@@ -274,7 +274,12 @@ Possiamo vedere che è stata rimossa la riga che inizia con `-` ed sostituita co
 
 Un modo più raffinato di agire sul codice consiste nel creare un differente "branch" dentro il quale modificare, creare, cancellare... file diversi. L'idea è che si dice a git di creare un'etichetta `viola` da portarsi dietro in ogni commit futuro.
 
-Da master si diparte un nuovo "branch":
+Diamo il comando
+
+```bash
+git checkout -b viola
+```
+Così facendo, da main si diparte un nuovo "branch":
 
 ```mermaid
 gitGraph:
@@ -283,7 +288,7 @@ branch viola
 checkout viola
 commit
 ```
-Si fanno dei commit in `viola`:
+Se ora si fanno dei commit in `viola`:
 
 ```mermaid
 gitGraph:
@@ -293,6 +298,7 @@ checkout viola
 commit
 commit
 ```
+il flusso di lavoro procede come al solito, con l'unica differenza che ora i commit fatti dopo aver creato `viola` sono "taggati" con l'etichetta che abbiamo creato.
 
 Al momento di confrontare il contenuto di `main` con il branch `viola` saranno possibili dei confronti più puntuali perché riguarderanno solo i commit etichettati con `viola`; questo rende più ordinato e chiaro il progresso del progetto (e GitHub ha una interfaccia intuitiva per gestire i conflitti).
 
@@ -303,15 +309,22 @@ branch viola
 checkout viola
 commit
 commit
-checkout master
+checkout main
 commit
 merge viola
 ```
 
-Mentre noi lavoravamo su `viola` qualcuno ha modificato `master`: il conflitto va risolto! Spesso questo avviene automaticamente, perché `git` sa capire quale modifica precede quale altra. In questo caso, il contenuto di `master` e di `viola` possono essere riunificati (con un commit su `master` che solitamente inizia con `Merge pull request ...`).
+Mentre noi lavoravamo su `viola` qualcuno ha modificato `main`: il conflitto va risolto! Spesso questo avviene automaticamente, perché `git` sa capire quale modifica precede quale altra. In questo caso, il contenuto di `main` e di `viola` possono essere riunificati (con un commit su `main` che solitamente inizia con `Merge pull request ...`).
 
-* git branch
-* git checkout -b
+`git branch` permette di vedere tutti i branch aperti nella repo.
+```bash
+$ git branch
+* gitgud
+  main
+```
+Quello con la stellina è il branch dove ci troviamo al momento. Per tornare a `main` è sufficiente dire `git checkout main`: così facendo, *tutti gli edit che non sono stati committati vanno persi*! Quindi non fatelo se non lo volete davvero.
+
+Altre operazioni possibili sono la cancellazione di un branch, con `git checkout -d`: leggete [qui](https://www.cloudbees.com/blog/git-delete-branch-how-to-for-both-local-and-remote) se volete, ma non credo dovrete preoccuparvi troppo di questo (io ed altri cancelleremo i branch che non servono più).
 
 ## Come si usa una repo (in compagnia, con GitHub)
 
@@ -328,11 +341,12 @@ Questo è un esempio di *conflitto* tra le versioni dello stesso file.
 
 E' possibile riconciliare le due versioni? Si! E molta dell'utilità di `git` viene dai suoi algoritmi che nella maggior parte delle situazioni permettono di risolvere conflitti senza interventi manuali.
 
-Nonostante questo, ci sono delle regole di igiene che è opportuno rispettare per minimizzare il rischio di conflitti complessi da risolvere.
+Nonostante questo, ci sono delle regole di igiene che è opportuno rispettare per minimizzare il rischio di conflitti complessi da risolvere ("perdere" irrimediabilmente un frammento di codice usando git è pressoché impossibile, a meno di poche eccezioni; queste eccezioni quasi sempre sono causate dal violare le regole che seguono).
 
-* Lavora sempre su un branch tuo; `fouche/CH1-moar-diagrams`, `ivan/APPENDIX-comments`...
-* Committa spesso, privilegiando piccole modifiche descritte chiaramente nei messaggi di commit. Quello che può accadere altrimenti è che il proprio lavoro venga sovrascritto dalle modifiche fatte da altri quando si pullano nella propria copia locale.
-* Pusha spesso: il tuo branch è tuo, non ci saran conflitti col lavoro degli altri, ed il tuo lavoro sarà sempre al sicuro nel repo remoto.
+* *Lavora sempre su un branch personale*: sarà buona pratica fissare delle regole generali per i nomi dei branch (qualcosa tipo `<user>/<sezione>-<comment>`, quindi qualcosa tipo `fouche/CHAPTER1-diagrams`, `ivan/APPENDIX-comments`...). Ci penserò, non è urgente, ma potrebbe evitare molte fatiche in futuro.
+* *Committa spesso*, privilegiando piccole modifiche, descritte **chiaramente** nei messaggi di commit. Quello che può accadere altrimenti è che il proprio lavoro venga sovrascritto dalle modifiche fatte da altri quando si pullano nella propria copia locale. **Questo è l'unico modo in cui è letteralmente impossibile recuperare il codice che avete perso**. Avete editato una riga? Commitate "missing \colon in chapter1". Corretto un typo? Committate "typos section 3.2". Cambiato una macro? `git commit -m "\category is now mathbf"`. There is no such thing as "too frequent commits"
+* *Pusha spesso*: il branch che hai creato è tuo, non ci saranno conflitti col lavoro degli altri, ed il tuo lavoro sarà sempre al sicuro nel repo remoto. Ci preoccuperemo poi di confrontarlo riga per riga con il `main`.
+* Il push di un commit è una operazione che si può costringere git a eseguire anche quando si lamenta che questo potrebbe creare problemi ad altri utenti. In progetti di medie/grandi dimensioni *non* bisogna mai forzarlo in dei branch pubblici, che rappresentano un pezzo di storico del progetto che è condiviso tra vari utenti (solitamente i branch hanno nomi esplicativi: `main` è certamente condiviso tra tutti, mentre `fouche/CHAPTER7-yoneda` esiste mentre ci lavoro, e poi viene mergiato in main; sul secondo posso forzare un push, sul primo no, [pena rendere la vita molto dura a tutti gli altri](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)).
 
 
 Per effettuare le operazioni di riconciliazione del lavoro dei collaboratori è conveniente utilizzare l'interfaccia web di GitHub.
