@@ -5,14 +5,13 @@
 
 ## Cos'è il controllo del versionamento del codice
 
-Persone diverse stanno lavorando a un progetto che presuppone di scrivere del codice. Modifiche fatte in parallelo da persone diverse potrebbero essere in conflitto se agiscono sulla stessa linea di codice: diciamo che l'utente `A` scrive in `file.txt`:
+Persone diverse stanno lavorando a un progetto che presuppone di scrivere del codice. Modifiche fatte in parallelo da persone diverse potrebbero risultare in conflitto se agiscono sulla stessa linea di codice: diciamo che l'utente `A` scrive in `file.txt`:
 
 ```
 le rose sono rosse
 ```
 
-Nello stesso momento `B` scrive invece
-
+Nello stesso momento invece `B` scrive (in una copia che sta sul suo computer)
 
 ```
 le rose sono blu
@@ -20,51 +19,48 @@ le rose sono blu
 
 Chi ha ragione? Come fanno `A` e `B`a mettersi d'accordo su quale delle due versioni del file `file.txt` va usata nel progetto?
 
-Per risolvere questo problema serve una maniera di rappresentare univocamente le varie versioni in cui un file di codice evolve nel tempo; l'ideale sarebbe rendere possibile tornare indietro a una versione precedente dopo aver sperimentato qualcosa che si è rivelato fallace, e risolvere quanto più automaticamente possibile i conflitti come quello sopra.
+Per risolvere questo problema serve una maniera di rappresentare univocamente le varie versioni in cui un file di codice evolve nel tempo; l'ideale sarebbe rendere possibile tornare indietro a una versione precedente dopo aver sperimentato qualcosa che si è rivelato fallace, e risolvere quanto più automaticamente possibile conflitti analoghi a quello sopra.
 
 Hence git.
 
 ## Cosa è una repo
 
-Un "repo" è un apparato che risolve il problema di rappresentare la storia di modifiche successive potenzialmente divergenti ad una base di codice.
+Un "repo" o *repository* è un apparato che risolve il problema di rappresentare la storia di modifiche successive potenzialmente divergenti ad una base di codice.
 
-L'entità fondamentale è il DIFF, ovvero le differenze nel codice tra una versione e quella precedente.
+L'entità fondamentale in un repo è il *diff*, ovvero le differenze nel codice tra una versione e quella precedente.
 
-Internamente il repo è rappresentato come un grafo diretto aciclico, ed in particolare ai suoi nodi sono associati i DIFF, oltre ad alcuni metadati.
+Internamente il repo è rappresentato come un grafo diretto aciclico, ed in particolare ai suoi nodi sono associati i diff, oltre ad alcuni metadati.
 
-I metadati includono timestamp, nome utente, ed un hash crittografico calcolato sulla concatenazione di metadati, DIFF, e hash del nodo genitore.
+I metadati includono timestamp, nome utente, ed un hash crittografico calcolato sulla concatenazione di metadati, diff, e hash del nodo genitore.
 
 Questo fa del repo un [Merkle tree](https://it.wikipedia.org/wiki/Albero_di_Merkle).
 
-Sebbene i nodi rappresentino DIFFERENZE, è uso comune trattare i loro hash univoci come se si riferissero allo stato dell'intera base di codice nel momento in cui il nodo è stato creato (ovvero, la somma delle differenze di tutti gli ancestors del nodo).
+Sebbene i nodi rappresentino DIFFERENZE tra due versioni del codice, è uso comune trattare i loro hash univoci come se si riferissero allo stato dell'intera base di codice nel momento in cui il nodo è stato creato (ovvero, la somma delle differenze di tutti gli antenati del nodo).
 
 Gli hash sono riferimenti univoci e immutabili a "stati" del codice, ma non sono pratici nell'uso quotidiano.
-Questo è il motivo per cui l'albero viene decorato con delle etichette mobili (che prendono il nome di branch o tag a seconda del modo in cui vengono spostate). Più dettagli di seguito.
+Questo è il motivo per cui l'albero viene decorato con delle etichette mobili (che prendono il nome di *branch* o *tag* a seconda del modo in cui vengono spostate). Più dettagli di seguito.
 
 ## Dove è una repo
 
-Ogni cartella di un computer può essere resa una repo.
+Ogni cartella di un computer può essere resa una repo con il comando `git init` (vedi sotto); questa nota introduttiva però non parlerà di nulla che a a che fare con la creazione delle repo, la loro cancellazione etc.
 
 Se si trova sulla propria macchina viene chiamato repository o origin **locale**.
 
 Se si trova sulla macchina di qualche servizio di hosting (e.g. GitHub, BitBucket, GitLab, ...) viene chiamato repository o origin **remoto**.
 
-La differenza non è nella struttura ma nell'utilizzo: i repo remoti sono tipicamente quelli di riferimento utilizzato per la condivisione del codice tra vari utenti.
+La differenza non è nella struttura ma nell'utilizzo: i repo remoti sono tipicamente quelli di riferimento utilizzato per la condivisione del codice tra vari utenti. Tutti gli utenti che contribuiscono a un progetto "puntano" al repo remoto e riferiscono ad esso le modifiche, salvo esplicita scelta di non farlo.
 
-Infatti gli utenti possono creare una versione locale del repo remoto, applicare delle modifiche, e spingerle poi verso il repo remoto per condividerle (o confrontarle e riconciliarle) con gli altri.
-
-
+Infatti gli utenti possono creare una versione locale del repo remoto, applicare delle modifiche, e "spingerle" poi verso il repo remoto per condividerle (o confrontarle e riconciliare i conflitti) con gli altri.
 ## Come si usa una repo (da soli, con git)
 
-Il principale servizio che ospita repository remote è [GitHub](https://github.com/).
+Il principale servizio che ospita repository remote è [GitHub](https://github.com/). Ne parliamo dopo.
 
 Lo strumento principale con cui si manipolano repository locali è [git](https://git-scm.com/).
-Si tratta di una commandline utility, e nel seguito esamineremo i principali comandi.
 
-
+Si tratta di una commandline utility, e nel seguito esamineremo i principali comandi. A seconda del proprio OS, ci sono diversi modi di installarlo sulla propria macchina, ma è molto probabile che sia già presente.
 ### Clonare una repo
 
-Per creare una copia locale di un repository remoto il comando da utilizzare è **`clone`**; il parametro importante da fornire è l'indirizzo del repository remoto:
+Per creare una copia locale di un repository remoto il comando da utilizzare è **`clone`**; il parametro importante da fornire è l'indirizzo del repository remoto: ad esempio, aperto un terminale
 
 ```bash
 $ git clone git@github.com:Progetto-ItaCa/libro.git
@@ -77,7 +73,6 @@ remote: Total 12 (delta 3), reused 0 (delta 0), pack-reused 0
 Receiving objects: 100% (12/12), 5.78 KiB | 5.78 MiB/s, done.
 Resolving deltas: 100% (3/3), done.
 ```
-
 Il comando crea una cartella col nome del repo, ed all'interno è possibile trovare il codice. Con il comando **`log`** è possibile esaminare una lista delle ultime modifiche:
 
 ```bash
@@ -95,22 +90,23 @@ Il testo `Rename ...` è un esempio di un *commit*; un commit è una stringa di 
 
 L'indicazione `HEAD` denota che lo stato dei file nella cartella è quello corrispondente al momento della creazione del commit. In altri termini: `HEAD` indica lo stato storico del repo su cui i file nella cartella sono "sintonizzati".
 
-L'indicazione `main` denota il `branch` di lavoro corrente; si tratta di una etichetta mobile che individua un certo "filone" di sviluppo.
+L'indicazione `main` denota il `branch` di lavoro corrente; si tratta di una etichetta mobile che individua un certo "filone" di sviluppo. Ce ne possono essere molti, grosso modo in funzione di quanti sotto-progetti sono in corso.
 
 Le indicazioni `origin/*` hanno un significato analogo, ma in relazione allo stato del repository remoto.
 
+Entrare nel dettaglio non è fondamentale al momento.
 
 ### Modificare una repo
 
-Immaginiamo che lo stato dei file locali sia il seguente:
+Immaginiamo che il contenuto della repo che abbiamo appena clonato sia il seguente:
 
 ```bash
 $ ls -l
 
--rw-r--r-- 1 fouche fouche   33 Mar 27 16:52 README.md
--rw-r--r-- 1 fouche fouche  309 Mar 27 16:52 beauty.py
--rw-r--r-- 1 fouche fouche 4652 Mar 27 16:52 itaca.sty
--rw-r--r-- 1 fouche fouche 1538 Mar 27 16:52 sample.tex
+-rw-r--r-- 1 <user>   33 Mar 27 16:52 README.md
+-rw-r--r-- 1 <user>  309 Mar 27 16:52 beauty.py
+-rw-r--r-- 1 <user> 4652 Mar 27 16:52 itaca.sty
+-rw-r--r-- 1 <user> 1538 Mar 27 16:52 sample.tex
 ```
 
 `git` può darci delle informazioni sullo stato della repo col comando `status`:
@@ -131,7 +127,7 @@ nothing to commit, working tree clean
 
 `nothing to commit, working tree clean` significa che non ci sono nuove modifiche apportate ai file rispetto a quanto già contenuto nel repo.
 
-Se apportiamo dell modifiche ai file (modificando un singolo file, cancellandone uno, creando una cartella...) come possiamo aggiornare lo stato del repository in modo che gli altri utenti che collaborano al progetto vedano queste modifiche?
+Se ora apportiamo dell modifiche ai file (modificando un singolo file, cancellandone uno, creando una cartella...) come possiamo aggiornare lo stato del repository in modo che gli altri utenti che collaborano al progetto vedano queste modifiche?
 
 Innanzitutto, osserviamo che `git status` è sensibile alle modifiche fatte: se vogliamo modificare il file `README.md`
 
@@ -164,7 +160,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ```
 
-"Changes not staged for commit" suggerisce che ci sono delle modifiche che è possibile mettere in `stage` per effettuare un `commit`. Questo è il primo passo della sequenza di azioni per pubblicare le proprie modifiche.
+`Changes not staged for commit` suggerisce che ci sono delle modifiche che è possibile mettere in `stage` per effettuare un `commit`. Questo è il primo passo della sequenza di azioni per pubblicare le proprie modifiche.
 
 Lo `stage` è un "palco" su cui è possibile posizionare le modifiche fatte ai file tramire il comando `git add`.
 
@@ -198,9 +194,9 @@ Your branch is ahead of 'origin/main' by 1 commit.
 nothing to commit, working tree clean
 ```
 
-"Your branch is ahead of 'origin/main' by 1 commit" ci conferma che il repo locale contiene un commit in più rispetto a quello remoto. Si tratta di quello che abbiamo appena creato.
+`Your branch is ahead of 'origin/main' by 1 commit` ci conferma che il repo locale contiene un commit in più rispetto a quello remoto. Si tratta di quello che abbiamo appena creato.
 
-Possiamo finalmente pubblicare le nostre modifiche col comando `git push`:
+Questo è il momento di pubblicare le nostre modifiche col comando `git push`:
 
 ```bash
 $ git push
@@ -221,10 +217,13 @@ Your branch is up to date with 'origin/main'.
 
 nothing to commit, working tree clean
 ```
-
 A questo punto se un altro utente clonasse il repo riceverebbe anche la nostra modifica.
 
-Cosa succede se però gli utenti hanno già una copia locale al momento del nostro push? Tramite `git status` possono vedere che sono "rimasti indietro":
+Questo conclude il processo con cui il codice che abbiamo modificato è stato reso disponibile agli altri; prima di questo momento, le modifiche sono essenzialmente reversibili. Dopo aver `push`ato il codice, in senso stretto non è più possibile eliminare una loro traccia.
+
+Per i novizi, quest'ultima caratteristica di `git` è allo stesso tempo la soluzione al problema originario, e la causa di una enorme quantità di problemi ausiliari...
+
+Tornando a noi: cosa succede ora se gli utenti *hanno già* una copia locale al momento del nostro push? Tramite `git status` possono vedere che sono "rimasti indietro" rispetto al punto dove gli altri autori hanno portato il codice:
 
 ```bash
 $ git status
@@ -236,7 +235,7 @@ Your branch is behind 'origin/main' by 1 commit, and can be fast-forwarded.
 nothing to commit, working tree clean
 ```
 
-"Your branch is behind 'origin/main' by 1 commit" significa che non hanno il commit che abbiamo appena pushato, e "can be fast-forwarded" li rassicura del fatto che possono riceverlo senza rischi di conflitti con il comando `pull`:
+`Your branch is behind 'origin/main' by 1 commit` significa che non hanno il commit che abbiamo appena pushato, e `can be fast-forwarded` li rassicura del fatto che possono riceverlo senza rischi di conflitti con il comando `pull`:
 
 ```bash
 $ git pull
@@ -270,6 +269,8 @@ index 88c3a71..89cc611 100644
 ```
 
 Possiamo vedere che è stata rimossa la riga che inizia con `-` ed sostituita con la riga che inizia con `+` all'interno del file `README.md`.
+
+### Branching
 
 Un modo più raffinato di agire sul codice consiste nel creare un differente "branch" dentro il quale modificare, creare, cancellare... file diversi. L'idea è che si dice a git di creare un'etichetta `viola` da portarsi dietro in ogni commit futuro.
 
@@ -337,7 +338,7 @@ Nonostante questo, ci sono delle regole di igiene che è opportuno rispettare pe
 Per effettuare le operazioni di riconciliazione del lavoro dei collaboratori è conveniente utilizzare l'interfaccia web di GitHub.
 è possibile farlo anche localmente, ma su GH è semplice esaminare differenze, conflitti, e discutere in contesto di eventuali correzioni coi revisori.
 
-## Cos'è (e come si usa) una pull request
+### Cos'è (e come si usa) una pull request
 
 Spesso chi vuole contribuire a una repo non ne ha completo accesso (per esempio per ragioni di sicurezza); se `A` vuole modificare il contenuto di una repo ad accesso ristretto deve prima creare un altro repo remoto a cui può accedere e che può modificare senza restrizioni (un "fork" del repo originario), per poi confrontare il fork con quest'ultimo.
 
