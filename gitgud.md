@@ -338,9 +338,20 @@ Nonostante questo, ci sono delle regole di igiene che è opportuno rispettare pe
 Per effettuare le operazioni di riconciliazione del lavoro dei collaboratori è conveniente utilizzare l'interfaccia web di GitHub.
 è possibile farlo anche localmente, ma su GH è semplice esaminare differenze, conflitti, e discutere in contesto di eventuali correzioni coi revisori.
 
+GitHub prevede che si crei un account (come lo avete fatto per mille altri siti) con un username che vi identifichi, e a cui solo voi potete accedere; potete creare delle vostre repo, editarle, condividerle con altri, o renderle private (invisibili a chiunque non vi abbia accesso).
+
+Questo è il mio profilo:
+
+![](https://i.imgur.com/oEMHCfs.png)
+
+il vostro avrà un aspetto molto simile (e se accedete al mio, voi vedrete solo le repo pubbliche).
+
+
 ### Cos'è (e come si usa) una pull request
 
-Spesso chi vuole contribuire a una repo non ne ha completo accesso (per esempio per ragioni di sicurezza); se `A` vuole modificare il contenuto di una repo ad accesso ristretto deve prima creare un altro repo remoto a cui può accedere e che può modificare senza restrizioni (un "fork" del repo originario), per poi confrontare il fork con quest'ultimo.
+Spesso chi vuole contribuire a una repo non ne ha completo accesso (per esempio per ragioni di sicurezza; oppure progetti molto grandi possono avere dei collaboratori saltuari, che sono perfetti estranei: per questo motivo il proprietario di una repo può voler esaminare i cambiamenti fatti da qualcuno prima di integrarli nel suo progetto).
+
+Se `A` vuole modificare il contenuto di una repo ad accesso ristretto deve prima creare *un altro* repo remoto a cui può accedere e che può modificare senza restrizioni (un "fork" del repo originario), per poi confrontare il fork con quest'ultimo. Questo avviene nel proprio profilo GitHub.
 
 Questa azione si chiama una "pull request": l'utente che ha forkato il repo originario domanda al suo proprietario `B` il permesso di mergiare i contributi dal fork al repo originario, mostrandogli le modifiche che ha fatto (alcuni commit del suo storico).
 
@@ -361,3 +372,17 @@ L'interazione tipica tra `A` e `B` è una cosa del genere
 - finché a un certo punto (si spera) si converge al momento in cui `B` accetta la PR.
 
 Quando `A` vuole forkare una repo, lo fa da GitHub e gli appare una copia della repo forkata nel proprio profilo; da lì, `A` clona una copia locale e agisce come al solito. In poche parole una PR permette di confrontare due branch di repo remote su cui persone diverse hanno agito e unificare il loro contenuto. Ad `A` quindi serve una copia in remoto del repo di `B`! Questo è ciò a cui serve un fork.
+
+### Qualche considerazione finale
+
+Imparare a usare git è un processo che non finisce mai, e passa per diversi momenti di illuminazione, seguita da frustrazione, seguita da ulteriore illuminazione, seguita... ma (come accade con TeX) il ritorno in termini di qualità del lavoro (inteso come work in progress) e del prodotto finito è ineguagliato da tanti altri metodi più o meno civili di controllo versione. E' impensabile gestire un progetto che abbia piu di due autori, senza controllo versione; git è l'unico modo razionale di farlo, ed è complesso e stratificato perché il processo di creazione del codice da parte di più di una persona è complesso e stratificato.
+
+Degli ottimi modi di imparare a usarlo sono
+
+- zillioni di [video di youtube](https://www.youtube.com/results?search_query=using+git) che promettono di insegnarlo in 15 minuti o meno.
+- corsi online relativamente a basso costo, come quelli di [udemy](https://www.udemy.com/course/git-complete/) e udacity.
+- gli amici e i colleghi che sanno già usarlo.
+
+---
+
+Questa nota è stata redatta da [me](https://github.com/tetrapharmakon) e da [paolobrasolin](https://github.com/paolobrasolin) (che sa molto più git di me e che potete comodamente pagare in birra appena lo vedete --così come a me).
