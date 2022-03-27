@@ -2,28 +2,6 @@
 
 ![YOU DIED](https://i.ytimg.com/vi/-ZGlaAxB7nI/maxresdefault.jpg)
 
-[TOC]
-
-
-
-```mermaid
-gitGraph:
-options
-{
-    "nodeSpacing": 100,
-    "nodeRadius": 10
-}
-end
-commit
-branch newbranch
-checkout newbranch
-commit
-commit
-checkout master
-commit
-commit
-merge newbranch
-```
 
 ## Cos'è il controllo del versionamento del codice
 
