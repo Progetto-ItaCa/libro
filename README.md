@@ -1,2 +1,2 @@
 # libro
-Il grande libro di ItaCa
+Il meraviglioso libro di ItaCa
