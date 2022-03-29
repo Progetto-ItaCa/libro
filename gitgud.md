@@ -281,38 +281,17 @@ git checkout -b viola
 ```
 Così facendo, da main si diparte un nuovo "branch":
 
-```mermaid
-gitGraph:
-commit
-branch viola
-checkout viola
-commit
-```
+[![](https://mermaid.ink/img/pako:eNo9zDEOwjAMBdCrVJ57gswgDsDqxSRuExHbVXCQUNW7k6Gw_f_19HeIlhgCrMVvjbYcUKOJFEd9NNKYp3exSmPNHJ_W_d9PBTMIN6GSxsuOOk0InlkYIYyYeKFeHQH1GLRviZyvqbg1CAvVF89A3e3-0QjBW-cfuhRaG8mpji-RBz0z)](https://mermaid.live/edit#pako:eNo9zDEOwjAMBdCrVJ57gswgDsDqxSRuExHbVXCQUNW7k6Gw_f_19HeIlhgCrMVvjbYcUKOJFEd9NNKYp3exSmPNHJ_W_d9PBTMIN6GSxsuOOk0InlkYIYyYeKFeHQH1GLRviZyvqbg1CAvVF89A3e3-0QjBW-cfuhRaG8mpji-RBz0z)
+
 Se ora si fanno dei commit in `viola`:
 
-```mermaid
-gitGraph:
-commit
-branch viola
-checkout viola
-commit
-commit
-```
+[![](https://mermaid.ink/img/pako:eNo9zDEOwyAMBdCrIM85AXOrHqCrFxecYBVMRE2lKsrdw5B08v9fT94g1MjgYRF7NFqTRw21FDHUVyMNyX2lZhpr4vCu3f79VNeFCQq3QhLHtw3VOQRLXBjBjxh5pp4NAXUftK-RjO9RrDbwM-UPT0Dd6vOnAby1zhe6CS2Nyqn2A8T7QIY)](https://mermaid.live/edit#pako:eNo9zDEOwyAMBdCrIM85AXOrHqCrFxecYBVMRE2lKsrdw5B08v9fT94g1MjgYRF7NFqTRw21FDHUVyMNyX2lZhpr4vCu3f79VNeFCQq3QhLHtw3VOQRLXBjBjxh5pp4NAXUftK-RjO9RrDbwM-UPT0Dd6vOnAby1zhe6CS2Nyqn2A8T7QIY)
+
 il flusso di lavoro procede come al solito, con l'unica differenza che ora i commit fatti dopo aver creato `viola` sono "taggati" con l'etichetta che abbiamo creato.
 
 Al momento di confrontare il contenuto di `main` con il branch `viola` saranno possibili dei confronti più puntuali perché riguarderanno solo i commit etichettati con `viola`; questo rende più ordinato e chiaro il progresso del progetto (e GitHub ha una interfaccia intuitiva per gestire i conflitti).
 
-```mermaid
-gitGraph:
-commit
-branch viola
-checkout viola
-commit
-commit
-checkout main
-commit
-merge viola
-```
+[![](https://mermaid.ink/img/pako:eNpFzTEOwzAIQNGrRMw5gedWPUBXFmqT2KqxI4IrVVHuXg9JusHnSWzga2BwMCd7KC3RYfFVJBmWl1LxcfikmqnXyP5dm137oa4utBrr_yCsM58aC4zQi1AK_duGZRgQLLIwgutj4IlaNgQse6dtCWR8D8mqgpsorzwCNavPb_HgTBuf6JZoVpJD7T9Ri00x)](https://mermaid.live/edit#pako:eNpFzTEOwzAIQNGrRMw5gedWPUBXFmqT2KqxI4IrVVHuXg9JusHnSWzga2BwMCd7KC3RYfFVJBmWl1LxcfikmqnXyP5dm137oa4utBrr_yCsM58aC4zQi1AK_duGZRgQLLIwgutj4IlaNgQse6dtCWR8D8mqgpsorzwCNavPb_HgTBuf6JZoVpJD7T9Ri00x)
 
 Mentre noi lavoravamo su `viola` qualcuno ha modificato `main`: il conflitto va risolto! Spesso questo avviene automaticamente, perché `git` sa capire quale modifica precede quale altra. In questo caso, il contenuto di `main` e di `viola` possono essere riunificati (con un commit su `main` che solitamente inizia con `Merge pull request ...`).
 
