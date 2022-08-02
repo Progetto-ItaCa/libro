@@ -5,32 +5,24 @@
               , BCOR=5mm
               , DIV=calc
               , bibliography=totoc
-              , final
+              , paper
               , version=last
               ]{scrbook}
 
-
+\usepackage[all,2cell]{xy}\UseAllTwocells
 
 \usepackage{itaca-preambolo/itaca}
 \usepackage[italian]{babel}
 \usepackage[automark]{scrlayer-scrpage}
 \usepackage{microtype}
 \usepackage{hyperref}
-\usepackage[ makeidx
-           , xcolor
-           , hyperref
-           , notion
-           , quotation
-           ]{knowledge}
-
+\usepackage[makeidx,xcolor,hyperref,notion,cleveref]{knowledge}
 \pagestyle{scrheadings}
+
+\input{main-knowledge}
+
 \recalctypearea
-
-\usepackage[all,2cell]{xy}\UseAllTwocells
-\usepackage{tikz-cd}
-% teste dei diagrammi
-\tikzset{commutative diagrams/.cd,arrow style=tikz,diagrams={>=stealth'}}
-
+\makeindex
 \begin{document}
 \frontmatter
 
@@ -60,89 +52,12 @@
 \input{cap/09-nervi-realizzazioni.tex}
 \appendix
 \input{cap/AA-appendice.tex}
+\input{cap/AB-soluzioni.tex}
+
 \clearpage
 
 \backmatter
+\printindex
 % here be backmatter: glossario, indice, bibliografia... e soluzioni agli esercizi?
-\chapter{Soluzioni agli esercizi}
-\section*{Capitolo 0}
-\begin{enumerate}
-    \item
-    \item
-    \item
-    \item
-    \item
-\end{enumerate}
-\section*{Capitolo 1}
-\begin{enumerate}
-    \item
-    \item
-    \item
-    \item
-    \item
-\end{enumerate}
-\section*{Capitolo 2}
-\begin{enumerate}
-    \item
-    \item
-    \item
-    \item
-    \item
-\end{enumerate}
-\section*{Capitolo 3}
-\begin{enumerate}
-    \item
-    \item
-    \item
-    \item
-    \item
-\end{enumerate}
-\section*{Capitolo 4}
-\begin{enumerate}
-    \item
-    \item
-    \item
-    \item
-    \item
-\end{enumerate}
-\section*{Capitolo 5}
-\begin{enumerate}
-    \item
-    \item
-    \item
-    \item
-    \item
-\end{enumerate}
-\section*{Capitolo 6}
-\begin{enumerate}
-    \item
-    \item
-    \item
-    \item
-    \item
-\end{enumerate}
-\section*{Capitolo 7}
-\begin{enumerate}
-    \item
-    \item
-    \item
-    \item
-    \item
-\end{enumerate}
-\section*{Capitolo 8}
-\begin{enumerate}
-    \item
-    \item
-    \item
-    \item
-    \item
-\end{enumerate}
-\section*{Capitolo 9}
-\begin{enumerate}
-    \item
-    \item
-    \item
-    \item
-    \item
-\end{enumerate}
+
 \end{document}
