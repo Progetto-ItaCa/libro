@@ -119,10 +119,14 @@ Tutte le categorie descritte finora sono localmente piccole.
 \subsubsection*{Esercizi}
 \begin{enumerate}
     \item Un \emph{grafo diretto} è un insieme $V$, i cui elementi chiamiamo \emph{vertici}, e una relazione $E\subseteq X\times X$, i cui elementi chiamiamo \emph{spigoli}. Diciamo che $x$ è \emph{adiacente} a $y$ se esiste uno spigolo $(x,y)\in E$. Un \emph{omomorfismo di grafi diretti} $f:(V,E)\to (V',E')$ è una funzione $f:V\to V'$ tale che se $x$ è adiacente a $y$, allora $f(x)$ è adiacente a $f(y)$. Dimostra che i grafi diretti e i loro omomorfismi formano una categoria. 
-    \item Un \emph{multigrafo diretto} è come un grafo diretto, ma può avere diversi spigoli tra gli stessi due vertici. Tecnicamente consiste di un insieme $V$ (i \emph{vertici}), e per ogni coppia ordinata $(x,y)$ di vertici, un insieme $E(x,y)$ (gli \emph{spigoli} da $x$ a $y$). Un \emph{omomorfismo di multigrafi diretti} consiste di una funzione $f_0:V\to V'$ tra i vertici, e per ogni coppia di vertici $x,y\in V$, una funzione $f_1:E(x,y)\to E'(f(x),f(y))$ che associa a uno spigolo tra $x$ e $y$ uno spigolo tra $f(x)$ e $f(y)$. Dimostra che i multigrafi diretti e i loro omomorfismi formano una categoria. 
-    \item Una categoria localmente piccola si può vedere come un multigrafo con identità e composizione: riscrivi la definizione di categoria (localmente piccola) in termini di multigrafi. 
-    \item Dimostra che la costruzione al punto 3 generalizza la definizione di monoide (come insieme con identità e composizione).
-    \item Un grafo diretto si può vedere come un multigrafo dove gli insiemi $E(x,y)$ hanno al massimo un elemento. Dimostra che la costruzione al punto 3, se applicata ad un grafo diretto, dà un preordine. 
+    \item Un \emph{multigrafo diretto} è come un grafo diretto, ma può avere diversi spigoli tra gli stessi due vertici. Tecnicamente consiste di un insieme $V$ (i \emph{vertici}), e un insieme $E$ (gli \emph{spigoli}), con due funzioni $d_-,d_+:E\to V$, che associano un ``dominio'' e un ``codominio'' ad ogni spigolo. Un \emph{omomorfismo di multigrafi diretti} $(V,E)\to (V',E')$ consiste di una funzione $f_0:V\to V'$ tra i vertici, e una funzione $f_1:E\to E'$ tra gli spigoli, compatibili con le mappe $d_-,d_+$ nel seguente modo:
+    $$
+    d_-(f_1(e)) = f_0(d_-(e)) ,\qquad d_+(f_1(e)) = f_0(d_+(e)) .
+    $$
+    Dimostra che $f_1:E\to E'$ associa a uno spigolo tra $x$ e $y$ uno spigolo tra $f_0(x)$ e $f_0(y)$. 
+    \item Dimostra che i multigrafi diretti e i loro omomorfismi formano una categoria. 
+    \item Una categoria piccola si può vedere come un multigrafo con identità e composizione: riscrivi la definizione di categoria (piccola) in termini di multigrafi.  In che modo questa costruzione generalizza la definizione di monoide (come insieme con identità e composizione)?
+    \item Un grafo diretto si può vedere come un multigrafo dove tra due vertici c'è al massimo uno spigolo. Dimostra che la costruzione al punto 3, se applicata ad un grafo diretto, dà un preordine. 
 \end{enumerate}
 
 
