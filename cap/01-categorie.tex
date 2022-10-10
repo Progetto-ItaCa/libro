@@ -1,4 +1,157 @@
 \chapter{Categorie, funtori, trasformazioni naturali}
+
+\section{Categorie}
+
+Prima di arrivare alla definizione formale di categorie, può essere di aiuto avere in mente un esempio concreto. Prendiamo per esempio gli spazi vettoriali e le mappe lineari tra di loro. 
+Molti di voi sapranno che le matrici invertibili su $\ictR^n$ con il loro prodotto formano un gruppo. Più un generale, se tralasciamo la condizione di invertibilità, abbiamo un \emph{monoide}:
+
+\begin{definition}
+ Un \emph{monoide} consiste in un insieme $M$ con:
+ \begin{itemize}
+  \item Un elemento particolare $e\in M$, chiamato \emph{elemento neutro}, \emph{unità} o \emph{identità};
+  \item Un'operazione binaria $M\times M\to M$, chiamata \emph{prodotto} o \emph{composizione}, e indicata con $(m,n),\mapsto m\cdot n$;
+  che soddisfano le seguenti proprietà:
+  \item \emph{Unitalità}: per ogni $m\in M$, i prodotti $m \cdot e$ ed $e\cdot m$ sono uguali a $m$;
+  \item \emph{Associatività}: per ogni $m,n,p\in M$, i prodotti $(m\cdot n)\cdot p$ ed $m\cdot (n\cdot p)$ sono uguali. 
+ \end{itemize}
+\end{definition}
+
+Se ora consideriamo gli spazi vettoriali $\ictR^n$ per diversi $n$, non tutte le mappe lineari si possono comporre. In particolare, una mappa $f:\ictR^n\to \ictR^m$ si può comporre con una mappa $g:\ictR^p\to\ictR^q$ solo se $p=q$. In altre parole, $g$ si può comporre con $f$ solo se il codominio di $f$ è uguale al dominio di $g$.
+Allo stesso modo, ci sono varie matrici identità, una per ogni $n$. 
+La struttura algebrica che otteniamo è una \emph{categoria}, che definiamo a breve.
+
+Nella definizione di categoria, in generale, è problematico usare la parola ``insieme'', è meglio parlare di \emph{classe}. Informalmente, una classe è come un insieme, ma potenzialmente ``più grande'', cioè può contenere tutti gli insiemi (ma non tutte le classi). 
+Nella definizione che segue, a prima vista si può leggere la parola ``classe'' come ``insieme''. Vedremo la questione più in dettaglio nell'Appendice \ref{fondamenti}. 
+
+\begin{definition}
+ Una \emph{categoria} $\ctC$ consiste dei seguenti dati.
+ \begin{itemize}
+  \item Una classe $\ctC_0$ i cui elementi chiamiamo \emph{oggetti}, di solito indicati con lettere latine maiuscole: $A$, $B$, $X$, $Y$,\dots
+  \item Una classe $\ctC_1$ i cui elementi chiamiamo \emph{morfismi}, di solito indicati con lettere latine minuscole: $f$, $g$, $h$,\dots
+  
+  Queste classi sono fornite delle seguenti strutture. 
+  
+  \item Ad ogni morfismo corrispondono due oggetti $\dom{f}$, $\cod{f}$ chiamati \emph{dominio} e \emph{codominio}. Se $f$ ha dominio $X$ e codominio $Y$, scriviamo $f:X\to Y$, o in forma diagrammatica, $X \xrightarrow{f} Y$.
+  \item Ogni oggetto $X$ ha un particolare morfismo $\id_X:X\to X$ chiamato \emph{identità}.
+  \item Dati tre oggetti $X,Y,Z$ e morfismi $f:X\to Y$ e $g:Y\to Z$ (si noti che $\cod{f}=\dom{g}$) esiste un particolare morfismo $g\circ f:X\to Z$ chiamato \emph{composizione di $f$ e $g$}. Graficamente:
+  $$
+  \begin{tikzcd}
+   X \ar{r}{f} \ar[bend right=20]{rr}[swap]{g\circ f} & Y \ar{r}{g} & Z .
+  \end{tikzcd}
+  $$
+  (Si noti che $\dom{g\circ f}=\dom{f}$ e $\cod{g\circ f}=\cod{g}$.)
+  
+  Queste strutture devono soddisfare le seguenti proprietà.
+  
+  \item \emph{Unitalità}: per ogni morfismo $f:X\to Y$, le composizioni $f\circ\id_X$ e $\id_Y\circ f$ sono uguali ad $f$.
+  \item \emph{Associatività}: dati oggetti $X,Y,Z,A$ e morfismi $f:X\to Y$, $g:Y\to Z$ e $h:Z\to A$, le composizioni $h\circ (g\circ f)$ e $(h\circ g)\circ f$ sono uguali.
+ \end{itemize}
+\end{definition}
+
+Dati due oggetti $X$ e $Y$, indichiamo con $\Hom{\ctC}(X,Y)$ la classe di morfismi da $X$ a $Y$. Altri autori usano altre notazioni, come $\mathrm{Hom}(X,Y)$ o $\mathrm{Hom}_\ctC(X,Y)$.
+
+
+Quando le classi $\ctC_0$ e $\ctC_1$ sono insiemi, chiamamo la categoria $\ctC$ \emph{piccola}. Più in generale, $\ctC$ si dice \emph{localmente piccola} se dati ogni due oggetti $X$ e $Y$, la classe $\Hom{\ctC}(X,Y)$ di morfismi da $X$ a $Y$ è un insieme. 
+
+\begin{examples} 
+ Vediamo alcuni esempi classici di categorie. 
+ \begin{itemize}
+  \item Come accennato sopra, gli spazi vettoriali su $\ictR$ e le mappe lineari formano una categoria, che chiamiamo $\ctVect_\ictR$. Più in generale possiamo definire la categoria $\ctVect_\ictF$, per un campo $\ictF$, in maniera analoga.
+  \item Gli insiemi e le funzioni formano una categoria, che chiamiamo $\ctSet$.
+  \item I gruppi e gli omomorfismi di gruppo formano la categoria $\ctGrp$.
+  \item I gruppi abeliani e gli omomorfismi di gruppo formano la sottocategoria $\ctAb\subseteq\ctGrp$. (Definiremo le sottocategorie a breve.)
+  \item Gli spazi topologici e le funzioni continue formano la categoria $\ctTop$. 
+ \end{itemize}
+Spesso un ambito della matematica si occupa di una o più categorie in particolare. Per esempio l'algebra lineare si occupa principalmente delle categorie $\ctVect_\ictF$.
+\end{examples}
+
+Le categorie negli esempi sopra si possono vedere come categorie dove gli oggetti sono insiemi con strutture ulteriori (per esempio, strutture di gruppo), e i morfismi sono funzioni che preservano queste strutture. Non tutte le categorie sono di questo tipo, come vediamo nei prossimi esempi. 
+
+\begin{example}
+ Una relazione di equivalenza si può vedere come una particolare categoria. Consideriamo un insieme $X$ con una relazione di equivalenza indicata con il simbolo $\sim$.
+ Definiamo la seguente categoria:
+ \begin{itemize}
+  \item Gli oggetti sono gli elementi di $x$;
+  \item Esiste un unico morfismo da $x$ a $y$ (e uno da $y$ a $x$) se e solo se $x\sim y$. 
+ \end{itemize}
+ Ad ogni oggetto $x$, l'identità è l'unico morfismo $x\to x$ dato dal fatto che la relazione è riflessiva ($x\sim x$). 
+ La composizione è data dalla transitività: se abbiamo morfismi $x\to y$ e $y\to z$ significa, in particolare, che $x\sim y$ e $y\sim z$. Per transitività, $x\sim z$, e quindi c'è un unico morfismo $x\to z$, che possiamo prendere come composizione. 
+ Gli assiomi di unitalità e associatività sono automaticamente soddisfatti: per esempio, dati $w\sim x\sim y\sim z$, per transitività abbiamo che $w\sim z$, e questo dà un \emph{unico} morfismo $w\to z$, non importa se lo otteniamo componendo prima $w\sim x$ e $x\sim y$ o prima $x\sim y$ e $y\sim z$ -- il risultato è lo stesso per unicità. 
+\end{example}
+
+Nell'esempio sopra vediamo che \emph{gli oggetti non sono insiemi con strutture ulteriori}. 
+Notiamo anche che la proprietà di \emph{simmetria} delle relazioni di equivalenza non serve per avere una categoria. Consideriamo i seguenti esempi.
+
+\begin{examples}
+ Una relazione d'ordine $(X,\le)$ si può vedere come una categoria, ancora una volta con un unico morfismo $x\to y$ se e solo se $x\le y$. Come nel caso delle relazioni di equivalenza, le identità sono date dalla proprietà riflessiva e la composizione dalla proprietà transitiva. 
+ 
+ Più in generale, un \emph{preordine} è una relazione riflessiva e transitiva, ma non necessariamente simmetrica o antisimmetrica. Ogni preordine si può vedere come una categoria.
+\end{examples}
+
+
+\begin{example}
+ Un monoide si può vedere come una categoria con un solo oggetto -- più precisamente, una categoria \emph{localmente piccola} con un solo oggetto. 
+ Vediamo come. Dato un monoide $M$, definiamo la seguente categoria, che indichiamo con $\ctB M$.\footnote{A volte la categoria definita in questo modo si indica con $\ctB M$, a volte semplicemente con $M$.}
+ \begin{itemize}
+  \item La categoria $\ctB M$ ha un unico oggetto, che indichiamo con un punto, $\bullet$;
+  \item La categoria $\ctB M$ ha un morfismo $m:\bullet\to\bullet$ per ogni elemento $m\in M$;
+  \item L'identità dell'unico oggetto $m$ e il morfismo definito dall'elemento neutro $e\in M$;
+  \item La composizione di morfismi è data dal prodotto in $M$.
+ \end{itemize}
+ In un monoide, a differenza di una categoria generica, possiamo sempre comporre due morfismi $m$ e $n$: questo è garantito dal fatto che siccome c'è un solo oggetto, il dominio e il codominio di $m$ ed $n$ sono necessariamente uguali. 
+ 
+ Viceversa, data una categoria localmente piccola con un solo oggetto (indichiamolo ancora con questo simbolo, $\bullet$), l'insieme di morfismi $\bullet\to\bullet$ ha una struttura di monoide con l'elemento neutro dato dall'identità, e il prodotto dato dalla composizione.
+ 
+ L'unitalità e l'associatività del monoide e della categoria si corrispondono.
+\end{example}
+
+In particolare, ogni gruppo si può vedere come una categoria con un solo oggetto. 
+
+\begin{remark}
+ Abbiamo visto che i gruppi sono gli oggetti della categoria $\ctGrp$, ma anche che ogni gruppo si può a sua volta vedere come una categoria (con un solo oggetto). Entrambe le prospettive sono valide, e ce ne sono altre ancora. 
+ Allo stesso modo, gli ordini parziali sono categorie, ma si possono anche vedere come oggetti della categoria $\ctPos$, dove i morfismi sono le funzioni monotone. 
+ Spesso, in teoria delle categorie, la stessa struttura matematica può apparire in modi diversi in contesti diversi, e questa varietà di prospettive è uno dei motivi per cui le categorie sono così versatili. 
+\end{remark}
+
+
+Tutte le categorie descritte finora sono localmente piccole. 
+
+\subsubsection*{Esercizi}
+\begin{enumerate}
+    \item Un \emph{grafo diretto} è un insieme $V$, i cui elementi chiamiamo \emph{vertici}, e una relazione $E\subseteq X\times X$, i cui elementi chiamiamo \emph{spigoli}. Diciamo che $x$ è \emph{adiacente} a $y$ se esiste uno spigolo $(x,y)\in E$. Un \emph{omomorfismo di grafi diretti} $f:(V,E)\to (V',E')$ è una funzione $f:V\to V'$ tale che se $x$ è adiacente a $y$, allora $f(x)$ è adiacente a $f(y)$. Dimostra che i grafi diretti e i loro omomorfismi formano una categoria. 
+    \item Un \emph{multigrafo diretto} è come un grafo diretto, ma può avere diversi spigoli tra gli stessi due vertici. Tecnicamente consiste di un insieme $V$ (i \emph{vertici}), e per ogni coppia ordinata $(x,y)$ di vertici, un insieme $E(x,y)$ (gli \emph{spigoli} da $x$ a $y$). Un \emph{omomorfismo di multigrafi diretti} consiste di una funzione $f_0:V\to V'$ tra i vertici, e per ogni coppia di vertici $x,y\in V$, una funzione $f_1:E(x,y)\to E'(f(x),f(y))$ che associa a uno spigolo tra $x$ e $y$ uno spigolo tra $f(x)$ e $f(y)$. Dimostra che i multigrafi diretti e i loro omomorfismi formano una categoria. 
+    \item Una categoria localmente piccola si può vedere come un multigrafo con identità e composizione: riscrivi la definizione di categoria (localmente piccola) in termini di multigrafi. 
+    \item Dimostra che la costruzione al punto 3 generalizza la definizione di monoide (come insieme con identità e composizione).
+    \item Un grafo diretto si può vedere come un multigrafo dove gli insiemi $E(x,y)$ hanno al massimo un elemento. Dimostra che la costruzione al punto 3, se applicata ad un grafo diretto, dà un preordine. 
+\end{enumerate}
+
+
+\section{Isomorfismi}
+
+\subsubsection*{Esercizi}
+\begin{enumerate}
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+\end{enumerate}
+
+
+\section{Funtori}
+
+\subsubsection*{Esercizi}
+\begin{enumerate}
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+\end{enumerate}
+
+
+\section{Trasformazioni naturali}
+
 \subsubsection*{Esercizi}
 \begin{enumerate}
     \item 
