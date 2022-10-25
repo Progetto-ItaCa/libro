@@ -8,9 +8,11 @@ Molti di voi sapranno che le matrici invertibili su $\ictR^n$ con il loro prodot
 \begin{definition}
  Un \emph{monoide} consiste in un insieme $M$ con:
  \begin{itemize}
-  \item Un elemento particolare $e\in M$, chiamato \emph{elemento neutro}, \emph{unità} o \emph{identità};
+  \item Un elemento distinto $e\in M$, chiamato \emph{elemento neutro}, \emph{unità} o \emph{identità};
   \item Un'operazione binaria $M\times M\to M$, chiamata \emph{prodotto} o \emph{composizione}, e indicata con $(m,n),\mapsto m\cdot n$;
-  che soddisfano le seguenti proprietà:
+ \end{itemize}
+ che soddisfano le seguenti proprietà:
+ \begin{itemize}
   \item \emph{Unitalità}: per ogni $m\in M$, i prodotti $m \cdot e$ ed $e\cdot m$ sono uguali a $m$;
   \item \emph{Associatività}: per ogni $m,n,p\in M$, i prodotti $(m\cdot n)\cdot p$ ed $m\cdot (n\cdot p)$ sono uguali. 
  \end{itemize}
@@ -28,12 +30,12 @@ Nella definizione che segue, a prima vista si può leggere la parola ``classe'' 
  \begin{itemize}
   \item Una classe $\ctC_0$ i cui elementi chiamiamo \emph{oggetti}, di solito indicati con lettere latine maiuscole: $A$, $B$, $X$, $Y$,\dots
   \item Una classe $\ctC_1$ i cui elementi chiamiamo \emph{morfismi}, di solito indicati con lettere latine minuscole: $f$, $g$, $h$,\dots
-  
-  Queste classi sono fornite delle seguenti strutture. 
-  
+ \end{itemize}
+ Queste classi sono fornite delle seguenti strutture. 
+ \begin{itemize}  
   \item Ad ogni morfismo corrispondono due oggetti $\dom{f}$, $\cod{f}$ chiamati \emph{dominio} e \emph{codominio}. Se $f$ ha dominio $X$ e codominio $Y$, scriviamo $f:X\to Y$, o in forma diagrammatica, $X \xrightarrow{f} Y$.
-  \item Ogni oggetto $X$ ha un particolare morfismo $\id_X:X\to X$ chiamato \emph{identità}.
-  \item Dati tre oggetti $X,Y,Z$ e morfismi $f:X\to Y$ e $g:Y\to Z$ (si noti che $\cod{f}=\dom{g}$) esiste un particolare morfismo $g\circ f:X\to Z$ chiamato \emph{composizione di $f$ e $g$}. Graficamente:
+  \item Ogni oggetto $X$ ha un morfismo distinto $\id_X:X\to X$ chiamato \emph{identità}.
+  \item Dati tre oggetti $X,Y,Z$ e morfismi $f:X\to Y$ e $g:Y\to Z$ (si noti che $\cod{f}=\dom{g}$) esiste un morfismo distinto $g\circ f:X\to Z$ chiamato \emph{composizione di $f$ e $g$}. Graficamente:
   $$
   \begin{tikzcd}
    X \ar{r}{f} \ar[bend right=20]{rr}[swap]{g\circ f} & Y \ar{r}{g} & Z .
@@ -71,10 +73,10 @@ Le categorie negli esempi sopra si possono vedere come categorie dove gli oggett
  Una relazione di equivalenza si può vedere come una particolare categoria. Consideriamo un insieme $X$ con una relazione di equivalenza indicata con il simbolo $\sim$.
  Definiamo la seguente categoria:
  \begin{itemize}
-  \item Gli oggetti sono gli elementi di $x$;
+  \item Gli oggetti sono gli elementi di $X$;
   \item Esiste un unico morfismo da $x$ a $y$ (e uno da $y$ a $x$) se e solo se $x\sim y$. 
  \end{itemize}
- Ad ogni oggetto $x$, l'identità è l'unico morfismo $x\to x$ dato dal fatto che la relazione è riflessiva ($x\sim x$). 
+ Per ogni oggetto $x$, l'identità è l'unico morfismo $x\to x$ dato dal fatto che la relazione è riflessiva ($x\sim x$). 
  La composizione è data dalla transitività: se abbiamo morfismi $x\to y$ e $y\to z$ significa, in particolare, che $x\sim y$ e $y\sim z$. Per transitività, $x\sim z$, e quindi c'è un unico morfismo $x\to z$, che possiamo prendere come composizione. 
  Gli assiomi di unitalità e associatività sono automaticamente soddisfatti: per esempio, dati $w\sim x\sim y\sim z$, per transitività abbiamo che $w\sim z$, e questo dà un \emph{unico} morfismo $w\to z$, non importa se lo otteniamo componendo prima $w\sim x$ e $x\sim y$ o prima $x\sim y$ e $y\sim z$ -- il risultato è lo stesso per unicità. 
 \end{example}
@@ -95,7 +97,7 @@ Notiamo anche che la proprietà di \emph{simmetria} delle relazioni di equivalen
  \begin{itemize}
   \item La categoria $\ctB M$ ha un unico oggetto, che indichiamo con un punto, $\bullet$;
   \item La categoria $\ctB M$ ha un morfismo $m:\bullet\to\bullet$ per ogni elemento $m\in M$;
-  \item L'identità dell'unico oggetto $m$ e il morfismo definito dall'elemento neutro $e\in M$;
+  \item L'identità dell'unico oggetto $m$ è il morfismo definito dall'elemento neutro $e\in M$;
   \item La composizione di morfismi è data dal prodotto in $M$.
  \end{itemize}
  In un monoide, a differenza di una categoria generica, possiamo sempre comporre due morfismi $m$ e $n$: questo è garantito dal fatto che siccome c'è un solo oggetto, il dominio e il codominio di $m$ ed $n$ sono necessariamente uguali. 
@@ -136,6 +138,7 @@ Concludiamo questa sezione con alcuni esempi estremi di categorie, utili per con
 
 Tutte le categorie descritte finora sono localmente piccole. 
 
+
 \subsubsection*{Esercizi}
 \begin{enumerate}
     \item Un \emph{grafo diretto} è un insieme $V$, i cui elementi chiamiamo \emph{vertici}, e una relazione $E\subseteq X\times X$, i cui elementi chiamiamo \emph{spigoli}. Diciamo che $x$ è \emph{adiacente} a $y$ se esiste uno spigolo $(x,y)\in E$. Un \emph{omomorfismo di grafi diretti} $f:(V,E)\to (V',E')$ è una funzione $f:V\to V'$ tale che se $x$ è adiacente a $y$, allora $f(x)$ è adiacente a $f(y)$. Dimostra che i grafi diretti e i loro omomorfismi formano una categoria. 
@@ -151,6 +154,8 @@ Tutte le categorie descritte finora sono localmente piccole.
 
 
 \section{Isomorfismi}\label{isomorfismi}
+
+In vari ambiti della matematica ci sono modi di indicare situazioni in cui due oggetti sono ``praticamente la stessa cosa'' o in cui ``si può passare dall'uno all'altro senza problemi''. La nozione di isomorfismo in teoria delle categorie generalizza molte di queste idee.
 
 \begin{definition}
  Dati due oggetti $X$ e $Y$ in una categoria $\ctC$, un \emph{isomorfismo} tra $X$ e $Y$ è una coppia di morfismi $f:X\to Y$ e $g:Y\to X$ tali che $g\circ f=\id_X$ e $f\circ g=\id_Y$. 
@@ -179,7 +184,7 @@ Normalmente si indica la coppia $(f,g)$ solo con $f$ o con $g$, lasciando l'inve
 \end{examples}
 
 \begin{warning}
- Spesso una categoria viene chiamata con il nome dei suoi oggetti ($\ctVect$, $\ctGrp$, eccetera), ma è importante sapere \emph{quali sono i morfismi} per sapere che struttura in particolare si sta studiando. Questo è particolarmente importante nel caso degli isomorfismi: per esempio, $\ictR$ e $\ictR^2$, come insiemi, sono isomorfi, ma non come spazi vettoriali. Per cui, nella categoria $\ctVect$, gli oggetti $\ictR$ e $\ictR^2$ sono isomorfi, ma non sono isomorfi se li intendiamo come oggetti della categoria $\ctSet$. 
+ Spesso una categoria viene chiamata con il nome dei suoi oggetti ($\ctVect$, $\ctGrp$, eccetera), ma è importante sapere \emph{quali sono i morfismi} per sapere che struttura in particolare si sta studiando. Questo è particolarmente importante nel caso degli isomorfismi: per esempio, $\ictR$ e $\ictR^2$, come insiemi, sono isomorfi, ma non come spazi vettoriali. Per cui, nella categoria $\ctSet$, gli oggetti $\ictR$ e $\ictR^2$ sono isomorfi, ma non sono isomorfi se li intendiamo come oggetti della categoria $\ctVect$. 
 \end{warning}
 
 Si noti che le condizioni $g\circ f = \id_X$ e $f\circ g=\id_Y$ servono entrambe, perché possono valere o non valere indipendentemente l'una dall'altra. 
@@ -230,6 +235,33 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 
 
 \section{Funtori e diagrammi}
+
+% motivazione
+
+\begin{definition}
+ Date due categorie $\ctC$ e $\ctD$, un \emph{funtore} $F:\ctC\to\ctD$ consiste dei seguenti dati.
+ \begin{itemize}
+  \item Un'assegnazione ad ogni oggetto $X$ di $\ctC$ di un oggetto $FX$ di $\ctD$;
+  \item Un'assegnazione ad ogni morfismo $X \xrightarrow{f} Y$ di $\ctC$ di un morfismo $FX \xrightarrow{Ff} FY$ di $\ctD$ (si noti che $F(\dom{f})=\dom{Ff}$ e $F(\cod{f})=\cod{Ff}$);
+  
+  che soddifa le seguenti proprietà.
+  \item \emph{Preservazione delle identità}: per ogni oggetto $X$ di $\ctC$, $F(\id_X)=\id_{FX}$;
+  \item \emph{Preservazione delle composizioni}: per ogni coppia di morfismi componibili $f$ e $g$ di $\ctC$, $F(g\circ f)=Fg\circ Ff$.
+ \end{itemize}
+\end{definition}
+
+% esempi: funzioni monotone
+% esempi: omomorfismi
+% esempi: rappresentazioni e azioni di gruppo
+% esempi: funtori ``dimenticanti''
+% esempi: funtori ``liberi''
+% altri esempi?
+
+% composizione di funtori, Cat
+
+% diagrammi
+% diagrammi commutativi 
+% funtori li preservano - in particolare, preservano iso
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
