@@ -33,6 +33,27 @@ dove dunque possono esserci più oggetti e, di conseguenza, la composizione è u
 	%Equivalentemente, \(e\) è un epimorfismo se è cancellabile a destra, ovvero \(f \cmp e = g \cmp e\) implica \(f = g\) ogni qual volta la scrittura ha senso (ovvero quando \(f\) e \(g\) sono frecce parallele e post-componibili con \(e\)).
 \end{definition}
 
+\begin{example}
+	In \(\ctSet\), la categoria degli insiemi, i monomorfismi sono precisamente le funzioni iniettive
+	e gli epimorfismi sono precisamente le funzioni surgettive.
+	
+	Consideriamo il caso delle funzioni surgettive.
+	Se \(e \colon X \to A\) è una funzione surgettiva e \(f, g \colon A \to B\) sono funzioni tali che \(f \cmp e = g \cmp e\),
+	allora per ogni elemento \(a \in A\) esiste un \(x \in X\) tale che \(e(x) = a\), per la surgettività di \(e\).
+	Osserviamo che \((f \cmp e)(x) = (g \cmp e)(x)\), ovvero \(f(e(x)) = g(e(x))\),
+	ma allora \(f(a) = g(a)\).
+	Per la genericità di \(a\) concludiamo che \(f = g\), e dunque \(e\) è epi.
+
+	Nel caso opposto, in cui \(e \colon X \to A\) è epi, sia \(a \in A\).
+	Assumiamo per assurdo che non esista \(x \in X\) tale che \(f(x) = a\).
+	Allora siano \(k_0 \colon A \to \{0, 1\}\) la funzione costante in \(0\),
+	e \(\delta_a \colon A \to \{0, 1\}\) la funzione caratteristica di \(a\) in \(A\).
+	Siccome \(a\) non appartiene all'immagine di \(e\), abbiamo che \(k_0 \cmp e = \delta_a \cmp e\)
+	in quanto entrambe le composizioni assumono costantemente il valore \(0\) su tutto il dominio \(X\).
+	Dunque, \(k_0 = \delta_a\), il che è assurdo.
+	Dalla negazione dell'ipotesi per assurdo, concludiamo che \(e\) è surgettiva.
+\end{example}
+
 
 
 \section{Sezioni e retrazioni}
