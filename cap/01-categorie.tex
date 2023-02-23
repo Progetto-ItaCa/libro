@@ -10,16 +10,16 @@
 
 \section{Monomorfismi ed epimorfismi}
 
-Un monoide, non essendo necessariamente commutativo, può avere sia elementi cancellabili a sinistra,
-sia elementi cancellabili a destra.
-Un elemento \(x\) di un monoide \((M, \cdot, 1)\) è cancellabile a sinistra se,
-per ogni coppia di elementi \(y_0\) e \(y_1\) in \(M\) tali che \(x \cdot y_0 = x \cdot y_1\),
-si ha che \(y_0 = y_1\),
-e gli elementi cancellabili a destra sono definiti analogamente.
-Siccome i monoidi corrispondono precisamente alle categorie con un solo oggetto (\ref{???}),
-la definizione di elementi cancellabili a destra o sinistra si può applicare direttamente ai morfismi di tali categorie.
-Estendiamo ora questa definizione ad una categoria generica,
-dove dunque possono esserci più oggetti e, di conseguenza, la composizione è un'operazione parziale.
+Siccome i monoidi corrispondono precisamente alle categorie con un solo oggetto, come visto nell'esempio \ref{???},
+la definizione di elemento di un monoide cancellabile a sinistra o a destra si può applicare direttamente ai morfismi delle categorie da loro indotte.
+Ricordiamo che un elemento \(x\) di un monoide \((M, \cdot, 1)\) si dice cancellabile a sinistra (destra) se,
+per ogni coppia di elementi \(y_0\) e \(y_1\) in \(M\) tali che \(x \cdot y_0 = x \cdot y_1\) (\(y_0 \cdot x = y_1 \cdot x\)),
+si ha che \(y_0 = y_1\).
+Se però vogliamo estendere tale definizione ad una categoria generica,
+la cui composizione è dunque un'operazione parziale,
+è necessario considerare solo le composizioni ben definite
+(ovvero tra frecce consecutive).
+Si arriva così alle seguenti definizioni.
 
 \begin{definition}[Monomorfismo]
 	Un morfismo \(m \colon B \to X\) in una categoria \(\ctC\) è un \emph{monomorfismo} (o \emph{mono}) se,
@@ -28,11 +28,22 @@ dove dunque possono esserci più oggetti e, di conseguenza, la composizione è u
 \end{definition}
 
 \begin{definition}[Epimorfismo]
-	Un morfismo \(e \colon X \to A\) in una categoria \(\ctC\) è un \emph{epimorfismo} (o \emph{epi}),
+	Un morfismo \(e \colon X \to A\) in una categoria \(\ctC\) è un \emph{epimorfismo} (o \emph{epi}) se,
 	per ogni coppia di frecce parallele \(f, g \colon A \to B\) in \(\ctC\) tali che \(f \cmp e = g \cmp e\), si ha che \(f = g\).
 	%Equivalentemente, \(e\) è un epimorfismo se è cancellabile a destra, ovvero \(f \cmp e = g \cmp e\) implica \(f = g\) ogni qual volta la scrittura ha senso (ovvero quando \(f\) e \(g\) sono frecce parallele e post-componibili con \(e\)).
 \end{definition}
 
+Siccome le definizioni categoriali di mono ed epi generalizzano, rispettivamente, quelle, algebriche, di elementi cancellabili a sinistra e a destra,
+otteniamo immediatamente il seguente esempio.
+
+\begin{example}
+	Nella categoria indotta da un monoide, i mono sono gli elementi cancellabili a sinistra,
+	e gli epi sono gli elementi cancellabili a destra.
+\end{example}
+
+Vediamo ora invece esempi in categorie non indotte da monoidi.
+
+% TODO: Lo svolgimento dell'esempio dovrebbe invece essere un esercizio svolto? Come lo formattiamo?
 \begin{example}
 	In \(\ctSet\), la categoria degli insiemi, i monomorfismi sono precisamente le funzioni iniettive
 	e gli epimorfismi sono precisamente le funzioni surgettive.
