@@ -2,37 +2,57 @@
 
 \section{Categorie}\label{categorie}
 
-Prima di arrivare alla definizione formale di categorie, può essere di aiuto avere in mente un esempio concreto. Prendiamo per esempio gli spazi vettoriali e le mappe lineari tra di loro. 
-Molti di voi sapranno che le matrici invertibili su $\ictR^n$ con il loro prodotto formano un gruppo. Più un generale, se tralasciamo la condizione di invertibilità, abbiamo un \emph{monoide}:
+Prima di dare definizione formale di categoria, può essere di aiuto per orientare il lettore raccogliere degli esempi concreti.
 
+La nozione di categoria, che introdurremo in \autoref{}, riuscirà a unificare due strutture matematiche apparentemente molto diverse tra loro:
+\index{Monoide}
 \begin{definition}
- Un \emph{monoide} consiste in un insieme $M$ con:
- \begin{itemize}
-  \item Un elemento distinto $e\in M$, chiamato \emph{elemento neutro}, \emph{unità} o \emph{identità};
-  \item Un'operazione binaria $M\times M\to M$, chiamata \emph{prodotto} o \emph{composizione}, e indicata con $(m,n),\mapsto m\cdot n$;
- \end{itemize}
- che soddisfano le seguenti proprietà:
- \begin{itemize}
-  \item \emph{Unitalità}: per ogni $m\in M$, i prodotti $m \cdot e$ ed $e\cdot m$ sono uguali a $m$;
-  \item \emph{Associatività}: per ogni $m,n,p\in M$, i prodotti $(m\cdot n)\cdot p$ ed $m\cdot (n\cdot p)$ sono uguali. 
- \end{itemize}
+    Un \emph{monoide} consiste in un insieme non vuoto $M$ con:
+    \begin{itemize}
+     \item Un elemento distinto $e\in M$, chiamato \emph{elemento neutro}, \emph{unità} o \emph{identità};
+     \item Un'operazione binaria $M\times M\to M$, chiamata \emph{prodotto} o \emph{composizione}, e indicata con $(m,n),\mapsto m\cdot n$;
+    \end{itemize}
+    che soddisfano le seguenti proprietà:
+    \begin{itemize}
+     \item \emph{Unitalità}: per ogni $m\in M$, i prodotti $m \cdot e$ ed $e\cdot m$ sono uguali a $m$;
+     \item \emph{Associatività}: per ogni $m,n,p\in M$, i prodotti $(m\cdot n)\cdot p$ ed $m\cdot (n\cdot p)$ sono uguali.
+    \end{itemize}
+   \end{definition}
+\index{Poset}
+\begin{definition}
+    \Todo{poset}
 \end{definition}
+Dimostreremo in \autoref{} e in \autoref{} rispettivamente che `ogni monoide è una categoria', e `ogni insieme preordinato (e a fortiori, ogni insieme parzialmente ordinato, dove la relazione $\_\le\_$ è antisimmetrica) è una categoria'. (Gli enunciati suddetti renderanno precise queste affermazioni.)
+\index{Categoria!--- degli insiemi finiti}
+\begin{example}
+Un esempio naturale di categoria nasce considerando la classe $\ctFin$ di tutti gli insiemi finiti $[n]\defeq \{1,\dots,n\}$ (con la convenzione che $[0]=\varnothing$ sia l'insieme vuoto), e le funzioni $f : [n] \to [m]$ tra di loro. \'E evidente che non tutte tali funzioni sono componibili: una condizione necessaria --e sufficiente!-- affinché la composizione tra due funzioni $f : [p] \to [q],g : [m] \to [n]$ tra insiemi finiti sia possibile è che il dominio dell'una coincida con il codominio dell'altra, ovvero che $q=m$ e che le funzioni si possano `giustapporre' come
+\[\xymatrix{
+    [p] \ar[r]^-f & [q] \ar[r]^-g & [r]
+}\]
+La composizione di funzioni $(f,g)\mapsto g\cmp f$ perciò è una operazione che ricorda quella di un monoide (per esempio, essa è associativa quando è definita) ma è \emph{parziale}, cioè non definita tra tutte le possibili coppie $(f,g)$ di funzioni tra insiemi finiti; quale che sia la struttura matematica che la classe degli insiemi finiti forma, perciò, essa non può essere un monoide. (Un altro motivo per cui $\ctFin$ non può essere un monoide è che l'identità per la composizione di funzioni non è unica: \emph{ogni} insieme finito $[n]$ ha una sua propria funzione identica, e se $f : [m]\to [n]$, si deve avere che $f\cmp \id_{[m]}=f=\id_{[n]}\cmp f$ per funzioni identiche formalmente \emph{distinte}, sebbene definite `alla stessa maniera' da $\lambda x.x : [n]\to [n]$ e $\lambda y.y : [m]\to [m]$.)
 
-Se ora consideriamo gli spazi vettoriali $\ictR^n$ per diversi $n$, non tutte le mappe lineari si possono comporre. In particolare, una mappa $f:\ictR^n\to \ictR^m$ si può comporre con una mappa $g:\ictR^p\to\ictR^q$ solo se $m=p$. In altre parole, $g$ si può comporre con $f$ solo se il codominio di $f$ è uguale al dominio di $g$.
-Inoltre, non c'e solo una matrice identità, ma ce n'è una per ogni $n$. 
-La struttura algebrica che otteniamo è una \emph{categoria}, che definiamo a breve.
+La classe $\ctFin$ formerà una \emph{categoria}, e per lo stesso motivo faranno altrettanto
+\begin{itemize}
+    \item \index{Categoria!---e di strutture algebriche} la classe $\ctVect$ di tutti gli spazi vettoriali reali della forma $\ictR^n$ per un $n\ge 1$ naturale; non tutte le mappe lineari tra spazi vettoriali si possono comporre, e le applicazioni identiche sono tutte distinte;
+    \item la classe di tutte le strutture algebriche di un dato tipo (gli insiemi, senza limite alla loro taglia; i gruppi, con gli omomorfismi di gruppo; gli spazi vettoriali, anche di dimensione infinita; gli spazi topologici, con le funzioni continue; eccetera).
+\end{itemize}
+% spazi vettoriali e mappe lineari tra di loro: gli spazi vettoriali $\ictR^n$ per diversi $n$, non tutte le mappe lineari si possono comporre. In particolare, una mappa $f:\ictR^n\to \ictR^m$ si può comporre con una mappa $g:\ictR^p\to\ictR^q$ solo se $m=p$. In altre parole, $g$ si può comporre con $f$ solo se il codominio di $f$ è uguale al dominio di $g$.
+% Inoltre, non c'e solo una matrice identità, ma ce n'è una per ogni $n$.
+\end{example}
+% La struttura algebrica che otteniamo è una \emph{categoria}, che definiamo a breve.
+\index{Classe propria}
+Nell'ultimo esempio abbiamo utilizzato la parola `classe': la definizione generale di categoria obbliga a farlo, dal momento che la collezione di tutte le strutture algebriche di un dato tipo è sempre `troppo grande per essere un insieme' (in un senso che formalizzeremo in dettaglio nell'Appendice \ref{fondamenti}); per il momento è sufficiente trattenere l'idea che informalmente una classe $\ctC$ è una collezione di elementi che ha tutte le proprietà di un insieme, a parte quella di poter essere `misurata' da un numero cardinale.
 
-Nella definizione di categoria, in generale, è problematico usare la parola ``insieme'', è meglio parlare di \emph{classe}. Informalmente, una classe è come un insieme, ma potenzialmente ``più grande'', cioè può contenere tutti gli insiemi (ma non tutte le classi). 
-Nella definizione che segue, a prima vista si può leggere la parola ``classe'' come ``insieme''. Vedremo la questione più in dettaglio nell'Appendice \ref{fondamenti}. 
-
+Ogni volta che è necessario, useremo costruzioni `elementari' che si possono fare sulle classi come se esse fossero insiemi: per esempio se $\ctA,\ctB$ sono classi, è possibile costruire la classe prodotto $\ctA\times\ctB$, e considerare \emph{funzioni tra classi} $F : \ctA\fun\ctB$, cioè sottoclassi $F$ del prodotto $\ctA\times\ctB$ che sono funzionali: per ogni elemento $A$ della classe $\ctA$, esiste un unico elemento $B=FA\in\ctB$ con $(A,B)\in F$. Di nuovo, tutto questo è possibile, e il linguaggio preciso verrà esposto nell'appendice \ref{fondamenti}; questa imprecisione sarà sempre del tutto innocua.
+\index{Categoria}
 \begin{definition}
- Una \emph{categoria} $\ctC$ consiste dei seguenti dati.
+ Una \emph{categoria} (localmente piccola) $\ctC$ consiste dei seguenti dati:
  \begin{itemize}
-  \item Una classe $\ctC_0$ i cui elementi chiamiamo \emph{oggetti}, di solito indicati con lettere latine maiuscole: $A$, $B$, $X$, $Y$,\dots
-  \item Una classe $\ctC_1$ i cui elementi chiamiamo \emph{morfismi}, di solito indicati con lettere latine minuscole: $f$, $g$, $h$,\dots
+  \item una classe $\ctC_0$ i cui elementi chiamiamo \emph{oggetti}, di solito indicati con lettere latine maiuscole: $A$, $B$, $X$, $Y$,\dots
+  \item una classe $\ctC_1$ i cui elementi chiamiamo \emph{morfismi}, di solito indicati con lettere latine minuscole: $f$, $g$, $h$,\dots
  \end{itemize}
- Queste classi sono fornite delle seguenti strutture. 
- \begin{itemize}  
+ Queste classi sono fornite delle seguenti strutture.
+ \begin{itemize}
   \item Ad ogni morfismo corrispondono due oggetti $\dom{f}$, $\cod{f}$ chiamati \emph{dominio} e \emph{codominio}. Se $f$ ha dominio $X$ e codominio $Y$, scriviamo $f:X\to Y$, o in forma diagrammatica, $X \xrightarrow{f} Y$.
   \item Ogni oggetto $X$ ha un morfismo distinto $\id_X:X\to X$ chiamato \emph{identità}.
   \item Dati tre oggetti $X,Y,Z$ e morfismi $f:X\to Y$ e $g:Y\to Z$ (si noti che $\cod{f}=\dom{g}$) esiste un morfismo distinto $g\circ f:X\to Z$ chiamato \emph{composizione di $f$ e $g$}. Graficamente:
@@ -42,9 +62,9 @@ Nella definizione che segue, a prima vista si può leggere la parola ``classe'' 
   \end{tikzcd}
   \]
   (Si noti che $\dom{g\circ f}=\dom{f}$ e $\cod{g\circ f}=\cod{g}$.)
-  
+
   Queste strutture devono soddisfare le seguenti proprietà.
-  
+
   \item \emph{Unitalità}: per ogni morfismo $f:X\to Y$, le composizioni $f\circ\id_X$ e $\id_Y\circ f$ sono uguali ad $f$.
   \item \emph{Associatività}: dati oggetti $X,Y,Z,W$ e morfismi $f:X\to Y$, $g:Y\to Z$ e $h:Z\to W$, le composizioni $h\circ (g\circ f)$ e $(h\circ g)\circ f$ sono uguali.
  \end{itemize}
@@ -53,46 +73,46 @@ Nella definizione che segue, a prima vista si può leggere la parola ``classe'' 
 Dati due oggetti $X$ e $Y$, indichiamo con $\Hom{\ctC}(X,Y)$ la classe di morfismi da $X$ a $Y$. Altri autori usano altre notazioni, come $\mathrm{Hom}(X,Y)$ o $\mathrm{Hom}_\ctC(X,Y)$.
 
 
-Quando le classi $\ctC_0$ e $\ctC_1$ sono insiemi, chiamamo la categoria $\ctC$ \emph{piccola}. Più in generale, $\ctC$ si dice \emph{localmente piccola} se dati ogni due oggetti $X$ e $Y$, la classe $\Hom{\ctC}(X,Y)$ di morfismi da $X$ a $Y$ è un insieme. 
+Quando le classi $\ctC_0$ e $\ctC_1$ sono insiemi, chiamamo la categoria $\ctC$ \emph{piccola}. Più in generale, $\ctC$ si dice \emph{localmente piccola} se dati ogni due oggetti $X$ e $Y$, la classe $\Hom{\ctC}(X,Y)$ di morfismi da $X$ a $Y$ è un insieme.
 
-\begin{examples} 
- Vediamo alcuni esempi classici di categorie. 
+\begin{examples}
+ Vediamo alcuni esempi classici di categorie.
  \begin{itemize}
   \item Come accennato sopra, gli spazi vettoriali su $\ictR$ e le mappe lineari formano una categoria, che chiamiamo $\ctVect_\ictR$. Più in generale possiamo definire la categoria $\ctVect_\ictF$, per un campo $\ictF$, in maniera analoga.
   \item Gli insiemi e le funzioni formano una categoria, che chiamiamo $\ctSet$.
   \item I gruppi e gli omomorfismi di gruppo formano la categoria $\ctGrp$.
   \item I gruppi abeliani e gli omomorfismi di gruppo formano la sottocategoria $\ctAb\subseteq\ctGrp$. (Definiremo le sottocategorie a breve.)
-  \item Gli spazi topologici e le funzioni continue formano la categoria $\ctTop$. 
+  \item Gli spazi topologici e le funzioni continue formano la categoria $\ctTop$.
  \end{itemize}
 Spesso un ambito della matematica si occupa di una o più categorie in particolare. Per esempio l'algebra lineare si occupa principalmente delle categorie $\ctVect_\ictF$.
 \end{examples}
 
-Le categorie negli esempi sopra si possono vedere come categorie dove gli oggetti sono insiemi con strutture ulteriori (per esempio, strutture di gruppo), e i morfismi sono funzioni che preservano queste strutture. Non tutte le categorie sono di questo tipo, come vediamo nei prossimi esempi. 
+Le categorie negli esempi sopra si possono vedere come categorie dove gli oggetti sono insiemi con strutture ulteriori (per esempio, strutture di gruppo), e i morfismi sono funzioni che preservano queste strutture. Non tutte le categorie sono di questo tipo, come vediamo nei prossimi esempi.
 
 \begin{example}
  Una relazione di equivalenza si può vedere come una particolare categoria. Consideriamo un insieme $X$ con una relazione di equivalenza indicata con il simbolo $\sim$.
  Definiamo la seguente categoria:
  \begin{itemize}
   \item Gli oggetti sono gli elementi di $X$;
-  \item Esiste un unico morfismo da $x$ a $y$ (e uno da $y$ a $x$) se e solo se $x\sim y$. 
+  \item Esiste un unico morfismo da $x$ a $y$ (e uno da $y$ a $x$) se e solo se $x\sim y$.
  \end{itemize}
- Per ogni oggetto $x$, l'identità è l'unico morfismo $x\to x$ dato dal fatto che la relazione è riflessiva ($x\sim x$). 
- La composizione è data dalla transitività: se abbiamo morfismi $x\to y$ e $y\to z$ significa, in particolare, che $x\sim y$ e $y\sim z$. Per transitività, $x\sim z$, e quindi c'è un unico morfismo $x\to z$, che possiamo prendere come composizione. 
- Gli assiomi di unitalità e associatività sono automaticamente soddisfatti: per esempio, dati $w\sim x\sim y\sim z$, per transitività abbiamo che $w\sim z$, e questo dà un \emph{unico} morfismo $w\to z$, non importa se lo otteniamo componendo prima $w\sim x$ e $x\sim y$ o prima $x\sim y$ e $y\sim z$---il risultato è lo stesso per unicità. 
+ Per ogni oggetto $x$, l'identità è l'unico morfismo $x\to x$ dato dal fatto che la relazione è riflessiva ($x\sim x$).
+ La composizione è data dalla transitività: se abbiamo morfismi $x\to y$ e $y\to z$ significa, in particolare, che $x\sim y$ e $y\sim z$. Per transitività, $x\sim z$, e quindi c'è un unico morfismo $x\to z$, che possiamo prendere come composizione.
+ Gli assiomi di unitalità e associatività sono automaticamente soddisfatti: per esempio, dati $w\sim x\sim y\sim z$, per transitività abbiamo che $w\sim z$, e questo dà un \emph{unico} morfismo $w\to z$, non importa se lo otteniamo componendo prima $w\sim x$ e $x\sim y$ o prima $x\sim y$ e $y\sim z$---il risultato è lo stesso per unicità.
 \end{example}
 
-Nell'esempio sopra vediamo che \emph{gli oggetti non sono insiemi con strutture ulteriori}. 
+Nell'esempio sopra vediamo che \emph{gli oggetti non sono insiemi con strutture ulteriori}.
 Notiamo anche che la proprietà di \emph{simmetria} delle relazioni di equivalenza non serve per avere una categoria. Consideriamo i seguenti esempi.
 
 \begin{examples}
- Una relazione d'ordine $(X,\le)$ si può vedere come una categoria, ancora una volta con un unico morfismo $x\to y$ se e solo se $x\le y$. Come nel caso delle relazioni di equivalenza, le identità sono date dalla proprietà riflessiva e la composizione dalla proprietà transitiva. 
- 
+ Una relazione d'ordine $(X,\le)$ si può vedere come una categoria, ancora una volta con un unico morfismo $x\to y$ se e solo se $x\le y$. Come nel caso delle relazioni di equivalenza, le identità sono date dalla proprietà riflessiva e la composizione dalla proprietà transitiva.
+
  Più in generale, un \emph{preordine} è una relazione riflessiva e transitiva, ma non necessariamente simmetrica o antisimmetrica. Ogni preordine si può vedere come una categoria.
 \end{examples}
 
 
 \begin{example}
- Un monoide si può vedere come una categoria con un solo oggetto---più precisamente, una categoria \emph{localmente piccola} con un solo oggetto. 
+ Un monoide si può vedere come una categoria con un solo oggetto---più precisamente, una categoria \emph{localmente piccola} con un solo oggetto.
  Vediamo come. Dato un monoide $M$, definiamo la seguente categoria, che indichiamo con $\ctB M$.\footnote{A volte la categoria definita in questo modo si indica con $\ctB M$, a volte semplicemente con $M$.}
  \begin{itemize}
   \item La categoria $\ctB M$ ha un unico oggetto, che indichiamo con un punto, $\bullet$;
@@ -100,20 +120,20 @@ Notiamo anche che la proprietà di \emph{simmetria} delle relazioni di equivalen
   \item L'identità dell'unico oggetto $m$ è il morfismo definito dall'elemento neutro $e\in M$;
   \item La composizione di morfismi è data dal prodotto in $M$.
  \end{itemize}
- In un monoide, a differenza di una categoria generica, possiamo sempre comporre due morfismi $m$ e $n$: questo è garantito dal fatto che siccome c'è un solo oggetto, il dominio e il codominio di $m$ ed $n$ sono necessariamente uguali. 
- 
+ In un monoide, a differenza di una categoria generica, possiamo sempre comporre due morfismi $m$ e $n$: questo è garantito dal fatto che siccome c'è un solo oggetto, il dominio e il codominio di $m$ ed $n$ sono necessariamente uguali.
+
  Viceversa, data una categoria localmente piccola con un solo oggetto (indichiamolo ancora con questo simbolo, $\bullet$), l'insieme di morfismi $\bullet\to\bullet$ ha una struttura di monoide con l'elemento neutro dato dall'identità, e il prodotto dato dalla composizione.
- 
+
  L'unitalità e l'associatività del monoide e della categoria si corrispondono.
 \end{example}
 
-In particolare, ogni gruppo si può vedere come una categoria con un solo oggetto. 
+In particolare, ogni gruppo si può vedere come una categoria con un solo oggetto.
 Dato un oggetto $X$ di una categoria, un morfismo da $X$ a $X$ si chiama anche \emph{endomorfismo}. In un monoide, tutti i morfismi sono endomorfismi.
 
 \begin{remark}
- Abbiamo visto che i gruppi sono gli oggetti della categoria $\ctGrp$, ma anche che ogni gruppo si può a sua volta vedere come una categoria (con un solo oggetto). Entrambe le prospettive sono valide, e ce ne sono altre ancora. 
- Allo stesso modo, gli ordini parziali sono categorie, ma si possono anche vedere come oggetti della categoria $\ctPos$, dove i morfismi sono le funzioni monotone. 
- Spesso, in teoria delle categorie, la stessa struttura matematica può apparire in modi diversi in contesti diversi, e questa varietà di prospettive è uno dei motivi per cui le categorie sono così versatili. 
+ Abbiamo visto che i gruppi sono gli oggetti della categoria $\ctGrp$, ma anche che ogni gruppo si può a sua volta vedere come una categoria (con un solo oggetto). Entrambe le prospettive sono valide, e ce ne sono altre ancora.
+ Allo stesso modo, gli ordini parziali sono categorie, ma si possono anche vedere come oggetti della categoria $\ctPos$, dove i morfismi sono le funzioni monotone.
+ Spesso, in teoria delle categorie, la stessa struttura matematica può apparire in modi diversi in contesti diversi, e questa varietà di prospettive è uno dei motivi per cui le categorie sono così versatili.
 \end{remark}
 
 Concludiamo questa sezione con alcuni esempi estremi di categorie, utili per controesempi e casi limite.
@@ -136,20 +156,20 @@ Concludiamo questa sezione con alcuni esempi estremi di categorie, utili per con
  La \emph{categoria vuota} non ha oggetti né morfismi.
 \end{example}
 
-Tutte le categorie descritte finora sono localmente piccole. 
+Tutte le categorie descritte finora sono localmente piccole.
 
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
-    \item Un \emph{grafo diretto} è un insieme $V$, i cui elementi chiamiamo \emph{vertici}, e una relazione $E\subseteq V\times V$, i cui elementi chiamiamo \emph{spigoli}. Diciamo che $x$ è \emph{adiacente} a $y$ se esiste uno spigolo $(x,y)\in E$. Un \emph{omomorfismo di grafi diretti} $f:(V,E)\to (V',E')$ è una funzione $f:V\to V'$ tale che se $x$ è adiacente a $y$, allora $f(x)$ è adiacente a $f(y)$. Dimostra che i grafi diretti e i loro omomorfismi formano una categoria. 
+    \item Un \emph{grafo diretto} è un insieme $V$, i cui elementi chiamiamo \emph{vertici}, e una relazione $E\subseteq V\times V$, i cui elementi chiamiamo \emph{spigoli}. Diciamo che $x$ è \emph{adiacente} a $y$ se esiste uno spigolo $(x,y)\in E$. Un \emph{omomorfismo di grafi diretti} $f:(V,E)\to (V',E')$ è una funzione $f:V\to V'$ tale che se $x$ è adiacente a $y$, allora $f(x)$ è adiacente a $f(y)$. Dimostra che i grafi diretti e i loro omomorfismi formano una categoria.
     \item Un \emph{multigrafo diretto} è come un grafo diretto, ma può avere diversi spigoli tra gli stessi due vertici. Tecnicamente consiste di un insieme $V$ (i \emph{vertici}), e un insieme $E$ (gli \emph{spigoli}), con due funzioni $d_-,d_+:E\to V$, che associano un ``dominio'' e un ``codominio'' ad ogni spigolo. Un \emph{omomorfismo di multigrafi diretti} $(V,E)\to (V',E')$ consiste di una funzione $f_0:V\to V'$ tra i vertici, e una funzione $f_1:E\to E'$ tra gli spigoli, compatibili con le mappe $d_-,d_+$ nel seguente modo:
     \[
     d_-(f_1(e)) = f_0(d_-(e)) ,\qquad d_+(f_1(e)) = f_0(d_+(e)) .
     \]
-    Dimostra che $f_1:E\to E'$ associa a uno spigolo tra $x$ e $y$ uno spigolo tra $f_0(x)$ e $f_0(y)$. 
-    \item Dimostra che i multigrafi diretti e i loro omomorfismi formano una categoria. 
+    Dimostra che $f_1:E\to E'$ associa a uno spigolo tra $x$ e $y$ uno spigolo tra $f_0(x)$ e $f_0(y)$.
+    \item Dimostra che i multigrafi diretti e i loro omomorfismi formano una categoria.
     \item Una categoria piccola si può vedere come un multigrafo con identità e composizione: riscrivi la definizione di categoria (piccola) in termini di multigrafi.  In che modo questa costruzione generalizza la definizione di monoide (come insieme con identità e composizione)?
-    \item Un grafo diretto si può vedere come un multigrafo dove tra due vertici c'è al massimo uno spigolo. Dimostra che la costruzione al punto 3, se applicata ad un grafo diretto, dà un preordine. 
+    \item Un grafo diretto si può vedere come un multigrafo dove tra due vertici c'è al massimo uno spigolo. Dimostra che la costruzione al punto 3, se applicata ad un grafo diretto, dà un preordine.
 \end{enumerate}
 
 
@@ -158,13 +178,13 @@ Tutte le categorie descritte finora sono localmente piccole.
 In vari ambiti della matematica ci sono modi di indicare situazioni in cui due oggetti sono ``praticamente la stessa cosa'' o in cui ``si può passare dall'uno all'altro senza problemi''. La nozione di isomorfismo in teoria delle categorie generalizza molte di queste idee.
 
 \begin{definition}
- Dati due oggetti $X$ e $Y$ in una categoria $\ctC$, un \emph{isomorfismo} tra $X$ e $Y$ è una coppia di morfismi $f:X\to Y$ e $g:Y\to X$ tali che $g\circ f=\id_X$ e $f\circ g=\id_Y$. 
+ Dati due oggetti $X$ e $Y$ in una categoria $\ctC$, un \emph{isomorfismo} tra $X$ e $Y$ è una coppia di morfismi $f:X\to Y$ e $g:Y\to X$ tali che $g\circ f=\id_X$ e $f\circ g=\id_Y$.
  $f$ è chiamato l'\emph{inverso} di $g$, e a volte si indica con $g^{-1}$, e viceversa.
- 
+
  Se esiste un isomorfismo tra $X$ e $Y$ diciamo che i due oggetti sono \emph{isomorfi}.
 \end{definition}
 
-Può essere utile un'interpretazione grafica: intuitivamente, un isomorfismo è una situazione dove l'applicazione di $f$ si può invertire o annullare tramite $g$, e viceversa, e si può sempre passare da $X$ a $Y$ senza perdere informazioni. 
+Può essere utile un'interpretazione grafica: intuitivamente, un isomorfismo è una situazione dove l'applicazione di $f$ si può invertire o annullare tramite $g$, e viceversa, e si può sempre passare da $X$ a $Y$ senza perdere informazioni.
 \[
 \begin{tikzcd}
  X \ar[shift left]{r}{f} & Y \ar[shift left]{l}{g}
@@ -178,22 +198,22 @@ Normalmente si indica la coppia $(f,g)$ solo con $f$ o con $g$, lasciando l'inve
  \begin{itemize}
   \item In $\ctSet$, gli isomorfismi sono le biiezioni, o corrispondenze biunivoche. In particolare, due insiemi sono isomorfi se e solo se hanno la stessa cardinalità.
   \item In $\ctVect_\ictR$, gli isomorfismi sono le biiezioni lineari. In particulare, in dimensione finita, due spazi vettoriali sono isomorfi se e solo se hanno la stessa dimensione.
-  \item In $\ctTop$, gli isomorfismi sono gli omeomorfismi: funzioni continue con un'inversa continua. 
-  \item In $\ctGrp$, gli isomorfismi sono gli isomorfismi di gruppi. 
+  \item In $\ctTop$, gli isomorfismi sono gli omeomorfismi: funzioni continue con un'inversa continua.
+  \item In $\ctGrp$, gli isomorfismi sono gli isomorfismi di gruppi.
  \end{itemize}
 \end{examples}
 
 \begin{warning}
- Spesso una categoria viene chiamata con il nome dei suoi oggetti ($\ctVect$, $\ctGrp$, eccetera), ma è importante sapere \emph{quali sono i morfismi} per sapere che struttura in particolare si sta studiando. Questo è particolarmente importante nel caso degli isomorfismi: per esempio, $\ictR$ e $\ictR^2$, come insiemi, sono isomorfi, ma non come spazi vettoriali. Per cui, nella categoria $\ctSet$, gli oggetti $\ictR$ e $\ictR^2$ sono isomorfi, ma non sono isomorfi se li intendiamo come oggetti della categoria $\ctVect$. 
+ Spesso una categoria viene chiamata con il nome dei suoi oggetti ($\ctVect$, $\ctGrp$, eccetera), ma è importante sapere \emph{quali sono i morfismi} per sapere che struttura in particolare si sta studiando. Questo è particolarmente importante nel caso degli isomorfismi: per esempio, $\ictR$ e $\ictR^2$, come insiemi, sono isomorfi, ma non come spazi vettoriali. Per cui, nella categoria $\ctSet$, gli oggetti $\ictR$ e $\ictR^2$ sono isomorfi, ma non sono isomorfi se li intendiamo come oggetti della categoria $\ctVect$.
 \end{warning}
 
-Si noti che le condizioni $g\circ f = \id_X$ e $f\circ g=\id_Y$ servono entrambe, perché possono valere o non valere indipendentemente l'una dall'altra. 
+Si noti che le condizioni $g\circ f = \id_X$ e $f\circ g=\id_Y$ servono entrambe, perché possono valere o non valere indipendentemente l'una dall'altra.
 \begin{example}
  Nella categoria $\ctVect_\ictR$, si consideri la mappa $f:\ictR\to\ictR^2$ data dall'inclusione dell'asse $X$, $x\mapsto(x,0)$. Data la proiezione sull'asse $X$ data da $g:\ictR^2\to\ictR$, $(x,y)\mapsto x$, si ha che $g\circ f=\id_\ictR$. Però non è vero che $f\circ g = \id_{\ictR^2}$. (E infatti i due oggetti non sono isomorfi come spazi vettoriali.)
 \end{example}
 
 \begin{definition}
- Una categoria in cui tutti i morfismi sono isomorfismi si chiama \emph{gruppoide}.\footnote{In inglese: \emph{groupoid}.} 
+ Una categoria in cui tutti i morfismi sono isomorfismi si chiama \emph{gruppoide}.\footnote{In inglese: \emph{groupoid}.}
 \end{definition}
 
 \begin{example}
@@ -201,7 +221,7 @@ Si noti che le condizioni $g\circ f = \id_X$ e $f\circ g=\id_Y$ servono entrambe
 \end{example}
 
 \begin{example}
- Abbiamo visto che ogni monoide $M$ si può considerare una categoria con un solo oggetto. Questa categoria è un gruppoide se e solo se $M$ è un gruppo. Infatti, un morfismo $m$ ammette un inverso nel senso della teoria delle categorie se e solo se ammette un inverso nel senso della teoria dei gruppi: $g\cdot g^{-1}=g^{-1}\cdot g = e$. 
+ Abbiamo visto che ogni monoide $M$ si può considerare una categoria con un solo oggetto. Questa categoria è un gruppoide se e solo se $M$ è un gruppo. Infatti, un morfismo $m$ ammette un inverso nel senso della teoria delle categorie se e solo se ammette un inverso nel senso della teoria dei gruppi: $g\cdot g^{-1}=g^{-1}\cdot g = e$.
 \end{example}
 
 Un \emph{automorfismo} è un endomorfismo (un morfismo da un oggetto a sé stesso) invertibile. In un gruppo, tutti i morfismi sono automorfismi.
@@ -213,11 +233,11 @@ Un \emph{automorfismo} è un endomorfismo (un morfismo da un oggetto a sé stess
 L'esempio precedente si può vedere come una sottocategoria di $\ctSet$.
 Più in generale, data una categoria, possiamo sempre prendere la sottocategoria che contiene solo gli isomorfismi.
 
-\begin{definition} 
- Il \emph{cuore}\footnote{In inglese: \emph{core}} di una categoria $\ctC$ è il gruppoide ottenuto prendendo come oggetti gli oggetti di $\ctC$, e come morfismi gli isomorfismi di $\ctC$. 
+\begin{definition}
+ Il \emph{cuore}\footnote{In inglese: \emph{core}} di una categoria $\ctC$ è il gruppoide ottenuto prendendo come oggetti gli oggetti di $\ctC$, e come morfismi gli isomorfismi di $\ctC$.
 \end{definition}
 
-Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con identità e composizione). 
+Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con identità e composizione).
 
 
 \subsubsection*{Esercizi}
@@ -228,8 +248,8 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
      d\big( f(x), f(x') \big) \le d(x,x')
     \]
     per ogni $x,x'\in X$. Dimostra che spazi metrici e le funzioni 1-Lipschitz formano una categoria, chiamata $\cate{Met}_\cate{Lip}$, e che gli isomorfismi di $\cate{Met}_\cate{Lip}$ sono le isometrie. Fornisci un esempio di due spazi metrici isomorfi in $\ctTop$, ma non in $\cate{Met}_\cate{Lip}$.
-    \item Costruisci un esempio in $\ctTop$ di oggetti $X$ e $Y$ non isomorfi, e morfismi $f:X\to Y$ e $g:Y\to X$ tali che $g\circ f=\id_X$ (ma $f\circ g \ne \id_Y$). 
-    \item Dimostra che in ogni categoria, le identità sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo. 
+    \item Costruisci un esempio in $\ctTop$ di oggetti $X$ e $Y$ non isomorfi, e morfismi $f:X\to Y$ e $g:Y\to X$ tali che $g\circ f=\id_X$ (ma $f\circ g \ne \id_Y$).
+    \item Dimostra che in ogni categoria, le identità sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo.
     \item In una categoria localmente piccola $\ctC$, dati due oggetti isomorfi $X$ e $Y$, dimostra che per ogni oggetto $A$, gli insiemi $\Hom{C}(A,X)$ e $\Hom{C}(A,Y)$ sono in corrispondenza biunivoca.
 \end{enumerate}
 
@@ -243,7 +263,7 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
  \begin{itemize}
   \item Un'assegnazione ad ogni oggetto $X$ di $\ctC$ di un oggetto $FX$ di $\ctD$;
   \item Un'assegnazione ad ogni morfismo $X \xrightarrow{f} Y$ di $\ctC$ di un morfismo $FX \xrightarrow{Ff} FY$ di $\ctD$ (si noti che $F(\dom{f})=\dom{Ff}$ e $F(\cod{f})=\cod{Ff}$);
-  
+
   che soddifa le seguenti proprietà.
   \item \emph{Preservazione delle identità}: per ogni oggetto $X$ di $\ctC$, $F(\id_X)=\id_{FX}$;
   \item \emph{Preservazione delle composizioni}: per ogni coppia di morfismi componibili $f$ e $g$ di $\ctC$, $F(g\circ f)=Fg\circ Ff$.
@@ -260,16 +280,16 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 % composizione di funtori, Cat
 
 % diagrammi
-% diagrammi commutativi 
+% diagrammi commutativi
 % funtori li preservano - in particolare, preservano iso
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
-    \item 
-    \item 
-    \item 
-    \item 
-    \item 
+    \item
+    \item
+    \item
+    \item
+    \item
 \end{enumerate}
 
 
@@ -284,11 +304,11 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
-    \item 
-    \item 
-    \item 
-    \item 
-    \item 
+    \item
+    \item
+    \item
+    \item
+    \item
 \end{enumerate}
 
 
@@ -296,9 +316,9 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
-    \item 
-    \item 
-    \item 
-    \item 
-    \item 
+    \item
+    \item
+    \item
+    \item
+    \item
 \end{enumerate}
