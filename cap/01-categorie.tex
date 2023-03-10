@@ -450,3 +450,86 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
     \item
     \item
 \end{enumerate}
+
+\section{Monomorfismi ed epimorfismi}
+
+Siccome i monoidi corrispondono precisamente alle categorie con un solo oggetto, come visto nell'esempio \ref{???},
+la definizione di elemento di un monoide cancellabile a sinistra o a destra si può applicare direttamente ai morfismi delle categorie da loro indotte.
+Ricordiamo che un elemento \(x\) di un monoide \((M, \cdot, 1)\) si dice cancellabile a sinistra (destra) se,
+per ogni coppia di elementi \(y_0\) e \(y_1\) in \(M\) tali che \(x \cdot y_0 = x \cdot y_1\) (\(y_0 \cdot x = y_1 \cdot x\)),
+si ha che \(y_0 = y_1\).
+Se però vogliamo estendere tale definizione ad una categoria generica,
+la cui composizione è dunque un'operazione parziale,
+è necessario considerare solo le composizioni ben definite
+(ovvero tra frecce consecutive).
+Si arriva così alle seguenti definizioni.
+
+\begin{definition}[Monomorfismo]
+	Un morfismo \(m \colon B \to X\) in una categoria \(\ctC\) è un \emph{monomorfismo} (o \emph{mono}) se,
+	per ogni coppia di frecce parallele \(f, g \colon A \to B\) in \(\ctC\) tali che \(m \cmp f = m \cmp g\), si ha che \(f = g\).
+	%Equivalentemente, \(m\) è un monomorfismo se è cancellabile a sinistra, ovvero \(m \cmp f = m \cmp g\) implica \(f = g\) ogni qual volta la scrittura ha senso (ovvero quando \(f\) e \(g\) sono frecce parallele e pre-componibili con \(m\)).
+\end{definition}
+
+\begin{definition}[Epimorfismo]
+	Un morfismo \(e \colon X \to A\) in una categoria \(\ctC\) è un \emph{epimorfismo} (o \emph{epi}) se,
+	per ogni coppia di frecce parallele \(f, g \colon A \to B\) in \(\ctC\) tali che \(f \cmp e = g \cmp e\), si ha che \(f = g\).
+	%Equivalentemente, \(e\) è un epimorfismo se è cancellabile a destra, ovvero \(f \cmp e = g \cmp e\) implica \(f = g\) ogni qual volta la scrittura ha senso (ovvero quando \(f\) e \(g\) sono frecce parallele e post-componibili con \(e\)).
+\end{definition}
+
+Siccome le definizioni categoriali di mono ed epi generalizzano, rispettivamente, quelle, algebriche, di elementi cancellabili a sinistra e a destra,
+otteniamo immediatamente il seguente esempio.
+
+\begin{example}
+	Nella categoria indotta da un monoide, i mono sono gli elementi cancellabili a sinistra,
+	e gli epi sono gli elementi cancellabili a destra.
+\end{example}
+
+Vediamo ora invece esempi in categorie non indotte da monoidi.
+
+% TODO: Lo svolgimento dell'esempio dovrebbe invece essere un esercizio svolto? Come lo formattiamo?
+\begin{example}
+	In \(\ctSet\), la categoria degli insiemi, i monomorfismi sono precisamente le funzioni iniettive
+	e gli epimorfismi sono precisamente le funzioni surgettive.
+
+	Consideriamo il caso delle funzioni surgettive.
+	Se \(e \colon X \to A\) è una funzione surgettiva e \(f, g \colon A \to B\) sono funzioni tali che \(f \cmp e = g \cmp e\),
+	allora per ogni elemento \(a \in A\) esiste un \(x \in X\) tale che \(e(x) = a\), per la surgettività di \(e\).
+	Osserviamo che \((f \cmp e)(x) = (g \cmp e)(x)\), ovvero \(f(e(x)) = g(e(x))\),
+	ma allora \(f(a) = g(a)\).
+	Per la genericità di \(a\) concludiamo che \(f = g\), e dunque \(e\) è epi.
+
+	Nel caso opposto, in cui \(e \colon X \to A\) è epi, sia \(a \in A\).
+	Assumiamo per assurdo che non esista \(x \in X\) tale che \(f(x) = a\).
+	Allora siano \(k_0 \colon A \to \{0, 1\}\) la funzione costante in \(0\),
+	e \(\delta_a \colon A \to \{0, 1\}\) la funzione caratteristica di \(a\) in \(A\).
+	Siccome \(a\) non appartiene all'immagine di \(e\), abbiamo che \(k_0 \cmp e = \delta_a \cmp e\)
+	in quanto entrambe le composizioni assumono costantemente il valore \(0\) su tutto il dominio \(X\).
+	Dunque, \(k_0 = \delta_a\), il che è assurdo.
+	Dalla negazione dell'ipotesi per assurdo, concludiamo che \(e\) è surgettiva.
+\end{example}
+
+Si noti che la dimostrazione che le funzioni surgettive sono epi sarebbe immediata
+se usassimo il fatto che ogni funzione surgettiva ha un'inversa destra.
+L'esistenza dell'inversa destra, però, è una conseguenza dell'assioma di scelta,
+che invece non viene impiegato nella dimostrazione di cui sopra.
+
+\begin{exercise}
+	Dimostrare che una funzione è iniettiva se e solo se è un mono in \(\ctSet\),
+	ma senza utilizzare il fatto che le funzioni iniettive hanno inversa sinistra.
+\end{exercise}
+
+Per ragioni che saranno evidenti nella prossima sezione,
+abbiamo evidenziato come l'equivalenza tra funzioni surgettive (iniettive)
+e epi (mono) in \(\ctSet\) sia indipendente dall'esistenza di un'inversa destra (sinistra).
+
+
+
+\section{Sezioni e retrazioni}
+
+\begin{definition}[Sezione]
+	Una \emph{sezione} di un morfismo \(f \colon A \to B\) in una categoria \(\ctC\) è un'inversa destra di \(f\), ovvero un morfismo \(s \colon B \to A\) tale che \(f \cmp s = \id_{B}\).
+\end{definition}
+
+\begin{definition}[Retrazione]
+	Una \emph{retrazione} di un morfismo \(f \colon A \to B\) in una categoria \(\ctC\) è un'inversa sinistra di \(f\), ovvero un morfismo \(r \colon B \to A\) tale che \(r \cmp f = \id_{A}\).
+\end{definition}
