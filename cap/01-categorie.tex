@@ -10,7 +10,7 @@ La nozione di categoria, che introdurremo in \autoref{}, riuscirà a unificare d
     Un \emph{monoide} consiste in un insieme $M$ dotato di
     \begin{itemize}
      \item un elemento $e\in M$, chiamato \emph{elemento neutro}, \emph{unità} o \emph{identità} (si noti che da ciò segue, indirettamente ma immediatamente, che $M$ è un insieme \emph{non vuoto}),
-     \item Un'operazione binaria $M\times M\to M$, detta \emph{prodotto} o \emph{composizione}, e indicata con $(m,n),\mapsto m\cdot n$,
+     \item Un'operazione binaria $M\times M\to M$, detta \emph{prodotto} o \emph{composizione}, e indicata con $(m,n)\mapsto m\cdot n$,
     \end{itemize}
     che soddisfano le seguenti proprietà:
     \begin{itemize}
@@ -48,8 +48,9 @@ La classe $\ctFin$ formerà una \emph{categoria}, e per lo stesso motivo faranno
 % Inoltre, non c'e solo una matrice identità, ma ce n'è una per ogni $n$.
 \end{example}
 % La struttura algebrica che otteniamo è una \emph{categoria}, che definiamo a breve.
-\index{Classe propria}
-Abbiamo utilizzato diverse volte la parola `classe': la definizione generale di categoria obbliga a farlo, dal momento che la collezione di tutte le strutture algebriche di un dato tipo è sempre `troppo grande per essere un insieme' (in un senso che formalizzeremo in dettaglio nell'Appendice \ref{fondamenti}); per il momento è sufficiente trattenere l'idea informale che una classe $\ctC$ è una collezione di elementi che ha tutte le proprietà di un insieme, a parte quella di poter essere `misurata' da un numero cardinale.
+\index{Classe}
+\index{Classe propria|see {Classe}}
+Abbiamo utilizzato diverse volte la parola `classe': la definizione generale di categoria obbliga a farlo, dal momento che la collezione di tutte le strutture algebriche di un dato tipo è sempre `troppo grande per essere un insieme' (in un senso che formalizzeremo in dettaglio nell'Appendice \ref{fondamenti}); per il momento è sufficiente trattenere l'idea informale che una classe (propria) $\ctC$ è una collezione di elementi che ha tutte le proprietà di un insieme, a parte quella di poter essere `misurata' da un numero cardinale.
 
 Ogni volta che è necessario, useremo costruzioni `elementari' che si possono fare sulle classi come se esse fossero insiemi: per esempio se $\ctA,\ctB$ sono classi, è lecito costruire la classe prodotto $\ctA\times\ctB$, e considerare \emph{funzioni tra classi} $F : \ctA\fun\ctB$, cioè sottoclassi $F$ del prodotto $\ctA\times\ctB$ che sono funzionali: per ogni elemento $A$ della classe $\ctA$, esiste un unico elemento $B\in\ctB$ con $(A,B)\in F$, questo elemento si denota $FA$, e a tutti gli effetti $F$ si comporta come una funzione. Di nuovo, il linguaggio preciso che formalizza queste costruzioni verrà esposto nell'appendice \ref{fondamenti}; questa imprecisione iniziale sarà sempre del tutto innocua, e per il momento invitiamo i lettori a considerare il desiderio di approfondire la cosa solo una inutile distrazione.
 \index{Categoria}
@@ -60,11 +61,11 @@ Ogni volta che è necessario, useremo costruzioni `elementari' che si possono fa
   \item\label{c_2} una classe $\ctC_1$ i cui elementi chiamiamo \emph{morfismi} o \emph{frecce}, di solito indicati con lettere latine minuscole: $f$, $g$, $h$,\dots
   \item\label{c_3} Ad ogni morfismo corrispondono due oggetti $\dom{f}$, $\cod{f}$ chiamati \emph{dominio} e \emph{codominio}. Per denotare il fatto che $f$ ha dominio $X\in\ctC_0$ e codominio $Y\in\ctC_0$, scriveremo $f:X\to Y$, o in \emph{forma diagrammatica}, $X \xrightarrow{f} Y$.
   \item\label{c_4} Ogni oggetto $X$ ha un morfismo distinto $\id_X:X\to X$ chiamato \emph{identità} o \emph{freccia identica}.
-  \item\label{c_5} Dati tre oggetti $X,Y,Z$ e morfismi $f:X\to Y$ e $g:Y\to Z$ (cioè tali che $\cod{f}=\dom{g}$) esiste un unico morfismo $g\circ f:X\to Z$ chiamato \emph{composizione di $f$ e $g$}. Graficamente:
+  \item\label{c_5} Dati tre oggetti $X,Y,Z$ e morfismi $f:X\to Y$ e $g:Y\to Z$ (cioè tali che $\cod{f}=\dom{g}$) esiste un unico morfismo $g\cmp f:X\to Z$ chiamato \emph{composizione di $f$ e $g$}. Graficamente:
   \[
   \begin{tikzcd}
    X \ar{r}{f}
-   \ar[rounded corners,out=-45, in=225]{rr}[swap]{g\circ f}
+   \ar[rounded corners,out=-45, in=225]{rr}[swap]{g\cmp f}
 %    \ar[rounded corners,
 %             to path={ -- ([xshift=2ex]\tikztostart.south)
 %                       |- (T.center) \tikztonodes
@@ -74,12 +75,12 @@ Ogni volta che è necessario, useremo costruzioni `elementari' che si possono fa
    &&
   \end{tikzcd}
   \]
-  (Si noti che $\dom{g\circ f}=\dom{f}$ e $\cod{g\circ f}=\cod{g}$.)
+  (Si noti che $\dom{g\cmp f}=\dom{f}$ e $\cod{g\cmp f}=\cod{g}$.)
 \end{enumtag}
   A questi dati, chiediamo di soddisfare le seguenti proprietà:
 \begin{enumtag}{p}
-  \item \label{p_1} \emph{Unitalità}: per ogni morfismo $f:X\to Y$, le composizioni $f\circ\id_X$ e $\id_Y\circ f$ sono uguali ad $f$.
-  \item \label{p_2} \emph{Associatività}: dati oggetti $X,Y,Z,W$ e morfismi $f:X\to Y$, $g:Y\to Z$ e $h:Z\to W$, le composizioni $h\circ (g\circ f)$ e $(h\circ g)\circ f$ sono uguali.
+  \item \label{p_1} \emph{Unitalità}: per ogni morfismo $f:X\to Y$, le composizioni $f\cmp\id_X$ e $\id_Y\cmp f$ sono uguali ad $f$.
+  \item \label{p_2} \emph{Associatività}: dati oggetti $X,Y,Z,W$ e morfismi $f:X\to Y$, $g:Y\to Z$ e $h:Z\to W$, le composizioni $h\cmp (g\cmp f)$ e $(h\cmp g)\cmp f$ sono uguali.
  \end{enumtag}
 \end{definition}
 \begin{notation}
@@ -96,9 +97,9 @@ Dati due oggetti $X$ e $Y$, indichiamo con $\Hom{\ctC}(X,Y)$ la classe di morfis
 \begin{definition}[Categoria piccola, categoria localmente piccola]
     \index{Categoria!--- piccola}
     \index{Categoria!--- loc. piccola}
-    Quando la classe $\ctC_1$ è un insieme, come conseguenza dell'ultima osservazione fatta, è un insieme anche $\ctC_0$: in tal caso chiamamo la categoria $\ctC$ \emph{piccola}: le categorie $\ctFin$ e $\bbR\emdash\ctVect$ definite sopra sono piccole.
+    Quando la classe $\ctC_1$ è un insieme, come conseguenza dell'ultima osservazione fatta, è un insieme anche $\ctC_0$: in tal caso chiamamo la categoria $\ctC$ \emph{piccola}: le categorie $\ctFin$ e $\bbR\emdash\ctVect$ definite sopra sono piccole, perché abbiamo limitato enormemente la loro classe di oggetti: non abbiamo considerato \emph{tutti} gli insiemi finiti, ma solo quelli della forma $\{1,\dots,n\}$.
 
-    Invece, $\ctC$ si dice \emph{localmente piccola} se dati ogni due oggetti $X$ e $Y$, la classe $\Hom{\ctC}(X,Y)$ di morfismi da $X$ a $Y$ è un insieme. La categoria di \emph{tutti} gli insiemi finiti non è, strettamente parlando, piccola (perché c'è una classe propria anche solo di insiemi con un singolo elemento), ma è localmente piccola, perché fissati due insiemi $X,Y$, l'insieme delle funzioni $f : X\to Y$ è un sottoinsieme di $2^{X\times Y}$, e quest'ultimo è un insieme.
+    Invece, $\ctC$ si dice \emph{localmente piccola} se dati ogni due oggetti $X$ e $Y$, la classe $\Hom{\ctC}(X,Y)$ di morfismi da $X$ a $Y$ è un insieme. La categoria di \emph{tutti} gli insiemi finiti non è, strettamente parlando, piccola (perché c'è una classe propria anche solo di insiemi con un singolo elemento: $\{\varnothing\},\{\{\varnothing\}\}, \{\{\{\varnothing\}\}\}$, eccetera), ma è localmente piccola, perché fissati due insiemi $X,Y$, l'insieme delle funzioni $f : X\to Y$ è un sottoinsieme di $2^{X\times Y}$, e quest'ultimo è un insieme.
 \end{definition}
 \begin{remark}
     Gli assiomi di categoria non impediscono di costruire `categorie' dove $\ctC_0$ è un insieme (per esempio, finito) e dove alcuni o tutti $\Hom{\ctC}(X,Y)$ sono classi; queste costruzioni sono però relativamente innaturali, e non ne parleremo mai.
@@ -115,18 +116,23 @@ La prima di queste osservazioni si basa sul fatto che un dato ambito della matem
 La seconda di queste osservazioni non è meno importante: porterà alla definizione di funtore (si veda \autoref{}), come \emph{omomorfismo tra categorie}, e alla definizione di trasformazione naturale (si veda \autoref{}), come \emph{omomorfismo tra funtori}.
 
 Iniziamo con degli esempi di categorie piccole:
+\index{Categoria!--- vuota}
 \begin{example}
     \Todo{la categoria vuota}
 \end{example}
+\index{Categoria!--- terminale}
 \begin{example}
     \Todo{la categoria terminale}
 \end{example}
+\index{Categoria!--- discreta}
 \begin{example}
     \Todo{la categoria discreta su un insieme $A$}
 \end{example}
+\index{Categoria!--- codiscreta}
 \begin{example}
     \Todo{la categoria codiscreta su un insieme $A$}
 \end{example}
+\index{Categoria!--- generica}
 \begin{example}
     \Todo{la `freccia generica'}
 \end{example}
@@ -142,50 +148,70 @@ Iniziamo con degli esempi di categorie piccole:
 \begin{example}
     \Todo{lo `span generico' e il `cospan generico'}
 \end{example}
+\index{Categoria!--- libera}
+\index{Grafo}
 \begin{example}
     \Todo{ogni grafo dà luogo a una categoria}
 \end{example}
 Due esempi più elaborati, ma molto `concreti', di categorie dove gli oggetti sono numeri naturali:
+\index{Categoria!--- dei circuiti}
 \begin{example}
     \Todo{la categoria dei circuiti elettrici}
 \end{example}
+\index{Categoria!--- dei diagrammi di flusso}
 \begin{example}
     \Todo{la categoria dei diagrammi di flusso}
 \end{example}
 Proseguiamo con degli esempi di categorie grandi:
+\index{Categoria!--- degli insiemi}
 \begin{example}
     \Todo{Insiemi finiti e funzioni (il primo esempio motivante)}
 \end{example}
+\index{Categoria!--- delle matrici}
 \begin{example}
     \Todo{`Numeri naturali e matrici' (il secondo esempio motivante)}
 \end{example}
+\index{Categoria!--- degli insiemi}
 \begin{example}
     \Todo{Tutti gli insiemi e funzioni, tutti gli spazi vettoriali}
 \end{example}
+\index{Categoria!--- degli ordinali}
+\begin{example}
+    \Todo{La categoria degli ordinali}
+\end{example}
+\index{Categoria!--- delle relazioni}
 \begin{example}
     \Todo{Insiemi e relazioni}
 \end{example}
+\index{Categoria!--- di strutture algebriche}
 \begin{example}
     \Todo{Gruppi/monoidi e omomorfismi}
 \end{example}
+\index{Categoria!---}
 \begin{example}
     \Todo{Omomorfismi per una generica segnatura algebrica}
 \end{example}
+\index{Categoria!--- di spazi topologici}
 \begin{example}
     \Todo{Spazi e funzioni continue}
 \end{example}
+\index{Categoria!--- di insiemi ordinati}
 \begin{example}
     \Todo{Insiemi ordinati e funzioni monotone}
 \end{example}
-\begin{example}
-    \Todo{Insiemi ordinati e funzioni monotone}
-\end{example}
+\index{Categoria!--- di funzioni parziali}
 \begin{example}
     \Todo{Insiemi e funzioni parziali}
 \end{example}
+\index{Categoria!--- di insiemi puntati}
 \begin{example}
     \Todo{Insiemi puntati}
 \end{example}
+\index{Categoria!--- di azioni di gruppo}
+\begin{example}
+    \Todo{Azioni di $G$}
+\end{example}
+\index{Categoria!--- di `stream'}
 \begin{example}
     \Todo{Streams (coalgebre per liste non vuote)}
 \end{example}
@@ -209,6 +235,7 @@ Questo modo di intendere la definizione però oscura un'altra idea importante, p
 
 Invece, non tutte le categorie sono di questo tipo:
 \Todo{qui sarebbe bello dire qualcosa di più, ma dobbiamo pensare a come}
+\index{Relazione di equivalenza}
 \begin{example}
  Una relazione di equivalenza si può vedere come una particolare categoria. Consideriamo un insieme $X$ con una relazione di equivalenza indicata con il simbolo $\sim$.
  Definiamo la seguente categoria:
@@ -221,6 +248,7 @@ Invece, non tutte le categorie sono di questo tipo:
  Gli assiomi di unitalità e associatività sono automaticamente soddisfatti: per esempio, dati $w\sim x\sim y\sim z$, per transitività abbiamo che $w\sim z$, e questo dà un \emph{unico} morfismo $w\to z$, non importa se lo otteniamo componendo prima $w\sim x$ e $x\sim y$ o prima $x\sim y$ e $y\sim z$---il risultato è lo stesso per unicità.
 \end{example}
 Questo è un primo esempio di categoria in cui \emph{gli oggetti non sono insiemi con strutture ulteriori}, ma non è quello minimale: la proprietà di \emph{simmetria} delle relazioni di equivalenza non serve per avere una categoria. Consideriamo i seguenti esempi (che raccogliamo in dei teoremi, di cui diamo una dimostrazione completa, perché questi esempi sono pedagogicamente rilevanti).
+\index{Categoria!--- da una relazione}
 \begin{theorem}\label{pos_sonocat}
     \Todo{ogni poset, e in effetti ogni preordine, definisce una categoria; copia da sotto}
 \end{theorem}
@@ -232,6 +260,8 @@ Questo è un primo esempio di categoria in cui \emph{gli oggetti non sono insiem
 
  Più in generale, un \emph{preordine} è una relazione riflessiva e transitiva, ma non necessariamente simmetrica o antisimmetrica. Ogni preordine si può vedere come una categoria.
 \end{examples}
+
+\index{Categoria!--- da un monoide}
 \begin{theorem}\label{mon_sonocat}
 \Todo{ogni monoide definisce una categoria; copia da sotto}
 \end{theorem}
@@ -300,47 +330,47 @@ Dato un oggetto $X$ di una categoria, un morfismo da $X$ a $X$ si chiama anche \
     \item Un grafo diretto si può vedere come un multigrafo dove tra due vertici c'è al massimo uno spigolo. Dimostra che la costruzione al punto 3, se applicata ad un grafo diretto, dà un preordine.\Todo{Cambierei questo esercizio dato che preferirei dimostrare esplicitamente un enunciato analogo}
 \end{enumerate}
 \color{black}
-\cippo
-\section{Isomorfismi}\label{isomorfismi}
+\section{Isomorfismi}\label{isomorfismi}\index{Isomorfismo}
+La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, a partire dai primi corsi di algebra astratta in poi. Quando due gruppi sono isomorfi, `tutte' le proprietà che si esprimono in termini degli assiomi di gruppo, e che sono godute dall'uno, sono godute anche dall'altro. Una strategia molto efficace per mostrare che due dati gruppi \emph{non possono} essere isomorfi è quindi cercare una proprietà che sia goduta solo da uno dei due (per esempio, essere abeliano: ci sono certamente almeno due gruppi di ordine 24 distinti, $7\in\bbZ/24\bbZ$ e il gruppo delle permutazioni di 4 lettere $\{a,b,c,d\}$).
+\Todo{Vorrei spiegare bene cosa significa: se $G\iso H$, allora $G$ è abeliano se e solo se lo è $H$; del resto, $7\in\bbZ/24\bbZ\iff 7\in\bbZ/9\bbZ$...}
 
-In vari ambiti della matematica ci sono modi di indicare situazioni in cui due oggetti sono ``praticamente la stessa cosa'' o in cui ``si può passare dall'uno all'altro senza problemi''. La nozione di isomorfismo in teoria delle categorie generalizza molte di queste idee.
+La nozione di isomorfismo in teoria delle categorie generalizza molte di queste idee.
+\begin{definition}[Isomorfismo]\label{def_isomorfismo}\index{Isomorfismo}\index{Morfismo!isomorfismo}
+ Dati due oggetti $X$ e $Y$ in una categoria $\ctC$, un \emph{isomorfismo} tra $X$ e $Y$ consiste di una coppia di morfismi $f:X\to Y$ e $g:Y\to X$ in direzioni opposte, tali che $g\cmp f=\id_X$ e $f\cmp g=\id_Y$.
 
-\begin{definition}
- Dati due oggetti $X$ e $Y$ in una categoria $\ctC$, un \emph{isomorfismo} tra $X$ e $Y$ è una coppia di morfismi $f:X\to Y$ e $g:Y\to X$ tali che $g\circ f=\id_X$ e $f\circ g=\id_Y$.
- $f$ è chiamato l'\emph{inverso} di $g$, e a volte si indica con $g^{-1}$, e viceversa.
+ Il morfismo $f$ è chiamato l'\emph{inverso} $g^{-1}$ di $g$ (e specularmente, $g$ è l'inverso $f^{-1}$ di $f$).
 
- Se esiste un isomorfismo tra $X$ e $Y$ diciamo che i due oggetti sono \emph{isomorfi}.
+ Se esiste un isomorfismo tra $X$ e $Y$ diciamo che i due oggetti sono \emph{isomorfi} (spesso tralasciando mediante quale coppia di morfismi, dato che è chiaro dal contesto) e scriviamo $X\iso Y$.\footnote{Formalmente parlando, $X\iso Y$ è una quadrupla $(f,g, i,j)$ dove $f : X\to Y, g: Y\to X$ e $i,$ sono rispettivamente due dimostrazioni, che $f\cmp g= \id_Y$ e che $g\cmp f=\id_X$, però non insisteremo mai su questo dettaglio costruttivo.}
 \end{definition}
-
-Può essere utile un'interpretazione grafica: intuitivamente, un isomorfismo è una situazione dove l'applicazione di $f$ si può invertire o annullare tramite $g$, e viceversa, e si può sempre passare da $X$ a $Y$ senza perdere informazioni.
+\`E utile, sebbene del tutto ovvio, rappresentare mediante dei diagrammi commutativi il fatto che $X,Y$ siano oggetti isomorfi: %un'interpretazione grafica: intuitivamente, un isomorfismo è una situazione dove l'applicazione di $f$ si può invertire o annullare tramite $g$, e viceversa, e si può sempre passare da $X$ a $Y$ senza perdere informazioni.
 \[
 \begin{tikzcd}
- X \ar[shift left]{r}{f} & Y \ar[shift left]{l}{g}
+ X\ar[d, "f"'] \ar[dr, equal, "\id_X"]& & Y \ar[dr, equal, "\id_Y"]\ar[d,"g"']\\
+ Y \ar[r, "g"']& X & X \ar[r, "f"']& Y
 \end{tikzcd}
 \]
-
 Normalmente si indica la coppia $(f,g)$ solo con $f$ o con $g$, lasciando l'inverso implicito (l'inverso, se esiste, è unico, si vedano gli esercizi).
-
 \begin{examples}
- La definizione di isomorfismo comprende molte delle nozioni di ``struttura equivalente'' usate in matematica:
- \begin{itemize}
-  \item In $\ctSet$, gli isomorfismi sono le biiezioni, o corrispondenze biunivoche. In particolare, due insiemi sono isomorfi se e solo se hanno la stessa cardinalità.
+ Raccogliamo degli esempi di isomorfismo in varie categorie:%La definizione di isomorfismo comprende molte delle nozioni di ``struttura equivalente'' usate in matematica:
+ \begin{enumtag}{ei}
+    \item \`E evidente che in ogni categoria $\ctC$, tutte le identità $\id_X : X\to X$ sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo.
+  \item In $\ctSet$, gli isomorfismi sono esattamente le biiezioni, o `corrispondenze biunivoche'. Per la definizione solitamente data di cardinalità, due insiemi sono isomorfi se e solo se hanno lo stesso numero cardinale.
   \item In $\bbR\emdash\ctVect$, gli isomorfismi sono le biiezioni lineari. In particulare, in dimensione finita, due spazi vettoriali sono isomorfi se e solo se hanno la stessa dimensione.
-  \item In $\ctTop$, gli isomorfismi sono gli omeomorfismi: funzioni continue con un'inversa continua.
-  \item In $\ctGrp$, gli isomorfismi sono gli isomorfismi di gruppi.
- \end{itemize}
+  \item In $\ctTop$, gli isomorfismi sono gli omeomorfismi: funzioni continue con un'inversa continua. Si noti come questo mostra che può non accadere che, se $f : X\to Y$ è un omomorfismo biiettivo, la \emph{funzione} inversa $g : Y\to X$ sia anch'essa un isomorfismo; per esempio, l'identità $\id_X : (X,\delta)\to (X,\gamma)$ su un insieme con tre punti $X=\{a,b,c\}$ è continua quando $\delta$ è la topologia discreta e $\gamma$ è la topologia banale, ma la sua inversa insiemistica $\id_X : (X,\gamma)\to(X,\delta)$ \emph{non} è continua.
+  \item In ogni categoria di strutture algebriche (si veda \autoref{}), gli isomorfismi sono gli isomorfismi di $\Sigma$-strutture, cioè le funzioni $f : A\to B$ che sono $\Sigma$-omomorfismi biiettivi, la cui inversa insiemistica è ancora un $\Sigma$-omomorfismo.
+ \end{enumtag}
 \end{examples}
-
 \begin{warning}
- Spesso una categoria viene chiamata con il nome dei suoi oggetti ($\ctVect$, $\ctGrp$, eccetera), ma è importante sapere \emph{quali sono i morfismi} per sapere che struttura in particolare si sta studiando. Questo è particolarmente importante nel caso degli isomorfismi: per esempio, $\bbR$ e $\bbR^2$, come insiemi, sono isomorfi, ma non come spazi vettoriali. Per cui, nella categoria $\ctSet$, gli oggetti $\bbR$ e $\bbR^2$ sono isomorfi, ma non sono isomorfi se li intendiamo come oggetti della categoria $\ctVect$.
+ Spesso una categoria viene chiamata con il nome dei suoi oggetti ($\ctVect$, $\ctGrp$, eccetera), ma per decidere se due oggetti sono isomorfi è essenziale sapere \emph{quali sono i morfismi} per sapere che struttura in particolare vogliamo preservare. Per esempio, tutte le potenze $\bbR,\bbR^2,\bbR^3,\dots$ sono isomorfe come insiemi (hanno la stessa cardinalità $2^{\aleph_0}$); ma non come spazi vettoriali (hanno dimensioni diverse) né come varietà differenziabili (hanno dimensioni diverse; ma il teorema di invarianza della dimensione per varietà non è completamente ovvio), ma lo sono come gruppi abeliani (o come spazi vettoriali sui razionali, il che è leggermente controintuitivo: infatti la dimostrazione dipende dall'assioma della scelta).
+
+ Per cui, nella categoria $\ctSet$, gli oggetti $\bbR$ e $\bbR^2$ sono isomorfi, ma non sono isomorfi se li intendiamo come oggetti della categoria $\bbR\emdash\ctVect$, e lo sono invece in $\bbQ\emdash\ctVect$.
 \end{warning}
+% Si noti che le condizioni $g\cmp f = \id_X$ e $f\cmp g=\id_Y$ servono entrambe, perché possono valere o non valere indipendentemente l'una dall'altra.
+% \begin{example}
+%  Nella categoria $\bbR\emdash\ctVect$, si consideri la mappa $f:\bbR\to\bbR^2$ data dall'inclusione dell'asse $X$, $x\mapsto(x,0)$. Data la proiezione sull'asse $X$ data da $g:\bbR^2\to\bbR$, $(x,y)\mapsto x$, si ha che $g\cmp f=\id_\bbR$. Però non è vero che $f\cmp g = \id_{\bbR^2}$. (E infatti i due oggetti non sono isomorfi come spazi vettoriali.)
+% \end{example}
 
-Si noti che le condizioni $g\circ f = \id_X$ e $f\circ g=\id_Y$ servono entrambe, perché possono valere o non valere indipendentemente l'una dall'altra.
-\begin{example}
- Nella categoria $\bbR\emdash\ctVect$, si consideri la mappa $f:\bbR\to\bbR^2$ data dall'inclusione dell'asse $X$, $x\mapsto(x,0)$. Data la proiezione sull'asse $X$ data da $g:\bbR^2\to\bbR$, $(x,y)\mapsto x$, si ha che $g\circ f=\id_\bbR$. Però non è vero che $f\circ g = \id_{\bbR^2}$. (E infatti i due oggetti non sono isomorfi come spazi vettoriali.)
-\end{example}
-
-\begin{definition}
+\begin{definition}[Gruppoide]\label{def_gruppoide}\index{Categoria!Gruppoide}
  Una categoria in cui tutti i morfismi sono isomorfismi si chiama \emph{gruppoide}.\footnote{In inglese \emph{groupoid}. Da notare che una vecchissima terminologia coniata dal matematico norvegese Øystein Ore chiama `gruppoidi' quelli che oggi sono detti \emph{magmi}, insiemi dotati di una operazione binaria --e nessun altro assioma. Noi non useremo mai la terminologia di Ore.}
 \end{definition}
 
@@ -359,33 +389,49 @@ Un \emph{automorfismo} è un endomorfismo (un morfismo da un oggetto a sé stess
 \end{example}
 
 L'esempio precedente si può vedere come una sottocategoria di $\ctSet$.
-Più in generale, data una categoria, possiamo sempre prendere la sottocategoria che contiene solo gli isomorfismi.
-
+Più in generale, in virtù del fatto che ogni identità $\id_X$ è un isomorfismo, e del fatto che la composizione di isomorfismi è un isomorfismo, data una categoria $\ctC$ possiamo sempre prendere la sottocategoria che contiene tutti gli oggetti e tutti i suoi isomorfismi.
 \begin{definition}
- Il \emph{cuore}\footnote{In inglese: \emph{core}} di una categoria $\ctC$ è il gruppoide ottenuto prendendo come oggetti gli oggetti di $\ctC$, e come morfismi gli isomorfismi di $\ctC$.
+ Il \emph{cuore} di una categoria $\ctC$ è il gruppoide ottenuto prendendo
+ \begin{itemize}
+    \item come oggetti gli oggetti di $\ctC$,
+    \item come morfismi $X\to Y$ gli isomorfismi di $\ctC$ da $X$ a $Y$.
+ \end{itemize}
 \end{definition}
 
 Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con identità e composizione).
 
-
+\begin{definition}[Categoria scheletrica]\label{def_cat_scheletrica}\index{Categoria!--- scheletrica}
+    Una categoria $\ctC$ si dice \emph{scheletrica} se vale la seguente proprietà:
+    \[X\iso Y \, (\text{mediante } f,g) \,\Rightarrow\, (X=Y \,\&\, f=g=\id_X),\]
+    cioè se gli unici isomorfismi che esistono tra due oggetti sono le identità (si veda \autoref{}).
+\end{definition}
 \subsubsection*{Esercizi}
 \begin{enumerate}
-    \item Dato un morfismo $f:X\to Y$ in una categoria $\ctC$, dimostra che se un'inverso per $f$ esiste, allora è unico.
+    \item Dato un morfismo $f:X\to Y$ in una categoria $\ctC$, dimostra che se un inverso per $f$ esiste, allora è unico.
+    \item Caratterizzare gli isomorfismi nelle seguenti categorie: \Todo{lista}
     \item Dati due spazi metrici $X$ e $Y$, ricorda che una funzione $f:X\to Y$ si dice \emph{1-Lipschitz} se soddisfa la disuguaglianza
     \[
      d\big( f(x), f(x') \big) \le d(x,x')
     \]
     per ogni $x,x'\in X$. Dimostra che spazi metrici e le funzioni 1-Lipschitz formano una categoria, chiamata $\cate{Met}_\cate{Lip}$, e che gli isomorfismi di $\cate{Met}_\cate{Lip}$ sono le isometrie. Fornisci un esempio di due spazi metrici isomorfi in $\ctTop$, ma non in $\cate{Met}_\cate{Lip}$.
-    \item Costruisci un esempio in $\ctTop$ di oggetti $X$ e $Y$ non isomorfi, e morfismi $f:X\to Y$ e $g:Y\to X$ tali che $g\circ f=\id_X$ (ma $f\circ g \ne \id_Y$).
+    \item Costruisci un esempio in $\ctTop$ di oggetti $X$ e $Y$ non isomorfi, e morfismi $f:X\to Y$ e $g:Y\to X$ tali che $g\cmp f=\id_X$ (ma $f\cmp g \ne \id_Y$).
     \item Dimostra che in ogni categoria, le identità sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo.
-    \item In una categoria localmente piccola $\ctC$, dati due oggetti isomorfi $X$ e $Y$, dimostra che per ogni oggetto $A$, gli insiemi $\Hom{C}(A,X)$ e $\Hom{C}(A,Y)$ sono in corrispondenza biunivoca.
+    \Todo{Trovo questi esercizi un po' troppo facili\dots Non che sia un male, ma vorrei degli esempi più pedagogici!}
+    \item In una categoria localmente piccola $\ctC$, dati due oggetti isomorfi $X$ e $Y$, dimostra che per ogni oggetto $A$, gli insiemi $\Hom{\ctC}(A,X)$ e $\Hom{\ctC}(A,Y)$ sono in corrispondenza biunivoca.
 \end{enumerate}
+\cippo
+\section{Operazioni tra categorie}
 
+\Todo{categoria prodotto, categoria somma, categoria opposta,}
+\Todo{categorie slice e coslice}
+\Todo{spazi puntati come coslice}
+\Todo{scheletro di una categoria}
+\Todo{categoria dei morfismi}
+\Todo{Categoria degli `span' e dei `cospan'}
 
 \section{Funtori e diagrammi}
 
-% motivazione
-
+\Todo{motivazione: se i monoidi e i poset sono categorie, a che tipo di trasformazione tra categorie corrispondono gli omomorfismi di monoide e le funzioni monotone? Ottima domanda!}
 \begin{definition}
  Date due categorie $\ctC$ e $\ctD$, un \emph{funtore} $F:\ctC\to\ctD$ consiste dei seguenti dati.
  \begin{itemize}
@@ -394,21 +440,23 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 
   che soddifa le seguenti proprietà.
   \item \emph{Preservazione delle identità}: per ogni oggetto $X$ di $\ctC$, $F(\id_X)=\id_{FX}$;
-  \item \emph{Preservazione delle composizioni}: per ogni coppia di morfismi componibili $f$ e $g$ di $\ctC$, $F(g\circ f)=Fg\circ Ff$.
+  \item \emph{Preservazione delle composizioni}: per ogni coppia di morfismi componibili $f$ e $g$ di $\ctC$, $F(g\cmp f)=Fg\cmp Ff$.
  \end{itemize}
 \end{definition}
 
 % esempi: funzioni monotone
 % esempi: omomorfismi
 % esempi: rappresentazioni e azioni di gruppo
+% funtori controvarianti, prefasci, bifuntori
+% hom come funtore
 % esempi: funtori ``dimenticanti''
 % esempi: funtori ``liberi''
+% C -> Sk(C) "è un'equivalenza"
 % altri esempi?
-
-% composizione di funtori, Cat
+% composizione di funtori, la (1-)categoria Cat
 
 % diagrammi
-% diagrammi commutativi
+% diagrammi commutativi (voglio una definizione precisa)
 % funtori li preservano - in particolare, preservano iso
 
 \subsubsection*{Esercizi}
@@ -419,16 +467,6 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
     \item
     \item
 \end{enumerate}
-
-
-\section{Operazioni tra categorie}
-
-% categoria opposta, funtori controvarianti, prefasci
-% categoria prodotto, categoria somma, bifuntori
-% hom
-% categorie slice e coslice
-% spazi puntati come coslice
-% scheletri
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
@@ -464,13 +502,13 @@ la cui composizione è dunque un'operazione parziale,
 (ovvero tra frecce consecutive).
 Si arriva così alle seguenti definizioni.
 
-\begin{definition}[Monomorfismo]
+\begin{definition}[Monomorfismo]\label{def_Mono}\index{Monomorfismo}
 	Un morfismo \(m \colon B \to X\) in una categoria \(\ctC\) è un \emph{monomorfismo} (o \emph{mono}) se,
 	per ogni coppia di frecce parallele \(f, g \colon A \to B\) in \(\ctC\) tali che \(m \cmp f = m \cmp g\), si ha che \(f = g\).
 	%Equivalentemente, \(m\) è un monomorfismo se è cancellabile a sinistra, ovvero \(m \cmp f = m \cmp g\) implica \(f = g\) ogni qual volta la scrittura ha senso (ovvero quando \(f\) e \(g\) sono frecce parallele e pre-componibili con \(m\)).
 \end{definition}
 
-\begin{definition}[Epimorfismo]
+\begin{definition}[Epimorfismo]\label{def_Epi}\index{Epimorfismo}
 	Un morfismo \(e \colon X \to A\) in una categoria \(\ctC\) è un \emph{epimorfismo} (o \emph{epi}) se,
 	per ogni coppia di frecce parallele \(f, g \colon A \to B\) in \(\ctC\) tali che \(f \cmp e = g \cmp e\), si ha che \(f = g\).
 	%Equivalentemente, \(e\) è un epimorfismo se è cancellabile a destra, ovvero \(f \cmp e = g \cmp e\) implica \(f = g\) ogni qual volta la scrittura ha senso (ovvero quando \(f\) e \(g\) sono frecce parallele e post-componibili con \(e\)).
@@ -523,7 +561,17 @@ abbiamo evidenziato come l'equivalenza tra funzioni surgettive (iniettive)
 e epi (mono) in \(\ctSet\) sia indipendente dall'esistenza di un'inversa destra (sinistra).
 
 
-
+\begin{proposition}[Una proprietà di mono ed epi in $\ctSet$]
+    Dato un quadrato commutativo di funzioni
+    \[\begin{tikzcd}
+        E \ar[r,"f"]\ar[d, "e"']& A\ar[d, "m"] \\
+        B \ar[r, "g"'] & X
+    \end{tikzcd}\]
+    dove $e : E\to B$ è un epi e $m : A \to X$ un mono, esiste un unica funzione $u : B\to A$ con la proprietà di `spezzare il quadrato', cioè tale che $u\cmp e=f$ e $m\cmp u=g$.
+\end{proposition}
+\begin{proof}
+    Costruiamo $u$ esplicitamente: \Todo{}
+\end{proof}
 \section{Sezioni e retrazioni}
 
 \begin{definition}[Sezione]
