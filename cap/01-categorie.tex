@@ -125,6 +125,7 @@ Iniziamo con degli esempi di categorie piccole:
     \Todo{la categoria terminale}
 \end{example}
 \index{Categoria!--- discreta}
+\`E sempre possibile dotare un insieme $A$ della topologia discreta (o `massimale'), dove ogni sottoinsieme $U$ di $A$ è aperto, e della topologia indiscreta (o `minimale'), dove solo $\varnothing$ e $A$ sono aperti. Similmente, esistono due maniere, massimale e minimale, di considerare un insieme una categoria.
 \begin{example}
     \Todo{la categoria discreta su un insieme $A$}
 \end{example}
@@ -132,6 +133,7 @@ Iniziamo con degli esempi di categorie piccole:
 \begin{example}
     \Todo{la categoria codiscreta su un insieme $A$}
 \end{example}
+Alcune categorie che è spesso utile considerare si rappresentano mediante dei grafi:
 \index{Categoria!--- generica}
 \begin{example}
     \Todo{la `freccia generica'}
@@ -149,6 +151,7 @@ Iniziamo con degli esempi di categorie piccole:
     \Todo{lo `span generico' e il `cospan generico'}
 \end{example}
 \index{Categoria!--- libera}
+Questi ultimi esempi lasciano supporre che \emph{ogni} grafo $\ctG$, fatto di un insieme di vertici (o `oggetti') $V$ e di un insieme di lati (o `morfismi') $E$ generi una categoria $F\ctG$. \`E effettivamente così, e la seguente costruzione in forma di esempio formalizza questa idea.
 \index{Grafo}
 \begin{example}
     \Todo{ogni grafo dà luogo a una categoria}
@@ -212,8 +215,20 @@ Proseguiamo con degli esempi di categorie grandi:
     \Todo{Azioni di $G$}
 \end{example}
 \index{Categoria!--- di `stream'}
-\begin{example}
-    \Todo{Streams (coalgebre per liste non vuote)}
+\begin{example}\label{example_streams}
+    % \Todo{Streams (coalgebre per liste non vuote)}
+    La categoria $\cate{Stream}$ ha
+    \begin{itemize}
+        \item per oggetti gli insiemi $A,B,C\dots$
+        \item per morfismi $f : A\pto B$ le funzioni della forma
+        \[\longmor{f : \sum_{n=1}^\infty A^n}{B}\]
+        dove il dominio $A^+=\sum_{n=1}^\infty A^n$ è l'insieme delle \emph{liste non vuote} di elementi di $A$, cioè l'insieme $A + (A\times A) + (A\times A\times A) + \dots$ i cui elementi sono sequenze ordinate della forma $(\tup an,)$ per $n\ge 1$ e $a_i\in A$ per ogni $i=1,\dots,n$.\footnote{In termini più formali, $A^+$ è il \emph{semigruppo libero} generato dall'insieme $A$, un `semigruppo' essendo un insieme dotato di una operazione binaria associativa.}
+    \end{itemize}
+    L'intuizione dietro questa definizione è che un morfismo $f \in \Hom{\cate{Stream}}(A,B)$ consiste di un `algoritmo' che data una lista non vuota di input $(\tup an,)$ calcola un output $f(\tup an,)\in B$ (che chiaramente può dipendere anche da $n$), per ogni $n\ge 1$.
+
+    Le identità sono le funzioni $\sum_{n=1} A^n\to A$ definite mandando $(\tup an,)$ in $a_n$; la composizione è data, se $f : A\pto B$ e $g : B\pto C$ dalla regola $g\circ f : A\pto C$
+    \[(\tup an,)\longmapsto g\big(f(a_1),f(a_1,a_2),\dots f(\tup a{n-1},),f(\tup an,)\big).\]
+    Ovvero, la composizione $g\circ f$ calcola l'output che la funzione $g$ genera a partire dagli input $f(a_1),f(a_1,a_2),\dots f(\tup a{n-1},),f(\tup an,)$.
 \end{example}
 % \begin{itemize}
 %   \item Come accennato sopra, gli spazi vettoriali su $\bbR$ e le mappe lineari formano una categoria, che chiamiamo $\bbR\emdash\ctVect$. Più in generale possiamo definire la categoria $\bbF\emdash\ctVect$, per un campo $\ictF$, in maniera analoga.
@@ -229,7 +244,7 @@ Qualsiasi circostanza in cui una classe di strutture possiede una nozione ovvia 
     \item l'identità è un omomorfismo;
     \item la composizione di due omomorfismi è ancora un omomorfismo;
 \end{itemize}
-definisce la classe degli oggetti e dei morfismi di una categoria. (Gli esempi di strutture algebriche sono tutti di questo tipo; ne esistono altri: la composizione di due mappe proprie tra spazi di Hausdorff è ancora una mappa propria.)
+definisce la classe degli oggetti e dei morfismi di una categoria. (Gli esempi di strutture algebriche sono tutti di questo tipo; ne esistono altri, che non riguardano le operazioni algebriche: la composizione di due mappe proprie tra spazi di Hausdorff è ancora una mappa propria.)
 
 Questo modo di intendere la definizione però oscura un'altra idea importante, perché potrebbe far sospettare che gli oggetti di una categori siano, alla fine, sempre insiemi dotati di strutture ulteriori (per esempio, operazioni o relazioni), e i morfismi funzioni che preservano queste strutture.
 
@@ -237,17 +252,18 @@ Invece, non tutte le categorie sono di questo tipo:
 \Todo{qui sarebbe bello dire qualcosa di più, ma dobbiamo pensare a come}
 \index{Relazione di equivalenza}
 \begin{example}
- Una relazione di equivalenza si può vedere come una particolare categoria. Consideriamo un insieme $X$ con una relazione di equivalenza indicata con il simbolo $\sim$.
- Definiamo la seguente categoria:
+ Un insieme dotato di una relazione di equivalenza si può vedere come una particolare categoria. Consideriamo un insieme $X$ dotato di una relazione di equivalenza indicata con il simbolo $\sim$.
+ Definiamo la seguente categoria $\ctB(X,\sim)$:
  \begin{itemize}
-  \item Gli oggetti sono gli elementi di $X$;
-  \item Esiste un unico morfismo da $x$ a $y$ (e uno da $y$ a $x$) se e solo se $x\sim y$.
+  \item Gli oggetti di $\ctB(X,\sim)$ sono gli elementi di $X$;
+  \item Esiste un unico morfismo $x\to y$ se e solo se $x\sim y$ (e allora esiste anche un unico morfismo $y\to x$).
  \end{itemize}
  Per ogni oggetto $x$, l'identità è l'unico morfismo $x\to x$ dato dal fatto che la relazione è riflessiva ($x\sim x$).
- La composizione è data dalla transitività: se abbiamo morfismi $x\to y$ e $y\to z$ significa, in particolare, che $x\sim y$ e $y\sim z$. Per transitività, $x\sim z$, e quindi c'è un unico morfismo $x\to z$, che possiamo prendere come composizione.
- Gli assiomi di unitalità e associatività sono automaticamente soddisfatti: per esempio, dati $w\sim x\sim y\sim z$, per transitività abbiamo che $w\sim z$, e questo dà un \emph{unico} morfismo $w\to z$, non importa se lo otteniamo componendo prima $w\sim x$ e $x\sim y$ o prima $x\sim y$ e $y\sim z$---il risultato è lo stesso per unicità.
+ La composizione è data dalla transitività: se abbiamo morfismi $x\to y$ e $y\to z$ significa, in particolare, che $x\sim y$ e $y\sim z$. Per transitività, $x\sim z$, e quindi c'è un unico morfismo $x\to z$, che possiamo defiinre come composizione.
+
+ Gli assiomi di unitalità e associatività sono automaticamente soddisfatti: per esempio, la composizione $(w\to x\to y)\to z$ e la composizione $w\to (x\to y\to z)$ coincidono, constando dell'unico morfismo $w\to z$.
 \end{example}
-Questo è un primo esempio di categoria in cui \emph{gli oggetti non sono insiemi con strutture ulteriori}, ma non è quello minimale: la proprietà di \emph{simmetria} delle relazioni di equivalenza non serve per avere una categoria. Consideriamo i seguenti esempi (che raccogliamo in dei teoremi, di cui diamo una dimostrazione completa, perché questi esempi sono pedagogicamente rilevanti).
+Quello di $\ctB(X,\sim)$ è un primo esempio di categoria in cui gli oggetti non sono insiemi con strutture ulteriori, ma non è quello minimale: la proprietà di \emph{simmetria} di $\sim$ non serve per ottenere una categoria. Consideriamo i seguenti esempi (che raccogliamo in dei teoremi, di cui diamo una dimostrazione completa, perché questi esempi sono pedagogicamente rilevanti).
 \index{Categoria!--- da una relazione}
 \begin{theorem}\label{pos_sonocat}
     \Todo{ogni poset, e in effetti ogni preordine, definisce una categoria; copia da sotto}
@@ -260,24 +276,25 @@ Questo è un primo esempio di categoria in cui \emph{gli oggetti non sono insiem
 
  Più in generale, un \emph{preordine} è una relazione riflessiva e transitiva, ma non necessariamente simmetrica o antisimmetrica. Ogni preordine si può vedere come una categoria.
 \end{examples}
-
 \index{Categoria!--- da un monoide}
 \begin{theorem}\label{mon_sonocat}
-\Todo{ogni monoide definisce una categoria; copia da sotto}
+    Un monoide si può vedere come una categoria con un solo oggetto --più precisamente, una categoria \emph{localmente piccola} con un solo oggetto.
+
+    Dato un monoide $(M,\cdot,1)$, definiamo la seguente categoria, che indichiamo con $\ctB M$.\footnote{A volte la categoria definita in questo modo si indica con $\ctB(M,\cdot)$, a volte semplicemente con $M$.}
+    \begin{itemize}
+     \item La categoria $\ctB M$ ha un unico oggetto, che indichiamo con $\star$;
+     \item La categoria $\ctB M$ ha un morfismo $m:\star\to\star$ per ogni elemento $m\in M$; l'unico hom-insieme che dobbiamo specificare, $\Hom{\ctB(M,\cdot)}(\star,\star)$, è cioè uguale a $M$, e in particolare, l'identità $\id_\star$ è l'elemento neutro $1\in M$;
+     \item La composizione di morfismi
+     \[\longmor{\Hom{\ctB(M,\cdot)}(\star,\star)\times \Hom{\ctB(M,\cdot)}(\star,\star)}{\Hom{\ctB(M,\cdot)}(\star,\star)}\]
+     è data dal prodotto $M\times M\to M$.
+    \end{itemize}
 \end{theorem}
+Di converso,
 \begin{theorem}
     \Todo{una categoria con un solo oggetto `è' un monoide}
 \end{theorem}
 \color{blue}
 \begin{example}
- Un monoide si può vedere come una categoria con un solo oggetto---più precisamente, una categoria \emph{localmente piccola} con un solo oggetto.
- Vediamo come. Dato un monoide $M$, definiamo la seguente categoria, che indichiamo con $\ctB M$.\footnote{A volte la categoria definita in questo modo si indica con $\ctB M$, a volte semplicemente con $M$.}
- \begin{itemize}
-  \item La categoria $\ctB M$ ha un unico oggetto, che indichiamo con un punto, $\bullet$;
-  \item La categoria $\ctB M$ ha un morfismo $m:\bullet\to\bullet$ per ogni elemento $m\in M$;
-  \item L'identità dell'unico oggetto $m$ è il morfismo definito dall'elemento neutro $e\in M$;
-  \item La composizione di morfismi è data dal prodotto in $M$.
- \end{itemize}
  In un monoide, a differenza di una categoria generica, possiamo sempre comporre due morfismi $m$ e $n$: questo è garantito dal fatto che siccome c'è un solo oggetto, il dominio e il codominio di $m$ ed $n$ sono necessariamente uguali.
 
  Viceversa, data una categoria localmente piccola con un solo oggetto (indichiamolo ancora con questo simbolo, $\bullet$), l'insieme di morfismi $\bullet\to\bullet$ ha una struttura di monoide con l'elemento neutro dato dall'identità, e il prodotto dato dalla composizione.
@@ -373,12 +390,10 @@ Normalmente si indica la coppia $(f,g)$ solo con $f$ o con $g$, lasciando l'inve
 \begin{definition}[Gruppoide]\label{def_gruppoide}\index{Categoria!Gruppoide}
  Una categoria in cui tutti i morfismi sono isomorfismi si chiama \emph{gruppoide}.\footnote{In inglese \emph{groupoid}. Da notare che una vecchissima terminologia coniata dal matematico norvegese Øystein Ore chiama `gruppoidi' quelli che oggi sono detti \emph{magmi}, insiemi dotati di una operazione binaria --e nessun altro assioma. Noi non useremo mai la terminologia di Ore.}
 \end{definition}
-
-\begin{example}
+\begin{example}[$\ctB(X,\sim)$ come gruppoide]\label{exa_releq_groupoid}
  Abbiamo visto che un preordine (una relazione riflessiva e transitiva) si può vedere come una categoria. Questa categoria è un gruppoide se e solo se la relazione è anche simmetrica (cioè, è un'equivalenza). Se $x\sim y$, abbiamo un unico morfismo $x\to y$. Questo morfismo è invertibile se e solo se esiste un morfismo $y\to x$, cioè, se anche $y\sim x$. (Si noti che non ci sono altre condizioni da soddisfare per avere un inverso: per esempio, il morfismo composto $x\to y\to x$ è necessariamente uguale a $\id_x$ per unicità.)
 \end{example}
-
-\begin{example}
+\begin{example}[$\ctB(G,\cdot,1)$ come gruppoide]\label{exa_grp_groupoid}
  Abbiamo visto che ogni monoide $M$ si può considerare una categoria con un solo oggetto. Questa categoria è un gruppoide se e solo se $M$ è un gruppo. Infatti, un morfismo $m$ ammette un inverso nel senso della teoria delle categorie se e solo se ammette un inverso nel senso della teoria dei gruppi: $g\cdot g^{-1}=g^{-1}\cdot g = e$.
 \end{example}
 
@@ -407,7 +422,7 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 \end{definition}
 \subsubsection*{Esercizi}
 \begin{enumerate}
-    \item Dato un morfismo $f:X\to Y$ in una categoria $\ctC$, dimostra che se un inverso per $f$ esiste, allora è unico.
+    \item Mostrare che la composizione nella categoria $\cate{Stream}$ definita in \autoref{example_streams} è effettivamente associativa, e l'assioma di identità è effettivamente valido. %Dato un morfismo $f:X\to Y$ in una categoria $\ctC$, dimostra che se un inverso per $f$ esiste, allora è unico.
     \item Caratterizzare gli isomorfismi nelle seguenti categorie: \Todo{lista}
     \item Dati due spazi metrici $X$ e $Y$, ricorda che una funzione $f:X\to Y$ si dice \emph{1-Lipschitz} se soddisfa la disuguaglianza
     \[
