@@ -424,17 +424,20 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 \begin{enumerate}
 	\item Mostrare che la composizione nella categoria \(\cate{Stream}\) definita in \autoref{example_streams} è effettivamente associativa, e l'assioma di identità è effettivamente valido. %Dato un morfismo \(f:X\to Y\) in una categoria \(\ctC\), dimostra che se un inverso per \(f\) esiste, allora è unico.
 	\item Caratterizzare gli isomorfismi nelle seguenti categorie: \Todo{lista}
-	\item Dati due spazi metrici \(X\) e \(Y\), ricorda che una funzione \(f:X\to Y\) si dice \emph{1-Lipschitz} se soddisfa la disuguaglianza
+	\item Dati due spazi metrici \((X,d)\) e \((Y,d')\), ricorda che una funzione \(f:X\to Y\) si dice \emph{Lipschitz continua} se soddisfa la disuguaglianza
 	      \[
-		      d\big( f(x), f(x') \big) \le d(x,x')
+		      d'(fx,fx')\le \alpha d(x,x')
 	      \]
-	      per ogni \(x,x'\in X\). Dimostra che spazi metrici e le funzioni 1-Lipschitz formano una categoria, chiamata \(\cate{Met}_\cate{Lip}\), e che gli isomorfismi di \(\cate{Met}_\cate{Lip}\) sono le isometrie. Fornisci un esempio di due spazi metrici isomorfi in \(\ctTop\), ma non in \(\cate{Met}_\cate{Lip}\).
+	      per ogni \(x,x'\in X\) e per qualche $\alpha\in\bbR_{>0}$; in tal caso, l'inf di tutti questi $\alpha$ si chiama la \emph{costante di Lipschitz} di $f$; dimostrare che gli spazi metrici e le funzioni Lipschitz continua sono oggetti e morfismi di una categoria, chiamata \(\cate{MetLip}\); caratterizzre gli isomorfismi di \(\cate{MetLip}\). Fornire un esempio di due spazi metrici isomorfi in \(\ctTop\), ma non in \(\cate{MetLip}\).
+
+          Ripetere tutte queste domande rispetto alla definizione, più generale, di funzioni \emph{$K\emdash\alpha$-h\"olderiane} tra spazi metrici, ricordando che una funzione $f : (X,d)\to (Y,d')$ si dice $K\emdash\alpha$-h\"olderiana quando
+          \[d'(fx,fx')\le Kd(x,x')^\alpha\]
+          per $K\in \bbR_{\ge 0}$ e $\alpha\in \bbR_{>0}$.
 	\item Costruisci un esempio in \(\ctTop\) di oggetti \(X\) e \(Y\) non isomorfi, e morfismi \(f:X\to Y\) e \(g:Y\to X\) tali che \(g\cmp f=\id_X\) (ma \(f\cmp g \ne \id_Y\)).
-	\item Dimostra che in ogni categoria, le identità sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo.
-	      \Todo{Trovo questi esercizi un po' troppo facili\dots Non che sia un male, ma vorrei degli esempi più pedagogici!}
+	% \item Dimostra che in ogni categoria, le identità sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo.
+	%       \Todo{Trovo questi esercizi un po' troppo facili\dots Non che sia un male, ma vorrei degli esempi più pedagogici!}
 	\item In una categoria localmente piccola \(\ctC\), dati due oggetti isomorfi \(X\) e \(Y\), dimostra che per ogni oggetto \(A\), gli insiemi \(\Hom{\ctC}(A,X)\) e \(\Hom{\ctC}(A,Y)\) sono in corrispondenza biunivoca.
 \end{enumerate}
-\cippo
 \section{Operazioni tra categorie}
 
 \Todo{categoria prodotto, categoria somma, categoria opposta,}
@@ -517,13 +520,13 @@ la cui composizione è dunque un'operazione parziale,
 (ovvero tra frecce consecutive).
 Si arriva così alle seguenti definizioni.
 
-\begin{definition}[Monomorfismo]\label{def_Mono}\index{Monomorfismo}
+\begin{definition}[Monomorfismo]\label{def_Mono}\index{Monomorfismo}\index{Morfismo!mono---}
 	Un morfismo \(m \colon B \to X\) in una categoria \(\ctC\) è un \emph{monomorfismo} (o \emph{mono}) se,
 	per ogni coppia di frecce parallele \(f, g \colon A \to B\) in \(\ctC\) tali che \(m \cmp f = m \cmp g\), si ha che \(f = g\).
 	%Equivalentemente, \(m\) è un monomorfismo se è cancellabile a sinistra, ovvero \(m \cmp f = m \cmp g\) implica \(f = g\) ogni qual volta la scrittura ha senso (ovvero quando \(f\) e \(g\) sono frecce parallele e pre-componibili con \(m\)).
 \end{definition}
 
-\begin{definition}[Epimorfismo]\label{def_Epi}\index{Epimorfismo}
+\begin{definition}[Epimorfismo]\label{def_Epi}\index{Epimorfismo}\index{Morfismo!epi---}
 	Un morfismo \(e \colon X \to A\) in una categoria \(\ctC\) è un \emph{epimorfismo} (o \emph{epi}) se,
 	per ogni coppia di frecce parallele \(f, g \colon A \to B\) in \(\ctC\) tali che \(f \cmp e = g \cmp e\), si ha che \(f = g\).
 	%Equivalentemente, \(e\) è un epimorfismo se è cancellabile a destra, ovvero \(f \cmp e = g \cmp e\) implica \(f = g\) ogni qual volta la scrittura ha senso (ovvero quando \(f\) e \(g\) sono frecce parallele e post-componibili con \(e\)).
@@ -580,19 +583,20 @@ e epi (mono) in \(\ctSet\) sia indipendente dall'esistenza di un'inversa destra 
 	Dato un quadrato commutativo di funzioni
 	\[\begin{tikzcd}
 			E \ar[r,"f"]\ar[d, "e"']& A\ar[d, "m"] \\
-			B \ar[r, "g"'] & X
+			B \ar[r, "g"']\ar[ur,dashed,"u"] & X
 		\end{tikzcd}\]
-	dove \(e : E\to B\) è un epi e \(m : A \to X\) un mono, esiste un unica funzione \(u : B\to A\) con la proprietà di `spezzare il quadrato', cioè tale che \(u\cmp e=f\) e \(m\cmp u=g\).
+	dove \(e : E\to B\) è un epi e \(m : A \to X\) un mono, esiste un unica funzione \(u : B\to A\) (indicata con una freccia tratteggiata) con la proprietà di `spezzare il quadrato', cioè tale che \(u\cmp e=f\) e \(m\cmp u=g\).
 \end{proposition}
 \begin{proof}
-	Costruiamo \(u\) esplicitamente: \Todo{}
+	Costruiamo \(u\) esplicitamente: ad un elemento $b\in B$, che sappiamo essere della forma $e(a)$ per qualche $a\in A$, associamo l'elemento $u(b)=f(a)$. Questa definizione è ben posta, perché se $a,a'$ sono entrambi tali che $e(a)=e(a')=b$, allora $mu(b)=mf(a)=mf(a')$, così che $f(a)=f(a')$, perché $m$ è un mono. \`E evidente ora che $u\circ e= f$, per costruzione, ed $(m\circ u)(b)=m(f(a))=g(e(a))=g(b)$; l'unicità segue ancora dal fatto che $m$ è mono.
 \end{proof}
 \section{Sezioni e retrazioni}
 
 \begin{definition}[Sezione]
 	Una \emph{sezione} di un morfismo \(f \colon A \to B\) in una categoria \(\ctC\) è un'inversa destra di \(f\), ovvero un morfismo \(s \colon B \to A\) tale che \(f \cmp s = \id_{B}\).
 \end{definition}
-
+\index{Epimorfismo!--- spezzante}Ogni sezione è un particolare tipo di epimorfismo, detto un \emph{epi spezzante}.
 \begin{definition}[Retrazione]
 	Una \emph{retrazione} di un morfismo \(f \colon A \to B\) in una categoria \(\ctC\) è un'inversa sinistra di \(f\), ovvero un morfismo \(r \colon B \to A\) tale che \(r \cmp f = \id_{A}\).
 \end{definition}
+\index{Monomorfismo!--- spezzante}Ogni retrazione è un particolare tipo di monomorfismo, detto un \emph{mono spezzante}.
