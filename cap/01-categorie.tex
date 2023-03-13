@@ -54,7 +54,7 @@ Abbiamo utilizzato diverse volte la parola `classe': la definizione generale di 
 
 Ogni volta che è necessario, useremo costruzioni `elementari' che si possono fare sulle classi come se esse fossero insiemi: per esempio se \(\ctA,\ctB\) sono classi, è lecito costruire la classe prodotto \(\ctA\times\ctB\), e considerare \emph{funzioni tra classi} \(F : \ctA\fun\ctB\), cioè sottoclassi \(F\) del prodotto \(\ctA\times\ctB\) che sono funzionali: per ogni elemento \(A\) della classe \(\ctA\), esiste un unico elemento \(B\in\ctB\) con \((A,B)\in F\), questo elemento si denota \(FA\), e a tutti gli effetti \(F\) si comporta come una funzione. Di nuovo, il linguaggio preciso che formalizza queste costruzioni verrà esposto nell'appendice \ref{fondamenti}; questa imprecisione iniziale sarà sempre del tutto innocua, e per il momento invitiamo i lettori a considerare il desiderio di approfondire la cosa solo una inutile distrazione.
 \index{Categoria}
-\begin{definition}[Categoria]
+\begin{definition}[Categoria]\label{def_categ}
 	Una \emph{categoria} \(\ctC\) consiste dei seguenti dati:
 	\begin{enumtag}{c}
 		\item\label{c_1} una classe \(\ctC_0\) i cui elementi chiamiamo \emph{oggetti}, di solito indicati con lettere latine maiuscole: \(A\), \(B\), \(X\), \(Y\),\dots
@@ -154,7 +154,18 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di un insieme di vertici (o `oggetti') \(V\) e di un insieme di lati (o `morfismi') \(E\) generi una categoria \(F\ctG\). \`E effettivamente così, e la seguente costruzione in forma di esempio formalizza questa idea.
 \index{Grafo}
 \begin{example}
-	\Todo{ogni grafo dà luogo a una categoria}
+    Dato un grafo (o più propriamente, un \emph{multidigrafo}, ossia una coppia di insiemi $E,V$ dotati di due funzioni $s,t : E\rightrightarrows V$ che associano ad ogni \emph{lato} $e\in E$ una coppia ordinata di \emph{vertici} $se,te\in V$ detti il suo dominio o \emph{source} e il suo codominio o \emph{target}) $\ctG$ possiamo definire la \emph{categoria libera} $F\ctG$ su $\ctG$ come segue:
+    \begin{itemize}
+        \item gli oggetti di $F\ctG$ sono esattamente gli elementi di $V$;
+        \item i morfismi $u\to v$ sono l'insieme
+        \[\sum_{n=0}^\infty E(u,x_1)\times\dots\times E(x_n,v)\]
+        di tutte le sequenze ordinate e finite di lati
+        \[ [\tup en;] : u \xto{e_1} x_1 \xto{e_2} x_2\xto{e_3} \dots\xto{e_{n-1}} x_{n-1}\xto{e_n} v\]
+        con la convenzione che se $u=v$ ed $n=0$ la sequenza vuota si interpreta come un laccio `banale' $[\;]_u : u\to u$, e usando la notazione, ovvia, $E(x,y)\subseteq E$ per denotare i lati di source $x$ e target $y$.
+    \end{itemize}
+    La composizione di due sequenze $[\tup fm;]$ e $[\tup en;]$ è data dalla loro \emph{concatenazione}, ossia dalla operazione
+    \[[\tup fm;]\circ[\tup en;] = [\tup fm;;\tup en;].\]
+    Quando è definita, questa operazione è, evidentemente, associativa, e la sequenza vuota soddisfa la condizione di unitalità \ref{p_1} nella \autoref{def_categ}.
 \end{example}
 Due esempi più elaborati, ma molto `concreti', di categorie dove gli oggetti sono numeri naturali:
 \index{Categoria!--- dei circuiti}
