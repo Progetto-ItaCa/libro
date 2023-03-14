@@ -10,3 +10,9 @@ c:
 
 v:
 	evince main.pdf &
+
+pretty:
+	for file in cap/*.tex ; do \
+		python3 beautifier.py $$file ; \
+		rm cap/*.bak* cap/*.log ; \
+	done
