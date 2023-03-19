@@ -171,13 +171,30 @@ Due esempi più elaborati, ma molto `concreti', di categorie dove gli oggetti so
 \index{Categoria!--- dei circuiti}
 \begin{example}
 	\Todo{la categoria dei circuiti elettrici}
+	La categoria $\cate{Circ}$ ha
+	\begin{itemize}
+		\item per oggetti i numeri naturali $0,1,2,\dots$;
+		\item l'insieme dei morfismi $\cate{Circ}(m,n)$ consiste dell'insieme delle funzioni $\bbB^n\to \bbB^m$, dove $\bbB=\{0,1\}$ è l'insieme dei \emph{Booleani}\footnote{L'insieme $\bbB$ può essere interpretato come: l'insieme degli interi positivi modulo 2, l'insieme degli stati di un singolo bit di informazione; l'insieme \{sì, no\} delle risposte a una domanda; l'insieme $\{-1,1\}$ dei \emph{segni} assunti dagli elementi dell'immagine di una funzione reale, l'insieme \{acceso, spento\} degli stati di un interruttore, eccetera.} e $\bbB^0\defeq \{*\}, \bbB^{n+1}\defeq \bbB^n\times \bbB$ sono i prodotti cartesiani iterati di $\bbB$ con sé stesso.
+	\end{itemize}
+	Si noti che ogni funzione Booleana $f : \bbB^n\to\bbB^m$ risulta dal `prodotto' di $m$ funzioni Booleane \emph{semplici} $f_1,\dots,f_m : \bbB^n\to\bbB$, di modo che
+	\[f(\tup xn,)=(f_1(\tup xn,),\dots,f_m(\tup xn,))\]
+	Tra le funzioni Booleane semplici ci sono certamente le proiezioni canoniche $\pi_i : \bbB^n\to\bbB :(\tup xn,)\mapsto x_i$, ma anche le mappe diagonali $\Delta_m:\bbB\to\bbB^m$ definite da
+	\[\Delta_m : x\mapsto (x,\dots,x)\quad m\text{ volte}\]
+	Sull'insieme dei Booleani è possibile definire le operazioni logiche elementari di disgiunzione, congiunzione e negazione, che rappresentiamo graficamente con i seguenti diagrammi (noti a qualsiasi ingegnere elettronico)
 	\[\begin{circuitikz}
 		% \node[and port] (0,0) (myand1) {};
-		\node[or port] (4,0) (or) {$\lor$};
-		\node[xshift=5cm,not port] (0,0) (not) {$\lnot$};
-		\node[xshift=3cm,and port] (0,0) (and) {$\land$};
+		\node[or port, fill=gray!10] (4,0) (or) {$\lor$};
+		\node[xshift=3cm,and port, fill=gray!10] (0,0) (and) {$\land$};
+		\node[xshift=5cm,not port, fill=gray!10] (0,0) (not) {$\lnot$};
+		\node[font=\scriptsize] at (-1,-1) (z1) {$\_\lor\_ : \bbB^2\to\bbB$};
+		\node[font=\scriptsize] at (2,-1) (z3) {$\_\land\_ : \bbB^2\to\bbB$};
+		\node[font=\scriptsize] at (5,-1) (z2) {$\_\lnot : \bbB\to\bbB$};
 	\end{circuitikz}\]
 \end{example}
+Vale il seguente teorema:
+\begin{theorem}
+	\Todo{}
+\end{theorem}
 \index{Categoria!--- dei diagrammi di flusso}
 \begin{example}
 	\Todo{la categoria dei diagrammi di flusso}
