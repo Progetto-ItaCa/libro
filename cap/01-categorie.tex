@@ -50,9 +50,9 @@ Dimostreremo in \autoref{mon_sonocat} e in \autoref{pos_sonocat} rispettivamente
 % La struttura algebrica che otteniamo è una \emph{categoria}, che definiamo a breve.
 \index{Classe}
 \index{Classe propria|see {Classe}}
-Abbiamo utilizzato diverse volte la parola `classe': la definizione generale di categoria obbliga a farlo, dal momento che la collezione di tutte le strutture algebriche di un dato tipo è sempre `troppo grande per essere un insieme' (in un senso che formalizzeremo in dettaglio nell'Appendice \ref{fondamenti}); per il momento è sufficiente trattenere l'idea informale che una classe (propria) \(\ctC\) è una collezione di elementi che ha tutte le proprietà di un insieme, a parte quella di poter essere `misurata' da un numero cardinale.
+Abbiamo utilizzato diverse volte la parola `classe': la definizione generale di categoria obbliga a farlo, dal momento che la collezione di tutte le strutture algebriche di un dato tipo è sempre `troppo grande per essere un insieme' (in un senso che formalizzeremo in dettaglio nell'Appendice \ref{fondamenti}); per il momento è sufficiente trattenere l'idea informale che una classe (o \emph{classe propria}) \(\ctC\) è una collezione di elementi che ha tutte le proprietà di un insieme, a parte quella di poter essere misurata da un numero cardinale.
 
-Ogni volta che è necessario, useremo costruzioni `elementari' che si possono fare sulle classi come se esse fossero insiemi: per esempio se \(\ctA,\ctB\) sono classi, è lecito costruire la classe prodotto \(\ctA\times\ctB\), e considerare \emph{funzioni tra classi} \(F : \ctA\fun\ctB\), cioè sottoclassi \(F\) del prodotto \(\ctA\times\ctB\) che sono funzionali: per ogni elemento \(A\) della classe \(\ctA\), esiste un unico elemento \(B\in\ctB\) con \((A,B)\in F\), questo elemento si denota \(FA\), e a tutti gli effetti \(F\) si comporta come una funzione. Di nuovo, il linguaggio preciso che formalizza queste costruzioni verrà esposto nell'appendice \ref{fondamenti}; questa imprecisione iniziale sarà sempre del tutto innocua, e per il momento invitiamo i lettori a considerare il desiderio di approfondire la cosa solo una inutile distrazione.
+Ogni volta che è necessario, useremo costruzioni elementari che si possono fare sulle classi come se esse fossero insiemi: per esempio se \(\ctA,\ctB\) sono classi, è lecito costruire la classe prodotto \(\ctA\times\ctB\), e considerare \emph{funzioni tra classi} \(F : \ctA\fun\ctB\), cioè sottoclassi \(F\) del prodotto \(\ctA\times\ctB\) che sono funzionali: per ogni elemento \(A\) della classe \(\ctA\), esiste un unico elemento \(B\in\ctB\) con \((A,B)\in F\), questo elemento si denota \(FA\), e a tutti gli effetti \(F\) si comporta come una funzione. Di nuovo, il linguaggio preciso che formalizza queste costruzioni verrà esposto nell'appendice \ref{fondamenti}; questa imprecisione iniziale sarà sempre del tutto innocua, e per il momento invitiamo chi legge a considerare il desiderio di approfondire la cosa solo una inutile distrazione.
 \index{Categoria}
 \begin{definition}[Categoria]\label{def_categ}
 	Una \emph{categoria} \(\ctC\) consiste dei seguenti dati:
@@ -118,20 +118,19 @@ La seconda di queste osservazioni non è meno importante: porterà alla definizi
 Iniziamo con degli esempi di categorie piccole:
 \index{Categoria!--- vuota}
 \begin{example}
-	\Todo{la categoria vuota}
+	La categoria vuota $\ctInit$ non ha oggetti né morfismi. Più formalmente, $\ctC_0,\ctC_1$ sono le classi vuote, e non è necessario specificare altra struttura per soddisfare (vacuamente) tutti gli assiomi di categoria.
 \end{example}
 \index{Categoria!--- terminale}
 \begin{example}
-	\Todo{la categoria terminale}
+La categoria terminale $\ctTerm$ ha un solo oggetto \(\bullet\), e un unico morfismo $\id_\bullet : \bullet\to\bullet$ che fa da identità. Chiaramente, $\id_\bullet\circ\id_\bullet=\id_\bullet$, e tutti gli assiomi di categoria sono soddisfatti.
 \end{example}
 \index{Categoria!--- discreta}
 \`E sempre possibile dotare un insieme \(A\) della topologia discreta (o `massimale'), dove ogni sottoinsieme \(U\) di \(A\) è aperto, e della topologia indiscreta (o `minimale'), dove solo \(\varnothing\) e \(A\) sono aperti. Similmente, esistono due maniere, massimale e minimale, di considerare un insieme una categoria.
 \begin{example}
-	\Todo{la categoria discreta su un insieme \(A\)}
+	Dato un insieme $A$, la \emph{categoria discreta} su $A$, denotata $A^\delta$, ha per oggetti gli elementi $a\in A$, un unico morfismo identico $\id_a : a\to a$, e nessun altro. La composizione è forzata a essere definita solamente tra identità, nel modo più ovvio possibile, e tutti gli assiomi di categoria sono ovviamente soddisfatti.
 \end{example}
-\index{Categoria!--- codiscreta}
 \begin{example}
-	\Todo{la categoria codiscreta su un insieme \(A\)}
+	Dato un insieme $A$, la \emph{categoria codiscreta} su $A$, denotata $A^\chi$ ha per oggetti gli elementi $a\in A$, e per ogni coppia di oggetti $a,a'\in A$, un unico morfismo $u_{aa'}:a\to a'$, e la composizione è definita da $u_{a'a''}\circ u_{aa'}=u_{aa''}$ (in particolare, da questo segue che esiste un unico elemento $\id_a=u_{aa}\in A^\chi(a,a)$).
 \end{example}
 Alcune categorie che è spesso utile considerare si rappresentano mediante dei grafi:
 \index{Categoria!--- generica}
@@ -406,13 +405,13 @@ Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando 
 	\begin{enumtag}{ei}
 		\item \`E evidente che in ogni categoria \(\ctC\), tutte le identità \(\id_X : X\to X\) sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo.
 		\item In \(\ctSet\), gli isomorfismi sono esattamente le biiezioni, o `corrispondenze biunivoche'. Per la definizione solitamente data di cardinalità, due insiemi sono isomorfi se e solo se hanno lo stesso numero cardinale.
-		\item In \(\bbR\emdash\ctVect\), gli isomorfismi sono le biiezioni lineari. In particulare, in dimensione finita, due spazi vettoriali sono isomorfi se e solo se hanno la stessa dimensione.
+		\item In \(\bbR\emdash\ctVect\), gli isomorfismi sono le biiezioni lineari. In particolare, in dimensione finita, due spazi vettoriali sono isomorfi se e solo se hanno la stessa dimensione.
 		\item In \(\ctTop\), gli isomorfismi sono gli omeomorfismi: funzioni continue con un'inversa continua. Si noti come questo mostra che può non accadere che, se \(f : X\to Y\) è un omomorfismo biiettivo, la \emph{funzione} inversa \(g : Y\to X\) sia anch'essa un isomorfismo; per esempio, l'identità \(\id_X : (X,\delta)\to (X,\gamma)\) su un insieme con tre punti \(X=\{a,b,c\}\) è continua quando \(\delta\) è la topologia discreta e \(\gamma\) è la topologia banale, ma la sua inversa insiemistica \(\id_X : (X,\gamma)\to(X,\delta)\) \emph{non} è continua.
 		\item In ogni categoria di strutture algebriche (si veda \autoref{}), gli isomorfismi sono gli isomorfismi di \(\Sigma\)-strutture, cioè le funzioni \(f : A\to B\) che sono \(\Sigma\)-omomorfismi biiettivi, la cui inversa insiemistica è ancora un \(\Sigma\)-omomorfismo.
 	\end{enumtag}
 \end{examples}
 \begin{warning}
-	Spesso una categoria viene chiamata con il nome dei suoi oggetti (\(\ctVect\), \(\ctGrp\), eccetera), ma per decidere se due oggetti sono isomorfi è essenziale sapere \emph{quali sono i morfismi} per sapere che struttura in particolare vogliamo preservare. Per esempio, tutte le potenze \(\bbR,\bbR^2,\bbR^3,\dots\) sono isomorfe come insiemi (hanno la stessa cardinalità \(2^{\aleph_0}\)); ma non come spazi vettoriali (hanno dimensioni diverse) né come varietà differenziabili (hanno dimensioni diverse; ma il teorema di invarianza della dimensione per varietà non è completamente ovvio), ma lo sono come gruppi abeliani (o come spazi vettoriali sui razionali, il che è leggermente controintuitivo: infatti la dimostrazione dipende dall'assioma della scelta).
+	Spesso una categoria viene chiamata con il nome dei suoi oggetti (\(\ctVect\), \(\ctGrp\), eccetera), ma per decidere se due oggetti sono isomorfi è essenziale sapere \emph{quali sono i morfismi} per sapere che struttura in particolare vogliamo preservare. Per esempio, tutte le potenze \(\bbR,\bbR^2,\bbR^3,\dots\) sono isomorfe come insiemi (hanno la stessa cardinalità \(2^{\aleph_0}\)); ma non come spazi vettoriali reali (hanno dimensioni diverse) né come varietà differenziabili (hanno dimensioni diverse; ma il teorema di invarianza della dimensione per varietà non è completamente ovvio), ma lo sono come gruppi abeliani (o come spazi vettoriali \emph{sui razionali}, il che è leggermente controintuitivo: infatti la dimostrazione dipende dall'assioma della scelta).
 
 	Per cui, nella categoria \(\ctSet\), gli oggetti \(\bbR\) e \(\bbR^2\) sono isomorfi, ma non sono isomorfi se li intendiamo come oggetti della categoria \(\bbR\emdash\ctVect\), e lo sono invece in \(\bbQ\emdash\ctVect\).
 \end{warning}
