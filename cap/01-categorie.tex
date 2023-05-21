@@ -686,19 +686,47 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	Sia \(f \colon A \to B\) un morfismo in una categoria.
 	Allora chiamiamo:
 	\begin{itemize}
-		\item \emph{sezione} di \(f\) una inversa destra di \(f\), ovvero un morfismo \(s \colon B \to A\) tale che \(f \cmp s = \id_{B}\).
-		\item \emph{retrazione} di \(f\) una inversa sinistra di \(f\), ovvero un morfismo \(r \colon B \to A\) tale che \(f \cmp r = \id_{A}\).
+		\item \emph{sezione} di \(f\) una sua inversa destra, ovvero un morfismo \(s \colon B \to A\) tale che \(f \cmp s = \id_{B}\).
+		\item \emph{retrazione} di \(f\) una sua inversa sinistra, ovvero un morfismo \(r \colon B \to A\) tale che \(r \cmp f = \id_{A}\).
 	\end{itemize}
 \end{definition}
 
-Osserviamo che una sezione di un qualche morfismo, essendo invertibile a sinistra, è, in particolare, cancellabile a sinistra.
+Osserviamo che una sezione di un qualche morfismo, essendo invertibile a sinistra, è cancellabile a sinistra.
 Dunque, ogni sezione è, in particolare, un monomorfismo.
 \index{Monomorfismo!--- spezzante}Un monomorfismo che è anche una sezione si dice \emph{mono spezzante}.
-Dualmente, ogni retrazione è cancellabile a destra e, in particolare, un epimorfismo.
+Dualmente, ogni retrazione è cancellabile a destra e dunque un epimorfismo.
 \index{Epimorfismo!--- spezzante}Un epimorfismo che è anche una retrazione si dice \emph{epi spezzante}.
 Inoltre, le nozioni di sezione e retrazione sono intrecciate tra di loro:
 un morfismo che ha una sezione ne è una retrazione,
 e viceversa.
+
+TODO: dualità
+
+\begin{definition}[Retratto]
+	Dati due oggetti \(A\) e \(B\) in una categoria,
+	diciamo che \(A\) è un \emph{retratto} di \(B\) se ci sono una coppia di sezione e retrazione
+	\begin{equation}
+		\begin{tikzcd}
+			A \ar[r, bend left, "s"] &B \ar[l, bend left, "r"]
+		\end{tikzcd}
+	\end{equation}
+	ovvero tale che \(r \cmp s = \id_A\).
+	In tal caso, diciamo che \(r\), che è un epi spezzante, è un \emph{retratto} di \(B\) su \(A\),
+	mentre \(s\) è un mono spezzante.
+\end{definition}
+
+\begin{exercise}
+	Dimostrare che, se \(s \colon A \to B\) e \(r \colon B \to A\) sono una coppia di sezione e retrazione,
+	allora il morfismo
+	\begin{equation}
+		\begin{tikzcd}
+			B \ar[r, "r"] & A \ar[r, "s"] &B
+		\end{tikzcd}
+	\end{equation}
+	è un morfismo idempotente.
+
+	TODO: dobbiamo definire cosa sia un morfismo idempotente?
+\end{exercise}
 
 \begin{example}
 	In \(\ctSet\), una funzione ha una retrazione se e solo se è iniettiva.
