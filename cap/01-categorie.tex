@@ -664,7 +664,6 @@ sfruttando la dualità a nostro vantaggio.
 	\end{enumerate}
 \end{proof}
 
-
 \begin{proposition}[Una proprietà di mono ed epi in \(\ctSet\)]
 	Dato un quadrato commutativo di funzioni
 	\[\begin{tikzcd}
@@ -676,19 +675,56 @@ sfruttando la dualità a nostro vantaggio.
 \begin{proof}
 	Costruiamo \(u\) esplicitamente: ad un elemento \(b\in B\), che sappiamo essere della forma \(e(a)\) per qualche \(a\in A\), associamo l'elemento \(u(b)=f(a)\). Questa definizione è ben posta, perché se \(a,a'\) sono entrambi tali che \(e(a)=e(a')=b\), allora \(mu(b)=mf(a)=mf(a')\), così che \(f(a)=f(a')\), perché \(m\) è un mono. \`E evidente ora che \(u\circ e= f\), per costruzione, ed \((m\circ u)(b)=m(f(a))=g(e(a))=g(b)\); l'unicità segue ancora dal fatto che \(m\) è mono.
 \end{proof}
+
+
+
 \section{Sezioni e retrazioni}
 
+Così come l'algebra ci ha suggerito di generalizzare all'ambito categoriale la nozione di elemento di un monoide cancellabile a sinistra/destra,
+similmente possiamo considerare la nozione di elemento invertibile a sinistra/destra.
+
+\begin{definition}[Sezione e retrazione]
+	Sia \(f \colon A \to B\) un morfismo in una categoria.
+	Allora chiamiamo:
+	\begin{itemize}
+		\item \emph{sezione} di \(f\) una inversa destra di \(f\), ovvero un morfismo \(s \colon B \to A\) tale che \(f \cmp s = \id_{B}\).
+		\item \emph{retrazione} di \(f\) una inversa sinistra di \(f\), ovvero un morfismo \(r \colon B \to A\) tale che \(f \cmp r = \id_{B}\).
+	\end{itemize}
+\end{definition}
+
+Osserviamo che una sezione di un qualche morfismo, essendo invertibile a sinistra, è, in particolare, cancellabile a sinistra.
+Dunque, ogni sezione è, in particolare, un epimorfismo.
+\index{Epimorfismo!--- spezzante}Un epimorfismo che è anche una sezione si dice \emph{epi spezzante}.
+\index{Monomorfismo!--- spezzante}Dualmente, ogni retrazione è in particolare un monomorfismo,
+ed ogni monomorfismo che è anche una retrazione si dice \emph{mono spezzante}.
+
+
+
+
+
+
+
+
 \begin{definition}[Sezione]
-	Una \emph{sezione} di un morfismo \(f \colon A \to B\) in una categoria \(\ctC\) è un'inversa destra di \(f\), ovvero un morfismo \(s \colon B \to A\) tale che \(f \cmp s = \id_{B}\).
+	Una \emph{sezione} di un morfismo \(f \colon A \to B\) in una categoria è un'inversa destra di \(f\), ovvero un morfismo \(s \colon B \to A\) tale che \(f \cmp s = \id_{B}\).
 \end{definition}
-\index{Epimorfismo!--- spezzante}Ogni sezione è un particolare tipo di epimorfismo, detto un \emph{epi spezzante}.
+
+Dualmente, definiamo la nozione di retrazione.
+
 \begin{definition}[Retrazione]
-	Una \emph{retrazione} di un morfismo \(f \colon A \to B\) in una categoria \(\ctC\) è un'inversa sinistra di \(f\), ovvero un morfismo \(r \colon B \to A\) tale che \(r \cmp f = \id_{A}\).
+	Una \emph{retrazione} di un morfismo \(f \colon A \to B\) in una categoria) è un'inversa sinistra di \(f\), ovvero un morfismo \(r \colon B \to A\) tale che \(r \cmp f = \id_{A}\).
 \end{definition}
+
+\index{Monomorfismo!--- spezzante}Analogamente al caso degli epi, ogni retrazione è in particolare un monomorfismo,
+ed ogni monomorfismo che è anche una retrazione si dice \emph{mono spezzante}.
 
 Le nozioni di sezione e retrazione sono intrecciate tra di loro:
 un morfismo che ha una sezione ne è una retrazione,
 e viceversa.
+
+
+
+
 
 \begin{example}
 	In \(\ctSet\), una funzione ha una retrazione se e solo se è iniettiva.
@@ -699,4 +735,3 @@ e viceversa.
 	% Questo esempio, inoltre, dimostra che sezioni e retrazioni non sono uniche:
 	% una funzione surgettiva può avere più inverse destre (sezioni).
 \end{example}
-\index{Monomorfismo!--- spezzante}Ogni retrazione è un particolare tipo di monomorfismo, detto un \emph{mono spezzante}.
