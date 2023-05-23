@@ -202,7 +202,7 @@ Due esempi più elaborati, ma molto `concreti', di categorie dove gli oggetti so
 \end{example}
 Vale il seguente teorema:
 \begin{theorem}
-	\Todo{}
+	\Todo{qualcosa che dovrebbe essere nel libro di Walters \cite{Walters1992}, da cui ho preso questo esempio}
 \end{theorem}
 \index{Categoria!--- dei diagrammi di flusso}
 \begin{example}
@@ -281,6 +281,7 @@ Proseguiamo con degli esempi di categorie grandi:
 %   \item Gli spazi topologici e le funzioni continue formano la categoria \(\ctTop\).
 %  \end{itemize}
 % \end{examples}
+Veniamo ora a degli esempi più astratti e chiudiamo il cerchio su quelli che hanno motivato la definizione di categoria all'inizio.
 
 Qualsiasi circostanza in cui una classe di strutture possiede una nozione ovvia di `omomorfismo' tale che
 \begin{itemize}
@@ -391,8 +392,10 @@ Dato un oggetto \(X\) di una categoria, un morfismo da \(X\) a \(X\) si chiama a
 \end{enumerate}
 \color{black}
 \section{Isomorfismi}\label{isomorfismi}\index{Isomorfismo}
-La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, a partire dai primi corsi di algebra astratta in poi. Quando due gruppi sono isomorfi, `tutte' le proprietà che si esprimono in termini degli assiomi di gruppo, e che sono godute dall'uno, sono godute anche dall'altro. Una strategia molto efficace per mostrare che due dati gruppi \emph{non possono} essere isomorfi è quindi cercare una proprietà che sia goduta solo da uno dei due (per esempio, essere abeliano: ci sono certamente almeno due gruppi di ordine 24 distinti, \(7\in\bbZ/24\bbZ\) e il gruppo delle permutazioni di 4 lettere \(\{a,b,c,d\}\)).
-\Todo{Vorrei spiegare bene cosa significa: se \(G\iso H\), allora \(G\) è abeliano se e solo se lo è \(H\); del resto, \(7\in\bbZ/24\bbZ\iff 7\in\bbZ/9\bbZ\)...}
+La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta.
+
+Chi legge quindi ricorderà che quando due gruppi sono isomorfi, tutte le proprietà che si esprimono in termini degli assiomi di gruppo, e che sono godute dall'uno, sono godute anche dall'altro, e che grazie a ciò una strategia molto efficace per mostrare che due dati gruppi \emph{non possono} essere isomorfi è cercare una proprietà che sia goduta solo da uno dei due (per esempio, l'essere abeliano: ci sono certamente almeno due gruppi di ordine 24 distinti, il gruppo \emph{ciclico} \(\bbZ/24\bbZ\) e il gruppo \emph{simmetrico} delle permutazioni di 4 lettere \(\{a,b,c,d\}\)).
+\Todo{Vorrei spiegare bene cosa significa: se \(G\iso H\), allora \(G\) è abeliano se e solo se lo è \(H\); del resto, \(7\in\bbZ/24\bbZ\iff 7\in\bbZ/12\bbZ\), che del primo è un sottogruppo proprio...}
 
 La nozione di isomorfismo in teoria delle categorie generalizza molte di queste idee.
 \begin{definition}[Isomorfismo]\label{def_isomorfismo}\index{Isomorfismo}\index{Morfismo!isomorfismo}
@@ -409,14 +412,14 @@ La nozione di isomorfismo in teoria delle categorie generalizza molte di queste 
 		Y \ar[r, "g"']& X & X \ar[r, "f"']& Y
 	\end{tikzcd}
 \]
-Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando l'inverso implicito (l'inverso, se esiste, è unico, si vedano gli esercizi).
+Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando l'inverso implicito (tale inverso, se esiste, è unico, si vedano gli esercizi, e ciò ci autorizza a usare il singolare nella definizione).
 \begin{examples}
 	Raccogliamo degli esempi di isomorfismo in varie categorie:%La definizione di isomorfismo comprende molte delle nozioni di ``struttura equivalente'' usate in matematica:
 	\begin{enumtag}{ei}
-		\item \`E evidente che in ogni categoria \(\ctC\), tutte le identità \(\id_X : X\to X\) sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo.
-		\item In \(\ctSet\), gli isomorfismi sono esattamente le biiezioni, o `corrispondenze biunivoche'. Per la definizione solitamente data di cardinalità, due insiemi sono isomorfi se e solo se hanno lo stesso numero cardinale.
-		\item In \(\bbR\emdash\ctVect\), gli isomorfismi sono le biiezioni lineari. In particolare, in dimensione finita, due spazi vettoriali sono isomorfi se e solo se hanno la stessa dimensione.
-		\item In \(\ctTop\), gli isomorfismi sono gli omeomorfismi: funzioni continue con un'inversa continua. Si noti come questo mostra che può non accadere che, se \(f : X\to Y\) è un omomorfismo biiettivo, la \emph{funzione} inversa \(g : Y\to X\) sia anch'essa un isomorfismo; per esempio, l'identità \(\id_X : (X,\delta)\to (X,\gamma)\) su un insieme con tre punti \(X=\{a,b,c\}\) è continua quando \(\delta\) è la topologia discreta e \(\gamma\) è la topologia banale, ma la sua inversa insiemistica \(\id_X : (X,\gamma)\to(X,\delta)\) \emph{non} è continua.
+		\item \`E evidente che in ogni categoria \(\ctC\), tutte le identità \(\id_X : X\to X\) sono isomorfismi che coincidono col loro inverso, e che la composizione di isomorfismi $f_1\circ f_2$ è un isomorfismo di inverso $g_2\circ g_1$, cioè (come è noto a chiunque abbia sostenuto con profitto un esame di teoria dei gruppi) $(f_1\circ f_2)^{-1} = f_2^{-1}\circ f_1^{-1}$.
+		\item In \(\ctSet\), gli isomorfismi sono esattamente le biiezioni, o `corrispondenze biunivoche'. Per la definizione solitamente data di cardinalità, due insiemi sono isomorfi se e solo se hanno lo stesso numero cardinale, che quindi risulta essere una scelta privilegiata di un elemento isomorfo a un dato insieme.
+		\item In \(\bbR\emdash\ctVect\), gli isomorfismi sono le biiezioni lineari. In particolare, due spazi vettoriali $V,W$ di dimensione finita $\dim V=n,\dim W=m$ sono isomorfi se e solo se $n=m$.
+		\item In \(\ctTop\), gli isomorfismi sono gli \emph{omeomorfismi}: funzioni continue con un'inversa insiemistica anch'essa continua. Si noti come questo mostra che può non accadere che, se \(f : X\to Y\) è un omomorfismo biiettivo, la \emph{funzione} inversa \(g : Y\to X\) sia anch'essa un isomorfismo; per esempio, l'identità \(\id_X : (X,\delta)\to (X,\gamma)\) su un insieme con tre punti \(X=\{a,b,c\}\) è continua quando \(\delta\) è la topologia discreta e \(\gamma\) è la topologia banale, ma la sua inversa insiemistica \(\id_X : (X,\gamma)\to(X,\delta)\) \emph{non} è continua.
 		\item In ogni categoria di strutture algebriche (si veda \ref{}), gli isomorfismi sono gli isomorfismi di \(\Sigma\)-strutture, cioè le funzioni \(f : A\to B\) che sono \(\Sigma\)-omomorfismi biiettivi, la cui inversa insiemistica è ancora un \(\Sigma\)-omomorfismo.
 	\end{enumtag}
 \end{examples}
@@ -494,7 +497,7 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 
 \Todo{motivazione: se i monoidi e i poset sono categorie, a che tipo di trasformazione tra categorie corrispondono gli omomorfismi di monoide e le funzioni monotone? Ottima domanda!}
 \begin{definition}[Funtore]\label{def_funtore}\index{Funtore}
-	Date due categorie \(\ctC\) e \(\ctD\), un \emph{funtore} \(F:\ctC\to\ctD\) consiste dei seguenti dati.
+	Date due categorie \(\ctC\) e \(\ctD\), un \emph{funtore} \(F:\ctC\fun\ctD\) consiste dei seguenti dati.
 	\begin{itemize}
 		\item Un'assegnazione ad ogni oggetto \(X\) di \(\ctC\) di un oggetto \(FX\) di \(\ctD\);
 		\item Un'assegnazione ad ogni morfismo \(X \xrightarrow{f} Y\) di \(\ctC\) di un morfismo \(FX \xrightarrow{Ff} FY\) di \(\ctD\) (si noti che \(F(\dom{f})=\dom{Ff}\) e \(F(\cod{f})=\cod{Ff}\));
@@ -552,11 +555,12 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 
 \section{Monomorfismi ed epimorfismi}
 
-Siccome i monoidi corrispondono precisamente alle categorie con un solo oggetto, come visto nell'esempio \ref{???},
+Siccome i monoidi corrispondono precisamente alle categorie con un solo oggetto, come visto nell'esempio \ref{mon_sonocat},
 la definizione di elemento di un monoide cancellabile a sinistra o a destra si può applicare direttamente ai morfismi delle categorie da loro indotte.
-Ricordiamo che un elemento \(x\) di un monoide \((M, \cdot, 1)\) si dice cancellabile a sinistra (destra) se,
-per ogni coppia di elementi \(y_0\) e \(y_1\) in \(M\) tali che \(x \cdot y_0 = x \cdot y_1\) (\(y_0 \cdot x = y_1 \cdot x\)),
+Ricordiamo che un elemento \(x\) di un monoide \((M, \cdot, 1)\) si dice cancellabile a sinistra (rispettivamente, destra) se,
+per ogni coppia di elementi \(y_0\) e \(y_1\) in \(M\) tali che \(x \cdot y_0 = x \cdot y_1\) (rispettivamente, \(y_0 \cdot x = y_1 \cdot x\)),
 si ha che \(y_0 = y_1\).
+
 Se però vogliamo estendere tale definizione ad una categoria generica,
 la cui composizione è dunque un'operazione parziale,
 è necessario considerare solo le composizioni ben definite
