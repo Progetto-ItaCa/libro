@@ -752,3 +752,44 @@ TODO: dualità
 	% Questo esempio, inoltre, dimostra che sezioni e retrazioni non sono uniche:
 	% una funzione surgettiva può avere più inverse destre (sezioni).
 \end{example}
+
+I funtori preservano sezioni e retrazioni,
+nel senso precisato dal seguente teorema:
+
+\begin{theorem}
+	Dato un funtore \(F \colon \ctC \to \ctD\) ed una coppia di sezione e retrazione \(s \colon A \to B\) e \(r \colon B \to A\),
+	allora \(F(s) \colon F(A) \to F(B)\) e \(F(r) \colon F(B) \to F(A)\) è una coppia di sezione e retrazione.
+\end{theorem}
+\begin{proof}
+	La coppia di sezione e retrazione \(s\) e \(r\),
+	per definizione, è tale che \(r \cmp_{\ctC} s = \id_A\).
+	Dunque, applicando il funtore \(F\), abbiamo che \(F(r \cmp_{\ctC} s) = F(\id_A)\).
+	Siccome i funtori, per definizione, preservano composizione e identità,
+	otteniamo che \(F(r) \cmp_{\ctD} F(s) = \id_{F(A)}\),
+	ovvero che \(F(A)\) e \(F(B)\) sono una coppia di sezione/retrazione.
+\end{proof}
+
+Di conseguenza, abbiamo i seguente corollari:
+
+\begin{corollary}
+	Sia \(F \colon \ctC \to \ctD\) un funtore.
+	Allora:
+	\begin{enumerate}
+		\item Se \(r \colon B \to A\) è un retratto di \(B\) su \(A\),
+			allora \(F(r)\) è un retratto di \(F(B)\) su \(F(A)\).
+		\item Se \(A\) è un retratto di \(B\),
+			allora \(F(A)\) è un retratto di \(F(B)\).
+		\item Se \(m \colon A \to B\) è un mono spezzante,
+			allora \(F(m)\) è un mono spezzante.
+		\item Se \(e \colon B \to A\) è un epi spezzante,
+			allora \(F(e)\) è un epi spezzante.
+	\end{enumerate}
+	Ovvero, i funtori preservano i retratti (sia nel senso di oggetti che di morfismi),
+	i mono spezzanti e gli epi spezzanti.
+\end{corollary}
+
+Questo risultato, per quanto banale nella sua dimostrazione, ha conseguenze profonde:
+ci dice infatti che, sebbene abbiano proprietà simili,
+mono (risp., epi) e mono spezzanti (risp., epi spezzanti)
+sono distinti da una differenza fondamentale:
+l'essere o meno preservati dai funtori.
