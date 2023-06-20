@@ -756,7 +756,8 @@ TODO: dualità
 I funtori preservano sezioni e retrazioni,
 nel senso precisato dal seguente teorema:
 
-\begin{theorem}
+\begin{theorem}%
+	\label{thm:fun-sezioni-retrazioni}
 	Dato un funtore \(F \colon \ctC \to \ctD\) ed una coppia di sezione e retrazione \(s \colon A \to B\) e \(r \colon B \to A\),
 	allora \(F(s) \colon F(A) \to F(B)\) e \(F(r) \colon F(B) \to F(A)\) è una coppia di sezione e retrazione.
 \end{theorem}
@@ -771,8 +772,8 @@ nel senso precisato dal seguente teorema:
 
 Di conseguenza, abbiamo i seguente corollari:
 
-\begin{corollary}
-	\label{cor:fun-sezioni-retrazioni}
+\begin{corollary}%
+\label{cor:fun-sezioni-retrazioni}
 	Sia \(F \colon \ctC \to \ctD\) un funtore.
 	Allora:
 	\begin{enumerate}
@@ -796,13 +797,22 @@ sono distinti da una differenza fondamentale:
 l'essere o meno preservati dai funtori.
 
 \begin{example}
-	Si consideri \(\ctMon\), la categoria dei monoidi e omomorfismi di monoide.
-	L'immersione \(\iota \colon \bbN \mono \bbZ\) è un mono,
-	ma è anche epi.
+	% Si consideri \(\ctMon\), la categoria dei monoidi e omomorfismi di monoide.
+	% L'immersione \(\iota \colon \bbN \mono \bbZ\) è un mono,
+	% ma è anche epi.
 	Si consideri l'immersione \(\iota \colon \bbN \mono \bbZ\)
 	nella categoria \(\ctMon\) dei monoidi e omomorfismi di monoide.
-	Questa è mono (vedi \ref{???}),
-	ma è anche epi.
+	Questa è mono in quanto la sua funzione sottogiacente è iniettiva (vedi~\ref{???}),
+	ma non è spezzante.
+	Infatti, se avesse una retrazione,
+	questa sarebbe preservata dal funtore dimenticante \(U \colon \ctMon \to \ctSet\),
+	per il \autoref{thm:fun-sezioni-retrazioni},
+	e dunque sarebbe un'inversa sinistra della funzione \(\iota\).
+	Come omomorfismo di monoidi, però, tale inversa sinistra dovrebbe preservare gli elementi inversi,
+	e ciò non è possibile.
+
+	Inoltre, e più sorprendentemente, \(\iota\) è anche epi,
+	nonostante la sua funzione sottogiacente non sia surgettiva.
 	Infatti, se \(f, g \colon \bbZ \to M\) sono morfismi di monoidi tali che \(f \iota = g \iota\),
 	allora, per ogni \(n \in \bbZ\),
 	abbiamo due possibilità:
@@ -816,7 +826,7 @@ l'essere o meno preservati dai funtori.
 			Analogamente al caso precedente, esiste \(n_0 \in \bbN\) tale che
 			\(-n = \iota(n_0)\) e \(f \iota (-n) = g \iota (-n)\).
 			Siccome gli omomorfismi di monoide preservano le inverse,
-			\((f (n))^{-1} = f \iota (-n) = g \iota (-n) = (g (n))^{-1}\).
+			\({(f (n))}^{-1} = f \iota {(-n)} = g \iota {(-n)} = {(g (n))}^{-1}\).
 			Per l'unicità dell'inversa, concludiamo che \(f (n) = g (n)\),
 			ovvero che \(f\) e \(g\) coincidono sugli interi negativi.
 	\end{itemize}
@@ -825,8 +835,11 @@ l'essere o meno preservati dai funtori.
 	l'immersione \(\iota\) è un epi. 
 	Tuttavia, \(\iota\) non è un epi spezzante.
 	Infatti, se esistesse, la sua sezione dovrebbe essere preservata dal funtore dimenticante \(U \colon \ctMon \to \ctSet\),
-	per il \autoref{cor:fun-sezioni-retrazioni}.
+	per il \autoref{thm:fun-sezioni-retrazioni}.
 	Tuttavia, \(U(\iota)\) non è una funzione surgettiva,
 	e dunque non può avere una sezione, per \autoref{exm:set-sezioni-retrazioni}.
-\end{example}
 
+	Questa discussione fornisce alcuni utili controesempi:
+	un morfismo può essere sia epi che mono senza necessariamente essere epi spezzante o mono spezzante,
+	e, in particolare, senza essere un isomorfismo.
+\end{example}
