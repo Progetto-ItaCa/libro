@@ -165,7 +165,7 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 			\node (0') at (2,0) {};
 			\fill (3,0) circle (1pt) node[below] {$1$};
 			\node (1') at (3,0) {};
-			\draw[->] (0') -- (1');
+			\draw[-latex] (0') -- (1');
 			%--
 			\fill (5,0) circle (1pt) node[below] {$0$};
 			\node (0'') at (5,0) {};
@@ -173,9 +173,9 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 			\node (1'') at (5.5,0.866) {};
 			\fill (6,0) circle (1pt) node[below] {$2$};
 			\node (2'') at (6,0) {};
-			\draw[->] (0'') -- (1'');
-			\draw[->] (1'') -- (2'');
-			\draw[->] (0'') -- (2'');
+			\draw[-latex] (0'') -- (1'');
+			\draw[-latex] (1'') -- (2'');
+			\draw[-latex] (0'') -- (2'');
 			%--
 			\fill (8,0) circle (1pt) node[below] {$0$};
 			\node (0'') at (8,0) {};
@@ -185,12 +185,12 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 			\node (2'') at (9,0) {};
 			\fill (9.5,0.866) circle (1pt) node[above] {$3$};
 			\node (3'') at (9.5,0.866) {};
-			\draw[->] (0'') -- (1'');
-			\draw[->] (1'') -- (2'');
-			\draw[->] (0'') -- (2'');
-			\draw[->] (2'') -- (3'');
-			\draw[->] (1'') -- (3'');
-			\draw[->] (0'') -- (3'');
+			\draw[-latex] (0'') -- (1'');
+			\draw[-latex] (1'') -- (2'');
+			\draw[-latex] (0'') -- (2'');
+			\draw[-latex] (2'') -- (3'');
+			\draw[-latex] (1'') -- (3'');
+			\draw[-latex] (0'') -- (3'');
 			\end{tikzpicture}
 		\end{center}
 			\caption{Le categorie $\Delta[0], \dots,\Delta[3]$. Si noti che non abbiamo rappresentato le frecce identiche dei vari oggetti, e che la struttura di categoria che risulta è completamente determinata dalla struttura di grafo diretto. Ovviamente, $\Delta[0]$ è la categoria terminale di \ref{}, $\Delta[1]$ è la freccia generica di \ref{}. La categoria $\Delta[n]$ spesso si chiama un $n$-\emph{simplesso}.}
@@ -332,17 +332,16 @@ Proseguiamo con degli esempi di categorie grandi:
 % \end{examples}
 Veniamo ora a degli esempi più astratti e chiudiamo il cerchio su quelli che hanno motivato la definizione di categoria all'inizio.
 
-Qualsiasi circostanza in cui una classe di strutture possiede una nozione ovvia di `omomorfismo' tale che
+Un'ottima intuizione sulla definizione \ref{def_categ} è che in qualsiasi circostanza dove una classe di strutture possiede una nozione ovvia di omomorfismo che preserva la specifica di quella struttura, e tale che
 \begin{itemize}
 	\item l'identità è un omomorfismo;
 	\item la composizione di due omomorfismi è ancora un omomorfismo;
 \end{itemize}
-definisce la classe degli oggetti e dei morfismi di una categoria. (Gli esempi di strutture algebriche sono tutti di questo tipo; ne esistono altri, che non riguardano le operazioni algebriche: la composizione di due mappe proprie tra spazi di Hausdorff è ancora una mappa propria.)
+si riesce a definire la classe degli oggetti e dei morfismi di una categoria. Gli esempi di strutture algebriche sono tutti di questo tipo, ovviamente; ne esistono altri, che non riguardano le operazioni algebriche: per esempio, la composizione di due mappe monotone è monotona, e la composizione di due mappe \emph{proprie} tra spazi di Hausdorff è ancora una mappa propria.
 
-Questo modo di intendere la definizione però oscura un'altra idea importante, perché potrebbe far sospettare che gli oggetti di una categori siano, alla fine, sempre insiemi dotati di strutture ulteriori (per esempio, operazioni o relazioni), e i morfismi funzioni che preservano queste strutture.
+Questo modo di intendere la definizione però oscura un'altra idea importante, perché potrebbe far sospettare che gli oggetti di una categori siano, alla fin fine, sempre insiemi dotati di strutture ulteriori (per esempio, operazioni o relazioni), e i morfismi funzioni che preservano queste strutture.
 
-Invece, non tutte le categorie sono di questo tipo:
-\Todo{qui sarebbe bello dire qualcosa di più, ma dobbiamo pensare a come}
+Invece, le categorie che hanno questa proprietà si dicono \emph{concrete}, ed esistono esempi di categorie non concrete (sebbene essi siano piuttosto ardui da definire); si veda \ref{}, \ref{} per maggiori informazioni.
 \index{Relazione di equivalenza}
 \begin{example}\label{ex_cat_rel_equiv}
 	Un insieme dotato di una relazione di equivalenza si può vedere come una particolare categoria. Consideriamo un insieme \(X\) dotato di una relazione di equivalenza indicata con il simbolo \(\sim\).
@@ -768,29 +767,26 @@ TODO: dualità
 
 \begin{definition}[Retratto]
 	Dati due oggetti \(A\) e \(B\) in una categoria,
-	diciamo che \(A\) è un \emph{retratto} di \(B\) se ci sono una coppia di sezione e retrazione
+	diciamo che \(A\) è un \emph{retratto} di \(B\) se ci sono una coppia di morfismi detti \emph{sezione} e \emph{retrazione}, raffigurabili come
 	\begin{equation}
 		\begin{tikzcd}
 			A \ar[r, bend left, "s"] &B \ar[l, bend left, "r"]
 		\end{tikzcd}
 	\end{equation}
-	ovvero tale che \(r \cmp s = \id_A\).
-	In tal caso, diciamo che \(r\), che è un epi spezzante, è un \emph{retratto} di \(B\) su \(A\),
-	mentre \(s\) è un mono spezzante.
+  tali che \(r \cmp s = \id_A\).
+	In tal caso, diciamo che \(r\), che è un epi spezzante (dato che ha $s$ come inversa destra), è un \emph{retratto} di \(B\) su \(A\), mentre \(s\) è un mono spezzante (perché ha $r$ come inversa sinistra).
 \end{definition}
-
-\begin{exercise}
-	Dimostrare che, se \(s \colon A \to B\) e \(r \colon B \to A\) sono una coppia di sezione e retrazione,
+\begin{remark}
+	Un endomorfismo $e : X\to X$ si dice \emph{idempotente} se $e\cmp e=e$; si osservi che, se \(s \colon A \to B\) e \(r \colon B \to A\) sono una coppia di sezione e retrazione,
 	allora il morfismo
 	\begin{equation}
 		\begin{tikzcd}
 			B \ar[r, "r"] & A \ar[r, "s"] &B
 		\end{tikzcd}
 	\end{equation}
-	è un morfismo idempotente.
-
-	TODO: dobbiamo definire cosa sia un morfismo idempotente?
-\end{exercise}
+	è un morfismo idempotente, dato che
+	\[(s\cmp r)\cmp (s\cmp r) = s\cmp (r\cmp s)\cmp r = s\cmp 1\cmp r=s\cmp r.\]
+\end{remark}
 
 \begin{example}
 	\label{exm:set-sezioni-retrazioni}
@@ -801,6 +797,7 @@ TODO: dualità
 	% Questo esempio, inoltre, dimostra che sezioni e retrazioni non sono uniche:
 	% una funzione surgettiva può avere più inverse destre (sezioni).
 \end{example}
+\Todo{Tempo fa vidi una dimostrazione molto eloquente di questo fatto, mi piacerebee aggiungerla.}
 
 I funtori preservano sezioni e retrazioni,
 nel senso precisato dal seguente teorema:
@@ -881,7 +878,7 @@ l'essere o meno preservati dai funtori.
 	\end{itemize}
 	Dunque, possiamo concludere che \(f = g\)
 	e che, per l'arbitrarietà di \(f\) e \(g\),
-	l'immersione \(\iota\) è un epi. 
+	l'immersione \(\iota\) è un epi.
 	Tuttavia, \(\iota\) non è un epi spezzante.
 	Infatti, se esistesse, la sua sezione dovrebbe essere preservata dal funtore dimenticante \(U \colon \ctMon \to \ctSet\),
 	per il \autoref{thm:fun-sezioni-retrazioni}.
