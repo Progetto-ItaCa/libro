@@ -202,11 +202,66 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 
 	La doppia freccia generica è la `forma universale' di un grafo diretto (si veda \ref{ex_grafi}), dato che una coppia di funzioni $s,t: X_1 \rightrightarrows X_0$ tra due insiemi consta precisamente di un digrafo che ha $X_0$ per insieme dei vertici e $X_1$ per insieme dei lati.
 \end{example}
+\index{Categoria!--- quadrato generico}
 \begin{example}\label{ex_quadcuboncubo}
-	\Todo{il quadrato generico, il cubo generico, l'\(n\)-cubo generico}
+	La categoria `quadrato generico' $P[2]$ ha 4 oggetti
+	\[\{(00),(10),(01),(11)\} \]
+	e un morfismo $(ij)\to(kl)$ se e solo se $i\le k$ e $j\le l$; rappresentata graficamente, si tratta della categoria
+	\[\begin{tikzcd}
+		(00) \ar[r]\ar[d]\ar[dr]& (10)\ar[d] \\
+		(01) \ar[r]& (11)
+	\end{tikzcd}\]
+	La composizione è forzata a essere definita cosicché la composizione $bla$ sia uguale alla composizione $bla$, e quindi la categoria $P[2]$ rappresenta la forma generica di un quadrato commutativo.
+
+	Si noti che $P[2]$ è un insieme ordinato, e precisamente l'insieme dei sottoinsiemi di un insieme con due elementi $\{a,b\}$; in tal senso $(ij)$ rappresenta la funzione caratteristica $\chi_U : \{a,b\}\to \{0,1\}$ di un sottoinsieme $U\subseteq \{a,b\}$, nel senso che ad esempio $(10)=\{a\}, (00)=\varnothing$, eccetera. Si osservi anche che $P[2]$ è l'insieme parzialmente ordinato $\{0\le 1\}\times \{0\le 1\}$, dotato dell'\emph{ordine prodotto} (si veda \ref{pos_sonocat} e \ref{ex_cat_rel_ord}).
+
+	Quindi possiamo definire induttivamente
+	\[P[0] = \Delta[0], \qquad P[n+1] = P[n]\times \Delta[1]\]
+	o (equivalentemente, nel senso che questa seconda definizione dà per ogni $n\ge 0$ un $P'[n]$ isomorfo a $P[n]$ come insieme ordinato) $P'[n] = 2^{\{1,\dots,n\}}$, cosicché $P[n]$ è il `cubo $n$-dimensionale generico': alcune $P[n]$ per $n=0,1,2,3$ sono raffigurate in \ref{}.
 \end{example}
-\begin{example}\label{ex_spancospan}
-	\Todo{lo `span generico' e il `cospan generico'}
+\index{Categoria!--- span generico}
+\index{Categoria!--- cospan generico|see {span generico}}
+\begin{example}[Span e cospan generici]\label{ex_spancospan}
+La categoria `span generico' $\Lambda^2_0$ ha tre oggetti $0,1,2$ e due morfismi non identici. Si raffigura come segue:
+\[\begin{tikzcd}
+	1 & 0 \ar[r]\ar[l] & 2
+\end{tikzcd}\]
+La composizione è definita solamente quando almeno una delle due frecce è identica, ed è forzata da questo fatto.
+
+Dualmente, la categoria `cospan generico' $\Lambda^2_2$ ha tre oggetti $0,1,2$ ma i due morfismi non identici escono da $0$ invece che puntare verso $2$:
+\[\begin{tikzcd}
+	0\ar[r] & 2 & 1\ar[l]
+\end{tikzcd}\]
+Di nuovo, la composizione è definita solamente quando almeno una delle due frecce è identica.
+
+Si noti che $\Lambda^2_2$ si ottiene da $\Delta[2]$ `rimuovendo la freccia $0\to 1$', e analogamente $\Lambda^2_0$ si ottiene rimuovendo la freccia $1\to 2$.
+
+Più in generale, sia $S$ un insieme; la categoria `$S$-span generico' $S^\lhd$ è definita come segue:
+\begin{itemize}
+	\item gli oggetti di $S^\lhd$ sono gli elementi di $S^+ := S\cup \{-\infty\}$;
+	\item esiste un unico morfismo $f_s : -\infty\to s$, per ogni $s\in S$.
+\end{itemize}
+La composizione è ancora una volta definita solamente quando almeno una delle due frecce è identica. Questo definisce una categoria in cui da un oggetto chiamato `$-\infty$' spiccano tante frecce $f_s$ quanti sono gli elementi di $S$.
+% \[
+% \begin{tikzpicture}
+% 	\fill (0,0) circle (2pt) node[left, font=\small] {$-\infty$};
+% 	\fill (20:1) circle (2pt) node[right, font=\small] {$s$};
+% 	\fill (-20:1)circle (2pt) node[right, font=\small]  {};
+% 	\fill (-35:1)circle (2pt) node[right, font=\small]  {$s'$};
+% 	\draw[-Straight Barb, shorten <=3pt, shorten >=3pt] (0,0) -- (20:1) node[midway, above, font=\small] {$f_s$};
+% 	\draw[-Straight Barb, shorten <=3pt, shorten >=3pt] (0,0) -- (-35:1) node[midway, below, font=\small] {$f_{s'}$};
+% 	\draw[-Straight Barb, shorten <=3pt, shorten >=3pt] (0,0) -- (-20:1);
+% \end{tikzpicture}
+% \]
+
+Dualmente, definiamo la categoria `$S$-cospan generico' $S^\rhd$ come segue:
+\begin{itemize}
+	\item gli oggetti di $S^\rhd$ sono gli elementi di $S^+ := S\cup \{+\infty\}$;
+	\item esiste un unico morfismo $f_s : s\to+\infty$, per ogni $s\in S$.
+\end{itemize}
+La composizione è ancora una volta definita solamente quando almeno una delle due frecce è identica. Questo definisce una categoria in cui verso un oggetto chiamato `$\infty$' puntano tante frecce $f_s$ quanti sono gli elementi di $S$.
+
+Si noti che $\Lambda^2_0=\{1,2\}^\lhd$ e $\Lambda^2_2=\{0,1\}^\rhd$.
 \end{example}
 \index{Categoria!--- libera}
 Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di un insieme di vertici (o `oggetti') \(V\) e di un insieme di lati (o `morfismi') \(E\) generi una categoria \(F\ctG\). \`E effettivamente così, e la seguente costruzione in forma di esempio formalizza questa idea.
@@ -255,7 +310,12 @@ Vale il seguente teorema:
 \end{theorem}
 \index{Categoria!--- dei diagrammi di flusso}
 \begin{example}\label{ex_cat_flusso}
-	\Todo{la categoria dei diagrammi di flusso}
+	La categoria dei `diagrammi di flusso' è definita come segue:
+	\begin{itemize}
+		\item gli oggetti di $\cate{Flux}$ sono i numeri naturali $0,1,2,\dots$;
+		\item l'insieme dei morfismi $\cate{Flux}(n,m)$ consiste dell'insieme delle funzioni $\bbR^n\to \bbR^m$, dove $\bbR$ consta dell'usuale insieme dei numeri reali, e $\bbR^n = \bbR\times\dots\times\bbR$ è il prodotto cartesiano iterato di $\bbR$ con sé stesso.
+	\end{itemize}
+	\Todo{...}
 \end{example}
 Proseguiamo con degli esempi di categorie grandi:
 \index{Categoria!--- degli insiemi}
@@ -491,10 +551,12 @@ Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando 
 	Abbiamo visto che ogni monoide \(M\) si può considerare una categoria con un solo oggetto. Questa categoria è un gruppoide se e solo se \(M\) è un gruppo. Infatti, un morfismo \(m\) ammette un inverso nel senso della teoria delle categorie se e solo se ammette un inverso nel senso della teoria dei gruppi: \(g\cdot g^{-1}=g^{-1}\cdot g = e\).
 \end{example}
 
-Un \emph{automorfismo} è un endomorfismo (un morfismo da un oggetto a sé stesso) invertibile. In un gruppo, tutti i morfismi sono automorfismi.
+Un \emph{automorfismo} è un endomorfismo (un morfismo da un oggetto a sé stesso) invertibile. In un gruppo $(G,\cdot)$ guardato come una categoria $\ctB(G,\cdot)$ tutti i morfismi $g : \bullet\to\bullet$ sono automorfismi.
 
 \begin{example}
-	La categoria i cui oggetti sono gli insiemi e i cui morfismi sono biiezioni è un gruppoide. Quando si prendono solo gli insiemi finiti, questa categoria diventa molto interessante: consta della `unione disgiunta' (in un senso che preciseremo in \ref{}) di tutti i gruppi simmetrici\Todo{}
+	La categoria $\cate{Bij}$ i cui oggetti sono gli insiemi e i cui morfismi sono biiezioni è un gruppoide. Quando si prendono solo gli insiemi finiti, la categoria $\cate{FBij}\subset\cate{Bij}$ diventa molto interessante: consta della `unione disgiunta' (in un senso che preciseremo in \ref{}) di tutti i gruppi simmetrici $S_n$, ciascuno guardato come una categoria nel senso di \ref{}:
+	\[\cate{FBij}\cong \sum_{n=0}^\infty \ctB(S_n,\circ)\]
+	dove la notazione è quella di \ref{mon_sonocat}.
 \end{example}
 
 L'esempio precedente si può vedere come una sottocategoria di \(\ctSet\).
@@ -535,6 +597,15 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 \section{Operazioni tra categorie}
 
 \Todo{categoria prodotto, categoria somma, categoria opposta,}
+\begin{remark}
+	Chiaramente, la categoria vuota \(\ctInit\) è autoduale (ossia $\ctInit^\op=\ctInit$) e altrettanto è vero per la categoria terminale $\ctTerm$ e per la categoria discreta $A^\delta$ di \ref{}.
+
+	La categoria $\Delta[n]$ di \ref{} si identifica alla sua opposta mediante la funzione $j\mapsto n-j$, la quale inverte l'ordine, e risulta quindi un anti-isomorfismo tra l'insieme ordinato $\Delta[n]=(\{1,\dots,n\},\le)$ e l'insieme ordinato $\Delta[n]^\op = (\{1,\dots,n\},\ge)$.
+	\Todo{Esercizio: la categoria codiscreta di \ref{} si identifica alla sua opposta mediante...}
+
+	Le categorie `span generico' e `cospan generico' sono opposte l'una dell'altra, e altrettanto è vero per le categorie $S^\lhd$ e $S^\rhd$:
+	\[(\Lambda^2_0)^\op = \Lambda^2_2\qquad\qquad (S^\lhd)^\op = S^\rhd\]
+\end{remark}
 \Todo{categorie slice e coslice}
 \Todo{spazi puntati come coslice}
 \Todo{scheletro di una categoria}
@@ -603,17 +674,15 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 
 \section{Monomorfismi ed epimorfismi}
 
+Come visto nell'esempio \ref{mon_sonocat}, i monoidi corrispondono precisamente alle categorie con un solo oggetto; allora,
+la definizione di elemento \emph{cancellabile a sinistra} (o a destra) in un monoide $M$ si può applicare direttamente ai morfismi della categoria $\ctB M$.
 
-Siccome i monoidi corrispondono precisamente alle categorie con un solo oggetto, come visto nell'esempio \ref{mon_sonocat},
-la definizione di elemento di un monoide cancellabile a sinistra o a destra si può applicare direttamente ai morfismi delle categorie da loro indotte.
 Ricordiamo che un elemento \(x\) di un monoide \((M, \cdot, 1)\) si dice cancellabile a sinistra (rispettivamente, destra) se,
-per ogni coppia di elementi \(y_0\) e \(y_1\) in \(M\) tali che \(x \cdot y_0 = x \cdot y_1\) (rispettivamente, \(y_0 \cdot x = y_1 \cdot x\)),
-si ha che \(y_0 = y_1\).
+per ogni coppia di elementi \(y_0\) e \(y_1\) in \(M\) tali che \(x \cdot y_0 = x \cdot y_1\) (rispettivamente, \(y_0 \cdot x = y_1 \cdot x\)), si ha che \(y_0 = y_1\).
 
 Se però vogliamo estendere tale definizione ad una categoria generica,
 la cui composizione è dunque un'operazione parziale,
-è necessario considerare solo le composizioni ben definite
-(ovvero tra frecce consecutive).
+è necessario considerare solo le composizioni ben definite, ovvero tra frecce consecutive.
 Si arriva così alle seguenti definizioni.
 
 \begin{definition}[Monomorfismo]\label{def_Mono}\index{Monomorfismo}\index{Morfismo!mono---}
@@ -627,12 +696,12 @@ Si arriva così alle seguenti definizioni.
 	per ogni coppia di frecce parallele \(f, g \colon A \to B\) in \(\ctC\) tali che \(f \cmp e = g \cmp e\), si ha che \(f = g\).
 	%Equivalentemente, \(e\) è un epimorfismo se è cancellabile a destra, ovvero \(f \cmp e = g \cmp e\) implica \(f = g\) ogni qual volta la scrittura ha senso (ovvero quando \(f\) e \(g\) sono frecce parallele e post-componibili con \(e\)).
 \end{definition}
-
-Siccome le definizioni categoriali di mono ed epi generalizzano, rispettivamente, quelle, algebriche, di elementi cancellabili a sinistra e a destra,
-otteniamo immediatamente il seguente esempio.
-
+\begin{remark}
+	Il prefisso greco \emph{mono-} significa `uno, singolo' (il greco $\mu\acute{o}\nu o\varsigma$ è imparentato al latino \emph{moenia}, un muro fatto di un solo pezzo); la scelta del nome `monomorfismo' si motiva quindi notando che una funzione $f : A\to B$ è un monomorfismo se ogni valore $b=f(a) \in B$ viene assunto per al più un $a\in A$. Il prefisso \emph{epi-} significa invece `sopra, presso' (il greco $\overset,\varepsilon\pi\acute{\iota}$ è imparentato al latino \emph{apud}); la scelta del nome `epimorfismo' si motiva quindi pensando che una funzione $f : A\to B$ che è un epimorfismo `copra' il suo dominio completamente, nel senso che ogni valore $b=f(a)$ è assunto almeno una volta.
+\end{remark}
+Dato che le definizioni categoriali di mono ed epi generalizzano, rispettivamente, quelle, algebriche, di elementi cancellabili a sinistra e a destra, otteniamo immediatamente il seguente esempio.
 \begin{example}
-	Nella categoria indotta da un monoide, i mono sono gli elementi cancellabili a sinistra,
+	Nella categoria $\ctB(M,\cdot)$ indotta da un monoide come in \ref{}, i mono sono gli elementi cancellabili a sinistra,
 	e gli epi sono gli elementi cancellabili a destra.
 \end{example}
 
@@ -652,7 +721,7 @@ Il prossimo esempio, rispetto ai precedenti, è più complesso.
 
 % TODO: Lo svolgimento dell'esempio dovrebbe invece essere un esercizio svolto? Come lo formattiamo?
 \begin{example}
-	In \(\ctSet\), la categoria degli insiemi, i monomorfismi sono precisamente le funzioni iniettive
+	Nella categoria \(\ctSet\) di insiemi e funzioni, i monomorfismi sono precisamente le funzioni iniettive
 	e gli epimorfismi sono precisamente le funzioni surgettive.
 
 	Consideriamo il caso delle funzioni surgettive.
