@@ -434,11 +434,22 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	Se $[n]=\{1,\dots,n\}$ è un insieme finito, l'ordinamento $\{1<2<\dots<n\}$ lo rende un woset nel senso di \ref{}, e quindi $\Delta[n]$ è in maniera naturale un oggetto di $\ctPos$, ma anche di $\ctOrd$; insieme alle funzioni monotòne tra questi insiemi finiti, ciò identifica la sottocategoria di $\ctOrd$ generata da tutte le catene generiche $\Delta[n]$ di \ref{} con la sottocategoria $\ctFOrd$ di tutti gli ordinali finiti
 \end{remark}
 \begin{remark}
-\Todo{serve un assioma per avere ordinali piu grandi	}
 Senza un assioma dedicato a tale scopo, non si possono generare ordinali più grandi; al contrario, assumendo che esista almeno un insieme \emph{induttivo} $N$ (cioè tale che, se $x\in N$, allora $x^+:=x\cup\{x\}\in N$), possiamo `accedere' a ordinali più grandi, e da qui generarne di \emph{molto} grandi (abbastanza da far sì che la categoria $\ctOrd$ abbia una classe propria di oggetti).
+
+Questa è una maniera un po' semplificata di introdurre l'ordinale $\omega$ ottenuto come `limite' di tutti gli ordinali finiti $[n]$: rinviamo chi legge a un corso di logica elementare per approfondire la questione in modo più tecnico, e ci limitiamo a osservare che la dicotomia importante nella definizione di un numero ordinale è la seguente: un ordinale $\alpha\in\ctOrd_0$ può essere di due tipi: un \emph{successore}, se esiste $\beta$ tale che $\alpha=\beta^+$, e un ordinale \emph{limite} se, invece, $\alpha=\bigcup\alpha=\sup\{\gamma\mid \gamma < \alpha\}$.
 \end{remark}
 \begin{remark}
-\Todo{	gli ordinali permettono definizioni date induttivamente}
+L'importanza degli ordinali risiede nella possibilità di dare \emph{definizioni induttive} (per induzione finita, o transfinita): se $\ctC$ è una classe, una funzione di classe $H : \ctOrd_0\to\ctC$ è univocamente determinata dalla specifica
+\begin{itemize}
+	\item di un elemento $H(0)\in\ctC$ detto base dell'induzione;
+	\item di una maniera di calcolare $H(x+1)=H(x^+)$ in termini degli elementi precedenti $H(0), H(1),\dots,H(x)$; questo è il \emph{passo induttivo} della costruzione;
+	\item di una maniera di calcolare il `passo limite' dell'induzione, $H(\lambda)$, in termini di $H(\gamma)$ per $\gamma < \lambda$.
+\end{itemize}
+Un esempio particolare si apprezzerà con la definizione di funtore, dato che una maniera di formalizzare le successioni
+\[\begin{tikzcd}
+	A_0 \ar[r] & A_1 \ar[r] & A_2 \ar[r] & \dots \ar[r] & A_\alpha
+\end{tikzcd}\]
+\emph{eventualmente infinite} di morfismi contigui in una categoria $\ctC$ sarà esattamente come un funtore $\ctOrd_{\le\lambda}\funto \ctC$.
 \end{remark}
 \index{Categoria!--- di spazi topologici}
 \begin{example}\label{ex_cat_top}
