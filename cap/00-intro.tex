@@ -41,7 +41,7 @@ In questo preciso senso il prestito terminologico ha senso: la matematica è un 
 	\begin{center}
 		\begin{tikzpicture}
 			\fill[rounded corners, gray!40] (0,0) rectangle (3,4);
-			\fill[rounded corners, gray!40] (4,0) rectangle ++(3,4);
+			\fill[rounded corners, blue!20] (4,0) rectangle ++(3,4);
 			%--
 			\node[fill=white,inner sep=1mm,circle, draw, font=\small] (A) at (1,1) {$A$};
 			\node[fill=white,inner sep=1mm,circle, draw, font=\small] (B) at (1,2.75) {$B$};
@@ -54,6 +54,12 @@ In questo preciso senso il prestito terminologico ha senso: la matematica è un 
 			\draw[->] (A) |- ++(4,-.5) -- (A');
 			\draw[->] (B) |- ++ (4,.5) -- (B');
 			\draw[->] (C) -- (C');
+			%--
+			\draw[-latex,gray] (A) -- (C);
+			\draw[-latex,blue!60] (A') -- (C');
+			\draw[-latex,gray] (A) to[bend left] (B);
+			\draw[-latex,gray] (B) to[bend left] (A);
+			\draw[-latex,blue!60] (B') -- (A');
 			\end{tikzpicture}
 	\end{center}
 	\caption{\Todo{captione}}
