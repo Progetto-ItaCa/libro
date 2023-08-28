@@ -1,7 +1,7 @@
 \chapter{Categorie, funtori, trasformazioni naturali}\label{chap_cat_fun_nat}
 \section{Categorie}\label{sec_categorie}
 
-Prima di dare una definizione formale di categoria, può essere d'aiuto raccogliere alcuni esempi concreti per orientare i lettori.
+Prima di dare una definizione formale di categoria, può essere d'aiuto raccogliere alcuni esempi concreti per orientare chi legge.
 
 La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unificare due strutture matematiche apparentemente molto diverse tra loro:
 \index{Monoide}
@@ -483,11 +483,13 @@ Un esempio particolare si apprezzerà con la definizione di funtore, dato che un
 	Ovvero, la composizione \(g\circ f\) calcola l'output che la funzione \(g\) genera a partire dagli input \(f(a_1),f(a_1,a_2),\dots f(\tup a{n-1},),f(\tup an,)\).
 \end{example}
 \begin{example}[La categoria degli insiemi dimensionati]\label{example_dimensionati}
-	La categoria $\cate{dSet}$ degli \emph{insiemi con unità di misura} o insiemi `dimensionati' ha
+	La categoria $\cate{dSet}$ degli \emph{insiemi con unità di misura} o `insiemi dimensionati' ha
 	\begin{itemize}
-		\item per oggetti le funzioni suriettive $d : A\to D$ verso un insieme $D$ che ha il ruolo di insieme delle unità di misura con cui gli elementi di $A$ sono etichettati; se, ad esempio $D := \{m,s,kg\}$, gli elementi di $d^{-1}(m)$ sono le `lunghezze' (cioè si misurano in metri), gli elementi di $d^{-1}(s)$ sono i tempi, eccetera.
+		\item per oggetti le funzioni suriettive $d : A\to D$ verso un insieme $D$ che svolge il ruolo di insieme delle unità di misura con cui gli elementi di $A$ sono etichettati; se, ad esempio $D := \{m,s,kg\}$, gli elementi di $d^{-1}(m)$ sono le `lunghezze' (cioè si misurano in metri), gli elementi di $d^{-1}(s)$ sono i tempi, eccetera.
 		\item dati due insiemi dimensionati $(d : A\to D)$ e $(d', B\to D')$, un morfismo tra di loro consiste di una coppia di funzioni $u,v$ che fanno commutare il seguente quadrato:
-			\[\begin{tizkcd} X \end{tizkcd}\]
+			\[\begin{tikzcd} 
+			A & B \\ D & D' 
+		\end{tikzcd}\]
 	\end{itemize}
 \end{example}
 Veniamo ora a degli esempi più astratti e chiudiamo il cerchio su quelli che hanno motivato la definizione di categoria all'inizio.
@@ -501,7 +503,7 @@ si riesce a definire la classe degli oggetti e dei morfismi di una categoria. Gl
 
 Questo modo di intendere la definizione però oscura un'altra idea importante, perché potrebbe far sospettare che gli oggetti di una categori siano, alla fin fine, sempre insiemi dotati di strutture ulteriori (per esempio, operazioni o relazioni), e i morfismi funzioni che preservano queste strutture.
 
-Invece, le categorie che hanno questa proprietà si dicono \emph{concrete}, ed esistono esempi di categorie non concrete (sebbene essi siano piuttosto ardui da definire); chi legge può consultare \cite{a,b} per maggiori informazioni.
+Invece, le categorie che hanno questa proprietà si dicono \emph{concrete}, ed esistono esempi di categorie non concrete (sebbene essi siano piuttosto ardui da definire); chi legge può consultare \cite{Freyd1973,Kuera1971} per maggiori informazioni.
 \index{Relazione di equivalenza}
 \begin{example}\label{ex_cat_rel_equiv}
 	Un insieme dotato di una relazione di equivalenza si può vedere come una particolare categoria. Consideriamo un insieme \(X\) dotato di una relazione di equivalenza indicata con il simbolo \(\sim\).
