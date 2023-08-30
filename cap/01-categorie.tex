@@ -50,7 +50,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `entità
 	\index{Classe propria|see {Classe}}
 	Abbiamo già utilizzato diverse volte la parola `classe': la definizione generale di categoria obbliga a farlo, dal momento che la collezione di tutte le strutture algebriche di un dato tipo è sempre `troppo grande per essere un insieme' (in un senso che formalizzeremo in dettaglio nell'Appendice \ref{fondamenti}); per il momento è sufficiente trattenere l'idea informale che una classe (o \emph{classe propria}) \(\ctC\) è una collezione di elementi che ha tutte le proprietà di un insieme, a parte quella di poter essere misurata da un numero cardinale.
 
-	Ogni volta che è necessario, useremo costruzioni elementari che si possono fare sulle classi come se esse fossero insiemi: per esempio se \(\ctA,\ctB\) sono classi, è lecito costruire la classe prodotto \(\ctA\times\ctB\), e considerare \emph{funzioni tra classi} \(F : \ctA\fun\ctB\), cioè sottoclassi \(F\) del prodotto \(\ctA\times\ctB\) che sono funzionali: per ogni elemento \(A\) della classe \(\ctA\), esiste un unico elemento \(B\in\ctB\) con \((A,B)\in F\), questo elemento si denota \(FA\), e a tutti gli effetti \(F\) si comporta come una funzione. Di nuovo, il linguaggio preciso che formalizza queste costruzioni verrà esposto nell'appendice \ref{fondamenti}; questa imprecisione iniziale sarà sempre del tutto innocua, e per il momento invitiamo chi legge a considerare il desiderio di approfondire la cosa solo una inutile distrazione.
+	Ogni volta che è necessario, useremo costruzioni elementari che si possono fare sulle classi come se esse fossero insiemi: per esempio se \(\ctA,\ctB\) sono classi, è lecito costruire la classe prodotto \(\ctA\times\ctB\), e considerare \emph{funzioni tra classi} \(F : \ctA\fun\ctB\), cioè sottoclassi \(F\) del prodotto \(\ctA\times\ctB\) che sono funzionali: per ogni elemento \(A\) della classe \(\ctA\), esiste un unico elemento \(B\in\ctB\) con \((A,B)\in F\), questo elemento si denota \(FA\), e a tutti gli effetti \(F\) si comporta come una funzione. Di nuovo, il linguaggio preciso (il linguaggio \textsf{NBG} della teoria degli insiemi di von Neumann, Bernays e G\"odel) che formalizza queste costruzioni verrà esposto nell'appendice \ref{fondamenti}; questa imprecisione iniziale sarà sempre del tutto innocua, e per il momento invitiamo chi legge a considerare il desiderio di approfondire la cosa solo una inutile distrazione.
 \end{remark}
 \index{Categoria}
 \begin{definition}[Categoria]\label{def_categ}
@@ -488,7 +488,8 @@ Un esempio particolare si apprezzerà con la definizione di funtore, dato che un
 		\item per oggetti le funzioni suriettive $d : A\to D$ verso un insieme $D$ che svolge il ruolo di insieme delle unità di misura con cui gli elementi di $A$ sono etichettati; se, ad esempio $D := \{m,s,kg\}$, gli elementi di $d^{-1}(m)$ sono le `lunghezze' (cioè si misurano in metri), gli elementi di $d^{-1}(s)$ sono i tempi, eccetera.
 		\item dati due insiemi dimensionati $(d : A\to D)$ e $(d', B\to D')$, un morfismo tra di loro consiste di una coppia di funzioni $u,v$ che fanno commutare il seguente quadrato:
 			\[\begin{tikzcd}
-			A & B \\ D & D'
+				A\ar[r, "u"]\ar[d,"d"'] & B \ar[d, "d'"]\\ 
+				D \ar[r, "v"']& D'
 		\end{tikzcd}\]
 	\end{itemize}
 \end{example}
