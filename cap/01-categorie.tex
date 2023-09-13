@@ -27,7 +27,7 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 	\end{itemize}
 	Quando la relazione \(\le\) soddisfa anche la proprietà \emph{antisimmetrica}, cioè è tale per cui
 	\[(x\le y)\;\&\;(y\le x) \quad\implies\quad x = y\]
-	l'insieme \(P\), o meglio la coppia \((P,\le)\) si dice un insieme \emph{parzialmente ordinato} o \emph{poset}.
+  l'insieme \(P\), o meglio la coppia \((P,\le)\) si dice un insieme \emph{parzialmente ordinato} o \emph{poset}. La relazione $\le$ in un poset si chiama un \emph{ordine parziale}.
 \end{definition}
 Dimostreremo in \ref{mon_sonocat} e in \ref{pos_sonocat} rispettivamente che ogni monoide è una categoria, e ogni insieme preordinato (e a fortiori, ogni insieme parzialmente ordinato) è una categoria. (Gli enunciati in questione renderanno più precise queste ultime affermazioni.)
 \index{Categoria!--- degli insiemi finiti}
@@ -38,13 +38,13 @@ Dimostreremo in \ref{mon_sonocat} e in \ref{pos_sonocat} rispettivamente che ogn
 		}\]
 	La composizione di funzioni \((f,g)\mapsto g\cmp f\) perciò è una operazione che ricorda quella di un monoide (per esempio, essa è associativa quando è definita) ma è appunto un'operazione \emph{parziale}, cioè non definita tra tutte le possibili coppie \((f,g)\) di funzioni tra insiemi finiti; quale che sia la struttura matematica che la classe degli insiemi finiti forma, perciò, essa non può essere un monoide. Un altro motivo per cui \(\ctFin\) non può essere un monoide è che l'identità per la composizione di funzioni non è unica come accade, invece, in ogni monoide: \emph{ogni} insieme finito \([n]\) ha una sua propria funzione identica \(\id_{[n]}\), e se \(f : [m]\to [n]\) con \(m\ne n\), si deve avere che \(f\cmp \id_{[m]}=f=\id_{[n]}\cmp f\) per funzioni identiche formalmente \emph{distinte}, sebbene definite `alla stessa maniera' da \(\lambda x.x : [n]\to [n]\) e \(\lambda y.y : [m]\to [m]\).
 
-	La classe \(\ctFin\) formerà una \emph{categoria}, e per lo stesso motivo faranno altrettanto delle collezioni di oggetti matematici che esibiscono una struttura simile a quella di un monoide, ma si presentano all'esperienza come più generali:
-	\begin{itemize}
-		\item \index{Categoria!---e di strutture algebriche} la classe \(\bbR\emdash\ctVect\) di tutti gli spazi vettoriali reali della forma \(\bbR^n\) per un \(n\ge 1\) naturale; non tutte le mappe lineari tra spazi vettoriali si possono comporre, e le applicazioni identiche sono tutte distinte;
+	La classe \(\ctFin\) formerà una \emph{categoria}, e per lo stesso motivo faranno altrettanto delle collezioni di oggetti matematici che esibiscono una struttura simile a quella di un monoide, ma sono più generali per motivi simili:
+\begin{itemize}
+		\item \index{Categoria!---e di strutture algebriche} la classe \(\bbR\emdash\ctVect\) di tutti gli spazi vettoriali reali della forma \(\bbR^n\) per un \(n\ge 1\) naturale; non tutte le mappe lineari tra spazi vettoriali si possono comporre, e le applicazioni identiche sono tutte distinte; e più in generale,
 		\item la classe di tutte le strutture algebriche di un dato tipo (gli insiemi, senza limite alla loro taglia; i gruppi, con gli omomorfismi di gruppo; gli spazi vettoriali, anche di dimensione infinita; gli spazi topologici, con le funzioni continue; eccetera).
 	\end{itemize}
 \end{example}
-Una categoria sarà dunque, in prima approssimazione, una collezione di `entità' non meglio definite \(A,B,X,Y,\dots\), legate tra loro da delle relazioni o `funzioni astratte' \(f : X\to Y, g : A\to B\),\dots{} le quali potranno essere composte alla maniera delle funzioni. Questa intuizione è sufficiente per formulare la definizione, a cui deve però prima seguire una precisazione terminologica.
+Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti' \(A,B,X,Y,\dots\), legati tra loro da delle relazioni o `funzioni astratte' \(f : X\to Y, g : A\to B\),\dots{} le quali potranno essere composte alla maniera delle funzioni. Questa intuizione è sufficiente per formulare la definizione, a cui deve però prima seguire una precisazione terminologica.
 \begin{remark}
 	\index{Classe}
 	\index{Classe propria|see {Classe}}
@@ -57,9 +57,10 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `entità
 	Una \emph{categoria} \(\ctC\) consiste dei seguenti dati:
 	\begin{enumtag}{c}
 		\item\label{c_1} una classe \(\ctC_0\) i cui elementi chiamiamo \emph{oggetti}, di solito indicati con lettere latine maiuscole: \(A\), \(B\), \(X\), \(Y\),\dots
-		\item\label{c_2} una classe \(\ctC_1\) i cui elementi chiamiamo \emph{morfismi} o \emph{frecce}, di solito indicati con lettere latine minuscole: \(f\), \(g\), \(h\),\dots
-		\item\label{c_3} Ad ogni morfismo \(f\) corrispondono due oggetti \(\dom{f}\), \(\cod{f}\) chiamati \emph{dominio} e \emph{codominio}. Per denotare il fatto che \(f\) ha dominio \(X\in\ctC_0\) e codominio \(Y\in\ctC_0\), scriveremo \(f\colon X\to Y\), o in \emph{forma diagrammatica}, \(X \xrightarrow{f} Y\).
-		\item\label{c_4} Ogni oggetto \(X\) ha un morfismo distinto \(\id_X\colon X\to X\) chiamato \emph{identità} o \emph{freccia identità}.
+		\item\label{c_2} una classe \(\ctC_1\) i cui elementi chiamiamo \emph{morfismi} o \emph{frecce}, di solito indicati con lettere latine minuscole: \(f,g,h\),\dots, $u,v,w$\dots
+		\item\label{c_3} Ad ogni morfismo \(f\) corrispondono due oggetti \(\dom{f}\), \(\cod{f}\) chiamati \emph{dominio} e \emph{codominio}. Per denotare il fatto che \(f\) ha dominio \(X\in\ctC_0\) e codominio \(Y\in\ctC_0\), scriveremo \(f\colon X\to Y\), o in \emph{forma diagrammatica},
+      \[\begin{tikzcd} X \ar[r, "f"] & Y. \end{tikzcd}\]
+		\item\label{c_4} Ogni oggetto \(X\) ha un morfismo distinto \(\id_X\colon X\to X\) chiamato \emph{identità} o \emph{freccia identica}.
 		\item\label{c_5} Per ogni coppia di morfismi \(f\colon X\to Y\) e \(g\colon Y\to Z\), cioè tali che \(\cod{f}=\dom{g}\)), è dato un morfismo \(g\circ f:X\to Z\) chiamato \emph{composizione di \(f\) e \(g\)}. Graficamente:
 		\[
 			\begin{tikzcd}
