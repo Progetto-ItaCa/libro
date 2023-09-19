@@ -89,9 +89,9 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 		\item come conseguenza immediata, se \(X\ne X'\) sono oggetti diversi, le identità \(\id_X,\id_{X'}\) sono morfismi diversi: si può cioè pensare la corrispondenza \(X\mapsto \id_X : \ctC_0\to\ctC_1\) come una funzione \emph{iniettiva} tra classi;
 		\item la composizione consta di una funzione \emph{parziale}
 		      \[\xymatrix{\_\circ\_ : \ctC_1 \times \ctC_1 \ar[r] & \ctC_1}\]
-								il cui dominio è la sotto-classe \(\sum_{XYZ} \{ X \xrightarrow f Y \xrightarrow g Z \}\) dei morfismi \emph{contigui} o componibili. Dato che i vari $\ctC(X,Y)$ sono a due a due disgiunti, la composizione $\_\circ\_$ si `decompone' in una classe di funzioni 
-                \[\xymatrix{\_\circ_{XZ}^Y\_ : \ctC(Y,Z)\times\ctC(X,Y) \ar[r] & \ctC(X,Z)}\]
-                dove ciascuna manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in $g\circ f$ (praticamente sempre, si sottintende il dominio particolare di $\_\circ_{XZ}^Y\_$).
+		      il cui dominio è la sotto-classe \(\sum_{XYZ} \{ X \xrightarrow f Y \xrightarrow g Z \}\) dei morfismi \emph{contigui} o componibili. Dato che i vari \(\ctC(X,Y)\) sono a due a due disgiunti, la composizione \(\_\circ\_\) si `decompone' in una classe di funzioni
+		      \[\xymatrix{\_\circ_{XZ}^Y\_ : \ctC(Y,Z)\times\ctC(X,Y) \ar[r] & \ctC(X,Z)}\]
+		      dove ciascuna manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in \(g\circ f\) (praticamente sempre, si sottintende il dominio particolare di \(\_\circ_{XZ}^Y\_\)).
 	\end{itemize}
 \end{remark}
 \begin{definition}[Categoria piccola, categoria localmente piccola]
@@ -417,7 +417,7 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 \end{example}
 \`E un esercizio tedioso nella manipolazione delle tuple ordinate, ora, dimostrare che gli assiomi di categoria sono tutti soddisfatti. Un esercizio analogamente tedioso è di trovare segnature algebriche opportune che esprimono le categorie dei gruppi, dei monoidi, degli anelli e degli spazi vettoriali ecc. come esempi particolari di categorie di modelli di una segnatura algebrica. (Tedioso, e a volte non proprio banale: ad esempio, come si descrivono le operazioni di moltiplicazione per scalare in uno spazio vettoriale usando la definizione di segnatura algebrica?)
 \begin{example}[Categoria dei grafi]\label{ex_cat_grafi}\index{Categoria!--- dei grafi}
-  \Todo{}
+	\Todo{}
 \end{example}
 \index{Categoria!--- di insiemi ordinati}
 \index{Preordine}
@@ -427,7 +427,7 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 
 	La categoria \(\ctPOrd\) ha per oggetti e morfismi gli insiemi preordinati e le funzioni monotòne. Chiaramente, l'identità \(\id_P : (P,\le)\to (P,\le)\) è una funzione monotòna, e la composizione di due funzioni monotòne resta monotòna.
 
-	\`E tuttavia importante che l'ordine su \(P\) sia \emph{lo stesso} affinché l'identità sia monotòna: infatti, ogni insieme \(P\) può essere dotato dell'ordine \emph{banale} (dove \(x \mathrel{\le^\delta} y\) se e solo se \(x=y\)) e dell'ordine \emph{caotico} (dove \(x\mathrel{\le^\chi} y\) per ogni \(x,y\in P\)). Se $P$ ha almeno tre elementi, la funzione identica \((P,\le^\chi)\to (P,\le^\delta)\) non è, chiaramente, monotòna.
+	\`E tuttavia importante che l'ordine su \(P\) sia \emph{lo stesso} affinché l'identità sia monotòna: infatti, ogni insieme \(P\) può essere dotato dell'ordine \emph{banale} (dove \(x \mathrel{\le^\delta} y\) se e solo se \(x=y\)) e dell'ordine \emph{caotico} (dove \(x\mathrel{\le^\chi} y\) per ogni \(x,y\in P\)). Se \(P\) ha almeno tre elementi, la funzione identica \((P,\le^\chi)\to (P,\le^\delta)\) non è, chiaramente, monotòna.
 \end{example}
 \index{Ordine parziale}
 \begin{remark}[po, wo e to]\label{po_wo_to}
@@ -540,44 +540,44 @@ Invece, le categorie che hanno questa proprietà si dicono \emph{concrete}, ed e
 
 	Gli assiomi di unitalità e associatività sono automaticamente soddisfatti: per esempio, la composizione \((w\to x\to y)\to z\) e la composizione \(w\to (x\to y\to z)\) coincidono, constando dell'unico morfismo \(w\to z\).
 \end{example}
-Quelle della forma \(\ctB(X,\sim)\) per qualche insieme $X$ e relazione di equivalenza $\sim$ sono un primo esempio elementare di categoria in cui gli oggetti non sono insiemi strutturati, ma non è quello più semplice possibile: la proprietà di simmetria di \(\sim\) non è essenziale per ottenere una categoria. 
+Quelle della forma \(\ctB(X,\sim)\) per qualche insieme \(X\) e relazione di equivalenza \(\sim\) sono un primo esempio elementare di categoria in cui gli oggetti non sono insiemi strutturati, ma non è quello più semplice possibile: la proprietà di simmetria di \(\sim\) non è essenziale per ottenere una categoria.
 
 Consideriamo ora i seguenti esempi di categorie simili (che raccogliamo in dei teoremi, di cui diamo una dimostrazione completa, perché questi esempi sono pedagogicamente rilevanti).
 \index{Categoria!--- da una relazione}
 \begin{examples}\label{ord_sonocat}
-	Ogni relazione d'ordine \((X,\le)\) forma una categoria, ancora una volta con un unico morfismo \(x\to y\) se e solo se \(x\le y\). Come nel caso delle relazioni di equivalenza, gli oggetti di $\ctP(X,\le)$ sono gli elementi di $X$, le identità sono date dalla proprietà riflessiva $x\le x$ e la composizione dalla proprietà transitiva. Ciò è sufficiente a soddisfare tutti gli assiomi di categoria.
+	Ogni relazione d'ordine \((X,\le)\) forma una categoria, ancora una volta con un unico morfismo \(x\to y\) se e solo se \(x\le y\). Come nel caso delle relazioni di equivalenza, gli oggetti di \(\ctP(X,\le)\) sono gli elementi di \(X\), le identità sono date dalla proprietà riflessiva \(x\le x\) e la composizione dalla proprietà transitiva. Ciò è sufficiente a soddisfare tutti gli assiomi di categoria.
 
 	Più in generale, un \emph{preordine} è una relazione riflessiva e transitiva, ma non necessariamente simmetrica o antisimmetrica. Ogni preordine si può vedere come una categoria alla stessa maniera di prima.
 \end{examples}
 \begin{remark}
-Due osservazioni sono a questo punto importanti: 
-\begin{itemize}
-  \item è facile fraintendere la definizione appena data, o perlomeno esserne confusi, perché la definizione di categoria data in \ref{def_categ} chiede che esista un \emph{insieme} di morfismi $x\to y$ tra due oggetti $x,y$ di $\ctP(X,\le)$. 
+	Due osservazioni sono a questo punto importanti:
+	\begin{itemize}
+		\item è facile fraintendere la definizione appena data, o perlomeno esserne confusi, perché la definizione di categoria data in \ref{def_categ} chiede che esista un \emph{insieme} di morfismi \(x\to y\) tra due oggetti \(x,y\) di \(\ctP(X,\le)\).
 
-    Qual è quindi l'insieme di morfismi tra $x$ e $y$? La risposta è che, in questo caso, tra due morfismi esiste una \emph{proposizione}, precisamente quella che asserisce se $x\le y$ o meno. Il problema di rendere questa proposizione un insieme si risolve così: diciamo che $\ctP(X,\le)$ è un insieme con un singolo elemento (lo chiamiamo $[x\le y]$) se e solo se $x\le y$ `è vera', ed è l'insieme vuoto altrimenti. In questo modo, dobbiamo definire una regola di composizione tra l'elemento $[x\le y]$ e l'elemento $[y\le z]$: questo non può che essere l'elemento $[x\le z]$, e a questo punto lasciamo i dettagli (tediosi) da scrivere a chi legge.
-  \item \`E fondamentale non rimanere confusi da un altro dettaglio: in base a \ref{ex_cat_ordini} esiste una categoria i cui oggetti sono gli insiemi ordinati $(X,\le)$ e i cui morfismi sono le funzioni monotòne. In base a \ref{ord_sonocat}, \emph{ogni} insieme ordinato $(X,\le)$ è \emph{esso stesso} una categoria i cui oggetti sono gli elementi di $X$. Queste due asserzioni sono molto diverse tra loro; sarà la definizione \ref{ex_cat_cat} a rendere preciso in che senso $\ctPos$ è una `categoria di categorie'.
-\end{itemize}
+		      Qual è quindi l'insieme di morfismi tra \(x\) e \(y\)? La risposta è che, in questo caso, tra due morfismi esiste una \emph{proposizione}, precisamente quella che asserisce se \(x\le y\) o meno. Il problema di rendere questa proposizione un insieme si risolve così: diciamo che \(\ctP(X,\le)\) è un insieme con un singolo elemento (lo chiamiamo \([x\le y]\)) se e solo se \(x\le y\) `è vera', ed è l'insieme vuoto altrimenti. In questo modo, dobbiamo definire una regola di composizione tra l'elemento \([x\le y]\) e l'elemento \([y\le z]\): questo non può che essere l'elemento \([x\le z]\), e a questo punto lasciamo i dettagli (tediosi) da scrivere a chi legge.
+		\item \`E fondamentale non rimanere confusi da un altro dettaglio: in base a \ref{ex_cat_ordini} esiste una categoria i cui oggetti sono gli insiemi ordinati \((X,\le)\) e i cui morfismi sono le funzioni monotòne. In base a \ref{ord_sonocat}, \emph{ogni} insieme ordinato \((X,\le)\) è \emph{esso stesso} una categoria i cui oggetti sono gli elementi di \(X\). Queste due asserzioni sono molto diverse tra loro; sarà la definizione \ref{ex_cat_cat} a rendere preciso in che senso \(\ctPos\) è una `categoria di categorie'.
+	\end{itemize}
 \end{remark}
 Occupiamoci ora di dimostrare che una categoria dove tra due oggetti esiste al più un morfismo è \emph{precisamente} un insieme (pre)ordinato.
 \begin{theorem}\label{cat_sonopos}
 	% \Todo{rovescio: una categoria dove ogni hom-set ha al piu un elemento è un preset}
-  Sia $\ctC$ una categoria, con la proprietà che $\ctC(X,Y)$ ha al più un elemento. Allora, la relazione 
-  \[X\le Y \iff \ctC(X,Y) \text{ non è vuoto}\]
-  definisce una struttura di insieme preordinato su $\ctC_0$.
+	Sia \(\ctC\) una categoria, con la proprietà che \(\ctC(X,Y)\) ha al più un elemento. Allora, la relazione
+	\[X\le Y \iff \ctC(X,Y) \text{ non è vuoto}\]
+	definisce una struttura di insieme preordinato su \(\ctC_0\).
 \end{theorem}
 \begin{proof}
-  La relazione così definita è 
-  \begin{itemize}
-    \item riflessiva, perché $\ctC(X,X)$ contiene l'identità (e solo l'identità);
-    \item transitiva, perché se $\ctC(X,Y), \ctC(Y,Z)$ non sono vuoti, la composizione è definita come in \ref{cor_def_categ} e quindi esiste esattamente un elemento in $\ctC(X,Z)$.
-  \end{itemize}
+	La relazione così definita è
+	\begin{itemize}
+		\item riflessiva, perché \(\ctC(X,X)\) contiene l'identità (e solo l'identità);
+		\item transitiva, perché se \(\ctC(X,Y), \ctC(Y,Z)\) non sono vuoti, la composizione è definita come in \ref{cor_def_categ} e quindi esiste esattamente un elemento in \(\ctC(X,Z)\).
+	\end{itemize}
 \end{proof}
 \index{Categoria!--- da un monoide}
 Esiste un altro esempio di questo fatto (alcune strutture matematiche sono esse stesse una categoria): infatti, ogni monoide si può vedere come una categoria che ha un solo oggetto. Questi sono precisamente gli esempi iniziali con cui abbiamo motivato la definizione \ref{def_categ}.
 \begin{theorem}\label{mon_sonocat}
-	Dato un monoide \((M,\cdot,1)\), definiamo la seguente categoria, che indichiamo con \(\ctB M\).\footnote{A volte la categoria definita in questo modo si indica con \(\ctB(M,\cdot)\), a volte (quando l'operazione su $M$ è ovvia dal contesto) semplicemente con \(\ctB M\).}
+	Dato un monoide \((M,\cdot,1)\), definiamo la seguente categoria, che indichiamo con \(\ctB M\).\footnote{A volte la categoria definita in questo modo si indica con \(\ctB(M,\cdot)\), a volte (quando l'operazione su \(M\) è ovvia dal contesto) semplicemente con \(\ctB M\).}
 	\begin{itemize}
-    \item La categoria \(\ctB M\) ha un unico oggetto, che indichiamo con \(\star\);\footnote{La notazione è volta a suggerire che precisare questo elemento non sarà mai importante (una scelta canonica, ma che potrebbe causare confusione, è fissare $\ctB M_0 := \{M\}$, insieme che ovviamente \emph{non} è $M$).}
+		\item La categoria \(\ctB M\) ha un unico oggetto, che indichiamo con \(\star\);\footnote{La notazione è volta a suggerire che precisare questo elemento non sarà mai importante (una scelta canonica, ma che potrebbe causare confusione, è fissare \(\ctB M_0 := \{M\}\), insieme che ovviamente \emph{non} è \(M\)).}
 		\item La categoria \(\ctB M\) ha un morfismo \(m:\star\to\star\) per ogni elemento \(m\in M\); l'unico hom-insieme che dobbiamo specificare, \(\Hom{\ctB M}(\star,\star)\), è cioè uguale a \(M\), e in particolare, l'identità \(\id_\star\) è l'elemento neutro \(1\in M\);
 		\item La composizione di morfismi
 		      \[\longmor{\Hom{\ctB M}(\star,\star)\times \Hom{\ctB M}(\star,\star)}{\Hom{\ctB M}(\star,\star)}\]
@@ -598,11 +598,11 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 % 	L'unitalità e l'associatività del monoide e della categoria si corrispondono.
 % \end{example}
 \begin{corollary}\label{cor_cat_mon}
-  In particolare, un gruppo $(G,\cdot,1)$ si può ugalmente vedere come la categoria $\ctB G$ ad esso associata, che ha un solo oggetto e $G$ come insieme di morfismi. In maniera concisa (ma anche ora, chi legge dovrebbe fermarsi a riflettere finché questa frase non risulta perfettamente evidente) un monoide è una categoria con un singolo oggetto, e un gruppo è un gruppoide (come in \ref{def_gruppoide}) con un singolo oggetto.
+	In particolare, un gruppo \((G,\cdot,1)\) si può ugalmente vedere come la categoria \(\ctB G\) ad esso associata, che ha un solo oggetto e \(G\) come insieme di morfismi. In maniera concisa (ma anche ora, chi legge dovrebbe fermarsi a riflettere finché questa frase non risulta perfettamente evidente) un monoide è una categoria con un singolo oggetto, e un gruppo è un gruppoide (come in \ref{def_gruppoide}) con un singolo oggetto.
 \end{corollary}
 \begin{remark}
-  Del resto, una categoria con un solo oggetto non `è' un monoide, ma lo definisce naturalmente; e un monoide non `è' la categoria $\ctB M$, ma la definisce naturalmente (e qualcosa di simile si può dire per gli insiemi ordinati). In altre parole, eliminare la distinzione tra $M$ e $\ctB M$ non segue da una tautologia, ma è una \emph{identità informativa} (intesa come in `Senso e significato` di Frege) che non è \emph{strettamente} una identità ma una \emph{identificazione}: $M\mapsto \ctB M$ e $\ctC\mapsto \ctC_1$ sono, a patto che $\ctC_0$ abbia un solo elemento, corrispondenze inverse una dell'altra, nel senso che $(\ctB M)_1 = M$ e che $\ctB(\ctC_1) = \ctC$.
-%Dato un oggetto \(X\) di una categoria, un morfismo da \(X\) a \(X\) si chiama anche \emph{endomorfismo}. In un monoide, tutti i morfismi sono endomorfismi.
+	Del resto, una categoria con un solo oggetto non `è' un monoide, ma lo definisce naturalmente; e un monoide non `è' la categoria \(\ctB M\), ma la definisce naturalmente (e qualcosa di simile si può dire per gli insiemi ordinati). In altre parole, eliminare la distinzione tra \(M\) e \(\ctB M\) non segue da una tautologia, ma è una \emph{identità informativa} (intesa come in `Senso e significato` di Frege) che non è \emph{strettamente} una identità ma una \emph{identificazione}: \(M\mapsto \ctB M\) e \(\ctC\mapsto \ctC_1\) sono, a patto che \(\ctC_0\) abbia un solo elemento, corrispondenze inverse una dell'altra, nel senso che \((\ctB M)_1 = M\) e che \(\ctB(\ctC_1) = \ctC\).
+	%Dato un oggetto \(X\) di una categoria, un morfismo da \(X\) a \(X\) si chiama anche \emph{endomorfismo}. In un monoide, tutti i morfismi sono endomorfismi.
 \end{remark}
 % \begin{remark}
 % 	Abbiamo visto che i gruppi sono gli oggetti della categoria \(\ctGrp\), ma anche che ogni gruppo si può a sua volta vedere come una categoria (con un solo oggetto). Entrambe le prospettive sono valide, e ce ne sono altre ancora.
@@ -626,7 +626,7 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 \Todo{categoria prodotto, categoria somma, categoria opposta,}
 \index{Categoria!sotto---}
 \begin{definition}\label{def_subcat}
-  \Todo{sottocategoria}
+	\Todo{sottocategoria}
 \end{definition}
 \begin{definition}\label{def_cat_prodotto}
 	\Todo{Categoria prodotto}
@@ -741,7 +741,7 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 \begin{definition}[Categoria scheletrica]\label{def_cat_scheletrica}\index{Categoria!--- scheletrica}
 	Una categoria \(\ctC\) si dice \emph{scheletrica} se vale la seguente proprietà:
 	\[X\iso Y \, (\text{mediante } f,g) \,\Rightarrow\, (X=Y \,\&\, f=g=\id_X),\]
-  cioè se gli unici isomorfismi che esistono tra due oggetti sono le identità (alcuni esempi di categorie che sono scheletriche: \ref{ex_cat_vuota}, \ref{ex_cat_term}, \ref{ex_cat_discreta}, \ref{ex_cat_doppiafreccia}, \ref{ex_cat_catena}, \ref{ex_cat_codiscreta}, \ref{ex_cat_ordinali}).
+	cioè se gli unici isomorfismi che esistono tra due oggetti sono le identità (alcuni esempi di categorie che sono scheletriche: \ref{ex_cat_vuota}, \ref{ex_cat_term}, \ref{ex_cat_discreta}, \ref{ex_cat_doppiafreccia}, \ref{ex_cat_catena}, \ref{ex_cat_codiscreta}, \ref{ex_cat_ordinali}).
 \end{definition}
 \subsubsection*{Esercizi}
 \begin{enumerate}
@@ -793,13 +793,13 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 \end{example}
 \begin{example}\label{exa_funtori_liberi_forgetti}\index{Funtore!--- libero e dimenticante}
 	\Todo{funtori liberi e funtori dimenticanti}
-  Se $(\Omega,a)$ è una segnatura algebrica come in \ref{ex_cat_sigma_strutture}, esiste un funtore 
-  \[
-  \begin{tikzcd}
-    U : \ctMod(\Omega,a) \ar[r] & \ctSet
-  \end{tikzcd}
-  \]
-  che manda ogni modello in $\ctMod(\Omega,a)$ nel suo \emph{insieme soggiaciente} $X$.
+	Se \((\Omega,a)\) è una segnatura algebrica come in \ref{ex_cat_sigma_strutture}, esiste un funtore
+	\[
+		\begin{tikzcd}
+			U : \ctMod(\Omega,a) \ar[r] & \ctSet
+		\end{tikzcd}
+	\]
+	che manda ogni modello in \(\ctMod(\Omega,a)\) nel suo \emph{insieme soggiaciente} \(X\).
 \end{example}
 \begin{proposition}\label{compo_funtori}
 	\Todo{Composizione di funtori}
@@ -880,7 +880,7 @@ Vediamo ora invece esempi in categorie non indotte da monoidi.
 Il primo caso, alquanto degenere, è dato dai preordini.
 
 \begin{example}
-  Nella categoria indotta da un preordine, come visto nell'esempio~\ref{ord_sonocat},
+	Nella categoria indotta da un preordine, come visto nell'esempio~\ref{ord_sonocat},
 	tutti i morfismi sono sia epi che mono.
 	Infatti, la definizione di epi e mono è sempre soddisfatta banalmente,
 	dato che, in un preordine, due frecce parallele sono necessariamente uguali.
@@ -991,14 +991,14 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	\end{itemize}
 \end{definition}
 \begin{remark}
-Una sezione di un qualche morfismo, essendo invertibile a sinistra, è anche cancellabile a sinistra.
-Dunque, ogni sezione è, in particolare, un monomorfismo.
-\index{Monomorfismo!--- spezzante}Un monomorfismo che è anche una sezione si dice \emph{mono spezzante}.
-Dualmente, ogni retrazione è cancellabile a destra e dunque un epimorfismo.
-\index{Epimorfismo!--- spezzante}Un epimorfismo che è anche una retrazione si dice \emph{epi spezzante}.
-Inoltre, le nozioni di sezione e retrazione sono ovviamente dipendenti una dall'altra:
-un morfismo \(f : A \to B\) che ha una sezione \(s : B\to A\) è una retrazione di \(s\),
-e viceversa \(f\) è una sezione di ogni sua retrazione.
+	Una sezione di un qualche morfismo, essendo invertibile a sinistra, è anche cancellabile a sinistra.
+	Dunque, ogni sezione è, in particolare, un monomorfismo.
+	\index{Monomorfismo!--- spezzante}Un monomorfismo che è anche una sezione si dice \emph{mono spezzante}.
+	Dualmente, ogni retrazione è cancellabile a destra e dunque un epimorfismo.
+	\index{Epimorfismo!--- spezzante}Un epimorfismo che è anche una retrazione si dice \emph{epi spezzante}.
+	Inoltre, le nozioni di sezione e retrazione sono ovviamente dipendenti una dall'altra:
+	un morfismo \(f : A \to B\) che ha una sezione \(s : B\to A\) è una retrazione di \(s\),
+	e viceversa \(f\) è una sezione di ogni sua retrazione.
 \end{remark}
 \Todo{dualità}
 
@@ -1127,12 +1127,12 @@ l'essere o meno preservati dai funtori.
 	e, in particolare, senza essere un isomorfismo.
 \end{example}
 \begin{example}[La categoria dei punti]\label{ex_cat_punti}\index{Categoria!--- dei punti su un oggetto}
-  Sia $\ctC$ una categoria. Per ogni oggeto $X\in\ctC_0$ definiamo la categoria $\cate{Pt}_X(\ctC)$ dei \emph{punti su $X$} come segue:
-  \begin{itemize}
-    \item gli oggetti $\var [p]EX[\downuparrows]$ di $\cate{Pt}_X(\ctC)$ sono epi spezzanti di codominio $X$, cioè morfismi $p : E \to X$ che ammettono una sezione $\bar p : X\to E$ tale che $p\circ \bar p = \id_X$; 
-    \item i morfismi $f : \var [p] EX[\downuparrows]\to \var[q] FX[\downuparrows]$ sono morfismi $f : E \to F$ tali che 
-      \[q\circ f = p \qquad \qquad f\circ \bar q = \bar p.\]
-  \end{itemize}
+	Sia \(\ctC\) una categoria. Per ogni oggeto \(X\in\ctC_0\) definiamo la categoria \(\cate{Pt}_X(\ctC)\) dei \emph{punti su \(X\)} come segue:
+	\begin{itemize}
+		\item gli oggetti \(\var [p]EX[\downuparrows]\) di \(\cate{Pt}_X(\ctC)\) sono epi spezzanti di codominio \(X\), cioè morfismi \(p : E \to X\) che ammettono una sezione \(\bar p : X\to E\) tale che \(p\circ \bar p = \id_X\);
+		\item i morfismi \(f : \var [p] EX[\downuparrows]\to \var[q] FX[\downuparrows]\) sono morfismi \(f : E \to F\) tali che
+		      \[q\circ f = p \qquad \qquad f\circ \bar q = \bar p.\]
+	\end{itemize}
 \end{example}
 
 \subsubsection*{Esercizi}
