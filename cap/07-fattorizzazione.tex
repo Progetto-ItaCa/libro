@@ -1,9 +1,28 @@
+\label{cap:fattorizzazione}
 \chapter{Sistemi di Fattorizzazione}
+La nozione di \emph{sistema di fattorizzazione} in una categoria è uno dei concetti più antichi della teoria; Mac Lane produsse un esempio di sistema di fattorizzazione nella categoria dei gruppi nel 1948, \cite{bla}. Da quel momento, la nozione ha dimostrato di essere fondamentale per unificare un certo numero di costruzioni universali in algebra, logica e (soprattutto) in topologia.
+
+L'intuizione fondamentale dietro la definizione è la seguente osservazione/lemma: 
+\begin{lemma}
+  Se $\ctSet$ denota la categoria di insiemi e funzioni di \ref{ex_cat_insiemi}, ogni funzione $f : X \to Y$ si fattorizza come $f = m \circ e$, dove $m$ è iniettiva (un monomorfismo, si veda \ref{}) ed $e$ è suriettiva (un epimorfismo, si veda \ref{}).
+\end{lemma}
+In più, abbiamo preannunciato in \ref{caratt_epi_con_ort} che la nozione di epimorfismo e di monomorfismo ammettono una ulteriore caratterizzazione nei termini seguenti (rammentiamo il contenuto di \ref{caratt_epi_con_ort} per facilità di lettura): il lemma \ref{lem_fatt_epimono} permette di dimostrare questo fatto in modo molto elegante.
+\begin{proposition*}
+Sia $p : E \to B$ una funzione tra insiemi; le seguenti condizioni sono equivalenti:
 \begin{itemize}
-	\item ogni funzione si può fattorizzare come composizione di una funzione iniettiva e una suriettiva;
-	\item monomorfismi ed epimorfismi nella categoria degli insiemi si determinano a vicenda nel senso che segue:
-	      \Todo{lemma lemmino stammi vicino}
+  \item $p$ è un epimorfismo (si veda \ref{def_Mono})
+  \item in ogni diagramma di insiemi e funzioni come il seguente: 
+    \[\begin{tikzcd}
+      E \ar[r, "f"]\ar[d, "p"']& X \ar[d, "m"]\\ 
+      B \ar[r, "g"'] \ar[ur, dashed, "u"]& Y
+    \end{tikzcd}\]
+    dove $m : X\to Y$ è un monomorfismo, esiste un unico $u : B\to X$ tale che $u\circ p = f$ e $m\circ u = g$.
 \end{itemize}
+\end{proposition*}
+\begin{proof}
+  \Todo{}
+\end{proof}
+
 Questo motiva la nozione di \emph{ortogonalità} tra morfismi e di \emph{fattorizzazione} di ogni morfismo \(f : X\to Y\) di una categoria \(\ctC\) come una certa composizione \(f = m\circ e : X \epi F \mono Y\).
 
 Idealmente, una struttura del genere imposta su una categoria permette di `generarla' a partire dalle classi \(\ctE,\ctM\); in una notazione suggestiva, \(\hom(\ctC)=\ctM\circ \ctE\).
@@ -18,7 +37,7 @@ Sulla classe dei morfismi di una generica categoria \(\ctC\) è possibile defini
 			}}\]
 	esiste un unico morfismo \(a : Y\to A\) tale che \(a\cmp f=u\) e \(g\cmp a=v\).
 \end{definition}
-La relazione di ortogonalità è un sottoinsieme \(\mathbin{\perp^\ctC} \subseteq \hom(\ctC)\) e il fatto che \((f,g)\in \mathbin{\perp^\ctC}\) si denota con il simbolo infisso \(f\perp^\ctC g\) o semplicemente come \(f\perp g\) quando il contesto permette di determinare quale sia la categoria \(\ctC\) di riferimento.
+La relazione di ortogonalità è un sottoinsieme \(O^\ctC \subseteq \hom(\ctC)\) e il fatto che \((f,g)\in O^\ctC\) verrà denotato con il simbolo infisso \(f\perp^\ctC g\) o semplicemente come \(f\perp g\) quando il contesto permette di determinare quale sia la categoria \(\ctC\) di riferimento.
 
 La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetrica o transitiva; \ref{} sostanzia questa osservazione con delle maniere di costruire dei controesempi.
 \begin{remark}\label{perche_ortogonale}

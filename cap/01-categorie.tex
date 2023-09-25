@@ -977,12 +977,42 @@ sfruttando la dualità a nostro vantaggio.
 \begin{proof}
 	Costruiamo \(u\) esplicitamente: ad un elemento \(b\in B\), che sappiamo essere della forma \(e(a)\) per qualche \(a\in A\), associamo l'elemento \(u(b)=f(a)\). Questa definizione è ben posta, perché se \(a,a'\) sono entrambi tali che \(e(a)=e(a')=b\), allora \(mu(b)=mf(a)=mf(a')\), così che \(f(a)=f(a')\), perché \(m\) è un mono. \`E evidente ora che \(u\circ e= f\), per costruzione, ed \((m\circ u)(b)=m(f(a))=g(e(a))=g(b)\); l'unicità segue ancora dal fatto che \(m\) è mono.
 \end{proof}
-\subsection{Sezioni e retrazioni}\label{sec_sezretraz}
+Concludiamo la sezione enunciando un risultato che nel capitolo \ref{} avremo gli strumenti per dimostrare in modo elegante (chi legge interpreti così la situazione: dimostrare in maniera elementare il seguente risultato è possibile, ma va considerato un esercizio laborioso. Una parte dell'esercizio è però del tutto elementare e invitiamo chi legge a scoprire quale --e a cimentarvisi). 
+\begin{proposition}\label{caratt_epi_con_ort}
+Sia $p : E \to B$ una funzione tra insiemi; le seguenti condizioni sono equivalenti:
+\begin{itemize}
+  \item $p$ è un epimorfismo (si veda \ref{def_Mono})
+  \item in ogni diagramma di insiemi e funzioni come il seguente: 
+    \[\begin{tikzcd}
+      E \ar[r, "f"]\ar[d, "p"']& X \ar[d, "m"]\\ 
+      B \ar[r, "g"'] \ar[ur, dashed, "u"]& Y
+    \end{tikzcd}\]
+    dove $m : X\to Y$ è un monomorfismo, esiste un unico $u : B\to X$ tale che $u\circ p = f$ e $m\circ u = g$.
+\end{itemize}
+\end{proposition}
+Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette una condizione equivalente in più, e dunque una formulazione più semplice: 
+\begin{proposition}
+Sia $m : X\to Y$ una funzione tra insiemi; le seguenti condizioni sono equivalenti:
+\begin{itemize}
+  \item $m$ è un monomorfismo (si veda \ref{def_Epi});
+  \item in ogni diagramma di insiemi e funzioni come il seguente: 
+    \[\begin{tikzcd}
+      E \ar[r, "f"]\ar[d, "p"']& X \ar[d, "m"]\\ 
+      B \ar[r, "g"'] \ar[ur, dashed, "u"]& Y
+    \end{tikzcd}\]
+    dove $p : E\to B$ è un epimorfismo, esiste un unico $u : B\to X$ tale che $u\circ p = f$ e $m\circ u = g$; 
+  \item la condizione del punto precedente vale per $p : \{0,1\} \to \{\bullet\}$ (l'unica funzione $0\mapsto\bullet, 1\mapsto\bullet$).
+\end{itemize}
+\end{proposition}
+\begin{proof}
+  \Todo{}
+\end{proof}
 
+\subsection{Sezioni e retrazioni}\label{sec_sezretraz}\index{Sezione}
 Così come l'algebra ci ha suggerito di generalizzare all'ambito categoriale la nozione di elemento di un monoide cancellabile a sinistra/destra,
 similmente possiamo considerare la nozione di elemento invertibile a sinistra/destra.
 
-\begin{definition}[Sezione e retrazione]
+\begin{definition}[Sezione e retrazione]\index{Sezione}\index{Retrazione|see {Sezione}}
 	Sia \(f \colon A \to B\) un morfismo in una categoria.
 	Allora chiamiamo:
 	\begin{itemize}
