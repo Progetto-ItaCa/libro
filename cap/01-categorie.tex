@@ -371,6 +371,11 @@ Proseguiamo con degli esempi di categorie grandi:
 Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto cartesiano è importante, perché se \(R : A\to B\) è una relazione, vogliamo che \(A\) ne sia il dominio, e \(B\) il codominio. \`E però vero che gli insiemi \(A\times B\) e \(B\times A\) sono in biiezione canonica, e quindi si potrebbe pensare di definire una categoria \(\ctRel'\) con gli stessi oggetti di \(\ctRel\), ma con morfismi da \(A\) verso \(B\) le relazioni \(R\subseteq B\times A\). In effetti, questa è la categoria opposta \(\ctRel^\op\) di \(\ctRel\) (si veda \ref{def_cat_opp}), e tra \(\ctRel^\op\) e \(\ctRel\) esiste una identificazione canonica.
 \index{Categoria!--- degli insiemi}
 \index{Categoria!--- degli insiemi finiti|see {--- degli insiemi}}
+\begin{remark}\label{klext_delle_relazioni}
+  Ogni relazione $R : A\to B$ induce una funzione $R^* : 2^B\to 2^A$ nel modo che segue: un sottoinsieme $U\subseteq B$ viene mandato in $R^*U:=\{x\in A\mid \forall u\in U.(x,u)\in R\}$. In effetti, esiste una analoga funzione $R_* : 2^A\to 2^B$, definita da $(V\subseteq A) \mapsto R_*V:= \{y\in B\mid \forall v\in V.(v,y)\in R\}$, e tra le due funzioni $R^*, R_*$ sussiste la relazione 
+\[bla\]
+In \ref{} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie, affrontata per esteso nel capitolo \ref{}.
+\end{remark}
 \begin{example}[Insiemi e funzioni]\label{ex_cat_insiemi}
 	La categoria \(\ctSet\) ha
 	\begin{itemize}
@@ -400,7 +405,7 @@ Questo appena fatto è il secondo degli esempi motivanti fatti ad inizio capitol
 \begin{example}\label{ex_cat_algebre}
 	\Todo{Gruppi/monoidi e omomorfismi}
 \end{example}
-L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme dotato di operazioni, codificando una struttura algebrica in una \emph{funzione di arietà}:\footnote{Le parole \emph{arietà}, così come \emph{nullario} e \emph{unario} e \(n\)-ario (ma non binario, ternario, quaternario, etc.) sono retroformazioni che il lessico matematico ha introdotto a partire dal suffisso latino \emph{-arius}, usato per formare aggettivi a partire da nomi o numerali. Una operazione `\(n\)-aria' accetta \(n\) argomenti a dominio.} innanzitutto, si ricordi che una operazione \(n\)-aria su un insieme \(X\) consta di una funzione \(\tup Xn\times \to X\) dove \(X_i = X\) per ogni \(i=1,\dots,n\).
+L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme dotato di operazioni, codificando una struttura algebrica in una \emph{funzione di arietà}:\footnote{Le parole \emph{arietà}, così come \emph{nullario} e \emph{unario} e \(n\)-ario (ma non binario, ternario, quaternario, etc.) sono retroformazioni che il lessico matematico ha introdotto a partire dal suffisso latino \emph{-\={a}rius, -\=aria, -\=arium}, usato per formare aggettivi a partire da nomi o numerali. Una operazione `\(n\)-aria' accetta \(n\) argomenti a dominio.} innanzitutto, si ricordi che una operazione \(n\)-aria su un insieme \(X\) consta di una funzione \(\tup Xn\times \to X\) dove \(X_i = X\) per ogni \(i=1,\dots,n\).
 \index{Categoria!---}
 \begin{example}\label{ex_cat_sigma_strutture}
 	% \Todo{Omomorfismi per una generica segnatura algebrica}
@@ -728,7 +733,7 @@ Un \emph{automorfismo} è un endomorfismo (un morfismo da un oggetto a sé stess
 
 L'esempio precedente si può vedere come una sottocategoria di \(\ctSet\).
 Più in generale, in virtù del fatto che ogni identità \(\id_X\) è un isomorfismo, e del fatto che la composizione di isomorfismi è un isomorfismo, data una categoria \(\ctC\) possiamo sempre prendere la sottocategoria che contiene tutti gli oggetti e tutti i suoi isomorfismi.
-\begin{definition}
+\begin{definition}\label{def_cuore}\index{Cuore!--- di una categoria}\index{Categoria!Cuore di una ---}
 	Il \emph{cuore} di una categoria \(\ctC\) è il gruppoide ottenuto prendendo
 	\begin{itemize}
 		\item come oggetti gli oggetti di \(\ctC\),
@@ -891,7 +896,7 @@ un morfismo possa essere sia epi che mono, e comunque non essere un isomorfismo.
 Il prossimo esempio, rispetto ai precedenti, è più complesso.
 
 % TODO: Lo svolgimento dell'esempio dovrebbe invece essere un esercizio svolto? Come lo formattiamo?
-\begin{example}
+\begin{example}\label{monoepi_in_set}
 	Nella categoria \(\ctSet\) di insiemi e funzioni, i monomorfismi sono precisamente le funzioni iniettive
 	e gli epimorfismi sono precisamente le funzioni surgettive.
 
