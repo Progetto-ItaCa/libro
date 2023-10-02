@@ -19,7 +19,7 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 \end{definition}
 \index{Poset}
 \begin{definition}\label{prelim_def_preset}
-	Un \emph{insieme preordinato} (o \emph{preordine} o \emph{preset}) consiste di un insieme \(P\) dotato di una operazione binaria \(\le\), solitamente indicata come un simbolo infisso \(x\le y\) per significare che \((x,y)\) è un elemento di \(\le\), che soddisfa le seguenti due proprietà:
+	Un \emph{insieme preordinato} (o \emph{preordine} o \emph{preset}) consiste di un insieme \(P\) dotato di una relazione binaria \(\le\), solitamente indicata come un simbolo infisso \(x\le y\) per significare che \((x,y)\) è un elemento di \(\le\), che soddisfa le seguenti due proprietà:
 	\begin{itemize}
 		\item \emph{Riflessività}: per ogni \(x\in P\), si ha \(x\le x\);
 		\item \emph{Transitività}: per ogni \(x,y,z\in P\), si ha che
@@ -36,11 +36,24 @@ Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogn
 	\[\xymatrix{
 			[p] \ar[r]^-f & [q] \ar[r]^-g & [r].
 		}\]
-	La composizione di funzioni \((f,g)\mapsto g\cmp f\) perciò è una operazione che ricorda quella di un monoide (per esempio, essa è associativa quando è definita) ma è appunto un'operazione \emph{parziale}, cioè non definita tra tutte le possibili coppie \((f,g)\) di funzioni tra insiemi finiti; quale che sia la struttura matematica che la classe degli insiemi finiti forma, perciò, essa non può essere un monoide. Un altro motivo per cui \(\ctFin\) non può essere un monoide è che l'identità per la composizione di funzioni non è unica come accade, invece, in ogni monoide: \emph{ogni} insieme finito \([n]\) ha una sua propria funzione identica \(\id_{[n]}\), e se \(f : [m]\to [n]\) con \(m\ne n\), si deve avere che \(f\cmp \id_{[m]}=f=\id_{[n]}\cmp f\) per funzioni identiche formalmente \emph{distinte}, sebbene definite `alla stessa maniera' da \(\lambda x.x : [n]\to [n]\) e \(\lambda y.y : [m]\to [m]\).
+	La composizione di funzioni \((f,g)\mapsto g\cmp f\) perciò è una operazione che ricorda quella di un monoide (per esempio, essa è associativa quando è definita) ma è appunto un'operazione \emph{parziale}, cioè non definita tra tutte le possibili coppie \((f,g)\) di funzioni tra insiemi finiti; quale che sia la struttura matematica che la classe degli insiemi finiti forma, perciò, essa non può essere un monoide. Un altro motivo per cui \(\ctFin\) non può essere un monoide è che l'identità per la composizione di funzioni non è unica come accade, invece, in ogni monoide: \emph{ogni} insieme finito \([n]\) ha una sua propria funzione identica \(\id_{[n]}\), e se \(f : [m]\to [n]\) con \(m\ne n\), si deve avere che \(f\cmp \id_{[m]}=f=\id_{[n]}\cmp f\) per funzioni identiche formalmente \emph{distinte}, sebbene definite `alla stessa maniera' da
+	\[
+	\begin{tikzcd}[row sep=0]
+		{[n]} \ar{r}{\id_{[n]}} & {[n]} \\
+		x \ar[mapsto]{r} & x
+	\end{tikzcd}
+	\qquad\mbox{e}\qquad
+	\begin{tikzcd}[row sep=0]
+		{[m]} \ar{r}{\id_{[m]}} & {[m]} \\
+		y \ar[mapsto]{r} & y .
+	\end{tikzcd}
+	\]
+	% \(\lambda x.x : [n]\to [n]\) e \(\lambda y.y : [m]\to [m]\). % non credo i lettori conoscano la notazione lambda, forse dovremmo introdurla
 
 	La classe \(\ctFin\) formerà una \emph{categoria}, e per lo stesso motivo faranno altrettanto delle collezioni di oggetti matematici che esibiscono una struttura simile a quella di un monoide, ma sono più generali per motivi simili:
 	\begin{itemize}
-		\item \index{Categoria!---e di strutture algebriche} la classe \(\bbR\emdash\ctVect\) di tutti gli spazi vettoriali reali della forma \(\bbR^n\) per un \(n\ge 1\) naturale; non tutte le mappe lineari tra spazi vettoriali si possono comporre, e le applicazioni identiche sono tutte distinte; e più in generale,
+		\item \index{Categoria!---e di strutture algebriche} la classe \(\bbR\emdash\ctVect\) di tutti gli spazi vettoriali reali della forma \(\bbR^n\) per un \(n\) %\(n\ge 1\) 
+		naturale; non tutte le mappe lineari tra spazi vettoriali si possono comporre, e le applicazioni identiche sono tutte distinte; e più in generale,
 		\item la classe di tutte le strutture algebriche di un dato tipo (gli insiemi, senza limite alla loro taglia; i gruppi, con gli omomorfismi di gruppo; gli spazi vettoriali, anche di dimensione infinita; gli spazi topologici, con le funzioni continue; eccetera).
 	\end{itemize}
 \end{example}
@@ -48,9 +61,9 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 \begin{remark}
 	\index{Classe}
 	\index{Classe propria|see {Classe}}
-	Abbiamo già utilizzato diverse volte la parola `classe': la definizione generale di categoria obbliga a farlo, dal momento che la collezione di tutte le strutture algebriche di un dato tipo è sempre `troppo grande per essere un insieme' (in un senso che formalizzeremo in dettaglio nell'Appendice \ref{fondamenti}); per il momento è sufficiente trattenere l'idea informale che una classe (o \emph{classe propria}) \(\ctC\) è una collezione di elementi che ha tutte le proprietà di un insieme, a parte quella di poter essere misurata da un numero cardinale.
+	Abbiamo già utilizzato diverse volte la parola `classe': la definizione generale di categoria obbliga a farlo, dal momento che la collezione di tutte le strutture algebriche di un dato tipo è spesso `troppo grande per essere un insieme' (in un senso che formalizzeremo in dettaglio nell'Appendice \ref{fondamenti}); per il momento è sufficiente trattenere l'idea informale che una classe (o \emph{classe propria}) \(\ctC\) è una collezione di elementi che ha tutte le proprietà di un insieme, a parte quella di poter essere misurata da un numero cardinale.
 
-	Ogni volta che è necessario, useremo costruzioni elementari che si possono fare sulle classi come se esse fossero insiemi: per esempio se \(\ctA,\ctB\) sono classi, è lecito costruire la classe prodotto \(\ctA\times\ctB\), e considerare \emph{funzioni tra classi} \(F : \ctA\fun\ctB\), cioè sottoclassi \(F\) del prodotto \(\ctA\times\ctB\) che sono funzionali: per ogni elemento \(A\) della classe \(\ctA\), esiste un unico elemento \(B\in\ctB\) con \((A,B)\in F\), questo elemento si denota \(FA\), e a tutti gli effetti \(F\) si comporta come una funzione. Di nuovo, il linguaggio preciso (il linguaggio \textsf{NBG} della teoria degli insiemi di von Neumann, Bernays e G\"odel) che formalizza queste costruzioni verrà esposto nell'appendice \ref{fondamenti}; questa imprecisione iniziale sarà sempre del tutto innocua, e per il momento invitiamo chi legge a considerare il desiderio di approfondire la cosa solo una inutile distrazione.
+	Ogni volta che è necessario, useremo costruzioni elementari che si possono fare sulle classi come se esse fossero insiemi: per esempio se \(\ctA,\ctB\) sono classi, è lecito costruire la classe prodotto \(\ctA\times\ctB\), e considerare \emph{funzioni tra classi} \(F : \ctA\fun\ctB\), cioè sottoclassi \(F\) del prodotto \(\ctA\times\ctB\) che sono funzionali: per ogni elemento \(A\) della classe \(\ctA\), esiste un unico elemento \(B\in\ctB\) con \((A,B)\in F\), questo elemento si denota \(FA\), e a tutti gli effetti \(F\) si comporta come una funzione. Di nuovo, il linguaggio preciso (il linguaggio \textsf{NBG} della teoria degli insiemi di von Neumann, Bernays e G\"odel) che formalizza queste costruzioni verrà esposto nell'appendice \ref{fondamenti}; questa imprecisione iniziale sarà sempre del tutto innocua.%, e per il momento invitiamo chi legge a considerare il desiderio di approfondire la cosa solo una inutile distrazione.
 \end{remark}
 \index{Categoria}
 \begin{definition}[Categoria]\label{def_categ}
@@ -102,7 +115,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 	Invece, \(\ctC\) si dice \emph{localmente piccola} se dati ogni due oggetti \(X\) e \(Y\), la classe \(\Hom{\ctC}(X,Y)\) di morfismi da \(X\) a \(Y\) è un insieme. La categoria di \emph{tutti} gli insiemi finiti non è, strettamente parlando, piccola (perché c'è una classe propria anche solo di insiemi con un singolo elemento: \(\{\varnothing\},\{\{\varnothing\}\}, \{\{\{\varnothing\}\}\}\), eccetera), ma è localmente piccola, perché fissati due insiemi \(X,Y\), la collezione delle funzioni \(f : X\to Y\) è contenuta in \(2^{X\times Y}\), e quest'ultimo è un insieme (per assioma).
 \end{definition}
 \begin{remark}
-	Gli assiomi di categoria non impediscono di costruire `categorie' dove \(\ctC_0\) è un insieme (per esempio, finito) e dove alcuni o tutti \(\Hom{\ctC}(X,Y)\) sono classi; queste costruzioni sono però relativamente innaturali, e non ne parleremo mai. In effetti, non parleremo mai nemmeno di categorie grandi che non sono localmente piccole (ne risentirebbe irrimediabilmente il capitolo 4 del libro, e molti altri risultati). Perciò, da ora in poi adottiamo la convenzione che \emph{categoria} significhi sempre \emph{categoria localmente piccola}. Alternative a questa maniera di ragionare sono possibili, ma non porremo mai una particolare attenzione alla questione.
+	Gli assiomi di categoria non impediscono di costruire `categorie' dove \(\ctC_0\) è un insieme (per esempio, finito) e dove alcuni o tutti \(\Hom{\ctC}(X,Y)\) sono classi proprie; queste costruzioni sono però relativamente innaturali, e non ne parleremo mai. In effetti, non parleremo mai nemmeno di categorie grandi che non sono localmente piccole (ne risentirebbe irrimediabilmente il capitolo 4 del libro, e molti altri risultati). Perciò, da ora in poi adottiamo la convenzione che \emph{categoria}, se non specifichiamo altro, significhi sempre \emph{categoria localmente piccola}. Alternative a questa maniera di ragionare sono possibili, ma non porremo mai una particolare attenzione alla questione.
 \end{remark}
 Concludiamo con un lemma apparentemente banale, ma che sarà utile in seguito (precisamente, nella dimostrazione di \ref{cat_sonomon}).
 \begin{lemma}\label{lem_end_monoide}
@@ -140,10 +153,10 @@ Iniziamo ora a dare degli esempi di categorie piccole: l'esempio più semplice �
 \index{Categoria!--- discreta}
 \`E sempre possibile dotare un insieme \(A\) della topologia discreta (o `massimale'), dove ogni sottoinsieme \(U\) di \(A\) è aperto, e della topologia indiscreta (o `minimale'), dove solo \(\varnothing\) e \(A\) sono aperti. Similmente, esistono due maniere, massimale e minimale, di considerare un insieme\footnote{Riguardo al problema se sia possibile dotare una classe propria della struttura di categoria discreta, la questione \emph{sembra} banale, ma in realtà tutt'altro che semplice da discutere: sebbene non ci sia alcun apparente problema ad assumere l'esistenza di classi proprie discrete, queste spesso vengono proibite \emph{ab imis} assumendo un assioma a parte in aggiunta ai soliti della teoria degli insiemi/classi, detto \emph{principio di Vop\v enka}: questo assioma afferma, precisamente, che non esistono sottoclassi proprie discrete nella classe propria di tutti gli insiemi.} \(A\) una categoria.
 \begin{example}\label{ex_cat_discreta}
-	Dato un insieme \(A\), la \emph{categoria discreta} su \(A\), denotata \(A^\delta\), ha per oggetti gli elementi \(a\in A\), un unico morfismo identico \(\id_a : a\to a\), e nessun altro. La composizione è forzata a essere definita solamente tra identità, nel modo più ovvio possibile, e tutti gli assiomi di categoria sono ovviamente soddisfatti.
+	Dato un insieme \(A\), la \emph{categoria discreta} su \(A\), denotata \(A^\delta\), ha per oggetti gli elementi \(a\in A\), un unico morfismo identico \(\id_a : a\to a\) per ogni \(a\), e nessun altro. La composizione è forzata a essere definita solamente tra identità, nel modo più ovvio possibile, e tutti gli assiomi di categoria sono ovviamente soddisfatti.
 \end{example}
 \begin{example}\label{ex_cat_codiscreta}
-	Dato un insieme \(A\), la \emph{categoria codiscreta} su \(A\), denotata \(A^\chi\) ha per oggetti gli elementi \(a\in A\), e per ogni coppia di oggetti \(a,a'\in A\), un unico morfismo \(u_{aa'}:a\to a'\), e la composizione è definita da \(u_{a'a''}\circ u_{aa'}=u_{aa''}\) (in particolare, da questo segue che esiste un unico elemento \(\id_a=u_{aa}\in A^\chi(a,a)\)).
+	Dato un insieme \(A\), la \emph{categoria codiscreta} su \(A\), denotata \(A^\chi\) ha per oggetti gli elementi \(a\in A\), per ogni coppia di oggetti \(a,a'\in A\) un unico morfismo \(u_{aa'}:a\to a'\), e la composizione è definita da \(u_{a'a''}\circ u_{aa'}=u_{aa''}\) (in particolare, da questo segue che esiste un unico elemento \(\id_a=u_{aa}\in A^\chi(a,a)\)).
 \end{example}
 Alcune categorie che è spesso utile considerare si rappresentano mediante dei grafi:
 \index{Categoria!--- freccia generica}
@@ -203,13 +216,15 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 \end{example}
 \index{Categoria!--- doppia freccia generica}
 \begin{example}\label{ex_cat_doppiafreccia}
-	La categoria `doppia freccia generica' ha due oggetti \(0,1\) ed esattamente due morfismi non identici e paralleli \(s,t : 0\to 1\); anche in questo caso, tali morfismi di solito non hanno nome. La composizione è definita, ancora una volta, nell'unico modo ovvio, chiedendo che \(x\circ \id_0=x=\id_1\circ x\) per \(x\in\{s,t\}\).
+	La categoria `doppia freccia generica' ha due oggetti \(0,1\) ed esattamente due morfismi non identici e paralleli \(s,t : 0\to 1\)%
+	%;anche in questo caso, tali morfismi di solito non hanno nome % ce l'hanno: s e t
+	. La composizione è definita, ancora una volta, nell'unico modo ovvio, chiedendo che \(x\circ \id_0=x=\id_1\circ x\) per \(x\in\{s,t\}\).
 
 	La doppia freccia è la `forma generica' di un grafo diretto (si veda \ref{ex_cat_libera}), dato che una coppia di funzioni \(s,t: X_1 \rightrightarrows X_0\) tra due insiemi consta precisamente di un digrafo che ha \(X_0\) per insieme dei vertici e \(X_1\) per insieme dei lati.
 \end{example}
-\index{Categoria!--- quadrato generico}
+\index{Categoria!--- quadrato commutativo generico}
 \begin{example}\label{ex_quadcuboncubo}
-	La categoria `quadrato generico' \(P[2]\) ha 4 oggetti
+	La categoria `quadrato commutativo generico' \(P[2]\) ha 4 oggetti
 	\[\{(00),(10),(01),(11)\} \]
 	e un morfismo \((ij)\to(kl)\) se e solo se \(i\le k\) e \(j\le l\); rappresentata graficamente, si tratta della categoria
 	\[\begin{tikzcd}
@@ -222,7 +237,7 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 
 	Quindi possiamo definire induttivamente
 	\[P[0] = \Delta[0], \qquad P[n+1] = P[n]\times \Delta[1]\]
-	o (equivalentemente, nel senso che questa seconda definizione dà per ogni \(n\ge 0\) un \(P'[n]\) isomorfo a \(P[n]\) come insieme ordinato) \(P'[n] = 2^{\{1,\dots,n\}}\), cosicché \(P[n]\) è il `cubo \(n\)-dimensionale generico': alcune \(P[n]\) per \(n=0,1,2,3\) sono raffigurate in \ref{fig_n_cubo}.
+	o (equivalentemente, nel senso che questa seconda definizione dà per ogni \(n\ge 0\) un \(P'[n]\) isomorfo a \(P[n]\) come insieme ordinato) \(P'[n] = 2^{\{1,\dots,n\}}\), cosicché \(P[n]\) è il `cubo commutativo \(n\)-dimensionale generico': alcune \(P[n]\) per \(n=0,1,2,3\) sono raffigurate in \ref{fig_n_cubo}.
 \end{example}
 \begin{figure}[h]
 	\begin{center}
@@ -312,7 +327,7 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 	\begin{itemize}
 		\item gli oggetti di \(F\ctG\) sono esattamente gli elementi di \(V\);
 		\item fissati due vertici \(u,v\in V\), i morfismi \(u\to v\) sono l'insieme
-		      \[\sum_{n=0}^\infty E(u,x_1)\times\dots\times E(x_n,v)\]
+		      \[\sum_{n=0}^\infty E(u,x_1)\times E(x_1,x_2)\times\dots\times E(x_n,v)\]
 		      di tutte le sequenze ordinate e finite di lati
 		      \[ [\tup en;] : u \xto{e_1} x_1 \xto{e_2} x_2\xto{e_3} \dots\xto{e_{n-1}} x_{n-1}\xto{e_n} v\]
 		      con la convenzione che se \(u=v\) ed \(n=0\) la sequenza vuota si interpreta come un laccio `banale' \([\;]_u : u\to u\), e usando la notazione, ovvia, \(E(x,y)\subseteq E\) per denotare i lati di source \(x\) e target \(y\).
@@ -379,7 +394,7 @@ In \ref{} questo sarà un esempio elementare di una nozione importante, quella d
 \begin{example}[Insiemi e funzioni]\label{ex_cat_insiemi}
 	La categoria \(\ctSet\) ha
 	\begin{itemize}
-		\item per oggetti gli insiemi denotati con le lettere \(A,B,C\dots\);
+		\item per oggetti gli insiemi, denotati con le lettere \(A,B,C\dots\);
 		\item per morfismi da \(A\) vero \(B\) tutte le funzioni \(f : A\to B\), ossia tutte le relazioni \(F\subseteq A\times B\) con la proprietà che per ogni \(a\in A\) esiste un unico \(b\in B\) tale che \((a,b)\in F\) o, più formalmente, \(F\cap(\{a\}\times B)\) è un singoletto; l'elemento \(b\) in questione si denota \(f(a)\) o \(fa\) e l'insieme \(F = \{(a,fa)\mid a\in A\}\) è il \emph{grafico} o \emph{supporto} della funzione. Queste relazioni sono \emph{totali} (perché sono definite sull'intero dominio \(A\)) e \emph{a valore singolo}.
 	\end{itemize}
 	Due funzioni \(f : A\to B\), \(g : B\to C\) si compongono alla maniera delle relazioni (e la composizione è ancora una funzione, poiché l'intersezione \((G\circ F)\cap (\{a\}\times C)\) consta del singoletto \(\{g(fa)\}\)).
@@ -390,6 +405,7 @@ Evidentemente, possiamo restringerci a considerare la categoria dei soli insiemi
 \index{Categoria!--- delle matrici}
 \begin{example}[Categoria delle matrici in \(\bbF\)]\label{ex_cat_matrici}
 	La categoria \(\bbF\emdash\cate{Mat}\) delle \emph{matrici a ingressi in \(\bbF\)} ha
+	\todo{Si dice `ingressi' o `entrate' in italiano?}
 	\begin{itemize}
 		\item per oggetti i numeri naturali \(0,1,2,\dots\);
 		\item per morfismi \(n\to m\) le matrici con \(m\) righe ed \(n\) colonne a coefficienti in \(\bbF\):
@@ -402,8 +418,18 @@ Evidentemente, possiamo restringerci a considerare la categoria dei soli insiemi
 \end{example}
 Questo appena fatto è il secondo degli esempi motivanti fatti ad inizio capitolo.
 \index{Categoria!--- di strutture algebriche}
-\begin{example}\label{ex_cat_algebre}
-	\Todo{Gruppi/monoidi e omomorfismi}
+\begin{example}\label{ex_cat_monoidi}\index{Omomorfismo!---di monoidi}
+	Dati due monoidi \(M\) e \(N\), un \emph{omomorfismo di monoidi} \(f:M\to N\) è una funzione \(f:M\to N\) tale che
+	\begin{itemize}
+		\item \(f(e) = e\), cioè mappa l'elemento neutro di \(M\) in quello ti \(N\);
+		\item \(f(m\cdot m')=f(m)\cdot f(m')\) per ogni \(m,m'\in M\), cioè rispetta la moltiplicazione.
+	\end{itemize}
+	In particolare, se \(M\) ed \(N\) sono gruppi, un omomorfismo di monoidi è esattamente un omomorfismo di gruppi.
+	Come si può facilmente verificare, l'identità su un monoide è un omomorfismo, e la composizione di omomorfismi è un omomorfismo.
+	\begin{itemize}
+		\item I monoidi e gli omomorfismi di monoidi formano la categoria \(\ctMon\).
+		\item I gruppi e gli omomorfismi di gruppo formano la categoria \(\ctGrp\).
+	\end{itemize}
 \end{example}
 L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme dotato di operazioni, codificando una struttura algebrica in una \emph{funzione di arietà}:\footnote{Le parole \emph{arietà}, così come \emph{nullario} e \emph{unario} e \(n\)-ario (ma non binario, ternario, quaternario, etc.) sono retroformazioni che il lessico matematico ha introdotto a partire dal suffisso latino \emph{-\={a}rius, -\=aria, -\=arium}, usato per formare aggettivi a partire da nomi o numerali. Una operazione `\(n\)-aria' accetta \(n\) argomenti a dominio.} innanzitutto, si ricordi che una operazione \(n\)-aria su un insieme \(X\) consta di una funzione \(\tup Xn\times \to X\) dove \(X_i = X\) per ogni \(i=1,\dots,n\).
 \index{Categoria!---}
@@ -416,11 +442,16 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 		\item gli oggetti di \(\ctMod(\Omega,a)\) sono precisamente i modelli \((X,f_\bullet)\) di \((\Omega,a)\);
 		\item fissati due modelli \((X,f_\bullet), (Y,g_\bullet)\) un \emph{omomorfismo} di modelli è una funzione \(h : X\to Y\) con la proprietà che per ogni \(\omega\in\Omega\) si abbia l'uguaglianza
 		      \[h(f_\omega(\tup x{a(\omega)},)) = g_\omega(\tup {hx}{a(\omega)},)\]
-		      o in termini diagrammatici:
-		      \[bla\]
+		      o in termini diagrammatici, il seguente diagramma commuta.
+		      \[
+		      \begin{tikzcd}
+		      	X^{a(\omega)} \ar{r}{h^{a(\omega)}} \ar{d}{f_\omega} & Y^{a(\omega)} \ar{d}{g_\omega} \\
+		      	X \ar{r}{f} & Y
+		      \end{tikzcd}
+		      \]
 	\end{itemize}
 \end{example}
-\`E un esercizio tedioso nella manipolazione delle tuple ordinate, ora, dimostrare che gli assiomi di categoria sono tutti soddisfatti. Un esercizio analogamente tedioso è di trovare segnature algebriche opportune che esprimono le categorie dei gruppi, dei monoidi, degli anelli e degli spazi vettoriali ecc. come esempi particolari di categorie di modelli di una segnatura algebrica. (Tedioso, e a volte non proprio banale: ad esempio, come si descrivono le operazioni di moltiplicazione per scalare in uno spazio vettoriale usando la definizione di segnatura algebrica?)
+\`E un esercizio tedioso nella manipolazione delle tuple ordinate, ora, dimostrare che gli assiomi di categoria sono tutti soddisfatti. Un esercizio analogamente tedioso è di trovare segnature algebriche opportune che esprimono le categorie dei gruppi, dei monoidi, degli anelli e degli spazi vettoriali ecc.\ come esempi particolari di categorie di modelli di una segnatura algebrica. (Tedioso, e a volte non proprio banale: ad esempio, come si descrivono le operazioni di moltiplicazione per scalare in uno spazio vettoriale usando la definizione di segnatura algebrica?)
 \begin{example}[Categoria dei grafi]\label{ex_cat_grafi}\index{Categoria!--- dei grafi}
 	\Todo{}
 \end{example}
@@ -456,7 +487,7 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 \end{example}
 L'importanza della categoria degli ordinali sarà più evidente quando in \ref{sec_funtori} introdurremo la definizione di funtore. Per il momento, ci limitiamo ad alcune osservazioni.
 \begin{remark}
-	Se \([n]=\{1,\dots,n\}\) è un insieme finito, l'ordinamento \(\{1<2<\dots<n\}\) lo rende un woset nel senso di \ref{po_wo_to}, e quindi \(\Delta[n]\) è in maniera naturale un oggetto di \(\ctPos\), ma anche di \(\ctOrd\); insieme alle funzioni monotòne tra questi insiemi finiti, ciò identifica la sottocategoria di \(\ctOrd\) generata da tutte le catene generiche \(\Delta[n]\) di \ref{ex_cat_catena} con la sottocategoria \(\ctFOrd\) di tutti gli ordinali finiti
+	Se \([n]=\{1,\dots,n\}\) è un insieme finito, l'ordinamento \(\{1<2<\dots<n\}\) lo rende un woset nel senso di \ref{po_wo_to}, e quindi \(\Delta[n]\) è in maniera naturale un oggetto di \(\ctPos\), ma anche di \(\ctOrd\); insieme alle funzioni monotòne tra questi insiemi finiti, ciò identifica la sottocategoria di \(\ctOrd\) generata da tutte le catene generiche \(\Delta[n]\) di \ref{ex_cat_catena} con la sottocategoria \(\ctFOrd\) di tutti gli ordinali finiti.
 \end{remark}
 \begin{remark}
 	Senza un assioma dedicato a tale scopo, non si possono generare ordinali più grandi di quelli finiti; al contrario, assumendo che esista almeno un insieme \emph{induttivo} \(N\) (cioè tale che, se \(x\in N\), allora \(x^+:=x\cup\{x\}\in N\)), possiamo `accedere' a ordinali più grandi, e da qui generarne di \emph{molto} grandi (abbastanza da far sì che la categoria \(\ctOrd\) abbia una classe propria di oggetti).
@@ -478,19 +509,67 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 \end{remark}
 \index{Categoria!--- di spazi topologici}
 \begin{example}\label{ex_cat_top}
-	\Todo{Spazi e funzioni continue}
+	Ricordiamo che uno \emph{spazio topologico} è un insieme \(X\) dotato di una \emph{topologia}, cioè una collezione $\tau_X$ di sottoinsiemi di \(X\), chiamati gli \emph{aperti}, contenente l'insieme vuoto e \(X\) stesso, e chiusa rispetto alle intersezioni finite e a tutte le unioni. 
+	Dati due spazi topologici \((X,\tau_X)\) e \((Y,\tau_Y)\), una funzione \(f:X\to Y\) è continua per le topologie \(\tau_X\) e \(\tau_Y\) se per ogni aperto \(V\in\tau_Y\), la sua preimmagine \(f^{-1}(V)\) è un aperto di \(\tau_X\).
+	Gli spazi topologici e le funzioni continue tra loro formano la categoria \(\ctTop\).
 \end{example}
 \index{Categoria!--- di funzioni parziali}
-\begin{example}\label{ex_cat_pfun}
-	\Todo{Insiemi e funzioni parziali}
+\begin{example}\label{ex_cat_pfun}\index{Funzione!--- parziale}
+	Dati due insiemi \(X\) e \(Y\), una \emph{funzione parziale} è una relazione \(p\) tra \(X\) e \(Y\) che associa ad ogni elemento di \(X\) \emph{al più} un singolo elemento di \(Y\). In maniera equivalente, possiamo vedere \(p\) come una funzione da un sottoinsieme \(D_f\subseteq X\) a \(Y\), a volte chiamato il \emph{dominio} di \(p\). Se \(x\notin D_f\), si dice che \(p(x)\) \emph{non è definita} (\emph{n.d.}).
+	Date due funzioni parziali \(f:X\to Y\) e \(g:Y\to Z\), la funzione parziale \(g\circ f:X\to Z\) è definita come segue:
+	\[
+	(g\circ f) (x) \coloneqq \begin{cases}
+								n.d. & x\notin D_f ; \\
+								n.d. & x\in D_f, f(x)\notin D_g ; \\
+								g(f(x)) & x\in D_f, f(x)\in D_g .
+							 \end{cases}
+	\]
+	La categoria degli insiemi e delle funzioni parziali è chiamata \(\cate{SetPart}\).
 \end{example}
 \index{Categoria!--- di insiemi puntati}
-\begin{example}\label{ex_cat_puntati}
-	\Todo{Insiemi puntati}
+\begin{example}\label{ex_cat_puntati}\index{Insieme!--- puntato}
+	Un'\emph{insieme puntato} è una coppia \((X,x)\) dove \(X\) è un insieme e \(x\) è uno specifico elemento di \(X\).
+	La \emph{categoria degli insiemi puntati} \(\ctSet_*\) ha
+	\begin{itemize}
+		\item come oggetti, gli insiemi puntati;
+		\item come morfismi, dati due insiemi puntati \((X,x)\) e \((Y,y)\), funzioni \(f:X\to Y\) tali che \(f(x)=y\).
+	\end{itemize}
 \end{example}
 \index{Categoria!--- di azioni di gruppo}
 \begin{example}\label{ex_cat_g_insiemi}
-	\Todo{Azioni di \(G\)}
+	Dato un gruppo \(G\) (o anche un monoide, se si vuole), un'\emph{azione sinistra di \(G\) su un insieme \(X\)} è una funzione 
+	\[
+	\begin{tikzcd}[row sep=0]
+		G\times X \ar{r}{a_X} & X \\
+		(g,x) \ar[mapsto]{r} & g\cdot x
+	\end{tikzcd}
+	\]
+	con le seguenti proprietà:
+	\begin{itemize}
+		\item Per ogni \(x\in X\), l'azione dell'elemento neutro lascia \(x\) invariato:
+		\[
+		e\cdot x = x ;
+		\]
+		\item Per ogni \(x\in X\) e per ogni coppia di elementi \(g,h\in G\), l'azione del prodotto in \(G\) è la composizione delle azioni:
+		\[
+		(g\cdot h)\cdot x = g\cdot(h\cdot x) .
+		\]
+	\end{itemize}
+	Un'\emph{azione destra} è una funzione \(X\times G\to X\) con proprietà analoghe.
+	Un insieme dotato di una specifica azione di \(G\) viene chiamato un \emph{\(G\)-insieme}, o \emph{\(G\)-set}.
+	
+	Dati due \(G\)-insiemi \((X,a_X)\) e \((Y,a_Y)\) (per lo stesso gruppo o monoide \(G\)), una funzione \(f:X\to Y\) si dice \emph{equivariante} se per ogni \(x\in X\) e \(g\in G\),
+	\[
+		f(g\cdot x) = g\cdot f(x) ,
+	\]
+	ossia se il seguente diagramma commuta.
+	\[
+	\begin{tikzcd}
+		G\times X \ar{r}{\id_G\times f} \ar{d}{a_X} & G\times Y \ar{d}{a_Y} \\
+		X \ar{r}{f} & Y
+	\end{tikzcd}
+	\]
+	Si noti che la composizione di funzioni equivarianti è anch'essa equivariante. I \(G\)-insiemi e le funzioni equivarianti tra loro formano la categoria \(G\emdash\ctSet\). 
 \end{example}
 \index{Categoria!--- di `stream'}
 \begin{example}\label{example_streams}
@@ -520,7 +599,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 \end{example}
 Veniamo ora a degli esempi più astratti e chiudiamo il cerchio su quelli che hanno motivato la definizione di categoria all'inizio.
 
-Un'ottima intuizione sulla definizione \ref{def_categ} è che in qualsiasi circostanza dove una classe di strutture possiede una nozione ovvia di omomorfismo che preserva la specifica di quella struttura, e tale che
+Un'utile intuizione sulla definizione \ref{def_categ} è che in qualsiasi circostanza dove una classe di strutture possiede una nozione ovvia di omomorfismo che preserva la specifica di quella struttura, e tale che
 \begin{itemize}
 	\item l'identità è un omomorfismo;
 	\item la composizione di due omomorfismi è ancora un omomorfismo;
@@ -529,9 +608,12 @@ si riesce a definire la classe degli oggetti e dei morfismi di una categoria. Gl
 
 Fin qui, l'osservazione che le strutture matematiche di un dato tipo, con la definizione appropriata di omomorfismo, formino una categoria, è nient'altro che una banalità della prassi matematica. Una osservazione decisamente meno banale è che alcune delle strutture basilari della pratica matematica sono \emph{esse stesse} delle categorie.
 
-In più, questo modo di intendere la definizione oscura un'altra idea importante, perché l'esempio \ref{ex_cat_sigma_strutture} potrebbe far sospettare che gli oggetti di una categori siano, alla fin fine, sempre insiemi dotati di strutture ulteriori (per esempio, operazioni o relazioni), e i morfismi funzioni che preservano queste strutture.
+In più, questo modo di intendere la definizione oscura un'altra idea importante, perché l'esempio \ref{ex_cat_sigma_strutture} potrebbe far sospettare che gli oggetti di una categoria siano, alla fin fine, sempre insiemi dotati di strutture ulteriori (per esempio, operazioni o relazioni), e i morfismi funzioni che preservano queste strutture.
 
 Invece, le categorie che hanno questa proprietà si dicono \emph{concrete}, ed esistono esempi di categorie non concrete (sebbene essi siano piuttosto ardui da definire); chi legge può consultare \cite{Freyd1973,Kuera1971} per maggiori informazioni.
+In ogni caso, per molte categorie, anche se \emph{tecnicamente} si potrebbero interpretare come categorie i cui oggetti sono insiemi strutturati, questa interpretazione non è la più naturale o la più utile. Questo è il caso degli esempi \ref{ex_cat_vuota}--\ref{ex_cat_libera}, in cui gli oggetti si possono vedere, più che come insiemi strutturati, come \emph{vertici di un grafo}.
+I seguenti esempi sono simili:
+
 \index{Relazione di equivalenza}
 \begin{example}\label{ex_cat_rel_equiv}
 	Un insieme dotato di una relazione di equivalenza si può vedere come una particolare categoria. Consideriamo un insieme \(X\) dotato di una relazione di equivalenza indicata con il simbolo \(\sim\).
@@ -545,7 +627,7 @@ Invece, le categorie che hanno questa proprietà si dicono \emph{concrete}, ed e
 
 	Gli assiomi di unitalità e associatività sono automaticamente soddisfatti: per esempio, la composizione \((w\to x\to y)\to z\) e la composizione \(w\to (x\to y\to z)\) coincidono, constando dell'unico morfismo \(w\to z\).
 \end{example}
-Quelle della forma \(\ctB(X,\sim)\) per qualche insieme \(X\) e relazione di equivalenza \(\sim\) sono un primo esempio elementare di categoria in cui gli oggetti non sono insiemi strutturati, ma non è quello più semplice possibile: la proprietà di simmetria di \(\sim\) non è essenziale per ottenere una categoria.
+Quelle della forma \(\ctB(X,\sim)\) per qualche insieme \(X\) e relazione di equivalenza \(\sim\) sono un esempio elementare di categoria in cui gli oggetti non sono insiemi strutturati, ma non è quello più semplice possibile: la proprietà di simmetria di \(\sim\) non è essenziale per ottenere una categoria.
 
 Consideriamo ora i seguenti esempi di categorie simili (che raccogliamo in dei teoremi, di cui diamo una dimostrazione completa, perché questi esempi sono pedagogicamente rilevanti).
 \index{Categoria!--- da una relazione}
@@ -603,7 +685,7 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 % 	L'unitalità e l'associatività del monoide e della categoria si corrispondono.
 % \end{example}
 \begin{corollary}\label{cor_cat_mon}
-	In particolare, un gruppo \((G,\cdot,1)\) si può ugalmente vedere come la categoria \(\ctB G\) ad esso associata, che ha un solo oggetto e \(G\) come insieme di morfismi. In maniera concisa (ma anche ora, chi legge dovrebbe fermarsi a riflettere finché questa frase non risulta perfettamente evidente) un monoide è una categoria con un singolo oggetto, e un gruppo è un gruppoide (come in \ref{def_gruppoide}) con un singolo oggetto.
+	In particolare, un gruppo \((G,\cdot,1)\) si può ugalmente vedere come la categoria \(\ctB G\) ad esso associata, che ha un solo oggetto e \(G\) come insieme di morfismi. In maniera concisa (ma anche ora, chi legge dovrebbe fermarsi a riflettere finché questa frase non risulta perfettamente evidente) un monoide è una categoria con un singolo oggetto.%, e un gruppo è un gruppoide (come in \ref{def_gruppoide}) con un singolo oggetto.
 \end{corollary}
 \begin{remark}
 	Del resto, una categoria con un solo oggetto non `è' un monoide, ma lo definisce naturalmente; e un monoide non `è' la categoria \(\ctB M\), ma la definisce naturalmente (e qualcosa di simile si può dire per gli insiemi ordinati). In altre parole, eliminare la distinzione tra \(M\) e \(\ctB M\) non segue da una tautologia, ma è una \emph{identità informativa} (intesa come in `Senso e significato` di Frege) che non è \emph{strettamente} una identità ma una \emph{identificazione}: \(M\mapsto \ctB M\) e \(\ctC\mapsto \ctC_1\) sono, a patto che \(\ctC_0\) abbia un solo elemento, corrispondenze inverse una dell'altra, nel senso che \((\ctB M)_1 = M\) e che \(\ctB(\ctC_1) = \ctC\).
