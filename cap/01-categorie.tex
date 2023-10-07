@@ -460,17 +460,17 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 	Si ricordi da \ref{prelim_def_preset} che un \emph{insieme preordinato} è un insieme \(P\) dotato di una relazione riflessiva e transitiva \(\le\); una funzione \(f  : (P,\le)\to (Q,\preceq)\) si dice \emph{monotòna} o si dice che \(f\) \emph{preserva l'ordine} se vale
 	\[\forall x,y(x\le y\Rightarrow fx\le fy).\]
 
-	La categoria \(\ctPOrd\) ha per oggetti e morfismi gli insiemi preordinati e le funzioni monotòne. Chiaramente, l'identità \(\id_P : (P,\le)\to (P,\le)\) è una funzione monotòna, e la composizione di due funzioni monotòne resta monotòna.
+	La categoria \(\ctPre\) ha per oggetti e morfismi gli insiemi preordinati e le funzioni monotòne. Chiaramente, l'identità \(\id_P : (P,\le)\to (P,\le)\) è una funzione monotòna, e la composizione di due funzioni monotòne resta monotòna.
 
 	\`E tuttavia importante che l'ordine su \(P\) sia \emph{lo stesso} affinché l'identità sia monotòna: infatti, ogni insieme \(P\) può essere dotato dell'ordine \emph{banale} (dove \(x \mathrel{\le^\delta} y\) se e solo se \(x=y\)) e dell'ordine \emph{caotico} (dove \(x\mathrel{\le^\chi} y\) per ogni \(x,y\in P\)). Se \(P\) ha almeno tre elementi, la funzione identica \((P,\le^\chi)\to (P,\le^\delta)\) non è, chiaramente, monotòna.
 \end{example}
 \index{Ordine parziale}
 \begin{remark}[po, wo e to]\label{po_wo_to}
-	Una sottoclasse importante di preordini sono quelli dove \(\le\) è una relazione antisimmetrica; in tal caso il preordine \((P,\le)\) si dice un \emph{insieme parzialmente ordinato} o \emph{poset}. La categoria \(\ctPos\) ha per oggetti i poset e per morfismi le stesse funzioni monotòne di \ref{ex_cat_ordini}.
+	Una sottoclasse importante di preordini si ottiene imponendo che \(\le\) sia una relazione antisimmetrica; in tal caso il preordine \((P,\le)\) si dice un \emph{insieme parzialmente ordinato} o \emph{poset}. La categoria \(\ctPos\) ha per oggetti i poset e per morfismi le stesse funzioni monotòne di \ref{ex_cat_ordini}.
 
-	Un'altra sottocategoria importante di \(\ctPOrd\) è quella degli insiemi \emph{totalmente ordinati} o \emph{toset}, dove tutti gli elementi sono confrontabili tra loro:
+	Un'altra sottocategoria importante di \(\ctPre\) è quella degli insiemi \emph{totalmente ordinati} o \emph{toset}, dove tutti gli elementi sono confrontabili tra loro:
 	\[\forall x,y\in P((x\le y)\lor (y\le x)).\]
-	Da ultimo, una ulteriore sottocategoria importante di \(\ctPOrd\) è quella degli insiemi \emph{bene ordinati} o \emph{woset}, dove ogni sottoinsieme non vuoto ammette un elemento minimo.
+	Da ultimo, una ulteriore sottocategoria importante di \(\ctPre\) è quella degli insiemi \emph{bene ordinati} o \emph{woset}, dove ogni sottoinsieme non vuoto ammette un elemento minimo.
 \end{remark}
 \index{Categoria!--- degli ordinali}
 \begin{example}\label{ex_cat_ordinali}
@@ -731,7 +731,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 	\end{itemize}
 \end{definition}
 \begin{example}
-	Raccogliamo in un unico paragrafo diversi esempi di sottocategorie: la sottocategoria degli insiemi finiti di \ref{protoex_finset} è una sottocategoria (piena) della categoria $\ctSet$ di \ref{ex_cat_insiemi}; la categoria dei gruppi abeliani è una sottocategoria piena della categoria di tutti i gruppi; la categoria degli insiemi totalmente ordinati è una sottocategoria di $\ctPos$ definita in \ref{}.
+	Raccogliamo in un unico paragrafo diversi esempi di sottocategorie: la sottocategoria degli insiemi finiti di \ref{protoex_finset} è una sottocategoria (piena) della categoria $\ctSet$ di \ref{ex_cat_insiemi}; la categoria dei gruppi abeliani è una sottocategoria piena della categoria di tutti i gruppi; la categoria degli insiemi totalmente ordinati è una sottocategoria di $\ctPos$ definita in \ref{po_wo_to}.
 \end{example}
 \begin{definition}\label{def_cat_prodotto}
 	Date due categorie \(\ctC\) e \(\ctD\), la \emph{categoria prodotto} \(\ctC\times\ctD\) ha
@@ -778,12 +778,36 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 \begin{example}
 	La categoria opposta di un poset
 \end{example}
-\begin{remark}
+\begin{proposition}
 	Il \emph{principio di dualità} in teoria delle categorie afferma che ogni asserto valido nel linguaggio della teoria ammette un enunciato duale a sua volta valido, che si ottiene invertendo i ruoli di dominio e codominio e (conseguentemente) l'ordine della composizione in una categoria.
 
-	Per rendere preciso questo principio dobbiamo fare uso di alcune nozioni elementari di logica; 
-\end{remark}
+	Per rendere preciso questo principio dobbiamo fare uso di alcune nozioni elementari di logica; svolgere davvero questo compito (cioè scrivere un linguaggio al primo ordine, dove esprimere veramente la teoria delle categorie) sarebbe fuorviante,\footnote{Chi legge consulti \cite{ETCC} per approfondimenti, se lo desidera.} quindi ci limitiamo a una esposizione semi-formale, definendo il \emph{linguaggio $\mathsf{CT}$} come quello che ha 
+	\begin{itemize}
+		\item per costanti i simboli $A,B,C\dots : \ctC_0$ degli oggetti e i simboli $f,g,h,\dots : \ctC_1$ dei morfismi;
+		\item le funzioni dominio e codominio $d,c : \ctC_1\to\ctC_0$;
+		\item la funzione di costruzione dell'identità $\id : \ctC_0\to \ctC_1$;
+		\item l'operazione di composizione $\_\circ\_ : \ctC_2 \to \ctC_1$ dove ricordiamo che 
+		\[\ctC_2 := \{\}\subseteq\ctC_1\times\ctC_1\]
+	\end{itemize}
+	tutto ciò soggetto alle equazioni
+	\Todo{}
+	(che vanno interpretate `in contesto', cioè ad esempio $(g,f) \in \ctC_2\vdash d(g\circ f)=d(f)$ eccetera).
+
+	Il principio di dualità si enuncia come segue. 
+	Data una formula $\Sigma$ nel linguaggio $\mathsf{CT}$, possiamo costruire la formula duale con la sostituzione $\Sigma[d/c,c/d,\circ/\circ^\op]$\footnote{\`E chiaro cosa lo scambio di $d,c$ significhi: prima si sostituisce $d$ con un simbolo vergine $\dot c$ e $c$ con un simbolo vergine $\dot d$, e poi si sosituisce $\dot c$ con $c$ e $\dot d$ con $d$:
+	\[\Sigma \squig \Sigma[d/\dot c,c/\dot d]\squig \Sigma[\dot c/c,\dot d/d] =:\Sigma^\op\]
+	ma questa pedanteria è eccessiva.} dove $\_\circ^\op\_$ è definita come $u\circ^\op v = v\circ u$ (e questa è una buona definizione, dopo lo scambio $d\leftrightarrows c$).
+	\begin{quote}[Principio di dualità in una categoria]
+		Se $\Sigma$ è valido in $\mathsf{CT}$ (in simboli, $\mathsf{CT}\vDash \Sigma$) allora $\Sigma^\op$ è valido in $\mathsf{CT}$ ($\mathsf{CT}\vDash \Sigma^\op$).
+	\end{quote}
+\end{proposition}
 \begin{remark}
+	Il principio di dualità è molto lontano dall'affermare che un asserto è vero in una categoria $\ctC$ se e solo se esso è vero in $\ctC^\op$; l'asserto va (formalizzato, cioè espresso come un enunciato nel linguaggio $\mathsf{CT}$) \emph{e dualizzato}, ed è solo dopo questa dualizzazione che esso vale (in $\ctC^\op$, non necessariamente in $\ctC$!).
+
+	Ad esempio: nell'insieme parzialmente ordinato dei numeri naturali ogni sottoinsieme non vuoto ammette un minimo. Tale ordine parziale è una categoria per \ref{}; il minimo di un insieme ordinato ora si descrive in termini della relazione d'ordine (cioè della classe dei suoi morfismi); del resto, $\bfN^\op = \{\dots\le 2 \le 1 \le 0\}$ non ha un minimo, bensì un massimo.
+\end{remark}
+Le categorie che si identificano alla propria opposta meritano quindi un nome specifico.
+\begin{definition}
 	Diciamo che una categoria \(\ctC\) è \emph{autoduale} se \(\ctC=\ctC^\op\).
 
 	Chiaramente, la categoria vuota \(\ctInit\) è autoduale (ossia \(\ctInit^\op=\ctInit\)) e altrettanto è vero per la categoria terminale \(\ctTerm\) e per la categoria discreta \(A^\delta\) di \ref{ex_cat_discreta}.
@@ -793,7 +817,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 
 	Le categorie `span generico' e `cospan generico' sono opposte l'una dell'altra, e altrettanto è vero per le categorie \(S^\lhd\) e \(S^\rhd\):
 	\[(\Lambda^2_0)^\op = \Lambda^2_2\qquad\qquad (S^\lhd)^\op = S^\rhd\]
-\end{remark}
+\end{definition}
 
 \begin{definition}[Incubi e succube sopra un oggetto]\label{def_cat_slice}\index{Categoria!--- incubo}\index{Categoria!--- succuba|see {incubo}}\index{Categoria!--- sopra un oggetto}\index{Categoria!--- sotto un oggetto|see {sopra un oggetto}}
 	Sia \(\ctC\) una categoria, e \(X\) un oggetto di \(\ctC\). 
