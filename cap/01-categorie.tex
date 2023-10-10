@@ -1057,9 +1057,11 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 	      %       \Todo{Trovo questi esercizi un po' troppo facili\dots Non che sia un male, ma vorrei degli esempi più pedagogici!}
 	      \item\label{isounico} In una categoria localmente piccola \(\ctC\), dati due oggetti isomorfi \(X\) e \(Y\), dimostra che per ogni oggetto \(A\), gli insiemi \(\Hom{\ctC}(A,X)\) e \(\Hom{\ctC}(A,Y)\) sono in corrispondenza biunivoca.
 \end{enumerate}
+
 \section{Funtori e diagrammi}\label{sec_funtori}
 
 \Todo{motivazione: se i monoidi e i poset sono categorie, a che tipo di trasformazione tra categorie corrispondono gli omomorfismi di monoide e le funzioni monotone? Ottima domanda!}
+
 \begin{definition}[Funtore]\label{def_funtore}\index{Funtore}
 	Date due categorie \(\ctC\) e \(\ctD\), un \emph{funtore} \(F:\ctC\fun\ctD\) consiste dei seguenti dati.
 	\begin{itemize}
@@ -1071,22 +1073,63 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 		\item \emph{Preservazione delle composizioni}: per ogni coppia di morfismi componibili \(f\) e \(g\) di \(\ctC\), \(F(g\cmp f)=Fg\cmp Ff\).
 	\end{itemize}
 \end{definition}
+
 \begin{example}\label{exa_monotone_funtori}\index{Funtore!mappa monotòna come ---}
-	\Todo{funzioni monotone come funtori}
+	Abbiamo visto in \ref{ord_sonocat} che gli insiemi parzialmente ordinati si possono vedere come particolari categorie. 
+	Dati due insiemi parzialmente ordinati \((X,\le)\) e \((Y,\le)\), un funtore \((X,\le)\to(Y,\le)\) è precisamente una funzione monotòna nel senso di \ref{ex_cat_ordini}. 
+	Vediamo come. Innanzitutto, per ogni oggetto (cioè, in questo caso, elemento) \(x\) di \(X\), un oggetto (elemento) di \(Y\). In altre parole, abbiamo una funzione \(f:X\to Y\). 
+	Sulle frecce, per ogni freccia \(x\to x'\) di \(X\) (ce n'è una, ed è unica, se e solo se \(x\le x'\)), una freccia \(f(x)\to f(x')\) (ancora, ce n'è una unica se s solo se \(f(x)\le f(x')\)). In altre parole, \(f\) ha la proprietà che se \(x\le x'\), allora \(f(x)\le f(x')\). Cioè, \emph{\(f\) è monotòna}. 
+	L'identità è preservata automaticamente: per ogni \(x\), esiste un'unica freccia \(f(x)\to f(x)\), data dal fatto che l'ordine di \(Y\) è riflessivo. Per cui l'equazione \(f(\id_{x})=\id_{f(x)}\) in questo caso è una tautologia.
+	Allo stesso modo, anche le composizioni sono preservate automaticamente.
 \end{example}
+
 \begin{example}\label{exa_funtori_da_gruppi}\index{Funtore!omomorfismi di monoidi come ---}
-	\Todo{hom di monoidi come funtori}
+	Abbiamo visto in \ref{mon_sonocat} che i monoidi (e i gruppi) si possono vedere come particolari categorie, con un solo oggetto.
+	Dati due monoidi \(M\) e \(N\), un funtore \(\ctB M\to \ctB N\) è precisamente un morfismo di monoidi nel senso di \ref{ex_cat_monoidi}.
+	Innanzitutto, un funtore \(\ctB M\to \ctB N\) deve mappare l'unico oggetto di \(\ctB M\) in quello di \(\ctB N\) nell'unico modo possibile, e questo vale per tutti i funtori di questo tipo.
+	Sulle frecce, il funtore deve assegnare ad ogni morfismo di \(\ctB M\) (ossia, ogni elemento del monoide \(M\)) un morfismo di \(\ctB N\) (elemento di \(N\)). In altre parole, abbiamo una funzione \(f:M\to N\).
+	In questo caso, le condizioni sull'identità e la composizione non sono banali: la preservazione dell'identità ci dice che \(f(1_M)=1_N\), e la preservazione delle composizioni ci dice che per ogni \(m,m'\in M\) abbiamo \(f(m\cdot m')=f(m)\cdot f(m')\). 
 \end{example}
+
 \begin{example}\label{exa_azioni_funtori}\index{Funtore!azioni come ---}
-	\Todo{azioni di gruppo come funtori}
+	Dato un gruppo \(G\), un funtore \(\ctB G\to\ctSet\) è precisamente un \(G\)-insieme, i.e.\ un insieme con un'azione di \(G\), nel senso di \ref{ex_cat_g_insiemi}. 
+	Il funtore mappa l'unico oggetto di \(\ctB G\) in un insieme, chiamiamolo \(X\).
+	Sulle frecce, un po' come nell'esempio sopra, il funtore assegna ad ogni elemento \(g\) di \(G\) una funzione \(X\to X\), che possiamo scrivere come \(x\mapsto g\cdot x\). 
+	La preservazione dell'identità e della composizione dicono precisamente che le funzioni \(x\mapsto g\cdot x\) per ogni \(g\) danno un'azione di \(G\) su \(X\).
+	
+	In maniera simile, un funtore \(\ctB G\to\bbR\emdash\ctVect\) è una rappresentazione (lineare) di \(G\) su uno spazio vettoriale.
+	
+	Le stesse costruzioni si possono fare con un monoide invece di un gruppo.
 \end{example}
+
+\begin{example}\label{exa_derivata_funtore}\index{Funtore!differenziale come ---}
+	Sia \(\cate{Euc}_*\) la categoria come segue:
+	\begin{itemize}
+		\item Gli oggetti sono \emph{spazi Euclidei puntati}, cioè coppie \((\bbR^n,x)\) con \(n\in\bbR\) e \(x\in\bbR^n\);
+		\item I morfismi \((\bbR^n,x)\to (\bbR^m,y)\) sono funzioni differenziabili \(f:\bbR^n\to\bbR^m\) tali che \(f(x)=y\).
+	\end{itemize}
+	Possiamo costruire un funtore \(D:\cate{Euc}_*\to\bbR\emdash\ctVect\) nel seguente modo:
+	\begin{itemize}
+		\item Sugli oggetti, mappa \((\bbR^n,x)\) in \(\bbR^n\);
+		\item Sui morfismi, assegna alla funzione \(f:(\bbR^n,x)\to (\bbR^m,y)\) il \emph{differenziale} di \(f\) in \(x\), cioè, la mappa lineare \(Df:\bbR^n\to\bbR^m\).
+	\end{itemize}
+	Questa costruzione è funtoriale perché
+	\begin{itemize}
+		\item Il differenziale della funzione identità, ad ogni punto, è la matrice identità;
+		\item Il differenziale della composizione di due funzioni è il prodotto matriciale dei differenziali.
+	\end{itemize}
+	(Se queste proprietà non fossero chiare, può essere di aiuto scriverle per esteso.)
+\end{example}
+
 \begin{example}\label{exa_funtori_da_poset}\index{Funtore!--- covariante}
 	\index{Funtore!Prefascio}
 	\Todo{funtori contro, covarianti, prefasci, bifuntori}
 \end{example}
+
 \begin{example}\label{ex_hom_funtore}\index{Funtore!hom}
 	\Todo{hom come funtore; hom come bifuntore}
 \end{example}
+
 \begin{example}\label{exa_funtori_liberi_forgetti}\index{Funtore!--- libero e dimenticante}
 	\Todo{funtori liberi e funtori dimenticanti}
 	Se \((\Omega,a)\) è una segnatura algebrica come in \ref{ex_cat_sigma_strutture}, esiste un funtore
@@ -1097,37 +1140,58 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 	\]
 	che manda ogni modello in \(\ctMod(\Omega,a)\) nel suo \emph{insieme soggiaciente} \(X\).
 \end{example}
-\begin{proposition}\label{compo_funtori}
-	\Todo{Composizione di funtori}
-\end{proposition}
+
+\begin{definition}\label{compo_funtori}
+	Dati due funtori \(F:\ctC\to\ctD\) e \(G:\ctD\to\ctE\), il \emph{funtore composto} \(G\circ F:\ctC\to\ctE\) assegna
+	\begin{itemize}
+		\item Ad ogni oggetto \(X\) di \(\ctC\), l'oggetto \(GFX\) (ossia \(G(F(X))\)) di \(\ctE\);
+		\item Ad ogni morfismo \(f:X\to Y\) di \(\ctC\), il morfismo \(GFf\) (ossia \(G(F(f))\)) di \(\ctE\).
+	\end{itemize}
+	Il fatto che questo dia un funtore (i.e.\ che preservi identità e composizione) segue dal fatto che \(F\) e \(G\) sono funtori:
+	\[
+	G(F(\id_X)) = G(\id_{FX}) = \id_{GFX} ;
+	\]
+	\[
+	G(F(g\circ f)) = G(Ff\circ Fg) = GFf\circ GFg .
+	\]
+\end{definition}
+
 \begin{definition}[Funtore identità]\label{def_funtore_id}\index{Funtore!identità}
-	\Todo{Funtore identità}
+	Data una categoria \(\ctC\), il \emph{funtore identità} su \(\ctC\) assegna ad ogni oggetto \(X\), \(X\) stesso, e ad ogni morfismo \(f\), \(f\) stesso.
+	(Può essere di aiuto verificare manualmente perché questo sia un funtore.)
 \end{definition}
+
 \begin{definition}[La categoria delle categorie]\label{ex_cat_cat}\index{Categoria!--- delle categorie}
-	\Todo{La categoria di categorie e funtori}
+	Come si può verificare, la composizione di funtori come definita sopra è associativa, e con il funtore identità definito sopra, è unitale.
+	Per questo le categorie e i funtori formano una categoria. Per essere precisi:
+	\begin{itemize}
+		\item Chiamiamo \(\ctCat\) la categoria delle categorie piccole e i funtori tra loro;
+		\item Chiamiamo \(\cate{CAT}\) la categoria delle categorie localmente piccole e i funtori tra loro.
+	\end{itemize}
 \end{definition}
+
+\Todo{Va bene la convenzione sopra? Se no cambiatela senza problemi. --Paolo}
+
 \begin{definition}\label{def_diagramma_comm}
 	\Todo{Diagramma, diagramma commutativo.}
 \end{definition}
+
 \begin{lemma}\label{lem_funtori_preservano_comm}
 	\Todo{Funtori preservano i diagrammi commutativi} in particolare, preservano gli isomorfismi.
 \end{lemma}
+
 \begin{definition}\label{def_cat_cocomma}
 	\Todo{Categoria comma e cocomma di due funtori}
 \end{definition}
 % C -> Sk(C) "è un'equivalenza"
 % altri esempi?
-% composizione di funtori, la (1-)categoria Cat
 
-% diagrammi
-% diagrammi commutativi (voglio una definizione precisa)
-% funtori li preservano - in particolare, preservano iso
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
+	\item 
 	\item
-	\item
-	\item
+	\item Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà il suo fibrato tangente. 
 	\item
 	\item
 \end{enumerate}
