@@ -1059,7 +1059,9 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 \end{enumerate}
 
 \section{Funtori e diagrammi}\label{sec_funtori}
-Dato che monoidi e poset si possono guardare come categorie, è una buona domanda chiedersi a che tipo di `trasformazione tra categorie' corrispondono gli omomorfismi di monoide di \ref{ex_cat_monoidi} e le funzioni monotòne di \ref{ex_cat_ordini}. Questo conduce alla definizione di \emph{funtore} tra categorie.
+
+\Todo{motivazione: se i monoidi e i poset sono categorie, a che tipo di trasformazione tra categorie corrispondono gli omomorfismi di monoide e le funzioni monotone? Ottima domanda!}
+
 \begin{definition}[Funtore]\label{def_funtore}\index{Funtore}
 	Date due categorie \(\ctC\) e \(\ctD\), un \emph{funtore} \(F:\ctC\fun\ctD\) consiste dei seguenti dati:
 	\begin{enumtag}{f}
@@ -1074,13 +1076,13 @@ Dato che monoidi e poset si possono guardare come categorie, è una buona domand
 \end{definition}
 
 \begin{example}\label{exa_monotone_funtori}\index{Funtore!mappa monotòna come ---}
-	Dati due insiemi parzialmente ordinati \((X,\le)\) e \((Y,\preceq)\) guardati come categorie nel senso di \ref{ord_sonocat}, un funtore \((X,\le)\fun(Y,\preceq)\) è precisamente una funzione monotòna nel senso di \ref{ex_cat_ordini}. 
+	Dati due insiemi parzialmente ordinati \((X,\le)\) e \((Y,\le)\) guardati come categorie nel senso di \ref{ord_sonocat}, un funtore \((X,\le)\fun(Y,\le)\) è precisamente una funzione monotòna nel senso di \ref{ex_cat_ordini}. 
 
     Innanzitutto, la funzione \(f:X\to Y\) definisce una corrispondenza sugli oggetti.
 
-	Poi, l'unica freccia \(x\le x'\) in \(X\) determina una freccia \(fx\preceq fx'\) se e solo se $f$ è monotòna.% (ancora, ce n'è una unica se s solo se \(f(x)\le f(x')\)). In altre parole, \(f\) ha la proprietà che se \(x\le x'\), allora \(f(x)\le f(x')\). Cioè, \emph{\(f\) è monotòna}. 
+	Poi, l'unica freccia \(x\to x'\) in \(X\) determina una freccia \(f(x)\to f(x')\) se e solo se $f$ è monotòna.% (ancora, ce n'è una unica se s solo se \(f(x)\le f(x')\)). In altre parole, \(f\) ha la proprietà che se \(x\le x'\), allora \(f(x)\le f(x')\). Cioè, \emph{\(f\) è monotòna}. 
 
-	L'identità è preservata automaticamente: per ogni \(x\), esiste un'unica freccia \(fx\to fx\), data dal fatto che l'ordine di \(Y\) è riflessivo. Per cui, \(f(\id_{x})=\id_{fx}\).
+	L'identità è preservata automaticamente: per ogni \(x\), esiste un'unica freccia \(f(x)\to f(x)\), data dal fatto che l'ordine di \(Y\) è riflessivo. Per cui, \(f(\id_{x})=\id_{f(x)}\).
 
 	Allo stesso modo, anche le composizioni sono preservate automaticamente.
 \end{example}
@@ -1097,11 +1099,11 @@ Dato che monoidi e poset si possono guardare come categorie, è una buona domand
 \end{example}
 Proponiamo due esercizi a chi legge. 
 
-Se $\ctC$ è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore $\ctC \fun \ctB N$; farsi degli esempi con le categorie di \ref{sec_esempi_cats}, e con $N=(\bbN,+,0)$ il monoide dei numeri naturali.
+Se $\ctC$ è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore $\ctC \fun \ctB N$; farsi degli esempi con le categorie di \ref{}, e con $N=(\bbN,+,0)$ il monoide dei numeri naturali.
 
-Dualmente, se $\ctD$ è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore $\ctB M \fun \ctD$; farsi degli esempi con le categorie di \ref{sec_esempi_cats}, e con $M = (\bbN,+,0)$ il monoide dei numeri naturali.
+Dualmente, se $\ctD$ è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore $\ctB M \fun \ctD$; farsi degli esempi con le categorie di \ref{}, e con $M = (\bbN,+,0)$ il monoide dei numeri naturali.
 
-Questo secondo esercizio ha, come caso particolare, il seguente esempio quando $\ctD=\ctSet$ è la categoria di insiemi e funzioni di \ref{ex_cat_insiemi}: ciò giustifica la definizione che segue.
+Questo secondo esercizio ha, come caso particolare, il seguente esempio quando $\ctD=\ctSet$ è la categoria di insiemi e funzioni di \ref{}: ciò giustifica la definizione che segue.
 \begin{example}\label{exa_azioni_funtori}\index{Funtore!azioni come ---}
 	Dato un gruppo \(G\), un funtore \(\ctB G\fun\ctSet\) è precisamente un \emph{\(G\)-insieme}, ovvero un insieme con un'azione di \(G\), nel senso di \ref{ex_cat_g_insiemi}. 
 	Il funtore mappa l'unico oggetto di \(\ctB G\) in un insieme, chiamiamolo \(X\).
@@ -1109,7 +1111,7 @@ Questo secondo esercizio ha, come caso particolare, il seguente esempio quando $
 	La preservazione dell'identità e della composizione dicono precisamente che le funzioni \(x\mapsto g\cdot x\) per ogni \(g\) danno un'azione di \(G\) su \(X\).
 	
 \end{example}
-In maniera simile, un funtore \(\ctB G\fun\bbR\emdash\ctVect\) corrisponde a una rappresentazione (lineare) di \(G\) su uno spazio vettoriale, e le stesse costruzioni si possono fare con un monoide invece di un gruppo. Ciò giustifica la definizione seguente.
+In maniera simile, un funtore \(\ctB G\fun\bbR\emdash\ctVect\) è una rappresentazione (lineare) di \(G\) su uno spazio vettoriale, e le stesse costruzioni si possono fare con un monoide invece di un gruppo, e ciò giustifica la definizione seguente.
 \begin{definition}[Rappresentazione di $M$]
 	Sia $\ctD$ una categoria, ed $(M,\cdot,1)$ un monoide; una \emph{rappresentazione} di $M$ in $\ctD$ consiste di un funtore $\ctB M \to \ctD$.
 \end{definition}
@@ -1117,22 +1119,22 @@ In maniera simile, un funtore \(\ctB G\fun\bbR\emdash\ctVect\) corrisponde a una
 	Sia \(\cate{Euc}_*^\bbR\) la categoria degli spazi reali Euclidei puntati, definita come segue:
 	\begin{itemize}
 		\item Gli oggetti sono coppie \((n,x)\) con \(n\in\bbN\) e \(x\in\bbR^n\);
-		\item I morfismi \(f : (n,x)\to (m,y)\) sono funzioni differenziabili \(f:\bbR^n\to\bbR^m\) tali che \(f(x)=y\).
+		\item I morfismi \((n,x)\to (m,y)\) sono funzioni differenziabili \(f:\bbR^n\to\bbR^m\) tali che \(f(x)=y\).
 	\end{itemize}
-	Possiamo costruire un funtore \(D:\cate{Euc}_*^\bbR\to\bbR\emdash\cate{Mat}\) nel seguente modo:
+	Possiamo costruire un funtore \(D:\cate{Euc}_*\to\bbR\emdash\cate{Mat}\) nel seguente modo:
 	\begin{itemize}
 		\item Sugli oggetti, mappa \((n,x)\) in \(n\);
-		\item Sui morfismi, assegna alla funzione \(f:(n,x)\to (m,y)\) il \emph{differenziale} di \(f\) in \(x\), cioè, la mappa lineare \(Df:\bbR^n\to\bbR^m\).
+		\item Sui morfismi, assegna alla funzione \(f:(\bbR^n,x)\to (\bbR^m,y)\) il \emph{differenziale} di \(f\) in \(x\), cioè, la mappa lineare \(Df:\bbR^n\to\bbR^m\).
 	\end{itemize}
 	Questa costruzione è funtoriale perché
 	\begin{itemize}
-		\item Il differenziale della funzione identità $\id : (n,x) \to (n,x)$ è la matrice identità;
+		\item Il differenziale della funzione identità $\id : (\bbR,x) \to (\bbR,x)$ è la matrice identità;
 		\item Il differenziale della composizione di due funzioni è il prodotto (tra matrici) dei differenziali.
 	\end{itemize}
 	(Se queste proprietà non fossero chiare, può essere di aiuto scriverle per esteso ricordando \ref{ex_cat_matrici}.)
 \end{example}
 Raccogliamo in una singola definizione alcune classi di funtori particolari, che data la loro ubiquità meritano nomi specifici.
-\begin{definition}[Funtore controvariante]\label{def_funtore_contro}\index{Funtore!--- covariante}\index{Funtore!--- controvariante}
+\begin{definition}\index{Funtore!--- covariante}\index{Funtore!--- controvariante}
 	Definiamo un funtore \emph{controvariante} $F : \ctC \fun\ctD$ come un funtore $F : \ctC^\op\fun\ctD$; un tale funtore consta dei dati seguenti: 
 	\begin{enumtag}{fc}
 		\item a 
