@@ -374,8 +374,8 @@ Vale il seguente teorema:
 \end{example}
 \Todo{...}
 \subsection{Categorie come universi}
-	\Todo{...}
-	Proseguiamo con degli esempi di categorie grandi:
+\Todo{...}
+Proseguiamo con degli esempi di categorie grandi:
 \index{Categoria!--- delle relazioni}
 \begin{example}[Insiemi e relazioni]\label{ex_cat_rels}
 	La categoria \(\ctRel\) ha
@@ -1067,8 +1067,8 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 \begin{definition}[Funtore]\label{def_funtore}\index{Funtore}
 	Date due categorie \(\ctC\) e \(\ctD\), un \emph{funtore} \(F:\ctC\fun\ctD\) consiste dei seguenti dati:
 	\begin{enumtag}{f}
-		\item \label{f_1} Una funzione tra classi $F_0 : \ctC_0\to\ctD_0$ che assegna ad ogni oggetto \(X\) di \(\ctC\) un oggetto \(FX\) di \(\ctD\);
-		\item \label{f_2} Una funzione tra classi $F_1 : \ctC_1\to\ctD_1$ che assegna ad ogni morfismo \(X \xrightarrow{f} Y\) di \(\ctC\) un morfismo \(FX \xrightarrow{Ff} FY\) di \(\ctD\) (si noti che da ciò segue che \(F(\dom{f})=\dom{Ff}\) e \(F(\cod{f})=\cod{Ff}\));
+		\item \label{f_1} Una funzione tra classi \(F_0 : \ctC_0\to\ctD_0\) che assegna ad ogni oggetto \(X\) di \(\ctC\) un oggetto \(FX\) di \(\ctD\);
+		\item \label{f_2} Una funzione tra classi \(F_1 : \ctC_1\to\ctD_1\) che assegna ad ogni morfismo \(X \xrightarrow{f} Y\) di \(\ctC\) un morfismo \(FX \xrightarrow{Ff} FY\) di \(\ctD\) (si noti che da ciò segue che \(F(\dom{f})=\dom{Ff}\) e \(F(\cod{f})=\cod{Ff}\));
 	\end{enumtag}
 	Le funzioni di classe soddisfano le seguenti proprietà:
 	\begin{enumtag}{p}
@@ -1078,11 +1078,11 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 \end{definition}
 
 \begin{example}\label{exa_monotone_funtori}\index{Funtore!mappa monotòna come ---}
-	Dati due insiemi parzialmente ordinati \((X,\le)\) e \((Y,\le)\) guardati come categorie nel senso di \ref{ord_sonocat}, un funtore \((X,\le)\fun(Y,\le)\) è precisamente una funzione monotòna nel senso di \ref{ex_cat_ordini}. 
+	Dati due insiemi parzialmente ordinati \((X,\le)\) e \((Y,\le)\) guardati come categorie nel senso di \ref{ord_sonocat}, un funtore \((X,\le)\fun(Y,\le)\) è precisamente una funzione monotòna nel senso di \ref{ex_cat_ordini}.
 
-    Innanzitutto, la funzione \(f:X\to Y\) definisce una corrispondenza sugli oggetti.
+	Innanzitutto, la funzione \(f:X\to Y\) definisce una corrispondenza sugli oggetti.
 
-	Poi, l'unica freccia \(x\to x'\) in \(X\) determina una freccia \(f(x)\to f(x')\) se e solo se $f$ è monotòna.% (ancora, ce n'è una unica se s solo se \(f(x)\le f(x')\)). In altre parole, \(f\) ha la proprietà che se \(x\le x'\), allora \(f(x)\le f(x')\). Cioè, \emph{\(f\) è monotòna}. 
+	Poi, l'unica freccia \(x\to x'\) in \(X\) determina una freccia \(f(x)\to f(x')\) se e solo se \(f\) è monotòna.% (ancora, ce n'è una unica se s solo se \(f(x)\le f(x')\)). In altre parole, \(f\) ha la proprietà che se \(x\le x'\), allora \(f(x)\le f(x')\). Cioè, \emph{\(f\) è monotòna}. 
 
 	L'identità è preservata automaticamente: per ogni \(x\), esiste un'unica freccia \(f(x)\to f(x)\), data dal fatto che l'ordine di \(Y\) è riflessivo. Per cui, \(f(\id_{x})=\id_{f(x)}\).
 
@@ -1092,30 +1092,30 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 \begin{example}\label{exa_funtori_da_gruppi}\index{Funtore!omomorfismi di monoidi come ---}
 	% Abbiamo visto in \ref{mon_sonocat} che i monoidi (e i gruppi) si possono vedere come particolari categorie, con un solo oggetto.
 	Dati due monoidi \(M\) e \(N\) guardati come categorie nel senso di \ref{mon_sonocat}, un funtore \(\ctB M\fun \ctB N\) è precisamente un morfismo di monoidi nel senso di \ref{ex_cat_monoidi}.
-	
-	Innanzitutto, un funtore \(\ctB M\fun \ctB N\) deve mappare l'unico oggetto di \(\ctB M\) in quello di \(\ctB N\) nell'unico modo possibile, e questo vale per tutti i funtori il cui codominio è della forma $\ctB N$ per qualche monoide $N$.
+
+	Innanzitutto, un funtore \(\ctB M\fun \ctB N\) deve mappare l'unico oggetto di \(\ctB M\) in quello di \(\ctB N\) nell'unico modo possibile, e questo vale per tutti i funtori il cui codominio è della forma \(\ctB N\) per qualche monoide \(N\).
 
 	Sulle frecce, il funtore deve assegnare ad ogni morfismo di \(\ctB M\) (ossia, ogni elemento del monoide \(M\)) un morfismo di \(\ctB N\) (elemento di \(N\)). In altre parole, abbiamo una funzione \(f:M\to N\).
-	
+
 	In questo caso, le condizioni \ref{def_funtore}.\ref{p_1} e \ref{def_funtore}.\ref{p_2} non sono automaticamente vere: la preservazione dell'identità ci dice che \(f(1_M)=1_N\), e la preservazione delle composizioni ci dice che per ogni \(m,m'\in M\) abbiamo \(f(m\cdot m')=f(m)\cdot f(m')\).
 \end{example}
-Proponiamo due esercizi a chi legge. 
+Proponiamo due esercizi a chi legge.
 
-Se $\ctC$ è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore $\ctC \fun \ctB N$; farsi degli esempi con le categorie di \ref{sec_esempi_cats}, e con $N=(\bbN,+,0)$ il monoide dei numeri naturali.
+Se \(\ctC\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\ctC \fun \ctB N\); farsi degli esempi con le categorie di \ref{sec_esempi_cats}, e con \(N=(\bbN,+,0)\) il monoide dei numeri naturali.
 
-Dualmente, se $\ctD$ è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore $\ctB M \fun \ctD$; farsi degli esempi con le categorie di \ref{sec_esempi_cats}, e con $M = (\bbN,+,0)$ il monoide dei numeri naturali.
+Dualmente, se \(\ctD\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\ctB M \fun \ctD\); farsi degli esempi con le categorie di \ref{sec_esempi_cats}, e con \(M = (\bbN,+,0)\) il monoide dei numeri naturali.
 
-Questo secondo esercizio ha, come caso particolare, il seguente esempio quando $\ctD=\ctSet$ è la categoria di insiemi e funzioni di \ref{ex_cat_insiemi}: ciò giustifica la definizione che segue.
+Questo secondo esercizio ha, come caso particolare, il seguente esempio quando \(\ctD=\ctSet\) è la categoria di insiemi e funzioni di \ref{ex_cat_insiemi}: ciò giustifica la definizione che segue.
 \begin{example}\label{exa_azioni_funtori}\index{Funtore!azioni come ---}
-	Dato un gruppo \(G\), un funtore \(\ctB G\fun\ctSet\) è precisamente un \emph{\(G\)-insieme}, ovvero un insieme con un'azione di \(G\), nel senso di \ref{ex_cat_g_insiemi}. 
+	Dato un gruppo \(G\), un funtore \(\ctB G\fun\ctSet\) è precisamente un \emph{\(G\)-insieme}, ovvero un insieme con un'azione di \(G\), nel senso di \ref{ex_cat_g_insiemi}.
 	Il funtore mappa l'unico oggetto di \(\ctB G\) in un insieme, chiamiamolo \(X\).
-	Sulle frecce, un po' come nell'esempio sopra, il funtore assegna ad ogni elemento \(g\) di \(G\) una funzione \(X\to X\), che possiamo scrivere come \(x\mapsto g\cdot x\). 
+	Sulle frecce, un po' come nell'esempio sopra, il funtore assegna ad ogni elemento \(g\) di \(G\) una funzione \(X\to X\), che possiamo scrivere come \(x\mapsto g\cdot x\).
 	La preservazione dell'identità e della composizione dicono precisamente che le funzioni \(x\mapsto g\cdot x\) per ogni \(g\) danno un'azione di \(G\) su \(X\).
-	
+
 \end{example}
 In maniera simile, un funtore \(\ctB G\fun\bbR\emdash\ctVect\) è una rappresentazione (lineare) di \(G\) su uno spazio vettoriale, e le stesse costruzioni si possono fare con un monoide invece di un gruppo, e ciò giustifica la definizione seguente.
-\begin{definition}[Rappresentazione di $M$]
-	Sia $\ctD$ una categoria, ed $(M,\cdot,1)$ un monoide; una \emph{rappresentazione} di $M$ in $\ctD$ consiste di un funtore $\ctB M \to \ctD$.
+\begin{definition}[Rappresentazione di \(M\)]
+	Sia \(\ctD\) una categoria, ed \((M,\cdot,1)\) un monoide; una \emph{rappresentazione} di \(M\) in \(\ctD\) consiste di un funtore \(\ctB M \to \ctD\).
 \end{definition}
 \begin{example}\label{exa_derivata_funtore}\index{Funtore!differenziale come ---}
 	Sia \(\ctEuc\) la categoria degli spazi reali Euclidei puntati, definita come segue:
@@ -1130,20 +1130,20 @@ In maniera simile, un funtore \(\ctB G\fun\bbR\emdash\ctVect\) è una rappresent
 	\end{itemize}
 	Questa costruzione è funtoriale perché
 	\begin{itemize}
-		\item il differenziale della funzione identità $\id : (\bbR,x) \to (\bbR,x)$ è la matrice identità;
+		\item il differenziale della funzione identità \(\id : (\bbR,x) \to (\bbR,x)\) è la matrice identità;
 		\item il differenziale della composizione di due funzioni è il prodotto (tra matrici) dei differenziali.
 	\end{itemize}
 	(Se queste proprietà non fossero chiare, può essere di aiuto scriverle per esteso ricordando \ref{ex_cat_matrici}.)
 \end{example}
 Ora raccogliamo in una singola definizione alcune classi di funtori particolari, che data la loro ubiquità meritano nomi specifici.
 \begin{definition}[Funtore controvariante]\label{def_funtore_contro}\index{Funtore!--- covariante}\index{Funtore!--- controvariante}
-	Definiamo un funtore \emph{controvariante} $F : \ctC \fun\ctD$ come un funtore $F : \ctC^\op\fun\ctD$; un tale funtore consta dei dati seguenti: 
+	Definiamo un funtore \emph{controvariante} \(F : \ctC \fun\ctD\) come un funtore \(F : \ctC^\op\fun\ctD\); un tale funtore consta dei dati seguenti:
 	\begin{enumtag}{fc}
-		\item \label{fc_1} Una funzione tra classi $F_0 : \ctC_0\to\ctD_0$ che assegna ad ogni oggetto \(X\) di \(\ctC\) un oggetto \(FX\) di \(\ctD\);
-		\item \label{fc_2} Una funzione tra classi $F_1 : \ctC_1\to\ctD_1$ che assegna ad ogni morfismo \(Y \xrightarrow{f} X\) di \(\ctC^\op\), cioè ad ogni morfismo $X\xto f Y$ di $\ctC$, un morfismo \(FX \xrightarrow{Ff} FY\) di \(\ctD\) (si noti che da ciò segue che \(F(\dom{f})=\cod{Ff}\) e \(F(\cod{f})=\dom{Ff}\)):
+		\item \label{fc_1} Una funzione tra classi \(F_0 : \ctC_0\to\ctD_0\) che assegna ad ogni oggetto \(X\) di \(\ctC\) un oggetto \(FX\) di \(\ctD\);
+		\item \label{fc_2} Una funzione tra classi \(F_1 : \ctC_1\to\ctD_1\) che assegna ad ogni morfismo \(Y \xrightarrow{f} X\) di \(\ctC^\op\), cioè ad ogni morfismo \(X\xto f Y\) di \(\ctC\), un morfismo \(FX \xrightarrow{Ff} FY\) di \(\ctD\) (si noti che da ciò segue che \(F(\dom{f})=\cod{Ff}\) e \(F(\cod{f})=\dom{Ff}\)):
 		\[F(\xymatrix{Y \ar[r]^f & X}) = \xymatrix{FX \ar[r]^{Ff} & FY}\]
 	\end{enumtag}
-	soddisfacenti le proprietà seguenti: 
+	soddisfacenti le proprietà seguenti:
 	\begin{enumtag}{pc}
 		\item \label{pc_1} \emph{Preservazione delle identità}: per ogni oggetto \(X\) di \(\ctC\), \(F(\id_X)=\id_{FX}\);
 		\item \label{pc_2} \emph{Rovesciamento delle composizioni}: per ogni coppia di morfismi componibili \(f\) e \(g\) di \(\ctC\), \(F(g\cmp f)=Ff\cmp Fg\).
@@ -1151,74 +1151,74 @@ Ora raccogliamo in una singola definizione alcune classi di funtori particolari,
 	\index{Funtore!Prefascio}
 	% \Todo{funtori contro, covarianti, prefasci, bifuntori}
 \end{definition}
-Ciò conduce a una definizione molto importante e pervasiva in teoria delle categorie. 
+Ciò conduce a una definizione molto importante e pervasiva in teoria delle categorie.
 \begin{definition}\label{exa_funtori_da_poset}\index{Prefascio}\index{Funtore!Prefascio}
-	Sia $(P,\le)$ un insieme preordinato nel senso di \ref{ex_cat_ordini}; un funtore controvariante 
+	Sia \((P,\le)\) un insieme preordinato nel senso di \ref{ex_cat_ordini}; un funtore controvariante
 	\[\xymatrix{F : (P,\le)^\op \ar[r] & \ctSet}\]
 	si dice un \emph{prefascio}.\footnote{La parola è un calco dell'inglese \emph{presheaf}, cf. \cite{a,b,c}.}
 
-	Esplicitamente, un prefascio consiste di 
+	Esplicitamente, un prefascio consiste di
 	\begin{itemize}
-		\item una corrispondenza sugli oggetti, che assegna a ogni elemento $x\in P$ un insieme $Fx$,
-		\item una corrispondenza sui morfismi, che assegna a ogni $x\le y$ una funzione $Fy\to Fx$,
+		\item una corrispondenza sugli oggetti, che assegna a ogni elemento \(x\in P\) un insieme \(Fx\),
+		\item una corrispondenza sui morfismi, che assegna a ogni \(x\le y\) una funzione \(Fy\to Fx\),
 	\end{itemize}
 	che soddisfano \ref{def_funtore}.\ref{p_1}, \ref{def_funtore}.\ref{p_2}.
 \end{definition}
-L'esempio che motiva la definizione è il seguente: se $X$ è uno spazio topologico, $P=\ctO X$ è l'insieme parzialmente ordinato dei suoi aperti, e un prefascio $F$ su $\ctO X$ (o più brevemente, su $X$) assegna a ogni aperto $U\subseteq X$ un insieme $FU$ e ad ogni inclusione $U\subseteq V$ una funzione detta \emph{restrizione} $r_{UV} : FV \to FU$, in modo tale che 
+L'esempio che motiva la definizione è il seguente: se \(X\) è uno spazio topologico, \(P=\ctO X\) è l'insieme parzialmente ordinato dei suoi aperti, e un prefascio \(F\) su \(\ctO X\) (o più brevemente, su \(X\)) assegna a ogni aperto \(U\subseteq X\) un insieme \(FU\) e ad ogni inclusione \(U\subseteq V\) una funzione detta \emph{restrizione} \(r_{UV} : FV \to FU\), in modo tale che
 % FW --r_VW--> FV ---r_UV--> FU
 \[(U\subseteq V\subseteq W) \Rightarrow r_{UV}\cmp r_{VW} = r_{UW} \qquad\qquad r_{UU} = \id_{FU}\]
-Si noti che, anche se si può pensare $U\subseteq V\subseteq X$ come alle funzioni iniettive che includono $U$ in $V$ e $U,V$ in $X$, le restrizioni $r_{UV}, r_{UX}, r_{VX}$ non hanno motivo di essere funzioni iniettive.
+Si noti che, anche se si può pensare \(U\subseteq V\subseteq X\) come alle funzioni iniettive che includono \(U\) in \(V\) e \(U,V\) in \(X\), le restrizioni \(r_{UV}, r_{UX}, r_{VX}\) non hanno motivo di essere funzioni iniettive.
 
-Un esempio canonico di una corrispondenza del genere è questo: consideriamo uno spazio topologico $X$ e ad ogni aperto $U\subseteq X$ associamo l'insieme delle funzioni continue $U\to \bbR$. Questa associazione soddisfa in più anche le seguenti due proprietà: fissato un aperto $U\subseteq X$ e un ricoprimento $\{U_i\}$ di $U$, vale che 
+Un esempio canonico di una corrispondenza del genere è questo: consideriamo uno spazio topologico \(X\) e ad ogni aperto \(U\subseteq X\) associamo l'insieme delle funzioni continue \(U\to \bbR\). Questa associazione soddisfa in più anche le seguenti due proprietà: fissato un aperto \(U\subseteq X\) e un ricoprimento \(\{U_i\}\) di \(U\), vale che
 \begin{itemize}
-	\item per ogni coppia di elementi $s,t \in FU$,
-	\[\forall (i \in I).(r_{U_iU}s = r_{U_iU} t \,\Rightarrow\, s=t)\]
-	\item per ogni famiglia $s_i \in FU_i$, tale che $r_{U_{ij}U_i}s_i = r_{U_{ij}U_j}s_j$, esiste un $s\in FU$ tale che $r_{U_iU}s=s_i$.
+	\item per ogni coppia di elementi \(s,t \in FU\),
+	      \[\forall (i \in I).(r_{U_iU}s = r_{U_iU} t \,\Rightarrow\, s=t)\]
+	\item per ogni famiglia \(s_i \in FU_i\), tale che \(r_{U_{ij}U_i}s_i = r_{U_{ij}U_j}s_j\), esiste un \(s\in FU\) tale che \(r_{U_iU}s=s_i\).
 \end{itemize}
-Una corrispondenza del genere si dice un \emph{fascio} sullo spazio $X$.
+Una corrispondenza del genere si dice un \emph{fascio} sullo spazio \(X\).
 \begin{definition}
-	Un \emph{bifuntore} è un funtore il cui dominio sia una categoria prodotto; più precisamente, date tre categorie $\ctA,\ctB,\ctC$ un bifuntore $F : \ctA \times \ctB \fun \ctC$ assegna 
+	Un \emph{bifuntore} è un funtore il cui dominio sia una categoria prodotto; più precisamente, date tre categorie \(\ctA,\ctB,\ctC\) un bifuntore \(F : \ctA \times \ctB \fun \ctC\) assegna
 	\begin{itemize}
-		\item a ogni coppia $(A,B)\in \ctA_0\times\ctB_0$ di oggetti un oggetto $F(A,B) \in\ctC_0$;
-		\item a ogni coppia di morfismi $f : A\to A', g : B\to B'$ un morfismo $F(f,g) : F(A,B)\to F(A',B')$ in $\ctC$.
+		\item a ogni coppia \((A,B)\in \ctA_0\times\ctB_0\) di oggetti un oggetto \(F(A,B) \in\ctC_0\);
+		\item a ogni coppia di morfismi \(f : A\to A', g : B\to B'\) un morfismo \(F(f,g) : F(A,B)\to F(A',B')\) in \(\ctC\).
 	\end{itemize}
-	Questi dati soddisfano poi \ref{p_1} e \ref{p_2} in \ref{def_funtore}. 
+	Questi dati soddisfano poi \ref{p_1} e \ref{p_2} in \ref{def_funtore}.
 \end{definition}
-Si dimostri per facile esercizio che definire $F(f,\id_B)$ e $F(\id_A,g)$ è sufficiente a definire $F(f,g)$ in maniera univoca, dato che il quadrato 
+Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è sufficiente a definire \(F(f,g)\) in maniera univoca, dato che il quadrato
 \[
-\begin{tikzcd}
-	F(A,B) \ar[r]\ar[d] & F(A,B') \ar[d]\\ 
-	F(A',B) \ar[r] & F(A',B')
-\end{tikzcd}	
+	\begin{tikzcd}
+		F(A,B) \ar[r]\ar[d] & F(A,B') \ar[d]\\
+		F(A',B) \ar[r] & F(A',B')
+	\end{tikzcd}
 \]
 è commutativo.
 \begin{example}\label{ex_hom_funtore}\index{Funtore!hom --- covariante}\index{Funtore!hom --- controvariante}
-	L'esempio prototipico di funtore controvariante è il seguente. Sia $\ctC$ una categoria, e $X$ un suo oggetto. Definiamo un funtore $\ctC(-,X) : \ctC^\op\fun\ctSet$ come segue: 
+	L'esempio prototipico di funtore controvariante è il seguente. Sia \(\ctC\) una categoria, e \(X\) un suo oggetto. Definiamo un funtore \(\ctC(-,X) : \ctC^\op\fun\ctSet\) come segue:
 	\begin{itemize}
-		\item un oggetto $Y$ viene mandato nell'insieme $\ctC(Y,X)$ dei morfismi $u : Y\to X$;
-		\item un morfismo $f : Y\to Y'$ viene mandato nella funzione 
-		\[\xymatrix{
-			\ctC(Y',X) \ar[r] & \ctC(Y,X)
-		}\]
-		che manda $u : Y'\to X$ in $u\cmp f : Y\to Y' \to X$.
+		\item un oggetto \(Y\) viene mandato nell'insieme \(\ctC(Y,X)\) dei morfismi \(u : Y\to X\);
+		\item un morfismo \(f : Y\to Y'\) viene mandato nella funzione
+		      \[\xymatrix{
+				      \ctC(Y',X) \ar[r] & \ctC(Y,X)
+			      }\]
+		      che manda \(u : Y'\to X\) in \(u\cmp f : Y\to Y' \to X\).
 	\end{itemize}
 	Le condizioni \ref{p_1}, \ref{p_2} si riducono agli assiomi di categoria: si può infatti
 	\begin{itemize}
-		\item verificare che $(u\cmp f)\cmp g = u\cmp (f\cmp g)$, perché la composizione è associativa;
-		\item verificare che $u\cmp \id_Y = u$, perché la composizione è unitale.
+		\item verificare che \((u\cmp f)\cmp g = u\cmp (f\cmp g)\), perché la composizione è associativa;
+		\item verificare che \(u\cmp \id_Y = u\), perché la composizione è unitale.
 	\end{itemize}
-	Dualmente, possiamo definire un funtore hom covariante $\ctC(X,-)$, fissando un oggetto $X\in\ctC_0$ e definendo la funzione sugli oggetti come $\ctC(X,-)_0 : Y\mapsto \ctC(X,Y)$ e $\ctC(X,f) : (u : X\to Y)\mapsto f\cmp u$ per $f : Y\to Y'$.
+	Dualmente, possiamo definire un funtore hom covariante \(\ctC(X,-)\), fissando un oggetto \(X\in\ctC_0\) e definendo la funzione sugli oggetti come \(\ctC(X,-)_0 : Y\mapsto \ctC(X,Y)\) e \(\ctC(X,f) : (u : X\to Y)\mapsto f\cmp u\) per \(f : Y\to Y'\).
 
-	\index{Funtore!hom ---} In effetti, entrambi i funtori hom covarianti e controvarianti nascono fissando la componente (destra per il funtore hom controvariante, sinistra per il covariante) del \emph{bifuntore hom} di $\ctC$,
+	\index{Funtore!hom ---} In effetti, entrambi i funtori hom covarianti e controvarianti nascono fissando la componente (destra per il funtore hom controvariante, sinistra per il covariante) del \emph{bifuntore hom} di \(\ctC\),
 	\[\xymatrix{\hom_\ctC : \ctC^\op\times\ctC \ar[r] & \ctSet}\]
-	definito come segue: 
+	definito come segue:
 	\begin{itemize}
-		\item Sugli oggetti, $(X,Y)\mapsto \ctC(X,Y)$;
-		\item sui morfismi, il morfismo $(u : X'\to X, v : Y\to Y')$ induce la funzione 
-		\[\xymatrix{\ctC(X,Y) \ar[r] & \ctC(X',Y')}\]
-		che manda $h : X\to Y$ in $v\cmp h\cmp u$.
+		\item Sugli oggetti, \((X,Y)\mapsto \ctC(X,Y)\);
+		\item sui morfismi, il morfismo \((u : X'\to X, v : Y\to Y')\) induce la funzione
+		      \[\xymatrix{\ctC(X,Y) \ar[r] & \ctC(X',Y')}\]
+		      che manda \(h : X\to Y\) in \(v\cmp h\cmp u\).
 	\end{itemize}
-	Con questa definizione, è evidente che se $f : A\to B$ è un morfismo di $\ctC$, $\hom(f,X)$ agisce come $\hom(f,\id_X)$ e $\hom(Y,f)$ agisce come $\hom(\id_Y,f)$. 
+	Con questa definizione, è evidente che se \(f : A\to B\) è un morfismo di \(\ctC\), \(\hom(f,X)\) agisce come \(\hom(f,\id_X)\) e \(\hom(Y,f)\) agisce come \(\hom(\id_Y,f)\).
 \end{example}
 
 \begin{example}\label{exa_funtori_liberi_forgetti}\index{Funtore!--- libero e dimenticante}
@@ -1227,9 +1227,9 @@ Si dimostri per facile esercizio che definire $F(f,\id_B)$ e $F(\id_A,g)$ è suf
 		\begin{tikzcd}
 			U : \ctMod(\Omega,a) \ar[r] & \ctSet
 		\end{tikzcd}
-		\]
-		che manda ogni modello in \(\ctMod(\Omega,a)\) nel suo \emph{insieme soggiaciente} \(X\).
-		\Todo{Sui funtori liberi\dots}
+	\]
+	che manda ogni modello in \(\ctMod(\Omega,a)\) nel suo \emph{insieme soggiaciente} \(X\).
+	\Todo{Sui funtori liberi\dots}
 \end{example}
 
 \begin{definition}\label{compo_funtori}
@@ -1240,10 +1240,10 @@ Si dimostri per facile esercizio che definire $F(f,\id_B)$ e $F(\id_A,g)$ è suf
 	\end{itemize}
 	Il fatto che questo dia un funtore (ovvero che preservi identità e composizione) segue dal fatto che \(F\) e \(G\) sono funtori:
 	\[
-	G(F(\id_X)) = G(\id_{FX}) = \id_{GFX} ;
+		G(F(\id_X)) = G(\id_{FX}) = \id_{GFX} ;
 	\]
 	\[
-	G(F(g\cmp f)) = G(Ff\cmp Fg) = GFf\cmp GFg .
+		G(F(g\cmp f)) = G(Ff\cmp Fg) = GFf\cmp GFg .
 	\]
 \end{definition}
 
@@ -1253,17 +1253,17 @@ Si dimostri per facile esercizio che definire $F(f,\id_B)$ e $F(\id_A,g)$ è suf
 \end{definition}
 
 \begin{definition}[La categoria delle categorie]\label{ex_cat_cat}\index{Categoria!--- delle categorie}
-	Come si può verificare, la composizione di funtori come definita sopra è associativa, e con il funtore identità definito sopra, è unitale. Per questo le categorie e i funtori formano una categoria. 
-	
-	Nel dare questa definizione è però importante essere precisi: la categoria delle categorie così definita non può essere un oggetto di sé stessa, o avremmo appena creato un paradosso molto fastidioso. Quella che chiamiamo `categoria delle categorie' è la categoria larga $\ctCat$  formata prendendo 
+	Come si può verificare, la composizione di funtori come definita sopra è associativa, e con il funtore identità definito sopra, è unitale. Per questo le categorie e i funtori formano una categoria.
+
+	Nel dare questa definizione è però importante essere precisi: la categoria delle categorie così definita non può essere un oggetto di sé stessa, o avremmo appena creato un paradosso molto fastidioso. Quella che chiamiamo `categoria delle categorie' è la categoria larga \(\ctCat\)  formata prendendo
 	\begin{itemize}
 		\item come oggetti tutte le categorie \emph{piccole};
 		\item come morfismi i funtori tra due categorie piccole.
 	\end{itemize}
 \end{definition}
-	La `categoria' $\cate{CAT}$ di tutte le categorie localmente piccole è `illegittima' perché non è localmente piccola: la classe dei funtori $\ctC \fun\ctD$ tra due categorie larghe non è un insieme.\footnote{Usando la definizione, è possibile mostrare che c'è una classe propria di funzioni di classe $F_0 : \ctC_0 \to \ctD_0$ e $F_1 : \ctC_1 \to \ctD_1$ che soddisfano \ref{p_1},\ref{p_2}.} Questo può sembrare un puntiglio terminologico, ma è causa di diversi problemi (ad esempio: per $\ctCAT$ non esistono i funtori hom di \ref{ex_hom_funtore}; quando avremo definito una trasformazione naturale in \ref{} vedremo che anche la categoria $[\ctCAT,\ctSet]$ è illegittima, e che questo è un problema --per esempio, per $\ctCAT$ nessuno dei risultati del capitolo \ref{cap:yoneda} è valido).
+La `categoria' \(\cate{CAT}\) di tutte le categorie localmente piccole è `illegittima' perché non è localmente piccola: la classe dei funtori \(\ctC \fun\ctD\) tra due categorie larghe non è un insieme.\footnote{Usando la definizione, è possibile mostrare che c'è una classe propria di funzioni di classe \(F_0 : \ctC_0 \to \ctD_0\) e \(F_1 : \ctC_1 \to \ctD_1\) che soddisfano \ref{p_1},\ref{p_2}.} Questo può sembrare un puntiglio terminologico, ma è causa di diversi problemi (ad esempio: per \(\ctCAT\) non esistono i funtori hom di \ref{ex_hom_funtore}; quando avremo definito una trasformazione naturale in \ref{} vedremo che anche la categoria \([\ctCAT,\ctSet]\) è illegittima, e che questo è un problema --per esempio, per \(\ctCAT\) nessuno dei risultati del capitolo \ref{cap:yoneda} è valido).
 
-	Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture categoriali definibili in topologia algebrica). Raramente faremo riferimento a $\ctCAT$, e mai parlando della sua struttura di `categoria'.
+Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture categoriali definibili in topologia algebrica). Raramente faremo riferimento a \(\ctCAT\), e mai parlando della sua struttura di `categoria'.
 \begin{definition}\label{def_diagramma_comm}
 	\Todo{Diagramma, diagramma commutativo.}
 \end{definition}
@@ -1281,9 +1281,9 @@ Si dimostri per facile esercizio che definire $F(f,\id_B)$ e $F(\id_A,g)$ è suf
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
-	\item 
 	\item
-	\item Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà il suo fibrato tangente. 
+	\item
+	\item Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà il suo fibrato tangente.
 	\item
 	\item
 \end{enumerate}
