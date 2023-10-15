@@ -373,6 +373,7 @@ Vale il seguente teorema:
 	\Todo{...}
 \end{example}
 \subsection{Categorie come universi}\label{ssec:categorie_universi}
+Proseguiamo con degli esempi di categorie grandi, che giustificano l'intuizione per le categorie come universi del discorso.
 \index{Categoria!--- delle relazioni}
 \begin{example}[Insiemi e relazioni]\label{ex_cat_rels}
 	La categoria \(\ctRel\) ha
@@ -389,8 +390,8 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 \index{Categoria!--- degli insiemi finiti|see {--- degli insiemi}}
 \begin{remark}\label{klext_delle_relazioni}
 	Ogni relazione \(R : A\to B\) induce una funzione \(R^* : 2^B\to 2^A\) nel modo che segue: un sottoinsieme \(U\subseteq B\) viene mandato in \(R^*U:=\{x\in A\mid \forall u\in U.(x,u)\in R\}\). In effetti, esiste una analoga funzione \(R_* : 2^A\to 2^B\), definita da \((V\subseteq A) \mapsto R_*V:= \{y\in B\mid \forall v\in V.(v,y)\in R\}\), e tra le due funzioni \(R^*, R_*\) sussiste la relazione
-	\[bla\]
-	In \ref{} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie, affrontata per esteso nel capitolo \ref{}.
+	\[V\subseteq R^*U \iff U\subseteq R_*V\label{aggiunti_in_disguise}\]
+	In \ref{} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie, affrontata per esteso nel capitolo \ref{cap:aggiunti}.
 \end{remark}
 \begin{example}[Insiemi e funzioni]\label{ex_cat_insiemi}
 	La categoria \(\ctSet\) ha
@@ -656,7 +657,7 @@ Occupiamoci ora di dimostrare che una categoria dove tra due oggetti esiste al p
 	La relazione così definita è
 	\begin{itemize}
 		\item riflessiva, perché \(\ctC(X,X)\) contiene l'identità (e solo l'identità);
-		\item transitiva, perché se \(\ctC(X,Y), \ctC(Y,Z)\) non sono vuoti, la composizione è definita come in \ref{cor_def_categ} e quindi esiste esattamente un elemento in \(\ctC(X,Z)\).
+		\item transitiva, perché se \(\ctC(X,Y), \ctC(Y,Z)\) non sono vuoti, la composizione è definita come in \ref{cor_def_categ} e quindi esiste esattamente un elemento in \(\ctC(X,Z)\).\qedhere
 	\end{itemize}
 \end{proof}
 \index{Categoria!--- da un monoide}
@@ -710,7 +711,6 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 \end{enumerate}
 
 \section{Operazioni tra categorie}\label{sec_operazioni}
-
 Come con tutte le altre strutture algebriche, esistono modi per formare nuove categorie a partire da categorie date.
 
 Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subcat}, \ref{def_cat_prodotto}, \ref{def_cat_somma}) sono tipiche dell'algebra universale, definendo le nozioni di sotto-struttura, struttura prodotto e struttura somma, e altre che invece sono specifiche della teoria delle categorie (\ref{def_cat_opp}, \ref{def_cat_slice}).
@@ -726,6 +726,8 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 	In questo modo, \(\ctS\) è anch'essa una categoria, con identità e composizione indotte da \(\ctC\). (Si paragoni una sottocategoria a un sottogruppo.)
 
 	Una sottocategoria \(\ctS\subseteq \ctC\) si dice
+	\index{Categoria!sotto--- piena}\index{Sottocategoria!--- piena}
+	\index{Categoria!sotto--- ampia}\index{Sottocategoria!--- ampia}
 	\begin{itemize}
 		\item \emph{piena} se per ogni coppia di oggetti \(X\) e \(Y\) di \(\ctS\), tutti i morfismi \(X\to Y\) di \(\ctC\) sono anch'essi in \(\ctS\);
 		\item \emph{ampia} se tutti gli oggetti di \(\ctC\) sono in \(\ctS\).
@@ -1094,7 +1096,10 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 
 	In questo caso, le condizioni \ref{def_funtore}.\ref{p_1} e \ref{def_funtore}.\ref{p_2} non sono automaticamente vere: la preservazione dell'identità ci dice che \(f(1_M)=1_N\), e la preservazione delle composizioni ci dice che per ogni \(m,m'\in M\) abbiamo \(f(m\cdot m')=f(m)\cdot f(m')\).
 \end{example}
-Proponiamo due esercizi a chi legge.
+\begin{remark}
+	\Todo{A proposito del nome `funtore'}
+\end{remark}
+Dopo questa digressione, proponiamo due esercizi a chi legge.
 
 Se \(\ctC\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\ctC \fun \ctB N\); farsi degli esempi con le categorie di \ref{sec_esempi_cats}, e con \(N=(\bbN,+,0)\) il monoide dei numeri naturali.
 
@@ -1215,7 +1220,14 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\end{itemize}
 	Con questa definizione, è evidente che se \(f : A\to B\) è un morfismo di \(\ctC\), \(\hom(f,X)\) agisce come \(\hom(f,\id_X)\) e \(\hom(Y,f)\) agisce come \(\hom(\id_Y,f)\).
 \end{example}
+\begin{remark}
+	\Todo{A proposito del nome `controvariante'}
+\end{remark}
+\begin{remark}
+	Ogni funtore $F : \ctC\fun\ctD$ definisce un funtore $F^\op : \ctC^\op \fun\ctD^\op$ che coincide con $F$ sugli oggetti, e che è definito sulle frecce mandando $f^\op\in\ctC^\op$ in $F(f)^\op\in\ctD^\op$. \`E semplice e tedioso verificare le proprietà \ref{p_1}, \ref{p_2}.
 
+	Dal momento che $(\ctC^\op)^\op = \ctC$, il dato di un funtore controvariante $F : \ctC\fun\ctD$, cioè di un funtore $F : \ctC^\op \fun\ctD$, è esattamente equivalente al dato di un funtore $F^\op : \ctC \to \ctD^\op$. Ogni qualvolta sia necessario, parleremo invariabilmente dell'uno o dell'altro funtore riferendoci alla sua controvarianza.
+\end{remark}
 \begin{example}\label{exa_funtori_liberi_forgetti}\index{Funtore!--- libero e dimenticante}
 	Se \((\Omega,a)\) è una segnatura algebrica come in \ref{ex_cat_sigma_strutture}, esiste un funtore
 	\[
@@ -1276,7 +1288,17 @@ Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori 
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
-	\item
+	\item Mostrare che le seguenti condizioni sono equivalenti, nella notazionedi \ref{klext_delle_relazioni} per le funzioni $R^*,R_*$:
+	\begin{itemize}
+		\item la condizione in \ref{klext_delle_relazioni}, 
+		\[V\subseteq R^*U\iff U\subseteq R_*V\]
+		\item il fatto che per ogni $U\subseteq B,V\subseteq A$ si abbia 
+		\[V\subseteq R^*R_*V\qquad\qquad U\subseteq R_*R^*U\]
+	\end{itemize}
+	Mostrare che da una qualunque di queste condizioni equivalenti segue che $R^*,R_*$ sono una coppia di funtori controvarianti, 
+	\[\begin{tikzcd}
+		R^* : (2^B,\subseteq)^\op \ar[r, shift left] & (2^A,\subseteq) : R_* \ar[l, shift left]
+	\end{tikzcd}\]
 	\item
 	\item Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà il suo fibrato tangente.
 	\item
