@@ -132,8 +132,8 @@ Nel resto della sezione raccogliamo alcuni esempi classici di categorie, e nella
 
 La dicotomia essenziale che chi legge dovrebbe apprezzare è questa:
 \begin{itemize}
-	\item le categorie sono strutture ideate per raccogliere una totalità di oggetti matematici di un dato tipo (tutti i gruppi, tutti gli spazi topologici, ecc.) in una classe \(\ctC\) (in \emph{due} classi: gli oggetti e i morfismi) e studiarne le proprietà globali: le categorie (grandi) quindi sono `universi del discorso matematico': questo punto di vista si apprezza particolarmente in \ref{ex_cat_sigma_strutture} e in \ref{ex_cat_top}.
-	\item D'altra parte le categorie sono anche delle strutture matematiche a sé stanti, modellate sulla nozione elementare di \emph{multigrafo diretto} (si veda \ref{ex_cat_libera}): le categorie (piccole) quindi sono esse stesse degli oggetti matematici che possiamo studiare alla stregua di ogni altro oggetto matematico (e raccogliere in una loro totalità: ma questo discorso sarà approfondito solo molto più tardi, si veda \ref{ex_cat_cat}).
+	\item le categorie sono strutture ideate per raccogliere una totalità di oggetti matematici di un dato tipo (tutti i gruppi, tutti gli spazi topologici, ecc.) in una classe \(\ctC\) (in \emph{due} classi: gli oggetti e i morfismi) e studiarne le proprietà globali: le categorie (grandi) quindi sono `universi del discorso matematico': questo punto di vista si apprezza nella \autoref{ssec:categorie_universi} e particolarmente in \ref{ex_cat_sigma_strutture} e in \ref{ex_cat_top}.
+	\item D'altra parte le categorie sono anche delle strutture matematiche a sé stanti, modellate sulla nozione elementare di \emph{multigrafo diretto} (si veda \ref{ex_cat_libera}): le categorie (piccole) quindi sono esse stesse degli oggetti matematici che possiamo studiare alla stregua di ogni altro oggetto matematico (e raccogliere in una loro totalità: ma questo discorso sarà approfondito solo molto più tardi, si veda \ref{ex_cat_cat}). Questo punto di vista si apprezza particolarmente nella \autoref{ssec:categorie_strutture}.
 \end{itemize}
 Si può imparare la teoria delle categorie in modo proficuo solo abbracciando \emph{entrambi} questi punti di vista, e ciò perché un dato ambito della matematica si occupa o `vive' in una (o più) categorie. Per esempio, l'algebra lineare studia le categorie \(\bbF\emdash\ctVect\) di spazi vettoriali, eventualmente su diversi campi di base (come \(\bbQ,\bbR,\bbC\), o un campo finito). La topologia generale studia le categorie di \emph{spazi topologici} (e i morfismi funzioni continue), mentre la topologia differenziale si restringe alla categoria i cui oggetti sono \emph{varietà} (e i morfismi funzioni differenziabili), oppure studia particolari categorie di strutture ordinate (perché l'insieme degli aperti di uno spazio topologico \(X\) con una topologia \(\tau \subseteq 2^X\) forma, con le operazioni di unione e intersezione, una struttura algebrica detta \emph{algebra di Heyting}, si veda \cite{Esakia2019}).
 
@@ -142,7 +142,7 @@ D'altra parte l'analisi funzionale studia quegli spazi \emph{vettoriali} (di dim
 La seconda di queste osservazioni non è meno importante: porterà alla definizione di funtore in \ref{def_funtore} come \emph{omomorfismo tra categorie}, alla definizione di \emph{diagramma} in \ref{def_diagramma} come immagine di una categoria piccola in una categoria, non necessariamente piccola, e alla definizione di trasformazione naturale in \ref{sec_tnat}, vista come \emph{omomorfismo tra funtori}.
 \section{Esempi di categorie nella pratica matematica}\label{sec_esempi_cats}
 Iniziamo ora a dare degli esempi di categorie piccole partendo dall'esempio più semplice, anche quello più banale.
-\subsection{Categorie come forme}
+\subsection{Categorie come forme}\label{ssec:categorie_forme}
 \index{Categoria!--- vuota}
 \begin{example}\label{ex_cat_vuota}
 	La categoria vuota \(\ctInit\) non ha oggetti né morfismi. Più formalmente, \(\ctC_0,\ctC_1\) sono le classi vuote, e non è necessario specificare altra struttura per soddisfare (vacuamente) tutti gli assiomi di categoria.
@@ -372,10 +372,7 @@ Vale il seguente teorema:
 	\end{itemize}
 	\Todo{...}
 \end{example}
-\Todo{...}
-\subsection{Categorie come universi}
-\Todo{...}
-Proseguiamo con degli esempi di categorie grandi:
+\subsection{Categorie come universi}\label{ssec:categorie_universi}
 \index{Categoria!--- delle relazioni}
 \begin{example}[Insiemi e relazioni]\label{ex_cat_rels}
 	La categoria \(\ctRel\) ha
@@ -608,7 +605,7 @@ Un'utile intuizione sulla definizione \ref{def_categ} è che in qualsiasi circos
 	\item la composizione di due omomorfismi è ancora un omomorfismo;
 \end{itemize}
 si riesce a definire la classe degli oggetti e dei morfismi di una categoria. Gli esempi di strutture algebriche sono tutti di questo tipo, ovviamente; ne esistono altri, che non riguardano le operazioni algebriche: per esempio, la composizione di due mappe monotòne è monotòna, e la composizione di due mappe \emph{proprie} tra spazi di Hausdorff è ancora una mappa propria.
-\subsection{Categorie come strutture}
+\subsection{Categorie come strutture}\label{ssec:categorie_strutture}
 Fin qui, l'osservazione che le strutture matematiche di un dato tipo, con la definizione appropriata di omomorfismo, formino una categoria, è nient'altro che una banalità della prassi matematica. Una osservazione decisamente meno banale è che alcune delle strutture basilari della pratica matematica sono \emph{esse stesse} delle categorie.
 
 In più, questo modo di intendere la definizione oscura un'altra idea importante, perché l'esempio \ref{ex_cat_sigma_strutture} potrebbe far sospettare che gli oggetti di una categoria siano, alla fin fine, sempre insiemi dotati di strutture ulteriori (per esempio, operazioni o relazioni), e i morfismi funzioni che preservano queste strutture.
@@ -737,7 +734,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 \begin{example}
 	Raccogliamo in un unico paragrafo diversi esempi di sottocategorie: la sottocategoria degli insiemi finiti di \ref{protoex_finset} è una sottocategoria (piena) della categoria \(\ctSet\) di \ref{ex_cat_insiemi}; la categoria dei gruppi abeliani è una sottocategoria piena della categoria di tutti i gruppi; la categoria degli insiemi totalmente ordinati è una sottocategoria di \(\ctPos\) definita in \ref{po_wo_to}.
 \end{example}
-\begin{definition}\label{def_cat_prodotto}
+\begin{definition}\label{def_cat_prodotto}\index{Categoria!--- prodotto}
 	Date due categorie \(\ctC\) e \(\ctD\), la \emph{categoria prodotto} \(\ctC\times\ctD\) ha
 	\begin{itemize}
 		\item Per oggetti, coppie \((C,D)\) dove \(C\) è un oggetto di \(\ctC\), e \(D\) è un oggetto di \(\ctD\);
@@ -746,9 +743,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 		\item La composizione di morfismi è data dalla composizione delle ciascune componenti.
 	\end{itemize}
 \end{definition}
-
-\index{Categoria!--- somma}
-\begin{definition}\label{def_cat_somma}
+\begin{definition}\label{def_cat_somma}\index{Categoria!--- somma}
 	Date due categorie \(\ctC\) e \(\ctD\), la \emph{categoria somma} \(\ctC+\ctD\) è definita come segue.
 	\begin{itemize}
 		\item Come classe di oggetti,  ha l'unione disgiunta di \(\ctC_0\) e \(\ctD_0\);
