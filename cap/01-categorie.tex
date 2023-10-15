@@ -434,7 +434,7 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 \index{Categoria!---}
 \begin{example}\label{ex_cat_sigma_strutture}
 	% \Todo{Omomorfismi per una generica segnatura algebrica}
-	Una \emph{segnatura algebrica} consiste di una coppia \((\Omega, a)\) dove \(\Omega\) è un insieme, e \(a : \Omega \to \bfN\) è una funzione detta \emph{funzione di arietà} che associa a ogni elemento \(\omega \in \Omega\) la sua arietà \(a(\omega)\ge 0\). Un \emph{modello} per una segnatura algebrica \((\Omega,a)\) consiste di un insieme \(X\) e di una funzione \(f_\bullet\) che associa a ogni \(\omega\in\Omega\) una operazione \(f_\omega : X^{a(\omega)} \to X\) di arietà \(a(\omega)\).
+	Una \emph{segnatura algebrica} consiste di una coppia \((\Omega, a)\) dove \(\Omega\) è un insieme, e \(a : \Omega \to \bbN\) è una funzione detta \emph{funzione di arietà} che associa a ogni elemento \(\omega \in \Omega\) la sua arietà \(a(\omega)\ge 0\). Un \emph{modello} per una segnatura algebrica \((\Omega,a)\) consiste di un insieme \(X\) e di una funzione \(f_\bullet\) che associa a ogni \(\omega\in\Omega\) una operazione \(f_\omega : X^{a(\omega)} \to X\) di arietà \(a(\omega)\).
 
 	Fissata una segnatura algebrica \((\Omega,a)\) possiamo definire la categoria \(\ctMod(\Omega,a)\) dei suoi modelli come segue:
 	\begin{itemize}
@@ -458,7 +458,7 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 \index{Preordine}
 \begin{example}\label{ex_cat_ordini}
 	Si ricordi da \ref{prelim_def_preset} che un \emph{insieme preordinato} è un insieme \(P\) dotato di una relazione riflessiva e transitiva \(\le\); una funzione \(f  : (P,\le)\to (Q,\preceq)\) si dice \emph{monotòna} o si dice che \(f\) \emph{preserva l'ordine} se vale
-	\[\forall x,y(x\le y\Rightarrow fx\le fy).\]
+	\[\forall x,y(x\le y\Rightarrow fx\preceq fy).\]
 
 	La categoria \(\ctPre\) ha per oggetti e morfismi gli insiemi preordinati e le funzioni monotòne. Chiaramente, l'identità \(\id_P : (P,\le)\to (P,\le)\) è una funzione monotòna, e la composizione di due funzioni monotòne resta monotòna.
 
@@ -804,7 +804,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 \begin{remark}
 	Il principio di dualità è molto lontano dall'affermare che un asserto è vero in una categoria \(\ctC\) se e solo se esso è vero in \(\ctC^\op\); l'asserto va (formalizzato, cioè espresso come un enunciato nel linguaggio \(\mathsf{CT}\)) \emph{e dualizzato}, ed è solo dopo questa dualizzazione che esso vale (in \(\ctC^\op\), non necessariamente in \(\ctC\)!).
 
-	Ad esempio: nell'insieme parzialmente ordinato dei numeri naturali ogni sottoinsieme non vuoto ammette un minimo. Tale ordine parziale è una categoria per \ref{}; il minimo di un insieme ordinato ora si descrive in termini della relazione d'ordine (cioè della classe dei suoi morfismi); del resto, \(\bfN^\op = \{\dots\le 2 \le 1 \le 0\}\) non ha un minimo, bensì un massimo.
+	Ad esempio: nell'insieme parzialmente ordinato dei numeri naturali ogni sottoinsieme non vuoto ammette un minimo. Tale ordine parziale è una categoria per \ref{}; il minimo di un insieme ordinato ora si descrive in termini della relazione d'ordine (cioè della classe dei suoi morfismi); del resto, \(\bbN^\op = \{\dots\le 2 \le 1 \le 0\}\) non ha un minimo, bensì un massimo.
 \end{remark}
 Le categorie che si identificano alla propria opposta meritano quindi un nome specifico.
 \begin{definition}
@@ -853,7 +853,7 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 	Se \(\{\iter r\}\) denota un insieme con \(r\) elementi, una \emph{colorazione} di un insieme \(X\) consiste di una funzione \(c : X \to \{\iter r\}\) (di modo che gli elementi di \(X_i := c^{-1}(i)\) siano gli elementi `colorati' nel modo \(i\)); molti problemi di combinatoria enumerativa elementare riguardano colorazioni di insiemi finiti, e quindi essi possono essere enunciati attraverso la categoria incubo sopra \(\{\iter r\}\).
 \end{example}
 \begin{example}[Intervalli]\label{ex_pos_slices}\index{Categoria!--- intervallo di un poset}
-	Se \((\bfR,\le)\) denota l'insieme dei numeri reali linearmente ordinato nel modo usuale, ed \(x\in\bfR\) è un numero reale, la categoria \(\bfR/x\) è il semi-intervallo inferiormente illimitato \((-\infty,t]:=\{t\le x\}\), e analogamente \(x/\bfR\) è il semi-intervallo \([t,+\infty)\). Più in generale, in ogni insieme parzialmente ordinato \((P,\le)\) guardato come categoria, l'incubo \(P/x\) sopra \(x\in P\) consiste dell'intervallo \(\{t\le x\}\) dotato dell'ordine indotto da \(P\), e similmente accade per \(x/P\). (Se \(a,b\in\bfR\) con l'ordine usuale, e \(a\le b\), si noti anche che \((a/\bfR)/(a\le b)\) è esattamente l'intervallo limitato \([a,b]\).)
+	Se \((\bbR,\le)\) denota l'insieme dei numeri reali linearmente ordinato nel modo usuale, ed \(x\in\bbR\) è un numero reale, la categoria \(\bbR/x\) è il semi-intervallo inferiormente illimitato \((-\infty,t]:=\{t\le x\}\), e analogamente \(x/\bbR\) è il semi-intervallo \([t,+\infty)\). Più in generale, in ogni insieme parzialmente ordinato \((P,\le)\) guardato come categoria, l'incubo \(P/x\) sopra \(x\in P\) consiste dell'intervallo \(\{t\le x\}\) dotato dell'ordine indotto da \(P\), e similmente accade per \(x/P\). (Se \(a,b\in\bbR\) con l'ordine usuale, e \(a\le b\), si noti anche che \((a/\bbR)/(a\le b)\) è esattamente l'intervallo limitato \([a,b]\).)
 \end{example}
 \begin{example}[Spazi incubi, fibrati, rivestimenti]\label{ex_fibrati_rivestimenti}\index{Categoria!--- dei rivestimenti}
 	Dato uno spazio topologico \(X\), la categoria incubo \(\ctTop/X\) è quella degli spazi incubi sopra \(X\), o fibrati generalizzati. Tra questi, isoliamo
@@ -1057,36 +1057,130 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 	      %       \Todo{Trovo questi esercizi un po' troppo facili\dots Non che sia un male, ma vorrei degli esempi più pedagogici!}
 	      \item\label{isounico} In una categoria localmente piccola \(\ctC\), dati due oggetti isomorfi \(X\) e \(Y\), dimostra che per ogni oggetto \(A\), gli insiemi \(\Hom{\ctC}(A,X)\) e \(\Hom{\ctC}(A,Y)\) sono in corrispondenza biunivoca.
 \end{enumerate}
+
 \section{Funtori e diagrammi}\label{sec_funtori}
-
-\Todo{motivazione: se i monoidi e i poset sono categorie, a che tipo di trasformazione tra categorie corrispondono gli omomorfismi di monoide e le funzioni monotone? Ottima domanda!}
+Dato che monoidi e poset si possono guardare come categorie, è una buona domanda chiedersi a che tipo di `trasformazione tra categorie' corrispondono gli omomorfismi di monoide di \ref{ex_cat_monoidi} e le funzioni monotòne di \ref{ex_cat_ordini}. Questo conduce alla definizione di \emph{funtore} tra categorie.
 \begin{definition}[Funtore]\label{def_funtore}\index{Funtore}
-	Date due categorie \(\ctC\) e \(\ctD\), un \emph{funtore} \(F:\ctC\fun\ctD\) consiste dei seguenti dati.
-	\begin{itemize}
-		\item Un'assegnazione ad ogni oggetto \(X\) di \(\ctC\) di un oggetto \(FX\) di \(\ctD\);
-		\item Un'assegnazione ad ogni morfismo \(X \xrightarrow{f} Y\) di \(\ctC\) di un morfismo \(FX \xrightarrow{Ff} FY\) di \(\ctD\) (si noti che \(F(\dom{f})=\dom{Ff}\) e \(F(\cod{f})=\cod{Ff}\));
-
-		      che soddifa le seguenti proprietà.
-		\item \emph{Preservazione delle identità}: per ogni oggetto \(X\) di \(\ctC\), \(F(\id_X)=\id_{FX}\);
-		\item \emph{Preservazione delle composizioni}: per ogni coppia di morfismi componibili \(f\) e \(g\) di \(\ctC\), \(F(g\cmp f)=Fg\cmp Ff\).
-	\end{itemize}
+	Date due categorie \(\ctC\) e \(\ctD\), un \emph{funtore} \(F:\ctC\fun\ctD\) consiste dei seguenti dati:
+	\begin{enumtag}{f}
+		\item \label{f_1} Una funzione tra classi $F_0 : \ctC_0\to\ctD_0$ che assegna ad ogni oggetto \(X\) di \(\ctC\) un oggetto \(FX\) di \(\ctD\);
+		\item \label{f_2} Una funzione tra classi $F_1 : \ctC_1\to\ctD_1$ che assegna ad ogni morfismo \(X \xrightarrow{f} Y\) di \(\ctC\) un morfismo \(FX \xrightarrow{Ff} FY\) di \(\ctD\) (si noti che da ciò segue che \(F(\dom{f})=\dom{Ff}\) e \(F(\cod{f})=\cod{Ff}\));
+	\end{enumtag}
+	Le funzioni di classe soddisfano le seguenti proprietà:
+	\begin{enumtag}{p}
+		\item \label{p_1} \emph{Preservazione delle identità}: per ogni oggetto \(X\) di \(\ctC\), \(F(\id_X)=\id_{FX}\);
+		\item \label{p_2} \emph{Preservazione delle composizioni}: per ogni coppia di morfismi componibili \(f\) e \(g\) di \(\ctC\), \(F(g\cmp f)=Fg\cmp Ff\).
+	\end{enumtag}
 \end{definition}
+
 \begin{example}\label{exa_monotone_funtori}\index{Funtore!mappa monotòna come ---}
-	\Todo{funzioni monotone come funtori}
+	Dati due insiemi parzialmente ordinati \((X,\le)\) e \((Y,\preceq)\) guardati come categorie nel senso di \ref{ord_sonocat}, un funtore \((X,\le)\fun(Y,\preceq)\) è precisamente una funzione monotòna nel senso di \ref{ex_cat_ordini}. 
+
+    Innanzitutto, la funzione \(f:X\to Y\) definisce una corrispondenza sugli oggetti.
+
+	Poi, l'unica freccia \(x\le x'\) in \(X\) determina una freccia \(fx\preceq fx'\) se e solo se $f$ è monotòna.% (ancora, ce n'è una unica se s solo se \(f(x)\le f(x')\)). In altre parole, \(f\) ha la proprietà che se \(x\le x'\), allora \(f(x)\le f(x')\). Cioè, \emph{\(f\) è monotòna}. 
+
+	L'identità è preservata automaticamente: per ogni \(x\), esiste un'unica freccia \(fx\to fx\), data dal fatto che l'ordine di \(Y\) è riflessivo. Per cui, \(f(\id_{x})=\id_{fx}\).
+
+	Allo stesso modo, anche le composizioni sono preservate automaticamente.
 \end{example}
+
 \begin{example}\label{exa_funtori_da_gruppi}\index{Funtore!omomorfismi di monoidi come ---}
-	\Todo{hom di monoidi come funtori}
+	% Abbiamo visto in \ref{mon_sonocat} che i monoidi (e i gruppi) si possono vedere come particolari categorie, con un solo oggetto.
+	Dati due monoidi \(M\) e \(N\) guardati come categorie nel senso di \ref{mon_sonocat}, un funtore \(\ctB M\fun \ctB N\) è precisamente un morfismo di monoidi nel senso di \ref{ex_cat_monoidi}.
+	
+	Innanzitutto, un funtore \(\ctB M\fun \ctB N\) deve mappare l'unico oggetto di \(\ctB M\) in quello di \(\ctB N\) nell'unico modo possibile, e questo vale per tutti i funtori il cui codominio è della forma $\ctB N$ per qualche monoide $N$.
+
+	Sulle frecce, il funtore deve assegnare ad ogni morfismo di \(\ctB M\) (ossia, ogni elemento del monoide \(M\)) un morfismo di \(\ctB N\) (elemento di \(N\)). In altre parole, abbiamo una funzione \(f:M\to N\).
+	
+	In questo caso, le condizioni \ref{def_funtore}.\ref{p_1} e \ref{def_funtore}.\ref{p_2} non sono automaticamente vere: la preservazione dell'identità ci dice che \(f(1_M)=1_N\), e la preservazione delle composizioni ci dice che per ogni \(m,m'\in M\) abbiamo \(f(m\cdot m')=f(m)\cdot f(m')\).
 \end{example}
+Proponiamo due esercizi a chi legge. 
+
+Se $\ctC$ è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore $\ctC \fun \ctB N$; farsi degli esempi con le categorie di \ref{sec_esempi_cats}, e con $N=(\bbN,+,0)$ il monoide dei numeri naturali.
+
+Dualmente, se $\ctD$ è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore $\ctB M \fun \ctD$; farsi degli esempi con le categorie di \ref{sec_esempi_cats}, e con $M = (\bbN,+,0)$ il monoide dei numeri naturali.
+
+Questo secondo esercizio ha, come caso particolare, il seguente esempio quando $\ctD=\ctSet$ è la categoria di insiemi e funzioni di \ref{ex_cat_insiemi}: ciò giustifica la definizione che segue.
 \begin{example}\label{exa_azioni_funtori}\index{Funtore!azioni come ---}
-	\Todo{azioni di gruppo come funtori}
+	Dato un gruppo \(G\), un funtore \(\ctB G\fun\ctSet\) è precisamente un \emph{\(G\)-insieme}, ovvero un insieme con un'azione di \(G\), nel senso di \ref{ex_cat_g_insiemi}. 
+	Il funtore mappa l'unico oggetto di \(\ctB G\) in un insieme, chiamiamolo \(X\).
+	Sulle frecce, un po' come nell'esempio sopra, il funtore assegna ad ogni elemento \(g\) di \(G\) una funzione \(X\to X\), che possiamo scrivere come \(x\mapsto g\cdot x\). 
+	La preservazione dell'identità e della composizione dicono precisamente che le funzioni \(x\mapsto g\cdot x\) per ogni \(g\) danno un'azione di \(G\) su \(X\).
+	
 \end{example}
-\begin{example}\label{exa_funtori_da_poset}\index{Funtore!--- covariante}
+In maniera simile, un funtore \(\ctB G\fun\bbR\emdash\ctVect\) corrisponde a una rappresentazione (lineare) di \(G\) su uno spazio vettoriale, e le stesse costruzioni si possono fare con un monoide invece di un gruppo. Ciò giustifica la definizione seguente.
+\begin{definition}[Rappresentazione di $M$]
+	Sia $\ctD$ una categoria, ed $(M,\cdot,1)$ un monoide; una \emph{rappresentazione} di $M$ in $\ctD$ consiste di un funtore $\ctB M \to \ctD$.
+\end{definition}
+\begin{example}\label{exa_derivata_funtore}\index{Funtore!differenziale come ---}
+	Sia \(\cate{Euc}_*^\bbR\) la categoria degli spazi reali Euclidei puntati, definita come segue:
+	\begin{itemize}
+		\item Gli oggetti sono coppie \((n,x)\) con \(n\in\bbN\) e \(x\in\bbR^n\);
+		\item I morfismi \(f : (n,x)\to (m,y)\) sono funzioni differenziabili \(f:\bbR^n\to\bbR^m\) tali che \(f(x)=y\).
+	\end{itemize}
+	Possiamo costruire un funtore \(D:\cate{Euc}_*^\bbR\to\bbR\emdash\cate{Mat}\) nel seguente modo:
+	\begin{itemize}
+		\item Sugli oggetti, mappa \((n,x)\) in \(n\);
+		\item Sui morfismi, assegna alla funzione \(f:(n,x)\to (m,y)\) il \emph{differenziale} di \(f\) in \(x\), cioè, la mappa lineare \(Df:\bbR^n\to\bbR^m\).
+	\end{itemize}
+	Questa costruzione è funtoriale perché
+	\begin{itemize}
+		\item Il differenziale della funzione identità $\id : (n,x) \to (n,x)$ è la matrice identità;
+		\item Il differenziale della composizione di due funzioni è il prodotto (tra matrici) dei differenziali.
+	\end{itemize}
+	(Se queste proprietà non fossero chiare, può essere di aiuto scriverle per esteso ricordando \ref{ex_cat_matrici}.)
+\end{example}
+Raccogliamo in una singola definizione alcune classi di funtori particolari, che data la loro ubiquità meritano nomi specifici.
+\begin{definition}[Funtore controvariante]\label{def_funtore_contro}\index{Funtore!--- covariante}\index{Funtore!--- controvariante}
+	Definiamo un funtore \emph{controvariante} $F : \ctC \fun\ctD$ come un funtore $F : \ctC^\op\fun\ctD$; un tale funtore consta dei dati seguenti: 
+	\begin{enumtag}{fc}
+		\item a 
+		\item b
+	\end{enumtag}
+	soddisfacenti le proprietà seguenti: 
+	\begin{enumtag}{pc}
+		\item a 
+		\item b
+	\end{enumtag}
 	\index{Funtore!Prefascio}
-	\Todo{funtori contro, covarianti, prefasci, bifuntori}
-\end{example}
+	% \Todo{funtori contro, covarianti, prefasci, bifuntori}
+\end{definition}
+Ciò conduce a una definizione molto importante e pervasiva in teoria delle categorie. 
+\begin{definition}\label{exa_funtori_da_poset}\index{Prefascio}\index{Funtore!Prefascio}
+	Sia $(P,\le)$ un insieme preordinato nel senso di \ref{}; un funtore controvariante 
+	\[\xymatrix{(P,\le)^\op & \ctSet}\]
+	si dice un \emph{prefascio}.\footnote{La parola è un calco dell'inglese \emph{presheaf}, cf. \cite{a,b,c}.}
+
+	Esplicitamente, un prefascio consiste di 
+	\begin{itemize}
+		\item Una corrispondenza sugli oggetti, che assegna a ogni elemento $x\in P$ un insieme $Fx$,
+		\item Una corrispondenza sui morfismi, che assegna a ogni $x\le y$ una funzione $Fy\to Fx$,
+	\end{itemize}
+	che soddisfano \ref{def_funtore}.\ref{p_1}, \ref{def_funtore}.\ref{p_2}.
+\end{definition}
+L'esempio che motiva la definizione è il seguente: se $X$ è uno spazio topologico, $P=\ctO X$ è l'insieme parzialmente ordinato dei suoi aperti, e un prefascio $F$ su $\ctO X$ (o più brevemente, su $X$) assegna a ogni aperto $U\subseteq X$ un insieme $FU$ e ad ogni inclusione $U\subseteq V$ una funzione detta \emph{restrizione} $r_{UV} : FV \to FU$, in modo tale che 
+\[\dots\]
+Si noti che, anche se si può pensare $U\subseteq V\subseteq X$ come alle funzioni iniettive che includono $U$ in $V$ e $U,V$ in $X$, le restrizioni $r_{UV}, r_{UX}, r_{VX}$ non hanno motivo di essere funzioni iniettive.
+\begin{definition}
+	\Todo{Bifuntore}
+\end{definition}
 \begin{example}\label{ex_hom_funtore}\index{Funtore!hom}
-	\Todo{hom come funtore; hom come bifuntore}
+	% \Todo{hom come funtore; hom come bifuntore}
+	L'esempio prototipico di funtore controvariante è il seguente. Sia $\ctC$ una categoria, e $X$ un suo oggetto. Definiamo un funtore come segue \dots 
+
+	Dualmente, possiamo definire un funtore hom covariante, fissando un oggetto $X\in\ctC_0$ e definendo \dots 
+
+	In effetti, entrambi i funtori hom covarianti e controvarianti nascono fissando la componente (destra per il funtore hom controvariante, sinistra per il covariante) del \emph{bifuntore hom} di $\ctC$: 
+	\[\xymatrix{\hom_\ctC : \ctC^\op\times\ctC \ar[r] & \ctSet}\]
+	è definito come segue: 
+	\begin{itemize}
+		\item Sugli oggetti, \dots; 
+		\item sui morfismi, \dots 
+	\end{itemize}
+	Con questa definizione, è evidente che se $f : A\to B$ è un morfismo di $\ctC$, $\hom(f,X)$ agisce come $\hom(f,\id_X)$ e $\hom(Y,f)$ agisce come $\hom(\id_Y,f)$. 
 \end{example}
+
 \begin{example}\label{exa_funtori_liberi_forgetti}\index{Funtore!--- libero e dimenticante}
 	\Todo{funtori liberi e funtori dimenticanti}
 	Se \((\Omega,a)\) è una segnatura algebrica come in \ref{ex_cat_sigma_strutture}, esiste un funtore
@@ -1097,37 +1191,58 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 	\]
 	che manda ogni modello in \(\ctMod(\Omega,a)\) nel suo \emph{insieme soggiaciente} \(X\).
 \end{example}
-\begin{proposition}\label{compo_funtori}
-	\Todo{Composizione di funtori}
-\end{proposition}
+
+\begin{definition}\label{compo_funtori}
+	Dati due funtori \(F:\ctC\to\ctD\) e \(G:\ctD\to\ctE\), il \emph{funtore composto} \(G\circ F:\ctC\to\ctE\) assegna
+	\begin{itemize}
+		\item Ad ogni oggetto \(X\) di \(\ctC\), l'oggetto \(GFX\) (ossia \(G(F(X))\)) di \(\ctE\);
+		\item Ad ogni morfismo \(f:X\to Y\) di \(\ctC\), il morfismo \(GFf\) (ossia \(G(F(f))\)) di \(\ctE\).
+	\end{itemize}
+	Il fatto che questo dia un funtore (ovvero che preservi identità e composizione) segue dal fatto che \(F\) e \(G\) sono funtori:
+	\[
+	G(F(\id_X)) = G(\id_{FX}) = \id_{GFX} ;
+	\]
+	\[
+	G(F(g\circ f)) = G(Ff\circ Fg) = GFf\circ GFg .
+	\]
+\end{definition}
+
 \begin{definition}[Funtore identità]\label{def_funtore_id}\index{Funtore!identità}
-	\Todo{Funtore identità}
+	Data una categoria \(\ctC\), il \emph{funtore identità} su \(\ctC\) assegna ad ogni oggetto \(X\), \(X\) stesso, e ad ogni morfismo \(f\), \(f\) stesso.
+	(Può essere di aiuto verificare manualmente perché questo sia un funtore.)
 \end{definition}
+
 \begin{definition}[La categoria delle categorie]\label{ex_cat_cat}\index{Categoria!--- delle categorie}
-	\Todo{La categoria di categorie e funtori}
+	Come si può verificare, la composizione di funtori come definita sopra è associativa, e con il funtore identità definito sopra, è unitale.
+	Per questo le categorie e i funtori formano una categoria. Per essere precisi:
+	\begin{itemize}
+		\item Chiamiamo \(\ctCat\) la categoria delle categorie piccole e i funtori tra loro;
+		\item Chiamiamo \(\cate{CAT}\) la categoria delle categorie localmente piccole e i funtori tra loro.
+	\end{itemize}
 \end{definition}
+
+\Todo{Va bene la convenzione sopra? Se no cambiatela senza problemi. --Paolo}
+
 \begin{definition}\label{def_diagramma_comm}
 	\Todo{Diagramma, diagramma commutativo.}
 \end{definition}
+
 \begin{lemma}\label{lem_funtori_preservano_comm}
 	\Todo{Funtori preservano i diagrammi commutativi} in particolare, preservano gli isomorfismi.
 \end{lemma}
+
 \begin{definition}\label{def_cat_cocomma}
 	\Todo{Categoria comma e cocomma di due funtori}
 \end{definition}
 % C -> Sk(C) "è un'equivalenza"
 % altri esempi?
-% composizione di funtori, la (1-)categoria Cat
 
-% diagrammi
-% diagrammi commutativi (voglio una definizione precisa)
-% funtori li preservano - in particolare, preservano iso
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
+	\item 
 	\item
-	\item
-	\item
+	\item Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà il suo fibrato tangente. 
 	\item
 	\item
 \end{enumerate}
