@@ -337,9 +337,9 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 	\[[\tup fm;]\cmp[\tup en;] = [\tup fm;;\tup en;].\]
 	Quando è definita, questa operazione è, evidentemente, associativa, e la sequenza vuota soddisfa la condizione di unitalità \ref{cp_1} nella \ref{def_categ}.
 \end{example}
-Due esempi più elaborati, ma molto `concreti', di categorie dove gli oggetti sono numeri naturali:
+Dopo questa digressione veniamo a due esempi più elaborati, ma molto `concreti', di categorie dove gli oggetti sono numeri naturali:
 \index{Categoria!--- dei circuiti}
-\begin{example}[La categoria dei circuiti elettrici]\label{ex_cat_circuiti}
+\begin{example}[La categoria dei circuiti digitali]\label{ex_cat_circuiti}
 	La categoria \(\ctCirc\) ha
 	\begin{itemize}
 		\item per oggetti i numeri naturali \(0,1,2,\dots\);
@@ -351,12 +351,12 @@ Due esempi più elaborati, ma molto `concreti', di categorie dove gli oggetti so
 	\[\Delta_m : x\mapsto (x,\dots,x)\quad m\text{ volte}\]
 	Sull'insieme dei Booleani è possibile definire le operazioni logiche elementari di disgiunzione, congiunzione e negazione, che rappresentiamo graficamente con i seguenti diagrammi (noti a qualsiasi ingegnere elettronico)
 	\[\begin{circuitikz}
-			\node[or port, fill=gray!10] (4,0) (or) {\(\lor\)};
-			\node[xshift=3cm,and port, fill=gray!10] (0,0) (and) {\(\land\)};
-			\node[xshift=5cm,not port, fill=gray!10] (0,0) (not) {\(\lnot\)};
-			\node[font=\scriptsize] at (-1,-1) (z1) {\(\_\lor\_ : \bbB^2\to\bbB\)};
-			\node[font=\scriptsize] at (2,-1) (z3) {\(\_\land\_ : \bbB^2\to\bbB\)};
-			\node[font=\scriptsize] at (5,-1) (z2) {\(\_\lnot : \bbB\to\bbB\)};
+			\node[xshift=-4cm, or port, fill=gray!10] (4,0) (or) {\(\lor\)};
+			\node[and port, fill=gray!10] (0,0) (and) {\(\land\)};
+			\node[xshift=3cm, not port, fill=gray!10] (0,0) (not) {\(\lnot\)};
+			\node[below=.15cm of or ] (z1) {\(\_\lor\_ : \bbB^2\to\bbB\)};
+			\node[below=.15cm of and] (z3) {\(\_\land\_ : \bbB^2\to\bbB\)};
+			\node[below=.15cm of not] (z2) {\(\_\lnot : \bbB\to\bbB\)};
 		\end{circuitikz}\]
 \end{example}
 Vale il seguente teorema:
@@ -483,12 +483,12 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 \index{Categoria!--- di insiemi ordinati}
 \index{Preordine}
 \begin{example}\label{ex_cat_ordini}
-	Si ricordi da \ref{prelim_def_preset} che un \emph{insieme preordinato} è un insieme \(P\) dotato di una relazione riflessiva e transitiva \(\le\); una funzione \(f  : (P,\le)\to (Q,\preceq)\) si dice \emph{monotòna} o si dice che \(f\) \emph{preserva l'ordine} se vale
+	Si ricordi da \ref{prelim_def_preset} che un \emph{insieme preordinato} è un insieme \(P\) dotato di una relazione riflessiva e transitiva \(\le\) che si dice la \emph{(relazione d')ordine} su $P$; una funzione \(f  : (P,\le)\to (Q,\preceq)\) si dice \emph{monotòna} o si dice che \(f\) \emph{preserva l'ordine} se vale
 	\[\forall x,y(x\le y\Rightarrow fx\preceq fy).\]
 
 	La categoria \(\ctPre\) ha per oggetti e morfismi gli insiemi preordinati e le funzioni monotòne. Chiaramente, l'identità \(\id_P : (P,\le)\to (P,\le)\) è una funzione monotòna, e la composizione di due funzioni monotòne resta monotòna.
 
-	\`E tuttavia importante che l'ordine su \(P\) sia \emph{lo stesso} affinché l'identità sia monotòna: infatti, ogni insieme \(P\) può essere dotato dell'ordine \emph{banale} (dove \(x \mathrel{\le^\delta} y\) se e solo se \(x=y\)) e dell'ordine \emph{caotico} (dove \(x\mathrel{\le^\chi} y\) per ogni \(x,y\in P\)). Se \(P\) ha almeno tre elementi, la funzione identica \((P,\le^\chi)\to (P,\le^\delta)\) non è, chiaramente, monotòna.
+	\`E tuttavia importante che l'ordine su \(P\) sia \emph{lo stesso} affinché l'identità sia monotòna: infatti, ogni insieme \(P\) può essere dotato dell'ordine \emph{banale} (dove \(x \mathrel{\le^\delta} y\) se e solo se \(x=y\)) e dell'ordine \emph{caotico} (dove \(x\mathrel{\le^\chi} y\) per ogni \(x,y\in P\)). Se \(P\) ha almeno due elementi, la funzione identica \((P,\le^\chi)\to (P,\le^\delta)\) non è, chiaramente, monotòna.
 \end{example}
 \index{Ordine parziale}
 \begin{remark}[po, wo e to]\label{po_wo_to}
@@ -630,6 +630,17 @@ Un'utile intuizione sulla definizione \ref{def_categ} è che in qualsiasi circos
 	\item la composizione di due omomorfismi è ancora un omomorfismo;
 \end{itemize}
 si riesce a definire la classe degli oggetti e dei morfismi di una categoria. Gli esempi di strutture algebriche sono tutti di questo tipo, ovviamente; ne esistono altri, che non riguardano le operazioni algebriche: per esempio, la composizione di due mappe monotòne è monotòna, e la composizione di due mappe \emph{proprie} tra spazi di Hausdorff è ancora una mappa propria.
+\begin{example}[La categoria degli pseudoinsiemi]
+	Uno \emph{pseudoinsieme}, o \emph{insieme di Bishop}, o \emph{prequoziente} consiste di un insieme $S$ su cui è definita una relazione di equivalenza $\sim_S$. La categoria $\cate{Bish}$ degli insiemi di Bishop è definita come segue: 
+	\begin{itemize}
+		\item gli oggetti sono gli pseudoinsiemi $(S,\sim)$;
+		\item un omomorfismo di pseudoinsiemi $f : (S,\sim) \to (T,\asymp)$ consiste di una funzione $f : S\to T$ con la proprietà che se $s\sim s'$ in $S$ allora $fs\asymp fs'$ in $T$. Equivalentemente, gli omomorfismi di pseudoinsiemi sono le funzioni $f : S\to T$ che `scendono al quoziente' definendo una funzione $\hat f : S/_\sim \to T/_\asymp$ tra gli insiemi quoziente.
+	\end{itemize}
+	La composizione di omomorfismi di pseudoinsiemi è la composizione di funzioni; la funzione identica è l'identità di $(S,\sim)$ (e se $\sim'$ è una relazione di equivalenza più fine di $\sim$ sullo stesso insieme $S$, la funzione identica $(S,\sim) \to (S,\sim')$ è un omomorfismo, ma non è un isomorfismo, nel senso di \ref{def_isomorfismo}).
+\end{example}
+\begin{remark}[Sul nome `pseudoinsieme']
+	\Todo{insiemi di Bishop da \cite{}; pseudoinsieme perché la relazione di equivalenza fa le veci dell'uguaglianza; prequoziente perché è un quoziente, prima di averlo effettivamente eseguito.}
+\end{remark}
 \subsection{Categorie come strutture}\label{ssec:categorie_strutture}
 Fin qui, l'osservazione che le strutture matematiche di un dato tipo, con la definizione appropriata di omomorfismo, formino una categoria, è nient'altro che una banalità della prassi matematica. Una osservazione decisamente meno banale è che alcune delle strutture basilari della pratica matematica sono \emph{esse stesse} delle categorie.
 
@@ -793,8 +804,8 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 		\item Dati due morfismi \(f\) e \(g\) componibili in \(\ctC\), la composizione di \(f^\op\cmp g^\op\) è data da \((g\cmp f)^\op\). Si noti l'ordine inverso della composizione:
 		      \[
 			      \begin{tikzcd}
-				      \ctC: & X \ar{r}[swap]{f} \ar[bend left=20]{rr}{g\cmp f} & Y \ar{r}[swap]{g} & Z \\
-				      \ctC^\op: &X & Y  \ar{l}[swap]{f^\op} & Z \ar{l}[swap]{g^\op} \ar[bend left=20]{ll}{f^\op\cmp g^\op=(g\cmp f)^\op}
+				      \text{in }\ctC: & X \ar{r}[swap]{f} \ar[bend left=20]{rr}{g\cmp f} & Y \ar{r}[swap]{g} & Z \\
+				      \text{in }\ctC^\op: &X & Y  \ar{l}[swap]{f^\op} & Z \ar{l}[swap]{g^\op} \ar[bend left=20]{ll}{f^\op\cmp g^\op=(g\cmp f)^\op}
 			      \end{tikzcd}
 		      \]
 	\end{itemize}
@@ -851,7 +862,8 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 	Chiaramente, la categoria vuota \(\ctInit\) è autoduale (ossia \(\ctInit^\op=\ctInit\)) e altrettanto è vero per la categoria terminale \(\ctTerm\) e per la categoria discreta \(A^\delta\) di \ref{ex_cat_discreta}.
 
 	La categoria \(\Delta[n]\) di \ref{ex_cat_catena} si identifica alla sua opposta mediante la funzione \(j\mapsto n-j\), la quale inverte l'ordine, e risulta quindi un anti-isomorfismo tra l'insieme ordinato \(\Delta[n]=(\{1,\dots,n\},\le)\) e l'insieme ordinato \(\Delta[n]^\op = (\{1,\dots,n\},\ge)\).
-	\Todo{Esercizio: la categoria codiscreta di \ref{ex_cat_codiscreta} si identifica alla sua opposta mediante...}
+	
+	La categoria codiscreta di \ref{ex_cat_codiscreta} si identifica alla sua opposta mediante la corrispondenza che è l'identità sugli oggetti, e che scambia tra loro il morfismo $u_{aa'}$ (notazioni come in \ref{ex_cat_codiscreta}) e $u_{a'a} = u_{aa'}^{-1}$.
 
 	Le categorie `span generico' e `cospan generico' sono opposte l'una dell'altra, e altrettanto è vero per le categorie \(S^\lhd\) e \(S^\rhd\):
 	\[(\Lambda^2_0)^\op = \Lambda^2_2\qquad\qquad (S^\lhd)^\op = S^\rhd\]
@@ -985,6 +997,9 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 		      ossia tali che \(r\cmp f=f'\cmp p\) e \(r\cmp g=g'\cmp q\).
 	\end{itemize}
 \end{definition}
+\begin{definition}
+	\Todo{Join di categorie}
+\end{definition}
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
@@ -1040,11 +1055,29 @@ Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando 
 \begin{example}[\(\ctB(X,\sim)\) come gruppoide]\label{exa_releq_groupoid}
 	Abbiamo visto che un preordine (una relazione riflessiva e transitiva) si può vedere come una categoria. Questa categoria è un gruppoide se e solo se la relazione è anche simmetrica (cioè, è un'equivalenza). Se \(x\sim y\), abbiamo un unico morfismo \(x\to y\). Questo morfismo è invertibile se e solo se esiste un morfismo \(y\to x\), cioè, se anche \(y\sim x\). (Si noti che non ci sono altre condizioni da soddisfare per avere un inverso: per esempio, il morfismo composto \(x\to y\to x\) è necessariamente uguale a \(\id_x\) per unicità.)
 \end{example}
+\begin{remark}
+	Il preordine caotico su un insieme $X$ (dove \(x\mathrel{\le^\chi} y\) per ogni \(x,x'\in X\)) può essere visto come un esempio di \ref{exa_releq_groupoid} dove le relazione è la relazione \emph{totale} $\forall x,x'\in X.x\sim x'$. C'è quindi una identificazione
+	\[\ctB(X,\sim) = (X,\le^\chi)\]
+	per ogni insieme $X$.
+\end{remark}
 \begin{example}[\(\ctB(G,\cdot,1)\) come gruppoide]\label{exa_grp_groupoid}
 	Abbiamo visto che ogni monoide \(M\) si può considerare una categoria con un solo oggetto. Questa categoria è un gruppoide se e solo se \(M\) è un gruppo. Infatti, un morfismo \(m\) ammette un inverso nel senso della teoria delle categorie se e solo se ammette un inverso nel senso della teoria dei gruppi: \(g\cdot g^{-1}=g^{-1}\cdot g = e\).
 \end{example}
-
-Un \emph{automorfismo} è un endomorfismo (un morfismo da un oggetto a sé stesso) invertibile. In un gruppo \((G,\cdot)\) guardato come una categoria \(\ctB(G,\cdot)\) tutti i morfismi \(g : \star\to\star\) sono automorfismi.
+\begin{example}[Gruppoide d'azione]\label{action_groupoid}\index{Gruppoide!--- d'azione}
+	A ogni gruppo $(G,\cdot,1)$ si associa anche il suo \emph{gruppoide delle traslazioni} (o \emph{d'azione}), denotato $\act G$: 
+	\begin{itemize}
+		\item gli oggetti di $\act G$ sono gli elementi di $G$;
+		\item le frecce di $\act G$ sono a loro volta elementi di $G$, determinati come segue: per ogni $g,x\in G$ esiste un morfismo $\langle g\rangle_x : x\to g\cdot x$.
+	\end{itemize}
+	Ovviamente $\langle 1_G\rangle_x : x \to 1_G\cdot x=x$ ha il ruolo di identità $\id_x$, e la composizione è definita da $\langle h\rangle_{gx}\cmp \langle g\rangle_x = \langle h\cdot g\rangle_x$,
+	\[\begin{tikzcd}
+		x \ar[r] & g\cdot x \ar[r] & h\cdot (g\cdot x) = (h\cdot g)\cdot x
+	\end{tikzcd}\]
+	L'associatività dell'operazione di $G$ rende $\act G$ una categoria.
+\end{example}
+\begin{definition}
+	Un \emph{automorfismo} è un endomorfismo (un morfismo da un oggetto a sé stesso) invertibile. In un gruppo \((G,\cdot)\) guardato come una categoria \(\ctB(G,\cdot)\) tutti i morfismi \(g : \star\to\star\) sono automorfismi.
+\end{definition}
 
 \begin{example}
 	La categoria \(\cate{Bij}\) i cui oggetti sono gli insiemi e i cui morfismi sono biiezioni è un gruppoide. Quando si prendono solo gli insiemi finiti, la categoria \(\cate{FBij}\subset\cate{Bij}\) diventa molto interessante: consta della `unione disgiunta' (o più precisamente, la \emph{categoria somma}, Definizione \ref{def_cat_somma}) di tutti i gruppi simmetrici \(S_n\), ciascuno guardato come una categoria nel senso di \ref{mon_sonocat}:
@@ -1063,7 +1096,9 @@ Più in generale, in virtù del fatto che ogni identità \(\id_X\) è un isomorf
 \end{definition}
 
 Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con identità e composizione).
-
+\begin{example}\label{mongruppi_liberi}
+	\Todo{monoidi e gruppi liberi; categorie libere e gruppoidi liberi}
+\end{example}
 \begin{definition}[Categoria scheletrica]\label{def_cat_scheletrica}\index{Categoria!--- scheletrica}
 	Una categoria \(\ctC\) si dice \emph{scheletrica} se vale la seguente proprietà:
 	\[X\iso Y \, (\text{mediante } f,g) \,\Rightarrow\, (X=Y \,\&\, f=g=\id_X),\]
@@ -1095,10 +1130,16 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 	      Ripetere tutte queste domande rispetto alla definizione, più generale, di funzioni \emph{\(K\emdash\alpha\)-h\"olderiane} tra spazi metrici, ricordando che una funzione \(f : (X,d)\to (Y,d')\) si dice \(K\emdash\alpha\)-h\"olderiana quando
 	      \[d'(fx,fx')\le Kd(x,x')^\alpha\]
 	      per \(K\in \bbR_{\ge 0}\) e \(\alpha\in \bbR_{>0}\).
-	\item Costruisci un esempio in \(\ctTop\) di oggetti \(X\) e \(Y\) non isomorfi, e morfismi \(f:X\to Y\) e \(g:Y\to X\) tali che \(g\cmp f=\id_X\) (ma \(f\cmp g \ne \id_Y\)).
+		  \item\label{isounico} In una categoria localmente piccola \(\ctC\), dati due oggetti isomorfi \(X\) e \(Y\), dimostrare che per ogni oggetto \(A\), gli insiemi \(\Hom{\ctC}(A,X)\) e \(\Hom{\ctC}(A,Y)\) sono in biiezione.
+		  \item Generalizzare \ref{action_groupoid} come segue: dato un monoide $(M,\cdot,1)$, e un insieme $X$ con una azione di $M$ nel senso di \ref{ex_cat_g_insiemi}, definire la \emph{categoria d'azione} $M/\!\!/X$ come segue: 
+		  \begin{itemize}
+			\item gli oggetti sono gli elementi di $X$;
+			\item c'è un morfismo $\langle m\rangle_x : x\to m\cdot x$, dove $m\cdot x$ denota l'azione di $m\in M$ su $x$.
+		  \end{itemize}
+		  Mostrare esplicitamente gli assiomi di categoria (rendendo così precisa questa definizione informale). Recuperare $\act G$  come caso particolare di questa definizione; mostrare che, quando $M$ è un monoide libero (su un insieme $A$ di generatori) nel senso di \ref{mongruppi_liberi}, allora $M/\!\!/X$ è una categoria libera nel senso di \ref{ex_cat_libera} (su un grafo $G[A]$ determinato come\dots).
+	% \item Costruisci un esempio in \(\ctTop\) di oggetti \(X\) e \(Y\) non isomorfi, e morfismi \(f:X\to Y\) e \(g:Y\to X\) tali che \(g\cmp f=\id_X\) (ma \(f\cmp g \ne \id_Y\)).
 	      % \item Dimostra che in ogni categoria, le identità sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo.
 	      %       \Todo{Trovo questi esercizi un po' troppo facili\dots Non che sia un male, ma vorrei degli esempi più pedagogici!}
-	      \item\label{isounico} In una categoria localmente piccola \(\ctC\), dati due oggetti isomorfi \(X\) e \(Y\), dimostra che per ogni oggetto \(A\), gli insiemi \(\Hom{\ctC}(A,X)\) e \(\Hom{\ctC}(A,Y)\) sono in corrispondenza biunivoca.
 \end{enumerate}
 
 \section{Funtori e diagrammi}\label{sec_funtori}
