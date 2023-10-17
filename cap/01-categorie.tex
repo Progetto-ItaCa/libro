@@ -486,7 +486,7 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 	Si ricordi da \ref{prelim_def_preset} che un \emph{insieme preordinato} è un insieme \(P\) dotato di una relazione riflessiva e transitiva \(\le\) che si dice la \emph{(relazione d')ordine} su $P$; una funzione \(f  : (P,\le)\to (Q,\preceq)\) si dice \emph{monotòna} o si dice che \(f\) \emph{preserva l'ordine} se vale
 	\[\forall x,y(x\le y\Rightarrow fx\preceq fy).\]
 
-	La categoria \(\ctPre\) ha per oggetti e morfismi gli insiemi preordinati e le funzioni monotòne. Chiaramente, l'identità \(\id_P : (P,\le)\to (P,\le)\) è una funzione monotòna, e la composizione di due funzioni monotòne resta monotòna.
+	La categoria \(\ctPOrd\) ha per oggetti e morfismi gli insiemi preordinati e le funzioni monotòne. Chiaramente, l'identità \(\id_P : (P,\le)\to (P,\le)\) è una funzione monotòna, e la composizione di due funzioni monotòne resta monotòna.
 
 	\`E tuttavia importante che l'ordine su \(P\) sia \emph{lo stesso} affinché l'identità sia monotòna: infatti, ogni insieme \(P\) può essere dotato dell'ordine \emph{banale} (dove \(x \mathrel{\le^\delta} y\) se e solo se \(x=y\)) e dell'ordine \emph{caotico} (dove \(x\mathrel{\le^\chi} y\) per ogni \(x,y\in P\)). Se \(P\) ha almeno due elementi, la funzione identica \((P,\le^\chi)\to (P,\le^\delta)\) non è, chiaramente, monotòna.
 \end{example}
@@ -494,9 +494,9 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 \begin{remark}[po, wo e to]\label{po_wo_to}
 	Una sottoclasse importante di preordini si ottiene imponendo che \(\le\) sia una relazione antisimmetrica; in tal caso il preordine \((P,\le)\) si dice un \emph{insieme parzialmente ordinato} o \emph{poset}. La categoria \(\ctPos\) ha per oggetti i poset e per morfismi le stesse funzioni monotòne di \ref{ex_cat_ordini}.
 
-	Un'altra sottocategoria importante di \(\ctPre\) è quella degli insiemi \emph{totalmente ordinati} o \emph{toset}, dove tutti gli elementi sono confrontabili tra loro:
+	Un'altra sottocategoria importante di \(\ctPOrd\) è quella degli insiemi \emph{totalmente ordinati} o \emph{toset}, dove tutti gli elementi sono confrontabili tra loro:
 	\[\forall x,y\in P.((x\le y)\lor (y\le x));\]
-	da ultimo, una ulteriore sottocategoria importante di \(\ctPre\) è quella degli insiemi \emph{bene ordinati} o \emph{woset}, dove ogni sottoinsieme non vuoto ammette un elemento minimo.
+	da ultimo, una ulteriore sottocategoria importante di \(\ctPOrd\) è quella degli insiemi \emph{bene ordinati} o \emph{woset}, dove ogni sottoinsieme non vuoto ammette un elemento minimo.
 \end{remark}
 \index{Categoria!--- degli ordinali}
 \begin{example}\label{ex_cat_ordinali}
@@ -772,6 +772,13 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 \end{definition}
 \begin{example}
 	Raccogliamo in un unico paragrafo diversi esempi di sottocategorie: la sottocategoria degli insiemi finiti di \ref{protoex_finset} è una sottocategoria (piena) della categoria \(\ctSet\) di \ref{ex_cat_insiemi}; la categoria dei gruppi abeliani è una sottocategoria piena della categoria di tutti i gruppi; la categoria degli insiemi totalmente ordinati è una sottocategoria di \(\ctPos\) definita in \ref{po_wo_to}.
+
+  A volte le sottocategorie costruite su una sottoclasse di oggetti sono piene; altre volte, per motivi `tecnici' si restringe anche la classe dei morfismi ammissibili: per esempio 
+  \begin{itemize}
+    \item le sottocategorie $\cate{T}n\ctTop$ per $n=0,1,2,3$ degli spazi che soddisfano gli assiomi di separazione $Tn$ sono sottocategorie piene della categoria $\ctTop$ di \ref{}, una inclusa nell'altra,
+      \[\ctTop\supseteq\cate{T}0\ctTop\supseteq\cate{T}1\ctTop\supseteq\cate{T}2\ctTop\supseteq\cate{T}3\ctTop\]
+    \item la sottocategoria degli spazi T2 e compatti ha per morfismi le mappe $f : X\to Y$ continue e \emph{proprie}, tali cioè che la controimmagine di un sottoinsieme compatto $K\Subset Y$ mediante $f$ sia un sottoinsieme compatto di $X$.
+  \end{itemize}
 \end{example}
 \begin{definition}\label{def_cat_prodotto}\index{Categoria!--- prodotto}
 	Date due categorie \(\ctC\) e \(\ctD\), la \emph{categoria prodotto} \(\ctC\times\ctD\) ha
@@ -858,17 +865,17 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 Le categorie che si identificano alla propria opposta meritano quindi un nome specifico.
 \begin{definition}
 	Diciamo che una categoria \(\ctC\) è \emph{autoduale} se \(\ctC=\ctC^\op\).
-
+\end{definition}
+\begin{example}
 	Chiaramente, la categoria vuota \(\ctInit\) è autoduale (ossia \(\ctInit^\op=\ctInit\)) e altrettanto è vero per la categoria terminale \(\ctTerm\) e per la categoria discreta \(A^\delta\) di \ref{ex_cat_discreta}.
 
-	La categoria \(\Delta[n]\) di \ref{ex_cat_catena} si identifica alla sua opposta mediante la funzione \(j\mapsto n-j\), la quale inverte l'ordine, e risulta quindi un anti-isomorfismo tra l'insieme ordinato \(\Delta[n]=(\{1,\dots,n\},\le)\) e l'insieme ordinato \(\Delta[n]^\op = (\{1,\dots,n\},\ge)\).
+	La categoria \(\Delta[n]\) di \ref{ex_cat_catena} si identifica alla sua opposta mediante la funzione \(j\mapsto n-j\), la quale inverte l'ordine, e risulta quindi un anti-isomorfismo tra l'insieme ordinato \(\Delta[n]=(\{0,1,\dots,n\},\le)\) e l'insieme ordinato \(\Delta[n]^\op = (\{0,1,\dots,n\},\ge)\).
 	
 	La categoria codiscreta di \ref{ex_cat_codiscreta} si identifica alla sua opposta mediante la corrispondenza che è l'identità sugli oggetti, e che scambia tra loro il morfismo $u_{aa'}$ (notazioni come in \ref{ex_cat_codiscreta}) e $u_{a'a} = u_{aa'}^{-1}$.
 
 	Le categorie `span generico' e `cospan generico' sono opposte l'una dell'altra, e altrettanto è vero per le categorie \(S^\lhd\) e \(S^\rhd\):
 	\[(\Lambda^2_0)^\op = \Lambda^2_2\qquad\qquad (S^\lhd)^\op = S^\rhd\]
-\end{definition}
-
+\end{example}
 \begin{definition}[Incubi e succube sopra un oggetto]\label{def_cat_slice}\index{Categoria!--- incubo}\index{Categoria!--- succuba|see {incubo}}\index{Categoria!--- sopra un oggetto}\index{Categoria!--- sotto un oggetto|see {sopra un oggetto}}
 	Sia \(\ctC\) una categoria, e \(X\) un oggetto di \(\ctC\).
 	La \emph{categoria incubo} sopra \(X\), denotata \(\ctC/X\), o semplicemente \emph{categoria sopra} \(X\) è definita come segue:%\todo{`Su' o `sopra'? In algebra cosa si dice di solito, \emph{modulo sull'anello} o \emph{modulo sopra l'anello}?} ha 
@@ -923,11 +930,11 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 	Ogni oggetto di \(\ctA\) determina uno spazio affine (non vuoto) modellato su \(k\) ottenuto considerando lo spazio vettoriale \(A_0 = \ker A\) la cui somma di vettori agisce in maniera transitiva sull'insieme di punti \(A_1 := A^{-1}(1_k)\) (\(0_k,1_k\) sono rispettivamente l'elemento neutro additivo e quello moltiplicativo del campo \(k\)).
 \end{example}
 \begin{example}[Implicazioni in contesto]\label{ex_boole_cpc}\index{Categoria!--- del calcolo proposizionale}
-	\`E noto dai corsi di logica elementare che l'insieme \(\{\varphi,\psi,\dots\}\) delle formule ben formate del calcolo proposizionale (classico) forma un'algebra di Boole rispetto all'ordine
+	\`E noto dai corsi di logica elementare che l'insieme \(\ctB=\{\varphi,\psi,\dots\}\) delle formule ben formate del calcolo proposizionale (classico) forma un'algebra di Boole rispetto all'ordine
 	\[\varphi\le\psi \overset{\text{def}}\iff \varphi \to \psi\]
 	dove \(\_\to\_\) è l'implicazione logica. (A meno che non consideriamo le classi di equivalenza rispetto alla relazione
 	\[\varphi\equiv\psi \overset{\text{def}}\iff (\varphi\le \psi) \; \& \; (\psi\le\varphi)\]
-	questo insieme è solamente \emph{pre}ordinato.) Consideriamo la categoria \(\ctB/\varphi\); in base a \ref{} questa coincide con il segmento \(\{\alpha\le\varphi\}\), il quale in base alla definizione di \(\_\le\_\) si identifica all'insieme degli \(\alpha\) tali che \(\alpha\) implica \(\varphi\), dotato dell'ordine indotto.
+	questo insieme è solamente \emph{pre}ordinato.) Consideriamo la categoria \(\ctB/\varphi\); in base a \ref{ex_pos_slices} questa coincide con il segmento \(\{\alpha\le\varphi\}\), il quale in base alla definizione di \(\_\le\_\) si identifica all'insieme degli \(\alpha\) tali che \(\alpha\) implica \(\varphi\), dotato dell'ordine indotto.
 
 	La categoria-ordine \(\ctB/\varphi\) modella la struttura della classe delle proposizioni \(\alpha,\beta,\dots\) dove \(\alpha \to \beta\) (in \(\ctB/\varphi\)) se e solo se \(\alpha \land \varphi \to \beta\) (in \(\ctB\)).
 	\Todo{}
@@ -998,7 +1005,7 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 	\end{itemize}
 \end{definition}
 \begin{definition}
-	\Todo{Join di categorie}
+	\Todo{Join di categorie: come lo chiamiamo? Join o traduciamo? A me piace `giunto' di due categorie.}
 \end{definition}
 
 \subsubsection*{Esercizi}
@@ -1007,7 +1014,7 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 	\item
 	\item
 	\item
-	\item
+  \item Determinare il join di due catene generiche $\Delta[n] * \Delta[m]$ come in \ref{ex_cat_catena} e di due cubi $P[n] * P[m]$ come in \ref{ex_quadcuboncubo}, e più in generale di due insiemi parzialmente ordinati $P,Q$. Determinare il join di due categorie discrete $A^\delta * B^\delta$ come in \ref{ex_cat_discreta} e di due categorie codiscrete $A^\chi * B^\chi$: il risultato è ancora codiscreto? Più in generale, determinare il join di due gruppoidi $\ctG * \ctG'$; il risultato è ancora un gruppoide? Determinare il join $\ctB(\bbN,+) * \ctB(\bbN,+)$ del monoide dei numeri naturali con la somma, e $\ctB(\bbN,\max) * \ctB(\bbN,\max)$ del monoide dove la moltiplicazione è data da $n\land m \defeq \max\{n,m\}$.
 \end{enumerate}
 \section{Isomorfismi}\label{sec_isomorfismi}\index{Isomorfismo}
 La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta. Quando due gruppi sono isomorfi, `tutte' le proprietà che si esprimono in termini degli assiomi di gruppo, e che sono godute dall'uno, sono godute anche dall'altro, e in forza di questo meta-principio una strategia molto efficace per mostrare che due dati gruppi \emph{non possono} essere isomorfi è cercare una proprietà che sia goduta solo da uno dei due (per esempio, l'essere abeliano: ci sono certamente almeno due gruppi di ordine 24 distinti, il gruppo \emph{ciclico} \(\bbZ/24\bbZ\) e il gruppo \emph{simmetrico} delle permutazioni di 4 lettere \(\{a,b,c,d\}\), perché il primo è abeliano, il secondo no, e --si dimostra-- se due gruppi sono isomorfi, uno è abeliano se e solo se lo è l'altro).
