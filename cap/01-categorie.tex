@@ -1383,8 +1383,28 @@ La `categoria' \(\cate{CAT}\) di tutte le categorie localmente piccole è `illeg
 Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture categoriali definibili in topologia algebrica). Raramente faremo riferimento a \(\ctCAT\), e mai parlando della sua struttura di `categoria'.
 \begin{definition}\label{def_diagramma_comm}
 	\Todo{Diagramma, diagramma commutativo.}
-\end{definition}
+  In teoria delle categorie, la locuzione \emph{diagramma} (di \emph{forma} $\ctJ$) è sinonimo di \emph{funtore} (di \emph{dominio} $\ctJ$).
 
+  Più formalmente, se $\ctJ$ è una categoria piccola e $\ctC$ una categoria, un diagramma in $\ctC$ di forma $\ctJ$ è precisamente un funtore 
+  \[\begin{tikzcd}
+  D : \ctJ \ar[r] & \ctC.
+\end{tikzcd}
+\]
+\end{definition}
+\begin{remark}
+Come è evidente, gli esempi di diagrammi delle forme più svariate abbondano: fissata una categoria $\ctC$, uno span in $\ctC$ come in \ref{def_span_e_cospan} è un diagramma di forma $\Lambda^2_0$ e un cospan è un diagramma di forma $\Lambda^2_2$. Un quadrato in $\ctC$ è un diagramma di forma $P[2]$, e un cubo $n$-dimensionale di forma $P[n]$. Una singola freccia $f : X\to Y$ in $\ctC$ si può vedere come un diagramma di tipo $\Delta[1]$, e più in generale una catena 
+\[\begin{tikzcd}
+  A_0 \ar[r, "f_1"] & A_1 \ar[r, "f_2"] & \dots \ar[r] & A_{n-1} \ar[r, "f_n"] & a_n
+\end{tikzcd}
+\]
+di morfismi contigui in $\ctC$ è un diagramma di tipo $\Delta[n]$.
+
+Questi esempi giustificano i nomi che abbiamo dato in \ref{}, \ref{}, \ref{}, perché le categorie $\Lambda^2_0,\Lambda^2_2,\Delta[n], P[n], \dots$  sono astrazioni o `forme generiche' per diagrammi di un certo tipo.
+\end{remark}
+\begin{remark}
+  Il termine `diagramma' è riservato a funtori il cui dominio è una categoria piccola, e il cui codominio può essere una categoria larga, per suggerire il principio generale cui abbiamo già accennato in \ref{}, ossia la tensione tra categorie come forme e come universi: un diagramma di forma piccola $\ctJ$ è `interpretato' in una categoria $\ctC$, possibilmente larga.
+\end{remark}
+\Todo{}
 \begin{lemma}\label{lem_funtori_preservano_comm}
 	\Todo{Funtori preservano i diagrammi commutativi} in particolare, preservano gli isomorfismi.
 \end{lemma}
@@ -1416,6 +1436,7 @@ Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori 
 \end{enumerate}
 
 \section{Trasformazioni naturali}\label{sec_tnat}
+Gli span e i cospan si possono vedere come funtori; ciò significa che c'è una nozione di morfismo tra funtori, almeno in alcuni contesti. Vorremmo rendere precisa questa congettura.
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item
