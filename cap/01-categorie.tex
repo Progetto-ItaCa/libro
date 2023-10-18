@@ -1005,7 +1005,6 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 	\end{itemize}
 \end{definition}
 \begin{definition}
-	% \Todo{Join di categorie: come lo chiamiamo? Join o traduciamo? A me piace `giunto' di due categorie..}
   Date due categorie $\ctC,\ctD$ il \emph{giunto} (in inglese, \emph{join}) di $\ctC$ e $\ctD$, denotato con $\ctC\star\ctD$, è la categoria definta come segue:
   \begin{itemize}
     \item gli oggetti sono l'unione disgiunta di $\ctC_0$ e $\ctD_0$ (cioè gli stessi oggetti di $\ctC+\ctD$ in \ref{def_cat_somma}); 
@@ -1091,7 +1090,7 @@ Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando 
 	Abbiamo visto che ogni monoide \(M\) si può considerare una categoria con un solo oggetto. Questa categoria è un gruppoide se e solo se \(M\) è un gruppo. Infatti, un morfismo \(m\) ammette un inverso nel senso della teoria delle categorie se e solo se ammette un inverso nel senso della teoria dei gruppi: \(g\cdot g^{-1}=g^{-1}\cdot g = e\).
 \end{example}
 \begin{example}[Gruppoide d'azione]\label{action_groupoid}\index{Gruppoide!--- d'azione}
-	A ogni gruppo $(G,\cdot,1)$ si associa anche il suo \emph{gruppoide delle traslazioni} (o \emph{d'azione}), denotato $\act G$: 
+	A ogni gruppo $(G,\cdot,1)$ si può associare il suo \emph{gruppoide delle traslazioni} (o \emph{d'azione}), denotato $\act G$: 
 	\begin{itemize}
 		\item gli oggetti di $\act G$ sono gli elementi di $G$;
 		\item le frecce di $\act G$ sono a loro volta elementi di $G$, determinati come segue: per ogni $g,x\in G$ esiste un morfismo $\langle g\rangle_x : x\to g\cdot x$.
@@ -1223,10 +1222,11 @@ Questo secondo esercizio ha, come caso particolare, il seguente esempio quando \
 	La preservazione dell'identità e della composizione dicono precisamente che le funzioni \(x\mapsto g\cdot x\) per ogni \(g\) danno un'azione di \(G\) su \(X\).
 
 \end{example}
-In maniera simile, un funtore \(\ctB G\fun\bbR\emdash\ctVect\) è una rappresentazione (lineare) di \(G\) su uno spazio vettoriale, e le stesse costruzioni si possono fare con un monoide invece di un gruppo, e ciò giustifica la definizione seguente.
+In maniera simile, un funtore \(\ctB G\fun\bbR\emdash\ctVect\) è una rappresentazione (lineare) di \(G\) su uno spazio vettoriale; le stesse costruzioni si possono fare con un monoide invece di un gruppo, e ciò giustifica la definizione seguente.
 \begin{definition}[Rappresentazione di \(M\)]
 	Sia \(\ctD\) una categoria, ed \((M,\cdot,1)\) un monoide; una \emph{rappresentazione} di \(M\) in \(\ctD\) consiste di un funtore \(\ctB M \to \ctD\).
 \end{definition}
+Un esempio importante di rappresentazione di $G$ in una categoria è dato dai gruppi a un parametro di diffeomorfismi\footnote{Il nome `gruppo a un parametro' è un relitto del tempo antico quando la nozione di fibrato e di funtore erano le ultime innovazioni tecnologiche; esso è dovuto al fatto che si pensava a un'azione di $\bbR$ su una varietà $X$ come a una famiglia di diffeomorfismi $\varphi_t : X\to X$ dipendenti --appunto-- da un parametro reale $t\in\bbR$. Chiaramente, $\varphi_t = \varphi(t,-)$ per un'azione $\varphi : \bbR\times X\to X$ mediante diffeomorfismi.}
 \begin{example}\label{exa_derivata_funtore}\index{Funtore!differenziale come ---}
 	Sia \(\ctEuc\) la categoria degli spazi reali Euclidei puntati, definita come segue:
 	\begin{itemize}
@@ -1282,8 +1282,8 @@ Si noti che, anche se si può pensare \(U\subseteq V\subseteq X\) come alle funz
 Un esempio canonico di una corrispondenza del genere è questo: consideriamo uno spazio topologico \(X\) e ad ogni aperto \(U\subseteq X\) associamo l'insieme delle funzioni continue \(U\to \bbR\). Questa associazione soddisfa in più anche le seguenti due proprietà: fissato un aperto \(U\subseteq X\) e un ricoprimento \(\{U_i\}\) di \(U\), vale che
 \begin{itemize}
 	\item per ogni coppia di elementi \(s,t \in FU\),
-	      \[\forall (i \in I).(r_{U_iU}s = r_{U_iU} t \,\Rightarrow\, s=t)\]
-	\item per ogni famiglia \(s_i \in FU_i\), tale che \(r_{U_{ij}U_i}s_i = r_{U_{ij}U_j}s_j\), esiste un \(s\in FU\) tale che \(r_{U_iU}s=s_i\).
+	      \[(\forall i \in I.r_{U_iU}s = r_{U_iU} t) \,\Rightarrow\, s=t\]
+	\item per ogni famiglia \(s_i \in FU_i\), tale che \(r_{U_{ij}U_i}s_i = r_{U_{ij}U_j}s_j\), esiste un (unico, in virtù della proprietà precedente) \(s\in FU\) tale che \(r_{U_iU}s=s_i\).
 \end{itemize}
 Una corrispondenza del genere si dice un \emph{fascio} sullo spazio \(X\).
 \begin{definition}
@@ -1297,8 +1297,8 @@ Una corrispondenza del genere si dice un \emph{fascio} sullo spazio \(X\).
 Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è sufficiente a definire \(F(f,g)\) in maniera univoca, dato che il quadrato
 \[
 	\begin{tikzcd}
-		F(A,B) \ar[r]\ar[d] & F(A,B') \ar[d]\\
-		F(A',B) \ar[r] & F(A',B')
+		F(A,B) \ar[r, "{F(A,g)}"]\ar[d, "{F(f,B)}"'] & F(A,B') \ar[d, "{F(f,B')}"]\\
+		F(A',B) \ar[r, "{F(A',g)}"'] & F(A',B')
 	\end{tikzcd}
 \]
 è commutativo.
@@ -1348,7 +1348,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	che manda ogni modello in \(\ctMod(\Omega,a)\) nel suo \emph{insieme soggiaciente} \(X\).
 	\Todo{Sui funtori liberi\dots}
 \end{example}
-
 \begin{definition}\label{compo_funtori}
 	Dati due funtori \(F:\ctC\to\ctD\) e \(G:\ctD\to\ctE\), il \emph{funtore composto} \(G\cmp F:\ctC\to\ctE\) assegna
 	\begin{itemize}
@@ -1378,11 +1377,77 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		\item come morfismi i funtori tra due categorie piccole.
 	\end{itemize}
 \end{definition}
+\begin{remark}[La categoria delle categorie esiste davvero?]
 La `categoria' \(\cate{CAT}\) di tutte le categorie localmente piccole è `illegittima' perché non è localmente piccola: la classe dei funtori \(\ctC \fun\ctD\) tra due categorie larghe non è un insieme.\footnote{Usando la definizione, è possibile mostrare che c'è una classe propria di funzioni di classe \(F_0 : \ctC_0 \to \ctD_0\) e \(F_1 : \ctC_1 \to \ctD_1\) che soddisfano \ref{p_1},\ref{p_2}.} Questo può sembrare un puntiglio terminologico, ma è causa di diversi problemi (ad esempio: per \(\ctCAT\) non esistono i funtori hom di \ref{ex_hom_funtore}; quando avremo definito una trasformazione naturale in \ref{} vedremo che anche la categoria \([\ctCAT,\ctSet]\) è illegittima, e che questo è un problema --per esempio, per \(\ctCAT\) nessuno dei risultati del capitolo \ref{cap:yoneda} è valido).
 
 Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture categoriali definibili in topologia algebrica). Raramente faremo riferimento a \(\ctCAT\), e mai parlando della sua struttura di `categoria'.
+\end{remark}
+\`E chiaro che non si può compilare una lista esaustiva di funtori importanti nella pratica matematica. Possiamo però concentrarci su alcuni funtori che è immediato costruire tra le categorie di §\ref{sec_esempi_cats}.
+\begin{example}
+	\Todo{Mandare un insieme nella sua categoria (co)discreta}
+\end{example}
+\begin{example}
+	\Todo{Dominio e codominio}
+\end{example}
+\begin{example}
+	\Todo{Mandare un monoide in $\ctB(M,\cdot,1)$}
+\end{example}
+\begin{example}
+	\Todo{Le componenti connesse di un (multidi)grafo}
+\end{example}
+\begin{example}
+	\Todo{Mandare un grafo nella sua categoria libera}
+\end{example}
+\begin{example}
+	\Todo{Realizzare $\bbF\emdash\cate{Mat}$ in $\bbF\emdash\ctVect$}
+\end{example}
+\begin{example}
+	\Todo{Sequenze simmetriche}
+\end{example}
+\begin{example}
+	\Todo{Bimoduli}
+\end{example}
+\begin{example}
+	\Todo{Spazio delle orbite di un $G$-insieme }
+\end{example}
+\begin{example}
+	\Todo{Funtori da un gruppoide d'azione $\act G$ VS $G$-insiemi}
+\end{example}
+\begin{example}
+	\Todo{Gruppo delle unità di un anello}
+\end{example}
+\begin{example}
+	\Todo{Abelianizzato di un gruppo}
+\end{example}
+\begin{example}
+	\Todo{Campo dei quozienti di un dominio di integrità}
+\end{example}
+\begin{example}
+	\Todo{Il funtore GL }
+\end{example}
+\begin{example}
+	\Todo{Estensione degli scalari}
+\end{example}
+\begin{example}
+	\Todo{Localizzazione ad un primo }
+\end{example}
+\begin{example}
+	\Todo{Compattificazione ad un punto }
+\end{example}
+\begin{example}
+	\Todo{Il quoziente indotto da un prequoziente}
+\end{example}
+\begin{example}
+	\Todo{Proiezioni da $\ctC\times\ctD$; inclusioni in $\ctC+\ctD$; inclusioni in $\ctC\star\ctD$.}
+\end{example}
+\begin{example}
+	\Todo{Nucleo e conucleo di un omomorfismo}
+\end{example}
+\begin{example}
+	\Todo{Da spazi affini a spazi vettoriali, a spazi proiettivi, et cetera.}
+\end{example}
 \begin{definition}\label{def_diagramma_comm}
-	\Todo{Diagramma, diagramma commutativo.}
+	% \Todo{Diagramma, diagramma commutativo.}
   In teoria delle categorie, la locuzione \emph{diagramma} (di \emph{forma} $\ctJ$) è sinonimo di \emph{funtore} (di \emph{dominio} $\ctJ$).
 
   Più formalmente, se $\ctJ$ è una categoria piccola e $\ctC$ una categoria, un diagramma in $\ctC$ di forma $\ctJ$ è precisamente un funtore 
@@ -1392,7 +1457,7 @@ Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori 
 \]
 \end{definition}
 \begin{remark}
-Come è evidente, gli esempi di diagrammi delle forme più svariate abbondano: fissata una categoria $\ctC$, uno span in $\ctC$ come in \ref{def_span_e_cospan} è un diagramma di forma $\Lambda^2_0$ e un cospan è un diagramma di forma $\Lambda^2_2$. Un quadrato in $\ctC$ è un diagramma di forma $P[2]$, e un cubo $n$-dimensionale di forma $P[n]$. Una singola freccia $f : X\to Y$ in $\ctC$ si può vedere come un diagramma di tipo $\Delta[1]$, e più in generale una catena 
+Come è evidente, gli esempi di diagrammi delle forme più svariate abbondano: fissata una categoria $\ctC$, uno span in $\ctC$ come in \ref{def_span_e_cospan} è un diagramma di forma $\Lambda^2_0$ e un cospan è un diagramma di forma $\Lambda^2_2$. Un quadrato in $\ctC$ è un diagramma di forma $P[2]$, e un cubo $n$-dimensionale di forma $P[n]$. Un singolo oggetto di $\ctC$ si può vedere come un diagramma di forma $\Delta[0]=\ctTerm$, e una singola freccia $f : X\to Y$ in $\ctC$ si può vedere come un diagramma di tipo $\Delta[1]$, e più in generale una catena 
 \[\begin{tikzcd}
   A_0 \ar[r, "f_1"] & A_1 \ar[r, "f_2"] & \dots \ar[r] & A_{n-1} \ar[r, "f_n"] & a_n
 \end{tikzcd}
