@@ -1005,16 +1005,36 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 	\end{itemize}
 \end{definition}
 \begin{definition}
-	\Todo{Join di categorie: come lo chiamiamo? Join o traduciamo? A me piace `giunto' di due categorie.}
+	% \Todo{Join di categorie: come lo chiamiamo? Join o traduciamo? A me piace `giunto' di due categorie..}
+  Date due categorie $\ctC,\ctD$ il \emph{giunto} (in inglese, \emph{join}) di $\ctC$ e $\ctD$, denotato con $\ctC\star\ctD$, è la categoria definta come segue:
+  \begin{itemize}
+    \item gli oggetti sono l'unione disgiunta di $\ctC_0$ e $\ctD_0$ (cioè gli stessi oggetti di $\ctC+\ctD$ in \ref{def_cat_somma}); 
+    \item i morfismi $\Hom{(\ctC\star\ctD)}(X,Y)$ sono specificati per casi: 
+      \begin{itemize}
+        \item se $X,Y\in\ctC_0$, $\Hom{(\ctC\star\ctD)}(X,Y)=\Hom{\ctC}(X,Y)$;
+        \item se $X,Y\in\ctD_0$, $\Hom{(\ctC\star\ctD)}(X,Y)=\Hom{\ctD}(X,Y)$;
+        \item se $X\in\ctC_0$ e $Y\in\ctD_0$, esiste un unica freccia $u_{XY} : X \squig Y$; questa unica freccia si chiama l'\emph{eteromorfismo} che connette $X$ e $Y$;
+        \item se $X\in\ctD_0$ e $Y\in\ctC_0$, $\Hom{(\ctC\star\ctD)}(X,Y)$ è vuoto. 
+      \end{itemize}
+  \end{itemize}
+  La composizione è definita come in $\ctC$ (o come in $\ctD$) quando i morfismi sono entrambi in $\ctC$ (o in $\ctD$); la composizione con un eteromorfismo è un eteromorfismo: 
+  \[\begin{tikzcd}[row sep=2pt]
+    C \ar[r] & C' \ar[r,rightsquigarrow, "u_{C'D}"] & D \ar[r,phantom, "="] & C\ar[r,rightsquigarrow, "u_{CD}"] & D\\
+    C \ar[r,rightsquigarrow, "u_{CD}"'] & D \ar[r] & D' \ar[r,phantom, "="]& C \ar[r,rightsquigarrow, "u_{CD'}"'] & D'
+  \end{tikzcd}\]
 \end{definition}
+Dalla definizione della composizione in $\ctC\star\ctD$ si può mostrare per induzione che la composizione di una $n$-upla di morfismi di $\ctC\star\ctD$ di cui almeno uno è un eteromorfismo, è un eteromorfismo (tra gli appropriati dominio e codominio). Questo dimostra la proprietà associativa (e la buona definizione) della composizione con eteromorfismi. %Si noti che nessun eteromorfismo può essere invertibile (perché?). 
 
+L'operazione di giunto tra due categorie è essenziale alla teoria `combinatoria' delle categorie, e al trattarle come strutture, dato che molte costruzioni elementari si descrivono in termini di giunti: ad esempio, se $S=\{a,b\}$ è un insieme con due elementi, lo span generico di \ref{ex_spancospan} è il giunto $\ctTerm\star S^\delta$, e il cospan generico è $S^\delta\star\ctTerm$, e identiche relazioni valgono anche per gli $S$-span ed $S$-cospan generici.
+
+Ci sono però altre applicazioni di questa costruzione: per esempio, se $\ctB G$ è un gruppo, Milnor \cite{milnor1,milnor2} ha studiato la successione $\ctB G, \ctB G\star\ctB G, \dots, \ctB G \star\dots\star \ctB G =:\ctB G^{\star n}$ e il suo `limite' per dei problemi di topologia.
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item
 	\item
 	\item
 	\item
-  \item Determinare il join di due catene generiche $\Delta[n] * \Delta[m]$ come in \ref{ex_cat_catena} e di due cubi $P[n] * P[m]$ come in \ref{ex_quadcuboncubo}, e più in generale di due insiemi parzialmente ordinati $P,Q$. Determinare il join di due categorie discrete $A^\delta * B^\delta$ come in \ref{ex_cat_discreta} e di due categorie codiscrete $A^\chi * B^\chi$: il risultato è ancora codiscreto? Più in generale, determinare il join di due gruppoidi $\ctG * \ctG'$; il risultato è ancora un gruppoide? Determinare il join $\ctB(\bbN,+) * \ctB(\bbN,+)$ del monoide dei numeri naturali con la somma, e $\ctB(\bbN,\max) * \ctB(\bbN,\max)$ del monoide dove la moltiplicazione è data da $n\land m \defeq \max\{n,m\}$.
+  \item Determinare il giunto di due catene generiche $\Delta[n] * \Delta[m]$ come in \ref{ex_cat_catena} e di due cubi $P[n] * P[m]$ come in \ref{ex_quadcuboncubo}, e più in generale di due insiemi parzialmente ordinati $P,Q$. Determinare il giunto di due categorie discrete (prenderle finite!) $A^\delta * B^\delta$ come in \ref{ex_cat_discreta} e di due categorie codiscrete $A^\chi * B^\chi$: il risultato è ancora codiscreto? Più in generale, determinare il giunto di due gruppoidi $\ctG * \ctG'$; il risultato è ancora un gruppoide? Determinare il giunto $\ctB(\bbN,+) * \ctB(\bbN,+)$ del monoide dei numeri naturali con la somma, e $\ctB(\bbN,\max) * \ctB(\bbN,\max)$ del monoide dove la moltiplicazione è data da $n\land m \defeq \max\{n,m\}$. C'è una relazione tra $(\ctC\star\ctD)^\op$ e $\ctD^\op\star\ctC^\op$ (uguali, oposte una dell'altra, nessuna relazione\dots)?
 \end{enumerate}
 \section{Isomorfismi}\label{sec_isomorfismi}\index{Isomorfismo}
 La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta. Quando due gruppi sono isomorfi, `tutte' le proprietà che si esprimono in termini degli assiomi di gruppo, e che sono godute dall'uno, sono godute anche dall'altro, e in forza di questo meta-principio una strategia molto efficace per mostrare che due dati gruppi \emph{non possono} essere isomorfi è cercare una proprietà che sia goduta solo da uno dei due (per esempio, l'essere abeliano: ci sono certamente almeno due gruppi di ordine 24 distinti, il gruppo \emph{ciclico} \(\bbZ/24\bbZ\) e il gruppo \emph{simmetrico} delle permutazioni di 4 lettere \(\{a,b,c,d\}\), perché il primo è abeliano, il secondo no, e --si dimostra-- se due gruppi sono isomorfi, uno è abeliano se e solo se lo è l'altro).
