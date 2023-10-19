@@ -639,17 +639,20 @@ si riesce a definire la classe degli oggetti e dei morfismi di una categoria. Gl
 	La composizione di omomorfismi di pseudoinsiemi è la composizione di funzioni; la funzione identica è l'identità di $(S,\sim)$ (e se $\sim'$ è una relazione di equivalenza più fine di $\sim$ sullo stesso insieme $S$, la funzione identica $(S,\sim) \to (S,\sim')$ è un omomorfismo, ma non è un isomorfismo, nel senso di \ref{def_isomorfismo}).
 \end{example}
 \begin{remark}[Sul nome `pseudoinsieme']
-	\Todo{insiemi di Bishop da \cite{}; pseudoinsieme perché la relazione di equivalenza fa le veci dell'uguaglianza; prequoziente perché è un quoziente, prima di averlo effettivamente eseguito.}
+  La nomenclatura `insieme di Bishop' viene da \cite{Bishop1985}, dove quello che è chiamato qui pseudoinsieme consiste di un insieme per cui sia data una regola esplicita che costruisce i suoi elementi, e questi elementi possono essere uguagliati mediante una relazione $\sim$, che astrae l'uguaglianza sintattica.\footnote{In Bishop il punto centrale della definizione di pseudoinsieme è la costruibilità dei suoi elementi: elementi esibiti mediante procedure differenti sono però uguali ad ogni fine pratico, e vanno quindi identificati.}
+
+  In questo senso va intesa la nomenclatura `pseudoinsieme': gli elementi di un insieme di Bishop non sono strettamente uguali ma equivalenti mediante $\sim$; analogamente va inteso il termine `prequoziente': un insieme di Bishop consta della struttura `precedente al quoziente' $S/_\sim$.
 \end{remark}
 \subsection{Categorie come strutture}\label{ssec:categorie_strutture}
-Fin qui, l'osservazione che le strutture matematiche di un dato tipo, con la definizione appropriata di omomorfismo, formino una categoria, è nient'altro che una banalità della prassi matematica. Una osservazione decisamente meno banale è che alcune delle strutture basilari della pratica matematica sono \emph{esse stesse} delle categorie.
+Fin qui, l'osservazione che le strutture matematiche di un dato tipo, con la definizione appropriata di omomorfismo, formino una categoria, è nient'altro che una banalità della prassi matematica. Una osservazione decisamente meno banale è che alcune delle strutture della pratica matematica sono \emph{esse stesse} delle categorie.
 
-In più, questo modo di intendere la definizione oscura un'altra idea importante, perché l'esempio \ref{ex_cat_sigma_strutture} potrebbe far sospettare che gli oggetti di una categoria siano, alla fin fine, sempre insiemi dotati di strutture ulteriori (per esempio, operazioni o relazioni), e i morfismi funzioni che preservano queste strutture.
+In più, l'esempio \ref{ex_cat_sigma_strutture} potrebbe far sospettare che gli oggetti di una categoria siano, alla fin fine, sempre insiemi dotati di strutture ulteriori (per esempio, operazioni o relazioni), e i morfismi funzioni che preservano queste strutture.
 
-Invece, le categorie che hanno questa proprietà si dicono \emph{concrete}, ed esistono esempi di categorie non concrete (sebbene essi siano piuttosto ardui da definire); chi legge può consultare \cite{Freyd1973,Kuera1971} per maggiori informazioni.
-In ogni caso, per molte categorie, anche se \emph{tecnicamente} si potrebbero interpretare come categorie i cui oggetti sono insiemi strutturati, questa interpretazione non è la più naturale o la più utile. Questo è il caso degli esempi \ref{ex_cat_vuota}--\ref{ex_cat_libera}, in cui gli oggetti si possono vedere, più che come insiemi strutturati, come \emph{vertici di un grafo}.
-I seguenti esempi sono simili:
+Invece, le categorie che hanno questa proprietà si dicono \emph{concrete}, ed esistono esempi di categorie non concrete (sebbene essi siano sorprendentemente ardui da definire); chi legge può consultare \cite{Freyd1973,Kuera1971} per maggiori informazioni.
 
+Negli esempi \ref{ex_cat_vuota}--\ref{ex_cat_libera} gli oggetti si possono vedere, più che come insiemi strutturati, come \emph{vertici di un grafo}.
+
+I seguenti esempi sono simili, e vanno a rinforzare l'idea che una maniera aggiuntiva e molto utile di pensare le categorie sia come strutture matematiche a sé stanti:
 \index{Relazione di equivalenza}
 \begin{example}\label{ex_cat_rel_equiv}
 	Un insieme dotato di una relazione di equivalenza si può vedere come una particolare categoria. Consideriamo un insieme \(X\) dotato di una relazione di equivalenza indicata con il simbolo \(\sim\).
@@ -700,10 +703,10 @@ Esiste un altro esempio di questo fatto (alcune strutture matematiche sono esse 
 \begin{theorem}\label{mon_sonocat}
 	Dato un monoide \((M,\cdot,1)\), definiamo la seguente categoria, che indichiamo con \(\ctB M\).\footnote{A volte la categoria definita in questo modo si indica con \(\ctB(M,\cdot)\), a volte (quando l'operazione su \(M\) è ovvia dal contesto) semplicemente con \(\ctB M\).}
 	\begin{itemize}
-		\item La categoria \(\ctB M\) ha un unico oggetto, che indichiamo con \(\star\);\footnote{La notazione è volta a suggerire che precisare questo elemento non sarà mai importante (una scelta canonica, ma che potrebbe causare confusione, è fissare \(\ctB M_0 := \{M\}\), insieme che ovviamente \emph{non} è \(M\)).}
-		\item La categoria \(\ctB M\) ha un morfismo \(m:\star\to\star\) per ogni elemento \(m\in M\); l'unico hom-insieme che dobbiamo specificare, \(\Hom{\ctB M}(\star,\star)\), è cioè uguale a \(M\), e in particolare, l'identità \(\id_\star\) è l'elemento neutro \(1\in M\);
+		\item La categoria \(\ctB M\) ha un unico oggetto, che indichiamo con \(\bullet\);\footnote{La notazione è volta a suggerire che precisare questo elemento non sarà mai importante (una scelta canonica, ma che potrebbe causare confusione, è fissare \(\ctB M_0 := \{M\}\), insieme che ovviamente \emph{non} è \(M\)).}
+		\item La categoria \(\ctB M\) ha un morfismo \(m:\bullet\to\bullet\) per ogni elemento \(m\in M\); l'unico hom-insieme che dobbiamo specificare, \(\Hom{\ctB M}(\bullet,\bullet)\), è cioè uguale a \(M\), e in particolare, l'identità \(\id_\bullet\) è l'elemento neutro \(1\in M\);
 		\item La composizione di morfismi
-		      \[\longmor{\Hom{\ctB M}(\star,\star)\times \Hom{\ctB M}(\star,\star)}{\Hom{\ctB M}(\star,\star)}\]
+		      \[\longmor{\Hom{\ctB M}(\bullet,\bullet)\times \Hom{\ctB M}(\bullet,\bullet)}{\Hom{\ctB M}(\bullet,\bullet)}\]
 		      è data dal prodotto \(M\times M\to M\).
 	\end{itemize}
 \end{theorem}
@@ -840,11 +843,11 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 	\end{itemize}
 	tutto ciò soggetto alle equazioni
 		\begin{center}
-			\begin{tabular}{cc}
-			$d(\id_A)=A$                      & $c(\id_A)=A$       \\\midrule
-			$f\cmp \id_{df}=f$                & $\id_{cf}\cmp f=f$ \\\midrule
-			$d(g\cmp f)=df$                   & $c(g\cmp f)=cg$    \\\midrule
-			\multicolumn{2}{c}{$h\cmp (g\cmp f)=(h\cmp g)\cmp f$}
+			\begin{tabular}{ccc}
+        $d(\id_A)=A$                      && $c(\id_A)=A$       \\\midrule
+        $f\cmp \id_{df}=f$                && $\id_{cf}\cmp f=f$ \\\midrule
+        $d(g\cmp f)=df$                   && $c(g\cmp f)=cg$    \\\midrule
+			\multicolumn{3}{c}{$h\cmp (g\cmp f)=(h\cmp g)\cmp f$}
 			\end{tabular}
 		\end{center}
 	(che vanno interpretate `in contesto', cioè ad esempio \((g,f) \in \ctC_2\vdash d(g\cmp f)=d(f)\) eccetera).
@@ -962,7 +965,7 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 \end{definition}
 
 \begin{definition}\label{def_span_e_cospan}\index{Categoria!--- degli span}\index{Categoria!--- dei cospan|see {span}}
-	Data una categoria \(\ctC\), la \emph{categoria degli span} di \(\ctC\) ha
+	Data una categoria \(\ctC\), la categoria $\ctSpan(\ctC)$ degli \emph{span} di \(\ctC\) ha
 	\begin{itemize}
 		\item Come oggetti, gli \emph{span} di \(\ctC\), ovvero coppie di frecce \(f,g\) di \(\ctC\) con lo stesso dominio:
 		      \[
@@ -983,7 +986,7 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 		      ossia tali che \(q\cmp f=f'\cmp p\) e \(r\cmp g=g'\cmp p\).
 	\end{itemize}
 
-	La \emph{categoria dei cospan} di \(\ctC\) ha
+	La categoria $\ctCospan(\ctC)$ dei \emph{cospan} di \(\ctC\) ha
 	\begin{itemize}
 		\item Come oggetti, i \emph{cospan} di \(\ctC\), ovvero coppie di frecce \(f,g\) di \(\ctC\) con lo stesso codominio:
 		      \[
@@ -1004,6 +1007,7 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 		      ossia tali che \(r\cmp f=f'\cmp p\) e \(r\cmp g=g'\cmp q\).
 	\end{itemize}
 \end{definition}
+Chi legge rifletta su questa domanda: la categoria $\ctCospan(\ctC)$ è $\ctSpan(\ctC)^\op$ oppure $\ctSpan(\ctC^\op)^\op$? C'è differenza tra le due?
 \begin{definition}
   Date due categorie $\ctC,\ctD$ il \emph{giunto} (in inglese, \emph{join}) di $\ctC$ e $\ctD$, denotato con $\ctC\star\ctD$, è la categoria definta come segue:
   \begin{itemize}
