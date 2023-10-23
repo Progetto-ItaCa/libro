@@ -778,7 +778,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 
   A volte le sottocategorie costruite su una sottoclasse di oggetti sono piene; altre volte, per motivi `tecnici' si restringe anche la classe dei morfismi ammissibili: per esempio 
   \begin{itemize}
-    \item le sottocategorie $\cate{T}n\ctTop$ per $n=0,1,2,3$ degli spazi che soddisfano gli assiomi di separazione $Tn$ sono sottocategorie piene della categoria $\ctTop$ di \ref{}, una inclusa nell'altra,
+    \item le sottocategorie $\cate{T}n\ctTop$ per $n=0,1,2,3$ degli spazi che soddisfano gli assiomi di separazione $Tn$ sono sottocategorie piene della categoria $\ctTop$ di \ref{ex_cat_top}, una inclusa nell'altra,
       \[\ctTop\supseteq\cate{T}0\ctTop\supseteq\cate{T}1\ctTop\supseteq\cate{T}2\ctTop\supseteq\cate{T}3\ctTop\]
     \item la sottocategoria degli spazi T2 e compatti ha per morfismi le mappe $f : X\to Y$ continue e \emph{proprie}, tali cioè che la controimmagine di un sottoinsieme compatto $K\Subset Y$ mediante $f$ sia un sottoinsieme compatto di $X$.
   \end{itemize}
@@ -1186,7 +1186,16 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 		\item \label{p_2} \emph{Preservazione delle composizioni}: per ogni coppia di morfismi componibili \(f\) e \(g\) di \(\ctC\), \(F(g\cmp f)=Fg\cmp Ff\).
 	\end{enumtag}
 \end{definition}
+\begin{remark}
+	Una maniera alternativa di dare la definizione di funtore, che spesso torna utile nella pratica, è la seguente: un funtore $F : \ctC\fun\ctD$ consiste di una funzione tra classi $F_0 : \ctC_0\to \ctD_0$ come sopra, e per ogni $X,Y\in\ctC_0$, una funzione di insiemi 
+	\[\begin{tikzcd}
+	F_{XY} : \Hom{\ctC}(X,Y) & \Hom{\ctD}(F_0X,F_0Y)
+	\end{tikzcd}
+	\]
+	tale che $F_{XX}(\id_X) = \id_{F_0X}$ e $F_{XZ}(g\cmp f) = F_{YZ}g\cmp F_{XY}f$. 
 
+	\`E una prassi universale, però, omettere i pedici ad $F_{XY}$ e scrivere solamente la definizione nella forma di \ref{p_2}.
+\end{remark}
 \begin{example}\label{exa_monotone_funtori}\index{Funtore!mappa monotòna come ---}
 	Dati due insiemi parzialmente ordinati \((X,\le)\) e \((Y,\le)\) guardati come categorie nel senso di \ref{ord_sonocat}, un funtore \((X,\le)\fun(Y,\le)\) è precisamente una funzione monotòna nel senso di \ref{ex_cat_ordini}.
 
@@ -1382,15 +1391,28 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\end{itemize}
 \end{definition}
 \begin{remark}[La categoria delle categorie esiste davvero?]
-La `categoria' \(\cate{CAT}\) di tutte le categorie localmente piccole è `illegittima' perché non è localmente piccola: la classe dei funtori \(\ctC \fun\ctD\) tra due categorie larghe non è un insieme.\footnote{Usando la definizione, è possibile mostrare che c'è una classe propria di funzioni di classe \(F_0 : \ctC_0 \to \ctD_0\) e \(F_1 : \ctC_1 \to \ctD_1\) che soddisfano \ref{p_1},\ref{p_2}.} Questo può sembrare un puntiglio terminologico, ma è causa di diversi problemi (ad esempio: per \(\ctCAT\) non esistono i funtori hom di \ref{ex_hom_funtore}; quando avremo definito una trasformazione naturale in \ref{} vedremo che anche la categoria \([\ctCAT,\ctSet]\) è illegittima, e che questo è un problema --per esempio, per \(\ctCAT\) nessuno dei risultati del capitolo \ref{cap:yoneda} è valido).
+La `categoria' \(\cate{CAT}\) di tutte le categorie localmente piccole è `illegittima' perché non è localmente piccola: la classe dei funtori \(\ctC \fun\ctD\) tra due categorie larghe non è un insieme.\footnote{Usando la definizione, è possibile mostrare che c'è una classe propria di funzioni di classe \(F_0 : \ctC_0 \to \ctD_0\) e \(F_1 : \ctC_1 \to \ctD_1\) che soddisfano \ref{p_1},\ref{p_2}.} Questo può sembrare un puntiglio terminologico, ma è causa di diversi problemi (ad esempio: per \(\ctCAT\) non esistono i funtori hom di \ref{ex_hom_funtore}; quando avremo definito una trasformazione naturale in \ref{sec_tnat} vedremo che anche la categoria \([\ctCAT,\ctSet]\) è illegittima, e che questo è un problema --per esempio, per \(\ctCAT\) nessuno dei risultati del capitolo \ref{cap:yoneda} è valido).
 
 Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture categoriali definibili in topologia algebrica). Raramente faremo riferimento a \(\ctCAT\), e mai parlando della sua struttura di `categoria'.
 \end{remark}
-\`E chiaro che non si può compilare una lista esaustiva di funtori importanti nella pratica matematica. Possiamo però concentrarci su alcuni funtori che è immediato costruire tra le categorie di §\ref{sec_esempi_cats}.
+\`E chiaro che non si può compilare una lista esaustiva di funtori importanti nella pratica matematica. Possiamo però concentrarci su alcuni funtori che è immediato costruire tra le categorie di §\ref{sec_esempi_cats}. In particolare, ed è uno dei motivi per cui \ref{def_funtore} è interessante, diverse operazioni che guardano una struttura come esempio di un'altra struttura si possono rendere precise mediante la nozione di funtore.
 \begin{example}
-	\Todo{Mandare un insieme nella sua categoria (co)discreta}
+	Mandare un insieme $A$ nella sua categoria discreta $A^\delta$ di \ref{} è un funtore $(-)^\delta : \ctSet \fun \ctCat$: ogni funzione $f : A \to B$ induce un funtore, tautologico, $f^\delta : A \to B$ che agisce come $f$ sugli oggetti, ed è univocamente determinato dalla richiesta che $f^\delta(\id_a) = \id_{fa}$, imposta da \ref{}.
+
+	Similmente, mandare un insieme $A$ nella sua categoria codiscreta $A^\chi$ è un funtore $\ctSet \fun\ctCat$; qui è meno immediato che esista un funtore $f^\chi : A^\chi\to B^\chi$, ma usando la caratterizzazione di un funtore in \ref{} è sufficiente trovare una famiglia di funzioni 
+	\[\begin{tikzcd}
+		f^\chi_{aa'} : \Hom{A^\chi}(a,a') \ar[r] & \Hom{B^\chi}(fa, fa')
+	\end{tikzcd}\]
+	e l'unica freccia $u_{aa'} : a\to a'$ deve per forza essere mandata nell'unica freccia $v_{fa,fa'} : fa \to fa'$ in $B^\chi$.
 \end{example}
 \begin{example}
+	Se $\ctC$ è una categoria e $X\in\ctC_0$, esiste un funtore `dominio'
+	\[\dmFun{d}{\ctC/X}{\ctC}\]
+	che manda ogni oggetto $f : A\to X$ di $\ctC/X$ nel suo dominio $A$.
+
+	Similmente, esiste un funtore `codominio'
+	\[\dmFun{c}{\ctC/X}{\ctC}\]
+	che manda ogni oggetto $f : X\to A$ nel suo codominio $A$.
 	\Todo{Dominio e codominio}
 \end{example}
 \begin{example}
@@ -1468,7 +1490,7 @@ Come è evidente, gli esempi di diagrammi delle forme più svariate abbondano: f
 \]
 di morfismi contigui in $\ctC$ è un diagramma di tipo $\Delta[n]$.
 
-Questi esempi giustificano i nomi che abbiamo dato in \ref{}, \ref{}, \ref{}, perché le categorie $\Lambda^2_0,\Lambda^2_2,\Delta[n], P[n], \dots$  sono astrazioni o `forme generiche' per diagrammi di un certo tipo.
+Questi esempi giustificano i nomi che abbiamo dato in \ref{ex_cat_freccia}, \ref{ex_cat_doppiafreccia}, \ref{ex_spancospan}, perché le categorie $\Lambda^2_0,\Lambda^2_2,\Delta[n], P[n], \dots$  sono astrazioni o `forme generiche' per diagrammi di un certo tipo.
 \end{remark}
 \begin{remark}
   Il termine `diagramma' è riservato a funtori il cui dominio è una categoria piccola, e il cui codominio può essere una categoria larga, per suggerire il principio generale cui abbiamo già accennato in \ref{}, ossia la tensione tra categorie come forme e come universi: un diagramma di forma piccola $\ctJ$ è `interpretato' in una categoria $\ctC$, possibilmente larga.
