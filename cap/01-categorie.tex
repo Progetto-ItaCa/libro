@@ -331,7 +331,7 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 		      \[\sum_{n=0}^\infty E(u,x_1)\times E(x_1,x_2)\times\dots\times E(x_n,v)\]
 		      di tutte le sequenze ordinate e finite di lati
 		      \[ [\tup en;] : u \xto{e_1} x_1 \xto{e_2} x_2\xto{e_3} \dots\xto{e_{n-1}} x_{n-1}\xto{e_n} v\]
-		      con la convenzione che se \(u=v\) ed \(n=0\) la sequenza vuota si interpreta come un laccio `banale' \([\;]_u : u\to u\), e usando la notazione, ovvia, \(E(x,y)\subseteq E\) per denotare i lati di source \(x\) e target \(y\).
+		      con la convenzione che se \(u=v\) ed \(n=0\) la sequenza vuota si interpreta come un laccio `banale' \(\emptyList_u : u\to u\), e usando la notazione, ovvia, \(E(x,y)\subseteq E\) per denotare i lati di source \(x\) e target \(y\).
 	\end{itemize}
 	La composizione di due sequenze \([\tup fm;]\) e \([\tup en;]\) è data dalla loro \emph{concatenazione}, ossia dalla operazione
 	\[[\tup fm;]\cmp[\tup en;] = [\tup fm;;\tup en;].\]
@@ -432,7 +432,7 @@ Questo appena fatto è il secondo degli esempi motivanti fatti ad inizio capitol
 		\item I gruppi e gli omomorfismi di gruppo formano la categoria \(\ctGrp\).
 	\end{itemize}
 \end{example}
-L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme dotato di operazioni, codificando una struttura algebrica in una \emph{funzione di arietà}:\footnote{Le parole \emph{arietà}, così come \emph{nullario} e \emph{unario} e \(n\)-ario (ma non binario, ternario, quaternario, etc.) sono retroformazioni che il lessico matematico ha introdotto a partire dal suffisso latino \emph{-\={a}rius, -\=aria, -\=arium}, usato per formare aggettivi a partire da nomi o numerali. Una operazione `\(n\)-aria' accetta \(n\) argomenti a dominio.} innanzitutto, si ricordi che una operazione \(n\)-aria su un insieme \(X\) consta di una funzione \(\tup Xn\times \to X\) dove \(X_i = X\) per ogni \(i=1,\dots,n\).
+L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme dotato di operazioni, codificando una struttura algebrica in una \emph{funzione di arietà}:\footnote{Le parole \emph{arietà}, così come \emph{nullario} e \emph{unario} e \(n\)-ario (ma non binario, ternario, quaternario, etc.) sono retroformazioni che il lessico matematico ha introdotto a partire dal suffisso latino \emph{-\={a}rius, -\=aria, -\=arium}, usato per formare aggettivi a partire da nomi o numerali. Una operazione `\(n\)-aria' accetta \(n\) argomenti a dominio.} innanzitutto, si ricordi che una operazione \(n\)-aria su un insieme \(X\) consta di una funzione \(X\times X\times\dots\times X \to X\) dove il prodotto cartesiano è fatto $n$ volte.
 \index{Categoria!---}
 \begin{example}\label{ex_cat_sigma_strutture}
 	% \Todo{Omomorfismi per una generica segnatura algebrica}
@@ -446,8 +446,8 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 		      o in termini diagrammatici, il seguente diagramma commuta.
 		      \[
 			      \begin{tikzcd}
-				      X^{a(\omega)} \ar{r}{h^{a(\omega)}} \ar{d}{f_\omega} & Y^{a(\omega)} \ar{d}{g_\omega} \\
-				      X \ar{r}{f} & Y
+				      X^{a(\omega)} \ar{r}{h^{a(\omega)}} \ar[d, "f_\omega"'] & Y^{a(\omega)} \ar{d}{g_\omega} \\
+				      X \ar[r, "f"']& Y
 			      \end{tikzcd}
 		      \]
 	\end{itemize}
@@ -480,6 +480,7 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 	\end{itemize}
 	Si noti che questo significa che questo impone precisamente che per ogni $e\in E$, $f_E(e)$ sia un lato in $E'$ di vertici $f_V(se), f_V(te)$ rispettivamente.
 \end{example}
+Evidentemente, possiamo scrivere $e : x\to y$ per denotare in maniera compatta il fatto che $e \in E$ è un lato tale che $se=x,te=y$; allora un omomorfismo di multidigrafi è tale che se $e : x\to y$, allora $f_Ee : f_Vx\to f_Vy$.
 \index{Categoria!--- di insiemi ordinati}
 \index{Preordine}
 \begin{example}\label{ex_cat_ordini}
@@ -590,8 +591,8 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	ossia se il seguente diagramma commuta.
 	\[
 		\begin{tikzcd}
-			G\times X \ar{r}{\id_G\times f} \ar{d}{a_X} & G\times Y \ar{d}{a_Y} \\
-			X \ar{r}{f} & Y
+			G\times X \ar{r}{\id_G\times f} \ar[d, "a_X"'] & G\times Y \ar{d}{a_Y} \\
+			X \ar[r, "f"'] & Y
 		\end{tikzcd}
 	\]
 	Si noti che la composizione di funzioni equivarianti è anch'essa equivariante. I \(G\)-insiemi e le funzioni equivarianti tra loro formano la categoria \(G\emdash\ctSet\).
@@ -639,7 +640,7 @@ si riesce a definire la classe degli oggetti e dei morfismi di una categoria. Gl
 	La composizione di omomorfismi di pseudoinsiemi è la composizione di funzioni; la funzione identica è l'identità di $(S,\sim)$ (e se $\sim'$ è una relazione di equivalenza più fine di $\sim$ sullo stesso insieme $S$, la funzione identica $(S,\sim) \to (S,\sim')$ è un omomorfismo, ma non è un isomorfismo, nel senso di \ref{def_isomorfismo}).
 \end{example}
 \begin{remark}[Sul nome `pseudoinsieme']
-  La nomenclatura `insieme di Bishop' viene da \cite{Bishop1985}, dove quello che è chiamato qui pseudoinsieme consiste di un insieme per cui sia data una regola esplicita che costruisce i suoi elementi, e questi elementi possono essere uguagliati mediante una relazione $\sim$, che astrae l'uguaglianza sintattica.\footnote{In Bishop il punto centrale della definizione di pseudoinsieme è la costruibilità dei suoi elementi: elementi esibiti mediante procedure differenti sono però uguali ad ogni fine pratico, e vanno quindi identificati.}
+  La nomenclatura `insieme di Bishop' viene da \cite{Bishop1985}, dove quello che è chiamato qui pseudoinsieme consiste di un insieme per cui sia data una regola esplicita che costruisce i suoi elementi, e questi elementi possono essere uguagliati mediante una relazione $\sim$, che astrae l'uguaglianza sintattica.\footnote{In Bishop la costruibilità dei suoi elementi è il punto centrale nella definizione di pseudoinsieme: elementi esibiti mediante procedure differenti sono però uguali ad ogni fine pratico, e vanno quindi identificati.}
 
   In questo senso va intesa la nomenclatura `pseudoinsieme': gli elementi di un insieme di Bishop non sono strettamente uguali ma equivalenti mediante $\sim$; analogamente va inteso il termine `prequoziente': un insieme di Bishop consta della struttura `precedente al quoziente' $S/_\sim$.
 \end{remark}
@@ -820,7 +821,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 		      \]
 	\end{itemize}
 \end{definition}
-\begin{example}
+\begin{example}[Categorie e monoidi opposti]\label{mon_opposti_cat_opposte}
 	Guardando un monoide $(M,\cdot,1)$ come una categoria $\ctB M$, la categoria opposta $(\ctB M)^\op$ coincide col \emph{monoide opposto} $M^\op$, dove l'ordine dell'operazione è stato rovesciato: in $M^\op$, si ha l'operazione $\cdot^\op$ definita da $x\cdot^\op y \defeq y\cdot x$, e $1^\op \defeq 1$. Evidentemente, $(M^\op)^\op = M$, e un monoide è commutativo se e solo se $M^\op=M$.
 
 	Come è noto da un qualsiasi corso di algebra astratta, in particolare, se $M$ è un gruppo l'operazione di inversione $g\mapsto g^{-1}$ è un omomorfismo $G^\op\to G$, \emph{ma non} $G\to G$.
@@ -1110,7 +1111,7 @@ Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando 
 	Un \emph{automorfismo} è un endomorfismo (un morfismo da un oggetto a sé stesso) invertibile. In un gruppo \((G,\cdot)\) guardato come una categoria \(\ctB(G,\cdot)\) tutti i morfismi \(g : \star\to\star\) sono automorfismi.
 \end{definition}
 
-\begin{example}
+\begin{example}\label{ex_cat_gruppoide_naturali}
 	La categoria \(\cate{Bij}\) i cui oggetti sono gli insiemi e i cui morfismi sono biiezioni è un gruppoide. Quando si prendono solo gli insiemi finiti, la categoria \(\cate{FBij}\subset\cate{Bij}\) diventa molto interessante: consta della `unione disgiunta' (o più precisamente, la \emph{categoria somma}, Definizione \ref{def_cat_somma}) di tutti i gruppi simmetrici \(S_n\), ciascuno guardato come una categoria nel senso di \ref{mon_sonocat}:
 	\[\cate{FBij}\cong \sum_{n=0}^\infty \ctB(S_n,\cmp)\]
 	dove la notazione è quella di \ref{mon_sonocat}.
@@ -1187,7 +1188,7 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 		\item \label{p_2} \emph{Preservazione delle composizioni}: per ogni coppia di morfismi componibili \(f\) e \(g\) di \(\ctC\), \(F(g\cmp f)=Fg\cmp Ff\).
 	\end{enumtag}
 \end{definition}
-\begin{remark}
+\begin{remark}\label{def_alternativa_funtore}
 	Una maniera alternativa di dare la definizione di funtore, che spesso torna utile nella pratica, è la seguente: un funtore $F : \ctC\fun\ctD$ consiste di una funzione tra classi $F_0 : \ctC_0\to \ctD_0$ come sopra, e per ogni $X,Y\in\ctC_0$, una funzione di insiemi 
 	\[\begin{tikzcd}
 	F_{XY} : \Hom{\ctC}(X,Y) & \Hom{\ctD}(F_0X,F_0Y)
@@ -1240,7 +1241,7 @@ In maniera simile, un funtore \(\ctB G\fun\bbR\emdash\ctVect\) è una rappresent
 \begin{definition}[Rappresentazione di \(M\)]
 	Sia \(\ctD\) una categoria, ed \((M,\cdot,1)\) un monoide; una \emph{rappresentazione} di \(M\) in \(\ctD\) consiste di un funtore \(\ctB M \to \ctD\).
 \end{definition}
-La teoria classica delle equazioni differenziali ordinarie dà un esempio importante di rappresentazione di $G$ in una categoria di spazi topologici, mediante i \emph{gruppi a un parametro} di diffeomorfismi,\footnote{Il nome `gruppo a un parametro' è un relitto del tempo antico quando la nozione di fibrato e di funtore erano le ultime innovazioni tecnologiche; esso è dovuto al fatto che si pensava a un'azione di $\bbR$ su una varietà $X$ come a una famiglia di diffeomorfismi $\{\varphi_t : X\to X\}_t$ dipendenti --appunto-- da un parametro reale $t\in\bbR$ (o $t\in [a,b]$, o $t\in [0,\infty)$\dots). Chiaramente, $\varphi_t = \varphi(t,-)$ per un'azione $\varphi : \bbR\times X\to X$ mediante diffeomorfismi, cioè per un funtore $\ctB(\bbR,+,0)\to\cate{Mfd}$ verso una categoria di varietà differenziabili e mappe lisce.} o dai campi vettoriali a loro associati.
+La teoria classica delle equazioni differenziali ordinarie dà un esempio importante di rappresentazione di $G$ in una categoria di spazi topologici, mediante i \emph{gruppi a un parametro} di diffeomorfismi,\footnote{Il nome `gruppo a un parametro' è un relitto ottocentesco dovuto al fatto che si preferiva pensare a un'azione del gruppo additivo $\bbR$ su una varietà $X$ come a una famiglia di diffeomorfismi $\{\varphi_t : X\to X\}_t$ dipendenti --appunto-- da un parametro reale $t\in\bbR$ (o $t\in [a,b]$, o $t\in [0,\infty)$\dots). Chiaramente, $\varphi_t = \varphi(t,-)$ per un'azione $\varphi : \bbR\times X\to X$ mediante diffeomorfismi, cioè per un funtore $\ctB(\bbR,+,0)\to\cate{Mfd}$ verso una categoria di varietà differenziabili e mappe lisce. La lezione per chi legge è che qualsiasi corso di sistemi dinamici fa uso, più o meno nascostamente, più o meno ammettendolo, del concetto di funtore.} o dai campi vettoriali a loro associati.
 \begin{example}\label{exa_derivata_funtore}\index{Funtore!differenziale come ---}
 	Sia \(\ctEuc\) la categoria degli spazi reali Euclidei puntati, definita come segue:
 	\begin{itemize}
@@ -1279,7 +1280,7 @@ Ciò conduce a una definizione molto importante e pervasiva in teoria delle cate
 \begin{definition}\label{exa_funtori_da_poset}\index{Prefascio}\index{Funtore!Prefascio}
 	Sia \((P,\le)\) un insieme preordinato nel senso di \ref{ex_cat_ordini}; un funtore controvariante
 	\[\xymatrix{F : (P,\le)^\op \ar[r] & \ctSet}\]
-	si dice un \emph{prefascio}.\footnote{La parola è un calco dell'inglese \emph{presheaf}, cf. \cite{a,b,c}.}
+	si dice un \emph{prefascio}.\footnote{La parola è un calco strutturale dell'inglese \emph{presheaf}, che è a sua volta un calco dal francese \emph{prefaisceaux}; cf. \cite{Tennison1975,Bredon1997,Godement} e \cite[Cap. ???]{pedicchiofoundations} per una introduzione meno geometrica --ma storicamente molto istruttiva. Per indagare l'etimologia del termine e il suo impiego in matematica, chi legge può consultare l'ottima nota breve di Lovering, \cite{Lovering}}
 
 	Esplicitamente, un prefascio consiste di
 	\begin{itemize}
@@ -1317,7 +1318,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \]
 è commutativo.
 \begin{example}\label{ex_hom_funtore}\index{Funtore!hom --- covariante}\index{Funtore!hom --- controvariante}
-	L'esempio prototipico di funtore controvariante è il seguente. Sia \(\ctC\) una categoria, e \(X\) un suo oggetto. Definiamo un funtore \(\ctC(-,X) : \ctC^\op\fun\ctSet\) come segue:
+	L'esempio prototipico di \emph{funtore hom} controvariante, definito come segue. Sia \(\ctC\) una categoria, e \(X\) un suo oggetto. Definiamo un funtore \(\ctC(-,X) : \ctC^\op\fun\ctSet\) come segue:
 	\begin{itemize}
 		\item un oggetto \(Y\) viene mandato nell'insieme \(\ctC(Y,X)\) dei morfismi \(u : Y\to X\);
 		\item un morfismo \(f : Y\to Y'\) viene mandato nella funzione
@@ -1394,19 +1395,19 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \begin{remark}[La categoria delle categorie esiste davvero?]
 La `categoria' \(\cate{CAT}\) di tutte le categorie localmente piccole è `illegittima' perché non è localmente piccola: la classe dei funtori \(\ctC \fun\ctD\) tra due categorie larghe non è un insieme.\footnote{Usando la definizione, è possibile mostrare che c'è una classe propria di funzioni di classe \(F_0 : \ctC_0 \to \ctD_0\) e \(F_1 : \ctC_1 \to \ctD_1\) che soddisfano \ref{p_1},\ref{p_2}.} Questo può sembrare un puntiglio terminologico, ma è causa di diversi problemi (ad esempio: per \(\ctCAT\) non esistono i funtori hom di \ref{ex_hom_funtore}; quando avremo definito una trasformazione naturale in \ref{sec_tnat} vedremo che anche la categoria \([\ctCAT,\ctSet]\) è illegittima, e che questo è un problema --per esempio, per \(\ctCAT\) nessuno dei risultati del capitolo \ref{cap:yoneda} è valido).
 
-Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture categoriali definibili in topologia algebrica). Raramente faremo riferimento a \(\ctCAT\), e mai parlando della sua struttura di `categoria'.
+Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture definibili in topologia algebrica, che somigliano a categorie ma dove gli assiomi \ref{cp_1}, \ref{cp_2} `valgono a meno di omotopia'). Raramente faremo riferimento a \(\ctCAT\), e mai parlando della sua struttura di `categoria'.
 \end{remark}
 \`E chiaro che non si può compilare una lista esaustiva di funtori importanti nella pratica matematica. Possiamo però concentrarci su alcuni funtori che è immediato costruire tra le categorie di §\ref{sec_esempi_cats}. In particolare, ed è uno dei motivi per cui \ref{def_funtore} è interessante, diverse operazioni che guardano una struttura come esempio di un'altra struttura si possono rendere precise mediante la nozione di funtore.
-\begin{example}
-	Mandare un insieme $A$ nella sua categoria discreta $A^\delta$ di \ref{} è un funtore $(-)^\delta : \ctSet \fun \ctCat$: ogni funzione $f : A \to B$ induce un funtore, tautologico, $f^\delta : A \to B$ che agisce come $f$ sugli oggetti, ed è univocamente determinato dalla richiesta che $f^\delta(\id_a) = \id_{fa}$, imposta da \ref{}.
+\begin{example}[Categorie discrete e codiscrete]\index{Categoria!--- discreta}\index{Categoria!--- codiscreta}\index{Funtore!--- categoria discreta}\index{Funtore!--- categoria codiscreta}
+	Mandare un insieme $A$ nella sua categoria discreta $A^\delta$ di \ref{ex_cat_discreta} è un funtore $(-)^\delta : \ctSet \fun \ctCat$: ogni funzione $f : A \to B$ induce un funtore, tautologico, $f^\delta : A \to B$ che agisce come $f$ sugli oggetti, ed è univocamente determinato dalla richiesta che $f^\delta(\id_a) = \id_{fa}$, imposta da \ref{p_1}.
 
-	Similmente, mandare un insieme $A$ nella sua categoria codiscreta $A^\chi$ è un funtore $\ctSet \fun\ctCat$; qui è meno immediato che esista un funtore $f^\chi : A^\chi\to B^\chi$, ma usando la caratterizzazione di un funtore in \ref{} è sufficiente trovare una famiglia di funzioni 
+	Similmente, mandare un insieme $A$ nella sua categoria codiscreta $A^\chi$ è un funtore $\ctSet \fun\ctCat$; qui è meno immediato che esista un funtore $f^\chi : A^\chi\to B^\chi$, ma usando la caratterizzazione di un funtore in \ref{def_alternativa_funtore} è sufficiente trovare una famiglia di funzioni 
 	\[\begin{tikzcd}
 		f^\chi_{aa'} : \Hom{A^\chi}(a,a') \ar[r] & \Hom{B^\chi}(fa, fa')
 	\end{tikzcd}\]
 	e l'unica freccia $u_{aa'} : a\to a'$ deve per forza essere mandata nell'unica freccia $v_{fa,fa'} : fa \to fa'$ in $B^\chi$.
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- dominio}\index{Funtore!--- codominio}
 	Se $\ctC$ è una categoria e $X\in\ctC_0$, esiste un funtore `dominio'
 	\[\dmFun{d}{\ctC/X}{\ctC}\]
 	che manda ogni oggetto $f : A\to X$ di $\ctC/X$ nel suo dominio $A$.
@@ -1414,66 +1415,102 @@ Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori 
 	Similmente, esiste un funtore `codominio'
 	\[\dmFun{c}{\ctC/X}{\ctC}\]
 	che manda ogni oggetto $f : X\to A$ nel suo codominio $A$.
-	\Todo{Dominio e codominio}
 \end{example}
-\begin{example}
-	\Todo{Mandare un monoide in $\ctB(M,\cdot,1)$}
+\begin{example}\index{Funtore!--- categoria associata a monoide}
+	La corrispondenza che assegna a un monoide $(M,\cdot,1)$ la categoria con un solo oggeto $\ctB(M,\cdot,1)$ come in \ref{mon_sonocat} è la parte sugli oggetti di un funtore 
+	\[\dmFun{\ctB}{\ctMon}{\ctCat}\]
+	tra le categorie di \ref{ex_cat_monoidi} e di \ref{ex_cat_cat}; abbiamo in effetti già dimostrato in \ref{exa_funtori_da_gruppi} che i funtori tra categorie della forma $\ctB M$ sono tutti e soli gli omomorfismi di monoidi (e la composizione di omomorfismi $M\to N\to R$ e di funtori $\ctB M \fun\ctB N \fun\ctB R$ coincidono), quindi la sottocategoria di $\ctCat$ identificata come l'immagine di $\ctB$ è piena, e si identifica alla categoria dei monoidi. (Questa ultima osservazione sarà chiara quando avremo introdotto la nozione di \emph{funtore pienamente fedele} in \ref{}.)
 \end{example}
-\begin{example}
-	\Todo{Le componenti connesse di un (multidi)grafo}
+\begin{example}[Le componenti connesse di un (multidi)grafo]\index{Funtore!--- componenti connesse di un grafo}\index{$\pi_0$|see {componenti connesse}}\index{Componenti connesse!--- di un grafo}
+	Se $\ctG=(E,V)$ è un multidigrafo come in \ref{ex_cat_grafi}, possiamo costruire l'insieme delle sue \emph{componenti connesse} considerando la relazione $x\asymp y$ sull'insieme dei suoi vertici, definita da $x\asymp y$ se $x=y$, o esiste un lato $e : x \to y$, o esiste un lato $e' : y\to x$. Due vertici $x,y\in V$ appartengono alla stessa componente connessa se esiste una successione finita di vertici $\tup vn,$ tale che 
+	\[x \asymp v_1 \asymp v_2 \asymp\dots\asymp v_n\asymp y.\]
+	(Si tratta in poche parole della chiusura transitiva $\asymp^*$ di $\asymp$, che quindi diventa una relazione di equivalenza su $V$.) 
+
+	Definiamo $\pi_0\ctG$ come l'insieme quoziente $V/_{\asymp^*}$ delle componenti connesse di $\ctG$. Questa assegnazione è la funzione sugli oggetti di un funtore 
+	\[\dmFun{\pi_0}{\ctGph}{\ctSet}\]
+	che su un omomorfismo di multidigrafi $f : \ctG \to\ctH$ è definita mandando la componente connessa di $v\in V_\ctG$ nella componente connessa di $f_V(v)\in V_\ctH$ (è immediato verificare dal fatto che $f_E(e : x\to y)=f_Ee : f_Vx\to f_Vy$ che questa è una buona definizione, cioè che $f_V$ scende al quoziente).
 \end{example}
-\begin{example}
-	\Todo{Mandare un grafo nella sua categoria libera}
+\begin{example}[La categoria libera associata a un grafo]\index{Funtore!--- categoria libera}
+	Se $\ctG$ è un multidigrafo come in \ref{ex_cat_grafi}, la costruzione della categoria libera $F\ctG$ di \ref{ex_cat_libera} definisce la funzione sugli oggetti di un funtore 
+	\[\dmFun F\ctGph\ctCat\]
+	Un omomorfismo di grafi $(f_E,f_V) : \ctG \to \ctH$ infatti è il dato sufficiente per definire un funtore $F(f_E,f_V) : F\ctG \fun F\ctH$ sugli oggetti (con $f_V$) e sui morfismi generatori (con $f_E$), mandando la successione di lati contigui $[\tup en;]$ in $F\ctG$ in $[\tup {{f_E}e}n;]$ in $F\ctH$ (se $n=0$ questo significa che $F(f_E,f_V)\emptyList = \emptyList$).
 \end{example}
-\begin{example}
-	\Todo{Realizzare $\bbF\emdash\cate{Mat}$ in $\bbF\emdash\ctVect$}
+\begin{example}[Realizzare $\bbF\emdash\cate{Mat}$ in $\bbF\emdash\ctVect$]\index{Funtore!--- matrici reali}
+	\Todo{}
 \end{example}
-\begin{example}
-	\Todo{Sequenze simmetriche}
+\begin{example}[Successioni simmetriche, specie combinatorie]\index{Funtore!--- specie combinatoria}\index{Specie combinatorie}\index{Successione simmetrica|see {Specie combinatoria}} 
+Si ricordi la definizione della categoria $\cate{Bij}$ in \ref{ex_cat_gruppoide_naturali}; un funtore 
+\[\dmFun{f}{\cate{Bij}}{\ctSet}\]
+consta dei seguenti dati:
+\begin{itemize}
+	\item una collezione di insiemi $f(n)=X_n$ indicizzata dai numeri naturali $n\ge 1$;
+	\item una rappresentazione $S_n \times X_n\to X_n$, ossia un'azione (sinistra) del gruppo simmetrico $S_n$ degli automorfismi dell'insieme $\{\iter n\}$.
+\end{itemize}
+Il funtore $f$ si dice una \emph{specie combinatoria} e la famiglia $f(n)=X_n$ è una \emph{successione simmetrica}. Questo tipo di funtori, molto ricchi di struttura e di proprietà interessanti, trovano applicazioni in combinatoria enumerativa \cite{}, teoria delle rappresentazioni \cite{}, geometria e topologia \cite{} (quando invece che insiemi gli $X_n$ sono spazi vettoriali), logica e informatica teorica \cite{}. Denotando con $\# S$ la cardinalità di un insieme, ad ogni specie combinatoria $f : \cate{Bij} \fun\ctSet$ tale che ogni $f(n)$ sia finito possiamo associare la serie formale $F(t)\in\mathbb{N}\llbracket t\rrbracket$ definita come $F(t) \defeq \sum_{n\ge 1} \frac{\# X_n}{n!}t^n$. Questa si chiama la \emph{funzione generatrice} della specie combinatoria $F$, e le sue proprietà algebriche o analitiche (qualora $F(t)$ converga) sono in corrispondenza diretta con le proprietà del funtore $f$.
+	% \Todo{Sequenze simmetriche}
 \end{example}
-\begin{example}
-	\Todo{Bimoduli}
+\begin{example}[Moduli sinistri; moduli destri; bimoduli]\index{Moduli su un anello!--- come funtori}\index{Modulo}
+	Se $\ctAb$ è la categoria dei gruppi abeliani e loro omomorfismi, ed $(R,+,\cdot,0,1)$ è un anello unitario, una rappresentazione del monoide $(R,\cdot,1)$ in $\ctAb$, ossia un funtore 
+	\[\dmFun{M}{\ctB(R,\cdot,1)}{\ctAb}\]
+	consiste di un gruppo abeliano $M$ su cui è definita un'azione $a$ del monoide $(R,\cdot,1)$ mediante mappe bilineari. L'azione $a : R\times M\to M$ soddisfa cioè le proprietà 
+	\begin{itemize}
+		\item $a(1,m)=m$ per ogni $m\in M$;
+		\item $a(s\cdot r,m)=a(s,a(r,m))$ per ogni $r,s\in R$, $m\in M$;
+		\item $a(r+s,m) = a(r,m) + a(s,m)$ per ogni $r,s\in R$, $m\in M$;
+		\item $a(r,m+n) = a(r,m) + a(r,n)$ per ogni $r\in R$, $m,n\in M$.
+	\end{itemize}
+	Denotando $a(r,m)$ con un simbolo infisso $r.m$, questi assiomi sono esattamente quelli che caratterizzano $M$ come un \emph{$R$-modulo (sinistro)}.
+
+	Similmente, un modulo destro è un funtore \emph{controvariante} $R\fun\ctAb$, cioè un funtore $R^\op\fun\ctAb$ dove $R^\op$ è l'\emph{anello opposto} (cf. \ref{mon_opposti_cat_opposte}) dotato della moltiplicazione $x\cdot^\op y \defeq y\cdot x$, e un $R,S$-\emph{bimodulo} è un funtore 
+	\[\dmFun{{}_RM_S}{S^\op\times R}{\ctAb.}\]
 \end{example}
-\begin{example}
-	\Todo{Spazio delle orbite di un $G$-insieme }
+\begin{example}[Spazio delle orbite di un $G$-insieme]\index{Funtore!--- orbite di un $G$-insieme}
+	Ogni volta che sia data una rappresentazione di un gruppo $G$ come in \ref{exa_azioni_funtori} (cioè un $G$-insieme come in \ref{ex_cat_g_insiemi}) possiamo considerare lo \emph{spazio delle orbite} $X/G$ definito come l'insieme delle classi di equivalenza della forma 
+	\[[x]_G \defeq \{g\cdot x\mid g\in G\}\]
+	(ciascuno dei $[x]_G$ si chiama l'\emph{orbita} di $x$ rispetto all'azione di $G$).
+
+	Mostriamo che esiste un funtore 
+	\[\dmFun{-/G}{G\emdash\ctSet}{\ctSet}\]
+	che manda il $G$-insieme $X$ nell'insieme $X/G$. Affinché questo sia vero, una funzione equivariante $f : X\to Y$ deve indurre una funzione ben definita tra gli spazi delle orbite $X/G$ e $Y/G$, in modo che gli assiomi \ref{p_1} e \ref{p_2} siano soddisfatti. \`E facile verificare che $f/G : X/G \to Y/G : [x]_G\mapsto [f(x)]_G$ ha tutte queste proprietà. (In particolare, se chiamiamo $\pi_X : X\to X/G$ la funzione $x\mapsto [x]_G$ che manda ogni elemento nella sua orbita, $f/G$ è l'unica funzione tale che $f/G(\pi_X(x)) = \pi_Y(f(x))$.)
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- da un gruppoide d'azione}
 	\Todo{Funtori da un gruppoide d'azione $\act G$ VS $G$-insiemi}
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- gruppo delle unità}
 	\Todo{Gruppo delle unità di un anello}
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- omotopia}\index{Funtore!--- omologia}
 	\Todo{Omotopia, omologia, e parafernalia topologici}
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- di abelianizzazione}
 	\Todo{Abelianizzato di un gruppo}
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- campo dei quozienti}
 	\Todo{Campo dei quozienti di un dominio di integrità}
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- gruppo generale lineare}\index{GL|see {Gruppo generale lineare}}\index{Gruppo generale lineare}
 	\Todo{Il funtore GL }
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- di estensione degli scalari}
 	\Todo{Estensione degli scalari}
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- di localizzazione}
 	\Todo{Localizzazione ad un primo }
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- di compattificazione}
 	\Todo{Compattificazione ad un punto }
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- quoziente di uno pseudoinsieme}
 	\Todo{Il quoziente indotto da un prequoziente}
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- proiezioni da un prodotto}
+	\index{Funtore!--- inclusioni in una somma}
 	\Todo{Proiezioni da $\ctC\times\ctD$; inclusioni in $\ctC+\ctD$; inclusioni in $\ctC\star\ctD$.}
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- nucleo e conucleo}\index{ker|see {nucleo}}\index{coker|see {conucleo}}
 	\Todo{Nucleo e conucleo di un omomorfismo}
 \end{example}
-\begin{example}
+\begin{example}\index{Funtore!--- tra spazi affini e proiettivi}
 	\Todo{Da spazi affini a spazi vettoriali, a spazi proiettivi, et cetera.}
 \end{example}
 \begin{definition}\label{def_diagramma_comm}
@@ -1497,7 +1534,7 @@ di morfismi contigui in $\ctC$ è un diagramma di tipo $\Delta[n]$.
 Questi esempi giustificano i nomi che abbiamo dato in \ref{ex_cat_freccia}, \ref{ex_cat_doppiafreccia}, \ref{ex_spancospan}, perché le categorie $\Lambda^2_0,\Lambda^2_2,\Delta[n], P[n], \dots$  sono astrazioni o `forme generiche' per diagrammi di un certo tipo.
 \end{remark}
 \begin{remark}
-  Il termine `diagramma' è riservato a funtori il cui dominio è una categoria piccola, e il cui codominio può essere una categoria larga, per suggerire il principio generale cui abbiamo già accennato in \ref{}, ossia la tensione tra categorie come forme e come universi: un diagramma di forma piccola $\ctJ$ è `interpretato' in una categoria $\ctC$, possibilmente larga.
+  Il termine `diagramma' è riservato a funtori il cui dominio è una categoria piccola, e il cui codominio può essere una categoria larga, per suggerire il principio generale cui abbiamo già accennato in \ref{ssec:categorie_forme}, ossia la tensione tra categorie come forme e come universi: un diagramma di forma piccola $\ctJ$ è `interpretato' in una categoria $\ctC$, possibilmente larga.
 \end{remark}
 \Todo{}
 \begin{lemma}\label{lem_funtori_preservano_comm}
@@ -1672,7 +1709,7 @@ sfruttando la dualità a nostro vantaggio.
 \begin{proof}
 	Costruiamo \(u\) esplicitamente: ad un elemento \(b\in B\), che sappiamo essere della forma \(e(a)\) per qualche \(a\in A\), associamo l'elemento \(u(b)=f(a)\). Questa definizione è ben posta, perché se \(a,a'\) sono entrambi tali che \(e(a)=e(a')=b\), allora \(mu(b)=mf(a)=mf(a')\), così che \(f(a)=f(a')\), perché \(m\) è un mono. \`E evidente ora che \(u\cmp e= f\), per costruzione, ed \((m\cmp u)(b)=m(f(a))=g(e(a))=g(b)\); l'unicità segue ancora dal fatto che \(m\) è mono.
 \end{proof}
-Concludiamo la sezione enunciando un risultato che nel capitolo \ref{} avremo gli strumenti per dimostrare in modo elegante (chi legge interpreti così la situazione: dimostrare in maniera elementare il seguente risultato è possibile, ma va considerato un esercizio laborioso. Una parte dell'esercizio è però del tutto elementare e invitiamo chi legge a scoprire quale --e a cimentarvisi).
+Concludiamo la sezione enunciando un risultato che nel capitolo \ref{cap:fattorizzazione} avremo gli strumenti per dimostrare in modo elegante (chi legge interpreti così la situazione: dimostrare in maniera elementare il seguente risultato è possibile, ma va considerato un esercizio laborioso. Una parte dell'esercizio è però del tutto elementare e invitiamo chi legge a scoprire quale --e a cimentarvisi).
 \begin{proposition}\label{caratt_epi_con_ort}
 	Sia \(p : E \to B\) una funzione tra insiemi; le seguenti condizioni sono equivalenti:
 	\begin{itemize}
