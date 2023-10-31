@@ -453,10 +453,10 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 	\end{itemize}
 \end{example}
 \`E un esercizio tedioso nella manipolazione delle tuple ordinate, ora, dimostrare che gli assiomi di categoria sono tutti soddisfatti. Un esercizio analogamente tedioso è di trovare segnature algebriche opportune che esprimono le categorie dei gruppi, dei monoidi, degli anelli e degli spazi vettoriali ecc.\ come esempi particolari di categorie di modelli di una segnatura algebrica. (Tedioso, e a volte non proprio banale: ad esempio, come si descrivono le operazioni di moltiplicazione per scalare in uno spazio vettoriale usando la definizione di segnatura algebrica?)
-\begin{example}[Categoria dei grafi]\label{ex_cat_grafi}\index{Categoria!--- dei grafi}
-	Questo esempio rende precise alcune osservazioni fatte in precedenza, \ref{ex_cat_doppiafreccia} e \ref{ex_cat_libera}. La categoria \(\ctGph\) dei grafi è così definita:
+\begin{example}[Categoria dei multidigrafi]\label{ex_cat_grafi}\index{Categoria!--- dei grafi}
+	Questo esempio rende precise alcune osservazioni fatte in precedenza, \ref{ex_cat_doppiafreccia} e \ref{ex_cat_libera}. La categoria \(\ctdGph\) dei grafi è così definita:
 	\begin{itemize}
-		\item gli oggetti di \(\ctGph\) sono i grafi, o più precisamente i \emph{multidigrafi}: un (multidi)grafo \(\ctG = (E,V,s,t)\) consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\rightrightarrows V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}.
+		\item gli oggetti di \(\ctdGph\) sono i grafi, o più precisamente i \emph{multidigrafi}: un (multidi)grafo \(\ctG = (E,V,s,t)\) consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\rightrightarrows V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}.
 		\item Un omomorfismo di (multidi)grafi \((f_E,f_V) : (E,V,s,t)=\ctG\to\ctG'= (E', V',s',t')\) consiste in una coppia di funzioni \(f_E, f_V\) tali che
 		      \begin{gather*}
 			      s'\cmp f_E = f_V\cmp s\\
@@ -481,6 +481,11 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 	Si noti che questo significa che questo impone precisamente che per ogni \(e\in E\), \(f_E(e)\) sia un lato in \(E'\) di vertici \(f_V(se), f_V(te)\) rispettivamente.
 \end{example}
 Evidentemente, possiamo scrivere \(e : x\to y\) per denotare in maniera compatta il fatto che \(e \in E\) è un lato tale che \(se=x,te=y\); allora un omomorfismo di multidigrafi è tale che se \(e : x\to y\), allora \(f_Ee : f_Vx\to f_Vy\).
+\begin{example}[Categoria dei grafi]\label{ex_cat_grafi_nondiretti}
+In maniera simile possiamo definire la categoria $\ctGph$ dei grafi non diretti; un grafo non diretto è un insieme $V$ di vertici, su cui sia definita una relazione $E\subseteq V\times V$, simmetrica e irriflessiva (cioè $\forall v\in V.(v,v)\notin E$).
+
+Un omomorfismo di grafi non diretti è una funzione tra i vertici $f_V : V\to V'$ compatibile con le relazioni $E,E'$: se $(u,v)\in E$, allora $(fu,fv)\in E'$.
+\end{example}
 \index{Categoria!--- di insiemi ordinati}
 \index{Preordine}
 \begin{example}\label{ex_cat_ordini}
@@ -728,7 +733,7 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 	In particolare, un gruppo \((G,\cdot,1)\) si può ugalmente vedere come la categoria \(\ctB G\) ad esso associata, che ha un solo oggetto e \(G\) come insieme di morfismi. In maniera concisa (ma anche ora, chi legge dovrebbe fermarsi a riflettere finché questa frase non risulta perfettamente evidente) un monoide è una categoria con un singolo oggetto.%, e un gruppo è un gruppoide (come in \ref{def_gruppoide}) con un singolo oggetto.
 \end{corollary}
 \begin{remark}
-	Del resto, una categoria con un solo oggetto non `è' un monoide, ma lo definisce naturalmente; e un monoide non `è' la categoria \(\ctB M\), ma la definisce naturalmente (e qualcosa di simile si può dire per gli insiemi ordinati). In altre parole, eliminare la distinzione tra \(M\) e \(\ctB M\) non segue da una tautologia, ma è una \emph{identità informativa} (intesa come in `Senso e significato` di Frege) che non è \emph{strettamente} una identità ma una \emph{identificazione}: \(M\mapsto \ctB M\) e \(\ctC\mapsto \ctC_1\) sono, a patto che \(\ctC_0\) abbia un solo elemento, corrispondenze inverse una dell'altra, nel senso che \((\ctB M)_1 = M\) e che \(\ctB(\ctC_1) = \ctC\).
+	Del resto, una categoria con un solo oggetto non `è' un monoide, ma lo definisce naturalmente; e un monoide non `è' la categoria \(\ctB M\), ma la definisce naturalmente (e qualcosa di simile si può dire per gli insiemi ordinati). In altre parole, eliminare la distinzione tra \(M\) e \(\ctB M\) non segue da una tautologia, ma è una \emph{identità informativa} (intesa come in `Senso e significato' di Frege) che non è \emph{strettamente} una identità ma una \emph{identificazione}: \(M\mapsto \ctB M\) e \(\ctC\mapsto \ctC_1\) sono, a patto che \(\ctC_0\) abbia un solo elemento, corrispondenze inverse una dell'altra, nel senso che \((\ctB M)_1 = M\) e che \(\ctB(\ctC_1) = \ctC\).
 	%Dato un oggetto \(X\) di una categoria, un morfismo da \(X\) a \(X\) si chiama anche \emph{endomorfismo}. In un monoide, tutti i morfismi sono endomorfismi.
 \end{remark}
 % \begin{remark}
@@ -918,8 +923,16 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 \begin{example}[Colorazioni di insiemi]\label{ex_set_colorati}\index{Categoria!--- degli insiemi colorati}
 	Se \(\{\iter r\}\) denota un insieme con \(r\) elementi, una \emph{colorazione} di un insieme \(X\) consiste di una funzione \(c : X \to \{\iter r\}\) (di modo che gli elementi di \(X_i := c^{-1}(i)\) siano gli elementi `colorati' nel modo \(i\)); molti problemi di combinatoria enumerativa elementare riguardano colorazioni di insiemi finiti, e quindi essi possono essere enunciati attraverso la categoria incubo sopra \(\{\iter r\}\).
 \end{example}
+Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 \begin{example}
-	\Todo{Grafi colorati}
+	Una \emph{$n$-colorazione} di un grafo non diretto come in \ref{ex_cat_grafi_nondiretti} consiste della scelta di un `colore' $i\in\{1,\dots,n\}$ per ogni vertice $V$ di un grafo $(E,V)$, in modo tale che due vertici collegati da un lato non siano dello stesso colore.
+
+	Una $n$-colorazione per un grafo $\ctG$ corrisponde precisamente al dato di un omomorfismo di grafi $\ctG\to\ctK_n$ verso il \emph{grafo completo} su $n$ vertici:
+	\begin{itemize}
+		\item i vertici di $\ctK_n$ sono gli elementi di $\{1,\dots,n\}$;
+		\item due vertici $i,j$ sono in relazione se e solo se $i\ne j$.
+	\end{itemize}
+	Da ciò segue che la categoria dei grafi $n$-colorati, i cui oggetti sono grafi con una $n$-colorazione, e i cui morfismi rispettano la colorazione, è precisamente la categoria incubo di $\ctGph$ sopra $\ctK_n$. 
 \end{example}
 \begin{example}[Intervalli]\label{ex_pos_slices}\index{Categoria!--- intervallo di un poset}
 	Se \((\bbR,\le)\) denota l'insieme dei numeri reali linearmente ordinato nel modo usuale, ed \(x\in\bbR\) è un numero reale, la categoria \(\bbR/x\) è il semi-intervallo inferiormente illimitato \((-\infty,t]:=\{t\le x\}\), e analogamente \(x/\bbR\) è il semi-intervallo \([t,+\infty)\). Più in generale, in ogni insieme parzialmente ordinato \((P,\le)\) guardato come categoria, l'incubo \(P/x\) sopra \(x\in P\) consiste dell'intervallo \(\{t\le x\}\) dotato dell'ordine indotto da \(P\), e similmente accade per \(x/P\). (Se \(a,b\in\bbR\) con l'ordine usuale, e \(a\le b\), si noti anche che \((a/\bbR)/(a\le b)\) è esattamente l'intervallo limitato \([a,b]\).)
@@ -952,10 +965,10 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 	\Todo{}
 \end{example}
 \begin{definition}\label{def_cat_frecce}\index{Categoria!--- delle frecce}
-	Data una categoria \(\ctC\), la \emph{categoria delle frecce} o \emph{dei morfismi} di \(\ctC\) ha
+	Data una categoria \(\ctC\), la \emph{categoria delle frecce} o \emph{dei morfismi} di \(\ctC\), denotata $\ctC^\to$, ha
 	\begin{itemize}
-		\item Come oggetti, le frecce \(f:A\to B\) di \(\ctC\);
-		\item Come morfismi \(f\to f'\), coppie di frecce \(p:A\to A'\) e \(q:B\to B'\) che fanno commutare il seguente quadrato,
+		\item come oggetti, le frecce \(f:A\to B\) di \(\ctC\);
+		\item come morfismi \(f\to f'\), coppie di frecce \(p:A\to A'\) e \(q:B\to B'\) che fanno commutare il seguente quadrato,
 		      \[
 			      \begin{tikzcd}
 				      A \ar{r}{f} \ar{d}{p} & B \ar{d}{q} \\
@@ -1427,12 +1440,12 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	(Si tratta in poche parole della chiusura transitiva \(\asymp^*\) di \(\asymp\), che quindi diventa una relazione di equivalenza su \(V\).)
 
 	Definiamo \(\pi_0\ctG\) come l'insieme quoziente \(V/_{\asymp^*}\) delle componenti connesse di \(\ctG\). Questa assegnazione è la funzione sugli oggetti di un funtore
-	\[\dmFun{\pi_0}{\ctGph}{\ctSet}\]
+	\[\dmFun{\pi_0}{\ctdGph}{\ctSet}\]
 	che su un omomorfismo di multidigrafi \(f : \ctG \to\ctH\) è definita mandando la componente connessa di \(v\in V_\ctG\) nella componente connessa di \(f_V(v)\in V_\ctH\) (è immediato verificare dal fatto che \(f_E(e : x\to y)=f_Ee : f_Vx\to f_Vy\) che questa è una buona definizione, cioè che \(f_V\) scende al quoziente).
 \end{example}
 \begin{example}[La categoria libera associata a un grafo]\index{Funtore!--- categoria libera}
 	Se \(\ctG\) è un multidigrafo come in \ref{ex_cat_grafi}, la costruzione della categoria libera \(F\ctG\) di \ref{ex_cat_libera} definisce la funzione sugli oggetti di un funtore
-	\[\dmFun F\ctGph\ctCat\]
+	\[\dmFun F\ctdGph\ctCat\]
 	Un omomorfismo di grafi \((f_E,f_V) : \ctG \to \ctH\) infatti è il dato sufficiente per definire un funtore \(F(f_E,f_V) : F\ctG \fun F\ctH\) sugli oggetti (con \(f_V\)) e sui morfismi generatori (con \(f_E\)), mandando la successione di lati contigui \([\tup en;]\) in \(F\ctG\) in \([\tup {{f_E}e}n;]\) in \(F\ctH\) (se \(n=0\) questo significa che \(F(f_E,f_V)\emptyList = \emptyList\)).
 \end{example}
 \begin{example}[Realizzare \(\bbF\emdash\cate{Mat}\) in \(\bbF\emdash\ctVect\)]\index{Funtore!--- matrici reali}
@@ -1477,28 +1490,73 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\Todo{Funtori da un gruppoide d'azione \(\act G\) VS \(G\)-insiemi}
 \end{example}
 \begin{example}\index{Funtore!--- gruppo delle unità}
-	\Todo{Gruppo delle unità di un anello}
-\end{example}
-\begin{example}\index{Funtore!--- omotopia}\index{Funtore!--- omologia}
-	\Todo{Omotopia, omologia, e parafernalia topologici}
+	% \Todo{Gruppo delle unità di un anello}
+	Assegnare a un anello unitario $(R,+,0\cdot,1)$ il gruppo $(R^\times,\cdot,1)$ dei suoi elementi invertibili è un funtore 
+	\[\dmFun{(-)^\times}\ctRing{\ctGrp.}\]
+	Infatti ogni omomorfismo di anelli $f : R\to S$ induce un omomorfismo di gruppi $f^\times : R^\times \to S^\times$, dato che se $u\in R$ è invertibile, tale è anche $f(u)$ (e $f(u)^{-1}=f(u^{-1})$).
 \end{example}
 \begin{example}\index{Funtore!--- di abelianizzazione}
-	\Todo{Abelianizzato di un gruppo}
+	% \Todo{Abelianizzato di un gruppo}
+	Dato un gruppo $G$, il sottogruppo $[G,G]$ generato dai commutatori $[x,y] \defeq xyx^{-1}y^{-1}$ è il sottogruppo normale più piccolo tale che $G/N$ sia abeliano; il quoziente $G^\aa \defeq G/[G,G]$ si chiama \emph{abelianizzato} di $G$ e l'assegnazione $G\mapsto G^\aa$ definisce un funtore 
+	\[\dmFun{(-)^\aa}\ctGrp\ctAb\]
+	di abelianizzazione. Un omomorfismo di gruppi $f : G \to H$ infatti scende al quoziente ad un omomorfismo $f^\aa : G^\aa \to H^\aa$ tale che
+	\[
+	\begin{tikzcd}
+		G\ar[r, "f"]\ar[d, "\pi"'] & H \ar[d, "\pi"]\\ 
+		G^\aa \ar[r, "f^\aa"']& H^\aa
+	\end{tikzcd}
+	\]
+	sia commutativo (questo è evidente, dato che $f[x,y]=[fx,fy]$). L'omomorfismo $f^\aa$ è l'unico con questa proprietà, e ciò mostra che $(g\circ f)^\aa = g^\aa\circ f^\aa$ e $(\id_G)^\aa=\id_{G^\aa}$.
 \end{example}
 \begin{example}\index{Funtore!--- campo dei quozienti}
 	\Todo{Campo dei quozienti di un dominio di integrità}
 \end{example}
 \begin{example}\index{Funtore!--- gruppo generale lineare}\index{GL|see {Gruppo generale lineare}}\index{Gruppo generale lineare}
 	\Todo{Il funtore GL }
+	Se $n\ge 1$ è un numero intero, mandare un anello commutativo $R$ nel gruppo delle matrici invertibili $n\times n$ a coefficienti in $R$ è la funzione sugli oggetti di un funtore 
+	\[\dmFun{\GL_n}\ctcRing\ctGrp\]
+	Per vederlo, basta definire un omomorfismo di gruppi $\GL_n(f) : \GL_n(R)\to \GL_n(S)$ dato un omomorfismo di anelli $f : R\to S$; ragioniamo nel caso $n=2$ per comodità, e il caso generale è completamente analogo: la corrispondenza
+	\[\GL_2(f) : A=\left(\begin{smallmatrix}
+		a	&	b \\ 
+		c	&	d
+		\end{smallmatrix}\right)
+		\mapsto 
+		\left(\begin{smallmatrix}
+			fa	&	fb \\ 
+			fc	&	fd
+			\end{smallmatrix}\right)
+			\]
+			è tale che $\det(\GL(f)A)=\det\left(\begin{smallmatrix}
+				fa	&	fb \\ 
+				fc	&	fd
+				\end{smallmatrix}\right) = f(\det A)$, cosicché $\GL_2(f)$ è ben definita verso $\GL_2(S)$; evidentemente ciascun $\GL_2(f)$ è un omomorfismo di gruppi, e $f\mapsto\GL_2(g\circ f) = \GL_2(g)\circ\GL_2(f)$, e $\GL_2(\id_R) = \id_{\GL_2(R)}$.
 \end{example}
 \begin{example}\index{Funtore!--- di estensione degli scalari}
-	\Todo{Estensione degli scalari}
+	\Todo{Estensione e restrizione degli scalari}
 \end{example}
 \begin{example}\index{Funtore!--- di localizzazione}
 	\Todo{Localizzazione ad un primo }
 \end{example}
+\begin{example}\index{Funtore!--- nucleo e conucleo}\index{ker|see {nucleo}}\index{coker|see {conucleo}}
+	\Todo{Nucleo e conucleo di un omomorfismo}
+	Data una applicazione lineare $f : V\to W$ tra $k$-spazi vettoriali, il suo \emph{nucleo} consiste del sottospazio $\ker f\le V$ di tutti i vettori $v\in V$ tali che $f(v)=0$. Questa assegnazione è un funtore 
+	\[\dmFun{\ker}{\ctVect^\to}\ctVect\]
+	dove $\ctVect^\to$ è la categoria delle frecce di \ref{def_cat_frecce}. Infatti, a ogni quadrato commutativo 
+	\[\begin{tikzcd}
+		V \ar[r, "f"]\ar[d, "p"']& W\ar[d, "q"] \\ 
+		V' \ar[r, "{f'}"'] & W'
+	\end{tikzcd}\]
+	corrisponde una mappa lineare $\ker f \to \ker f'$ (la restrizione di $p$ a $\ker f$, dato che se $fv=0$ anche $f'(pv)=q(fv)=q(0)=0$).
+
+	Dualmente, il \emph{conucleo} di $f : V\to W$ è lo spazio vettoriale quoziente $W/fV$, e l'assegnazione $f\mapsto \coker f$ è un funtore 
+	\[\dmFun{\coker}{\ctVect^\to}\ctVect\]
+	perché un quadrato commutativo come sopra implica che $q$ scende al quoziente in modo che composizione e identità siano rispettate: se $F = fV$ è l'immagine di $f$ in $W$ ed $F'$ quella di $f'$ in $W'$, la classe laterale $w + F$ viene mandata in $qw+F'$; questa è una buona definizione, perché $q(fv) \in F'$ per ogni $v\in V$.
+\end{example}
 \begin{example}\index{Funtore!--- di compattificazione}
 	\Todo{Compattificazione ad un punto }
+\end{example}
+\begin{example}\index{Funtore!--- omotopia}\index{Funtore!--- omologia}
+	\Todo{Omotopia, omologia, e parafernalia topologici}
 \end{example}
 \begin{example}\index{Funtore!--- quoziente di uno pseudoinsieme}
 	\Todo{Il quoziente indotto da un prequoziente}
@@ -1506,9 +1564,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \begin{example}\index{Funtore!--- proiezioni da un prodotto}
 	\index{Funtore!--- inclusioni in una somma}
 	\Todo{Proiezioni da \(\ctC\times\ctD\); inclusioni in \(\ctC+\ctD\); inclusioni in \(\ctC\star\ctD\).}
-\end{example}
-\begin{example}\index{Funtore!--- nucleo e conucleo}\index{ker|see {nucleo}}\index{coker|see {conucleo}}
-	\Todo{Nucleo e conucleo di un omomorfismo}
 \end{example}
 \begin{example}\index{Funtore!--- tra spazi affini e proiettivi}
 	\Todo{Da spazi affini a spazi vettoriali, a spazi proiettivi, et cetera.}
