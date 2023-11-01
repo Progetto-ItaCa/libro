@@ -406,11 +406,11 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 Evidentemente, possiamo restringerci a considerare la categoria dei soli insiemi \emph{finiti} (così come la categoria \(\ctFRel\) delle relazioni tra insiemi finiti, che la contiene propriamente). Questo è il primo degli esempi motivanti fatti ad inizio capitolo, e in un senso evidente (che sarà precisato dalla definizione \ref{def_subcat}), \(\ctFRel\) è una \emph{sottocategoria} di \(\ctRel\) (e \(\ctFin\) è una sottocategoria di \(\ctSet\), che a sua volta è una sottocategoria di \(\ctRel\), sebbene in un modo non completamente banale).
 \index{Categoria!--- delle matrici}
 \begin{example}[Categoria delle matrici in \(\bbF\)]\label{ex_cat_matrici}
-	La categoria \(\bbF\emdash\cate{Mat}\) delle \emph{matrici a componenti in \(\bbF\)} ha
+	La categoria \(\bbF\emdash\ctMat\) delle \emph{matrici a componenti in \(\bbF\)} ha
 	\begin{itemize}
 		\item per oggetti i numeri naturali \(0,1,2,\dots\);
 		\item per morfismi \(n\to m\) le matrici con \(m\) righe ed \(n\) colonne a coefficienti in \(\bbF\):
-		      \[\bbF\emdash\cate{Mat}(n,m) = M_{m\times n}(\bbF) = \text{Lin}_{\bbF}(\bbF^n,\bbF^m)\]
+		      \[\bbF\emdash\ctMat(n,m) = M_{m\times n}(\bbF) = \text{Lin}_{\bbF}(\bbF^n,\bbF^m)\]
 		      dove \(\bbF^n:=\bbF \times\dots\times\bbF\) è il prodotto cartesiano iterato di \(\bbF\) con sé stesso, e \(\text{Lin}_{\bbF}(\bbF^n,\bbF^m)\) è l'insieme delle funzioni \(\bbF\)-lineari \(\bbF^n\to\bbF^m\).
 	\end{itemize}
 	La composizione è il prodotto di matrici: se \(A : n\to m\) e \(B : m\to p\) sono matrici di entrate \((A_{ij}\mid 1\le i\le m,1\le j\le n)\) e \((B_{rs}\mid 1\le r\le p,1\le s\le m)\), la loro composizione \(BA : n\to p\) è la matrice \(BA\in M_{p\times n}(\bbF)\) definita da \((BA)_{ij} = \sum_{k=1}^m B_{ik}A_{kj}\).
@@ -453,6 +453,9 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 	\end{itemize}
 \end{example}
 \`E un esercizio tedioso nella manipolazione delle tuple ordinate, ora, dimostrare che gli assiomi di categoria sono tutti soddisfatti. Un esercizio analogamente tedioso è di trovare segnature algebriche opportune che esprimono le categorie dei gruppi, dei monoidi, degli anelli e degli spazi vettoriali ecc.\ come esempi particolari di categorie di modelli di una segnatura algebrica. (Tedioso, e a volte non proprio banale: ad esempio, come si descrivono le operazioni di moltiplicazione per scalare in uno spazio vettoriale usando la definizione di segnatura algebrica?)
+\begin{notation}
+	L'esempio appena fatto mostra che `tutte' le categorie di insiemi con operazioni che soddisfano, eventualmente, delle equazioni, forma una categoria; sebbene a volte non sia una questione banale scegliere la `giusta' nozione di omomorfismo tra strutture, ci affidiamo alla competenza che gli studi anteriori hanno dato a chi legge nel capire che, anche quando non abbiamo definito precisamente oggetti e morfismi, ci riferiamo alle categorie di strutture algebriche con le loro scelte `ovvie' di omomorfismo.
+\end{notation}
 \begin{example}[Categoria dei multidigrafi]\label{ex_cat_grafi}\index{Categoria!--- dei grafi}
 	Questo esempio rende precise alcune osservazioni fatte in precedenza, \ref{ex_cat_doppiafreccia} e \ref{ex_cat_libera}. La categoria \(\ctdGph\) dei grafi è così definita:
 	\begin{itemize}
@@ -539,10 +542,13 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	\emph{eventualmente infinite} di morfismi contigui in una categoria \(\ctC\) sarà esattamente come un funtore \(\ctOrd_{\le\lambda}\funto \ctC\).
 \end{remark}
 \index{Categoria!--- di spazi topologici}
-\begin{example}\label{ex_cat_top}
+\begin{example}[Spazi topologici]\label{ex_cat_top}
 	Ricordiamo che uno \emph{spazio topologico} è un insieme \(X\) dotato di una \emph{topologia}, cioè una collezione \(\tau_X\) di sottoinsiemi di \(X\), chiamati gli \emph{aperti}, contenente l'insieme vuoto e \(X\) stesso, e chiusa rispetto alle intersezioni finite e a tutte le unioni.
 	Dati due spazi topologici \((X,\tau_X)\) e \((Y,\tau_Y)\), una funzione \(f:X\to Y\) è continua per le topologie \(\tau_X\) e \(\tau_Y\) se per ogni aperto \(V\in\tau_Y\), la sua preimmagine \(f^{-1}(V)\) è un aperto di \(\tau_X\).
 	Gli spazi topologici e le funzioni continue tra loro formano la categoria \(\ctTop\).
+\end{example}
+\begin{example}[Spazi topologici e classi di omotopia]\index{Categoria!--- dell'omotopia}\label{ex_cat_hotop}
+	\Todo{}
 \end{example}
 \index{Categoria!--- di funzioni parziali}
 \begin{example}\label{ex_cat_pfun}\index{Funzione!--- parziale}
@@ -555,7 +561,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 			g(f(x)) & x\in D_f, f(x)\in D_g .
 		\end{cases}
 	\]
-	La categoria degli insiemi e delle funzioni parziali è chiamata \(\cate{SetPart}\).
+	La categoria degli insiemi e delle funzioni parziali è chiamata \(\pSet\).
 \end{example}
 \index{Categoria!--- di insiemi puntati}
 \begin{example}\label{ex_cat_puntati}\index{Insieme!--- puntato}
@@ -961,8 +967,8 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 	\[\varphi\equiv\psi \overset{\text{def}}\iff (\varphi\le \psi) \; \& \; (\psi\le\varphi)\]
 	questo insieme è solamente \emph{pre}ordinato.) Consideriamo la categoria \(\ctB/\varphi\); in base a \ref{ex_pos_slices} questa coincide con il segmento \(\{\alpha\le\varphi\}\), il quale in base alla definizione di \(\_\le\_\) si identifica all'insieme degli \(\alpha\) tali che \(\alpha\) implica \(\varphi\), dotato dell'ordine indotto.
 
-	La categoria-ordine \(\ctB/\varphi\) modella la struttura della classe delle proposizioni \(\alpha,\beta,\dots\) dove \(\alpha \to \beta\) (in \(\ctB/\varphi\)) se e solo se \(\alpha \land \varphi \to \beta\) (in \(\ctB\)).
-	\Todo{}
+	La categoria-ordine \(\ctB/\varphi\) modella la struttura della classe delle proposizioni \(\alpha,\beta,\dots\) dove \(\alpha \to \beta\) (in \(\ctB/\varphi\)) se e solo se \(\alpha \land \varphi \to \beta\) (in \(\ctB\)). In breve, $\varphi$ fa da \emph{contesto} in cui le proposizioni sono determinate.
+	% \Todo{}
 \end{example}
 \begin{definition}\label{def_cat_frecce}\index{Categoria!--- delle frecce}
 	Data una categoria \(\ctC\), la \emph{categoria delle frecce} o \emph{dei morfismi} di \(\ctC\), denotata $\ctC^\to$, ha
@@ -1261,7 +1267,7 @@ La teoria classica delle equazioni differenziali ordinarie dà un esempio import
 		\item gli oggetti sono coppie \((n,x)\) con \(n\in\bbN\) e \(x\in\bbR^n\);
 		\item i morfismi \((n,x)\to (m,y)\) sono funzioni differenziabili \(f:\bbR^n\to\bbR^m\) tali che \(f(x)=y\).
 	\end{itemize}
-	Possiamo costruire un funtore \(D:\ctEuc\to\bbR\emdash\cate{Mat}\) nel seguente modo:
+	Possiamo costruire un funtore \(D:\ctEuc\to\bbR\emdash\ctMat\) nel seguente modo:
 	\begin{itemize}
 		\item sugli oggetti, mappa \((n,x)\) in \(n\);
 		\item sui morfismi, assegna alla funzione \(f:(\bbR^n,x)\to (\bbR^m,y)\) il \emph{differenziale} di \(f\) in \(x\), cioè, la mappa lineare \(Df:\bbR^n\to\bbR^m\).
@@ -1293,7 +1299,7 @@ Ciò conduce a una definizione molto importante e pervasiva in teoria delle cate
 \begin{definition}\label{exa_funtori_da_poset}\index{Prefascio}\index{Funtore!Prefascio}
 	Sia \((P,\le)\) un insieme preordinato nel senso di \ref{ex_cat_ordini}; un funtore controvariante
 	\[\xymatrix{F : (P,\le)^\op \ar[r] & \ctSet}\]
-	si dice un \emph{prefascio}.\footnote{La parola è un calco strutturale dell'inglese \emph{presheaf}, che è a sua volta un calco dal francese \emph{prefaisceaux}; cf. \cite{Tennison1975,Bredon1997,Godement} e \cite[Cap. ???]{pedicchiofoundations} per una introduzione meno geometrica --ma storicamente molto istruttiva. Per indagare l'etimologia del termine e il suo impiego in matematica, chi legge può consultare l'ottima nota breve di Lovering, \cite{Lovering}}
+	si dice un \emph{prefascio}.\footnote{La parola è un calco strutturale dell'inglese \emph{presheaf}, che è a sua volta un calco dal francese \emph{prefaisceaux}; cf. \cite{Tennison1975,Bredon1997,Godement} e \cite[Cap. ???]{pedicchiofoundations} per una introduzione meno geometrica --ma storicamente molto istruttiva. Per indagare l'etimologia del termine e il suo impiego in matematica, chi legge può consultare l'ottima nota breve di Lovering, \cite{Lovering}.}
 
 	Esplicitamente, un prefascio consiste di
 	\begin{itemize}
@@ -1448,7 +1454,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\[\dmFun F\ctdGph\ctCat\]
 	Un omomorfismo di grafi \((f_E,f_V) : \ctG \to \ctH\) infatti è il dato sufficiente per definire un funtore \(F(f_E,f_V) : F\ctG \fun F\ctH\) sugli oggetti (con \(f_V\)) e sui morfismi generatori (con \(f_E\)), mandando la successione di lati contigui \([\tup en;]\) in \(F\ctG\) in \([\tup {{f_E}e}n;]\) in \(F\ctH\) (se \(n=0\) questo significa che \(F(f_E,f_V)\emptyList = \emptyList\)).
 \end{example}
-\begin{example}[Realizzare \(\bbF\emdash\cate{Mat}\) in \(\bbF\emdash\ctVect\)]\index{Funtore!--- matrici reali}
+\begin{example}[Realizzare \(\bbF\emdash\ctMat\) in \(\bbF\emdash\ctVect\)]\index{Funtore!--- matrici reali}
 	\Todo{}
 \end{example}
 \begin{example}[Successioni simmetriche, specie combinatorie]\index{Funtore!--- specie combinatoria}\index{Specie combinatorie}\index{Successione simmetrica|see {Specie combinatoria}}
@@ -1486,9 +1492,9 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\[\dmFun{-/G}{G\emdash\ctSet}{\ctSet}\]
 	che manda il \(G\)-insieme \(X\) nell'insieme \(X/G\). Affinché questo sia vero, una funzione equivariante \(f : X\to Y\) deve indurre una funzione ben definita tra gli spazi delle orbite \(X/G\) e \(Y/G\), in modo che gli assiomi \ref{p_1} e \ref{p_2} siano soddisfatti. \`E facile verificare che \(f/G : X/G \to Y/G : [x]_G\mapsto [f(x)]_G\) ha tutte queste proprietà. (In particolare, se chiamiamo \(\pi_X : X\to X/G\) la funzione \(x\mapsto [x]_G\) che manda ogni elemento nella sua orbita, \(f/G\) è l'unica funzione tale che \(f/G(\pi_X(x)) = \pi_Y(f(x))\).)
 \end{example}
-\begin{example}\index{Funtore!--- da un gruppoide d'azione}
-	\Todo{Funtori da un gruppoide d'azione \(\act G\) VS \(G\)-insiemi}
-\end{example}
+% \begin{example}\index{Funtore!--- da un gruppoide d'azione}
+% 	\Todo{Funtori da un gruppoide d'azione \(\act G\) VS \(G\)-insiemi}
+% \end{example}
 \begin{example}\index{Funtore!--- gruppo delle unità}
 	% \Todo{Gruppo delle unità di un anello}
 	Assegnare a un anello unitario $(R,+,0\cdot,1)$ il gruppo $(R^\times,\cdot,1)$ dei suoi elementi invertibili è un funtore 
@@ -1512,7 +1518,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\Todo{Campo dei quozienti di un dominio di integrità}
 \end{example}
 \begin{example}\index{Funtore!--- gruppo generale lineare}\index{GL|see {Gruppo generale lineare}}\index{Gruppo generale lineare}
-	\Todo{Il funtore GL }
+	% \Todo{Il funtore GL }
 	Se $n\ge 1$ è un numero intero, mandare un anello commutativo $R$ nel gruppo delle matrici invertibili $n\times n$ a coefficienti in $R$ è la funzione sugli oggetti di un funtore 
 	\[\dmFun{\GL_n}\ctcRing\ctGrp\]
 	Per vederlo, basta definire un omomorfismo di gruppi $\GL_n(f) : \GL_n(R)\to \GL_n(S)$ dato un omomorfismo di anelli $f : R\to S$; ragioniamo nel caso $n=2$ per comodità, e il caso generale è completamente analogo: la corrispondenza
@@ -1538,7 +1544,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\Todo{Localizzazione ad un primo }
 \end{example}
 \begin{example}\index{Funtore!--- nucleo e conucleo}\index{ker|see {nucleo}}\index{coker|see {conucleo}}
-	\Todo{Nucleo e conucleo di un omomorfismo}
+	% \Todo{Nucleo e conucleo di un omomorfismo}
 	Data una applicazione lineare $f : V\to W$ tra $k$-spazi vettoriali, il suo \emph{nucleo} consiste del sottospazio $\ker f\le V$ di tutti i vettori $v\in V$ tali che $f(v)=0$. Questa assegnazione è un funtore 
 	\[\dmFun{\ker}{\ctVect^\to}\ctVect\]
 	dove $\ctVect^\to$ è la categoria delle frecce di \ref{def_cat_frecce}. Infatti, a ogni quadrato commutativo 
@@ -1553,7 +1559,17 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	perché un quadrato commutativo come sopra implica che $q$ scende al quoziente in modo che composizione e identità siano rispettate: se $F = fV$ è l'immagine di $f$ in $W$ ed $F'$ quella di $f'$ in $W'$, la classe laterale $w + F$ viene mandata in $qw+F'$; questa è una buona definizione, perché $q(fv) \in F'$ per ogni $v\in V$.
 \end{example}
 \begin{example}\index{Funtore!--- di compattificazione}
-	\Todo{Compattificazione ad un punto }
+	Se $(X,\tau)$ è uno spazio topologico come in \ref{ex_cat_top}, la sua \emph{compattificazione ad un punto}, o compattificazione di Alexandroff, è lo spazio topologico $(X_\infty,\bar\tau)$ dove $X_\infty \defeq X + \{\infty\}$ è l'unione disgiunta di $X$ e di un `punto all'infinito' $\infty$, e $\bar\tau$ è la topologia che contiene tutti gli aperti di $\tau$ ma anche gli insiemi della forma $K^c \cup \{\infty\}$, dove $K\Subset X$ è un sottoinsieme chiuso e compatto di $X$ e $K^c = X\smallsetminus K$ è il suo complementare. Si osservi che 
+	\begin{itemize}
+		\item $X_\infty$ è compatto e contiene $X$ come un sottospazio denso;
+		\item $X\mapsto  X_\infty$ è un funtore 
+		\[\dmFun{(-)_\infty}\ctTop\ctTop\]
+		(la cui immagine però è la sottocategoria degli spazi compatti), che induce, per ogni mappa propria $f : X\to Y$, una mappa propria tra le loro compattificazioni 
+		\[\begin{tikzcd}
+			f_\infty : X_\infty \ar[r] & Y_\infty
+		\end{tikzcd}\]
+		che manda $x\mapsto fx$ e $\infty_X$ in $\infty_Y$. La continuità sugli aperti della topologia di $Y$ è ovvia, e va verificata solo sugli aperti di $Y_\infty$ della forma $V=K^c\cup\{\infty_Y\}$ con $K$ compatto e chiuso in $Y$; del resto, ora, $f^{-1}V = (f^{-1}K)^c \cup \{\infty_X\}$ che è un intorno aperto di $\infty_X$.
+	\end{itemize}
 \end{example}
 \begin{example}\index{Funtore!--- omotopia}\index{Funtore!--- omologia}
 	\Todo{Omotopia, omologia, e parafernalia topologici}
@@ -1581,12 +1597,16 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \begin{remark}
 	Come è evidente, gli esempi di diagrammi delle forme più svariate abbondano: fissata una categoria \(\ctC\), uno span in \(\ctC\) come in \ref{def_span_e_cospan} è un diagramma di forma \(\Lambda^2_0\) e un cospan è un diagramma di forma \(\Lambda^2_2\). Un quadrato in \(\ctC\) è un diagramma di forma \(P[2]\), e un cubo \(n\)-dimensionale di forma \(P[n]\). Un singolo oggetto di \(\ctC\) si può vedere come un diagramma di forma \(\Delta[0]=\ctTerm\), e una singola freccia \(f : X\to Y\) in \(\ctC\) si può vedere come un diagramma di tipo \(\Delta[1]\), e più in generale una catena
 	\[\begin{tikzcd}
-			A_0 \ar[r, "f_1"] & A_1 \ar[r, "f_2"] & \dots \ar[r] & A_{n-1} \ar[r, "f_n"] & a_n
+			A_0 \ar[r, "f_1"] & A_1 \ar[r, "f_2"] & \dots \ar[r] & A_{n-1} \ar[r, "f_n"] & A_n
 		\end{tikzcd}
 	\]
 	di morfismi contigui in \(\ctC\) è un diagramma di tipo \(\Delta[n]\).
 
-	Questi esempi giustificano i nomi che abbiamo dato in \ref{ex_cat_freccia}, \ref{ex_cat_doppiafreccia}, \ref{ex_spancospan}, perché le categorie \(\Lambda^2_0,\Lambda^2_2,\Delta[n], P[n], \dots\)  sono astrazioni o `forme generiche' per diagrammi di un certo tipo.
+	Questi esempi giustificano i nomi che abbiamo dato in \ref{ex_cat_freccia}, \ref{ex_cat_doppiafreccia}, \ref{ex_spancospan}, perché le categorie \(\Lambda^2_0,\Lambda^2_2,\Delta[n], P[n], \dots\)  sono astrazioni o `forme generiche' per diagrammi di un certo tipo: ecco che allora possiamo adottare un lieve abuso di notazione, nel chiamare, per una qualche categoria $\ctC$ fissata, \emph{cospan in $\ctC$} un diagramma della forma 
+	\[\dmFun C{\Lambda^2_2}\ctC\]
+	(e dualmente uno span in $\ctC$) o catena (infinita, di lunghezza $\alpha$) un diagramma della forma 
+	\[\dmFun K\alpha\ctC\]
+	se $\alpha$ è un numero ordinale, guardato come categoria rispetto alla sua relazione d'ordine, e così via per ogni altro genere di forma.
 \end{remark}
 \begin{remark}
 	Il termine `diagramma' è riservato a funtori il cui dominio è una categoria piccola, e il cui codominio può essere una categoria larga, per suggerire il principio generale cui abbiamo già accennato in \ref{ssec:categorie_forme}, ossia la tensione tra categorie come forme e come universi: un diagramma di forma piccola \(\ctJ\) è `interpretato' in una categoria \(\ctC\), possibilmente larga.
@@ -1597,7 +1617,25 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \end{lemma}
 
 \begin{definition}\label{def_cat_cocomma}
-	\Todo{Categoria comma e cocomma di due funtori}
+	% \Todo{Categoria comma e cocomma di due funtori}
+	Consideriamo un cospan di funtori 
+	\[\begin{tikzcd}
+		\ctC \ar[r, "F"'] & \ctE &\ar[l, "G"] \ctD
+	\end{tikzcd}\]
+	e definiamo la \emph{categoria comma} $(F/G)$ come segue: 
+	\begin{itemize}
+		\item gli oggetti di $(F/G)$ sono terne $(C,D,f)$ dove $C\in\ctC_0,D\in\ctD_0$ e $f : FC\to GD$ è una freccia di $\ctE$;
+		\item una freccia $(C,D,f)\to (C',D',g)$ consiste di una coppia $(u : C\to C', v : D\to D')$ tale che il quadrato 
+		\[\begin{tikzcd}
+			FC \ar[r, "f"]\ar[d, "Fu"'] & GD\ar[d, "Gv"] \\ 
+			FC' \ar[r, "g"'] & GD'
+		\end{tikzcd}\]
+		sia commutativo.
+	\end{itemize}
+	L'identità e la composizione si fanno come in $\ctD$, cioè l'identità di $(C,D,f)$ è $\id_C,\id_D$ e la composizione è definita da 
+	\[\begin{tikzcd}
+		(C,D,f) \ar[r, "{(u,v)}"] & (C',D',g) \ar[r, "{(u',v')}"] & (C'',D'',h)
+	\end{tikzcd}\]
 \end{definition}
 % C -> Sk(C) "è un'equivalenza"
 % altri esempi?
@@ -1616,7 +1654,9 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	      \[\begin{tikzcd}
 			      R^* : (2^B,\subseteq)^\op \ar[r, shift left] & (2^A,\subseteq) : R_* \ar[l, shift left]
 		      \end{tikzcd}\]
-	\item
+	\item In cosa consiste un funtore 
+	\[\dmFun F {\act G}\ctSet\]
+	se $\act G$ è il gruppoide d'azione di \ref{action_groupoid}? Farsi degli esempi (e dei disegni) quando $G=C_n$ è il gruppo ciclico con $n$ elementi, quando $G=\bbZ$ è il gruppo additivo degli interi, e quando $G=S_3$ è il gruppo simmetrico delle biiezioni dell'insieme $\{1,2,3\}$.
 	\item Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà il suo fibrato tangente.
 	\item
 	\item
