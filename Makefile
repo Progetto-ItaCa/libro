@@ -14,5 +14,5 @@ v:
 pretty:
 	for file in cap/*.tex ; do \
 		python3 beautifier.py $$file ; \
-		rm cap/*.bak cap/*.bak0 cap/*.log ; \
+		rm -f cap/*.bak cap/*.bak0 cap/*.log ; \
 	done
