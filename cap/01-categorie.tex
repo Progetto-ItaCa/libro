@@ -548,10 +548,24 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	Gli spazi topologici e le funzioni continue tra loro formano la categoria \(\ctTop\).
 \end{example}
 \begin{example}[Spazi topologici e classi di omotopia]\index{Categoria!--- dell'omotopia}\label{ex_cat_hotop}
-	\Todo{}
+	La categoria $\ctHoTop$ detta \emph{categoria dell'omotopia (di spazi topologici)} è così definita:  
+	\begin{itemize}
+		\item gli oggetti di $\ctHoTop$ sono gli spazi topologici di \ref{ex_cat_top};
+		\item una freccia tra due spazi topologici $X,Y$ è una classe di omotopia di mappe continue $X\to Y$, dove la relazione di omotopia in $\ctTop(X,Y)$ è definita così: due mappe continue $f,g : X\to Y$ sono omotope (l'accento è sulla prima \emph{o}) quando esiste una funzione continua $H : X \times [0,1] \to Y$ tale che $H(x,0) = f(x)$ e $H(x,1)=g(x)$ per ogni $x\in X$. Questo si denota con $f\simeq_H g$ o brevemente con $f\simeq g$ (quando è univoco, o ovvio, come costruire $H$ a partire dal contesto).
+	\end{itemize}
+	La composizione di classi di omotopia di mappe continue è definita grazie al fatto che l'omotopia tra mappe è una congruenza su ogni $\ctTop(X,Y)$ (cioè, se $f\simeq g$, allora $h\cmp f\cmp k\simeq h\cmp g\cmp k$): si veda anche \ref{fun_ex_omoto_omolo} più avanti.
 \end{example}
 \begin{example}
 	\Todo{la categoria dei complessi di catene di gruppi abeliani}
+	Un \emph{complesso di catene} $(A_\bullet, d_\bullet)$ di gruppi abeliani è una catena di omomorfismi tra gruppi abeliani della forma 
+	\[\begin{tikzcd}
+		\dots \ar[r] & A_2 \ar[r, "d_2"] & A_1  \ar[r, "d_1"] & A_0 \ar[r, "d_0"] & A_{-1} \ar[r, "d_{-1}"] & A_{-1} \ar[r] & \dots
+	\end{tikzcd}\]
+	con la proprietà che $d_n\cmp d_{n+1}=0$ (o equivalentemente, l'immagine di $d_{n+1}$ sia contenuta in $\ker d_n$). Un omomorfismo tra complessi di catene $(A_\bullet,d_\bullet) \to (B_\bullet,d'_\bullet)$ consiste di una famiglia di omomorfismi $f_n : A_n \to B_n$ tali che ciascun quadrato in 
+	\[bla\]
+	sia commutativo.
+
+	La categoria dei complessi di catene è importante in topologia algebrica: ad ogni complesso di catene $(A_\bullet, d_\bullet)$ si possono associare vari gruppi abeliani.
 \end{example}
 \index{Categoria!--- di funzioni parziali}
 \begin{example}\label{ex_cat_pfun}\index{Funzione!--- parziale}
@@ -1108,7 +1122,7 @@ Verificare se gli assiomi di categoria sono soddifatti, con le ovvie scelte di c
 	quando $n_0=3$ e $n_1=7$; il sottoinsieme $H\subseteq n_0$ determina poi le regioni del cromosoma $\chi$ che si vogliono usare nella replicazione, e il suo complementare $H^c$ quelle che sono silenziate (\emph{masking}). Se ad esempio $H\subseteq [3]$ è l'insieme $\{1,3\}$, possiamo colorare la partizione di sopra come 
 	\[[{\bullet}{\bullet}][{\circ}{\circ}{\circ}{\circ}][{\bullet}].\]
 	Invitiamo chi legge a trovare quale possa essere una interpretazione per un omomorfismo di segmenti!}
-	\item
+	\item\Todo{}
 	\item Determinare il giunto di due catene generiche \(\Delta[n] * \Delta[m]\) come in \ref{ex_cat_catena} e di due cubi \(P[n] * P[m]\) come in \ref{ex_quadcuboncubo}, e più in generale di due insiemi parzialmente ordinati \(P,Q\). Determinare il giunto di due categorie discrete (prenderle finite!) \(A^\delta * B^\delta\) come in \ref{ex_cat_discreta} e di due categorie codiscrete \(A^\chi * B^\chi\): il risultato è ancora codiscreto? Più in generale, determinare il giunto di due gruppoidi \(\ctG * \ctG'\); il risultato è ancora un gruppoide? Determinare il giunto \(\ctB(\bbN,+) * \ctB(\bbN,+)\) del monoide dei numeri naturali con la somma, e \(\ctB(\bbN,\max) * \ctB(\bbN,\max)\) del monoide dove la moltiplicazione è data da \(n\land m \defeq \max\{n,m\}\). C'è una relazione tra \((\ctC\star\ctD)^\op\) e \(\ctD^\op\star\ctC^\op\) (uguali, oposte una dell'altra, nessuna relazione\dots)?
 \end{enumerate}
 \section{Isomorfismi}\label{sec_isomorfismi}\index{Isomorfismo}
@@ -1222,8 +1236,17 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Mostrare che la composizione nella categoria \(\cate{Stream}\) definita in \ref{example_streams} è effettivamente associativa, e l'assioma di identità è effettivamente valido. %Dato un morfismo \(f:X\to Y\) in una categoria \(\ctC\), dimostra che se un inverso per \(f\) esiste, allora è unico.
-	\item Caratterizzare gli isomorfismi nelle seguenti categorie: \Todo{lista}
-	\item Dati due spazi metrici \((X,d)\) e \((Y,d')\), ricorda che una funzione \(f:X\to Y\) si dice \emph{Lipschitz continua} se soddisfa la disuguaglianza
+	\item Caratterizzare gli isomorfismi nelle seguenti categorie:% \Todo{lista}
+	\begin{itemize}
+		\item la categoria dei modelli di una segnatura algebrica $(\Omega,a)$;
+		\item la categoria degli ordinali di \ref{};
+		\item la categoria dell'omotopia $\ctHoTop$ di \ref{};
+		\item la categoria delle mappe stocastiche di \ref{};
+		\item la categoria libera su un grafo $\ctG$ (prenderlo finito!);
+		\item la categoria dei $G$-insiemi di \ref{}.
+	\end{itemize}
+	Mostrare che in un incubo $\ctC/X$ la seguente condizione caratterizza gli isomorfismi: $t : T\to X$ è un isomorfismo in $\ctC$ se e solo se per ogni altro oggetto $f : E\to X$ esiste un unica freccia $h : E\to T$ tale che $t\cmp h=f$. La stessa dimostrazione vale anche in una categoria succuba $X/\ctC$?
+	\item Dati due spazi metrici \((X,d)\) e \((Y,d')\), una funzione \(f:X\to Y\) si dice \emph{Lipschitz continua} se soddisfa la disuguaglianza
 	      \[
 		      d'(fx,fx')\le \alpha d(x,x')
 	      \]
@@ -1566,7 +1589,18 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	sia commutativo (questo è evidente, dato che $f[x,y]=[fx,fy]$). L'omomorfismo $f^\aa$ è l'unico con questa proprietà, e ciò mostra che $(g\circ f)^\aa = g^\aa\circ f^\aa$ e $(\id_G)^\aa=\id_{G^\aa}$.
 \end{example}
 \begin{example}\index{Funtore!--- campo dei quozienti}
-	\Todo{Campo dei quozienti di un dominio di integrità}
+	% \Todo{Campo dei quozienti di un dominio di integrità}
+	Se $R$ è un dominio di integrità, il suo \emph{campo dei quozienti} $Q(R)$ è l'anello definito come segue:
+	\begin{itemize}
+		\item i suoi elementi sono classi di equivalenza $\frac pq$ di coppie $(p,q) \in R\times R$ dove $q\ne 0$ rispetto alla relazione che identifica $(p,q), (p',q')$ quando $pq'=qp'$;
+		\item la somma e il prodotto sono definiti da 
+		\[\frac pq + \frac st = \frac{pt+qs}{qt} \qquad\qquad \frac pq\cdot\frac st = \frac{ps}{qt}\]
+	\end{itemize}
+	Con queste scelte, $Q(R)$ diventa un campo (cioè, ogni elemento diverso dalla classe di equivalenza di $(0,1)$ è invertibile).
+
+	La corrispondenza $R\mapsto Q(R)$ è la funzione sugli oggetti di un funtore 
+	\[\dmFun Q\ctDInt\ctFld\]
+	(il codominio è la sottocategoria -piena- di $\ctcRing$ i cui oggetti sono i campi). Infatti, ogni omomorfismo di anelli $f : R \to S$ che siano domini di integrità induce un omomorfismo di anelli $Q(f) : Q(R) \to Q(S)$ definito da $f(\frac pq) = \frac{fp}{fq}$.
 \end{example}
 \begin{example}\index{Funtore!--- gruppo generale lineare}\index{GL|see {Gruppo generale lineare}}\index{Gruppo generale lineare}
 	% \Todo{Il funtore GL }
@@ -1588,12 +1622,12 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 				fc	&	fd
 				\end{smallmatrix}\right) = f(\det A)$, cosicché $\GL_2(f)$ è ben definita verso $\GL_2(S)$; evidentemente ciascun $\GL_2(f)$ è un omomorfismo di gruppi, e $f\mapsto\GL_2(g\circ f) = \GL_2(g)\circ\GL_2(f)$, e $\GL_2(\id_R) = \id_{\GL_2(R)}$.
 \end{example}
-\begin{example}\index{Funtore!--- di estensione degli scalari}
-	\Todo{Estensione e restrizione degli scalari}
-\end{example}
-\begin{example}\index{Funtore!--- di localizzazione}
-	\Todo{Localizzazione ad un primo }
-\end{example}
+% \begin{example}\index{Funtore!--- di estensione degli scalari}
+% 	\Todo{Estensione e restrizione degli scalari}
+% \end{example}
+% \begin{example}\index{Funtore!--- di localizzazione}
+% 	\Todo{Localizzazione ad un primo }
+% \end{example}
 \begin{example}\index{Funtore!--- nucleo e conucleo}\index{ker|see {nucleo}}\index{coker|see {conucleo}}
 	% \Todo{Nucleo e conucleo di un omomorfismo}
 	Data una applicazione lineare $f : V\to W$ tra $k$-spazi vettoriali, il suo \emph{nucleo} consiste del sottospazio $\ker f\le V$ di tutti i vettori $v\in V$ tali che $f(v)=0$. Questa assegnazione è un funtore 
@@ -1622,7 +1656,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		che manda $x\mapsto fx$ e $\infty_X$ in $\infty_Y$. La continuità sugli aperti della topologia di $Y$ è ovvia, e va verificata solo sugli aperti di $Y_\infty$ della forma $V=K^c\cup\{\infty_Y\}$ con $K$ compatto e chiuso in $Y$; del resto, ora, $f^{-1}V = (f^{-1}K)^c \cup \{\infty_X\}$ che è un intorno aperto di $\infty_X$ (essendo $f$ propria, $f^{-1}K$ è compatto).
 	\end{itemize}
 \end{example}
-\begin{example}\index{Funtore!--- omotopia}\index{Funtore!--- omologia}
+\begin{example}\label{fun_ex_omoto_omolo}\index{Funtore!--- omotopia}\index{Funtore!--- omologia}
 	% \Todo{Omotopia, omologia, e parafernalia topologici}
 	% Non è infrequente incontrare la definizione di funtorialità studiando la topologia algebrica elementare; ciò perché un esempio naturale di corrispondenza funtoriale si ha studiando i gruppi fondamentali e i gruppi di (co)omologia di spazi topologici. 
 	Ad ogni spazio topologico puntato $(X,x_0)$ si può associare l'insieme delle classi di omotopia di mappe $(S^1, \copmap[r] 10)\to (X, x_0)$ che preservano il punto base; tale insieme è un gruppo, e dato che la relazione di omotopia è una \emph{congruenza} rispetto alla composizione (ossia che, se $f\cong g$ allora $h\cmp f\cmp k\cong h\cmp g\cmp k$), è anche un funtore
@@ -1675,7 +1709,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \begin{remark}
 	Il termine `diagramma' è riservato a funtori il cui dominio è una categoria piccola, e il cui codominio può essere una categoria larga, per suggerire il principio generale cui abbiamo già accennato in \ref{ssec:categorie_forme}, ossia la tensione tra categorie come forme e come universi: un diagramma di forma piccola \(\ctJ\) è `interpretato' in una categoria \(\ctC\), possibilmente larga.
 \end{remark}
-\Todo{}
 \begin{lemma}\label{lem_funtori_preservano_comm}
 	\Todo{Funtori preservano i diagrammi commutativi} in particolare, preservano gli isomorfismi.
 \end{lemma}
@@ -1707,6 +1740,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
+	\item Mostrare che un funtore $\ctTerm \fun\ctC$ (un `diagramma di tipo $\ctTerm = \Delta[0]$') ammonta precisamente alla scelta di un oggetto di $\ctC$, e che un diagramma di tipo $\Delta[1] = \{0\to 1\}$ ammonta esattamente alla scelta di una freccia tra due oggetti di $\ctC$.
 	\item Mostrare che le seguenti condizioni sono equivalenti, nella notazionedi \ref{klext_delle_relazioni} per le funzioni \(R^*,R_*\):
 	      \begin{itemize}
 		      \item la condizione in \ref{klext_delle_relazioni},
@@ -1722,8 +1756,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\[\dmFun F {\act G}\ctSet\]
 	se $\act G$ è il gruppoide d'azione di \ref{action_groupoid}? Farsi degli esempi (e dei disegni) quando $G=C_n$ è il gruppo ciclico con $n$ elementi, quando $G=\bbZ$ è il gruppo additivo degli interi, e quando $G=S_3$ è il gruppo simmetrico delle biiezioni dell'insieme $\{1,2,3\}$.
 	\item Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà il suo fibrato tangente.
-	\item
-	\item
+	\item Determinare la categoria comma $(F/G)$ nelle varie combinazioni in cui: $F$ è il funtore identico; $G$ sia il funtore identico; $F$ è un funtore costante in un oggetto $E\in\ctE_0$; $G$ è un funtore costante in un oggetto $E\in\ctE_0$. Chi è $(E_1/E_2)$ se $E_1,E_2$ sono due oggetti, guardati come funtori $\ctTerm \fun\ctE$ (cf. il primo esercizio di questa sezione)?
 \end{enumerate}
 
 \section{Trasformazioni naturali}\label{sec_tnat}
