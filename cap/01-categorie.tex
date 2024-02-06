@@ -435,7 +435,6 @@ Questo appena fatto è il secondo degli esempi motivanti fatti ad inizio capitol
 L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme dotato di operazioni, codificando una struttura algebrica in una \emph{funzione di arietà}:\footnote{Le parole \emph{arietà}, così come \emph{nullario} e \emph{unario} e \(n\)-ario (ma non binario, ternario, quaternario, etc.) sono retroformazioni che il lessico matematico ha introdotto a partire dal suffisso latino \emph{-\={a}rius, -\=aria, -\=arium}, usato per formare aggettivi a partire da nomi o numerali. Una operazione `\(n\)-aria' accetta \(n\) argomenti a dominio.} innanzitutto, si ricordi che una operazione \(n\)-aria su un insieme \(X\) consta di una funzione \(X\times X\times\dots\times X \to X\) dove il prodotto cartesiano è fatto \(n\) volte.
 \index{Categoria!---}
 \begin{example}\label{ex_cat_sigma_strutture}
-	% \Todo{Omomorfismi per una generica segnatura algebrica}
 	Una \emph{segnatura algebrica} consiste di una coppia \((\Omega, a)\) dove \(\Omega\) è un insieme, e \(a : \Omega \to \bbN\) è una funzione detta \emph{funzione di arietà} che associa a ogni elemento \(\omega \in \Omega\) la sua arietà \(a(\omega)\ge 0\). Un \emph{modello} per una segnatura algebrica \((\Omega,a)\) consiste di un insieme \(X\) e di una funzione \(f_\bullet\) che associa a ogni \(\omega\in\Omega\) una operazione \(f_\omega : X^{a(\omega)} \to X\) di arietà \(a(\omega)\).
 
 	Fissata una segnatura algebrica \((\Omega,a)\) possiamo definire la categoria \(\ctMod(\Omega,a)\) dei suoi modelli come segue:
@@ -723,7 +722,6 @@ Consideriamo ora i seguenti esempi di categorie simili (che raccogliamo in dei t
 \end{remark}
 Occupiamoci ora di dimostrare che una categoria dove tra due oggetti esiste al più un morfismo è \emph{precisamente} un insieme (pre)ordinato.
 \begin{theorem}\label{cat_sonopos}
-	% \Todo{rovescio: una categoria dove ogni hom-set ha al piu un elemento è un preset}
 	Sia \(\ctC\) una categoria, con la proprietà che \(\ctC(X,Y)\) ha al più un elemento. Allora, la relazione
 	\[X\le Y \iff \ctC(X,Y) \text{ non è vuoto}\]
 	definisce una struttura di insieme preordinato su \(\ctC_0\).
@@ -942,9 +940,6 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 		      \]
 	\end{itemize}
 \end{definition}
-
-% \Todo{Esempio: fibrati, o schemi, o simili, come categoria slice? Penso che sarebbe di grande aiuto, ma non sono abbastanza esperto da scriverlo io (Paolo).}
-% \Todo{Me ne occupo io, sì:}
 Diverse costruzioni familiari della matematica di base si esprimono facilmente come categorie sopra o sotto oggetti fissati. Raccogliamo alcuni esempi (riempire i dettagli mancanti nelle definizioni è un utile esercizio per familiarizzare con le definizioni in \ref{def_cat_slice}).
 \begin{example}\label{def_spazi_pun_succuba}\index{Categoria!--- degli spazi puntati}\index{Spazi topologici}
 	La categoria degli insiemi puntati \(\ctSet_*\) costruita nell'Esempio \ref{ex_cat_puntati} si può vedere equivalentemente come la categoria succuba \(1/\ctSet\), dove \(1\) è un insieme con un solo elemento.
@@ -993,7 +988,6 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 	questo insieme è solamente \emph{pre}ordinato.) Consideriamo la categoria \(\ctB/\varphi\); in base a \ref{ex_pos_slices} questa coincide con il segmento \(\{\alpha\le\varphi\}\), il quale in base alla definizione di \(\_\le\_\) si identifica all'insieme degli \(\alpha\) tali che \(\alpha\) implica \(\varphi\), dotato dell'ordine indotto.
 
 	La categoria-ordine \(\ctB/\varphi\) modella la struttura della classe delle proposizioni \(\alpha,\beta,\dots\) dove \(\alpha \to \beta\) (in \(\ctB/\varphi\)) se e solo se \(\alpha \land \varphi \to \beta\) (in \(\ctB\)). In breve, $\varphi$ fa da \emph{contesto} in cui le proposizioni sono determinate.
-	% \Todo{}
 \end{example}
 \begin{definition}\label{def_cat_frecce}\index{Categoria!--- delle frecce}
 	Data una categoria \(\ctC\), la \emph{categoria delle frecce} o \emph{dei morfismi} di \(\ctC\), denotata $\ctC^\to$, ha
@@ -1141,7 +1135,6 @@ si dice il \emph{grafico} di $R$: per quale motivo? Si disegni la cospanna $c(R)
 \end{enumerate}
 \section{Isomorfismi}\label{sec_isomorfismi}\index{Isomorfismo}
 La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta. Quando due gruppi sono isomorfi, `tutte' le proprietà che si esprimono in termini degli assiomi di gruppo, e che sono godute dall'uno, sono godute anche dall'altro, e in forza di questo meta-principio una strategia molto efficace per mostrare che due dati gruppi \emph{non possono} essere isomorfi è cercare una proprietà che sia goduta solo da uno dei due (per esempio, l'essere abeliano: ci sono certamente almeno due gruppi di ordine 24 distinti, il gruppo \emph{ciclico} \(\bbZ/24\bbZ\) e il gruppo \emph{simmetrico} delle permutazioni di 4 lettere \(\{a,b,c,d\}\), perché il primo è abeliano, il secondo no, e --si dimostra-- se due gruppi sono isomorfi, uno è abeliano se e solo se lo è l'altro).
-%\Todo{Vorrei spiegare bene cosa significa: se \(G\iso H\), allora \(G\) è abeliano se e solo se lo è \(H\); del resto, \(7\in\bbZ/24\bbZ\iff 7\in\bbZ/12\bbZ\), che del primo è un sottogruppo proprio...}
 
 La nozione di isomorfismo in teoria delle categorie generalizza e precisa molte di queste idee.
 \begin{definition}[Isomorfismo]\label{def_isomorfismo}\index{Isomorfismo}\index{Morfismo!isomorfismo}
@@ -1250,7 +1243,7 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Mostrare che la composizione nella categoria \(\cate{Stream}\) definita in \ref{example_streams} è effettivamente associativa, e l'assioma di identità è effettivamente valido. %Dato un morfismo \(f:X\to Y\) in una categoria \(\ctC\), dimostra che se un inverso per \(f\) esiste, allora è unico.
-	\item Caratterizzare gli isomorfismi nelle seguenti categorie:% \Todo{lista}
+	\item Caratterizzare gli isomorfismi nelle seguenti categorie:
 	\begin{itemize}
 		\item la categoria dei modelli di una segnatura algebrica $(\Omega,a)$;
 		\item la categoria degli ordinali di \ref{};
@@ -1278,7 +1271,6 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 	      Mostrare esplicitamente gli assiomi di categoria (rendendo così precisa questa definizione informale). Recuperare \(\act G\)  come caso particolare di questa definizione; mostrare che, quando \(M\) è un monoide libero (su un insieme \(A\) di generatori) nel senso di \ref{mongruppi_liberi}, allora \(M/\!\!/X\) è una categoria libera nel senso di \ref{ex_cat_libera} (su un grafo \(G[A]\) determinato come\dots).
 	      % \item Costruisci un esempio in \(\ctTop\) di oggetti \(X\) e \(Y\) non isomorfi, e morfismi \(f:X\to Y\) e \(g:Y\to X\) tali che \(g\cmp f=\id_X\) (ma \(f\cmp g \ne \id_Y\)).
 	      % \item Dimostra che in ogni categoria, le identità sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo.
-	      %       \Todo{Trovo questi esercizi un po' troppo facili\dots Non che sia un male, ma vorrei degli esempi più pedagogici!}
 \end{enumerate}
 
 \section{Funtori e diagrammi}\label{sec_funtori}
@@ -1381,7 +1373,6 @@ Ora raccogliamo in una singola definizione alcune classi di funtori particolari,
 		\item \label{pc_2} \emph{Rovesciamento delle composizioni}: per ogni coppia di morfismi componibili \(f\) e \(g\) di \(\ctC\), \(F(g\cmp f)=Ff\cmp Fg\).
 	\end{enumtag}
 	\index{Funtore!Prefascio}
-	% \Todo{funtori contro, covarianti, prefasci, bifuntori}
 \end{definition}
 Ciò conduce a una definizione molto importante e pervasiva in teoria delle categorie.
 \begin{definition}\label{exa_funtori_da_poset}\index{Prefascio}\index{Funtore!Prefascio}
@@ -1554,7 +1545,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		\item una rappresentazione \(S_n \times X_n\to X_n\), ossia un'azione (sinistra) del gruppo simmetrico \(S_n\) degli automorfismi dell'insieme \(\{\iter n\}\).
 	\end{itemize}
 	Il funtore \(f\) si dice una \emph{specie combinatoria} e la famiglia \(f(n)=X_n\) è una \emph{successione simmetrica}. Questo tipo di funtori, molto ricchi di struttura e di proprietà interessanti, trovano applicazioni in combinatoria enumerativa \cite{bergeron1998combinatorial}, teoria delle rappresentazioni \cite{aguiar2010monoidal}, geometria e topologia \cite{} (quando invece che insiemi gli \(X_n\) sono spazi vettoriali), logica e informatica teorica \cite{}. Denotando con \(\# S\) la cardinalità di un insieme, ad ogni specie combinatoria \(f : \cate{Bij} \fun\ctSet\) tale che ogni \(f(n)\) sia finito possiamo associare la serie formale \(F(t)\in\mathbb{N}\llbracket t\rrbracket\) definita come \(F(t) \defeq \sum_{n\ge 1} \frac{\# X_n}{n!}t^n\). Questa si chiama la \emph{funzione generatrice} della specie combinatoria \(F\), e le sue proprietà algebriche o analitiche (qualora \(F(t)\) converga) sono in corrispondenza diretta con le proprietà del funtore \(f\).
-	% \Todo{Sequenze simmetriche}
 \end{example}
 \begin{example}[Moduli sinistri; moduli destri; bimoduli]\index{Moduli su un anello!--- come funtori}\index{Modulo}
 	Se \(\ctAb\) è la categoria dei gruppi abeliani e loro omomorfismi, ed \((R,+,\cdot,0,1)\) è un anello unitario, una rappresentazione del monoide \((R,\cdot,1)\) in \(\ctAb\), ossia un funtore
@@ -1580,9 +1570,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\[\dmFun{-/G}{G\emdash\ctSet}{\ctSet}\]
 	che manda il \(G\)-insieme \(X\) nell'insieme \(X/G\). Affinché questo sia vero, una funzione equivariante \(f : X\to Y\) deve indurre una funzione ben definita tra gli spazi delle orbite \(X/G\) e \(Y/G\), in modo che gli assiomi \ref{p_1} e \ref{p_2} siano soddisfatti. \`E facile verificare che \(f/G : X/G \to Y/G : [x]_G\mapsto [f(x)]_G\) ha tutte queste proprietà. (In particolare, se chiamiamo \(\pi_X : X\to X/G\) la funzione \(x\mapsto [x]_G\) che manda ogni elemento nella sua orbita, \(f/G\) è l'unica funzione tale che \(f/G(\pi_X(x)) = \pi_Y(f(x))\).)
 \end{example}
-% \begin{example}\index{Funtore!--- da un gruppoide d'azione}
-% 	\Todo{Funtori da un gruppoide d'azione \(\act G\) VS \(G\)-insiemi}
-% \end{example}
 \begin{example}\index{Funtore!--- gruppo delle unità}
 	% \Todo{Gruppo delle unità di un anello}
 	Assegnare a un anello unitario $(R,+,0\cdot,1)$ il gruppo $(R^\times,\cdot,1)$ dei suoi elementi invertibili è un funtore 
@@ -1590,7 +1577,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	Infatti ogni omomorfismo di anelli $f : R\to S$ induce un omomorfismo di gruppi $f^\times : R^\times \to S^\times$, dato che se $u\in R$ è invertibile, tale è anche $f(u)$ (e $f(u)^{-1}=f(u^{-1})$).
 \end{example}
 \begin{example}\index{Funtore!--- di abelianizzazione}
-	% \Todo{Abelianizzato di un gruppo}
 	Dato un gruppo $G$, il sottogruppo $[G,G]$ generato dai commutatori $[x,y] \defeq xyx^{-1}y^{-1}$ è il sottogruppo normale più piccolo tale che $G/N$ sia abeliano; il quoziente $G^\aa \defeq G/[G,G]$ si chiama \emph{abelianizzato} di $G$ e l'assegnazione $G\mapsto G^\aa$ definisce un funtore 
 	\[\dmFun{(-)^\aa}\ctGrp\ctAb\]
 	di abelianizzazione. Un omomorfismo di gruppi $f : G \to H$ infatti scende al quoziente ad un omomorfismo $f^\aa : G^\aa \to H^\aa$ tale che
@@ -1603,7 +1589,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	sia commutativo (questo è evidente, dato che $f[x,y]=[fx,fy]$). L'omomorfismo $f^\aa$ è l'unico con questa proprietà, e ciò mostra che $(g\circ f)^\aa = g^\aa\circ f^\aa$ e $(\id_G)^\aa=\id_{G^\aa}$.
 \end{example}
 \begin{example}\index{Funtore!--- campo dei quozienti}
-	% \Todo{Campo dei quozienti di un dominio di integrità}
 	Se $R$ è un dominio di integrità, il suo \emph{campo dei quozienti} $Q(R)$ è l'anello definito come segue:
 	\begin{itemize}
 		\item i suoi elementi sono classi di equivalenza $\frac pq$ di coppie $(p,q) \in R\times R$ dove $q\ne 0$ rispetto alla relazione che identifica $(p,q), (p',q')$ quando $pq'=qp'$;
@@ -1617,7 +1602,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	(il codominio è la sottocategoria -piena- di $\ctcRing$ i cui oggetti sono i campi). Infatti, ogni omomorfismo di anelli $f : R \to S$ che siano domini di integrità induce un omomorfismo di anelli $Q(f) : Q(R) \to Q(S)$ definito da $f(\frac pq) = \frac{fp}{fq}$.
 \end{example}
 \begin{example}\index{Funtore!--- gruppo generale lineare}\index{GL|see {Gruppo generale lineare}}\index{Gruppo generale lineare}
-	% \Todo{Il funtore GL }
 	Se $n\ge 1$ è un numero intero, mandare un anello commutativo $R$ nel gruppo delle matrici invertibili $n\times n$ a coefficienti in $R$ è la funzione sugli oggetti di un funtore 
 	\[\dmFun{\GL_n}\ctcRing\ctGrp\]
 	Per vederlo, basta definire un omomorfismo di gruppi $\GL_n(f) : \GL_n(R)\to \GL_n(S)$ dato un omomorfismo di anelli $f : R\to S$; ragioniamo nel caso $n=2$ per comodità, e il caso generale è completamente analogo: la corrispondenza
@@ -1636,12 +1620,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 				fc	&	fd
 				\end{smallmatrix}\right) = f(\det A)$, cosicché $\GL_2(f)$ è ben definita verso $\GL_2(S)$; evidentemente ciascun $\GL_2(f)$ è un omomorfismo di gruppi, e $f\mapsto\GL_2(g\circ f) = \GL_2(g)\circ\GL_2(f)$, e $\GL_2(\id_R) = \id_{\GL_2(R)}$.
 \end{example}
-% \begin{example}\index{Funtore!--- di estensione degli scalari}
-% 	\Todo{Estensione e restrizione degli scalari}
-% \end{example}
-% \begin{example}\index{Funtore!--- di localizzazione}
-% 	\Todo{Localizzazione ad un primo }
-% \end{example}
 \begin{example}\index{Funtore!--- nucleo e conucleo}\index{ker|see {nucleo}}\index{coker|see {conucleo}}
 	% \Todo{Nucleo e conucleo di un omomorfismo}
 	Data una applicazione lineare $f : V\to W$ tra $k$-spazi vettoriali, il suo \emph{nucleo} consiste del sottospazio $\ker f\le V$ di tutti i vettori $v\in V$ tali che $f(v)=0$. Questa assegnazione è un funtore 
@@ -1671,8 +1649,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\end{itemize}
 \end{example}
 \begin{example}\label{fun_ex_omoto_omolo}\index{Funtore!--- omotopia}\index{Funtore!--- omologia}
-	% \Todo{Omotopia, omologia, e parafernalia topologici}
-	% Non è infrequente incontrare la definizione di funtorialità studiando la topologia algebrica elementare; ciò perché un esempio naturale di corrispondenza funtoriale si ha studiando i gruppi fondamentali e i gruppi di (co)omologia di spazi topologici. 
 	Ad ogni spazio topologico puntato $(X,x_0)$ si può associare l'insieme delle classi di omotopia di mappe $(S^1, \copmap[r] 10)\to (X, x_0)$ che preservano il punto base; tale insieme è un gruppo, e dato che la relazione di omotopia è una \emph{congruenza} rispetto alla composizione (ossia che, se $f\cong g$ allora $h\cmp f\cmp k\cong h\cmp g\cmp k$), è anche un funtore
 	\[\dmFun{\pi_1}\ctTop\ctGrp\]
 	e in effetti, dato che mappe omotope $f\cong g : X\to Y$ inducono lo stesso omomorfismo $f_* = g_* : \pi_1(X,x_0) \to \pi_1(Y,y_0)$, un funtore 
@@ -1697,7 +1673,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\Todo{Da spazi affini a spazi vettoriali, a spazi proiettivi, et cetera.}
 \end{example}
 \begin{definition}\label{def_diagramma_comm}
-	% \Todo{Diagramma, diagramma commutativo.}
 	In teoria delle categorie, la locuzione \emph{diagramma} (di \emph{forma} \(\ctJ\)) è sinonimo di \emph{funtore} (di \emph{dominio} \(\ctJ\)).
 
 	Più formalmente, se \(\ctJ\) è una categoria piccola e \(\ctC\) una categoria, un diagramma in \(\ctC\) di forma \(\ctJ\) è precisamente un funtore
@@ -1728,7 +1703,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \end{lemma}
 
 \begin{definition}\label{def_cat_cocomma}
-	% \Todo{Categoria comma e cocomma di due funtori}
 	Consideriamo una cospanna di funtori 
 	\[\begin{tikzcd}
 		\ctC \ar[r, "F"'] & \ctE &\ar[l, "G"] \ctD
