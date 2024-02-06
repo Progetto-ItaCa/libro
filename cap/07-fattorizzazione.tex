@@ -1,12 +1,12 @@
 \label{cap:fattorizzazione}
 \chapter{Sistemi di Fattorizzazione}
 \section{La relazione di ortogonalità}
-La nozione di \emph{sistema di fattorizzazione} in una categoria è uno dei concetti più antichi della teoria; Mac Lane produsse un esempio di sistema di fattorizzazione nella categoria dei gruppi nel 1948, \cite{maclane_grp_duality}.\footnote{L'articolo in questione è molto breve, e molto istruttivo a proposito dell'intuizione che, pochi anni dopo la sua prima definizione esplicita, la nozione di categoria aveva per il suo inventore; è anche un reperto storico sulla terminologia matematica e su come essa è evoluta: una categoria equipaggiata con un sistema di fattorizzazione viene chiamata una \emph{bicategoria} da Mac Lane, termine che oggi riserviamo a una struttura che nulla ha a che vedere con la fattorizzazione di morfismi. Notiamo anche che la definizione che daremo in \ref{fat_funno} è leggermente diversa, ma equivalente, a quella proposta da Mac Lane, che chiede che ogni morfismo \(f : X\to Y\) si fattorizzi come una composizione \(m\circ u\circ e\), dove \(m\) è un monomorfismo, \(e\) un epimorfismo, e \(u\) un isomorfismo. L'assiomatica proposta da Mac Lane era volta a determinare una nozione di decomposizione di una categoria \(\ctC\) mediante due sottoclassi \(\ctE,\ctM\subseteq\ctC_1\) tali che se \((\ctE,\ctM)\) determina una fattorizzazione su \(\ctC\), allora \((\ctM^\op,\ctE^\op)\) determina una fattorizzazione su \(\ctC^\op\).} Da quel momento, la nozione ha dimostrato di essere fondamentale per unificare un certo numero di costruzioni universali in algebra, logica e (soprattutto) in topologia.
+La nozione di \emph{sistema di fattorizzazione} in una categoria è uno dei concetti più antichi della teoria; Mac Lane produsse un esempio di sistema di fattorizzazione nella categoria dei gruppi nel 1948, \cite{maclane_grp_duality}.\footnote{L'articolo in questione è molto breve, e istruttivo a proposito dell'intuizione che, pochi anni dopo la sua prima definizione esplicita, la nozione di categoria aveva per il suo inventore; è anche un reperto storico sulla terminologia matematica e su come essa è evoluta: una categoria equipaggiata con un sistema di fattorizzazione viene chiamata una \emph{bicategoria} da Mac Lane, termine che oggi è riservato a una struttura che nulla ha a che vedere con la fattorizzazione di morfismi. Notiamo anche che la definizione che daremo in \ref{fat_funno} è leggermente diversa, ma equivalente, a quella proposta da Mac Lane, che chiede che ogni morfismo \(f : X\to Y\) si fattorizzi come una composizione \(m\cmp u\cmp e\), dove \(m\) è un monomorfismo, \(e\) un epimorfismo, e \(u\) un isomorfismo. L'assiomatica proposta da Mac Lane serviva a determinare una nozione di decomposizione di una categoria \(\ctC\) mediante due sottoclassi \(\ctE,\ctM\subseteq\ctC_1\) tali che se \((\ctE,\ctM)\) determina una fattorizzazione su \(\ctC\), allora \((\ctM^\op,\ctE^\op)\) determina una fattorizzazione su \(\ctC^\op\).} Da quel momento, la nozione ha dimostrato di essere fondamentale per unificare diverse costruzioni universali in algebra, logica e (soprattutto) in topologia.
 
 \medskip
 L'intuizione fondamentale dietro la definizione è la seguente osservazione/lemma:
 \begin{lemma}\label{fatt_in_set}
-	Se \(\ctSet\) denota la categoria di insiemi e funzioni di \ref{ex_cat_insiemi}, ogni funzione \(f : X \to Y\) si fattorizza come \(f = m \circ e\), dove \(m\) è iniettiva (un monomorfismo, si veda \ref{monoepi_in_set}) ed \(e\) è suriettiva.% (un epimorfismo, si veda \ref{def_Epi}).
+	Se \(\ctSet\) denota la categoria di insiemi e funzioni di \ref{ex_cat_insiemi}, ogni funzione \(f : X \to Y\) si fattorizza come \(f = m \cmp e\), dove \(m\) è iniettiva (un monomorfismo, si veda \ref{monoepi_in_set}) ed \(e\) è suriettiva.% (un epimorfismo, si veda \ref{def_Epi}).
 \end{lemma}
 In più, abbiamo preannunciato in \ref{caratt_epi_con_ort} che la nozione di epimorfismo e di monomorfismo ammettono una ulteriore caratterizzazione nei termini seguenti (rammentiamo il contenuto di \ref{caratt_epi_con_ort} per facilità di lettura): il lemma \ref{fatt_in_set} permette di dimostrare questo fatto in modo molto elegante.
 \begin{proposition*}
@@ -18,51 +18,57 @@ In più, abbiamo preannunciato in \ref{caratt_epi_con_ort} che la nozione di epi
 				      E \ar[r, "f"]\ar[d, "p"']& X \ar[d, "m"]\\
 				      B \ar[r, "g"'] \ar[ur, dashed, "u"]& Y
 			      \end{tikzcd}\]
-		      dove \(m : X\to Y\) è un monomorfismo, esiste un unico morfismo \(u : B\to X\) tale che \(u\circ p = f\) e \(m\circ u = g\).
+		      dove \(m : X\to Y\) è un monomorfismo, esiste un unico morfismo \(u : B\to X\) tale che \(u\cmp p = f\) e \(m\cmp u = g\).
 	\end{itemize}
 \end{proposition*}
 \begin{proof}
 	\Todo{}
 \end{proof}
-
 Questo motiva la nozione di \emph{ortogonalità} tra morfismi e di \emph{fattorizzazione} di ogni morfismo \(f : X\to Y\) di una categoria \(\ctC\) come una certa composizione
 \[
 	\begin{tikzcd}
 		f : X \ar[r, "e", two heads]& F \ar[r, "m", hook] & Y.
 	\end{tikzcd}
 \]
-L'intuizione che il lettore dovrebbe avere sulla definizione è questa: una struttura del genere imposta su una categoria \(\ctC\) permette di `generarla' a partire dalle classi \(\ctE,\ctM\); in una notazione suggestiva, \(\ctC_1 = \ctM\circ \ctE\). In più, le due classi \(\ctE,\ctM\) sono `ortogonali' nel senso che hanno intersezione più piccola possibile: \(\ctE\cap \ctM\) consta del cuore (si veda \ref{def_cuore}) di \(\ctC\), cioè della categoria di tutti gli isomorfismiin \(\ctC\).
+L'esempio più importante di fattorizzazione di questo tipo sarà proprio quando $\ctE$ è la classe degli epimorfismi di $\ctC$ ed $\ctM$ è la classe dei monomorfismi, sebbene non l'unico interessante.
 
+L'intuizione che il lettore dovrebbe avere sulla definizione è questa: una struttura del genere imposta su una categoria \(\ctC\) permette di `generarla' a partire dalle classi \(\ctE,\ctM\), in una notazione suggestiva, cioè, è vero che \(\hom(\ctC) = \ctM\cmp \ctE\). In più, le due classi \(\ctE,\ctM\) sono `ortogonali' nel senso che hanno intersezione più piccola possibile: \(\ctE\cap \ctM\) consta del \emph{cuore} (si veda \ref{def_cuore}) di \(\ctC\), cioè della categoria di tutti gli isomorfismi in \(\ctC\).
+
+\medskip
 % \section[Ortogonalità]{La relazione di ortogonalità}
 Sulla classe dei morfismi di una generica categoria \(\ctC\) è possibile definire una relazione binaria detta \emph{ortogonalità}, nel modo che segue.
 \begin{definition}[Relazione di ortogonalità]\label{def_ortogona}\index{Ortogonalità}\index{Morfismi!--- ortogonali}\index{Relazione!---di ortogonalità}
 	Dati due morfismi \(f : X\to Y\) e \(g : A\to B\) diciamo che \(f\) è ortogonale a sinistra a \(g\), o che \(g\) è ortogonale a destra a \(f\), o che \(f\) e \(g\) sono \emph{ortogonali} se in ogni quadrato commutativo della forma
-	\[
-		\vcenter{\xymatrix{%
-				X \ar[r]^u\ar[d]_f & A\ar[d]^g\\
-				Y \ar[r]_v & B
-			}}\]
+      \[
+        \begin{tikzcd}
+          X \ar[d, "f"']\ar[r, "u"]& A\ar[d, "g"] \\ 
+          Y \ar[r, "v"']& B
+        \end{tikzcd}
+      \]
 	esiste un unico morfismo \(a : Y\to A\) tale che \(a\cmp f=u\) e \(g\cmp a=v\).
 \end{definition}
-La relazione di ortogonalità è un sottoinsieme \(O^\ctC \subseteq \hom(\ctC)\) e il fatto che \((f,g)\in O^\ctC\) verrà sempre denotato con il simbolo infisso \(f\perp^\ctC g\) o semplicemente come \(f\perp g\) quando il contesto permette di determinare quale sia la categoria \(\ctC\) di riferimento.
+La relazione di ortogonalità è una sottoclasse \(O^\ctC \subseteq \hom(\ctC)\) e il fatto che \((f,g)\in O^\ctC\) verrà sempre denotato con un simbolo infisso \(f\perp^\ctC g\), o semplicemente come \(f\perp g\) quando il contesto permette di determinare quale sia la categoria \(\ctC\) di riferimento (ossia, quasi sempre).
 
 La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetrica o transitiva; \ref{} sostanzia questa osservazione con delle maniere di costruire dei controesempi.
 \begin{remark}\label{perche_ortogonale}
 	Diverse intuizioni sulla nomenclatura `ortogonale'.
 \end{remark}
 \begin{definition}
-	Miscellanea di definizioni: classi vaste, sature, cellulari, chiuse per (co)limiti, cancellative a sinistra (destra).
+	Miscellanea di definizioni: classi vaste, sature, cellulari, chiuse per (co)limiti, cancellative a sinistra (destra, bilatere).
 \end{definition}
+\begin{examples}
+Esempi di classi vaste, sature, etc. in varie categorie
+\end{examples}
 \section[Proprietà ed esempi]{Proprietà fondamentali ed esempi}
 \begin{remark}
-	Grazie a \ref{klext_delle_relazioni} possiamo estendere la relazione di ortogonalità a una coppia di funzioni
-	\[\lort{(-)} : 2^{\ctC_1} \leftrightarrows 2^{\ctC_1} : \rort{(-)}\]
+	Grazie a \ref{klext_delle_relazioni} possiamo estendere la relazione di ortogonalità a una coppia di funzioni sulle sottoclassi di $\hom(\ctC)$,
+	\[\lort{(-)} : 2^{\hom(\ctC)} \leftrightarrows 2^{\hom(\ctC)} : \rort{(-)}\]
 	tali che \(\rort\ctU\subseteq\ctV\) se e solo se \(\ctU\subseteq\lort\ctV\) e definite alla maniera seguente: data una sottoclasse \(\ctU\subseteq \ctC_1\),
 	\begin{gather*}
 		\rort{\ctU} := \{f\in\ctC_1\mid \forall u\in\ctU.(u\perp f)\}\\
 		\lort{\ctU} := \{f\in\ctC_1\mid \forall u\in\ctU.(f\perp u)\}
 	\end{gather*}
-	Se estendiamo la relazione di ortogonalità tra morfismi di \(\ctC\) a una relazione di ortogonalità tra le sue sottoclassi, possiamo definire
+	Così, possiamo definire la relazione di ortogonalità estesa alle sottoclassi di $\hom(\ctC)$, 
 	\[\ctL\perp \ctR := \forall l\in\ctL,r\in\ctR.(l\perp r).\]
 	Si osservi che le seguenti tre condizioni sono equivalenti (lo si dimostri come esercizio per familiarizzare con la definizione):
 	\[\ctL\perp\ctR\qquad \ctL\subseteq\lort\ctR\qquad \rort\ctL\subseteq \ctR\]
@@ -71,23 +77,33 @@ La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetric
 	Siano \(f : A \to B\) e \(g : X\to Y\) due morfismi di ua categoria \(\ctC\). Il \emph{prodotto di Leibniz} di \(f\) e \(g\), denotato \(f\oast g\), si costruisce a partire dal prodotto fibrato
 	\[
 		\begin{tikzcd}
-			\pull {\ctC(A,X)}{\ctC(B,Y)}{\ctC(A,Y)} \ar[r]\ar[d] & \ctC(B,Y) \ar[d, "\_\circ f"]\\
-			\ctC(A,X) \ar[r, "g\circ\_"'] & \ctC(A,Y)
+			\pull {\ctC(A,X)}{\ctC(B,Y)}{\ctC(A,Y)} \ar[r]\ar[d] & \ctC(B,Y) \ar[d, "\_\cmp f"]\\
+			\ctC(A,X) \ar[r, "g\cmp\_"'] & \ctC(A,Y)
 		\end{tikzcd}
 	\]
 	e consiste della mappa di confronto \(f\oast g : \ctC(B,X) \to \pull {\ctC(A,X)}{\ctC(B,Y)}{\ctC(A,Y)}\) indotta dalla proprietà universale.
 
-	Diciamo che il prodotto di Leibniz di \(f,g\) è \emph{esatto} se \(f\oast g\) è una biiezione.
+	Diciamo che il prodotto di Leibniz di \(f,g\) è \emph{esatto} se \(f\oast g\) è una biiezione. Questo è equivalente ad affermare che il quadrato 
+  \[
+    \begin{tikzcd}
+      \ctC(B,X) \ar[d]\ar[r,"g\cmp\_"]& \ctC(B,Y)\ar[d, "\_\cmp f"]\\
+			\ctC(A,X) \ar[r, "g\cmp\_"'] & \ctC(A,Y)
+    \end{tikzcd}
+  \]
+  è un prodotto fibrato.
 \end{definition}
-Per orientare chi legge, è utile rendere esplicita la definizione del prodotto di Leibniz \(f\oast g\): un morfismo \(u : B\to X\) viene mandato nella coppia \((u\circ f, g\circ u)\), che appartiene al prodotto fibrato in questione dato che \(g\circ (u\circ f) = (g\circ u)\circ f\).
+Per orientare chi legge, è utile rendere esplicita la definizione del prodotto di Leibniz \(f\oast g\): un morfismo \(u : B\to X\) viene mandato nella coppia \((u\cmp f, g\cmp u)\), che appartiene al prodotto fibrato in questione vista l'associatività della composizione: \(g\cmp (u\cmp f) = (g\cmp u)\cmp f\).
 
-La proprietà più importante del prodotto di Leibniz è la possibilità di ridefinire la relazione di ortogonalità mediante l'esattezza di \(f\oast g\): la dimostrazione del seguente fatto consiste nel riscrivere le due condizioni in modo che entrambe si rifrasino così:
+Il prodotto di Leibniz permette di ridefinire la relazione di ortogonalità mediante l'esattezza, ossia l'invertibilità di \(f\oast g\); la dimostrazione del seguente fatto consiste nel riscrivere le due condizioni in modo che entrambe si rifrasino così:
 \begin{quote}
-	Per ogni coppia di morfismi \(u : X\to A\), \(v : Y\to B\) tali che \(g\circ u=v\circ f\), esiste un unico morfismo \(a : Y\to A\) tale che \(g\circ a=v\) e \(a\circ f=u\).
+	Per ogni coppia di morfismi \(u : X\to A\), \(v : Y\to B\) tali che \(g\cmp u=v\cmp f\), esiste un unico morfismo \(a : Y\to A\) tale che \(g\cmp a=v\) e \(a\cmp f=u\).
 \end{quote}
 \begin{proposition}
 	Due morfismi \(f,g\) sono ortogonali (cioè \(f\perp g\) nel senso di \ref{def_ortogona}) se e solo se il prodotto di Leibniz \(f\oast g\) è esatto.
 \end{proposition}
+\begin{proof}
+  Evidente: la condizione su $a$ in \ref{def_ortogona} si traduce in esistenza (suriettività di $f\oast g$) e unicità (iniettività).
+\end{proof}
 \begin{definition}[Sistema di prefattorizzazione]
 	\Todo{}
 \end{definition}
