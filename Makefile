@@ -1,11 +1,11 @@
 p:
-	latexmk -pdf -pvc main.tex
+	texfot latexmk -pdf -pvc main.tex
 
 t:
-	latexmk -pdf main.tex
+	texfot latexmk -pdf main.tex
 
 c:
-	latexmk -C
+	texfot latexmk -C
 	rm *.bbl
 
 v:

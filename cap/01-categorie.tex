@@ -110,6 +110,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 \begin{definition}[Categoria piccola, categoria localmente piccola]
 	\index{Categoria!--- piccola}
 	\index{Categoria!--- loc. piccola}
+
 	Quando la classe \(\ctC_1\) è un insieme, come conseguenza della seconda osservazione fatta, è un insieme anche \(\ctC_0\) (dato che una sottoclasse di una classe che è un insieme, è a sua volta un insieme): in tal caso chiamamo la categoria \(\ctC\) \emph{piccola}: le categorie \(\ctFin\) e \(\bbR\emdash\ctVect\) definite sopra sono piccole, perché abbiamo limitato enormemente la loro classe di oggetti; non abbiamo considerato \emph{tutti} gli insiemi finiti, ma solo quelli della forma \(\{1,\dots,n\}\). Una categoria che non è piccola si dice \emph{grande}, \emph{larga} o simili.
 
 	Invece, \(\ctC\) si dice \emph{localmente piccola} se dati ogni due oggetti \(X\) e \(Y\), la classe \(\Hom{\ctC}(X,Y)\) di morfismi da \(X\) a \(Y\) è un insieme. La categoria di \emph{tutti} gli insiemi finiti non è, strettamente parlando, piccola (perché c'è una classe propria anche solo di insiemi con un singolo elemento: \(\{\varnothing\},\{\{\varnothing\}\}, \{\{\{\varnothing\}\}\}\), eccetera), ma è localmente piccola, perché fissati due insiemi \(X,Y\), la collezione delle funzioni \(f : X\to Y\) è contenuta in \(2^{X\times Y}\), e quest'ultimo è un insieme (per assioma).
@@ -287,16 +288,16 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	\caption{Le categorie \(P[n]\) per \(n=0,1,2,3\). La categoria \(P[n]\) si chiama un \(n\)-\emph{cubo}.}
 	\label{fig_n_cubo}
 \end{figure}
-\index{Categoria!--- span generico}
-\index{Categoria!--- cospan generico|see {span generico}}
-\begin{example}[Span e cospan generici]\label{ex_spancospan}
-	La categoria `span generico' \(\Lambda^2_0\) ha tre oggetti \(0,1,2\) e due morfismi non identici. Si raffigura come segue:
+\index{Categoria!--- spanna generica}
+\index{Categoria!--- cospanna generica|see {spanna generica}}
+\begin{example}[Spanne e cospanne generiche]\label{ex_spancospan}
+	La categoria `spanna generica' \(\Lambda^2_0\) ha tre oggetti \(0,1,2\) e due morfismi non identici. Si raffigura come segue:
 	\[\begin{tikzcd}
 			1 & 0 \ar[r]\ar[l] & 2
 		\end{tikzcd}\]
 	La composizione è definita solamente quando almeno una delle due frecce è identica, ed è forzata da questo fatto.
 
-	Dualmente, la categoria `cospan generico' \(\Lambda^2_2\) ha tre oggetti \(0,1,2\) ma i due morfismi non identici puntano verso \(2\) invece che uscire da \(0\):
+	Dualmente, la categoria `cospanna generica' \(\Lambda^2_2\) ha tre oggetti \(0,1,2\) ma i due morfismi non identici puntano verso \(2\) invece che uscire da \(0\):
 	\[\begin{tikzcd}
 			0\ar[r] & 2 & 1\ar[l]
 		\end{tikzcd}\]
@@ -304,14 +305,14 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 
 	Si noti che \(\Lambda^2_2\) si ottiene da \(\Delta[2]\) `rimuovendo la freccia \(0\to 1\)', e analogamente \(\Lambda^2_0\) si ottiene rimuovendo la freccia \(1\to 2\).
 
-	Più in generale, sia \(S\) un insieme; la categoria `\(S\)-span generico' \(S^\lhd\) è definita come segue:
+	Più in generale, sia \(S\) un insieme; la categoria `\(S\)-spanna generica' \(S^\lhd\) è definita come segue:
 	\begin{itemize}
 		\item gli oggetti di \(S^\lhd\) sono gli elementi di \(S^+ := S\cup \{-\infty\}\);
 		\item esiste un unico morfismo \(f_s : -\infty\to s\), per ogni \(s\in S\).
 	\end{itemize}
 	La composizione è ancora una volta definita solamente quando almeno una delle due frecce è identica. Questo definisce una categoria in cui da un oggetto chiamato `\(-\infty\)' spiccano tante frecce \(f_s\) quanti sono gli elementi di \(S\).
 
-	Dualmente, definiamo la categoria `\(S\)-cospan generico' \(S^\rhd\) come segue:
+	Dualmente, definiamo la categoria `\(S\)-cospanna generica' \(S^\rhd\) come segue:
 	\begin{itemize}
 		\item gli oggetti di \(S^\rhd\) sono gli elementi di \(S^+ := S\cup \{+\infty\}\);
 		\item esiste un unico morfismo \(f_s : s\to+\infty\), per ogni \(s\in S\).
@@ -435,7 +436,6 @@ Questo appena fatto è il secondo degli esempi motivanti fatti ad inizio capitol
 L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme dotato di operazioni, codificando una struttura algebrica in una \emph{funzione di arietà}:\footnote{Le parole \emph{arietà}, così come \emph{nullario} e \emph{unario} e \(n\)-ario (ma non binario, ternario, quaternario, etc.) sono retroformazioni che il lessico matematico ha introdotto a partire dal suffisso latino \emph{-\={a}rius, -\=aria, -\=arium}, usato per formare aggettivi a partire da nomi o numerali. Una operazione `\(n\)-aria' accetta \(n\) argomenti a dominio.} innanzitutto, si ricordi che una operazione \(n\)-aria su un insieme \(X\) consta di una funzione \(X\times X\times\dots\times X \to X\) dove il prodotto cartesiano è fatto \(n\) volte.
 \index{Categoria!---}
 \begin{example}\label{ex_cat_sigma_strutture}
-	% \Todo{Omomorfismi per una generica segnatura algebrica}
 	Una \emph{segnatura algebrica} consiste di una coppia \((\Omega, a)\) dove \(\Omega\) è un insieme, e \(a : \Omega \to \bbN\) è una funzione detta \emph{funzione di arietà} che associa a ogni elemento \(\omega \in \Omega\) la sua arietà \(a(\omega)\ge 0\). Un \emph{modello} per una segnatura algebrica \((\Omega,a)\) consiste di un insieme \(X\) e di una funzione \(f_\bullet\) che associa a ogni \(\omega\in\Omega\) una operazione \(f_\omega : X^{a(\omega)} \to X\) di arietà \(a(\omega)\).
 
 	Fissata una segnatura algebrica \((\Omega,a)\) possiamo definire la categoria \(\ctMod(\Omega,a)\) dei suoi modelli come segue:
@@ -556,16 +556,18 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	La composizione di classi di omotopia di mappe continue è definita grazie al fatto che l'omotopia tra mappe è una congruenza su ogni $\ctTop(X,Y)$ (cioè, se $f\simeq g$, allora $h\cmp f\cmp k\simeq h\cmp g\cmp k$): si veda anche \ref{fun_ex_omoto_omolo} più avanti.
 \end{example}
 \begin{example}
-	\Todo{la categoria dei complessi di catene di gruppi abeliani}
 	Un \emph{complesso di catene} $(A_\bullet, d_\bullet)$ di gruppi abeliani è una catena di omomorfismi tra gruppi abeliani della forma 
 	\[\begin{tikzcd}
 		\dots \ar[r] & A_2 \ar[r, "d_2"] & A_1  \ar[r, "d_1"] & A_0 \ar[r, "d_0"] & A_{-1} \ar[r, "d_{-1}"] & A_{-1} \ar[r] & \dots
 	\end{tikzcd}\]
 	con la proprietà che $d_n\cmp d_{n+1}=0$ (o equivalentemente, l'immagine di $d_{n+1}$ sia contenuta in $\ker d_n$). Un omomorfismo tra complessi di catene $(A_\bullet,d_\bullet) \to (B_\bullet,d'_\bullet)$ consiste di una famiglia di omomorfismi $f_n : A_n \to B_n$ tali che ciascun quadrato in 
-	\[bla\]
+	\[\begin{tikzcd}
+    \dots \ar[r] & A_2 \ar[d,"f_2"]\ar[r, "d_2"] & A_1 \ar[d,"f_1"] \ar[r, "d_1"] & A_0 \ar[d,"f_0"]\ar[r, "d_0"] & A_{-1} \ar[d,"f_{-1}"]\ar[r, "d_{-1}"] & A_{-2} \ar[d, "f_{-2}"]\ar[r] & \dots\\
+		\dots \ar[r] & B_2 \ar[r, "d_2'"] & B_1  \ar[r, "d_1'"] & B_0 \ar[r, "d_0'"] & B_{-1} \ar[r, "d_{-1}'"] & B_{-2} \ar[r] & \dots
+	\end{tikzcd}\]
 	sia commutativo.
 
-	La categoria dei complessi di catene è importante in topologia algebrica: ad ogni complesso di catene $(A_\bullet, d_\bullet)$ si possono associare vari gruppi abeliani.
+La categoria dei complessi di catene è una importante costruzione in topologia algebrica: ad ogni complesso di catene $(A_\bullet, d_\bullet)$ si possono associare vari gruppi abeliani detti gruppi di \emph{omologia}.
 \end{example}
 \index{Categoria!--- di funzioni parziali}
 \begin{example}\label{ex_cat_pfun}\index{Funzione!--- parziale}
@@ -715,13 +717,12 @@ Consideriamo ora i seguenti esempi di categorie simili (che raccogliamo in dei t
 	\begin{itemize}
 		\item è facile fraintendere la definizione appena data, o perlomeno esserne confusi, perché la definizione di categoria data in \ref{def_categ} chiede che esista un \emph{insieme} di morfismi \(x\to y\) tra due oggetti \(x,y\) di \(\ctP(X,\le)\).
 
-		      Qual è quindi l'insieme di morfismi tra \(x\) e \(y\)? La risposta è che, in questo caso, tra due morfismi esiste una \emph{proposizione}, precisamente quella che asserisce se \(x\le y\) o meno. Il problema di rendere questa proposizione un insieme si risolve così: diciamo che \(\ctP(X,\le)\) è un insieme con un singolo elemento (lo chiamiamo \([x\le y]\)) se e solo se \(x\le y\) `è vera', ed è l'insieme vuoto altrimenti. In questo modo, dobbiamo definire una regola di composizione tra l'elemento \([x\le y]\) e l'elemento \([y\le z]\): questo non può che essere l'elemento \([x\le z]\), e a questo punto lasciamo i dettagli (tediosi) da scrivere a chi legge.
+      Qual è quindi l'insieme di morfismi tra \(x\) e \(y\), in un insieme ordinato $(X,\le)$? Una risposta possibile è che, in questo caso, tra due morfismi esiste una \emph{proposizione}, precisamente quella che asserisce se \(x\le y\) o meno. Una maniera di pensare questa proposizione è come segue: diciamo che \(\ctP(X,\le)\) è un insieme con un singolo elemento (lo chiamiamo \([x\le y]\)) se e solo se \(x\le y\) `è vera', ed è l'insieme vuoto altrimenti. In questo modo, dobbiamo definire una regola di composizione tra l'elemento \([x\le y]\) e l'elemento \([y\le z]\): questo non può che essere l'elemento \([x\le z]\), e a questo punto lasciamo i dettagli (tediosi) da scrivere a chi legge.
 		\item \`E fondamentale non rimanere confusi da un altro dettaglio: in base a \ref{ex_cat_ordini} esiste una categoria i cui oggetti sono gli insiemi ordinati \((X,\le)\) e i cui morfismi sono le funzioni monotòne. In base a \ref{ord_sonocat}, \emph{ogni} insieme ordinato \((X,\le)\) è \emph{esso stesso} una categoria i cui oggetti sono gli elementi di \(X\). Queste due asserzioni sono molto diverse tra loro; sarà la definizione \ref{ex_cat_cat} a rendere preciso in che senso \(\ctPos\) è una `categoria di categorie'.
 	\end{itemize}
 \end{remark}
 Occupiamoci ora di dimostrare che una categoria dove tra due oggetti esiste al più un morfismo è \emph{precisamente} un insieme (pre)ordinato.
 \begin{theorem}\label{cat_sonopos}
-	% \Todo{rovescio: una categoria dove ogni hom-set ha al piu un elemento è un preset}
 	Sia \(\ctC\) una categoria, con la proprietà che \(\ctC(X,Y)\) ha al più un elemento. Allora, la relazione
 	\[X\le Y \iff \ctC(X,Y) \text{ non è vuoto}\]
 	definisce una struttura di insieme preordinato su \(\ctC_0\).
@@ -759,7 +760,7 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 % 	L'unitalità e l'associatività del monoide e della categoria si corrispondono.
 % \end{example}
 \begin{corollary}\label{cor_cat_mon}
-	In particolare, un gruppo \((G,\cdot,1)\) si può ugalmente vedere come la categoria \(\ctB G\) ad esso associata, che ha un solo oggetto e \(G\) come insieme di morfismi. In maniera concisa (ma anche ora, chi legge dovrebbe fermarsi a riflettere finché questa frase non risulta perfettamente evidente) un monoide è una categoria con un singolo oggetto.%, e un gruppo è un gruppoide (come in \ref{def_gruppoide}) con un singolo oggetto.
+	In particolare, un gruppo \((G,\cdot,1)\) si può ugualmente vedere come la categoria \(\ctB G\) ad esso associata, che ha un solo oggetto e \(G\) come insieme di morfismi. In maniera concisa (ma anche ora, chi legge dovrebbe fermarsi a riflettere finché questa frase non risulta perfettamente evidente) un monoide è una categoria con un singolo oggetto.%, e un gruppo è un gruppoide (come in \ref{def_gruppoide}) con un singolo oggetto.
 \end{corollary}
 \begin{remark}
 	Del resto, una categoria con un solo oggetto non `è' un monoide, ma lo definisce naturalmente; e un monoide non `è' la categoria \(\ctB M\), ma la definisce naturalmente (e qualcosa di simile si può dire per gli insiemi ordinati). In altre parole, eliminare la distinzione tra \(M\) e \(\ctB M\) non segue da una tautologia, ma è una \emph{identità informativa} (intesa come in `Senso e significato' di Frege) che non è \emph{strettamente} una identità ma una \emph{identificazione}: \(M\mapsto \ctB M\) e \(\ctC\mapsto \ctC_1\) sono, a patto che \(\ctC_0\) abbia un solo elemento, corrispondenze inverse una dell'altra, nel senso che \((\ctB M)_1 = M\) e che \(\ctB(\ctC_1) = \ctC\).
@@ -911,7 +912,7 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 
 	La categoria codiscreta di \ref{ex_cat_codiscreta} si identifica alla sua opposta mediante la corrispondenza che è l'identità sugli oggetti, e che scambia tra loro il morfismo \(u_{aa'}\) (notazioni come in \ref{ex_cat_codiscreta}) e \(u_{a'a} = u_{aa'}^{-1}\).
 
-	Le categorie `span generico' e `cospan generico' sono opposte l'una dell'altra, e altrettanto è vero per le categorie \(S^\lhd\) e \(S^\rhd\):
+	Le categorie `spanna generica' e `cospanna generica' sono opposte l'una dell'altra, e altrettanto è vero per le categorie \(S^\lhd\) e \(S^\rhd\):
 	\[(\Lambda^2_0)^\op = \Lambda^2_2\qquad\qquad (S^\lhd)^\op = S^\rhd\]
 \end{example}
 \begin{definition}[Incubi e succube sopra un oggetto]\label{def_cat_slice}\index{Categoria!--- incubo}\index{Categoria!--- succuba|see {incubo}}\index{Categoria!--- sopra un oggetto}\index{Categoria!--- sotto un oggetto|see {sopra un oggetto}}
@@ -940,9 +941,6 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 		      \]
 	\end{itemize}
 \end{definition}
-
-% \Todo{Esempio: fibrati, o schemi, o simili, come categoria slice? Penso che sarebbe di grande aiuto, ma non sono abbastanza esperto da scriverlo io (Paolo).}
-% \Todo{Me ne occupo io, sì:}
 Diverse costruzioni familiari della matematica di base si esprimono facilmente come categorie sopra o sotto oggetti fissati. Raccogliamo alcuni esempi (riempire i dettagli mancanti nelle definizioni è un utile esercizio per familiarizzare con le definizioni in \ref{def_cat_slice}).
 \begin{example}\label{def_spazi_pun_succuba}\index{Categoria!--- degli spazi puntati}\index{Spazi topologici}
 	La categoria degli insiemi puntati \(\ctSet_*\) costruita nell'Esempio \ref{ex_cat_puntati} si può vedere equivalentemente come la categoria succuba \(1/\ctSet\), dove \(1\) è un insieme con un solo elemento.
@@ -991,7 +989,6 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 	questo insieme è solamente \emph{pre}ordinato.) Consideriamo la categoria \(\ctB/\varphi\); in base a \ref{ex_pos_slices} questa coincide con il segmento \(\{\alpha\le\varphi\}\), il quale in base alla definizione di \(\_\le\_\) si identifica all'insieme degli \(\alpha\) tali che \(\alpha\) implica \(\varphi\), dotato dell'ordine indotto.
 
 	La categoria-ordine \(\ctB/\varphi\) modella la struttura della classe delle proposizioni \(\alpha,\beta,\dots\) dove \(\alpha \to \beta\) (in \(\ctB/\varphi\)) se e solo se \(\alpha \land \varphi \to \beta\) (in \(\ctB\)). In breve, $\varphi$ fa da \emph{contesto} in cui le proposizioni sono determinate.
-	% \Todo{}
 \end{example}
 \begin{definition}\label{def_cat_frecce}\index{Categoria!--- delle frecce}
 	Data una categoria \(\ctC\), la \emph{categoria delle frecce} o \emph{dei morfismi} di \(\ctC\), denotata $\ctC^\to$, ha
@@ -1008,10 +1005,10 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 	\end{itemize}
 \end{definition}
 
-\begin{definition}\label{def_span_e_cospan}\index{Categoria!--- degli span}\index{Categoria!--- dei cospan|see {span}}
-	Data una categoria \(\ctC\), la categoria \(\ctSpan(\ctC)\) degli \emph{span} di \(\ctC\) ha
+\begin{definition}[Categoria delle spanne e cospanne]\label{def_span_e_cospan}\index{Categoria!--- degli span}\index{Categoria!--- dei cospan|see {span}}
+  Data una categoria \(\ctC\), la categoria \(\ctSpan(\ctC)\) delle \emph{spanne} (in inglese, \emph{span}) di \(\ctC\) ha
 	\begin{itemize}
-		\item Come oggetti, gli \emph{span} di \(\ctC\), ovvero coppie di frecce \(f,g\) di \(\ctC\) con lo stesso dominio:
+    \item Come oggetti, le \emph{spanne} di \(\ctC\), ovvero coppie di frecce \(f,g\) di \(\ctC\) con lo stesso dominio:\footnote{La scelta del termine si può intendere motivata dal fatto che una spanna è: la distanza (misurata dai codomini di $f,g$) tra punta del pollice e punta del mignolo di una mano aperta adulta; l'arcata di un ponte (il cui punto più alto è il dominio comune di $f,g$); le due braccia di un giogo (in inglese antico \emph{ġespan} era un giogo, un collare o per estensione un bracciale); un arcolaio (le cui braccia sono proprio $f,g$; quest'ultima etimologia è dalla radice proto-indoeuropea \emph{*(s)penh$_1$-}, da cui derivano varie parole).}
 		      \[
 			      \begin{tikzcd}[row sep=small]
 				      & A \ar{dl}[swap]{f} \ar{dr}{g} \\
@@ -1032,7 +1029,7 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 
 	La categoria \(\ctCospan(\ctC)\) dei \emph{cospan} di \(\ctC\) ha
 	\begin{itemize}
-		\item Come oggetti, i \emph{cospan} di \(\ctC\), ovvero coppie di frecce \(f,g\) di \(\ctC\) con lo stesso codominio:
+		\item Come oggetti, le \emph{cospanne} di \(\ctC\), ovvero coppie di frecce \(f,g\) di \(\ctC\) con lo stesso codominio:
 		      \[
 			      \begin{tikzcd}[row sep=small]
 				      A \ar{dr}{f} && B \ar{dl}[swap]{g} \\
@@ -1053,7 +1050,7 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 \end{definition}
 Chi legge rifletta su questa domanda: la categoria \(\ctCospan(\ctC)\) è \(\ctSpan(\ctC)^\op\) oppure \(\ctSpan(\ctC^\op)^\op\)? C'è differenza tra le due?
 \begin{definition}
-	Date due categorie \(\ctC,\ctD\) il \emph{giunto} (in inglese, \emph{join}) di \(\ctC\) e \(\ctD\), denotato con \(\ctC\star\ctD\), è la categoria definta come segue:
+	Date due categorie \(\ctC,\ctD\) il \emph{giunto} (in inglese, \emph{join}) di \(\ctC\) e \(\ctD\), denotato con \(\ctC\star\ctD\), è la categoria definita come segue:
 	\begin{itemize}
 		\item gli oggetti sono l'unione disgiunta di \(\ctC_0\) e \(\ctD_0\) (cioè gli stessi oggetti di \(\ctC+\ctD\) in \ref{def_cat_somma});
 		\item i morfismi \(\Hom{(\ctC\star\ctD)}(X,Y)\) sono specificati per casi:
@@ -1072,7 +1069,7 @@ Chi legge rifletta su questa domanda: la categoria \(\ctCospan(\ctC)\) è \(\ctS
 \end{definition}
 Dalla definizione della composizione in \(\ctC\star\ctD\) si può mostrare per induzione che la composizione di una \(n\)-upla di morfismi di \(\ctC\star\ctD\) di cui almeno uno è un eteromorfismo, è un eteromorfismo (tra gli appropriati dominio e codominio). Questo dimostra la proprietà associativa (e la buona definizione) della composizione con eteromorfismi. %Si noti che nessun eteromorfismo può essere invertibile (perché?). 
 
-L'operazione di giunto tra due categorie è essenziale alla teoria `combinatoria' delle categorie, e al trattarle come strutture, dato che molte costruzioni elementari si descrivono in termini di giunti: ad esempio, se \(S=\{a,b\}\) è un insieme con due elementi, lo span generico di \ref{ex_spancospan} è il giunto \(\ctTerm\star S^\delta\), e il cospan generico è \(S^\delta\star\ctTerm\), e identiche relazioni valgono anche per gli \(S\)-span ed \(S\)-cospan generici.
+L'operazione di giunto tra due categorie è essenziale alla teoria `combinatoria' delle categorie, e al trattarle come strutture, dato che molte costruzioni elementari si descrivono in termini di giunti: ad esempio, se \(S=\{a,b\}\) è un insieme con due elementi, la spanna generica di \ref{ex_spancospan} è il giunto \(\ctTerm\star S^\delta\), e la cospanna generica è \(S^\delta\star\ctTerm\), e identiche relazioni valgono anche per le \(S\)-spanne ed \(S\)-cospanne generiche.
 
 Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\ctB G\) è un gruppo, Milnor \cite{milnor1,milnor2} ha studiato la successione \(\ctB G, \ctB G\star\ctB G, \dots, \ctB G \star\dots\star \ctB G =:\ctB G^{\star n}\) e il suo `limite' per dei problemi di topologia.
 \subsubsection*{Esercizi}
@@ -1104,7 +1101,7 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\ctB G
 \end{tikzcd}\]
 dove ogni quadrato e i due triangoli sono commutativi. (La direzione della freccia verso $X_n$ dipende dalla parità di $n$.) Se $n\ne m$, non ci sono morfismi tra le due catene.
 \end{itemize}
-Verificare se gli assiomi di categoria sono soddifatti, con le ovvie scelte di composizione e identità; determinare quante amache di `lunghezza' zero esistono tra $A$ e $B$ per diverse scelte di $A,B$ (se $A$ è vuoto e $B$ no, se $B$ è vuoto e $A$ no, eccetera).
+Verificare se gli assiomi di categoria sono soddisfatti, con le ovvie scelte di composizione e identità; determinare quante amache di `lunghezza' zero esistono tra $A$ e $B$ per diverse scelte di $A,B$ (se $A$ è vuoto e $B$ no, se $B$ è vuoto e $A$ no, eccetera).
 	\item Un \emph{segmento binario} $(n_0,n_1,t,H)$ consiste di una coppia di interi positivi $n_0 \le n_1$,con una funzione suriettiva e monotòna $t : [n_1] \to [n_0]$, e un sottoinsieme $H\subseteq [n_0]$. Un omomorfismo tra segmenti binari $(n_0,n_1,t,H) \to (n_0',n_1',t',H')$ consiste di una coppia $(f_0,f_1)$ dove 
 	\begin{itemize}
 		\item $f_1 : [n_1] \to [n_1']$ è una funzione iniettiva e monotòna;
@@ -1117,17 +1114,28 @@ Verificare se gli assiomi di categoria sono soddifatti, con le ovvie scelte di c
 		è commutativo;
 		\item $f_0^{-1}(H')\subseteq H$.
 	\end{itemize}
-	Mostrare che questo definisce una categoria $\cate{Seg}^{[{\circ}{\bullet}]}$ dei segmenti binari.\footnote{Un segmento binario è una rappresentazione discreta e semplificata di un cromosoma: la funzione $t$ detta \emph{topologia} determina una partizione di $[n_1]$ in $n_0$ sottoinsiemi $t^{-1}(1),t^{-1}(2),\dots t^{-1}(n_0)$ che si può rappresentare come 
+	Mostrare che questo definisce una categoria $\cate{Seg}^{[{\circ}{\bullet}]}$ dei segmenti binari.\footnote{Un segmento binario è una rappresentazione discreta e semplificata di un cromosoma: la funzione $t$ determina una partizione di $[n_1]$ in $n_0$ sottoinsiemi $t^{-1}(1),t^{-1}(2),\dots t^{-1}(n_0)$ che si può rappresentare come 
 	\[[{\circ}{\circ}][{\circ}{\circ}{\circ}{\circ}][{\circ}]\]
 	quando $n_0=3$ e $n_1=7$; il sottoinsieme $H\subseteq n_0$ determina poi le regioni del cromosoma $\chi$ che si vogliono usare nella replicazione, e il suo complementare $H^c$ quelle che sono silenziate (\emph{masking}). Se ad esempio $H\subseteq [3]$ è l'insieme $\{1,3\}$, possiamo colorare la partizione di sopra come 
 	\[[{\bullet}{\bullet}][{\circ}{\circ}{\circ}{\circ}][{\bullet}].\]
 	Invitiamo chi legge a trovare quale possa essere una interpretazione per un omomorfismo di segmenti!}
-	\item\Todo{}
+\item \'E possibile rappresentare le relazioni (si veda \ref{ex_cat_rels}) sia come spanne che come cospanne. La prima rappresentazione è molto semplice (l'esercizio consiste nel verificare quanto diciamo): una relazione $R\subseteq A\times B$ corrisponde a una spanna 
+\[
+  \begin{tikzcd}
+  A & R \ar[r, "b"]\ar[l, "a"']& B
+\end{tikzcd}
+\]
+e una spanna dello stesso tipo corrisponde a una relazione non appena la funzione $R \to A\times B$ che manda $r\in R$ nella coppia $(a(r),b(r))$ è iniettiva; di converso, la cospanna $c(R)$ associata alla relazione $R$ è definita come la categoria che ha per oggetti la somma disgiunta di insiemi $A+B$, e dove esiste un morfismo $s\to t$ se e solo se $s\in A,t\in B$ e $(s,t)\in R$. Questa cospanna 
+\[
+  \begin{tikzcd}
+  A \ar[r] & c(R) & \ar[l] B 
+\end{tikzcd}
+\]
+si dice il \emph{grafico} di $R$: per quale motivo? Si disegni la cospanna $c(R)$ per semplici relazioni tra insiemi finiti; si descriva $c(R)$ per una relazione $R\subseteq X\times X$ che sia riflessiva, per una simmetrica, per una transitiva, su un insieme $X$.
 	\item Determinare il giunto di due catene generiche \(\Delta[n] * \Delta[m]\) come in \ref{ex_cat_catena} e di due cubi \(P[n] * P[m]\) come in \ref{ex_quadcuboncubo}, e più in generale di due insiemi parzialmente ordinati \(P,Q\). Determinare il giunto di due categorie discrete (prenderle finite!) \(A^\delta * B^\delta\) come in \ref{ex_cat_discreta} e di due categorie codiscrete \(A^\chi * B^\chi\): il risultato è ancora codiscreto? Più in generale, determinare il giunto di due gruppoidi \(\ctG * \ctG'\); il risultato è ancora un gruppoide? Determinare il giunto \(\ctB(\bbN,+) * \ctB(\bbN,+)\) del monoide dei numeri naturali con la somma, e \(\ctB(\bbN,\max) * \ctB(\bbN,\max)\) del monoide dove la moltiplicazione è data da \(n\land m \defeq \max\{n,m\}\). C'è una relazione tra \((\ctC\star\ctD)^\op\) e \(\ctD^\op\star\ctC^\op\) (uguali, oposte una dell'altra, nessuna relazione\dots)?
 \end{enumerate}
 \section{Isomorfismi}\label{sec_isomorfismi}\index{Isomorfismo}
 La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta. Quando due gruppi sono isomorfi, `tutte' le proprietà che si esprimono in termini degli assiomi di gruppo, e che sono godute dall'uno, sono godute anche dall'altro, e in forza di questo meta-principio una strategia molto efficace per mostrare che due dati gruppi \emph{non possono} essere isomorfi è cercare una proprietà che sia goduta solo da uno dei due (per esempio, l'essere abeliano: ci sono certamente almeno due gruppi di ordine 24 distinti, il gruppo \emph{ciclico} \(\bbZ/24\bbZ\) e il gruppo \emph{simmetrico} delle permutazioni di 4 lettere \(\{a,b,c,d\}\), perché il primo è abeliano, il secondo no, e --si dimostra-- se due gruppi sono isomorfi, uno è abeliano se e solo se lo è l'altro).
-%\Todo{Vorrei spiegare bene cosa significa: se \(G\iso H\), allora \(G\) è abeliano se e solo se lo è \(H\); del resto, \(7\in\bbZ/24\bbZ\iff 7\in\bbZ/12\bbZ\), che del primo è un sottogruppo proprio...}
 
 La nozione di isomorfismo in teoria delle categorie generalizza e precisa molte di queste idee.
 \begin{definition}[Isomorfismo]\label{def_isomorfismo}\index{Isomorfismo}\index{Morfismo!isomorfismo}
@@ -1236,7 +1244,7 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Mostrare che la composizione nella categoria \(\cate{Stream}\) definita in \ref{example_streams} è effettivamente associativa, e l'assioma di identità è effettivamente valido. %Dato un morfismo \(f:X\to Y\) in una categoria \(\ctC\), dimostra che se un inverso per \(f\) esiste, allora è unico.
-	\item Caratterizzare gli isomorfismi nelle seguenti categorie:% \Todo{lista}
+	\item Caratterizzare gli isomorfismi nelle seguenti categorie:
 	\begin{itemize}
 		\item la categoria dei modelli di una segnatura algebrica $(\Omega,a)$;
 		\item la categoria degli ordinali di \ref{};
@@ -1250,7 +1258,7 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 	      \[
 		      d'(fx,fx')\le \alpha d(x,x')
 	      \]
-	      per ogni \(x,x'\in X\) e per qualche \(\alpha\in\bbR_{>0}\); in tal caso, l'inf di tutti questi \(\alpha\) si chiama la \emph{costante di Lipschitz} di \(f\); dimostrare che gli spazi metrici e le funzioni Lipschitz continua sono oggetti e morfismi di una categoria, chiamata \(\cate{MetLip}\); caratterizzre gli isomorfismi di \(\cate{MetLip}\). Fornire un esempio di due spazi metrici isomorfi in \(\ctTop\), ma non in \(\cate{MetLip}\).
+	      per ogni \(x,x'\in X\) e per qualche \(\alpha\in\bbR_{>0}\); in tal caso, l'inf di tutti questi \(\alpha\) si chiama la \emph{costante di Lipschitz} di \(f\); dimostrare che gli spazi metrici e le funzioni Lipschitz continua sono oggetti e morfismi di una categoria, chiamata \(\cate{MetLip}\); caratterizzare gli isomorfismi di \(\cate{MetLip}\). Fornire un esempio di due spazi metrici isomorfi in \(\ctTop\), ma non in \(\cate{MetLip}\).
 
 	      Ripetere tutte queste domande rispetto alla definizione, più generale, di funzioni \emph{\(K\emdash\alpha\)-h\"olderiane} tra spazi metrici, ricordando che una funzione \(f : (X,d)\to (Y,d')\) si dice \(K\emdash\alpha\)-h\"olderiana quando
 	      \[d'(fx,fx')\le Kd(x,x')^\alpha\]
@@ -1264,7 +1272,6 @@ Non tutte le categorie sono scheletriche, ma da ogni categoria se ne può ottene
 	      Mostrare esplicitamente gli assiomi di categoria (rendendo così precisa questa definizione informale). Recuperare \(\act G\)  come caso particolare di questa definizione; mostrare che, quando \(M\) è un monoide libero (su un insieme \(A\) di generatori) nel senso di \ref{mongruppi_liberi}, allora \(M/\!\!/X\) è una categoria libera nel senso di \ref{ex_cat_libera} (su un grafo \(G[A]\) determinato come\dots).
 	      % \item Costruisci un esempio in \(\ctTop\) di oggetti \(X\) e \(Y\) non isomorfi, e morfismi \(f:X\to Y\) e \(g:Y\to X\) tali che \(g\cmp f=\id_X\) (ma \(f\cmp g \ne \id_Y\)).
 	      % \item Dimostra che in ogni categoria, le identità sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo.
-	      %       \Todo{Trovo questi esercizi un po' troppo facili\dots Non che sia un male, ma vorrei degli esempi più pedagogici!}
 \end{enumerate}
 
 \section{Funtori e diagrammi}\label{sec_funtori}
@@ -1367,7 +1374,6 @@ Ora raccogliamo in una singola definizione alcune classi di funtori particolari,
 		\item \label{pc_2} \emph{Rovesciamento delle composizioni}: per ogni coppia di morfismi componibili \(f\) e \(g\) di \(\ctC\), \(F(g\cmp f)=Ff\cmp Fg\).
 	\end{enumtag}
 	\index{Funtore!Prefascio}
-	% \Todo{funtori contro, covarianti, prefasci, bifuntori}
 \end{definition}
 Ciò conduce a una definizione molto importante e pervasiva in teoria delle categorie.
 \begin{definition}\label{exa_funtori_da_poset}\index{Prefascio}\index{Funtore!Prefascio}
@@ -1453,7 +1459,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 			U : \ctMod(\Omega,a) \ar[r] & \ctSet
 		\end{tikzcd}
 	\]
-	che manda ogni modello in \(\ctMod(\Omega,a)\) nel suo \emph{insieme soggiaciente} \(X\).
+	che manda ogni modello in \(\ctMod(\Omega,a)\) nel suo \emph{insieme soggiacente} \(X\).
 	\Todo{Sui funtori liberi\dots}
 \end{example}
 \begin{definition}\label{compo_funtori}
@@ -1510,7 +1516,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	che manda ogni oggetto \(f : X\to A\) nel suo codominio \(A\).
 \end{example}
 \begin{example}\index{Funtore!--- categoria associata a monoide}
-	La corrispondenza che assegna a un monoide \((M,\cdot,1)\) la categoria con un solo oggeto \(\ctB(M,\cdot,1)\) come in \ref{mon_sonocat} è la parte sugli oggetti di un funtore
+	La corrispondenza che assegna a un monoide \((M,\cdot,1)\) la categoria con un solo oggetto \(\ctB(M,\cdot,1)\) come in \ref{mon_sonocat} è la parte sugli oggetti di un funtore
 	\[\dmFun{\ctB}{\ctMon}{\ctCat}\]
 	tra le categorie di \ref{ex_cat_monoidi} e di \ref{ex_cat_cat}; abbiamo in effetti già dimostrato in \ref{exa_funtori_da_gruppi} che i funtori tra categorie della forma \(\ctB M\) sono tutti e soli gli omomorfismi di monoidi (e la composizione di omomorfismi \(M\to N\to R\) e di funtori \(\ctB M \fun\ctB N \fun\ctB R\) coincidono), quindi la sottocategoria di \(\ctCat\) identificata come l'immagine di \(\ctB\) è piena, e si identifica alla categoria dei monoidi. (Questa ultima osservazione sarà chiara quando avremo introdotto la nozione di \emph{funtore pienamente fedele} in \ref{}.)
 \end{example}
@@ -1540,7 +1546,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		\item una rappresentazione \(S_n \times X_n\to X_n\), ossia un'azione (sinistra) del gruppo simmetrico \(S_n\) degli automorfismi dell'insieme \(\{\iter n\}\).
 	\end{itemize}
 	Il funtore \(f\) si dice una \emph{specie combinatoria} e la famiglia \(f(n)=X_n\) è una \emph{successione simmetrica}. Questo tipo di funtori, molto ricchi di struttura e di proprietà interessanti, trovano applicazioni in combinatoria enumerativa \cite{bergeron1998combinatorial}, teoria delle rappresentazioni \cite{aguiar2010monoidal}, geometria e topologia \cite{} (quando invece che insiemi gli \(X_n\) sono spazi vettoriali), logica e informatica teorica \cite{}. Denotando con \(\# S\) la cardinalità di un insieme, ad ogni specie combinatoria \(f : \cate{Bij} \fun\ctSet\) tale che ogni \(f(n)\) sia finito possiamo associare la serie formale \(F(t)\in\mathbb{N}\llbracket t\rrbracket\) definita come \(F(t) \defeq \sum_{n\ge 1} \frac{\# X_n}{n!}t^n\). Questa si chiama la \emph{funzione generatrice} della specie combinatoria \(F\), e le sue proprietà algebriche o analitiche (qualora \(F(t)\) converga) sono in corrispondenza diretta con le proprietà del funtore \(f\).
-	% \Todo{Sequenze simmetriche}
 \end{example}
 \begin{example}[Moduli sinistri; moduli destri; bimoduli]\index{Moduli su un anello!--- come funtori}\index{Modulo}
 	Se \(\ctAb\) è la categoria dei gruppi abeliani e loro omomorfismi, ed \((R,+,\cdot,0,1)\) è un anello unitario, una rappresentazione del monoide \((R,\cdot,1)\) in \(\ctAb\), ossia un funtore
@@ -1566,9 +1571,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\[\dmFun{-/G}{G\emdash\ctSet}{\ctSet}\]
 	che manda il \(G\)-insieme \(X\) nell'insieme \(X/G\). Affinché questo sia vero, una funzione equivariante \(f : X\to Y\) deve indurre una funzione ben definita tra gli spazi delle orbite \(X/G\) e \(Y/G\), in modo che gli assiomi \ref{p_1} e \ref{p_2} siano soddisfatti. \`E facile verificare che \(f/G : X/G \to Y/G : [x]_G\mapsto [f(x)]_G\) ha tutte queste proprietà. (In particolare, se chiamiamo \(\pi_X : X\to X/G\) la funzione \(x\mapsto [x]_G\) che manda ogni elemento nella sua orbita, \(f/G\) è l'unica funzione tale che \(f/G(\pi_X(x)) = \pi_Y(f(x))\).)
 \end{example}
-% \begin{example}\index{Funtore!--- da un gruppoide d'azione}
-% 	\Todo{Funtori da un gruppoide d'azione \(\act G\) VS \(G\)-insiemi}
-% \end{example}
 \begin{example}\index{Funtore!--- gruppo delle unità}
 	% \Todo{Gruppo delle unità di un anello}
 	Assegnare a un anello unitario $(R,+,0\cdot,1)$ il gruppo $(R^\times,\cdot,1)$ dei suoi elementi invertibili è un funtore 
@@ -1576,7 +1578,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	Infatti ogni omomorfismo di anelli $f : R\to S$ induce un omomorfismo di gruppi $f^\times : R^\times \to S^\times$, dato che se $u\in R$ è invertibile, tale è anche $f(u)$ (e $f(u)^{-1}=f(u^{-1})$).
 \end{example}
 \begin{example}\index{Funtore!--- di abelianizzazione}
-	% \Todo{Abelianizzato di un gruppo}
 	Dato un gruppo $G$, il sottogruppo $[G,G]$ generato dai commutatori $[x,y] \defeq xyx^{-1}y^{-1}$ è il sottogruppo normale più piccolo tale che $G/N$ sia abeliano; il quoziente $G^\aa \defeq G/[G,G]$ si chiama \emph{abelianizzato} di $G$ e l'assegnazione $G\mapsto G^\aa$ definisce un funtore 
 	\[\dmFun{(-)^\aa}\ctGrp\ctAb\]
 	di abelianizzazione. Un omomorfismo di gruppi $f : G \to H$ infatti scende al quoziente ad un omomorfismo $f^\aa : G^\aa \to H^\aa$ tale che
@@ -1589,7 +1590,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	sia commutativo (questo è evidente, dato che $f[x,y]=[fx,fy]$). L'omomorfismo $f^\aa$ è l'unico con questa proprietà, e ciò mostra che $(g\circ f)^\aa = g^\aa\circ f^\aa$ e $(\id_G)^\aa=\id_{G^\aa}$.
 \end{example}
 \begin{example}\index{Funtore!--- campo dei quozienti}
-	% \Todo{Campo dei quozienti di un dominio di integrità}
 	Se $R$ è un dominio di integrità, il suo \emph{campo dei quozienti} $Q(R)$ è l'anello definito come segue:
 	\begin{itemize}
 		\item i suoi elementi sono classi di equivalenza $\frac pq$ di coppie $(p,q) \in R\times R$ dove $q\ne 0$ rispetto alla relazione che identifica $(p,q), (p',q')$ quando $pq'=qp'$;
@@ -1603,7 +1603,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	(il codominio è la sottocategoria -piena- di $\ctcRing$ i cui oggetti sono i campi). Infatti, ogni omomorfismo di anelli $f : R \to S$ che siano domini di integrità induce un omomorfismo di anelli $Q(f) : Q(R) \to Q(S)$ definito da $f(\frac pq) = \frac{fp}{fq}$.
 \end{example}
 \begin{example}\index{Funtore!--- gruppo generale lineare}\index{GL|see {Gruppo generale lineare}}\index{Gruppo generale lineare}
-	% \Todo{Il funtore GL }
 	Se $n\ge 1$ è un numero intero, mandare un anello commutativo $R$ nel gruppo delle matrici invertibili $n\times n$ a coefficienti in $R$ è la funzione sugli oggetti di un funtore 
 	\[\dmFun{\GL_n}\ctcRing\ctGrp\]
 	Per vederlo, basta definire un omomorfismo di gruppi $\GL_n(f) : \GL_n(R)\to \GL_n(S)$ dato un omomorfismo di anelli $f : R\to S$; ragioniamo nel caso $n=2$ per comodità, e il caso generale è completamente analogo: la corrispondenza
@@ -1622,12 +1621,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 				fc	&	fd
 				\end{smallmatrix}\right) = f(\det A)$, cosicché $\GL_2(f)$ è ben definita verso $\GL_2(S)$; evidentemente ciascun $\GL_2(f)$ è un omomorfismo di gruppi, e $f\mapsto\GL_2(g\circ f) = \GL_2(g)\circ\GL_2(f)$, e $\GL_2(\id_R) = \id_{\GL_2(R)}$.
 \end{example}
-% \begin{example}\index{Funtore!--- di estensione degli scalari}
-% 	\Todo{Estensione e restrizione degli scalari}
-% \end{example}
-% \begin{example}\index{Funtore!--- di localizzazione}
-% 	\Todo{Localizzazione ad un primo }
-% \end{example}
 \begin{example}\index{Funtore!--- nucleo e conucleo}\index{ker|see {nucleo}}\index{coker|see {conucleo}}
 	% \Todo{Nucleo e conucleo di un omomorfismo}
 	Data una applicazione lineare $f : V\to W$ tra $k$-spazi vettoriali, il suo \emph{nucleo} consiste del sottospazio $\ker f\le V$ di tutti i vettori $v\in V$ tali che $f(v)=0$. Questa assegnazione è un funtore 
@@ -1657,8 +1650,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\end{itemize}
 \end{example}
 \begin{example}\label{fun_ex_omoto_omolo}\index{Funtore!--- omotopia}\index{Funtore!--- omologia}
-	% \Todo{Omotopia, omologia, e parafernalia topologici}
-	% Non è infrequente incontrare la definizione di funtorialità studiando la topologia algebrica elementare; ciò perché un esempio naturale di corrispondenza funtoriale si ha studiando i gruppi fondamentali e i gruppi di (co)omologia di spazi topologici. 
 	Ad ogni spazio topologico puntato $(X,x_0)$ si può associare l'insieme delle classi di omotopia di mappe $(S^1, \copmap[r] 10)\to (X, x_0)$ che preservano il punto base; tale insieme è un gruppo, e dato che la relazione di omotopia è una \emph{congruenza} rispetto alla composizione (ossia che, se $f\cong g$ allora $h\cmp f\cmp k\cong h\cmp g\cmp k$), è anche un funtore
 	\[\dmFun{\pi_1}\ctTop\ctGrp\]
 	e in effetti, dato che mappe omotope $f\cong g : X\to Y$ inducono lo stesso omomorfismo $f_* = g_* : \pi_1(X,x_0) \to \pi_1(Y,y_0)$, un funtore 
@@ -1683,7 +1674,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\Todo{Da spazi affini a spazi vettoriali, a spazi proiettivi, et cetera.}
 \end{example}
 \begin{definition}\label{def_diagramma_comm}
-	% \Todo{Diagramma, diagramma commutativo.}
 	In teoria delle categorie, la locuzione \emph{diagramma} (di \emph{forma} \(\ctJ\)) è sinonimo di \emph{funtore} (di \emph{dominio} \(\ctJ\)).
 
 	Più formalmente, se \(\ctJ\) è una categoria piccola e \(\ctC\) una categoria, un diagramma in \(\ctC\) di forma \(\ctJ\) è precisamente un funtore
@@ -1693,16 +1683,16 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\]
 \end{definition}
 \begin{remark}
-	Come è evidente, gli esempi di diagrammi delle forme più svariate abbondano: fissata una categoria \(\ctC\), uno span in \(\ctC\) come in \ref{def_span_e_cospan} è un diagramma di forma \(\Lambda^2_0\) e un cospan è un diagramma di forma \(\Lambda^2_2\). Un quadrato in \(\ctC\) è un diagramma di forma \(P[2]\), e un cubo \(n\)-dimensionale di forma \(P[n]\). Un singolo oggetto di \(\ctC\) si può vedere come un diagramma di forma \(\Delta[0]=\ctTerm\), e una singola freccia \(f : X\to Y\) in \(\ctC\) si può vedere come un diagramma di tipo \(\Delta[1]\), e più in generale una catena
+	Come è evidente, gli esempi di diagrammi delle forme più svariate abbondano: fissata una categoria \(\ctC\), una spanna in \(\ctC\) come in \ref{def_span_e_cospan} è un diagramma di forma \(\Lambda^2_0\) e una cospanna è un diagramma di forma \(\Lambda^2_2\). Un quadrato in \(\ctC\) è un diagramma di forma \(P[2]\), e un cubo \(n\)-dimensionale di forma \(P[n]\). Un singolo oggetto di \(\ctC\) si può vedere come un diagramma di forma \(\Delta[0]=\ctTerm\), e una singola freccia \(f : X\to Y\) in \(\ctC\) si può vedere come un diagramma di tipo \(\Delta[1]\), e più in generale una catena
 	\[\begin{tikzcd}
 			A_0 \ar[r, "f_1"] & A_1 \ar[r, "f_2"] & \dots \ar[r] & A_{n-1} \ar[r, "f_n"] & A_n
 		\end{tikzcd}
 	\]
 	di morfismi contigui in \(\ctC\) è un diagramma di tipo \(\Delta[n]\).
 
-	Questi esempi giustificano i nomi che abbiamo dato in \ref{ex_cat_freccia}, \ref{ex_cat_doppiafreccia}, \ref{ex_spancospan}, perché le categorie \(\Lambda^2_0,\Lambda^2_2,\Delta[n], P[n], \dots\)  sono astrazioni o `forme generiche' per diagrammi di un certo tipo: ecco che allora possiamo adottare un lieve abuso di notazione, nel chiamare, per una qualche categoria $\ctC$ fissata, \emph{cospan in $\ctC$} un diagramma della forma 
+	Questi esempi giustificano i nomi che abbiamo dato in \ref{ex_cat_freccia}, \ref{ex_cat_doppiafreccia}, \ref{ex_spancospan}, perché le categorie \(\Lambda^2_0,\Lambda^2_2,\Delta[n], P[n], \dots\)  sono astrazioni o `forme generiche' per diagrammi di un certo tipo: ecco che allora possiamo adottare un lieve abuso di notazione, nel chiamare, per una qualche categoria $\ctC$ fissata, \emph{cospanna in $\ctC$} un diagramma della forma 
 	\[\dmFun C{\Lambda^2_2}\ctC\]
-	(e dualmente uno span in $\ctC$) o catena (infinita, di lunghezza $\alpha$) un diagramma della forma 
+	(e dualmente una spanna in $\ctC$) o catena (infinita, di lunghezza $\alpha$) un diagramma della forma 
 	\[\dmFun K\alpha\ctC\]
 	se $\alpha$ è un numero ordinale, guardato come categoria rispetto alla sua relazione d'ordine, e così via per ogni altro genere di forma.
 \end{remark}
@@ -1714,8 +1704,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \end{lemma}
 
 \begin{definition}\label{def_cat_cocomma}
-	% \Todo{Categoria comma e cocomma di due funtori}
-	Consideriamo un cospan di funtori 
+	Consideriamo una cospanna di funtori 
 	\[\begin{tikzcd}
 		\ctC \ar[r, "F"'] & \ctE &\ar[l, "G"] \ctD
 	\end{tikzcd}\]
@@ -1741,7 +1730,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Mostrare che un funtore $\ctTerm \fun\ctC$ (un `diagramma di tipo $\ctTerm = \Delta[0]$') ammonta precisamente alla scelta di un oggetto di $\ctC$, e che un diagramma di tipo $\Delta[1] = \{0\to 1\}$ ammonta esattamente alla scelta di una freccia tra due oggetti di $\ctC$.
-	\item Mostrare che le seguenti condizioni sono equivalenti, nella notazionedi \ref{klext_delle_relazioni} per le funzioni \(R^*,R_*\):
+	\item Mostrare che le seguenti condizioni sono equivalenti, nella notazione di \ref{klext_delle_relazioni} per le funzioni \(R^*,R_*\):
 	      \begin{itemize}
 		      \item la condizione in \ref{klext_delle_relazioni},
 		            \[V\subseteq R^*U\iff U\subseteq R_*V\]
@@ -1760,7 +1749,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \end{enumerate}
 
 \section{Trasformazioni naturali}\label{sec_tnat}
-Gli span e i cospan si possono vedere come funtori; ciò significa che c'è una nozione di morfismo tra funtori, almeno in alcuni contesti. Vorremmo rendere precisa questa congettura.
+Le spanne e cospanne si possono vedere come funtori; ciò significa che c'è una nozione di morfismo tra funtori, almeno in alcuni contesti. Vorremmo rendere precisa questa congettura.
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item
