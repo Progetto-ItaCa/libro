@@ -347,17 +347,19 @@ Dopo questa digressione veniamo a due esempi più elaborati, ma molto `concreti'
 		\item l'insieme dei morfismi \(\ctCirc(m,n)\) consiste dell'insieme delle funzioni \(\bbB^n\to \bbB^m\), dove \(\bbB=\{0,1\}\) è l'insieme dei \emph{Booleani}\footnote{L'insieme \(\bbB\) può essere interpretato come: l'insieme degli interi positivi modulo 2, l'insieme degli stati di un singolo bit di informazione; l'insieme \{sì, no\} delle risposte a una domanda; l'insieme \(\{-1,1\}\) dei \emph{segni} assunti dagli elementi dell'immagine di una funzione reale, l'insieme \{acceso, spento\} degli stati di un interruttore, eccetera.} e \(\bbB^0\defeq \{*\}, \bbB^{n+1}\defeq \bbB^n\times \bbB\) sono i prodotti cartesiani iterati di \(\bbB\) con sé stesso.
 	\end{itemize}
 	Si noti che ogni funzione Booleana \(f : \bbB^n\to\bbB^m\) risulta dal `prodotto' di \(m\) funzioni Booleane \emph{semplici} \(f_1,\dots,f_m : \bbB^n\to\bbB\), di modo che
-	\[f(\tup xn,)=(f_1(\tup xn,),\dots,f_m(\tup xn,))\]
-	Tra le funzioni Booleane semplici ci sono certamente le proiezioni canoniche \(\pi_i : \bbB^n\to\bbB :(\tup xn,)\mapsto x_i\), ma anche le mappe diagonali \(\Delta_m:\bbB\to\bbB^m\) definite da
+	\[f(\tup xn,)=(f_1(\tup xn,),\dots,f_m(\tup xn,)).\]
+	Tra le funzioni Booleane semplici ci sono certamente le proiezioni canoniche \(\pi_i : \bbB^n\to\bbB :(\tup xn,)\mapsto x_i\), ma è anche possibile definire la mappa diagonale \(\Delta_m:\bbB\to\bbB^m\) come
 	\[\Delta_m : x\mapsto (x,\dots,x)\quad m\text{ volte}\]
-	Sull'insieme dei Booleani è possibile definire le operazioni logiche elementari di disgiunzione, congiunzione e negazione, che rappresentiamo graficamente con i seguenti diagrammi (noti a qualsiasi ingegnere elettronico)
+cioè mediante le $m$ funzioni semplici identiche $x\mapsto x$.
+
+  Sull'insieme dei Booleani è possibile definire le operazioni logiche elementari di disgiunzione, congiunzione e negazione logica, che è possibile rappresentare graficamente con i seguenti diagrammi o `porte' logiche (note a qualsiasi ingegnere elettronico)
 	\[\begin{circuitikz}
-			\node[xshift=-4cm, or port, fill=gray!10] (4,0) (or) {\(\lor\)};
-			\node[and port, fill=gray!10] (0,0) (and) {\(\land\)};
-			\node[xshift=3cm, not port, fill=gray!10] (0,0) (not) {\(\lnot\)};
-			\node[below=.15cm of or ] (z1) {\(\_\lor\_ : \bbB^2\to\bbB\)};
-			\node[below=.15cm of and] (z3) {\(\_\land\_ : \bbB^2\to\bbB\)};
-			\node[below=.15cm of not] (z2) {\(\_\lnot : \bbB\to\bbB\)};
+    \node[font=\tiny, xshift=-4cm, or port, fill=gray!10] (4,0) (or) {\(\text{OR}\)};
+    \node[font=\tiny, and port, fill=gray!10] (0,0) (and) {\(\text{AND}\)};
+    \node[font=\tiny, xshift=3cm, not port, fill=gray!10] (0,0) (not) {\(\text{NOT}\)};
+			% \node[below=.15cm of or ] (z1) {\(\_\lor\_ : \bbB^2\to\bbB\)};
+			% \node[below=.15cm of and] (z3) {\(\_\land\_ : \bbB^2\to\bbB\)};
+			% \node[below=.15cm of not] (z2) {\(\_\lnot : \bbB\to\bbB\)};
 		\end{circuitikz}\]
 \end{example}
 Vale il seguente teorema:
