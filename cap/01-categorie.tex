@@ -653,7 +653,25 @@ La categoria dei complessi di catene è una importante costruzione in topologia 
 	Si noti che la composizione di funzioni equivarianti è anch'essa equivariante. I \(G\)-insiemi e le funzioni equivarianti tra loro formano la categoria \(G\emdash\ctSet\).
 \end{example}
 \begin{example}
-	\Todo{Categorie in analisi funzionale (Cstar algebre)}
+  Una \emph{$\mathrm{C}^*$-algebra} consiste di uno spazio di Banach $A$ (cioè di uno spazio vettoriale topologico, dotato di una norma $\norm{\_} : A \to \bbR_{\ge 0}$, e completo rispetto alla metrica indotta da $\norm{\_}$), che in più è dotato di
+  \begin{itemize}
+    \item una operazione di anello (possibilmente non unitario) $\_\cdot\_ : A \times A \to A$ che sia \emph{submoltiplicativa}, cioè tale che $\norm{x\cdot y} \le\norm x\norm y$ (questo assicura che la moltiplicazione sia una funzione continua);
+  \item una involuzione $(\_)^* : A\to A$ che soddisfa la \emph{proprietà fondamentale}
+    \[\norm{x^*\cdot x} = \norm{x}^2\]
+    (questo assicura che $x\mapsto x^*$ sia un'isometria, cioè $\norm x = \norm{x^*}$).
+\end{itemize}
+Uno \emph{*-omomorfismo} tra $\mathrm{C}^*$-algebre consiste di un omomorfismo di anelli $f : A\to B$ con la proprietà che $f(a^*) = f(a)^*$.
+
+La categoria $\ctCsAlg$ ha
+\begin{itemize}
+  \item per oggetti le $\mathrm{C}^*$-algebre;
+\item per morfismi, date due $\mathrm{C}^*$-algebre $A,B$, tutti gli *-omomorfismi $f : A \to B$.
+\end{itemize}
+Una $\mathrm{C}^*$-algebra può essere: \emph{unitale} se la sua struttura di anello ammette un'unità moltiplicativa, \emph{commutativa} se la moltiplicazione è commutativa. 
+
+Uno *-omomorfismo che preserva l'unità è detto *-omomorfismo \emph{unitale}, e le $\mathrm{C}^*$-algebre unitali insieme agli *-omomorfismi unitali, formano anch'essi una categoria $\ctCsAlg_1$, che è sottocategoria (si veda \ref{def_subcat}) di $\ctCsAlg$. 
+
+Discorso completamente analogo per le $\mathrm{C}^*$-algebre commutative, che con tutti gli *-omomorfismi formano una sottocategoria $\ctCsAlg_c$ di $\ctCsAlg$.
 \end{example}
 \begin{example}
 	\Todo{Categorie in probabilità (mappe stocastiche)}
