@@ -399,7 +399,18 @@ Il capitolo \ref{} e in particolare la nozione di prodotto, \ref{}, renderanno c
 	\Todo{...}
 \end{example}
 \subsection{Categorie come universi}\label{ssec:categorie_universi}
-Proseguiamo con degli esempi di categorie grandi, che giustificano l'intuizione per le categorie come universi del discorso.
+Proseguiamo con degli esempi di categorie grandi, che giustificano l'intuizione per le categorie come `universi del discorso matematico', ossia come classi i cui elementi sono collegati da relazioni reciproche. L'esempio che fa da paradigma a tutta la sezione è \ref{ex_cat_insiemi}, la categoria di insiemi e funzioni. Usando questa categoria $\ctSet$ come esempio paradigmatico, è possibile costruire
+% \`E tuttavia importante notare che \emph{non tutte le categorie larghe astratte sono categorie di insiemi strutturati}.% Una approssimazione conveniente per una categoria larga `astratta' è quindi come un rimpiazzo per la categoria $\ctSet$ e per esempio può essere 
+\begin{itemize}
+  \item categorie di strutture algebriche (gruppi, anelli, algebre su un campo di base\dots); esempi di queste categorie sono \ref{}, \ref{};
+  \item categorie di strutture topologiche/ordinate (spazi topologici, insiemi parzialmente ordinati); esempi di queste categorie sono \ref{}, \ref{};
+\end{itemize}
+e insieme a queste, molte altre. Esiste una dicotomia forte tra queste due classi di categorie, che sarà possibile apprezzare una volta introdotti più strumenti.
+
+\`E tuttavia estremamente importante notare che 
+\begin{quote}
+Non tutte le categorie larghe astratte sono categorie di insiemi strutturati.
+\end{quote}
 \index{Categoria!--- delle relazioni}
 \begin{example}[Insiemi e relazioni]\label{ex_cat_rels}
 	La categoria \(\ctRel\) ha
@@ -674,7 +685,19 @@ Uno *-omomorfismo che preserva l'unità è detto *-omomorfismo \emph{unitale}, e
 Discorso completamente analogo per le $\mathrm{C}^*$-algebre commutative, che con tutti gli *-omomorfismi formano una sottocategoria $\ctCsAlg_c$ di $\ctCsAlg$.
 \end{example}
 \begin{example}
-	\Todo{Categorie in probabilità (mappe stocastiche)}
+	% \Todo{Categorie in probabilità (mappe stocastiche)}
+  La categoria $\cate{FStoch}$ delle \emph{mappe stocastiche tra insiemi finiti} ha 
+  \begin{itemize}
+    \item per oggetti i numeri natural $0,1,2,\dots$;
+    \item per morfismi $n\to m$ le matrici $A=(a_{ij}\mid i\in [m], j\in[n])$ con $m$ righe ed $n$ colonne a coefficienti reali, soggette alle restrizioni seguenti: 
+      \begin{itemize}
+        \item ogni entrata $a_{ij}$ di $A : n\to m$ è un numero reale compreso tra $0$ e $1$ (inclusi);
+        \item per ogni $i\in[m]$, la somma $\sum_{j=1}^n a_{ij}$ è uguale a 1.
+      \end{itemize}
+  \end{itemize}
+  La composizione è data dalla composizione di matrici (dunque l'identità coincide con la matrice che ha tutti 1 in diagonale, e zero altrove), e tutti gli assiomi di categoria sono soddisfatti. 
+
+  Sebbene questa categoria somigli molto alla categoria delle matrici di \ref{ex_cat_matrici}, essa si comporta molto diversamente (per esempio: non è possibile sommare due matrici stocastiche per ottenerne una terza, né riscalare una matrice stocastica di un fattore $\lambda\in\bbR$; però è possibile considerare \emph{combinazioni convesse} di matrici stocastiche, ossia la somma di matrici $\alpha_1 A_1+\dots + \alpha_n A_n$ è una matrice stocastica quando lo sono tutte le $\tup An,$ e $\tup\alpha n+ = 1$).
 \end{example}
 \index{Categoria!--- di `stream'}
 \begin{example}\label{example_streams}
@@ -694,7 +717,7 @@ Discorso completamente analogo per le $\mathrm{C}^*$-algebre commutative, che co
 \begin{example}[La categoria degli insiemi dimensionati]\label{example_dimensionati}
 	La categoria \(\cate{dSet}\) degli \emph{insiemi con unità di misura} o `insiemi dimensionati' ha
 	\begin{itemize}
-		\item per oggetti le funzioni suriettive \(d : A\to D\) verso un insieme \(D\) che svolge il ruolo di insieme delle unità di misura con cui gli elementi di \(A\) sono etichettati; se, ad esempio \(D := \{m,s,kg\}\), gli elementi di \(d^{-1}(m)\) sono le `lunghezze' (cioè si misurano in metri), gli elementi di \(d^{-1}(s)\) sono i tempi, eccetera.
+    \item per oggetti le funzioni suriettive \(d : A\to D\) verso un insieme \(D\) che svolge il ruolo di insieme delle unità di misura con cui gli elementi di \(A\) sono etichettati; se, ad esempio \(D := \{\texttt{m},\texttt{s},\texttt{kg}\}\), gli elementi di \(d^{-1}(m)\) sono le `lunghezze' (cioè si misurano in metri), gli elementi di \(d^{-1}(s)\) sono i tempi, eccetera.
 		\item dati due insiemi dimensionati \((d : A\to D)\) e \((d', B\to D')\), un morfismo tra di loro consiste di una coppia di funzioni \(u,v\) che fanno commutare il seguente quadrato:
 		      \[\begin{tikzcd}
 				      A\ar[r, "u"]\ar[d,"d"'] & B \ar[d, "d'"]\\
@@ -1184,7 +1207,9 @@ si dice il \emph{grafico} di $R$: per quale motivo? Si disegni la cospanna $c(R)
 	\item Determinare il giunto di due catene generiche \(\Delta[n] * \Delta[m]\) come in \ref{ex_cat_catena} e di due cubi \(P[n] * P[m]\) come in \ref{ex_quadcuboncubo}, e più in generale di due insiemi parzialmente ordinati \(P,Q\). Determinare il giunto di due categorie discrete (prenderle finite!) \(A^\delta * B^\delta\) come in \ref{ex_cat_discreta} e di due categorie codiscrete \(A^\chi * B^\chi\): il risultato è ancora codiscreto? Più in generale, determinare il giunto di due gruppoidi \(\ctG * \ctG'\); il risultato è ancora un gruppoide? Determinare il giunto \(\ctB(\bbN,+) * \ctB(\bbN,+)\) del monoide dei numeri naturali con la somma, e \(\ctB(\bbN,\max) * \ctB(\bbN,\max)\) del monoide dove la moltiplicazione è data da \(n\land m \defeq \max\{n,m\}\). C'è una relazione tra \((\ctC\star\ctD)^\op\) e \(\ctD^\op\star\ctC^\op\) (uguali, oposte una dell'altra, nessuna relazione\dots)?
 \end{enumerate}
 \section{Isomorfismi}\label{sec_isomorfismi}\index{Isomorfismo}
-La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta. Quando due gruppi sono isomorfi, `tutte' le proprietà che si esprimono in termini degli assiomi di gruppo, e che sono godute dall'uno, sono godute anche dall'altro, e in forza di questo meta-principio una strategia molto efficace per mostrare che due dati gruppi \emph{non possono} essere isomorfi è cercare una proprietà che sia goduta solo da uno dei due (per esempio, l'essere abeliano: ci sono certamente almeno due gruppi di ordine 24 distinti, il gruppo \emph{ciclico} \(\bbZ/24\bbZ\) e il gruppo \emph{simmetrico} delle permutazioni di 4 lettere \(\{a,b,c,d\}\), perché il primo è abeliano, il secondo no, e --si dimostra-- se due gruppi sono isomorfi, uno è abeliano se e solo se lo è l'altro).
+La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta. Fu però solo la definizione di categoria data da Eilenberg e Mac Lane in \cite{} a fissare definitivamente la nozione moderna nell'uso matematico.
+
+Quando due gruppi sono isomorfi, `tutte' le proprietà che si esprimono in termini degli assiomi di gruppo, e che sono godute dall'uno, sono godute anche dall'altro, e in forza di questo meta-principio una strategia molto efficace per mostrare che due dati gruppi \emph{non possono} essere isomorfi è cercare una proprietà che sia goduta solo da uno dei due (per esempio, l'essere abeliano: ci sono certamente almeno due gruppi di ordine 24 distinti, il gruppo \emph{ciclico} \(\bbZ/24\bbZ\) e il gruppo \emph{simmetrico} delle permutazioni di 4 lettere \(\{a,b,c,d\}\), perché il primo è abeliano, il secondo no, e --si dimostra-- se due gruppi sono isomorfi, uno è abeliano se e solo se lo è l'altro).
 
 La nozione di isomorfismo in teoria delle categorie generalizza e precisa molte di queste idee.
 \begin{definition}[Isomorfismo]\label{def_isomorfismo}\index{Isomorfismo}\index{Morfismo!isomorfismo}
@@ -1208,8 +1233,10 @@ Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando 
 		\item \`E evidente che in ogni categoria \(\ctC\), tutte le identità \(\id_X : X\to X\) sono isomorfismi che coincidono col loro inverso, e che la composizione di isomorfismi \(f_1\cmp f_2\) è un isomorfismo di inverso \(g_2\cmp g_1\), cioè (come è familiare a chiunque abbia sostenuto con profitto un esame di teoria dei gruppi o di algebra lineare) \((f_1\cmp f_2)^{-1} = f_2^{-1}\cmp f_1^{-1}\).
 		\item In \(\ctSet\), gli isomorfismi sono esattamente le biiezioni, o `corrispondenze biunivoche'. Per la definizione solitamente data di cardinalità, due insiemi sono isomorfi se e solo se hanno lo stesso numero cardinale, che quindi risulta essere una scelta privilegiata di un elemento isomorfo a un dato insieme.
 		\item In \(\bbR\emdash\ctVect\), gli isomorfismi sono le biiezioni lineari. In particolare, due spazi vettoriali \(V,W\) di dimensione finita \(\dim V=n,\dim W=m\) sono isomorfi se e solo se \(n=m\).
-		\item In \(\ctTop\), gli isomorfismi sono gli \emph{omeomorfismi}: funzioni continue con un'inversa insiemistica anch'essa continua. Si noti come questo mostra che può non accadere che, se \(f : X\to Y\) è un omomorfismo biiettivo, la \emph{funzione} inversa \(g : Y\to X\) sia anch'essa un isomorfismo; per esempio, l'identità \(\id_X : (X,\delta)\to (X,\gamma)\) su un insieme con tre punti \(X=\{a,b,c\}\) è continua quando \(\delta\) è la topologia discreta e \(\gamma\) è la topologia banale, ma la sua inversa insiemistica \(\id_X : (X,\gamma)\to(X,\delta)\) \emph{non} è continua.
-		\item In ogni categoria di strutture algebriche (si veda \ref{ex_cat_sigma_strutture}), gli isomorfismi sono gli isomorfismi di \(\Sigma\)-strutture, cioè le funzioni \(f : A\to B\) che sono \(\Sigma\)-omomorfismi biiettivi, la cui inversa insiemistica è ancora un \(\Sigma\)-omomorfismo.
+		\item In \(\ctTop\), gli isomorfismi sono gli \emph{omeomorfismi}: funzioni continue con un'inversa insiemistica anch'essa continua. In generale, può non accadere che, se \(f : X\to Y\) è un omomorfismo biiettivo, la \emph{funzione} inversa \(g : Y\to X\) sia anch'essa un isomorfismo; per esempio, l'identità \(\id_X : (X,\delta)\to (X,\gamma)\) su un insieme con tre punti \(X=\{a,b,c\}\) è continua quando \(\delta\) è la topologia discreta e \(\gamma\) è la topologia banale, ma la sua inversa insiemistica \(\id_X : (X,\gamma)\to(X,\delta)\) \emph{non} è continua.
+		\item In ogni categoria di strutture algebriche (si veda \ref{ex_cat_sigma_strutture}), gli isomorfismi sono gli isomorfismi di \(\Sigma\)-strutture, cioè le funzioni \(f : A\to B\) che sono \(\Sigma\)-omomorfismi biiettivi (qui, non può accadere quanto succede negli spazi topologici: se $f : A\to B$ è un omomorfismo biiettivo, la sua inversa insiemistica deve a sua volta essere un omomorfismo dato che (ad esempio, quando $\cdot$ è una operazione binaria specificata dalla segnatura $\Sigma$ in questione)
+      \[f^{-1}(x\cdot y) = f^{-1}(fa\cdot fa') = f^{-1}(f(a\cdot a')) = a\cdot a' = f^{-1}(x)\cdot f^{-1}(y).\]
+      Questa è una importante differenza tra categorie di tipo `algebrico' e categorie di tipo `topologico', su cui per ora non insistiamo). 
 	\end{enumtag}
 \end{examples}
 \begin{warning}
@@ -1270,6 +1297,7 @@ Più in generale, in virtù del fatto che ogni identità \(\id_X\) è un isomorf
 
 Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con identità e composizione).
 \begin{example}\label{mongruppi_liberi}
+  In \ref{} abbiamo introdotto le categorie libere su un grafo. Quando il grafo è composto di un unico vertice
 	\Todo{monoidi e gruppi liberi; categorie libere e gruppoidi liberi}
 \end{example}
 \begin{definition}[Categoria scheletrica]\label{def_cat_scheletrica}\index{Categoria!--- scheletrica}
