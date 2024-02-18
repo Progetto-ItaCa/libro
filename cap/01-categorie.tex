@@ -388,7 +388,7 @@ Vale il seguente teorema:
 \end{theorem}
 In altre parole l'insieme $\{\text{AND},\text{OR}\}$ è \emph{funzionalmente completo} (o un \emph{insieme universale di porte logiche}). Per una dimostrazione, si veda \cite[Teorema 1.4]{Crama2011}. In termini categoriali, stiamo affermando che un certo insieme di morfismi genera, insieme alle $\pi_1,\dots,\pi_n$ e $\Delta_n$ per ogni $n\ge 0$, l'intera categoria mediante le operazioni di prodotto e composizione.
 
-Il capitolo \ref{} e in particolare la nozione di prodotto, \ref{}, renderanno chiaro il ruolo fondamentale delle mappe $\Delta_n,\pi_1,\dots,\pi_n$ in questa e molte altre costruzioni.
+Il capitolo \ref{chap_limiti_colimiti} e in particolare la nozione di prodotto, \ref{}, renderanno chiaro il ruolo fondamentale delle mappe $\Delta_n,\pi_1,\dots,\pi_n$ in questa e molte altre costruzioni.
 \index{Categoria!--- dei diagrammi di flusso}
 \begin{example}[La categoria dei diagrammi di flusso]\label{ex_cat_flusso}
 	La categoria \(\ctFlux\) è definita come segue:
@@ -402,14 +402,14 @@ Il capitolo \ref{} e in particolare la nozione di prodotto, \ref{}, renderanno c
 Proseguiamo con degli esempi di categorie grandi, che giustificano l'intuizione per le categorie come `universi del discorso matematico', ossia come classi i cui elementi sono collegati da relazioni reciproche. L'esempio che fa da paradigma a tutta la sezione è \ref{ex_cat_insiemi}, la categoria di insiemi e funzioni. Usando questa categoria $\ctSet$ come esempio paradigmatico, è possibile costruire
 % \`E tuttavia importante notare che \emph{non tutte le categorie larghe astratte sono categorie di insiemi strutturati}.% Una approssimazione conveniente per una categoria larga `astratta' è quindi come un rimpiazzo per la categoria $\ctSet$ e per esempio può essere 
 \begin{itemize}
-  \item categorie di strutture algebriche (gruppi, anelli, algebre su un campo di base\dots); esempi di queste categorie sono \ref{}, \ref{};
-  \item categorie di strutture topologiche/ordinate (spazi topologici, insiemi parzialmente ordinati); esempi di queste categorie sono \ref{}, \ref{};
+  \item categorie di strutture algebriche (gruppi, anelli, algebre su un campo di base\dots); esempi di queste categorie sono \ref{ex_cat_monoidi}, e in generale \ref{ex_cat_sigma_strutture};
+  \item categorie di strutture topologiche/ordinate (spazi topologici, insiemi parzialmente ordinati); esempi di queste categorie sono \ref{po_wo_to}, \ref{ex_cat_top};
 \end{itemize}
 e insieme a queste, molte altre. Esiste una dicotomia forte tra queste due classi di categorie, che sarà possibile apprezzare una volta introdotti più strumenti.
 
 \`E tuttavia estremamente importante notare che 
 \begin{quote}
-Non tutte le categorie larghe astratte sono categorie di insiemi strutturati.
+  Non tutte le categorie larghe astratte sono categorie di insiemi strutturati. Ad esempio, la categoria di \ref{ex_cat_hotop} non ha la proprietà di essere \emph{concreta} (si veda \ref{categorie_strutture}).
 \end{quote}
 \index{Categoria!--- delle relazioni}
 \begin{example}[Insiemi e relazioni]\label{ex_cat_rels}
@@ -428,7 +428,7 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 \begin{remark}\label{klext_delle_relazioni}
 	Ogni relazione \(R : A\to B\) induce una funzione \(R^* : 2^B\to 2^A\) nel modo che segue: un sottoinsieme \(U\subseteq B\) viene mandato in \(R^*U:=\{x\in A\mid \forall u\in U.(x,u)\in R\}\). In effetti, esiste una analoga funzione \(R_* : 2^A\to 2^B\), definita da \((V\subseteq A) \mapsto R_*V:= \{y\in B\mid \forall v\in V.(v,y)\in R\}\), e tra le due funzioni \(R^*, R_*\) sussiste la relazione
 	\[V\subseteq R^*U \iff U\subseteq R_*V\label{aggiunti_in_disguise}\]
-	In \ref{} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie, affrontata per esteso nel capitolo \ref{cap:aggiunti}.
+  In \ref{rel_danno_aggiunti} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie, affrontata per esteso nel capitolo \ref{cap:aggiunti}.
 \end{remark}
 \begin{example}[Insiemi e funzioni]\label{ex_cat_insiemi}
 	La categoria \(\ctSet\) ha
@@ -663,8 +663,8 @@ La categoria dei complessi di catene è una importante costruzione in topologia 
 	\]
 	Si noti che la composizione di funzioni equivarianti è anch'essa equivariante. I \(G\)-insiemi e le funzioni equivarianti tra loro formano la categoria \(G\emdash\ctSet\).
 \end{example}
-\begin{example}
-  Una \emph{$\mathrm{C}^*$-algebra} consiste di uno spazio di Banach $A$ (cioè di uno spazio vettoriale topologico, dotato di una norma $\norm{\_} : A \to \bbR_{\ge 0}$, e completo rispetto alla metrica indotta da $\norm{\_}$), che in più è dotato di
+\begin{example}[$\mathrm{C}^*$-algebre complesse]\index{Categoria!--- delle $\mathrm{C}^*$-algebre}\index{$\mathrm{C}^*$-algebra}
+  Una \emph{$\mathrm{C}^*$-algebra} consiste di uno spazio di Banach $A$ (cioè di uno spazio vettoriale topologico sul campo dei complessi, dotato di una norma $\norm{\_} : A \to \bbR_{\ge 0}$, e completo rispetto alla metrica indotta da $\norm{\_}$), che in più è dotato di
   \begin{itemize}
     \item una operazione di anello (possibilmente non unitario) $\_\cdot\_ : A \times A \to A$ che sia \emph{submoltiplicativa}, cioè tale che $\norm{x\cdot y} \le\norm x\norm y$ (questo assicura che la moltiplicazione sia una funzione continua);
   \item una involuzione $(\_)^* : A\to A$ che soddisfa la \emph{proprietà fondamentale}
@@ -684,7 +684,7 @@ Uno *-omomorfismo che preserva l'unità è detto *-omomorfismo \emph{unitale}, e
 
 Discorso completamente analogo per le $\mathrm{C}^*$-algebre commutative, che con tutti gli *-omomorfismi formano una sottocategoria $\ctCsAlg_c$ di $\ctCsAlg$.
 \end{example}
-\begin{example}
+\begin{example}[Mappe stocastiche]\index{Categoria!--- delle mappe stocastiche}\index{Mappa stocastica}\index{Matrici!categoria delle --- stocastiche}\label{cat_stocazziche}
 	% \Todo{Categorie in probabilità (mappe stocastiche)}
   La categoria $\cate{FStoch}$ delle \emph{mappe stocastiche tra insiemi finiti} ha 
   \begin{itemize}
@@ -1207,7 +1207,7 @@ si dice il \emph{grafico} di $R$: per quale motivo? Si disegni la cospanna $c(R)
 	\item Determinare il giunto di due catene generiche \(\Delta[n] * \Delta[m]\) come in \ref{ex_cat_catena} e di due cubi \(P[n] * P[m]\) come in \ref{ex_quadcuboncubo}, e più in generale di due insiemi parzialmente ordinati \(P,Q\). Determinare il giunto di due categorie discrete (prenderle finite!) \(A^\delta * B^\delta\) come in \ref{ex_cat_discreta} e di due categorie codiscrete \(A^\chi * B^\chi\): il risultato è ancora codiscreto? Più in generale, determinare il giunto di due gruppoidi \(\ctG * \ctG'\); il risultato è ancora un gruppoide? Determinare il giunto \(\ctB(\bbN,+) * \ctB(\bbN,+)\) del monoide dei numeri naturali con la somma, e \(\ctB(\bbN,\max) * \ctB(\bbN,\max)\) del monoide dove la moltiplicazione è data da \(n\land m \defeq \max\{n,m\}\). C'è una relazione tra \((\ctC\star\ctD)^\op\) e \(\ctD^\op\star\ctC^\op\) (uguali, oposte una dell'altra, nessuna relazione\dots)?
 \end{enumerate}
 \section{Isomorfismi}\label{sec_isomorfismi}\index{Isomorfismo}
-La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta. Fu però solo la definizione di categoria data da Eilenberg e Mac Lane in \cite{} a fissare definitivamente la nozione moderna nell'uso matematico.
+La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta. Fu però solo la definizione di categoria data da Eilenberg e Mac Lane in \cite{gtone} a fissare definitivamente la nozione moderna nell'uso matematico.
 
 Quando due gruppi sono isomorfi, `tutte' le proprietà che si esprimono in termini degli assiomi di gruppo, e che sono godute dall'uno, sono godute anche dall'altro, e in forza di questo meta-principio una strategia molto efficace per mostrare che due dati gruppi \emph{non possono} essere isomorfi è cercare una proprietà che sia goduta solo da uno dei due (per esempio, l'essere abeliano: ci sono certamente almeno due gruppi di ordine 24 distinti, il gruppo \emph{ciclico} \(\bbZ/24\bbZ\) e il gruppo \emph{simmetrico} delle permutazioni di 4 lettere \(\{a,b,c,d\}\), perché il primo è abeliano, il secondo no, e --si dimostra-- se due gruppi sono isomorfi, uno è abeliano se e solo se lo è l'altro).
 
@@ -1297,7 +1297,7 @@ Più in generale, in virtù del fatto che ogni identità \(\id_X\) è un isomorf
 
 Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con identità e composizione).
 \begin{example}[Monoidi e gruppi liberi; gruppoidi liberi]\label{mongruppi_liberi}\index{Monoide!--- libero}\index{Monoide}\index{Categoria!--- libera}
-  In \ref{} abbiamo introdotto le categorie libere su un grafo. Quando il grafo $\ctG=(\bullet,E)$ è composto di un unico vertice e ha $E$ come insieme dei lati, la categoria libera $F\ctG$ ha anch'essa un unico vertice, e in virtù di \ref{mon_sonocat} l'insieme $E^* := F\ctG(\bullet,\bullet)$ è un monoide rispetto alla congiunzione di lacci. L'insieme $E^*$ è il \emph{monoide libero} sull'insieme $E$, detto solitamente `alfabeto', dato che il generico elemento di $E^*$ è della forma 
+  In \ref{ex_cat_libera} abbiamo introdotto le categorie libere su un grafo. Quando il grafo $\ctG=(\bullet,E)$ è composto di un unico vertice e ha $E$ come insieme dei lati, la categoria libera $F\ctG$ ha anch'essa un unico vertice, e in virtù di \ref{mon_sonocat} l'insieme $E^* := F\ctG(\bullet,\bullet)$ è un monoide rispetto alla congiunzione di lacci. L'insieme $E^*$ è il \emph{monoide libero} sull'insieme $E$, detto solitamente `alfabeto', dato che il generico elemento di $E^*$ è della forma 
   \[[\tup en;]\qquad n\ge 0, \tup en,\in E\]
   o più brevemente $[\tup en{}]$, una `parola' scritta con le `lettere' $\tup en,$. La composizione è la giustapposizione di parole $[\tup en{}]\circ[\tup {e'}n{}] = [\tup en{}\tup{e'}n{}]$, per cui l'identità è la parola vuota $[]$ (quando $n=0$).
 
@@ -1328,11 +1328,11 @@ Chiaramente esistono categorie che non sono scheletriche (per esempio perché es
 	\item Caratterizzare gli isomorfismi nelle seguenti categorie:
 	\begin{itemize}
 		\item la categoria dei modelli di una segnatura algebrica $(\Omega,a)$;
-		\item la categoria degli ordinali di \ref{};
-		\item la categoria dell'omotopia $\ctHoTop$ di \ref{};
-		\item la categoria delle mappe stocastiche di \ref{};
+		\item la categoria degli ordinali di \ref{ex_cat_ordinali};
+		\item la categoria dell'omotopia $\ctHoTop$ di \ref{ex_cat_hotop};
+		\item la categoria delle mappe stocastiche di \ref{cat_stocazziche};
 		\item la categoria libera su un grafo $\ctG$ (prenderlo finito!);
-		\item la categoria dei $G$-insiemi di \ref{}.
+		\item la categoria dei $G$-insiemi di \ref{exa_azioni_funtori}.
 	\end{itemize}
 	Mostrare che in un incubo $\ctC/X$ la seguente condizione caratterizza gli isomorfismi: $t : T\to X$ è un isomorfismo in $\ctC$ se e solo se per ogni altro oggetto $f : E\to X$ esiste un unica freccia $h : E\to T$ tale che $t\cmp h=f$. La stessa dimostrazione vale anche in una categoria succuba $X/\ctC$?
 	\item Dati due spazi metrici \((X,d)\) e \((Y,d')\), una funzione \(f:X\to Y\) si dice \emph{Lipschitz continua} se soddisfa la disuguaglianza
@@ -1461,7 +1461,7 @@ Ciò conduce a una definizione molto importante e pervasiva in teoria delle cate
 \begin{definition}\label{exa_funtori_da_poset}\index{Prefascio}\index{Funtore!Prefascio}
 	Sia \((P,\le)\) un insieme preordinato nel senso di \ref{ex_cat_ordini}; un funtore controvariante
 	\[\xymatrix{F : (P,\le)^\op \ar[r] & \ctSet}\]
-	si dice un \emph{prefascio}.\footnote{La parola è un calco strutturale dell'inglese \emph{presheaf}, che è a sua volta un calco dal francese \emph{prefaisceaux}; cf. \cite{Tennison1975,Bredon1997,Godement} e \cite[Cap. ???]{pedicchiofoundations} per una introduzione meno geometrica --ma storicamente molto istruttiva. Per indagare l'etimologia del termine e il suo impiego in matematica, chi legge può consultare l'ottima nota breve di Lovering, \cite{Lovering}.}
+	si dice un \emph{prefascio}.\footnote{La parola è un calco strutturale dell'inglese \emph{presheaf}, che è a sua volta un calco dal francese \emph{prefaisceaux}; cf. \cite{Tennison1975,Bredon1997,Godement} e \cite[Cap. VII]{pedicchiofoundations} per una introduzione meno geometrica --ma storicamente molto istruttiva. Per indagare l'etimologia del termine e il suo impiego in matematica, chi legge può consultare l'ottima nota breve di Lovering, \cite{Lovering}.}
 
 	Esplicitamente, un prefascio consiste di
 	\begin{itemize}
@@ -1619,7 +1619,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \begin{example}[Realizzare \(\bbF\emdash\ctMat\) in \(\bbF\emdash\ctVect\)]\index{Funtore!--- matrici reali}
 	\Todo{}
 \end{example}
-\begin{example}[Successioni simmetriche, specie combinatorie]\index{Funtore!--- specie combinatoria}\index{Specie combinatorie}\index{Successione simmetrica|see {Specie combinatoria}}
+\begin{example}[Successioni simmetriche, specie combinatorie]\index{Funtore!--- specie combinatoria}\index{Specie combinatoria}\index{Successione simmetrica|see {Specie combinatoria}}
 	Si ricordi la definizione della categoria \(\cate{Bij}\) in \ref{ex_cat_gruppoide_naturali}; un funtore
 	\[\dmFun{f}{\cate{Bij}}{\ctSet}\]
 	consta dei seguenti dati:
@@ -1627,7 +1627,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		\item una collezione di insiemi \(f(n)=X_n\) indicizzata dai numeri naturali \(n\ge 1\);
 		\item una rappresentazione \(S_n \times X_n\to X_n\), ossia un'azione (sinistra) del gruppo simmetrico \(S_n\) degli automorfismi dell'insieme \(\{\iter n\}\).
 	\end{itemize}
-	Il funtore \(f\) si dice una \emph{specie combinatoria} e la famiglia \(f(n)=X_n\) è una \emph{successione simmetrica}. Questo tipo di funtori, molto ricchi di struttura e di proprietà interessanti, trovano applicazioni in combinatoria enumerativa \cite{bergeron1998combinatorial}, teoria delle rappresentazioni \cite{aguiar2010monoidal}, geometria e topologia \cite{} (quando invece che insiemi gli \(X_n\) sono spazi vettoriali), logica e informatica teorica \cite{}. Denotando con \(\# S\) la cardinalità di un insieme, ad ogni specie combinatoria \(f : \cate{Bij} \fun\ctSet\) tale che ogni \(f(n)\) sia finito possiamo associare la serie formale \(F(t)\in\mathbb{N}\llbracket t\rrbracket\) definita come \(F(t) \defeq \sum_{n\ge 1} \frac{\# X_n}{n!}t^n\). Questa si chiama la \emph{funzione generatrice} della specie combinatoria \(F\), e le sue proprietà algebriche o analitiche (qualora \(F(t)\) converga) sono in corrispondenza diretta con le proprietà del funtore \(f\).
+	Il funtore \(f\) si dice una \emph{specie combinatoria} e la famiglia \(f(n)=X_n\) è una \emph{successione simmetrica}. Questo tipo di funtori, molto ricchi di struttura e di proprietà interessanti, trovano applicazioni in combinatoria enumerativa \cite{bergeron1998combinatorial}, teoria delle rappresentazioni \cite{aguiar2010monoidal}, geometria e topologia \cite{Fresse2009} (quando invece che insiemi gli \(X_n\) sono spazi vettoriali), logica e informatica teorica \cite{Gambinno2017,Hasegawa2022}. Denotando con \(\# S\) la cardinalità di un insieme, ad ogni specie combinatoria \(f : \cate{Bij} \fun\ctSet\) tale che ogni \(f(n)\) sia finito possiamo associare la serie formale \(F(t)\in\mathbb{N}\llbracket t\rrbracket\) definita come \(F(t) \defeq \sum_{n\ge 1} \frac{\# X_n}{n!}t^n\). Questa si chiama la \emph{funzione generatrice} della specie combinatoria \(F\), e le sue proprietà algebriche o analitiche (qualora \(F(t)\) converga) sono in corrispondenza diretta con le proprietà del funtore \(f\).
 \end{example}
 \begin{example}[Moduli sinistri; moduli destri; bimoduli]\index{Moduli su un anello!--- come funtori}\index{Modulo}
 	Se \(\ctAb\) è la categoria dei gruppi abeliani e loro omomorfismi, ed \((R,+,\cdot,0,1)\) è un anello unitario, una rappresentazione del monoide \((R,\cdot,1)\) in \(\ctAb\), ossia un funtore
@@ -1744,6 +1744,12 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\[\dmFun{H_n(-,\bbZ)}\ctHoTop\ctAb\]
 	per $n\ge 0$, e di coomologia (a coefficienti interi)
 	\[\dmFun{H^n(-,\bbZ)}{\ctHoTop^\op}{\ctAb.}\]
+\end{example}
+\begin{example}
+  \Todo{Lo spettro di una C*-algebra commutativa}
+\end{example}
+\begin{example}
+  \Todo{La C*-algebra di uno spazio localmente compatto}
 \end{example}
 \begin{example}\index{Funtore!--- quoziente di uno pseudoinsieme}
 	\Todo{Il quoziente indotto da un prequoziente}
