@@ -96,11 +96,20 @@ La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetric
     Spesso si limita la taglia di queste successioni a uno specifico ordinale limite $\lambda$, cioè si considerano solo funtori $\ctOrd_{<\lambda}\to\ctC$ (in questo modo, la categoria delle successioni transfinite $\ctOrd \to \ctC$ è legittima); in questo caso parliamo di una \emph{$\lambda$-successione in $\ctC$}. Data una ($\lambda$-)successione $f : X_0\to X_1 \to \dots$ chiamiamo la sua \emph{composizione} l'unico morfismo $X_0\to \colim_{\beta<\lambda} X_\beta$.
   \end{definition}
   \begin{proposition}
-    Se una $\omega$-successione $f : \ctOrd_{<\omega}\to\ctSet$ ha la proprietà che ogni $X_n \to X_{n+1}$ è una funzione iniettiva, è iniettiva anche la composizione transfinita $X_0\to \colim_{n<\omega} X_n$.
+    Se una $\omega$-successione $f : \ctOrd_{<\omega}\to\ctSet$ ha la proprietà che ogni $X_n \to X_{n+1}$ è una funzione iniettiva, è iniettiva anche la composizione transfinita $f_\infty : X_0\to \colim_{n<\omega} X_n$.
   \end{proposition}
   \begin{proof}
+    La mappa $f_\infty$ è definita dalla proprietà universale del colimite $\colim_{n<\omega} X_n$; se $f_\infty(x)=f_\infty(x')$, allora esiste un $n<\omega$ tale che $f_{0n}(x) = f_{:n}(x')$ dove $f_{:n}$ è la funzione composta 
+    \[\begin{tikzcd}
+      X_0 \ar[r, "f_1"]& X_1\ar[r, "f_2"] & \dots \ar[r, "f_n"] & X_n
+    \end{tikzcd}\]
+    che è iniettiva; allora, $x=x'$.
     
+    (Evidentemente un argomento simile dimostra, per induzione transfinita, che la composizione di ogni $\lambda$-successione $f : \ctOrd_{<\lambda}\to\ctSet$ tale che ogni $f_\alpha$ sia un monomorfismo è ancora un monomorfismo.)
   \end{proof}
+  \begin{definition}
+    Una classe di morfismi $\ctK\subseteq\ctC_1$ di una category $\ctC$ si dice \emph{chiusa per composizioni transfinite} se, per ogni $\lambda$-successione $f : \ctOrd_{<\lambda}\to\ctK$ la composizione transfinita $f_{:\lambda} : X_0\to \colim_{\alpha < \lambda} X_\alpha$ è ancora un morfismo di $\ctK$.
+  \end{definition}
 \begin{definition}[Classi speciali di morfismi]
   Sia $\ctC$ una categoria. Una classe di morfismi $\ctK\subseteq\ctC_1$ si dice 
   \begin{itemize}
