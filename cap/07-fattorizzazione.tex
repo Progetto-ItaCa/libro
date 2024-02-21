@@ -50,14 +50,94 @@ Sulla classe dei morfismi di una generica categoria \(\ctC\) è possibile defini
 La relazione di ortogonalità è una sottoclasse \(O^\ctC \subseteq \hom(\ctC)\) e il fatto che \((f,g)\in O^\ctC\) verrà sempre denotato con un simbolo infisso \(f\perp^\ctC g\), o semplicemente come \(f\perp g\) quando il contesto permette di determinare quale sia la categoria \(\ctC\) di riferimento (ossia, quasi sempre).
 
 La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetrica o transitiva; \ref{} sostanzia questa osservazione con delle maniere di costruire dei controesempi.
+\begin{proposition}\label{ort_to_terminale}
+  Sia $\ctC$ una categoria che ha un oggetto terminale $\term$. Allora, dati un morfismo $f : X\to Y$, e un oggetto $A\in \ctC_0$, le condizioni seguenti sono equivalenti: 
+  \begin{enumtag}{ot}
+  \item\label{ot_1} il morfismo $f$ è ortogonale a sinistra al morfismo terminale $A\to \term$;
+  \item\label{ot_2} il funtore $\ctC(\_,A)$ manda il morfismo $f$ in una biiezione 
+      \[\begin{tikzcd}
+        \ctC(Y,A) \ar[r, "{g\circ \_}"] & \ctC(X,A).
+    \end{tikzcd}\]
+  \end{enumtag}
+  Dualmente, sia $\ctC$ una categoria con un oggetto iniziale $\init$. Allora, dati un morfismo $g : A\to B$, e un oggetto $Y\in\ctC_0$, le condizioni seguenti sono equivalenti:
+  \begin{enumtag}{oi}
+  \item \label{oi_1} il morfismo $g$ è ortogonale a destra al morfismo iniziale $\init\to Y$;
+  \item \label{oi_2} il funtore $\ctC(B,\_)$ manda il morfismo $g$ in una biiezione 
+      \[\begin{tikzcd}
+        \ctC(Y,A) \ar[r, "{\_\circ f}"] & \ctC(Y,B).
+    \end{tikzcd}\]
+  \end{enumtag}
+\end{proposition}
+\begin{proof}
+  Dimostriamo l'equivalenza di \ref{ot_1} e \ref{ot_2}, e dualizzare questo argomento dimostrerà l'equivalenza di \ref{oi_1} e \ref{oi_2}. 
+
+  Del resto, la condizione per cui per ogni $u : X\to A$ esista un unico morfismo $\bar u : Y\to A$ tale che $\bar u\circ f = u$ è esattamente la richiesta che la funzione $u\mapsto u\circ f$ sia suriettiva (esistenza) e iniettiva (unicità).
+\end{proof}
 \begin{remark}\label{perche_ortogonale}
-	Diverse intuizioni sulla nomenclatura `ortogonale'.
+  \Todo{Diverse intuizioni sulla nomenclatura `ortogonale'.}
+
+  Una dall'algebra lineare:\dots
+
+  Una meno formale ma suggestiva: grazie a \ref{ort_to_terminale} la relazione di ortogonalità può essere estesa alla ortogonalità tra un morfismo e un \emph{oggetto}. Da qui\dots
 \end{remark}
-\begin{definition}
 	Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limiti, cancellative a sinistra (destra, bilatere).
+  \begin{definition}
+    Una \emph{successione transfinita} di morfismi in una categoria $\ctC$ consiste di un funtore $f : \ctOrd \to \ctC$ che preserva i colimiti; in parole semplici, una successione transfinita in $\ctC$ consiste di una successione di oggetti $X_\lambda$, uno per ogni ordinale $\lambda$, e di morfismi
+    \[
+      \begin{tikzcd}
+        X_0 \ar[r] & X_1\ar[r] & X_2 \ar[r]& \dots \ar[r] & X_\alpha \ar[r] & X_{\alpha+1}\ar[r] & \dots 
+      \end{tikzcd}
+    \]
+    tale che per ogni ordinale limite $\lambda = \colim_{\beta<\lambda}\beta$ si abbia che $X_\lambda\cong \colim_{\beta < \lambda} X_\beta$. I morfismi di questa catena sono quindi essenzialmente di due tipi:
+    \begin{itemize}
+      \item $X_\alpha \to X_{\alpha+1}$ ogni volta che $\beta=\alpha+1$ è un ordinale successore;
+      \item morfismi da un ordinale $\theta<\lambda$ dentro l'`oggetto limite' $\colim_{\beta<\lambda}X_\beta\cong X_\lambda$.
+    \end{itemize}
+    Spesso si limita la taglia di queste successioni a uno specifico ordinale limite $\lambda$, cioè si considerano solo funtori $\ctOrd_{<\lambda}\to\ctC$ (in questo modo, la categoria delle successioni transfinite $\ctOrd \to \ctC$ è legittima); in questo caso parliamo di una \emph{$\lambda$-successione in $\ctC$}. Data una ($\lambda$-)successione $f : X_0\to X_1 \to \dots$ chiamiamo la sua \emph{composizione} l'unico morfismo $X_0\to \colim_{\beta<\lambda} X_\beta$.
+  \end{definition}
+  \begin{proposition}
+    Se una $\omega$-successione $f : \ctOrd_{<\omega}\to\ctSet$ ha la proprietà che ogni $X_n \to X_{n+1}$ è una funzione iniettiva, è iniettiva anche la composizione transfinita $f_\infty : X_0\to \colim_{n<\omega} X_n$.
+  \end{proposition}
+  \begin{proof}
+    La mappa $f_\infty$ è definita dalla proprietà universale del colimite $\colim_{n<\omega} X_n$; se $f_\infty(x)=f_\infty(x')$, allora esiste un $n<\omega$ tale che $f_{0n}(x) = f_{:n}(x')$ dove $f_{:n}$ è la funzione composta 
+    \[\begin{tikzcd}
+      X_0 \ar[r, "f_1"]& X_1\ar[r, "f_2"] & \dots \ar[r, "f_n"] & X_n
+    \end{tikzcd}\]
+    che è iniettiva; allora, $x=x'$.
+
+    (Evidentemente un argomento simile dimostra, per induzione transfinita, che la composizione di ogni $\lambda$-successione $f : \ctOrd_{<\lambda}\to\ctSet$ tale che ogni $f_\alpha$ sia un monomorfismo è ancora un monomorfismo.)
+  \end{proof}
+  \begin{definition}
+    Una classe di morfismi $\ctK\subseteq\ctC_1$ di una category $\ctC$ si dice \emph{chiusa per composizioni transfinite} se, per ogni $\lambda$-successione $f : \ctOrd_{<\lambda}\to\ctK$ la composizione transfinita $f_{:\lambda} : X_0\to \colim_{\alpha < \lambda} X_\alpha$ è ancora un morfismo di $\ctK$.
+  \end{definition}
+\begin{definition}[Classi speciali di morfismi]
+  Sia $\ctC$ una categoria. Una classe di morfismi $\ctK\subseteq\ctC_1$ si dice 
+  \begin{itemize}
+    \item \emph{ampia} se la sottocategoria individuata da $\ctK$ è ampia nel senso di \ref{}; in particolare, $\ctK$ contiene tutti i morfismi identici, e quindi tutti gli oggetti di $\ctC$, ed è chiusa per composizione.
+    \item \emph{presatura} se ogni volta che sia dato un diagramma 
+      \[
+        \begin{tikzcd}
+          A \ar[d, "k"']\ar[r, "f"]& X \\ 
+          B & 
+        \end{tikzcd}
+      \]
+      tale che $k\in\ctK$, se la somma amalgamata $\push BXA$ esiste, allora il morfismo $k' : B\to \push BXA$ è anch'esso in $\ctK$.
+    \item \emph{quasisatura} se è presatura e chiusa per retratti (nella categoria dei morfismi $\ctC^\to$, si veda \ref{def_cat_frecce}): significa che, dato un diagramma 
+      \[
+        \begin{tikzcd}
+          A \ar[r, "i"]\ar[d, "k'"'] & K \ar[r, "r"]\ar[d, "k"]& A \ar[d, "k'"']\\
+          B \ar[r, "i'"'] & K' \ar[r, "r'"'] & B
+        \end{tikzcd}
+      \]
+      dove $r\circ i = 1_A$ e $r'\circ i' = 1_B$, se $k\in \ctK$, allora anche $k'\in\ctK$.
+    \item \emph{cellulare} se è presatura e chiusa per composizione transfinita nel senso di \ref{}.
+    \item \emph{satura} se è quasisatura e cellulare.
+    \item \emph{cancellativa a destra} (risp., \emph{a sinistra}) se\dots; cancellativa, se lo è da entrambi i lati.
+    \item \emph{chiusa per limiti} (risp., \emph{per colimiti}) se\dots
+  \end{itemize}
 \end{definition}
 \begin{examples}
-	Esempi di classi ampie, sature, etc. in varie categorie
+  \Todo{Esempi di classi ampie, sature, etc. in varie categorie}
 \end{examples}
 \section[Proprietà ed esempi]{Proprietà fondamentali ed esempi}
 \begin{remark}
