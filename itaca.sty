@@ -1,0 +1,312 @@
+\NeedsTeXFormat{LaTeX2e}[2020/12/01]
+\ProvidesPackage{itaca-preambolo/itaca}
+  [lo .sty per il libro di ItaCa]
+
+
+
+% TODO:
+% - funziona tutto ma c'è molto refactoring da fare:
+  % - la parte in LaTeX3 è vecchia e farraginosa
+  % - i nomi delle categorie sono un po' random
+  % - le macro vanno separate per tipo
+  % - alcune vanno definite con meno hacks
+  % - va tutto documentato meglio
+
+
+% questi vanno chiamati per primi
+\RequirePackage{ xparse
+               , mathrsfs
+               }
+
+\ExplSyntaxOn
+\NewDocumentCommand{\makeabbrev}{mmm}
+ {
+  \yoruk_makeabbrev:nnn { #1 } { #2 } { #3 }
+ }
+
+\cs_new_protected:Npn \yoruk_makeabbrev:nnn #1 #2 #3
+ {
+  \clist_map_inline:nn { #3 }
+   {
+    \cs_new_protected:cpn { #2 } { #1 { ##1 } }
+   }
+ }
+\ExplSyntaxOff
+
+\makeabbrev{\textbf}{bf#1}{
+  a,b,c,d,e,g,h,i,j,k,l,m,n,o,p,q,r,t,u,v,w,x,y,z,%
+  A,B,C,D,E,G,H,I,J,K,L,M,N,O,P,Q,R,T,U,V,W,X,Y,Z }
+\makeabbrev{\boldsymbol}{mnd#1}{%
+    a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%
+    A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+
+\makeabbrev{\mathfrak}{fk#1}{
+  a,b,c,d,e,f,g,h,j,k,i,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%
+  A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+
+  \makeabbrev{\mathcal}{ct#1}{
+    A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+\makeabbrev{\mathscr}{ect#1}{
+  A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+\makeabbrev{\mathbb}{ict#1}{
+    A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+\makeabbrev{\mathbb}{bb#1}{
+    A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+\makeabbrev{\mathrm}{ob#1}{
+  A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+
+\makeabbrev{\mathbf}{ct#1}{ Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, Ord, FOrd, Lat, Vect, Mat, HoTop, Fld, DInt }
+
+\def\pSet{\partial\ctSet}
+\def\ctCsAlg{\mathrm{C}^*\emdash\cate{Alg}}
+
+\makeabbrev{\mathrm}{#1}{ GL }
+
+\RequirePackage[utf8x]{inputenc}
+\RequirePackage[T2A]{fontenc}
+\RequirePackage[svgnames]{xcolor}
+\RequirePackage[pdftex]{graphicx}
+\RequirePackage{ amsfonts
+               , amsmath
+               , amssymb
+               , amsthm
+               , enumitem
+               , microtype
+               , mathtools
+               , hyphenat
+               , todonotes
+               , stackrel
+               , stmaryrd
+               , tikz-cd
+               , turnstile
+               }
+
+\RequirePackage{tikz}
+	\usetikzlibrary{calc,matrix,arrows,positioning}
+  \usetikzlibrary{decorations.pathmorphing}
+% classi di frecce
+\let\mono\hookrightarrow
+\let\epi\twoheadrightarrow
+
+\tikzcdset{arrow style=tikz,
+           diagrams={>=Straight Barb}
+           }
+
+% teoremi
+\makeatletter
+\def\defthm#1#2{%
+  \newtheorem{#1}{#2}[section]%
+  \expandafter\def\csname #1autorefname\endcsname{#2}%
+  \expandafter\let\csname c@#1\endcsname\c@theorem}
+\makeatother
+
+\theoremstyle{definition}
+% \theoremstyle{plain}
+% \theoremstyle{remark}
+% ^ commentato perché Ivan si lamenterà
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Teorema}[section]
+ \defthm{corollary}{Corollario}
+ \defthm{proposition}{Proposizione}
+ \defthm{lemma}{Lemma}
+ \defthm{definition}{Definizione}
+ \defthm{notation}{Notazione}
+ \defthm{remark}{Osservazione}
+ \defthm{conjecture}{Congettura}
+ \defthm{axiom}{Assioma}
+ \defthm{example}{Esempio}
+ \defthm{examples}{Esempi}
+ \defthm{exercise}{Esercizio}
+ \defthm{exercises}{Esercizi}
+ \defthm{counterexample}{Controesempio}
+ \defthm{construction}{Costruzione}
+ \defthm{warning}{Caveat}
+ \defthm{digression}{Digressione}
+ \defthm{perspective}{Prospettiva}
+ \defthm{discussion}{Discussione}
+ \defthm{terminology}{Terminologia}
+ \defthm{heuristics}{Euristica}
+
+\newtheorem*{proposition*}{Proposizione}
+
+\ProcessOptions\relax
+
+\newcommand{\Hom}[1]{#1}
+
+\def\fun{\longrightarrow}
+\let\funto\fun
+\def\aa{\text{a}}
+\def\nat{\Rightarrow}
+\def\implies{\Rightarrow}
+
+\def\xto#1{\xrightarrow{#1}}
+\def\xfun#1{\xlongrightarrow{#1}}
+\def\xnat#1{\xRightarrow{#1}}
+
+% == categorie che hanno un nome
+\newcommand{\cate}[1]{\mathbf{#1}}
+  \NewDocumentCommand{\ctEuc}{O{\bbR}}{\cate{Euc}^{#1}_*}
+  \newcommand{\ctInit}{\cate{0}}
+  \newcommand{\ctTerm}{\cate{1}}
+
+\DeclareMathOperator*{\colim}{colim}
+\DeclareMathOperator*{\eq}{eq}
+\DeclareMathOperator*{\coeq}{coeq}
+\DeclareMathOperator*{\coker}{coker}
+
+\newcommand{\yon}{y}
+\newcommand{\cop}{\coprod}
+
+% #1 #2 : gli oggetti che pulli
+% #3 : l'oggetto su cui #1 #2 arrivano
+\newcommand{\pull}[3]{#1 \times_{#3} #2}
+
+% #1 #2 : gli oggetti che pushi
+% #3 : l'oggetto lungo cui incolli
+\newcommand{\push}[3]{#1 +_{#3} #2}
+
+\newcommand{\init}{0}
+\newcommand{\term}{1}
+
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\dom}[1]{d(#1)}
+\newcommand{\cod}[1]{c(#1)}
+\newcommand{\cmp}{\circ}
+
+\def\op{\text{op}}
+\newcommand{\opp}[1]{#1^\op}
+
+% strutture monoidali
+\newcommand{\monProd}{\otimes}
+\newcommand{\monUnit}{I}
+\newcommand{\monSymm}{\sigma}
+\newcommand{\associator}{\alpha}
+\newcommand{\unitorL}{\lambda}
+\newcommand{\unitorR}{\varrho}
+
+% aggiunti
+\NewDocumentCommand{\adjunct}{O{} O{}}{\nsststile{#2}{#1}}
+
+% isomorfismi / equivalenze
+\newcommand{\iso}{\cong}
+\newcommand{\eqv}{\simeq}
+
+\newcommand{\defeq}{\coloneqq}
+\newcommand{\emptyList}{[\;]}
+\NewDocumentCommand{\tup}{O{1} m m m}{
+#2_{#1} #4 \dots #4 #2_{#3}
+}
+% #1 : l'indice di partenza
+% #2 : la variabile indicizzata
+% #3 : l'indice di fine
+% #4 : il simbolo infisso ("," "\otimes" "+" etc)
+
+\NewDocumentCommand{\iter}{O{1} O{,} m}{
+{#1} #2 \dots #2 {#3}
+}
+
+
+\def\squig{\rightsquigarrow}
+
+% un generico `todo`
+\newcommand{\Todo}[1]{\todo[inline, caption=0,color=green!20]{#1}}
+
+% un box dei commenti dedicato a ciascuno di noi 
+
+\NewDocumentCommand{\bla}{ O{\textit{anonimo}} m O{red} }{
+  \todo[inline, caption=0, color=#3!10]{ \scriptsize #1 ha detto: #2 }
+}
+
+\NewDocumentCommand{\fosco}{ m }{\bla[Fosco]{#1}[red]}
+\NewDocumentCommand{\paolo}{ m }{\bla[Paolo]{#1}[green]}
+\NewDocumentCommand{\beppe}{ m }{\bla[Beppe]{#1}[blue]}
+\NewDocumentCommand{\ivan}{ m }{\bla[Ivan]{#1}[yellow]}
+\NewDocumentCommand{\enricoV}{ m }{\bla[Enrico V.]{#1}[black]}
+\NewDocumentCommand{\enricoG}{ m }{\bla[Enrico G.]{#1}[cyan]}
+% ... poi aggiungerò gli altri.
+
+\DeclareDocumentEnvironment{enumtag}{m}{%
+	\begin{enumerate}[ label = \textsc{#1}\oldstylenums{\arabic*}), ref = \textsc{#1}\oldstylenums{\arabic*} ] }{ \end{enumerate} }
+
+\newcommand{\emdash}{\text{-}}
+\setlist[itemize,enumerate]{itemsep=0pt}
+
+\def\pto{\rightarrowtriangle}
+
+
+\def\longmor#1#2{\begin{tikzcd}[ampersand replacement=\&] #1 \ar[r] \& #2 \end{tikzcd}}
+
+\newenvironment{xsmallmatrix}[1]
+{\renewcommand\thickspace{\kern#1}\smallmatrix}
+{\endsmallmatrix}
+
+\NewDocumentCommand{\prevar}{o m m O{\downarrow}}{
+	\IfNoValueTF{#1}{
+	  \begin{smallmatrix}
+	  	#2 \\ #4 \\ #3
+	  \end{smallmatrix}}
+	{
+		\begin{xsmallmatrix}{0em}
+			   & #2         \\
+			#1 & #4 \\
+			   & #3
+		\end{xsmallmatrix}
+	}
+}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\var}{ o m O{s} m O{\downarrow} }{
+	\str_case:nn { #3 } {
+    {r}{\left(       \prevar[#1]{#2}{#4}[#5] \right)}
+    {s}{\left[       \prevar[#1]{#2}{#4}[#5] \right]}
+    {c}{\left\{      \prevar[#1]{#2}{#4}[#5] \right\}}
+    {a}{\left\langle \prevar[#1]{#2}{#4}[#5] \right\rangle}
+	}}
+	\newcommand{\precop}[2]{
+		\begin{smallmatrix}
+			#1 \\ #2
+		\end{smallmatrix}
+	}
+	\NewDocumentCommand{\copmap}{O{r} m m}{
+		\str_case:nn { #1 } {
+			{r}{\left(       \precop{#2}{#3} \right)}
+			{s}{\left[       \precop{#2}{#3} \right]}
+			{c}{\left\{      \precop{#2}{#3} \right\}}
+			{a}{\left\langle \precop{#2}{#3} \right\rangle}
+		}}
+
+\ExplSyntaxOff
+
+\usepackage{adjustbox}
+\newenvironment{adju}[1][0.925]{%
+\begin{center}%
+	\begin{adjustbox}{max height=0.5\textheight, max width=#1\textwidth}%
+}{%
+  \end{adjustbox}\end{center}%
+}
+
+\NewDocumentCommand{\lort}{ m }{ 
+  {}^\perp #1
+}
+
+\NewDocumentCommand{\rort}{ m }{ 
+  #1^\perp
+}
+
+\NewDocumentCommand{\act}{ m }{
+  #1/\!\!/#1
+}
+
+% [d]isplay[m]ath[Fun]ctor
+\NewDocumentCommand{\dmFun}{m m m}{
+  \begin{tikzcd}[ampersand replacement=\&]
+    #1 : #2 \ar[r] \& #3
+  \end{tikzcd}
+}
+
+\def\norm#1{\|#1\|}
+
+% inutile riga di controllo
+% END OF FILE
