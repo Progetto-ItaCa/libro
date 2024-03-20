@@ -104,7 +104,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 		      \[\xymatrix{\_\cmp\_ : \ctC_1 \times \ctC_1 \ar[r] & \ctC_1}\]
 		      il cui dominio è la sotto-classe \(\sum_{XYZ} \{ X \xrightarrow f Y \xrightarrow g Z \}\) dei morfismi \emph{contigui} o componibili. Dato che i vari \(\ctC(X,Y)\) sono a due a due disgiunti, la composizione \(\_\cmp\_\) si `spezza' in una classe di funzioni
 		      \[\xymatrix{\_\cmp_{XZ}^Y\_ : \ctC(Y,Z)\times\ctC(X,Y) \ar[r] & \ctC(X,Z)}\]
-		      dove ciascuna manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in \(g\cmp f\) (si sottintende \emph{sempre} il dominio particolare di \(\_\cmp_{XZ}^Y\_\) e lo si indica solo con $\_\circ\_$).
+		      dove ciascuna manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in \(g\cmp f\) (si sottintende \emph{sempre} il dominio particolare di \(\_\cmp_{XZ}^Y\_\) e lo si indica solo con $\_\cmp\_$).
 	\end{itemize}
 \end{remark}
 \begin{definition}[Categoria piccola, categoria localmente piccola]
@@ -349,7 +349,7 @@ Dopo questa digressione veniamo a due esempi più elaborati, ma molto `concreti'
 	\end{itemize}
   Si noti che ogni funzione Booleana \(f : \bbB^n\to\bbB^m\) risulta dal `prodotto' di \(m\) funzioni Booleane \emph{semplici} \(f_1,\dots,f_m : \bbB^n\to\bbB\), di modo che
 	\[f(\tup xn,)=(f_1(\tup xn,),\dots,f_m(\tup xn,)).\]
-	Tra le funzioni Booleane semplici ci sono certamente le proiezioni canoniche \(\pi_i : \bbB^n\to\bbB :(\tup xn,)\mapsto x_i\), con le quali è possibile caratterizzare le $f_i$ su menzionate: $f_i = \pi_i\circ f$; è anche possibile definire la mappa diagonale \(\Delta_m:\bbB\to\bbB^m\) come
+	Tra le funzioni Booleane semplici ci sono certamente le proiezioni canoniche \(\pi_i : \bbB^n\to\bbB :(\tup xn,)\mapsto x_i\), con le quali è possibile caratterizzare le $f_i$ su menzionate: $f_i = \pi_i\cmp f$; è anche possibile definire la mappa diagonale \(\Delta_m:\bbB\to\bbB^m\) come
 	\[\Delta_m : x\mapsto (x,\dots,x)\quad m\text{ volte}\]
 cioè mediante le $m$ funzioni semplici identiche $x\mapsto x$.
 
@@ -916,16 +916,27 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 \begin{definition}\label{def_cat_opp}
 	Data una categoria \(\ctC\), la \emph{categoria opposta} o \emph{duale} \(\ctC^\op\) ha
 	\begin{itemize}
-		\item Come oggetti, gli stessi oggetti di \(\ctC\);
-		\item Come morfismi, un morfismo \(f^\op:Y\to X\) per ogni morfismo \(f:X\to Y\) di \(\ctC\);
-		\item Per ogni oggetto \(X\), l'identità è data da \((\id_X)^\op\);
-		\item Dati due morfismi \(f\) e \(g\) componibili in \(\ctC\), la composizione di \(f^\op\cmp g^\op\) è data da \((g\cmp f)^\op\). Si noti l'ordine inverso della composizione:
-		      \[
-			      \begin{tikzcd}
-				      \text{in }\ctC: & X \ar{r}[swap]{f} \ar[bend left=20]{rr}{g\cmp f} & Y \ar{r}[swap]{g} & Z \\
-				      \text{in }\ctC^\op: &X & Y  \ar{l}[swap]{f^\op} & Z \ar{l}[swap]{g^\op} \ar[bend left=20]{ll}{f^\op\cmp g^\op=(g\cmp f)^\op}
-			      \end{tikzcd}
-		      \]
+		\item come oggetti, gli stessi oggetti di \(\ctC\);
+		\item come morfismi, un morfismo \(f^\op:Y\to X\) per ogni morfismo \(f:X\to Y\) di \(\ctC\);
+		\item per ogni oggetto \(X\), l'identità è data da \((\id_X)^\op\);
+		\item dati due morfismi \(f\) e \(g\) componibili in \(\ctC\), la composizione di \(f^\op\cmp g^\op\) è data da \((g\cmp f)^\op\). Si noti l'ordine inverso della composizione:
+% https://q.uiver.app/#q=WzAsOCxbMCwxLCJcXHRleHR7aW4gfVxcY3RDOiJdLFsxLDAsIlgiXSxbMSwxLCJZIl0sWzIsMSwiWiJdLFszLDEsIlxcdGV4dHtpbiB9XFxjdENeXFxvcDoiXSxbNCwwLCJYIl0sWzQsMSwiWSJdLFs1LDEsIloiXSxbMSwyLCJmIiwyXSxbMiwzLCJnIiwyXSxbNyw2LCJnXlxcb3AiXSxbNiw1LCJmXlxcb3AiXSxbMSwzLCJnXFxjbXAgZiJdLFs3LDUsImZeXFxvcFxcY21wIGdeXFxvcCA9IChnXFxjbXAgZileXFxvcCIsMl1d
+\[\begin{tikzcd}
+	& X &&& X \\
+	{\text{in }\ctC:} & Y & Z & {\text{in }\ctC^\op:} & Y & Z
+	\arrow["f"', from=1-2, to=2-2]
+	\arrow["g"', from=2-2, to=2-3]
+	\arrow["{g^\op}", from=2-6, to=2-5]
+	\arrow["{f^\op}", from=2-5, to=1-5]
+	\arrow["{g\cmp f}", from=1-2, to=2-3]
+	\arrow["{f^\op\cmp g^\op = (g\cmp f)^\op}"', from=2-6, to=1-5]
+\end{tikzcd}\]
+		    %   \[
+			%       \begin{tikzcd}
+			% 	      \text{in }\ctC: & X \ar{r}[swap]{f} \ar[bend left=20]{rr}{g\cmp f} & Y \ar{r}[swap]{g} & Z \\
+			% 	      \text{in }\ctC^\op: &X & Y  \ar{l}[swap]{f^\op} & Z \ar{l}[swap]{g^\op} \ar[bend left=20]{ll}{f^\op\cmp g^\op=(g\cmp f)^\op}
+			%       \end{tikzcd}
+		    %   \]
 	\end{itemize}
 \end{definition}
 \begin{example}[Categorie e monoidi opposti]\label{mon_opposti_cat_opposte}
@@ -1180,7 +1191,7 @@ Verificare se gli assiomi di categoria sono soddisfatti, con le ovvie scelte di 
 		\item il diagramma
 		\[\begin{tikzcd}
 			{[n_1]}\ar[r, "t"]\ar[d, hook, "{f_1}"'] & {[n_0]} \ar[d, "f_0"]\\
-			{[n_1']} \ar[r, "{t'}"'] & {[n_0']} \\
+			{[n_1']} \ar[r, "{t'}"'] & {[n_0']}
 		\end{tikzcd}\]
 		è commutativo;
 		\item $f_0^{-1}(H')\subseteq H$.
@@ -1298,7 +1309,7 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 \begin{example}[Monoidi e gruppi liberi; gruppoidi liberi]\label{mongruppi_liberi}\index{Monoide!--- libero}\index{Monoide}\index{Categoria!--- libera}
   In \ref{ex_cat_libera} abbiamo introdotto le categorie libere su un grafo. Quando il grafo $\ctG=(\bullet,E)$ è composto di un unico vertice e ha $E$ come insieme dei lati, la categoria libera $F\ctG$ ha anch'essa un unico vertice, e in virtù di \ref{mon_sonocat} l'insieme $E^* := F\ctG(\bullet,\bullet)$ è un monoide rispetto alla congiunzione di lacci. L'insieme $E^*$ è il \emph{monoide libero} sull'insieme $E$, detto solitamente `alfabeto', dato che il generico elemento di $E^*$ è della forma 
   \[[\tup en;]\qquad n\ge 0, \tup en,\in E\]
-  o più brevemente $[\tup en{}]$, una `parola' scritta con le `lettere' $\tup en,$. La composizione è la giustapposizione di parole $[\tup en{}]\circ[\tup {e'}n{}] = [\tup en{}\tup{e'}n{}]$, per cui l'identità è la parola vuota $[]$ (quando $n=0$).
+  o più brevemente $[\tup en{}]$, una `parola' scritta con le `lettere' $\tup en,$. La composizione è la giustapposizione di parole $[\tup en{}]\cmp[\tup {e'}n{}] = [\tup en{}\tup{e'}n{}]$, per cui l'identità è la parola vuota $[]$ (quando $n=0$).
 
   Costruire i gruppi liberi (probabilmente noti a chi legge dall'algebra elementare) come gruppoidi liberi con un solo oggetto è più complicato. 
 
@@ -1668,7 +1679,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		G^\aa \ar[r, "f^\aa"']& H^\aa
 	\end{tikzcd}
 	\]
-	sia commutativo (questo è evidente, dato che $f[x,y]=[fx,fy]$). L'omomorfismo $f^\aa$ è l'unico con questa proprietà, e ciò mostra che $(g\circ f)^\aa = g^\aa\circ f^\aa$ e $(\id_G)^\aa=\id_{G^\aa}$.
+	sia commutativo (questo è evidente, dato che $f[x,y]=[fx,fy]$). L'omomorfismo $f^\aa$ è l'unico con questa proprietà, e ciò mostra che $(g\cmp f)^\aa = g^\aa\cmp f^\aa$ e $(\id_G)^\aa=\id_{G^\aa}$.
 \end{example}
 \begin{example}\index{Funtore!--- campo dei quozienti}
 	Se $R$ è un dominio di integrità, il suo \emph{campo dei quozienti} $Q(R)$ è l'anello definito come segue:
@@ -1700,7 +1711,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 			è tale che $\det(\GL(f)A)=\det\left(\begin{smallmatrix}
 				fa	&	fb \\
 				fc	&	fd
-				\end{smallmatrix}\right) = f(\det A)$, cosicché $\GL_2(f)$ è ben definita verso $\GL_2(S)$; evidentemente ciascun $\GL_2(f)$ è un omomorfismo di gruppi, e $f\mapsto\GL_2(g\circ f) = \GL_2(g)\circ\GL_2(f)$, e $\GL_2(\id_R) = \id_{\GL_2(R)}$.
+				\end{smallmatrix}\right) = f(\det A)$, cosicché $\GL_2(f)$ è ben definita verso $\GL_2(S)$; evidentemente ciascun $\GL_2(f)$ è un omomorfismo di gruppi, e $f\mapsto\GL_2(g\cmp f) = \GL_2(g)\cmp\GL_2(f)$, e $\GL_2(\id_R) = \id_{\GL_2(R)}$.
 \end{example}
 \begin{example}\index{Funtore!--- nucleo e conucleo}\index{ker|see {nucleo}}\index{coker|see {conucleo}}
 	% \Todo{Nucleo e conucleo di un omomorfismo}
