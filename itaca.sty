@@ -245,13 +245,15 @@
 \NewDocumentCommand{\prevar}{o m m O{\downarrow}}{
 	\IfNoValueTF{#1}{
 	  \begin{smallmatrix}
-	  	#2 \\ #4 \\ #3
+	  	#2 \\ % dom
+      #4 \\ %  ↓
+      #3    % cod
 	  \end{smallmatrix}}
 	{
 		\begin{xsmallmatrix}{0em}
-			   & #2         \\
-			#1 & #4 \\
-			   & #3
+			   & #2 \\ %  dom
+			#1 & #4 \\ % f ↓
+			   & #3    %  cod
 		\end{xsmallmatrix}
 	}
 }
