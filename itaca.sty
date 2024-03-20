@@ -17,43 +17,45 @@
                }
 
 \ExplSyntaxOn
-\NewDocumentCommand{\makeabbrev}{mmm}
- {
-  \yoruk_makeabbrev:nnn { #1 } { #2 } { #3 }
- }
 
-\cs_new_protected:Npn \yoruk_makeabbrev:nnn #1 #2 #3
+\clist_new:N \g_itaca_upper_clist
+\clist_gset:Nn \g_itaca_upper_clist { A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+
+\clist_new:N \g_itaca_lower_clist
+\clist_gset:Nn \g_itaca_lower_clist { a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z }
+
+\clist_new:N \g_itaca_both_clist
+\clist_concat:NNN \g_itaca_both_clist \g_itaca_upper_clist \g_itaca_lower_clist
+
+\clist_new:N \g_itaca_categories_clist
+\clist_gset:Nn \g_itaca_categories_clist { Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, Ord, FOrd, Lat, Vect, Mat, HoTop, Fld, DInt }
+
+\clist_new:N \g_itaca_operators_clist
+\clist_gset:Nn \g_itaca_operators_clist { GL, lan, Lan, LAN, lft, Lft, LFT, Nat, ran,  Ran, RAN, Rft, Yan, RFT, rft, op, co, coop, colim, coker, eq, coeq }
+
+\cs_new_protected:Npn \itaca_makeabbrev:nnN #1 #2 #3
  {
-  \clist_map_inline:nn { #3 }
+  \clist_map_inline:Nn { #3 }
    {
     \cs_new_protected:cpn { #2 } { #1 { ##1 } }
    }
  }
+\itaca_makeabbrev:nnN { \textbf } { bf#1 } \g_itaca_both_clist
+\itaca_makeabbrev:nnN { \mathfrak } { fk#1 } \g_itaca_both_clist
+\itaca_makeabbrev:nnN { \boldsymbol } { mnd#1 } \g_itaca_both_clist
+\itaca_makeabbrev:nnN { \textsf } { sf#1 } \g_itaca_both_clist
+\itaca_makeabbrev:nnN { \underline } { un#1 } \g_itaca_both_clist
+
+\itaca_makeabbrev:nnN { \mathcal } { ct#1 } \g_itaca_upper_clist
+\itaca_makeabbrev:nnN { \mathscr } { ect#1 } \g_itaca_upper_clist
+\itaca_makeabbrev:nnN { \mathbb } { ict#1 } \g_itaca_upper_clist
+\itaca_makeabbrev:nnN { \mathbb } { bb#1 } \g_itaca_upper_clist
+\itaca_makeabbrev:nnN { \mathrm } { ob#1 } \g_itaca_upper_clist
+
+\itaca_makeabbrev:nnN { \textsf } { ct#1 } \g_itaca_categories_clist
+\itaca_makeabbrev:nnN { \mathrm } { #1 } \g_itaca_operators_clist
+
 \ExplSyntaxOff
-
-\makeabbrev{\textbf}{bf#1}{
-  a,b,c,d,e,g,h,i,j,k,l,m,n,o,p,q,r,t,u,v,w,x,y,z,%
-  A,B,C,D,E,G,H,I,J,K,L,M,N,O,P,Q,R,T,U,V,W,X,Y,Z }
-\makeabbrev{\boldsymbol}{mnd#1}{%
-    a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%
-    A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
-
-\makeabbrev{\mathfrak}{fk#1}{
-  a,b,c,d,e,f,g,h,j,k,i,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%
-  A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
-
-  \makeabbrev{\mathcal}{ct#1}{
-    A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
-\makeabbrev{\mathscr}{ect#1}{
-  A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
-\makeabbrev{\mathbb}{ict#1}{
-    A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
-\makeabbrev{\mathbb}{bb#1}{
-    A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
-\makeabbrev{\mathrm}{ob#1}{
-  A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
-
-\makeabbrev{\mathbf}{ct#1}{ Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, Ord, FOrd, Lat, Vect, Mat, HoTop, Fld, DInt }
 
 \def\pSet{\partial\ctSet}
 \def\ctCsAlg{\mathrm{C}^*\emdash\cate{Alg}}
