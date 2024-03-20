@@ -2,6 +2,17 @@
 \ProvidesPackage{itaca-preambolo/itaca}
   [lo .sty per il libro di ItaCa]
 
+
+
+% TODO:
+% - funziona tutto ma c'è molto refactoring da fare:
+  % - la parte in LaTeX3 è vecchia e farraginosa
+  % - i nomi delle categorie sono un po' random
+  % - le macro vanno separate per tipo
+  % - alcune vanno definite con meno hacks
+  % - va tutto documentato meglio
+
+
 % questi vanno chiamati per primi
 \RequirePackage{ xparse
                , mathrsfs
@@ -199,15 +210,30 @@
 
 \def\squig{\rightsquigarrow}
 
+% un generico `todo`
 \newcommand{\Todo}[1]{\todo[inline, caption=0,color=green!20]{#1}}
-\newcommand{\cippo}{\todo[inline, caption=0,color=blue!20]{Sono arrivato qui, il \today}}
+
+% un box dei commenti dedicato a ciascuno di noi 
+
+\NewDocumentCommand{\bla}{ O{\textit{anonimo}} m O{red} }{
+  \todo[inline, caption=0, color=#3!10]{ \scriptsize #1 ha detto: #2 }
+}
+
+\NewDocumentCommand{\fosco}{ m }{\bla[Fosco]{#1}[red]}
+\NewDocumentCommand{\paolo}{ m }{\bla[Paolo]{#1}[green]}
+\NewDocumentCommand{\beppe}{ m }{\bla[Beppe]{#1}[blue]}
+\NewDocumentCommand{\ivan}{ m }{\bla[Ivan]{#1}[yellow]}
+\NewDocumentCommand{\enricoV}{ m }{\bla[Enrico V.]{#1}[black]}
+\NewDocumentCommand{\enricoG}{ m }{\bla[Enrico G.]{#1}[cyan]}
+% ... poi aggiungerò gli altri.
+
 \DeclareDocumentEnvironment{enumtag}{m}{%
-	\begin{enumerate}[ label = \textsc{#1}\oldstylenums{\arabic*}), ref   = \textsc{#1}\oldstylenums{\arabic*} ] }{ \end{enumerate} }
+	\begin{enumerate}[ label = \textsc{#1}\oldstylenums{\arabic*}), ref = \textsc{#1}\oldstylenums{\arabic*} ] }{ \end{enumerate} }
 
 \newcommand{\emdash}{\text{-}}
 \setlist[itemize,enumerate]{itemsep=0pt}
 
-\def\pto{\rightarrowtriangle}%{\mathbin{\ooalign{$\to$\cr$\hfil\mapstochar\hfil$}}}
+\def\pto{\rightarrowtriangle}
 
 
 \def\longmor#1#2{\begin{tikzcd}[ampersand replacement=\&] #1 \ar[r] \& #2 \end{tikzcd}}
@@ -273,7 +299,7 @@
   #1/\!\!/#1
 }
 
-% funtore in displaymath
+% [d]isplay[m]ath[Fun]ctor
 \NewDocumentCommand{\dmFun}{m m m}{
   \begin{tikzcd}[ampersand replacement=\&]
     #1 : #2 \ar[r] \& #3
