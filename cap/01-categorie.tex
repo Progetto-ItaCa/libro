@@ -102,8 +102,8 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 		\item come conseguenza immediata, se \(X\ne X'\) sono oggetti diversi, le identità \(\id_X,\id_{X'}\) sono morfismi diversi: si può cioè pensare la corrispondenza \(X\mapsto \id_X : \ctC_0\to\ctC_1\) come una funzione \emph{iniettiva} tra classi;
 		\item la composizione consta di una funzione \emph{parziale}
 		      \[\xymatrix{\_\cmp\_ : \ctC_1 \times \ctC_1 \ar[r] & \ctC_1}\]
-		      il cui dominio è la sotto-classe \(\sum_{XYZ} \{ X \xrightarrow f Y \xrightarrow g Z \}\) dei morfismi \emph{contigui} o componibili. Dato che i vari \(\ctC(X,Y)\) sono a due a due disgiunti, la composizione \(\_\cmp\_\) si `spezza' in una classe di funzioni
-		      \[\xymatrix{\_\cmp_{XZ}^Y\_ : \ctC(Y,Z)\times\ctC(X,Y) \ar[r] & \ctC(X,Z)}\]
+		      il cui dominio è la sotto-classe \(\sum_{XYZ} \{ X \xrightarrow f Y \xrightarrow g Z \}\) dei morfismi \emph{contigui} o componibili. Dato che i vari \(\Hom{\ctC}(X,Y)\) sono a due a due disgiunti, la composizione \(\_\cmp\_\) si `spezza' in una classe di funzioni
+		      \[\xymatrix{\_\cmp_{XZ}^Y\_ : \Hom{\ctC}(Y,Z)\times\Hom{\ctC}(X,Y) \ar[r] & \Hom{\ctC}(X,Z)}\]
 		      dove ciascuna manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in \(g\cmp f\) (si sottintende \emph{sempre} il dominio particolare di \(\_\cmp_{XZ}^Y\_\) e lo si indica solo con $\_\cmp\_$).
 	\end{itemize}
 \end{remark}
@@ -789,21 +789,21 @@ Consideriamo ora i seguenti esempi di categorie simili (che raccogliamo in dei t
 \end{remark}
 Occupiamoci ora di dimostrare che una categoria dove tra due oggetti esiste al più un morfismo è \emph{precisamente} un insieme (pre)ordinato.
 \begin{theorem}\label{cat_sonopos}
-	Sia \(\ctC\) una categoria, con la proprietà che \(\ctC(X,Y)\) ha al più un elemento. Allora, la relazione
-	\[X\le Y \iff \ctC(X,Y) \text{ non è vuoto}\]
+	Sia \(\ctC\) una categoria, con la proprietà che \(\Hom{\ctC}(X,Y)\) ha al più un elemento. Allora, la relazione
+	\[X\le Y \iff \Hom{\ctC}(X,Y) \text{ non è vuoto}\]
 	definisce una struttura di insieme preordinato su \(\ctC_0\).
 \end{theorem}
 \begin{proof}
 	La relazione così definita è
 	\begin{itemize}
-		\item riflessiva, perché \(\ctC(X,X)\) contiene l'identità (e solo l'identità);
-		\item transitiva, perché se \(\ctC(X,Y), \ctC(Y,Z)\) non sono vuoti, la composizione è definita come in \ref{cor_def_categ} e quindi esiste esattamente un elemento in \(\ctC(X,Z)\).\qedhere
+		\item riflessiva, perché \(\Hom{\ctC}(X,X)\) contiene l'identità (e solo l'identità);
+		\item transitiva, perché se \(\Hom{\ctC}(X,Y), \Hom{\ctC}(Y,Z)\) non sono vuoti, la composizione è definita come in \ref{cor_def_categ} e quindi esiste esattamente un elemento in \(\Hom{\ctC}(X,Z)\).\qedhere
 	\end{itemize}
 \end{proof}
 \index{Categoria!--- da un monoide}
 Esiste un altro esempio di questo fatto (alcune strutture matematiche sono esse stesse una categoria): infatti, ogni monoide si può vedere come una categoria che ha un solo oggetto. Questi sono precisamente gli esempi iniziali con cui abbiamo motivato la definizione \ref{def_categ}.
 \begin{theorem}\label{mon_sonocat}
-	Dato un monoide \((M,\cdot,1)\), definiamo la seguente categoria, che indichiamo con \(\ctB M\).\footnote{A volte la categoria definita in questo modo si indica con \(\ctB(M,\cdot)\), a volte (quando l'operazione su \(M\) è ovvia dal contesto) semplicemente con \(\ctB M\).}
+	Dato un monoide \((M,\cdot,1)\), definiamo la seguente categoria, che indichiamo con \(\ctB M\).\footnote{A volte la categoria definita in questo modo si indica con \(\ctB(M,\cdot,1)\), a volte (quando l'operazione su \(M\) è ovvia dal contesto) semplicemente con \(\ctB M\).}
 	\begin{itemize}
 		\item La categoria \(\ctB M\) ha un unico oggetto, che indichiamo con \(\bullet\);\footnote{La notazione è volta a suggerire che precisare questo elemento non sarà mai importante (una scelta canonica, ma che potrebbe causare confusione, è fissare \(\ctB M_0 := \{M\}\), insieme che ovviamente \emph{non} è \(M\)).}
 		\item La categoria \(\ctB M\) ha un morfismo \(m:\bullet\to\bullet\) per ogni elemento \(m\in M\); l'unico hom-insieme che dobbiamo specificare, \(\Hom{\ctB M}(\bullet,\bullet)\), è cioè uguale a \(M\), e in particolare, l'identità \(\id_\bullet\) è l'elemento neutro \(1\in M\);
@@ -829,7 +829,7 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 	In particolare, un gruppo \((G,\cdot,1)\) si può ugualmente vedere come la categoria \(\ctB G\) ad esso associata, che ha un solo oggetto e \(G\) come insieme di morfismi. In maniera concisa (ma anche ora, chi legge dovrebbe fermarsi a riflettere finché questa frase non risulta perfettamente evidente) un monoide è una categoria con un singolo oggetto.%, e un gruppo è un gruppoide (come in \ref{def_gruppoide}) con un singolo oggetto.
 \end{corollary}
 \begin{remark}
-	Del resto, una categoria con un solo oggetto non `è' un monoide, ma lo definisce naturalmente; e un monoide non `è' la categoria \(\ctB M\), ma la definisce naturalmente (e qualcosa di simile si può dire per gli insiemi ordinati). In altre parole, eliminare la distinzione tra \(M\) e \(\ctB M\) non segue da una tautologia, ma è una \emph{identità informativa} (intesa come in `Senso e significato' di Frege) che non è \emph{strettamente} una identità ma una \emph{identificazione}: \(M\mapsto \ctB M\) e \(\ctC\mapsto \ctC_1\) sono, a patto che \(\ctC_0\) abbia un solo elemento, corrispondenze inverse una dell'altra, nel senso che \((\ctB M)_1 = M\) e che \(\ctB(\ctC_1) = \ctC\).
+	Del resto, una categoria con un solo oggetto non `è' un monoide, ma lo definisce naturalmente; e un monoide non `è' la categoria \(\ctB M\), ma la definisce naturalmente (e qualcosa di simile si può dire per gli insiemi ordinati). In altre parole, eliminare la distinzione tra \(M\) e \(\ctB M\) non segue da una tautologia, ma è una \emph{identità informativa} (intesa come in `Senso e significato' di Frege) che non è \emph{strettamente} una identità ma una \emph{identificazione}: \(M\mapsto \ctB M\) e \(\ctC\mapsto \ctC_1\) sono, a patto che \(\ctC_0\) abbia un solo elemento $\{\bullet\}$, corrispondenze inverse una dell'altra, nel senso che \((\ctB M,\cdot,1)_1 = M\) e che \(\ctB(\ctC_1,\circ,\id_\bullet) = \ctC\).
 	%Dato un oggetto \(X\) di una categoria, un morfismo da \(X\) a \(X\) si chiama anche \emph{endomorfismo}. In un monoide, tutti i morfismi sono endomorfismi.
 \end{remark}
 % \begin{remark}
@@ -1214,7 +1214,7 @@ e una spanna dello stesso tipo corrisponde a una relazione non appena la funzion
 \end{tikzcd}
 \]
 si dice il \emph{grafico} di $R$: per quale motivo? Si disegni la cospanna $c(R)$ per semplici relazioni tra insiemi finiti; si descriva $c(R)$ per una relazione $R\subseteq X\times X$ che sia riflessiva, per una simmetrica, per una transitiva, su un insieme $X$.
-	\item Determinare il giunto di due catene generiche \(\Delta[n] * \Delta[m]\) come in \ref{ex_cat_catena} e di due cubi \(P[n] * P[m]\) come in \ref{ex_quadcuboncubo}, e più in generale di due insiemi parzialmente ordinati \(P,Q\). Determinare il giunto di due categorie discrete (prenderle finite!) \(A^\delta * B^\delta\) come in \ref{ex_cat_discreta} e di due categorie codiscrete \(A^\chi * B^\chi\): il risultato è ancora codiscreto? Più in generale, determinare il giunto di due gruppoidi \(\ctG * \ctG'\); il risultato è ancora un gruppoide? Determinare il giunto \(\ctB(\bbN,+) * \ctB(\bbN,+)\) del monoide dei numeri naturali con la somma, e \(\ctB(\bbN,\max) * \ctB(\bbN,\max)\) del monoide dove la moltiplicazione è data da \(n\land m \defeq \max\{n,m\}\). C'è una relazione tra \((\ctC\star\ctD)^\op\) e \(\ctD^\op\star\ctC^\op\) (uguali, oposte una dell'altra, nessuna relazione\dots)?
+	\item Determinare il giunto di due catene generiche \(\Delta[n] * \Delta[m]\) come in \ref{ex_cat_catena} e di due cubi \(P[n] * P[m]\) come in \ref{ex_quadcuboncubo}, e più in generale di due insiemi parzialmente ordinati \(P,Q\). Determinare il giunto di due categorie discrete (prenderle finite!) \(A^\delta * B^\delta\) come in \ref{ex_cat_discreta} e di due categorie codiscrete \(A^\chi * B^\chi\): il risultato è ancora codiscreto? Più in generale, determinare il giunto di due gruppoidi \(\ctG * \ctG'\); il risultato è ancora un gruppoide? Determinare il giunto \(\ctB(\bbN,+,0) * \ctB(\bbN,+,0)\) del monoide dei numeri naturali con la somma, e \(\ctB(\bbN,\max,0) * \ctB(\bbN,\max,0)\) del monoide dove la moltiplicazione è data da \(n\land m \defeq \max\{n,m\}\). C'è una relazione tra \((\ctC\star\ctD)^\op\) e \(\ctD^\op\star\ctC^\op\) (uguali, oposte una dell'altra, nessuna relazione\dots)?
 \end{enumerate}
 \section{Isomorfismi}\label{sec_isomorfismi}\index{Isomorfismo}
 La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta. Fu però solo la definizione di categoria data da Eilenberg e Mac Lane in \cite{gtone} a fissare definitivamente la nozione moderna nell'uso matematico.
@@ -1286,7 +1286,7 @@ Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando 
 	L'associatività dell'operazione di \(G\) rende \(\act G\) una categoria.
 \end{example}
 \begin{definition}
-	Un \emph{automorfismo} è un endomorfismo (un morfismo da un oggetto a sé stesso) invertibile. In un gruppo \((G,\cdot)\) guardato come una categoria \(\ctB(G,\cdot)\) tutti i morfismi \(g : \star\to\star\) sono automorfismi.
+	Un \emph{automorfismo} è un endomorfismo (un morfismo da un oggetto a sé stesso) invertibile. In un gruppo \((G,\cdot)\) guardato come una categoria \(\ctB(G,\cdot,1)\) tutti i morfismi \(g : \star\to\star\) sono automorfismi.
 \end{definition}
 
 \begin{example}\label{ex_cat_gruppoide_naturali}
@@ -1509,12 +1509,12 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \]
 è commutativo.
 \begin{example}\label{ex_hom_funtore}\index{Funtore!hom --- covariante}\index{Funtore!hom --- controvariante}
-	L'esempio prototipico di \emph{funtore hom} controvariante, definito come segue. Sia \(\ctC\) una categoria, e \(X\) un suo oggetto. Definiamo un funtore \(\ctC(-,X) : \ctC^\op\fun\ctSet\) come segue:
+	L'esempio prototipico di \emph{funtore hom} controvariante, definito come segue. Sia \(\ctC\) una categoria, e \(X\) un suo oggetto. Definiamo un funtore \(\Hom{\ctC}(-,X) : \ctC^\op\fun\ctSet\) come segue:
 	\begin{itemize}
-		\item un oggetto \(Y\) viene mandato nell'insieme \(\ctC(Y,X)\) dei morfismi \(u : Y\to X\);
+		\item un oggetto \(Y\) viene mandato nell'insieme \(\Hom{\ctC}(Y,X)\) dei morfismi \(u : Y\to X\);
 		\item un morfismo \(f : Y\to Y'\) viene mandato nella funzione
 		      \[\xymatrix{
-				      \ctC(Y',X) \ar[r] & \ctC(Y,X)
+				      \Hom{\ctC}(Y',X) \ar[r] & \Hom{\ctC}(Y,X)
 			      }\]
 		      che manda \(u : Y'\to X\) in \(u\cmp f : Y\to Y' \to X\).
 	\end{itemize}
@@ -1523,15 +1523,15 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		\item verificare che \((u\cmp f)\cmp g = u\cmp (f\cmp g)\), perché la composizione è associativa;
 		\item verificare che \(u\cmp \id_Y = u\), perché la composizione è unitale.
 	\end{itemize}
-	Dualmente, possiamo definire un funtore hom covariante \(\ctC(X,-)\), fissando un oggetto \(X\in\ctC_0\) e definendo la funzione sugli oggetti come \(\ctC(X,-)_0 : Y\mapsto \ctC(X,Y)\) e \(\ctC(X,f) : (u : X\to Y)\mapsto f\cmp u\) per \(f : Y\to Y'\).
+	Dualmente, possiamo definire un funtore hom covariante \(\Hom{\ctC}(X,-)\), fissando un oggetto \(X\in\ctC_0\) e definendo la funzione sugli oggetti come \(\Hom{\ctC}(X,-)_0 : Y\mapsto \Hom{\ctC}(X,Y)\) e \(\Hom{\ctC}(X,f) : (u : X\to Y)\mapsto f\cmp u\) per \(f : Y\to Y'\).
 
 	\index{Funtore!hom ---} In effetti, entrambi i funtori hom covarianti e controvarianti nascono fissando la componente (destra per il funtore hom controvariante, sinistra per il covariante) del \emph{bifuntore hom} di \(\ctC\),
 	\[\xymatrix{\hom_\ctC : \ctC^\op\times\ctC \ar[r] & \ctSet}\]
 	definito come segue:
 	\begin{itemize}
-		\item Sugli oggetti, \((X,Y)\mapsto \ctC(X,Y)\);
+		\item Sugli oggetti, \((X,Y)\mapsto \Hom{\ctC}(X,Y)\);
 		\item sui morfismi, il morfismo \((u : X'\to X, v : Y\to Y')\) induce la funzione
-		      \[\xymatrix{\ctC(X,Y) \ar[r] & \ctC(X',Y')}\]
+		      \[\xymatrix{\Hom{\ctC}(X,Y) \ar[r] & \Hom{\ctC}(X',Y')}\]
 		      che manda \(h : X\to Y\) in \(v\cmp h\cmp u\).
 	\end{itemize}
 	Con questa definizione, è evidente che se \(f : A\to B\) è un morfismo di \(\ctC\), \(\hom(f,X)\) agisce come \(\hom(f,\id_X)\) e \(\hom(Y,f)\) agisce come \(\hom(\id_Y,f)\).
@@ -1883,7 +1883,7 @@ Si arriva così alle seguenti definizioni.
 \end{remark}
 Dato che le definizioni categoriali di mono ed epi generalizzano, rispettivamente, quelle, algebriche, di elementi cancellabili a sinistra e a destra, otteniamo immediatamente il seguente esempio.
 \begin{example}
-	Nella categoria \(\ctB(M,\cdot)\) indotta da un monoide come in \ref{mon_sonocat}, i mono sono gli elementi cancellabili a sinistra,
+	Nella categoria \(\ctB(M,\cdot,1)\) indotta da un monoide come in \ref{mon_sonocat}, i mono sono gli elementi cancellabili a sinistra,
 	e gli epi sono gli elementi cancellabili a destra.
 \end{example}
 

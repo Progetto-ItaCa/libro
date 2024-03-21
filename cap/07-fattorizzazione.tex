@@ -54,17 +54,17 @@ La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetric
 	Sia \(\ctC\) una categoria che ha un oggetto terminale \(\term\). Allora, dati un morfismo \(f : X\to Y\), e un oggetto \(A\in \ctC_0\), le condizioni seguenti sono equivalenti:
 	\begin{enumtag}{ot}
 		\item\label{ot_1} il morfismo \(f\) è ortogonale a sinistra al morfismo terminale \(A\to \term\);
-		\item\label{ot_2} il funtore \(\ctC(\_,A)\) manda il morfismo \(f\) in una biiezione
+		\item\label{ot_2} il funtore \(\Hom{\ctC}(\_,A)\) manda il morfismo \(f\) in una biiezione
 		\[\begin{tikzcd}
-				\ctC(Y,A) \ar[r, "{g\cmp \_}"] & \ctC(X,A).
+				\Hom{\ctC}(Y,A) \ar[r, "{g\cmp \_}"] & \Hom{\ctC}(X,A).
 			\end{tikzcd}\]
 	\end{enumtag}
 	Dualmente, sia \(\ctC\) una categoria con un oggetto iniziale \(\init\). Allora, dati un morfismo \(g : A\to B\), e un oggetto \(Y\in\ctC_0\), le condizioni seguenti sono equivalenti:
 	\begin{enumtag}{oi}
 		\item \label{oi_1} il morfismo \(g\) è ortogonale a destra al morfismo iniziale \(\init\to Y\);
-		\item \label{oi_2} il funtore \(\ctC(B,\_)\) manda il morfismo \(g\) in una biiezione
+		\item \label{oi_2} il funtore \(\Hom{\ctC}(B,\_)\) manda il morfismo \(g\) in una biiezione
 		\[\begin{tikzcd}
-				\ctC(Y,A) \ar[r, "{\_\cmp f}"] & \ctC(Y,B).
+				\Hom{\ctC}(Y,A) \ar[r, "{\_\cmp f}"] & \Hom{\ctC}(Y,B).
 			\end{tikzcd}\]
 	\end{enumtag}
 \end{proposition}
@@ -157,17 +157,17 @@ Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limi
 	Siano \(f : A \to B\) e \(g : X\to Y\) due morfismi di ua categoria \(\ctC\). Il \emph{prodotto di Leibniz} di \(f\) e \(g\), denotato \(f\oast g\), si costruisce a partire dal prodotto fibrato
 	\[
 		\begin{tikzcd}
-			\pull {\ctC(A,X)}{\ctC(B,Y)}{\ctC(A,Y)} \ar[r]\ar[d] & \ctC(B,Y) \ar[d, "\_\cmp f"]\\
-			\ctC(A,X) \ar[r, "g\cmp\_"'] & \ctC(A,Y)
+			\pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)} \ar[r]\ar[d] & \Hom{\ctC}(B,Y) \ar[d, "\_\cmp f"]\\
+			\Hom{\ctC}(A,X) \ar[r, "g\cmp\_"'] & \Hom{\ctC}(A,Y)
 		\end{tikzcd}
 	\]
-	e consiste della mappa di confronto \(f\oast g : \ctC(B,X) \to \pull {\ctC(A,X)}{\ctC(B,Y)}{\ctC(A,Y)}\) indotta dalla proprietà universale.
+	e consiste della mappa di confronto \(f\oast g : \Hom{\ctC}(B,X) \to \pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)}\) indotta dalla proprietà universale.
 
 	Diciamo che il prodotto di Leibniz di \(f,g\) è \emph{esatto} se \(f\oast g\) è una biiezione. Questo è equivalente ad affermare che il quadrato
 	\[
 		\begin{tikzcd}
-			\ctC(B,X) \ar[d]\ar[r,"g\cmp\_"]& \ctC(B,Y)\ar[d, "\_\cmp f"]\\
-			\ctC(A,X) \ar[r, "g\cmp\_"'] & \ctC(A,Y)
+			\Hom{\ctC}(B,X) \ar[d]\ar[r,"g\cmp\_"]& \Hom{\ctC}(B,Y)\ar[d, "\_\cmp f"]\\
+			\Hom{\ctC}(A,X) \ar[r, "g\cmp\_"'] & \Hom{\ctC}(A,Y)
 		\end{tikzcd}
 	\]
 	è un prodotto fibrato.
