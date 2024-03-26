@@ -19,11 +19,11 @@ le rose sono blu
 
 Chi ha ragione? Come fanno `A` e `B`a mettersi d'accordo su quale delle due versioni del file `file.txt` va usata nel progetto?
 
-Per risolvere questo problema serve una maniera di rappresentare univocamente le varie versioni in cui un file di codice evolve nel tempo; l'ideale sarebbe rendere possibile tornare indietro a una versione precedente dopo aver sperimentato qualcosa che si è rivelato fallace, e risolvere quanto più automaticamente possibile conflitti analoghi a quello sopra.
+Per risolvere questo problema servirebbe una maniera di rappresentare univocamente le varie versioni di un file di testo, tenendo traccia di come esso evolve nel tempo; l'ideale sarebbe rendere possibile *tornare indietro* a una versione precedente del file dopo aver sperimentato qualcosa che si è rivelato fallace, e risolvere quanto più automaticamente possibile conflitti analoghi a quello sopra.
 
 Hence git.
 
-## Cosa è una repo
+## Cosa è un repo
 
 Un "repo" o *repository* è un apparato che risolve il problema di rappresentare la storia di modifiche successive potenzialmente divergenti ad una base di codice.
 
@@ -40,9 +40,9 @@ Sebbene i nodi rappresentino DIFFERENZE tra due versioni del codice, è uso comu
 Gli hash sono riferimenti univoci e immutabili a "stati" del codice, ma non sono pratici nell'uso quotidiano.
 Questo è il motivo per cui l'albero viene decorato con delle etichette mobili (che prendono il nome di *branch* o *tag* a seconda del modo in cui vengono spostate). Più dettagli di seguito.
 
-## Dove è una repo
+## Dove è un repo
 
-Ogni cartella di un computer può essere resa una repo con il comando `git init` (vedi sotto); questa nota introduttiva però non parlerà di nulla che a a che fare con la creazione delle repo, la loro cancellazione etc.
+Ogni cartella di un computer può essere resa un repo con il comando `git init` (vedi sotto); questa nota introduttiva però non parlerà di nulla che a a che fare con la creazione delle repo, la loro cancellazione etc.
 
 Se si trova sulla propria macchina viene chiamato repository o origin **locale**.
 
@@ -51,14 +51,14 @@ Se si trova sulla macchina di qualche servizio di hosting (e.g. GitHub, BitBucke
 La differenza non è nella struttura ma nell'utilizzo: i repo remoti sono tipicamente quelli di riferimento utilizzato per la condivisione del codice tra vari utenti. Tutti gli utenti che contribuiscono a un progetto "puntano" al repo remoto e riferiscono ad esso le modifiche, salvo esplicita scelta di non farlo.
 
 Infatti gli utenti possono creare una versione locale del repo remoto, applicare delle modifiche, e "spingerle" poi verso il repo remoto per condividerle (o confrontarle e riconciliare i conflitti) con gli altri.
-## Come si usa una repo (da soli, con git)
+## Come si usa un repo (da soli, con git)
 
 Il principale servizio che ospita repository remote è [GitHub](https://github.com/). Ne parliamo dopo.
 
 Lo strumento principale con cui si manipolano repository locali è [git](https://git-scm.com/).
 
 Si tratta di una commandline utility, e nel seguito esamineremo i principali comandi. A seconda del proprio OS, ci sono diversi modi di installarlo sulla propria macchina, ma è molto probabile che sia già presente.
-### Clonare una repo
+### Clonare un repo
 
 Per creare una copia locale di un repository remoto il comando da utilizzare è **`clone`**; il parametro importante da fornire è l'indirizzo del repository remoto: ad esempio, aperto un terminale
 
@@ -96,7 +96,7 @@ Le indicazioni `origin/*` hanno un significato analogo, ma in relazione allo sta
 
 Entrare nel dettaglio non è fondamentale al momento.
 
-### Modificare una repo
+### Modificare un repo
 
 Immaginiamo che il contenuto della repo che abbiamo appena clonato sia il seguente:
 
@@ -305,7 +305,7 @@ Quello con la stellina è il branch dove ci troviamo al momento. Per tornare a `
 
 Altre operazioni possibili sono la cancellazione di un branch, con `git checkout -d`: leggete [qui](https://www.cloudbees.com/blog/git-delete-branch-how-to-for-both-local-and-remote) se volete, ma non credo dovrete preoccuparvi troppo di questo (io ed altri cancelleremo i branch che non servono più).
 
-## Come si usa una repo (in compagnia, con GitHub)
+## Come si usa un repo (in compagnia, con GitHub)
 
 Quando molte persone contribuiscono ad un unico repo accade naturalmente che ognuno produca una "storia" divergente da quella degli altri.
 
@@ -342,9 +342,9 @@ il vostro avrà un aspetto molto simile (e se accedete al mio, voi vedrete solo 
 
 ### Cos'è (e come si usa) una pull request
 
-Spesso chi vuole contribuire a una repo non ne ha completo accesso (per esempio per ragioni di sicurezza; oppure progetti molto grandi possono avere dei collaboratori saltuari, che sono perfetti estranei: per questo motivo il proprietario di una repo può voler esaminare i cambiamenti fatti da qualcuno prima di integrarli nel suo progetto).
+Spesso chi vuole contribuire a un repo non ne ha completo accesso (per esempio per ragioni di sicurezza; oppure progetti molto grandi possono avere dei collaboratori saltuari, che sono perfetti estranei: per questo motivo il proprietario di un repo può voler esaminare i cambiamenti fatti da qualcuno prima di integrarli nel suo progetto).
 
-Se `A` vuole modificare il contenuto di una repo ad accesso ristretto deve prima creare *un altro* repo remoto a cui può accedere e che può modificare senza restrizioni (un "fork" del repo originario), per poi confrontare il fork con quest'ultimo. Questo avviene nel proprio profilo GitHub.
+Se `A` vuole modificare il contenuto di un repo ad accesso ristretto deve prima creare *un altro* repo remoto a cui può accedere e che può modificare senza restrizioni (un "fork" del repo originario), per poi confrontare il fork con quest'ultimo. Questo avviene nel proprio profilo GitHub.
 
 Questa azione si chiama una "pull request": l'utente che ha forkato il repo originario domanda al suo proprietario `B` il permesso di mergiare i contributi dal fork al repo originario, mostrandogli le modifiche che ha fatto (alcuni commit del suo storico).
 
@@ -364,7 +364,7 @@ L'interazione tipica tra `A` e `B` è una cosa del genere
 - ...
 - finché a un certo punto (si spera) si converge al momento in cui `B` accetta la PR.
 
-Quando `A` vuole forkare una repo, lo fa da GitHub e gli appare una copia della repo forkata nel proprio profilo; da lì, `A` clona una copia locale e agisce come al solito. In poche parole una PR permette di confrontare due branch di repo remote su cui persone diverse hanno agito e unificare il loro contenuto. Ad `A` quindi serve una copia in remoto del repo di `B`! Questo è ciò a cui serve un fork.
+Quando `A` vuole forkare un repo, lo fa da GitHub e gli appare una copia della repo forkata nel proprio profilo; da lì, `A` clona una copia locale e agisce come al solito. In poche parole una PR permette di confrontare due branch di repo remote su cui persone diverse hanno agito e unificare il loro contenuto. Ad `A` quindi serve una copia in remoto del repo di `B`! Questo è ciò a cui serve un fork.
 
 ### Qualche considerazione finale
 
