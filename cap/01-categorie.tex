@@ -36,7 +36,7 @@ Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogn
 	\[\xymatrix{
 			[p] \ar[r]^-f & [q] \ar[r]^-g & [r].
 		}\]
-	La composizione di funzioni \((f,g)\mapsto g\cmp f\) perciò è una operazione che ricorda quella di un monoide (per esempio, essa è associativa quando è definita) ma è appunto un'operazione \emph{parziale}, cioè non definita tra tutte le possibili coppie \((f,g)\) di funzioni tra insiemi finiti; quale che sia la struttura matematica che la classe degli insiemi finiti forma, perciò, essa non può essere un monoide. Un altro motivo per cui \(\ctFin\) non può essere un monoide è che l'identità per la composizione di funzioni non è unica come accade, invece, in ogni monoide: \emph{ogni} insieme finito \([n]\) ha una sua propria funzione identica \(\id_{[n]}\), e se \(f : [m]\to [n]\) con \(m\ne n\), si deve avere che \(f\cmp \id_{[m]}=f=\id_{[n]}\cmp f\) per funzioni identiche formalmente \emph{distinte}, sebbene definite `alla stessa maniera' da
+	La composizione di funzioni \((f,g)\mapsto g\cmp f\) perciò è una operazione che ricorda quella di \ref{prelim_def_monoide} (per esempio, essa è associativa quando è definita) ma è appunto un'operazione \emph{parziale}, cioè non definita tra tutte le possibili coppie \((f,g)\) di funzioni tra insiemi finiti; quale che sia la struttura matematica che la classe degli insiemi finiti forma, perciò, essa non può essere un monoide. Un altro motivo per cui \(\ctFin\) non può essere un monoide è che l'identità per la composizione di funzioni non è unica come accade, invece, in ogni monoide: \emph{ogni} insieme finito \([n]\) ha una sua propria funzione identica \(\id_{[n]}\), e se \(f : [m]\to [n]\) con \(m\ne n\), si deve avere che \(f\cmp \id_{[m]}=f=\id_{[n]}\cmp f\) per funzioni identiche formalmente \emph{distinte}, sebbene definite `alla stessa maniera' da
 	\[
 		\begin{tikzcd}[row sep=0]
 			{[n]} \ar{r}{\id_{[n]}} & {[n]} \\
@@ -50,7 +50,7 @@ Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogn
 	\]
 	% \(\lambda x.x : [n]\to [n]\) e \(\lambda y.y : [m]\to [m]\). % non credo i lettori conoscano la notazione lambda, forse dovremmo introdurla
 
-	La classe \(\ctFin\) formerà una \emph{categoria}, e per lo stesso motivo faranno altrettanto delle collezioni di oggetti matematici che esibiscono una struttura simile a quella di un monoide, ma sono più generali per motivi simili:
+	La classe \(\ctFin\) formerà una categoria, e per lo stesso motivo faranno altrettanto delle collezioni di oggetti matematici che esibiscono una struttura simile a quella di un monoide, ma sono più generali per motivi simili:
 	\begin{itemize}
 		\item \index{Categoria!---e di strutture algebriche} la classe \(\bbR\emdash\ctVect\) di tutti gli spazi vettoriali reali della forma \(\bbR^n\) per un \(n\) %\(n\ge 1\)
 		      naturale; non tutte le mappe lineari tra spazi vettoriali si possono comporre, e le applicazioni identiche sono tutte distinte; e più in generale,
@@ -63,7 +63,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 	\index{Classe propria|see {Classe}}
 	Abbiamo già utilizzato diverse volte la parola `classe': la definizione generale di categoria obbliga a farlo, dal momento che la collezione di tutte le strutture algebriche di un dato tipo è spesso `troppo grande per essere un insieme' (in un senso che formalizzeremo in dettaglio nell'Appendice \ref{fondamenti}); per il momento è sufficiente trattenere l'idea informale che una classe (o \emph{classe propria}) \(\ctC\) è una collezione di elementi che ha tutte le proprietà di un insieme, a parte quella di poter essere misurata da un numero cardinale.
 
-	Ogni volta che è necessario, useremo costruzioni elementari che si possono fare sulle classi come se esse fossero insiemi: per esempio se \(\ctA,\ctB\) sono classi, è lecito costruire la classe prodotto \(\ctA\times\ctB\), e considerare \emph{funzioni tra classi} \(F : \ctA\fun\ctB\), cioè sottoclassi \(F\) del prodotto \(\ctA\times\ctB\) che sono funzionali: per ogni elemento \(A\) della classe \(\ctA\), esiste un unico elemento \(B\in\ctB\) con \((A,B)\in F\), questo elemento si denota \(FA\), e a tutti gli effetti \(F\) si comporta come una funzione. Di nuovo, il linguaggio preciso (il linguaggio \textsf{NBG} della teoria degli insiemi di von Neumann, Bernays e G\"odel) che formalizza queste costruzioni verrà esposto nell'appendice \ref{fondamenti}. \`E possibile approfondire la questione nell'appendice, ma consigliamo a chi legge di finire prima questo capitolo: l'imprecisione iniziale non pregiudica né il rigore, né la comprensione degli argomenti che seguono.
+	Ogni volta che è necessario, useremo costruzioni elementari che si possono fare sulle classi come se esse fossero insiemi: per esempio se \(\ctA,\ctB\) sono classi, è lecito costruire la classe prodotto \(\ctA\times\ctB\), e considerare \emph{funzioni tra classi} \(F : \ctA\fun\ctB\), cioè sottoclassi \(F\) del prodotto \(\ctA\times\ctB\) che sono funzionali: per ogni elemento \(A\) della classe \(\ctA\), esiste un unico elemento \(B\in\ctB\) con \((A,B)\in F\), questo elemento si denota \(FA\), e a tutti gli effetti \(F\) si comporta come una funzione. Di nuovo, il linguaggio preciso (il linguaggio \textsf{NBG} della teoria degli insiemi di von Neumann, Bernays e G\"odel) che formalizza queste costruzioni verrà esposto nell'appendice \ref{fondamenti}. Consigliamo però a chi legge di finire prima questo capitolo: l'imprecisione iniziale non pregiudica né il rigore, né la comprensione degli argomenti che seguono.
 \end{remark}
 \index{Categoria}
 \begin{definition}[Categoria]\label{def_categ}
@@ -131,12 +131,15 @@ Concludiamo con un lemma apparentemente banale, ma che sarà utile in seguito (p
 \end{proof}
 Nel resto della sezione raccogliamo alcuni esempi classici di categorie, e nella successiva inizieremo a `costruire categorie nuove dalle vecchie', cioè a definire il \emph{prodotto} \(\ctC\times\ctD\) (si veda \ref{def_cat_prodotto}) e la \emph{somma} \(\ctC+\ctD\) di due categorie date in \ref{def_cat_somma}, le categorie \emph{comma} \(\ctC/X\) e \emph{co-comma} \(X/\ctC\) sopra un oggetto \(X\in\ctC_0\) in \ref{def_cat_cocomma}, la categoria \emph{opposta} \(\ctC^\op\) di \(\ctC\) in \ref{def_cat_opp}, e molte altre.
 
-La dicotomia essenziale che chi legge dovrebbe apprezzare è questa:
+La definizione di categoria data in \ref{def_categ} è estremamente generale, ed è quindi `quasi vuota' di intuizione. 
+
+C'è una tripartizione essenziale nella interpretazione della definizione, che chi legge dovrebbe apprezzare.
 \begin{itemize}
-	\item le categorie sono strutture ideate per raccogliere una totalità di oggetti matematici di un dato tipo (tutti i gruppi, tutti gli spazi topologici, ecc.) in una classe \(\ctC\) (in \emph{due} classi: gli oggetti e i morfismi) e studiarne le proprietà globali: le categorie (grandi) quindi sono `universi del discorso matematico': questo punto di vista si apprezza nella \autoref{ssec:categorie_universi} e particolarmente in \ref{ex_cat_sigma_strutture} e in \ref{ex_cat_top}.
-	\item D'altra parte le categorie sono anche delle strutture matematiche a sé stanti, modellate sulla nozione elementare di \emph{multigrafo diretto} (si veda \ref{ex_cat_libera}): le categorie (piccole) quindi sono esse stesse degli oggetti matematici che possiamo studiare alla stregua di ogni altro oggetto matematico (e raccogliere in una loro totalità: ma questo discorso sarà approfondito solo molto più tardi, si veda \ref{ex_cat_cat}). Questo punto di vista si apprezza particolarmente nella \autoref{ssec:categorie_strutture}.
+       \item Le categorie sono `forme' per oggetti combinatori (dei \emph{grafi diretti}) dove lati contigui possono essere composti, rispetto a una regola di composizione che è associativa, quando definita, e ha degli `elementi identità', cioè un particolare laccio (un lato il cui dominio e codominio coincidono) per ogni vertice.In quanto tali, le categorie sono solo particolari strutture con operazioni che soddisfano proprietà. Le categorie (piccole) quindi sono esse stesse degli oggetti matematici che possiamo studiare alla stregua di ogni altro oggetto matematico (e raccogliere in una loro totalità: ma questo discorso sarà approfondito solo molto più tardi, si veda \ref{ex_cat_cat}). Questo punto di vista si apprezza particolarmente nella \autoref{ssec:categorie_strutture}.
+       \item Le categorie sono, allo stesso tempo, strutture ideate per raccogliere una totalità di oggetti matematici di un dato tipo (`tutti' i gruppi, `tutti' gli spazi topologici, ecc.) in una classe \(\ctC\) (in \emph{due} classi: gli oggetti e i morfismi) e studiarne le proprietà globali: le categorie (larghe) quindi sono `universi del discorso matematico', in ciascuno dei quali è possibile fare matematica: questo punto di vista si apprezza nella \autoref{ssec:categorie_universi} e particolarmente in \ref{ex_cat_sigma_strutture} e in \ref{ex_cat_top}.
+       \item D'altra parte, alcune strutture note ed importanti per altre ragioni, come ad esempio i monoidi e gli insiemi preordinati, ma anche gli insiemi su cui è fissata una relazione di equivalenza, sono \emph{essi stessi} esempi di categorie. Le categorie sono quindi una generalizzazione simultanea di queste, ed altre, strutture matematiche, unificate da una stessa definizione complessiva.
 \end{itemize}
-Si può imparare la teoria delle categorie in modo proficuo solo abbracciando \emph{entrambi} questi punti di vista, e ciò perché un dato ambito della matematica si occupa o `vive' in una (o più) categorie. Per esempio, l'algebra lineare studia le categorie \(\bbF\emdash\ctVect\) di spazi vettoriali, eventualmente su diversi campi di base (come \(\bbQ,\bbR,\bbC\), o un campo finito). La topologia generale studia le categorie di \emph{spazi topologici} (e i morfismi funzioni continue), mentre la topologia differenziale si restringe alla categoria i cui oggetti sono \emph{varietà} (e i morfismi funzioni differenziabili), oppure studia particolari categorie di strutture ordinate (perché l'insieme degli aperti di uno spazio topologico \(X\) con una topologia \(\tau \subseteq 2^X\) forma, con le operazioni di unione e intersezione, una struttura algebrica detta \emph{algebra di Heyting}, si veda \cite{Esakia2019}).
+Si può imparare la teoria delle categorie in modo proficuo solo abbracciando \emph{tutti} questi punti di vista, e ciò anche perché un dato ambito della matematica si occupa o `vive' in una (o più) categorie. Per esempio, l'algebra lineare studia le categorie \(\bbF\emdash\ctVect\) di spazi vettoriali, eventualmente su diversi campi di base (come \(\bbQ,\bbR,\bbC\), o un campo finito). La topologia generale studia le categorie di \emph{spazi topologici} (e i morfismi funzioni continue), mentre la topologia differenziale si restringe alla categoria i cui oggetti sono \emph{varietà} (e i morfismi funzioni differenziabili), oppure studia particolari categorie di strutture ordinate (perché l'insieme degli aperti di uno spazio topologico \(X\) con una topologia \(\tau \subseteq 2^X\) forma, con le operazioni di unione e intersezione, una struttura algebrica detta \emph{algebra di Heyting}, si veda \cite{Esakia2019}).
 
 D'altra parte l'analisi funzionale studia quegli spazi \emph{vettoriali} (di dimensione infinita) che sono dotati di una \emph{topologia} metrizzabile (e determinata da un filtro di intorni dello zero), ed eventualmente di un prodotto scalare; la teoria della rappresentazione studia certi omomorfismi in un gruppo di matrici, o le proprietà \emph{topologiche-differenziali} di questi gruppi di matrici (il gruppo ortogonale speciale, il gruppo dei quaternioni di norma 1, ecc.). Per comprendere queste strutture è spesso necessario spostarsi di categoria in categoria.
 
@@ -196,20 +199,20 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 				\draw[-latex] (1'') -- (2'');
 				\draw[-latex] (0'') -- (2'');
 				%--
-				\fill (8,0) circle (1pt) node[below] {\(0\)};
-				\node (0'') at (8,0) {};
-				\fill (5.5,0.866) circle (1pt) node[above] {\(2\)};
-				\node (2'') at (5.5,0.866) {};
-				\fill (6,0) circle (1pt) node[below] {\(1\)};
-				\node (1'') at (6,0) {};
-				\fill (9.5,0.866) circle (1pt) node[above] {\(3\)};
-				\node (3'') at (9.5,0.866) {};
-				\draw[-latex] (0'') -- (1'');
-				\draw[-latex] (1'') -- (2'');
-				\draw[-latex] (0'') -- (2'');
-				\draw[-latex] (2'') -- (3'');
-				\draw[-latex] (1'') -- (3'');
-				\draw[-latex] (0'') -- (3'');
+				\fill (9,0) circle (1pt) node[below] {\(0\)};
+				\node (0''') at (9,0) {};
+				\fill (9.5,0.866) circle (1pt) node[above] {\(2\)};
+				\node (2''') at (9.5,0.866) {};
+				\fill (10,0) circle (1pt) node[below] {\(1\)};
+				\node (1''') at (10,0) {};
+				\fill (10.5,0.866) circle (1pt) node[above] {\(3\)};
+				\node (3''') at (10.5,0.866) {};
+				\draw[-latex] (0''') -- (1''');
+				\draw[-latex] (1''') -- (2''');
+				\draw[-latex] (0''') -- (2''');
+				\draw[-latex] (2''') -- (3''');
+				\draw[-latex] (1''') -- (3''');
+				\draw[-latex] (0''') -- (3''');
 			\end{tikzpicture}
 		\end{center}
 		\caption{Le categorie \(\Delta[0], \dots,\Delta[3]\). Si noti che non abbiamo rappresentato le frecce identiche dei vari oggetti, e che la struttura di categoria che risulta è completamente determinata dalla struttura di grafo diretto. Ovviamente, \(\Delta[0]\) è la categoria terminale di \ref{ex_cat_term}, \(\Delta[1]\) è la freccia generica di \ref{ex_cat_freccia}. La categoria \(\Delta[n]\) spesso si chiama un \(n\)-\emph{simplesso}. }
@@ -291,8 +294,8 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 \index{Categoria!--- spanna generica}
 \index{Categoria!--- cospanna generica|see {spanna generica}}
 \begin{example}[Spanne e cospanne generiche]\label{ex_spancospan}
-	La categoria `spanna generica'\footnote{La scelta del termine si può intendere motivata dal fatto che una spanna è: la distanza (misurata dai codomini delle due frecce verso $0,1$) tra punta del pollice e punta del mignolo di una mano aperta adulta; l'arcata di un ponte (il cui punto più alto è l'oggetto $0$); le due braccia di un giogo (in inglese antico \emph{ġespan} era un giogo, un collare o per estensione un bracciale); un arcolaio (le cui braccia sono proprio $1\leftarrow 0\to 2$; quest'ultima etimologia è dalla radice proto-indoeuropea \emph{*(s)penh$_1$-}, da cui derivano varie parole nel campo semantico di ciò che è capace di ruotare attorno a un asse).}
-\(\Lambda^2_0\) ha tre oggetti \(0,1,2\) e due morfismi non identici. Si raffigura come segue:
+	La categoria `spanna generica'
+\(\Lambda^2_0\) ha tre oggetti \(0,1,2\) e due morfismi non identici. Si raffigura come segue:\footnote{La scelta del termine si può intendere motivata dal fatto che una spanna è: la distanza (misurata dai codomini delle due frecce verso $0,1$) tra punta del pollice e punta del mignolo di una mano aperta adulta; l'arcata di un ponte (il cui punto più alto è l'oggetto $0$); le due braccia di un giogo (in inglese antico \emph{ġespan} era un giogo, un collare o per estensione un bracciale); un arcolaio (le cui braccia sono proprio $1\leftarrow 0\to 2$; quest'ultima etimologia è dalla radice proto-indoeuropea \emph{*(s)penh$_1$-}, da cui derivano varie parole nel campo semantico di ciò che è capace di ruotare attorno a un asse).}
 	\[\begin{tikzcd}
 			1 & 0 \ar[r]\ar[l] & 2
 		\end{tikzcd}\]
@@ -326,11 +329,11 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di un insieme di vertici (o `oggetti') \(V\) e di un insieme di lati (o `morfismi') \(E\) generi una categoria \(F\ctG\). \`E effettivamente così, e la seguente costruzione in forma di esempio formalizza questa idea.
 \index{Grafo}
 \begin{example}\label{ex_cat_libera}
-	Dato un grafo (o più propriamente, un \emph{multidigrafo}, ossia una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\rightrightarrows V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}, si veda \ref{ex_cat_grafi}) \(\ctG\) possiamo definire la \emph{categoria libera} \(F\ctG\) su \(\ctG\) come segue:
+	Un \emph{multidigrafo} consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\rightrightarrows V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}, si veda \ref{ex_cat_grafi}. Dato un multidigrafo \(\ctG\) (spesso chiamato semplicemente \emph{grafo diretto}) possiamo definire la \emph{categoria libera} \(F\ctG\) su \(\ctG\) come segue:
 	\begin{itemize}
 		\item gli oggetti di \(F\ctG\) sono esattamente gli elementi di \(V\);
 		\item fissati due vertici \(u,v\in V\), i morfismi \(u\to v\) sono l'insieme
-		      \[\sum_{n=0}^\infty E(u,x_1)\times E(x_1,x_2)\times\dots\times E(x_n,v)\]
+		      \[\sum_{n\ge0} E(u,x_1)\times E(x_1,x_2)\times\dots\times E(x_n,v)\]
 		      di tutte le sequenze ordinate e finite di lati
 		      \[ [\tup en;] : u \xto{e_1} x_1 \xto{e_2} x_2\xto{e_3} \dots\xto{e_{n-1}} x_{n-1}\xto{e_n} v\]
 		      con la convenzione che se \(u=v\) ed \(n=0\) la sequenza vuota si interpreta come un laccio `banale' \(\emptyList_u : u\to u\), e usando la notazione, ovvia, \(E(x,y)\subseteq E\) per denotare i lati di source \(x\) e target \(y\).
@@ -399,7 +402,7 @@ Il capitolo \ref{chap_limiti_colimiti} e in particolare la nozione di prodotto, 
 	\Todo{...}
 \end{example}
 \subsection{Categorie come universi}\label{ssec:categorie_universi}
-Proseguiamo con degli esempi di categorie grandi, che giustificano l'intuizione per le categorie come `universi del discorso matematico', ossia come classi i cui elementi sono collegati da relazioni reciproche. L'esempio che fa da paradigma a tutta la sezione è \ref{ex_cat_insiemi}, la categoria di insiemi e funzioni. Usando questa categoria $\ctSet$ come esempio paradigmatico, è possibile costruire
+Proseguiamo con degli esempi di categorie grandi, che giustificano l'intuizione per le categorie come `universi del discorso matematico', ossia come classi i cui elementi sono collegati da relazioni reciproche. L'esempio fondamentale per tutta la sezione è \ref{ex_cat_insiemi}, la categoria di insiemi e funzioni. Usando questa categoria $\ctSet$ come esempio paradigmatico, è possibile costruire
 % \`E tuttavia importante notare che \emph{non tutte le categorie larghe astratte sono categorie di insiemi strutturati}.% Una approssimazione conveniente per una categoria larga `astratta' è quindi come un rimpiazzo per la categoria $\ctSet$ e per esempio può essere 
 \begin{itemize}
   \item categorie di strutture algebriche (gruppi, anelli, algebre su un campo di base\dots); esempi di queste categorie sono \ref{ex_cat_monoidi}, e in generale \ref{ex_cat_sigma_strutture};
@@ -409,7 +412,7 @@ e insieme a queste, molte altre. Esiste una dicotomia forte tra queste due class
 
 \`E tuttavia estremamente importante notare che 
 \begin{quote}
-  Non tutte le categorie larghe astratte sono categorie di insiemi strutturati. Ad esempio, la categoria di \ref{ex_cat_hotop} non ha la proprietà di essere \emph{concreta} (si veda \ref{categorie_strutture}).
+  Non tutte le categorie larghe astratte sono categorie di insiemi strutturati. Ad esempio, la categoria di \ref{ex_cat_hotop} non ha la proprietà di essere \emph{concreta} (si veda \ref{ssec:categorie_strutture}).
 \end{quote}
 \index{Categoria!--- delle relazioni}
 \begin{example}[Insiemi e relazioni]\label{ex_cat_rels}
@@ -704,8 +707,8 @@ Discorso completamente analogo per le $\mathrm{C}^*$-algebre commutative, che co
 	\begin{itemize}
 		\item per oggetti gli insiemi \(A,B,C\dots\)
 		\item per morfismi \(f : A\pto B\) le funzioni della forma
-		      \[\longmor{f : \sum_{n=1}^\infty A^n}{B}\]
-		      dove il dominio \(A^+=\sum_{n=1}^\infty A^n\) è l'insieme delle \emph{liste non vuote} di elementi di \(A\), cioè l'insieme \(A + (A\times A) + (A\times A\times A) + \dots\) i cui elementi sono sequenze ordinate della forma \((\tup an,)\) per \(n\ge 1\) e \(a_i\in A\) per ogni \(i=1,\dots,n\).\footnote{In termini più formali, \(A^+\) è il \emph{semigruppo libero} generato dall'insieme \(A\), un `semigruppo' essendo un insieme dotato di una operazione binaria associativa.}
+		      \[\longmor{f : \sum_{n\ge1} A^n}{B}\]
+		      dove il dominio \(A^+=\sum_{n\ge1} A^n\) è l'insieme delle \emph{liste non vuote} di elementi di \(A\), cioè l'insieme \(A + (A\times A) + (A\times A\times A) + \dots\) i cui elementi sono sequenze ordinate della forma \((\tup an,)\) per \(n\ge 1\) e \(a_i\in A\) per ogni \(i=1,\dots,n\).\footnote{In termini più formali, \(A^+\) è il \emph{semigruppo libero} generato dall'insieme \(A\), un `semigruppo' essendo un insieme dotato di una operazione binaria associativa.}
 	\end{itemize}
 	L'intuizione dietro questa definizione è che un morfismo \(f \in \Hom{\cate{Stream}}(A,B)\) consiste di un `algoritmo' che data una lista non vuota di input \((\tup an,)\) calcola un output \(f(\tup an,)\in B\) (che chiaramente può dipendere anche da \(n\)), per ogni \(n\ge 1\).
 
@@ -954,17 +957,17 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 
 	Per rendere preciso questo principio dobbiamo fare uso di alcune nozioni elementari di logica; svolgere davvero questo compito (cioè scrivere un linguaggio al primo ordine, dove esprimere veramente la teoria delle categorie) sarebbe fuorviante,\footnote{Chi legge consulti \cite{ETCC} per approfondimenti, se lo desidera.} quindi ci limitiamo a una esposizione semi-formale, definendo il \emph{linguaggio \(\mathsf{CT}\)} come quello che ha
 	\begin{itemize}
-		\item per costanti i simboli \(A,B,C\dots : \ctC_0\) degli oggetti e i simboli \(f,g,h,\dots : \ctC_1\) dei morfismi;
-		\item le funzioni dominio e codominio \(d,c : \ctC_1\to\ctC_0\);
-		\item la funzione di costruzione dell'identità \(\id : \ctC_0\to \ctC_1\);
+		\item per costanti i simboli \(A,B,C,\dots : \ctC_0\) degli oggetti e i simboli \(f,g,h,\dots : \ctC_1\) dei morfismi (in particolare $A,B,C,\dots$ hanno \emph{sorte} $\ctC_0$ e $f,g,h,\dots$ sorte $\ctC_1$);
+		\item le funzioni dominio e codominio \(d,c : \ctC_1\to\ctC_0:f\mapsto d(f),c(f)\);
+		\item la funzione di costruzione dell'identità \(\id : \ctC_0\to \ctC_1 : A\mapsto \id[A]\);
 		\item l'operazione di composizione \(\_\cmp\_ : \ctC_2 \to \ctC_1\) dove ricordiamo che
-		      \[\ctC_2 := \{(f,g)\mid c(f) = d(g)\}\subseteq\ctC_1\times\ctC_1\]
+		      \[\ctC_2 := \{(f,g) : \ctC_1\times\ctC_1\mid c(f) = d(g)\}\subseteq\ctC_1\times\ctC_1\]
 	\end{itemize}
 	tutto ciò soggetto alle equazioni
 	\begin{center}
 		\begin{tabular}{ccc}
-			\(d(\id_A)=A\)       &  & \(c(\id_A)=A\)       \\\midrule
-			\(f\cmp \id_{df}=f\) &  & \(\id_{cf}\cmp f=f\) \\\midrule
+			\(d(\id[A])=A\)       &  & \(c(\id[A])=A\)       \\\midrule
+			\(f\cmp \id[df]=f\) &  & \(\id[cf]\cmp f=f\) \\\midrule
 			\(d(g\cmp f)=df\)    &  & \(c(g\cmp f)=cg\)    \\\midrule
 			\multicolumn{3}{c}{\(h\cmp (g\cmp f)=(h\cmp g)\cmp f\)}
 		\end{tabular}
@@ -972,7 +975,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 	(che vanno interpretate `in contesto', cioè ad esempio \((g,f) \in \ctC_2\vdash d(g\cmp f)=d(f)\) eccetera).
 
 	Il principio di dualità si enuncia come segue.
-	Data una formula \(\Sigma\) nel linguaggio \(\mathsf{CT}\), possiamo costruire la formula duale con la sostituzione \(\Sigma[d/c,c/d,\cmp/\cmp^\op]\)\footnote{\`E chiaro cosa lo scambio di \(d,c\) significhi: prima si sostituisce \(d\) con un simbolo vergine \(\hat c\) e \(c\) con un simbolo vergine \(\hat d\), e poi si sosituisce \(\hat c\) con \(c\) e \(\hat d\) con \(d\):
+	Data una formula \(\Sigma\) nel linguaggio \(\mathsf{CT}\), possiamo costruire la formula duale per sostituzione, \(\Sigma^\op:=\Sigma[d/c,c/d,\cmp/\cmp^\op]\)\footnote{\`E chiaro cosa lo scambio di \(d,c\) significhi: prima si sostituisce \(d\) con un simbolo vergine \(\hat c\) e \(c\) con un simbolo vergine \(\hat d\), e poi si sosituisce \(\hat c\) con \(c\) e \(\hat d\) con \(d\):
 		\[\Sigma \squig \Sigma[d/\hat c,c/\hat d]\squig \Sigma[\hat c/c,\hat d/d] =:\Sigma^\op\]
 		ma questa pedanteria è eccessiva.} dove \(\_\cmp^\op\_\) è definita come \(u\cmp^\op v = v\cmp u\) (e questa è una buona definizione, dopo lo scambio \(d\leftrightarrows c\)).
 	\begin{quote}%[Principio di dualità in una categoria]
@@ -982,7 +985,9 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 \begin{remark}
 	Il principio di dualità è molto lontano dall'affermare che un asserto è vero in una categoria \(\ctC\) se e solo se esso è vero in \(\ctC^\op\); l'asserto va (formalizzato, cioè espresso come un enunciato nel linguaggio \(\mathsf{CT}\)) \emph{e dualizzato}, ed è solo dopo questa dualizzazione che esso vale (in \(\ctC^\op\), non necessariamente in \(\ctC\)!).
 
-	Ad esempio: nell'insieme parzialmente ordinato dei numeri naturali ogni sottoinsieme non vuoto ammette un minimo. Tale ordine parziale è una categoria; il minimo di un insieme ordinato ora si descrive in termini della relazione d'ordine (cioè della classe dei suoi morfismi); del resto, \(\bbN^\op = \{\dots\le 2 \le 1 \le 0\}\) non ha un \emph{minimo}, bensì un \emph{massimo}.
+	Ad esempio: nell'insieme parzialmente ordinato dei numeri naturali ogni sottoinsieme $S\subseteq\bbN$ non vuoto ammette un minimo $\min S$. L'ordine parziale $(\bbN,\le)$ è una categoria, e il minimo di un insieme (non vuoto e) ordinato si descrive in termini della relazione d'ordine (cioè della classe dei suoi morfismi) come 
+ \[z = \min S \iff (z\in S)\land (\forall k\in S.z\le k)\]
+ del resto, \(\bbN^\op = \{\dots\le 2 \le 1 \le 0\}\) non ha un \emph{minimo}, bensì un \emph{massimo}.
 \end{remark}
 Le categorie che si identificano alla propria opposta meritano quindi un nome specifico.
 \begin{definition}

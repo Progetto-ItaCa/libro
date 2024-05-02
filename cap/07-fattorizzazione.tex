@@ -6,7 +6,7 @@ La nozione di \emph{sistema di fattorizzazione} in una categoria è uno dei conc
 \medskip
 L'intuizione fondamentale dietro la definizione è la seguente osservazione/lemma:
 \begin{lemma}\label{fatt_in_set}
-	Se \(\ctSet\) denota la categoria di insiemi e funzioni di \ref{ex_cat_insiemi}, ogni funzione \(f : X \to Y\) si fattorizza come \(f = m \cmp e\), dove \(m\) è iniettiva (un monomorfismo, si veda \ref{monoepi_in_set}) ed \(e\) è suriettiva.% (un epimorfismo, si veda \ref{def_Epi}).
+	Nella categoria \(\ctSet\) di insiemi e funzioni, descritta in \ref{ex_cat_insiemi}, ogni funzione \(f : X \to Y\) si fattorizza come \(f = m \cmp e\), dove \(m\) è iniettiva (un monomorfismo, si veda \ref{monoepi_in_set}) ed \(e\) è suriettiva.% (un epimorfismo, si veda \ref{def_Epi}).
 \end{lemma}
 In più, abbiamo preannunciato in \ref{caratt_epi_con_ort} che la nozione di epimorfismo e di monomorfismo ammettono una ulteriore caratterizzazione nei termini seguenti (rammentiamo il contenuto di \ref{caratt_epi_con_ort} per facilità di lettura): il lemma \ref{fatt_in_set} permette di dimostrare questo fatto in modo molto elegante.
 \begin{proposition*}
@@ -22,19 +22,25 @@ In più, abbiamo preannunciato in \ref{caratt_epi_con_ort} che la nozione di epi
 	\end{itemize}
 \end{proposition*}
 \begin{proof}
-	\Todo{}
+  \Todo{Qual era la dimostrazione elegante che avevo in mente? Non me lo ricordo più}
 \end{proof}
-Questo motiva la nozione di \emph{ortogonalità} tra morfismi e di \emph{fattorizzazione} di ogni morfismo \(f : X\to Y\) di una categoria \(\ctC\) come una certa composizione
+Questo motiva la nozione di \emph{ortogonalità} tra morfismi (si veda \ref{def_ortogona} sotto) e di \emph{fattorizzazione} di ogni morfismo \(f : X\to Y\) di una categoria \(\ctC\) come una certa composizione in termini di due sottoclassi $\ctE,\ctM\subseteq\ctC$ 
 \[
 	\begin{tikzcd}
 		f : X \ar[r, "e", two heads]& F \ar[r, "m", hook] & Y.
 	\end{tikzcd}
 \]
-L'esempio più importante (sebbene non l'unico interessante) di fattorizzazione di questo tipo sarà proprio quando \(\ctE\) è la classe degli epimorfismi di \(\ctC\) ed \(\ctM\) è la classe dei monomorfismi.
+dove $e\in\ctE$ e $m\in\ctM$ sono morfismi nelle due sottoclassi.
 
-L'intuizione che chi sta leggendo dovrebbe avere sulla definizione è questa: una struttura del genere imposta su una categoria \(\ctC\) permette di `generarla' a partire dalle classi \(\ctE,\ctM\), in una notazione suggestiva, cioè, è vero che \(\hom(\ctC) = \ctM\cmp \ctE\). In più, le due classi \(\ctE,\ctM\) sono `ortogonali' nel senso che hanno intersezione più piccola possibile: \(\ctE\cap \ctM\) consta del \emph{cuore} (si veda \ref{def_cuore}) di \(\ctC\), cioè della categoria di tutti gli isomorfismi in \(\ctC\).
-
-\medskip
+L'intuizione che chi sta leggendo dovrebbe avere sulla definizione è che una struttura del genere imposta su una categoria \(\ctC\) permette di `generarla' a partire dalle classi \(\ctE,\ctM\), in una notazione suggestiva, cioè, è vero che \(\hom(\ctC) = \ctM\cmp \ctE\). In più, le due classi \(\ctE,\ctM\) sono `ortogonali' nel senso che hanno intersezione più piccola possibile: \(\ctE\cap \ctM\) consta del \emph{cuore} (si veda \ref{def_cuore}) di \(\ctC\), cioè della categoria di tutti gli isomorfismi in \(\ctC\).
+\color{red}
+L'esempio più importante (sebbene non l'unico interessante) di fattorizzazione di questo tipo sarà proprio quando \(\ctE\) è la classe $\Epi$ degli epimorfismi ed \(\ctM\) è la classe $\Mono$ dei monomorfismi di $\ctC$. Quando le proprietà di ortogonalità e fattorizzazione valgono per la coppia $(\ctE,\ctM)$ questa si dice un \emph{sistema di fattorizzazione} su $\ctC$.
+\begin{remark}
+    Chi legge non deve con questo pensare che data una qualsiasi categoria $\ctC$, la coppia di classi $(\Epi,\Mono)$ formi sempre un sistema di fattorizzazione su $\ctC$.
+    
+    In effetti, non è nemmeno vero che $(\Epi,\Mono)$ è sempre una coppia di classi ortogonali nel senso di \ref{def_ortogona} (si pensi al caso dei preordini, dove \emph{ogni} morfismo è sia un monomorfismo che un epimorfismo, cosicché $\Epi[\ctPos]\cap\Mono[\ctPos]=\hom(\ctPos)$, ma non tutti gli oggetti di un preordine sono tra loro isomorfi).
+\end{remark}
+\color{black}
 % \section[Ortogonalità]{La relazione di ortogonalità}
 Sulla classe dei morfismi di una generica categoria \(\ctC\) è possibile definire una relazione binaria detta \emph{ortogonalità}, nel modo che segue.
 \begin{definition}[Relazione di ortogonalità]\label{def_ortogona}\index{Ortogonalità}\index{Morfismi!--- ortogonali}\index{Relazione!---di ortogonalità}

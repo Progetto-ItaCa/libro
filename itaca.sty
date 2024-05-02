@@ -30,6 +30,8 @@
 \clist_new:N \g_itaca_categories_clist
 \clist_gset:Nn \g_itaca_categories_clist { Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, Ord, FOrd, Lat, Vect, Mat, HoTop, Fld, DInt }
 
+% \mathbf{#1} -> \bf#1
+
 \clist_new:N \g_itaca_operators_clist
 \clist_gset:Nn \g_itaca_operators_clist { GL, lan, Lan, LAN, lft, Lft, LFT, Nat, ran,  Ran, RAN, Rft, Yan, RFT, rft, op, co, coop, colim, coker, eq, coeq }
 
@@ -52,7 +54,7 @@
 \itaca_makeabbrev:nnN { \mathbb } { bb#1 } \g_itaca_upper_clist
 \itaca_makeabbrev:nnN { \mathrm } { ob#1 } \g_itaca_upper_clist
 
-\itaca_makeabbrev:nnN { \textsf } { ct#1 } \g_itaca_categories_clist
+\itaca_makeabbrev:nnN { \mathbf } { ct#1 } \g_itaca_categories_clist
 \itaca_makeabbrev:nnN { \mathrm } { #1 } \g_itaca_operators_clist
 
 \ExplSyntaxOff
@@ -87,6 +89,8 @@
 % classi di frecce
 \let\mono\hookrightarrow
 \let\epi\twoheadrightarrow
+\NewDocumentCommand{\Epi}{ O{\ctC} }{\mathbf{Epi}_{#1}}
+\NewDocumentCommand{\Mono}{ O{\ctC} }{\mathbf{Mono}_{#1}}
 
 \tikzcdset{arrow style=tikz,
            diagrams={>=Straight Barb}
@@ -133,6 +137,8 @@
 \ProcessOptions\relax
 
 \newcommand{\Hom}[1]{#1}
+% NO: \ctC(X,Y) 
+% \Hom{\ctC}(X,Y)
 \newcommand{\varHom}{\hom}
 \newcommand{\vvarHom}[1]{\mathrm{Hom}_{#1}}
 
@@ -158,6 +164,10 @@
 % #1 #2 : gli oggetti che pulli
 % #3 : l'oggetto su cui #1 #2 arrivano
 \newcommand{\pull}[3]{#1 \times_{#3} #2}
+% X x_Z Y <- \pull XYZ oppure \pull{X}{Y}{Z}
+
+\newcommand{\varpull}[3]{#1 \underset{#3}\times #2}
+% X x_{f,g} Y <- \pull X{f,g}Z oppure \pull{X}{Y}{Z}
 
 % #1 #2 : gli oggetti che pushi
 % #3 : l'oggetto lungo cui incolli
