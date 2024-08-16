@@ -1803,8 +1803,8 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\end{tikzcd}
 	\]
 \end{definition}
-\begin{remark}
-	Come è evidente, gli esempi di diagrammi abbondano tra gli esempi fatti in precedenza: fissata una categoria \(\ctC\), una spanna in \(\ctC\) come in \ref{def_span_e_cospan} è un diagramma di forma \(\Lambda^2_0\) e una cospanna è un diagramma di forma \(\Lambda^2_2\). Un quadrato in \(\ctC\) è un diagramma di forma \(P[2]\), e un cubo \(n\)-dimensionale di forma \(P[n]\). Un singolo oggetto di \(\ctC\) si può vedere come un diagramma di forma \(\Delta[0]=\ctTerm\), e più in generale un insieme di cardinalità $|A|$ di oggetti di $\ctC$ è un diagramma di forma $A^\delta$, come in \ref{ex_cat_discreta}; una singola freccia \(f : X\to Y\) in \(\ctC\) si può vedere come un diagramma di tipo \(\Delta[1]\), e più in generale una catena
+\begin{remark}\label{tante_cose_sono_diag}
+	Come è evidente, gli esempi di diagrammi abbondano tra gli esempi fatti in precedenza: fissata una categoria \(\ctC\), una spanna in \(\ctC\) come in \ref{def_span_e_cospan} è un diagramma di forma \(\Lambda^2_0\) e una cospanna è un diagramma di forma \(\Lambda^2_2\). Un quadrato commutativo in \(\ctC\) è un diagramma di forma \(P[2]\), e un cubo \(n\)-dimensionale (le cui facce commutano tutte) uno di forma \(P[n]\). Un singolo oggetto di \(\ctC\) si può vedere come un diagramma di forma \(\Delta[0]=\ctTerm\), e più in generale un insieme di cardinalità $|A|$ di oggetti di $\ctC$ è un diagramma di forma $A^\delta$, come in \ref{ex_cat_discreta}; una singola freccia \(f : X\to Y\) in \(\ctC\) si può vedere come un diagramma di tipo \(\Delta[1]\), e più in generale una catena
 	\[\begin{tikzcd}
 		A_0 \ar[r, "f_1"] & A_1 \ar[r, "f_2"] & \dots \ar[r] & A_{n-1} \ar[r, "f_n"] & A_n
 	\end{tikzcd}
@@ -1870,8 +1870,12 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \end{enumerate}
 
 \section{Trasformazioni naturali}\label{sec_tnat}
-In \ref{} abbiamo osservato che le spanne e cospanne in $\ctC$ si possono vedere come funtori; del resto, in \ref{} abbiamo costruito una \emph{categoria} di spanne in $\ctC$. Ciò significa che c'è una qualche nozione di morfismo tra funtori, almeno in alcuni contesti. Vorremmo rendere precisa questa congettura.
+In \ref{tante_cose_sono_diag} abbiamo osservato che le spanne e cospanne in $\ctC$ si possono vedere come funtori; del resto, in \ref{def_span_e_cospan} abbiamo costruito una \emph{categoria} di spanne in $\ctC$. Un morfismo di spanne consiste, secondo quella definizione, di una famiglia di tre morfismi di $\ctC$ tra i vertici omonimi delle due spanne $(X_1\leftarrow X_0\to X_2)$ e $(Y_1\leftarrow Y_0\to Y_2)$:
+\[\alpha_0 : X_0\to Y_0,\quad \alpha_1 : X_1\to Y_1,\quad \alpha_2 : X_2\to Y_2\]
+che rendono commutativi i diagrammi in \ref{}. Riguardando le spanne $X_\bullet,Y_\bullet$ come diagrammi di forma $\Lambda^2_0 \to\ctC$, la terna $(\alpha_0,\alpha_1,\alpha_2)$ si può vedere come una freccia $X_\bullet \nat Y_\bullet$, nel senso che\Todo{}
+% Ciò significa che c'è una qualche nozione di morfismo tra funtori, almeno in alcuni contesti. 
 
+La nozione di \emph{trasformazione naturale} tra funtori rende precisa questa congettura.
 \begin{definition}[Trasformazione naturale]\label{def_nat}\index{Trasformazione naturale}\index{Naturale!trasformazione}\index{Naturalità}
 	Date due categorie \(\ctC\) e \(\ctD\) e dati due funtori \(F,G:\ctC\to\ctD\), una \emph{trasformazione naturale} \(\alpha:F\Rightarrow G\) consiste dei seguenti dati:
 	\begin{itemize}
