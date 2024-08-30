@@ -13,9 +13,9 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 	\end{itemize}
 	che soddisfano le seguenti proprietà:
 	\begin{itemize}
-		\item \emph{Unitalità}: per ogni \(m\in M\), valgono le identità 
+		\item \emph{Unitalità}: per ogni \(m\in M\), valgono le uguaglianze 
   \[m\cdot e = e\cdot m=m.\]
-		\item \emph{Associatività}: per ogni \(m,n,p\in M\), vale l'identità 
+		\item \emph{Associatività}: per ogni \(m,n,p\in M\), vale l'uguaglianza 
   \[(m\cdot n)\cdot p = m\cdot (n\cdot p)\]
 	\end{itemize}
 \end{definition}
@@ -89,8 +89,10 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 	\end{enumtag}
 	A questi dati, chiediamo di soddisfare le seguenti proprietà:
 	\begin{enumtag}{p}
-		\item \label{cp_1} \emph{Unitalità}: per ogni morfismo \(f:X\to Y\), le composizioni \(f\cmp\id_X\) e \(\id_Y\cmp f\) sono uguali ad \(f\).
-		\item \label{cp_2} \emph{Associatività}: dati oggetti \(X,Y,Z,W\) e morfismi \(f:X\to Y\), \(g:Y\to Z\) e \(h:Z\to W\), le composizioni \(h\cmp (g\cmp f)\) e \((h\cmp g)\cmp f\) sono uguali.
+		\item \label{cp_1} \emph{Assioma di identità}: per ogni morfismo \(f:X\to Y\), valgono le uguaglianze 
+  \[f\cmp\id_X=\id_Y\cmp f=f.\]
+		\item \label{cp_2} \emph{Assioma di associatività}: dati oggetti \(X,Y,Z,W\) e morfismi \(f:X\to Y\), \(g:Y\to Z\) e \(h:Z\to W\), vale l'identità 
+  \[h\cmp (g\cmp f) = (h\cmp g)\cmp f.\]
 	\end{enumtag}
 \end{definition}
 \begin{notation}
@@ -112,11 +114,16 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 \begin{definition}[Categoria piccola, categoria localmente piccola]
 	\index{Categoria!--- piccola}
 	\index{Categoria!--- loc. piccola}
+	Quando la classe \(\ctC_1\) è un insieme, come conseguenza della seconda osservazione fatta, è un insieme anche \(\ctC_0\) (dato che una sottoclasse di una classe che è un insieme, è a sua volta un insieme): in tal caso chiamiamo la categoria \(\ctC\) \emph{piccola}; per contro %: l Una 
+ una categoria che non è piccola si dice \emph{grande}, \emph{larga} o simili.
 	
-	Quando la classe \(\ctC_1\) è un insieme, come conseguenza della seconda osservazione fatta, è un insieme anche \(\ctC_0\) (dato che una sottoclasse di una classe che è un insieme, è a sua volta un insieme): in tal caso chiamamo la categoria \(\ctC\) \emph{piccola}: le categorie \(\ctFin\) e \(\bbR\emdash\ctVect\) definite sopra sono piccole, perché abbiamo limitato enormemente la loro classe di oggetti; non abbiamo considerato \emph{tutti} gli insiemi finiti, ma solo quelli della forma \(\{1,\dots,n\}\). Una categoria che non è piccola si dice \emph{grande}, \emph{larga} o simili.
-	
-	Invece, \(\ctC\) si dice \emph{localmente piccola} se dati ogni due oggetti \(X\) e \(Y\), la classe \(\Hom{\ctC}(X,Y)\) di morfismi da \(X\) a \(Y\) è un insieme. La categoria di \emph{tutti} gli insiemi finiti non è, strettamente parlando, piccola (perché c'è una classe propria anche solo di insiemi con un singolo elemento: \(\{\varnothing\},\{\{\varnothing\}\}, \{\{\{\varnothing\}\}\}\), eccetera), ma è localmente piccola, perché fissati due insiemi \(X,Y\), la collezione delle funzioni \(f : X\to Y\) è contenuta in \(2^{X\times Y}\), e quest'ultimo è un insieme (per assioma).
+	Invece, \(\ctC\) si dice \emph{localmente piccola} se dati ogni due oggetti \(X\) e \(Y\), la classe \(\Hom{\ctC}(X,Y)\) di morfismi da \(X\) a \(Y\) è un insieme. 
 \end{definition}
+ Le categorie \(\ctFin\) e \(\bbR\emdash\ctVect\) definite sopra sono piccole, perché abbiamo limitato enormemente la loro classe di oggetti; non abbiamo considerato \emph{tutti} gli insiemi finiti, ma solo quelli della forma \(\{1,\dots,n\}\) per $n\ge 0$; non tutti gli spazi vettoriali, ma solo quelli della forma $\bbR^n$ per $n\ge 0$. Come conseguenza, la classe $\ctFin_1$ dei morfismi di $\ctFin$ è un sottoinsieme di
+ \(\bigcup_{n,m\ge 0}2^{n\times m}\)
+ (fatto da quelle relazioni $R\subseteq n\times m$ che sono funzioni, si veda \ref{}), ed è quindi un insieme.
+
+ La categoria di \emph{tutti} gli insiemi finiti non è, strettamente parlando, piccola (perché c'è una classe propria anche solo di insiemi con un singolo elemento: \(\{\varnothing\},\{\{\varnothing\}\}, \{\{\{\varnothing\}\}\}\), eccetera), ma è localmente piccola, perché fissati due insiemi \(X,Y\), la collezione delle funzioni \(f : X\to Y\) è contenuta in \(2^{X\times Y}\), e quest'ultimo è un insieme (per assioma).
 \begin{remark}
 	Gli assiomi di categoria non impediscono di costruire `categorie' dove \(\ctC_0\) è un insieme (per esempio, finito) e dove alcuni o tutti \(\Hom{\ctC}(X,Y)\) sono classi proprie; queste costruzioni sono però relativamente innaturali, e non ne parleremo mai. In effetti, non parleremo mai nemmeno di categorie grandi che non sono localmente piccole (ne risentirebbe irrimediabilmente il capitolo 4 del libro, e molti altri risultati). Perciò, da ora in poi adottiamo la convenzione che \emph{categoria}, senz'altro aggiungere, significhi sempre \emph{categoria localmente piccola}. Alternative a questa maniera di ragionare sono possibili, ma non porremo mai una particolare attenzione alla questione.
 \end{remark}
