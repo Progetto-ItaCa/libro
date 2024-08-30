@@ -13,8 +13,10 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 	\end{itemize}
 	che soddisfano le seguenti proprietà:
 	\begin{itemize}
-		\item \emph{Unitalità}: per ogni \(m\in M\), i prodotti \(m \cdot e\) ed \(e\cdot m\) sono uguali a \(m\);
-		\item \emph{Associatività}: per ogni \(m,n,p\in M\), i prodotti \((m\cdot n)\cdot p\) ed \(m\cdot (n\cdot p)\) sono uguali.
+		\item \emph{Unitalità}: per ogni \(m\in M\), valgono le identità 
+  \[m\cdot e = e\cdot m=m.\]
+		\item \emph{Associatività}: per ogni \(m,n,p\in M\), vale l'identità 
+  \[(m\cdot n)\cdot p = m\cdot (n\cdot p)\]
 	\end{itemize}
 \end{definition}
 \index{Poset}
@@ -36,7 +38,7 @@ Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogn
 	\[\xymatrix{
 		[p] \ar[r]^-f & [q] \ar[r]^-g & [r].
 	}\]
-	La composizione di funzioni \((f,g)\mapsto g\cmp f\) perciò è una operazione che ricorda quella di \ref{prelim_def_monoide} (per esempio, essa è associativa quando è definita) ma è appunto un'operazione \emph{parziale}, cioè non definita tra tutte le possibili coppie \((f,g)\) di funzioni tra insiemi finiti; quale che sia la struttura matematica che la classe degli insiemi finiti forma, perciò, essa non può essere un monoide. Un altro motivo per cui \(\ctFin\) non può essere un monoide è che l'identità per la composizione di funzioni non è unica come accade, invece, in ogni monoide: \emph{ogni} insieme finito \([n]\) ha una sua propria funzione identica \(\id_{[n]}\), e se \(f : [m]\to [n]\) con \(m\ne n\), si deve avere che \(f\cmp \id_{[m]}=f=\id_{[n]}\cmp f\) per funzioni identiche formalmente \emph{distinte}, sebbene definite `alla stessa maniera' da
+	La composizione di funzioni \((f,g)\mapsto g\cmp f\) perciò è una operazione che ricorda quella di \ref{prelim_def_monoide} (per esempio, essa è associativa quando è definita) ma è appunto un'operazione \emph{parziale}, cioè non definita tra tutte le possibili coppie \((f,g)\) di funzioni tra insiemi finiti; quale che sia la struttura matematica che la classe degli insiemi finiti forma, perciò, essa non può essere un monoide. Un altro motivo per cui \(\ctFin\) non può essere un monoide è che l'identità per la composizione di funzioni non è unica come accade, invece, in ogni monoide: \emph{ogni} insieme finito \([n]\) ha una sua propria funzione identità \(\id_{[n]}\), e se \(f : [m]\to [n]\) con \(m\ne n\), si deve avere che \(f\cmp \id_{[m]}=f=\id_{[n]}\cmp f\) per funzioni identità formalmente \emph{distinte}, sebbene definite `alla stessa maniera' da
 	\[
 	\begin{tikzcd}[row sep=0]
 		{[n]} \ar{r}{\id_{[n]}} & {[n]} \\
@@ -53,7 +55,7 @@ Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogn
 	La classe \(\ctFin\) formerà una categoria, e per lo stesso motivo faranno altrettanto delle collezioni di oggetti matematici che esibiscono una struttura simile a quella di un monoide, ma sono più generali per motivi simili:
 	\begin{itemize}
 		\item \index{Categoria!---e di strutture algebriche} la classe \(\bbR\emdash\ctVect\) di tutti gli spazi vettoriali reali della forma \(\bbR^n\) per un \(n\) %\(n\ge 1\)
-		naturale; non tutte le mappe lineari tra spazi vettoriali si possono comporre, e le applicazioni identiche sono tutte distinte; e più in generale,
+		naturale; non tutte le mappe lineari tra spazi vettoriali si possono comporre, e le applicazioni identità sono tutte distinte; e più in generale,
 		\item la classe di tutte le strutture algebriche di un dato tipo (gli insiemi, senza limite alla loro taglia; i gruppi, con gli omomorfismi di gruppo; gli spazi vettoriali, anche di dimensione infinita; gli spazi topologici, con le funzioni continue; eccetera).
 	\end{itemize}
 \end{example}
@@ -73,7 +75,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 		\item\label{c_2} una classe \(\ctC_1\) i cui elementi chiamiamo \emph{morfismi} o \emph{frecce}, di solito indicati con lettere latine minuscole: \(f,g,h\),\dots, \(u,v,w\)\dots
 		\item\label{c_3} Ad ogni morfismo \(f\) corrispondono due oggetti \(\dom{f}\), \(\cod{f}\) chiamati \emph{dominio} e \emph{codominio}. Per denotare il fatto che \(f\) ha dominio \(X\in\ctC_0\) e codominio \(Y\in\ctC_0\), scriveremo \(f\colon X\to Y\), o in \emph{forma diagrammatica},
 		\[\begin{tikzcd} X \ar[r, "f"] & Y. \end{tikzcd}\]
-		\item\label{c_4} Ogni oggetto \(X\) ha un morfismo distinto \(\id_X\colon X\to X\) chiamato \emph{identità} o \emph{freccia identica}.
+		\item\label{c_4} Ogni oggetto \(X\) ha un morfismo distinto \(\id_X\colon X\to X\) chiamato \emph{identità}.
 		\item\label{c_5} Per ogni coppia di morfismi \(f\colon X\to Y\) e \(g\colon Y\to Z\), cioè tali che \(\cod{f}=\dom{g}\), è dato un morfismo \(g\cmp f:X\to Z\) chiamato \emph{composizione di \(f\) e \(g\)}. Graficamente:
 		\[
 		\begin{tikzcd}
@@ -158,7 +160,7 @@ Iniziamo ora a dare degli esempi di categorie piccole partendo dall'esempio più
 \index{Categoria!--- discreta}
 \`E sempre possibile dotare un insieme \(A\) della topologia discreta (o `massimale'), dove ogni sottoinsieme \(U\) di \(A\) è aperto, e della topologia indiscreta (o `minimale'), dove solo \(\varnothing\) e \(A\) sono aperti. Similmente, esistono due maniere, massimale e minimale, di considerare un insieme\footnote{Riguardo al problema se sia possibile dotare una classe propria della struttura di categoria discreta, la questione \emph{sembra} banale, ma in realtà tutt'altro che semplice da discutere: sebbene non ci sia alcun apparente problema ad assumere l'esistenza di classi proprie discrete, queste spesso vengono proibite \emph{ab imis} assumendo un assioma a parte in aggiunta ai soliti della teoria degli insiemi/classi, detto \emph{principio di Vop\v enka}: questo assioma afferma, precisamente, che non esistono sottoclassi proprie discrete nella classe propria di tutti gli insiemi.} \(A\) una categoria.
 \begin{example}\label{ex_cat_discreta}
-	Dato un insieme \(A\), la \emph{categoria discreta} su \(A\), denotata \(A^\delta\), ha per oggetti gli elementi \(a\in A\), un unico morfismo identico \(\id_a : a\to a\) per ogni \(a\), e nessun altro. La composizione è forzata a essere definita solamente tra identità, nel modo più ovvio possibile, e tutti gli assiomi di categoria sono ovviamente soddisfatti.
+	Dato un insieme \(A\), la \emph{categoria discreta} su \(A\), denotata \(A^\delta\), ha per oggetti gli elementi \(a\in A\), un unico morfismo identità \(\id_a : a\to a\) per ogni \(a\), e nessun altro. La composizione è forzata a essere definita solamente tra identità, nel modo più ovvio possibile, e tutti gli assiomi di categoria sono ovviamente soddisfatti.
 \end{example}
 \begin{example}\label{ex_cat_codiscreta}
 	Dato un insieme \(A\), la \emph{categoria codiscreta} su \(A\), denotata \(A^\chi\) ha per oggetti gli elementi \(a\in A\), per ogni coppia di oggetti \(a,a'\in A\) un unico morfismo \(u_{aa'}:a\to a'\), e la composizione è definita da \(u_{a'a''}\cmp u_{aa'}=u_{aa''}\) (in particolare, da questo segue che esiste un unico elemento \(\id_a=u_{aa}\in A^\chi(a,a)\)).
@@ -166,7 +168,7 @@ Iniziamo ora a dare degli esempi di categorie piccole partendo dall'esempio più
 Alcune categorie che è spesso utile considerare si rappresentano mediante dei grafi:
 \index{Categoria!--- freccia generica}
 \begin{example}\label{ex_cat_freccia}
-	La categoria `freccia generica' ha due oggetti \(0,1\) e un unico morfismo non identico \(u : 0\to 1\) (che di solito non ha nome). La composizione è forzata a essere definita solamente tra le identità ed \(u\), nell'unico modo ovvio, e tutti gli assiomi di categoria sono banalmente soddisfatti.
+	La categoria `freccia generica' ha due oggetti \(0,1\) e un unico morfismo non identità \(u : 0\to 1\) (che di solito non ha nome). La composizione è forzata a essere definita solamente tra le identità ed \(u\), nell'unico modo ovvio, e tutti gli assiomi di categoria sono banalmente soddisfatti.
 \end{example}
 \index{Categoria!--- catena generica}
 \begin{example}\label{ex_cat_catena}
@@ -215,13 +217,13 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 				\draw[-latex] (0''') -- (3''');
 			\end{tikzpicture}
 		\end{center}
-		\caption{Le categorie \(\Delta[0], \dots,\Delta[3]\). Si noti che non abbiamo rappresentato le frecce identiche dei vari oggetti, e che la struttura di categoria che risulta è completamente determinata dalla struttura di grafo diretto. Ovviamente, \(\Delta[0]\) è la categoria terminale di \ref{ex_cat_term}, \(\Delta[1]\) è la freccia generica di \ref{ex_cat_freccia}. La categoria \(\Delta[n]\) spesso si chiama un \(n\)-\emph{simplesso}. }
+		\caption{Le categorie \(\Delta[0], \dots,\Delta[3]\). Si noti che non abbiamo rappresentato le frecce identità dei vari oggetti, e che la struttura di categoria che risulta è completamente determinata dalla struttura di grafo diretto. Ovviamente, \(\Delta[0]\) è la categoria terminale di \ref{ex_cat_term}, \(\Delta[1]\) è la freccia generica di \ref{ex_cat_freccia}. La categoria \(\Delta[n]\) spesso si chiama un \(n\)-\emph{simplesso}. }
 		\label{fig:le_delta}
 	\end{figure}\todo{questo disegno al momento sembra rotto, non so perché}
 \end{example}
 \index{Categoria!--- doppia freccia generica}
 \begin{example}\label{ex_cat_doppiafreccia}
-	La categoria `doppia freccia generica' ha due oggetti \(0,1\) ed esattamente due morfismi non identici e paralleli \(s,t : 0\to 1\)%
+	La categoria `doppia freccia generica' ha due oggetti \(0,1\) ed esattamente due morfismi non identità e paralleli \(s,t : 0\to 1\)%
 	%;anche in questo caso, tali morfismi di solito non hanno nome % ce l'hanno: s e t
 	. La composizione è definita, ancora una volta, nell'unico modo ovvio, chiedendo che \(x\cmp \id_0=x=\id_1\cmp x\) per \(x\in\{s,t\}\).
 	
@@ -295,17 +297,17 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 \index{Categoria!--- cospanna generica|see {spanna generica}}
 \begin{example}[Spanne e cospanne generiche]\label{ex_spancospan}
 	La categoria `spanna generica'
-	\(\Lambda^2_0\) ha tre oggetti \(0,1,2\) e due morfismi non identici. Si raffigura come segue:\footnote{La scelta del termine si può intendere motivata dal fatto che una spanna è: la distanza (misurata dai codomini delle due frecce verso $0,1$) tra punta del pollice e punta del mignolo di una mano aperta adulta; l'arcata di un ponte (il cui punto più alto è l'oggetto $0$); le due braccia di un giogo (in inglese antico \emph{ġespan} era un giogo, un collare o per estensione un bracciale); un arcolaio (le cui braccia sono proprio $1\leftarrow 0\to 2$; quest'ultima etimologia è dalla radice proto-indoeuropea \emph{*(s)penh$_1$-}, da cui derivano varie parole nel campo semantico di ciò che è capace di ruotare attorno a un asse).}
+	\(\Lambda^2_0\) ha tre oggetti \(0,1,2\) e due morfismi non identità. Si raffigura come segue:\footnote{La scelta del termine si può intendere motivata dal fatto che una spanna è: la distanza (misurata dai codomini delle due frecce verso $0,1$) tra punta del pollice e punta del mignolo di una mano aperta adulta; l'arcata di un ponte (il cui punto più alto è l'oggetto $0$); le due braccia di un giogo (in inglese antico \emph{ġespan} era un giogo, un collare o per estensione un bracciale); un arcolaio (le cui braccia sono proprio $1\leftarrow 0\to 2$; quest'ultima etimologia è dalla radice proto-indoeuropea \emph{*(s)penh$_1$-}, da cui derivano varie parole nel campo semantico di ciò che è capace di ruotare attorno a un asse).}
 	\[\begin{tikzcd}
 		1 & 0 \ar[r]\ar[l] & 2
 	\end{tikzcd}\]
-	La composizione è definita solamente quando almeno una delle due frecce è identica, ed è forzata da questo fatto.
+	La composizione è definita solamente quando almeno una delle due frecce è l'identità, ed è forzata da questo fatto.
 	
-	Dualmente, la categoria `cospanna generica' \(\Lambda^2_2\) ha tre oggetti \(0,1,2\) ma i due morfismi non identici puntano verso \(2\) invece che uscire da \(0\):
+	Dualmente, la categoria `cospanna generica' \(\Lambda^2_2\) ha tre oggetti \(0,1,2\) ma i due morfismi non identità puntano verso \(2\) invece che uscire da \(0\):
 	\[\begin{tikzcd}
 		0\ar[r] & 2 & 1\ar[l]
 	\end{tikzcd}\]
-	Di nuovo, la composizione è definita solamente quando almeno una delle due frecce è identica.
+	Di nuovo, la composizione è definita solamente quando almeno una delle due frecce è l'identità.
 	
 	Si noti che \(\Lambda^2_2\) si ottiene da \(\Delta[2]\) `rimuovendo la freccia \(0\to 1\)', e analogamente \(\Lambda^2_0\) si ottiene rimuovendo la freccia \(1\to 2\).
 	
@@ -314,14 +316,14 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 		\item gli oggetti di \(S^\lhd\) sono gli elementi di \(S^+ := S\cup \{-\infty\}\);
 		\item esiste un unico morfismo \(f_s : -\infty\to s\), per ogni \(s\in S\).
 	\end{itemize}
-	La composizione è ancora una volta definita solamente quando almeno una delle due frecce è identica. Questo definisce una categoria in cui da un oggetto chiamato `\(-\infty\)' spiccano tante frecce \(f_s\) quanti sono gli elementi di \(S\).
+	La composizione è ancora una volta definita solamente quando almeno una delle due frecce è l'identità. Questo definisce una categoria in cui da un oggetto chiamato `\(-\infty\)' spiccano tante frecce \(f_s\) quanti sono gli elementi di \(S\).
 	
 	Dualmente, definiamo la categoria `\(S\)-cospanna generica' \(S^\rhd\) come segue:
 	\begin{itemize}
 		\item gli oggetti di \(S^\rhd\) sono gli elementi di \(S^+ := S\cup \{+\infty\}\);
 		\item esiste un unico morfismo \(f_s : s\to+\infty\), per ogni \(s\in S\).
 	\end{itemize}
-	La composizione è ancora una volta definita solamente quando almeno una delle due frecce è identica. Questo definisce una categoria in cui verso un oggetto chiamato `\(\infty\)' puntano tante frecce \(f_s\) quanti sono gli elementi di \(S\).
+	La composizione è ancora una volta definita solamente quando almeno una delle due frecce è l'identità. Questo definisce una categoria in cui verso un oggetto chiamato `\(\infty\)' puntano tante frecce \(f_s\) quanti sono gli elementi di \(S\).
 	
 	Si noti che \(\Lambda^2_0=\{1,2\}^\lhd\) e \(\Lambda^2_2=\{0,1\}^\rhd\).
 \end{example}
@@ -354,7 +356,7 @@ Dopo questa digressione veniamo a due esempi più elaborati, ma molto `concreti'
 	\[f(\tup xn,)=(f_1(\tup xn,),\dots,f_m(\tup xn,)).\]
 	Tra le funzioni Booleane semplici ci sono certamente le proiezioni canoniche \(\pi_i : \bbB^n\to\bbB :(\tup xn,)\mapsto x_i\), con le quali è possibile caratterizzare le $f_i$ su menzionate: $f_i = \pi_i\cmp f$; è anche possibile definire la mappa diagonale \(\Delta_m:\bbB\to\bbB^m\) come
 	\[\Delta_m : x\mapsto (x,\dots,x)\quad m\text{ volte}\]
-	cioè mediante le $m$ funzioni semplici identiche $x\mapsto x$.
+	cioè mediante le $m$ funzioni semplici identità $x\mapsto x$.
 	
 	Sull'insieme dei Booleani è possibile definire le operazioni logiche elementari di disgiunzione, congiunzione e negazione logica, che è possibile rappresentare graficamente con i seguenti diagrammi o `porte' logiche (note a qualsiasi ingegnere elettronico)
 	\[\begin{circuitikz}
@@ -441,7 +443,7 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 	\end{itemize}
 	Due funzioni \(f : A\to B\), \(g : B\to C\) si compongono alla maniera delle relazioni (e la composizione è ancora una funzione, poiché l'intersezione \((G\cmp F)\cap (\{a\}\times C)\) consta del singoletto \(\{g(fa)\}\)).
 	
-	La relazione diagonale è infine la funzione identica.
+	La relazione diagonale è infine la (relazione sottostante alla) funzione identità.
 \end{example}
 Evidentemente, possiamo restringerci a considerare la categoria dei soli insiemi \emph{finiti} (così come la categoria \(\ctFRel\) delle relazioni tra insiemi finiti, che la contiene propriamente). Questo è il primo degli esempi motivanti fatti ad inizio capitolo, e in un senso evidente (che sarà precisato dalla definizione \ref{def_subcat}), \(\ctFRel\) è una \emph{sottocategoria} di \(\ctRel\) (e \(\ctFin\) è una sottocategoria di \(\ctSet\), che a sua volta è una sottocategoria di \(\ctRel\), sebbene in un modo non completamente banale).
 \index{Categoria!--- delle matrici}
@@ -536,7 +538,7 @@ Evidentemente, possiamo scrivere \(e : x\to y\) per denotare in maniera compatta
 	
 	La categoria \(\ctPOrd\) ha per oggetti e morfismi gli insiemi preordinati e le funzioni monotòne. Chiaramente, l'identità \(\id_P : (P,\le)\to (P,\le)\) è una funzione monotòna, e la composizione di due funzioni monotòne resta monotòna.
 	
-	\`E tuttavia importante che l'ordine su \(P\) sia \emph{lo stesso} affinché l'identità sia monotòna: infatti, ogni insieme \(P\) può essere dotato dell'ordine \emph{banale} (dove \(x \mathrel{\le^\delta} y\) se e solo se \(x=y\)) e dell'ordine \emph{caotico} (dove \(x\mathrel{\le^\chi} y\) per ogni \(x,y\in P\)). Se \(P\) ha almeno due elementi, la funzione identica \((P,\le^\chi)\to (P,\le^\delta)\) non è, chiaramente, monotòna.
+	\`E tuttavia importante che l'ordine su \(P\) sia \emph{lo stesso} affinché l'identità sia monotòna: infatti, ogni insieme \(P\) può essere dotato dell'ordine \emph{banale} (dove \(x \mathrel{\le^\delta} y\) se e solo se \(x=y\)) e dell'ordine \emph{caotico} (dove \(x\mathrel{\le^\chi} y\) per ogni \(x,y\in P\)). Se \(P\) ha almeno due elementi, la funzione identità \((P,\le^\chi)\to (P,\le^\delta)\) non è, chiaramente, monotòna.
 \end{example}
 \index{Ordine parziale}
 \begin{remark}[po, wo e to]\label{po_wo_to}
@@ -726,7 +728,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 			D \ar[r, "v"']& D'
 		\end{tikzcd}\]
 	\end{itemize}
-	Gli assiomi di categoria sono ovviamente soddisfatti: la coppia di morfismi identici $(\id_A,\id_D)$ è evidentemente l'identità dell'oggetto $(d : A\to D)$ per l'operazione di composizione di funzioni, componente per componente.
+	Gli assiomi di categoria sono ovviamente soddisfatti: la coppia di identità $(\id_A,\id_D)$ è evidentemente l'identità dell'oggetto $(d : A\to D)$ per l'operazione di composizione di funzioni, componente per componente.
 \end{example}
 Veniamo ora a degli esempi più astratti e chiudiamo il cerchio su quelli che hanno motivato la definizione di categoria all'inizio.
 
@@ -742,7 +744,7 @@ si riesce a definire la classe degli oggetti e dei morfismi di una categoria. Gl
 		\item gli oggetti sono gli pseudoinsiemi \((S,\sim)\);
 		\item un omomorfismo di pseudoinsiemi \(f : (S,\sim) \to (T,\asymp)\) consiste di una funzione \(f : S\to T\) con la proprietà che se \(s\sim s'\) in \(S\) allora \(fs\asymp fs'\) in \(T\). Equivalentemente, gli omomorfismi di pseudoinsiemi sono le funzioni \(f : S\to T\) che `scendono al quoziente' definendo una funzione \(\hat f : S/_\sim \to T/_\asymp\) tra gli insiemi quoziente.
 	\end{itemize}
-	La composizione di omomorfismi di pseudoinsiemi è la composizione di funzioni; la funzione identica è l'identità di \((S,\sim)\) (e se \(\sim'\) è una relazione di equivalenza più fine di \(\sim\) sullo stesso insieme \(S\), la funzione identica \((S,\sim) \to (S,\sim')\) è un omomorfismo, ma non è un isomorfismo, nel senso di \ref{def_isomorfismo}).
+	La composizione di omomorfismi di pseudoinsiemi è la composizione di funzioni; la funzione identità è l'identità di \((S,\sim)\) (e se \(\sim'\) è una relazione di equivalenza più fine di \(\sim\) sullo stesso insieme \(S\), la funzione identità \((S,\sim) \to (S,\sim')\) è un omomorfismo, ma non è un isomorfismo, nel senso di \ref{def_isomorfismo}).
 \end{example}
 \begin{remark}[Sul nome `pseudoinsieme']
 	La nomenclatura `insieme di Bishop' viene da \cite{Bishop1985}, dove quello che è chiamato qui pseudoinsieme consiste di un insieme per cui sia data una regola esplicita che costruisce i suoi elementi, e questi elementi possono essere uguagliati mediante una relazione \(\sim\), che astrae l'uguaglianza sintattica.\footnote{In Bishop la costruibilità dei suoi elementi è il punto centrale nella definizione di pseudoinsieme: elementi esibiti mediante procedure differenti sono però uguali ad ogni fine pratico, e vanno quindi identificati.}
@@ -1103,14 +1105,15 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 		\end{tikzcd}
 		\]
 		\item Come morfismi \((f,g)\to (f',g')\), triple di frecce \(p:A\to A'\), \(q:B\to B'\) e \(r:C\to C'\) che fanno commutare il seguente diagramma,
-		\[
+		\begin{equation}
 		\begin{tikzcd}[row sep=small]
 			& A \ar{dd}{p} \ar{dl}[swap]{f} \ar{dr}{g} \\
 			B \ar{dd}{q} && C \ar{dd}{r} \\
 			& A' \ar{dl}{f'} \ar{dr}[swap]{g'} \\
 			B' && C'
 		\end{tikzcd}
-		\]
+  \label{mor_spanne}
+		\end{equation}
 		ossia tali che \(q\cmp f=f'\cmp p\) e \(r\cmp g=g'\cmp p\).
 	\end{itemize}
 	
@@ -1156,7 +1159,7 @@ Chi legge rifletta su questa domanda: la categoria \(\ctCospan(\ctC)\) è \(\ctS
 \end{definition}
 Dalla definizione della composizione in \(\ctC\star\ctD\) si può mostrare per induzione che la composizione di una \(n\)-upla di morfismi di \(\ctC\star\ctD\) di cui almeno uno è un eteromorfismo, è un eteromorfismo (tra gli appropriati dominio e codominio). Questo dimostra la proprietà associativa (e la buona definizione) della composizione con eteromorfismi. %Si noti che nessun eteromorfismo può essere invertibile (perché?).
 
-L'operazione di giunto tra due categorie è essenziale alla loro teoria `combinatoria', e al trattarle come strutture, dato che molte costruzioni elementari si descrivono in termini di giunti: ad esempio, se \(S=\{a,b\}\) è un insieme con due elementi, la spanna generica di \ref{ex_spancospan} è il giunto \(\ctTerm\star S^\delta\), e la cospanna generica è \(S^\delta\star\ctTerm\), e identiche relazioni valgono anche per le \(S\)-spanne ed \(S\)-cospanne generiche.
+L'operazione di giunto tra due categorie è essenziale alla loro teoria `combinatoria', e al trattarle come strutture, dato che molte costruzioni elementari si descrivono in termini di giunti: ad esempio, se \(S=\{a,b\}\) è un insieme con due elementi, la spanna generica di \ref{ex_spancospan} è il giunto \(\ctTerm\star S^\delta\), e la cospanna generica è \(S^\delta\star\ctTerm\), e relazioni analoghe valgono anche per le \(S\)-spanne ed \(S\)-cospanne generiche.
 
 Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp G\) è un gruppo guardato come categoria alla maniera di \ref{}, Milnor \cite{milnor1,milnor2} ha studiato la successione \[\susp G, \susp G\star\susp G, \dots, \susp G \star\dots\star \susp G =:\susp G^{\star n}\] e il suo `limite' per dei problemi di topologia.
 \subsubsection*{Esercizi}
@@ -1866,13 +1869,13 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\[\dmFun F {\act G}\ctSet\]
 	se $\act G$ è il gruppoide d'azione di \ref{action_groupoid}? Farsi degli esempi (e dei disegni) quando $G=C_n$ è il gruppo ciclico con $n$ elementi, quando $G=\bbZ$ è il gruppo additivo degli interi, e quando $G=S_3$ è il gruppo simmetrico delle biiezioni dell'insieme $\{1,2,3\}$.
 	\item Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà il suo fibrato tangente.
-	\item Determinare la categoria comma $(F/G)$ nelle varie combinazioni in cui: $F$ è il funtore identico; $G$ sia il funtore identico; $F$ è un funtore costante in un oggetto $E\in\ctE_0$; $G$ è un funtore costante in un oggetto $E\in\ctE_0$. Chi è $(E_1/E_2)$ se $E_1,E_2$ sono due oggetti, guardati come funtori $\ctTerm \fun\ctE$ (cf. il primo esercizio di questa sezione)?
+	\item Determinare la categoria comma $(F/G)$ nelle varie combinazioni in cui: $F$ è il funtore identità; $G$ è il funtore identità; $F$ è un funtore costante in un oggetto $E\in\ctE_0$; $G$ è un funtore costante in un oggetto $E\in\ctE_0$. Chi è $(E_1/E_2)$ se $E_1,E_2$ sono due oggetti, guardati come funtori $\ctTerm \fun\ctE$ (cf. il primo esercizio di questa sezione)?
 \end{enumerate}
 
 \section{Trasformazioni naturali}\label{sec_tnat}
-In \ref{tante_cose_sono_diag} abbiamo osservato che le spanne e cospanne in $\ctC$ si possono vedere come funtori; del resto, in \ref{def_span_e_cospan} abbiamo costruito una \emph{categoria} di spanne in $\ctC$. Un morfismo di spanne consiste, secondo quella definizione, di una famiglia di tre morfismi di $\ctC$ tra i vertici omonimi delle due spanne $(X_1\leftarrow X_0\to X_2)$ e $(Y_1\leftarrow Y_0\to Y_2)$:
+In \ref{tante_cose_sono_diag} abbiamo osservato che le spanne e cospanne in $\ctC$ si possono vedere come funtori; del resto, in \ref{def_span_e_cospan} abbiamo costruito una \emph{categoria} di spanne in $\ctC$. Un morfismo di spanne consiste, secondo quella definizione, di una famiglia di tre morfismi di $\ctC$ tra i vertici omonimi delle due spanne $(X_1\overset l\leftarrow X_0\overset r\to X_2)$ e $(Y_1\overset{l'}\leftarrow Y_0\overset{r'}\to Y_2)$:
 \[\alpha_0 : X_0\to Y_0,\quad \alpha_1 : X_1\to Y_1,\quad \alpha_2 : X_2\to Y_2\]
-che rendono commutativi i diagrammi in \ref{}. Riguardando le spanne $X_\bullet,Y_\bullet$ come diagrammi di forma $\Lambda^2_0 \to\ctC$, la terna $(\alpha_0,\alpha_1,\alpha_2)$ si può vedere come una freccia $X_\bullet \nat Y_\bullet$, nel senso che\Todo{}
+che rendono commutativi i diagrammi in \ref{mor_spanne}. Riguardando le spanne $X_\bullet,Y_\bullet$ come diagrammi di forma $\Lambda^2_0 \to\ctC$, la terna $(\alpha_0,\alpha_1,\alpha_2)$ si può vedere come una freccia $X_\bullet \nat Y_\bullet$, nel senso che\Todo{}
 % Ciò significa che c'è una qualche nozione di morfismo tra funtori, almeno in alcuni contesti. 
 
 La nozione di \emph{trasformazione naturale} tra funtori rende precisa questa congettura.
@@ -1906,17 +1909,19 @@ Siccome i funtori si possono considerare a loro volta frecce, le trasformazioni 
 	Abbiamo visto nell'Esempio~\ref{exa_azioni_funtori} che dato un gruppo \(G\), un funtore \(\ctB G\to\ctSet\) è un insieme \(X\) con un'azione di \(G\) su \(X\). Dati due funtori \(\ctB G\to\ctSet\), i.e.\ due insiemi \(X\) e \(Y\) con un'azione di \(G\), una trasformazione naturale tra questi due funtori è una funzione \(f:X\to Y\) che commuta con l'azione di \(G\), nel senso che per ogni \(g\in G\), il seguente diagramma commuta:
 	\[
 	\begin{tikzcd}
-		X \ar{d}{f} \ar{r}{g\cdot} & X \ar{d}{f} \\
-		Y \ar{r}{g\cdot} & Y
+		X \ar{d}{f} \ar{r}{g\cdot\_} & X \ar{d}{f} \\
+		Y \ar{r}{g\cdot\_} & Y
 	\end{tikzcd}
 	\]
-	In teoria delle rappresentazioni, questa condizione su \(f\) si chiama \emph{equivarianza}, ed è esattamente la condizione di naturalità istanziata in questo caso.
+	In teoria delle rappresentazioni, la condizione su \(f\) 
+ \[\text{per ogni } g\in G,\, f(g\cdot x)=g\cdot f(x)\]
+ si chiama \emph{equivarianza}, ed è esattamente la condizione di naturalità istanziata in questo caso. Una conseguenza immediata della condizione è che $f$ si restringe all'insieme \(X^G:=\{x\in X\mid \forall g\in G . g\cdot x = x\}\) dei punti fissi dell'azione di $G$ su $X$; infatti, per ogni $x\in X^G$ si ha $g\cdot f(x) = f(g\cdot x) = f(x)$.
 \end{example}
 
-\begin{example}[Doppio duale]
+\begin{example}\Todo{Doppio duale}
 \end{example}
 
-\begin{example}[Mappa di Hurewicz]
+\begin{example}\Todo{Mappa di Hurewicz}
 \end{example}
 
 \begin{definition}[Composizione verticale di trasformazioni naturali]\label{def_vcomp}\index{Composizione verticale!di trasformazioni naturali}
@@ -1925,9 +1930,9 @@ Siccome i funtori si possono considerare a loro volta frecce, le trasformazioni 
 	rappresentata come segue, 
 	\[
 	\begin{tikzcd}[sep=large]
-		\ctC \ar[bend left=60, ""{name=F,below}]{r}{F} 
+		\ctC \ar[bend left=50, ""{name=F,below}]{r}{F} 
 		\ar[""{name=Gup,above}, ""{name=Gdown,below}]{r}[near start]{G} 
-		\ar[bend right=60, ""{name=H,above}]{r}[swap]{H} & \ctD
+		\ar[bend right=50, ""{name=H,above}]{r}[swap]{H} & \ctD
 		\ar[Rightarrow, from=F, to=Gup, "\alpha"]
 		\ar[Rightarrow, from=Gdown, to=H, "\beta"]
 	\end{tikzcd}
