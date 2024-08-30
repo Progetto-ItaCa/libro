@@ -13,7 +13,7 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 	\end{itemize}
 	che soddisfano le seguenti proprietà:
 	\begin{itemize}
-		\item \emph{Unitalità}: per ogni \(m\in M\), valgono le uguaglianze 
+		\item \emph{Identità}: per ogni \(m\in M\), valgono le uguaglianze 
   \[m\cdot e = e\cdot m=m.\]
 		\item \emph{Associatività}: per ogni \(m,n,p\in M\), vale l'uguaglianza 
   \[(m\cdot n)\cdot p = m\cdot (n\cdot p)\]
@@ -123,7 +123,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
  \(\bigcup_{n,m\ge 0}2^{n\times m}\)
  (fatto da quelle relazioni $R\subseteq n\times m$ che sono funzioni, si veda \ref{}), ed è quindi un insieme.
 
- La categoria di \emph{tutti} gli insiemi finiti non è, strettamente parlando, piccola (perché c'è una classe propria anche solo di insiemi con un singolo elemento: \(\{\varnothing\},\{\{\varnothing\}\}, \{\{\{\varnothing\}\}\}\), eccetera), ma è localmente piccola, perché fissati due insiemi \(X,Y\), la collezione delle funzioni \(f : X\to Y\) è contenuta in \(2^{X\times Y}\), e quest'ultimo è un insieme (per assioma).
+ La categoria di \emph{tutti} gli insiemi finiti non è, strettamente parlando, piccola (perché c'è una classe propria anche solo di insiemi con un singolo elemento: \(\{\varnothing\},\{\{\varnothing\}\}, \{\{\{\varnothing\}\}\}\), eccetera), ma è localmente piccola, perché fissati due insiemi \(X,Y\), la collezione delle funzioni \(f : X\to Y\) è contenuta (stessa idea di prima) in \(2^{X\times Y}\), e quest'ultimo è un insieme (per assioma). La differenza tra le due situazioni è che l'unione \(\bigcup_{X,Y}2^{X\times Y}\) è indiciata su una classe propria, e quindi è una classe propria.
 \begin{remark}
 	Gli assiomi di categoria non impediscono di costruire `categorie' dove \(\ctC_0\) è un insieme (per esempio, finito) e dove alcuni o tutti \(\Hom{\ctC}(X,Y)\) sono classi proprie; queste costruzioni sono però relativamente innaturali, e non ne parleremo mai. In effetti, non parleremo mai nemmeno di categorie grandi che non sono localmente piccole (ne risentirebbe irrimediabilmente il capitolo 4 del libro, e molti altri risultati). Perciò, da ora in poi adottiamo la convenzione che \emph{categoria}, senz'altro aggiungere, significhi sempre \emph{categoria localmente piccola}. Alternative a questa maniera di ragionare sono possibili, ma non porremo mai una particolare attenzione alla questione.
 \end{remark}
@@ -349,7 +349,13 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 	\end{itemize}
 	La composizione di due sequenze \([\tup fm;]\) e \([\tup en;]\) è data dalla loro \emph{concatenazione}, ossia dalla operazione
 	\[[\tup fm;]\cmp[\tup en;] = [\tup fm;;\tup en;].\]
-	Quando è definita, questa operazione è, evidentemente, associativa, e la sequenza vuota soddisfa la condizione di unitalità \ref{cp_1} nella \ref{def_categ}.
+	Quando è definita, questa operazione è, evidentemente, associativa, e la sequenza vuota soddisfa l'assioma di identità \ref{cp_1} nella \ref{def_categ}.
+ \begin{figure}
+     %\centering
+     \Todo{}
+     \caption{Concatenazione di due sequenze in $F\ctG$.}
+     \label{fig:enter-label}
+ \end{figure}
 \end{example}
 Dopo questa digressione veniamo a due esempi più elaborati, ma molto `concreti', di categorie dove gli oggetti sono numeri naturali:
 \index{Categoria!--- dei circuiti}
@@ -779,7 +785,7 @@ I seguenti esempi sono simili, e vanno a rinforzare l'idea che una maniera aggiu
 	Per ogni oggetto \(x\), l'identità è l'unico morfismo \(x\to x\) dato dal fatto che la relazione è riflessiva (\(x\sim x\)).
 	La composizione è data dalla transitività: se abbiamo morfismi \(x\to y\) e \(y\to z\) significa, in particolare, che \(x\sim y\) e \(y\sim z\). Per transitività, \(x\sim z\), e quindi c'è un unico morfismo \(x\to z\), che possiamo definire come composizione.
 	
-	Gli assiomi di unitalità e associatività sono automaticamente soddisfatti: per esempio, la composizione \((w\to x\to y)\to z\) e la composizione \(w\to (x\to y\to z)\) coincidono, constando dell'unico morfismo \(w\to z\).
+	Gli assiomi di identità e associatività sono automaticamente soddisfatti: per esempio, la composizione \((w\to x\to y)\to z\) e la composizione \(w\to (x\to y\to z)\) coincidono, constando dell'unico morfismo \(w\to z\).
 \end{example}
 Quelle della forma \(\susp(X,\sim)\) per qualche insieme \(X\) e relazione di equivalenza \(\sim\) sono un esempio elementare di categoria in cui gli oggetti non sono insiemi strutturati, ma non è quello più semplice possibile: la proprietà di simmetria di \(\sim\) non è essenziale per ottenere una categoria.
 
