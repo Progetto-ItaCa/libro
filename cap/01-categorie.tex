@@ -111,6 +111,18 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 		dove ciascuna manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in \(g\cmp f\) (si sottintende \emph{sempre} il dominio particolare di \(\_\cmp_{XZ}^Y\_\) e lo si indica solo con $\_\cmp\_$).
 	\end{itemize}
 \end{remark}
+\begin{remark}[A proposito dell'ordine di composizione]\label{sulla_compo}
+    \Todo{}
+La forma diagrammatica di rappresentazione di un morfismo in \ref{c_3} pone un problema notazionale riguardo la composizione di morfismi in \ref{c_5}; in matematica è una convenzione \emph{quasi} universale applicare le funzioni a sinistra degli argomenti, cioè scrivere $g(f(x))$ per denotare che la prima funzione ad \emph{agire} su un elemento $x\in X$ è $f$, e la seconda è $g$. Ma $g$ è la prima funzione a essere \emph{letta} enunciando la composizione di $f$ con $g$ (che non ha senso se non come in \ref{c_5}, quando $X\ne Z$): come conseguenza, i diagrammi commutativi si leggono `al contrario' rispetto a come si disegnano, scrivendo per primo il morfismo che viene composto per ultimo.  Sorprendentemente, questa semplice inversione è sufficiente a confondere una minoranza di matematici, che vorrebbero applicare le funzioni a destra del loro argomento, scrivendo cioè $(xf)g$ per ciò che noi denotiamo $g(fx)$. Essendo il problema generato da una scelta del tutto soggettiva e legata al progresso storico (la scrittura in occidente procede da sinistra a destra, e leggiamo $\cos(z)$, `il coseno di $z$', e non brutture come $(x)\!\cos$ o $x^{\cos}$, `l'elemento $x$ su cui ha agito la funzione coseno') è impossibile stabilire chi ha ragione o torto: si può solo fare una scelta e mantenerla coerentemente. Tra le varie soluzioni possibili, la più elementare è rovesciare il verso delle frecce, cioè scrivere
+\[
+\begin{tikzcd}
+	Z 
+	& Y \ar[l, "g"'] & X \ar[l, "f"']
+\end{tikzcd}
+\]
+per la composizione che appare in \ref{c_5} (e fare altrettanto per diagrammi più complessi): ora la composizione di $g$ e di $f$ è effettivamente $g\cmp f$; questo sposta semplicemente il problema, dato che ora le frecce scorrono in senso contrario al verso di lettura...
+    % Il modello mentale che è utile avere in mente per comprendere la definizione di categoria è dato dall'Esempio \ref{ex_cat_insiemi};\footnote{Ma (avremo modo di ripeterlo diverse volte) \emph{esistono categorie i cui morfismi non sono funzioni tra insiemi}.} la notazione per la composizione di morfismi `$\cmp$' è infatti la stessa usata in algebra per denotare la composizione di funzioni, che applica la funzione `$f$' all'argomento `$x$' scrivendo $f(x)$, e compone $g$ con $f$ scrivendo $(g\cmp f)(x):=g(f(x))$.
+\end{remark}
 \begin{definition}[Categoria piccola, categoria localmente piccola]
 	\index{Categoria!--- piccola}
 	\index{Categoria!--- loc. piccola}
@@ -344,16 +356,37 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 		\item fissati due vertici \(u,v\in V\), i morfismi \(u\to v\) sono l'insieme
 		\[\sum_{n\ge0} E(u,x_1)\times E(x_1,x_2)\times\dots\times E(x_n,v)\]
 		di tutte le sequenze ordinate e finite di lati
-		\[ [\tup en;] : u \xto{e_1} x_1 \xto{e_2} x_2\xto{e_3} \dots\xto{e_{n-1}} x_{n-1}\xto{e_n} v\]
-		con la convenzione che se \(u=v\) ed \(n=0\) la sequenza vuota si interpreta come un laccio `banale' \(\emptyList_u : u\to u\), e usando la notazione, ovvia, \(E(x,y)\subseteq E\) per denotare i lati di source \(x\) e target \(y\).
+		\[ [e_n;\dots;e_1] : u \xto{e_1} x_1 \xto{e_2} x_2\xto{e_3} \dots\xto{e_{n-1}} x_{n-1}\xto{e_n} v\]
+		con la convenzione di scrivere gli elementi della sequenza in ordine inverso\footnote{Questa convenzione segue quella che applica le funzioni `a sinistra', scrivendo $(f(g(x)) = (f\circ g)(x)$, si veda \ref{sulla_compo}.} ed intepretando il caso \(u=v,n=0\) come una sequenza fatta da un laccio `banale' \(\emptyList_u : u\to u\); in più, usiamo la notazione ovvia, \(E(x,y)\subseteq E\) per denotare i lati del grafo di dominio \(x\) e codominio \(y\).
 	\end{itemize}
-	La composizione di due sequenze \([\tup fm;]\) e \([\tup en;]\) è data dalla loro \emph{concatenazione}, ossia dalla operazione
-	\[[\tup fm;]\cmp[\tup en;] = [\tup fm;;\tup en;].\]
-	Quando è definita, questa operazione è, evidentemente, associativa, e la sequenza vuota soddisfa l'assioma di identità \ref{cp_1} nella \ref{def_categ}.
+	La composizione di due sequenze \([f_m;\dots;f_1]\) e \([e_n;\dots;e_1]\) è data dalla loro \emph{concatenazione}, ossia dalla operazione
+	\[[f_m;\dots;f_1]\cmp[e_n;\dots;e_1] = [f_m;\dots;f_1;e_n;\dots;e_1].\]
+	Quando è definita, questa operazione è, evidentemente, associativa, e la sequenza vuota $\emptyList_u$ soddisfa l'assioma di identità \ref{cp_1} nella \ref{def_categ}.
  \begin{figure}
      %\centering
-     \Todo{}
-     \caption{Concatenazione di due sequenze in $F\ctG$.}
+     \begin{center}
+         \begin{tikzpicture}
+ \coordinate (a0) at (0,0);
+ \coordinate (a1) at (1,1);
+ \coordinate (a2) at (2.5,.75);
+ \coordinate (a3) at (3,0);
+ \coordinate (a4) at (4,1);
+ \coordinate (a5) at (5.75,1.5);
+ \coordinate (a6) at (6,0);
+ \coordinate (a7) at (8,.5);
+ %
+ \draw[red!20,line width=5mm, rounded corners, cap=round] (a0) -- (a1) -- (a2) -- (a3) -- (a4);
+ \draw[blue!20,line width=5mm, rounded corners, cap=round] (a4) -- (a5) -- (a6) -- (a7);
+ % 
+ \foreach \i in {0,...,7}
+ \node (e\i) at (a\i) {$x_\i$};
+ \foreach \i in {0,...,6}{
+ \edef\ipp{\fpeval{\i + 1}}
+ \draw[->] (e\i) -- (e\ipp);
+ }
+\end{tikzpicture}
+     \end{center}
+     \caption{Concatenazione di due sequenze $[\optup[0] e4;]$ e $[\optup[4]f7;]$ di morfismi in $F\ctG$.}
      \label{fig:enter-label}
  \end{figure}
 \end{example}
@@ -454,7 +487,7 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 		\item per oggetti gli insiemi, denotati con le lettere \(A,B,C\dots\);
 		\item per morfismi da \(A\) vero \(B\) tutte le funzioni \(f : A\to B\), ossia tutte le relazioni \(F\subseteq A\times B\) con la proprietà che per ogni \(a\in A\) esiste un unico \(b\in B\) tale che \((a,b)\in F\) o, più formalmente, \(F\cap(\{a\}\times B)\) è un singoletto; l'elemento \(b\) in questione si denota \(f(a)\) o \(fa\) e l'insieme \(F = \{(a,fa)\mid a\in A\}\) è il \emph{grafico} o \emph{supporto} della funzione. Queste relazioni sono \emph{totali} (perché sono definite sull'intero dominio \(A\)) e \emph{a valore singolo}.
 	\end{itemize}
-	Due funzioni \(f : A\to B\), \(g : B\to C\) si compongono alla maniera delle relazioni (e la composizione è ancora una funzione, poiché l'intersezione \((G\cmp F)\cap (\{a\}\times C)\) consta del singoletto \(\{g(fa)\}\)).
+	Due funzioni \(f : A\to B\), \(g : B\to C\) si compongono alla maniera delle relazioni (e la composizione è ancora una funzione, poiché l'intersezione \((G\cmp F)\cap (\{a\}\times C)\) consta del singoletto \(\{g(f(a))\}\)).
 	
 	La relazione diagonale è infine la (relazione sottostante alla) funzione identità.
 \end{example}
@@ -487,7 +520,9 @@ Questo appena fatto è il secondo degli esempi motivanti fatti ad inizio capitol
 		\item I gruppi e gli omomorfismi di gruppo formano la categoria \(\ctGrp\).
 	\end{itemize}
 \end{example}
-L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme dotato di operazioni, codificando una struttura algebrica in una \emph{funzione di arietà}:\footnote{Le parole \emph{arietà}, così come \emph{nullario} e \emph{unario} e \(n\)-ario (ma non binario, ternario, quaternario, etc.) sono retroformazioni che il lessico matematico ha introdotto a partire dal suffisso latino \emph{-\={a}rius, -\=aria, -\=arium}, usato per formare aggettivi a partire da nomi o numerali. Una operazione `\(n\)-aria' accetta \(n\) argomenti a dominio.} innanzitutto, si ricordi che una operazione \(n\)-aria su un insieme \(X\) consta di una funzione \(X\times X\times\dots\times X \to X\) dove il prodotto cartesiano è fatto \(n\) volte.
+L'idea da trattenere dopo questi primi esempi è che `tutte' le categorie di insiemi con operazioni che soddisfano, eventualmente, delle equazioni, forma una categoria; sebbene a volte non sia una questione banale scegliere la `giusta' nozione di omomorfismo tra strutture, ci affidiamo alla competenza che gli studi anteriori hanno dato a chi legge nel capire che, anche quando non abbiamo definito precisamente oggetti e morfismi, ci riferiamo alle categorie di strutture algebriche con le loro scelte `ovvie' di omomorfismo come funzione che rispetta (tutta) la struttura algebrica.
+
+L'\emph{algebra universale} si occupa di rendere preciso il concetto di `insieme dotato di operazioni', codificando una struttura algebrica mediante una \emph{funzione di arietà}:\footnote{Le parole \emph{arietà}, così come \emph{nullario} e \emph{unario} e \(n\)-ario (ma non binario, ternario, quaternario, etc.) sono retroformazioni che il lessico matematico ha introdotto a partire dal suffisso latino \emph{-\={a}rius, -\=aria, -\=arium}, usato per formare aggettivi a partire da nomi o numerali. Una operazione `\(n\)-aria' accetta \(n\) argomenti a dominio.} innanzitutto, si ricordi che una operazione \(n\)-aria su un insieme \(X\) consta di una funzione \(X\times X\times\dots\times X \to X\) dove il prodotto cartesiano è fatto \(n\) volte.
 \index{Categoria!---}
 \begin{example}\label{ex_cat_sigma_strutture}
 	Una \emph{segnatura algebrica} consiste di una coppia \((\Omega, a)\) dove \(\Omega\) è un insieme, e \(a : \Omega \to \bbN\) è una funzione detta \emph{funzione di arietà} che associa a ogni elemento \(\omega \in \Omega\) la sua arietà \(a(\omega)\ge 0\). Un \emph{modello} per una segnatura algebrica \((\Omega,a)\) consiste di un insieme \(X\) e di una funzione \(f_\bullet\) che associa a ogni \(\omega\in\Omega\) una operazione \(f_\omega : X^{a(\omega)} \to X\) di arietà \(a(\omega)\).
@@ -506,10 +541,8 @@ L'\emph{algebra universale} si occupa di generalizzare il concetto di insieme do
 		\]
 	\end{itemize}
 \end{example}
-\`E un esercizio tedioso nella manipolazione delle tuple ordinate, ora, dimostrare che gli assiomi di categoria sono tutti soddisfatti. Un esercizio analogamente tedioso è di trovare segnature algebriche opportune che esprimono le categorie dei gruppi, dei monoidi, degli anelli e degli spazi vettoriali ecc.\ come esempi particolari di categorie di modelli di una segnatura algebrica.\footnote{Tedioso, e a volte non proprio banale: ad esempio, come si descrivono le operazioni di moltiplicazione per scalare in uno spazio vettoriale usando la definizione di segnatura algebrica?}
-\begin{notation}
-	L'esempio appena fatto mostra che `tutte' le categorie di insiemi con operazioni che soddisfano, eventualmente, delle equazioni, forma una categoria; sebbene a volte non sia una questione banale scegliere la `giusta' nozione di omomorfismo tra strutture, ci affidiamo alla competenza che gli studi anteriori hanno dato a chi legge nel capire che, anche quando non abbiamo definito precisamente oggetti e morfismi, ci riferiamo alle categorie di strutture algebriche con le loro scelte `ovvie' di omomorfismo.
-\end{notation}
+\`E un esercizio tedioso nella manipolazione delle tuple ordinate, ora, dimostrare che gli assiomi di categoria sono tutti soddisfatti. Un esercizio analogamente tedioso è di trovare segnature algebriche opportune che esprimono le categorie dei gruppi, dei monoidi, degli anelli e degli spazi vettoriali ecc.\ come esempi particolari di categorie di modelli di una segnatura algebrica.\footnote{Tedioso, e a volte non proprio banale: ad esempio, come si descrivono le operazioni di moltiplicazione per scalare in uno spazio vettoriale usando la definizione di segnatura algebrica? Si noti anche che la richiesta che un omomorfismo di modelli rispetti \emph{tutti} gli elementi della segnatura a volte è ridondante: ogni omomorfismo di gruppi $f : G\to H$ manda l'identità del dominio nell'identità del codominio perché \(f(e_G)\) deve essere un elemento idempotente di $H$, e preserva gli inversi come corollario.}
+
 \begin{example}[Categoria dei multidigrafi]\label{ex_cat_grafi}\index{Categoria!--- dei grafi}
 	Questo esempio rende precise alcune osservazioni fatte in precedenza, \ref{ex_cat_doppiafreccia} e \ref{ex_cat_libera}. La categoria \(\ctdGph\) dei grafi è così definita:
 	\begin{itemize}
@@ -555,7 +588,7 @@ Evidentemente, possiamo scrivere \(e : x\to y\) per denotare in maniera compatta
 \end{example}
 \index{Ordine parziale}
 \begin{remark}[po, wo e to]\label{po_wo_to}
-	Una sottoclasse importante di preordini si ottiene imponendo che \(\le\) sia una relazione antisimmetrica; in tal caso il preordine \((P,\le)\) si dice un \emph{insieme parzialmente ordinato} o \emph{poset}. La categoria \(\ctPos\) ha per oggetti i poset e per morfismi le stesse funzioni monotòne di \ref{ex_cat_ordini}.
+	Una sottoclasse importante di preordini si ottiene imponendo che \(\le\) sia una relazione antisimmetrica; in tal caso il preordine \((P,\le)\) si dice un \emph{insieme parzialmente ordinato} (in inglese, \emph{p}artially \emph{o}rdered \emph{set} o brevemente \emph{poset}). La categoria \(\ctPos\) ha per oggetti i poset e per morfismi le stesse funzioni monotòne di \ref{ex_cat_ordini}.
 	
 	Un'altra sottocategoria importante di \(\ctPOrd\) è quella degli insiemi \emph{totalmente ordinati} o \emph{toset}, dove tutti gli elementi sono confrontabili tra loro:
 	\[\forall x,y\in P.((x\le y)\lor (y\le x));\]
