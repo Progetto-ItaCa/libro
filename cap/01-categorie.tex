@@ -1245,7 +1245,8 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
 		\end{tikzcd}\]
 		dove ogni quadrato e i due triangoli sono commutativi. (La direzione della freccia verso $X_n$ dipende dalla parità di $n$.) Se $n\ne m$, non ci sono morfismi tra le due catene.
 	\end{itemize}
-	Verificare se gli assiomi di categoria sono soddisfatti, con le ovvie scelte di composizione e identità; determinare quante amache di `lunghezza' zero esistono tra $A$ e $B$ per diverse scelte di $A,B$ (se $A$ è vuoto e $B$ no, se $B$ è vuoto e $A$ no, eccetera).
+	Verificare se gli assiomi di categoria sono soddisfatti, con le ovvie scelte di composizione e identità; determinare quante amache di `lunghezza' zero esistono tra $A$ e $B$ per diverse scelte di $A,B$ (se $A$ è vuoto e $B$ no, se $B$ è vuoto e $A$ no, eccetera). Studiare le proprietà della \emph{giunzione} di amache, definita mandando il diagramma 
+ \Todo{}
 	\item Un \emph{segmento binario} $(n_0,n_1,t,H)$ consiste di una coppia di interi positivi $n_0 \le n_1$,con una funzione suriettiva e monotòna $t : [n_1] \to [n_0]$, e un sottoinsieme $H\subseteq [n_0]$. Un omomorfismo tra segmenti binari $(n_0,n_1,t,H) \to (n_0',n_1',t',H')$ consiste di una coppia $(f_0,f_1)$ dove
 	\begin{itemize}
 		\item $f_1 : [n_1] \to [n_1']$ è una funzione iniettiva e monotòna;
@@ -1276,10 +1277,10 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
 	\end{tikzcd}
 	\]
 	si dice il \emph{grafico} di $R$: per quale motivo? Si disegni la cospanna $c(R)$ per semplici relazioni tra insiemi finiti; si descriva $c(R)$ per una relazione $R\subseteq X\times X$ che sia riflessiva, per una simmetrica, per una transitiva, su un insieme $X$.
-	\item Determinare il giunto di due catene generiche \(\Delta[n] * \Delta[m]\) come in \ref{ex_cat_catena} e di due cubi \(P[n] * P[m]\) come in \ref{ex_quadcuboncubo}, e più in generale di due insiemi parzialmente ordinati \(P,Q\). Determinare il giunto di due categorie discrete (prenderle finite!) \(A^\delta * B^\delta\) come in \ref{ex_cat_discreta} e di due categorie codiscrete \(A^\chi * B^\chi\): il risultato è ancora codiscreto? Più in generale, determinare il giunto di due gruppoidi \(\ctG * \ctG'\); il risultato è ancora un gruppoide? Determinare il giunto \(\susp(\bbN,+,0) * \susp(\bbN,+,0)\) del monoide dei numeri naturali con la somma, e \(\susp(\bbN,\max,0) * \susp(\bbN,\max,0)\) del monoide dove la moltiplicazione è data da \(n\land m \defeq \max\{n,m\}\). C'è una relazione tra \((\ctC\star\ctD)^\op\) e \(\ctD^\op\star\ctC^\op\) (uguali, oposte una dell'altra, nessuna relazione\dots)?
+	\item Determinare il giunto di due catene generiche \(\Delta[n] \star \Delta[m]\) come in \ref{ex_cat_catena} e di due cubi \(P[n] \star P[m]\) come in \ref{ex_quadcuboncubo}, e più in generale di due insiemi parzialmente ordinati \(P,Q\). Determinare il giunto di due categorie discrete (prenderle finite!) \(A^\delta \star B^\delta\) come in \ref{ex_cat_discreta} e di due categorie codiscrete \(A^\chi \star B^\chi\): il risultato è ancora codiscreto? Più in generale, determinare il giunto di due gruppoidi \(\ctG \star \ctG'\); il risultato è ancora un gruppoide? Determinare il giunto \(\susp(\bbN,+,0) \star \susp(\bbN,+,0)\) del monoide dei numeri naturali con la somma, e \(\susp(\bbN,\max,0) \star \susp(\bbN,\max,0)\) del monoide dove la moltiplicazione è data da \(n\land m \defeq \max\{n,m\}\). C'è una relazione tra \((\ctC\star\ctD)^\op\) e \(\ctD^\op\star\ctC^\op\) (uguali, oposte una dell'altra, nessuna relazione\dots)?
 \end{enumerate}
 \section{Isomorfismi}\label{sec_isomorfismi}\index{Isomorfismo}
-La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta. Fu però solo la definizione di categoria data da Eilenberg e Mac Lane in \cite{gtone} a fissare definitivamente la nozione moderna nell'uso matematico.
+La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta. Non viene però menzionato che fu in larga parte la definizione di categoria data da Eilenberg e Mac Lane in \cite{gtone} a precisare definitivamente la nozione moderna di `strutture isomorfe' fissandola nell'uso matematico nella forma odierna.
 
 Quando due gruppi sono isomorfi, `tutte' le proprietà che si esprimono in termini degli assiomi di gruppo, e che sono godute dall'uno, sono godute anche dall'altro, e in forza di questo meta-principio una strategia molto efficace per mostrare che due dati gruppi \emph{non possono} essere isomorfi è cercare una proprietà che sia goduta solo da uno dei due (per esempio, l'essere abeliano: ci sono certamente almeno due gruppi di ordine 24 distinti, il gruppo \emph{ciclico} \(\bbZ/24\bbZ\) e il gruppo \emph{simmetrico} delle permutazioni di 4 lettere \(\{a,b,c,d\}\), perché il primo è abeliano, il secondo no, e --si dimostra-- se due gruppi sono isomorfi, uno è abeliano se e solo se lo è l'altro).
 
@@ -1304,9 +1305,9 @@ Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando 
 	\begin{enumtag}{ei}
 		\item \`E evidente che in ogni categoria \(\ctC\), tutte le identità \(\id_X : X\to X\) sono isomorfismi che coincidono col loro inverso, e che la composizione di isomorfismi \(f_1\cmp f_2\) è un isomorfismo di inverso \(g_2\cmp g_1\), cioè \((f_1\cmp f_2)^{-1} = f_2^{-1}\cmp f_1^{-1}\).
 		\item In \(\ctSet\), gli isomorfismi sono esattamente le biiezioni, o `corrispondenze biunivoche'. Per la definizione solitamente data di cardinalità, due insiemi sono isomorfi se e solo se hanno lo stesso numero cardinale, che quindi risulta essere una scelta privilegiata di un oggetto di $\ctSet$, rappresentante della classe di isomorfismo di un dato insieme.
-		\item In \(\bbR\emdash\ctVect\), gli isomorfismi sono le biiezioni lineari. In particolare, due spazi vettoriali \(V,W\) di dimensione finita \(\dim V=n,\dim W=m\) sono isomorfi se e solo se \(n=m\).
+		\item In \(\bbF\emdash\ctVect\), gli isomorfismi sono le biiezioni lineari. In particolare, due spazi vettoriali \(V,W\) di dimensione finita \(\dim V=n,\dim W=m\) sono isomorfi se e solo se \(n=m\). Similmente, in \(\bbF\emdash\ctMat\) gli isomorfismi sono elementi dell'unione \(\bigcup_{n\ge 0}\text{GL}(n,\bbF)\) di tutti i gruppi delle matrici a coefficienti in $\bbF$, di taglia $n$, invertibili.
 		\item In \(\ctTop\), gli isomorfismi sono gli \emph{omeomorfismi}: funzioni continue con un'inversa insiemistica anch'essa continua. In generale, può non accadere che, se \(f : X\to Y\) è un omomorfismo biiettivo, la \emph{funzione} inversa \(g : Y\to X\) sia anch'essa un isomorfismo; per esempio, l'identità \(\id_X : (X,\delta)\to (X,\gamma)\) su un insieme con tre punti \(X=\{a,b,c\}\) è continua quando \(\delta\) è la topologia discreta e \(\gamma\) è la topologia banale, ma la sua inversa insiemistica \(\id_X : (X,\gamma)\to(X,\delta)\) \emph{non} è continua.
-		\item In ogni categoria di strutture algebriche (si veda \ref{ex_cat_sigma_strutture}), gli isomorfismi sono gli isomorfismi di \(\Sigma\)-strutture, cioè le funzioni \(f : A\to B\) che sono \(\Sigma\)-omomorfismi biiettivi (qui, non può accadere quanto succede negli spazi topologici: se $f : A\to B$ è un omomorfismo biiettivo, la sua inversa insiemistica deve a sua volta essere un omomorfismo dato che (ad esempio, quando $\cdot$ è una operazione binaria specificata dalla segnatura $\Sigma$ in questione)
+		\item In ogni categoria di strutture algebriche (si veda \ref{ex_cat_sigma_strutture}), gli isomorfismi sono gli \emph{isomorfismi di \(\Sigma\)-strutture}, cioè le funzioni \(f : A\to B\) che sono \(\Sigma\)-omomorfismi biiettivi: qui non può accadere quanto succede negli spazi topologici: se $f : A\to B$ è un omomorfismo biiettivo, la sua inversa insiemistica deve a sua volta essere un omomorfismo dato che (ad esempio, quando $\cdot$ è una operazione binaria specificata dalla segnatura $\Sigma$ in questione)
       \[f^{-1}(x\cdot y) = f^{-1}(fa\cdot fa') = f^{-1}(f(a\cdot a')) = a\cdot a' = f^{-1}(x)\cdot f^{-1}(y).\]
       Questa è una importante differenza tra categorie di tipo `algebrico' e categorie di tipo `topologico', su cui per ora non insistiamo. 
 	\end{enumtag}
@@ -1371,9 +1372,9 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 \begin{example}[Monoidi e gruppi liberi; gruppoidi liberi]\label{mongruppi_liberi}\index{Monoide!--- libero}\index{Monoide}\index{Categoria!--- libera}
 	In \ref{ex_cat_libera} abbiamo introdotto le categorie libere su un grafo. Quando il grafo $\ctG=(\bullet,E)$ è composto di un unico vertice e ha $E$ come insieme dei lati, la categoria libera $F\ctG$ ha anch'essa un unico vertice, e in virtù di \ref{mon_sonocat} l'insieme $E^* := F\ctG(\bullet,\bullet)$ è un monoide rispetto alla congiunzione di lacci. L'insieme $E^*$ è il \emph{monoide libero} sull'insieme $E$, detto solitamente `alfabeto', dato che il generico elemento di $E^*$ è della forma 
 	\[[\tup en;]\qquad n\ge 0, \tup en,\in E\]
-	o più brevemente $[\tup en{}]$, una `parola' scritta con le `lettere' $\tup en,$. La composizione è la giustapposizione di parole $[\tup en{}]\cmp[\tup {e'}n{}] = [\tup en{}\tup{e'}n{}]$, per cui l'identità è la parola vuota $[]$ (quando $n=0$).
+	o più brevemente $[\tup en{}]$, una `parola' scritta con le `lettere' $\tup en,$. La composizione è la giustapposizione di parole $[\tup en{}]\cmp[\tup {e'}n{}] = [\tup en{}\tup{e'}n{}]$, per cui l'identità è la parola vuota $\emptyList$ (quando $n=0$).
 	
-	Costruire i gruppi liberi (probabilmente noti a chi legge dall'algebra elementare) come gruppoidi liberi con un solo oggetto è più complicato. 
+	Costruire i gruppi liberi (probabilmente noti a chi legge dall'algebra elementare) come gruppo\emph{idi} liberi con un solo oggetto è più complicato. 
 	
 	Anzitutto
 	
@@ -1444,22 +1445,23 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 \end{definition}
 \begin{remark}\label{def_alternativa_funtore}
 	Una maniera alternativa di dare la definizione di funtore, che spesso torna utile nella pratica, è la seguente: un funtore \(F : \ctC\fun\ctD\) consiste di una funzione tra classi \(F_0 : \ctC_0\to \ctD_0\) come sopra, e per ogni \(X,Y\in\ctC_0\), una funzione di insiemi
-	\[\begin{tikzcd}
-		F_{XY} : \Hom{\ctC}(X,Y) & \Hom{\ctD}(F_0X,F_0Y)
-	\end{tikzcd}
+	\[\dmFun{F_{XY}}{\Hom{\ctC}(X,Y)}{\Hom{\ctD}(F_0X,F_0Y)}
+ % \begin{tikzcd}
+	% 	F_{XY} : \Hom{\ctC}(X,Y) & \Hom{\ctD}(F_0X,F_0Y)
+	% \end{tikzcd}
 	\]
-	tale che \(F_{XX}(\id_X) = \id_{F_0X}\) e \(F_{XZ}(g\cmp f) = F_{YZ}g\cmp F_{XY}f\).
+	tale che \(F_{XX}(\id_X) = \id_{F_0X}\) e \(F_{XZ}(g\cmp f) = F_{YZ}(g)\cmp F_{XY}(f)\).
 	
-	\`E una prassi universale, però, omettere i pedici ad \(F_{XY}\) e scrivere solamente la definizione nella forma di \ref{p_2}.
+	\`E una prassi universale, però, omettere i pedici ad \(F_{XY}\) e scrivere la definizione nella forma di \ref{p_2}.
 \end{remark}
 \begin{example}\label{exa_monotone_funtori}\index{Funtore!mappa monotòna come ---}
 	Dati due insiemi parzialmente ordinati \((X,\le)\) e \((Y,\le)\) guardati come categorie nel senso di \ref{ord_sonocat}, un funtore \((X,\le)\fun(Y,\le)\) è precisamente una funzione monotòna nel senso di \ref{ex_cat_ordini}.
 	
 	Innanzitutto, la funzione \(f:X\to Y\) definisce una corrispondenza sugli oggetti.
 	
-	Poi, l'unica freccia \(x\to x'\) in \(X\) determina una freccia \(f(x)\to f(x')\) se e solo se \(f\) è monotòna.% (ancora, ce n'è una unica se s solo se \(f(x)\le f(x')\)). In altre parole, \(f\) ha la proprietà che se \(x\le x'\), allora \(f(x)\le f(x')\). Cioè, \emph{\(f\) è monotòna}.
+	Poi, l'unica freccia \([x\le x']\) in \(X\) determina una freccia \([f(x)\le f(x')]\) se e solo se \(f\) è monotòna.% (ancora, ce n'è una unica se s solo se \(f(x)\le f(x')\)). In altre parole, \(f\) ha la proprietà che se \(x\le x'\), allora \(f(x)\le f(x')\). Cioè, \emph{\(f\) è monotòna}.
 	
-	L'identità è preservata automaticamente: per ogni \(x\), esiste un'unica freccia \(f(x)\to f(x)\), data dal fatto che l'ordine di \(Y\) è riflessivo. Per cui, \(f(\id_{x})=\id_{f(x)}\).
+	L'identità è preservata automaticamente: per ogni \(x\), la riflessività dell'ordine di \(Y\) dà un'unica freccia \([f(x)\le f(x)]\). Con un (innocuo) abuso di notazione, \(f(\id_{x})=\id_{f(x)}\) segue da $f([x\le x])=[fx\le fx]$.
 	
 	Allo stesso modo, anche le composizioni sono preservate automaticamente.
 \end{example}
