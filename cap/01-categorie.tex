@@ -1536,24 +1536,24 @@ La teoria classica delle equazioni differenziali ordinarie dà un esempio import
 \end{example}
 Ora raccogliamo in una singola definizione alcune classi di funtori particolari, che data la loro ubiquità meritano nomi specifici.
 \begin{definition}[Funtore controvariante]\label{def_funtore_contro}\index{Funtore!--- covariante}\index{Funtore!--- controvariante}
-	Definiamo un funtore \emph{controvariante} \(F : \ctC \fun\ctD\) come un funtore \(F : \ctC^\op\fun\ctD\); un tale funtore consta dei dati seguenti:
+	Definiamo un funtore \emph{controvariante} \(F : \ctC \fun\ctD\) come un funtore \(F : \ctC^\op\fun\ctD\); consta dei dati seguenti:
 	\begin{enumtag}{fc}
 		\item \label{fc_1} Una funzione tra classi \(F_0 : \ctC_0\to\ctD_0\) che assegna ad ogni oggetto \(X\) di \(\ctC\) un oggetto \(FX\) di \(\ctD\);
-		\item \label{fc_2} Una funzione tra classi \(F_1 : \ctC_1\to\ctD_1\) che assegna ad ogni morfismo \(Y \xrightarrow{f} X\) di \(\ctC^\op\), cioè ad ogni morfismo \(X\xto f Y\) di \(\ctC\), un morfismo \(FX \xrightarrow{Ff} FY\) di \(\ctD\) (si noti che da ciò segue che \(F(\dom{f})=\cod{Ff}\) e \(F(\cod{f})=\dom{Ff}\)):
+		\item \label{fc_2} Una funzione tra classi \(F_1 : \ctC_1\to\ctD_1\) che assegna ad ogni morfismo \(Y \xrightarrow{f} X\) di \(\ctC^\op\), cioè ad ogni morfismo \(X\xto f Y\) di \(\ctC\), un morfismo \(FX \xrightarrow{Ff} FY\) di \(\ctD\) (si noti che da ciò segue che \(F(\dom{f})=\cod{Ff}\) e \(F(\cod{f})=\dom{Ff}\)): in parole semplici, l'azione di $F_{XY}$su una freccia la rovescia,
 		\[F(\xymatrix{Y \ar[r]^f & X}) = \xymatrix{FX \ar[r]^{Ff} & FY}\]
 	\end{enumtag}
-	soddisfacenti le proprietà seguenti:
+	La struttura in \ref{fc_1} ed \ref{fc_2} soddisfa le proprietà seguenti:
 	\begin{enumtag}{pc}
 		\item \label{pc_1} \emph{Preservazione delle identità}: per ogni oggetto \(X\) di \(\ctC\), \(F(\id_X)=\id_{FX}\);
 		\item \label{pc_2} \emph{Rovesciamento delle composizioni}: per ogni coppia di morfismi componibili \(f\) e \(g\) di \(\ctC\), \(F(g\cmp f)=Ff\cmp Fg\).
 	\end{enumtag}
 	\index{Funtore!Prefascio}
 \end{definition}
-Ciò conduce a una definizione molto importante e pervasiva in teoria delle categorie.
+Ciò permette di introdurre una definizione molto importante e pervasiva in teoria delle categorie.
 \begin{definition}\label{exa_funtori_da_poset}\index{Prefascio}\index{Funtore!Prefascio}
 	Sia \((P,\le)\) un insieme preordinato nel senso di \ref{ex_cat_ordini}; un funtore controvariante
 	\[\xymatrix{F : (P,\le)^\op \ar[r] & \ctSet}\]
-	si dice un \emph{prefascio}.\footnote{La parola è un calco strutturale dell'inglese \emph{presheaf}, che è a sua volta un calco dal francese \emph{prefaisceaux}; cf. \cite{Tennison1975,Bredon1997,Godement} e \cite[Cap. VII]{pedicchiofoundations} per una introduzione meno geometrica --ma storicamente molto istruttiva. Per indagare l'etimologia del termine e il suo impiego in matematica, chi legge può consultare l'ottima nota breve di Lovering, \cite{Lovering}.}
+	si dice un \emph{prefascio} (su $P$).\footnote{La parola è un calco strutturale dell'inglese \emph{presheaf}, che è a sua volta un calco dal francese \emph{prefaisceaux}; cf. \cite{Tennison1975,Bredon1997,Godement} e \cite[Cap. VII]{pedicchiofoundations} per una introduzione meno geometrica --ma storicamente molto istruttiva. Per indagare l'etimologia del termine e il suo impiego in matematica, chi legge può consultare l'ottima nota breve di Lovering, \cite{Lovering}.}
 	
 	Esplicitamente, un prefascio consiste di
 	\begin{itemize}
@@ -1686,7 +1686,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	che manda ogni oggetto \(f : A\to X\) di \(\ctC/X\) nel suo dominio \(A\).
 	
 	Similmente, esiste un funtore `codominio'
-	\[\dmFun{c}{\ctC/X}{\ctC}\]
+	\[\dmFun{c}{X/\ctC}{\ctC}\]
 	che manda ogni oggetto \(f : X\to A\) nel suo codominio \(A\).
 \end{example}
 \begin{example}\index{Funtore!--- categoria associata a monoide}
