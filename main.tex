@@ -1,66 +1,32 @@
 \documentclass[ paper=a4
-              , pagesize
+              % , pagesize
               , fontsize=12pt
-              , twoside=true
-              % , BCOR=5mm
-              % , DIV=calc
+              % , twoside=true
               , bibliography=totoc
-              % , paper
               , version=last
               ]{scrbook} 
 
 \usepackage[all,2cell]{xy}\UseAllTwocells
-\usepackage{imakeidx}
-\usepackage[italian]{babel}
-\usepackage[automark]{scrlayer-scrpage}
 \usepackage{itaca}
-\usepackage{microtype,multirow,booktabs}
-\usepackage{hyperref}
-\let\second\relax
-\usepackage{mathabx}
-\usepackage[color]{showkeys}
-\usepackage{circuitikz}
-% ciccacicca
-% abbasso il latino
-% abbasso anche il greco
 
-
-\ctikzset{tripoles/thickness=1}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=black,
-    filecolor=black,
-    urlcolor=black,
-    citecolor=black,
-    }
-\pagestyle{scrheadings}
-
-% KOMA-classes have a weird default for footnotes
-\deffootnote{1em}{1em}{\textsuperscript{\thefootnotemark}}
-% ... and captions
-\renewcommand*{\figureformat}{%
-  \figurename~\thefigure%
-%  \autodot% DELETED
-}
-\renewcommand*{\tableformat}{%
-  \tablename~\thetable%
-%  \autodot% DELETED
-}
-%==
-\NewDocumentCommand{\hammock}{ O{\ctSet} m m }{ #2 \leftrightarroweq_{#1} #3 }
-\usepackage[font={small}]{caption}
-\usepackage{datetime}
 \recalctypearea
 \makeindex
+\includeonly{cap/01-categorie}
 \begin{document}
 \frontmatter
 \title{Teoria delle categorie}
 \author{Outis}
-\date{31 Dicembre 2099\\\textcolor{red}{\tiny \today -- \currenttime}}
+\date{%
+ 31 Dicembre 2099\\%
+ \textcolor{red}{\tiny \today -- \currenttime}
+}
+
+% filler temporanei
 \publishers{Casa editrice}
 \uppertitleback{Dettagli pubblicazione I?}
 \lowertitleback{Dettagli pubblicazione II?}
 \dedication{Alla 1,3,7-trimetilxantina ---senza cui la matematica non esisterebbe}
+
 
 \maketitle
 
@@ -68,20 +34,20 @@
 
 \mainmatter
 
-% \input{cap/00-intro.tex}
-\input{cap/01-categorie.tex}
-% \input{cap/02-limiti.tex}
-% \input{cap/03-aggiunti.tex}
-% \input{cap/04-yoneda.tex}
-% \input{cap/05-YAL.tex}
-% \input{cap/06-monadi.tex}
-% \input{cap/07-fattorizzazione.tex}
-% \input{cap/08-monoidali-interne-arricchite.tex}
-% \input{cap/09-nervi-realizzazioni.tex}
+\include{cap/00-intro.tex}
+\include{cap/01-categorie.tex}
+\include{cap/02-limiti.tex}
+\include{cap/03-aggiunti.tex}
+\include{cap/04-yoneda.tex}
+\include{cap/05-YAL.tex}
+\include{cap/06-monadi.tex}
+\include{cap/07-fattorizzazione.tex}
+\include{cap/08-monoidali-interne-arricchite.tex}
+\include{cap/09-nervi-realizzazioni.tex}
 \appendix
-% \input{cap/AA-appendice.tex}
-% \input{cap/AX-complementi.tex}
-% \input{cap/AB-soluzioni.tex}
+\include{cap/AA-appendice.tex}
+\include{cap/AX-complementi.tex}
+\include{cap/AB-soluzioni.tex}
 
 \clearpage
 
