@@ -2018,20 +2018,7 @@ Siccome i funtori si possono considerare a loro volta frecce, le trasformazioni 
 		\ar[Rightarrow, from=Gdown, to=H, "\beta"]
 	\end{tikzcd}
 	\]
-	è definita componendo $\beta_X,\alpha_X$:
-	\[
-	\begin{tikzcd}
-		FX \ar{r}{\alpha_X} & GX \ar{r}{\beta_X} & HX
-	\end{tikzcd}
-	\]
- Evidentemente, si ha 
- \begin{align*}
-     Hf\cmp (\beta_X\cmp \alpha_X)&= (Hf\cmp \beta_X)\cmp \alpha_X\\ 
-     &=(\beta_Y\cmp Gf)\cmp \alpha_X \\ 
-     &=\beta_Y\cmp (Gf\cmp \alpha_X) \\ 
-     &=\beta_Y\cmp (\alpha_Y\cmp Ff) \\ 
-     &=(\beta_Y\cmp \alpha_Y)\cmp Ff.
- \end{align*}
+	è definita dalla composizione $\beta_X\cmp\alpha_X : FX\to GX\to HX$.
 \end{definition}
 Si noti che la condizione di naturalità di \(\beta\circ\alpha\) si ottiene componendo quelle di \(\alpha\) e \(\beta\):
 \[
@@ -2040,8 +2027,14 @@ Si noti che la condizione di naturalità di \(\beta\circ\alpha\) si ottiene comp
 	FY \ar{r}{\alpha_Y} & GY \ar{r}{\beta_Y} & HY.
 \end{tikzcd}
 \]
-
-
+ perché evidentemente, si ha 
+ \begin{align*}
+     Hf\cmp (\beta_X\cmp \alpha_X)&= (Hf\cmp \beta_X)\cmp \alpha_X\\ 
+     &=(\beta_Y\cmp Gf)\cmp \alpha_X \\ 
+     &=\beta_Y\cmp (Gf\cmp \alpha_X) \\ 
+     &=\beta_Y\cmp (\alpha_Y\cmp Ff) \\ 
+     &=(\beta_Y\cmp \alpha_Y)\cmp Ff.
+ \end{align*}
 \begin{definition}[Composizione orizzontale di trasformazioni naturali]\label{def_hcomp}\index{Composizione orizzontale!di trasformazioni naturali}
 	Si considerino tre categorie \(\ctC,\ctD,\ctE\), due funtori \(F,G:\ctC\to\ctD\) e due funtori \(F',G':\ctD\to\ctE\). Date tue trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\alpha':F'\Rightarrow G'\), la \emph{trasformazione naturale composta orizzontalmente} \(\alpha'\alpha:F'\circ F\Rightarrow G'\circ G\), rappresentata come segue,
 	\[
@@ -2062,13 +2055,79 @@ Si noti che la condizione di naturalità di \(\beta\circ\alpha\) si ottiene comp
 	\]
 	che commuta per via della naturalità di \(\alpha'\).
 \end{definition}
+\begin{definition}[\Whisk di un funtore e una trasformazione naturale]
+Date tre categorie $\ctA,\ctB,\ctC$ e un diagramma di funtori e trasformazioni naturali 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGN0QSJdLFsxLDAsIlxcY3RCIl0sWzMsMCwiXFxjdEMiXSxbNCwwLCJcXGN0RCJdLFswLDEsIksiXSxbMSwyLCIiLDAseyJjdXJ2ZSI6LTJ9XSxbMiwzLCJIIl0sWzEsMiwiIiwxLHsiY3VydmUiOjJ9XSxbNSw3LCJcXGFscGhhIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
+\[\begin{tikzcd}
+	\ctA & \ctB && \ctC & \ctD
+	\arrow["K", from=1-1, to=1-2]
+	\arrow[""{name=0, anchor=center, inner sep=0}, curve={height=-12pt}, from=1-2, to=1-4, "F"]
+	\arrow[""{name=1, anchor=center, inner sep=0}, curve={height=12pt}, from=1-2, to=1-4, "G"']
+	\arrow["H", from=1-4, to=1-5]
+	\arrow["\alpha", shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=1]
+\end{tikzcd}\]
+definiamo \emph{\whisk} sinistro tra il funtore $H$ e la trasformazione naturale $\alpha$, denotato $H * \alpha$, la trasformazione naturale di componenti
+\[(H*\alpha)_X = H(\alpha_X) : H(FX) \to H(GX)\]
+Dualmente, definiamo \emph{\whisk} destro tra il funtore $K$ e la trasformazione naturale $\alpha$, denotato $\alpha * K$, la trasformazione naturale di componenti 
+\[(\alpha * K)_Y = \alpha_{KA} : FKA \to GKA.\]
+\`E facile verificare che queste due definizioni dànno trasformazioni naturali (in un caso, $H$ applicato a ciascun quadrato di naturalità per $\alpha$ ne preserva la commutatività; nell'altro, stiamo restringendo $\alpha$ alle sole componenti della forma $X=KA$).
+    % \Todo{Come traduciamo `whiskering'? La questione è delicata: dovremmo evitare un nome buffo, ma allo stesso tempo non creare un termine troppo distante dall'idea della parola whiskering. L'italiano non ha una regola simile all'inglese per la derivazione verbale (whisker significa `baffo' o più propriamente `vibrissa', e `baffare', `vibrissare' sono derivazioni verbali grammaticali in italiano, ma ridicole). Le uniche proposte intelligenti che riesco a immaginare sono: 
+    % \begin{itemize}
+    %     \item \emph{innesto destro} di $H$ e $\alpha$, per $\alpha *H$, e \emph{innesto sinistro} per $H * \alpha$;
+    %     \item \emph{visco destro} di $H$ e $\alpha$ per $\alpha*H$, e sinistro per $H*\alpha$ (`visco' è una lettura arcaica di `vischio' che è legato etimologicamente alla stessa radice di `whisker');
+    %     \item vibrissa destra / sinistra o simili, se vogliamo essere attinenti all'etimologia -come fanno gli anglofoni a non ridere?!-
+    % \end{itemize}}
+\end{definition}
+Chi legge può facilmente verificare che (nelle stesse notazioni di sopra) vale l'uguaglianza 
+\[(H*\alpha)*K=H*(\alpha*K)\]
+la quale rende la scrittura $H * \alpha * K$ univocamente definita.
 \begin{definition}
     \Todo{Legge di interscambio}
     \Todo{Identità di Godement}
 \end{definition}
 \subsubsection*{Esercizi}
 \begin{enumerate}
-	\item
+	\item Per risolvere questo esercizio è necessario ricordare la definizione di una \emph{successione esatta} di omomorfismi di gruppo: se $H,G,G',K$ sono gruppi abeliani, una successione esatta corta è una sequenza di mappe componibili 
+    % https://q.uiver.app/#q=WzAsNixbMCwwLCIwIl0sWzEsMCwiSyJdLFsyLDAsIkciXSxbMywwLCJHJyJdLFs1LDAsIjAiXSxbNCwwLCJIIl0sWzAsMV0sWzEsMiwiaCJdLFsyLDMsImYiXSxbMyw1LCJnIl0sWzUsNF1d
+\[\begin{tikzcd}
+	0 & K & G & {G'} & H & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow["g", from=1-2, to=1-3]
+	\arrow["f", from=1-3, to=1-4]
+	\arrow["h", from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\]
+    tale che $\ker f=\im g$, $\ker h=\im f$, $\ker g=(0)$ e $\im h = H$. Chi non ha mai visto questo risultato, dimostri che ogni omomorfismo $f : G\to G'$ tra due gruppi abeliani induce una successione esatta come questa, se $K=\ker f$ e $H=G'/\im f$, quando $g : \ker f \mono G$ è l'inclusione ovvia, e $h$ la proiezione al quoziente sul conucleo (si veda \ref{}) di $f$.
+    
+    Sia ora $\ctC$ una categoria piccola e consideriamo la categoria dei funtori $F : \ctC\funto\ctAb$ di codominio la categoria dei gruppi abeliani. Questo esercizio chiede di definire e studiare una nozione di nucleo associato a una trasformazione naturale:
+    \begin{itemize}
+        \item Definire $\ker\alpha$ come la trasformazione naturale associata ad $\alpha : F \natto G$ e avente per componenti
+        \[(\ker\alpha)_C := \ker(\alpha_C : FC\to GC).\]
+        \item Mostrare che $X\mapsto\ker(\alpha_X)$ definisce un funtore $K : \ctC\funto\ctAb$, e che $\kappa_X : \ker(\alpha_X) \to FX$ è naturale, e un monomorfismo in $[\ctC,\ctAb]$ (si veda \ref{}); a questa maniera, esiste una successione esatta \emph{di trasformazioni naturali} 
+        \[0\natto\ker\alpha \overset\kappa\natto F \overset\alpha\natto G\]
+        dove chiaramente `$0$' è il funtore costante nel gruppo abeliano nullo.
+        \item Dualizzare e definire il conucleo di una trasformazione naturale; costruire la successione esatta
+        \[\begin{tikzcd}
+	0 & \ker\alpha & F & G & \coker\alpha & 0.
+	\arrow[from=1-1, to=1-2, Rightarrow]
+	\arrow["\kappa", from=1-2, to=1-3, Rightarrow]
+	\arrow["\alpha", from=1-3, to=1-4, Rightarrow]
+	\arrow["\pi", from=1-4, to=1-5, Rightarrow]
+	\arrow[from=1-5, to=1-6, Rightarrow]
+\end{tikzcd}\]
+\item Mostrare, o trovare un controesempio, al seguente enunciato: per ogni funtore $H : \ctB\fun\ctC$ come nel diagramma
+% https://q.uiver.app/#q=WzAsMyxbMiwwLCJcXGN0QyJdLFs0LDAsIlxcY3REIl0sWzAsMCwiXFxjdEIiXSxbMiwwLCJIIl0sWzAsMSwiRiIsMCx7ImxhYmVsX3Bvc2l0aW9uIjozMH1dLFswLDEsIksiLDAseyJjdXJ2ZSI6LTN9XSxbMCwxLCJHIiwyLHsiY3VydmUiOjN9XSxbNSw0LCJcXGtlclxcYWxwaGEiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzQsNiwiXFxhbHBoYSIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}
+	\ctB && \ctC && \ctD
+	\arrow["H", from=1-1, to=1-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "F"{pos=0.3}, from=1-3, to=1-5]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "K", curve={height=-18pt}, from=1-3, to=1-5]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "G"', curve={height=18pt}, from=1-3, to=1-5]
+	\arrow["{\ker\alpha}", shorten <=2pt, shorten >=2pt, Rightarrow, from=1, to=0]
+	\arrow["\alpha", shorten <=2pt, shorten >=2pt, Rightarrow, from=0, to=2]
+\end{tikzcd}\]
+
+    \end{itemize}
 	\item
 	\item
 	\item
