@@ -1780,7 +1780,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\[\dmFun Q\ctDInt\ctFld\]
 	(il dominio è la categoria degli anelli integri, il codominio è la sottocategoria -piena- di $\ctcRing$ i cui oggetti sono i campi). Infatti, ogni omomorfismo di anelli $f : R \to S$ che siano domini di integrità induce un omomorfismo di anelli $Q(f) : Q(R) \to Q(S)$ definito da $f(\frac pq) = \frac{fp}{fq}$.
 \end{example}
-\begin{example}\index{Funtore!--- gruppo generale lineare}\index{GL|see {Gruppo generale lineare}}\index{Gruppo generale lineare}
+\begin{example}[I gruppi lineari come funtori]\label{ex_fun_GLn}\index{Funtore!--- gruppo generale lineare}\index{GL|see {Gruppo generale lineare}}\index{Gruppo generale lineare}
 	Se $n\ge 1$ è un numero intero, mandare un anello commutativo $R$ nel gruppo delle matrici invertibili $n\times n$ a coefficienti in $R$ è la funzione sugli oggetti di un funtore
 	\[\dmFun{\GL_n}\ctcRing\ctGrp\]
 	Per vederlo, basta definire un omomorfismo di gruppi $\GL_n(f) : \GL_n(R)\to \GL_n(S)$ dato un omomorfismo di anelli $f : R\to S$; ragioniamo nel caso $n=2$ per comodità, e il caso generale è completamente analogo: la corrispondenza
@@ -1997,18 +1997,26 @@ Siccome i funtori si possono considerare a loro volta frecce, le trasformazioni 
 \end{warning}
 \begin{example}\Todo{Mappa di Hurewicz}
 \end{example}
-\begin{example}\Todo{Morfismi tra rappresentazioni di gruppi}
-\end{example}
 \begin{example}\Todo{il determinante}
+Sia $n\ge 1$ un numero intero; si può definire un funtore 
+\[\dmFun{\text{GL}_n}{\ctcRing}{\ctGrp}\]
+come in \ref{ex_fun_GLn}, e un funtore  
+\[\dmFun{(-)^\times}{\ctcRing}{\ctGrp}\]
+che manda un anello commutativo nel suo gruppo delle unità (La notazione in tal senso è stata fissata da \ref{def_cat_anelli}, \ref{def_anelli_commu}).
+
+Il determinante fornisce un esempio di trasformazione naturale $\det : \text{GL}_n\natto (-)^\times$ di componenti
+\[\dmFun{\det_R}{\text{GL}_n(R)}{R^\times}\]
 \end{example}
 \begin{example}\Todo{un paio di esempi di funtori puntati e copuntati}
+\end{example}
+\begin{example}\Todo{un paio di esempi di moltiplicazioni e comoltiplicazioni}
 \end{example}
 \begin{proposition}
     \Todo{rappresentabilità del determinante}
 \end{proposition}
 \begin{definition}[Composizione verticale di trasformazioni naturali]\label{def_vcomp}\index{Composizione verticale!di trasformazioni naturali}
 	Si considerino tre funtori \(F,G,H:\ctC\to\ctD\) e due trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\beta:G\Rightarrow H\). 
-	La \emph{composizione verticale} \(\beta\circ\alpha:F\Rightarrow H\) delle transformazioni naturali $\beta,\alpha$, rappresentata come 
+	La \emph{composizione verticale} \(\beta\circ\alpha:F\Rightarrow H\) delle transformazioni naturali $\beta,\alpha$, rappresentate avendo il bordo $G$ in comune,
 	\[
 	\begin{tikzcd}[sep=large]
 		\ctC \ar[bend left=50, ""{name=F,below}]{r}{F} 
@@ -2036,7 +2044,7 @@ Si noti che la condizione di naturalità di \(\beta\circ\alpha\) si ottiene comp
      &=(\beta_Y\cmp \alpha_Y)\cmp Ff.
  \end{align*}
 \begin{definition}[Composizione orizzontale di trasformazioni naturali]\label{def_hcomp}\index{Composizione orizzontale!di trasformazioni naturali}
-	Si considerino tre categorie \(\ctC,\ctD,\ctE\), due funtori \(F,G:\ctC\to\ctD\) e due funtori \(F',G':\ctD\to\ctE\). Date tue trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\alpha':F'\Rightarrow G'\), la \emph{trasformazione naturale composta orizzontalmente} \(\alpha'\alpha:F'\circ F\Rightarrow G'\circ G\), rappresentata come segue,
+	Si considerino tre categorie \(\ctC,\ctD,\ctE\), due funtori \(F,G:\ctC\to\ctD\) e due funtori \(F',G':\ctD\to\ctE\). Date tue trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\alpha':F'\Rightarrow G'\), la \emph{trasformazione naturale composta orizzontalmente} \(\alpha'\horcomp\alpha:F'\circ F\Rightarrow G'\circ G\), rappresentata come segue,
 	\[
 	\begin{tikzcd}[sep=large]
 		\ctC \ar[bend left, ""{name=F,below}]{r}{F} \ar[bend right, ""{name=G,above}]{r}[swap]{G} 
@@ -2046,7 +2054,7 @@ Si noti che la condizione di naturalità di \(\beta\circ\alpha\) si ottiene comp
 		\ar[Rightarrow, from=FP, to=GP, "\alpha'"]
 	\end{tikzcd}
 	\]
-	è definita in componenti da uno dei due percorsi equivalenti nel seguente diagramma in \(\ctE\),
+	è definita in componenti dalla diagonale comune del seguente diagramma in \(\ctE\),
 	\[
 	\begin{tikzcd}
 		F'FX \ar{r}{F'\alpha_X} \ar{d}{\alpha'_{FX}} & F'GX \ar{d}{\alpha'_{GX}} \\
@@ -2085,6 +2093,11 @@ la quale rende la scrittura $H * \alpha * K$ univocamente definita.
     \Todo{Legge di interscambio}
     \Todo{Identità di Godement}
 \end{definition}
+\begin{remark}
+    L'\whisk tra un funtore e una trasformazione naturale si può definire in termini della composizione orizzontale: infatti, si verifica facilmente che 
+    \[\alpha * K = \alpha\horcomp\id_K\qquad\qquad H * \alpha = \id_H \horcomp\alpha\]
+    (cosa che spiega la stessa notazione utilizzata per la composizione orizzontale e per l'\whisk).
+\end{remark}
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Per risolvere questo esercizio è necessario ricordare la definizione di una \emph{successione esatta} di omomorfismi di gruppo: se $H,G,G',K$ sono gruppi abeliani, una successione esatta corta è una sequenza di mappe componibili 
@@ -2102,13 +2115,13 @@ la quale rende la scrittura $H * \alpha * K$ univocamente definita.
     Sia ora $\ctC$ una categoria piccola e consideriamo la categoria dei funtori $F : \ctC\funto\ctAb$ di codominio la categoria dei gruppi abeliani. Questo esercizio chiede di definire e studiare una nozione di nucleo associato a una trasformazione naturale:
     \begin{itemize}
         \item Definire $\ker\alpha$ come la trasformazione naturale associata ad $\alpha : F \natto G$ e avente per componenti
-        \[(\ker\alpha)_C := \ker(\alpha_C : FC\to GC).\]
-        \item Mostrare che $X\mapsto\ker(\alpha_X)$ definisce un funtore $K : \ctC\funto\ctAb$, e che $\kappa_X : \ker(\alpha_X) \to FX$ è naturale, e un monomorfismo in $[\ctC,\ctAb]$ (si veda \ref{}); a questa maniera, esiste una successione esatta \emph{di trasformazioni naturali} 
+        \[(\ker\alpha)_C := \ker(\alpha_C : FC\to GC) \to FC.\]
+        \item Mostrare che $X\mapsto\ker(\alpha_X)$ definisce un funtore $K : \ctC\funto\ctAb$, e che $\kappa_X : \ker(\alpha_X) \to FX$ è naturale, e un monomorfismo in $[\ctC,\ctAb]$ (si veda \ref{}); a questa maniera, esiste una successione esatta \emph{di trasformazioni naturali} (cioè una successione di trasformazioni naturali, esatta quando saturata in ogni componente) della forma
         \[0\natto\ker\alpha \overset\kappa\natto F \overset\alpha\natto G\]
         dove chiaramente `$0$' è il funtore costante nel gruppo abeliano nullo.
-        \item Dualizzare e definire il conucleo di una trasformazione naturale; costruire la successione esatta
+        \item Dualizzare e definire il \emph{conucleo} di una trasformazione naturale; costruire la successione esatta
         \[\begin{tikzcd}
-	0 & \ker\alpha & F & G & \coker\alpha & 0.
+	0 & \ker\alpha & F & G & \coker\,\alpha & 0.
 	\arrow[from=1-1, to=1-2, Rightarrow]
 	\arrow["\kappa", from=1-2, to=1-3, Rightarrow]
 	\arrow["\alpha", from=1-3, to=1-4, Rightarrow]
@@ -2126,7 +2139,15 @@ la quale rende la scrittura $H * \alpha * K$ univocamente definita.
 	\arrow["{\ker\alpha}", shorten <=2pt, shorten >=2pt, Rightarrow, from=1, to=0]
 	\arrow["\alpha", shorten <=2pt, shorten >=2pt, Rightarrow, from=0, to=2]
 \end{tikzcd}\]
-
+esiste una successione esatta 
+        \[\begin{tikzcd}
+	0 & \ker\alpha H & F H & G H & \coker\,\alpha H & 0.
+	\arrow[from=1-1, to=1-2, Rightarrow]
+	\arrow["\kappa*H", from=1-2, to=1-3, Rightarrow]
+	\arrow["\alpha*H", from=1-3, to=1-4, Rightarrow]
+	\arrow["\pi*H", from=1-4, to=1-5, Rightarrow]
+	\arrow[from=1-5, to=1-6, Rightarrow]
+\end{tikzcd}\]
     \end{itemize}
 	\item
 	\item
