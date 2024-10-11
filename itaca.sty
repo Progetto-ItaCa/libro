@@ -80,6 +80,7 @@
                , stmaryrd
                , tikz-cd
                , turnstile
+               , xspace
                }
 
 \RequirePackage{tikz}
@@ -149,9 +150,14 @@
 \let\funto\fun
 \def\aa{\text{a}}
 \def\nat{\Rightarrow}
+\let\natto\nat
+\let\To\nat
 \def\implies{\Rightarrow}
+\def\whisk{innesto\@\xspace}
+\def\Whisk{Innesto\@\xspace}
 
 \def\xto#1{\xrightarrow{#1}}
+\def\xot#1{\xleftarrow{#1}}
 \def\xfun#1{\xlongrightarrow{#1}}
 \def\xnat#1{\xRightarrow{#1}}
 
@@ -184,6 +190,7 @@
 \newcommand{\dom}[1]{d(#1)}
 \newcommand{\cod}[1]{c(#1)}
 \newcommand{\cmp}{\circ}
+\newcommand{\horcomp}{*}
 
 \def\op{\text{op}}
 \newcommand{\opp}[1]{#1^\op}
@@ -207,6 +214,9 @@
 \newcommand{\emptyList}{[\;]}
 \NewDocumentCommand{\tup}{O{1} m m m}{
 #2_{#1} #4 \dots #4 #2_{#3}
+}
+\NewDocumentCommand{\optup}{O{1} m m m}{
+#2_{#3} #4 \dots #4 #2_{#1}
 }
 % #1 : l'indice di partenza
 % #2 : la variabile indicizzata
@@ -245,7 +255,7 @@
 \setlist[itemize,enumerate]{itemsep=0pt}
 
 \def\pto{\rightarrowtriangle}
-
+\DeclareMathOperator{\im}{im}
 
 \def\longmor#1#2{\begin{tikzcd}[ampersand replacement=\&] #1 \ar[r] \& #2 \end{tikzcd}}
 
@@ -268,6 +278,8 @@
 		\end{xsmallmatrix}
 	}
 }
+
+\newenvironment{smat}{\left(\begin{smallmatrix}}{\end{smallmatrix}\right)}
 
 \ExplSyntaxOn
 \NewDocumentCommand{\var}{ o m O{s} m O{\downarrow} }{
@@ -320,6 +332,44 @@
 }
 
 \def\norm#1{\|#1\|}
+
+\NewDocumentCommand{\matrici}{ m m m }{\mathrm{M}_{#1\times #2}(#3)}
+
+\usepackage{imakeidx}
+\usepackage[automark]{scrlayer-scrpage}
+\usepackage[italian]{babel}
+\usepackage{microtype,multirow,booktabs}
+\usepackage{hyperref}
+\let\second\relax
+\usepackage{mathabx}
+\usepackage[color]{showkeys}
+\usepackage{circuitikz}
+
+\ctikzset{tripoles/thickness=1}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    urlcolor=black,
+    citecolor=black,
+    }
+\pagestyle{scrheadings}
+
+% KOMA-classes have a weird default for footnotes
+\deffootnote{1em}{1em}{\textsuperscript{\thefootnotemark}}
+% ... and captions
+\renewcommand*{\figureformat}{%
+  \figurename~\thefigure%
+%  \autodot% DELETED
+}
+\renewcommand*{\tableformat}{%
+  \tablename~\thetable%
+%  \autodot% DELETED
+}
+%==
+\NewDocumentCommand{\hammock}{ O{\ctSet} m m }{ #2 \leftrightarroweq_{#1} #3 }
+\usepackage[font={small}]{caption}
+\usepackage{datetime}
 
 % inutile riga di controllo
 % END OF FILE
