@@ -138,6 +138,30 @@
 
 \newtheorem*{proposition*}{Proposizione}
 
+\usepackage{fontawesome}
+\ExplSyntaxOn
+\NewDocumentCommand{\hands}{m}
+{
+  \str_case:nnTF { #1 }
+  {
+    { fund } { \faicon{hand-paper-o} }
+    { skip } { \faicon{hand-scissors-o} }
+    { tech } { \faicon{hand-spock-o} }
+  }{}
+  {
+    \msg_error:nnn { hands } { invalid-argument } { #1 }
+    % Error for invalid argument
+  }
+}
+
+% Custom error message if the argument is not recognized
+\msg_new:nnn { hands } { invalid-argument }
+  { The~argument~'#1'~is~invalid.~Valid~arguments~are~"fund",~"skip",~or~"tech". 
+  }
+\ExplSyntaxOff
+
+\newenvironment{handsExample}[2][]{\begin{example}[#1]\hands{#2}}{\end{example}}
+
 \ProcessOptions\relax
 
 \newcommand{\Hom}[1]{#1}
