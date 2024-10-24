@@ -1,14 +1,14 @@
-p:
+watch:
 	texfot latexmk -pdf -pvc main.tex
 
-t:
+book:
 	texfot latexmk -pdf main.tex
 
-c:
+clean:
 	texfot latexmk -C
 	rm *.bbl
 
-v:
+view:
 	evince main.pdf &
 
 pretty:
