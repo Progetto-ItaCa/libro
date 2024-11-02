@@ -278,48 +278,63 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	o (equivalentemente, nel senso che questa seconda definizione dà per ogni \(n\ge 0\) un \(P'[n]\) isomorfo a \(P[n]\) come insieme ordinato) \(P'[n] = 2^{\{1,\dots,n\}}\), cosicché \(P[n]\) è il `cubo commutativo \(n\)-dimensionale generico': alcune \(P[n]\) per \(n=0,1,2,3\) sono raffigurate in \ref{fig_n_cubo}.
 \begin{figure}[h]
 	\begin{center}
-		\begin{tikzpicture}[scale=1.5]
-			\node (empty) at (-1,0) {\(\bullet\)};
-			%
-			\node (0) at (0,0) {\(\bullet\)};
-			\node (1) at (1,0) {\(\bullet\)};
-			\draw[-latex] (0) -- (1);
-			\begin{scope}[xshift=2cm]
-				\node (00) at (0,0) {\(\bullet\)};
-				\node (10) at (1,0) {\(\bullet\)};
-				\node (01) at (0,1) {\(\bullet\)};
-				\node (11) at (1,1) {\(\bullet\)};
-				\draw[-latex] (00) -- (10);
-				\draw[-latex] (10) -- (11);
-				\draw[-latex] (00) -- (01);
-				\draw[-latex] (01) -- (11);
-			\end{scope}
-			\begin{scope}[xshift=4cm]
-				\node (00) at (0,0) {\(\bullet\)};
-				\node (10) at (1,0) {\(\bullet\)};
-				\node (01) at (0,1) {\(\bullet\)};
-				\node (11) at (1,1) {\(\bullet\)};
-				\draw[-latex] (00) -- (10);
-				\draw[-latex] (10) -- (11);
-				\draw[-latex] (00) -- (01);
-				\draw[-latex] (01) -- (11);
-			\end{scope}
-			\begin{scope}[xshift=4.5cm,yshift=.5cm]
-				\node (00') at (0,0) {\(\bullet\)};
-				\node (10') at (1,0) {\(\bullet\)};
-				\node (01') at (0,1) {\(\bullet\)};
-				\node (11') at (1,1) {\(\bullet\)};
-				\draw[-latex] (00') -- (10');
-				\draw[-latex] (10') -- (11');
-				\draw[-latex] (00') -- (01');
-				\draw[-latex] (01') -- (11');
-			\end{scope}
-			\draw[-latex, shorten >=-.35pc] (00) -- (00');
-			\draw[-latex, shorten >=-.35pc] (01) -- (01');
-			\draw[-latex, shorten >=-.35pc] (10) -- (10');
-			\draw[-latex, shorten >=-.35pc] (11) -- (11');
-		\end{tikzpicture}
-	\end{center}
+    \begin{tikzpicture}[x=8em, y=8em,
+        wrap/.style={fill=black!5, rounded corners},
+        edge/.style={-latex},
+        subset/.style={font=\small\ttfamily},
+      ]
+      \begin{scope}[xshift=0em,yshift=4em]
+        \node[subset] (0D0) at (0.0,0) {0};
+      \end{scope}
+      \begin{scope}[xshift=2em,yshift=4em]
+        \node[subset] (1D0) at (0.3,0) {0};
+        \node[subset] (1D1) at (0.7,0) {1};
+        \draw[edge] (1D0) -- (1D1);
+      \end{scope}
+      \begin{scope}[xshift=10em]
+        \node[subset] (2D0) at (0.3,0.3) {00};
+        \node[subset] (2D1) at (0.7,0.3) {01};
+        \node[subset] (2D2) at (0.3,0.7) {10};
+        \node[subset] (2D3) at (0.7,0.7) {11};
+        \draw[edge] (2D0) -- (2D1);
+        \draw[edge] (2D0) -- (2D2);
+        \draw[edge] (2D2) -- (2D3);
+        \draw[edge] (2D1) -- (2D3);
+      \end{scope}
+      \begin{scope}[xshift=22em]
+        \node[subset] (3D0) at (0.3,0.3) {000};
+        \node[subset] (3D1) at (0.7,0.3) {001};
+        \node[subset] (3D2) at (0.3,0.7) {010};
+        \node[subset] (3D3) at (0.7,0.7) {011};
+        \node[subset] (3D4) at (0,0) {100};
+        \node[subset] (3D5) at (1,0) {101};
+        \node[subset] (3D6) at (0,1) {110};
+        \node[subset] (3D7) at (1,1) {111};
+        \draw[edge] (3D0) -- (3D1);
+        \draw[edge] (3D0) -- (3D2);
+        \draw[edge] (3D2) -- (3D3);
+        \draw[edge] (3D1) -- (3D3);
+        \draw[edge] (3D4) -- (3D5);
+        \draw[edge] (3D4) -- (3D6);
+        \draw[edge] (3D6) -- (3D7);
+        \draw[edge] (3D5) -- (3D7);
+        \draw[edge] (3D0) -- (3D4);
+        \draw[edge] (3D1) -- (3D5);
+        \draw[edge] (3D2) -- (3D6);
+        \draw[edge] (3D3) -- (3D7);
+      \end{scope}
+      \begin{scope}[on background layer]
+        \path node[wrap, fit=(0D0)] (W0) {};
+        \path node[wrap, fit=(1D0)(1D1)] (W1) {};
+        \path node[wrap, fit=(2D0)(2D1)(2D2)] (W2) {};
+        \path node[wrap, fit=(3D4)(3D5)(3D6)(3D7)] (W3) {};
+        \node [below=5em of W0] (L) {$P[0]$};
+        \node at (L -| W1) {$P[1]$};
+        \node at (L -| W2) {$P[2]$};
+        \node at (L -| W3) {$P[3]$};
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
 	\caption{Le categorie \(P[n]\) per \(n=0,1,2,3\). La categoria \(P[n]\) si chiama un \(n\)-\emph{cubo}.}
 	\label{fig_n_cubo}
 \end{figure}
