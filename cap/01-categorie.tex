@@ -1127,6 +1127,101 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 		\item due vertici $i,j$ sono in relazione se e solo se $i\ne j$.
 	\end{itemize}
 	Da ciò segue che la categoria dei grafi $n$-colorati, i cui oggetti sono grafi con una $n$-colorazione, e i cui morfismi rispettano la colorazione, è precisamente la categoria incubo di $\ctGph$ sopra $\ctK_n$.
+  \begin{figure}[h]
+    \begin{center}
+      \begin{tikzpicture}[
+          x=2em, y=2em,
+          dot/.style={
+            circle,
+            fill=#1,
+            draw=black,
+            inner sep=0pt,
+            minimum size=4pt,
+            draw=none,
+          },
+          homo/.style={
+            gray,
+            dashed,
+            ultra thin,
+          },
+          wrap/.style={
+            fill=black!5,
+            rounded corners,
+            inner sep=1em,
+          },
+        ]
+
+        \begin{scope}[xshift=0em]
+          \path
+            node[dot=ibmMagenta] (cNose)  at (+0.0,+0.0) {}
+            node[dot=ibmBlue]    (rNose)  at (+0.3,+0.3) {}
+            node[dot=ibmYellow]  (lNose)  at (-0.3,+0.3) {}
+            node[dot=ibmBlue]    (rMouth) at (+1.1,-0.1) {}
+            node[dot=ibmYellow]  (lMouth) at (-1.1,-0.1) {}
+            node[dot=ibmBlue]    (rEye)   at (+1.1,+0.8) {}
+            node[dot=ibmYellow]  (lEye)   at (-1.1,+0.8) {}
+            node[dot=ibmBlue]    (rNeck)  at (+1.8,-0.4) {}
+            node[dot=ibmYellow]  (lNeck)  at (-1.8,-0.4) {}
+            node[dot=ibmMagenta] (rEar)   at (+1.8,+2.2) {}
+            node[dot=ibmMagenta] (lEar)   at (-1.8,+2.2) {}
+            node[dot=ibmBlue]    (rHead)  at (+1.3,+1.8) {}
+            node[dot=ibmYellow]  (lHead)  at (-1.3,+1.8) {};
+          \draw
+            (lMouth) to[bend right]    (cNose)
+            (cNose)  to[bend right]    (rMouth)
+            (cNose)  to[bend right=10] (rNose)
+            (rNose)  to[bend right=10] (lNose)
+            (lNose)  to[bend right=10] (cNose)
+            (lNeck)  to[bend left=20]  (lEar)
+            (lEar)   to[bend left=10]  (lHead)
+            (lHead)  to[bend left]     (rHead)
+            (rHead)  to[bend left=10]  (rEar)
+            (rEar)   to[bend left=20]  (rNeck);
+        \end{scope}
+
+        \begin{scope}[on background layer]
+          \path node[wrap, fit=(lNeck)(rEar)] {};
+        \end{scope}
+
+        \begin{scope}[xshift=12em]
+          \foreach \i/\c/\color in {0/G/ibmYellow,1/R/ibmMagenta,2/B/ibmBlue}
+            \node[dot=\color] (p\c) at ($({120*\i-210+180}:1.5)+(0em,10em)$) {};
+          \draw (pG) -- (pR) -- (pB) -- (pG);
+          \path
+            node[dot=black] (cNose)  at (+0.0,+0.0) {} edge[homo]               (pR)
+            node[dot=black] (rNose)  at (+0.3,+0.3) {} edge[homo,bend left=20]  (pB)
+            node[dot=black] (lNose)  at (-0.3,+0.3) {} edge[homo,bend right=20] (pG)
+            node[dot=black] (rMouth) at (+1.1,-0.1) {} edge[homo,bend left=20]  (pB)
+            node[dot=black] (lMouth) at (-1.1,-0.1) {} edge[homo,bend right=20] (pG)
+            node[dot=black] (rEye)   at (+1.1,+0.8) {} edge[homo,bend left=20]  (pB)
+            node[dot=black] (lEye)   at (-1.1,+0.8) {} edge[homo,bend right=20] (pG)
+            node[dot=black] (rNeck)  at (+1.8,-0.4) {} edge[homo,bend left=20]  (pB)
+            node[dot=black] (lNeck)  at (-1.8,-0.4) {} edge[homo,bend right=20] (pG)
+            node[dot=black] (rEar)   at (+1.8,+2.2) {} edge[homo,bend right=30] (pR)
+            node[dot=black] (lEar)   at (-1.8,+2.2) {} edge[homo,bend left=30]  (pR)
+            node[dot=black] (rHead)  at (+1.3,+1.8) {} edge[homo,bend left=10]  (pB)
+            node[dot=black] (lHead)  at (-1.3,+1.8) {} edge[homo,bend right=10] (pG);
+          \draw
+            (lMouth) to[bend right]    (cNose)
+            (cNose)  to[bend right]    (rMouth)
+            (cNose)  to[bend right=10] (rNose)
+            (rNose)  to[bend right=10] (lNose)
+            (lNose)  to[bend right=10] (cNose)
+            (lNeck)  to[bend left=20]  (lEar)
+            (lEar)   to[bend left=10]  (lHead)
+            (lHead)  to[bend left]     (rHead)
+            (rHead)  to[bend left=10]  (rEar)
+            (rEar)   to[bend left=20]  (rNeck);
+        \end{scope}
+
+        \begin{scope}[on background layer]
+          \path node[wrap, fit=(lNeck)(rEar)(pR)] {};
+        \end{scope}
+      \end{tikzpicture}
+    \end{center}
+    \caption{3-colorazione di un grafo a forma di gatto.}
+    \label{fig_n_colorazione_grafo}
+  \end{figure}
 \end{example}
 \begin{example}[Intervalli]\label{ex_pos_slices}\index{Categoria!--- intervallo di un poset}
 	Se \((\bbR,\le)\) denota l'insieme dei numeri reali linearmente ordinato nel modo usuale, ed \(x\in\bbR\) è un numero reale, la categoria \(\bbR/x\) è il semi-intervallo inferiormente illimitato \((-\infty,t]:=\{t\le x\}\), e analogamente \(x/\bbR\) è il semi-intervallo \([t,+\infty)\). Più in generale, in ogni insieme parzialmente ordinato \((P,\le)\) guardato come categoria, l'incubo \(P/x\) sopra \(x\in P\) consiste dell'intervallo \(\{t\le x\}\) dotato dell'ordine indotto da \(P\), e similmente accade per \(x/P\). (Se \(a,b\in\bbR\) con l'ordine usuale, e \(a\le b\), si noti anche che \((a/\bbR)/(a\le b)\) è esattamente l'intervallo limitato \([a,b]\).)
