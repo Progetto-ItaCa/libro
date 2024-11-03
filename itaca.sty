@@ -74,6 +74,15 @@
 \definecolor{ibmOrange}{HTML}{fe6100}
 \definecolor{ibmYellow}{HTML}{ffb000}
 
+\NewDocumentCommand{\drawDot}{ O{black} }{%
+\begin{tikzpicture}
+  \node[circle, fill=#1, radius=2pt, inner sep=0pt, minimum size=4pt, draw=none] at (0,0) {};
+\end{tikzpicture}
+}
+\newcommand{\yellowDot}{ \drawDot[ibmYellow] }
+\newcommand{\redDot}{ \drawDot[ibmMagenta] }
+\newcommand{\blueDot}{ \drawDot[ibmBlue] }
+
 \RequirePackage[pdftex]{graphicx}
 \RequirePackage{ amsfonts
                , amsmath
