@@ -14,7 +14,7 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 	che soddisfano le seguenti proprietà:
 	\begin{itemize}
 		\item \emph{Identità}: per ogni \(m\in M\), valgono le uguaglianze 
-  \[m\cdot e = e\cdot m=m.\]
+  \[m\cdot e = m = e\cdot m.\]
 		\item \emph{Associatività}: per ogni \(m,n,p\in M\), vale l'uguaglianza 
   \[(m\cdot n)\cdot p = m\cdot (n\cdot p)\]
 	\end{itemize}
@@ -34,7 +34,7 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogni monoide è una categoria, e ogni insieme preordinato (e a fortiori, ogni insieme parzialmente ordinato) è una categoria. (Gli enunciati in questione renderanno più precise queste ultime affermazioni.)
 \index{Categoria!--- degli insiemi finiti}
 \begin{handsExample}{fund}\label{protoex_finset}
-	Un esempio naturale di categoria nasce considerando la classe \(\ctFin\) di tutti gli insiemi finiti \([n]\defeq \{1,\dots,n\}\) (con la convenzione che \([0]=\varnothing\) sia l'insieme vuoto), e le funzioni \(f : [n] \to [m]\) tra di loro. \`E evidente che non tutte tali funzioni sono componibili: una condizione necessaria --e sufficiente!-- affinché la composizione tra due funzioni \(f : [p] \to [q],g : [m] \to [n]\) tra insiemi finiti sia possibile è che il dominio dell'una coincida con il codominio dell'altra, ovvero che \(q=m\) e che le funzioni si possano `giustapporre' come
+	Un esempio naturale di categoria nasce considerando la classe \(\ctFin\) di tutti gli insiemi finiti \([n]\defeq \{1,\dots,n\}\) (con la convenzione che \([0]=\varnothing\) sia l'insieme vuoto), e le funzioni \(f : [n] \to [m]\) tra di loro. \`E evidente che non tutte tali funzioni sono componibili: una condizione necessaria --e sufficiente!-- affinché la composizione tra due funzioni \(f : [p] \to [q],g : [m] \to [n]\) tra insiemi finiti sia possibile è che il dominio dell'una coincida con il codominio dell'altra, ovvero che \(q=m\). Quando questo accade, è possibile `giustapporre' le due funzioni come
 	\[\xymatrix{
 		[p] \ar[r]^-f & [q] \ar[r]^-g & [r].
 	}\]
@@ -65,7 +65,8 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 	\index{Classe propria|see {Classe}}
 	Abbiamo già utilizzato diverse volte la parola `classe': la definizione generale di categoria obbliga a farlo, dal momento che la collezione di tutte le strutture algebriche di un dato tipo è spesso `troppo grande per essere un insieme' (in un senso che formalizzeremo in dettaglio nell'Appendice \ref{fondamenti}); per il momento è sufficiente trattenere l'idea informale che una classe (o \emph{classe propria}) \(\ctC\) è una collezione di elementi che ha tutte le proprietà di un insieme, a parte quella di poter essere misurata da un numero cardinale.
 	
-	Ogni volta che è necessario, useremo costruzioni elementari che si possono fare sulle classi come se esse fossero insiemi: per esempio se \(\ctA,\ctB\) sono classi, è lecito costruire la classe prodotto \(\ctA\times\ctB\), e considerare \emph{funzioni tra classi} \(F : \ctA\fun\ctB\), cioè sottoclassi \(F\) del prodotto \(\ctA\times\ctB\) che sono funzionali: per ogni elemento \(A\) della classe \(\ctA\), esiste un unico elemento \(B\in\ctB\) con \((A,B)\in F\), questo elemento si denota \(FA\), e a tutti gli effetti \(F\) si comporta come una funzione. Di nuovo, il linguaggio preciso (il linguaggio \textsf{NBG} della teoria degli insiemi di von Neumann, Bernays e G\"odel) che formalizza queste costruzioni verrà esposto nell'appendice \ref{fondamenti}. Consigliamo però a chi legge di finire prima questo capitolo: l'imprecisione iniziale non pregiudica né il rigore, né la comprensione degli argomenti che seguono.
+	Più precisamente, gli insiemi sono quelle classi che compaiono come elementi di altre classi. Come conseguenza, sugli insiemi è possibile effettuare più operazioni che sulle classi. Operazioni che tipicamente non è possibile fare sulle classi sono: la classe quoziente di una relazione d'equivalenza su una classe data, e la classe di tutte le sottoclassi a una classe data.
+	D'altra parte, se \(\ctA,\ctB\) sono classi, è lecito costruire la classe prodotto \(\ctA\times\ctB\), e considerare \emph{funzioni tra classi} \(F : \ctA\fun\ctB\), cioè sottoclassi \(F\) del prodotto \(\ctA\times\ctB\) che sono funzionali: per ogni elemento \(A\) della classe \(\ctA\), esiste un unico elemento \(B\in\ctB\) con \((A,B)\in F\), questo elemento si denota \(FA\), e a tutti gli effetti \(F\) si comporta come una funzione. Di nuovo, il linguaggio preciso (il linguaggio \textsf{NBG} della teoria degli insiemi di von Neumann, Bernays e G\"odel) che formalizza queste costruzioni verrà esposto nell'appendice \ref{fondamenti}. Consigliamo però a chi legge di finire prima questo capitolo: l'imprecisione iniziale non pregiudica né il rigore, né la comprensione degli argomenti che seguono.
 \end{remark}
 \index{Categoria}
 \begin{definition}[Categoria]\label{def_categ}
@@ -75,7 +76,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 		\item\label{c_2} una classe \(\ctC_1\) i cui elementi chiamiamo \emph{morfismi} o \emph{frecce}, di solito indicati con lettere latine minuscole: \(f,g,h\),\dots, \(u,v,w\)\dots
 		\item\label{c_3} Ad ogni morfismo \(f\) corrispondono due oggetti \(\dom{f}\), \(\cod{f}\) chiamati \emph{dominio} e \emph{codominio}. Per denotare il fatto che \(f\) ha dominio \(X\in\ctC_0\) e codominio \(Y\in\ctC_0\), scriveremo \(f\colon X\to Y\), o in \emph{forma diagrammatica},
 		\[\begin{tikzcd} X \ar[r, "f"] & Y. \end{tikzcd}\]
-		\item\label{c_4} Ogni oggetto \(X\) ha un morfismo distinto \(\id_X\colon X\to X\) chiamato \emph{identità}.
+		\item\label{c_4} Ogni oggetto \(X\) ha un morfismo \(\id_X\colon X\to X\) chiamato \emph{identità}.
 		\item\label{c_5} Per ogni coppia di morfismi \(f\colon X\to Y\) e \(g\colon Y\to Z\), cioè tali che \(\cod{f}=\dom{g}\), è dato un morfismo \(g\cmp f:X\to Z\) chiamato \emph{composizione di \(f\) e \(g\)}. Graficamente:
 		\[
 		\begin{tikzcd}
@@ -85,30 +86,30 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 			&&
 		\end{tikzcd}
 		\]
-		(Incidentalmente, osserviamo che \(\dom{g\cmp f}=\dom{f}\) e \(\cod{g\cmp f}=\cod{g}\).)
+		(La notazione diagrammatica implica che \(\dom{g\cmp f}=\dom{f}\) e \(\cod{g\cmp f}=\cod{g}\).)
 	\end{enumtag}
 	A questi dati, chiediamo di soddisfare le seguenti proprietà:
 	\begin{enumtag}{p}
 		\item \label{cp_1} \emph{Assioma di identità}: per ogni morfismo \(f:X\to Y\), valgono le uguaglianze 
-  \[f\cmp\id_X=\id_Y\cmp f=f.\]
+  \[f\cmp\id_X=f=\id_Y\cmp f.\]
 		\item \label{cp_2} \emph{Assioma di associatività}: dati oggetti \(X,Y,Z,W\) e morfismi \(f:X\to Y\), \(g:Y\to Z\) e \(h:Z\to W\), vale l'identità 
   \[h\cmp (g\cmp f) = (h\cmp g)\cmp f.\]
 	\end{enumtag}
 \end{definition}
 \begin{notation}
-	Dati due oggetti \(X\) e \(Y\), indichiamo con \(\Hom{\ctC}(X,Y)\) la classe di morfismi da \(X\) a \(Y\). Altre notazioni, come \(\varHom(X,Y)\) o \(\vvarHom{\ctC}(X,Y)\), sono ugualmente comuni, e motivate dal fatto che le frecce di una categoria astraggono la nozione di \emph{omomorfismo} tra insiemi strutturati (si veda \ref{ex_cat_monoidi} e più in generale l'esempio \ref{ex_cat_sigma_strutture}). Questa notazione renderà chiara quella in \ref{ex_hom_funtore} per i \emph{funtori hom}. \`E anche comune indicare la classe $\ctC_1$ dei morfismi di una categoria con $\hom(\ctC)$.
+	Dati due oggetti \(X\) e \(Y\), indichiamo con \(\Hom{\ctC}(X,Y)\) la classe di morfismi da \(X\) a \(Y\). Altre notazioni, come \(\varHom(X,Y)\) o \(\vvarHom{\ctC}(X,Y)\), sono ugualmente comuni, e motivate dal fatto che le frecce di una categoria astraggono la nozione di \emph{omomorfismo} tra insiemi strutturati (si veda \ref{ex_cat_monoidi} e più in generale l'esempio \ref{ex_cat_sigma_strutture}). Questa notazione renderà chiara quella in \ref{ex_hom_funtore} per i \emph{funtori hom}. \`E anche comune indicare la classe $\ctC_1$ dei morfismi di una categoria con $\hom(\ctC)$ o $\mathrm{ar}(\ctC)$.
 	% TODO: mettere in una definizione sola "tutte" le categorie di strutture algebriche.
 \end{notation}
 \begin{remark}\label{cor_def_categ}
-	Si osservi che dalla definizione appena data discendono due corollari:
+	Si osservi che dalla definizione appena data discendono alcuni corollari:
 	\begin{itemize}
-		\item Le classi \(\Hom{\ctC}(X,Y)\) al variare di \((X,Y)\in\ctC_0\times\ctC_0\) sono tutte disgiunte, perché la corrispondenza \(\ctC_1 \to \ctC_0\times\ctC_0\) che manda \(f\) nella coppia \((\dom{f},\cod{f})\) è una funzione (e allora la sua `fibra' sopra \((X,Y)\) è proprio \(\Hom{\ctC}(X,Y)\), disgiunto da \(\Hom{\ctC}(X',Y')\));
+		\item Le classi \(\Hom{\ctC}(X,Y)\) al variare di \((X,Y)\in\ctC_0\times\ctC_0\) sono tutte disgiunte, perché la corrispondenza \(\ctC_1 \to \ctC_0\times\ctC_0\) che manda \(f\) nella coppia \((\dom{f},\cod{f})\) è una funzione (e allora la sua \emph{fibra} sopra \((X,Y)\) è proprio \(\Hom{\ctC}(X,Y)\), disgiunto da \(\Hom{\ctC}(X',Y')\));
 		\item come conseguenza immediata, se \(X\ne X'\) sono oggetti diversi, le identità \(\id_X,\id_{X'}\) sono morfismi diversi: si può cioè pensare la corrispondenza \(X\mapsto \id_X : \ctC_0\to\ctC_1\) come una funzione \emph{iniettiva} tra classi;
-		\item la composizione consta di una funzione \emph{parziale}
-		\[\xymatrix{\_\cmp\_ : \ctC_1 \times \ctC_1 \ar[r] & \ctC_1}\]
-		il cui dominio è la sotto-classe \(\sum_{XYZ} \{ X \xrightarrow f Y \xrightarrow g Z \}\) dei morfismi \emph{contigui} o componibili. Dato che i vari \(\Hom{\ctC}(X,Y)\) sono a due a due disgiunti, la composizione \(\_\cmp\_\) si `spezza' in una classe di funzioni
+		\item la composizione consta di una funzione \emph{parziale} (si noti la diversa freccia)
+		\[\xymatrix{\_\cmp\_ : \ctC_1 \times \ctC_1 \ar@^{->}[r] & \ctC_1}\]
+		il cui dominio è la sotto-classe \(\sum_{XYZ} \{ X \xrightarrow f Y \xrightarrow g Z \}\) di \(\ctC_1 \times \ctC_1\) dei morfismi \emph{contigui} o \emph{componibili}. Dato che i vari \(\Hom{\ctC}(X,Y)\) sono a due a due disgiunti, la composizione \(\_\cmp\_\) si `spezza' in una classe di funzioni
 		\[\xymatrix{\_\cmp_{XZ}^Y\_ : \Hom{\ctC}(Y,Z)\times\Hom{\ctC}(X,Y) \ar[r] & \Hom{\ctC}(X,Z)}\]
-		dove ciascuna manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in \(g\cmp f\) (si sottintende \emph{sempre} il dominio particolare di \(\_\cmp_{XZ}^Y\_\) e lo si indica solo con $\_\cmp\_$).
+		dove ciascuna funzione manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in \(g\cmp f\) (in effetti, gli indici che indicano il dominio della particolare funzione \(\_\cmp_{XZ}^Y\_\) vengono \emph{sempre} lasciati sottintesi, e si scrive solo \(\_\cmp\_\)).
 	\end{itemize}
 \end{remark}
 \begin{remark}[A proposito dell'ordine di composizione]\label{sulla_compo}
@@ -128,19 +129,20 @@ per la composizione che appare in \ref{c_5} (e fare altrettanto per diagrammi pi
 	Quando la classe \(\ctC_1\) è un insieme, come conseguenza della seconda osservazione fatta, è un insieme anche \(\ctC_0\) (dato che una sottoclasse di una classe che è un insieme, è a sua volta un insieme): in tal caso chiamiamo la categoria \(\ctC\) \emph{piccola}; per contro %: l Una 
  una categoria che non è piccola si dice \emph{grande}, \emph{larga} o simili.
 	
-	Invece, \(\ctC\) si dice \emph{localmente piccola} se dati ogni due oggetti \(X\) e \(Y\), la classe \(\Hom{\ctC}(X,Y)\) di morfismi da \(X\) a \(Y\) è un insieme. 
+	Invece, \(\ctC\) si dice \emph{localmente piccola} se dati ogni due oggetti \(X\) e \(Y\), la classe \(\Hom{\ctC}(X,Y)\) dei morfismi da \(X\) a \(Y\) è un insieme. 
 \end{definition}
  Le categorie \(\ctFin\) e \(\bbR\emdash\ctVect\) definite sopra sono piccole, perché abbiamo limitato enormemente la loro classe di oggetti; non abbiamo considerato \emph{tutti} gli insiemi finiti, ma solo quelli della forma \(\{1,\dots,n\}\) per $n\ge 0$; non tutti gli spazi vettoriali, ma solo quelli della forma $\bbR^n$ per $n\ge 0$. Come conseguenza, la classe $\ctFin_1$ dei morfismi di $\ctFin$ è un sottoinsieme di
  \(\bigcup_{n,m\ge 0}2^{n\times m}\)
  (fatto da quelle relazioni $R\subseteq n\times m$ che sono funzioni, si veda \ref{}), ed è quindi un insieme.
 
- La categoria di \emph{tutti} gli insiemi finiti non è, strettamente parlando, piccola (perché c'è una classe propria anche solo di insiemi con un singolo elemento: \(\{\varnothing\},\{\{\varnothing\}\}, \{\{\{\varnothing\}\}\}\), eccetera), ma è localmente piccola, perché fissati due insiemi \(X,Y\), la collezione delle funzioni \(f : X\to Y\) è contenuta (stessa idea di prima) in \(2^{X\times Y}\), e quest'ultimo è un insieme (per assioma). La differenza tra le due situazioni è che l'unione \(\bigcup_{X,Y}2^{X\times Y}\) è indiciata su una classe propria, e quindi è una classe propria.
+ La categoria di \emph{tutti} gli insiemi finiti non è piccola (perché c'è una classe propria anche solo di insiemi con un singolo elemento: ogni insieme $x$ vi compare come il singoletto $\{x\}$), ma è localmente piccola, perché fissati due insiemi \(X,Y\), la collezione delle funzioni \(f : X\to Y\) è contenuta (stessa idea di prima) in \(2^{X\times Y}\), e quest'ultimo è un insieme. La differenza tra le due situazioni è che questa volta l'unione \(\bigcup_{X,Y}2^{X\times Y}\) è indiciata su una classe propria, e quindi è una classe propria.
 \begin{remark}
-	Gli assiomi di categoria non impediscono di costruire `categorie' dove \(\ctC_0\) è un insieme (per esempio, finito) e dove alcuni o tutti \(\Hom{\ctC}(X,Y)\) sono classi proprie; queste costruzioni sono però relativamente innaturali, e non ne parleremo mai. In effetti, non parleremo mai nemmeno di categorie grandi che non sono localmente piccole (ne risentirebbe irrimediabilmente il capitolo 4 del libro, e molti altri risultati). Perciò, da ora in poi adottiamo la convenzione che \emph{categoria}, senz'altro aggiungere, significhi sempre \emph{categoria localmente piccola}. Alternative a questa maniera di ragionare sono possibili, ma non porremo mai una particolare attenzione alla questione.
+	Gli assiomi di categoria non impediscono di costruire `categorie' dove \(\ctC_0\) è un insieme (per esempio, finito) e dove alcuni o tutti \(\Hom{\ctC}(X,Y)\) sono classi proprie; queste costruzioni sono però relativamente innaturali, e non ne parleremo mai. In effetti, eviteremo di considerare anche le categorie grandi che non sono localmente piccole, di cui parleremo solo per mostrarne l'esistenza (ne risentirebbe irrimediabilmente il capitolo 4 del libro, e molti altri risultati). Perciò, da ora in poi adottiamo la convenzione che \emph{categoria}, senz'altro aggiungere, significhi sempre \emph{categoria localmente piccola}.
 \end{remark}
 Concludiamo con un lemma apparentemente banale, ma che sarà utile in seguito (precisamente, nella dimostrazione di \ref{cat_sonomon}).
 \begin{lemma}\label{lem_end_monoide}
 	Sia \(\ctC\) una categoria, \(A\in\ctC_0\) un suo oggetto; allora \(M=\Hom{\ctC}(A,A)\) è un monoide, con l'identità \(\id_A\) come elemento neutro e la composizione \(\cmp\) come prodotto.
+	Indicheremo questo monoide come \(\End[\ctC]{A}\), o semplicemente come \(\End{A}\).
 \end{lemma}
 \begin{proof}
 	La composizione è un'operazione associativa
@@ -149,13 +151,13 @@ Concludiamo con un lemma apparentemente banale, ma che sarà utile in seguito (p
 	\end{tikzcd}\]
 	per \ref{cp_2}, e il fatto che \(f\cmp \id_A=f=\id_A\cmp f\) segue da \ref{cp_1}, in \ref{def_categ}.
 \end{proof}
-Nel resto della sezione raccogliamo alcuni esempi classici di categorie, e nella successiva inizieremo a `costruire categorie nuove dalle vecchie', cioè a definire il \emph{prodotto} \(\ctC\times\ctD\) (si veda \ref{def_cat_prodotto}) e la \emph{somma} \(\ctC+\ctD\) di due categorie date in \ref{def_cat_somma}, le categorie \emph{comma} \(\ctC/X\) e \emph{co-comma} \(X/\ctC\) sopra un oggetto \(X\in\ctC_0\) in \ref{def_cat_cocomma}, la categoria \emph{opposta} \(\ctC^\op\) di \(\ctC\) in \ref{def_cat_opp}, e molte altre.
+Nel resto della sezione raccogliamo alcuni esempi classici di categorie, e nella successiva inizieremo a `costruire categorie nuove dalle vecchie', cioè a definire il \emph{prodotto} \(\ctC\times\ctD\) (si veda \ref{def_cat_prodotto}) e la \emph{somma} \(\ctC+\ctD\) di due categorie date in \ref{def_cat_somma}, le categorie \emph{comma} \(\ctC/X\) e \emph{co-comma} \(X/\ctC\) su di un oggetto \(X\in\ctC_0\) in \ref{def_cat_cocomma} (anche dette il taglio di \(\ctC\) sopra \(X\) e sotto \(X\)), la categoria \emph{opposta} \(\ctC^\op\) di \(\ctC\) in \ref{def_cat_opp}, e molte altre.
 
 La definizione di categoria data in \ref{def_categ} è estremamente generale, ed è quindi `quasi vuota' di intuizione. 
 
 C'è una tripartizione essenziale nella interpretazione della definizione, che chi legge dovrebbe apprezzare.
 \begin{itemize}
-	\item Le categorie sono `forme' per oggetti combinatori (dei \emph{grafi diretti}) dove lati contigui possono essere composti, rispetto a una regola di composizione che è associativa, quando definita, e ha degli `elementi identità', cioè un particolare laccio (un lato il cui dominio e codominio coincidono) per ogni vertice.In quanto tali, le categorie sono solo particolari strutture con operazioni che soddisfano proprietà. Le categorie (piccole) quindi sono esse stesse degli oggetti matematici che possiamo studiare alla stregua di ogni altro oggetto matematico (e raccogliere in una loro totalità: ma questo discorso sarà approfondito solo molto più tardi, si veda \ref{ex_cat_cat}). Questo punto di vista si apprezza particolarmente nella \autoref{ssec:categorie_strutture}.
+	\item Le categorie sono `forme' per oggetti combinatori (dei \emph{grafi diretti}) dove lati contigui possono essere composti, rispetto a una regola di composizione che è associativa, quando definita, e ha degli `elementi identità', cioè un particolare laccio (un lato il cui dominio e codominio coincidono) per ogni vertice. In quanto tali, le categorie sono solo particolari strutture con operazioni che soddisfano proprietà. Le categorie (piccole) quindi sono esse stesse degli oggetti matematici che possiamo studiare alla stregua di ogni altro oggetto matematico (e raccogliere in una loro totalità: ma questo discorso sarà approfondito solo molto più tardi, si veda \ref{ex_cat_cat}). Questo punto di vista si apprezza particolarmente nella \autoref{ssec:categorie_strutture}.
 	\item Le categorie sono, allo stesso tempo, strutture ideate per raccogliere una totalità di oggetti matematici di un dato tipo (`tutti' i gruppi, `tutti' gli spazi topologici, ecc.) in una classe \(\ctC\) (in \emph{due} classi: gli oggetti e i morfismi) e studiarne le proprietà globali: le categorie (larghe) quindi sono `universi del discorso matematico', in ciascuno dei quali è possibile fare matematica: questo punto di vista si apprezza nella \autoref{ssec:categorie_universi} e particolarmente in \ref{ex_cat_sigma_strutture} e in \ref{ex_cat_top}.
 	\item D'altra parte, alcune strutture note ed importanti per altre ragioni, come ad esempio i monoidi e gli insiemi preordinati, ma anche gli insiemi su cui è fissata una relazione di equivalenza, sono \emph{essi stessi} esempi di categorie. Le categorie sono quindi una generalizzazione simultanea di queste, ed altre, strutture matematiche, unificate da una stessa definizione complessiva.
 \end{itemize}
