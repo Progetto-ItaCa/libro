@@ -1129,8 +1129,8 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 	Se \(\{\iter r\}\) denota un insieme con \(r\) elementi, una \emph{colorazione} di un insieme \(X\) consiste di una funzione \(c : X \to \{\iter r\}\) (di modo che gli elementi di \(X_i := c^{-1}(i)\) siano gli elementi `colorati' nel modo \(i\)); molti problemi di combinatoria enumerativa elementare riguardano colorazioni di insiemi finiti, e quindi essi possono essere enunciati attraverso la categoria incubo sopra \(\{\iter r\}\).
 \end{example}
 Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
-\begin{example}
-	Una \emph{$n$-colorazione} di un grafo non diretto come in \ref{ex_cat_grafi_nondiretti} consiste della scelta di un `colore' $i\in\{1,\dots,n\}$ per ogni vertice $V$ di un grafo $(E,V)$, in modo tale che due vertici collegati da un lato non siano dello stesso colore.
+\begin{example}[Colorazioni di grafi]\label{ex_grph_colorati}\index{Categoria!--- dei grafi colorati}
+	Una \emph{$n$-colorazione} di un grafo non diretto come in \ref{ex_cat_grafi_nondiretti} consiste della scelta di una colorazione $c : V \to \{1,\dots,n\}$, che assegna un colore ad ogni vertice $V$ di un grafo $\ctG=(E,V)$, in modo tale che due vertici collegati da un lato non siano dello stesso colore.
 	
 	Una $n$-colorazione per un grafo $\ctG$ corrisponde precisamente al dato di un omomorfismo di grafi $\ctG\to\ctK_n$ verso il \emph{grafo completo} su $n$ vertici:
 	\begin{itemize}
@@ -1145,7 +1145,6 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
           dot/.style={
             circle,
             fill=#1,
-            draw=black,
             inner sep=0pt,
             minimum size=4pt,
             draw=none,
@@ -1230,7 +1229,7 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
         \end{scope}
       \end{tikzpicture}
     \end{center}
-    \caption{3-colorazione di un grafo a forma di gatto.}
+    \caption{Una 3-colorazione di un grafo $\ctG$ a forma di gatto. I vertici di $\ctG$ sono etichettati da dei colori (gli elementi dell'insieme $C = \{\yellowDot,\redDot,\blueDot\}$), di modo che resti definito un omomorfismo $f : \ctG \to\ctK_G$ di grafi non diretti verso il grafo completo costruito sull'insieme $C$, che estende la colorazione $c : V\to C$. Questo significa: dato un vertice $v$, $c(v)=\redDot$ se e solo se $f(v)=\redDot$ (e lo stesso vale per gli altri colori).}
     \label{fig_n_colorazione_grafo}
   \end{figure}
 \end{example}
