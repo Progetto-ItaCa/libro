@@ -1328,6 +1328,86 @@ Chi legge rifletta su questa domanda: la categoria \(\ctCospan(\ctC)\) è \(\ctS
 		C \ar[r] & C' \ar[r,rightsquigarrow, "u_{C'D}"] & D \ar[r,phantom, "="] & C\ar[r,rightsquigarrow, "u_{CD}"] & D\\
 		C \ar[r,rightsquigarrow, "u_{CD}"'] & D \ar[r] & D' \ar[r,phantom, "="]& C \ar[r,rightsquigarrow, "u_{CD'}"'] & D'
 	\end{tikzcd}\]
+  \begin{figure}[h]
+    \begin{center}
+      \begin{tikzpicture}[
+          x=4em, y=4em,
+          dot/.style={
+            circle,
+            fill=#1,
+            draw=black,
+            inner sep=0pt,
+            outer sep=2pt,
+            minimum size=4pt,
+            draw=none,
+          },
+          squig/.style={
+            -latex,
+            decorate,
+            decoration={
+              snake,
+              amplitude=0.5pt,
+              segment length=4pt,
+              post length=10pt,
+            },
+          },
+          wrap/.style={
+            fill=black!5,
+            rounded corners,
+            inner sep=1em,
+          },
+        ]
+
+        \begin{scope}[xshift=0em]
+          \pgfmathsetseed{14}
+          \foreach \i in {1,...,2} {
+            \pgfmathsetmacro{\x}{rnd*2}
+            \pgfmathsetmacro{\y}{rnd*2}
+            \path node[dot=black] (C\i) at (\x,\y) {};
+          }
+          \foreach \i in {3,...,9} {
+            \pgfmathsetmacro{\x}{rnd*2}
+            \pgfmathsetmacro{\y}{rnd*2}
+            \path node[dot=lightgray] (C\i) at (\x,\y) {};
+          }
+        \end{scope}
+
+        \begin{scope}[xshift=10em]
+          \pgfmathsetseed{12}
+          \foreach \i in {1,...,3} {
+            \pgfmathsetmacro{\x}{rnd*2}
+            \pgfmathsetmacro{\y}{rnd*2}
+            \path node[dot=black] (D\i) at (\x,\y) {};
+          }
+          \foreach \i in {4,...,8} {
+            \pgfmathsetmacro{\x}{rnd*2}
+            \pgfmathsetmacro{\y}{rnd*2}
+            \path node[dot=lightgray] (D\i) at (\x,\y) {};
+          }
+        \end{scope}
+
+        \draw[-latex] (C1) -- (C2);
+
+        \draw[-latex] (D1) -- (D2);
+        \draw[-latex] (D2) -- (D3);
+        \draw[-latex] (D1) -- (D3);
+
+        \foreach \i in {1,2}
+          \foreach \j in {1,2,3}
+            \draw[squig] (C\i) -- (D\j);
+
+        \begin{scope}[on background layer]
+          \path node[wrap, fit=(C1)(C2)(C3)(C4)(C5)(C6)(C7)(C8)(C9)] (C) {};
+          \path node[wrap, fit=(D1)(D2)(D3)(D4)(D5)(D6)(D7)(D8)] (D) {};
+        \end{scope}
+
+        \node [below=0.5em of C] {$\ctC$};
+        \node [below=0.5em of D] {$\ctD$};
+      \end{tikzpicture}
+      \caption{Giunto di \(\ctC\) e \(\ctD\) con alcuni morfismi ed eteromorfismi in evidenza.}
+      \label{fig_giunto}
+    \end{center}
+  \end{figure}
 \end{definition}
 Dalla definizione della composizione in \(\ctC\star\ctD\) si può mostrare per induzione che la composizione di una \(n\)-upla di morfismi di \(\ctC\star\ctD\) di cui almeno uno è un eteromorfismo, è un eteromorfismo (tra gli appropriati dominio e codominio). Questo dimostra la proprietà associativa (e la buona definizione) della composizione con eteromorfismi. %Si noti che nessun eteromorfismo può essere invertibile (perché?).
 
