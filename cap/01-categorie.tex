@@ -1555,7 +1555,75 @@ Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando 
 		x \ar[r] & g\cdot x \ar[r] & h\cdot (g\cdot x) = (h\cdot g)\cdot x
 	\end{tikzcd}\]
 	L'associatività dell'operazione di \(G\) rende \(\act G\) una categoria.
-	\PlaceholderFigure{Il gruppoide d'azione del gruppo $V=\{id, (12)(34), (13)(24), (14)(23)\}$ (gruppo di Klein, o gruppo diedrale $D_2$: $V$ agisce sui vertici di un quadrato riflettendolo verticalmente, orizzontalmente, ruotandolo di un angolo $\pi$, o lasciandolo fisso).}
+	\begin{figure}[h]
+		\begin{center}
+			\begin{tikzpicture}[
+					x=4em, y=4em,
+					dot/.style={
+							circle,
+							fill=#1,
+							draw=black,
+							inner sep=0pt,
+							outer sep=4pt,
+							minimum size=8pt,
+							draw=none,
+						},
+					wrap/.style={
+							shape=circle,
+							inner sep=0,
+						},
+					fR/.style={fill=ibmMagenta},
+					fG/.style={fill=ibmYellow},
+					fB/.style={fill=ibmBlue},
+					dR/.style={draw=ibmMagenta},
+					dG/.style={draw=ibmYellow},
+					dB/.style={draw=ibmBlue},
+					dK/.style={draw=black},
+				]
+
+				\foreach \n/\a/\b/\c in {%
+						0/R/G/B,
+						1/B/R/G,
+						2/G/B/R,
+						3/B/G/R,
+						4/G/R/B,
+						5/R/B/G%
+					} {
+						\foreach \i/\col in {0/\a,1/\b,2/\c} {
+								\node[dot,f\col,shift=(60*\n-30:2)] (T-\n-\i) at ({120*\i-30}:0.2) {};
+							};
+						\path node[wrap, fit=(T-\n-0)(T-\n-1)(T-\n-2)] (O\n) {};
+					};
+
+				\foreach \i/\j/\c in {
+						0/1/K,
+						1/2/K,
+						2/0/K,
+						%
+						0/3/G,
+						0/4/B,
+						0/5/R,
+						%
+						1/3/B,
+						1/4/R,
+						1/5/G,
+						%
+						2/3/R,
+						2/4/G,
+						2/5/B,
+						%
+						4/3/K,
+						3/5/K,
+						5/4/K%
+					} {
+						\draw[draw=white,line width=4pt] (O\i) -- (O\j);
+						\draw[-latex,d\c,line width=1pt] (O\i) -- (O\j);
+					};
+			\end{tikzpicture}
+		\end{center}
+		\caption{TODO}
+		\label{fig_gruppoide_d_azione}
+	\end{figure}
 \end{example}
 \begin{definition}
 	Un \emph{automorfismo} è un endomorfismo (un morfismo da un oggetto a sé stesso) invertibile. In un gruppo \((G,\cdot)\) guardato come una categoria \(\susp(G,\cdot,1)\) tutti i morfismi \(g : \star\to\star\) sono automorfismi.
