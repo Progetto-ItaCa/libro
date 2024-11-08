@@ -1247,6 +1247,102 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 		\end{tikzcd}
 		\]
 	\end{itemize}
+  \begin{figure}
+    \begin{center}
+    \begin{tikzpicture}[
+        x=6em, y=6em,
+        dot/.style={
+            circle,
+            fill=#1,
+            draw=black,
+            inner sep=0pt,
+            outer sep=2pt,
+            minimum size=4pt,
+            draw=none,
+          },
+        wrap/.style={
+            inner sep=0,
+            fill=black!5,
+            rounded corners,
+            inner sep=1em,
+          },
+      ]
+
+      \def\seedC{37}
+      \def\seedD{11}
+
+      \begin{scope}[local bounding box=C]
+        \path node[font=\Large] (0) at (0,0) {$\star$};
+
+        \GimmeBounds{\seedC}{5}
+        \pgfmathsetseed{\seedC}
+        \foreach \i in {1,...,5} {
+            \pgfmathsetmacro{\x}{(rnd-\xmid)/(\xmax-\xmin)}
+            \pgfmathsetmacro{\y}{(rnd-\ymid)/(\ymax-\ymin)}
+            \path node[dot=black] (+\i) at (2*\x,\y+1) {};
+          }
+
+        \GimmeBounds{\seedD}{6}
+        \pgfmathsetseed{\seedD}
+        \foreach \i in {1,...,4} {
+            \pgfmathsetmacro{\x}{(rnd-\xmid)/(\xmax-\xmin)}
+            \pgfmathsetmacro{\y}{(rnd-\ymid)/(\ymax-\ymin)}
+            \path node[dot=black] (-\i) at (2*\x,\y-1) {};
+          }
+      \end{scope}
+
+      \begin{scope}[xshift=18em, local bounding box=C/0]
+        \GimmeBounds{\seedC}{5}
+        \pgfmathsetseed{\seedC}
+        \foreach \i/\l in {1/$f$,2/$g$,3/$h$,4/,5/$i$} {
+            \pgfmathsetmacro{\x}{(rnd-\xmid)/(\xmax-\xmin)}
+            \pgfmathsetmacro{\y}{(rnd-\ymid)/(\ymax-\ymin)}
+            \ifnum\i=4\else
+            \path node (+\i/0) at (2*\x,\y+1) {\l};
+            \fi
+          }
+      \end{scope}
+
+      \begin{scope}[xshift=18em, local bounding box=0/C]
+        \GimmeBounds{\seedD}{6}
+        \pgfmathsetseed{\seedD}
+        \foreach \i/\l in {1/$p$,2/$q$,3/$r$,4/$s$} {
+            \pgfmathsetmacro{\x}{(rnd-\xmid)/(\xmax-\xmin)}
+            \pgfmathsetmacro{\y}{(rnd-\ymid)/(\ymax-\ymin)}
+            \path node (0/-\i) at (2*\x,\y-1) {\l};
+          }
+      \end{scope}
+
+      \foreach \s/\l in {1/$f$,2/$g$,3/$h$,5/$i$} {
+        \draw[-latex,draw=ibmMagenta] (+\s) -- node[auto] {\l} (0);
+      }
+      \foreach \t/\l in {1/$p$,2/$q$,3/$r$,4/$s$} {
+        \draw[-latex,draw=ibmBlue] (0) -- node[auto] {\l} (-\t);
+      }
+
+      \foreach \s/\t in {3/5,5/2} {
+        \draw[-latex] (+\s) -- (+\t);
+        \draw[-latex] (+\s/0) -- (+\t/0);
+      }
+      \foreach \s/\t in {1/2,2/3,3/4,2/4} {
+        \draw[-latex] (-\s) -- (-\t);
+        \draw[-latex] (0/-\s) -- (0/-\t);
+      }
+
+      \begin{scope}[on background layer]
+        \path node[wrap, fit=(C.south west)(C.north east)] {};
+        \path node[wrap, fit=(C/0.south west)(C/0.north east)] {};
+        \path node[wrap, fit=(0/C.south west)(0/C.north east)] {};
+      \end{scope}
+
+      \node [below=1.5em of C] {$\ctC$};
+      \node [below=1.5em of C/0] {$\ctC/\star$};
+      \node [below=1.5em of 0/C] {$\star/\ctC$};
+    \end{tikzpicture}
+    \caption{TODO}
+    \label{fig_cat_incubo_e_succuba}
+    \end{center}
+  \end{figure}
 \end{definition}
 Diverse costruzioni familiari della matematica di base si esprimono facilmente come categorie sopra o sotto oggetti fissati. Raccogliamo alcuni esempi (riempire i dettagli mancanti nelle definizioni è un utile esercizio per familiarizzare con le definizioni in \ref{def_cat_slice}).
 \begin{example}\label{def_spazi_pun_succuba}\index{Categoria!--- degli spazi puntati}\index{Spazi topologici}
