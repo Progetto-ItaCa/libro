@@ -1002,6 +1002,135 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 		\item Le identità e le composizioni sono ancora una volta indotte da quelle di \(\ctC\) e \(\ctD\).
 	\end{itemize}
 \end{definition}
+\begin{figure}[h]
+  \begin{center}
+    \begin{tikzpicture}[
+        x=4em, y=4em,
+        dot/.style={
+            circle,
+            fill=#1,
+            draw=black,
+            inner sep=0pt,
+            outer sep=2pt,
+            minimum size=4pt,
+            draw=none,
+          },
+        wrap/.style={
+            inner sep=0,
+            fill=black!5,
+            rounded corners,
+            inner sep=1em,
+          },
+      ]
+
+      \def\seedC{4}
+      \def\seedD{11}
+
+      \begin{scope}[yshift=5em,local bounding box=C]
+        \GimmeBounds{\seedC}{4}
+        \pgfmathsetseed{\seedC}
+        \foreach \i in {1,...,4} {
+            \pgfmathsetmacro{\x}{(rnd-\xmid)/(\xmax-\xmin)} % Center x
+            \pgfmathsetmacro{\y}{(rnd-\ymid)/(\ymax-\ymin)} % Center y
+            \path node[dot=black] (C\i) at (\x,\y) {};
+          }
+      \end{scope}
+
+      \begin{scope}[yshift=-5em,local bounding box=D]
+        \GimmeBounds{\seedD}{3}
+        \pgfmathsetseed{\seedD}
+        \foreach \i in {1,...,3} {
+            \pgfmathsetmacro{\x}{(rnd-\xmid)/(\xmax-\xmin)}
+            \pgfmathsetmacro{\y}{(rnd-\ymid)/(\ymax-\ymin)}
+            \path node[dot=black] (D\i) at (\x,\y) {};
+          }
+      \end{scope}
+
+      \begin{scope}[xshift=9em,local bounding box=CtD]
+        \GimmeBounds{\seedC}{4}
+        \pgfmathsetseed{\seedC}
+        \foreach \i in {1,...,4} {
+            \pgfmathsetmacro{\x}{(rnd-\xmid)/(\xmax-\xmin)}
+            \pgfmathsetmacro{\y}{(rnd-\ymid)/(\ymax-\ymin)}
+            \path node[dot=black] (C\i-Dt) at (\x,\y+.8) {};
+          }
+
+        \GimmeBounds{\seedD}{3}
+        \pgfmathsetseed{\seedD}
+        \foreach \i in {1,...,3} {
+            \pgfmathsetmacro{\x}{(rnd-\xmid)/(\xmax-\xmin)}
+            \pgfmathsetmacro{\y}{(rnd-\ymid)/(\ymax-\ymin)}
+            \path node[dot=black] (Ct-D\i) at (\x,\y-.8) {};
+          }
+      \end{scope}
+
+      \begin{scope}[xshift=22em,local bounding box=CxD]
+        \GimmeBounds{\seedC}{4}
+        \let\xminC\xmin\let\xmidC\xmid\let\xmaxC\xmax
+        \let\yminC\ymin\let\ymidC\ymid\let\ymaxC\ymax
+        \GimmeBounds{\seedD}{3}
+        \let\xminD\xmin\let\xmidD\xmid\let\xmaxD\xmax
+        \let\yminD\ymin\let\ymidD\ymid\let\ymaxD\ymax
+
+        \pgfmathsetseed{\seedD}
+        \foreach \j in {1,...,3} {
+            \pgfmathsetmacro{\dx}{(rnd-\xmidD)/(\xmaxD-\xminD)}
+            \pgfmathsetmacro{\dy}{(rnd-\ymidD)/(\ymaxD-\yminD)}
+            \pgfmathsetseed{\seedC}
+            \foreach \i in {1,...,4} {
+                \pgfmathsetmacro{\cx}{(rnd-\xmidC)/(\xmaxC-\xminC)}
+                \pgfmathsetmacro{\cy}{(rnd-\ymidC)/(\ymaxC-\yminC)}
+                \path node[dot=black] (C\i-D\j) at (2.5*\dx+0.8*\cx,2.5*\dy+0.8*\cy) {};
+              }
+            \pgfmathsetseed{\seedD}
+            \foreach \k in {1,...,\j} \pgfmathparse{rnd+rnd};
+          }
+      \end{scope}
+
+      \def\morsC{1/2,2/4,1/3,3/4}
+      \def\morsD{2/1,2/3}
+
+      \foreach \s/\t in \morsC {
+        \draw[-latex,draw=ibmMagenta] (C\s) -- (C\t);
+        \draw[-latex,draw=ibmMagenta] (C\s-Dt) -- (C\t-Dt);
+      }
+
+      \foreach \s/\t in \morsD {
+        \draw[-latex,draw=ibmBlue] (D\s) -- (D\t);
+        \draw[-latex,draw=ibmBlue] (Ct-D\s) -- (Ct-D\t);
+      }
+
+      \foreach \oC/\mD in {1/{2/1},2/{2/3},3/{}} {
+      \foreach \s/\t in \morsC {
+        \foreach \j in \oC {
+          \draw[black!5,ultra thick] (C\s-D\j) -- (C\t-D\j);
+          \draw[-latex,draw=ibmMagenta] (C\s-D\j) -- (C\t-D\j);
+        }
+      }
+      \foreach \s/\t in \mD {
+        \foreach \i in {4,3,2,1} {
+            \draw[black!5,ultra thick] (C\i-D\s) -- (C\i-D\t);
+            \draw[-latex,draw=ibmBlue] (C\i-D\s) -- (C\i-D\t);
+          }
+      }
+      }
+
+      \begin{scope}[on background layer]
+        \path node[wrap, fit=(C.south west)(C.north east)] {};
+        \path node[wrap, fit=(D.south west)(D.north east)] {};
+        \path node[wrap, fit=(CtD.south west)(CtD.north east)] {};
+        \path node[wrap, fit=(CxD.south west)(CxD.north east)] {};
+      \end{scope}
+
+      \node [below=1.5em of C] {$\ctC$};
+      \node [below=1.5em of D] {$\ctD$};
+      \node [below=1.5em of CtD] {$\ctC+\ctD$};
+      \node [below=1.5em of CxD] {$\ctC\times\ctD$};
+    \end{tikzpicture}
+    \caption{TODO}
+    \label{fig_cat_somma_e_prodotto}
+  \end{center}
+\end{figure}
 
 % \index{Categoria!--- comma} % per questa dobbiamo prima definire i funtori
 
