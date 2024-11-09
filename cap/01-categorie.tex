@@ -2930,6 +2930,104 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	% una funzione surgettiva può avere più inverse destre (sezioni).
 \end{example}
 \Todo{Tempo fa vidi una dimostrazione molto eloquente di questo fatto, mi piacerebee aggiungerla.}
+\begin{figure}[h]
+  \begin{center}
+    \begin{tikzpicture}[
+        x=1em, y=1em,
+        dot/.style={
+          circle,
+          fill=#1,
+          inner sep=0pt,
+          outer sep=2pt,
+          minimum size=4pt,
+          draw=none,
+        },
+        wrap/.style={
+          fill=black!5,
+          rounded corners,
+          inner sep=.5em,
+        },
+      ]
+
+      \def\sizeX{5}
+      \def\seedX{1}
+      \def\seedXS{
+        3/2,
+        1/3,
+        4/4,
+        1/5,
+        5/9%
+      }
+
+      \begin{scope}[local bounding box=X]
+        \GimmeBounds{\seedX}{\sizeX}
+        \let\xminC\xmin\let\xmidC\xmid\let\xmaxC\xmax
+        \let\yminC\ymin\let\ymidC\ymid\let\ymaxC\ymax
+
+        \pgfmathsetseed{\seedX}
+        \foreach \count/\seed [count=\n] in \seedXS {
+          \begin{scope}[xshift=(\n-\sizeX/2)*5em,local bounding box=X\n]
+            \pgfmathsetmacro{\dx}{(rnd-\xmidC)/(\xmaxC-\xminC)}
+            \pgfmathsetmacro{\dy}{(rnd-\ymidC)/(\ymaxC-\yminC)}
+
+            \GimmeBounds{\seed}{\count}
+            \pgfmathsetseed{\seed}
+            \foreach \i in {1,...,\count} {
+              \pgfmathsetmacro{\x}{\dx + 2*(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+              \pgfmathsetmacro{\y}{\dy + 2*(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+              \path node[dot=black] (X\n\i) at (\x,\y) {};
+            }
+
+            \pgfmathsetseed{\seedX}
+            \foreach \k in {1,...,\n} \pgfmathparse{rnd+rnd};
+
+          \end{scope}
+        }
+      \end{scope}
+
+      \begin{scope}[yshift=-8em,local bounding box=Y]
+        \GimmeBounds{\seedX}{\sizeX}
+        \pgfmathsetseed{\seedX}
+        \foreach \i/\c in {
+          1/ibmBlue,
+          2/ibmPurple,
+          3/ibmMagenta,
+          4/ibmOrange,
+          5/ibmYellow%
+        } {
+          \pgfmathsetmacro{\x}{(\i-\sizeX/2)*5+(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+          \pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+          \path node[dot=\c] (Y\i) at (\x,\y) {};
+        }
+      \end{scope}
+
+      \begin{scope}[on background layer]
+        \path node[wrap, draw=gray, inner sep=2em, fit=(X)] (D) {};
+        \path node[wrap, draw=gray, inner sep=2em, fit=(Y)] (C) {};
+        \foreach \n/\c in {
+          1/ibmBlue,
+          2/ibmPurple,
+          3/ibmMagenta,
+          4/ibmOrange,
+          5/ibmYellow%
+        } {
+          \path node[wrap, shape=circle, fill=\c!20, draw=\c, fit=(X\n)] (W\n) {};
+          \draw [-latex, \c] (W\n) to[bend right=15] (Y\n);
+        }
+      \end{scope}
+
+      \foreach \s/\t in {
+        Y1/X11,
+        Y2/X21,
+        Y3/X31,
+        Y4/X41,
+        Y5/X51%
+      } \draw (\s) edge[-latex, bend right=15] (\t);
+    \end{tikzpicture}
+  \end{center}
+  \caption{}
+  \label{fig_assioma_scelta}
+\end{figure}
 
 I funtori preservano sezioni e retrazioni,
 nel senso precisato dal seguente teorema:
