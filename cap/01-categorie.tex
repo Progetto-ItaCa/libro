@@ -188,11 +188,11 @@ Iniziamo ora a dare degli esempi di categorie piccole partendo dall'esempio più
 Alcune categorie che è spesso utile considerare si rappresentano mediante dei grafi:
 \index{Categoria!--- freccia generica}
 \begin{example}\label{ex_cat_freccia}
-	La categoria `freccia generica' ha due oggetti \(0,1\) e un unico morfismo non identità \(u : 0\to 1\) (che di solito non ha nome). La composizione è forzata a essere definita solamente tra le identità ed \(u\), nell'unico modo ovvio, e tutti gli assiomi di categoria sono banalmente soddisfatti.
+	La categoria \emph{freccia generica} ha due oggetti \(0,1\) e un unico morfismo non identità \(u : 0\to 1\) (che di solito non ha nome). La composizione è forzata a essere definita solamente tra le identità ed \(u\), nell'unico modo ovvio, e tutti gli assiomi di categoria sono banalmente soddisfatti.
 \end{example}
 \index{Categoria!--- catena generica}
 \begin{example}\label{ex_cat_catena}
-	Più in generale, la categoria \(\Delta[n]\) detta `catena generica di lunghezza \(n+1\)' è definita come segue:
+	Più in generale, la categoria \(\Delta[n]\) detta \emph{catena generica di lunghezza \(n+1\)} è definita come segue:
 	\begin{itemize}
 		\item gli oggetti di \(\Delta[n]\) sono gli elementi di \(\{0,\dots,n\}\) (ci sono quindi \(n+1\) oggetti, per ogni \(n\ge 1\));\footnote{A volte è utile adottare la convenzione per cui quando \(n=-1\), l'insieme \(\{0,\dots,n\}\) è vuoto, e quindi la categoria `catena di lunghezza \(0\)' è la categoria vuota \(\ctInit\) di \ref{ex_cat_vuota}.}
 		\item C'è un unico morfismo \(i\to j\) in \(\Delta[n]\) se e solo se \(i\le j\), di modo che esista un unico morfismo \(i\to i\) (l'identità) per ogni \(i\in\{0,\dots,n\}\), e un unico morfismo \(i\to i+1\) per \(i\in\{0,\dots,n-1\}\); in particolare l'unico morfismo \(i\to j\) è ottenuto dalla composizione
@@ -250,9 +250,15 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 		\label{fig:le_delta}
 	\end{figure}\todo{questo disegno al momento sembra rotto, non so perché}
 \end{example}
+\index{Categoria!--- isomorfismo generico}
+\begin{example}\label{ex_cat_iso}
+	La categoria \emph{isomorfismo generico} \(\ctIso\) ha due oggetti ed esattamente una freccia fra ciascuna coppia di essi:
+	\[\xymatrix@C=7ex{0 \ar@<.7ex>[r]^u \ar@(dl,ul)[] & 1 \ar@<.7ex>[l]^{u^{-1}} \ar@(ur,dr)[]}\]
+	I due endomorfismi su \(0\) ed \(1\) devono quindi essere le identità, ed entrambe le composizioni dei morfismi non identità \(u\) e \(u^{-1}\) sono forzate ad essere l'identità sull'oggetto corrispondente. \`E quindi la categoria con due oggetti ed un unico isomorfismo fra di essi.
+\end{example}
 \index{Categoria!--- doppia freccia generica}
 \begin{example}\label{ex_cat_doppiafreccia}
-	La categoria `doppia freccia generica' ha due oggetti \(0,1\) ed esattamente due morfismi non identità e paralleli \(s,t : 0\to 1\)%
+	La categoria \emph{doppia freccia generica} ha due oggetti \(0,1\) ed esattamente due morfismi non identità e paralleli \(s,t : 0\to 1\)%
 	%;anche in questo caso, tali morfismi di solito non hanno nome % ce l'hanno: s e t
 	. La composizione è definita, ancora una volta, nell'unico modo ovvio, chiedendo che \(x\cmp \id_0=x=\id_1\cmp x\) per \(x\in\{s,t\}\).
 
@@ -260,7 +266,7 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 \end{example}
 \index{Categoria!--- quadrato commutativo generico}
 \begin{example}\label{ex_quadcuboncubo}
-	La categoria `quadrato commutativo generico' \(P[2]\) ha 4 oggetti
+	La categoria \emph{quadrato commutativo generico} \(P[2]\) ha 4 oggetti
 	\[\{(00),(10),(01),(11)\} \]
 	e un morfismo \((ij)\to(kl)\) se e solo se \(i\le k\) e \(j\le l\); rappresentata graficamente, si tratta della categoria
 	\[\begin{tikzcd}
@@ -344,29 +350,29 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 \index{Categoria!--- spanna generica}
 \index{Categoria!--- cospanna generica|see {spanna generica}}
 \begin{example}[Spanne e cospanne generiche]\label{ex_spancospan}
-	La categoria `spanna generica'
+	La categoria \emph{spanna generica}
 	\(\Lambda^2_0\) ha tre oggetti \(0,1,2\) e due morfismi non identità. Si raffigura come segue:\footnote{La scelta del termine si può intendere motivata dal fatto che una spanna è: la distanza (misurata dai codomini delle due frecce verso $0,1$) tra punta del pollice e punta del mignolo di una mano aperta adulta; l'arcata di un ponte (il cui punto più alto è l'oggetto $0$); le due braccia di un giogo (in inglese antico \emph{ġespan} era un giogo, un collare o per estensione un bracciale); un arcolaio (le cui braccia sono proprio $1\leftarrow 0\to 2$; quest'ultima etimologia è dalla radice proto-indoeuropea \emph{*(s)penh$_1$-}, da cui derivano varie parole nel campo semantico di ciò che è capace di ruotare attorno a un asse).}
 	\[\begin{tikzcd}
 		1 & 0 \ar[r]\ar[l] & 2
 	\end{tikzcd}\]
 	La composizione è definita solamente quando almeno una delle due frecce è l'identità, ed è forzata da questo fatto.
-
-	Dualmente, la categoria `cospanna generica' \(\Lambda^2_2\) ha tre oggetti \(0,1,2\) ma i due morfismi non identità puntano verso \(2\) invece che uscire da \(0\):
+	
+	Dualmente, la categoria \emph{cospanna generica} \(\Lambda^2_2\) ha tre oggetti \(0,1,2\) ma i due morfismi non identità puntano verso \(2\) invece che uscire da \(0\):
 	\[\begin{tikzcd}
 		0\ar[r] & 2 & 1\ar[l]
 	\end{tikzcd}\]
 	Di nuovo, la composizione è definita solamente quando almeno una delle due frecce è l'identità.
 
 	Si noti che \(\Lambda^2_2\) si ottiene da \(\Delta[2]\) `rimuovendo la freccia \(0\to 1\)', e analogamente \(\Lambda^2_0\) si ottiene rimuovendo la freccia \(1\to 2\).
-
-	Più in generale, sia \(S\) un insieme; la categoria `\(S\)-spanna generica' \(S^\lhd\) è definita come segue:
+	
+	Più in generale, sia \(S\) un insieme; la categoria \emph{\(S\)-spanna generica} \(S^\lhd\) è definita come segue:
 	\begin{itemize}
 		\item gli oggetti di \(S^\lhd\) sono gli elementi di \(S^+ := S\cup \{-\infty\}\);
 		\item esiste un unico morfismo \(f_s : -\infty\to s\), per ogni \(s\in S\).
 	\end{itemize}
 	La composizione è ancora una volta definita solamente quando almeno una delle due frecce è l'identità. Questo definisce una categoria in cui da un oggetto chiamato `\(-\infty\)' spiccano tante frecce \(f_s\) quanti sono gli elementi di \(S\).
-
-	Dualmente, definiamo la categoria `\(S\)-cospanna generica' \(S^\rhd\) come segue:
+	
+	Dualmente, definiamo la categoria \emph{\(S\)-cospanna generica} \(S^\rhd\) come segue:
 	\begin{itemize}
 		\item gli oggetti di \(S^\rhd\) sono gli elementi di \(S^+ := S\cup \{+\infty\}\);
 		\item esiste un unico morfismo \(f_s : s\to+\infty\), per ogni \(s\in S\).
@@ -397,7 +403,7 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 %		\[ [e_n;\dots;e_1] : u \xto{e_1} x_1 \xto{e_2} x_2\xto{e_3} \dots\xto{e_{n-1}} x_{n-1}\xto{e_n} v\]
 %		con la convenzione di scrivere gli elementi della sequenza in ordine inverso\footnote{Questa convenzione segue quella che applica le funzioni `a sinistra', scrivendo $(f(g(x)) = (f\circ g)(x)$, si veda \ref{sulla_compo}.} ed intepretando il caso \(u=v,n=0\) come una sequenza fatta da un laccio `banale' \(\emptyList_u : u\to u\); in più, usiamo la notazione ovvia, \(E(x,y)\subseteq E\) per denotare i lati del grafo di dominio \(x\) e codominio \(y\).
 	\end{itemize}
-	La composizione di due sequenze \((f_1,\dots,f_m)\) e \((e_1,\dots,e_n)\) è data dalla loro \emph{concatenazione}, ossia dalla operazione
+	La composizione di due sequenze \((e_1,\dots,e_n)\) da \(x_0\) a \(x_n\) e \((f_1,\dots,f_m)\) da \(x_n\) a \(x_{n+m}\) è data dalla loro \emph{concatenazione}, ovvero:
 	\[(f_1,\dots,f_m)\cmp(e_1,\dots,e_n) = (e_1,\dots,e_n,f_1,\dots,f_m).\]
 	Quando è definita, questa operazione è, evidentemente, associativa, e la sequenza vuota $\emptyList_u$ soddisfa l'assioma di identità \ref{cp_1} nella \ref{def_categ}.
  \begin{figure}
@@ -424,7 +430,7 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
  }
 \end{tikzpicture}
      \end{center}
-     \caption{Concatenazione di due sequenze $[\optup[0] e4;]$ e $[\optup[4]f7;]$ di morfismi in $F\ctG$.}
+     \caption{Composizione di due morfismi $(e_1,e_2,e_3,e_4)$ e $(f_1,f_2,f_3)$ in $F\ctG$.}
      \label{fig:enter-label}
  \end{figure}
 \end{example}
@@ -511,19 +517,19 @@ e insieme a queste, molte altre. Esiste una dicotomia forte tra queste due class
 	\[(a,c)\in S\cmp R\iff \exists (b\in B) : ((a,b)\in R)\land ((b,c)\in S).\]
 	Con questa definizione, si può mostrare che \(T\cmp(S\cmp R)=(T\cmp S)\cmp R\) e che la relazione diagonale \(\{(a,a)\mid a\in A\}\subseteq A\times A\) (ovvero la relazione \(a\,\Delta\,a'\iff a=a'\)) funge da elemento identità per la composizione così definita.
 \end{example}
-Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto cartesiano è importante, perché se \(R : A\to B\) è una relazione, vogliamo che \(A\) ne sia il dominio, e \(B\) il codominio. \`E però vero che gli insiemi \(A\times B\) e \(B\times A\) sono in biiezione canonica, e quindi si potrebbe pensare di definire una categoria \(\ctRel'\) con gli stessi oggetti di \(\ctRel\), ma con morfismi da \(A\) verso \(B\) le relazioni \(R\subseteq B\times A\). In effetti, questa è la categoria opposta \(\ctRel^\op\) di \(\ctRel\) (si veda \ref{def_cat_opp}), e tra \(\ctRel^\op\) e \(\ctRel\) esiste una identificazione canonica.
-\index{Categoria!--- degli insiemi}
-\index{Categoria!--- degli insiemi finiti|see {--- degli insiemi}}
+Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto cartesiano è importante, perché se \(R : A\to B\) è una relazione, vogliamo che \(A\) ne sia il dominio, e \(B\) il codominio. \`E però vero che gli insiemi \(A\times B\) e \(B\times A\) sono in biiezione canonica, e quindi si potrebbe pensare di definire una categoria \(\ctRel'\) con gli stessi oggetti di \(\ctRel\), ma con morfismi da \(A\) verso \(B\) le relazioni \(R\subseteq B\times A\). In effetti, questa è la categoria opposta \(\ctRel^\op\) di \(\ctRel\) (si veda \ref{def_cat_opp}), e tra \(\ctRel^\op\) e \(\ctRel\) esiste un isomorfismo (si veda \ref{??}). % aggiungere riferimento a dove faremo vedere questo isomorfismo.
 \begin{remark}\label{klext_delle_relazioni}
 	Ogni relazione \(R : A\to B\) induce una funzione \(R^* : 2^B\to 2^A\) nel modo che segue: un sottoinsieme \(U\subseteq B\) viene mandato in \(R^*U:=\{x\in A\mid \forall u\in U.(x,u)\in R\}\). In effetti, esiste una analoga funzione \(R_* : 2^A\to 2^B\), definita da \((V\subseteq A) \mapsto R_*V:= \{y\in B\mid \forall v\in V.(v,y)\in R\}\), e tra le due funzioni \(R^*, R_*\) sussiste la relazione
 	\[V\subseteq R^*U \iff U\subseteq R_*V\label{aggiunti_in_disguise}\]
-	In \ref{rel_danno_aggiunti} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie, affrontata per esteso nel capitolo \ref{cap:aggiunti}.
+	dal momento che il lato sinistro è equivalente a \(\forall v\in V.\forall u\in U.(v,u)\in R\) e il lato destro a \(\forall u\in U.\forall v\in V.(v,u)\in R\). In \ref{rel_danno_aggiunti} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie, affrontata per esteso nel capitolo \ref{cap:aggiunti}.
 \end{remark}
+\index{Categoria!--- degli insiemi}
+\index{Categoria!--- degli insiemi finiti|see {--- degli insiemi}}
 \begin{example}[Insiemi e funzioni]\label{ex_cat_insiemi}
 	La categoria \(\ctSet\) ha
 	\begin{itemize}
 		\item per oggetti gli insiemi, denotati con le lettere \(A,B,C\dots\);
-		\item per morfismi da \(A\) vero \(B\) tutte le funzioni \(f : A\to B\), ossia tutte le relazioni \(F\subseteq A\times B\) con la proprietà che per ogni \(a\in A\) esiste un unico \(b\in B\) tale che \((a,b)\in F\) o, più formalmente, \(F\cap(\{a\}\times B)\) è un singoletto; l'elemento \(b\) in questione si denota \(f(a)\) o \(fa\) e l'insieme \(F = \{(a,fa)\mid a\in A\}\) è il \emph{grafico} o \emph{supporto} della funzione. Queste relazioni sono \emph{totali} (perché sono definite sull'intero dominio \(A\)) e \emph{a valore singolo}.
+		\item per morfismi da \(A\) verso \(B\) tutte le funzioni \(f : A\to B\), ossia tutte le relazioni \(F\subseteq A\times B\) con la proprietà che per ogni \(a\in A\) esiste un unico \(b\in B\) tale che \((a,b)\in F\) o, più formalmente, \(F\cap(\{a\}\times B)\) è un singoletto; l'elemento \(b\) in questione si denota \(f(a)\) o \(fa\) e l'insieme \(F = \{(a,fa)\mid a\in A\}\) è il \emph{grafico} o \emph{supporto} della funzione. Queste relazioni sono \emph{totali} (perché sono definite sull'intero dominio \(A\)) e \emph{a valore singolo}.
 	\end{itemize}
 	Due funzioni \(f : A\to B\), \(g : B\to C\) si compongono alla maniera delle relazioni (e la composizione è ancora una funzione, poiché l'intersezione \((G\cmp F)\cap (\{a\}\times C)\) consta del singoletto \(\{g(f(a))\}\)).
 
