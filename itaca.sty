@@ -104,6 +104,25 @@
   \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{calc,matrix,arrows,positioning,backgrounds,fit}
 
+% TikZ drawing helper for random point clouds
+\NewDocumentCommand{\GimmeBounds}{m m}{
+  \pgfmathsetmacro{\xmin}{1}
+  \pgfmathsetmacro{\xmax}{0}
+  \pgfmathsetmacro{\ymin}{1}
+  \pgfmathsetmacro{\ymax}{0}
+  \pgfmathsetseed{#1}
+  \foreach \i in {1,...,#2} {
+      \pgfmathsetmacro{\x}{rnd}
+      \pgfmathsetmacro{\y}{rnd}
+      \pgfmathparse{min(\x,\xmin)}\global\let\xmin\pgfmathresult
+      \pgfmathparse{max(\x,\xmax)}\global\let\xmax\pgfmathresult
+      \pgfmathparse{min(\y,\ymin)}\global\let\ymin\pgfmathresult
+      \pgfmathparse{max(\y,\ymax)}\global\let\ymax\pgfmathresult
+    }
+  \pgfmathparse{(\xmin + \xmax) / 2}\global\let\xmid\pgfmathresult
+  \pgfmathparse{(\ymin + \ymax) / 2}\global\let\ymid\pgfmathresult
+}
+
 \NewDocumentCommand{\PlaceholderFigure}{m}{%
   \begin{figure}[h]
 		\begin{center}
@@ -182,7 +201,7 @@
 
 % Custom error message if the argument is not recognized
 \msg_new:nnn { hands } { invalid-argument }
-  { The~argument~'#1'~is~invalid.~Valid~arguments~are~"fund",~"skip",~or~"tech". 
+  { The~argument~'#1'~is~invalid.~Valid~arguments~are~"fund",~"skip",~or~"tech".
   }
 \ExplSyntaxOff
 
@@ -191,7 +210,7 @@
 \ProcessOptions\relax
 
 \newcommand{\Hom}[1]{#1}
-% NO: \ctC(X,Y) 
+% NO: \ctC(X,Y)
 % \Hom{\ctC}(X,Y)
 \newcommand{\varHom}{\hom}
 \newcommand{\vvarHom}[1]{\mathrm{Hom}_{#1}}
@@ -288,7 +307,7 @@
 % un generico `todo`
 \newcommand{\Todo}[1]{\todo[inline, caption=0,color=green!20]{#1}}
 
-% un box dei commenti dedicato a ciascuno di noi 
+% un box dei commenti dedicato a ciascuno di noi
 \NewDocumentCommand{\bla}{ O{\textit{anonimo}} m O{red} }{
   \todo[inline, caption=0, color=#3!10]{ \scriptsize #1 ha detto: #2 }
 }
@@ -365,11 +384,11 @@
   \end{adjustbox}\end{center}%
 }
 
-\NewDocumentCommand{\lort}{ m }{ 
+\NewDocumentCommand{\lort}{ m }{
   {}^\perp #1
 }
 
-\NewDocumentCommand{\rort}{ m }{ 
+\NewDocumentCommand{\rort}{ m }{
   #1^\perp
 }
 
