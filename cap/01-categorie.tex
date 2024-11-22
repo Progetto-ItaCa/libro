@@ -2838,7 +2838,7 @@ sfruttando la dualità a nostro vantaggio.
 	\end{enumerate}
 \end{proof}
 
-\begin{proposition}[Una proprietà di mono ed epi in \(\ctSet\)]
+\begin{proposition}\label{mono_epi_ort}[Una proprietà di mono ed epi in \(\ctSet\)]
 	Dato un quadrato commutativo di funzioni
 	\[\begin{tikzcd}
 		E \ar[r,"f"]\ar[d, "e"']& A\ar[d, "m"] \\
@@ -2863,21 +2863,30 @@ Concludiamo la sezione enunciando un risultato che nel capitolo \ref{cap:fattori
 	\end{itemize}
 \end{proposition}
 Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette una condizione equivalente in più, e dunque una formulazione più semplice:
-\begin{proposition}
+\begin{proposition}\label{caratt_epi_con_ort_duale}
 	Sia \(m : X\to Y\) una funzione tra insiemi; le seguenti condizioni sono equivalenti:
-	\begin{itemize}
-		\item \(m\) è un monomorfismo (si veda \ref{def_Epi});
-		\item in ogni diagramma di insiemi e funzioni come il seguente:
+	\begin{enumerate}
+		\item\label{caratt_epi_con_ort_duale:itm1} \(m\) è un monomorfismo (si veda \ref{def_Epi});
+		\item\label{caratt_epi_con_ort_duale:itm2} in ogni diagramma di insiemi e funzioni come il seguente:
 		\[\begin{tikzcd}
 			E \ar[r, "f"]\ar[d, "p"']& X \ar[d, "m"]\\
 			B \ar[r, "g"'] \ar[ur, dashed, "u"]& Y
 		\end{tikzcd}\]
 		dove \(p : E\to B\) è un epimorfismo, esiste un unico \(u : B\to X\) tale che \(u\cmp p = f\) e \(m\cmp u = g\);
-		\item la condizione del punto precedente vale per \(p : \{0,1\} \to \{\bullet\}\) (l'unica funzione \(0\mapsto\bullet, 1\mapsto\bullet\)).
-	\end{itemize}
+		\item\label{caratt_epi_con_ort_duale:itm3} la condizione del punto precedente vale per \(p : \{0,1\} \to \{\bullet\}\) (l'unica funzione \(0\mapsto\bullet, 1\mapsto\bullet\)).
+	\end{enumerate}
 \end{proposition}
 \begin{proof}
-	\Todo{}
+	Delle condizioni dell'enunciato, \ref{caratt_epi_con_ort_duale:itm2} segue da \ref{caratt_epi_con_ort_duale:itm1} per la proposizione \ref{mono_epi_ort}.
+	Inoltre, \ref{caratt_epi_con_ort_duale:itm3} \`e un caso particolare di \ref{caratt_epi_con_ort_duale:itm2}.
+	Dunque, rimane da dimostrare che \ref{caratt_epi_con_ort_duale:itm1} segue da \ref{caratt_epi_con_ort_duale:itm3} .
+	Siano \(x, x' \in X\) tali che \(m(x) = m(x')\).
+	Allora, consideriamo la funzione \(f \colon \{0, 1\} \to X\) per cui \(0 \mapsto x\) e \(1 \mapsto x'\),
+	e la funzione \(g \colon \{\bullet\} \to Y\) per cui \(\bullet \mapsto m(x)\).
+	Per costruzione \(m \cmp f = g \cmp p\) e dunque, per l'ipotesi \ref{caratt_epi_con_ort_duale:itm3}, esiste un unico \(u : B\to X\) tale che \(u\cmp p = f\) (e \(m\cmp u = g\)).
+	Allora, \(x = f(0) = u(p(0)) = u(\bullet) = u(p(1)) = f(1) = x'\).
+	Per la genericit\`a di \(x\) e \(x'\), abbiamo che \(f\) \`e iniettiva,
+	e dunque un monomorfismo in \(\ctSet\).
 \end{proof}
 
 \subsection{Sezioni e retrazioni}\label{sec_sezretraz}\index{Sezione}
