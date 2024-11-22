@@ -2751,7 +2751,7 @@ Dato che le definizioni categoriali di mono ed epi generalizzano, rispettivament
 Vediamo ora invece esempi in categorie non indotte da monoidi.
 Il primo caso, alquanto degenere, è dato dai preordini.
 
-\begin{example}
+\begin{example}\label{ex:mono-epi-preord}
 	Nella categoria indotta da un preordine, come visto nell'esempio~\ref{ord_sonocat},
 	tutti i morfismi sono sia epi che mono.
 	Infatti, la definizione di epi e mono è sempre soddisfatta banalmente,
@@ -3143,6 +3143,28 @@ l'essere o meno preservati dai funtori.
 		\[q\cmp f = p \qquad \qquad f\cmp \bar q = \bar p.\]
 	\end{itemize}
 \end{example}
+
+Abbiamo visto in precedenza che, in generale, un morfismo pu\`o essere sia epi che mono senza essere un isomorfismo (vedasi esempio~\ref{ex:mono-epi-preord}).
+Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzanti.
+
+\begin{proposition}\label{prop:iso-epi-mono}
+	Sia \(f \colon A \to B\) un morfismo. Le seguenti condizioni sono equivalenti:
+	\begin{enumerate}
+    	\item\label{prop:iso-epi-mono:item1} \(f\) \`e un isomorfismo.
+		\item\label{prop:iso-epi-mono:item2} \(f\) \`e mono ed epi spezzante.
+		\item\label{prop:iso-epi-mono:item3} \(f\) \`e mono spezzante ed epi.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+	Ogni isomorfismo \`e, in particolare, epi spezzante e mono spezzante, dunque il punto~\ref{prop:iso-epi-mono:item1} implica i punti~\ref{prop:iso-epi-mono:item2} e~\ref{prop:iso-epi-mono:item3}.
+	Dimostriamo che il punto~\ref{prop:iso-epi-mono:item2} implica il punto~\ref{prop:iso-epi-mono:item1}.
+	Siccome \(f\) \`e epi spezzante, esiste una sua inversa destra \(g\), ovvero tale che \(f \cmp g = \id_{B}\).
+	Dimostriamo che \(g\) \`e anche inversa sinistra di \(f\), ovvero che \(g \cmp f = \id_{A}\).
+	Osserviamo infatti che \(f \cmp (g \cmp f) = (f \cmp g) \cmp f = \id_{B} \cmp f = f = f \cmp \id_{A}\).
+	Siccome per ipotesi \(f\) \`e mono, dalla osservazione precedente segue che \(g \cmp f = \id_{A}\).
+	Dunque \(f\) \`e un isomorfismo con inversa \(g\).
+	Dualmente, abbiamo che il punto~\ref{prop:iso-epi-mono:item3} implica il punto~\ref{prop:iso-epi-mono:item1}.
+\end{proof}
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
