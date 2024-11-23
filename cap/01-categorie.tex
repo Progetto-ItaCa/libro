@@ -1964,6 +1964,14 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 	\[\dmFun{\bigcup_{XY}F_{XY}}{\bigcup_{XY}\Hom{\ctC}(X,Y)}{\bigcup_{XY}\Hom{\ctD}(F_0X,F_0Y)}\]
 	(e il codominio di questa funzione di classe è evidentemente una sottoclasse di $\ctD_1$). \`E una prassi quasi universale, però, omettere i pedici ad \(F_{XY}\) e scrivere la definizione nella forma di \ref{p_2}.
 \end{remark}
+\begin{definition}[Funtori pieni, fedeli, essenzialmente suriettivi]
+	\`E conveniente dare un nome speciale ai funtori $F : \ctC\fun\ctD$ tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva:
+	\begin{itemize}
+		\item pieno 
+		\item fedele 
+		\item essurj (nome in the joy of cats: `iso-denso')
+	\end{itemize}
+\end{definition}
 \begin{example}\label{exa_monotone_funtori}\index{Funtore!mappa monotòna come ---}
 	Dati due insiemi parzialmente ordinati \((X,\le)\) e \((Y,\le)\) guardati come categorie nel senso di \ref{ord_sonocat}, un funtore \((X,\le)\fun(Y,\le)\) è precisamente una funzione monotòna nel senso di \ref{ex_cat_ordini}.
 
@@ -2205,7 +2213,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \begin{example}\index{Funtore!--- categoria associata a monoide}
 	La corrispondenza che assegna a un monoide \((M,\cdot,1)\) la categoria con un solo oggetto \(\susp(M,\cdot,1)\) come in \ref{mon_sonocat} è la parte sugli oggetti di un funtore
 	\[\dmFun{\susp}{\ctMon}{\ctCat}\]
-	tra le categorie di \ref{ex_cat_monoidi} e di \ref{ex_cat_cat}; abbiamo in effetti già dimostrato in \ref{exa_funtori_da_gruppi} che i funtori tra categorie della forma \(\susp M\) sono tutti e soli gli omomorfismi di monoidi (e la composizione di omomorfismi \(M\to N\to R\) e di funtori \(\susp M \fun\susp N \fun\susp R\) coincidono), quindi la sottocategoria di \(\ctCat\) identificata come l'immagine di \(\susp\) è piena, e si identifica alla categoria dei monoidi. (Questa ultima osservazione sarà chiara quando avremo introdotto la nozione di \emph{funtore pienamente fedele} in \ref{}.)
+	tra le categorie di \ref{ex_cat_monoidi} e di \ref{ex_cat_cat}; abbiamo in effetti già dimostrato in \ref{exa_funtori_da_gruppi} che i funtori tra categorie della forma \(\susp M\) sono tutti e soli gli omomorfismi di monoidi (e la composizione di omomorfismi \(M\to N\to R\) e di funtori \(\susp M \fun\susp N \fun\susp R\) coincidono), quindi la sottocategoria di \(\ctCat\) identificata come l'immagine di \(\susp\) è piena, e si identifica alla categoria dei monoidi. (Questa ultima osservazione sarà chiara quando avremo introdotto la nozione di \emph{funtore pienamente fedele} in \ref{fun_pienfed}.)
 \end{example}
 \begin{example}[Le componenti connesse di un (multidi)grafo]\index{Funtore!--- componenti connesse di un grafo}\index{\(\pi_0\)|see {componenti connesse}}\index{Componenti connesse!--- di un grafo}
 	Se \(\ctG=(E,V)\) è un multidigrafo come in \ref{ex_cat_grafi}, possiamo costruire l'insieme delle sue \emph{componenti connesse} considerando la relazione \(x\asymp y\) sull'insieme dei suoi vertici, definita da \(x\asymp y\) se \(x=y\), o esiste un lato \(e : x \to y\), o esiste un lato \(e' : y\to x\). Due vertici \(x,y\in V\) appartengono alla stessa componente connessa se esiste una successione finita di vertici \(\tup vn,\) tale che
@@ -3178,3 +3186,37 @@ Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzant
 	\item
 	\item
 \end{enumerate}
+
+\Todo{...qualcosa prima...}
+\subsection{Classi di funtori}\label{ssec:classi_di_funtori}
+\begin{definition}\label{funtore_pieno}
+  Funtore pieno 
+\end{definition}
+\begin{definition}\label{funtore_fedele}
+  \Todo{Funtore fedele }
+\end{definition}
+\begin{notation}\label{fun_pienfed}
+Un funtore che sia allo stesso tempo pieno e fedele, ossia tale che ciascuna $F_{XY}$ sia biiettiva, si dice \emph{pienamente fedele}.
+\end{notation}
+\begin{definition}\label{funtore_essurj}
+  \Todo{Funtore essenzialmente suriettivo (nome alternativo: iso-denso)}
+\end{definition}
+\begin{definition}[Isomorfismo di categorie]\label{fun_isocat}
+	
+\end{definition}
+\begin{definition}\label{funtore_equcat}
+  \Todo{Equivalenza di categorie }
+\end{definition}
+
+Alcuni esempi di categorie equivalenti ma non isomorfe
+\begin{example}
+	L'esempio piu piccolo
+\end{example}
+\begin{example}
+	La categoria delle matrici di \ref{} è equivalente, senza essere isomorfa, a Vect.
+\end{example}
+\Todo{...qualcosa dopo...}
+
+Esercizio: i mono in $\ctCat$ sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. C'è un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti. 
+
+Mostrare che Mat e Vect \emph{non possono essere} isomorfe (hint: costruire il gruppoide dei soli automorfismi di $\ctC$; il `nocciolo' di $\ctC$; mostrare che due categorie isomorfe hanno noccioli isomorfi. Mostrare che il nocciolo di Mat e quello di Vect non sono isomorfi.)
