@@ -2941,11 +2941,13 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	In \(\ctSet\), una funzione ha una retrazione se e solo se è iniettiva.
 	Inoltre, le funzioni che hanno una sezione sono surgettive,
 	mentre l'implicazione inversa vale soltanto se assumiamo l'Assioma di Scelta.
+  \Todo{ci è equivalente, se non ricordo male; ma non voglio entrare troppo nel dettaglio.}
+  Una giustificazione intuitiva di questo fatto si può dare mediante la figura \ref{fig_assioma_scelta}: data una funzione suriettiva $g : E\to B$, una sua sezione $s$ ammonta alla scelta, per ogni elemento $b$ di $B$, di un elemento di $g^{-1}(b)$; questa scelta è possibile perché ciascuno di questi insiemi è non vuoto (questa è la cosa vera solo l'assioma di scelta: che $\prod_{b\in B}g^{-1}(b)$ sia non vuoto); nulla vieta che per alcune fibre essa sia unica, ma ovviamente una stessa funzione suriettiva può avere molte inverse destre distinte.
 	% TODO: questo è il teorema di Cantor? Riferimento necessario?
 	% Questo esempio, inoltre, dimostra che sezioni e retrazioni non sono uniche:
 	% una funzione surgettiva può avere più inverse destre (sezioni).
 \end{example}
-\Todo{Tempo fa vidi una dimostrazione molto eloquente di questo fatto, mi piacerebee aggiungerla.}
+%\Todo{Tempo fa vidi una dimostrazione molto eloquente di questo fatto, mi piacerebee aggiungerla.}
 \begin{figure}[h]
   \begin{center}
     \begin{tikzpicture}[
@@ -3020,6 +3022,8 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
       \begin{scope}[on background layer]
         \path node[wrap, draw=gray, inner sep=2em, fit=(X)] (D) {};
         \path node[wrap, draw=gray, inner sep=2em, fit=(Y)] (C) {};
+        \node[right=3pt of C] {$B$};
+        \node[right=3pt of D] {$E$};
         \foreach \n/\c in {
           1/ibmBlue,
           2/ibmPurple,
@@ -3041,7 +3045,7 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
       } \draw (\s) edge[-latex, bend right=15] (\t);
     \end{tikzpicture}
   \end{center}
-  \caption{}
+  \caption{Una funzione suriettiva $g : E\to B$ dove $B=\{\blueDot,\purpleDot,\redDot,\orangeDot,\yellowDot\}$. Ciascuna fibra di $g$ è non vuota, e la scelta di una inversa destra $s : B\to E$ ammonta esattamente alla scelta di un elemento in ciascuna di queste fibre.}
   \label{fig_assioma_scelta}
 \end{figure}
 
