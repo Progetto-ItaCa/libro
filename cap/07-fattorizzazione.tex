@@ -1,5 +1,5 @@
-\label{cap:fattorizzazione}
 \chapter{Sistemi di Fattorizzazione}
+\label{cap_fattorizzazione}
 \section{La relazione di ortogonalità}
 La nozione di \emph{sistema di fattorizzazione} in una categoria è uno dei concetti più antichi della teoria; Mac Lane produsse un esempio di sistema di fattorizzazione nella categoria dei gruppi nel 1948, \cite{maclane_grp_duality}.\footnote{L'articolo in questione è molto breve, e istruttivo a proposito dell'intuizione che, pochi anni dopo la sua prima definizione esplicita, la nozione di categoria aveva per il suo inventore; è anche un reperto storico sulla terminologia matematica e su come essa è evoluta: una categoria equipaggiata con un sistema di fattorizzazione viene chiamata una \emph{bicategoria} da Mac Lane, termine che oggi è riservato a una struttura che nulla ha a che vedere con la fattorizzazione di morfismi. Notiamo anche che la definizione che daremo in \ref{fat_funno} è leggermente diversa, ma equivalente, a quella proposta da Mac Lane, che chiede che ogni morfismo \(f : X\to Y\) si fattorizzi come una composizione \(m\cmp u\cmp e\), dove \(m\) è un monomorfismo, \(e\) un epimorfismo, e \(u\) un isomorfismo. L'assiomatica proposta da Mac Lane serviva a determinare una nozione di decomposizione di una categoria \(\ctC\) mediante due sottoclassi \(\ctE,\ctM\subseteq\ctC_1\) tali che se \((\ctE,\ctM)\) determina una fattorizzazione su \(\ctC\), allora \((\ctM^\op,\ctE^\op)\) determina una fattorizzazione su \(\ctC^\op\).} Da quel momento, la nozione ha dimostrato di essere fondamentale per unificare diverse costruzioni universali in algebra, logica e (soprattutto) in topologia.
 
@@ -22,23 +22,23 @@ In più, abbiamo preannunciato in \ref{caratt_epi_con_ort} che la nozione di epi
 	\end{itemize}
 \end{proposition*}
 \begin{proof}
-  \Todo{Qual era la dimostrazione elegante che avevo in mente? Non me lo ricordo più}
+	\Todo{Qual era la dimostrazione elegante che avevo in mente? Non me lo ricordo più}
 \end{proof}
-Questo motiva la nozione di \emph{ortogonalità} tra morfismi (si veda \ref{def_ortogona} sotto) e di \emph{fattorizzazione} di ogni morfismo \(f : X\to Y\) di una categoria \(\ctC\) come una certa composizione in termini di due sottoclassi $\ctE,\ctM\subseteq\ctC$ 
+Questo motiva la nozione di \emph{ortogonalità} tra morfismi (si veda \ref{def_ortogona} sotto) e di \emph{fattorizzazione} di ogni morfismo \(f : X\to Y\) di una categoria \(\ctC\) come una certa composizione in termini di due sottoclassi \(\ctE,\ctM\subseteq\ctC\)
 \[
 	\begin{tikzcd}
 		f : X \ar[r, "e", two heads]& F \ar[r, "m", hook] & Y.
 	\end{tikzcd}
 \]
-dove $e\in\ctE$ e $m\in\ctM$ sono morfismi nelle due sottoclassi.
+dove \(e\in\ctE\) e \(m\in\ctM\) sono morfismi nelle due sottoclassi.
 
 L'intuizione che chi sta leggendo dovrebbe avere sulla definizione è che una struttura del genere imposta su una categoria \(\ctC\) permette di `generarla' a partire dalle classi \(\ctE,\ctM\), in una notazione suggestiva, cioè, è vero che \(\hom(\ctC) = \ctM\cmp \ctE\). In più, le due classi \(\ctE,\ctM\) sono `ortogonali' nel senso che hanno intersezione più piccola possibile: \(\ctE\cap \ctM\) consta del \emph{cuore} (si veda \ref{def_cuore}) di \(\ctC\), cioè della categoria di tutti gli isomorfismi in \(\ctC\).
 \color{red}
-L'esempio più importante (sebbene non l'unico interessante) di fattorizzazione di questo tipo sarà proprio quando \(\ctE\) è la classe $\Epi$ degli epimorfismi ed \(\ctM\) è la classe $\Mono$ dei monomorfismi di $\ctC$. Quando le proprietà di ortogonalità e fattorizzazione valgono per la coppia $(\ctE,\ctM)$ questa si dice un \emph{sistema di fattorizzazione} su $\ctC$.
+L'esempio più importante (sebbene non l'unico interessante) di fattorizzazione di questo tipo sarà proprio quando \(\ctE\) è la classe \(\Epi\) degli epimorfismi ed \(\ctM\) è la classe \(\Mono\) dei monomorfismi di \(\ctC\). Quando le proprietà di ortogonalità e fattorizzazione valgono per la coppia \((\ctE,\ctM)\) questa si dice un \emph{sistema di fattorizzazione} su \(\ctC\).
 \begin{remark}
-    Chi legge non deve con questo pensare che data una qualsiasi categoria $\ctC$, la coppia di classi $(\Epi,\Mono)$ formi sempre un sistema di fattorizzazione su $\ctC$.
-    
-    In effetti, non è nemmeno vero che $(\Epi,\Mono)$ è sempre una coppia di classi ortogonali nel senso di \ref{def_ortogona} (si pensi al caso dei preordini, dove \emph{ogni} morfismo è sia un monomorfismo che un epimorfismo, cosicché $\Epi[\ctPos]\cap\Mono[\ctPos]=\hom(\ctPos)$, ma non tutti gli oggetti di un preordine sono tra loro isomorfi).
+	Chi legge non deve con questo pensare che data una qualsiasi categoria \(\ctC\), la coppia di classi \((\Epi,\Mono)\) formi sempre un sistema di fattorizzazione su \(\ctC\).
+
+	In effetti, non è nemmeno vero che \((\Epi,\Mono)\) è sempre una coppia di classi ortogonali nel senso di \ref{def_ortogona} (si pensi al caso dei preordini, dove \emph{ogni} morfismo è sia un monomorfismo che un epimorfismo, cosicché \(\Epi[\ctPos]\cap\Mono[\ctPos]=\hom(\ctPos)\), ma non tutti gli oggetti di un preordine sono tra loro isomorfi).
 \end{remark}
 \color{black}
 % \section[Ortogonalità]{La relazione di ortogonalità}
@@ -82,34 +82,34 @@ La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetric
 \begin{remark}\label{perche_ortogonale}
 	\Todo{Diverse intuizioni sulla nomenclatura `ortogonale'.}
 
-  Una intuizione a proposito del nome `ortogonale' scelto per \ref{} viene dall'algebra lineare: così come due sottospazi $U,W$ di uno stesso spazio vettoriale sono in somma ortogonale, scritto $U\perp W$, se $u\cdot w=0$ per ogni $(u,w)\in U\times W$; questo è equivalente alla condizione $U\le W^\perp$, o alla condizione $W\le U^\perp$, dove per un sottospazio $Z$ si definisce $Z^\perp = \{v\in V\mid \forall z\in Z,\,z\cdot v=0\}$. Questa analogia formale verrà sostanziata in \ref{} dove vedremo che mandare una classe di morfismi nel suo ortogonale definisce un operatore di chiusura (così come accade per l'ortogonale di sottospazi vettoriali).
+	Una intuizione a proposito del nome `ortogonale' scelto per \ref{} viene dall'algebra lineare: così come due sottospazi \(U,W\) di uno stesso spazio vettoriale sono in somma ortogonale, scritto \(U\perp W\), se \(u\cdot w=0\) per ogni \((u,w)\in U\times W\); questo è equivalente alla condizione \(U\le W^\perp\), o alla condizione \(W\le U^\perp\), dove per un sottospazio \(Z\) si definisce \(Z^\perp = \{v\in V\mid \forall z\in Z,\,z\cdot v=0\}\). Questa analogia formale verrà sostanziata in \ref{} dove vedremo che mandare una classe di morfismi nel suo ortogonale definisce un operatore di chiusura (così come accade per l'ortogonale di sottospazi vettoriali).
 
 	Una analogia meno formale ma suggestiva: grazie a \ref{ort_to_terminale} la relazione di ortogonalità può essere considerata tra un morfismo e un \emph{oggetto}. Da qui\dots
-%   It means X
-%  “thinks” f
-%  is an isomorphism in the sense that hom(f,X):hom(B,X)→hom(A,X)
-%  is an isomorphism (i.e., as far as X
-% -probes or coprobes are concerned, f
-%  is an iso). If we think of an isomorphism as a notion of sameness, then f
-%  makes A
-%  and B
-%  look just the same as gauged by the instrument X
-% .
-%
-% Now in elementary physics, say if we are measuring temperature by a thermometer X
-% , there are certain trajectories f:A→B
-%  between points A,B
-%  in space which exhibit sameness as gauged by X
-% , namely by traveling along isothermal lines. These are orthogonal to the “direction” of X
-%  given by gradients (really the ⊥
-%  here is a relation between tangent vectors which are infinitesimal f
-%  and 1-forms dX
-% , but hopefully you get the idea).
-%
-% When you transport all this to the slice category over Y
-% , you get the standard notion of an object g:X→Y
-%  being orthogonal to an arrow f
-%  in the slice.
+	%   It means X
+	%  “thinks” f
+	%  is an isomorphism in the sense that hom(f,X):hom(B,X)→hom(A,X)
+	%  is an isomorphism (i.e., as far as X
+	% -probes or coprobes are concerned, f
+	%  is an iso). If we think of an isomorphism as a notion of sameness, then f
+	%  makes A
+	%  and B
+	%  look just the same as gauged by the instrument X
+	% .
+	%
+	% Now in elementary physics, say if we are measuring temperature by a thermometer X
+	% , there are certain trajectories f:A→B
+	%  between points A,B
+	%  in space which exhibit sameness as gauged by X
+	% , namely by traveling along isothermal lines. These are orthogonal to the “direction” of X
+	%  given by gradients (really the ⊥
+	%  here is a relation between tangent vectors which are infinitesimal f
+	%  and 1-forms dX
+	% , but hopefully you get the idea).
+	%
+	% When you transport all this to the slice category over Y
+	% , you get the standard notion of an object g:X→Y
+	%  being orthogonal to an arrow f
+	%  in the slice.
 \end{remark}
 Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limiti, cancellative a sinistra (destra, bilatere).
 \begin{definition}
@@ -231,6 +231,98 @@ Il prodotto di Leibniz permette di ridefinire la relazione di ortogonalità medi
 	Sistema di fattorizzazione: due classi, tra loro esattamente ortogonali, tali che \(\ctC_1 = \ctM \fatsemi \ctE\).
 	(Remark: ci occuperemo solo di sistemi di fattorizzazione funtoriali in questo senso)
 \end{definition}
+\begin{figure}[h]
+  \begin{center}
+    \begin{tikzpicture}[
+        x=1em, y=1em,
+        dot/.style={
+          circle,
+          fill=#1,
+          inner sep=0pt,
+          outer sep=2pt,
+          minimum size=4pt,
+          draw=none,
+        },
+        wrap/.style={
+          fill=black!5,
+          rounded corners,
+          inner sep=.5em,
+        },
+      ]
+
+      \def\items{%
+      0/0/0/ 0.0,
+      1/0/1/-0.5,
+      1/1/1/+0.5,
+      2/0/2/-1.0,
+      2/1/2/ 0.0,
+      2/2/2/+1.0,
+      2/3/3/-1.0,
+      2/4/3/ 0.0,
+      2/5/3/+1.0,
+      3/0/4/-1.5,
+      3/1/4/-0.5,
+      3/2/4/+0.5,
+      3/3/4/+1.5}
+
+      \foreach \n/\v/\row/\col in \items {
+        \begin{scope}[xshift=7em*\col,yshift=-6.25em*\row,local bounding box=C\n\v]
+          \foreach \i in {0,1,2} {
+            \node[dot=black] (C\n\v-\i) at ($({120*\i-210+180}:1.5)$) {};
+            \path[ibmPurple, loop, out=-60+120*\i, in=120*\i, distance=1em] (C\n\v-\i) edge (C\n\v-\i);
+          }
+        \end{scope}
+      }
+
+      \begin{scope}[on background layer]
+        \foreach \n/\v/\row/\col in \items
+          \path node[wrap, fit=(C\n\v)] (W\n\v) {};
+      \end{scope}
+
+      \begin{scope}[every path/.style={-latex}]
+        \path[ibmMagenta] (C10-2) edge (C10-0);
+
+        \path[ibmBlue]    (C11-2) edge (C11-0);
+
+        \path[ibmBlue]    (C20-1) edge (C20-2);
+        \path[ibmBlue]    (C20-1) edge (C20-0);
+
+        \path[ibmBlue]    (C21-1) edge (C21-2);
+        \path[ibmMagenta] (C21-1) edge (C21-0);
+
+        \path[ibmMagenta] (C22-1) edge (C22-2);
+        \path[ibmMagenta] (C22-1) edge (C22-0);
+
+        \path[ibmBlue]    (C23-2) edge (C23-1);
+        \path[ibmBlue]    (C23-0) edge (C23-1);
+
+        \path[ibmBlue]    (C24-2) edge (C24-1);
+        \path[ibmMagenta] (C24-0) edge (C24-1);
+
+        \path[ibmMagenta] (C25-2) edge (C25-1);
+        \path[ibmMagenta] (C25-0) edge (C25-1);
+
+        \path[ibmBlue]    (C30-2) edge (C30-1);
+        \path[ibmBlue]    (C30-1) edge (C30-0);
+        \path[ibmBlue]    (C30-2) edge (C30-0);
+
+        \path[ibmBlue]    (C31-2) edge (C31-1);
+        \path[ibmMagenta] (C31-1) edge (C31-0);
+        \path[black]      (C31-2) edge (C31-0);
+
+        \path[ibmMagenta] (C32-2) edge (C32-1);
+        \path[ibmBlue]    (C32-1) edge (C32-0);
+        \path[black]      (C32-2) edge (C32-0);
+
+        \path[ibmMagenta] (C33-2) edge (C33-1);
+        \path[ibmMagenta] (C33-1) edge (C33-0);
+        \path[ibmMagenta] (C33-2) edge (C33-0);
+      \end{scope}
+    \end{tikzpicture}
+    \caption{TODO}
+    \label{fig_sistema_di_fattorizzazione}
+  \end{center}
+\end{figure}
 \begin{itemize}
 	% \item estensione ai sottoinsiemi dell'ortogonalità
 	% \item Caratterizzazioni equivalenti della relazione di ortogonalità
