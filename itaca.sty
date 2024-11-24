@@ -64,7 +64,7 @@
 \def\ctCsAlg{\mathrm{C}^*\emdash\cate{Alg}}
 
 
-\RequirePackage[utf8x]{inputenc}
+% \RequirePackage[utf8x]{inputenc}
 \RequirePackage[T2A]{fontenc}
 
 \RequirePackage[svgnames]{xcolor}
@@ -208,8 +208,27 @@
   }
 \ExplSyntaxOff
 
-\newenvironment{handsExample}[2][]{\begin{example}[#1\,|\,\hands{#2}]}{\end{example}}
-
+\newenvironment{hCorollary}[2][]{\begin{corollary}[#1\,|\,\hands{#2}]}{\end{corollary}}
+\newenvironment{hProposition}[2][]{\begin{proposition}[#1\,|\,\hands{#2}]}{\end{proposition}}
+\newenvironment{hLemma}[2][]{\begin{lemma}[#1\,|\,\hands{#2}]}{\end{lemma}}
+\newenvironment{hDefinition}[2][]{\begin{definition}[#1\,|\,\hands{#2}]}{\end{definition}}
+\newenvironment{hNotation}[2][]{\begin{notation}[#1\,|\,\hands{#2}]}{\end{notation}}
+\newenvironment{hRemark}[2][]{\begin{remark}[#1\,|\,\hands{#2}]}{\end{remark}}
+\newenvironment{hConjecture}[2][]{\begin{conjecture}[#1\,|\,\hands{#2}]}{\end{conjecture}}
+\newenvironment{hAxiom}[2][]{\begin{axiom}[#1\,|\,\hands{#2}]}{\end{axiom}}
+\newenvironment{hExample}[2][]{\begin{example}[#1\,|\,\hands{#2}]}{\end{example}}
+\newenvironment{hExamples}[2][]{\begin{examples}[#1\,|\,\hands{#2}]}{\end{examples}}
+\newenvironment{hExercise}[2][]{\begin{exercise}[#1\,|\,\hands{#2}]}{\end{exercise}}
+\newenvironment{hExercises}[2][]{\begin{exercises}[#1\,|\,\hands{#2}]}{\end{exercises}}
+\newenvironment{hCounterexample}[2][]{\begin{counterexample}[#1\,|\,\hands{#2}]}{\end{counterexample}}
+\newenvironment{hConstruction}[2][]{\begin{construction}[#1\,|\,\hands{#2}]}{\end{construction}}
+\newenvironment{hWarning}[2][]{\begin{warning}[#1\,|\,\hands{#2}]}{\end{warning}}
+\newenvironment{hDigression}[2][]{\begin{digression}[#1\,|\,\hands{#2}]}{\end{digression}}
+\newenvironment{hPerspective}[2][]{\begin{perspective}[#1\,|\,\hands{#2}]}{\end{perspective}}
+\newenvironment{hDiscussion}[2][]{\begin{discussion}[#1\,|\,\hands{#2}]}{\end{discussion}}
+\newenvironment{hTerminology}[2][]{\begin{terminology}[#1\,|\,\hands{#2}]}{\end{terminology}}
+\newenvironment{hHeuristics}[2][]{\begin{heuristics}[#1\,|\,\hands{#2}]}{\end{heuristics}}
+ 
 \ProcessOptions\relax
 
 \newcommand{\Hom}[1]{#1}
@@ -240,7 +259,10 @@
   \newcommand{\ctTerm}{\cate{1}}
   \newcommand{\ctIso}{\cate{I}}
 
-\newcommand{\yon}{y}
+
+% imprescindibile yoneda in hiragana
+\usepackage{CJKutf8}
+\newcommand{\yon}{\text{\begin{CJK}{UTF8}{min}よ\end{CJK}}}
 \newcommand{\cop}{\coprod}
 
 % #1 #2 : gli oggetti che pulli
