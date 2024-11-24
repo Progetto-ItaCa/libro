@@ -1868,13 +1868,16 @@ Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando 
 
 L'esempio precedente si può vedere come una sottocategoria di \(\ctSet\).
 Più in generale, in virtù del fatto che ogni identità \(\id_X\) è un isomorfismo, e del fatto che la composizione di isomorfismi è un isomorfismo, data una categoria \(\ctC\) possiamo sempre prendere la sottocategoria che contiene tutti gli oggetti e tutti i suoi isomorfismi.
-\begin{definition}\label{def_cuore}\index{Cuore!--- di una categoria}\index{Categoria!Cuore di una ---}
-	Il \emph{cuore} (in inglese, \emph{core}) di una categoria \(\ctC\) è il gruppoide ottenuto prendendo
+\begin{definition}[Cuore di $\ctC$]\label{def_cuore}\index{Cuore!--- di una categoria}\index{Categoria!Cuore di una ---}
+	Il \emph{cuore} (in inglese, \emph{core}) di una categoria \(\ctC\) è il gruppoide $\ctC_\cong$ ottenuto prendendo
 	\begin{itemize}
-		\item come oggetti gli oggetti di \(\ctC\),
+		\item come oggetti gli stessi di \(\ctC\),
 		\item come morfismi \(X\to Y\) gli isomorfismi di \(\ctC\) da \(X\) a \(Y\).
 	\end{itemize}
 \end{definition}
+\begin{notation}[Anima di $\ctC$]\label{def_anima}\index{Categoria!anima di una ---}
+Una notazione per riferirsi agli isomorfismi $X\to Y$ tra due oggetti $X,Y\in\ctC_0$ che è in accordo con la nomenclatura finora esposta è $\ctC_\cong(X,Y)$; si noti che questo insieme può essere vuoto, ma che contiene almeno l'identità se $X=Y$ (è un gruppo, il \emph{gruppo degli automorfismi} di $X$). Di tanto in tanto sarà conveniente riferirsi all'\emph{anima} di $\ctC$ come l'unione di tutti i gruppi di automorfismi dei suoi oggetti, $\ctC^\text{an} := \sum_{C\in\ctC_0}\ctC_\cong(C,C)$.
+\end{notation}
 
 Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con identità e composizione).
 \begin{example}[Monoidi e gruppi liberi; gruppoidi liberi]\label{mongruppi_liberi}\index{Monoide!--- libero}\index{Monoide}\index{Categoria!--- libera}
@@ -1965,11 +1968,20 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 	(e il codominio di questa funzione di classe è evidentemente una sottoclasse di $\ctD_1$). \`E una prassi quasi universale, però, omettere i pedici ad \(F_{XY}\) e scrivere la definizione nella forma di \ref{p_2}.
 \end{remark}
 \begin{definition}[Funtori pieni, fedeli, essenzialmente suriettivi]
-	\`E conveniente dare un nome speciale ai funtori $F : \ctC\fun\ctD$ tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva:
+	\`E conveniente dare un nome speciale ai funtori $F : \ctC\fun\ctD$ tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva: $F : \ctC\fun\ctD$ si dirà
 	\begin{itemize}
-		\item pieno 
-		\item fedele 
-		\item essurj (nome in the joy of cats: `iso-denso')
+		\item \emph{pieno} se ciascuna $F_{XY}$ è una funzione suriettiva; questo significa che 
+		\begin{quote}
+			per ogni $g : FX\to FY$ in $\ctD$ esiste almeno un $f : X\to Y$ in $\ctC$ tale che $Ff=g$.
+		\end{quote}
+		\item \emph{fedele} se ciascuna $F_{XY}$ è una funzione iniettiva; questo significa che 
+		\begin{quote}
+			Dati $u,v : X\to Y$ morfismi paralleli in $\ctC$, se $Fu=Fv$ allora $u=v$.
+		\end{quote}
+		\item \emph{pienamente fedele} se ciascuna $F_{XY}$ è sia iniettiva che suriettiva (quindi, in virtù di \ref{}, è biiettiva); questo significa che 
+		\begin{quote}
+			
+		\end{quote}
 	\end{itemize}
 \end{definition}
 \begin{example}\label{exa_monotone_funtori}\index{Funtore!mappa monotòna come ---}
@@ -2671,6 +2683,17 @@ la quale rende la scrittura $H * \alpha * K$ univocamente definita.
     \[\alpha * K = \alpha\horcomp\id_K\qquad\qquad H * \alpha = \id_H \horcomp\alpha\]
     (cosa che spiega la stessa notazione utilizzata per la composizione orizzontale e per l'\whisk).
 \end{remark}
+\begin{example}
+	Caso particolare di \ref{}, quando la categoria $\ctD$ è la categoria degli insiemi introdotta in \ref{ex_cat_insiemi}: la categoria dei prefasci su $\ctC$.
+\end{example}
+Una colonna portante del pensiero moderno:
+\begin{example}
+	L'immersione di Yoneda
+\end{example}
+Un risultato apparentemente innocuo dalle conseguenze devastanti, la cui dimostrazione riposa sul risultato centrale del capitolo \ref{}: 
+\begin{proposition}
+	L'immersione di Yoneda è un funtore pienamente fedele.
+\end{proposition}
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Per risolvere questo esercizio è necessario ricordare la definizione di una \emph{successione esatta} di omomorfismi di gruppo: se $H,G,G',K$ sono gruppi abeliani, una successione esatta corta è una sequenza di mappe componibili
@@ -2812,9 +2835,18 @@ e epi (mono) in \(\ctSet\) sia indipendente dall'esistenza di un'inversa destra 
 \begin{remark}
 	\label{rmk:mono-epi-duality}
 	Le nozioni di monomorfismo ed epimorfismo sono duali:
-	un morfismo in una categoria \(\ctC\) è mono (epi) se e solo se è epi (mono) in \(\ctC^{\op}\) (si veda \ref{def_cat_opp}).
+	\begin{itemize}
+		\item un morfismo $f : X\to Y$ in una categoria \(\ctC\) è mono se e solo se $f^\op : Y\to X$ è epi in \(\ctC^{\op}\);% (si veda \ref{def_cat_opp});
+		\item un morfismo $f : X\to Y$ in una categoria \(\ctC\) è epi se e solo se $f^\op : Y\to X$ è mono in \(\ctC^{\op}\).% (si veda \ref{def_cat_opp}).
+	\end{itemize}
 \end{remark}
-
+\begin{notation}[Notazione per mono ed epi]
+Sia $f : X\to Y$ un morfismo di una categoria $\ctC$; 
+\begin{itemize}
+	\item se $f$ è mono, decoriamo la freccia che lo raffigura come $f : X\mono Y$;
+	\item se $f$ è epi, decoriamo la freccia che lo raffigura come $f : X\epi Y$.
+\end{itemize}
+\end{notation}
 Dimostriamo ora alcuni risultati che rendono più agevole lavorare con mono ed epi,
 sfruttando la dualità a nostro vantaggio.
 
@@ -2852,10 +2884,10 @@ sfruttando la dualità a nostro vantaggio.
 \begin{proposition}\label{mono_epi_ort}[Una proprietà di mono ed epi in \(\ctSet\)]
 	Dato un quadrato commutativo di funzioni
 	\[\begin{tikzcd}
-		E \ar[r,"f"]\ar[d, "e"']& A\ar[d, "m"] \\
+		E \ar[r,"f"]\ar[d, two heads, "e"']& A\ar[d, hook, "m"] \\
 		B \ar[r, "g"']\ar[ur,dashed,"u"] & X
 	\end{tikzcd}\]
-	dove \(e : E\to B\) è un epi e \(m : A \to X\) un mono, esiste un unica funzione \(u : B\to A\) (indicata con una freccia tratteggiata) con la proprietà di `spezzare il quadrato', cioè tale che \(u\cmp e=f\) e \(m\cmp u=g\).
+	dove \(e : E\epi B\) è un epi e \(m : A \mono X\) un mono, esiste un unica funzione \(u : B\to A\) (indicata con una freccia tratteggiata) con la proprietà di `spezzare il quadrato', cioè tale che \(u\cmp e=f\) e \(m\cmp u=g\).
 \end{proposition}
 \begin{proof}
 	Costruiamo \(u\) esplicitamente: ad un elemento \(b\in B\), che sappiamo essere della forma \(e(a)\) per qualche \(a\in A\), associamo l'elemento \(u(b)=f(a)\). Questa definizione è ben posta, perché se \(a,a'\) sono entrambi tali che \(e(a)=e(a')=b\), allora \(mu(b)=mf(a)=mf(a')\), così che \(f(a)=f(a')\), perché \(m\) è un mono. \`E evidente ora che \(u\cmp e= f\), per costruzione, ed \((m\cmp u)(b)=m(f(a))=g(e(a))=g(b)\); l'unicità segue ancora dal fatto che \(m\) è mono.
@@ -2865,12 +2897,12 @@ Concludiamo la sezione enunciando un risultato che nel capitolo \ref{cap:fattori
 	Sia \(p : E \to B\) una funzione tra insiemi; le seguenti condizioni sono equivalenti:
 	\begin{itemize}
 		\item \(p\) è un epimorfismo (si veda \ref{def_Mono})
-		\item in ogni diagramma di insiemi e funzioni come il seguente:
+		\item in ogni diagramma commutativo di insiemi e funzioni come il seguente:
 		\[\begin{tikzcd}
-			E \ar[r, "f"]\ar[d, "p"']& X \ar[d, "m"]\\
+			E \ar[r, "f"]\ar[d, "p"']& X \ar[d,hook, "m"]\\
 			B \ar[r, "g"'] \ar[ur, dashed, "u"]& Y
 		\end{tikzcd}\]
-		dove \(m : X\to Y\) è un monomorfismo, esiste un unico \(u : B\to X\) tale che \(u\cmp p = f\) e \(m\cmp u = g\).
+		dove \(m : X\mono Y\) è un monomorfismo, esiste un unico \(u : B\to X\) tale che \(u\cmp p = f\) e \(m\cmp u = g\).
 	\end{itemize}
 \end{proposition}
 Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette una condizione equivalente in più, e dunque una formulazione più semplice:
@@ -2880,10 +2912,10 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
 		\item\label{caratt_epi_con_ort_duale:itm1} \(m\) è un monomorfismo (si veda \ref{def_Epi});
 		\item\label{caratt_epi_con_ort_duale:itm2} in ogni diagramma di insiemi e funzioni come il seguente:
 		\[\begin{tikzcd}
-			E \ar[r, "f"]\ar[d, "p"']& X \ar[d, "m"]\\
+			E \ar[r, "f"]\ar[d, two heads, "p"']& X \ar[d, "m"]\\
 			B \ar[r, "g"'] \ar[ur, dashed, "u"]& Y
 		\end{tikzcd}\]
-		dove \(p : E\to B\) è un epimorfismo, esiste un unico \(u : B\to X\) tale che \(u\cmp p = f\) e \(m\cmp u = g\);
+		dove \(p : E\epi B\) è un epimorfismo, esiste un unico \(u : B\to X\) tale che \(u\cmp p = f\) e \(m\cmp u = g\);
 		\item\label{caratt_epi_con_ort_duale:itm3} la condizione del punto precedente vale per \(p : \{0,1\} \to \{\bullet\}\) (l'unica funzione \(0\mapsto\bullet, 1\mapsto\bullet\)).
 	\end{enumerate}
 \end{proposition}
@@ -3189,6 +3221,7 @@ Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzant
 
 \Todo{...qualcosa prima...}
 \subsection{Classi di funtori}\label{ssec:classi_di_funtori}
+Rammentiamo le definizioni date in \ref{}.
 \begin{definition}\label{funtore_pieno}
 	\index{Funtore!--- pieno}
  Funtore pieno 
@@ -3201,18 +3234,34 @@ Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzant
 	\index{Funtore!--- pienamente fedele}
 Un funtore che sia allo stesso tempo pieno e fedele, ossia tale che ciascuna $F_{XY}$ sia biiettiva, si dice \emph{pienamente fedele}.
 \end{notation}
+\begin{remark}
+	Tra i funtori finora introdotti, quelli degli esempi \ref{ba}, \ref{bi}, \ref{bu} sono pieni; quelli degli esempi \ref{fa}, \ref{fi}, \ref{fu} sono fedeli; quelli degli esempi \ref{ra}, \ref{ri}, \ref{ru} sono pienamente fedeli; quelli degli esempi \ref{na}, \ref{ni}, \ref{nu} sono iso-densi.
+\end{remark}
+\`E poi conveniente dare un nome esplicito a un'altra classe di funtori: 
 \begin{definition}\label{funtore_essurj}
+	$F : \ctC\fun\ctD$ si dice \emph{essenzialmente suriettivo} (\cite{acc} usa la terminologia \emph{funtore iso-denso}) se la seguente condizione è verificata: 
+	\begin{quote}
+		Per ogni oggetto $D\in\ctD_0$, esistono un oggetto $C\in\ctC_0$ e un isomorfismo $i_D : FC\cong D$.
+	\end{quote}
 	\index{Funtore!--- essenzialmente suriettivo}
 	\index{Funtore!--- iso-denso|see {--- essenzialmente suriettivo}}
-  \Todo{Funtore essenzialmente suriettivo (nome alternativo: iso-denso)}
-\end{definition}
+	\end{definition}
 \begin{definition}[Isomorfismo di categorie]\label{fun_isocat}
 	
 \end{definition}
 \begin{definition}\label{funtore_equcat}
   \Todo{Equivalenza di categorie }
 \end{definition}
-
+\begin{definition}\label{funtore_equcat}
+	\Todo{Equivalenza debole di categorie }
+\end{definition}
+\begin{remark}
+	Ogni equivalenza di categorie è un'equivalenza debole di categorie. Il vice versa, che consiste nel costruire uno pseudoinverso per un funtore $F : \ctC\fun\ctD$ che sia un'equivalenza debole, è dimostrabile assumendo l'assioma della scelta.
+	\begin{itemize}
+		\item un verso 
+		\item l'altro verso
+	\end{itemize} 
+\end{remark}
 Alcuni esempi di categorie equivalenti ma non isomorfe
 \begin{example}
 	L'esempio piu piccolo
@@ -3221,8 +3270,17 @@ Alcuni esempi di categorie equivalenti ma non isomorfe
 	La categoria delle matrici di \ref{} è equivalente, senza essere isomorfa, a Vect.
 \end{example}
 \Todo{...qualcosa dopo...}
-
-Esercizio: i mono in $\ctCat$ sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. C'è un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti. 
-
-Mostrare che Mat e Vect \emph{non possono essere} isomorfe (hint: costruire il gruppoide dei soli automorfismi di $\ctC$; il `nocciolo' di $\ctC$; mostrare che due categorie isomorfe hanno noccioli isomorfi. Mostrare che il nocciolo di Mat e quello di Vect non sono isomorfi.)
-\Todo{Alcune parole sul fatto che in $\ctCat$ le equivalenze sono `meglio' degli isomorfismi.}
+\begin{proposition}
+	La classe dei monomorfismi di $\ctCat$ consiste dei funtori $F : \ctC\fun\ctD$ che sono fedeli e iniettivi sugli oggetti (cioè $F_0$ e tutte le $F_{XY}$ in \ref{} sono entrambe funzioni iniettive).
+\end{proposition}
+\begin{proof}
+	\Todo{...}
+\end{proof}
+\subsubsection*{Esercizi}
+\begin{enumerate}
+	\item In \ref{} abbiamo dimostrato che i monomorfismi in $\ctCat$ sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti. 
+	\item Mostrare che $\ctMat$ e $\ctVect$ \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: $\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)$; mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di $\ctMat$ e quella di $\ctVect$ non sono isomorfe.)
+	\item
+	\item
+	\item
+\end{enumerate}
