@@ -356,7 +356,7 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 		1 & 0 \ar[r]\ar[l] & 2
 	\end{tikzcd}\]
 	La composizione è definita solamente quando almeno una delle due frecce è l'identità, ed è forzata da questo fatto.
-	
+
 	Dualmente, la categoria \emph{cospanna generica} \(\Lambda^2_2\) ha tre oggetti \(0,1,2\) ma i due morfismi non identità puntano verso \(2\) invece che uscire da \(0\):
 	\[\begin{tikzcd}
 		0\ar[r] & 2 & 1\ar[l]
@@ -364,14 +364,14 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	Di nuovo, la composizione è definita solamente quando almeno una delle due frecce è l'identità.
 
 	Si noti che \(\Lambda^2_2\) si ottiene da \(\Delta[2]\) `rimuovendo la freccia \(0\to 1\)', e analogamente \(\Lambda^2_0\) si ottiene rimuovendo la freccia \(1\to 2\).
-	
+
 	Più in generale, sia \(S\) un insieme; la categoria \emph{\(S\)-spanna generica} \(S^\lhd\) è definita come segue:
 	\begin{itemize}
 		\item gli oggetti di \(S^\lhd\) sono gli elementi di \(S^+ := S\cup \{-\infty\}\);
 		\item esiste un unico morfismo \(f_s : -\infty\to s\), per ogni \(s\in S\).
 	\end{itemize}
 	La composizione è ancora una volta definita solamente quando almeno una delle due frecce è l'identità. Questo definisce una categoria in cui da un oggetto chiamato `\(-\infty\)' spiccano tante frecce \(f_s\) quanti sono gli elementi di \(S\).
-	
+
 	Dualmente, definiamo la categoria \emph{\(S\)-cospanna generica} \(S^\rhd\) come segue:
 	\begin{itemize}
 		\item gli oggetti di \(S^\rhd\) sono gli elementi di \(S^+ := S\cup \{+\infty\}\);
@@ -668,7 +668,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	Questa è una maniera un po' semplificata di introdurre l'ordinale \(\omega\) ottenuto come `limite' di tutti gli ordinali finiti \([n]\): rinviamo chi legge a un corso di logica elementare per approfondire la questione in modo più tecnico, e ci limitiamo a osservare che la dicotomia importante nella definizione di un numero ordinale è la seguente: un ordinale \(\alpha\in\ctOrd_0\) può essere di due tipi: un \emph{successore}, se esiste \(\beta\) tale che \(\alpha=\beta^+\), e un \emph{limite} se, invece, \(\alpha=\bigcup\alpha=\sup\{\gamma\mid \gamma < \alpha\}\).
 \end{remark}
 \begin{remark}
-	L'importanza degli ordinali risiede nella possibilità di dare \emph{definizioni induttive} (per induzione, finita o transfinita) mediante essi: se \(\ctC\) è una classe, una funzione di classe \(H : \ctOrd_0\to\ctC\) si dice \emph{continua} se è univocamente determinata dalla specifica
+	L'importanza degli ordinali risiede nella possibilità di dare \emph{definizioni per induzione} (finita o transfinita) mediante essi: se \(\ctC\) è una classe, una funzione di classe \(H : \ctOrd_0\to\ctC\) si dice \emph{continua} se è univocamente determinata dalla specifica
 	\begin{itemize}
 		\item di un elemento \(H(0)\in\ctC\) detto base dell'induzione;
 		\item di una maniera di calcolare \(H(x^+)\) in funzione di \(H(0), H(1),\dots,H(x)\); questo è il \emph{passo induttivo} della costruzione;
@@ -681,11 +681,11 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	\emph{eventualmente infinite} di morfismi contigui in una categoria \(\ctC\) sarà esattamente definendole come funtori \(\ctOrd_{\le\lambda}\funto \ctC\).
 \end{remark}
 \index{Categoria!--- di spazi topologici}
-\begin{example}[Spazi topologici]\label{ex_cat_top}
+\begin{handsExample}[Spazi topologici]{fund}\label{ex_cat_top}
 	Ricordiamo che uno \emph{spazio topologico} è un insieme \(X\) dotato di una \emph{topologia}, cioè una collezione \(\tau_X\) di sottoinsiemi di \(X\), chiamati gli \emph{aperti}, contenente l'insieme vuoto e \(X\) stesso, e chiusa rispetto alle intersezioni finite e a tutte le unioni.
 	Dati due spazi topologici \((X,\tau_X)\) e \((Y,\tau_Y)\), una funzione \(f:X\to Y\) è continua per le topologie \(\tau_X\) e \(\tau_Y\) se per ogni aperto \(V\in\tau_Y\), la sua preimmagine \(f^{-1}(V)\) è un aperto di \(\tau_X\).
 	Gli spazi topologici e le funzioni continue tra loro formano la categoria \(\ctTop\).
-\end{example}
+\end{handsExample}
 \begin{handsExample}[Spazi topologici e classi di omotopia]{skip}\index{Categoria!--- dell'omotopia}\label{ex_cat_hotop}
 	La categoria $\ctHoTop$ detta \emph{categoria dell'omotopia (di spazi topologici)} è così definita:
 	\begin{itemize}
@@ -1133,7 +1133,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
       \node [below=1.5em of CtD] {$\ctC+\ctD$};
       \node [below=1.5em of CxD] {$\ctC\times\ctD$};
     \end{tikzpicture}
-    \caption{TODO}
+    \caption{Il prodotto di due categorie: il quadrato commutativo generico (si veda \ref{ex_quadcuboncubo}), in rosso, e la spanna generica (si veda \ref{ex_spancospan}), in blu.}
     \label{fig_cat_somma_e_prodotto}
   \end{center}
 \end{figure}
@@ -1345,7 +1345,7 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
       \node [below=1.5em of C/0] {$\ctC/\star$};
       \node [below=1.5em of 0/C] {$\star/\ctC$};
     \end{tikzpicture}
-    \caption{TODO}
+    \caption{Categorie incubo e succuba sopra un oggetto $\star$: in $\ctC/\star$ tutti gli oggetti che non ammettono un morfismo verso $\star$ non vengono considerati, e il morfismo $f$ di $\ctC$ diventa un oggetto `isolato' (poiché nessun morfismo lo connette ad un altro morfismo di codominio $\star$). Un fenomeno analogo, ma duale, avviene nella categoria succuba $\star/\ctC$.}
     \label{fig_cat_incubo_e_succuba}
     \end{center}
   \end{figure}
@@ -1905,7 +1905,7 @@ Chiaramente esistono categorie che non sono scheletriche (per esempio perché es
 		\item le identità e la composizione sono indotte da quelle di \(\ctC\).
 	\end{itemize}
 \end{definition}
-
+\Todo{Non sono convinto che questa definizione (che probabilmente ho scritto io) sia corretta. Bisognerà controllarla.}
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Mostrare che la composizione nella categoria \(\cate{Stream}\) definita in \ref{example_streams} è effettivamente associativa, e l'assioma di identità è effettivamente valido. %Dato un morfismo \(f:X\to Y\) in una categoria \(\ctC\), dimostra che se un inverso per \(f\) esiste, allora è unico.
@@ -1947,7 +1947,19 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 	\begin{enumtag}{f}
 		\item \label{f_1} Una funzione tra classi \(F_0 : \ctC_0\to\ctD_0\) che assegna ad ogni oggetto \(X\) di \(\ctC\) un oggetto \(FX\) di \(\ctD\);
 		\item \label{f_2} Una funzione tra classi \(F_1 : \ctC_1\to\ctD_1\) che assegna ad ogni morfismo \(X \xrightarrow{f} Y\) di \(\ctC\) un morfismo \(FX \xrightarrow{Ff} FY\) di \(\ctD\). Si noti che da ciò segue che \(F(\dom{f})=\dom{Ff}\) e \(F(\cod{f})=\cod{Ff}\), ovvero che i due quadrati
-  \[bla\]
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJcXGN0Q18xIl0sWzEsMCwiXFxjdENfMCJdLFszLDAsIlxcY3RDXzEiXSxbNCwwLCJcXGN0Q18wIl0sWzAsMSwiXFxjdERfMSJdLFsxLDEsIlxcY3REXzAiXSxbMywxLCJcXGN0RF8xIl0sWzQsMSwiXFxjdERfMCJdLFswLDEsImQiXSxbMCw0LCJ7Rl8xfSIsMl0sWzEsNSwie0ZfMH0iXSxbNCw1LCJkIiwyXSxbMiw2LCJGXzEiLDJdLFs2LDcsImMiLDJdLFsyLDMsImMiXSxbMyw3LCJGXzAiXV0=
+\[\begin{tikzcd}[cramped]
+	{\ctC_1} & {\ctC_0} && {\ctC_1} & {\ctC_0} \\
+	{\ctD_1} & {\ctD_0} && {\ctD_1} & {\ctD_0}
+	\arrow["d", from=1-1, to=1-2]
+	\arrow["{{F_1}}"', from=1-1, to=2-1]
+	\arrow["{{F_0}}", from=1-2, to=2-2]
+	\arrow["c", from=1-4, to=1-5]
+	\arrow["{F_1}"', from=1-4, to=2-4]
+	\arrow["{F_0}", from=1-5, to=2-5]
+	\arrow["d"', from=2-1, to=2-2]
+	\arrow["c"', from=2-4, to=2-5]
+\end{tikzcd}\]
   di funzioni di classe sono commutativi.
 	\end{enumtag}
 	Le funzioni di classe soddisfano le seguenti proprietà:
@@ -1970,17 +1982,17 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 \begin{definition}[Funtori pieni, fedeli, essenzialmente suriettivi]
 	\`E conveniente dare un nome speciale ai funtori $F : \ctC\fun\ctD$ tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva: $F : \ctC\fun\ctD$ si dirà
 	\begin{itemize}
-		\item \emph{pieno} se ciascuna $F_{XY}$ è una funzione suriettiva; questo significa che 
+		\item \emph{pieno} se ciascuna $F_{XY}$ è una funzione suriettiva; questo significa che
 		\begin{quote}
 			per ogni $g : FX\to FY$ in $\ctD$ esiste almeno un $f : X\to Y$ in $\ctC$ tale che $Ff=g$.
 		\end{quote}
-		\item \emph{fedele} se ciascuna $F_{XY}$ è una funzione iniettiva; questo significa che 
+		\item \emph{fedele} se ciascuna $F_{XY}$ è una funzione iniettiva; questo significa che
 		\begin{quote}
 			Dati $u,v : X\to Y$ morfismi paralleli in $\ctC$, se $Fu=Fv$ allora $u=v$.
 		\end{quote}
-		\item \emph{pienamente fedele} se ciascuna $F_{XY}$ è sia iniettiva che suriettiva (quindi, in virtù di \ref{}, è biiettiva); questo significa che 
+		\item \emph{pienamente fedele} se ciascuna $F_{XY}$ è sia iniettiva che suriettiva (quindi, in virtù di \ref{}, è biiettiva); questo significa che
 		\begin{quote}
-			
+			per ogni $g : FX\to FY$ esiste \emph{uno e un solo} morfismo $f : X\to Y$ tale che $Ff=g$.
 		\end{quote}
 	\end{itemize}
 \end{definition}
@@ -2542,7 +2554,7 @@ La nozione di \emph{trasformazione naturale} tra funtori rende precisa questa id
 	\end{itemize}
 \end{definition}
 \begin{remark}
-	I funtori sono i morfismi di una categoria $\ctCat$ delle categorie (piccole); le trasformazioni naturali tra funtori rendono l'insieme $\ctCat(\ctC,\ctD)$ dei funtori $F : \ctC\funto\ctD$ a sua volta una categoria, dove le trasformazioni naturali si pensano come ``frecce tra frecce'', o ``frecce di secondo ordine''. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo $\To$, a riempire un diagramma di funtori come segue:
+	I funtori sono i morfismi di una categoria $\ctCat$ delle categorie (piccole); le trasformazioni naturali tra funtori rendono l'insieme $\ctCat(\ctC,\ctD)$ dei funtori $F : \ctC\funto\ctD$ a sua volta una categoria, dove le trasformazioni naturali $\alpha : F\nat G$ si pensano come ``frecce tra frecce'', o ``frecce di dimensione 2'', nel senso che andiamo a spiegare. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo $\To$, a riempire un diagramma di funtori come segue:
 	%\Todo{Che si fa quando vogliamo considerare }
 	% si possono vedere come ``frecce tra frecce'', o ``frecce di secondo ordine''. È comune rappresentarle con delle doppie frecce, come segue:
 	\[
@@ -2551,25 +2563,37 @@ La nozione di \emph{trasformazione naturale} tra funtori rende precisa questa id
 		\ar[Rightarrow, from=F, to=G, "\alpha"]
 	\end{tikzcd}
 	\]
-	In questa rappresentazione, $\alpha$ è un morfismo di dominio $F$ e codominio $G$, ed $F$ e $G$ hanno a loro volta un dominio e un codominio.
+	In questa rappresentazione, $\alpha$ è un morfismo di dominio $F$ e codominio $G$, ed $F$ e $G$ hanno a loro volta un dominio $\ctC$ e un codominio $\ctD$.
 
+	\medskip
 	La struttura che ha per oggetti le categorie piccole, per frecce i funtori tra esse, e per frecce tra frecce le trasformazioni naturali è un esempio di \emph{2-categoria} (di cui non diamo la definizione qui, si veda \cite{Kelly2005b}).
 \end{remark}
 \begin{remark}
-	La definizione della categoria $\ctCat(\ctC,\ctD)$ pone un problema di teoria degli insiemi; infatti, quando $\ctC$ non è una categoria piccola, la classe delle trasformazioni naturali tra due funtori $F,G:\ctC\funto\ctD$ è una sottoclasse di \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), che in generale può non essere un insieme (per esempio, può coincidere con \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), quando succede?).
+	Sarà spesso utile considerare esempi in cui $\ctD$ non è una categoria piccola (si veda \ref{}), ma la definizione di $\ctCat(\ctC,\ctD)$ pone un problema di teoria degli insiemi quando $\ctC$ non è piccola; infatti, in quel caso la classe delle trasformazioni naturali tra due funtori $F,G:\ctC\funto\ctD$ è una sottoclasse di \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), che in generale può non essere un insieme (per esempio, può coincidere con \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), quando succede?).
 \end{remark}
+\begin{definition}[Isomorfismo naturale]\label{def_isonat}\index{Isomorfismo naturale}\index{Trasformazione naturale!isomorfismo naturale}
+	Dati due funtori $F,G : \ctC\fun\ctD$ tra categorie, un \emph{isomorfismo naturale} consiste di una trasformazione naturale  $\alpha : F\nat G$ che possieda una inversa per l'operazione di composizione verticale di \ref{def_vcomp}; in altre parole, $\alpha$ è un isomorfismo naturale se esiste una trasformazione naturale $\bar\alpha : G\nat F$ tale che $\alpha\vcmp\bar\alpha = 1_G$ e $\bar\alpha\vcmp\alpha =1_F$.
+\end{definition}
+\begin{lemma}
+	Una trasformazione naturale $\alpha : F\nat G$ è invertibile se e solo se ciascuna delle sue componenti è un isomorfismo di $\ctD$; infatti, la condizione di naturalità per $\alpha$ è il fatto che per ogni $u : X\to Y$ si abbia 
+	\[\alpha_Y \cmp Fu = Gu\cmp \alpha_X\]
+	da cui segue la condizione di naturalità per $\alpha^{-1}$ componendo da entrambi i lati questa equazione: 
+	\[Fu\cmp \alpha_X^{-1}=\alpha_Y^{-1}\cmp \alpha_Y \cmp Fu\cmp \alpha_X^{-1} = \alpha_Y^{-1}\cmp Gu\cmp \alpha_X\cmp \alpha_X^{-1}=\alpha_Y^{-1}\cmp Gu.\]
+\end{lemma}
 \begin{example}
-	Abbiamo visto nell'Esempio~\ref{exa_monotone_funtori} che una funzione monotona \(f:(X,\le)\to(Y,\le)\) si può vedere come un funtore. In questo contesto, date due funzioni monotone \(f,g:(X,\le)\to(Y,\le)\), si ha un'unica trasformazione naturale \(f\Rightarrow g\), o \(f\le g\), se e solo se per ogni \(x\in X\), \(f(x)\le g(x)\). (Quest'ultima disuguaglianza rappresenta la componente ad \(x\).)
+	Abbiamo visto nell'Esempio~\ref{exa_monotone_funtori} che una funzione monotòna \(f:(X,\le)\to(Y,\le)\) si può vedere come un funtore. In questo contesto, date due funzioni monotone \(f,g:(X,\le)\to(Y,\le)\), si ha un'unica trasformazione naturale \(f\Rightarrow g\), o \(f\le g\), se e solo se per ogni \(x\in X\), \(f(x)\le g(x)\). (Quest'ultima disuguaglianza rappresenta la componente ad \(x\) della trasformazione.)
 \end{example}
 
 \begin{example}\index{Equivarianza}
-	Abbiamo visto nell'Esempio~\ref{exa_azioni_funtori} che dato un gruppo \(G\), un funtore \(\susp G\to\ctSet\) è un insieme \(X\) con un'azione di \(G\) su \(X\). Dati due funtori \(\susp G\to\ctSet\), i.e.\ due insiemi \(X\) e \(Y\) con un'azione di \(G\), una trasformazione naturale tra questi due funtori è una funzione \(f:X\to Y\) che commuta con l'azione di \(G\), nel senso che per ogni \(g\in G\), il seguente diagramma commuta:
+	Abbiamo visto nell'Esempio~\ref{exa_azioni_funtori} che dato un gruppo \(G\), un funtore \(\susp G\to\ctSet\) è un insieme \(X\) con un'azione di \(G\) su \(X\). Dati due funtori \(\susp G\to\ctSet\), i.e.\ due insiemi \(X\) e \(Y\) con un'azione di \(G\), una trasformazione naturale tra questi due funtori è una funzione \(f:X\to Y\) che commuta con l'azione di \(G\), nel senso che per ogni \(g\in G\), il seguente diagramma commuta,
 	\[
 	\begin{tikzcd}
-		X \ar{d}{f} \ar{r}{g\cdot\_} & X \ar{d}{f} \\
-		Y \ar{r}{g\cdot\_} & Y
+		X \ar[d, "f"'] \ar{r}{g\cdot\_} & X \ar{d}{f} \\
+		Y \ar[r, "g\cdot\_"'] & Y
 	\end{tikzcd}
 	\]
+	(abbiamo indicato con $g\cdot\_$ la biiezione di $X$ che corrisponde all'elemento $g$ nella rappresentazione).
+
 	In teoria delle rappresentazioni, la condizione su \(f\)
  \[\text{per ogni } g\in G,\, f(g\cdot x)=g\cdot f(x)\]
  si chiama \emph{equivarianza}, ed è esattamente la condizione di naturalità istanziata in questo caso. Una conseguenza immediata della condizione è che $f$ si restringe all'insieme \(X^G:=\{x\in X\mid \forall g\in G . g\cdot x = x\}\) dei punti fissi dell'azione di $G$ su $X$; infatti, per ogni $x\in X^G$ si ha $g\cdot f(x) = f(g\cdot x) = f(x)$.
@@ -2684,15 +2708,60 @@ la quale rende la scrittura $H * \alpha * K$ univocamente definita.
     (cosa che spiega la stessa notazione utilizzata per la composizione orizzontale e per l'\whisk).
 \end{remark}
 \begin{example}
-	Caso particolare di \ref{}, quando la categoria $\ctD$ è la categoria degli insiemi introdotta in \ref{ex_cat_insiemi}: la categoria dei prefasci su $\ctC$.
+	Un caso particolare di \ref{}, quando la categoria $\ctD$ è la categoria degli insiemi introdotta in \ref{ex_cat_insiemi} è degno di attenzione: fissata $\ctC$ (piccola), la categoria i cui oggetti sono i funtori di tipo
+	\[\dmFun{F}{\ctC^\op}{\ctSet}\]
+	e i cui morfismi $\alpha : F\nat G$ sono le trasformazioni naturali, si chiama la categoria	dei \emph{prefasci} su $\ctC$.
+
+	Varie notazioni sono utilizzate per indicarla: tra le più comuni:
+	\[
+	\widehat{\ctC},\quad \PSh(\ctC),\quad \presh\ctC
+	\]
+	(delle tre, l'ultima è la meno ambigua: è quella che impiegheremo noi).
 \end{example}
 Una colonna portante del pensiero moderno:
-\begin{example}
-	L'immersione di Yoneda
-\end{example}
-Un risultato apparentemente innocuo dalle conseguenze devastanti, la cui dimostrazione riposa sul risultato centrale del capitolo \ref{}: 
+\begin{definition}\label{def_yoneda_embeddu}
+	L'\emph{immersione di Yoneda} consiste del funtore
+	\[\dmFun{\yon_\ctC}{\ctC}{\presh\ctC}\]
+	definito come segue.
+	\begin{itemize}
+		\item Sugli oggetti, manda $C\in\ctC_0$ nel funtore hom controvariante di \ref{ex_hom_funtore}.
+		\item Sui morfismi, manda $u : C\to C'$ nella trasformazione naturale $\yon_\ctC u : \yon_\ctC C \nat \yon_\ctC C'$ la cui componente ad $X\in\ctC_0$ è la funzione
+		% https://q.uiver.app/#q=WzAsMyxbMCwwLCIoXFx5b25fXFxjdEMgdSlfWCA6Il0sWzEsMCwiXFxIb217XFxjdEN9KFgsQykiXSxbMywwLCJcXEhvbXtcXGN0Q30oWCxDJykiXSxbMSwyXV0=
+\[\begin{tikzcd}[cramped]
+	{(\yon_\ctC u)_X : \Hom{\ctC}(X,C)} && {\Hom{\ctC}(X,C')}
+	\arrow[from=1-1, to=1-3]
+\end{tikzcd}\]
+che manda $X\xto t C$ in $X\xto t C\xto u C'$.
+	\end{itemize}
+	La naturalità di $\yon_\ctC u$, così come la funtorialità (cioè il fatto che $\yon_\ctC (v\cmp u)$ è la composizione verticale di $\yon_\ctC v$ e $\yon_\ctC u$) si verificano senza difficoltà (chi legge è invitato a ripetere come esercizio \emph{importante} il ragionamento, eventualmente con notazioni proprie): il fatto che $\yon_\ctC u$ è naturale significa che dato un morfismo $g : X\to Y$, il quadrato
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXEhvbXtcXGN0Q30oWCxDKSJdLFsyLDAsIlxcSG9te1xcY3RDfShYLEMnKSJdLFswLDEsIlxcSG9te1xcY3RDfShZLEMpIl0sWzIsMSwiXFxIb217XFxjdEN9KFksQycpIl0sWzIsMCwiXFxfXFxjbXAgZyIsMl0sWzIsMywidVxcY21wXFxfIiwyXSxbMCwxLCJ1XFxjbXBcXF8iXSxbMywxLCJcXF9cXGNtcCBnIiwyXV0=
+\[\begin{tikzcd}[cramped]
+	{\Hom{\ctC}(X,C)} && {\Hom{\ctC}(X,C')} \\
+	{\Hom{\ctC}(Y,C)} && {\Hom{\ctC}(Y,C')}
+	\arrow["{u\cmp\_}", from=1-1, to=1-3]
+	\arrow["{\_\cmp g}", from=2-1, to=1-1]
+	\arrow["{u\cmp\_}"', from=2-1, to=2-3]
+	\arrow["{\_\cmp g}"', from=2-3, to=1-3]
+\end{tikzcd}\]
+	è commutativo. Questo discende dall'associatività della composizione di funzioni. Il fatto che $u\mapsto \yon_\ctC u$ soddisfi gli assiomi \ref{f_1}, \ref{f_2} di \ref{def_funtore} segue dalla definizione di composizione verticale: dati $X \xto g Y \xto h Z$,
+	% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXEhvbXtcXGN0Q30oWCxDKSJdLFsyLDAsIlxcSG9te1xcY3RDfShYLEMnKSJdLFswLDEsIlxcSG9te1xcY3RDfShZLEMpIl0sWzIsMSwiXFxIb217XFxjdEN9KFksQycpIl0sWzAsMiwiXFxIb217XFxjdEN9KFosQykiXSxbMiwyLCJcXEhvbXtcXGN0Q30oWixDJykiXSxbMiwwLCJcXF9cXGNtcCBnIl0sWzIsMywidVxcY21wXFxfIiwyXSxbMCwxLCJ1XFxjbXBcXF8iXSxbMywxLCJcXF9cXGNtcCBnIiwyXSxbNCwyLCJcXF9cXGNtcCBoIl0sWzUsMywiXFxfXFxjbXAgaCIsMl0sWzQsNSwidVxcY21wXFxfIiwyXV0=
+\[\begin{tikzcd}[cramped]
+	{\Hom{\ctC}(X,C)} && {\Hom{\ctC}(X,C')} \\
+	{\Hom{\ctC}(Y,C)} && {\Hom{\ctC}(Y,C')} \\
+	{\Hom{\ctC}(Z,C)} && {\Hom{\ctC}(Z,C')}
+	\arrow["{u\cmp\_}", from=1-1, to=1-3]
+	\arrow["{\_\cmp g}", from=2-1, to=1-1]
+	\arrow["{u\cmp\_}"', from=2-1, to=2-3]
+	\arrow["{\_\cmp g}"', from=2-3, to=1-3]
+	\arrow["{\_\cmp h}", from=3-1, to=2-1]
+	\arrow["{u\cmp\_}"', from=3-1, to=3-3]
+	\arrow["{\_\cmp h}"', from=3-3, to=2-3]
+\end{tikzcd}\]
+è commutativo.
+\end{definition}
+Un risultato apparentemente innocuo dalle conseguenze devastanti, la cui dimostrazione riposa sul risultato centrale del capitolo \ref{cap_yoneda}:
 \begin{proposition}
-	L'immersione di Yoneda è un funtore pienamente fedele.
+	Per ogni categoria piccola $\ctC$, l'immersione di Yoneda $\yon_\ctC$ di \ref{def_yoneda_embeddu} è un funtore pienamente fedele.
 \end{proposition}
 \subsubsection*{Esercizi}
 \begin{enumerate}
@@ -2841,7 +2910,7 @@ e epi (mono) in \(\ctSet\) sia indipendente dall'esistenza di un'inversa destra 
 	\end{itemize}
 \end{remark}
 \begin{notation}[Notazione per mono ed epi]
-Sia $f : X\to Y$ un morfismo di una categoria $\ctC$; 
+Sia $f : X\to Y$ un morfismo di una categoria $\ctC$;
 \begin{itemize}
 	\item se $f$ è mono, decoriamo la freccia che lo raffigura come $f : X\mono Y$;
 	\item se $f$ è epi, decoriamo la freccia che lo raffigura come $f : X\epi Y$.
@@ -2944,7 +3013,7 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 		\item \emph{retrazione} di \(f\) una sua inversa sinistra, ovvero un morfismo \(r \colon B \to A\) tale che \(r \cmp f = \id_{A}\).
 	\end{itemize}
 \end{definition}
-\begin{remark}
+\begin{definition}[Epi e mono spezzanti]
 	Una sezione di un qualche morfismo, essendo invertibile a sinistra, è anche cancellabile a sinistra.
 	Dunque, ogni sezione è, in particolare, un monomorfismo.
 	\index{Monomorfismo!--- spezzante}Un monomorfismo che è anche una sezione si dice \emph{mono spezzante}.
@@ -2953,7 +3022,7 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	Inoltre, le nozioni di sezione e retrazione sono ovviamente dipendenti una dall'altra:
 	un morfismo \(f : A \to B\) che ha una sezione \(s : B\to A\) è una retrazione di \(s\),
 	e viceversa \(f\) è una sezione di ogni sua retrazione.
-\end{remark}
+\end{definition}
 \Todo{dualità}
 
 \begin{definition}[Retratto]
@@ -3088,7 +3157,7 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
       } \draw (\s) edge[-latex, bend right=15] (\t);
     \end{tikzpicture}
   \end{center}
-  \caption{Una funzione suriettiva $g : E\to B$ dove $B=\{\blueDot,\purpleDot,\redDot,\orangeDot,\yellowDot\}$. Ciascuna fibra di $g$ è non vuota, e la scelta di una inversa destra $s : B\to E$ ammonta esattamente alla scelta di un elemento in ciascuna di queste fibre.}
+  \caption{Una funzione suriettiva $g : E\to B$ dove $B=\{\blueDot\,\purpleDot\,\redDot\,\orangeDot\,\yellowDot\}$. Ciascuna fibra di $g$ è non vuota, e la scelta di una inversa destra $s : B\to E$ ammonta esattamente alla scelta di un elemento in ciascuna di queste fibre.}
   \label{fig_assioma_scelta}
 \end{figure}
 
@@ -3224,9 +3293,9 @@ Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzant
 Rammentiamo le definizioni date in \ref{}.
 \begin{definition}\label{funtore_pieno}
 	\index{Funtore!--- pieno}
- Funtore pieno 
+ Funtore pieno
 \end{definition}
-\begin{definition}\label{funtore_fedele}	
+\begin{definition}\label{funtore_fedele}
 	\index{Funtore!--- fedele}
 	 \Todo{Funtore fedele }
 \end{definition}
@@ -3237,9 +3306,9 @@ Un funtore che sia allo stesso tempo pieno e fedele, ossia tale che ciascuna $F_
 \begin{remark}
 	Tra i funtori finora introdotti, quelli degli esempi \ref{ba}, \ref{bi}, \ref{bu} sono pieni; quelli degli esempi \ref{fa}, \ref{fi}, \ref{fu} sono fedeli; quelli degli esempi \ref{ra}, \ref{ri}, \ref{ru} sono pienamente fedeli; quelli degli esempi \ref{na}, \ref{ni}, \ref{nu} sono iso-densi.
 \end{remark}
-\`E poi conveniente dare un nome esplicito a un'altra classe di funtori: 
+\`E poi conveniente dare un nome esplicito a un'altra classe di funtori:
 \begin{definition}\label{funtore_essurj}
-	$F : \ctC\fun\ctD$ si dice \emph{essenzialmente suriettivo} (\cite{acc} usa la terminologia \emph{funtore iso-denso}) se la seguente condizione è verificata: 
+	$F : \ctC\fun\ctD$ si dice \emph{essenzialmente suriettivo} (\cite{acc} usa la terminologia \emph{funtore iso-denso}) se la seguente condizione è verificata:
 	\begin{quote}
 		Per ogni oggetto $D\in\ctD_0$, esistono un oggetto $C\in\ctC_0$ e un isomorfismo $i_D : FC\cong D$.
 	\end{quote}
@@ -3247,20 +3316,20 @@ Un funtore che sia allo stesso tempo pieno e fedele, ossia tale che ciascuna $F_
 	\index{Funtore!--- iso-denso|see {--- essenzialmente suriettivo}}
 	\end{definition}
 \begin{definition}[Isomorfismo di categorie]\label{fun_isocat}
-	
+
 \end{definition}
 \begin{definition}\label{funtore_equcat}
   \Todo{Equivalenza di categorie }
 \end{definition}
-\begin{definition}\label{funtore_equcat}
+\begin{definition}\label{funtore_wequcat}
 	\Todo{Equivalenza debole di categorie }
 \end{definition}
 \begin{remark}
 	Ogni equivalenza di categorie è un'equivalenza debole di categorie. Il vice versa, che consiste nel costruire uno pseudoinverso per un funtore $F : \ctC\fun\ctD$ che sia un'equivalenza debole, è dimostrabile assumendo l'assioma della scelta.
 	\begin{itemize}
-		\item un verso 
+		\item un verso
 		\item l'altro verso
-	\end{itemize} 
+	\end{itemize}
 \end{remark}
 Alcuni esempi di categorie equivalenti ma non isomorfe
 \begin{example}
@@ -3278,7 +3347,7 @@ Alcuni esempi di categorie equivalenti ma non isomorfe
 \end{proof}
 \subsubsection*{Esercizi}
 \begin{enumerate}
-	\item In \ref{} abbiamo dimostrato che i monomorfismi in $\ctCat$ sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti. 
+	\item In \ref{} abbiamo dimostrato che i monomorfismi in $\ctCat$ sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
 	\item Mostrare che $\ctMat$ e $\ctVect$ \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: $\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)$; mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di $\ctMat$ e quella di $\ctVect$ non sono isomorfe.)
 	\item
 	\item

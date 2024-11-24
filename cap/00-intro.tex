@@ -1,37 +1,44 @@
 \chapter{Quattro preludi categoriali}\label{cap_preludi}
 \Todo{(Questa è l'introduzione che abbozzai anni fa, la metto qui solo per esporla alla vista e ne parleremo seriamente solo verso la fine)}
-La teoria delle categorie è una parte della matematica molto giovane se confrontata con il calcolo differenziale; è certamente una fanciulla quando viene posta a fianco di alberi antichi come la geometria e la logica. Si è sviluppata rapidamente, nello spazio di pochi decenni (i suoi concetti fondamentali sono stati introdotti da Samuel Eilenberg e Saunders Mac Lane in \cite{gtone}, nel 1945; i due credevano ingenuamente che quel loro articolo sarebbe stato `l'unico che sarebbe mai stato necessario scrivere su questo tema' \cite{}).
+La teoria delle categorie è una parte della matematica molto giovane se confrontata con il calcolo differenziale, utilizzato da secoli; è certamente una fanciulla quando viene posta a fianco di alberi antichi come la geometria e la logica, che sotto varie forme si sono sviluppate lungo i millenni. La teoria delle categorie è apparsa rapidamente nel panorama della matematica del ventesimo secolo, e nello spazio di pochi decenni si è incredibilmente espansa (i suoi concetti fondamentali sono stati introdotti da Samuel Eilenberg e Saunders Mac Lane in \cite{gtone}, nel 1945; i due credevano ingenuamente che quel loro articolo sarebbe stato `l'unico che sarebbe mai stato necessario scrivere su questo tema' \cite{}).
 
-Tuttavia, durante gli ultimi tre quarti di secolo, due generazioni di persone\footnote{Voi che vi apprestate a leggere questo libro fate probabilmente parte della terza o quarta generazione; noi che lo scriviamo, siamo appena appena più anziani.} hanno iniziato a riorganizzare con enorme vitalità l'insieme delle conoscenze della matematica moderna mediante questo linguaggio, fino a tentare l'ambizioso progetto di diventare un loro possibile fondamento.
+Tuttavia, durante gli ultimi tre quarti di secolo, due generazioni di persone\footnote{Chi ha in mano questo libro fa probabilmente parte della terza o quarta; noi che lo scriviamo, siamo appena appena più anziani.} hanno iniziato a riorganizzare con enorme vitalità l'insieme delle conoscenze della matematica moderna mediante questo linguaggio, fino a tentare l'ambizioso progetto di diventare un loro possibile fondamento.
 
 Un modo di raccontare cos'è la teoria delle categorie è quindi questo: un altro tentativo di unificare la matematica grazie a poche, ricorrenti idee universali, `evidenti alla pratica quotidiana' della persona che lavora con la matematica.
 \medskip
 
-Fermarsi qui a raccontare la teoria delle categorie però tradirebbe parte della sua storia.
-
-Essa nasce infatti anche con un intento molto più concreto e squisitamente \emph{pratico}, che si può riassumere nel desiderio, da parte di chi l'ha inventata, di formalizzare la seguente situazione in cui ogni matematico che lavora, conscio o meno di ciò, si è trovato.
-
-\medskip
-Spesso, la specifica di un problema o di una costruzione matematica porta a definire una famiglia di funzioni
-\[\alpha_A : A' \to A'' \]
-dove \(A',A''\) sono insiemi definiti in termini di un altro insieme \(A\).
+Fermarsi qui a raccontare la teoria delle categorie però tradirebbe parte della sua storia. Essa nasce infatti anche con un intento molto più concreto e squisitamente \emph{pratico}, che si può riassumere nel desiderio, da parte di chi l'ha inventata, di formalizzare la seguente situazione in cui ogni matematico che lavora, conscio o meno di ciò, si è trovato.
+% \medskip
+% Spesso, la specifica di un problema o di una costruzione matematica porta a definire una famiglia di funzioni
+% \[\alpha_A : A' \to A'' \]
+% dove \(A',A''\) sono insiemi definiti in termini di un altro insieme \(A\).
 \begin{example}
 	Sia \(A\) un anello commutativo e unitario; allora resta definita la mappa `determinante',
-	\[\textstyle\det_A : GL(A,2) \to A\]
+	\[\textstyle\det_A : M(A,2) \to A\]
 	che manda una generica matrice \(2\times 2\) a coefficienti in \(A\), diciamo \(\begin{smat} a_{11} & a_{12}\\a_{21} & a_{22}\end{smat}\) in \(a_{11}a_{22}-a_{12}a_{21}\).
 \end{example}
-Le varie `componenti' \(\alpha_A\) `variano con continuità' al variare di \(A\), ossia tutte le funzioni \(\det_A\) sono definite alla stessa maniera, non importa quale sia l'anello \(A\) in questione: in più, la seguente proprietà vale.
+L'insieme delle matrici $2\times 2$ a coefficienti in $A$ è in un senso evidente ottenuto `in funzione' di $A$, perché è costruito a partire dalle quaterne di elementi di $A$; in più, le varie `componenti' \(\alpha_A\) `variano con continuità' al variare di \(A\), ossia tutte le funzioni \(\det_A\) sono definite alla stessa maniera, non importa quale sia l'anello \(A\) in questione: in più, la seguente proprietà vale: se $f : A\to B$ è un omomorfismo di anelli commutativi e unitari, la composizione di funzioni 
+\[bla\]
+è uguale alla composizione di funzioni 
+\[ble\] 
+Usualmente, queste due possibili composizioni coincidenti si assemblano in un diagramma rettangolare,
+\[blo\] 
+e si dice, quando i due `percorsi' che uniscono il vertice in alto a sinistra con quello in basso a destra danno luogo alla stessa funzione, che il diagramma `commuta' o `è commutativo'. 
 
-Quando la corrispondenza \((\_)' : A\mapsto A'\) prende \(A\) come parametro, ed è definita in modo da indurre una funzione \(u' : A' \to B'\) per ogni \(u : A \to B\), e altrettanto è vero per la corrispondenza \(A\mapsto A''\), le varie \(\alpha_A, \alpha_B,\dots\) sono `compatibili' con le \(u\), cioè si assemblano in un quadrato%: significa che, per ogni \(u\) come sopra, la composizione di funzioni
+Ciò che i matematici della prima metà del ventesimo secolo iniziarono a notare è che costruzioni del genere sono tutto tranne che rare; spesso, la specifica di un problema o di una costruzione matematica porta a definire una famiglia di funzioni
+\[\alpha_A : A' \to A'' \]
+dove \(A',A''\) sono insiemi `definiti in termini' di un altro insieme \(A\).
+
+Si può poi richiedere che quando la corrispondenza \((\_)' : A\mapsto A'\) prende \(A\) come parametro, ed è definita in modo da indurre una funzione \(u' : A' \to B'\) per ogni \(u : A \to B\), e altrettanto è vero per la corrispondenza \(A\mapsto A''\), le varie \(\alpha_A, \alpha_B,\dots\) sono `compatibili' con le \(u\), cioè si assemblano in un quadrato%: significa che, per ogni \(u\) come sopra, la composizione di funzioni
 \[
 	\vcenter{\xymatrix{
 			A'\ar[r]^{u'}\ar[d]_{\alpha_A} & B'\ar[d]^{\alpha_B} \\
 			A'' \ar[r]_{u''} & B''
 		}}
 \]
-con la proprietà che componendo lungo i due possibili cammini che percorrono il quadrato, da \(A'\) a \(B''\), dà lo stesso risultato: il quadrato così ottenuto si dice \emph{commutativo}, le corrispondenze \((\_)'\) e \((\_)''\) si dicono \emph{funtori}, e l'insieme di tutte le \(\alpha_A\) si dice una \emph{trasformazione naturale}.
+commutativo; esempi di corrispondenze \((\_)'\) e \((\_)''\) del genere sono abbondanti e si dicono \emph{funtori}; l'insieme di tutte le \(\alpha_A\) si dice una \emph{trasformazione naturale} tra due funtori.
 
-Anche ad un occhio allenato, questa definizione non appare immediata: quale fenomeno stiamo cercando di catturare esattamente? Perché questa condizione è comune nella pratica? Come sono stati ottenuti \(A',A''\)? Non è chiaro quali siano degli esempi di funtore, perché abbiamo disegnato un quadrato, e non, ad esempio, un pentagono o una stella?
+Bisogna essere matematici o matematiche di una certa esperienza per notare come una congerie di esempi particolari di questa costruzione sia astraibile a un concetto generale. Senza dubbio, anche ad un occhio allenato, questa definizione non appare immediata: quale fenomeno stiamo cercando di catturare esattamente? Cosa significa poi definire un insieme `in termini' di un altro? Come sono stati ottenuti \(A',A''\)? Perché questa condizione è comune nella pratica? Non è chiaro quali siano degli esempi di funtore, perché abbiamo disegnato un quadrato, e non, ad esempio, un pentagono o una stella?
 
 Sta di fatto che la nozione di \emph{naturalità} si nasconde in ogni angolo della pratica matematica. Forse anche per questo, essa è per lungo tempo sfuggita a una formalizzazione matematica precisa, e in effetti ha costretto Mac Lane ed Eilenberg a definire preliminarmente gli altri concetti su cui riposa: quello di \emph{funtore}, per spiegare cosa sia la corrispondenza \(A\mapsto A'\), e quello di \emph{categoria}, per spiegare quale tipo di struttura possiedano il dominio e il codominio di questa corrispondenza.
 

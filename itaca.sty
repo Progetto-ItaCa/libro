@@ -9,6 +9,7 @@
   % - [todo] le macro vanno separate per tipo
   % - [todo] alcune vanno definite con meno hacks
   % - [todo] va tutto documentato meglio
+  % - [todo] la testa di freccia per gli epi nei diagrammi va migliorata
 
 
 % questi vanno chiamati per primi
@@ -33,7 +34,7 @@
 % \mathbf{#1} -> \bf#1
 
 \clist_new:N \g_itaca_operators_clist
-\clist_gset:Nn \g_itaca_operators_clist { GL, lan, Lan, LAN, lft, Lft, LFT, Nat, ran,  Ran, RAN, Rft, Yan, RFT, rft, op, co, coop, colim, coker, eq, coeq }
+\clist_gset:Nn \g_itaca_operators_clist { GL, lan, Lan, LAN, lft, Lft, LFT, Nat, ran,  Ran, RAN, Rft, Yan, RFT, rft, op, co, coop, colim, coker, eq, coeq, PSh }
 
 \cs_new_protected:Npn \itaca_makeabbrev:nnN #1 #2 #3
  {
@@ -207,7 +208,7 @@
   }
 \ExplSyntaxOff
 
-\newenvironment{handsExample}[2][]{\begin{example}[#1]\hands{#2}}{\end{example}}
+\newenvironment{handsExample}[2][]{\begin{example}[#1\,|\,\hands{#2}]}{\end{example}}
 
 \ProcessOptions\relax
 
@@ -262,6 +263,7 @@
 \newcommand{\dom}[1]{d(#1)}
 \newcommand{\cod}[1]{c(#1)}
 \newcommand{\cmp}{\circ}
+\let\vcmp\cmp
 \newcommand{\horcomp}{*}
 
 \def\op{\text{op}}
@@ -444,6 +446,8 @@
 \NewDocumentCommand{\hammock}{ O{\ctSet} m m }{ #2 \leftrightarroweq_{#1} #3 }
 \usepackage[font={small}]{caption}
 \usepackage{datetime}
+
+\NewDocumentCommand{\presh}{ m }{ \Hom{\ctCat}({#1}^\op,\ctSet) }
 
 % inutile riga di controllo
 % END OF FILE
