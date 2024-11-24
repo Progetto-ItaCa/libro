@@ -1,0 +1,28 @@
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - run: nix build --print-build-logs
+      - id: tags
+        run: |
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "ssha=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
+      - run: cp result/main.pdf ${{ steps.tags.outputs.date }}_${{ steps.tags.outputs.ssha }}_itaca.pdf
+      - uses: docker://antonyurchenko/git-release:v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_NAME: "${{ steps.tags.outputs.date }} (${{ steps.tags.outputs.ssha }})"
+          DRAFT_RELEASE: "false"
+          PRE_RELEASE: "true"
+          UNRELEASED: "update"
+          UNRELEASED_TAG: "latest"
+          ALLOW_EMPTY_CHANGELOG: "true"
+        with:
+          args: ${{ steps.tags.outputs.date }}_${{ steps.tags.outputs.ssha }}_itaca.pdf
+
