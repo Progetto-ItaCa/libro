@@ -1454,16 +1454,16 @@ Questo secondo esercizio ha, come caso particolare, il seguente esempio quando \
 \end{example}
 In maniera simile, un funtore \(\ctB G\fun\bbR\emdash\ctVect\) è una rappresentazione (lineare) di \(G\) su uno spazio vettoriale; le stesse costruzioni si possono fare con un monoide invece di un gruppo, e ciò giustifica la definizione seguente.
 \begin{definition}[Rappresentazione di \(M\)]
-	Sia \(\ctD\) una categoria, ed \((M,\cdot,1)\) un monoide; una \emph{rappresentazione} di \(M\) in \(\ctD\) consiste di un funtore \(\ctB M \to \ctD\).
+	Sia \(\ctD\) una categoria, ed \((M,\cdot,1)\) un monoide; una \emph{rappresentazione} di \(M\) in \(\ctD\) consiste di un funtore \(\susp M \fun \ctD\).
 \end{definition}
-La teoria classica delle equazioni differenziali ordinarie dà un esempio importante di rappresentazione di \(G\) in una categoria di spazi topologici, mediante i \emph{gruppi a un parametro} di diffeomorfismi,\footnote{Il nome `gruppo a un parametro' è un relitto ottocentesco dovuto al fatto che si preferiva pensare a un'azione del gruppo additivo \(\bbR\) su una varietà \(X\) come a una famiglia di diffeomorfismi \(\{\varphi_t : X\to X\}_t\) dipendenti --appunto-- da un parametro reale \(t\in\bbR\) (o \(t\in [a,b]\), o \(t\in [0,\infty)\)\dots). Chiaramente, \(\varphi_t = \varphi(t,-)\) per un'azione \(\varphi : \bbR\times X\to X\) mediante diffeomorfismi, cioè per un funtore \(\susp(\bbR,+,0)\to\cate{Mfd}\) verso una categoria di varietà differenziabili e mappe lisce. La lezione per chi legge è che qualsiasi corso introduttivo ai sistemi dinamici fa uso, più o meno nascostamente, più o meno ammettendolo, del concetto di funtore.} o dai campi vettoriali a loro associati.
+La teoria classica delle equazioni differenziali ordinarie dà un esempio importante di rappresentazione di \(G\) in una categoria di spazi topologici, mediante i \emph{gruppi a un parametro} di diffeomorfismi,\footnote{Il nome `gruppo a un parametro' è un relitto ottocentesco dovuto al fatto che si preferiva pensare a un'azione del gruppo additivo \(\bbR\) su una varietà \(X\) come a una famiglia di diffeomorfismi \(\{\varphi_t : X\to X\}_t\) dipendenti --appunto-- da un parametro reale \(t\in\bbR\) (o \(t\in [a,b]\), o \(t\in [0,\infty)\)\dots). Chiaramente, \(\varphi_t = \varphi(t,-)\) per un'azione \(\varphi : \bbR\times X\to X\) mediante diffeomorfismi, cioè per un funtore \(\susp(\bbR,+,0)\fun\cate{Mfd}\) verso una categoria di varietà differenziabili e mappe lisce. La lezione per chi legge è che qualsiasi corso introduttivo ai sistemi dinamici fa uso, più o meno nascostamente, più o meno ammettendolo, del concetto di funtore.} o dai campi vettoriali a loro associati.
 \begin{example}\label{exa_derivata_funtore}\index{Funtore!differenziale come ---}
 	Sia \(\ctEuc\) la categoria degli spazi reali Euclidei puntati, definita come segue:
 	\begin{itemize}
 		\item gli oggetti sono coppie \((n,x)\) con \(n\in\bbN\) e \(x\in\bbR^n\);
 		\item i morfismi \((n,x)\to (m,y)\) sono funzioni differenziabili \(f:\bbR^n\to\bbR^m\) tali che \(f(x)=y\).
 	\end{itemize}
-	Possiamo costruire un funtore \(D:\ctEuc\to\bbR\emdash\ctMat\) nel seguente modo:
+	Possiamo costruire un funtore \(D:\ctEuc\fun\bbR\emdash\ctMat\) nel seguente modo:
 	\begin{itemize}
 		\item sugli oggetti, mappa \((n,x)\) in \(n\);
 		\item sui morfismi, assegna alla funzione \(f:(\bbR^n,x)\to (\bbR^m,y)\) il \emph{differenziale} di \(f\) in \(x\), cioè, la mappa lineare \(Df:\bbR^n\to\bbR^m\).
@@ -1562,10 +1562,10 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \begin{remark}
 	\Todo{A proposito del nome `controvariante'}
 \end{remark}
-\begin{remark}
-	Ogni funtore \(F : \ctC\fun\ctD\) definisce un funtore \(F^\op : \ctC^\op \fun\ctD^\op\) che coincide con \(F\) sugli oggetti, e che è definito sulle frecce mandando \(f^\op\in\ctC^\op\) in \(F(f)^\op\in\ctD^\op\). \`E semplice e tedioso verificare le proprietà \ref{p_1}, \ref{p_2}.
-	
-	Dal momento che \((\ctC^\op)^\op = \ctC\), il dato di un funtore controvariante \(F : \ctC\fun\ctD\), cioè di un funtore \(F : \ctC^\op \fun\ctD\), è esattamente equivalente al dato di un funtore \(F^\op : \ctC \to \ctD^\op\). Ogni qualvolta sia necessario, parleremo invariabilmente dell'uno o dell'altro funtore riferendoci alla sua controvarianza.
+\begin{remark}\index{Funtore!--- controvariante}
+	Ogni funtore \(F : \ctC\fun\ctD\) definisce un funtore \(F^\op : \ctC^\op \fun\ctD^\op\) che coincide con \(F\) sugli oggetti, e che è definito sui morfismi mandando \(f^\op\in\ctC^\op\) in \(F(f)^\op\in\ctD^\op\). \`E semplice (e noioso) verificare le proprietà \ref{p_1}, \ref{p_2}.
+
+	Dal momento che \((\ctC^\op)^\op = \ctC\), il dato di un funtore controvariante \(F : \ctC\fun\ctD\), cioè di un funtore \(F : \ctC^\op \fun\ctD\), è esattamente equivalente al dato di un funtore \(F^\op : \ctC \fun \ctD^\op\). \`E a volte più conveniente considerare l'uno piuttosto che all'altro funtore, riferendosi alla sua controvarianza.
 \end{remark}
 \begin{example}\label{exa_funtori_liberi_forgetti}\index{Funtore!--- libero e dimenticante}
 	Se \((\Omega,a)\) è una segnatura algebrica come in \ref{ex_cat_sigma_strutture}, esiste un funtore
@@ -1578,7 +1578,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\Todo{Sui funtori liberi\dots}
 \end{example}
 \begin{definition}\label{compo_funtori}
-	Dati due funtori \(F:\ctC\to\ctD\) e \(G:\ctD\to\ctE\), il \emph{funtore composto} \(G\cmp F:\ctC\to\ctE\) assegna
+	Dati due funtori \(F:\ctC\to\ctD\) e \(G:\ctD\to\ctE\), il \emph{funtore composto} \(G\cmp F:\ctC\fun\ctE\) assegna
 	\begin{itemize}
 		\item Ad ogni oggetto \(X\) di \(\ctC\), l'oggetto \(GFX\) (ossia \(G(F(X))\)) di \(\ctE\);
 		\item Ad ogni morfismo \(f:X\to Y\) di \(\ctC\), il morfismo \(GFf\) (ossia \(G(F(f))\)) di \(\ctE\).
@@ -1614,8 +1614,8 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \`E chiaro che non si può compilare una lista esaustiva di funtori importanti nella pratica matematica. Possiamo però concentrarci su alcuni funtori che è immediato costruire tra le categorie di §\ref{sec_esempi_cats}. In particolare, ed è uno dei motivi per cui \ref{def_funtore} è interessante, diverse operazioni che guardano una struttura come esempio di un'altra struttura si possono rendere precise mediante la nozione di funtore.
 \begin{example}[Categorie discrete e codiscrete]\index{Categoria!--- discreta}\index{Categoria!--- codiscreta}\index{Funtore!--- categoria discreta}\index{Funtore!--- categoria codiscreta}
 	Mandare un insieme \(A\) nella sua categoria discreta \(A^\delta\) di \ref{ex_cat_discreta} è un funtore \((-)^\delta : \ctSet \fun \ctCat\): ogni funzione \(f : A \to B\) induce un funtore, tautologico, \(f^\delta : A \to B\) che agisce come \(f\) sugli oggetti, ed è univocamente determinato dalla richiesta che \(f^\delta(\id_a) = \id_{fa}\), imposta da \ref{p_1}.
-	
-	Similmente, mandare un insieme \(A\) nella sua categoria codiscreta \(A^\chi\) è un funtore \(\ctSet \fun\ctCat\); qui è meno immediato che esista un funtore \(f^\chi : A^\chi\to B^\chi\), ma usando la caratterizzazione di un funtore in \ref{def_alternativa_funtore} è sufficiente trovare una famiglia di funzioni
+
+	Similmente, mandare un insieme \(A\) nella sua categoria codiscreta \(A^\chi\) è un funtore \(\ctSet \fun\ctCat\); qui è meno immediato che esista un funtore \(f^\chi : A^\chi\fun B^\chi\), ma usando la caratterizzazione di un funtore in \ref{def_alternativa_funtore} è sufficiente trovare una famiglia di funzioni
 	\[\begin{tikzcd}
 		f^\chi_{aa'} : \Hom{A^\chi}(a,a') \ar[r] & \Hom{B^\chi}(fa, fa')
 	\end{tikzcd}\]
@@ -1632,8 +1632,11 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \end{example}
 \begin{example}\index{Funtore!--- categoria associata a monoide}
 	La corrispondenza che assegna a un monoide \((M,\cdot,1)\) la categoria con un solo oggetto \(\susp(M,\cdot,1)\) come in \ref{mon_sonocat} è la parte sugli oggetti di un funtore
-	\[\dmFun{\ctB}{\ctMon}{\ctCat}\]
-	tra le categorie di \ref{ex_cat_monoidi} e di \ref{ex_cat_cat}; abbiamo in effetti già dimostrato in \ref{exa_funtori_da_gruppi} che i funtori tra categorie della forma \(\ctB M\) sono tutti e soli gli omomorfismi di monoidi (e la composizione di omomorfismi \(M\to N\to R\) e di funtori \(\ctB M \fun\ctB N \fun\ctB R\) coincidono), quindi la sottocategoria di \(\ctCat\) identificata come l'immagine di \(\ctB\) è piena, e si identifica alla categoria dei monoidi. (Questa ultima osservazione sarà chiara quando avremo introdotto la nozione di \emph{funtore pienamente fedele} in \ref{}.)
+	\[\dmFun{\susp}{\ctMon}{\ctCat}\]
+	tra le categorie di \ref{ex_cat_monoidi} e di \ref{ex_cat_cat}; abbiamo in effetti già dimostrato in \ref{exa_funtori_da_gruppi} che i funtori tra categorie della forma \(\susp M\) sono tutti e soli gli omomorfismi di monoidi (e la composizione di omomorfismi \(M\to N\to R\) e di funtori \(\susp M \fun\susp N \fun\susp R\) coincidono), quindi la sottocategoria di \(\ctCat\) identificata come l'immagine di \(\susp\) è piena, e si identifica alla categoria dei monoidi. (Questa ultima osservazione sarà chiara quando avremo introdotto la nozione di \emph{funtore pienamente fedele} in \ref{fun_pienfed}.)
+	\index{Funtore!--- pieno}
+	\index{Funtore!--- fedele}
+	\index{Funtore!--- pienamente fedele}
 \end{example}
 \begin{example}[Le componenti connesse di un (multidi)grafo]\index{Funtore!--- componenti connesse di un grafo}\index{\(\pi_0\)|see {componenti connesse}}\index{Componenti connesse!--- di un grafo}
 	Se \(\ctG=(E,V)\) è un multidigrafo come in \ref{ex_cat_grafi}, possiamo costruire l'insieme delle sue \emph{componenti connesse} considerando la relazione \(x\asymp y\) sull'insieme dei suoi vertici, definita da \(x\asymp y\) se \(x=y\), o esiste un lato \(e : x \to y\), o esiste un lato \(e' : y\to x\). Due vertici \(x,y\in V\) appartengono alla stessa componente connessa se esiste una successione finita di vertici \(\tup vn,\) tale che
@@ -1967,7 +1970,55 @@ Si noti che la condizione di naturalità di \(\beta\circ\alpha\) si ottiene comp
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
-	\item
+	\item Per risolvere questo esercizio è necessario ricordare la definizione di una \emph{successione esatta} di omomorfismi di gruppo: se $H,G,G',K$ sono gruppi abeliani, una successione esatta corta è una sequenza di mappe componibili
+    % https://q.uiver.app/#q=WzAsNixbMCwwLCIwIl0sWzEsMCwiSyJdLFsyLDAsIkciXSxbMywwLCJHJyJdLFs1LDAsIjAiXSxbNCwwLCJIIl0sWzAsMV0sWzEsMiwiaCJdLFsyLDMsImYiXSxbMyw1LCJnIl0sWzUsNF1d
+\[\begin{tikzcd}
+	0 & K & G & {G'} & H & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow["g", from=1-2, to=1-3]
+	\arrow["f", from=1-3, to=1-4]
+	\arrow["h", from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\]
+    tale che $\ker f=\im g$, $\ker h=\im f$, $\ker g=(0)$ e $\im h = H$. Chi non ha mai visto questo risultato, dimostri che ogni omomorfismo $f : G\to G'$ tra due gruppi abeliani induce una successione esatta come questa, se $K=\ker f$ e $H=G'/\im f$, quando $g : \ker f \mono G$ è l'inclusione ovvia, e $h$ la proiezione al quoziente sul conucleo (si veda \ref{}) di $f$.
+
+    Sia ora $\ctC$ una categoria piccola e consideriamo la categoria dei funtori $F : \ctC\funto\ctAb$ di codominio la categoria dei gruppi abeliani. Questo esercizio chiede di definire e studiare una nozione di nucleo associato a una trasformazione naturale:
+    \begin{itemize}
+        \item Definire $\ker\alpha$ come la trasformazione naturale associata ad $\alpha : F \natto G$ e avente per componenti
+        \[(\ker\alpha)_C := \ker(\alpha_C : FC\to GC) \to FC.\]
+        \item Mostrare che $X\mapsto\ker(\alpha_X)$ definisce un funtore $K : \ctC\fun\ctAb$, e che $\kappa_X : \ker(\alpha_X) \to FX$ è naturale, e un monomorfismo in $[\ctC,\ctAb]$ (si veda \ref{}); a questa maniera, esiste una successione esatta \emph{di trasformazioni naturali} (cioè una successione di trasformazioni naturali, esatta quando saturata in ogni componente) della forma
+        \[0\natto\ker\alpha \overset\kappa\natto F \overset\alpha\natto G\]
+        dove chiaramente `$0$' è il funtore costante nel gruppo abeliano nullo.
+        \item Dualizzare e definire il \emph{conucleo} di una trasformazione naturale; costruire la successione esatta
+        \[\begin{tikzcd}
+	0 & \ker\alpha & F & G & \coker\,\alpha & 0.
+	\arrow[from=1-1, to=1-2, Rightarrow]
+	\arrow["\kappa", from=1-2, to=1-3, Rightarrow]
+	\arrow["\alpha", from=1-3, to=1-4, Rightarrow]
+	\arrow["\pi", from=1-4, to=1-5, Rightarrow]
+	\arrow[from=1-5, to=1-6, Rightarrow]
+\end{tikzcd}\]
+\item Mostrare, o trovare un controesempio, al seguente enunciato: per ogni funtore $H : \ctB\fun\ctC$ come nel diagramma
+% https://q.uiver.app/#q=WzAsMyxbMiwwLCJcXGN0QyJdLFs0LDAsIlxcY3REIl0sWzAsMCwiXFxjdEIiXSxbMiwwLCJIIl0sWzAsMSwiRiIsMCx7ImxhYmVsX3Bvc2l0aW9uIjozMH1dLFswLDEsIksiLDAseyJjdXJ2ZSI6LTN9XSxbMCwxLCJHIiwyLHsiY3VydmUiOjN9XSxbNSw0LCJcXGtlclxcYWxwaGEiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzQsNiwiXFxhbHBoYSIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}
+	\ctB && \ctC && \ctD
+	\arrow["H", from=1-1, to=1-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "F"{pos=0.3}, from=1-3, to=1-5]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "K", curve={height=-18pt}, from=1-3, to=1-5]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "G"', curve={height=18pt}, from=1-3, to=1-5]
+	\arrow["{\ker\alpha}", shorten <=2pt, shorten >=2pt, Rightarrow, from=1, to=0]
+	\arrow["\alpha", shorten <=2pt, shorten >=2pt, Rightarrow, from=0, to=2]
+\end{tikzcd}\]
+esiste una successione esatta
+        \[\begin{tikzcd}
+	0 & \ker\alpha H & F H & G H & \coker\,\alpha H & 0.
+	\arrow[from=1-1, to=1-2, Rightarrow]
+	\arrow["\kappa*H", from=1-2, to=1-3, Rightarrow]
+	\arrow["\alpha*H", from=1-3, to=1-4, Rightarrow]
+	\arrow["\pi*H", from=1-4, to=1-5, Rightarrow]
+	\arrow[from=1-5, to=1-6, Rightarrow]
+\end{tikzcd}\]
+    \end{itemize}
 	\item
 	\item
 	\item
@@ -2199,7 +2250,7 @@ nel senso precisato dal seguente teorema:
 
 \begin{theorem}%
 	\label{thm:fun-sezioni-retrazioni}
-	Dato un funtore \(F \colon \ctC \to \ctD\) ed una coppia di sezione e retrazione \(s \colon A \to B\) e \(r \colon B \to A\),
+	Dato un funtore \(F \colon \ctC \fun \ctD\) ed una coppia di sezione e retrazione \(s \colon A \to B\) e \(r \colon B \to A\),
 	allora \(F(s) \colon F(A) \to F(B)\) e \(F(r) \colon F(B) \to F(A)\) è una coppia di sezione e retrazione.
 \end{theorem}
 \begin{proof}
@@ -2246,7 +2297,7 @@ l'essere o meno preservati dai funtori.
 	Questa è mono in quanto la sua funzione sottogiacente è iniettiva,
 	ma non è spezzante.
 	Infatti, se avesse una retrazione,
-	questa sarebbe preservata dal funtore dimenticante \(U \colon \ctMon \to \ctSet\),
+	questa sarebbe preservata dal funtore dimenticante \(U \colon \ctMon \fun \ctSet\),
 	per il \autoref{thm:fun-sezioni-retrazioni},
 	e dunque sarebbe un'inversa sinistra della funzione \(\iota\).
 	Come omomorfismo di monoidi, però, tale inversa sinistra dovrebbe preservare gli elementi inversi,
@@ -2275,7 +2326,7 @@ l'essere o meno preservati dai funtori.
 	e che, per l'arbitrarietà di \(f\) e \(g\),
 	l'immersione \(\iota\) è un epi.
 	Tuttavia, \(\iota\) non è un epi spezzante.
-	Infatti, se esistesse, la sua sezione dovrebbe essere preservata dal funtore dimenticante \(U \colon \ctMon \to \ctSet\),
+	Infatti, se esistesse, la sua sezione dovrebbe essere preservata dal funtore dimenticante \(U \colon \ctMon \fun \ctSet\),
 	per il \autoref{thm:fun-sezioni-retrazioni}.
 	Tuttavia, \(U(\iota)\) non è una funzione surgettiva,
 	e dunque non può avere una sezione, per l'\autoref{exm:set-sezioni-retrazioni}.
@@ -2301,3 +2352,43 @@ l'essere o meno preservati dai funtori.
 	\item
 	\item
 \end{enumerate}
+
+\Todo{...qualcosa prima...}
+\subsection{Classi di funtori}\label{ssec:classi_di_funtori}
+\begin{definition}\label{funtore_pieno}
+	\index{Funtore!--- pieno}
+ Funtore pieno 
+\end{definition}
+\begin{definition}\label{funtore_fedele}	
+	\index{Funtore!--- fedele}
+	 \Todo{Funtore fedele }
+\end{definition}
+\begin{notation}\label{fun_pienfed}
+	\index{Funtore!--- pienamente fedele}
+Un funtore che sia allo stesso tempo pieno e fedele, ossia tale che ciascuna $F_{XY}$ sia biiettiva, si dice \emph{pienamente fedele}.
+\end{notation}
+\begin{definition}\label{funtore_essurj}
+	\index{Funtore!--- essenzialmente suriettivo}
+	\index{Funtore!--- iso-denso|see {--- essenzialmente suriettivo}}
+  \Todo{Funtore essenzialmente suriettivo (nome alternativo: iso-denso)}
+\end{definition}
+\begin{definition}[Isomorfismo di categorie]\label{fun_isocat}
+	
+\end{definition}
+\begin{definition}\label{funtore_equcat}
+  \Todo{Equivalenza di categorie }
+\end{definition}
+
+Alcuni esempi di categorie equivalenti ma non isomorfe
+\begin{example}
+	L'esempio piu piccolo
+\end{example}
+\begin{example}
+	La categoria delle matrici di \ref{} è equivalente, senza essere isomorfa, a Vect.
+\end{example}
+\Todo{...qualcosa dopo...}
+
+Esercizio: i mono in $\ctCat$ sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. C'è un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti. 
+
+Mostrare che Mat e Vect \emph{non possono essere} isomorfe (hint: costruire il gruppoide dei soli automorfismi di $\ctC$; il `nocciolo' di $\ctC$; mostrare che due categorie isomorfe hanno noccioli isomorfi. Mostrare che il nocciolo di Mat e quello di Vect non sono isomorfi.)
+\Todo{Alcune parole sul fatto che in $\ctCat$ le equivalenze sono `meglio' degli isomorfismi.}
