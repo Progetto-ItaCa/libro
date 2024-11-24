@@ -33,7 +33,7 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 \end{definition}
 Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogni monoide è una categoria, e ogni insieme preordinato (e a fortiori, ogni insieme parzialmente ordinato) è una categoria. (Gli enunciati in questione renderanno più precise queste ultime affermazioni.)
 \index{Categoria!--- degli insiemi finiti}
-\begin{handsExample}{fund}\label{protoex_finset}
+\begin{hExample}{fund}\label{protoex_finset}
 	Un esempio naturale di categoria nasce considerando la classe \(\ctFin\) di tutti gli insiemi finiti \([n]\defeq \{1,\dots,n\}\) (con la convenzione che \([0]=\varnothing\) sia l'insieme vuoto), e le funzioni \(f : [n] \to [m]\) tra di loro. \`E evidente che non tutte tali funzioni sono componibili: una condizione necessaria --e sufficiente!-- affinché la composizione tra due funzioni \(f : [p] \to [q],g : [m] \to [n]\) tra insiemi finiti sia possibile è che il dominio dell'una coincida con il codominio dell'altra, ovvero che \(q=m\). Quando questo accade, è possibile `giustapporre' le due funzioni come
 	\[\xymatrix{
 		[p] \ar[r]^-f & [q] \ar[r]^-g & [r].
@@ -58,7 +58,7 @@ Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogn
 		naturale; non tutte le mappe lineari tra spazi vettoriali si possono comporre, e le applicazioni identità sono tutte distinte; e più in generale,
 		\item la classe di tutte le strutture algebriche di un dato tipo (gli insiemi, senza limite alla loro taglia; i gruppi, con gli omomorfismi di gruppo; gli spazi vettoriali, anche di dimensione infinita; gli spazi topologici, con le funzioni continue; eccetera).
 	\end{itemize}
-\end{handsExample}
+\end{hExample}
 Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti' \(A,B,X,Y,\dots\), legati tra loro da delle relazioni o `funzioni astratte' \(f : X\to Y, g : A\to B\),\dots{} le quali potranno essere composte alla maniera delle funzioni. Questa intuizione è sufficiente per formulare la definizione, a cui deve però prima seguire una precisazione terminologica.
 \begin{remark}
 	\index{Classe}
@@ -133,7 +133,7 @@ per la composizione che appare in \ref{c_5} (e fare altrettanto per diagrammi pi
 \end{definition}
  Le categorie \(\ctFin\) e \(\bbR\emdash\ctVect\) definite sopra sono piccole, perché abbiamo limitato enormemente la loro classe di oggetti; non abbiamo considerato \emph{tutti} gli insiemi finiti, ma solo quelli della forma \(\{1,\dots,n\}\) per $n\ge 0$; non tutti gli spazi vettoriali, ma solo quelli della forma $\bbR^n$ per $n\ge 0$. Come conseguenza, la classe $\ctFin_1$ dei morfismi di $\ctFin$ è un sottoinsieme di
  \(\bigcup_{n,m\ge 0}2^{n\times m}\)
- (fatto da quelle relazioni $R\subseteq n\times m$ che sono funzioni, si veda \ref{}), ed è quindi un insieme.
+ (fatto da quelle relazioni $R\subseteq n\times m$ che sono funzioni, si veda \ref{ex_cat_insiemi}), ed è quindi un insieme.
 
  La categoria di \emph{tutti} gli insiemi finiti non è piccola (perché c'è una classe propria anche solo di insiemi con un singolo elemento: ogni insieme $x$ vi compare come il singoletto $\{x\}$), ma è localmente piccola, perché fissati due insiemi \(X,Y\), la collezione delle funzioni \(f : X\to Y\) è contenuta (stessa idea di prima) in \(2^{X\times Y}\), e quest'ultimo è un insieme. La differenza tra le due situazioni è che questa volta l'unione \(\bigcup_{X,Y}2^{X\times Y}\) è indiciata su una classe propria, e quindi è una classe propria.
 \begin{remark}
@@ -165,7 +165,7 @@ Si può imparare la teoria delle categorie in modo proficuo solo abbracciando \e
 
 D'altra parte l'analisi funzionale studia quegli spazi \emph{vettoriali} (di dimensione infinita) che sono dotati di una \emph{topologia} metrizzabile (e determinata da un filtro di intorni dello zero), ed eventualmente di un prodotto scalare; la teoria della rappresentazione studia certi omomorfismi in un gruppo di matrici, o le proprietà \emph{topologiche-differenziali} di questi gruppi di matrici (il gruppo ortogonale speciale, il gruppo dei quaternioni di norma 1, ecc.). Per comprendere queste strutture è spesso necessario spostarsi di categoria in categoria.
 
-La seconda di queste osservazioni non è meno importante: porterà alla definizione di funtore in \ref{def_funtore} come \emph{omomorfismo tra categorie}, alla definizione di \emph{diagramma} in \ref{def_diagramma} come immagine di una categoria piccola in una categoria, non necessariamente piccola, e alla definizione di trasformazione naturale in \ref{sec_tnat}, vista come \emph{omomorfismo tra funtori}.
+La seconda di queste osservazioni non è meno importante: porterà alla definizione di funtore in \ref{def_funtore} come \emph{omomorfismo tra categorie}, alla definizione di \emph{diagramma} in \ref{def_diagramma_comm} come immagine di una categoria piccola in una categoria, non necessariamente piccola, e alla definizione di trasformazione naturale in \ref{sec_tnat}, vista come \emph{omomorfismo tra funtori}.
 \section{Esempi di categorie nella pratica matematica}\label{sec_esempi_cats}
 Iniziamo ora a dare degli esempi di categorie piccole partendo dall'esempio più semplice, anche quello più banale.
 \subsection{Categorie come forme}\label{ssec:categorie_forme}
@@ -436,7 +436,7 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 \end{example}
 Dopo questa digressione veniamo a due esempi più elaborati, ma molto `concreti', di categorie dove gli oggetti sono numeri naturali:
 \index{Categoria!--- dei circuiti}
-\begin{handsExample}[La categoria dei circuiti digitali]{tech}\label{ex_cat_circuiti}
+\begin{hExample}[La categoria dei circuiti digitali]{tech}\label{ex_cat_circuiti}
 	La categoria \(\ctCirc\) ha
 	\begin{itemize}
 		\item per oggetti i numeri naturali \(0,1,2,\dots\);
@@ -476,14 +476,14 @@ Dopo questa digressione veniamo a due esempi più elaborati, ma molto `concreti'
 	\]
 	che rappresenta la funzione Booleana semplice
 	\[(x,y,z,w)\mapsto \lnot((x\land y)\lor(z\lor w)).\]
-\end{handsExample}
+\end{hExample}
 Vale il seguente teorema:
 \begin{theorem}\label{circ_thm}
 	Ogni funzione Booleana semplice $f :\bbB^n\to\bbB$ è esprimibile come composizione in serie e in parallelo di: proiezioni, mappe diagonali, congiunzioni e negazioni logiche.  %\Todo{qualcosa che dovrebbe essere nel libro di Walters \cite{Walters1992}, da cui ho preso questo esempio}
 \end{theorem}
 In altre parole l'insieme $\{\text{AND},\text{OR}\}$ è \emph{funzionalmente completo} (o un \emph{insieme universale di porte logiche}). Per una dimostrazione, si veda \cite[Teorema 1.4]{Crama2011}. In termini categoriali, stiamo affermando che un certo insieme di morfismi genera, insieme alle $\pi_1,\dots,\pi_n$ e $\Delta_n$ per ogni $n\ge 0$, l'intera categoria mediante le operazioni di prodotto e composizione.
 
-Il capitolo \ref{chap_limiti_colimiti} e in particolare la nozione di prodotto, \ref{}, renderanno chiaro il ruolo fondamentale delle mappe $\Delta_n,\pi_1,\dots,\pi_n$ in questa e molte altre costruzioni.
+Il capitolo \ref{chap_limiti_colimiti} e in particolare la nozione di prodotto, introdotta in \ref{chap_limiti_colimiti}, renderanno chiaro il ruolo fondamentale delle mappe $\Delta_n,\pi_1,\dots,\pi_n$ in questa e molte altre costruzioni.
 \index{Categoria!--- dei diagrammi di flusso}
 \begin{example}[La categoria dei diagrammi di flusso]\label{ex_cat_flusso}
 	La categoria \(\ctFlux\) è definita come segue:
@@ -517,7 +517,7 @@ e insieme a queste, molte altre. Esiste una dicotomia forte tra queste due class
 	\[(a,c)\in S\cmp R\iff \exists (b\in B) : ((a,b)\in R)\land ((b,c)\in S).\]
 	Con questa definizione, si può mostrare che \(T\cmp(S\cmp R)=(T\cmp S)\cmp R\) e che la relazione diagonale \(\{(a,a)\mid a\in A\}\subseteq A\times A\) (ovvero la relazione \(a\,\Delta\,a'\iff a=a'\)) funge da elemento identità per la composizione così definita.
 \end{example}
-Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto cartesiano è importante, perché se \(R : A\to B\) è una relazione, vogliamo che \(A\) ne sia il dominio, e \(B\) il codominio. \`E però vero che gli insiemi \(A\times B\) e \(B\times A\) sono in biiezione canonica, e quindi si potrebbe pensare di definire una categoria \(\ctRel'\) con gli stessi oggetti di \(\ctRel\), ma con morfismi da \(A\) verso \(B\) le relazioni \(R\subseteq B\times A\). In effetti, questa è la categoria opposta \(\ctRel^\op\) di \(\ctRel\) (si veda \ref{def_cat_opp}), e tra \(\ctRel^\op\) e \(\ctRel\) esiste un isomorfismo (si veda \ref{??}). % aggiungere riferimento a dove faremo vedere questo isomorfismo.
+Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto cartesiano è importante, perché se \(R : A\to B\) è una relazione, vogliamo che \(A\) ne sia il dominio, e \(B\) il codominio. \`E però vero che gli insiemi \(A\times B\) e \(B\times A\) sono in biiezione canonica, e quindi si potrebbe pensare di definire una categoria \(\ctRel'\) con gli stessi oggetti di \(\ctRel\), ma con morfismi da \(A\) verso \(B\) le relazioni \(R\subseteq B\times A\). In effetti, questa è la categoria opposta \(\ctRel^\op\) di \(\ctRel\) (si veda \ref{def_cat_opp}), e tra \(\ctRel^\op\) e \(\ctRel\) esiste un isomorfismo (si veda \ref{rel_autoduale}). % aggiungere riferimento a dove faremo vedere questo isomorfismo.
 \begin{remark}\label{klext_delle_relazioni}
 	Ogni relazione \(R : A\to B\) induce una funzione \(R^* : 2^B\to 2^A\) nel modo che segue: un sottoinsieme \(U\subseteq B\) viene mandato in \(R^*U:=\{x\in A\mid \forall u\in U.(x,u)\in R\}\). In effetti, esiste una analoga funzione \(R_* : 2^A\to 2^B\), definita da \((V\subseteq A) \mapsto R_*V:= \{y\in B\mid \forall v\in V.(v,y)\in R\}\), e tra le due funzioni \(R^*, R_*\) sussiste la relazione
 	\[V\subseteq R^*U \iff U\subseteq R_*V\label{aggiunti_in_disguise}\]
@@ -550,7 +550,7 @@ Evidentemente, possiamo restringerci a considerare la categoria dei soli insiemi
 	Questa operazione di composizione, come ricorda chiunque abbia studiato l'algebra lineare, è associativa, e la matrice identità \(I_n\in \matrici nn\bbF\) ne è l'elemento identità.
 \end{example}
 \begin{remark}
-    La categoria degli spazi vettoriali e mappe lineari, definita in \ref{}, e la categoria \(\bbF\emdash\ctMat\) ora definita, sono collegate in un senso preciso che sarà chiaro introducendo la nozione di \emph{scheletro} di una categoria in \ref{}: \(\bbF\emdash\ctMat\) si ottiene da $\bbF\emdash\ctVect$ scegliendo un solo oggetto per ogni dimensione (dato che ogni $\bbF$-spazio vettoriale $V$ di dimensione finita su $\bbF$ è isomorfo ad un oggetto di \(\bbF\emdash\ctMat\)).
+    La categoria degli spazi vettoriali e mappe lineari, definita in \ref{}, e la categoria \(\bbF\emdash\ctMat\) ora definita, sono collegate in un senso preciso che sarà chiaro introducendo la nozione di \emph{scheletro} di una categoria in \ref{def_scheletro}: \(\bbF\emdash\ctMat\) si ottiene da $\bbF\emdash\ctVect$ scegliendo un solo oggetto per ogni dimensione (dato che ogni $\bbF$-spazio vettoriale $V$ di dimensione finita su $\bbF$ è isomorfo ad un oggetto di \(\bbF\emdash\ctMat\)).
 \end{remark}
 Questo appena fatto è il secondo degli esempi motivanti fatti ad inizio capitolo.
 \index{Categoria!--- di strutture algebriche}
@@ -681,19 +681,19 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	\emph{eventualmente infinite} di morfismi contigui in una categoria \(\ctC\) sarà esattamente definendole come funtori \(\ctOrd_{\le\lambda}\funto \ctC\).
 \end{remark}
 \index{Categoria!--- di spazi topologici}
-\begin{handsExample}[Spazi topologici]{fund}\label{ex_cat_top}
+\begin{hExample}[Spazi topologici]{fund}\label{ex_cat_top}
 	Ricordiamo che uno \emph{spazio topologico} è un insieme \(X\) dotato di una \emph{topologia}, cioè una collezione \(\tau_X\) di sottoinsiemi di \(X\), chiamati gli \emph{aperti}, contenente l'insieme vuoto e \(X\) stesso, e chiusa rispetto alle intersezioni finite e a tutte le unioni.
 	Dati due spazi topologici \((X,\tau_X)\) e \((Y,\tau_Y)\), una funzione \(f:X\to Y\) è continua per le topologie \(\tau_X\) e \(\tau_Y\) se per ogni aperto \(V\in\tau_Y\), la sua preimmagine \(f^{-1}(V)\) è un aperto di \(\tau_X\).
 	Gli spazi topologici e le funzioni continue tra loro formano la categoria \(\ctTop\).
-\end{handsExample}
-\begin{handsExample}[Spazi topologici e classi di omotopia]{skip}\index{Categoria!--- dell'omotopia}\label{ex_cat_hotop}
+\end{hExample}
+\begin{hExample}[Spazi topologici e classi di omotopia]{skip}\index{Categoria!--- dell'omotopia}\label{ex_cat_hotop}
 	La categoria $\ctHoTop$ detta \emph{categoria dell'omotopia (di spazi topologici)} è così definita:
 	\begin{itemize}
 		\item gli oggetti di $\ctHoTop$ sono gli spazi topologici di \ref{ex_cat_top};
 		\item una freccia tra due spazi topologici $X,Y$ è una classe di omotopia di mappe continue $X\to Y$, dove la relazione di omotopia in $\ctTop(X,Y)$ è definita così: due mappe continue $f,g : X\to Y$ sono omotope (l'accento è sulla prima \emph{o}) quando esiste una funzione continua $H : X \times [0,1] \to Y$ tale che $H(x,0) = f(x)$ e $H(x,1)=g(x)$ per ogni $x\in X$. Questo si denota con $f\simeq_H g$ o brevemente con $f\simeq g$ (quando è univoco, o ovvio, come costruire $H$ a partire dal contesto).
 	\end{itemize}
 	La composizione di classi di omotopia di mappe continue è definita grazie al fatto che l'omotopia tra mappe è una congruenza su ogni $\ctTop(X,Y)$ (cioè, se $f\simeq g$, allora $h\cmp f\cmp k\simeq h\cmp g\cmp k$): si veda anche \ref{fun_ex_omoto_omolo} più avanti.
-\end{handsExample}
+\end{hExample}
 \begin{example}
 	Un \emph{complesso di catene} $(A_\bullet, d_\bullet)$ di gruppi abeliani è una catena di omomorfismi tra gruppi abeliani della forma
 	\[\begin{tikzcd}
@@ -1227,6 +1227,9 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 
 	Le categorie `spanna generica' e `cospanna generica' sono opposte l'una dell'altra, e altrettanto è vero per le categorie \(S^\lhd\) e \(S^\rhd\):
 	\[(\Lambda^2_0)^\op = \Lambda^2_2\qquad\qquad (S^\lhd)^\op = S^\rhd\]
+\end{example}
+\begin{example}\label{rel_autoduale}
+	Un esempio non banale di categoria autoduale è $\ctRel$.\Todo{}
 \end{example}
 \begin{definition}[Incubi e succube sopra un oggetto]\label{def_cat_slice}\index{Categoria!--- incubo}\index{Categoria!--- succuba|see {incubo}}\index{Categoria!--- sopra un oggetto}\index{Categoria!--- sotto un oggetto|see {sopra un oggetto}}
 	Sia \(\ctC\) una categoria, e \(X\) un oggetto di \(\ctC\).
