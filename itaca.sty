@@ -146,12 +146,16 @@
 \NewDocumentCommand{\Mono}{ O{\ctC} }{\mathbf{Mono}_{#1}}
 
 \usetikzlibrary {arrows.meta}
-\tikzcdset{arrow style=tikz,
-           diagrams={>={
-            Classical TikZ Rightarrow[ length  = +1.05pt 11
-                                     , width' = +0pt 0.65
-                                     , line width = 0pt 0.9 1]}}
-           }
+\pgfkeys{
+  cm to/.tip={
+    Classical TikZ Rightarrow[
+      length = +1.05pt 11,
+      width' = +0pt 0.65,
+      line width = 0pt 0.9 1,
+    ]
+  },
+  cm double to/.tip = {cm to[sep=+0pt -8.9]cm to},
+}
 % teoremi
 \makeatletter
 \def\defthm#1#2{%
