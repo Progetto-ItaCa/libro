@@ -63,8 +63,12 @@
 \def\pSet{\partial\ctSet}
 \def\ctCsAlg{\mathrm{C}^*\emdash\cate{Alg}}
 
+% imprescindibile yoneda in hiragana, va caricato prima di `inputenc'
+\RequirePackage{CJKutf8}
+\newcommand{\yon}{\text{\begin{CJK}{UTF8}{min}よ\end{CJK}}}
+\newcommand{\jap}[1]{\text{\begin{CJK}{UTF8}{min}#1\end{CJK}}}
 
-% \RequirePackage[utf8x]{inputenc}
+\RequirePackage[utf8]{inputenc}
 \RequirePackage[T2A]{fontenc}
 
 \RequirePackage[svgnames]{xcolor}
@@ -186,7 +190,7 @@
 
 \newtheorem*{proposition*}{Proposizione}
 
-\usepackage{fontawesome}
+\RequirePackage{fontawesome}
 \ExplSyntaxOn
 \NewDocumentCommand{\hands}{m}
 {
@@ -260,9 +264,6 @@
   \newcommand{\ctIso}{\cate{I}}
 
 
-% imprescindibile yoneda in hiragana
-\usepackage{CJKutf8}
-\newcommand{\yon}{\text{\begin{CJK}{UTF8}{min}よ\end{CJK}}}
 \newcommand{\cop}{\coprod}
 
 % #1 #2 : gli oggetti che pulli
@@ -402,7 +403,7 @@
 
 \ExplSyntaxOff
 
-\usepackage{adjustbox}
+\RequirePackage{adjustbox}
 \newenvironment{adju}[1][0.925]{%
 \begin{center}%
 	\begin{adjustbox}{max height=0.5\textheight, max width=#1\textwidth}%
@@ -433,15 +434,15 @@
 
 \NewDocumentCommand{\matrici}{ m m m }{\mathrm{M}_{#1\times #2}(#3)}
 
-\usepackage{imakeidx}
-\usepackage[automark]{scrlayer-scrpage}
-\usepackage[italian]{babel}
-\usepackage{microtype,multirow,booktabs}
-\usepackage{hyperref}
+\RequirePackage{imakeidx}
+\RequirePackage[automark]{scrlayer-scrpage}
+\RequirePackage[italian]{babel}
+\RequirePackage{microtype,multirow,booktabs}
+\RequirePackage{hyperref}
 \let\second\relax
-\usepackage{mathabx}
-\usepackage[color]{showkeys}
-\usepackage{circuitikz}
+\RequirePackage{mathabx}
+\RequirePackage[color]{showkeys}
+\RequirePackage{circuitikz}
 
 \ctikzset{tripoles/thickness=1}
 \hypersetup{
@@ -466,8 +467,8 @@
 }
 %==
 \NewDocumentCommand{\hammock}{ O{\ctSet} m m }{ #2 \leftrightarroweq_{#1} #3 }
-\usepackage[font={small}]{caption}
-\usepackage{datetime}
+\RequirePackage[font={small}]{caption}
+\RequirePackage{datetime}
 
 \NewDocumentCommand{\presh}{ m }{ \Hom{\ctCat}({#1}^\op,\ctSet) }
 
