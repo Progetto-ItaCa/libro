@@ -27,6 +27,7 @@
             circuitikz
             cm-super
             collectbox
+            cjk
             cyrillic
             datetime
             enumitem
