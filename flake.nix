@@ -52,6 +52,7 @@
             snapshot
             stmaryrd
             t2
+            texfot
             tikz-cd
             todonotes
             turnstile

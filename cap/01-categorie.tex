@@ -521,7 +521,7 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 \begin{remark}\label{klext_delle_relazioni}
 	Ogni relazione \(R : A\to B\) induce una funzione \(R^* : 2^B\to 2^A\) nel modo che segue: un sottoinsieme \(U\subseteq B\) viene mandato in \(R^*U:=\{x\in A\mid \forall u\in U.(x,u)\in R\}\). In effetti, esiste una analoga funzione \(R_* : 2^A\to 2^B\), definita da \((V\subseteq A) \mapsto R_*V:= \{y\in B\mid \forall v\in V.(v,y)\in R\}\), e tra le due funzioni \(R^*, R_*\) sussiste la relazione
 	\[V\subseteq R^*U \iff U\subseteq R_*V\label{aggiunti_in_disguise}\]
-	dal momento che il lato sinistro è equivalente a \(\forall v\in V.\forall u\in U.(v,u)\in R\) e il lato destro a \(\forall u\in U.\forall v\in V.(v,u)\in R\). In \ref{rel_danno_aggiunti} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie, affrontata per esteso nel capitolo \ref{cap:aggiunti}.
+	dal momento che il lato sinistro è equivalente a \(\forall v\in V.\forall u\in U.(v,u)\in R\) e il lato destro a \(\forall u\in U.\forall v\in V.(v,u)\in R\). Nel capitolo \ref{cap_aggiunti} e in particolare in \ref{rel_danno_aggiunti} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie.
 \end{remark}
 \index{Categoria!--- degli insiemi}
 \index{Categoria!--- degli insiemi finiti|see {--- degli insiemi}}
@@ -550,7 +550,7 @@ Evidentemente, possiamo restringerci a considerare la categoria dei soli insiemi
 	Questa operazione di composizione, come ricorda chiunque abbia studiato l'algebra lineare, è associativa, e la matrice identità \(I_n\in \matrici nn\bbF\) ne è l'elemento identità.
 \end{example}
 \begin{remark}
-    La categoria degli spazi vettoriali e mappe lineari, definita in \ref{}, e la categoria \(\bbF\emdash\ctMat\) ora definita, sono collegate in un senso preciso che sarà chiaro introducendo la nozione di \emph{scheletro} di una categoria in \ref{def_scheletro}: \(\bbF\emdash\ctMat\) si ottiene da $\bbF\emdash\ctVect$ scegliendo un solo oggetto per ogni dimensione (dato che ogni $\bbF$-spazio vettoriale $V$ di dimensione finita su $\bbF$ è isomorfo ad un oggetto di \(\bbF\emdash\ctMat\)).
+    La categoria degli spazi vettoriali e mappe lineari, introdotta indirettamente in \ref{varie_categorie_nella_pratica}, e la categoria \(\bbF\emdash\ctMat\) ora definita, sono collegate in un senso preciso che sarà chiaro introducendo la nozione di \emph{scheletro} di una categoria in \ref{def_scheletro}: \(\bbF\emdash\ctMat\) si ottiene da $\bbF\emdash\ctVect$ scegliendo un solo oggetto per ogni dimensione (dato che ogni $\bbF$-spazio vettoriale $V$ di dimensione finita su $\bbF$ è isomorfo ad un oggetto di \(\bbF\emdash\ctMat\)).
 \end{remark}
 Questo appena fatto è il secondo degli esempi motivanti fatti ad inizio capitolo.
 \index{Categoria!--- di strutture algebriche}
@@ -594,7 +594,9 @@ L'\emph{algebra universale} si occupa di rendere preciso il concetto di `insieme
 	\end{itemize}
 \end{example}
 \`E un esercizio tedioso nella manipolazione delle tuple ordinate, ora, dimostrare che gli assiomi di categoria sono tutti soddisfatti. Un esercizio analogamente tedioso è di trovare segnature algebriche opportune che esprimono le categorie dei gruppi, dei monoidi, degli anelli e degli spazi vettoriali ecc.\ come esempi particolari di categorie di modelli di una segnatura algebrica.\footnote{Tedioso, e a volte non proprio banale: ad esempio, come si descrivono le operazioni di moltiplicazione per scalare in uno spazio vettoriale usando la definizione di segnatura algebrica? Si noti anche che la richiesta che un omomorfismo di modelli rispetti \emph{tutti} gli elementi della segnatura a volte è ridondante: ogni omomorfismo di gruppi $f : G\to H$ manda l'identità del dominio nell'identità del codominio perché \(f(e_G)\) deve essere un elemento idempotente di $H$, e preserva gli inversi come corollario.}
-
+\begin{remark}\label{varie_categorie_nella_pratica}
+	Categorie di modelli come in \ref{ex_cat_sigma_strutture} sono tra le più comuni da considerare nella pratica matematica: i monoidi e i loro omomorfismi, i gruppi e i loro omomorfismi (tra essi, la sottocategoria dei gruppi abeliani), gli spazi vettoriali su un campo $k$ e le funzioni $k$-lineari, formano tutte esempi di categoria, che denotiamo con $\ctMon$, $\ctGrp$, $\ctAb$, $\ctVect_k$,\dots
+\end{remark}
 \begin{example}[Categoria dei multidigrafi]\label{ex_cat_grafi}\index{Categoria!--- dei grafi}
 	Questo esempio rende precise alcune osservazioni fatte in precedenza, \ref{ex_cat_doppiafreccia} e \ref{ex_cat_libera}. La categoria \(\ctdGph\) dei grafi è così definita:
 	\begin{itemize}
@@ -706,7 +708,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	\end{tikzcd}\]
 	sia commutativo.
 
-	La categoria dei complessi di catene è una importante costruzione in topologia algebrica: ad ogni complesso di catene $(A_\bullet, d_\bullet)$ si possono associare vari gruppi abeliani detti gruppi di \emph{omologia}. La definizione di \emph{funtore} approfondirà la questione in \ref{}.
+	La categoria dei complessi di catene è una importante costruzione in topologia algebrica: ad ogni complesso di catene $(A_\bullet, d_\bullet)$ si possono associare vari gruppi abeliani detti gruppi di \emph{omologia}. La definizione di \emph{funtore} approfondirà la questione in \ref{def_funtore}.
 \end{example}
 \index{Categoria!--- di funzioni parziali}
 \begin{example}\label{ex_cat_pfun}\index{Funzione!--- parziale}
@@ -896,7 +898,7 @@ Occupiamoci ora di dimostrare che una categoria dove tra due oggetti esiste al p
 	\end{itemize}
 \end{proof}
 \index{Categoria!--- da un monoide}
-L'altro esempio fondamentale di struttura matematica che è un caso particolare di categoria è: un monoide come in \ref{} è precisamente una categoria che ha un solo oggetto. Questi sono precisamente gli esempi iniziali con cui abbiamo motivato la definizione di categoria in \ref{def_categ}.
+L'altro esempio fondamentale di struttura matematica che è un caso particolare di categoria è: un monoide come in \ref{prelim_def_monoide} è precisamente una categoria che ha un solo oggetto. Questi sono precisamente gli esempi iniziali con cui abbiamo motivato la definizione di categoria in \ref{def_categ}.
 \begin{theorem}\label{mon_sonocat}
 	Dato un monoide \((M,\cdot,1)\), definiamo la seguente categoria, che indichiamo con \(\susp M\).\footnote{A volte la categoria definita in questo modo si indica con \(\susp(M,\cdot,1)\), a volte (quando l'operazione su \(M\) è ovvia dal contesto) semplicemente con \(\susp M\).}
 	\begin{itemize}
@@ -924,7 +926,7 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 	In particolare, un gruppo \((G,\cdot,1)\) si può ugualmente vedere come la categoria \(\susp G\) ad esso associata, che ha un solo oggetto e \(G\) come insieme di morfismi.
 \end{corollary}
 \begin{remark}
-	Del resto, una categoria con un solo oggetto non `è' un monoide, ma lo definisce naturalmente; e un monoide non `è' la categoria \(\susp M\), ma la definisce naturalmente (e qualcosa di simile si può dire per gli insiemi ordinati in \ref{}).
+	Del resto, una categoria con un solo oggetto non `è' un monoide, ma lo definisce naturalmente; e un monoide non `è' la categoria \(\susp M\), ma la definisce naturalmente (e qualcosa di simile si può dire per gli insiemi ordinati in \ref{ex_cat_ordini}).
 
     In altre parole, eliminare la distinzione tra \(M\) e \(\susp M\) non segue da una tautologia, ma è una \emph{identità informativa} (il termine è in `Senso e significato' di Frege, \cite{}) che non è \emph{strettamente} una identità, ma una \emph{identificazione} tra due concetti sintatticamente distinti: in maniera più vicina al gergo matematico, a patto che $\#\ctC_0 = 1$, le assegnazioni \(M\mapsto \susp M\) e \(\ctC\mapsto \ctC_1\) sono inverse una dell'altra, nel senso che
     \[(\susp M,\cdot,1)_1 = M\qquad\qquad\susp(\ctC_1,\circ,\id_\bullet) = \ctC.\]
@@ -1648,7 +1650,7 @@ Chi legge rifletta su questa domanda: la categoria \(\ctCospan(\ctC)\) è \(\ctS
         \node [below=0.5em of C] {$\ctC$};
         \node [below=0.5em of D] {$\ctD$};
       \end{tikzpicture}
-      \caption{Giunto di \(\ctC\) e \(\ctD\) con alcuni morfismi ed eteromorfismi in evidenza.}
+      \caption{Giunto di \(\ctC\) e \(\ctD\) con alcuni morfismi (frecce lisce) ed eteromorfismi (frecce ondulate) in evidenza.}
       \label{fig_giunto}
     \end{center}
   \end{figure}
@@ -1938,7 +1940,7 @@ Chiaramente esistono categorie che non sono scheletriche (per esempio perché es
 		\item gli oggetti sono gli elementi di \(X\);
 		\item c'è un morfismo \(\langle m\rangle_x : x\to m\cdot x\), dove \(m\cdot x\) denota l'azione di \(m\in M\) su \(x\).
 	\end{itemize}
-	Mostrare esplicitamente gli assiomi di categoria (rendendo così precisa questa definizione informale). Recuperare \(\act G\)  come caso particolare di questa definizione; mostrare che, quando \(M\) è un monoide libero (su un insieme \(A\) di generatori) nel senso di \ref{mongruppi_liberi}, allora \(M/\!\!/X\) è una categoria libera nel senso di \ref{ex_cat_libera} (su un grafo \(G[A]\) determinato come\dots).
+	Mostrare esplicitamente gli assiomi di categoria (rendendo così precisa questa definizione informale). Recuperare \(\act G\)  come caso particolare di questa definizione; mostrare che, quando \(M\) è un monoide libero (su un insieme \(A\) di generatori) nel senso di \ref{mongruppi_liberi}, allora \(M/\!\!/X\) è una categoria libera nel senso di \ref{ex_cat_libera} (su un grafo \(\ctG[A]\) determinato come\dots).
 	% \item Costruisci un esempio in \(\ctTop\) di oggetti \(X\) e \(Y\) non isomorfi, e morfismi \(f:X\to Y\) e \(g:Y\to X\) tali che \(g\cmp f=\id_X\) (ma \(f\cmp g \ne \id_Y\)).
 	% \item Dimostra che in ogni categoria, le identità sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo.
 \end{enumerate}
@@ -2121,7 +2123,7 @@ Consideriamo uno spazio topologico \(X\) e ad ogni aperto \(U\subseteq X\) assoc
 	\item per ogni famiglia \(s_i \in FU_i\), tale che \(r_{U_{ij}U_i}s_i = r_{U_{ij}U_j}s_j\), esiste un (unico, in virtù della proprietà precedente) \(s\in FU\) tale che \(r_{U_iU}s=s_i\).
 \end{itemize}
 Una corrispondenza del genere si dice un \emph{fascio} sullo spazio \(X\).
-\begin{definition}
+\begin{definition}[Bifuntore]\label{def_bifuntore}\index{Bifuntore}\index{Funtore!bi---}
 	Un \emph{bifuntore} è un funtore il cui dominio sia una categoria prodotto; più precisamente, date tre categorie \(\ctA,\ctB,\ctC\) un bifuntore \(F : \ctA \times \ctB \fun \ctC\) assegna
 	\begin{itemize}
 		\item a ogni coppia \((A,B)\in \ctA_0\times\ctB_0\) di oggetti un oggetto \(F(A,B) \in\ctC_0\);
@@ -2213,7 +2215,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\end{itemize}
 \end{definition}
 \begin{remark}[La categoria delle categorie esiste davvero?]
-	La `categoria' \(\cate{CAT}\) di tutte le categorie localmente piccole è `illegittima' perché non è localmente piccola: infatti la classe dei funtori \(\ctC \fun\ctD\) tra due categorie larghe non è un insieme.\footnote{Usando la definizione, è possibile mostrare che c'è una classe propria di funzioni di classe \(F_0 : \ctC_0 \to \ctD_0\) e \(F_1 : \ctC_1 \to \ctD_1\) che soddisfano \ref{p_1},\ref{p_2}.} Questo può sembrare un puntiglio terminologico, ma è causa di diversi problemi (ad esempio: per \(\ctCAT\) non esistono i funtori hom di \ref{ex_hom_funtore}; quando avremo definito una trasformazione naturale in \ref{sec_tnat} vedremo che anche la categoria \([\ctCat,\ctSet]\) dei funtori da $\ctCat$ a $\ctSet$ è illegittima, e che questo è un problema --per esempio, per \(\ctCAT\) nessuno dei risultati del capitolo \ref{cap:yoneda} è valido).
+	La `categoria' \(\cate{CAT}\) di tutte le categorie localmente piccole è `illegittima' perché non è localmente piccola: infatti la classe dei funtori \(\ctC \fun\ctD\) tra due categorie larghe non è un insieme.\footnote{Usando la definizione, è possibile mostrare che c'è una classe propria di funzioni di classe \(F_0 : \ctC_0 \to \ctD_0\) e \(F_1 : \ctC_1 \to \ctD_1\) che soddisfano \ref{p_1},\ref{p_2}.} Questo può sembrare un puntiglio terminologico, ma è causa di diversi problemi (ad esempio: per \(\ctCAT\) non esistono i funtori hom di \ref{ex_hom_funtore}; quando avremo definito una trasformazione naturale in \ref{sec_tnat} vedremo che anche la categoria \([\ctCat,\ctSet]\) dei funtori da $\ctCat$ a $\ctSet$ è illegittima, e che questo è un problema --per esempio, per \(\ctCAT\) nessuno dei risultati del capitolo \ref{cap_yoneda} è valido).
 
 	Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture definibili in topologia algebrica, che somigliano a categorie ma dove gli assiomi \ref{cp_1}, \ref{cp_2} `valgono a meno di omotopia'). Raramente faremo riferimento a \(\ctCAT\), e mai parlando della sua struttura di `categoria'; avremo invece spesso bisogno di formare categorie del tipo $[\ctC,\ctSet]$ (o simili: $[\ctC,\ctAb]$, $[\ctC,\ctVect]$ eccetera, ma \emph{solo quando $\ctC$ è piccola} (in questo caso queste categorie sono tutte legittime).
 \end{remark}
@@ -2556,8 +2558,8 @@ La nozione di \emph{trasformazione naturale} tra funtori rende precisa questa id
 		\]
 	\end{itemize}
 \end{definition}
-\begin{remark}
-	I funtori sono i morfismi di una categoria $\ctCat$ delle categorie (piccole); le trasformazioni naturali tra funtori rendono l'insieme $\ctCat(\ctC,\ctD)$ dei funtori $F : \ctC\funto\ctD$ a sua volta una categoria, dove le trasformazioni naturali $\alpha : F\nat G$ si pensano come ``frecce tra frecce'', o ``frecce di dimensione 2'', nel senso che andiamo a spiegare. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo $\To$, a riempire un diagramma di funtori come segue:
+\begin{definition}\label{def_natutra}
+	I funtori sono i morfismi di una categoria $\ctCat$ delle categorie (piccole); le trasformazioni naturali tra funtori rendono la classe $\ctCat(\ctC,\ctD)$ dei funtori $F : \ctC\funto\ctD$ a sua volta una categoria, dove le trasformazioni naturali $\alpha : F\nat G$ si pensano come ``frecce tra frecce'', o ``frecce di dimensione 2'', nel senso che andiamo a spiegare. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo $\To$, a riempire un diagramma di funtori come segue:
 	%\Todo{Che si fa quando vogliamo considerare }
 	% si possono vedere come ``frecce tra frecce'', o ``frecce di secondo ordine''. È comune rappresentarle con delle doppie frecce, come segue:
 	\[
@@ -2570,7 +2572,10 @@ La nozione di \emph{trasformazione naturale} tra funtori rende precisa questa id
 
 	\medskip
 	La struttura che ha per oggetti le categorie piccole, per frecce i funtori tra esse, e per frecce tra frecce le trasformazioni naturali è un esempio di \emph{2-categoria} (di cui non diamo la definizione qui, si veda \cite{Kelly2005b}).
-\end{remark}
+\end{definition}
+\begin{notation}
+Coerentemente con la notazione usata finora, dovremmo denotare $\Hom{\ctCat(\ctC,\ctD)}(F,G)$ la collezione delle trasformazioni naturali tra due funtori, cioè dei morfismi nella categoria $\ctCat(\ctC,\ctD)$. \`E però più conveniente usare una notazione più compatta, specie quando $\ctC,\ctD$ sono univocamente determinate dal contesto: una scelta comune è $\Nat(F,G)$ (ma alcuni autori usano convenzioni ancora più compatte come il semplice $[F,G]$).
+\end{notation}
 \begin{remark}
 	Sarà spesso utile considerare esempi in cui $\ctD$ non è una categoria piccola (si veda \ref{}), ma la definizione di $\ctCat(\ctC,\ctD)$ pone un problema di teoria degli insiemi quando $\ctC$ non è piccola; infatti, in quel caso la classe delle trasformazioni naturali tra due funtori $F,G:\ctC\funto\ctD$ è una sottoclasse di \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), che in generale può non essere un insieme (per esempio, può coincidere con \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), quando succede?).
 \end{remark}
@@ -2627,7 +2632,7 @@ Il determinante fornisce un esempio di trasformazione naturale $\det : \text{GL}
     \Todo{rappresentabilità del determinante}
 \end{proposition}
 \begin{definition}[Composizione verticale di trasformazioni naturali]\label{def_vcomp}\index{Composizione verticale!di trasformazioni naturali}
-	Si considerino tre funtori \(F,G,H:\ctC\to\ctD\) e due trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\beta:G\Rightarrow H\).
+	Consideriamo tre funtori \(F,G,H:\ctC\to\ctD\) e due trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\beta:G\Rightarrow H\).
 	La \emph{composizione verticale} \(\beta\circ\alpha:F\Rightarrow H\) delle transformazioni naturali $\beta,\alpha$, rappresentate avendo il bordo $G$ in comune,
 	\[
 	\begin{tikzcd}[sep=large]
@@ -2638,6 +2643,7 @@ Il determinante fornisce un esempio di trasformazione naturale $\det : \text{GL}
 		\ar[Rightarrow, from=Gdown, to=H, "\beta"]
 	\end{tikzcd}
 	\]
+	\Todo{bruttissimo, to fix}
 	è definita dalla composizione $\beta_X\cmp\alpha_X : FX\to GX\to HX$.
 \end{definition}
 Si noti che la condizione di naturalità di \(\beta\circ\alpha\) si ottiene componendo quelle di \(\alpha\) e \(\beta\):
@@ -2701,7 +2707,9 @@ Dualmente, definiamo \emph{\whisk} destro tra il funtore $K$ e la trasformazione
 Chi legge può facilmente verificare che (nelle stesse notazioni di sopra) vale l'uguaglianza
 \[(H*\alpha)*K=H*(\alpha*K)\]
 la quale rende la scrittura $H * \alpha * K$ univocamente definita.
-\begin{definition}
+
+Osserviamo che dalla definizione di composizione orizzontale in \ref{} la composizione $\cmp$ è un bifuntore (si veda \ref{def_bifuntore}): da questo segue
+\begin{definition}\label{interchangio}\index{Legge di interscambio}\index{Godement!identità di ---}
     \Todo{Legge di interscambio}
     \Todo{Identità di Godement}
 \end{definition}
@@ -2710,17 +2718,46 @@ la quale rende la scrittura $H * \alpha * K$ univocamente definita.
     \[\alpha * K = \alpha\horcomp\id_K\qquad\qquad H * \alpha = \id_H \horcomp\alpha\]
     (cosa che spiega la stessa notazione utilizzata per la composizione orizzontale e per l'\whisk).
 \end{remark}
-\begin{definition}[Il centro di $\ctC$]
-	Grazie a \ref{} sappiamo che Nat(1,1) è un monoide; esso si dice il \emph{centro} di $\ctC$ (motivazione: se $\ctC$ ha un solo oggetto).
+\index{Categoria!centro di una ---}\index{Centro}
+\begin{definition}[Centro di $\ctC$]\label{def_centro}
+	Grazie a \ref{lem_end_monoide} sappiamo che, fissata una categoria $\ctC$, la classe $\Nat(\id_\ctC,\id_\ctC)$ è un monoide rispetto all'operazione di composizione; esso si dice il \emph{centro} di $\ctC$ e viene denotato con $\zentrum(\ctC)$. La motivazione: se $\ctC$ ha un solo oggetto, ancora grazie a \ref{lem_end_monoide} essa è un monoide, e $\zentrum(\ctC)$ ne è precisamente il \emph{centro}, ossia il sottomonoide $\{x\in M\mid \forall a\in M, \, ax=xa\}$.
 \end{definition}
 \begin{proposition}
-	Il fatto che il centro di una categoria con un solo oggetto sia il centro del monoide ad essa associato, secondo \ref{}, non è casuale. Il centro di una qualsiasi categoria $\ctC$ è \emph{sempre} un monoide commutativo.
+	Il fatto che il centro di una categoria con un solo oggetto sia il centro del monoide ad essa associato, secondo \ref{def_centro}, non è casuale. Infatti il centro di una qualsiasi categoria $\ctC$ è \emph{sempre} un monoide commutativo.
 \end{proposition}
 \begin{proof}
-	\Todo{}
+	Diamo due dimostrazioni di questo risultato; chi legge ed è a suo agio con una, dovrebbe cercare di familiarizzare con l'altra. Chi conosce in che cosa consista il \emph{trucco di Eckmann-Hilton} riconoscerà questo come un suo caso particolare. 
+	\begin{itemize}
+		\item prima dimostrazione: una trasformazione naturale $\alpha : \id_\ctC\To\id_\ctC$ consiste di una famiglia di mappe $\alpha_X : X\to X$ indicizzata dagli oggetti di $\ctC$, con la proprietà che $\alpha_Y \cmp f = f\cmp \alpha_X$ per ogni morfismo $f : X\to Y$ in $\ctC$; del resto, se $\beta : \id_\ctC\To\id_\ctC$ è un altro elemento di $\zentrum(\ctC)$, questo vuol dire che $\alpha_X \cmp \beta_X = \beta_X\cmp \alpha_X$, cosicché $(\alpha\cmp\beta)_X = (\beta\cmp\alpha)_X$, ossia le trasformazioni naturali $\alpha\cmp\beta$ e $\beta\cmp\alpha$ coincidono.
+		\item seconda dimostrazione: si noti che vale la seguente catena di uguaglianze tra composizioni orizzontali e verticali (invocando \ref{interchangio} ogni volta che sia necessario):
+		\begin{align*}
+			\begin{tikzpicture}[baseline=(current bounding box.center)]
+			\almond\alpha\beta
+			\end{tikzpicture}
+			&\cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			\almonds\id\id\alpha\beta
+			\end{tikzpicture}\\
+			&\cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			\almonds\alpha\id\id\beta
+			\end{tikzpicture}\\
+			&\cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			\almonds\id\beta\alpha\id
+			\end{tikzpicture}\\
+			&\cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			\almonds\beta\id\id\alpha
+			\end{tikzpicture}\\
+			&\cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			\almonds\beta\alpha\id\id
+			\end{tikzpicture}\\
+			&\cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			\almond\beta\alpha
+			\end{tikzpicture}
+			\end{align*}
+	\end{itemize}
+	Questo conclude la dimostrazione che $\beta\cmp\alpha = \alpha\cmp\beta$.
 \end{proof}
 \begin{example}
-	Un caso particolare di \ref{}, quando la categoria $\ctD$ è la categoria degli insiemi introdotta in \ref{ex_cat_insiemi} è degno di attenzione: fissata $\ctC$ (piccola), la categoria i cui oggetti sono i funtori di tipo
+	Un caso particolare di \ref{def_natutra}, quando la categoria $\ctD$ è la categoria degli insiemi introdotta in \ref{ex_cat_insiemi} è degno di attenzione: fissata $\ctC$ (piccola), la categoria i cui oggetti sono i funtori di tipo
 	\[\dmFun{F}{\ctC^\op}{\ctSet}\]
 	e i cui morfismi $\alpha : F\nat G$ sono le trasformazioni naturali, si chiama la categoria	dei \emph{prefasci} su $\ctC$.
 
@@ -2772,12 +2809,13 @@ che manda $X\xto t C$ in $X\xto t C\xto u C'$.
 è commutativo.
 \end{definition}
 \begin{hRemark}[A proposito del simbolo $\yon_\ctC$]{skip}
-L'immersione di Yoneda è denotata con un carattere non latino. Si legge come lo `\emph{io}' di p\emph{io}ggia, ed è la prima sillaba, nel sistema di scrittura hiragana, del cognome `Yoneda' (\jap{米田 信夫}; in giapponese il cognome precede il nome), di Nobuo Yoneda (\(*\)1930-\(\dag\)1996), matematico e informatico giapponese.
+L'immersione di Yoneda è l'unico funtore di questo testo denotato con un carattere non latino o greco. Si legge come lo `\emph{io}' di p\emph{io}ggia, ed è la prima sillaba, nel sistema di scrittura hiragana, del nome di famiglia `Yoneda' (\jap{米田 信夫}; in giapponese il cognome precede il nome), di Nobuo Yoneda (\(*\)1930-\(\dag\)1996), matematico e informatico teorico giapponese.
 \end{hRemark}
-Un risultato apparentemente innocuo dalle conseguenze devastanti, la cui dimostrazione riposa sul risultato centrale del capitolo \ref{cap_yoneda}:
+Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto profonde, la cui dimostrazione riposa sul risultato centrale del capitolo \ref{cap_yoneda}, è la seguente:
 \begin{proposition}
 	Per ogni categoria piccola $\ctC$, l'immersione di Yoneda $\yon_\ctC$ di \ref{def_yoneda_embeddu} è un funtore pienamente fedele.
 \end{proposition}
+(Nel capitolo \ref{cap_yoneda} deriveremo questo da un risultato ancora più generale. Rimandiamo chi legge a \ref{lemma_yoneda} e \ref{corollario_yo_ff})
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Per risolvere questo esercizio è necessario ricordare la definizione di una \emph{successione esatta} di omomorfismi di gruppo: se $H,G,G',K$ sono gruppi abeliani, una successione esatta corta è una sequenza di mappe componibili
@@ -3038,8 +3076,6 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	un morfismo \(f : A \to B\) che ha una sezione \(s : B\to A\) è una retrazione di \(s\),
 	e viceversa \(f\) è una sezione di ogni sua retrazione.
 \end{definition}
-\Todo{dualità}
-
 \begin{definition}[Retratto]
 	Dati due oggetti \(A\) e \(B\) in una categoria,
 	diciamo che \(A\) è un \emph{retratto} di \(B\) se ci sono una coppia di morfismi detti \emph{sezione} e \emph{retrazione}, raffigurabili come

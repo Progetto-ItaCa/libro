@@ -475,6 +475,32 @@
 \RequirePackage{datetime}
 
 \NewDocumentCommand{\presh}{ m }{ \Hom{\ctCat}({#1}^\op,\ctSet) }
+\NewDocumentCommand{\zentrum}{ }{ \fkz }
 
+\NewDocumentCommand{\almond}{ m m O{\bullet} }{
+\node[inner sep=1pt] (C0) at (0,0) {$#3$};
+\node[inner sep=1pt] (C1) at (1.5,0) {$#3$};
+\draw (C0) -- (C1) 
+  node[font=\tiny,pos=.5,above] {$#1$}
+  node[font=\tiny,pos=.5,below] {$#2$};
+\draw (C0) to[bend left=50] (C1);
+\draw (C0) to[bend right=50] (C1);
+}
+\NewDocumentCommand{\almonds}{ m m m m O{\bullet} }{
+\node[inner sep=1pt] (C0) at (0,0) {$#5$};
+\node[inner sep=1pt] (C1) at (1.5,0) {$#5$};
+\node[inner sep=1pt] (C2) at (3,0) {$#5$};
+\draw (C0) -- (C1) 
+  node[font=\tiny,pos=.5,above] {$#1$}
+  node[font=\tiny,pos=.5,below] {$#2$};
+\draw (C0) to[bend left=50] (C1);
+\draw (C0) to[bend right=50] (C1);
+%
+\draw (C1) -- (C2) 
+  node[font=\tiny,pos=.5,above] {$#3$}
+  node[font=\tiny,pos=.5,below] {$#4$};
+\draw (C1) to[bend left=50] (C2);
+\draw (C1) to[bend right=50] (C2);
+}
 % inutile riga di controllo
 % END OF FILE
