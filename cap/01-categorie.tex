@@ -521,7 +521,7 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 \begin{remark}\label{klext_delle_relazioni}
 	Ogni relazione \(R : A\to B\) induce una funzione \(R^* : 2^B\to 2^A\) nel modo che segue: un sottoinsieme \(U\subseteq B\) viene mandato in \(R^*U:=\{x\in A\mid \forall u\in U.(x,u)\in R\}\). In effetti, esiste una analoga funzione \(R_* : 2^A\to 2^B\), definita da \((V\subseteq A) \mapsto R_*V:= \{y\in B\mid \forall v\in V.(v,y)\in R\}\), e tra le due funzioni \(R^*, R_*\) sussiste la relazione
 	\[V\subseteq R^*U \iff U\subseteq R_*V\label{aggiunti_in_disguise}\]
-	dal momento che il lato sinistro è equivalente a \(\forall v\in V.\forall u\in U.(v,u)\in R\) e il lato destro a \(\forall u\in U.\forall v\in V.(v,u)\in R\). Nel capitolo \ref{cap_aggiunti} e in particolare in \ref{rel_danno_aggiunti} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie.
+	dal momento che il lato sinistro è equivalente a \(\forall v\in V.\forall u\in U.(v,u)\in R\) e il lato destro a \(\forall u\in U.\forall v\in V.(v,u)\in R\). Nel capitolo \ref{cap_aggiunti} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie.
 \end{remark}
 \index{Categoria!--- degli insiemi}
 \index{Categoria!--- degli insiemi finiti|see {--- degli insiemi}}
@@ -595,7 +595,7 @@ L'\emph{algebra universale} si occupa di rendere preciso il concetto di `insieme
 \end{example}
 \`E un esercizio tedioso nella manipolazione delle tuple ordinate, ora, dimostrare che gli assiomi di categoria sono tutti soddisfatti. Un esercizio analogamente tedioso è di trovare segnature algebriche opportune che esprimono le categorie dei gruppi, dei monoidi, degli anelli e degli spazi vettoriali ecc.\ come esempi particolari di categorie di modelli di una segnatura algebrica.\footnote{Tedioso, e a volte non proprio banale: ad esempio, come si descrivono le operazioni di moltiplicazione per scalare in uno spazio vettoriale usando la definizione di segnatura algebrica? Si noti anche che la richiesta che un omomorfismo di modelli rispetti \emph{tutti} gli elementi della segnatura a volte è ridondante: ogni omomorfismo di gruppi $f : G\to H$ manda l'identità del dominio nell'identità del codominio perché \(f(e_G)\) deve essere un elemento idempotente di $H$, e preserva gli inversi come corollario.}
 \begin{remark}\label{varie_categorie_nella_pratica}
-	Categorie di modelli come in \ref{ex_cat_sigma_strutture} sono tra le più comuni da considerare nella pratica matematica: i monoidi e i loro omomorfismi, i gruppi e i loro omomorfismi (tra essi, la sottocategoria dei gruppi abeliani), gli spazi vettoriali su un campo $k$ e le funzioni $k$-lineari, formano tutte esempi di categoria, che denotiamo con $\ctMon$, $\ctGrp$, $\ctAb$, $\ctVect_k$,\dots
+	Categorie di modelli come in \ref{ex_cat_sigma_strutture} sono tra le più comuni da considerare nella pratica matematica: i monoidi e i loro omomorfismi, i gruppi e i loro omomorfismi (tra essi, la sottocategoria dei gruppi abeliani), gli anelli e i loro omomorfismi (tra essi, la sottocategoria degli anelli commutativi), gli spazi vettoriali su un campo $k$ e le funzioni $k$-lineari, formano tutte esempi di categorie, che denotiamo con $\ctMon$, $\ctGrp$, $\ctAb$, $\ctRing$, $\ctcRing$, $\ctVect_k$,\dots
 \end{remark}
 \begin{example}[Categoria dei multidigrafi]\label{ex_cat_grafi}\index{Categoria!--- dei grafi}
 	Questo esempio rende precise alcune osservazioni fatte in precedenza, \ref{ex_cat_doppiafreccia} e \ref{ex_cat_libera}. La categoria \(\ctdGph\) dei grafi è così definita:
@@ -1659,7 +1659,7 @@ Dalla definizione della composizione in \(\ctC\star\ctD\) si può mostrare per i
 
 L'operazione di giunto tra due categorie è essenziale alla loro teoria `combinatoria', e al trattarle come strutture, dato che molte costruzioni elementari si descrivono in termini di giunti: ad esempio, se \(S=\{a,b\}\) è un insieme con due elementi, la spanna generica di \ref{ex_spancospan} è il giunto \(\ctTerm\star S^\delta\), e la cospanna generica è \(S^\delta\star\ctTerm\), e relazioni analoghe valgono anche per le \(S\)-spanne ed \(S\)-cospanne generiche.
 
-Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp G\) è un gruppo guardato come categoria alla maniera di \ref{}, Milnor \cite{milnor1,milnor2} ha studiato la successione \[\susp G, \susp G\star\susp G, \dots, \susp G \star\dots\star \susp G =:\susp G^{\star n}\] e il suo `limite' per dei problemi di topologia.
+Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp G\) è un gruppo guardato come categoria alla maniera di \ref{mon_sonocat}, Milnor \cite{milnor1,milnor2} ha studiato la successione \[\susp G, \susp G\star\susp G, \dots, \susp G \star\dots\star \susp G =:\susp G^{\star n}\] e il suo `limite' per dei problemi di topologia.
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Sia $\ctC$ una categoria, $X\in\ctC_0$ un oggetto, $f : A\to X$ una freccia: dimostrare che il doppio incubo $(\ctC/X)/f$ è un incubo di $\ctC$ (su quale oggetto?). Questa `riduzione' di un incubo iterato resta vera per l'incubo della succuba $(A/\ctC)/f$, per $f/(\ctC/X)$, e per $f/(A/\ctC)$?
@@ -1744,14 +1744,14 @@ La nozione di isomorfismo in teoria delle categorie generalizza e precisa molte 
 \end{tikzcd}
 \]
 Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando l'inverso implicito (tale inverso, se esiste, è ovviamente unico, e ciò ci autorizza a usare il singolare nella definizione).
-\begin{examples}
+\begin{examples}\label{esempi_di_iso}
 	Raccogliamo degli esempi di isomorfismi in varie categorie:%La definizione di isomorfismo comprende molte delle nozioni di ``struttura equivalente'' usate in matematica:
 	\begin{enumtag}{ei}
-		\item \`E evidente che in ogni categoria \(\ctC\), tutte le identità \(\id_X : X\to X\) sono isomorfismi che coincidono col loro inverso, e che la composizione di isomorfismi \(f_1\cmp f_2\) è un isomorfismo di inverso \(g_2\cmp g_1\), cioè \((f_1\cmp f_2)^{-1} = f_2^{-1}\cmp f_1^{-1}\).
-		\item In \(\ctSet\), gli isomorfismi sono esattamente le biiezioni, o `corrispondenze biunivoche'. Per la definizione solitamente data di cardinalità, due insiemi sono isomorfi se e solo se hanno lo stesso numero cardinale, che quindi risulta essere una scelta privilegiata di un oggetto di $\ctSet$, rappresentante della classe di isomorfismo di un dato insieme.
-		\item In \(\bbF\emdash\ctVect\), gli isomorfismi sono le biiezioni lineari. In particolare, due spazi vettoriali \(V,W\) di dimensione finita \(\dim V=n,\dim W=m\) sono isomorfi se e solo se \(n=m\). Similmente, in \(\bbF\emdash\ctMat\) gli isomorfismi sono elementi dell'unione \(\bigcup_{n\ge 0}\text{GL}(n,\bbF)\) di tutti i gruppi delle matrici a coefficienti in $\bbF$, di taglia $n$, invertibili.
-		\item In \(\ctTop\), gli isomorfismi sono gli \emph{omeomorfismi}: funzioni continue con un'inversa insiemistica anch'essa continua. In generale, può non accadere che, se \(f : X\to Y\) è un omomorfismo biiettivo, la \emph{funzione} inversa \(g : Y\to X\) sia anch'essa un isomorfismo; per esempio, l'identità \(\id_X : (X,\delta)\to (X,\gamma)\) su un insieme con tre punti \(X=\{a,b,c\}\) è continua quando \(\delta\) è la topologia discreta e \(\gamma\) è la topologia banale, ma la sua inversa insiemistica \(\id_X : (X,\gamma)\to(X,\delta)\) \emph{non} è continua.
-		\item In ogni categoria di strutture algebriche (si veda \ref{ex_cat_sigma_strutture}), gli isomorfismi sono gli \emph{isomorfismi di \(\Sigma\)-strutture}, cioè le funzioni \(f : A\to B\) che sono \(\Sigma\)-omomorfismi biiettivi: qui non può accadere quanto succede negli spazi topologici: se $f : A\to B$ è un omomorfismo biiettivo, la sua inversa insiemistica deve a sua volta essere un omomorfismo dato che (ad esempio, quando $\cdot$ è una operazione binaria specificata dalla segnatura $\Sigma$ in questione)
+		\item \label{ei_1} \`E evidente che in ogni categoria \(\ctC\), tutte le identità \(\id_X : X\to X\) sono isomorfismi che coincidono col loro inverso, e che la composizione di isomorfismi \(f_1\cmp f_2\) è un isomorfismo di inverso \(g_2\cmp g_1\), cioè \((f_1\cmp f_2)^{-1} = f_2^{-1}\cmp f_1^{-1}\).
+		\item \label{ei_2} In \(\ctSet\), gli isomorfismi sono esattamente le biiezioni, o `corrispondenze biunivoche'. Per la definizione solitamente data di cardinalità, due insiemi sono isomorfi se e solo se hanno lo stesso numero cardinale, che quindi risulta essere una scelta privilegiata di un oggetto di $\ctSet$, rappresentante della classe di isomorfismo di un dato insieme.
+		\item \label{ei_3} In \(\bbF\emdash\ctVect\), gli isomorfismi sono le biiezioni lineari. In particolare, due spazi vettoriali \(V,W\) di dimensione finita \(\dim V=n,\dim W=m\) sono isomorfi se e solo se \(n=m\). Similmente, in \(\bbF\emdash\ctMat\) gli isomorfismi sono elementi dell'unione \(\bigcup_{n\ge 0}\text{GL}(n,\bbF)\) di tutti i gruppi delle matrici a coefficienti in $\bbF$, di taglia $n$, invertibili.
+		\item \label{ei_4} In \(\ctTop\), gli isomorfismi sono gli \emph{omeomorfismi}: funzioni continue con un'inversa insiemistica anch'essa continua. In generale, può non accadere che, se \(f : X\to Y\) è un omomorfismo biiettivo, la \emph{funzione} inversa \(g : Y\to X\) sia anch'essa un isomorfismo; per esempio, l'identità \(\id_X : (X,\delta)\to (X,\gamma)\) su un insieme con tre punti \(X=\{a,b,c\}\) è continua quando \(\delta\) è la topologia discreta e \(\gamma\) è la topologia banale, ma la sua inversa insiemistica \(\id_X : (X,\gamma)\to(X,\delta)\) \emph{non} è continua.
+		\item \label{ei_5} In ogni categoria di strutture algebriche (si veda \ref{ex_cat_sigma_strutture}), gli isomorfismi sono gli \emph{isomorfismi di \(\Sigma\)-strutture}, cioè le funzioni \(f : A\to B\) che sono \(\Sigma\)-omomorfismi biiettivi: qui non può accadere quanto succede negli spazi topologici: se $f : A\to B$ è un omomorfismo biiettivo, la sua inversa insiemistica deve a sua volta essere un omomorfismo dato che (ad esempio, quando $\cdot$ è una operazione binaria specificata dalla segnatura $\Sigma$ in questione)
       \[f^{-1}(x\cdot y) = f^{-1}(fa\cdot fa') = f^{-1}(f(a\cdot a')) = a\cdot a' = f^{-1}(x)\cdot f^{-1}(y).\]
       Questa è una importante differenza tra categorie di tipo `algebrico' e categorie di tipo `topologico', su cui per ora non insistiamo.
 	\end{enumtag}
@@ -1984,7 +1984,7 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 	\[\dmFun{\bigcup_{XY}F_{XY}}{\bigcup_{XY}\Hom{\ctC}(X,Y)}{\bigcup_{XY}\Hom{\ctD}(F_0X,F_0Y)}\]
 	(e il codominio di questa funzione di classe è evidentemente una sottoclasse di $\ctD_1$). \`E una prassi quasi universale, però, omettere i pedici ad \(F_{XY}\) e scrivere la definizione nella forma di \ref{p_2}.
 \end{remark}
-\begin{definition}[Funtori pieni, fedeli, essenzialmente suriettivi]
+\begin{definition}[Funtori pieni, fedeli, essenzialmente suriettivi]\label{classi_di_funtori}
 	\`E conveniente dare un nome speciale ai funtori $F : \ctC\fun\ctD$ tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva: $F : \ctC\fun\ctD$ si dirà
 	\begin{itemize}
 		\item \emph{pieno} se ciascuna $F_{XY}$ è una funzione suriettiva; questo significa che
@@ -1995,7 +1995,7 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 		\begin{quote}
 			Dati $u,v : X\to Y$ morfismi paralleli in $\ctC$, se $Fu=Fv$ allora $u=v$.
 		\end{quote}
-		\item \emph{pienamente fedele} se ciascuna $F_{XY}$ è sia iniettiva che suriettiva (quindi, in virtù di \ref{}, è biiettiva); questo significa che
+		\item \emph{pienamente fedele} se ciascuna $F_{XY}$ è sia iniettiva che suriettiva (quindi, in virtù di \ref{esempi_di_iso}.\ref{ei_2}, è biiettiva); questo significa che
 		\begin{quote}
 			per ogni $g : FX\to FY$ esiste \emph{uno e un solo} morfismo $f : X\to Y$ tale che $Ff=g$.
 		\end{quote}
@@ -2042,7 +2042,7 @@ Dato un costrutto $(\ctC,U)$ la \emph{fibra} sopra un insieme $X$ è la sottocat
 \begin{terminology}[A proposito del nome `funtore']
 	\`E sorprendentemente difficile attribuire con precisione la creazione del termine `funtore' a un singolo individuo.
 
-	Mac Lane scrive in \cite[??]{working-categories} che la parola è un prestito da Carnap, e precisamente dalla sua opera `La sintassi logica del linguaggio' \cite{carnappio}. Carnap scrive nel 1934, e fu proprio Mac Lane a recensire il libro in questione (e a distruggere completamente la sua tesi principale con un elementare controesempio preso dall'algebra astratta, che evidentemente Carnap ignorava).
+	Mac Lane scrive in \cite[note al cap. 1]{working-categories} che la parola è un prestito da Carnap, e precisamente dalla sua opera `La sintassi logica del linguaggio' \cite{carnappio}. Carnap scrive nel 1934, e fu proprio Mac Lane a recensire il libro in questione (e a distruggere completamente la sua tesi principale con un elementare controesempio preso dall'algebra astratta, che evidentemente Carnap ignorava).
 
 	Nel suo testo \cite{kromer}, Ralf Kr\"omer osserva che la terminologia `corrispondenza funtoriale' è stata, da quel momento in poi, largamente utilizzata senza ulteriore discussione (fino al punto che in \cite{} la `teoria delle categorie' viene chiamata `linguaggio funtoriale'); del resto a Carnap non va nemmeno il merito di avere coniato per primo la parola.
 
@@ -2231,7 +2231,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\end{itemize}
 \end{definition}
 \begin{remark}[La categoria delle categorie esiste davvero?]
-	La `categoria' \(\cate{CAT}\) di tutte le categorie localmente piccole è `illegittima' perché non è localmente piccola: infatti la classe dei funtori \(\ctC \fun\ctD\) tra due categorie larghe non è un insieme.\footnote{Usando la definizione, è possibile mostrare che c'è una classe propria di funzioni di classe \(F_0 : \ctC_0 \to \ctD_0\) e \(F_1 : \ctC_1 \to \ctD_1\) che soddisfano \ref{p_1},\ref{p_2}.} Questo può sembrare un puntiglio terminologico, ma è causa di diversi problemi (ad esempio: per \(\ctCAT\) non esistono i funtori hom di \ref{ex_hom_funtore}; quando avremo definito una trasformazione naturale in \ref{sec_tnat} vedremo che anche la categoria \([\ctCat,\ctSet]\) dei funtori da $\ctCat$ a $\ctSet$ è illegittima, e che questo è un problema --per esempio, per \(\ctCAT\) nessuno dei risultati del capitolo \ref{cap_yoneda} è valido).
+	La `categoria' \(\cate{CAT}\) di tutte le categorie localmente piccole è `illegittima' perché non è localmente piccola: infatti la classe dei funtori \(\ctC \fun\ctD\) tra due categorie larghe non è un insieme.\footnote{Usando la definizione, è possibile mostrare che c'è una classe propria di funzioni di classe \(F_0 : \ctC_0 \to \ctD_0\) e \(F_1 : \ctC_1 \to \ctD_1\) che soddisfano \ref{p_1},\ref{p_2}.} Questo può sembrare un puntiglio terminologico, ma è causa di diversi problemi (ad esempio: per \(\ctCAT\) non esistono i funtori hom di \ref{ex_hom_funtore}; quando avremo definito una trasformazione naturale in \ref{sec_tnat} vedremo che anche la categoria \([\ctCat,\ctSet]\) dei funtori da $\ctCat$ a $\ctSet$ è illegittima, e che questo è un problema --per esempio, per \(\ctCat\) la mappa \(\yon\) di \ref{def_yoneda_embeddu} non esiste, e nessuno dei risultati del capitolo \ref{cap_yoneda} è valido).
 
 	Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture definibili in topologia algebrica, che somigliano a categorie ma dove gli assiomi \ref{cp_1}, \ref{cp_2} `valgono a meno di omotopia'). Raramente faremo riferimento a \(\ctCAT\), e mai parlando della sua struttura di `categoria'; avremo invece spesso bisogno di formare categorie del tipo $[\ctC,\ctSet]$ (o simili: $[\ctC,\ctAb]$, $[\ctC,\ctVect]$ eccetera, ma \emph{solo quando $\ctC$ è piccola} (in questo caso queste categorie sono tutte legittime).
 \end{remark}
@@ -2364,7 +2364,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		fc	&	fd
 	\end{smallmatrix}\right) = f(\det A)$, cosicché $\GL_2(f)$ è ben definita verso $\GL_2(S)$; evidentemente ciascun $\GL_2(f)$ è un omomorfismo di gruppi, e $f\mapsto\GL_2(g\cmp f) = \GL_2(g)\cmp\GL_2(f)$, e $\GL_2(\id_R) = \id_{\GL_2(R)}$.
 \end{example}
-\begin{example}\index{Funtore!--- nucleo e conucleo}\index{ker|see {nucleo}}\index{coker|see {conucleo}}
+\begin{example}\label{ker_e_coker}\index{Funtore!--- nucleo e conucleo}\index{ker|see {nucleo}}\index{coker|see {conucleo}}
 	% \Todo{Nucleo e conucleo di un omomorfismo}
 	Data una applicazione lineare $f : V\to W$ tra $k$-spazi vettoriali, il suo \emph{nucleo} consiste del sottospazio $\ker f\le V$ di tutti i vettori $v\in V$ tali che $f(v)=0$. Questa assegnazione è un funtore
 	\[\dmFun{\ker}{\ctVect^\to}\ctVect\]
@@ -2593,7 +2593,7 @@ La nozione di \emph{trasformazione naturale} tra funtori rende precisa questa id
 Coerentemente con la notazione usata finora, dovremmo denotare $\Hom{\ctCat(\ctC,\ctD)}(F,G)$ la collezione delle trasformazioni naturali tra due funtori, cioè dei morfismi nella categoria $\ctCat(\ctC,\ctD)$. \`E però più conveniente usare una notazione più compatta, specie quando $\ctC,\ctD$ sono univocamente determinate dal contesto: una scelta comune è $\Nat(F,G)$ (ma alcuni autori usano convenzioni ancora più compatte come il semplice $[F,G]$).
 \end{notation}
 \begin{remark}
-	Sarà spesso utile considerare esempi in cui $\ctD$ non è una categoria piccola (si veda \ref{}), ma la definizione di $\ctCat(\ctC,\ctD)$ pone un problema di teoria degli insiemi quando $\ctC$ non è piccola; infatti, in quel caso la classe delle trasformazioni naturali tra due funtori $F,G:\ctC\funto\ctD$ è una sottoclasse di \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), che in generale può non essere un insieme (per esempio, può coincidere con \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), quando succede?).
+	Sarà spesso utile considerare esempi in cui $\ctD$ non è una categoria piccola (l'esempio più illustre e pervasivo è \ref{def_yoneda_embeddu}), e sarà altrettanto utile considerare esempi di funtori tra categorie entrambe larghe; però la definizione della `categoria' $\ctCat(\ctC,\ctD)$ pone un problema di teoria degli insiemi quando $\ctC$ non è piccola; infatti, in quel caso la classe delle trasformazioni naturali tra due funtori $F,G:\ctC\funto\ctD$ è una sottoclasse di \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), che in generale può non essere un insieme (per esempio, può coincidere con \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), quando?).
 \end{remark}
 \begin{definition}[Isomorfismo naturale]\label{def_isonat}\index{Isomorfismo naturale}\index{Trasformazione naturale!isomorfismo naturale}
 	Dati due funtori $F,G : \ctC\fun\ctD$ tra categorie, un \emph{isomorfismo naturale} consiste di una trasformazione naturale  $\alpha : F\nat G$ che possieda una inversa per l'operazione di composizione verticale di \ref{def_vcomp}; in altre parole, $\alpha$ è un isomorfismo naturale se esiste una trasformazione naturale $\bar\alpha : G\nat F$ tale che $\alpha\vcmp\bar\alpha = 1_G$ e $\bar\alpha\vcmp\alpha =1_F$.
@@ -2623,19 +2623,18 @@ Coerentemente con la notazione usata finora, dovremmo denotare $\Hom{\ctCat(\ctC
  si chiama \emph{equivarianza}, ed è esattamente la condizione di naturalità istanziata in questo caso. Una conseguenza immediata della condizione è che $f$ si restringe all'insieme \(X^G:=\{x\in X\mid \forall g\in G . g\cdot x = x\}\) dei punti fissi dell'azione di $G$ su $X$; infatti, per ogni $x\in X^G$ si ha $g\cdot f(x) = f(g\cdot x) = f(x)$.
 \end{example}
 
-\begin{example}\Todo{Doppio duale}
+\begin{example}\label{doppio_duale}
 \end{example}
-\begin{warning}
-    \Todo{Il duale singolo no}
+\begin{warning}\label{il_duale_singolo_no}
 \end{warning}
-\begin{example}\Todo{Mappa di Hurewicz}
+\begin{example}\label{mappa_di_hurewicz}
 \end{example}
-\begin{example}\Todo{il determinante}
+\begin{example}\label{il_determinante}
 Sia $n\ge 1$ un numero intero; si può definire un funtore
 \[\dmFun{\text{GL}_n}{\ctcRing}{\ctGrp}\]
 come in \ref{ex_fun_GLn}, e un funtore
 \[\dmFun{(-)^\times}{\ctcRing}{\ctGrp}\]
-che manda un anello commutativo nel suo gruppo delle unità (La notazione in tal senso è stata fissata da \ref{def_cat_anelli}, \ref{def_anelli_commu}).
+che manda un anello commutativo nel suo gruppo delle unità (La notazione in tal senso è stata fissata da \ref{varie_categorie_nella_pratica}).
 
 Il determinante fornisce un esempio di trasformazione naturale $\det : \text{GL}_n\natto (-)^\times$ di componenti
 \[\dmFun{\det_R}{\text{GL}_n(R)}{R^\times}\]
@@ -2724,7 +2723,7 @@ Chi legge può facilmente verificare che (nelle stesse notazioni di sopra) vale 
 \[(H*\alpha)*K=H*(\alpha*K)\]
 la quale rende la scrittura $H * \alpha * K$ univocamente definita.
 
-Osserviamo che dalla definizione di composizione orizzontale in \ref{} la composizione $\cmp$ è un bifuntore (si veda \ref{def_bifuntore}): da questo segue
+Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} la composizione $\cmp$ è un bifuntore (nel senso di \ref{def_bifuntore}): da questo segue
 \begin{definition}\label{interchangio}\index{Legge di interscambio}\index{Godement!identità di ---}
     \Todo{Legge di interscambio}
     \Todo{Identità di Godement}
@@ -2827,11 +2826,10 @@ che manda $X\xto t C$ in $X\xto t C\xto u C'$.
 \begin{hRemark}[A proposito del simbolo $\yon_\ctC$]{skip}
 L'immersione di Yoneda è l'unico funtore di questo testo denotato con un carattere non latino o greco. Si legge come lo `\emph{io}' di p\emph{io}ggia, ed è la prima sillaba, nel sistema di scrittura hiragana, del nome di famiglia `Yoneda' (\jap{米田 信夫}; in giapponese il cognome precede il nome), di Nobuo Yoneda (\(*\)1930-\(\dag\)1996), matematico e informatico teorico giapponese.
 \end{hRemark}
-Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto profonde, la cui dimostrazione riposa sul risultato centrale del capitolo \ref{cap_yoneda}, è la seguente:
+Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto profonde, la cui dimostrazione riposa sul risultato centrale del capitolo \ref{cap_yoneda} (a cui rimandiamo chi legge), è il seguente:
 \begin{proposition}
 	Per ogni categoria piccola $\ctC$, l'immersione di Yoneda $\yon_\ctC$ di \ref{def_yoneda_embeddu} è un funtore pienamente fedele.
 \end{proposition}
-(Nel capitolo \ref{cap_yoneda} deriveremo questo da un risultato ancora più generale. Rimandiamo chi legge a \ref{lemma_yoneda} e \ref{corollario_yo_ff})
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Per risolvere questo esercizio è necessario ricordare la definizione di una \emph{successione esatta} di omomorfismi di gruppo: se $H,G,G',K$ sono gruppi abeliani, una successione esatta corta è una sequenza di mappe componibili
@@ -2844,13 +2842,13 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 	\arrow["h", from=1-4, to=1-5]
 	\arrow[from=1-5, to=1-6]
 \end{tikzcd}\]
-    tale che $\ker f=\im g$, $\ker h=\im f$, $\ker g=(0)$ e $\im h = H$. Chi non ha mai visto questo risultato, dimostri che ogni omomorfismo $f : G\to G'$ tra due gruppi abeliani induce una successione esatta come questa, se $K=\ker f$ e $H=G'/\im f$, quando $g : \ker f \mono G$ è l'inclusione ovvia, e $h$ la proiezione al quoziente sul conucleo (si veda \ref{}) di $f$.
+    tale che $\ker f=\im g$, $\ker h=\im f$, $\ker g=(0)$ e $\im h = H$. Chi non ha mai visto questo risultato, dimostri che ogni omomorfismo $f : G\to G'$ tra due gruppi abeliani induce una successione esatta come questa, se $K=\ker f$ e $H=G'/\im f$, quando $g : \ker f \mono G$ è l'inclusione ovvia, e $h$ la proiezione al quoziente sul conucleo (si veda \ref{ker_e_coker}) di $f$.
 
     Sia ora $\ctC$ una categoria piccola e consideriamo la categoria dei funtori $F : \ctC\funto\ctAb$ di codominio la categoria dei gruppi abeliani. Questo esercizio chiede di definire e studiare una nozione di nucleo associato a una trasformazione naturale:
     \begin{itemize}
         \item Definire $\ker\alpha$ come la trasformazione naturale associata ad $\alpha : F \natto G$ e avente per componenti
         \[(\ker\alpha)_C := \ker(\alpha_C : FC\to GC) \to FC.\]
-        \item Mostrare che $X\mapsto\ker(\alpha_X)$ definisce un funtore $K : \ctC\fun\ctAb$, e che $\kappa_X : \ker(\alpha_X) \to FX$ è naturale, e un monomorfismo in $[\ctC,\ctAb]$ (si veda \ref{}); a questa maniera, esiste una successione esatta \emph{di trasformazioni naturali} (cioè una successione di trasformazioni naturali, esatta quando saturata in ogni componente) della forma
+        \item Mostrare che $X\mapsto\ker(\alpha_X)$ definisce un funtore $K : \ctC\fun\ctAb$, e che $\kappa_X : \ker(\alpha_X) \to FX$ è naturale, e un monomorfismo in $[\ctC,\ctAb]$; a questa maniera, esiste una successione esatta \emph{di trasformazioni naturali} (cioè una successione di trasformazioni naturali, esatta quando saturata in ogni componente) della forma
         \[0\natto\ker\alpha \overset\kappa\natto F \overset\alpha\natto G\]
         dove chiaramente `$0$' è il funtore costante nel gruppo abeliano nullo.
         \item Dualizzare e definire il \emph{conucleo} di una trasformazione naturale; costruire la successione esatta
@@ -3030,7 +3028,7 @@ sfruttando la dualità a nostro vantaggio.
 \begin{proof}
 	Costruiamo \(u\) esplicitamente: ad un elemento \(b\in B\), che sappiamo essere della forma \(e(a)\) per qualche \(a\in A\), associamo l'elemento \(u(b)=f(a)\). Questa definizione è ben posta, perché se \(a,a'\) sono entrambi tali che \(e(a)=e(a')=b\), allora \(mu(b)=mf(a)=mf(a')\), così che \(f(a)=f(a')\), perché \(m\) è un mono. \`E evidente ora che \(u\cmp e= f\), per costruzione, ed \((m\cmp u)(b)=m(f(a))=g(e(a))=g(b)\); l'unicità segue ancora dal fatto che \(m\) è mono.
 \end{proof}
-Concludiamo la sezione enunciando un risultato che nel capitolo \ref{cap:fattorizzazione} avremo gli strumenti per dimostrare in modo elegante (chi legge interpreti così la situazione: dimostrare in maniera elementare il seguente risultato è possibile, ma va considerato un esercizio laborioso. Una parte dell'esercizio è però del tutto elementare e invitiamo chi legge a scoprire quale---e a cimentarvisi).
+Concludiamo la sezione enunciando un risultato che nel capitolo \ref{cap_fattorizzazione} avremo gli strumenti per dimostrare in modo elegante (dimostrare in maniera elementare il seguente risultato è possibile, ma va considerato un esercizio laborioso. Una parte dell'esercizio è però del tutto elementare e invitiamo chi legge a scoprire quale---e a cimentarvisi).
 \begin{proposition}\label{caratt_epi_con_ort}
 	Sia \(p : E \to B\) una funzione tra insiemi; le seguenti condizioni sono equivalenti:
 	\begin{itemize}
@@ -3357,7 +3355,7 @@ Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzant
 
 \Todo{...qualcosa prima...}
 \subsection{Classi di funtori}\label{ssec:classi_di_funtori}
-Rammentiamo le definizioni date in \ref{}.
+Rammentiamo le definizioni date in \ref{classi_di_funtori}.
 \begin{definition}\label{funtore_pieno}
 	\index{Funtore!--- pieno}
  Funtore pieno
@@ -3403,18 +3401,18 @@ Alcuni esempi di categorie equivalenti ma non isomorfe
 	L'esempio piu piccolo
 \end{example}
 \begin{example}
-	La categoria delle matrici di \ref{} è equivalente, senza essere isomorfa, a Vect.
+	La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a Vect.
 \end{example}
 \Todo{...qualcosa dopo...}
-\begin{proposition}
-	La classe dei monomorfismi di $\ctCat$ consiste dei funtori $F : \ctC\fun\ctD$ che sono fedeli e iniettivi sugli oggetti (cioè $F_0$ e tutte le $F_{XY}$ in \ref{} sono entrambe funzioni iniettive).
+\begin{proposition}\label{mona_in_cat}
+	La classe dei monomorfismi di $\ctCat$ consiste dei funtori $F : \ctC\fun\ctD$ che sono fedeli e iniettivi sugli oggetti (cioè $F_0$ e tutte le $F_{XY}$ in \ref{def_alternativa_funtore} sono entrambe funzioni iniettive).
 \end{proposition}
 \begin{proof}
 	\Todo{...}
 \end{proof}
 \subsubsection*{Esercizi}
 \begin{enumerate}
-	\item In \ref{} abbiamo dimostrato che i monomorfismi in $\ctCat$ sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
+	\item In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in $\ctCat$ sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
 	\item Mostrare che $\ctMat$ e $\ctVect$ \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: $\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)$; mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di $\ctMat$ e quella di $\ctVect$ non sono isomorfe.)
 	\item
 	\item
