@@ -2001,6 +2001,22 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 		\end{quote}
 	\end{itemize}
 \end{definition}
+\begin{hDigression}[Costrutti e loro proprietà]{skip}
+La nozione di funtore fedele permette di formalizzare l'idea che alcune categorie nascano considerando `insiemi dotati di struttura' e funzioni compatibili con quella struttura. In \cite[I.5.1]{acc} un \emph{costrutto} è definito come una coppia $(\ctC,U)$ dove $U : \ctC \fun\ctSet$ è un funtore fedele (e più in generale un costrutto \emph{sopra $\ctX$} consiste di una categoria $\ctC$ con un funtore fedele $U : \ctC\fun\ctX$), che permette di pensare a ogni oggetto $C$ di $\ctC$ come ad un insieme $UC$, e ad ogni freccia $f : C\to C'$ come ad una particolare funzione $Uf : UC\to UC'$.
+
+Si può definire, da qui, la categoria $\cate{Cons}$ dei costrutti che ha per morfismi $K : (\ctC,U)\fun (\ctD,V)$ quei funtori $K : \ctC\fun\ctD$ compatibili con $U,V$ nel senso ovvio che $V\cmp K=U$. Più formalmente, al netto di un problema di taglia, si può pensare la categoria $\cate{Cons}$ come la sottocategoria della comma $\cate{CAT}/\ctSet$ sui soli oggetti $\ctC\fun\ctSet$ che sono funtori fedeli. Quel che però è più importante è che la nozione di \emph{isomorfismo} in $\cate{Cons}$ formalizza l'idea che si possano avere presentazioni differenti di uno stesso costrutto. Ad esempio, esiste una categoria degli spazi topologici, definita in \ref{ex_cat_top}, che è un costrutto rispetto all'ovvio funtore $U : \ctTop\fun\ctSet : (X,\tau)\mapsto X$ che dimentica la topologia $\tau$ di uno spazio $(X,\tau)$. 
+
+Lo stesso spazio può però essere presentato, invece che mediante una famiglia di `aperti' $\tau \subseteq 2^X$ chiusa per intersezioni finite e unioni arbitrarie, mediante una famiglia di chiusi $\gamma\subseteq 2^X$ che soddisfa i ben noti assiomi duali, oppure mediante una famiglia di filtri di intorni $(\fkF_x \mid x\in X)$, o ancora mediante un operatore di chiusura $k_X : 2^X\to 2^X$, etc.
+
+Sono, ora, veri i seguenti fatti:
+\begin{itemize}
+	\item le categorie $\ctTop_\fkF,\ctTop_\tau,\ctTop_\gamma,\ctTop_k,\dots$ degli spazi topologici specificati mediante famiglie di filtri, mediante famiglie di aperti, di chiusi, mediante operatori di chiusura, etc., sono tutte isomorfe (ossia esistono isomorfismi tra ogni coppia, nella `categoria' $\cate{CAT}$);
+	\item non solo: sono equivalenti \emph{in quanto costrutti}, ossia mediante dei funtori compatibili con i funtori dimenticanti di ciascuna categoria.
+\end{itemize}
+La nozione di costrutto permette anche di formalizzare una differenza sostanziale tra gli esempi di categoria dati in \ref{varie_categorie_nella_pratica} e gli esempi dati da un lato in \ref{varie_categorie_nella_pratica}, e dall'altro in \ref{po_wo_to} e \ref{ex_cat_top}: i primi sono di natura \emph{algebrica}, e i secondi di natura \emph{topologica}, e questa è una dicotomia fondamentale.
+
+Dato un costrutto $(\ctC,U)$ la \emph{fibra} sopra un insieme $X$ è la sottocategoria formata dagli oggetti $C$ tali che $UC=X$ (tutti i $\ctC$-oggetti che hanno un dato supporto $X$), dove è definita una relazione di preordine $C\le C'$ se e solo se $\id_X : UC \to UC'$ è immagine di una freccia $i : C\to C'$ in $\ctC$. In categorie del tipo definito in \ref{varie_categorie_nella_pratica}, la fibra sopra un oggetto è preordinata in modo banale, nel senso che $C\le C'$ se e solo se $C=C'$; per contro, nelle categorie definite in \ref{po_wo_to} e \ref{ex_cat_top} la fibra sopra un insieme ordinato (risp., uno spazio topologico) è fatta dal poset delle relazioni d'ordine (risp., delle topologie) su un dato insieme $X$, ordinato dalla relazione di finezza (ossia dalla relazione di inclusione in $2^{2^X}$).
+\end{hDigression}
 \begin{example}\label{exa_monotone_funtori}\index{Funtore!mappa monotòna come ---}
 	Dati due insiemi parzialmente ordinati \((X,\le)\) e \((Y,\le)\) guardati come categorie nel senso di \ref{ord_sonocat}, un funtore \((X,\le)\fun(Y,\le)\) è precisamente una funzione monotòna nel senso di \ref{ex_cat_ordini}.
 
