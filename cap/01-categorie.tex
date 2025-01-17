@@ -33,7 +33,7 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 \end{definition}
 Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogni monoide è una categoria, e ogni insieme preordinato (e a fortiori, ogni insieme parzialmente ordinato) è una categoria. (Gli enunciati in questione renderanno più precise queste ultime affermazioni.)
 \index{Categoria!--- degli insiemi finiti}
-\begin{hExample}{fund}\label{protoex_finset}
+\begin{hExample}[Un primo esempio motivante]{fund}\label{protoex_finset}
 	Un esempio naturale di categoria nasce considerando la classe \(\ctFin\) di tutti gli insiemi finiti \([n]\defeq \{1,\dots,n\}\) (con la convenzione che \([0]=\varnothing\) sia l'insieme vuoto), e le funzioni \(f : [n] \to [m]\) tra di loro. \`E evidente che non tutte tali funzioni sono componibili: una condizione necessaria --e sufficiente!-- affinché la composizione tra due funzioni \(f : [p] \to [q],g : [m] \to [n]\) tra insiemi finiti sia possibile è che il dominio dell'una coincida con il codominio dell'altra, ovvero che \(q=m\). Quando questo accade, è possibile `giustapporre' le due funzioni come
 	\[\xymatrix{
 		[p] \ar[r]^-f & [q] \ar[r]^-g & [r].
@@ -248,7 +248,7 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 		\end{center}
 		\caption{Le categorie \(\Delta[0], \dots,\Delta[3]\). Si noti che non abbiamo rappresentato le frecce identità dei vari oggetti, e che la struttura di categoria che risulta è completamente determinata dalla struttura di grafo diretto. Ovviamente, \(\Delta[0]\) è la categoria terminale di \ref{ex_cat_term}, \(\Delta[1]\) è la freccia generica di \ref{ex_cat_freccia}. La categoria \(\Delta[n]\) spesso si chiama un \(n\)-\emph{simplesso}. }
 		\label{fig:le_delta}
-	\end{figure}\todo{questo disegno al momento sembra rotto, non so perché}
+	\end{figure}
 \end{example}
 \index{Categoria!--- isomorfismo generico}
 \begin{example}\label{ex_cat_iso}
@@ -1984,6 +1984,26 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 	\[\dmFun{\bigcup_{XY}F_{XY}}{\bigcup_{XY}\Hom{\ctC}(X,Y)}{\bigcup_{XY}\Hom{\ctD}(F_0X,F_0Y)}\]
 	(e il codominio di questa funzione di classe è evidentemente una sottoclasse di $\ctD_1$). \`E una prassi quasi universale, però, omettere i pedici ad \(F_{XY}\) e scrivere la definizione nella forma di \ref{p_2}.
 \end{remark}
+\begin{examples}[Primi esempi di funtori]\label{es_di_funtori} Raccogliamo alcuni esempi elementari di funtori; la verifica che essi soddisfano le proprietà \ref{p_1} e \ref{p_2} è del tutto elementare e lasciata per esercizio.
+	\begin{itemize}
+		\item \label{exfun_1} Data una categoria \(\ctC\), il \emph{funtore identità} su \(\ctC\) assegna ad ogni oggetto \(X\), \(X\) stesso, e ad ogni morfismo \(f\), \(f\) stesso. 
+		\item \label{exfun_2} costante 
+		\item \label{exfun_3} diagonale $\Delta : \ctC \fun\ctC\times\ctC$
+		\item \label{exfun_4} riduzione $\nabla : \ctC+\ctC \fun\ctC$
+		\item \label{exfun_5} Dati due funtori \(F:\ctC\to\ctD\) e \(G:\ctD\to\ctE\), il \emph{funtore composto} \(G\cmp F:\ctC\fun\ctE\) assegna
+		\begin{itemize}
+			\item Ad ogni oggetto \(X\) di \(\ctC\), l'oggetto \(GFX\) (ossia \(G(F(X))\)) di \(\ctE\);
+			\item Ad ogni morfismo \(f:X\to Y\) di \(\ctC\), il morfismo \(GFf\) (ossia \(G(F(f))\)) di \(\ctE\).
+		\end{itemize}
+		Il fatto che questo dia un funtore (ovvero che preservi identità e composizione) segue dal fatto che \(F\) e \(G\) risultano componendo le funzioni di classe $G_0\cmp F_0$ e $G_1\cmp F_1$:
+		\[
+		G(F(\id_X)) = G(\id_{FX}) = \id_{GFX} ;
+		\]
+		\[
+		G(F(g\cmp f)) = G(Ff\cmp Fg) = GFf\cmp GFg .
+		\]
+	\end{itemize}
+\end{examples}
 \begin{definition}[Funtori pieni, fedeli, essenzialmente suriettivi]\label{classi_di_funtori}
 	\`E conveniente dare un nome speciale ai funtori $F : \ctC\fun\ctD$ tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva: $F : \ctC\fun\ctD$ si dirà
 	\begin{itemize}
@@ -2199,28 +2219,10 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\end{tikzcd}
 	\]
 	che manda ogni modello in \(\ctMod(\Omega,a)\) nel suo \emph{insieme soggiacente} \(X\).
-	\Todo{Sui funtori liberi\dots}
 \end{example}
-\begin{definition}\label{compo_funtori}
-	Dati due funtori \(F:\ctC\to\ctD\) e \(G:\ctD\to\ctE\), il \emph{funtore composto} \(G\cmp F:\ctC\fun\ctE\) assegna
-	\begin{itemize}
-		\item Ad ogni oggetto \(X\) di \(\ctC\), l'oggetto \(GFX\) (ossia \(G(F(X))\)) di \(\ctE\);
-		\item Ad ogni morfismo \(f:X\to Y\) di \(\ctC\), il morfismo \(GFf\) (ossia \(G(F(f))\)) di \(\ctE\).
-	\end{itemize}
-	Il fatto che questo dia un funtore (ovvero che preservi identità e composizione) segue dal fatto che \(F\) e \(G\) risultano componendo le funzioni di classe $G_0\cmp F_0$ e $G_1\cmp F_1$:
-	\[
-	G(F(\id_X)) = G(\id_{FX}) = \id_{GFX} ;
-	\]
-	\[
-	G(F(g\cmp f)) = G(Ff\cmp Fg) = GFf\cmp GFg .
-	\]
-\end{definition}
-
-\begin{definition}[Funtore identità]\label{def_funtore_id}\index{Funtore!identità}
-	Data una categoria \(\ctC\), il \emph{funtore identità} su \(\ctC\) assegna ad ogni oggetto \(X\), \(X\) stesso, e ad ogni morfismo \(f\), \(f\) stesso.
-	% (Può essere di aiuto verificare manualmente perché questo sia un funtore.)
-\end{definition}
-
+\begin{example}[Sui funtori liberi]\label{funtori_liberi}\index{Funtore!--- monoide libero}
+Ogni segnatura algebrica \((\Omega,a)\) ammette \emph{modelli liberi}, nel senso che è possibile definire un funtore $\ctSet\fun\ctMod(\Omega,a)$ che soddisfa una certa proprietà (di `aggiunzione', si vedrà nel capitolo \ref{}). Esiste un modo uniforme di costruire questo funtore data la segnatura \((\Omega,a)\), ma questo livello di generalità è prematuro ora. Ci concentriamo su un esempio tra i più elementari, e tuttavia esemplificativo della procedura generale, che è stato già delineato in \ref{mongruppi_liberi}: il \emph{monoide libero} $E^*$ su un insieme $E$ definisce un funtore $\ctSet\fun\ctMon$, dato che una funzione $f : X\to Y$ ha l'ovvia `estensione' $f^* : X^*\to Y^*$ che manda una parola $[\tup xn{}]$ nella parola $[\tup {fx}n{}]$. Le proprietà \ref{f_1} ed \ref{f_2} di \ref{def_funtore} sono immediate da verificare.
+\end{example}
 \begin{definition}[La categoria delle categorie]\label{ex_cat_cat}\index{Categoria!--- delle categorie}
 	Come si può verificare, la composizione di funtori come definita sopra è associativa, e con il funtore identità definito sopra, soddisfa l'assioma di identità. Per questo le categorie e i funtori formano una categoria.
 
@@ -2442,9 +2444,9 @@ che agiscono sugli oggetti immergendo $\ctC_0,\ctD_0$ nell'unione disgiunta $\ct
 %
 	% \Todo{Proiezioni da \(\ctC\times\ctD\); inclusioni in \(\ctC+\ctD\); inclusioni in \(\ctC\star\ctD\).}
 \end{example}
-\begin{example}\index{Funtore!--- tra spazi affini e proiettivi}
-	\Todo{Da spazi affini a spazi vettoriali, a spazi proiettivi, et cetera.}
-\end{example}
+% \begin{example}\index{Funtore!--- tra spazi affini e proiettivi}
+% 	\Todo{Da spazi affini a spazi vettoriali, a spazi proiettivi, et cetera.}
+% \end{example}
 \subsubsection*{Esercizi}
 \begin{enumerate}
 \item
@@ -2595,9 +2597,10 @@ Coerentemente con la notazione usata finora, dovremmo denotare $\Hom{\ctCat(\ctC
 \begin{remark}
 	Sarà spesso utile considerare esempi in cui $\ctD$ non è una categoria piccola (l'esempio più illustre e pervasivo è \ref{def_yoneda_embeddu}), e sarà altrettanto utile considerare esempi di funtori tra categorie entrambe larghe; però la definizione della `categoria' $\ctCat(\ctC,\ctD)$ pone un problema di teoria degli insiemi quando $\ctC$ non è piccola; infatti, in quel caso la classe delle trasformazioni naturali tra due funtori $F,G:\ctC\funto\ctD$ è una sottoclasse di \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), che in generale può non essere un insieme (per esempio, può coincidere con \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), quando?).
 \end{remark}
-\begin{definition}[Isomorfismo naturale]\label{def_isonat}\index{Isomorfismo naturale}\index{Trasformazione naturale!isomorfismo naturale}
-	Dati due funtori $F,G : \ctC\fun\ctD$ tra categorie, un \emph{isomorfismo naturale} consiste di una trasformazione naturale  $\alpha : F\nat G$ che possieda una inversa per l'operazione di composizione verticale di \ref{def_vcomp}; in altre parole, $\alpha$ è un isomorfismo naturale se esiste una trasformazione naturale $\bar\alpha : G\nat F$ tale che $\alpha\vcmp\bar\alpha = 1_G$ e $\bar\alpha\vcmp\alpha =1_F$.
+\begin{definition}[Isomorfismo naturale]\label{def_isonat}\index{Isomorfismo!--- naturale}\index{Trasformazione naturale!isomorfismo naturale}
+	Dati due funtori $F,G : \ctC\fun\ctD$ tra categorie, un \emph{isomorfismo naturale} consiste di una trasformazione naturale  $\alpha : F\nat G$ che possieda una inversa per l'operazione di composizione verticale di \ref{def_vcomp}; in altre parole, $\alpha$ è un isomorfismo naturale se esiste una trasformazione naturale $\bar\alpha : G\nat F$ tale che $\alpha\vcmp\bar\alpha = 1_G$ e $\bar\alpha\vcmp\alpha =1_F$. Evidentemente tale $\bar\alpha$ è unica e si può denotare con $\alpha^{-1}$. 
 \end{definition}
+Inoltre, la condizione di naturalità per $\alpha^{-1}$ può essere omessa:
 \begin{lemma}
 	Una trasformazione naturale $\alpha : F\nat G$ è invertibile se e solo se ciascuna delle sue componenti è un isomorfismo di $\ctD$; infatti, la condizione di naturalità per $\alpha$ è il fatto che per ogni $u : X\to Y$ si abbia 
 	\[\alpha_Y \cmp Fu = Gu\cmp \alpha_X\]
@@ -2622,13 +2625,42 @@ Coerentemente con la notazione usata finora, dovremmo denotare $\Hom{\ctCat(\ctC
  \[\text{per ogni } g\in G,\, f(g\cdot x)=g\cdot f(x)\]
  si chiama \emph{equivarianza}, ed è esattamente la condizione di naturalità istanziata in questo caso. Una conseguenza immediata della condizione è che $f$ si restringe all'insieme \(X^G:=\{x\in X\mid \forall g\in G . g\cdot x = x\}\) dei punti fissi dell'azione di $G$ su $X$; infatti, per ogni $x\in X^G$ si ha $g\cdot f(x) = f(g\cdot x) = f(x)$.
 \end{example}
-
 \begin{example}\label{doppio_duale}
+	Dato uno spazio vettoriale $V$ di dimensione finita su un campo $k$, ogni primo corso di algebra lineare mostra che è possibile definire un isomorfismo 
+	% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGVwc2lsb24gOiBWIl0sWzEsMCwiXFxkdWFse1xcZHVhbCBWfSJdLFswLDFdXQ==
+\[\begin{tikzcd}
+	{\epsilon : V} & {\ddual V}
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd}\]
+dove per ogni $W$, $\dual W :=\Hom{\ctVect}(W,k)$ è lo spazio vettoriale delle mappe lineari $W\to k$; $\epsilon_V(v)$ è la mappa lineare di \emph{valutazione} $\dual V\to k$ che manda $\alpha : V\to k$ in $\alpha(v)$. Questo isomorfismo è naturale, dato che una mappa lineare $f : V\to W$ fa commutare il quadrato 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJWIl0sWzAsMSwiVyJdLFsxLDAsIlxcZGR1YWwgViJdLFsxLDEsIlxcZGR1YWwgVyJdLFsyLDMsIlxcZGR1YWwgZiJdLFsxLDMsIlxcZXBzaWxvbl9XIiwyXSxbMCwxLCJmIiwyXSxbMCwyLCJcXGVwc2lsb25fViJdXQ==
+\[\begin{tikzcd}
+	V & {\ddual V} \\
+	W & {\ddual W}
+	\arrow["{\epsilon_V}", from=1-1, to=1-2]
+	\arrow["f"', from=1-1, to=2-1]
+	\arrow["{\ddual f}", from=1-2, to=2-2]
+	\arrow["{\epsilon_W}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+(la freccia verticale destra è definita mandando $\Phi : \dual V \to k$ nella mappa $\Phi \cmp \dual f$, che manda $\alpha : V\to k$ in $\Phi(\alpha\cmp f)\in k$).
 \end{example}
 \begin{warning}\label{il_duale_singolo_no}
+	\`E altrettanto noto che si può definire un isomorfismo $\theta_V : V\cong \dual V$, ma per farlo è essenziale \emph{scegliere} una base $\mathcal{B}$ di $V$ (ossia, l'isomorfismo $\theta_V^{\mathcal{B}}$ non può essere costruito senza questa scelta, e ne dipende, laddove invece l'isomorfismo di \ref{doppio_duale} è  \emph{polimorfo} in $V$, cioè è definito sempre alla stessa maniera, uniformemente nel `parametro' $V$). 
+
+	Non è possibile scegliere una base $\mathcal{B}=\mathcal{B}_V$ per ogni spazio vettoriale $V$, con degli isomorfismi $\theta^{\mathcal{B}}_V$, che si assemblano in un isomorfismo naturale `sghembo' 
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJWIl0sWzAsMSwiVyJdLFsxLDEsIlxcZHVhbCBXIl0sWzEsMCwiXFxkdWFsIFYiXSxbMCwzLCJcXHRoZXRhX1YiXSxbMCwxLCJmIiwyXSxbMSwyLCJcXHRoZXRhX1ciLDJdLFsyLDMsIlxcZHVhbCBmIiwyXV0=
+\[\begin{tikzcd}
+	V & {\dual V} \\
+	W & {\dual W}
+	\arrow["{\theta_V}", from=1-1, to=1-2]
+	\arrow["f"', from=1-1, to=2-1]
+	\arrow["{\theta_W}"', from=2-1, to=2-2]
+	\arrow["{\dual f}"', from=2-2, to=1-2]
+\end{tikzcd}\]
+	Il problema è più profondo del fatto che, strettamente parlando, le trasformazioni naturali sono state definite tra funtori della stessa varianza;\footnote{Questa restrizione si può aggirare definendo una trasformazione naturale sghemba tra un funtore covariante $F : \ctC\fun\ctD$ e un funtore controvariante $G : \ctC^\op\fun\ctD$ come una famiglia $\alpha_C : FC\to GC$ di morfismi di $\ctD$ con la proprietà che per ogni $f\in \Hom{\ctC}(X,Y)$ si abbia $\alpha_X = Gf\cmp\alpha_Y\cmp Ff$. Questi esempi sono relativamente comuni, ma abbiamo mostrato che in questo contesto nemmeno una trasformazione naturale sghemba può esistere.} infatti, se una famiglia $\theta^{\mathcal{B}}_V$ esistesse, per ogni mappa lineare $f : V\to W$ sarebbe vero che $\theta_V(v)(v') = \theta_W(fv)(fv')$, cosicché (scegliendo $f=0$) $\theta_V(v)(v')=0$, che significa $\theta_V=0$, il che è assurdo: abbiamo supposto $\theta_V$ invertibile.
 \end{warning}
-\begin{example}\label{mappa_di_hurewicz}
-\end{example}
+% \begin{example}\label{mappa_di_hurewicz}
+% \end{example}
 \begin{example}\label{il_determinante}
 Sia $n\ge 1$ un numero intero; si può definire un funtore
 \[\dmFun{\text{GL}_n}{\ctcRing}{\ctGrp}\]
@@ -2643,8 +2675,65 @@ Il determinante fornisce un esempio di trasformazione naturale $\det : \text{GL}
 \end{example}
 \begin{example}\Todo{un paio di esempi di moltiplicazioni e comoltiplicazioni}
 \end{example}
+\begin{hExample}[Un esempio di isomorfismo naturale]{tech}\index{Trasformazione naturale!isomorfismo naturale}
+	(La natura di questo esempio sarà chiarita dal capitolo \ref{}, sulle proprietà universali, e dal capitolo \ref{}, sui funtori aggiunti.)
+
+	Dati tre insiemi $A,B,C$ possiamo formare il prodotto cartesiano $B\times C = \{\pair bc\mid b\in B, c\in C\}$ e costruire una biiezione 
+	% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXEhvbXtcXGN0U2V0fShBLEJcXHRpbWVzIEMpIl0sWzEsMCwiXFxIb217XFxjdFNldH0oQSxCKVxcdGltZXMgXFxIb217XFxjdFNldH0oQSxDKSJdLFswLDFdXQ==
+\[\begin{tikzcd}
+	{\varpi^A_{BC}:\Hom{\ctSet}(A,B\times C)} & {\Hom{\ctSet}(A,B)\times \Hom{\ctSet}(A,C)}
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd}\]
+mandando una funzione $u : A\to B\times C$ nella coppia $\pair{\pi_B\cmp u}{\pi_C\cmp u}$, se $\pi_B : \pair bc\mapsto b$ e $\pi_C : \pair bc\mapsto c$ sono le proiezioni sui due fattori del prodotto. Si osservi che 
+\begin{itemize}
+	\item la funzione così definita è biiettiva. La maniera più conveniente di dimostrarlo è esibirne un'inversa: data una coppia di funzioni $\pair fg \in \Hom{\ctSet}(A,B)\times \Hom{\ctSet}(A,C)$ definiamo la funzione 
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzEsMCwiQlxcdGltZXMgQyJdLFswLDEsImEiXSxbMSwxLCJcXHBhaXJ7ZmF9e2dhfSJdLFswLDFdLFsyLDMsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XV0=
+\[\begin{tikzcd}[row sep=0]
+	f\pmap g : A & {B\times C} \\
+	a & {\pair{fa}{ga}}
+	\arrow[from=1-1, to=1-2]
+	\arrow[maps to, from=2-1, to=2-2]
+\end{tikzcd}\]
+Ovviamente $\pi_B\cmp(f\pmap g)(a)=\pi_B\pair{fa}{ga}=fa$ (cosicché sono uguali le funzioni $\pi_B\cmp(f\pmap g)=f$), e similmente $\pi_C\cmp (f\pmap g) = g$; viceversa, $\big((\pi_B\cmp u)\pmap(\pi_C\cmp u)\big)(a) = \pair{\pi_B(u(a))}{\pi_C(u(a))} = u(a)$, dato che un elemento $t=\pair bc$ del prodotto $B\times C$ soddisfa sempre l'uguaglianza $t=\pair{\pi_B t}{\pi_C t}$.
+\item la funzione $\varpi^A_{BC}$ è naturale in tutti i suoi argomenti, ossia $\varpi^A_{BC}$ sono le componenti di un isomorfismo naturale \emph{di funtori}.
+
+Quanto appena detto significa che per ogni terna $u : A'\to A$, $v : B\to B'$ e $w : C\to C'$ di funzioni, il diagramma di funzioni 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXEhvbXtcXGN0U2V0fShBLEJcXHRpbWVzIEMpIl0sWzEsMCwiXFxIb217XFxjdFNldH0oQSxCKVxcdGltZXMgXFxIb217XFxjdFNldH0oQSxDKSJdLFswLDEsIlxcSG9te1xcY3RTZXR9KEEnLEInXFx0aW1lcyBDJykiXSxbMSwxLCJcXEhvbXtcXGN0U2V0fShBJyxCJylcXHRpbWVzIFxcSG9te1xcY3RTZXR9KEEnLEMnKSJdLFswLDEsIlxcdmFycGlee0F9X3tCQ30iXSxbMiwzLCJcXHZhcnBpXntBJ31fe0InQyd9Il0sWzAsMiwiXFxIb217XFxjdFNldH0odSx2XFx0aW1lcyB3KSIsMl0sWzEsMywiXFxIb217XFxjdFNldH0odSx2KVxcdGltZXMgXFxIb217XFxjdFNldH0odSx3KSJdXQ==
+\[\begin{tikzcd}
+	{\Hom{\ctSet}(A,B\times C)} & {\Hom{\ctSet}(A,B)\times \Hom{\ctSet}(A,C)} \\
+	{\Hom{\ctSet}(A',B'\times C')} & {\Hom{\ctSet}(A',B')\times \Hom{\ctSet}(A',C')}
+	\arrow["{\varpi^{A}_{BC}}", from=1-1, to=1-2]
+	\arrow["{\Hom{\ctSet}(u,v\times w)}"', from=1-1, to=2-1]
+	\arrow["{\Hom{\ctSet}(u,v)\times \Hom{\ctSet}(u,w)}", from=1-2, to=2-2]
+	\arrow["{\varpi^{A'}_{B'C'}}", from=2-1, to=2-2]
+\end{tikzcd}\]
+è commutativo. (Questa è una verifica semplice e tediosa che lasciamo volentieri come esercizio a chi legge. Data una funzione $\lambda a.\pair{f_Ba}{f_Ca}$, deve essere vero che il termine  
+\[\pair{\lambda a.\pi_{B'}(\pair {vf_Ba}{wf_Ca})}{\lambda a.\pi_{C'}(\pair {vf_Ba}{wf_Ca})} \in \Hom{\ctSet}(A',B')\times \Hom{\ctSet}(A',C')\]
+è uguale a\dots{})
+\end{itemize}
+Usando il funtore `diagonale' $\Delta : \ctSet^\op \fun\ctSet^\op\times\ctSet^\op$ di \ref{es_di_funtori} e accettando (ma è semplice dimostrarlo!) il fatto che esiste un funtore prodotto $\Pi : \ctSet\times\ctSet \fun\ctSet$ definito mandando $X,Y\mapsto X\times Y$ e $u : X\to X',v : Y\to Y'$ in $u\times v : \pair xy\mapsto \pair{ux}{vy}$, $\varpi$ consta di una trasformazione naturale invertibile che `riempie' il diagramma 
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXGN0U2V0Xlxcb3BcXHRpbWVzXFxjdFNldFxcdGltZXNcXGN0U2V0Il0sWzAsMiwiXFxjdFNldF5cXG9wXFx0aW1lc1xcY3RTZXQiXSxbMSwyLCJcXGN0U2V0Il0sWzIsMiwiXFxjdFNldFxcdGltZXNcXGN0U2V0Il0sWzIsMSwiXFxjdFNldF5cXG9wXFx0aW1lc1xcY3RTZXRcXHRpbWVzXFxjdFNldF5cXG9wXFx0aW1lc1xcY3RTZXQiXSxbMiwwLCJcXGN0U2V0Xlxcb3BcXHRpbWVzXFxjdFNldF5cXG9wXFx0aW1lc1xcY3RTZXRcXHRpbWVzXFxjdFNldCJdLFswLDEsIlxcY3RTZXReXFxvcFxcdGltZXNcXFBpIiwyXSxbMSwyLCJcXEhvbXtcXGN0U2V0fSIsMl0sWzMsMiwiXFxQaSJdLFs1LDQsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMywiXFxIb217XFxjdFNldH1cXHRpbWVzXFxIb217XFxjdFNldH0iXSxbMCw1LCJcXERlbHRhXFx0aW1lc1xcY3RTZXRcXHRpbWVzXFxjdFNldCJdLFsxLDUsIlxcdmFycGkiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6NDAsInRhcmdldCI6NDB9LCJsZXZlbCI6Mn1dXQ==
+\[\begin{tikzcd}
+	{\ctSet^\op\times(\ctSet\times\ctSet)} && {(\ctSet^\op\times\ctSet^\op)\times\ctSet\times\ctSet} \\
+	&& {(\ctSet^\op\times\ctSet)\times(\ctSet^\op\times\ctSet)} \\
+	{\ctSet^\op\times\ctSet} & \ctSet & {\ctSet\times\ctSet}
+	\arrow["{\Delta\times\ctSet\times\ctSet}", from=1-1, to=1-3]
+	\arrow["{\ctSet^\op\times\Pi}"', from=1-1, to=3-1]
+	\arrow[Rightarrow, no head, from=1-3, to=2-3]
+	\arrow["{\Hom{\ctSet}(-,-)\times\Hom{\ctSet}(-,-)}", from=2-3, to=3-3]
+	\arrow["\varpi", shorten <=60pt, shorten >=60pt, Rightarrow, from=3-1, to=1-3]
+	\arrow["{\Hom{\ctSet}(-,-)}"', from=3-1, to=3-2]
+	\arrow["\Pi", from=3-3, to=3-2]
+\end{tikzcd}\]
+Chi legge vedrà presto che esempi del genere (solo, quasi sempre più elaborati di questo) pervadono la teoria delle categorie.
+\end{hExample}
 \begin{proposition}
-    \Todo{rappresentabilità del determinante}
+				Si ricordi che in \ref{il_determinante} e \ref{ex_fun_GLn} abbiamo definito un funtore $\GL_2 : \ctcRing\fun\ctGrp$; proviamo ora che esiste un isomorfismo naturale (precisamente, una biiezione di insiemi, che però può essere promossa a un isomorfismo di gruppi) tra $\GL_2$ e il funtore $\Hom{\ctcRing}(S(\GL_2),-)$ per l'anello $S(\GL_2)$ ottenuto dal quoziente
+				\[\bbZ[a,b,c,d,y]/(1-(ad-bc)y)\] 
+				in poche parole, $S(\GL_2)$ è ottenuto aggiungendo formalmente all'anello dei polinomi $\bbZ[a,b,c,d]$ un inverso all'elemento $y=ad-bc$. Si vede facilmente che un omomorfismo di anelli $S(\GL_2) \to R$ è determinato dalla scelta di quattro elementi $\alpha,\beta,\gamma,\delta\in R$ soggetti alla sola condizione che $\alpha\delta-\beta\gamma$ sia un'unità, e questo fissa un unico elemento $\left(\begin{smallmatrix}
+					\alpha	&	\beta \\
+					\gamma	&	\delta
+				\end{smallmatrix}\right)$ di $\GL_2(R)$.
 \end{proposition}
 \begin{definition}[Composizione verticale di trasformazioni naturali]\label{def_vcomp}\index{Composizione verticale!di trasformazioni naturali}
 	Consideriamo tre funtori \(F,G,H:\ctC\to\ctD\) e due trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\beta:G\Rightarrow H\).
@@ -2708,9 +2797,9 @@ Date tre categorie $\ctA,\ctB,\ctC$ e un diagramma di funtori e trasformazioni n
 	\arrow["\alpha", shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=1]
 \end{tikzcd}\]
 definiamo \emph{\whisk} sinistro tra il funtore $H$ e la trasformazione naturale $\alpha$, denotato $H * \alpha$, la trasformazione naturale di componenti
-\[(H*\alpha)_X = H(\alpha_X) : H(FX) \to H(GX)\]
+\[(H*\alpha)_B = H(\alpha_B) : H(FB) \to H(GB)\]
 Dualmente, definiamo \emph{\whisk} destro tra il funtore $K$ e la trasformazione naturale $\alpha$, denotato $\alpha * K$, la trasformazione naturale di componenti
-\[(\alpha * K)_Y = \alpha_{KA} : FKA \to GKA.\]
+\[(\alpha * K)_A = \alpha_{KA} : FKA \to GKA.\]
 \`E facile verificare che queste due definizioni dànno trasformazioni naturali (in un caso, $H$ applicato a ciascun quadrato di naturalità per $\alpha$ ne preserva la commutatività; nell'altro, stiamo restringendo $\alpha$ alle sole componenti della forma $X=KA$).
     % \Todo{Come traduciamo `whiskering'? La questione è delicata: dovremmo evitare un nome buffo, ma allo stesso tempo non creare un termine troppo distante dall'idea della parola whiskering. L'italiano non ha una regola simile all'inglese per la derivazione verbale (whisker significa `baffo' o più propriamente `vibrissa', e `baffare', `vibrissare' sono derivazioni verbali grammaticali in italiano, ma ridicole). Le uniche proposte intelligenti che riesco a immaginare sono:
     % \begin{itemize}
@@ -2721,7 +2810,7 @@ Dualmente, definiamo \emph{\whisk} destro tra il funtore $K$ e la trasformazione
 \end{definition}
 Chi legge può facilmente verificare che (nelle stesse notazioni di sopra) vale l'uguaglianza
 \[(H*\alpha)*K=H*(\alpha*K)\]
-la quale rende la scrittura $H * \alpha * K$ univocamente definita.
+(cioè su ogni componente si ha l'uguaglianza $((H*\alpha)*K)_A= H(\alpha_{KA})=(H*(\alpha*K))_A$) la quale rende la scrittura $H * \alpha * K$ univocamente definita.
 
 Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} la composizione $\cmp$ è un bifuntore (nel senso di \ref{def_bifuntore}): da questo segue
 \begin{definition}\label{interchangio}\index{Legge di interscambio}\index{Godement!identità di ---}
@@ -2732,6 +2821,9 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
     L'\whisk tra un funtore e una trasformazione naturale si può definire in termini della composizione orizzontale: infatti, si verifica facilmente che
     \[\alpha * K = \alpha\horcomp\id_K\qquad\qquad H * \alpha = \id_H \horcomp\alpha\]
     (cosa che spiega la stessa notazione utilizzata per la composizione orizzontale e per l'\whisk).
+\end{remark}
+\begin{remark}
+	\Todo{A proposito di \whisk e iso naturali...}
 \end{remark}
 \index{Categoria!centro di una ---}\index{Centro}
 \begin{definition}[Centro di $\ctC$]\label{def_centro}
@@ -2774,15 +2866,13 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 \begin{example}
 	Un caso particolare di \ref{def_natutra}, quando la categoria $\ctD$ è la categoria degli insiemi introdotta in \ref{ex_cat_insiemi} è degno di attenzione: fissata $\ctC$ (piccola), la categoria i cui oggetti sono i funtori di tipo
 	\[\dmFun{F}{\ctC^\op}{\ctSet}\]
-	e i cui morfismi $\alpha : F\nat G$ sono le trasformazioni naturali, si chiama la categoria	dei \emph{prefasci} su $\ctC$.
+	e i cui morfismi $\alpha : F\nat G$ sono le trasformazioni naturali, si chiama la categoria	dei \emph{prefasci} su $\ctC$. Questo generalizza \ref{exa_funtori_da_poset}, dove la stessa definizione è stata data quando $\ctC$ è la categoria ottenuta (mediante \ref{ord_sonocat}) dall'insieme parzialmente ordinato $(P,\le)$.
 
-	Varie notazioni sono utilizzate per indicarla: tra le più comuni:
-	\[
-	\widehat{\ctC},\quad \PSh(\ctC),\quad \presh\ctC
-	\]
-	(delle tre, l'ultima è la meno ambigua: è quella che impiegheremo noi).
+	Varie notazioni sono utilizzate per indicarla: tra le più comuni ci sono $\widehat{\ctC}$, $\ctC^\land$ o $\PSh(\ctC)$: la meno ambigua, che impiegheremo noi, è $\presh\ctC$.
 \end{example}
-Una colonna portante del pensiero moderno:
+\begin{remark}
+	\Todo{Definire anche $\copresh\ctC$ e studiare le relazioni tra $\presh-$ e $\copresh-$.}
+\end{remark}
 \begin{definition}\label{def_yoneda_embeddu}
 	L'\emph{immersione di Yoneda} consiste del funtore
 	\[\dmFun{\yon_\ctC}{\ctC}{\presh\ctC}\]

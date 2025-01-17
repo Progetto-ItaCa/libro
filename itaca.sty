@@ -332,8 +332,14 @@
 
 % sospensione di una categoria
 \def\susp{\mathcal{B}}
+\def\pair#1#2{\langle #1,#2\rangle}
 
+% parentesi e notazione per mappe nel prodotto
+\def\bkt#1{\langle #1\rangle}
 \def\squig{\rightsquigarrow}
+\def\dual#1{#1^\ast}
+\def\ddual#1{#1^{\ast\ast}}
+\let\pmap\divideontimes
 
 % un generico `todo`
 \newcommand{\Todo}[1]{\todo[inline, caption=0,color=green!20]{#1}}
@@ -475,6 +481,7 @@
 \RequirePackage{datetime}
 
 \NewDocumentCommand{\presh}{ m }{ \Hom{\ctCat}({#1}^\op,\ctSet) }
+\NewDocumentCommand{\copresh}{ m }{ \Hom{\ctCat}({#1},\ctSet) }
 \NewDocumentCommand{\zentrum}{ }{ \fkz }
 
 \NewDocumentCommand{\almond}{ m m O{\bullet} }{
