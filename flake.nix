@@ -42,6 +42,7 @@
             jknapltx
             koma-script
             latexmk
+            latexindent
             lh
             mathabx
             mathtools
