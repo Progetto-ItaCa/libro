@@ -33,11 +33,24 @@ if problems:
 
 good_delims = lambda x: re.sub(r"\$(.*?)\$", r"\\(\1\\)", x, flags = re.M)
 
-with open (sys.argv[1], 'r+' ) as f:
-    content = f.read()
-    content = good_delims(content)
+with open(sys.argv[1], 'r+') as f:
+    content = []
+    inside_tikz = False
+
+    for line in f:
+        if "\\begin{tikzpicture}" in line:
+            inside_tikz = True
+        if "\\end{tikzpicture}" in line:
+            inside_tikz = False
+            content.append(line)
+            continue
+        if not inside_tikz:
+            line = re.sub(r"\$(.*?)\$", r"\\(\1\\)", line)
+        content.append(line)
+
     f.seek(0)
-    f.write(content)
+    f.write(''.join(content))
     f.truncate()
+
 
 os.system("latexindent -w " + sys.argv[1])
