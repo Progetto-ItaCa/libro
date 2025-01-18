@@ -3420,14 +3420,14 @@ Il risultato in questione propone anche le sezioni e le retrazioni come esempi f
 	un morfismo può essere sia epi che mono senza necessariamente essere epi spezzante o mono spezzante,
 	e, in particolare, senza essere un isomorfismo.
 \end{example}
-\begin{example}[La categoria dei punti]\label{ex_cat_punti}\index{Categoria!--- dei punti su un oggetto}
+\begin{hExample}[La categoria dei punti]{tech}\label{ex_cat_punti}\index{Categoria!--- dei punti su un oggetto}
 	Sia \(\ctC\) una categoria. Per ogni oggetto \(X\in\ctC_0\) definiamo la categoria \(\cate{Pt}_X(\ctC)\) dei \emph{punti su \(X\)} come segue:
 	\begin{itemize}
 		\item gli oggetti \(\var [p]EX[\downuparrows]\) di \(\cate{Pt}_X(\ctC)\) sono epi spezzanti di codominio \(X\), cioè morfismi \(p : E \to X\) che ammettono una sezione \(\bar p : X\to E\) tale che \(p\cmp \bar p = \id_X\);
 		\item i morfismi \(f : \var [p] EX[\downuparrows]\to \var[q] FX[\downuparrows]\) sono morfismi \(f : E \to F\) tali che
 		      \[q\cmp f = p \qquad \qquad f\cmp \bar q = \bar p.\]
 	\end{itemize}
-\end{example}
+\end{hExample}
 
 Abbiamo visto in precedenza che, in generale, un morfismo pu\`o essere sia epi che mono senza essere un isomorfismo (vedasi esempio~\ref{ex:mono-epi-preord}).
 Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzanti.
@@ -3510,12 +3510,14 @@ Alcuni esempi di categorie equivalenti ma non isomorfe
 \begin{example}
 	La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a Vect.
 \end{example}
-\Todo{...qualcosa dopo...}
+L'esercizio \ref{} chiederà di dimostrare che le due non possono essere isomorfe.
+
+Finiamo la sezione caratterizzando i monomorfismi  in $\ctCat$: si tratta di funtori $F : \ctC \fun\ctD$ con la proprietà che sia $F_0 : \ctC_0\to\ctD_0$ che ogni $F_{XY} : \Hom\ctC(X,Y) \to \Hom\ctD(F_0X,F_0Y)$ sono funzioni iniettive.
 \begin{proposition}\label{mona_in_cat}
 	La classe dei monomorfismi di \(\ctCat\) consiste dei funtori \(F : \ctC\fun\ctD\) che sono fedeli e iniettivi sugli oggetti (cioè \(F_0\) e tutte le \(F_{XY}\) in \ref{def_alternativa_funtore} sono entrambe funzioni iniettive).
 \end{proposition}
 \begin{proof}
-	\Todo{...}
+Se $F : \ctC \fun\ctD$ è un mono in $\ctCat$, quando $X,Y \in\ctC_0$ si rappresentano come funtori $X,Y : \ctTerm \fun \ctC$, è evidente che $F\cmp X,F\cmp Y : \ctTm\to\ctD$, e se $F\cmp X$ è l'oggetto $F_0X$ (risp., $F\cmp Y$ è $F_0 Y$): se questi ultimi sono uguali, allora $X=Y$. In maniera simile, è possibile mostrare che ogni $F_{XY}$ è iniettiva.
 \end{proof}
 \subsubsection*{Esercizi}
 \begin{enumerate}
