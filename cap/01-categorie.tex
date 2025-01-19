@@ -400,7 +400,7 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 		      e sia \(C_0=\{\emptyList_u \mid u\in V\}\) l'insieme dei cammini di lunghezza zero.
 		      L'insieme dei morfismi di \(F\ctG\) è
 		      \[\sum_{n\ge0}C_n\]
-		      Il dominio e codominio di una sequenza \((e_1,\ldots,e_n)\) di lunghezza  \(n>0\) sono rispettivamente \(s(e_1)\) e \(t(e_n)\).
+		      Il dominio e codominio di una sequenza \((e_1,\ldots,e_n)\) di lunghezza \(n>0\) sono rispettivamente \(s(e_1)\) e \(t(e_n)\).
 		      Il dominio e codominio di un cammino \(\emptyList_u\) di lunghezza zero sono entrambi il vertice \(u\) stesso.
 		      %		fissati due vertici \(u,v\in V\), i morfismi \(u\to v\) sono l'insieme
 		      %		\[\sum_{n\ge0} E(u,x_1)\times E(x_1,x_2)\times\dots\times E(x_n,v)\]
@@ -638,7 +638,7 @@ Evidentemente, possiamo scrivere \(e : x\to y\) per denotare in maniera compatta
 \index{Categoria!--- di insiemi ordinati}
 \index{Preordine}
 \begin{example}\label{ex_cat_ordini}
-	Si ricordi da \ref{prelim_def_preset} che un \emph{insieme preordinato} è un insieme \(P\) dotato di una relazione riflessiva e transitiva \(\le\) che si dice la \emph{(relazione d')ordine} su \(P\); una funzione \(f  : (P,\le)\to (Q,\preceq)\) si dice \emph{monotòna} o si dice che \(f\) \emph{preserva l'ordine} se vale
+	Si ricordi da \ref{prelim_def_preset} che un \emph{insieme preordinato} è un insieme \(P\) dotato di una relazione riflessiva e transitiva \(\le\) che si dice la \emph{(relazione d')ordine} su \(P\); una funzione \(f : (P,\le)\to (Q,\preceq)\) si dice \emph{monotòna} o si dice che \(f\) \emph{preserva l'ordine} se vale
 	\[\forall x,y(x\le y\Rightarrow fx\preceq fy).\]
 
 	La categoria \(\ctPOrd\) ha per oggetti e morfismi gli insiemi preordinati e le funzioni monotòne. Chiaramente, l'identità \(\id_P : (P,\le)\to (P,\le)\) è una funzione monotòna, e la composizione di due funzioni monotòne resta monotòna.
@@ -674,7 +674,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 
 	Questa è una maniera un po' semplificata di introdurre l'ordinale \(\omega\) ottenuto come `limite' di tutti gli ordinali finiti \([n]\): rinviamo chi legge a un corso di logica elementare per approfondire la questione in modo più tecnico, e ci limitiamo a osservare che la dicotomia importante nella definizione di un numero ordinale è la seguente: un ordinale \(\alpha\in\ctOrd_0\) può essere di due tipi: un \emph{successore}, se esiste \(\beta\) tale che \(\alpha=\beta^+\), e un \emph{limite} se, invece, \(\alpha=\bigcup\alpha=\sup\{\gamma\mid \gamma < \alpha\}\).
 \end{remark}
-\begin{remark}
+\begin{remark}\label{es_catena_trans}
 	L'importanza degli ordinali risiede nella possibilità di dare \emph{definizioni per induzione} (finita o transfinita) mediante essi: se \(\ctC\) è una classe, una funzione di classe \(H : \ctOrd_0\to\ctC\) si dice \emph{continua} se è univocamente determinata dalla specifica
 	\begin{itemize}
 		\item di un elemento \(H(0)\in\ctC\) detto base dell'induzione;
@@ -955,7 +955,7 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 	% \item Dimostra che i multigrafi diretti e i loro omomorfismi formano una categoria.
 	%       \color{black}
 	\item Una categoria piccola si può vedere come un multigrafo con identità e composizione: riscrivi la definizione di categoria (piccola) in termini di multigrafi.  In che modo questa costruzione generalizza la definizione di monoide (come insieme con identità e composizione)?
-	\item Dimostrare che  se \((P,\le)\) è un insieme bene ordinato, ed \(f : P\to P\) è una funzione monotòna, allora \(a\le fa\) per ogni \(a\in P\) (cioè ogni endofunzione di un buon ordine è \emph{espansiva}); dimostrare che l'unica biiezione monotòna di un buon ordine è l'identità; più in generale, se esiste un isomorfismo d'ordine \(f : P\to Q\) tra due buon ordine, allora esso è unico.
+	\item Dimostrare che se \((P,\le)\) è un insieme bene ordinato, ed \(f : P\to P\) è una funzione monotòna, allora \(a\le fa\) per ogni \(a\in P\) (cioè ogni endofunzione di un buon ordine è \emph{espansiva}); dimostrare che l'unica biiezione monotòna di un buon ordine è l'identità; più in generale, se esiste un isomorfismo d'ordine \(f : P\to Q\) tra due buon ordine, allora esso è unico.
 	\item Dare una dimostrazione alternativa di \ref{circ_thm} secondo questa falsariga: definire una funzione di `misura' \(\mu\) sull'insieme delle funzioni Booleane semplici, che manda \(f : \bbB^n\to\bbB\) nella cardinalità dell'insieme \(f^\leftarrow(0)\). Mostrare che \(f\) è esprimibile come composizione di AND e NOT nei tre casi:
 	      \begin{itemize}
 		      \item \(\mu(f)=0\) (in tal caso, \(f\) è la funzione costantemente \(1\));
@@ -1169,7 +1169,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 		      %   \[
 		      %       \begin{tikzcd}
 		      % 	      \text{in }\ctC: & X \ar{r}[swap]{f} \ar[bend left=20]{rr}{g\cmp f} & Y \ar{r}[swap]{g} & Z \\
-		      % 	      \text{in }\ctC^\op: &X & Y  \ar{l}[swap]{f^\op} & Z \ar{l}[swap]{g^\op} \ar[bend left=20]{ll}{f^\op\cmp g^\op=(g\cmp f)^\op}
+		      % 	      \text{in }\ctC^\op: &X & Y \ar{l}[swap]{f^\op} & Z \ar{l}[swap]{g^\op} \ar[bend left=20]{ll}{f^\op\cmp g^\op=(g\cmp f)^\op}
 		      %       \end{tikzcd}
 		      %   \]
 	\end{itemize}
@@ -2104,7 +2104,7 @@ Quando, nel secondo esercizio, prendiamo \(\ctD=\ctSet\) di \ref{ex_cat_insiemi}
 
 \end{example}
 In maniera simile, un funtore \(\susp G\fun\ctVect[\bbR]\) consiste precisamente di una rappresentazione (lineare) di \(G\) su uno spazio vettoriale nel senso che è noto dall'algebra o dalla fisica matematica; le stesse costruzioni si possono fare con un monoide invece di un gruppo, e ciò giustifica la definizione seguente.
-\begin{definition}[Rappresentazione di \(M\)]
+\begin{definition}[Rappresentazione di \(M\)]\label{es_fun_repre}
 	Sia \(\ctD\) una categoria, ed \((M,\cdot,1)\) un monoide; una \emph{rappresentazione} di \(M\) in \(\ctD\) consiste di un funtore \(\susp M \fun \ctD\).
 \end{definition}
 La teoria classica delle equazioni differenziali ordinarie dà un esempio importante di rappresentazione di \(G\) in una categoria di spazi topologici, mediante i \emph{gruppi a un parametro} di diffeomorfismi,\footnote{Il nome `gruppo a un parametro' è un relitto ottocentesco dovuto al fatto che si preferiva pensare a un'azione del gruppo additivo \(\bbR\) su una varietà \(X\) come a una famiglia di diffeomorfismi \(\{\varphi_t : X\to X\}_t\) dipendenti --appunto-- da un parametro reale \(t\in\bbR\) (o \(t\in [a,b]\), o \(t\in [0,\infty)\)\dots). Chiaramente, \(\varphi_t = \varphi(t,-)\) per un'azione \(\varphi : \bbR\times X\to X\) mediante diffeomorfismi, cioè per un funtore \(\susp(\bbR,+,0)\fun\cate{Mfd}\) verso una categoria di varietà differenziabili e mappe lisce. La lezione per chi legge è che qualsiasi corso introduttivo ai sistemi dinamici fa uso, più o meno nascostamente, più o meno ammettendolo, del concetto di funtore.} o mediante i campi vettoriali a loro associati.
@@ -2405,7 +2405,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	Se \((X,\tau)\) è uno spazio topologico come in \ref{ex_cat_top}, la sua \emph{compattificazione ad un punto}, o compattificazione di Alexandroff, è lo spazio topologico \((X_\infty,\bar\tau)\) dove \(X_\infty \defeq X + \{\infty\}\) è l'unione disgiunta di \(X\) e di un `punto all'infinito' \(\infty\), e \(\bar\tau\) è la topologia che contiene tutti gli aperti di \(\tau\) ma anche gli insiemi della forma \(K^c \cup \{\infty\}\), dove \(K\Subset X\) è un sottoinsieme chiuso e compatto di \(X\) e \(K^c = X\smallsetminus K\) è il suo complementare. Si osservi che
 	\begin{itemize}
 		\item \(X_\infty\) è compatto e contiene \(X\) come un sottospazio denso;
-		\item \(X\mapsto  X_\infty\) è un funtore
+		\item \(X\mapsto X_\infty\) è un funtore
 		      \[\dmFun{(-)_\infty}\ctTop\ctTop\]
 		      (la cui immagine però è la sottocategoria degli spazi compatti), che induce, per ogni mappa propria \(f : X\to Y\), una mappa propria tra le loro compattificazioni
 		      \[\begin{tikzcd}
@@ -2473,7 +2473,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\item
 	\item
 \end{enumerate}
-\Todo{Due parole di introduzione, dato che qui cambia l'argomento; non credo che serva introdurre una nuova subsection.}
+In \ref{es_fun_repre} abbiamo visto che una \emph{rappresentazione} di un monoide $M$ consiste di un funtore $\susp M \fun\ctSet$, e più in generale un funtore $\ctC\fun\ctSet$ può essere pensato come una rappresentazione di $\ctC$; se una categoria $\ctJ$ è pensata come una \emph{forma} nel senso di \ref{ssec:categorie_forme}, e soprattutto quando è una forma generica nel senso di \ref{ex_cat_freccia}, \ref{ex_spancospan}, \ref{es_catena_trans}, possiamo dare la definizione seguente.
 \begin{definition}\label{def_diagramma_comm}
 	In teoria delle categorie, la parola \emph{diagramma} (di \emph{forma} \(\ctJ\)) è sinonimo di \emph{funtore} (di \emph{dominio} \(\ctJ\)).
 
@@ -2498,7 +2498,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	se \(\alpha\) è un numero ordinale, guardato come categoria rispetto alla sua relazione d'ordine, e così via per ogni altro genere di forma. Questo abuso di notazione è, ovviamente, molto conveniente quando ci si debba riferire a insiemi di oggetti e morfismi di \(\ctC\) connessi a una certa maniera.
 \end{remark}
 \begin{remark}
-	Il termine `diagramma' è di solito riservato a funtori il cui dominio è una categoria piccola, e il cui codominio può essere una categoria larga, per suggerire il principio generale cui abbiamo già accennato in \ref{ssec:categorie_forme}, ossia la tensione tra categorie come forme e come universi: un diagramma di forma piccola \(\ctJ\) è `interpretato' in una categoria \(\ctC\), possibilmente larga.
+	Il termine `diagramma' è di solito riservato a funtori il cui dominio è una categoria piccola, e il cui codominio può essere una categoria larga, per suggerire il principio generale cui abbiamo già accennato in \ref{ssec:categorie_forme}, ossia la tensione tra categorie come forme e come universi: un diagramma di forma piccola \(\ctJ\) è `interpretato' in una categoria \(\ctC\), possibilmente larga, come un grafo connesso e diretto alla stessa maniera di $\ctJ$. Possiamo quindi accedere a una porzione piccola di $\ctC$ e operare su di essa i ragionamenti che faremmo in $\ctJ$, \emph{specializzati ai morfismi di $\ctC$}.
 \end{remark}
 \begin{lemma}\label{lem_funtori_preservano_comm}
 	\Todo{Funtori preservano i diagrammi commutativi} in particolare, preservano gli isomorfismi.
@@ -2619,7 +2619,7 @@ La nozione di \emph{trasformazione naturale} tra funtori rende precisa questa id
 	Sarà spesso utile considerare esempi in cui \(\ctD\) non è una categoria piccola (l'esempio più illustre e pervasivo è \ref{def_yoneda_embeddu}), e sarà altrettanto utile considerare esempi di funtori tra categorie entrambe larghe; però la definizione della `categoria' \(\ctCat(\ctC,\ctD)\) pone un problema di teoria degli insiemi quando \(\ctC\) non è piccola; infatti, in quel caso la classe delle trasformazioni naturali tra due funtori \(F,G:\ctC\funto\ctD\) è una sottoclasse di \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), che in generale può non essere un insieme (per esempio, può coincidere con \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), quando?).
 \end{remark}
 \begin{definition}[Isomorfismo naturale]\label{def_isonat}\index{Isomorfismo!--- naturale}\index{Trasformazione naturale!isomorfismo naturale}
-	Dati due funtori \(F,G : \ctC\fun\ctD\) tra categorie, un \emph{isomorfismo naturale} consiste di una trasformazione naturale  \(\alpha : F\nat G\) che possieda una inversa per l'operazione di composizione verticale di \ref{def_vcomp}; in altre parole, \(\alpha\) è un isomorfismo naturale se esiste una trasformazione naturale \(\bar\alpha : G\nat F\) tale che \(\alpha\vcmp\bar\alpha = 1_G\) e \(\bar\alpha\vcmp\alpha =1_F\). Evidentemente tale \(\bar\alpha\) è unica e si può denotare con \(\alpha^{-1}\).
+	Dati due funtori \(F,G : \ctC\fun\ctD\) tra categorie, un \emph{isomorfismo naturale} consiste di una trasformazione naturale \(\alpha : F\nat G\) che possieda una inversa per l'operazione di composizione verticale di \ref{def_vcomp}; in altre parole, \(\alpha\) è un isomorfismo naturale se esiste una trasformazione naturale \(\bar\alpha : G\nat F\) tale che \(\alpha\vcmp\bar\alpha = 1_G\) e \(\bar\alpha\vcmp\alpha =1_F\). Evidentemente tale \(\bar\alpha\) è unica e si può denotare con \(\alpha^{-1}\).
 \end{definition}
 Inoltre, la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 \begin{lemma}
@@ -2775,7 +2775,7 @@ Si noti che la condizione di naturalità di \(\beta\circ\alpha\) si ottiene comp
 perché evidentemente, si ha
 \begin{align*}
 	Hf\cmp (\beta_X\cmp \alpha_X) & = (Hf\cmp \beta_X)\cmp \alpha_X \\
-	                              & =(\beta_Y\cmp Gf)\cmp \alpha_X  \\
+	                              & =(\beta_Y\cmp Gf)\cmp \alpha_X \\
 	                              & =\beta_Y\cmp (Gf\cmp \alpha_X)  \\
 	                              & =\beta_Y\cmp (\alpha_Y\cmp Ff)  \\
 	                              & =(\beta_Y\cmp \alpha_Y)\cmp Ff.
@@ -2800,7 +2800,7 @@ perché evidentemente, si ha
 	\]
 	che commuta per via della naturalità di \(\alpha'\).
 \end{definition}
-\begin{definition}[\Whisk di un funtore e una trasformazione naturale]
+\begin{definition}[\Whisk di un funtore e una trasformazione naturale]\label{def_whiskering}
 	Date tre categorie \(\ctA,\ctB,\ctC\) e un diagramma di funtori e trasformazioni naturali
 	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGN0QSJdLFsxLDAsIlxcY3RCIl0sWzMsMCwiXFxjdEMiXSxbNCwwLCJcXGN0RCJdLFswLDEsIksiXSxbMSwyLCIiLDAseyJjdXJ2ZSI6LTJ9XSxbMiwzLCJIIl0sWzEsMiwiIiwxLHsiY3VydmUiOjJ9XSxbNSw3LCJcXGFscGhhIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
 	\[\begin{tikzcd}
@@ -2811,10 +2811,10 @@ perché evidentemente, si ha
 			\arrow["H", from=1-4, to=1-5]
 			\arrow["\alpha", shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=1]
 		\end{tikzcd}\]
-	definiamo \emph{\whisk} sinistro tra il funtore \(H\) e la trasformazione naturale \(\alpha\), denotato \(H * \alpha\), la trasformazione naturale di componenti
-	\[(H*\alpha)_B = H(\alpha_B) : H(FB) \to H(GB)\]
-	Dualmente, definiamo \emph{\whisk} destro tra il funtore \(K\) e la trasformazione naturale \(\alpha\), denotato \(\alpha * K\), la trasformazione naturale di componenti
-	\[(\alpha * K)_A = \alpha_{KA} : FKA \to GKA.\]
+	definiamo \emph{\whisk} sinistro tra il funtore \(H\) e la trasformazione naturale \(\alpha\), denotato \(H \whi \alpha\), la trasformazione naturale di componenti
+	\[(H\whi\alpha)_B = H(\alpha_B) : H(FB) \to H(GB)\]
+	Dualmente, definiamo \emph{\whisk} destro tra il funtore \(K\) e la trasformazione naturale \(\alpha\), denotato \(\alpha \whi K\), la trasformazione naturale di componenti
+	\[(\alpha \whi K)_A = \alpha_{KA} : FKA \to GKA.\]
 	\`E facile verificare che queste due definizioni dànno trasformazioni naturali (in un caso, \(H\) applicato a ciascun quadrato di naturalità per \(\alpha\) ne preserva la commutatività; nell'altro, stiamo restringendo \(\alpha\) alle sole componenti della forma \(X=KA\)).
 	% \Todo{Come traduciamo `whiskering'? La questione è delicata: dovremmo evitare un nome buffo, ma allo stesso tempo non creare un termine troppo distante dall'idea della parola whiskering. L'italiano non ha una regola simile all'inglese per la derivazione verbale (whisker significa `baffo' o più propriamente `vibrissa', e `baffare', `vibrissare' sono derivazioni verbali grammaticali in italiano, ma ridicole). Le uniche proposte intelligenti che riesco a immaginare sono:
 	% \begin{itemize}
@@ -2824,8 +2824,8 @@ perché evidentemente, si ha
 	% \end{itemize}}
 \end{definition}
 Chi legge può facilmente verificare che (nelle stesse notazioni di sopra) vale l'uguaglianza
-\[(H*\alpha)*K=H*(\alpha*K)\]
-(cioè su ogni componente si ha l'uguaglianza \(((H*\alpha)*K)_A= H(\alpha_{KA})=(H*(\alpha*K))_A\)) la quale rende la scrittura \(H * \alpha * K\) univocamente definita.
+\[(H\whi \alpha)\whi K=H\whi (\alpha\whi K)\]
+(cioè su ogni componente si ha l'uguaglianza \(((H\whi \alpha)\whi K)_A= H(\alpha_{KA})=(H\whi (\alpha\whi K))_A\)) la quale rende la scrittura \(H \whi \alpha \whi K\) univocamente definita.
 
 Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} la composizione \(\cmp\) è un bifuntore (nel senso di \ref{def_bifuntore}): da questo segue
 \begin{definition}\label{interchangio}\index{Legge di interscambio}\index{Godement!identità di ---}
@@ -2834,11 +2834,15 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 \end{definition}
 \begin{remark}
 	L'\whisk tra un funtore e una trasformazione naturale si può definire in termini della composizione orizzontale: infatti, si verifica facilmente che
-	\[\alpha * K = \alpha\horcomp\id_K\qquad\qquad H * \alpha = \id_H \horcomp\alpha\]
+	\[\alpha \whi K = \alpha\horcomp\id_K\qquad\qquad H \whi \alpha = \id_H \horcomp\alpha\]
 	(cosa che spiega la stessa notazione utilizzata per la composizione orizzontale e per l'\whisk).
 \end{remark}
-\begin{remark}
-	\Todo{A proposito di \whisk e iso naturali...}
+\begin{remark}[A proposito di isomorfismi naturali e \whisk]
+	L'operazione di \whisk destro $\alpha \whi K$ di un isomorfismo naturale con un funtore $K$ (notazioni come in \ref{def_whiskering}) restituisce un isomorfismo naturale, ma ovviamente non è vero il viceversa: se esiste una componente $\alpha_B : FB \to GB$ che è invertibile e $K : \ctTerm\fun\ctB$ è il funtore che sceglie $B$, $\alpha \whi K$ è un isomorfismo naturale, senza che nessuna delle altre componenti di $\alpha$ sia invertibile.
+
+	L'operazione di \whisk sinistro $H \whi \alpha$ di un funtore $H$ con un isomorfismo naturale $\alpha$ restituisce un isomorfismo naturale, ma ovviamente non è vero che se $H(\alpha_B)$ è un isomorfismo in $\ctD$, allora $\alpha_B : FB\to GB$ è un isomorfismo in $\ctC$.
+
+	Data una trasformazione naturale $\alpha : F\nat G$, la sottocategoria piena $\ctI(\alpha)$ di $\ctB$ generata da tutti gli oggetti $B\in\ctB_0$ tali che $\alpha_B$ è invertibile ha una certa importanza e perciò prende un nome speciale: si chiama l'\emph{invertitore} di $\alpha$ (più precisamente, l'invertitore di $\alpha$ è la categoria insieme al funtore pieno di inclusione $k : \ctI(\alpha) \mono\ctB$).
 \end{remark}
 \index{Categoria!centro di una ---}\index{Centro}
 \begin{definition}[Centro di \(\ctC\)]\label{def_centro}
@@ -3518,7 +3522,7 @@ Alcuni esempi di categorie equivalenti ma non isomorfe
 \end{example}
 L'esercizio \ref{} chiederà di dimostrare che le due non possono essere isomorfe.
 
-Finiamo la sezione caratterizzando i monomorfismi  in \(\ctCat\): si tratta di funtori \(F : \ctC \fun\ctD\) con la proprietà che sia \(F_0 : \ctC_0\to\ctD_0\) che ogni \(F_{XY} : \Hom\ctC(X,Y) \to \Hom\ctD(F_0X,F_0Y)\) sono funzioni iniettive.
+Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di funtori \(F : \ctC \fun\ctD\) con la proprietà che sia \(F_0 : \ctC_0\to\ctD_0\) che ogni \(F_{XY} : \Hom\ctC(X,Y) \to \Hom\ctD(F_0X,F_0Y)\) sono funzioni iniettive.
 \begin{proposition}\label{mona_in_cat}
 	La classe dei monomorfismi di \(\ctCat\) consiste dei funtori \(F : \ctC\fun\ctD\) che sono fedeli e iniettivi sugli oggetti (cioè \(F_0\) e tutte le \(F_{XY}\) in \ref{def_alternativa_funtore} sono entrambe funzioni iniettive).
 \end{proposition}
