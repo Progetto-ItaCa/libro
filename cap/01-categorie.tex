@@ -54,7 +54,7 @@ Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogn
 
 	La classe \(\ctFin\) formerà una categoria, e per lo stesso motivo faranno altrettanto delle collezioni di oggetti matematici che esibiscono una struttura simile a quella di un monoide, ma sono più generali per motivi simili:
 	\begin{itemize}
-		\item \index{Categoria!---e di strutture algebriche} la classe \(\bbR\emdash\ctVect\) di tutti gli spazi vettoriali reali della forma \(\bbR^n\) per un \(n\) %\(n\ge 1\)
+		\item \index{Categoria!---e di strutture algebriche} la classe \(\ctVect[\bbR]\) di tutti gli spazi vettoriali reali della forma \(\bbR^n\) per un \(n\) %\(n\ge 1\)
 		      naturale; non tutte le mappe lineari tra spazi vettoriali si possono comporre, e le applicazioni identità sono tutte distinte; e più in generale,
 		\item la classe di tutte le strutture algebriche di un dato tipo (gli insiemi, senza limite alla loro taglia; i gruppi, con gli omomorfismi di gruppo; gli spazi vettoriali, anche di dimensione infinita; gli spazi topologici, con le funzioni continue; eccetera).
 	\end{itemize}
@@ -134,7 +134,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 
 	Invece, \(\ctC\) si dice \emph{localmente piccola} se dati ogni due oggetti \(X\) e \(Y\), la classe \(\Hom{\ctC}(X,Y)\) dei morfismi da \(X\) a \(Y\) è un insieme.
 \end{definition}
-Le categorie \(\ctFin\) e \(\bbR\emdash\ctVect\) definite sopra sono piccole, perché abbiamo limitato enormemente la loro classe di oggetti; non abbiamo considerato \emph{tutti} gli insiemi finiti, ma solo quelli della forma \(\{1,\dots,n\}\) per \(n\ge 0\); non tutti gli spazi vettoriali, ma solo quelli della forma \(\bbR^n\) per \(n\ge 0\). Come conseguenza, la classe \(\ctFin_1\) dei morfismi di \(\ctFin\) è un sottoinsieme di
+Le categorie \(\ctFin\) e \(\ctVect[\bbR]\) definite sopra sono piccole, perché abbiamo limitato enormemente la loro classe di oggetti; non abbiamo considerato \emph{tutti} gli insiemi finiti, ma solo quelli della forma \(\{1,\dots,n\}\) per \(n\ge 0\); non tutti gli spazi vettoriali, ma solo quelli della forma \(\bbR^n\) per \(n\ge 0\). Come conseguenza, la classe \(\ctFin_1\) dei morfismi di \(\ctFin\) è un sottoinsieme di
 \(\bigcup_{n,m\ge 0}2^{n\times m}\)
 (fatto da quelle relazioni \(R\subseteq n\times m\) che sono funzioni, si veda \ref{ex_cat_insiemi}), ed è quindi un insieme.
 
@@ -166,7 +166,7 @@ C'è una tripartizione essenziale nella interpretazione di \ref{def_categ}, che 
 
 	      Le categorie sono quindi una generalizzazione simultanea di queste (ed altre) strutture matematiche, unificate da una stessa definizione complessiva. Questo progresso verso l'unificazione degli oggetti matematici non va sottovalutato: iniziando a studiare matematica si percepisce che i metodi, i linguaggi e i risultati dell'algebra astratta e (ad esempio) della topologia siano diversi, quasi complementari. Eppure in un certo senso essi hanno tratti comuni, e la teoria delle categorie, ovvero il linguaggio sviluppato in questo libro, aiuta a capire quali siano queste affinità, contestualizzandole insieme alle loro importanti divergenze.
 \end{itemize}
-Si può imparare la teoria delle categorie in modo proficuo solo abbracciando \emph{tutti} questi punti di vista \emph{allo stesso tempo}, e ciò anche perché un dato ambito della matematica si occupa o `vive' in una (o più) categorie. Per esempio, l'algebra lineare studia le categorie \(\bbF\emdash\ctVect\) di spazi vettoriali, eventualmente su diversi campi di base (come \(\bbQ,\bbR,\bbC\), o un campo finito). La topologia generale studia le categorie di \emph{spazi topologici} (e i morfismi funzioni continue), mentre la topologia differenziale si restringe alla categoria i cui oggetti sono \emph{varietà} (e i morfismi funzioni differenziabili), oppure studia particolari categorie di strutture ordinate (perché l'insieme degli aperti di uno spazio topologico \(X\) con una topologia \(\tau \subseteq 2^X\) forma, con le operazioni di unione e intersezione, una struttura algebrica detta \emph{algebra di Heyting}, si veda \cite{Esakia2019}).
+Si può imparare la teoria delle categorie in modo proficuo solo abbracciando \emph{tutti} questi punti di vista \emph{allo stesso tempo}, e ciò anche perché un dato ambito della matematica si occupa o `vive' in una (o più) categorie. Per esempio, l'algebra lineare studia le categorie \(\ctVect\) di spazi vettoriali, eventualmente su diversi campi di base (come \(\bbQ,\bbR,\bbC\), o un campo finito). La topologia generale studia le categorie di \emph{spazi topologici} (e i morfismi funzioni continue), mentre la topologia differenziale si restringe alla categoria i cui oggetti sono \emph{varietà} (e i morfismi funzioni differenziabili), oppure studia particolari categorie di strutture ordinate (perché l'insieme degli aperti di uno spazio topologico \(X\) con una topologia \(\tau \subseteq 2^X\) forma, con le operazioni di unione e intersezione, una struttura algebrica detta \emph{algebra di Heyting}, si veda \cite{Esakia2019}).
 
 D'altra parte l'analisi funzionale studia quegli spazi \emph{vettoriali} (di dimensione infinita) che sono dotati di una \emph{topologia} metrizzabile (e determinata da un filtro di intorni dello zero), ed eventualmente di un prodotto scalare; la teoria della rappresentazione studia certi omomorfismi in un gruppo di matrici, o le proprietà \emph{topologiche-differenziali} di questi gruppi di matrici (il gruppo ortogonale speciale, il gruppo dei quaternioni di norma 1, ecc.). Per comprendere queste strutture è spesso necessario spostarsi di categoria in categoria.
 
@@ -543,11 +543,11 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 Evidentemente, possiamo restringerci a considerare la categoria dei soli insiemi \emph{finiti} (così come la categoria \(\ctFRel\) delle relazioni tra insiemi finiti, che la contiene propriamente). Questo è il primo degli esempi motivanti fatti ad inizio capitolo, e in un senso evidente (che sarà precisato dalla definizione \ref{def_subcat}), \(\ctFRel\) è una \emph{sottocategoria} di \(\ctRel\) (e \(\ctFin\) è una sottocategoria di \(\ctSet\), che a sua volta è una sottocategoria di \(\ctRel\), sebbene in un modo non completamente banale).
 \index{Categoria!--- delle matrici}
 \begin{example}[Categoria delle matrici in \(\bbF\)]\label{ex_cat_matrici}
-	Per ogni anello con divisione \(\bbF\), posiamo definire la categoria \(\bbF\emdash\ctMat\) delle \emph{matrici a componenti in \(\bbF\)} come quella che ha
+	Per ogni anello con divisione \(\bbF\), posiamo definire la categoria \(\ctMat\) delle \emph{matrici a componenti in \(\bbF\)} come quella che ha
 	\begin{itemize}
 		\item per oggetti i numeri naturali \(0,1,2,\dots\);
 		\item per morfismi \(n\to m\) le matrici con \(m\) righe ed \(n\) colonne a coefficienti in \(\bbF\), ossia:
-		      \[\bbF\emdash\ctMat(n,m) = \matrici mn\bbF = \text{Lin}_{\bbF}(\bbF^n,\bbF^m)\]
+		      \[\ctMat(n,m) = \matrici mn\bbF = \text{Lin}_{\bbF}(\bbF^n,\bbF^m)\]
 		      dove \(\bbF^n:=\bbF \times\dots\times\bbF\) è il prodotto cartesiano iterato di \(\bbF\) con sé stesso \(n\) volte (quindi \(\bbF^0\) contiene il solo vettore nullo), e \(\text{Lin}_{\bbF}(\bbF^n,\bbF^m)\) è l'insieme delle funzioni \(\bbF\)-lineari \(\bbF^n\to\bbF^m\) (che scegliendo su dominio e codominio le basi canoniche, si identifica alle matrici a componenti in \(\bbF\) di taglia \(m\times n\)).
 	\end{itemize}
 	La composizione è il prodotto di matrici: se \(A : n\to m\) e \(B : m\to p\) sono matrici di entrate \((A_{ij}\mid 1\le i\le m,1\le j\le n)\) e \((B_{rs}\mid 1\le r\le p,1\le s\le m)\), la loro composizione \(BA : n\to p\) è la matrice \(BA\in \matrici pn\bbF\) definita da \((BA)_{ij} = \sum_{k=1}^m B_{ik}A_{kj}\).
@@ -555,7 +555,7 @@ Evidentemente, possiamo restringerci a considerare la categoria dei soli insiemi
 	Questa operazione di composizione, come ricorda chiunque abbia studiato l'algebra lineare, è associativa, e la matrice identità \(I_n\in \matrici nn\bbF\) ne è l'elemento identità.
 \end{example}
 \begin{remark}
-	La categoria degli spazi vettoriali e mappe lineari, introdotta indirettamente in \ref{varie_categorie_nella_pratica}, e la categoria \(\bbF\emdash\ctMat\) ora definita, sono collegate in un senso preciso che sarà chiaro introducendo la nozione di \emph{scheletro} di una categoria in \ref{def_scheletro}: \(\bbF\emdash\ctMat\) si ottiene da \(\bbF\emdash\ctVect\) scegliendo un solo oggetto per ogni dimensione (dato che ogni \(\bbF\)-spazio vettoriale \(V\) di dimensione finita su \(\bbF\) è isomorfo ad un oggetto di \(\bbF\emdash\ctMat\)).
+	La categoria degli spazi vettoriali e mappe lineari, introdotta indirettamente in \ref{varie_categorie_nella_pratica}, e la categoria \(\ctMat\) ora definita, sono collegate in un senso preciso che sarà chiaro introducendo la nozione di \emph{scheletro} di una categoria in \ref{def_scheletro}: \(\ctMat\) si ottiene da \(\ctVect\) scegliendo un solo oggetto per ogni dimensione (dato che ogni \(\bbF\)-spazio vettoriale \(V\) di dimensione finita su \(\bbF\) è isomorfo ad un oggetto di \(\ctMat\)).
 \end{remark}
 Questo appena fatto è il secondo degli esempi motivanti fatti ad inizio capitolo.
 \index{Categoria!--- di strutture algebriche}
@@ -1488,7 +1488,7 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 	La sottocategoria \(\cate{Fib}/X\) dei fibrati sopra \(X\) è piena in \(\ctTop/X\). La sottocategoria dei \emph{rivestimenti} sopra \(X\), dove le fibre generiche sopra i punti \(x\in X\) sono spazi discreti, trova interessanti applicazioni in topologia algebrica.
 \end{example}
 \begin{example}[Spazi affini]\label{ex_affini}\index{Categoria!--- degli spazi affini}
-	Consideriamo la categoria \(k\emdash\ctVect\) degli spazi vettoriali su un campo \(k\); a partire dall'incubo \(\ctVect/k\) definiamo la categoria \(\ctA\) come segue:
+	Consideriamo la categoria \(\ctVect[k]\) degli spazi vettoriali su un campo \(k\); a partire dall'incubo \(\ctVect/k\) definiamo la categoria \(\ctA\) come segue:
 	\begin{itemize}
 		\item gli oggetti sono mappe lineari \emph{suriettive} \(A : V\to k\);
 		\item i morfismi sono gli stessi di \(\ctVect/k\).
@@ -1756,7 +1756,7 @@ Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando 
 	\begin{enumtag}{ei}
 		\item \label{ei_1} \`E evidente che in ogni categoria \(\ctC\), tutte le identità \(\id_X : X\to X\) sono isomorfismi che coincidono col loro inverso, e che la composizione di isomorfismi \(f_1\cmp f_2\) è un isomorfismo di inverso \(g_2\cmp g_1\), cioè \((f_1\cmp f_2)^{-1} = f_2^{-1}\cmp f_1^{-1}\).
 		\item \label{ei_2} In \(\ctSet\), gli isomorfismi sono esattamente le biiezioni, o `corrispondenze biunivoche'. Per la definizione solitamente data di cardinalità, due insiemi sono isomorfi se e solo se hanno lo stesso numero cardinale, che quindi risulta essere una scelta privilegiata di un oggetto di \(\ctSet\), rappresentante della classe di isomorfismo di un dato insieme.
-		\item \label{ei_3} In \(\bbF\emdash\ctVect\), gli isomorfismi sono le biiezioni lineari. In particolare, due spazi vettoriali \(V,W\) di dimensione finita \(\dim V=n,\dim W=m\) sono isomorfi se e solo se \(n=m\). Similmente, in \(\bbF\emdash\ctMat\) gli isomorfismi sono elementi dell'unione \(\bigcup_{n\ge 0}\text{GL}(n,\bbF)\) di tutti i gruppi delle matrici a coefficienti in \(\bbF\), di taglia \(n\), invertibili.
+		\item \label{ei_3} In \(\ctVect\), gli isomorfismi sono le biiezioni lineari. In particolare, due spazi vettoriali \(V,W\) di dimensione finita \(\dim V=n,\dim W=m\) sono isomorfi se e solo se \(n=m\). Similmente, in \(\ctMat\) gli isomorfismi sono elementi dell'unione \(\bigcup_{n\ge 0}\text{GL}(n,\bbF)\) di tutti i gruppi delle matrici a coefficienti in \(\bbF\), di taglia \(n\), invertibili.
 		\item \label{ei_4} In \(\ctTop\), gli isomorfismi sono gli \emph{omeomorfismi}: funzioni continue con un'inversa insiemistica anch'essa continua. In generale, può non accadere che, se \(f : X\to Y\) è un omomorfismo biiettivo, la \emph{funzione} inversa \(g : Y\to X\) sia anch'essa un isomorfismo; per esempio, l'identità \(\id_X : (X,\delta)\to (X,\gamma)\) su un insieme con tre punti \(X=\{a,b,c\}\) è continua quando \(\delta\) è la topologia discreta e \(\gamma\) è la topologia banale, ma la sua inversa insiemistica \(\id_X : (X,\gamma)\to(X,\delta)\) \emph{non} è continua.
 		\item \label{ei_5} In ogni categoria di strutture algebriche (si veda \ref{ex_cat_sigma_strutture}), gli isomorfismi sono gli \emph{isomorfismi di \(\Sigma\)-strutture}, cioè le funzioni \(f : A\to B\) che sono \(\Sigma\)-omomorfismi biiettivi. Quindi non può accadere quanto succede negli spazi topologici: se \(f : A\to B\) è un omomorfismo biiettivo, la sua inversa insiemistica deve a sua volta essere un omomorfismo dato che (ad esempio, quando \(\cdot\) è una operazione binaria specificata dalla segnatura \(\Sigma\) in questione)
 		\[f^{-1}(x\cdot y) = f^{-1}(fa\cdot fa') = f^{-1}(f(a\cdot a')) = a\cdot a' = f^{-1}(x)\cdot f^{-1}(y).\]
@@ -1766,11 +1766,11 @@ Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando 
 \begin{warning}
 	Spesso una categoria viene chiamata con il nome dei suoi oggetti (\(\ctVect\), \(\ctGrp\), eccetera), ma per decidere se due oggetti sono isomorfi è essenziale sapere \emph{quali sono i morfismi} per sapere che struttura in particolare vogliamo preservare. Per esempio, tutte le potenze \(\bbR,\bbR^2,\bbR^3,\dots\) sono isomorfe come insiemi (hanno la stessa cardinalità \(2^{\aleph_0}\)); ma non come spazi vettoriali reali (hanno dimensioni diverse) né come varietà differenziabili (hanno dimensioni diverse; ma il teorema di invarianza della dimensione per varietà non è completamente ovvio). Questi oggetti sono isomorfi anche come gruppi abeliani (o come spazi vettoriali \emph{sui razionali}, il che è leggermente controintuitivo: infatti la dimostrazione dipende dall'assioma della scelta).
 
-	Per cui, nelle categorie \(\ctSet\) e \(\bbQ\emdash\ctVect\), gli oggetti \(\bbR\) e \(\bbR^2\) sono isomorfi, ma non sono isomorfi se li intendiamo come oggetti della categoria \(\bbR\emdash\ctVect\).
+	Per cui, nelle categorie \(\ctSet\) e \(\bbQ\emdash\ctVect\), gli oggetti \(\bbR\) e \(\bbR^2\) sono isomorfi, ma non sono isomorfi se li intendiamo come oggetti della categoria \(\ctVect[\bbR]\).
 \end{warning}
 % Si noti che le condizioni \(g\cmp f = \id_X\) e \(f\cmp g=\id_Y\) servono entrambe, perché possono valere o non valere indipendentemente l'una dall'altra.
 % \begin{example}
-%  Nella categoria \(\bbR\emdash\ctVect\), si consideri la mappa \(f:\bbR\to\bbR^2\) data dall'inclusione dell'asse \(X\), \(x\mapsto(x,0)\). Data la proiezione sull'asse \(X\) data da \(g:\bbR^2\to\bbR\), \((x,y)\mapsto x\), si ha che \(g\cmp f=\id_\bbR\). Però non è vero che \(f\cmp g = \id_{\bbR^2}\). (E infatti i due oggetti non sono isomorfi come spazi vettoriali.)
+%  Nella categoria \(\ctVect[\bbR]\), si consideri la mappa \(f:\bbR\to\bbR^2\) data dall'inclusione dell'asse \(X\), \(x\mapsto(x,0)\). Data la proiezione sull'asse \(X\) data da \(g:\bbR^2\to\bbR\), \((x,y)\mapsto x\), si ha che \(g\cmp f=\id_\bbR\). Però non è vero che \(f\cmp g = \id_{\bbR^2}\). (E infatti i due oggetti non sono isomorfi come spazi vettoriali.)
 % \end{example}
 
 \begin{definition}[Gruppoide]\label{def_gruppoide}\index{Categoria!Gruppoide}
@@ -2103,7 +2103,7 @@ Quando, nel secondo esercizio, prendiamo \(\ctD=\ctSet\) di \ref{ex_cat_insiemi}
 	La preservazione dell'identità e della composizione dicono precisamente che le funzioni \(x\mapsto g\cdot x\) per ogni \(g\) danno un'azione di \(G\) su \(X\).
 
 \end{example}
-In maniera simile, un funtore \(\susp G\fun\bbR\emdash\ctVect\) consiste precisamente di una rappresentazione (lineare) di \(G\) su uno spazio vettoriale nel senso che è noto dall'algebra o dalla fisica matematica; le stesse costruzioni si possono fare con un monoide invece di un gruppo, e ciò giustifica la definizione seguente.
+In maniera simile, un funtore \(\susp G\fun\ctVect[\bbR]\) consiste precisamente di una rappresentazione (lineare) di \(G\) su uno spazio vettoriale nel senso che è noto dall'algebra o dalla fisica matematica; le stesse costruzioni si possono fare con un monoide invece di un gruppo, e ciò giustifica la definizione seguente.
 \begin{definition}[Rappresentazione di \(M\)]
 	Sia \(\ctD\) una categoria, ed \((M,\cdot,1)\) un monoide; una \emph{rappresentazione} di \(M\) in \(\ctD\) consiste di un funtore \(\susp M \fun \ctD\).
 \end{definition}
@@ -2114,7 +2114,7 @@ La teoria classica delle equazioni differenziali ordinarie dà un esempio import
 		\item gli oggetti sono coppie \((n,x)\) con \(n\in\bbN\) e \(x\in\bbR^n\);
 		\item i morfismi \((n,x)\to (m,y)\) sono funzioni differenziabili \(f:\bbR^n\to\bbR^m\) tali che \(f(x)=y\).
 	\end{itemize}
-	Possiamo costruire un funtore \(D:\ctEuc\fun\bbR\emdash\ctMat\) nel seguente modo:
+	Possiamo costruire un funtore \(D:\ctEuc \fun \ctMat[\bbR]\) nel seguente modo:
 	\begin{itemize}
 		\item sugli oggetti, mappa \((n,x)\) in \(n\);
 		\item sui morfismi, assegna alla funzione \(f:(\bbR^n,x)\to (\bbR^m,y)\) il \emph{differenziale} di \(f\) in \(x\), cioè, la mappa lineare \(Df:\bbR^n\to\bbR^m\).
@@ -2182,27 +2182,27 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\end{tikzcd}
 \]
 è commutativo.
-\begin{example}\label{ex_hom_funtore}\index{Funtore!hom --- covariante}\index{Funtore!hom --- controvariante}
-	L'esempio prototipico di \emph{funtore hom} controvariante, definito come segue. Sia \(\ctC\) una categoria, e \(X\) un suo oggetto. Definiamo un funtore
-	\[\dmFun{\Hom{\ctC}(-,X)}{\ctC^\op}{\ctSet}\]
+\begin{hExample}[Funtore hom co- e controvariante, bifuntore hom]{fund}\label{ex_hom_funtore}\index{Funtore!hom --- covariante}\index{Funtore!hom --- controvariante}
+	Sia \(\ctC\) una categoria, e \(C\) un suo oggetto. Definiamo un funtore
+	\[\dmFun{\Hom{\ctC}(-,C)}{\ctC^\op}{\ctSet}\]
 	come segue:
 	\begin{itemize}
-		\item un oggetto \(Y\) viene mandato nell'insieme \(\Hom{\ctC}(Y,X)\) dei morfismi \(u : Y\to X\);
+		\item un oggetto \(Y\) viene mandato nell'insieme \(\Hom{\ctC}(Y,C)\) dei morfismi \(u : Y\to C\);
 		\item un morfismo \(f : Y\to Y'\) viene mandato nella funzione
 		      \[\xymatrix{
-				      \Hom{\ctC}(Y',X) \ar[r] & \Hom{\ctC}(Y,X)
+				      \Hom{\ctC}(Y',C) \ar[r] & \Hom{\ctC}(Y,C)
 			      }\]
-		      che manda \(u : Y'\to X\) in \(u\cmp f : Y\to Y' \to X\).
+		      che manda \(u : Y'\to C\) in \(u\cmp f : Y\to Y' \to C\).
 	\end{itemize}
 	Le condizioni \ref{p_1}, \ref{p_2} si riducono agli assiomi di categoria: si tratta di
 	\begin{itemize}
 		\item verificare che \((u\cmp f)\cmp g = u\cmp (f\cmp g)\); vero, perché la composizione è associativa;
 		\item verificare che \(u\cmp \id_Y = u\); vero, perché la composizione ha le identità di \(\ctC\) come elementi neutri.
 	\end{itemize}
-	Dualmente, possiamo definire un funtore hom covariante \(\Hom{\ctC}(X,-)\), fissando un oggetto \(X\in\ctC_0\) e definendo la funzione sugli oggetti come \(\Hom{\ctC}(X,-)_0 : Y\mapsto \Hom{\ctC}(X,Y)\) e \(\Hom{\ctC}(X,f) : (u : X\to Y)\mapsto f\cmp u\) per \(f : Y\to Y'\).
+	Dualmente, possiamo definire un funtore hom covariante \(\Hom{\ctC}(C,-)\), fissando un oggetto \(C\in\ctC_0\) e definendo la funzione sugli oggetti come \(\Hom{\ctC}(C,-)_0 : Y\mapsto \Hom{\ctC}(C,Y)\) e \(\Hom{\ctC}(C,f) : (u : C\to Y)\mapsto f\cmp u\) per \(f : Y\to Y'\).
 
 	\index{Funtore!hom ---} In effetti, entrambi i funtori hom covarianti e controvarianti nascono fissando la componente (destra per il funtore hom controvariante, sinistra per il covariante) del \emph{bifuntore hom} di \(\ctC\),
-	\[\xymatrix{\hom_\ctC : \ctC^\op\times\ctC \ar[r] & \ctSet}\]
+	\[\xymatrix{\Hom\ctC(-,-) : \ctC^\op\times\ctC \ar[r] & \ctSet}\]
 	definito come segue:
 	\begin{itemize}
 		\item Sugli oggetti, \((X,Y)\mapsto \Hom{\ctC}(X,Y)\);
@@ -2210,8 +2210,8 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		      \[\xymatrix{\Hom{\ctC}(X,Y) \ar[r] & \Hom{\ctC}(X',Y')}\]
 		      che manda \(h : X\to Y\) in \(v\cmp h\cmp u\).
 	\end{itemize}
-	Con questa definizione, è evidente che se \(f : A\to B\) è un morfismo di \(\ctC\), \(\hom(f,X)\) agisce come \(\hom(f,\id_X)\) e \(\hom(Y,f)\) agisce come \(\hom(\id_Y,f)\); ma allora, quando sia definito, \(\hom(f,g)\) agisce come \(\hom(f,\id_\bullet)\cmp\hom(\id_\bullet,g)\), cioè come \(\hom(\id_\bullet,g)\cmp\hom(f,\id_\bullet)\).
-\end{example}
+	Con questa definizione, è evidente che se \(f : A\to B\) è un morfismo di \(\ctC\), \(\Hom\ctC(f,X)\) agisce come \(\Hom\ctC(f,\id_X)\) e \(\Hom\ctC(Y,f)\) agisce come \(\Hom\ctC(\id_Y,f)\); ma allora, quando sia definito, \(\Hom\ctC(f,g)\) agisce come \(\Hom\ctC(f,\id_\bullet)\cmp\Hom\ctC(\id_\bullet,g)\), cioè come \(\Hom\ctC(\id_\bullet,g)\cmp\Hom\ctC(f,\id_\bullet)\).
+\end{hExample}
 \begin{remark}
 	\Todo{La dicotomia tra covarianza e controvarianza viene dalla fisica che, purtroppo, definisce i due concetti in maniera opposta alla convenzione in teoria delle categorie.}
 \end{remark}
@@ -2288,9 +2288,9 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\[\dmFun F\ctdGph\ctCat\]
 	Un omomorfismo di grafi \((f_E,f_V) : \ctG \to \ctH\) infatti è il dato sufficiente per definire un funtore \(F(f_E,f_V) : F\ctG \fun F\ctH\) sugli oggetti (con \(f_V\)) e sui morfismi generatori (con \(f_E\)), mandando la successione di lati contigui \([\tup en;]\) in \(F\ctG\) in \([\tup {{f_E}e}n;]\) in \(F\ctH\) (se \(n=0\) questo significa che \(F(f_E,f_V)\emptyList = \emptyList\)).
 \end{example}
-\begin{example}[Realizzare \(\bbF\emdash\ctMat\) in \(\bbF\emdash\ctVect\)]\index{Funtore!--- matrici reali}
-	La categoria delle matrici \(\bbF\emdash\ctMat\) è stata definita in \ref{}; la categoria \(\bbF\emdash\ctVect\) è stata definita in \ref{}. Abbiamo già osservato che \(\bbF\emdash\ctMat\) si ottiene da \(\bbF\emdash\ctVect\) scegliendo un solo oggetto per ogni dimensione, e questo definisce un funtore ovvio \(\bbF\emdash\ctMat \to \bbF\emdash\ctVect\) (mandando \(n\) in \(\bbF^n\) e una matrice \(A\) nell'applicazione lineare che agisce come \(A\) nella base canonica). Esiste anche un funtore nella direzione opposta,
-	\[\dmFun{Q}{\bbF\emdash\ctVect}{\bbF\emdash\ctMat}\]
+\begin{example}[Realizzare \(\ctMat\) in \(\ctVect\)]\index{Funtore!--- matrici reali}
+	La categoria delle matrici \(\ctMat\) è stata definita in \ref{}; la categoria \(\ctVect\) è stata definita in \ref{}. Abbiamo già osservato che \(\ctMat\) si ottiene da \(\ctVect\) scegliendo un solo oggetto per ogni dimensione, e questo definisce un funtore ovvio \(\ctMat \to \ctVect\) (mandando \(n\) in \(\bbF^n\) e una matrice \(A\) nell'applicazione lineare che agisce come \(A\) nella base canonica). Esiste anche un funtore nella direzione opposta,
+	\[\dmFun{Q}{\ctVect}{\ctMat}\]
 	che assegna a uno spazio vettoriale \(V\) la sua dimensione (rispetto a una base scelta), e ad una mappa \(\bbF\)-lineare \(f : V\to W\) tra spazi vettoriali la matrice di \(f\) nelle basi scelte su \(V\) e \(W\).
 
 	Più precisamente, la base \(b(V)\) è stata scelta per determinare un isomorfismo \(\theta_V : V \to \bbF^n\) (se \(n=\dim_\bbF V)\), e il quadrato di applicazioni lineari
@@ -2469,7 +2469,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 % \end{example}
 \subsubsection*{Esercizi}
 \begin{enumerate}
-	\item
+	\item Descrivere il funtore hom covariante $\Hom\ctC(C,-)$ e controvariante $\Hom\ctC(-,C)$ di \ref{} quando: $\ctC$ ha un solo oggetto, \ref{mon_sonocat}; $\ctC$ è una classe preordinata, \ref{ord_sonocat}; $\ctC = \ctA+\ctB$ è la somma di due categorie fissate; $\ctC = G\emdash\ctSet$ per un gruppo $G$ \ref{ex_cat_g_insiemi}; $\ctC = \ctMat$
 	\item
 	\item
 \end{enumerate}
@@ -2935,6 +2935,8 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 	bisogna però scegliere come morfismi $F\nat G$ tra due funtori $F,G : \ctC\fun\ctSet$ le trasformazioni naturali $G\nat F$. Questa scelta permette di dualizzare \ref{} definendo l'\emph{immersione di coYoneda}
 	\[\dmFun{\coyon_\ctC}{\ctC}{\copresh\ctC}\]
 	definita mandando $C\in\ctC_0$ nel funtore hom covariante di \ref{}, e una freccia $f : C\to C'$ nella funzione tra hom insiemi di \ref{}.
+
+	Si osservi che le immersioni di Yoneda e coYoneda si ottengono `saturando' nel primo o nel secondo argomento il bifuntore hom di \ref{ex_hom_funtore}. Questa che sembra una banalità è una importante relazione tra $\yon_\ctC,\coyon_\ctC$ e $\hom_\ctC$.
 \end{remark}
 Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto profonde, la cui dimostrazione riposa sul risultato centrale del capitolo \ref{cap_yoneda} (a cui rimandiamo chi legge), è il seguente:
 \begin{proposition}
@@ -3529,7 +3531,7 @@ Questo conclude la dimostrazione.
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
-	\item Fissato un campo \(\bbF\), mostrare che \(\bbF\emdash\ctMat\) e \(\bbF\emdash\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\bbF\emdash\ctMat\) e quella di \(\bbF\emdash\ctVect\) non sono isomorfe.)
+	\item Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
 	\item
 	\item
 	\item
