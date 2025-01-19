@@ -193,7 +193,7 @@ Iniziamo ora a dare degli esempi di categorie piccole partendo dall'esempio più
 Alcune categorie che è spesso utile considerare si rappresentano mediante dei grafi:
 \index{Categoria!--- freccia generica}
 \begin{example}\label{ex_cat_freccia}
-	La categoria \emph{freccia generica} ha due oggetti \(0,1\) e un unico morfismo non identità \(u : 0\to 1\) (che di solito non ha nome). La composizione è forzata a essere definita solamente tra le identità ed \(u\), nell'unico modo ovvio, e tutti gli assiomi di categoria sono banalmente soddisfatti.
+	La categoria $\genArrow$ detta \emph{freccia generica} ha due oggetti \(0,1\) e un unico morfismo non identità \(u : 0\to 1\) (che di solito non ha nome). La composizione è forzata a essere definita solamente tra le identità ed \(u\), nell'unico modo ovvio, e tutti gli assiomi di categoria sono banalmente soddisfatti.
 \end{example}
 \index{Categoria!--- catena generica}
 \begin{example}\label{ex_cat_catena}
@@ -284,7 +284,7 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	\Todo{Che cos'è esattamente un diagramma commutativo?}
 \end{remark}
 \begin{remark}
-	Si noti che \(P[2]\) può essere pensato come un insieme ordinato, e precisamente l'insieme dei sottoinsiemi di un insieme con due elementi \(\{a,b\}\); in tal senso \((ij)\) rappresenta la funzione caratteristica \(\chi_U : \{a,b\}\to \{0,1\}\) di un sottoinsieme \(U\subseteq \{a,b\}\), nel senso che ad esempio \((10)=\{a\}, (00)=\varnothing\), eccetera. Si osservi anche che \(P[2]\) è l'insieme parzialmente ordinato \(\{0\le 1\}\times \{0\le 1\}\), dotato dell'\emph{ordine prodotto} (si veda \ref{ord_sonocat} e \ref{cat_sonopos}).
+	Si noti che \(P[2]\) può essere pensato come un insieme ordinato, e precisamente l'insieme dei sottoinsiemi di un insieme con due elementi \(\{a,b\}\); in tal senso \((ij)\) rappresenta la funzione caratteristica \(\chi_U : \{a,b\}\to \{0,1\}\) di un sottoinsieme \(U\subseteq \{a,b\}\), nel senso che ad esempio \((10)=\{a\}, (00)=\varnothing\), eccetera. Si osservi anche che \(P[2]\) è l'insieme parzialmente ordinato \(\genArrow\times \genArrow\), dotato dell'\emph{ordine prodotto} (si veda \ref{ord_sonocat} e \ref{cat_sonopos}).
 
 	Quindi possiamo definire induttivamente
 	\[P[0] = \Delta[0], \qquad P[n+1] = P[n]\times \Delta[1]\]
@@ -1009,7 +1009,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 \begin{definition}\label{def_cat_somma}\index{Categoria!--- somma}
 	Date due categorie \(\ctC\) e \(\ctD\), la \emph{categoria somma} \(\ctC+\ctD\) è definita come segue.
 	\begin{itemize}
-		\item Come classe di oggetti,  ha l'unione disgiunta di \(\ctC_0\) e \(\ctD_0\);
+		\item Come classe di oggetti,  ha l'unione disgiunta di \(\ctC_0\) e \(\ctD_0\); gli oggetti $(\ctC+\ctD)_0$ sono quindi indicizzati da due lettere $l,r$ (`sinistra' e `destra') della forma $(X,\epsilon)$ dove $X=C\in\ctC_0$ se $\epsilon = l$ e $X=D\in\ctD_0$ se $\epsilon=r$.
 		\item Dati due oggetti \(C\) e \(C'\) presi da \(\ctC\), i morfismi tra loro corrispondono a quelli in \(\ctC\), lo stesso succede per gli oggetti presi da \(\ctD\);
 		\item Non ci sono morfismi tra un oggetto preso da \(\ctC\) e uno preso da \(\ctD\) o viceversa;
 		\item Le identità e le composizioni sono ancora una volta indotte da quelle di \(\ctC\) e \(\ctD\).
@@ -1994,9 +1994,9 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 \begin{examples}[Primi esempi di funtori]\label{es_di_funtori} Raccogliamo alcuni esempi elementari di funtori; la verifica che essi soddisfano le proprietà \ref{p_1} e \ref{p_2} è del tutto elementare e lasciata per esercizio.
 	\begin{itemize}
 		\item \label{exfun_1} Data una categoria \(\ctC\), il \emph{funtore identità} su \(\ctC\) assegna ad ogni oggetto \(X\), \(X\) stesso, e ad ogni morfismo \(f\), \(f\) stesso.
-		\item \label{exfun_2} costante
-		\item \label{exfun_3} diagonale \(\Delta : \ctC \fun\ctC\times\ctC\)
-		\item \label{exfun_4} riduzione \(\nabla : \ctC+\ctC \fun\ctC\)
+		\item \label{exfun_2} L'esempio più semplice è il funtore \emph{costante} $\const_D : \ctC\fun\ctD$, definito ogni volta che $\ctD_0$ non è vuota, per ogni scelta di $D\in\ctD_0$: per ogni $C\in\ctC_0$, $\const_D(C)=D$ e per ogni $f : C\to C'$, $\const_D(f)=\id_D$.
+		\item \label{exfun_3} Il funtore \emph{diagonale} \(\Delta : \ctC \fun\ctC\times\ctC\), il cui codominio è la categoria prodotto di \ref{def_cat_prodotto}, manda $C\in\ctC_0$ in $(C,C)$ e $f : C\to C'$ in $(f,f)$.
+		\item \label{exfun_4} il funtore di \emph{riduzione} \(\nabla : \ctC+\ctC \fun\ctC\), il cui dominio è la categoria somma di \ref{def_cat_somma}: gli oggetti e i morfismi di $\ctC+\ctC$ sono della forma $(C,\epsilon)$ e $f : (C,\epsilon) \to (C',\epsilon)$ per $\epsilon=l,r$, e la riduzione è definita semplicemente da $\nabla(C,\epsilon)=C$ e $\nabla(f)=f : C\to C'$.
 		\item \label{exfun_5} Dati due funtori \(F:\ctC\to\ctD\) e \(G:\ctD\to\ctE\), il \emph{funtore composto} \(G\cmp F:\ctC\fun\ctE\) assegna
 		      \begin{itemize}
 			      \item Ad ogni oggetto \(X\) di \(\ctC\), l'oggetto \(GFX\) (ossia \(G(F(X))\)) di \(\ctE\);
@@ -2484,7 +2484,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\]
 \end{definition}
 \begin{remark}\label{tante_cose_sono_diag}
-	Come è evidente, gli esempi di diagrammi abbondano tra gli esempi fatti in precedenza: fissata una categoria \(\ctC\), una spanna in \(\ctC\) come in \ref{def_span_e_cospan} è un diagramma di forma \(\Lambda^2_0\) e una cospanna è un diagramma di forma \(\Lambda^2_2\). Un quadrato commutativo in \(\ctC\) è un diagramma di forma \(P[2]\), e un cubo \(n\)-dimensionale (le cui facce commutano tutte) uno di forma \(P[n]\). Un singolo oggetto di \(\ctC\) si può vedere come un diagramma di forma \(\Delta[0]=\ctTerm\), e più in generale un insieme di cardinalità \(|A|\) di oggetti di \(\ctC\) è un diagramma di forma \(A^\delta\), come in \ref{ex_cat_discreta}; una singola freccia \(f : X\to Y\) in \(\ctC\) si può vedere come un diagramma di tipo \(\Delta[1]\), e più in generale una catena
+	Come è evidente, gli esempi di diagrammi abbondano tra gli esempi fatti in precedenza: fissata una categoria \(\ctC\), una spanna in \(\ctC\) come in \ref{def_span_e_cospan} è un diagramma di forma \(\Lambda^2_0\) e una cospanna è un diagramma di forma \(\Lambda^2_2\). Un quadrato commutativo in \(\ctC\) è un diagramma di forma \(P[2]\), e un cubo \(n\)-dimensionale (le cui facce commutano tutte) uno di forma \(P[n]\). Un singolo oggetto di \(\ctC\) si può vedere come un diagramma di forma \(\Delta[0]=\ctTerm\), e più in generale un insieme di cardinalità \(|A|\) di oggetti di \(\ctC\) è un diagramma di forma \(A^\delta\), come in \ref{ex_cat_discreta}; una singola freccia \(f : X\to Y\) in \(\ctC\) si può vedere come un diagramma di tipo \(\Delta[1] = \genArrow\), e più in generale una catena
 	\[\begin{tikzcd}
 			A_0 \ar[r, "f_1"] & A_1 \ar[r, "f_2"] & \dots \ar[r] & A_{n-1} \ar[r, "f_n"] & A_n
 		\end{tikzcd}
@@ -2531,7 +2531,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
-	\item Mostrare che un funtore \(\ctTerm \fun\ctC\) (un `diagramma di tipo \(\ctTerm = \Delta[0]\)') ammonta precisamente alla scelta di un oggetto di \(\ctC\), e che un diagramma di tipo \(\Delta[1] = \{0\to 1\}\) ammonta esattamente alla scelta di una freccia tra due oggetti di \(\ctC\).
+	\item Mostrare che un funtore \(\ctTerm \fun\ctC\) (un `diagramma di tipo \(\ctTerm = \Delta[0]\)') ammonta precisamente alla scelta di un oggetto di \(\ctC\), e che un diagramma di tipo \(\Delta[1] = \genArrow\) ammonta esattamente alla scelta di una freccia tra due oggetti di \(\ctC\).
 	\item Mostrare che le seguenti condizioni sono equivalenti, nella notazione di \ref{klext_delle_relazioni} per le funzioni \(R^*,R_*\):
 	      \begin{itemize}
 		      \item la condizione in \ref{klext_delle_relazioni},
@@ -2755,16 +2755,13 @@ Inoltre, la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 \begin{definition}[Composizione verticale di trasformazioni naturali]\label{def_vcomp}\index{Composizione verticale!di trasformazioni naturali}
 	Consideriamo tre funtori \(F,G,H:\ctC\to\ctD\) e due trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\beta:G\Rightarrow H\).
 	La \emph{composizione verticale} \(\beta\circ\alpha:F\Rightarrow H\) delle transformazioni naturali \(\beta,\alpha\), rappresentate avendo il bordo \(G\) in comune,
-	\[
-		\begin{tikzcd}[sep=large]
-			\ctC \ar[bend left=50, ""{name=F,below}]{r}{F}
-			\ar[""{name=Gup,above}, ""{name=Gdown,below}]{r}[near start]{G}
-			\ar[bend right=50, ""{name=H,above}]{r}[swap]{H} & \ctD
-			\ar[Rightarrow, from=F, to=Gup, "\alpha"]
-			\ar[Rightarrow, from=Gdown, to=H, "\beta"]
-		\end{tikzcd}
+	\[\xymatrix{
+		\ctC \ar[rr]|G\ar@/^1.5pc/[rr]^F\ar@/_1.5pc/[rr]_H
+		\rruppertwocell<\omit>{<-2>\alpha} 
+		\rrlowertwocell<\omit>{<2>\beta} 
+		&& \ctD
+	}
 	\]
-	\Todo{bruttissimo, to fix}
 	è definita dalla composizione \(\beta_X\cmp\alpha_X : FX\to GX\to HX\).
 \end{definition}
 Si noti che la condizione di naturalità di \(\beta\circ\alpha\) si ottiene componendo quelle di \(\alpha\) e \(\beta\):
@@ -2887,9 +2884,6 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 
 	Varie notazioni sono utilizzate per indicarla: tra le più comuni ci sono \(\widehat{\ctC}\), \(\ctC^\land\) o \(\PSh(\ctC)\): la meno ambigua, che impiegheremo noi, è \(\presh\ctC\).
 \end{example}
-\begin{remark}
-	\Todo{Definire anche \(\copresh\ctC\) e studiare le relazioni tra \(\presh-\) e \(\copresh-\).}
-\end{remark}
 \begin{definition}\label{def_yoneda_embeddu}
 	L'\emph{immersione di Yoneda} consiste del funtore
 	\[\dmFun{\yon_\ctC}{\ctC}{\presh\ctC}\]
@@ -2933,9 +2927,18 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 \begin{hRemark}[A proposito del simbolo \(\yon_\ctC\)]{skip}
 	L'immersione di Yoneda è l'unico funtore di questo testo denotato con un carattere non latino o greco. Si legge come lo `\emph{io}' di p\emph{io}ggia, ed è la prima sillaba, nel sistema di scrittura hiragana, del nome di famiglia `Yoneda' (\jap{米田 信夫}; in giapponese il cognome precede il nome), di Nobuo Yoneda (\(*\)1930-\(\dag\)1996), matematico e informatico teorico giapponese.
 \end{hRemark}
+\begin{remark}
+	In maniera simile a \ref{} è interessante studiare la categoria (denotata spesso $\ctC^\lor$) dei funtori 
+	\[\dmFun{F}{\ctC}{\ctSet}\]
+	e delle trasformazioni naturali. Affinché questa si relazioni a $\presh\ctC$ in modo che 
+	\[\ctC^\land = \big((\ctC^\op)^\lor\big)^\op\]
+	bisogna però scegliere come morfismi $F\nat G$ tra due funtori $F,G : \ctC\fun\ctSet$ le trasformazioni naturali $G\nat F$. Questa scelta permette di dualizzare \ref{} definendo l'\emph{immersione di coYoneda}
+	\[\dmFun{\coyon_\ctC}{\ctC}{\copresh\ctC}\]
+	definita mandando $C\in\ctC_0$ nel funtore hom covariante di \ref{}, e una freccia $f : C\to C'$ nella funzione tra hom insiemi di \ref{}.
+\end{remark}
 Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto profonde, la cui dimostrazione riposa sul risultato centrale del capitolo \ref{cap_yoneda} (a cui rimandiamo chi legge), è il seguente:
 \begin{proposition}
-	Per ogni categoria piccola \(\ctC\), l'immersione di Yoneda \(\yon_\ctC\) di \ref{def_yoneda_embeddu} è un funtore pienamente fedele.
+	Per ogni categoria piccola \(\ctC\), l'immersione di Yoneda \(\yon_\ctC\) di \ref{def_yoneda_embeddu} e di coYoneda $\coyon_\ctC$ sono funtori pienamente fedeli.
 \end{proposition}
 \subsubsection*{Esercizi}
 \begin{enumerate}
@@ -3224,8 +3227,8 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	\label{exm:set-sezioni-retrazioni}
 	In \(\ctSet\), una funzione ha una retrazione se e solo se è iniettiva.
 	Inoltre, le funzioni che hanno una sezione sono surgettive,
-	mentre l'implicazione inversa vale soltanto se assumiamo l'Assioma di Scelta.
-	\Todo{ci è equivalente, se non ricordo male; ma non voglio entrare troppo nel dettaglio.}
+	mentre l'implicazione inversa vale soltanto se assumiamo una forma di assioma di scelta.
+
 	Una giustificazione intuitiva di questo fatto si può dare mediante la figura \ref{fig_assioma_scelta}: data una funzione suriettiva \(g : E\to B\), una sua sezione \(s\) ammonta alla scelta, per ogni elemento \(b\) di \(B\), di un elemento di \(g^{-1}(b)\); questa scelta è possibile perché ciascuno di questi insiemi è non vuoto (questa è la cosa vera solo l'assioma di scelta: che \(\prod_{b\in B}g^{-1}(b)\) sia non vuoto); nulla vieta che per alcune fibre essa sia unica, ma ovviamente una stessa funzione suriettiva può avere molte inverse destre distinte.
 	% TODO: questo è il teorema di Cantor? Riferimento necessario?
 	% Questo esempio, inoltre, dimostra che sezioni e retrazioni non sono uniche:
@@ -3517,7 +3520,11 @@ Finiamo la sezione caratterizzando i monomorfismi  in $\ctCat$: si tratta di fun
 	La classe dei monomorfismi di \(\ctCat\) consiste dei funtori \(F : \ctC\fun\ctD\) che sono fedeli e iniettivi sugli oggetti (cioè \(F_0\) e tutte le \(F_{XY}\) in \ref{def_alternativa_funtore} sono entrambe funzioni iniettive).
 \end{proposition}
 \begin{proof}
-Se $F : \ctC \fun\ctD$ è un mono in $\ctCat$, quando $X,Y \in\ctC_0$ si rappresentano come funtori $X,Y : \ctTerm \fun \ctC$, è evidente che $F\cmp X,F\cmp Y : \ctTm\to\ctD$, e se $F\cmp X$ è l'oggetto $F_0X$ (risp., $F\cmp Y$ è $F_0 Y$): se questi ultimi sono uguali, allora $X=Y$. In maniera simile, è possibile mostrare che ogni $F_{XY}$ è iniettiva.
+	Se sono dati due funtori $H,K:\ctJ \fun \ctC$, tali che $F\cmp H = F\cmp K$, ed $F$ è iniettivo sugli oggetti, allora per ogni $J\in\ctJ_0$ si ha $HJ=KJ$; similmente, se $F$ è iniettivo sui morfismi, si ha $Hf = Gf$ per ogni $f : X\to Y$ in $\ctC$.
+
+Se $F : \ctC \fun\ctD$ è un mono in $\ctCat$, quando $X,Y \in\ctC_0$ si rappresentano come funtori $X,Y : \ctTerm \fun \ctC$ al modo di \ref{tante_cose_sono_diag}, è evidente che $F\cmp X$ è l'oggetto $F_0X$ (risp., $F\cmp Y$ è $F_0 Y$): se questi ultimi sono uguali, allora $X=Y$. In maniera simile, è possibile mostrare che ogni $F_{XY}$ è iniettiva, presentando $f,g : X\to Y$ come funtori $\genArrow \fun \ctC$.
+
+Questo conclude la dimostrazione.
 \end{proof}
 \subsubsection*{Esercizi}
 \begin{enumerate}
