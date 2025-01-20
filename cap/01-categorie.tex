@@ -116,7 +116,6 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 	\end{itemize}
 \end{remark}
 \begin{hRemark}[A proposito dell'ordine di composizione]{skip}\label{sulla_compo}
-	% \Todo{}
 	La forma diagrammatica di rappresentazione di un morfismo in \ref{c_3} pone un problema notazionale riguardo la composizione di morfismi in \ref{c_5}; in matematica è una convenzione \emph{quasi} universale applicare le funzioni a sinistra degli argomenti, cioè scrivere \(g(f(x))\) per denotare che la prima funzione ad \emph{agire} su un elemento \(x\in X\) è \(f\), e la seconda è \(g\). Ma \(g\) è la prima funzione a essere \emph{letta} enunciando la composizione di \(f\) con \(g\) (che non ha senso se non come in \ref{c_5}, quando \(X\ne Z\)): come conseguenza, i diagrammi si leggono `al contrario' rispetto a come si disegnano, scrivendo per primo il morfismo che viene composto per ultimo.  Sorprendentemente, questa semplice inversione è sufficiente a confondere una minoranza di matematici, che vorrebbero applicare le funzioni a destra del loro argomento, scrivendo cioè \((xf)g\) per ciò che noi denotiamo \(g(fx)\). Essendo il problema generato da una scelta del tutto soggettiva e legata al progresso storico (la scrittura in occidente procede da sinistra a destra, e leggiamo \(\cos(z)\), `il coseno di \(z\)', e non brutture come \((x)\!\cos\) o \(x^{\cos}\), `l'elemento \(x\) su cui ha agito la funzione coseno') è impossibile stabilire chi ha ragione o torto: si può solo fare una scelta e mantenerla coerentemente. Tra le varie soluzioni possibili, la più elementare è rovesciare il verso delle frecce, cioè scrivere
 	\[
 		\begin{tikzcd}
@@ -484,7 +483,7 @@ Dopo questa digressione veniamo a due esempi più elaborati, ma molto `concreti'
 \end{hExample}
 Vale il seguente teorema:
 \begin{theorem}\label{circ_thm}
-	Ogni funzione Booleana semplice \(f :\bbB^n\to\bbB\) è esprimibile come composizione in serie e in parallelo di: proiezioni, mappe diagonali, congiunzioni e negazioni logiche.  %\Todo{qualcosa che dovrebbe essere nel libro di Walters \cite{Walters1992}, da cui ho preso questo esempio}
+	Ogni funzione Booleana semplice \(f :\bbB^n\to\bbB\) è esprimibile come composizione in serie e in parallelo di: proiezioni, mappe diagonali, congiunzioni e negazioni logiche.
 \end{theorem}
 In altre parole l'insieme \(\{\text{AND},\text{OR}\}\) è \emph{funzionalmente completo} (o un \emph{insieme universale di porte logiche}). Per una dimostrazione, si veda \cite[Teorema 1.4]{Crama2011}. In termini categoriali, stiamo affermando che un certo insieme di morfismi genera, insieme alle \(\pi_1,\dots,\pi_n\) e \(\Delta_n\) per ogni \(n\ge 0\), l'intera categoria mediante le operazioni di prodotto e composizione.
 
@@ -1242,7 +1241,7 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 \end{example}
 \begin{definition}[Incubi e succube sopra un oggetto]\label{def_cat_slice}\index{Categoria!--- incubo}\index{Categoria!--- succuba|see {incubo}}\index{Categoria!--- sopra un oggetto}\index{Categoria!--- sotto un oggetto|see {sopra un oggetto}}
 	Sia \(\ctC\) una categoria, e \(X\) un oggetto di \(\ctC\).
-	La \emph{categoria incubo} sopra \(X\), denotata \(\ctC/X\), o semplicemente \emph{categoria sopra} \(X\) è definita come segue:%\todo{`Su' o `sopra'? In algebra cosa si dice di solito, \emph{modulo sull'anello} o \emph{modulo sopra l'anello}?} ha
+	La \emph{categoria incubo} sopra \(X\), denotata \(\ctC/X\), o semplicemente \emph{categoria sopra} \(X\) è definita come segue:
 	\begin{itemize}
 		\item gli oggetti sono coppie \((A,p)\) dove \(A\) è un oggetto di \(\ctC\) e \(p : A\to X\) è un morfismo di \(\ctC\);
 		\item i morfismi \((A,p)\to(B,q)\) sono morfismi \(f:A\to B\) di \(\ctC\) tali che \(q\cmp f=p\), ovvero tali che il seguente diagramma commuta.
@@ -1897,7 +1896,7 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 	\[[\tup en;]\qquad n\ge 0, \tup en,\in E\]
 	o più brevemente \([\tup en{}]\), una `parola' scritta con le `lettere' \(\tup en,\). La composizione è la giustapposizione di parole \([\tup en{}]\cmp[\tup {e'}n{}] = [\tup en{}\tup{e'}n{}]\), per cui l'identità è la parola vuota \(\emptyList\) (quando \(n=0\)).
 
-	Costruire i gruppi liberi (probabilmente noti a chi legge dall'algebra elementare) come gruppo\emph{idi} liberi con un solo oggetto è più complicato.
+	Costruire i gruppi liberi (probabilmente noti a chi legge, dall'algebra elementare) come gruppo\emph{idi} liberi con un solo oggetto è più complicato.
 
 	Anzitutto
 
@@ -2340,7 +2339,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	che manda il \(G\)-insieme \(X\) nell'insieme \(X/G\). Affinché questo sia vero, una funzione equivariante \(f : X\to Y\) deve indurre una funzione ben definita tra gli spazi delle orbite \(X/G\) e \(Y/G\), in modo che gli assiomi \ref{p_1} e \ref{p_2} siano soddisfatti. \`E facile verificare che \(f/G : X/G \to Y/G : [x]_G\mapsto [f(x)]_G\) ha tutte queste proprietà. (In particolare, se chiamiamo \(\pi_X : X\to X/G\) la funzione \(x\mapsto [x]_G\) che manda ogni elemento nella sua orbita, \(f/G\) è l'unica funzione tale che \(f/G(\pi_X(x)) = \pi_Y(f(x))\).)
 \end{example}
 \begin{example}\index{Funtore!--- gruppo delle unità}
-	% \Todo{Gruppo delle unità di un anello}
 	Assegnare a un anello unitario \((R,+,0\cdot,1)\) il gruppo \((R^\times,\cdot,1)\) dei suoi elementi invertibili è un funtore
 	\[\dmFun{(-)^\times}\ctRing{\ctGrp.}\]
 	Infatti ogni omomorfismo di anelli \(f : R\to S\) induce un omomorfismo di gruppi \(f^\times : R^\times \to S^\times\), dato che se \(u\in R\) è invertibile, tale è anche \(f(u)\) (e \(f(u)^{-1}=f(u^{-1})\)).
@@ -2387,7 +2385,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	è tale che \(\det(\GL(f)A)=\det\left(\begin{smallmatrix}		fa	&	fb \\		fc	&	fd	\end{smallmatrix}\right) = f(\det A)\), cosicché \(\GL_2(f)\) è ben definita verso \(\GL_2(S)\); evidentemente ciascun \(\GL_2(f)\) è un omomorfismo di gruppi, e \(f\mapsto\GL_2(g\cmp f) = \GL_2(g)\cmp\GL_2(f)\), e \(\GL_2(\id_R) = \id_{\GL_2(R)}\).
 \end{example}
 \begin{example}\label{ker_e_coker}\index{Funtore!--- nucleo e conucleo}\index{ker|see {nucleo}}\index{coker|see {conucleo}}
-	% \Todo{Nucleo e conucleo di un omomorfismo}
 	Data una applicazione lineare \(f : V\to W\) tra \(k\)-spazi vettoriali, il suo \emph{nucleo} consiste del sottospazio \(\ker f\le V\) di tutti i vettori \(v\in V\) tali che \(f(v)=0\). Questa assegnazione è un funtore
 	\[\dmFun{\ker}{\ctVect^\to}\ctVect\]
 	dove \(\ctVect^\to\) è la categoria delle frecce di \ref{def_cat_frecce}. Infatti, a ogni quadrato commutativo
@@ -2435,7 +2432,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 % 	\Todo{La C*-algebra di uno spazio localmente compatto}
 % \end{example}
 \begin{example}\index{Funtore!--- quoziente di uno pseudoinsieme}
-	% \Todo{Il quoziente indotto da un prequoziente}
 	Sia \((X,\sim)\) un prequoziente come in \ref{ex_cat_pseudoinsiemi}; l'assegnazione del quoziente \(X/_\sim\) definisce un funtore
 	\[\dmFun q{\cate{Bish}}{\ctSet}\]
 	poiché ogni omomorfismo di pseudoinsiemi \(f : (X,\sim_X)\to (Y,\sim_Y)\) soddisfa esattamente la proprietà necessaria a indurre un'unica funzione \(qf : X/_{\sim_X}\to Y/_{\sim_Y}\), che manda la classe di equivalenza \([x]_X\) nella classe di equivalenza \([fx]_Y\) (si dimostrino per esercizio le identità funtoriali: \(q(\id_{(X,\sim)})=\id_{X/_\sim}\) e \(q(g\cmp f)=qg\cmp qf\)).
@@ -2462,11 +2458,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		      che agiscono sugli oggetti immergendo \(\ctC_0,\ctD_0\) nell'unione disgiunta \(\ctC_0+\ctD_0\), e analogamente sui morfismi.
 	\end{itemize}
 	%
-	% \Todo{Proiezioni da \(\ctC\times\ctD\); inclusioni in \(\ctC+\ctD\); inclusioni in \(\ctC\star\ctD\).}
 \end{example}
-% \begin{example}\index{Funtore!--- tra spazi affini e proiettivi}
-% 	\Todo{Da spazi affini a spazi vettoriali, a spazi proiettivi, et cetera.}
-% \end{example}
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Descrivere il funtore hom covariante \(\Hom\ctC(C,-)\) e controvariante \(\Hom\ctC(-,C)\) di \ref{} quando: \(\ctC\) ha un solo oggetto, come in \ref{mon_sonocat}; \(\ctC\) è una classe preordinata, come in \ref{ord_sonocat}; \(\ctC = \ctA+\ctB\) è la somma di due categorie fissate; \(\ctC = G\emdash\ctSet\) per un gruppo \(G\) come in \ref{ex_cat_g_insiemi}; \(\ctC = \ctMat\) per un campo \(\bbF\).
@@ -2598,13 +2590,7 @@ La nozione di \emph{trasformazione naturale} tra funtori rende precisa questa id
 \end{definition}
 \begin{definition}\label{def_natutra}
 	I funtori sono i morfismi di una categoria \(\ctCat\) delle categorie (piccole); le trasformazioni naturali tra funtori rendono la classe \(\ctCat(\ctC,\ctD)\) dei funtori \(F : \ctC\funto\ctD\) a sua volta una categoria, dove le trasformazioni naturali \(\alpha : F\nat G\) si pensano come ``frecce tra frecce'', o ``frecce di dimensione 2'', nel senso che andiamo a spiegare. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo \(\To\), a riempire un diagramma di funtori come segue:
-	%\Todo{Che si fa quando vogliamo considerare }
-	% si possono vedere come ``frecce tra frecce'', o ``frecce di secondo ordine''. È comune rappresentarle con delle doppie frecce, come segue:
 	\[
-		% \begin{tikzcd}[sep=large]
-		% 	\ctC \ar[bend left, ""{name=F,below}]{r}{F} \ar[bend right, ""{name=G,above}]{r}[swap]{G} & \ctD.
-		% 	\ar[Rightarrow, from=F, to=G, "\alpha"]
-		% \end{tikzcd}
 		\xymatrix{\ctC \rrtwocell^F_G{\alpha}&& \ctD.}
 	\]
 	In questa rappresentazione, \(\alpha\) è un morfismo di dominio \(F\) e codominio \(G\), ed \(F\) e \(G\) hanno a loro volta un dominio \(\ctC\) e un codominio \(\ctD\).
@@ -2816,12 +2802,6 @@ perché evidentemente, si ha
 	Dualmente, definiamo \emph{\whisk} destro tra il funtore \(K\) e la trasformazione naturale \(\alpha\), denotato \(\alpha \whi K\), la trasformazione naturale di componenti
 	\[(\alpha \whi K)_A = \alpha_{KA} : FKA \to GKA.\]
 	\`E facile verificare che queste due definizioni dànno trasformazioni naturali (in un caso, \(H\) applicato a ciascun quadrato di naturalità per \(\alpha\) ne preserva la commutatività; nell'altro, stiamo restringendo \(\alpha\) alle sole componenti della forma \(X=KA\)).
-	% \Todo{Come traduciamo `whiskering'? La questione è delicata: dovremmo evitare un nome buffo, ma allo stesso tempo non creare un termine troppo distante dall'idea della parola whiskering. L'italiano non ha una regola simile all'inglese per la derivazione verbale (whisker significa `baffo' o più propriamente `vibrissa', e `baffare', `vibrissare' sono derivazioni verbali grammaticali in italiano, ma ridicole). Le uniche proposte intelligenti che riesco a immaginare sono:
-	% \begin{itemize}
-	%     \item \emph{innesto destro} di \(H\) e \(\alpha\), per \(\alpha *H\), e \emph{innesto sinistro} per \(H * \alpha\);
-	%     \item \emph{visco destro} di \(H\) e \(\alpha\) per \(\alpha*H\), e sinistro per \(H*\alpha\) (`visco' è una lettura arcaica di `vischio' che è legato etimologicamente alla stessa radice di `whisker');
-	%     \item vibrissa destra / sinistra o simili, se vogliamo essere attinenti all'etimologia -come fanno gli anglofoni a non ridere?!-
-	% \end{itemize}}
 \end{definition}
 Chi legge può facilmente verificare che (nelle stesse notazioni di sopra) vale l'uguaglianza
 \[(H\whi \alpha)\whi K=H\whi (\alpha\whi K)\]
@@ -3241,7 +3221,6 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	% Questo esempio, inoltre, dimostra che sezioni e retrazioni non sono uniche:
 	% una funzione surgettiva può avere più inverse destre (sezioni).
 \end{example}
-%\Todo{Tempo fa vidi una dimostrazione molto eloquente di questo fatto, mi piacerebee aggiungerla.}
 \begin{figure}[h]
 	\begin{center}
 		\begin{tikzpicture}[
