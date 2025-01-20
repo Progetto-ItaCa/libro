@@ -27,6 +27,7 @@
             circuitikz
             cm-super
             collectbox
+            cjk
             cyrillic
             datetime
             enumitem
@@ -41,6 +42,7 @@
             jknapltx
             koma-script
             latexmk
+            latexindent
             lh
             mathabx
             mathtools
@@ -51,6 +53,7 @@
             snapshot
             stmaryrd
             t2
+            texfot
             tikz-cd
             todonotes
             turnstile

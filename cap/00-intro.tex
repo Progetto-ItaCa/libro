@@ -1,41 +1,48 @@
 \chapter{Quattro preludi categoriali}\label{cap_preludi}
 \Todo{(Questa è l'introduzione che abbozzai anni fa, la metto qui solo per esporla alla vista e ne parleremo seriamente solo verso la fine)}
-La teoria delle categorie è una parte della matematica molto giovane se confrontata con il calcolo differenziale; è certamente una fanciulla quando viene posta a fianco di alberi antichi come la geometria e la logica. Si è sviluppata rapidamente, nello spazio di pochi decenni (i suoi concetti fondamentali sono stati introdotti da Samuel Eilenberg e Saunders Mac Lane in \cite{gtone}, nel 1945; i due credevano ingenuamente che quel loro articolo sarebbe stato `l'unico che sarebbe mai stato necessario scrivere su questo tema' \cite{}).
+La teoria delle categorie è una parte della matematica molto giovane se confrontata con il calcolo differenziale, utilizzato da secoli; è certamente una fanciulla quando viene posta a fianco di alberi antichi come la geometria e la logica, che sotto varie forme si sono sviluppate lungo i millenni. La teoria delle categorie è apparsa rapidamente nel panorama della matematica del ventesimo secolo, e nello spazio di pochi decenni si è incredibilmente espansa (i suoi concetti fondamentali sono stati introdotti da Samuel Eilenberg e Saunders Mac Lane in \cite{gtone}, nel 1945; i due credevano ingenuamente che quel loro articolo sarebbe stato `l'unico che sarebbe mai stato necessario scrivere su questo tema' \cite{}).
 
-Tuttavia, durante gli ultimi tre quarti di secolo, due generazioni di persone\footnote{Voi che vi apprestate a leggere questo libro fate probabilmente parte della terza o quarta generazione; noi che lo scriviamo, siamo appena appena più anziani.} hanno iniziato a riorganizzare con enorme vitalità l'insieme delle conoscenze della matematica moderna mediante questo linguaggio, fino a tentare l'ambizioso progetto di diventare un loro possibile fondamento.
+Tuttavia, durante gli ultimi tre quarti di secolo, due generazioni di persone\footnote{Chi ha in mano questo libro fa probabilmente parte della terza o quarta; noi che lo scriviamo, siamo appena appena più anziani.} hanno iniziato a riorganizzare con enorme vitalità l'insieme delle conoscenze della matematica moderna mediante questo linguaggio, fino a tentare l'ambizioso progetto di diventare un loro possibile fondamento.
 
 Un modo di raccontare cos'è la teoria delle categorie è quindi questo: un altro tentativo di unificare la matematica grazie a poche, ricorrenti idee universali, `evidenti alla pratica quotidiana' della persona che lavora con la matematica.
 \medskip
 
-Fermarsi qui a raccontare la teoria delle categorie però tradirebbe parte della sua storia.
-
-Essa nasce infatti anche con un intento molto più concreto e squisitamente \emph{pratico}, che si può riassumere nel desiderio, da parte di chi l'ha inventata, di formalizzare la seguente situazione in cui ogni matematico che lavora, conscio o meno di ciò, si è trovato.
-
-\medskip
-Spesso, la specifica di un problema o di una costruzione matematica porta a definire una famiglia di funzioni
-\[\alpha_A : A' \to A'' \]
-dove \(A',A''\) sono insiemi definiti in termini di un altro insieme \(A\).
+Fermarsi qui a raccontare la teoria delle categorie però tradirebbe parte della sua storia. Essa nasce infatti anche con un intento molto più concreto e squisitamente \emph{pratico}, che si può riassumere nel desiderio, da parte di chi l'ha inventata, di formalizzare la seguente situazione in cui ogni matematico che lavora, conscio o meno di ciò, si è trovato.
+% \medskip
+% Spesso, la specifica di un problema o di una costruzione matematica porta a definire una famiglia di funzioni
+% \[\alpha_A : A' \to A'' \]
+% dove \(A',A''\) sono insiemi definiti in termini di un altro insieme \(A\).
 \begin{example}
 	Sia \(A\) un anello commutativo e unitario; allora resta definita la mappa `determinante',
-	\[\textstyle\det_A : GL(A,2) \to A\]
+	\[\textstyle\det_A : M(A,2) \to A\]
 	che manda una generica matrice \(2\times 2\) a coefficienti in \(A\), diciamo \(\begin{smat} a_{11} & a_{12}\\a_{21} & a_{22}\end{smat}\) in \(a_{11}a_{22}-a_{12}a_{21}\).
 \end{example}
-Le varie `componenti' \(\alpha_A\) `variano con continuità' al variare di \(A\), ossia tutte le funzioni \(\det_A\) sono definite alla stessa maniera, non importa quale sia l'anello \(A\) in questione: in più, la seguente proprietà vale.
+L'insieme delle matrici \(2\times 2\) a coefficienti in \(A\) è in un senso evidente ottenuto `in funzione' di \(A\), perché è costruito a partire dalle quaterne di elementi di \(A\); in più, le varie `componenti' \(\alpha_A\) `variano con continuità' al variare di \(A\), ossia tutte le funzioni \(\det_A\) sono definite alla stessa maniera, non importa quale sia l'anello \(A\) in questione: in più, la seguente proprietà vale: se \(f : A\to B\) è un omomorfismo di anelli commutativi e unitari, la composizione di funzioni
+\[bla\]
+è uguale alla composizione di funzioni
+\[ble\]
+Usualmente, queste due possibili composizioni coincidenti si assemblano in un diagramma rettangolare,
+\[blo\]
+e si dice, quando i due `percorsi' che uniscono il vertice in alto a sinistra con quello in basso a destra danno luogo alla stessa funzione, che il diagramma `commuta' o `è commutativo'.
 
-Quando la corrispondenza \((\_)' : A\mapsto A'\) prende \(A\) come parametro, ed è definita in modo da indurre una funzione \(u' : A' \to B'\) per ogni \(u : A \to B\), e altrettanto è vero per la corrispondenza \(A\mapsto A''\), le varie \(\alpha_A, \alpha_B,\dots\) sono `compatibili' con le \(u\), cioè si assemblano in un quadrato%: significa che, per ogni \(u\) come sopra, la composizione di funzioni
+Ciò che i matematici della prima metà del ventesimo secolo iniziarono a notare è che costruzioni del genere sono tutto tranne che rare; spesso, la specifica di un problema o di una costruzione matematica porta a definire una famiglia di funzioni
+\[\alpha_A : A' \to A'' \]
+dove \(A',A''\) sono insiemi `definiti in termini' di un altro insieme \(A\).
+
+Si può poi richiedere che quando la corrispondenza \((\_)' : A\mapsto A'\) prende \(A\) come parametro, ed è definita in modo da indurre una funzione \(u' : A' \to B'\) per ogni \(u : A \to B\), e altrettanto è vero per la corrispondenza \(A\mapsto A''\), le varie \(\alpha_A, \alpha_B,\dots\) sono `compatibili' con le \(u\), cioè si assemblano in un quadrato%: significa che, per ogni \(u\) come sopra, la composizione di funzioni
 \[
 	\vcenter{\xymatrix{
 			A'\ar[r]^{u'}\ar[d]_{\alpha_A} & B'\ar[d]^{\alpha_B} \\
 			A'' \ar[r]_{u''} & B''
 		}}
 \]
-con la proprietà che componendo lungo i due possibili cammini che percorrono il quadrato, da \(A'\) a \(B''\), dà lo stesso risultato: il quadrato così ottenuto si dice \emph{commutativo}, le corrispondenze \((\_)'\) e \((\_)''\) si dicono \emph{funtori}, e l'insieme di tutte le \(\alpha_A\) si dice una \emph{trasformazione naturale}.
+commutativo; esempi di corrispondenze \((\_)'\) e \((\_)''\) del genere sono abbondanti e si dicono \emph{funtori}; l'insieme di tutte le \(\alpha_A,\alpha_B,\dots\) si dice una \emph{trasformazione naturale} tra due funtori.
 
-Anche ad un occhio allenato, questa definizione non appare immediata: quale fenomeno stiamo cercando di catturare esattamente? Perché questa condizione è comune nella pratica? Come sono stati ottenuti \(A',A''\)? Non è chiaro quali siano degli esempi di funtore, perché abbiamo disegnato un quadrato, e non, ad esempio, un pentagono o una stella?
+Bisogna essere matematici o matematiche di una certa esperienza per notare come una congerie di esempi particolari di questa costruzione sia astraibile a un concetto generale. Senza dubbio, anche ad un occhio allenato, questa definizione non appare immediata: quale fenomeno stiamo cercando di catturare esattamente? Cosa significa poi definire un insieme `in termini' di un altro? Come sono stati ottenuti \(A',A''\)? Perché questa condizione è comune nella pratica? Non è chiaro quali siano degli esempi di funtore, perché abbiamo disegnato un quadrato, e non, ad esempio, un pentagono o una stella?
 
 Sta di fatto che la nozione di \emph{naturalità} si nasconde in ogni angolo della pratica matematica. Forse anche per questo, essa è per lungo tempo sfuggita a una formalizzazione matematica precisa, e in effetti ha costretto Mac Lane ed Eilenberg a definire preliminarmente gli altri concetti su cui riposa: quello di \emph{funtore}, per spiegare cosa sia la corrispondenza \(A\mapsto A'\), e quello di \emph{categoria}, per spiegare quale tipo di struttura possiedano il dominio e il codominio di questa corrispondenza.
 
-In effetti, non è subito chiaro quale regola assegni ad \(A\) un `nuovo' insieme \(A'\) (in quale senso cioè \(A'\) sia producibile mediante `operazioni elementari' a partire da \(A\): quante ne esistono, e come sono definite? Il prodotto cartesiano di insiemi è una di queste operazioni? E l'insieme di tutte le funzioni \(A\to A\)?), né è chiaro in quale senso esattamente la `compatibilità' di cui sopra, soddisfatta dalle \(\alpha_A\), si possa spiegare; è possibile costruire molti esempi (ne vedremo centinaia in questo libro, e molti altri non hanno trovato spazio), ma non è chiaro quali regole ne permettano la generazione. Per così dire: per un insieme di funzioni \(\alpha_A : A' \to A''\), `quanto è naturale essere naturale'?
+In effetti, non è subito chiaro quale regola\footnote{In quale senso cioè \(A'\) sia producibile mediante `operazioni elementari' a partire da \(A\): quante ne esistono, e come sono definite? Il prodotto cartesiano di insiemi è una di queste operazioni? E costruire l'insieme di tutte le funzioni \(A\to A\) dipende da \(A\) in che modo esattamente?} assegni ad \(A\) un `nuovo' insieme \(A'\), né è chiaro in quale senso esattamente la `compatibilità' di cui sopra, soddisfatta dalle \(\alpha_A\), si possa spiegare; è possibile costruire molti esempi (ne vedremo centinaia in questo libro, e molti altri sono stati omessi per motivi di spazio), ma non è chiaro quali regole ne permettano la generazione. Per così dire: per un insieme di funzioni \(\alpha_A : A' \to A''\), `quanto è naturale essere naturale'?
 
 \medskip
 Con pazienza, durante i vari capitoli di questo libro, risponderemo a queste domande essenziali, e molte altre.
@@ -96,37 +103,45 @@ All'esatto contrario, lo spirito che ha animato la teoria delle categorie è que
 \end{itemize}
 L'opinione di noi che scriviamo è che questo punto di vista, al di là dei suoi meriti concreti, misurabili, confermi come lo scibile matematico sia alla portata di chiunque lo voglia cogliere, quando esso sia espresso in termini di pochi concetti fondamentali.
 
-Quei concetti riusciranno poi a delineare cosa, all'interno delle verità del linguaggio, è una tautologia, e concentrare le proprie energie sul comprendere appieno ciò che non lo è. Se è vero che il discente paga un prezzo all'ingresso, perché non deve solo imparare definizioni e teoremi e tecniche di calcolo, ma soprattutto un modo di pensare diversamente (e ripensare, e ripensare ancora) a cosa è la matematica e al contempo \emph{disimparare} alcune abitudini, i rudimenti del linguaggio categoriale rendono più semplice, veloce ed efficiente apprezzare la natura intima di definizioni molto diverse tra loro, nate per risolvere problemi diversi, e sviluppate in dialetti diversi.
+Quei concetti riusciranno poi a delineare cosa, all'interno delle verità del linguaggio, è una tautologia, e concentrare le proprie energie sul comprendere appieno ciò che non lo è.
+
+Chi studia paga un prezzo all'ingresso, perché non deve solo imparare definizioni e teoremi e tecniche di calcolo, ma soprattutto un modo di pensare diversamente (e ripensare, e ripensare ancora) a cosa è la matematica e al contempo \emph{disimparare} alcune cattive abitudini impartite dall'insegnamento; ma ci si accorge in fretta che i rudimenti del linguaggio categoriale rendono più semplice, veloce ed efficiente apprezzare la natura intima di definizioni molto diverse tra loro, nate per risolvere problemi diversi, e sviluppate in dialetti diversi.
 
 Questo ha un costo cognitivo non indifferente: una indole poliedrica, e poco affine alla specializzazione, aiutano ad apprendere lo spirito dietro molte definizioni; ma questa indole, senza delle abilità di risolutore di problemi, rende impossibile \emph{fare i conti} adoperando le definizioni apprese.
 
 \medskip
-Lo scopo del libro che avete in mano è anche colmare questo abisso tra idee profonde, di ispirazione filosofica, generalista ed evocativa, e la natura eminentemente pratica (e quindi frustrante, pedissequa, quasi noiosa) del ragionamento matematico.
+Lo scopo del libro che avete in mano è anche colmare l'abisso che c'è tra idee profonde, di ispirazione filosofica, generaliste ed evocative, e la natura eminentemente pratica (e quindi frustrante, pedissequa, e quasi noiosa) del ragionamento matematico.
 
-Ben più di una certa cattiva divulgazione, noi crediamo che questo approccio riesca a mostrare che la matematica è `alla portata di tutti', e secondo noi colpendo certamente più al cuore di alcuni tentativi.
+Ben più di certa cattiva divulgazione, noi crediamo che questo approccio riesca a mostrare che la matematica è `alla portata di tutti', e secondo noi colpendo certamente più al cuore di alcuni tentativi.
 
 \medskip
-Esso nasce però anche con un fine molto più immediato: accompagnare un corso di teoria delle categorie che, durante l'anno accademico 2021-22 si è svolto online, su youtube, tenuto dal gruppo ItaCa (\url{https://progetto-itaca.github.io/pages/course.html}). Gli autori del libro sono i docenti di quel corso a cui abbiamo deciso di dare il nome collettivo di \emph{Outis} (\(O\tilde{\acute\upsilon}\tau\iota\varsigma\), Nessuno, è il nome con cui Ulisse ingannò Polifemo; ci piaceva, o meglio piaceva a uno degli autori, che questo libro fosse stato scritto da Nessuno).\footnote{Non menzionare nemmeno una volta i loro nomi sarebbe però irrispettoso; appaiono qui, quasi invisibili, una volta sola:
+Il libro nasce però anche con un fine molto più immediato: accompagnare un corso di teoria delle categorie che, durante l'anno accademico 2021-22 si è svolto online, su youtube, tenuto dal gruppo ItaCa (\url{https://progetto-itaca.github.io/pages/course.html}). Gli autori del libro sono i docenti di quel corso a cui abbiamo deciso di dare il nome collettivo di \emph{Outis} (\(O\tilde{\acute\upsilon}\tau\iota\varsigma\), Nessuno, è il nome con cui Ulisse ingannò Polifemo; ci piaceva, o meglio piaceva a uno degli autori, che questo libro fosse stato scritto da Nessuno).\footnote{Non menzionare nemmeno una volta i loro nomi sarebbe però irrispettoso; appaiono qui, quasi invisibili, una volta sola:
 	Greta Coraglia, Jacopo Emmenegger, Enrico Ghiorzi, Francesca Guffanti, Fosco Loregian, Beppe Metere, Daniele Palombi e Paolo Perrone.}
 
-Ci ha spinto a impegnarci in questa ulteriore fatica il fatto che, con poche eccezioni, agli atenei italiani manca un corso il cui argomento principale sia la teoria delle categorie; solitamente si apprendono i suoi rudimenti perché è necessario introdurre delle costruzioni in geometria algebrica, algebra omologica, teoria degli anelli (e, sebbene molto raramente, in analisi).
+Ci ha spinto a impegnarci in questa ulteriore fatica il fatto che, con poche eccezioni, agli atenei italiani manca un corso il cui argomento centrale sia la teoria delle categorie; abbondano i corsi che la derubricano a strumento, spesso della geometria o dell'algebra; ma ne danno una visione parziale perché è necessario introdurre in fretta delle costruzioni categoriali quando si approccia la geometria algebrica o la topologia moderna.
 
-Manca, invece, un corso che `riordini' le nozioni matematiche del discente unificandole sotto i pochi e fondamentali concetti della matematica strutturale. Questo è lo scopo concreto del libro che avete in mano.
+Manca, invece, un corso che `riordini' le nozioni matematiche di chi studia, unificandole sotto i pochi e fondamentali concetti della matematica strutturale. Questo è uno degli scopi concreto del libro che avete in mano.
 
-Esso si rivolge primariamente a quattro tipi di lettore:
+Esso si rivolge primariamente a quattro tipi di persone:
 \begin{itemize}
-	\item Il libro è pensato in primo luogo per chi studia in una laurea in matematica e sentito parlare vagamente della teoria delle categorie; per svariati motivi, queste persone sono curiose di saperne un po' di più. Perciò vorremmo che sia di lettura facile e allo stesso tempo motivante riguardo alle idee fondamentali, affinche dia un'immagine accessibile della teoria, e invogli ad approfondire.
-	\item In secondo luogo, qualcuno ad un livello anche pi\`u
-	      avanzato e con interessi diversi (altri rami della matematica o discipline `consumatrici' di matematica) che hanno sentito dire che la teoria delle categorie pu\`o aiutare nelle loro discipline di predilezione. Chi sta iniziando un dottorato in geometria algebrica userà, molte volte senza nemmeno saperlo, un piccolo risultato detto `lemma di Yoneda'\dots
-	\item Esiste poi un pubblico pi\`u specializzato, desideroso di trovare degli esempi non evidenti o di rinfrescarsi la memoria su qualche nozione di base, o ancora di leggere qualcosa di coerente perche ha informazioni parziali, mai sistematizzate, non soddisfacenti, su certe nozioni di teoria delle categorie a cui si è abituato (nel senso di Von Neumann).
-	\item Da ultimo, questo libro è scritto pensando alla comunità italiana di teoria delle categorie, ossia matematici e matematiche che usano le categorie nella vita di tutti i giorni, e che vogliono adottare un testo per insegnare la materia, o per approfondirla nelle parti che sono loro meno note. La teoria delle categorie usa infatti idee simili quando usata in logica, in algebra, in geometria; è però raro che un/a matematico/a di professione conosca le ramificazioni del linguaggio in discipline lontane dalla sua. Questo libro è anche per loro, ed è un desiderio comune renderlo un testo con cui si può \emph{lavorare e insegnare}. Un libro su cui magari anche soffrire (il meno possibile), e su cui poi tornare, da matematici maturi, continuando ogni volta a imparare qualcosa di nuovo.
+	\item \`E pensato in primo luogo per chi studia in una laurea in matematica e sentito parlare vagamente della teoria delle categorie; per svariati motivi, queste persone sono curiose di saperne un po' di più. Perciò vorremmo che sia di lettura facile e allo stesso tempo motivante riguardo alle idee fondamentali, affinche dia un'immagine accessibile della teoria, e invogli ad approfondire.
+	\item In secondo luogo, qualcuno ad un livello anche più avanzato e con interessi diversi (altri rami della matematica o discipline `consumatrici' di matematica) che hanno sentito dire che la teoria delle categorie pu\`o aiutare nelle loro discipline di predilezione. Chi sta iniziando un dottorato in geometria algebrica userà, molte volte senza nemmeno saperlo, un piccolo risultato detto `lemma di Yoneda'\dots
+	\item Esiste poi un pubblico pi\`u specializzato, desideroso di trovare degli esempi non evidenti o di rinfrescarsi la memoria su qualche nozione di base, o ancora di leggere qualcosa di coerente perche ha informazioni parziali, mai sistematizzate, non soddisfacenti, su certe nozioni di teoria delle categorie a cui ha fatto l'abitudine (nel senso precisato dalla famosa citazione di Von Neumann).
+	\item Da ultimo, questo libro è scritto pensando alla comunità italiana di teoria delle categorie, ossia matematici e matematiche che usano le categorie nella vita di tutti i giorni, e che vogliono adottare un testo per insegnare la materia, o per approfondirla nelle parti che sono loro meno note. La teoria delle categorie usa infatti idee simili quando usata in logica, in algebra, in geometria; è però raro che chi fa matematica per professione conosca le ramificazioni del linguaggio in discipline lontane dalla sua. Il tempo basta a malapena. Questo libro è anche per loro, ed è un nostro desiderio renderlo un testo con cui si può \emph{imparare e insegnare}. Un libro su cui magari anche sbattere la testa, soffrire (il meno possibile), per capire qualcosa di nuovo, e su cui tornare, da matematici maturi, continuando ogni volta a imparare qualcosa che prima era sfuggito.
 \end{itemize}
 \Todo{}
 
 \medskip
-Come è strutturato, quindi, questo libro? E' innanzitutto suddiviso in capitoli, che rispecchiano la struttura del corso ma lo espandono laddove sia necessario (ad esempio, vi sono costruzioni ed esempi nel libro che non troverete a lezione; il capitolo \ref{cap:fattorizzazione} non è presente nel corso, eccetera); le sezioni di ogni capitolo si concludono con degli esercizi per chi legge, solitamente 3-5 per sezione. Gli esercizi sono risolti alla fine del libro, in una appendice; la ragione è che dopo i primi anni di studio della matematica, raramente si impiega un po' di tempo per mostrare agli studenti come si fanno gli esercizi, o per essere più precisi, quali sono le tecniche che il vecchio matematico, che le ha affinate con l'esperienza, sa essere valide per fare una dimostrazione. Non avere questo tipo di conferma della correttezza dei propri argomenti, o averlo solo dietro enorme insistenza, è molto castrante quando oltre a imparare definizioni, teoremi e corollari ci si trova a dover imparare un nuovo modo di ragionare.
+Come è strutturato, quindi, questo libro? E' innanzitutto suddiviso in capitoli, che rispecchiano la struttura del corso di YouTube ma lo espandono laddove sia necessario (ad esempio, vi sono costruzioni ed esempi nel libro che non troverete a lezione; il capitolo \ref{cap_fattorizzazione} non è presente nel corso, eccetera); le sezioni di ogni capitolo si concludono con degli esercizi per chi legge, solitamente a gruppi di 3-5. Gli esercizi sono risolti alla fine del libro, in una appendice; la ragione è che dopo i primi anni di studio della matematica, raramente si impiega un po' di tempo per mostrare agli studenti come si fanno gli esercizi, o per essere più precisi, quali sono le tecniche, affinate con l'esperienza, che si sanno essere valide per fare una dimostrazione. Non avere questo tipo di conferma della correttezza dei propri argomenti, o averlo solo dietro enorme insistenza, è molto castrante quando oltre a imparare definizioni, teoremi e corollari ci si trova a dover imparare un nuovo modo di ragionare. Come fare a sapere che il mio esercizio è giusto, senza un termine di paragone?
 
 Chi legge si accorgerà vedendo le soluzioni degli esercizi (ma dovrebbe farlo solo dopo aver provato a risolverli!) che esistono alcune tattiche di dimostrazione stabilite, che possono essere descritte in poche parole e che hanno un ampio campo di validità. Queste tecniche spesso si aiutano l'un l'altra.
+
+Alcuni paragrafi lungo il testo sono decorati da delle `manine':
+\begin{itemize}
+	\item \hands{fund} (\emph{fermarsi a pensare}) indica un esempio, osservazione o nozione fondamentale, che non va evitata a una prima lettura, pena il non capire qualcosa di lì a poco;
+	\item \hands{skip} (\emph{tagliare corto qui}) indica un paragrafo che invece è possibile saltare senza inficiare la comprensione del testo circostante. Un esempio molto settoriale, una digressione terminologica (solitamente intitolata `A proposito del nome\dots');
+	\item \hands{tech} (\emph{lunga vita e prosperità a chi si ferma a leggere}) può essere un esempio abbastanza tecnico, inusuale, che va considerato come una curiosità o una piccola sfida per l'immaginazione di chi legge. Non è essenziale ad altro che a ampliare il panorama di chi legge.
+\end{itemize}
 \Todo{}
 \medskip
 Concludiamo questa introduzione parlando, finalmente, di matematica in senso stretto.

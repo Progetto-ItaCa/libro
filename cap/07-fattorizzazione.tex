@@ -232,96 +232,96 @@ Il prodotto di Leibniz permette di ridefinire la relazione di ortogonalità medi
 	(Remark: ci occuperemo solo di sistemi di fattorizzazione funtoriali in questo senso)
 \end{definition}
 \begin{figure}[h]
-  \begin{center}
-    \begin{tikzpicture}[
-        x=1em, y=1em,
-        dot/.style={
-          circle,
-          fill=#1,
-          inner sep=0pt,
-          outer sep=2pt,
-          minimum size=4pt,
-          draw=none,
-        },
-        wrap/.style={
-          fill=black!5,
-          rounded corners,
-          inner sep=.5em,
-        },
-      ]
+	\begin{center}
+		\begin{tikzpicture}[
+				x=1em, y=1em,
+				dot/.style={
+						circle,
+						fill=#1,
+						inner sep=0pt,
+						outer sep=2pt,
+						minimum size=4pt,
+						draw=none,
+					},
+				wrap/.style={
+						fill=black!5,
+						rounded corners,
+						inner sep=.5em,
+					},
+			]
 
-      \def\items{%
-      0/0/0/ 0.0,
-      1/0/1/-0.5,
-      1/1/1/+0.5,
-      2/0/2/-1.0,
-      2/1/2/ 0.0,
-      2/2/2/+1.0,
-      2/3/3/-1.0,
-      2/4/3/ 0.0,
-      2/5/3/+1.0,
-      3/0/4/-1.5,
-      3/1/4/-0.5,
-      3/2/4/+0.5,
-      3/3/4/+1.5}
+			\def\items{%
+				0/0/0/ 0.0,
+				1/0/1/-0.5,
+				1/1/1/+0.5,
+				2/0/2/-1.0,
+				2/1/2/ 0.0,
+				2/2/2/+1.0,
+				2/3/3/-1.0,
+				2/4/3/ 0.0,
+				2/5/3/+1.0,
+				3/0/4/-1.5,
+				3/1/4/-0.5,
+				3/2/4/+0.5,
+				3/3/4/+1.5}
 
-      \foreach \n/\v/\row/\col in \items {
-        \begin{scope}[xshift=7em*\col,yshift=-6.25em*\row,local bounding box=C\n\v]
-          \foreach \i in {0,1,2} {
-            \node[dot=black] (C\n\v-\i) at ($({120*\i-210+180}:1.5)$) {};
-            \path[ibmPurple, loop, out=-60+120*\i, in=120*\i, distance=1em] (C\n\v-\i) edge (C\n\v-\i);
-          }
-        \end{scope}
-      }
+			\foreach \n/\v/\row/\col in \items {
+				\begin{scope}[xshift=7em*\col,yshift=-6.25em*\row,local bounding box=C\n\v]
+					\foreach \i in {0,1,2} {
+					\node[dot=black] (C\n\v-\i) at (\(({120*\i-210+180}:1.5)\)) {};
+					\path[ibmPurple, loop, out=-60+120*\i, in=120*\i, distance=1em] (C\n\v-\i) edge (C\n\v-\i);
+					}
+				\end{scope}
+			}
 
-      \begin{scope}[on background layer]
-        \foreach \n/\v/\row/\col in \items
-          \path node[wrap, fit=(C\n\v)] (W\n\v) {};
-      \end{scope}
+			\begin{scope}[on background layer]
+				\foreach \n/\v/\row/\col in \items
+				\path node[wrap, fit=(C\n\v)] (W\n\v) {};
+			\end{scope}
 
-      \begin{scope}[every path/.style={-latex}]
-        \path[ibmMagenta] (C10-2) edge (C10-0);
+			\begin{scope}[every path/.style={-latex}]
+				\path[ibmMagenta] (C10-2) edge (C10-0);
 
-        \path[ibmBlue]    (C11-2) edge (C11-0);
+				\path[ibmBlue]    (C11-2) edge (C11-0);
 
-        \path[ibmBlue]    (C20-1) edge (C20-2);
-        \path[ibmBlue]    (C20-1) edge (C20-0);
+				\path[ibmBlue]    (C20-1) edge (C20-2);
+				\path[ibmBlue]    (C20-1) edge (C20-0);
 
-        \path[ibmBlue]    (C21-1) edge (C21-2);
-        \path[ibmMagenta] (C21-1) edge (C21-0);
+				\path[ibmBlue]    (C21-1) edge (C21-2);
+				\path[ibmMagenta] (C21-1) edge (C21-0);
 
-        \path[ibmMagenta] (C22-1) edge (C22-2);
-        \path[ibmMagenta] (C22-1) edge (C22-0);
+				\path[ibmMagenta] (C22-1) edge (C22-2);
+				\path[ibmMagenta] (C22-1) edge (C22-0);
 
-        \path[ibmBlue]    (C23-2) edge (C23-1);
-        \path[ibmBlue]    (C23-0) edge (C23-1);
+				\path[ibmBlue]    (C23-2) edge (C23-1);
+				\path[ibmBlue]    (C23-0) edge (C23-1);
 
-        \path[ibmBlue]    (C24-2) edge (C24-1);
-        \path[ibmMagenta] (C24-0) edge (C24-1);
+				\path[ibmBlue]    (C24-2) edge (C24-1);
+				\path[ibmMagenta] (C24-0) edge (C24-1);
 
-        \path[ibmMagenta] (C25-2) edge (C25-1);
-        \path[ibmMagenta] (C25-0) edge (C25-1);
+				\path[ibmMagenta] (C25-2) edge (C25-1);
+				\path[ibmMagenta] (C25-0) edge (C25-1);
 
-        \path[ibmBlue]    (C30-2) edge (C30-1);
-        \path[ibmBlue]    (C30-1) edge (C30-0);
-        \path[ibmBlue]    (C30-2) edge (C30-0);
+				\path[ibmBlue]    (C30-2) edge (C30-1);
+				\path[ibmBlue]    (C30-1) edge (C30-0);
+				\path[ibmBlue]    (C30-2) edge (C30-0);
 
-        \path[ibmBlue]    (C31-2) edge (C31-1);
-        \path[ibmMagenta] (C31-1) edge (C31-0);
-        \path[black]      (C31-2) edge (C31-0);
+				\path[ibmBlue]    (C31-2) edge (C31-1);
+				\path[ibmMagenta] (C31-1) edge (C31-0);
+				\path[black]      (C31-2) edge (C31-0);
 
-        \path[ibmMagenta] (C32-2) edge (C32-1);
-        \path[ibmBlue]    (C32-1) edge (C32-0);
-        \path[black]      (C32-2) edge (C32-0);
+				\path[ibmMagenta] (C32-2) edge (C32-1);
+				\path[ibmBlue]    (C32-1) edge (C32-0);
+				\path[black]      (C32-2) edge (C32-0);
 
-        \path[ibmMagenta] (C33-2) edge (C33-1);
-        \path[ibmMagenta] (C33-1) edge (C33-0);
-        \path[ibmMagenta] (C33-2) edge (C33-0);
-      \end{scope}
-    \end{tikzpicture}
-    \caption{TODO}
-    \label{fig_sistema_di_fattorizzazione}
-  \end{center}
+				\path[ibmMagenta] (C33-2) edge (C33-1);
+				\path[ibmMagenta] (C33-1) edge (C33-0);
+				\path[ibmMagenta] (C33-2) edge (C33-0);
+			\end{scope}
+		\end{tikzpicture}
+		\caption{TODO}
+		\label{fig_sistema_di_fattorizzazione}
+	\end{center}
 \end{figure}
 \begin{itemize}
 	% \item estensione ai sottoinsiemi dell'ortogonalità
