@@ -2247,7 +2247,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \end{remark}
 \section{Esempi di funtori nella pratica matematica}\label{sec_esempi_funtori}
 \`E chiaro che non si può compilare una lista esaustiva di funtori importanti nella pratica matematica. Possiamo però concentrarci su alcuni funtori che è immediato costruire tra le categorie di §\ref{sec_esempi_cats}. In particolare, ed è uno dei motivi per cui \ref{def_funtore} è interessante, diverse operazioni che guardano una struttura come esempio di un'altra struttura si possono rendere precise mediante la nozione di funtore.
-\begin{example}[Categorie discrete e codiscrete]\index{Categoria!--- discreta}\index{Categoria!--- codiscreta}\index{Funtore!--- categoria discreta}\index{Funtore!--- categoria codiscreta}
+\begin{example}[Categorie discrete e codiscrete]\label{ex_fun_co_disc}\index{Categoria!--- discreta}\index{Categoria!--- codiscreta}\index{Funtore!--- categoria discreta}\index{Funtore!--- categoria codiscreta}
 	Mandare un insieme \(A\) nella sua categoria discreta \(A^\delta\) di \ref{ex_cat_discreta} è un funtore \((-)^\delta : \ctSet \fun \ctCat\): ogni funzione \(f : A \to B\) induce un funtore, tautologico, \(f^\delta : A \to B\) che agisce come \(f\) sugli oggetti, ed è univocamente determinato dalla richiesta che \(f^\delta(\id_a) = \id_{fa}\), imposta da \ref{p_1}.
 
 	Similmente, mandare un insieme \(A\) nella sua categoria codiscreta \(A^\chi\) è un funtore \(\ctSet \fun\ctCat\); qui è meno immediato che esista un funtore \(f^\chi : A^\chi\fun B^\chi\), ma usando la caratterizzazione di un funtore in \ref{def_alternativa_funtore} è sufficiente trovare una famiglia di funzioni
@@ -2256,7 +2256,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		\end{tikzcd}\]
 	e l'unica freccia \(u_{aa'} : a\to a'\) deve per forza essere mandata nell'unica freccia \(v_{fa,fa'} : fa \to fa'\) in \(B^\chi\).
 \end{example}
-\begin{example}\index{Funtore!--- dominio}\index{Funtore!--- codominio}
+\begin{example}\label{dom_e_cod}\index{Funtore!--- dominio}\index{Funtore!--- codominio}
 	Se \(\ctC\) è una categoria e \(X\in\ctC_0\), esiste un funtore `dominio'
 	\[\dmFun{d}{\ctC/X}{\ctC}\]
 	che manda ogni oggetto \(f : A\to X\) di \(\ctC/X\) nel suo dominio \(A\).
@@ -2809,8 +2809,6 @@ Chi legge può facilmente verificare che (nelle stesse notazioni di sopra) vale 
 
 Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} la composizione \(\cmp\) è un bifuntore (nel senso di \ref{def_bifuntore}): da questo segue
 \begin{definition}\label{interchangio}\index{Legge di interscambio}\index{Godement!identità di ---}
-	\Todo{Legge di interscambio}
-	\Todo{Identità di Godement}
 	Dato un diagramma di trasformazioni naturali
 	\[\xymatrix{
 		\ctA \ruppertwocell^F{\alpha}
@@ -2831,14 +2829,31 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 				      \ctA \rrtwocell^{UF}_{WH}{} && \ctC.
 			      }\]
 	\end{itemize}
-	L'identità di Godement (detta anche \emph{regola di scambio}) afferma che queste due composizioni sono uguali; in effetti, dato che
+	L'identità di Godement (detta anche \emph{regola di scambio}) afferma che queste due composizioni sono uguali; in effetti, dato che usando la definizione
 	\begin{gather*}
-		\big((\delta\cmp\gamma)\horcomp(\beta\cmp\alpha)\big)_A = \\
-		\big((\delta\horcomp\beta)\cmp(\gamma\horcomp\alpha)\big)_A =
+		\big((\delta\cmp\gamma)\horcomp(\beta\cmp\alpha)\big)_A = W\beta_A\cmp W\alpha_A\cmp\delta_{FA}\cmp\gamma_{FA} \\
+		\big((\delta\horcomp\beta)\cmp(\gamma\horcomp\alpha)\big)_A = \delta_{HA}\cmp V\beta_A \cmp V\alpha_A \cmp\gamma_{FA}
 	\end{gather*}
-	la regola di scambio ammonta esattamente alla commutatività del quadrato
-	\[bla\]
-	che esprime la naturalità di \(x\) in \(y\), o equivalentemente, la naturalità di \(z\) in \(w\).
+	la regola di scambio discende dalla commutatività di ogni diagramma
+	% https://q.uiver.app/#q=WzAsOSxbMCwwLCJVRiJdLFsxLDAsIlVHIl0sWzIsMCwiVUgiXSxbMCwxLCJWRiJdLFsxLDEsIlZHIl0sWzIsMSwiVkgiXSxbMCwyLCJXRiJdLFsxLDIsIldHIl0sWzIsMiwiV0giXSxbMCwzLCJcXGdhbW1hIEYiLDJdLFszLDYsIlxcZGVsdGFfRiIsMl0sWzEsNCwiXFxnYW1tYSBHIl0sWzQsNywiXFxkZWx0YSBHIl0sWzIsNSwiXFxnYW1tYSBIIl0sWzUsOCwiXFxkZWx0YSBIIl0sWzAsMSwiVVxcYWxwaGEiXSxbMSwyLCJVXFxiZXRhIl0sWzMsNCwiVlxcYWxwaGEiLDJdLFs0LDUsIlZcXGJldGEiLDJdLFs2LDcsIldcXGFscGhhIiwyXSxbNyw4LCJXXFxiZXRhIiwyXV0=
+\[\begin{tikzcd}
+	UFA & UGA & UHA \\
+	VFA & VGA & VHA \\
+	WFA & WGA & WHA
+	\arrow["{U\alpha_A}", from=1-1, to=1-2]
+	\arrow["{\gamma_{FA}}"', from=1-1, to=2-1]
+	\arrow["{U\beta_A}", from=1-2, to=1-3]
+	\arrow["{\gamma_{GA}}", from=1-2, to=2-2]
+	\arrow["{\gamma_{HA}}", from=1-3, to=2-3]
+	\arrow["{V\alpha_A}"', from=2-1, to=2-2]
+	\arrow["{\delta_{FA}}"', from=2-1, to=3-1]
+	\arrow["{V\beta_A}"', from=2-2, to=2-3]
+	\arrow["{\delta_{GA}}", from=2-2, to=3-2]
+	\arrow["{\delta_{HA}}", from=2-3, to=3-3]
+	\arrow["{W\alpha_A}"', from=3-1, to=3-2]
+	\arrow["{W\beta_A}"', from=3-2, to=3-3]
+\end{tikzcd}\]
+	che esprime la naturalità di \(\gamma\) e $\delta$ delle componenti di \(\beta\).
 \end{definition}
 \begin{remark}
 	L'\whisk tra un funtore e una trasformazione naturale si può definire in termini della composizione orizzontale: infatti, si verifica facilmente che
@@ -2849,9 +2864,10 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 	L'operazione di \whisk destro \(\alpha \whi K\) di un isomorfismo naturale con un funtore \(K\) (notazioni come in \ref{def_whiskering}) restituisce un isomorfismo naturale, ma ovviamente non è vero il viceversa: se esiste una componente \(\alpha_B : FB \to GB\) che è invertibile e \(K : \ctTerm\fun\ctB\) è il funtore che sceglie \(B\), \(\alpha \whi K\) è un isomorfismo naturale, senza che nessuna delle altre componenti di \(\alpha\) sia invertibile.
 
 	L'operazione di \whisk sinistro \(H \whi \alpha\) di un funtore \(H\) con un isomorfismo naturale \(\alpha\) restituisce un isomorfismo naturale, ma ovviamente non è vero che se \(H(\alpha_B)\) è un isomorfismo in \(\ctD\), allora \(\alpha_B : FB\to GB\) è un isomorfismo in \(\ctC\).
-
-	Data una trasformazione naturale \(\alpha : F\nat G\), la sottocategoria piena \(\ctI(\alpha)\) di \(\ctB\) generata da tutti gli oggetti \(B\in\ctB_0\) tali che \(\alpha_B\) è invertibile ha una certa importanza e perciò prende un nome speciale: si chiama l'\emph{invertitore} di \(\alpha\) (più precisamente, l'invertitore di \(\alpha\) è la categoria insieme al funtore pieno di inclusione \(k : \ctI(\alpha) \mono\ctB\)).
 \end{remark}
+\begin{hDefinition}[Invertitore]{skip}
+	Data una trasformazione naturale \(\alpha : F\nat G\), la sottocategoria piena \(\ctI(\alpha)\) di \(\ctB\) generata da tutti gli oggetti \(B\in\ctB_0\) tali che \(\alpha_B\) è invertibile ha una certa importanza e perciò prende un nome speciale: si chiama l'\emph{invertitore} di \(\alpha\) (più precisamente, l'invertitore di \(\alpha\) è la categoria insieme al funtore pieno di inclusione \(k : \ctI(\alpha) \mono\ctB\)).
+\end{hDefinition}
 \index{Categoria!centro di una ---}\index{Centro}
 \begin{definition}[Centro di \(\ctC\)]\label{def_centro}
 	Grazie a \ref{lem_end_monoide} sappiamo che, fissata una categoria \(\ctC\), la classe \(\Nat(\id_\ctC,\id_\ctC)\) è un monoide rispetto all'operazione di composizione; esso si dice il \emph{centro} di \(\ctC\) e viene denotato con \(\zentrum(\ctC)\). La motivazione: se \(\ctC\) ha un solo oggetto, ancora grazie a \ref{lem_end_monoide} essa è un monoide, e \(\zentrum(\ctC)\) ne è precisamente il \emph{centro}, ossia il sottomonoide \(\{x\in M\mid \forall a\in M, \, ax=xa\}\).
@@ -2891,16 +2907,18 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 	Questo conclude la dimostrazione che \(\beta\cmp\alpha = \alpha\cmp\beta\).
 \end{proof}
 \begin{hRemark}[A proposito dei diagrammi di trasformazioni naturali]{skip}
-	\Todo{Ci sono tre modi di rappresentare un diagramma commutativo di trasformazioni naturali:
-		\begin{itemize}
-			\item come un ben noto diagramma commutativo in una cat di funtori
-			\item come \emph{incollamento naturale}, una tassellazione di una parte di piano fatta di bi-agoni, triangoli, quadrilateri,\dots{} della forma
-			      \[\xymatrix{
-				      \bullet \rtwocell^F_G{\alpha} & \bullet
-				      }\]
-			      che hanno la proprietà di condividere in comune il bordo dato da porzioni del loro dominio;
-			\item equazionale, che si ottiene da 1. e 2. come...
-		\end{itemize}}
+	Ci sono tre modi di rappresentare un diagramma commutativo di trasformazioni naturali:
+	\begin{itemize}
+		\item come un ben noto diagramma commutativo in una cat di funtori
+		\item come \emph{incollamento naturale}, una tassellazione di una parte di piano fatta di bi-agoni, triangoli, \dots{} della forma
+		\[\xymatrix@R=1mm{
+			\bullet \rtwocell^F_G{\alpha} & \bullet & \bullet \ar@/^1pc/[rr]^P\rruppertwocell<\omit>{\beta}\ar[dr]_R & & \bullet && \bullet \ar[dl]\ar[rr]&& \bullet\ar[dl] \\ 
+			&&&\bullet\ar[ur]_Q && \bullet \ar[rr]&& \bullet \ultwocell<\omit>{\gamma}
+			}\]
+			che hanno la proprietà di condividere in comune il bordo dato da porzioni del loro dominio;
+			\item equazionale, che si ottiene da 1. e 2. nello stesso modo in cui si passa da una presentazione diagrammatica a una equazionale (e viceversa) in una qualsiasi categoria (in questo caso, una opportuna categoria di funtori).
+		\end{itemize}
+		\Todo{}
 \end{hRemark}
 \begin{example}\label{ex_cat_preschif}\index{Prefascio}
 	Un caso particolare di \ref{def_natutra}, quando la categoria \(\ctD\) è la categoria degli insiemi introdotta in \ref{ex_cat_insiemi} è degno di attenzione: fissata \(\ctC\) (piccola), la categoria i cui oggetti sono i funtori di tipo
@@ -3493,21 +3511,27 @@ Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzant
 
 \Todo{...qualcosa prima...}
 \subsection{Classi di funtori}\label{ssec:classi_di_funtori}
-Rammentiamo le definizioni date in \ref{classi_di_funtori}.
+Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome speciale ai funtori \(F : \ctC\fun\ctD\) tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva:
 \begin{definition}\label{funtore_pieno}
 	\index{Funtore!--- pieno}
-	Funtore pieno
+	Il funtore $F : \ctC\fun\ctD$ si dice \emph{pieno} se ciascuna \(F_{XY}\) è una funzione suriettiva; questo significa che
+	\begin{quote}
+		per ogni \(g : FX\to FY\) in \(\ctD\) esiste almeno un \(f : X\to Y\) in \(\ctC\) tale che \(Ff=g\).
+	\end{quote}
 \end{definition}
 \begin{definition}\label{funtore_fedele}
 	\index{Funtore!--- fedele}
-	\Todo{Funtore fedele }
+	Il funtore $F : \ctC\fun\ctD$ si dice \emph{fedele} se ciascuna \(F_{XY}\) è una funzione iniettiva; questo significa che
+	\begin{quote}
+		Dati \(u,v : X\to Y\) morfismi paralleli in \(\ctC\), se \(Fu=Fv\) allora \(u=v\).
+	\end{quote}
 \end{definition}
 \begin{notation}\label{fun_pienfed}
 	\index{Funtore!--- pienamente fedele}
 	Un funtore che sia allo stesso tempo pieno e fedele, ossia tale che ciascuna \(F_{XY}\) sia biiettiva, si dice \emph{pienamente fedele}.
 \end{notation}
 \begin{remark}
-	Tra i funtori finora introdotti, quelli degli esempi \ref{ba}, \ref{bi}, \ref{bu} sono pieni; quelli degli esempi \ref{fa}, \ref{fi}, \ref{fu} sono fedeli; quelli degli esempi \ref{ra}, \ref{ri}, \ref{ru} sono pienamente fedeli; quelli degli esempi \ref{na}, \ref{ni}, \ref{nu} sono iso-densi.
+	Tra i funtori finora introdotti, quelli degli esempi \ref{exfun_4}, \ref{}, \ref{} sono pieni; quelli degli esempi \ref{exfun_3}, \ref{dom_e_cod}, \ref{liberi_forgetti} sono fedeli; quelli degli esempi \ref{ex_fun_co_disc}, \ref{exa_monotone_funtori}, \ref{exa_funtori_da_gruppi} sono pienamente fedeli; quelli degli esempi \ref{}, \ref{}, \ref{} sono iso-densi.
 \end{remark}
 \`E poi conveniente dare un nome esplicito a un'altra classe di funtori:
 \begin{definition}\label{funtore_essurj}
@@ -3523,9 +3547,21 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}.
 \end{definition}
 \begin{definition}\label{funtore_equcat}
 	\Todo{Equivalenza di categorie }
+	Una equivalenza di categorie $\ctC\simeq\ctD$ consiste di una quadrupla $(F,G,\eta,\epsilon)$, dove 
+	\begin{itemize}
+		\item 
+		\item 
+		\item 
+		\item 
+	\end{itemize}
+	Dato $F$, il funtore $G$ è detto lo \emph{pseudoinverso} di $F$, e analogamente $F$ è lo pseudoinverso del funtore $G$; i due si caratterizzano a vicenda, ma non in maniera strettamente unica, bensì \emph{a meno di isomorfismo naturale}:
+	\begin{quote}
+		Se $\hat G,\tilde G$ sono pseudoinversi dello stesso $F : \ctC\fun\ctD$, allora esiste un isomorfismo naturale $\hat G\nat \tilde G$, ottenuto da 
+		\[\xymatrix{\hat G \ar@{=>}[r]^-{\tilde\eta\whi\hat G } & \hat G F \tilde G \ar@{=>}[r]^-{\tilde G \whi \hat\epsilon} & \tilde G}\]
+	\end{quote}
 \end{definition}
 \begin{definition}\label{funtore_wequcat}
-	\Todo{Equivalenza debole di categorie }
+	Una equivalenza debole di categorie è un funtore $F : \ctC \fun\ctD$ che sia pieno, fedele ed essenzialmente suriettivo.
 \end{definition}
 \begin{remark}
 	Ogni equivalenza di categorie è un'equivalenza debole di categorie. Il vice versa, che consiste nel costruire uno pseudoinverso per un funtore \(F : \ctC\fun\ctD\) che sia un'equivalenza debole, è dimostrabile assumendo l'assioma della scelta.
