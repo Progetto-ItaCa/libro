@@ -2694,14 +2694,24 @@ Inoltre, la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 	\[\dmFun{\det_R}{\text{GL}_n(R)}{R^\times}\]
 \end{example}
 Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato}) da una trasformazione naturale \(\eta : \id_\ctC \nat F\) (risp., \(\epsilon : F \nat \id_\ctC\)).
-\begin{example}\Todo{un paio di esempi di funtori puntati e copuntati}
-	Raccogliamo alcuni esempi di funtori puntati e copuntati:
-	\begin{itemize}
-		\item valutazione
-		\item insieme potenza come in \ref{ex_fun_parti}
-	\end{itemize}
+\begin{example}[Co/puntature e co/moltiplicazioni]
+	\Todo{Raccogliamo alcuni esempi di funtori puntati e copuntati:
+		\begin{itemize}
+			\item valutazione
+			\item insieme potenza come in \ref{ex_fun_parti}
+			\item testa di liste non vuote
+		\end{itemize}
+		In più, possiamo trovare
+		\begin{itemize}
+			\item comoltiplicazione di \(X\times (-)^X\)
+			\item unione come moltiplicazione di \(P\)
+			\item ... % https://mathoverflow.net/questions/328513/big-list-of-comonads
+			\item % https://ieeexplore.ieee.org/document/8005129
+			\item % https://arxiv.org/pdf/1012.1220
+		\end{itemize}}
 \end{example}
-\begin{example}\Todo{un paio di esempi di moltiplicazioni e comoltiplicazioni}
+\begin{example}
+
 \end{example}
 \begin{hExample}[Un esempio di isomorfismo naturale]{tech}\index{Trasformazione naturale!isomorfismo naturale}
 	(La natura di questo esempio sarà chiarita dal capitolo \ref{chap_limiti_colimiti}, sulle proprietà universali, e dal capitolo \ref{cap_aggiunti}, sui funtori aggiunti.)
@@ -2931,17 +2941,27 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 	Questa osservazione fa il paio con \ref{cos_diag_comm}.
 
 	Ci sono tre modi di rappresentare un diagramma commutativo di trasformazioni naturali:
-	\begin{itemize}
-		\item come un ben noto diagramma commutativo in una cat di funtori
-		\item come \emph{incollamento naturale}, una tassellazione di una parte di piano fatta di bi-agoni, triangoli, \dots{} della forma
+	\begin{enumerate}
+		\item come un diagramma commutativo in una categoria di funtori \(\Hom{\ctCat}(\ctA,\ctB)\), che ha per oggetti i funtori \(\ctA\fun\ctB\) e per morfismi le trasformazioni naturali;
+		\item come \emph{incollamento naturale}, una tassellazione di una parte di piano fatta di bi-agoni, triangoli,\dots{} della forma
 		      \[\xymatrix@R=1mm{
 			      \bullet \rtwocell^F_G{\alpha} & \bullet & \bullet \ar@/^1pc/[rr]^P\rruppertwocell<\omit>{\beta}\ar[dr]_R & & \bullet && \bullet \ar[dl]\ar[rr]&& \bullet\ar[dl] \\
 			      &&&\bullet\ar[ur]_Q && \bullet \ar[rr]&& \bullet \ultwocell<\omit>{\gamma}
 			      }\]
 		      che hanno la proprietà di condividere in comune il bordo dato da porzioni del loro dominio;
-		\item equazionale, che si ottiene da 1. e 2. nello stesso modo in cui si passa da una presentazione diagrammatica a una equazionale (e viceversa) in una qualsiasi categoria (in questo caso, una opportuna categoria di funtori).
-	\end{itemize}
-	\Todo{}
+		\item in maniera equazionale, che si ottiene da 1. e 2. nello stesso modo in cui si passa da una presentazione diagrammatica a una equazionale (e viceversa) in una qualsiasi categoria (in questo caso, una opportuna categoria di funtori).
+	\end{enumerate}
+	Un esempio concreto: consideriamo un arrangiamento di categorie, funtori e trasformazioni naturali e l'uguaglianza
+	\[\xymatrix{
+		\ctC \ar@/^1pc/[rr]^F\rrtwocell<\omit>{<1>\beta} \drtwocell^U_V{\alpha}&& \ctD \ar[dl]^G\ar@{}[dr]|=& \ctC \drtwocell<\omit>{<-1>\delta}\ar@/_.5pc/[dr]_V\rrtwocell^F_H{\gamma} && \ctD\ar[dl]^G \\
+		&\ctE &&& \ctE
+		}\]
+	Essa si riscrive nella forma di una equazione \(\alpha\cmp\beta=\delta\cmp (G\whi\gamma)\), che a sua volta è un diagramma commutativo
+	\[\xymatrix{
+			GF\ar@{=>}[r]^\beta\ar@{=>}[d]_{G\whi\gamma} & U \ar@{=>}[d]^\alpha \\
+			GH \ar@{=>}[r]_\delta& V
+		}\]
+	di morfismi nella categoria \(\Hom{\ctCat}(\ctC,\ctE)\) dei funtori di tipo \(\ctC\fun\ctE\).
 \end{hRemark}
 \begin{example}\label{ex_cat_preschif}\index{Prefascio}
 	Un caso particolare di \ref{def_natutra}, quando la categoria \(\ctD\) è la categoria degli insiemi introdotta in \ref{ex_cat_insiemi} è degno di attenzione: fissata \(\ctC\) (piccola), la categoria i cui oggetti sono i funtori di tipo
@@ -3068,12 +3088,22 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 	      \[\mathtt{inits}_X\emptyList = [\emptyList] \qquad \mathtt{inits}_X [\tup xn,] = [[x_1],[x_1,x_2],\dots, [\tup xn,]]\]
 	      Mostrare che \(\mathtt{inits}_X\) sono le componenti di una trasformazione naturale \(M \nat M\cmp M\); mostrare, o trovare un controesempio, alla validità della seguente equazione:
 	      \[\mathtt{inits}_{MX}\cmp\mathtt{inits}_X = M(\mathtt{inits}_X)\cmp \mathtt{inits}_X.\]
+	      Domande analoghe (per chi sa interpretare questa notazione) per la trasformazione naturale \(\theta : M\nat M \cmp M\) definita da
+	      \[\theta_X = \begin{cases}
+			      \emptyList  & \mapsto [\emptyList]                                             \\
+			      (x\cons xs) & \mapsto \texttt{map}\kern.5em (x\cons\_)\kern.5em \theta_X (xs).
+		      \end{cases}
+	      \]
+	      % si controlla che un lato e l'altro dell'uguaglianza devono essere risp.
+	      % [[[1],[1]],[[1],[1,2],[1,2]],[[1],[1,2],[1,2]]]
+	      % [[[1]],[[1],[1,2]],[[1],[1,2],[1,2]],[[1],[1,2],[1,2]]] 
+	      % la seconda è vera ma riduce a un'espressione molto semplice, [1,2,3] |-> [[1,2,3]]
 	\item Scrivere in forma equazionale le condizioni di commutatività seguenti, date mediante diagrammi di incollamento naturale:
 	      % https://q.uiver.app/#q=WzAsMjIsWzAsMSwiXFxidWxsZXQiXSxbMCwyLCJcXGJ1bGxldCJdLFsxLDEsIlxcYnVsbGV0Il0sWzEsMiwiXFxidWxsZXQiXSxbMSwwLCJcXGJ1bGxldCJdLFsyLDAsIlxcYnVsbGV0Il0sWzIsMSwiXFxidWxsZXQiXSxbMywxLCJcXGJ1bGxldCJdLFs0LDAsIlxcYnVsbGV0Il0sWzUsMCwiXFxidWxsZXQiXSxbNSwxLCJcXGJ1bGxldCJdLFs0LDIsIlxcYnVsbGV0Il0sWzMsMiwiXFxidWxsZXQiXSxbNCwxLCJcXGJ1bGxldCJdLFs3LDEsIlxcYnVsbGV0Il0sWzcsMiwiXFxidWxsZXQiXSxbOCwxLCJcXGJ1bGxldCJdLFs4LDIsIlxcYnVsbGV0Il0sWzksMSwiXFxidWxsZXQiXSxbOSwyLCJcXGJ1bGxldCJdLFsxMCwxLCJcXGJ1bGxldCJdLFsxMCwyLCJcXGJ1bGxldCJdLFswLDRdLFsyLDVdLFs0LDVdLFs1LDZdLFsyLDNdLFszLDZdLFswLDJdLFswLDFdLFsxLDNdLFs4LDEzXSxbMTMsMTBdLFs4LDldLFs5LDEwXSxbNyw4XSxbNywxMl0sWzEyLDEzXSxbMTEsMTBdLFsxMiwxMV0sWzE0LDE2XSxbMTYsMTddLFsxNCwxNV0sWzE1LDE3XSxbMTgsMTldLFsxOCwyMF0sWzIwLDIxXSxbMTksMjFdXQ==
 	      \[\xymatrix@R=5mm{
-		      & \bullet \ar[r]& \bullet \dlltwocell<\omit>{\beta}\ar[dd]&& \bullet\ar[r] \ar[dd]& \bullet \ar[dd]&& \bullet \ar[r]\ar[dd]\ddrtwocell<\omit>{\alpha}& \bullet \ddtwocell^{}_{}{\beta}& \bullet\ddrtwocell<\omit>{\delta}\ddtwocell^{}_{}{\gamma} \ar[r]& \bullet\ar[dd]\\
+		      & \bullet \ar[r]& \bullet \dlltwocell<\omit>{\beta}\ar[dd]&& \bullet\ar[r] \ar[dd]& \bullet \ar[dd]&& \bullet \ar[r]\ar[dd]\ddrtwocell<\omit>{\alpha}& \bullet \ar@{}[ddr]|=\ddtwocell^{}_{}{\beta}& \bullet\ddrtwocell<\omit>{\delta}\ddtwocell^{}_{}{\gamma} \ar[r]& \bullet\ar[dd]\\
 		      \bullet \ar[ur]\ar[dd]\ar[r]& \bullet \ar[ur]\ar[dd]&  & \bullet \ar[dd]\ar[ur]& &  && && \\
-		      &  & \bullet \ultwocell<\omit>{\gamma} &  &\bullet\ar[r]\ultwocell<\omit>{\delta} & \bullet \uultwocell<\omit>{\epsilon}\dlltwocell<\omit>{\theta} && \bullet \ar[r]& \bullet & \bullet\ar[r] & \bullet\\
+		      &  & \bullet \ar@{}[ur]|=\ultwocell<\omit>{\gamma} &  &\bullet\ar[r]\ultwocell<\omit>{\delta} & \bullet \uultwocell<\omit>{\epsilon}\dlltwocell<\omit>{\theta} && \bullet \ar[r]& \bullet & \bullet\ar[r] & \bullet\\
 		      \bullet \ar[r]& \bullet\uultwocell<\omit>{\alpha}\ar[ur] && \bullet \ar[r]\ar[ur]& \bullet\ar[ur]
 		      }\]
 	      (Iniziare dando dei nomi opportuni ai funtori in ciascun diagramma, ed usare la composizione orizzontale, verticale, e la regola di scambio.)
