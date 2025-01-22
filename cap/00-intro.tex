@@ -17,16 +17,24 @@ Fermarsi qui a raccontare la teoria delle categorie però tradirebbe parte della
 	\[\textstyle\det_A : M(A,2) \to A\]
 	che manda una generica matrice \(2\times 2\) a coefficienti in \(A\), diciamo \(\begin{smat} a_{11} & a_{12}\\a_{21} & a_{22}\end{smat}\) in \(a_{11}a_{22}-a_{12}a_{21}\).
 \end{example}
-L'insieme delle matrici \(2\times 2\) a coefficienti in \(A\) è in un senso evidente ottenuto `in funzione' di \(A\), perché è costruito a partire dalle quaterne di elementi di \(A\); in più, le varie `componenti' \(\alpha_A\) `variano con continuità' al variare di \(A\), ossia tutte le funzioni \(\det_A\) sono definite alla stessa maniera, non importa quale sia l'anello \(A\) in questione. La specifica delle funzioni `determinante' è \emph{polimorfa} in $A$, ossia si può pensare (in modo impreciso, ma evocativo) come una funzione di tipo
+L'insieme delle matrici \(2\times 2\) a coefficienti in \(A\) è in un senso evidente ottenuto `in funzione' di \(A\), perché è costruito a partire dalle quaterne di elementi di \(A\); in più, le varie `componenti' \(\alpha_A\) `variano con continuità' al variare di \(A\), ossia tutte le funzioni \(\det_A\) sono definite alla stessa maniera, non importa quale sia l'anello \(A\) in questione. La specifica delle funzioni `determinante' è \emph{polimorfa} in \(A\), ossia si può pensare (in modo impreciso, ma evocativo) come una funzione di tipo
 \[\textstyle\forall A \text{ anello} : \det_A : M(A,2) \to A\]
-che ad ogni $A$ `assegna' una funzione dall'insieme delle matrici $2\times 2$, a ingressi in $A$, verso $A$. 
+che ad ogni \(A\) `assegna' una funzione dall'insieme delle matrici \(2\times 2\), a ingressi in \(A\), verso \(A\).
 
-Se questo problema, la seguente proprietà vale: se \(f : A\to B\) è un omomorfismo di anelli commutativi e unitari, la composizione di funzioni
-\[bla\]
-è uguale alla composizione di funzioni
-\[ble\]
-Usualmente, queste due possibili composizioni coincidenti si assemblano in un diagramma rettangolare,
-\[blo\]
+In più, la seguente proprietà vale: se \(f : A\to B\) è un omomorfismo di anelli commutativi e unitari, la composizione di funzioni
+\[\xymatrix{
+	M(A,2) \ar[r]^-{\det_A}& A\ar[d] \\
+	& B
+	}\]
+definita da \(M\mapsto f(\det_A(M)) = f(a_{11})f(a_{22})-f(a_{12})f(a_{21})\) è uguale alla composizione di funzioni
+\[\xymatrix{
+	M(A,2) \ar[d]_{M(f,2)}&  \\
+	M(B,2) \ar[r]_-{\det_B} & B
+	}\] (\(M(f,2)\) `applica \(f\) ad ogni ingresso' della matrice \(M\)) definita da \(M\mapsto \det_B \begin{smat} f(a_{11}) & f(a_{12})\\f(a_{21}) & f(a_{22})\end{smat}\); in altre parole, è possibile organizzare le due possibili composizioni coincidenti in un diagramma quadrato/rettangolare,
+\[\xymatrix{
+	M(A,2) \ar[d]_{M(f,2)}\ar[r]^-{\det_A}& A\ar[d] \\
+	M(B,2) \ar[r]_-{\det_B} & B
+	}\]
 e si dice, quando i due `percorsi' che uniscono il vertice in alto a sinistra con quello in basso a destra danno luogo alla stessa funzione, che il diagramma `commuta' o `è commutativo'.
 
 Ciò che i matematici della prima metà del ventesimo secolo iniziarono a notare è che costruzioni del genere sono tutto tranne che rare; spesso, la specifica di un problema o di una costruzione matematica porta a definire una famiglia di funzioni

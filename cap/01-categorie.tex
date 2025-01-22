@@ -494,9 +494,6 @@ Il capitolo \ref{chap_limiti_colimiti} e in particolare la nozione di prodotto, 
 	\end{itemize}
 	\Todo{...}
 \end{example}
-\begin{hRemark}[Che cos'è esattamente un diagramma commutativo?]{tech}\label{cos_diag_comm}
-	\Todo{...}
-\end{hRemark}
 \subsection{Categorie come universi}\label{ssec:categorie_universi}
 Proseguiamo con degli esempi di categorie grandi, che giustificano l'intuizione per le categorie come `universi del discorso matematico', ossia come classi i cui elementi sono collegati da relazioni reciproche. L'esempio fondamentale per tutta la sezione è \ref{ex_cat_insiemi}, la categoria di insiemi e funzioni. Usando questa categoria \(\ctSet\) come esempio paradigmatico, è possibile costruire
 % \`E tuttavia importante notare che \emph{non tutte le categorie larghe astratte sono categorie di insiemi strutturati}.% Una approssimazione conveniente per una categoria larga `astratta' è quindi come un rimpiazzo per la categoria \(\ctSet\) e per esempio può essere
@@ -834,6 +831,14 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	\end{itemize}
 	Gli assiomi di categoria sono ovviamente soddisfatti: la coppia di identità \((\id_A,\id_D)\) è evidentemente l'identità dell'oggetto \((d : A\to D)\) per l'operazione di composizione di funzioni, componente per componente.
 \end{example}
+\begin{example}[La categoria degli insiemi pesati]\label{example_pesati}
+	Consideriamo l'insieme \([0,\infty]\) dei numeri reali ordinato nel modo usuale (ovviamente \(x\le \infty\) per ogni \(x\in [0,\infty]\)) La categoria \(\cate{wSet}\) degli \emph{insiemi pesati} ha
+	\begin{itemize}
+		\item per oggetti le coppie \((X,w)\) dove \(X\) è un insieme, e \(w : X \to [0,\infty]\) una funzione di `costo' o `peso' che assegna a ogni elemento di \(X\) un numero reale \(w(x)\) (possibilmente infinito; pensando a \(w(x)\) come a un `peso' o `magnitudine' di \(x\), possiamo denotare brevemente \(w(x)=|x|\));
+		\item per morfismi \(f : (X,w) \to (Y,w')\) le \emph{contrazioni} di insiemi pesati, ossia le funzioni \(f : X\to Y\) con la proprietà che \(w'\cmp f \le w\) (cioè la funzione \(w\) maggiora punto per punto la composta \(w'\cmp f\): per ogni \(x\in X\) si ha \(|f(x)|_Y \le |x|_X\)).
+	\end{itemize}
+	La composizione e le identità si scelgono nel modo ovvio.
+\end{example}
 \begin{example}[La categoria degli pseudoinsiemi]\label{ex_cat_pseudoinsiemi}\index{Pseudoinsieme}\index{Categoria!--- degli pseudoinsiemi}\index{Categoria!\(\cate{Bish}\)|see {--- degli pseudoinsiemi}}\index{Categoria!--- degli insiemi di Bishop|see {--- degli pseudoinsiemi}}
 	Uno \emph{pseudoinsieme}, o \emph{insieme di Bishop}, o \emph{prequoziente} consiste di un insieme \(S\) su cui è definita una relazione di equivalenza \(\sim_S\). La categoria \(\cate{Bish}\) degli insiemi di Bishop è definita come segue:
 	\begin{itemize}
@@ -932,7 +937,7 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 \begin{remark}
 	Del resto, una categoria con un solo oggetto non `è' un monoide, ma lo definisce naturalmente; e un monoide non `è' la categoria \(\susp M\), ma la definisce naturalmente (e qualcosa di simile si può dire per gli insiemi ordinati in \ref{ex_cat_ordini}).
 
-	In altre parole, eliminare la distinzione tra \(M\) e \(\susp M\) non segue da una tautologia, ma è una \emph{identità informativa} (il termine è in `Senso e significato' di Frege, \cite{}) che non è \emph{strettamente} una identità, ma una \emph{identificazione} tra due concetti sintatticamente distinti: in maniera più vicina al gergo matematico, a patto che \(\#\ctC_0 = 1\), le assegnazioni \(M\mapsto \susp M\) e \(\ctC\mapsto \ctC_1\) sono inverse una dell'altra, nel senso che
+	In altre parole, eliminare la distinzione tra \(M\) e \(\susp M\) non segue da una tautologia, ma è una \emph{identità informativa} (il termine è in `Senso e significato' di Frege, \cite{frege1892sinn}) che non è \emph{strettamente} una identità, ma una \emph{identificazione} tra due concetti sintatticamente distinti: in maniera più vicina al gergo matematico, a patto che \(\#\ctC_0 = 1\), le assegnazioni \(M\mapsto \susp M\) e \(\ctC\mapsto \ctC_1\) sono inverse una dell'altra, nel senso che
 	\[(\susp M,\cdot,1)_1 = M\qquad\qquad\susp(\ctC_1,\circ,\id_\bullet) = \ctC.\]
 	%\((\susp M,\cdot,1)_1 = M\) e che \(\susp(\ctC_1,\circ,\id_\bullet) = \ctC\).
 	%Dato un oggetto \(X\) di una categoria, un morfismo da \(X\) a \(X\) si chiama anche \emph{endomorfismo}. In un monoide, tutti i morfismi sono endomorfismi.
@@ -2070,7 +2075,7 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 
 	Mac Lane scrive in \cite[note al cap. 1]{working-categories} che la parola è un prestito da Carnap, e precisamente dalla sua opera `La sintassi logica del linguaggio' \cite{carnappio}. Carnap scrive nel 1934, e fu proprio Mac Lane a recensire il libro in questione (e a distruggere completamente la sua tesi principale con un elementare controesempio preso dall'algebra astratta, che evidentemente Carnap ignorava).
 
-	Nel suo testo \cite{kromer}, Ralf Kr\"omer osserva che la terminologia `corrispondenza funtoriale' è stata, da quel momento in poi, largamente utilizzata senza ulteriore discussione (fino al punto che in \cite{} la `teoria delle categorie' viene chiamata `linguaggio funtoriale'); del resto a Carnap non va nemmeno il merito di avere coniato per primo la parola.
+	Nel suo testo \cite{kromer}, Ralf Kr\"omer osserva che la terminologia `corrispondenza funtoriale' è stata, da quel momento in poi, largamente utilizzata senza ulteriore discussione (fino al punto che in \cite{grothendieck1965introduction} la `teoria delle categorie' viene chiamata `linguaggio funtoriale'); del resto a Carnap non va nemmeno il merito di avere coniato per primo la parola.
 
 	Haskell Curry \cite{Curry1961SomeLA} attribuisce più correttamente il termine a Tadeusz Kotarbiński, logico e filosofo polacco, che nel suo testo \emph{Elementy teorji poznania} (scritto cinque anni prima di \cite{carnappio}) introduce i funtori come `connettivi sentenziali' all'inizio del suo capitolo II. In \cite{Curry1961SomeLA} l'autore fa uso del concetto di funtore nel suo senso filosofico (più precisamente, in filosofia del linguaggio, dove un funtore è definito come un operatore che agisce sulle frasi di un dato linguaggio, per formarne altre, `preservando l'analisi logica', ossia le relazioni tra le parti della frase) per costruire il linguaggio giocattolo dei sami, teteli e tanteti.
 
@@ -2088,12 +2093,6 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 
 	\`E ragionevole concludere che il termine sia nato come innovazione lessicale spontanea nella scuola polacca di logica e filosofia del linguaggio, nei primi decenni del ventesimo secolo, e che analogamente ad altri termini nati senza un autore preciso, si sia poi diffuso universalmente.
 \end{terminology}
-Dopo questa digressione, proponiamo due esercizi a chi legge.
-\subsubsection*{Esercizi}
-\begin{enumerate}
-	\item Se \(\ctC\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\ctC \fun \susp N\); farsi degli esempi scegliendo come \(\ctC\) una delle categorie di \ref{sec_esempi_cats}, e con \(N=(\bbN,+,0)\) il monoide dei numeri naturali.
-	\item Dualmente, se \(\ctD\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\susp M \fun \ctD\); farsi degli esempi scegliendo come \(\ctD\) una delle categorie di \ref{sec_esempi_cats}, e con \(M = (\bbN,+,0)\) il monoide dei numeri naturali.
-\end{enumerate}
 Quando, nel secondo esercizio, prendiamo \(\ctD=\ctSet\) di \ref{ex_cat_insiemi} otteniamo una importante costruzione.
 \begin{example}\label{exa_azioni_funtori}\index{Funtore!azioni come ---}
 	Dato un gruppo \(G\), un funtore \(\susp G\fun\ctSet\) è precisamente un \emph{\(G\)-insieme}, ovvero un insieme con un'azione di \(G\), nel senso di \ref{ex_cat_g_insiemi}.
@@ -2159,12 +2158,12 @@ L'esempio che motiva la definizione è il seguente: se \((X,\tau_X)\) è uno spa
 Si noti che, anche se si può pensare \(U\subseteq V\subseteq X\) come alle funzioni iniettive che includono \(U\) in \(V\) e \(U,V\) in \(X\), le restrizioni \(r_{UV}, r_{UX}, r_{VX}\) non hanno motivo di essere funzioni iniettive.
 
 Consideriamo uno spazio topologico \(X\) e ad ogni aperto \(U\subseteq X\) associamo l'insieme delle funzioni continue \(U\to \bbR\). Questa associazione definisce un prefascio su \(X\) che soddisfa in più anche le seguenti due proprietà: fissato un aperto \(U\subseteq X\) e un ricoprimento aperto \(\{U_i\}\) di \(U\), vale che
-\begin{itemize}
-	\item per ogni coppia di elementi \(s,t \in FU\),
-	      \[(\forall i \in I.r_{U_iU}s = r_{U_iU} t) \,\Rightarrow\, s=t\]
-	\item per ogni famiglia \(s_i \in FU_i\), tale che \(r_{U_{ij}U_i}s_i = r_{U_{ij}U_j}s_j\), esiste un (unico, in virtù della proprietà precedente) \(s\in FU\) tale che \(r_{U_iU}s=s_i\).
-\end{itemize}
-Una corrispondenza del genere si dice un \emph{fascio} sullo spazio \(X\). La teoria delle equazioni differenziali ordinarie conduce naturalmente alla nozione di fascio, \cite{a,b}, e la geometria algebrica moderna è edificata su questa nozione (anche quando, però, gli spazi topologici considerati possono avere topologie molto diverse da quella di una varietà reale o complessa).
+\begin{enumtag}{cf}
+	\item \label{cf_1} per ogni coppia di elementi \(s,t \in FU\),
+	\[(\forall i \in I.r_{U_iU}s = r_{U_iU} t) \,\Rightarrow\, s=t\]
+	\item \label{cf_2} per ogni famiglia \(s_i \in FU_i\), tale che \(r_{U_{ij}U_i}s_i = r_{U_{ij}U_j}s_j\), esiste un (unico, in virtù della proprietà precedente) \(s\in FU\) tale che \(r_{U_iU}s=s_i\).
+\end{enumtag}
+Una corrispondenza del genere si dice un \emph{fascio} sullo spazio \(X\). La teoria delle equazioni differenziali ordinarie conduce naturalmente alla nozione di fascio, \cite[Cap. II]{mac1992sheaves}, \cite{Tennison1975,Borceux1994a,Borceux1989-gf,pedicchiofoundations}, e la geometria algebrica moderna è edificata su questa nozione (anche quando, però, gli spazi topologici considerati possono avere topologie molto diverse da quella di una varietà reale o complessa).
 \begin{definition}[Bifuntore]\label{def_bifuntore}\index{Bifuntore}\index{Funtore!bi---}
 	Un \emph{bifuntore} è un funtore il cui dominio sia una categoria prodotto come in \ref{def_cat_prodotto}; più precisamente, date tre categorie \(\ctA,\ctB,\ctC\) un bifuntore \(F : \ctA \times \ctB \fun \ctC\) assegna
 	\begin{itemize}
@@ -2245,6 +2244,12 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 
 	Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture definibili in topologia algebrica, che somigliano a categorie ma dove gli assiomi \ref{cp_1}, \ref{cp_2} `valgono a meno di omotopia'). Raramente faremo riferimento a \(\ctCAT\), e mai parlando della sua struttura di `categoria'; avremo invece spesso bisogno di formare categorie del tipo \([\ctC,\ctSet]\) (o simili: \([\ctC,\ctAb]\), \([\ctC,\ctVect]\) eccetera, ma \emph{solo quando \(\ctC\) è piccola} (in questo caso queste categorie sono tutte legittime).
 \end{remark}
+\subsubsection*{Esercizi}
+\begin{enumerate}
+	\item Se \(\ctC\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\ctC \fun \susp N\); farsi degli esempi scegliendo come \(\ctC\) una delle categorie di \ref{sec_esempi_cats}, e con \(N=(\bbN,+,0)\) il monoide dei numeri naturali.
+	\item Dualmente, se \(\ctD\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\susp M \fun \ctD\); farsi degli esempi scegliendo come \(\ctD\) una delle categorie di \ref{sec_esempi_cats}, e con \(M = (\bbN,+,0)\) il monoide dei numeri naturali.
+	\item Scrivere in cosa consiste un prefascio, nel senso di \ref{exa_funtori_da_poset}, quando \(P=2^X\) è l'insieme delle parti di un insieme \(X\), ordinato dall'inclusione. In cosa consiste un \emph{fascio} \(F : (2^X)^\op\to\ctSet\), cioè un funtore che soddisfa le due condizioni in \ref{cf_1}, \ref{cf_2}? (Suggerimento: \(2^X\) è generato dai suoi elementi minimali, ossia \(U\subseteq X\) risulta, ovviamente, da \(\bigcup_{x\in U} \{x\}\).)
+\end{enumerate}
 \section{Esempi di funtori nella pratica matematica}\label{sec_esempi_funtori}
 \`E chiaro che non si può compilare una lista esaustiva di funtori importanti nella pratica matematica. Possiamo però concentrarci su alcuni funtori che è immediato costruire tra le categorie di §\ref{sec_esempi_cats}. In particolare, ed è uno dei motivi per cui \ref{def_funtore} è interessante, diverse operazioni che guardano una struttura come esempio di un'altra struttura si possono rendere precise mediante la nozione di funtore.
 \begin{example}[Categorie discrete e codiscrete]\label{ex_fun_co_disc}\index{Categoria!--- discreta}\index{Categoria!--- codiscreta}\index{Funtore!--- categoria discreta}\index{Funtore!--- categoria codiscreta}
@@ -2264,6 +2269,10 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	Similmente, esiste un funtore `codominio'
 	\[\dmFun{c}{X/\ctC}{\ctC}\]
 	che manda ogni oggetto \(f : X\to A\) nel suo codominio \(A\).
+\end{example}
+\begin{example}\index{Funtore!--- insieme delle parti}\label{ex_fun_parti}
+	\Todo{funtore potenza covariante}
+	\Todo{funtore potenza controvariante}
 \end{example}
 \begin{example}\index{Funtore!--- categoria associata a monoide}
 	La corrispondenza che assegna a un monoide \((M,\cdot,1)\) la categoria con un solo oggetto \(\susp(M,\cdot,1)\) come in \ref{mon_sonocat} è la parte sugli oggetti di un funtore
@@ -2312,7 +2321,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		\item una collezione di insiemi \(f(n)=X_n\) indicizzata dai numeri naturali \(n\ge 1\);
 		\item una rappresentazione \(S_n \times X_n\to X_n\), ossia un'azione (sinistra) del gruppo simmetrico \(S_n\) degli automorfismi dell'insieme \(\{\iter n\}\).
 	\end{itemize}
-	Il funtore \(f\) si dice una \emph{specie combinatoria} e la famiglia \(f(n)=X_n\) è una \emph{successione simmetrica}. Questo tipo di funtori, molto ricchi di struttura e di proprietà interessanti, trovano applicazioni in combinatoria enumerativa \cite{bergeron1998combinatorial}, teoria delle rappresentazioni \cite{aguiar2010monoidal}, geometria e topologia \cite{Fresse2009} (quando invece che insiemi gli \(X_n\) sono spazi vettoriali), logica e informatica teorica \cite{Gambino2017,Hasegawa2002}. Denotando con \(\# S\) la cardinalità di un insieme, ad ogni specie combinatoria \(f : \cate{Bij} \fun\ctSet\) tale che ogni \(f(n)\) sia finito possiamo associare la serie formale \(F(t)\in\mathbb{N}\llbracket t\rrbracket\) definita come \(F(t) \defeq \sum_{n\ge 1} \frac{\# X_n}{n!}t^n\). Questa si chiama la \emph{funzione generatrice} della specie combinatoria \(F\), e le sue proprietà algebriche o analitiche (qualora \(F(t)\) converga) sono in corrispondenza diretta con le proprietà del funtore \(f\).
+	Il funtore \(f\) si dice una \emph{specie combinatoria} e la famiglia \(f(n)=X_n\) è una \emph{successione simmetrica}. Questo tipo di funtori, molto ricchi di struttura e di proprietà interessanti, trovano applicazioni in combinatoria enumerativa \cite{bergeron1998combinatorial}, teoria delle rappresentazioni \cite{aguiar2010monoidal}, geometria e topologia \cite{fresse-operads} (quando invece che insiemi gli \(X_n\) sono spazi vettoriali), logica e informatica teorica \cite{Gambino2017,Hasegawa2002}. Denotando con \(\# S\) la cardinalità di un insieme, ad ogni specie combinatoria \(f : \cate{Bij} \fun\ctSet\) tale che ogni \(f(n)\) sia finito possiamo associare la serie formale \(F(t)\in\mathbb{N}\llbracket t\rrbracket\) definita come \(F(t) \defeq \sum_{n\ge 1} \frac{\# X_n}{n!}t^n\). Questa si chiama la \emph{funzione generatrice} della specie combinatoria \(F\), e le sue proprietà algebriche o analitiche (qualora \(F(t)\) converga) sono in corrispondenza diretta con le proprietà del funtore \(f\).
 \end{example}
 \begin{example}[Moduli sinistri; moduli destri; bimoduli]\index{Moduli su un anello!--- come funtori}\index{Modulo}
 	Se \(\ctAb\) è la categoria dei gruppi abeliani e loro omomorfismi, ed \((R,+,\cdot,0,1)\) è un anello unitario, una rappresentazione del monoide \((R,\cdot,1)\) in \(\ctAb\), ossia un funtore
@@ -2462,7 +2471,9 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Descrivere il funtore hom covariante \(\Hom\ctC(C,-)\) e controvariante \(\Hom\ctC(-,C)\) di \ref{ex_hom_funtore} quando: \(\ctC\) ha un solo oggetto, come in \ref{mon_sonocat}; \(\ctC\) è una classe preordinata, come in \ref{ord_sonocat}; \(\ctC = \ctA+\ctB\) è la somma di due categorie fissate; \(\ctC = G\emdash\ctSet\) per un gruppo \(G\) come in \ref{ex_cat_g_insiemi}; \(\ctC = \ctMat\) per un campo \(\bbF\).
-	\item
+	\item Si ricordi la definizione \ref{example_pesati} della categoria \(\cate{wSet}\) degli insiemi pesati. Sia \(\lambda\in[0,\infty]\) un numero reale fissato; definire e studiare le proprietà del funtore `palla di raggio \(\lambda\)'
+	      \[\dmFun{B_\lambda}{\cate{wSet}}{\ctSet}\]
+	      che manda \((X,w)\mapsto \{x\in X\mid |x|\le \lambda\}\), con particolare attenzione alle scelte \(\lambda=0,1,\infty\). Il funtore \(B_\lambda\) è pieno? Fedele? Definire funtori \(W_\lambda : \ctSet \fun\cate{wSet}\) nella direzione opposta (sono pieni, fedeli?) tali che se \(\singleton\) denota un qualsiasi singoletto, \(B_\lambda X\) si identifica con l'insieme \(\Hom(W_\lambda\singleton,(X,w))\).
 	\item
 \end{enumerate}
 In \ref{es_fun_repre} abbiamo visto che una \emph{rappresentazione} di un monoide \(M\) consiste di un funtore \(\susp M \fun\ctSet\), e più in generale un funtore \(\ctC\fun\ctSet\) può essere pensato come una rappresentazione di \(\ctC\); se una categoria \(\ctJ\) è pensata come una \emph{forma} nel senso di \ref{ssec:categorie_forme}, e soprattutto quando è una forma generica nel senso di \ref{ex_cat_freccia}, \ref{ex_spancospan}, \ref{es_catena_trans}, possiamo dare la definizione seguente.
@@ -2492,6 +2503,10 @@ In \ref{es_fun_repre} abbiamo visto che una \emph{rappresentazione} di un monoid
 \begin{remark}
 	Il termine `diagramma' è di solito riservato a funtori il cui dominio è una categoria piccola, e il cui codominio può essere una categoria larga, per suggerire il principio generale cui abbiamo già accennato in \ref{ssec:categorie_forme}, ossia la tensione tra categorie come forme e come universi: un diagramma di forma piccola \(\ctJ\) è `interpretato' in una categoria \(\ctC\), possibilmente larga, come un grafo connesso e diretto alla stessa maniera di \(\ctJ\). Possiamo quindi accedere a una porzione piccola di \(\ctC\) e operare su di essa i ragionamenti che faremmo in \(\ctJ\), \emph{specializzati ai morfismi di \(\ctC\)}.
 \end{remark}
+La nozione di diagramma permette di formalizzare l'idea di diagramma commutativo (in tutte le sue parti) come un insieme di condizioni di commutatività. L'idea informale è ovviamente sufficiente a operare e ragionale proficuamente con i diagrammi: questa osservazione è pensata per chi desidera una spiegazione più tecnica.
+\begin{hRemark}[Che cos'è esattamente un diagramma commutativo?]{tech}\label{cos_diag_comm}
+	\Todo{...}
+\end{hRemark}
 \begin{lemma}\label{lem_funtori_preservano_comm}
 	\Todo{Funtori preservano i diagrammi commutativi} in particolare, preservano gli isomorfismi.
 \end{lemma}
@@ -2678,7 +2693,13 @@ Inoltre, la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 	Il determinante fornisce un esempio di trasformazione naturale \(\det : \text{GL}_n\natto (-)^\times\) di componenti
 	\[\dmFun{\det_R}{\text{GL}_n(R)}{R^\times}\]
 \end{example}
+Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato}) da una trasformazione naturale \(\eta : \id_\ctC \nat F\) (risp., \(\epsilon : F \nat \id_\ctC\)).
 \begin{example}\Todo{un paio di esempi di funtori puntati e copuntati}
+	Raccogliamo alcuni esempi di funtori puntati e copuntati:
+	\begin{itemize}
+		\item valutazione
+		\item insieme potenza come in \ref{ex_fun_parti}
+	\end{itemize}
 \end{example}
 \begin{example}\Todo{un paio di esempi di moltiplicazioni e comoltiplicazioni}
 \end{example}
@@ -2907,6 +2928,8 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 	Questo conclude la dimostrazione che \(\beta\cmp\alpha = \alpha\cmp\beta\).
 \end{proof}
 \begin{hRemark}[A proposito dei diagrammi di trasformazioni naturali]{skip}
+	Questa osservazione fa il paio con \ref{cos_diag_comm}.
+
 	Ci sono tre modi di rappresentare un diagramma commutativo di trasformazioni naturali:
 	\begin{itemize}
 		\item come un ben noto diagramma commutativo in una cat di funtori
@@ -2988,7 +3011,7 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 \subsubsection*{Esercizi}
 \begin{enumerate}
 	\item Mostrare che la regola di scambio di \ref{interchangio} è equivalente al fatto che la composizione
-	      \[bla\]
+	      \[\dmFun{\cmp}{\ctCat(\ctB,\ctC)\times\ctCat(\ctA,\ctB)}{\ctCat(\ctA,\ctC)}\]
 	      sia un bifuntore (nel senso di \ref{def_bifuntore}) quando le tre categorie di funtori hanno per morfismi le trasformazioni naturali.
 	\item Per risolvere questo esercizio è necessario ricordare la definizione di una \emph{successione esatta} di omomorfismi di gruppo: se \(H,G,G',K\) sono gruppi abeliani, una successione esatta corta è una sequenza di mappe componibili
 	      % https://q.uiver.app/#q=WzAsNixbMCwwLCIwIl0sWzEsMCwiSyJdLFsyLDAsIkciXSxbMywwLCJHJyJdLFs1LDAsIjAiXSxbNCwwLCJIIl0sWzAsMV0sWzEsMiwiaCJdLFsyLDMsImYiXSxbMyw1LCJnIl0sWzUsNF1d
@@ -3006,7 +3029,7 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 	      \begin{itemize}
 		      \item Definire \(\ker\alpha\) come la trasformazione naturale associata ad \(\alpha : F \natto G\) e avente per componenti
 		            \[(\ker\alpha)_C := \ker(\alpha_C : FC\to GC) \to FC.\]
-		      \item Mostrare che \(X\mapsto\ker(\alpha_X)\) definisce un funtore \(K : \ctC\fun\ctAb\), e che \(\kappa_X : \ker(\alpha_X) \to FX\) è naturale, e un monomorfismo in \([\ctC,\ctAb]\); a questa maniera, esiste una successione esatta \emph{di trasformazioni naturali} (cioè una successione di trasformazioni naturali, esatta quando saturata in ogni componente) della forma
+		      \item Mostrare che \(X\mapsto\ker(\alpha_X)\) definisce un funtore \(K : \ctC\fun\ctAb\), e che \(\kappa_X : \ker(\alpha_X) \to FX\) è naturale e ha ciascuna componente un omomorfismo iniettivo di gruppi; a questa maniera, esiste una successione esatta \emph{di trasformazioni naturali} (cioè una successione di trasformazioni naturali, esatta quando saturata in ogni componente) della forma
 		            \[0\natto\ker\alpha \overset\kappa\natto F \overset\alpha\natto G\]
 		            dove chiaramente `\(0\)' è il funtore costante nel gruppo abeliano nullo.
 		      \item Dualizzare e definire il \emph{conucleo} di una trasformazione naturale; costruire la successione esatta
@@ -3039,8 +3062,21 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 				            \arrow[from=1-5, to=1-6, Rightarrow]
 			            \end{tikzcd}\]
 	      \end{itemize}
-	\item
-	\item
+	\item Per ogni insieme \(X\) definire la funzione \texttt{inits}
+	      \[\xymatrix{\mathtt{inits}_X : X^* \ar[r] & (X^*)^*}\]
+	      dove \(MX = X^*\) è il monoide libero delle liste di elementi di \(X\), come in \ref{mongruppi_liberi}, e
+	      \[\mathtt{inits}_X\emptyList = [\emptyList] \qquad \mathtt{inits}_X [\tup xn,] = [[x_1],[x_1,x_2],\dots, [\tup xn,]]\]
+	      Mostrare che \(\mathtt{inits}_X\) sono le componenti di una trasformazione naturale \(M \nat M\cmp M\); mostrare, o trovare un controesempio, alla validità della seguente equazione:
+	      \[\mathtt{inits}_{MX}\cmp\mathtt{inits}_X = M(\mathtt{inits}_X)\cmp \mathtt{inits}_X.\]
+	\item Scrivere in forma equazionale le condizioni di commutatività seguenti, date mediante diagrammi di incollamento naturale:
+	      % https://q.uiver.app/#q=WzAsMjIsWzAsMSwiXFxidWxsZXQiXSxbMCwyLCJcXGJ1bGxldCJdLFsxLDEsIlxcYnVsbGV0Il0sWzEsMiwiXFxidWxsZXQiXSxbMSwwLCJcXGJ1bGxldCJdLFsyLDAsIlxcYnVsbGV0Il0sWzIsMSwiXFxidWxsZXQiXSxbMywxLCJcXGJ1bGxldCJdLFs0LDAsIlxcYnVsbGV0Il0sWzUsMCwiXFxidWxsZXQiXSxbNSwxLCJcXGJ1bGxldCJdLFs0LDIsIlxcYnVsbGV0Il0sWzMsMiwiXFxidWxsZXQiXSxbNCwxLCJcXGJ1bGxldCJdLFs3LDEsIlxcYnVsbGV0Il0sWzcsMiwiXFxidWxsZXQiXSxbOCwxLCJcXGJ1bGxldCJdLFs4LDIsIlxcYnVsbGV0Il0sWzksMSwiXFxidWxsZXQiXSxbOSwyLCJcXGJ1bGxldCJdLFsxMCwxLCJcXGJ1bGxldCJdLFsxMCwyLCJcXGJ1bGxldCJdLFswLDRdLFsyLDVdLFs0LDVdLFs1LDZdLFsyLDNdLFszLDZdLFswLDJdLFswLDFdLFsxLDNdLFs4LDEzXSxbMTMsMTBdLFs4LDldLFs5LDEwXSxbNyw4XSxbNywxMl0sWzEyLDEzXSxbMTEsMTBdLFsxMiwxMV0sWzE0LDE2XSxbMTYsMTddLFsxNCwxNV0sWzE1LDE3XSxbMTgsMTldLFsxOCwyMF0sWzIwLDIxXSxbMTksMjFdXQ==
+	      \[\xymatrix@R=5mm{
+		      & \bullet \ar[r]& \bullet \dlltwocell<\omit>{\beta}\ar[dd]&& \bullet\ar[r] \ar[dd]& \bullet \ar[dd]&& \bullet \ar[r]\ar[dd]\ddrtwocell<\omit>{\alpha}& \bullet \ddtwocell^{}_{}{\beta}& \bullet\ddrtwocell<\omit>{\delta}\ddtwocell^{}_{}{\gamma} \ar[r]& \bullet\ar[dd]\\
+		      \bullet \ar[ur]\ar[dd]\ar[r]& \bullet \ar[ur]\ar[dd]&  & \bullet \ar[dd]\ar[ur]& &  && && \\
+		      &  & \bullet \ultwocell<\omit>{\gamma} &  &\bullet\ar[r]\ultwocell<\omit>{\delta} & \bullet \uultwocell<\omit>{\epsilon}\dlltwocell<\omit>{\theta} && \bullet \ar[r]& \bullet & \bullet\ar[r] & \bullet\\
+		      \bullet \ar[r]& \bullet\uultwocell<\omit>{\alpha}\ar[ur] && \bullet \ar[r]\ar[ur]& \bullet\ar[ur]
+		      }\]
+	      (Iniziare dando dei nomi opportuni ai funtori in ciascun diagramma, ed usare la composizione orizzontale, verticale, e la regola di scambio.)
 	\item
 \end{enumerate}
 
@@ -3209,7 +3245,7 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
 				      B \ar[r, "g"'] \ar[ur, dashed, "u"]& Y
 			      \end{tikzcd}\]
 		      dove \(p : E\epi B\) è un epimorfismo, esiste un unico \(u : B\to X\) tale che \(u\cmp p = f\) e \(m\cmp u = g\);
-		\item\label{caratt_epi_con_ort_duale:itm3} la condizione del punto precedente vale per \(p : \{0,1\} \to \{\bullet\}\) (l'unica funzione \(0\mapsto\bullet, 1\mapsto\bullet\)).
+		\item\label{caratt_epi_con_ort_duale:itm3} la condizione del punto precedente vale per \(p : \{0,1\} \to \singleton\) (l'unica funzione \(0\mapsto\bullet, 1\mapsto\bullet\)).
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -3218,7 +3254,7 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
 	Dunque, rimane da dimostrare che \ref{caratt_epi_con_ort_duale:itm1} segue da \ref{caratt_epi_con_ort_duale:itm3} .
 	Siano \(x, x' \in X\) tali che \(m(x) = m(x')\).
 	Allora, consideriamo la funzione \(f \colon \{0, 1\} \to X\) per cui \(0 \mapsto x\) e \(1 \mapsto x'\),
-	e la funzione \(g \colon \{\bullet\} \to Y\) per cui \(\bullet \mapsto m(x)\).
+	e la funzione \(g \colon \singleton \to Y\) per cui \(\bullet \mapsto m(x)\).
 	Per costruzione \(m \cmp f = g \cmp p\) e dunque, per l'ipotesi \ref{caratt_epi_con_ort_duale:itm3}, esiste un unico \(u : B\to X\) tale che \(u\cmp p = f\) (e \(m\cmp u = g\)).
 	Allora, \(x = f(0) = u(p(0)) = u(\bullet) = u(p(1)) = f(1) = x'\).
 	Per la genericit\`a di \(x\) e \(x'\), abbiamo che \(f\) \`e iniettiva,
