@@ -231,8 +231,6 @@
 \newenvironment{hAxiom}[2][]{\begin{axiom}[#1\,|\,\hands{#2}]}{\end{axiom}}
 \newenvironment{hExample}[2][]{\begin{example}[#1\,|\,\hands{#2}]}{\end{example}}
 \newenvironment{hExamples}[2][]{\begin{examples}[#1\,|\,\hands{#2}]}{\end{examples}}
-\newenvironment{hExercise}[2][]{\begin{exercise}[#1\,|\,\hands{#2}]}{\end{exercise}}
-\newenvironment{hExercises}[2][]{\begin{exercises}[#1\,|\,\hands{#2}]}{\end{exercises}}
 \newenvironment{hCounterexample}[2][]{\begin{counterexample}[#1\,|\,\hands{#2}]}{\end{counterexample}}
 \newenvironment{hConstruction}[2][]{\begin{construction}[#1\,|\,\hands{#2}]}{\end{construction}}
 \newenvironment{hWarning}[2][]{\begin{warning}[#1\,|\,\hands{#2}]}{\end{warning}}
@@ -373,6 +371,11 @@
 
 \DeclareDocumentEnvironment{enumtag}{m}{%
 	\begin{enumerate}[ label = \textsc{#1}\oldstylenums{\arabic*}), ref = \textsc{#1}\oldstylenums{\arabic*} ] }{ \end{enumerate} }
+
+\DeclareDocumentEnvironment{esercizi}{ O{E.\thesection.\arabic*} }%
+  { \subsubsection*{Esercizi della sezione \thesection} \begin{enumerate}[ label = #1 , ref = #1 ] }
+  { \end{enumerate} }
+
 
 \newcommand{\emdash}{\text{-}}
 \setlist[itemize,enumerate]{itemsep=0pt}
