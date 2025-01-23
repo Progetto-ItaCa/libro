@@ -74,7 +74,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 	\begin{enumtag}{c}
 		\item\label{c_1} una classe \(\ctC_0\) i cui elementi chiamiamo \emph{oggetti}, di solito indicati con lettere latine maiuscole: \(A\), \(B\), \(X\), \(Y\),\dots
 		\item\label{c_2} una classe \(\ctC_1\) i cui elementi chiamiamo \emph{morfismi} o \emph{frecce}, di solito indicati con lettere latine minuscole: \(f,g,h\),\dots, \(u,v,w\)\dots
-		\item\label{c_3} Ad ogni morfismo \(f\) corrispondono due oggetti \(\dom{f}\), \(\cod{f}\) chiamati \emph{dominio} e \emph{codominio}. Per denotare il fatto che \(f\) ha dominio \(X\in\ctC_0\) e codominio \(Y\in\ctC_0\), scriveremo \(f\colon X\to Y\), o in \emph{forma diagrammatica},
+		\item\label{c_3} Ad ogni morfismo \(f\) corrispondono (unici) due oggetti \(\dom{f}\), \(\cod{f}\) chiamati \emph{dominio} e \emph{codominio}. Per denotare il fatto che \(f\) ha dominio \(X\in\ctC_0\) e codominio \(Y\in\ctC_0\), scriveremo \(f\colon X\to Y\), o in \emph{forma diagrammatica},
 		\[\begin{tikzcd} X \ar[r, "f"] & Y. \end{tikzcd}\]
 		\item\label{c_4} Ogni oggetto \(X\) ha un morfismo \(\id_X\colon X\to X\) chiamato \emph{identità}.
 		\item\label{c_5} Per ogni coppia di morfismi \(f\colon X\to Y\) e \(g\colon Y\to Z\), cioè tali che \(\cod{f}=\dom{g}\), esiste un morfismo \(g\cmp f:X\to Z\) chiamato \emph{composizione di \(f\) e \(g\)}. Diagrammaticamente: se sono dati
@@ -110,7 +110,9 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 		\item come conseguenza immediata, se \(X\ne X'\) sono oggetti diversi, le identità \(\id_X,\id_{X'}\) sono morfismi diversi: si può cioè pensare la corrispondenza \(X\mapsto \id_X : \ctC_0\to\ctC_1\) come una funzione \emph{iniettiva} tra classi;
 		\item la composizione consta di una funzione \emph{parziale} (si noti la diversa freccia)
 		      \[\xymatrix{\_\cmp\_ : \ctC_1 \times \ctC_1 \ar@^{->}[r] & \ctC_1}\]
-		      il cui dominio è la sotto-classe \(\sum_{XYZ} \{ X \xrightarrow f Y \xrightarrow g Z \}\) di \(\ctC_1 \times \ctC_1\) dei morfismi \emph{contigui} o \emph{componibili}. Dato che i vari \(\Hom{\ctC}(X,Y)\) sono a due a due disgiunti, la composizione \(\_\cmp\_\) si `spezza' in una classe di funzioni
+		      il cui dominio è la sotto-classe \(\sum_{XYZ} \{ X \xrightarrow f Y \xrightarrow g Z \}\subseteq\ctC_1 \times \ctC_1\) dei morfismi \emph{contigui} o \emph{componibili}, cioè
+								\[\sum_{XYZ} \{ X \xrightarrow f Y \xrightarrow g Z \} = \{(f,g)\in \ctC_1 \times \ctC_1\mid c(f)=d(g)\}.\] 
+								Dato che i vari \(\Hom{\ctC}(X,Y)\) sono a due a due disgiunti, la composizione \(\_\cmp\_\) si `spezza' in una classe di funzioni
 		      \[\xymatrix{\_\cmp_{XZ}^Y\_ : \Hom{\ctC}(Y,Z)\times\Hom{\ctC}(X,Y) \ar[r] & \Hom{\ctC}(X,Z)}\]
 		      dove ciascuna funzione manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in \(g\cmp f\) (in effetti, gli indici che indicano il dominio della particolare funzione \(\_\cmp_{XZ}^Y\_\) vengono \emph{sempre} lasciati sottintesi, e si scrive solo \(\_\cmp\_\)).
 	\end{itemize}
@@ -143,8 +145,7 @@ La categoria di \emph{tutti} gli insiemi finiti non è piccola (perché c'è una
 \end{remark}
 Concludiamo con un lemma apparentemente banale, ma che sarà utile in seguito (precisamente, nella dimostrazione di \ref{cat_sonomon}).
 \begin{lemma}\label{lem_end_monoide}
-	Sia \(\ctC\) una categoria, \(A\in\ctC_0\) un suo oggetto; allora \(M=\Hom{\ctC}(A,A)\) è un monoide, con l'identità \(\id_A\) come elemento neutro e la composizione \(\cmp\) come prodotto.
-	Indicheremo questo monoide come \(\End[\ctC]{A}\), o semplicemente come \(\End{A}\).
+	Sia \(\ctC\) una categoria, \(A\in\ctC_0\) un suo oggetto; allora \(M=\Hom{\ctC}(A,A)\) è un monoide (indicato come \(\End[\ctC]{A}\), o semplicemente come \(\End{A}\)), con l'identità \(\id_A\) come elemento neutro e la composizione \(\cmp\) come prodotto.
 \end{lemma}
 \begin{proof}
 	La composizione è un'operazione associativa
@@ -170,6 +171,22 @@ Si può imparare la teoria delle categorie in modo proficuo solo abbracciando \e
 D'altra parte l'analisi funzionale studia quegli spazi \emph{vettoriali} (di dimensione infinita) che sono dotati di una \emph{topologia} metrizzabile (e determinata da un filtro di intorni dello zero), ed eventualmente di un prodotto scalare; la teoria della rappresentazione studia certi omomorfismi in un gruppo di matrici, o le proprietà \emph{topologiche-differenziali} di questi gruppi di matrici (il gruppo ortogonale speciale, il gruppo dei quaternioni di norma 1, ecc.). Per comprendere queste strutture è spesso necessario spostarsi di categoria in categoria.
 
 La seconda di queste osservazioni non è meno importante: porterà alla definizione di funtore in \ref{def_funtore} come \emph{omomorfismo tra categorie}, alla definizione di \emph{diagramma} in \ref{def_diagramma_comm} come immagine di una categoria piccola in una categoria, non necessariamente piccola, e alla definizione di trasformazione naturale in \ref{sec_tnat}, vista come \emph{omomorfismo tra funtori}.
+\begin{esercizi}
+\item \label{jgdasoh_1} Definiamo un \emph{magma parziale} come una classe $\ctM$ dotata di una operazione binaria parziale $\cmp : \ctM\times\ctM\to\ctM$; scriviamo $\checkmark(x\cmp y)$ quando $(x,y)$ appartengono al dominio di $\circ$. Un elemento di un magma parziale è una \emph{unità} se $x\cmp u = x$ quando $\checkmark(x\cmp u)$, e $u\cmp y = y$ quando $\checkmark(u\cmp y)$. Una \emph{categoria senza oggetti} consiste di un magma parziale $(\ctM,\cmp)$ i cui elementi sono detti \emph{frecce}, tale che tutti i seguenti assiomi siano soddisfatti: 
+\begin{enumtag}{of}
+	\item per ogni $f,g,h\in\ctM$ le condizioni seguenti sono equivalenti: (i) $\checkmark(g\cmp f)$ e $\checkmark(h\cmp g)$, (ii) $\checkmark(h\cmp (g\cmp f))$, (iii) $\checkmark((h\cmp g)\cmp f)$;
+	\item per ogni $f,g,h$ che soddisfano una delle condizioni precedenti, $h\cmp (g\cmp f) = (h\cmp g)\cmp f$;
+	\item per ogni $f\in\ctM$ esistono unità $u_l,u_r$ tali che $\checkmark(u_l\cmp f)$ e $\checkmark(f\cmp u_r)$;
+	\item per ogni coppia di unità $(u_l,u_r)$ la classe 
+	\[\ctM[u_l,u_r] := \{f\in\ctM\mid \checkmark(u_l\cmp f),\,\checkmark(f\cmp u_r)\}\]
+	è un insieme.
+\end{enumtag}
+Mostrare che ogni categoria senza oggetti definisce una categoria nel senso di \ref{def_categ} e viceversa.
+\item \label{jgdasoh_2} Descrivere in cosa consiste una categoria che soddisfa tutti gli assiomi di \ref{def_categ}, a parte il fatto che $d,c : \ctC_1\to\ctC_0$ sono funzioni parziali: in una categoria `bucata', esistono frecce $\xymatrix{{} \ar[r]^f & Y}$ di $\ctC$ che non hanno dominio, e alcune $\xymatrix{X \ar[r]^g & {}}$ che non hanno codominio (possono esistere anche frecce $\xymatrix{{} \ar[r]^p & {}}$? Quante?).
+\item \label{jgdasoh_3} % categoria dove s,t sono relazioni?
+\item \label{jgdasoh_4} Verificare gli assiomi di categoria per $\ctFin$ e $\ctVect$ come sono state presentate in \ref{}.
+\item \label{jgdasoh_5} Costruire esempi di strutture che soddisfano tutti gli assiomi di \ref{def_categ} meno uno: due classi $\ctC_0,\ctC_1$, con funzioni di classe $d,c,\id,\cmp$ ma la composizione non è sempre definita, non è sempre associativa, non sempre unitale.
+\end{esercizi}
 \section{Esempi di categorie nella pratica matematica}\label{sec_esempi_cats}
 Iniziamo ora a dare degli esempi di categorie piccole partendo dall'esempio più semplice, anche quello più banale.
 \subsection{Categorie come forme}\label{ssec:categorie_forme}
@@ -714,7 +731,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 \index{Categoria!--- di funzioni parziali}
 \begin{example}\label{ex_cat_pfun}\index{Funzione!--- parziale}
 	Dati due insiemi \(X\) e \(Y\), una \emph{funzione parziale} è una relazione \(p\) tra \(X\) e \(Y\) che associa ad ogni elemento di \(X\) \emph{al più} un singolo elemento di \(Y\). In maniera equivalente, possiamo vedere \(p\) come una funzione da un sottoinsieme \(D_f\subseteq X\) a \(Y\), a volte chiamato il \emph{dominio} di \(p\). Se \(x\notin D_f\), si dice che \(p(x)\) \emph{non è definita} (\emph{n.d.}).
-	Date due funzioni parziali \(f:X\to Y\) e \(g:Y\to Z\), la funzione parziale \(g\cmp f:X\to Z\) è definita come segue:
+	Date due funzioni parziali \(f:X\parto Y\) e \(g:Y\parto Z\), la funzione parziale \(g\cmp f:X\parto Z\) è definita come segue:
 	\[
 		(g\cmp f) (x) \coloneqq \begin{cases}
 			n.d.    & x\notin D_f ;              \\
@@ -947,8 +964,7 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 % 	Allo stesso modo, gli ordini parziali sono categorie, ma si possono anche vedere come oggetti della categoria \(\ctPos\), dove i morfismi sono le funzioni monotone.
 % 	Spesso, in teoria delle categorie, la stessa struttura matematica può apparire in modi diversi in contesti diversi, e questa varietà di prospettive è uno dei motivi per cui le categorie sono così versatili.
 % \end{remark}
-\subsubsection*{Esercizi}
-\begin{enumerate}
+\begin{esercizi}
 	% \color{red}
 	% \item Un \emph{grafo diretto} (chiamato anche \emph{digrafo}) è un insieme \(V\), i cui elementi chiamiamo \emph{vertici}, e una relazione \(E\subseteq V\times V\), i cui elementi chiamiamo \emph{spigoli}. Diciamo che \(x\) è \emph{adiacente} a \(y\) se esiste uno spigolo \((x,y)\in E\). Un \emph{omomorfismo di grafi diretti} \(f:(V,E)\to (V',E')\) è una funzione \(f:V\to V'\) tale che se \(x\) è adiacente a \(y\), allora \(f(x)\) è adiacente a \(f(y)\). Dimostra che i grafi diretti e i loro omomorfismi formano una categoria.
 	% \item Un \emph{multigrafo diretto} (chiamato anche \emph{multidigrafo}) è definito similmente a un grafo diretto, ma può avere diversi spigoli tra gli stessi due vertici. Un multidigrafo consiste di un insieme \(V\) (i \emph{vertici}), e un insieme \(E\) (gli \emph{spigoli}), con due funzioni \(d_-,d_+:E\to V\), che associano un ``dominio'' e un ``codominio'' ad ogni spigolo. Un \emph{omomorfismo di multigrafi diretti} \((V,E)\to (V',E')\) consiste di una funzione \(f_0:V\to V'\) tra i vertici, e una funzione \(f_1:E\to E'\) tra gli spigoli, compatibili con le mappe \(d_-,d_+\) nel seguente modo:
@@ -966,7 +982,7 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 		      \item \(\mu(f)=1\) (in tal caso, esiste un solo \((\tup xn,)\in \bbB^n\) tale che \(f(\tup xn,)=1\); cosa significa questo quando \(n=1\)? Da questo, ragionare per induzione su \(n\));
 		      \item se \(\mu(f)\ge 2\), costruire \(f_1,f_2:\bbB^n\to \bbB\) tali che \(f(\tup xn,) = f_1(\tup xn,) \land f_2(\tup xn,)\).
 	      \end{itemize}
-\end{enumerate}
+\end{esercizi}
 
 \section{Operazioni tra categorie}\label{sec_operazioni}
 Come con tutte le altre strutture algebriche, esistono modi per formare nuove categorie a partire da categorie date.
@@ -1219,6 +1235,9 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 	\end{quote}
 \end{proposition}
 \begin{remark}
+	La definizione di categoria opposta data in \ref{def_cat_opp} Cat opposta per una categoria come forma, o come struttura. Meno quando si pensa a una categoria come universo...
+\end{remark}
+\begin{remark}
 	Il principio di dualità è molto lontano dall'affermare che un asserto è vero in una categoria \(\ctC\) se e solo se esso è vero in \(\ctC^\op\); l'asserto va (formalizzato, cioè espresso come un enunciato nel linguaggio \(\mathsf{CT}\)) \emph{e dualizzato}, ed è solo dopo questa dualizzazione che esso vale (in \(\ctC^\op\), non necessariamente in \(\ctC\)!).
 
 	Ad esempio: nell'insieme parzialmente ordinato dei numeri naturali ogni sottoinsieme \(S\subseteq\bbN\) non vuoto ammette un minimo \(\min S\). L'ordine parziale \((\bbN,\le)\) è una categoria, e il minimo di un insieme (non vuoto e) ordinato si descrive in termini della relazione d'ordine (cioè della classe dei suoi morfismi) come
@@ -1246,7 +1265,9 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 \end{example}
 \begin{definition}[Incubi e succube sopra un oggetto]\label{def_cat_slice}\index{Categoria!--- incubo}\index{Categoria!--- succuba|see {incubo}}\index{Categoria!--- sopra un oggetto}\index{Categoria!--- sotto un oggetto|see {sopra un oggetto}}
 	Sia \(\ctC\) una categoria, e \(X\) un oggetto di \(\ctC\).
-	La \emph{categoria incubo} sopra \(X\), denotata \(\ctC/X\), o semplicemente \emph{categoria sopra} \(X\) è definita come segue:
+	La \emph{categoria incubo} sopra \(X\), denotata \(\ctC/X\), o semplicemente \emph{categoria sopra} \(X\) è definita come segue:\footnote{Nel folklore medievale un \emph{incubo} è un demone maschile, che premendo sul petto dell'addormentato causa le paralisi notturne.
+
+	Una succuba, invece, è una entità demoniaca femminile, che appare nei sogni soggiogando il sognatore e lo obbliga a un rapporto sessuale.}
 	\begin{itemize}
 		\item gli oggetti sono coppie \((A,p)\) dove \(A\) è un oggetto di \(\ctC\) e \(p : A\to X\) è un morfismo di \(\ctC\);
 		\item i morfismi \((A,p)\to(B,q)\) sono morfismi \(f:A\to B\) di \(\ctC\) tali che \(q\cmp f=p\), ovvero tali che il seguente diagramma commuta.
@@ -1671,8 +1692,7 @@ Dalla definizione della composizione in \(\ctC\star\ctD\) si può mostrare per i
 L'operazione di giunto tra due categorie è essenziale alla loro teoria `combinatoria', e al trattarle come strutture, dato che molte costruzioni elementari si descrivono in termini di giunti: ad esempio, se \(S=\{a,b\}\) è un insieme con due elementi, la spanna generica di \ref{ex_spancospan} è il giunto \(\ctTerm\star S^\delta\), e la cospanna generica è \(S^\delta\star\ctTerm\), e relazioni analoghe valgono anche per le \(S\)-spanne ed \(S\)-cospanne generiche.
 
 Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp G\) è un gruppo guardato come categoria alla maniera di \ref{mon_sonocat}, Milnor \cite{milnor1,milnor2} ha studiato la successione \[\susp G, \susp G\star\susp G, \dots, \susp G \star\dots\star \susp G =:\susp G^{\star n}\] e il suo `limite' per dei problemi di topologia.
-\subsubsection*{Esercizi}
-\begin{enumerate}
+\begin{esercizi}
 	\item Sia \(\ctC\) una categoria, \(X\in\ctC_0\) un oggetto, \(f : A\to X\) una freccia: dimostrare che il doppio incubo \((\ctC/X)/f\) è un incubo di \(\ctC\) (su quale oggetto?). Questa `riduzione' di un incubo iterato resta vera per l'incubo della succuba \((A/\ctC)/f\), per \(f/(\ctC/X)\), e per \(f/(A/\ctC)\)?
 	\item Se \(A,B\) sono due insiemi, la categoria delle amache \(\hammock AB\) ha
 	      \begin{itemize}
@@ -1733,7 +1753,7 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
 	      \]
 	      si dice il \emph{grafico} di \(R\): per quale motivo? Si disegni la cospanna \(c(R)\) per semplici relazioni tra insiemi finiti; si descriva \(c(R)\) per una relazione \(R\subseteq X\times X\) che sia riflessiva, per una simmetrica, per una transitiva, su un insieme \(X\).
 	\item Determinare il giunto di due catene generiche \(\Delta[n] \star \Delta[m]\) come in \ref{ex_cat_catena} e di due cubi \(P[n] \star P[m]\) come in \ref{ex_quadcuboncubo}, e più in generale di due insiemi parzialmente ordinati \(P,Q\). Determinare il giunto di due categorie discrete (prenderle finite!) \(A^\delta \star B^\delta\) come in \ref{ex_cat_discreta} e di due categorie codiscrete \(A^\chi \star B^\chi\): il risultato è ancora codiscreto? Più in generale, determinare il giunto di due gruppoidi \(\ctG \star \ctG'\); il risultato è ancora un gruppoide? Determinare il giunto \(\susp(\bbN,+,0) \star \susp(\bbN,+,0)\) del monoide dei numeri naturali con la somma, e \(\susp(\bbN,\max,0) \star \susp(\bbN,\max,0)\) del monoide dove la moltiplicazione è data da \(n\land m \defeq \max\{n,m\}\). C'è una relazione tra \((\ctC\star\ctD)^\op\) e \(\ctD^\op\star\ctC^\op\) (uguali, oposte una dell'altra, nessuna relazione\dots)?
-\end{enumerate}
+\end{esercizi}
 \section{Isomorfismi}\label{sec_isomorfismi}\index{Isomorfismo}
 La nozione di isomorfismo tra due strutture di un dato tipo è certamente nota a chi legge, grazie ai primi corsi di algebra astratta. Non viene però menzionato che fu in larga parte la definizione di categoria data da Eilenberg e Mac Lane in \cite{gtone} a precisare definitivamente la nozione moderna di `strutture isomorfe' fissandola nell'uso matematico nella forma odierna.
 
@@ -1909,21 +1929,22 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 \end{example}
 \begin{definition}[Categoria scheletrica]\label{def_cat_scheletrica}\index{Categoria!--- scheletrica}
 	Una categoria \(\ctC\) si dice \emph{scheletrica} se vale la seguente proprietà:
-	\[X\iso Y \, (\text{mediante } f,g) \,\Rightarrow\, (X=Y \,\&\, f=g=\id_X),\]
-	cioè se gli unici isomorfismi che esistono tra due oggetti sono le identità (alcuni esempi di categorie che sono scheletriche: \ref{ex_cat_vuota}, \ref{ex_cat_term}, \ref{ex_cat_discreta}, \ref{ex_cat_doppiafreccia}, \ref{ex_cat_catena}, \ref{ex_cat_codiscreta}, \ref{ex_cat_ordinali}).
+	\[X\iso Y \, (\text{mediante } f,g) \,\Rightarrow\, X=Y\]
+	cioè se due oggetti isomorfi sono uguali, o ancora in altre parole se ogni \emph{iso}morfismo è un \emph{auto}morfismo. Se in più gli unici isomorfismi che esistono tra due oggetti sono le identità, diciamo che $\ctC$ è scarna (in inglese \emph{gaunt}). Alcuni esempi di categorie che sono scarne (e quindi scheletriche): \ref{ex_cat_vuota}, \ref{ex_cat_term}, \ref{ex_cat_discreta}, \ref{ex_cat_doppiafreccia}, \ref{ex_cat_catena}, \ref{ex_cat_codiscreta}, \ref{ex_cat_ordinali}.
 \end{definition}
-Chiaramente esistono categorie che non sono scheletriche (per esempio perché esistono molte strutture algebriche con gruppi di automorfismi molto complicati), ma da ogni categoria se ne può ottenere una scheletrica in maniera canonica: per iniziare, si noti (o si dimostri, come semplice esercizio) che `essere isomorfi' è una relazione di equivalenza sulla classe degli oggetti \(\ctC_0\).
+Chiaramente esistono categorie che non sono scheletriche (per esempio perché esistono molte strutture algebriche con gruppi di automorfismi molto complicati), ma da ogni categoria se ne può ottenere una scheletrica in maniera canonica, lo \emph{scheletro} $\sk(\ctC)$ di $\ctC$, che gli è `equivalente' (si veda \ref{funtore_equcat}); la nozione di categoria scarna è invece più rigida: esistono categorie che non sono equivalenti a una categoria scarna. 
+
+Per iniziare, si noti (o si dimostri, come semplice esercizio) che `essere isomorfi' è una relazione di equivalenza sulla classe degli oggetti \(\ctC_0\).
 \begin{definition}\label{def_scheletro}\index{Categoria!scheletro di una ---}
-	Data una categoria \(\ctC\), lo \emph{scheletro} di \(\ctC\) è la categoria scheletrica dove
+	Data una categoria \(\ctC\), lo \emph{scheletro} di \(\ctC\) è la categoria scheletrica $\sk(\ctC)$ dove
 	\begin{itemize}
 		\item Gli oggetti sono le classi di isomorfismo \([X],[Y],\dots\) definite sulla base del fatto che `essere isomorfi' è una relazione di equivalenza sulla classe \(\ctC_0\);
 		\item esiste un morfismo \([X]\to[Y]\) per ogni morfismo \(X\to Y\) di \(\ctC\) (questo non dipende dalla scelta dei rappresentanti \(X\) e \(Y\), si veda il seguente Esercizio \ref{isounico});
 		\item le identità e la composizione sono indotte da quelle di \(\ctC\).
 	\end{itemize}
 \end{definition}
-\Todo{Non sono convinto che questa definizione (che probabilmente ho scritto io) sia corretta. Bisognerà controllarla.}
-\subsubsection*{Esercizi}
-\begin{enumerate}
+\Todo{Ho introdotto la distinzione tra scheletrica (\emph{skeletal}) e scarna (\emph{gaunt}); gaunt è più stringente, ed è evil. Skeletal si può costruire (con AC). Penseremo a quale è più conveniente tenere.}
+\begin{esercizi}
 	\item Mostrare che la composizione nella categoria \(\cate{Stream}\) definita in \ref{example_streams} è effettivamente associativa, e l'assioma di identità è effettivamente valido. %Dato un morfismo \(f:X\to Y\) in una categoria \(\ctC\), dimostra che se un inverso per \(f\) esiste, allora è unico.
 	\item Caratterizzare gli isomorfismi nelle seguenti categorie:
 	      \begin{itemize}
@@ -1954,7 +1975,7 @@ Chiaramente esistono categorie che non sono scheletriche (per esempio perché es
 	      Mostrare esplicitamente gli assiomi di categoria (rendendo così precisa questa definizione informale). Recuperare \(\act G\)  come caso particolare di questa definizione; mostrare che, quando \(M\) è un monoide libero (su un insieme \(A\) di generatori) nel senso di \ref{mongruppi_liberi}, allora \(M/\!\!/X\) è una categoria libera nel senso di \ref{ex_cat_libera} (su un grafo \(\ctG[A]\) determinato come\dots).
 	      % \item Costruisci un esempio in \(\ctTop\) di oggetti \(X\) e \(Y\) non isomorfi, e morfismi \(f:X\to Y\) e \(g:Y\to X\) tali che \(g\cmp f=\id_X\) (ma \(f\cmp g \ne \id_Y\)).
 	      % \item Dimostra che in ogni categoria, le identità sono isomorfismi, e che la composizione di isomorfismi è un isomorfismo.
-\end{enumerate}
+\end{esercizi}
 
 \section{Funtori e diagrammi}\label{sec_funtori}
 Dato che i monoidi e i poset si possono guardare come categorie, è una buona domanda chiedere a che tipo di trasformazioni corrispondono gli omomorfismi di monoide di \ref{ex_cat_monoidi} e le funzioni monotone di \ref{ex_cat_ordini}. Questo porta alla definizione di \emph{funtore} tra categorie.
@@ -2143,7 +2164,7 @@ Ciò permette di introdurre una definizione molto importante e pervasiva in teor
 \begin{definition}\label{exa_funtori_da_poset}\index{Prefascio}\index{Funtore!Prefascio}
 	Sia \((P,\le)\) un insieme preordinato nel senso di \ref{ex_cat_ordini}; un funtore controvariante
 	\[\xymatrix{F : (P,\le)^\op \ar[r] & \ctSet}\]
-	si dice un \emph{prefascio} (su \(P\)).\footnote{La parola è un calco strutturale dell'inglese \emph{presheaf}, che è a sua volta un calco dal francese \emph{prefaisceaux}; cf. \cite{Tennison1975,Bredon1997,Godement} e \cite[Cap. VII]{pedicchiofoundations} per una introduzione meno geometrica --ma storicamente molto istruttiva. Per indagare l'etimologia del termine e il suo impiego in matematica, chi legge può consultare l'ottima nota breve di Lovering, \cite{Lovering}.}
+	si dice un \emph{prefascio} (su \(P\)).\footnote{La parola è un calco strutturale dell'inglese \emph{presheaf}, che è a sua volta un calco dal francese \emph{préfaisceaux}; cf. \cite{Tennison1975,Bredon1997,Godement} e \cite[Cap. VII]{pedicchiofoundations} per una introduzione meno geometrica --ma storicamente molto istruttiva. Per indagare l'etimologia del termine e il suo impiego in matematica, chi legge può consultare l'ottima nota breve di Lovering, \cite{Lovering}.}
 
 	Esplicitamente, un prefascio consiste di
 	\begin{itemize}
@@ -2244,12 +2265,11 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 
 	Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture definibili in topologia algebrica, che somigliano a categorie ma dove gli assiomi \ref{cp_1}, \ref{cp_2} `valgono a meno di omotopia'). Raramente faremo riferimento a \(\ctCAT\), e mai parlando della sua struttura di `categoria'; avremo invece spesso bisogno di formare categorie del tipo \([\ctC,\ctSet]\) (o simili: \([\ctC,\ctAb]\), \([\ctC,\ctVect]\) eccetera, ma \emph{solo quando \(\ctC\) è piccola} (in questo caso queste categorie sono tutte legittime).
 \end{remark}
-\subsubsection*{Esercizi}
-\begin{enumerate}
+\begin{esercizi}
 	\item Se \(\ctC\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\ctC \fun \susp N\); farsi degli esempi scegliendo come \(\ctC\) una delle categorie di \ref{sec_esempi_cats}, e con \(N=(\bbN,+,0)\) il monoide dei numeri naturali.
 	\item Dualmente, se \(\ctD\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\susp M \fun \ctD\); farsi degli esempi scegliendo come \(\ctD\) una delle categorie di \ref{sec_esempi_cats}, e con \(M = (\bbN,+,0)\) il monoide dei numeri naturali.
 	\item Scrivere in cosa consiste un prefascio, nel senso di \ref{exa_funtori_da_poset}, quando \(P=2^X\) è l'insieme delle parti di un insieme \(X\), ordinato dall'inclusione. In cosa consiste un \emph{fascio} \(F : (2^X)^\op\to\ctSet\), cioè un funtore che soddisfa le due condizioni in \ref{cf_1}, \ref{cf_2}? (Suggerimento: \(2^X\) è generato dai suoi elementi minimali, ossia \(U\subseteq X\) risulta, ovviamente, da \(\bigcup_{x\in U} \{x\}\).)
-\end{enumerate}
+\end{esercizi}
 \section{Esempi di funtori nella pratica matematica}\label{sec_esempi_funtori}
 \`E chiaro che non si può compilare una lista esaustiva di funtori importanti nella pratica matematica. Possiamo però concentrarci su alcuni funtori che è immediato costruire tra le categorie di §\ref{sec_esempi_cats}. In particolare, ed è uno dei motivi per cui \ref{def_funtore} è interessante, diverse operazioni che guardano una struttura come esempio di un'altra struttura si possono rendere precise mediante la nozione di funtore.
 \begin{example}[Categorie discrete e codiscrete]\label{ex_fun_co_disc}\index{Categoria!--- discreta}\index{Categoria!--- codiscreta}\index{Funtore!--- categoria discreta}\index{Funtore!--- categoria codiscreta}
@@ -2468,14 +2488,6 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\end{itemize}
 	%
 \end{example}
-\subsubsection*{Esercizi}
-\begin{enumerate}
-	\item Descrivere il funtore hom covariante \(\Hom\ctC(C,-)\) e controvariante \(\Hom\ctC(-,C)\) di \ref{ex_hom_funtore} quando: \(\ctC\) ha un solo oggetto, come in \ref{mon_sonocat}; \(\ctC\) è una classe preordinata, come in \ref{ord_sonocat}; \(\ctC = \ctA+\ctB\) è la somma di due categorie fissate; \(\ctC = G\emdash\ctSet\) per un gruppo \(G\) come in \ref{ex_cat_g_insiemi}; \(\ctC = \ctMat\) per un campo \(\bbF\).
-	\item Si ricordi la definizione \ref{example_pesati} della categoria \(\cate{wSet}\) degli insiemi pesati. Sia \(\lambda\in[0,\infty]\) un numero reale fissato; definire e studiare le proprietà del funtore `palla di raggio \(\lambda\)'
-	      \[\dmFun{B_\lambda}{\cate{wSet}}{\ctSet}\]
-	      che manda \((X,w)\mapsto \{x\in X\mid |x|\le \lambda\}\), con particolare attenzione alle scelte \(\lambda=0,1,\infty\). Il funtore \(B_\lambda\) è pieno? Fedele? Definire funtori \(W_\lambda : \ctSet \fun\cate{wSet}\) nella direzione opposta (sono pieni, fedeli?) tali che se \(\singleton\) denota un qualsiasi singoletto, \(B_\lambda X\) si identifica con l'insieme \(\Hom(W_\lambda\singleton,(X,w))\).
-	\item
-\end{enumerate}
 In \ref{es_fun_repre} abbiamo visto che una \emph{rappresentazione} di un monoide \(M\) consiste di un funtore \(\susp M \fun\ctSet\), e più in generale un funtore \(\ctC\fun\ctSet\) può essere pensato come una rappresentazione di \(\ctC\); se una categoria \(\ctJ\) è pensata come una \emph{forma} nel senso di \ref{ssec:categorie_forme}, e soprattutto quando è una forma generica nel senso di \ref{ex_cat_freccia}, \ref{ex_spancospan}, \ref{es_catena_trans}, possiamo dare la definizione seguente.
 \begin{definition}\label{def_diagramma_comm}
 	In teoria delle categorie, la parola \emph{diagramma} (di \emph{forma} \(\ctJ\)) è sinonimo di \emph{funtore} (di \emph{dominio} \(\ctJ\)).
@@ -2517,7 +2529,7 @@ La nozione di diagramma permette di formalizzare l'idea di diagramma commutativo
 	\[\begin{tikzcd}
 			\ctC \ar[r, "F"'] & \ctE &\ar[l, "G"] \ctD
 		\end{tikzcd}\]
-	e definiamo la \emph{categoria comma} \((F/G)\) come segue:
+	e definiamo la \emph{categoria comma}\footnote{`Comma' va qui inteso nella sua letterale accezione latina di `sezione di un verso' o di una frase (per questo quindi il plurale di comma è \emph{commæ}). Invece di tutti i morfismi di $\ctE$, la comma $(F/G)$ considera unicamente quelli che connettono oggetti nelle rispettive immagini di $F$ e $G$.} \((F/G)\) come segue:
 	\begin{itemize}
 		\item gli oggetti di \((F/G)\) sono terne \((C,D,f)\) dove \(C\in\ctC_0,D\in\ctD_0\) e \(f : FC\to GD\) è una freccia di \(\ctE\);
 		\item una freccia \((C,D,f)\to (C',D',g)\) consiste di una coppia \((u : C\to C', v : D\to D')\) tale che il quadrato
@@ -2532,14 +2544,19 @@ La nozione di diagramma permette di formalizzare l'idea di diagramma commutativo
 			(C,D,f) \ar[r, "{(u,v)}"] & (C',D',g) \ar[r, "{(u',v')}"] & (C'',D'',h)
 		\end{tikzcd}\]
 \end{definition}
+\begin{remark}[Alcuni esempi di commæ]
+Importanti esempi di categorie sono particolari categorie commæ per opportune scelte di $F$ o $G$; l'esercizio \ref{} invita chi legge a esplicitare, tra le altre, $(F/E)$ e $(E/G)$ dove $E$ è un oggetto guardato come funtore $E : \ctTerm \fun\ctE$ alla maniera dell'esercizio \ref{}.
+\end{remark}
 % C -> Sk(C) "è un'equivalenza"
 % altri esempi?
 
-
-\subsubsection*{Esercizi}
-\begin{enumerate}
-	\item Mostrare che un funtore \(\ctTerm \fun\ctC\) (un `diagramma di tipo \(\ctTerm = \Delta[0]\)') ammonta precisamente alla scelta di un oggetto di \(\ctC\), e che un diagramma di tipo \(\Delta[1] = \genArrow\) ammonta esattamente alla scelta di una freccia tra due oggetti di \(\ctC\).
-	\item Mostrare che le seguenti condizioni sono equivalenti, nella notazione di \ref{klext_delle_relazioni} per le funzioni \(R^*,R_*\):
+\begin{esercizi}
+	\item Descrivere il funtore hom covariante \(\Hom\ctC(C,-)\) e controvariante \(\Hom\ctC(-,C)\) di \ref{ex_hom_funtore} quando: \(\ctC\) ha un solo oggetto, come in \ref{mon_sonocat}; \(\ctC\) è una classe preordinata, come in \ref{ord_sonocat}; \(\ctC = \ctA+\ctB\) è la somma di due categorie fissate; \(\ctC = G\emdash\ctSet\) per un gruppo \(G\) come in \ref{ex_cat_g_insiemi}; \(\ctC = \ctMat\) per un campo \(\bbF\).
+	\item Si ricordi la definizione \ref{example_pesati} della categoria \(\cate{wSet}\) degli insiemi pesati. Sia \(\lambda\in[0,\infty]\) un numero reale fissato; definire e studiare le proprietà del funtore `palla di raggio \(\lambda\)'
+	      \[\dmFun{B_\lambda}{\cate{wSet}}{\ctSet}\]
+	      che manda \((X,w)\mapsto \{x\in X\mid |x|\le \lambda\}\), con particolare attenzione alle scelte \(\lambda=0,1,\infty\). Il funtore \(B_\lambda\) è pieno? Fedele? Definire funtori \(W_\lambda : \ctSet \fun\cate{wSet}\) nella direzione opposta (sono pieni, fedeli?) tali che se \(\singleton\) denota un qualsiasi singoletto, \(B_\lambda X\) si identifica con l'insieme \(\Hom(W_\lambda\singleton,(X,w))\).
+	\item \label{gfdpgubai_1} Mostrare che un funtore \(\ctTerm \fun\ctC\) (un `diagramma di tipo \(\ctTerm = \Delta[0]\)') ammonta precisamente alla scelta di un oggetto di \(\ctC\), e che un diagramma di tipo \(\Delta[1] = \genArrow\) ammonta esattamente alla scelta di una freccia tra due oggetti di \(\ctC\).
+	\item \label{gfdpgubai_2} Mostrare che le seguenti condizioni sono equivalenti, nella notazione di \ref{klext_delle_relazioni} per le funzioni \(R^*,R_*\):
 	      \begin{itemize}
 		      \item la condizione in \ref{klext_delle_relazioni},
 		            \[V\subseteq R^*U\iff U\subseteq R_*V\]
@@ -2550,12 +2567,12 @@ La nozione di diagramma permette di formalizzare l'idea di diagramma commutativo
 	      \[\begin{tikzcd}
 			      R^* : (2^B,\subseteq)^\op \ar[r, shift left] & (2^A,\subseteq) : R_* \ar[l, shift left]
 		      \end{tikzcd}\]
-	\item In cosa consiste un funtore
+	\item \label{gfdpgubai_3} In cosa consiste un funtore
 	      \[\dmFun F {\act G}\ctSet,\]
 	      quando \(\act G\) è il gruppoide d'azione di \ref{action_groupoid}? Farsi degli esempi (e dei disegni) quando \(G=C_n\) è il gruppo ciclico con \(n\) elementi, quando \(G=\bbZ\) è il gruppo additivo degli interi, e quando \(G=S_3\) è il gruppo simmetrico delle biiezioni dell'insieme \(\{1,2,3\}\).
-	\item Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà il suo fibrato tangente.
-	\item Determinare la categoria comma \((F/G)\) nelle varie combinazioni in cui: \(F\) è il funtore identità; \(G\) è il funtore identità; \(F\) è un funtore costante in un oggetto \(E\in\ctE_0\); \(G\) è un funtore costante in un oggetto \(E\in\ctE_0\). Chi è \((E_1/E_2)\) se \(E_1,E_2\) sono due oggetti, guardati come funtori \(\ctTerm \fun\ctE\) (cf. il primo esercizio di questa sezione)?
-\end{enumerate}
+	\item \label{gfdpgubai_4} Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà il suo fibrato tangente.
+	\item \label{gfdpgubai_5} Determinare la categoria comma \((F/G)\) nelle varie combinazioni in cui: \(F\) è il funtore identità; \(G\) è il funtore identità; \(F\) è un funtore costante in un oggetto \(E\in\ctE_0\); \(G\) è un funtore costante in un oggetto \(E\in\ctE_0\). Chi è \((E_1/E_2)\) se \(E_1,E_2\) sono due oggetti, guardati come funtori \(\ctTerm \fun\ctE\) (cf. il primo esercizio di questa sezione)?
+\end{esercizi}
 
 \section{Trasformazioni naturali}\label{sec_tnat}
 In \ref{tante_cose_sono_diag} abbiamo osservato che le spanne e cospanne in \(\ctC\) si possono vedere come funtori; del resto, in \ref{def_span_e_cospan} abbiamo costruito una \emph{categoria} di spanne in \(\ctC\). Un morfismo di spanne consiste, secondo quella definizione, di una famiglia di tre morfismi di \(\ctC\) tra i vertici omonimi delle due spanne \((X_1\overset l\leftarrow X_0\overset r\to X_2)\) e \((Y_1\overset{l'}\leftarrow Y_0\overset{r'}\to Y_2)\):
@@ -3028,8 +3045,7 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 \begin{proposition}
 	Per ogni categoria piccola \(\ctC\), l'immersione di Yoneda \(\yon_\ctC\) di \ref{def_yoneda_embeddu} e di coYoneda \(\coyon_\ctC\) sono funtori pienamente fedeli.
 \end{proposition}
-\subsubsection*{Esercizi}
-\begin{enumerate}
+\begin{esercizi}
 	\item Mostrare che la regola di scambio di \ref{interchangio} è equivalente al fatto che la composizione
 	      \[\dmFun{\cmp}{\ctCat(\ctB,\ctC)\times\ctCat(\ctA,\ctB)}{\ctCat(\ctA,\ctC)}\]
 	      sia un bifuntore (nel senso di \ref{def_bifuntore}) quando le tre categorie di funtori hanno per morfismi le trasformazioni naturali.
@@ -3108,7 +3124,7 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 		      }\]
 	      (Iniziare dando dei nomi opportuni ai funtori in ciascun diagramma, ed usare la composizione orizzontale, verticale, e la regola di scambio.)
 	\item
-\end{enumerate}
+\end{esercizi}
 
 \section{Monomorfismi ed epimorfismi}\label{sec_monoepi}
 
@@ -3182,10 +3198,10 @@ se usassimo il fatto che ogni funzione surgettiva ha un'inversa destra.
 L'esistenza dell'inversa destra, però, è una conseguenza dell'assioma di scelta,
 che invece non viene impiegato nella dimostrazione di cui sopra.
 
-\begin{exercise}
-	Dimostrare che una funzione è iniettiva se e solo se è un mono in \(\ctSet\),
-	ma senza utilizzare il fatto che le funzioni iniettive hanno inversa sinistra.
-\end{exercise}
+% \begin{exercise}
+% 	Dimostrare che una funzione è iniettiva se e solo se è un mono in \(\ctSet\),
+% 	ma senza utilizzare il fatto che le funzioni iniettive hanno inversa sinistra.
+% \end{exercise}
 
 Per ragioni che saranno evidenti nella prossima sezione,
 abbiamo evidenziato come l'equivalenza tra funzioni surgettive (iniettive)
@@ -3565,16 +3581,6 @@ Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzant
 	Dunque \(f\) \`e un isomorfismo con inversa \(g\).
 	Dualmente, abbiamo che il punto~\ref{prop:iso-epi-mono:item3} implica il punto~\ref{prop:iso-epi-mono:item1}.
 \end{proof}
-
-\subsubsection*{Esercizi}
-\begin{enumerate}
-	\item
-	\item
-	\item
-	\item
-	\item
-\end{enumerate}
-
 \Todo{...qualcosa prima...}
 \subsection{Classi di funtori}\label{ssec:classi_di_funtori}
 Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome speciale ai funtori \(F : \ctC\fun\ctD\) tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva:
@@ -3656,11 +3662,10 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 
 	Questo conclude la dimostrazione.
 \end{proof}
-\subsubsection*{Esercizi}
-\begin{enumerate}
+\begin{esercizi}
 	\item In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
 	\item Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
 	\item
 	\item
 	\item
-\end{enumerate}
+\end{esercizi}
