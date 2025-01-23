@@ -29,7 +29,7 @@
 \clist_concat:NNN \g_itaca_both_clist \g_itaca_upper_clist \g_itaca_lower_clist
 
 \clist_new:N \g_itaca_categories_clist
-\clist_gset:Nn \g_itaca_categories_clist { Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, Ord, FOrd, Lat, HoTop, Fld, DInt }
+\clist_gset:Nn \g_itaca_categories_clist { Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, Dyn, Ord, FOrd, Lat, HoTop, Fld, DInt }
 
 % \mathbf{#1} -> \bf#1
 
@@ -46,6 +46,7 @@
 \itaca_makeabbrev:nnN { \textbf } { bf#1 } \g_itaca_both_clist
 \itaca_makeabbrev:nnN { \mathfrak } { fk#1 } \g_itaca_both_clist
 \itaca_makeabbrev:nnN { \boldsymbol } { mnd#1 } \g_itaca_both_clist
+\itaca_makeabbrev:nnN { \boldsymbol } { bs#1 } \g_itaca_both_clist
 \itaca_makeabbrev:nnN { \textsf } { sf#1 } \g_itaca_both_clist
 \itaca_makeabbrev:nnN { \underline } { un#1 } \g_itaca_both_clist
 
@@ -526,6 +527,11 @@
   node[font=\tiny,pos=.5,below] {$#4$};
 \draw (C1) to[bend left=50] (C2);
 \draw (C1) to[bend right=50] (C2);
+}
+
+
+\NewDocumentCommand{\natHom}{ O{\ctC} O{\ctD} m m }{
+  \Hom{[#1,#2](#3,#4)}
 }
 % inutile riga di controllo
 % END OF FILE
