@@ -1537,7 +1537,7 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 	\end{itemize}
 \end{definition}
 Chi legge rifletta su questa domanda: la categoria \(\ctCospan(\ctC)\) è \(\ctSpan(\ctC)^\op\) oppure \(\ctSpan(\ctC^\op)^\op\)? C'è differenza tra le due?
-\begin{definition}
+\begin{definition}[Giunto di categorie]\label{cat_def_giunto}\index{Categoria!giunto di due ---e}
 	Date due categorie \(\ctC,\ctD\) il \emph{giunto} (in inglese, \emph{join}) di \(\ctC\) e \(\ctD\), denotato con \(\ctC\star\ctD\), è la categoria definita come segue:
 	\begin{itemize}
 		\item gli oggetti sono l'unione disgiunta di \(\ctC_0\) e \(\ctD_0\) (cioè gli stessi oggetti di \(\ctC+\ctD\) in \ref{def_cat_somma});
@@ -2204,10 +2204,34 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 
 	Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture definibili in topologia algebrica, che somigliano a categorie ma dove gli assiomi \ref{cp_1}, \ref{cp_2} `valgono a meno di omotopia'). Raramente faremo riferimento a \(\ctCAT\), e mai parlando della sua struttura di `categoria'; avremo invece spesso bisogno di formare categorie del tipo \([\ctC,\ctSet]\) (o simili: \([\ctC,\ctAb]\), \([\ctC,\ctVect]\) eccetera, ma \emph{solo quando \(\ctC\) è piccola} (in questo caso queste categorie sono tutte legittime).
 \end{remark}
+\begin{definition}\label{def_cat_cocomma}
+	Consideriamo una cospanna di funtori
+	\[\begin{tikzcd}
+			\ctC \ar[r, "F"'] & \ctE &\ar[l, "G"] \ctD
+		\end{tikzcd}\]
+	e definiamo la \emph{categoria comma}\footnote{`Comma' va qui inteso nella sua letterale accezione latina di `sezione di un verso' o di una frase (per questo quindi il plurale di comma è \emph{commæ}). Invece di tutti i morfismi di \(\ctE\), la comma \((F/G)\) considera unicamente quelli che connettono oggetti nelle rispettive immagini di \(F\) e \(G\).} \((F/G)\) come segue:
+	\begin{itemize}
+		\item gli oggetti di \((F/G)\) sono terne \((C,D,f)\) dove \(C\in\ctC_0,D\in\ctD_0\) e \(f : FC\to GD\) è una freccia di \(\ctE\);
+		\item una freccia \((C,D,f)\to (C',D',g)\) consiste di una coppia \((u : C\to C', v : D\to D')\) tale che il quadrato
+		      \[\begin{tikzcd}
+				      FC \ar[r, "f"]\ar[d, "Fu"'] & GD\ar[d, "Gv"] \\
+				      FC' \ar[r, "g"'] & GD'
+			      \end{tikzcd}\]
+		      sia commutativo.
+	\end{itemize}
+	L'identità e la composizione si fanno come in \(\ctD\), cioè l'identità di \((C,D,f)\) è \(\id_C,\id_D\) e la composizione è definita da
+	\[\begin{tikzcd}
+			(C,D,f) \ar[r, "{(u,v)}"] & (C',D',g) \ar[r, "{(u',v')}"] & (C'',D'',h)
+		\end{tikzcd}\]
+\end{definition}
+\begin{remark}[Alcuni esempi di commæ]
+	Importanti esempi di categorie sono particolari categorie commæ per opportune scelte di \(F\) o \(G\); l'esercizio \ref{} invita chi legge a esplicitare, tra le altre, \((F/E)\) e \((E/G)\) dove \(E\) è un oggetto guardato come funtore \(E : \ctTerm \fun\ctE\) alla maniera dell'esercizio \ref{}.
+\end{remark}
 \begin{esercizi}
 	\item Se \(\ctC\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\ctC \fun \susp N\); farsi degli esempi scegliendo come \(\ctC\) una delle categorie di \ref{sec_esempi_cats}, e con \(N=(\bbN,+,0)\) il monoide dei numeri naturali.
 	\item Dualmente, se \(\ctD\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\susp M \fun \ctD\); farsi degli esempi scegliendo come \(\ctD\) una delle categorie di \ref{sec_esempi_cats}, e con \(M = (\bbN,+,0)\) il monoide dei numeri naturali.
 	\item Scrivere in cosa consiste un prefascio, nel senso di \ref{exa_funtori_da_poset}, quando \(P=2^X\) è l'insieme delle parti di un insieme \(X\), ordinato dall'inclusione. In cosa consiste un \emph{fascio} \(F : (2^X)^\op\to\ctSet\), cioè un funtore che soddisfa le due condizioni in \ref{cf_1}, \ref{cf_2}? (Suggerimento: \(2^X\) è generato dai suoi elementi minimali, ossia \(U\subseteq X\) risulta, ovviamente, da \(\bigcup_{x\in U} \{x\}\).)
+	\item \label{gfdpgubai_5} Determinare la categoria comma \((F/G)\) nelle varie combinazioni in cui: \(F\) è il funtore identità; \(G\) è il funtore identità; \(F\) è un funtore costante in un oggetto \(E\in\ctE_0\); \(G\) è un funtore costante in un oggetto \(E\in\ctE_0\). Chi è \((E_1/E_2)\) se \(E_1,E_2\) sono due oggetti, guardati come funtori \(\ctTerm \fun\ctE\) (cf. il primo esercizio di questa sezione)?
 \end{esercizi}
 \section{Esempi di funtori nella pratica matematica}\label{sec_esempi_funtori}
 \`E chiaro che non si può compilare una lista esaustiva di funtori importanti nella pratica matematica. Possiamo però concentrarci su alcuni funtori che è immediato costruire tra le categorie di §\ref{sec_esempi_cats}. In particolare, ed è uno dei motivi per cui \ref{def_funtore} è interessante, diverse operazioni che guardano una struttura come esempio di un'altra struttura si possono rendere precise mediante la nozione di funtore.
@@ -2241,7 +2265,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\index{Funtore!--- fedele}
 	\index{Funtore!--- pienamente fedele}
 \end{example}
-\begin{example}[Le componenti connesse di un (multidi)grafo]\index{Funtore!--- componenti connesse di un grafo}\index{pi0@\(\pi_0\)|see {componenti connesse}}\index{Componenti connesse!--- di un grafo}
+\begin{example}[Le componenti connesse di un (multidi)grafo]\index{Funtore!--- componenti connesse di un grafo}\index{pi0@\(\pi_0\)|see {componenti connesse}}\index{Componenti connesse!--- di un grafo}\label{ex_fun_cpt_conn}
 	Se \(\ctG=(E,V)\) è un multidigrafo come in \ref{ex_cat_grafi}, possiamo costruire l'insieme delle sue \emph{componenti connesse} considerando la relazione \(x\asymp y\) sull'insieme dei suoi vertici, definita da \(x\asymp y\) se \(x=y\), o esiste un lato \(e : x \to y\), o esiste un lato \(e' : y\to x\). Due vertici \(x,y\in V\) appartengono alla stessa componente connessa se esiste una successione finita di vertici \(\tup vn,\) tale che
 	\[x \asymp v_1 \asymp v_2 \asymp\dots\asymp v_n\asymp y.\]
 	(Si tratta in poche parole della chiusura transitiva \(\asymp^*\) di \(\asymp\), che quindi diventa una relazione di equivalenza su \(V\).)
@@ -2297,7 +2321,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	Similmente, un modulo destro è un funtore \emph{controvariante} \(R\fun\ctAb\), cioè un funtore \(R^\op\fun\ctAb\) dove \(R^\op\) è l'\emph{anello opposto} (cf. \ref{mon_opposti_cat_opposte}) dotato della moltiplicazione \(x\cdot^\op y \defeq y\cdot x\), e un \(R,S\)-\emph{bimodulo} è un funtore
 	\[\dmFun{{}_RM_S}{S^\op\times R}{\ctAb.}\]
 \end{example}
-\begin{example}[Spazio delle orbite di un \(G\)-insieme]\index{Funtore!--- orbite di un \(G\)-insieme}
+\begin{example}[Spazio delle orbite di un \(G\)-insieme]\index{Funtore!--- orbite di un \(G\)-insieme}\label{ex_fun_orbite}
 	Ogni volta che sia data una rappresentazione di un gruppo \(G\) come in \ref{exa_azioni_funtori} (cioè un \(G\)-insieme come in \ref{ex_cat_g_insiemi}) possiamo considerare lo \emph{spazio delle orbite} \(X/G\) definito come l'insieme delle classi di equivalenza della forma
 	\[[x]_G \defeq \{g\cdot x\mid g\in G\}\]
 	(ciascuno dei \([x]_G\) si chiama l'\emph{orbita} di \(x\) rispetto all'azione di \(G\)).
@@ -2456,30 +2480,6 @@ La nozione di diagramma permette di formalizzare l'idea di diagramma commutativo
 \end{lemma}
 
 \Todo{Un controesempio: l'immagine (stretta) di un funtore \(F : \ctC\fun\ctD\) può non essere una sottocategoria (la composizione può non stare nell'immagine).}
-\begin{definition}\label{def_cat_cocomma}
-	Consideriamo una cospanna di funtori
-	\[\begin{tikzcd}
-			\ctC \ar[r, "F"'] & \ctE &\ar[l, "G"] \ctD
-		\end{tikzcd}\]
-	e definiamo la \emph{categoria comma}\footnote{`Comma' va qui inteso nella sua letterale accezione latina di `sezione di un verso' o di una frase (per questo quindi il plurale di comma è \emph{commæ}). Invece di tutti i morfismi di \(\ctE\), la comma \((F/G)\) considera unicamente quelli che connettono oggetti nelle rispettive immagini di \(F\) e \(G\).} \((F/G)\) come segue:
-	\begin{itemize}
-		\item gli oggetti di \((F/G)\) sono terne \((C,D,f)\) dove \(C\in\ctC_0,D\in\ctD_0\) e \(f : FC\to GD\) è una freccia di \(\ctE\);
-		\item una freccia \((C,D,f)\to (C',D',g)\) consiste di una coppia \((u : C\to C', v : D\to D')\) tale che il quadrato
-		      \[\begin{tikzcd}
-				      FC \ar[r, "f"]\ar[d, "Fu"'] & GD\ar[d, "Gv"] \\
-				      FC' \ar[r, "g"'] & GD'
-			      \end{tikzcd}\]
-		      sia commutativo.
-	\end{itemize}
-	L'identità e la composizione si fanno come in \(\ctD\), cioè l'identità di \((C,D,f)\) è \(\id_C,\id_D\) e la composizione è definita da
-	\[\begin{tikzcd}
-			(C,D,f) \ar[r, "{(u,v)}"] & (C',D',g) \ar[r, "{(u',v')}"] & (C'',D'',h)
-		\end{tikzcd}\]
-\end{definition}
-\begin{remark}[Alcuni esempi di commæ]
-	Importanti esempi di categorie sono particolari categorie commæ per opportune scelte di \(F\) o \(G\); l'esercizio \ref{} invita chi legge a esplicitare, tra le altre, \((F/E)\) e \((E/G)\) dove \(E\) è un oggetto guardato come funtore \(E : \ctTerm \fun\ctE\) alla maniera dell'esercizio \ref{}.
-\end{remark}
-
 \begin{esercizi}
 	\item Descrivere il funtore hom covariante \(\Hom\ctC(C,-)\) e controvariante \(\Hom\ctC(-,C)\) di \ref{ex_hom_funtore} quando: \(\ctC\) ha un solo oggetto, come in \ref{mon_sonocat}; \(\ctC\) è una classe preordinata, come in \ref{ord_sonocat}; \(\ctC = \ctA+\ctB\) è la somma di due categorie fissate; \(\ctC = G\emdash\ctSet\) per un gruppo \(G\) come in \ref{ex_cat_g_insiemi}; \(\ctC = \ctMat\) per un campo \(\bbF\).
 	\item Si ricordi la definizione \ref{example_pesati} della categoria \(\cate{wSet}\) degli insiemi pesati. Sia \(\lambda\in[0,\infty]\) un numero reale fissato; definire e studiare le proprietà del funtore `palla di raggio \(\lambda\)'
@@ -2500,8 +2500,24 @@ La nozione di diagramma permette di formalizzare l'idea di diagramma commutativo
 	\item \label{gfdpgubai_3} In cosa consiste un funtore
 	\[\dmFun F {\act G}\ctSet,\]
 	quando \(\act G\) è il gruppoide d'azione di \ref{action_groupoid}? Farsi degli esempi (e dei disegni) quando \(G=C_n\) è il gruppo ciclico con \(n\) elementi, quando \(G=\bbZ\) è il gruppo additivo degli interi, e quando \(G=S_3\) è il gruppo simmetrico delle biiezioni dell'insieme \(\{1,2,3\}\).
-	\item \label{gfdpgubai_4} Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà il suo fibrato tangente.
-	\item \label{gfdpgubai_5} Determinare la categoria comma \((F/G)\) nelle varie combinazioni in cui: \(F\) è il funtore identità; \(G\) è il funtore identità; \(F\) è un funtore costante in un oggetto \(E\in\ctE_0\); \(G\) è un funtore costante in un oggetto \(E\in\ctE_0\). Chi è \((E_1/E_2)\) se \(E_1,E_2\) sono due oggetti, guardati come funtori \(\ctTerm \fun\ctE\) (cf. il primo esercizio di questa sezione)?
+	\item \label{gfdpgubai_4} Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà liscia $M$ il suo fibrato tangente $\text{T} M$; tale $\text{T} M$ è naturalmente equipaggiato con una mappa liscia $p_M : TM\to M$: il funtore $\text{T}$ è di tipo $\cate{Mfd} \to \cate{Mfd}^\to$? Ovvero, esiste un quadrato commutativo
+	\[\xymatrix{
+			\text{T} M \ar[r]^{\text{T} f}\ar[d]_{p_M} & \text{T} N \ar[d]^{p_N}\\ 
+			M \ar[r]_f & N
+	}\]
+	indotto da una mappa liscia $f : M\to N$ di varietà?
+	\item \label{exe_cpt_conn} Definiamo il funtore delle componenti connesse di una categoria 
+	\[\dmFun{\pi_0^\ctCat}{\ctCat}{\ctSet}\]
+	come la composizione del funtore $\pi_0 : \ctGph \fun\ctSet$ di \ref{ex_fun_cpt_conn} e del funtore $U : \ctCat \fun\ctGph$ che restituisce il grafo sottostante a una categoria. Diciamo che una categoria $\ctC$ è connessa quando lo è $U\ctC$, cioè quando $\pi_0(U\ctC)$ ha un solo elemento.
+
+	Usando la definizione, calcolare $\pi_0(A^\delta)$ e $\pi_0(A^\chi)$ se $A$ è un insieme (si veda \ref{ex_cat_discreta} e \ref{ex_cat_codiscreta}); calcolare poi
+	\begin{itemize}
+		\item $\pi_0(\ctC/X)$ (resp., $\pi_0(X/\ctC)$) se $\ctC$ è una categoria qualsiasi e $\ctC/X$ l'incubo (resp., la succuba) sopra $X$;
+		\item $\pi_0(\ctC^\op)$ (come in \ref{def_cat_opp}), è lo stesso di $\pi_0(\ctC)$?
+		\item $\pi_0(\ctC\star\ctD)$ (come in \ref{cat_def_giunto}), esiste una coppia di categorie tale che abbia più di un elemento?
+		\item $\pi_0(\act G)$, se $G$ è un gruppo e $\act G$ il gruppoide d'azione di \ref{action_groupoid}; cosa significa quando $\pi_0(\act G)$ non è connesso? (Suggerimento: pensare a \ref{ex_fun_orbite});
+		\item Esibire una biiezione, o trovare un controesempio alla sua esistenza, tra $\pi_0(\ctC\times\ctD)$ e $\pi_0(\ctC)\times\pi_0(\ctD)$, se $\ctC\times\ctD$ è il prodotto di categorie di \ref{def_cat_prodotto}; stessa domanda con $\pi_0(\ctC+\ctD)$ e $\pi_0(\ctC)+\pi_0(\ctD)$, se $\ctC+\ctD$ è la somma di categorie di \ref{def_cat_somma}.
+	\end{itemize}
 \end{esercizi}
 
 \section{Trasformazioni naturali}\label{sec_tnat}
@@ -3064,9 +3080,9 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 		\bullet \ar[r]& \bullet\uultwocell<\omit>{\alpha}\ar[ur] && \bullet \ar[r]\ar[ur]& \bullet\ar[ur]
 		}\]
 	(Iniziare dando dei nomi opportuni ai funtori in ciascun diagramma, ed usare la composizione orizzontale, verticale, e la regola di scambio.)
-	\item Si denoti con $\{s,t\}$ un insieme con due elementi, ed $M =\{s,t\}^*$ il monoide libero su un insieme con due elementi, seguendo \ref{}; la categoria degli \emph{autografi} consiste della categoria delle rappresentazioni di $M$, nel senso di \ref{}. 
+	\item Si denoti con $\{s,t\}$ un insieme con due elementi, ed $M =\{s,t\}^*$ il monoide libero su un insieme con due elementi, seguendo \ref{}; la categoria degli \emph{autogràfi} consiste della categoria delle rappresentazioni di $M$, nel senso di \ref{}. 
 	\begin{itemize}
-		\item Spiegare in che senso un autografo si descrive come un (multidi)grafo tale che `l'insieme dei lati coincide con l'insieme dei vertici';
+		\item Spiegare in che senso un autogràfo si descrive come un (multidi)grafo tale che `l'insieme dei lati coincide con l'insieme dei vertici';
 		\item \Todo{}
 	\end{itemize}
 \end{esercizi}
@@ -3602,6 +3618,9 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 \begin{definition}
 	\Todo{Funtore iniziale/finale (def con le comma)}
 \end{definition}
+\begin{definition}[Preservare e riflettere]\label{def_preserva_riflette}\index{Funtore!--- preserva proprietà}\index{Funtore!--- riflette proprietà|see {preserva proprietà}}
+	\Todo{Funtore che preserva una proprietà}
+\end{definition}
 \begin{esercizi}
 	\item In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
 	\item Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
@@ -3609,6 +3628,10 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 	\begin{quote}
 		Per ogni oggetto $\bsX=(X,x_0,f)$ di $\ctDyn$ esiste uno e un solo morfismo nell'insieme $\Hom\ctDyn(\bsN,\bsX)$.
 	\end{quote}
-	\item
-	\item
+	\item Se $\ctC$ è una categoria, un \emph{generatore} è un oggetto $G$ con la proprietà che 
+	\begin{quote}
+		bla
+	\end{quote}
+	Mostrare che $G$ è un generatore di $\ctC$ se e solo se il funtore $\Hom\ctC(G,-)$ è fedele.
+	\item 
 \end{esercizi}
