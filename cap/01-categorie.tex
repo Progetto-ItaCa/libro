@@ -178,7 +178,7 @@ La seconda di queste osservazioni non è meno importante: porterà alla definizi
 	Mostrare che ogni categoria senza oggetti definisce una categoria nel senso di \ref{def_categ} e viceversa.
 	\item \label{jgdasoh_2} Descrivere in cosa consiste una categoria che soddisfa tutti gli assiomi di \ref{def_categ}, a parte il fatto che \(d,c : \ctC_1\to\ctC_0\) sono funzioni parziali: in una categoria `bucata', esistono frecce \(\xymatrix{{} \ar[r]^f & Y}\) di \(\ctC\) che non hanno dominio, e alcune \(\xymatrix{X \ar[r]^g & {}}\) che non hanno codominio (possono esistere anche frecce \(\xymatrix{{} \ar[r]^p & {}}\)? Quante?).
 	\item \label{jgdasoh_3} \Todo{categoria dove s,t sono relazioni?}
-	\item \label{jgdasoh_4} Verificare gli assiomi di categoria per \(\ctFin\) e \(\ctVect\) come sono state presentate in \ref{}.
+	\item \label{jgdasoh_4} Verificare gli assiomi di categoria per \(\ctFin\) e \(\ctVect\) come sono state presentate in \ref{protoex_finset}.
 	\item \label{jgdasoh_5} Costruire esempi di strutture che soddisfano tutti gli assiomi di \ref{def_categ} meno uno: due classi \(\ctC_0,\ctC_1\), con funzioni di classe \(d,c,\id,\cmp\) ma la composizione non è sempre definita, non è sempre associativa, non sempre unitale.
 \end{esercizi}
 \section{Esempi di categorie nella pratica matematica}\label{sec_esempi_cats}
@@ -762,7 +762,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	\]
 	Si noti che la composizione di funzioni equivarianti è anch'essa equivariante. I \(G\)-insiemi e le funzioni equivarianti tra loro formano la categoria \(G\emdash\ctSet\).
 \end{example}
-\begin{example}[Categoria dei sistemi dinamici discreti]\label{ex_cat_dyn}\index{Categoria!--- dei sistemi dinamici}\index{Sistema dinamico discreto}\index{Dyn@$\ctDyn$}
+\begin{example}[Categoria dei sistemi dinamici discreti]\label{ex_cat_dyn}\index{Categoria!--- dei sistemi dinamici}\index{Sistema dinamico discreto}\index{Dyn@\(\ctDyn\)}
 	\Todo{Sistemi dinamici discreti}
 \end{example}
 \begin{example}[\(\mathrm{C}^*\)-algebre complesse]\index{Categoria!--- delle \(\mathrm{C}^*\)-algebre}\index{Cs-algebra@\(\mathrm{C}^*\)-algebra}
@@ -1976,6 +1976,11 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 		      \[
 			      G(F(g\cmp f)) = G(Ff\cmp Fg) = GFf\cmp GFg .
 		      \]
+		\item Ogni funtore \(F : \ctC\fun\ctD\) definisce il \emph{funtore opposto}
+		      \[\dmFun{F^\op}{\ctC^\op}{\ctD^\op}\]
+		      ponendo \(F^\op C=FC\) e \(F^\op(Y \xot f X) = FY \xot {(Ff)^\op} FX\); in termini della specifica di un funtore come in \ref{def_alternativa_funtore}, la funzione tra classi \(F^\op_0 : \ctC^\op_0\to\ctD^\op_0\) coincide con \(F_0\), e
+		      \[\dmFun{F_{XY}^\op}{\Hom{\ctC^\op}(Y,X)}{\Hom{\ctD^\op}(FY,FX)}\]
+		      è la funzione \(F_{YX} : \Hom{\ctC}(X,Y)\to \Hom{\ctD}(FX,FY)\).
 	\end{itemize}
 \end{examples}
 \begin{definition}[Funtori pieni, fedeli, essenzialmente suriettivi]\label{classi_di_funtori}
@@ -2225,7 +2230,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		\end{tikzcd}\]
 \end{definition}
 \begin{remark}[Alcuni esempi di commæ]
-	Importanti esempi di categorie sono particolari categorie commæ per opportune scelte di \(F\) o \(G\); l'esercizio \ref{} invita chi legge a esplicitare, tra le altre, \((F/E)\) e \((E/G)\) dove \(E\) è un oggetto guardato come funtore \(E : \ctTerm \fun\ctE\) alla maniera dell'esercizio \ref{}.
+	Importanti esempi di categorie sono particolari categorie commæ per opportune scelte di \(F\) o \(G\); l'esercizio \ref{gfdpgubai_5} invita chi legge a esplicitare, tra le altre, \((F/E)\) e \((E/G)\) dove \(E\) è un oggetto guardato come funtore \(E : \ctTerm \fun\ctE\) alla maniera di \ref{tante_cose_sono_diag}.
 \end{remark}
 \begin{esercizi}
 	\item Se \(\ctC\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\ctC \fun \susp N\); farsi degli esempi scegliendo come \(\ctC\) una delle categorie di \ref{sec_esempi_cats}, e con \(N=(\bbN,+,0)\) il monoide dei numeri naturali.
@@ -2500,23 +2505,23 @@ La nozione di diagramma permette di formalizzare l'idea di diagramma commutativo
 	\item \label{gfdpgubai_3} In cosa consiste un funtore
 	\[\dmFun F {\act G}\ctSet,\]
 	quando \(\act G\) è il gruppoide d'azione di \ref{action_groupoid}? Farsi degli esempi (e dei disegni) quando \(G=C_n\) è il gruppo ciclico con \(n\) elementi, quando \(G=\bbZ\) è il gruppo additivo degli interi, e quando \(G=S_3\) è il gruppo simmetrico delle biiezioni dell'insieme \(\{1,2,3\}\).
-	\item \label{gfdpgubai_4} Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà liscia $M$ il suo fibrato tangente $\text{T} M$; tale $\text{T} M$ è naturalmente equipaggiato con una mappa liscia $p_M : TM\to M$: il funtore $\text{T}$ è di tipo $\cate{Mfd} \to \cate{Mfd}^\to$? Ovvero, esiste un quadrato commutativo
+	\item \label{gfdpgubai_4} Si costruisca, tramite il differenziale, un funtore simile a quello di \ref{exa_derivata_funtore}, ma sulla categoria \(\cate{Mfd}\) delle varietà e funzioni lisce, che sugli oggetti assegna ad una varietà liscia \(M\) il suo fibrato tangente \(\text{T} M\); tale \(\text{T} M\) è naturalmente equipaggiato con una mappa liscia \(p_M : TM\to M\): il funtore \(\text{T}\) è di tipo \(\cate{Mfd} \to \cate{Mfd}^\to\)? Ovvero, esiste un quadrato commutativo
 	\[\xymatrix{
-			\text{T} M \ar[r]^{\text{T} f}\ar[d]_{p_M} & \text{T} N \ar[d]^{p_N}\\ 
-			M \ar[r]_f & N
-	}\]
-	indotto da una mappa liscia $f : M\to N$ di varietà?
-	\item \label{exe_cpt_conn} Definiamo il funtore delle componenti connesse di una categoria 
+		\text{T} M \ar[r]^{\text{T} f}\ar[d]_{p_M} & \text{T} N \ar[d]^{p_N}\\
+		M \ar[r]_f & N
+		}\]
+	indotto da una mappa liscia \(f : M\to N\) di varietà?
+	\item \label{exe_cpt_conn} Definiamo il funtore delle componenti connesse di una categoria
 	\[\dmFun{\pi_0^\ctCat}{\ctCat}{\ctSet}\]
-	come la composizione del funtore $\pi_0 : \ctGph \fun\ctSet$ di \ref{ex_fun_cpt_conn} e del funtore $U : \ctCat \fun\ctGph$ che restituisce il grafo sottostante a una categoria. Diciamo che una categoria $\ctC$ è connessa quando lo è $U\ctC$, cioè quando $\pi_0(U\ctC)$ ha un solo elemento.
+	come la composizione del funtore \(\pi_0 : \ctGph \fun\ctSet\) di \ref{ex_fun_cpt_conn} e del funtore \(U : \ctCat \fun\ctGph\) che restituisce il grafo sottostante a una categoria. Diciamo che una categoria \(\ctC\) è connessa quando lo è \(U\ctC\), cioè quando \(\pi_0(U\ctC)\) ha un solo elemento.
 
-	Usando la definizione, calcolare $\pi_0(A^\delta)$ e $\pi_0(A^\chi)$ se $A$ è un insieme (si veda \ref{ex_cat_discreta} e \ref{ex_cat_codiscreta}); calcolare poi
+	Usando la definizione, calcolare \(\pi_0(A^\delta)\) e \(\pi_0(A^\chi)\) se \(A\) è un insieme (si veda \ref{ex_cat_discreta} e \ref{ex_cat_codiscreta}); calcolare poi
 	\begin{itemize}
-		\item $\pi_0(\ctC/X)$ (resp., $\pi_0(X/\ctC)$) se $\ctC$ è una categoria qualsiasi e $\ctC/X$ l'incubo (resp., la succuba) sopra $X$;
-		\item $\pi_0(\ctC^\op)$ (come in \ref{def_cat_opp}), è lo stesso di $\pi_0(\ctC)$?
-		\item $\pi_0(\ctC\star\ctD)$ (come in \ref{cat_def_giunto}), esiste una coppia di categorie tale che abbia più di un elemento?
-		\item $\pi_0(\act G)$, se $G$ è un gruppo e $\act G$ il gruppoide d'azione di \ref{action_groupoid}; cosa significa quando $\pi_0(\act G)$ non è connesso? (Suggerimento: pensare a \ref{ex_fun_orbite});
-		\item Esibire una biiezione, o trovare un controesempio alla sua esistenza, tra $\pi_0(\ctC\times\ctD)$ e $\pi_0(\ctC)\times\pi_0(\ctD)$, se $\ctC\times\ctD$ è il prodotto di categorie di \ref{def_cat_prodotto}; stessa domanda con $\pi_0(\ctC+\ctD)$ e $\pi_0(\ctC)+\pi_0(\ctD)$, se $\ctC+\ctD$ è la somma di categorie di \ref{def_cat_somma}.
+		\item \(\pi_0(\ctC/X)\) (resp., \(\pi_0(X/\ctC)\)) se \(\ctC\) è una categoria qualsiasi e \(\ctC/X\) l'incubo (resp., la succuba) sopra \(X\);
+		\item \(\pi_0(\ctC^\op)\) (come in \ref{def_cat_opp}), è lo stesso di \(\pi_0(\ctC)\)?
+		\item \(\pi_0(\ctC\star\ctD)\) (come in \ref{cat_def_giunto}), esiste una coppia di categorie tale che abbia più di un elemento?
+		\item \(\pi_0(\act G)\), se \(G\) è un gruppo e \(\act G\) il gruppoide d'azione di \ref{action_groupoid}; cosa significa quando \(\pi_0(\act G)\) non è connesso? (Suggerimento: pensare a \ref{ex_fun_orbite});
+		\item Esibire una biiezione, o trovare un controesempio alla sua esistenza, tra \(\pi_0(\ctC\times\ctD)\) e \(\pi_0(\ctC)\times\pi_0(\ctD)\), se \(\ctC\times\ctD\) è il prodotto di categorie di \ref{def_cat_prodotto}; stessa domanda con \(\pi_0(\ctC+\ctD)\) e \(\pi_0(\ctC)+\pi_0(\ctD)\), se \(\ctC+\ctD\) è la somma di categorie di \ref{def_cat_somma}.
 	\end{itemize}
 \end{esercizi}
 
@@ -2577,9 +2582,9 @@ La nozione di \emph{trasformazione naturale} tra funtori rende precisa questa id
 	\]
 	è definita dalla composizione \(\beta_X\cmp\alpha_X : FX\to GX\to HX\).
 \end{definition}
-L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ctD)\) la cui classe degli oggetti è fatta dai funtori \(\ctC\fun\ctD\), e dove i morfismi \(F\nat G\) sono le trasformazioni naturali come in \ref{}; evidentemente, la trasformazione naturale identica \(\id_F : F\nat F\) ha per componenti \(\id_{FX} : FX\to FX\).
+L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ctD)\) la cui classe degli oggetti è fatta dai funtori \(\ctC\fun\ctD\), e dove i morfismi \(F\nat G\) sono le trasformazioni naturali come in \ref{def_nat}; evidentemente, la trasformazione naturale identica \(\id_F : F\nat F\) ha per componenti \(\id_{FX} : FX\to FX\).
 \begin{example}
-	Molti degli esempi di categorie fatti lungo \ref{} si descrivono come categorie di funtori:
+	Molti degli esempi di categorie fatti lungo la sezione \ref{sec_esempi_cats} si descrivono come categorie di funtori:
 	\begin{itemize}
 		\item La categoria delle spanne in \(\ctC\) di \ref{def_span_e_cospan} è la categoria dei funtori \(\ctCat(\Lambda^2_0,\ctC)\) di dominio la spanna generica di \ref{ex_spancospan} e codominio \(\ctC\); dualmente, la categoria delle cospanne in \(\ctC\) è la categoria dei funtori \(\ctCat(\Lambda^2_2,\ctC)\).
 		\item La categoria dei multidigrafi di \ref{ex_cat_grafi} è la categoria dei funtori \(\ctCat((0\rightrightarrows 1)^\op,\ctSet)\); ciò rende precisa l'osservazione subito successiva alla definizione di \ref{ex_cat_doppiafreccia}. Lasciamo per esercizio a chi legge di mostrare che una trasformazione naturale tra funtori \(F,G\) che assumono rispettivamente per valori delle coppie di funzioni
@@ -2587,11 +2592,11 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 				      F_1\ar@<.25em>[r]^{Fs}\ar@<-.25em>[r]_{Ft} & F_0 & G_1\ar@<.25em>[r]^{Gs}\ar@<-.25em>[r]_{Gt} & G_0
 			      }\]
 		      riduce a un omomorfismo di multidigrafi come in \ref{ex_cat_grafi}.
-		\item La categoria delle rappresentazioni (in $\ctSet$) di un monoide di \ref{ex_cat_g_insiemi} è la categoria dei funtori $\susp M \fun\ctSet$; una trasformazione naturale tra rappresentazioni viste come funtori è precisamente un omomorfismo equivariante. Un fatto analogo è vero per le rappresentazioni di un monoide in $\ctD$, come in \ref{es_fun_repre} (scrivere i dettagli per esercizio).
+		\item La categoria delle rappresentazioni (in \(\ctSet\)) di un monoide di \ref{ex_cat_g_insiemi} è la categoria dei funtori \(\susp M \fun\ctSet\); una trasformazione naturale tra rappresentazioni viste come funtori è precisamente un omomorfismo equivariante. Un fatto analogo è vero per le rappresentazioni di un monoide in \(\ctD\), come in \ref{es_fun_repre} (scrivere i dettagli per esercizio).
 	\end{itemize}
 \end{example}
 \begin{definition}\label{def_natutra}
-	Come visto in \ref{} i funtori sono i morfismi di una categoria \(\ctCat\) delle categorie (piccole); ma abbiamo appena trovato che anche le trasformazioni naturali tra funtori rendono la classe \(\ctCat(\ctC,\ctD)\) dei funtori \(F : \ctC\funto\ctD\) a sua volta una categoria, dove le trasformazioni naturali \(\alpha : F\nat G\) si pensano come ``frecce tra frecce'', o ``frecce di dimensione 2'', nel senso che andiamo a spiegare. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo \(\To\), a riempire un diagramma di funtori come segue:
+	Come visto in \ref{ex_cat_cat} i funtori sono i morfismi di una categoria \(\ctCat\) delle categorie (piccole); ma abbiamo appena trovato che anche le trasformazioni naturali tra funtori rendono la classe \(\ctCat(\ctC,\ctD)\) dei funtori \(F : \ctC\funto\ctD\) a sua volta una categoria, dove le trasformazioni naturali \(\alpha : F\nat G\) si pensano come ``frecce tra frecce'', o ``frecce di dimensione 2'', nel senso che andiamo a spiegare. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo \(\To\), a riempire un diagramma di funtori come segue:
 	\[
 		\xymatrix{\ctC \rrtwocell^F_G{\alpha}&& \ctD.}
 	\]
@@ -3080,10 +3085,10 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 		\bullet \ar[r]& \bullet\uultwocell<\omit>{\alpha}\ar[ur] && \bullet \ar[r]\ar[ur]& \bullet\ar[ur]
 		}\]
 	(Iniziare dando dei nomi opportuni ai funtori in ciascun diagramma, ed usare la composizione orizzontale, verticale, e la regola di scambio.)
-	\item Si denoti con $\{s,t\}$ un insieme con due elementi, ed $M =\{s,t\}^*$ il monoide libero su un insieme con due elementi, seguendo \ref{}; la categoria degli \emph{autogràfi} consiste della categoria delle rappresentazioni di $M$, nel senso di \ref{}. 
+	\item Si denoti con \(\{s,t\}\) un insieme con due elementi, ed \(M =\{s,t\}^*\) il monoide libero su un insieme con due elementi, seguendo \ref{mongruppi_liberi}; la categoria degli \emph{autogràfi} consiste della categoria delle rappresentazioni di \(M\), nel senso di \ref{es_fun_repre}.
 	\begin{itemize}
 		\item Spiegare in che senso un autogràfo si descrive come un (multidi)grafo tale che `l'insieme dei lati coincide con l'insieme dei vertici';
-		\item \Todo{}
+		\item Studiare la struttura di autogràfo \(X^\delta\) corrisponde all'azione banale \(s.x=x=t.x\) su un insieme \(X\) di vertici (che sono anche lati, cosicché l'autografo \(X^\delta\) ha per lati degli \(x\) della forma \(\xymatrix@C=4mm{x \ar@(ur,dr)[]^x}\)\dots).
 	\end{itemize}
 \end{esercizi}
 
@@ -3555,7 +3560,7 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	Un funtore che sia allo stesso tempo pieno e fedele, ossia tale che ciascuna \(F_{XY}\) sia biiettiva, si dice \emph{pienamente fedele}.
 \end{notation}
 \begin{remark}
-	Tra i funtori finora introdotti, quelli degli esempi \ref{exfun_4}, \ref{}, \ref{} sono pieni; quelli degli esempi \ref{exfun_3}, \ref{dom_e_cod}, \ref{liberi_forgetti} sono fedeli; quelli degli esempi \ref{ex_fun_co_disc}, \ref{exa_monotone_funtori}, \ref{exa_funtori_da_gruppi} sono pienamente fedeli; quelli degli esempi \ref{}, \ref{}, \ref{} sono iso-densi.
+	Tra i funtori finora introdotti, quello dell'esempio \ref{exfun_4} è pieno; quelli degli esempi \ref{exfun_3}, \ref{dom_e_cod}, \ref{liberi_forgetti} sono fedeli; quelli degli esempi \ref{ex_fun_co_disc}, \ref{exa_monotone_funtori}, \ref{exa_funtori_da_gruppi} sono pienamente fedeli.%; quelli degli esempi \ref{}, \ref{}, \ref{} sono iso-densi.
 \end{remark}
 \`E poi conveniente dare un nome esplicito a un'altra classe di funtori:
 \begin{definition}\label{funtore_essurj}
@@ -3569,7 +3574,7 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 \begin{definition}[Isomorfismo di categorie]\label{fun_isocat}
 
 \end{definition}
-Gli isomorfismi di categorie sono relativamente rari; è più comune trovarsi nella condizione in cui esistono due funtori $F : \ctC \leftrightarrows \ctD: G$ con la proprietà che esistano \emph{isomorfismi naturali} $\epsilon : F\cmp G \cong \Id[\ctD]$ ed $\eta : \Id[\ctC]\cong G\cmp F$. Questa definizione più rilassata di identificazione tra due categorie si dice\emph{equivalenza}.
+Gli isomorfismi di categorie sono relativamente rari; è più comune trovarsi nella condizione in cui esistono due funtori \(F : \ctC \leftrightarrows \ctD: G\) con la proprietà che esistano \emph{isomorfismi naturali} \(\epsilon : F\cmp G \cong \Id[\ctD]\) ed \(\eta : \Id[\ctC]\cong G\cmp F\). Questa definizione più rilassata di identificazione tra due categorie si dice\emph{equivalenza}.
 \begin{definition}[Equivalenza di categorie]\label{funtore_equcat}\index{Equivalenza}
 	\Todo{Equivalenza di categorie }
 	Una equivalenza di categorie \(\ctC\simeq\ctD\) consiste di una quadrupla \((F,G,\eta,\epsilon)\), dove
@@ -3602,7 +3607,7 @@ Alcuni esempi di categorie equivalenti ma non isomorfe
 \begin{example}
 	La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a Vect.
 \end{example}
-L'esercizio \ref{} chiederà di dimostrare che le due non possono essere isomorfe.
+L'esercizio \ref{ex_monepi_2} chiederà di dimostrare che le due non possono essere isomorfe.
 
 Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di funtori \(F : \ctC \fun\ctD\) con la proprietà che sia \(F_0 : \ctC_0\to\ctD_0\) che ogni \(F_{XY} : \Hom\ctC(X,Y) \to \Hom\ctD(F_0X,F_0Y)\) sono funzioni iniettive.
 \begin{proposition}\label{mona_in_cat}
@@ -3615,23 +3620,69 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 
 	Questo conclude la dimostrazione.
 \end{proof}
-\begin{definition}
-	\Todo{Funtore iniziale/finale (def con le comma)}
+\begin{definition}[Funtori iniziali e finali]\label{def_fun_initfin}\index{Funtore!--- iniziale}\index{Funtore!--- finale|see {Funtore iniziale}}
+	Un funtore \(F : \ctC\fun\ctD\) si dice \emph{iniziale} se per ogni oggetto \(D\in\ctD\) la categoria comma \((D/F)\) i cui oggetti sono coppie \((X,f : D\to FX)\) è non vuota e connessa (nel senso che \(\pi_0(U(D/F))\) ha un unico elemento).
+
+	In altre parole, \(F : \ctC\fun\ctD\) si dice iniziale se le due condizioni seguenti sono soddisfatte:
+	\begin{itemize}
+		\item per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom\ctD(D,FX)\) è non vuoto;
+		\item date due frecce \(D\to FX, D\to FY\) in \(\ctD\), esiste una successione finita di oggetti \(\tup An,\) e morfismi \(A_i \leftrightarrows A_{i+1}\) (in una delle due direzioni) tali che ogni triangolo nel diagramma
+		      % https://q.uiver.app/#q=WzAsNyxbMCwxLCJGWCJdLFsxLDEsIkZBXzAiXSxbMiwxLCJGQV8xIl0sWzMsMSwiXFxkb3RzIl0sWzQsMSwiRkFfbiJdLFs1LDEsIkZZIl0sWzIsMCwiRCJdLFs2LDBdLFs2LDFdLFs2LDJdLFs2LDRdLFs2LDVdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+		      \[\begin{tikzcd}
+				      && D \\
+				      FX & {FA_0} & {FA_1} & \dots & {FA_n} & FY
+				      \arrow[from=1-3, to=2-1]
+				      \arrow[from=1-3, to=2-2]
+				      \arrow[from=1-3, to=2-3]
+				      \arrow[from=1-3, to=2-5]
+				      \arrow[from=1-3, to=2-6]
+				      \arrow[no head, from=2-1, to=2-2]
+				      \arrow[no head, from=2-2, to=2-3]
+				      \arrow[no head, from=2-3, to=2-4]
+				      \arrow[no head, from=2-4, to=2-5]
+				      \arrow[no head, from=2-5, to=2-6]
+			      \end{tikzcd}\]
+		      sia commutativo.
+	\end{itemize}
+	Diciamo che \(F : \ctC\fun\ctD\) è \emph{finale} se il funtore opposto \(F^\op : \ctC^\op\fun\ctD^\op\) (come in \ref{es_di_funtori}) è iniziale.
 \end{definition}
 \begin{definition}[Preservare e riflettere]\label{def_preserva_riflette}\index{Funtore!--- preserva proprietà}\index{Funtore!--- riflette proprietà|see {preserva proprietà}}
-	\Todo{Funtore che preserva una proprietà}
+	Sia \(\mathcal{P}\) una proprietà di un oggetto \(X\) o morfismo \(f : X\to Y\) di una categoria \(\ctC\); si dice che un funtore \(F : \ctC \fun\ctD\)
+	\begin{itemize}
+		\item \emph{preserva} la proprietà \(\mathcal{P}\) se vale
+		      \[\mathcal{P}(X) \Rightarrow \mathcal{P}(FX) \quad \text{oppure} \quad
+			      \mathcal{P}(f) \Rightarrow \mathcal{P}(Ff) \]
+		      (a seconda che \(\mathcal P\) dipenda da un oggetto o morfismo);
+		\item \emph{riflette} la proprietà \(\mathcal{P}\) se vale
+		      \[\mathcal{P}(FX) \Rightarrow \mathcal{P}(X) \quad \text{oppure} \quad
+			      \mathcal{P}(Ff) \Rightarrow \mathcal{P}(f) \]
+	\end{itemize}
+	Un funtore preserva (per definizione) le proprietà
+	\begin{itemize}
+		\item \(\mathcal P_\cmp(f,g,h) := (g\cmp f = h)\);
+		\item \(\mathcal P_1(f) := (f = \id_X)\).
+	\end{itemize}
+	Tutti i funtori preservano la proprietà \(\mathcal P_e(f) := (f \text{ è un epi spezzante})\) e \(\mathcal P_m(f) := (f \text{ è un mono spezzante})\), per \ref{cor:fun-sezioni-retrazioni}. Gli hom funtori rappresentabili \(\Hom\ctC(C,-)\) preservano la proprietà `\(f\) è un monomorfismo' (diciamo che \(\Hom\ctC(C,-)\) \emph{preserva i monomorfismi}); nella categoria \(\ctSet\) degli insiemi, \(\Hom\ctSet(A,-)\) preserva anche la proprietà `\(f\) è un epimorfismo' se si assume l'assioma della scelta (come formulato in \ref{fig_assioma_scelta}).
+
+	Molte proprietà sono \emph{riflesse} dai funtori pienamente fedeli: per esempio,
+	\begin{itemize}
+		\item la proprietà \(\mathcal P_\cong(f) := (f \text{ è un isomorfismo})\);
+		\item la proprietà \(\mathcal P_e(f) := (f \text{ è un epi spezzante})\);
+		\item la proprietà \(\mathcal P_m(f) := (f \text{ è un mono spezzante})\).
+	\end{itemize}
+	Ogni funtore fedele \(F : \ctC\fun\ctD\) riflette la proprietà `\(f\) è un monomorfismo' (diciamo che \(F\) \emph{riflette i monomorfismi}) e gli epimorfismi.
 \end{definition}
 \begin{esercizi}
-	\item In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
-	\item Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
-	\item Costruire un'equivalenza di categorie tra la categoria dei sistemi dinamici discreti di \ref{ex_cat_dyn} e la categoria delle rappresentazioni, \ref{es_fun_repre}, del monoide $(\bbN,+,0)$; è un isomorfismo? Mostrare che $\bbN$ è in maniera naturale un oggetto $\bsN=(* \xto 0 \bbN \xto{\_+1} \bbN)$ di $\ctDyn$, che soddisfa la proprietà (\emph{universale}) seguente: 
+	\item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
+	\item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
+	\item \label{ex_monepi_3} Costruire un'equivalenza di categorie tra la categoria dei sistemi dinamici discreti di \ref{ex_cat_dyn} e la categoria delle rappresentazioni, \ref{es_fun_repre}, del monoide \((\bbN,+,0)\); è un isomorfismo? Mostrare che \(\bbN\) è in maniera naturale un oggetto \(\bsN=(* \xto 0 \bbN \xto{\_+1} \bbN)\) di \(\ctDyn\), che soddisfa la proprietà (\emph{universale}) seguente:
 	\begin{quote}
-		Per ogni oggetto $\bsX=(X,x_0,f)$ di $\ctDyn$ esiste uno e un solo morfismo nell'insieme $\Hom\ctDyn(\bsN,\bsX)$.
+		Per ogni oggetto \(\bsX=(X,x_0,f)\) di \(\ctDyn\) esiste uno e un solo morfismo nell'insieme \(\Hom\ctDyn(\bsN,\bsX)\).
 	\end{quote}
-	\item Se $\ctC$ è una categoria, un \emph{generatore} è un oggetto $G$ con la proprietà che 
+	\item \label{ex_monepi_4} Se \(\ctC\) è una categoria, un \emph{generatore} è un oggetto \(G\) con la proprietà che
 	\begin{quote}
 		bla
 	\end{quote}
-	Mostrare che $G$ è un generatore di $\ctC$ se e solo se il funtore $\Hom\ctC(G,-)$ è fedele.
-	\item 
+	Mostrare che \(G\) è un generatore di \(\ctC\) se e solo se il funtore \(\Hom\ctC(G,-)\) è fedele.
+	\item \label{ex_monepi_5} Esiste un unico funtore \(u_M : \ctTerm\fun\susp M\) quando guardiamo un monoide \((M,\cdot,1)\) come una categoria con un solo oggetto, al modo di \ref{mon_sonocat}; in quale proprietà di \(M\) si traduce il fatto che \(u_M\) è un funtore iniziale?
 \end{esercizi}
