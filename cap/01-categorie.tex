@@ -763,7 +763,17 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	Si noti che la composizione di funzioni equivarianti è anch'essa equivariante. I \(G\)-insiemi e le funzioni equivarianti tra loro formano la categoria \(G\emdash\ctSet\).
 \end{example}
 \begin{example}[Categoria dei sistemi dinamici discreti]\label{ex_cat_dyn}\index{Categoria!--- dei sistemi dinamici}\index{Sistema dinamico discreto}\index{Dyn@\(\ctDyn\)}
-	\Todo{Sistemi dinamici discreti}
+	La categoria $\ctDyn$ dei \emph{sistemi dinamici discreti} ha 
+	\begin{itemize}
+		\item per oggetti le coppie $((X,x_0),f)$ dove $(X,x_0)$ è un insieme puntato nel senso di \ref{}, ed $f : X\to X$ è una endofunzione di $X$;
+		\item  i morfismi tra \(((X,x_0),f)\) e \(((Y,y_0),g)\) consistono delle funzioni $u : X \to Y$ tali che $u(x_0)=y_0$ e $u\circ f = g\circ u$, cioè entrambi i diagrammi di funzioni 
+		\[\xymatrix{
+			1\ar[r]^{x_0}\ar[dr]_{y_0} & X\ar[r]^f\ar[d]_u & X \ar[d]_u\\
+			 & Y \ar[r]_g & Y 
+		}\] 
+		siano commutativi.
+	\end{itemize}
+	In un sistema dinamico discreto si considera l'\emph{orbita} $[x_0]:=\{x_0,f(x_0),f(f(x_0)),\dots\}$ del \emph{punto base} $x_0$ della dinamica per studiarne, per esempio, le proprietà geometriche quando $X$ ha una struttura di spazio metrico (ad esempio, $[x]\subseteq X$ può essere denso, per alcune scelte di $x_0$, o finito, per altre; può essere preservato da una misura, quando $X$ sia dotato di una struttura di spazio di probabilità).
 \end{example}
 \begin{example}[\(\mathrm{C}^*\)-algebre complesse]\index{Categoria!--- delle \(\mathrm{C}^*\)-algebre}\index{Cs-algebra@\(\mathrm{C}^*\)-algebra}
 	Una \emph{\(\mathrm{C}^*\)-algebra} consiste di uno spazio di Banach \(A\) (cioè di uno spazio vettoriale topologico sul campo dei complessi, dotato di una norma \(\norm{\_} : A \to \bbR_{\ge 0}\), e completo rispetto alla metrica indotta da \(\norm{\_}\)), che in più è dotato di
@@ -3538,7 +3548,6 @@ Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzant
 	Dunque \(f\) \`e un isomorfismo con inversa \(g\).
 	Dualmente, abbiamo che il punto~\ref{prop:iso-epi-mono:item3} implica il punto~\ref{prop:iso-epi-mono:item1}.
 \end{proof}
-\Todo{...qualcosa prima...}
 \subsection{Classi di funtori}\label{ssec:classi_di_funtori}
 Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome speciale ai funtori \(F : \ctC\fun\ctD\) tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva:
 \begin{definition}\label{funtore_pieno}
@@ -3560,7 +3569,7 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	Un funtore che sia allo stesso tempo pieno e fedele, ossia tale che ciascuna \(F_{XY}\) sia biiettiva, si dice \emph{pienamente fedele}.
 \end{notation}
 \begin{remark}
-	Tra i funtori finora introdotti, quello dell'esempio \ref{exfun_4} è pieno; quelli degli esempi \ref{exfun_3}, \ref{dom_e_cod}, \ref{liberi_forgetti} sono fedeli; quelli degli esempi \ref{ex_fun_co_disc}, \ref{exa_monotone_funtori}, \ref{exa_funtori_da_gruppi} sono pienamente fedeli.%; quelli degli esempi \ref{}, \ref{}, \ref{} sono iso-densi.
+	Tra i funtori finora introdotti, quello dell'esempio \ref{exfun_4} è pieno; quelli degli esempi \ref{exfun_3}, \ref{dom_e_cod}, \ref{liberi_forgetti} sono fedeli; quelli degli esempi \ref{ex_fun_co_disc}, \ref{exa_monotone_funtori}, \ref{exa_funtori_da_gruppi} sono pienamente fedeli.
 \end{remark}
 \`E poi conveniente dare un nome esplicito a un'altra classe di funtori:
 \begin{definition}\label{funtore_essurj}
