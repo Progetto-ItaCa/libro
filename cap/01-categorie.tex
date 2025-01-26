@@ -275,25 +275,25 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 \begin{example}\label{ex_cat_doppiafreccia}
 	La categoria \emph{doppia freccia generica} \(\{0\rightrightarrows 1\}\) ha due oggetti \(0,1\) ed esattamente due morfismi non identità e paralleli \(s,t : 0\to 1\). La composizione è definita, ancora una volta, nell'unico modo ovvio, chiedendo che \(x\cmp \id_0=x=\id_1\cmp x\) per \(x\in\{s,t\}\).
 
-	La doppia freccia è la `forma generica' di un grafo diretto (si veda \ref{ex_cat_libera}), dato che una coppia di funzioni \(s,t: X_1 \rightrightarrows X_0\) tra due insiemi consta precisamente di un digrafo che ha \(X_0\) per insieme dei vertici e \(X_1\) per insieme dei lati.
+	La doppia freccia è la `forma generica' di un grafo diretto (si veda \ref{ex_cat_libera}), dato che una coppia di funzioni \(s,t: E \rightrightarrows V\) tra due insiemi consta precisamente di un digrafo che ha \(V\) per insieme dei vertici e \(E\) per insieme dei lati.
 \end{example}
 \index{Categoria!--- quadrato commutativo generico}
 \begin{example}\label{ex_quadcuboncubo}
-	La categoria \emph{quadrato commutativo generico} \(P[2]\) ha 4 oggetti
+	La categoria \emph{quadrato commutativo generico} \(\ctQ\) ha 4 oggetti
 	\[\{(00),(10),(01),(11)\} \]
 	e un morfismo \((ij)\to(kl)\) se e solo se \(i\le k\) e \(j\le l\); rappresentata graficamente, si tratta della categoria
 	\[\begin{tikzcd}
 			(00) \ar[r]\ar[d]\ar[dr]& (10)\ar[d] \\
 			(01) \ar[r]& (11)
 		\end{tikzcd}\]
-	La composizione è forzata a essere definita cosicché la composizione \((00)\to (01)\to (11)\) sia uguale alla composizione \((00)\to (10)\to (11)\), e quindi la categoria \(P[2]\) rappresenta la forma generica di un \emph{quadrato commutativo}.
+	La composizione è forzata a essere definita cosicché la composizione \((00)\to (01)\to (11)\) sia uguale alla composizione \((00)\to (10)\to (11)\), e quindi la categoria \(\ctQ\) rappresenta la forma generica di un \emph{quadrato commutativo}.
 \end{example}
 \begin{remark}
-	Si noti che \(P[2]\) può essere pensato come un insieme ordinato, e precisamente l'insieme dei sottoinsiemi di un insieme con due elementi \(\{a,b\}\); in tal senso \((ij)\) rappresenta la funzione caratteristica \(\chi_U : \{a,b\}\to \{0,1\}\) di un sottoinsieme \(U\subseteq \{a,b\}\), nel senso che ad esempio \((10)=\{a\}, (00)=\varnothing\), eccetera. Si osservi anche che \(P[2]\) è l'insieme parzialmente ordinato \(\genArrow\times \genArrow\), dotato dell'\emph{ordine prodotto} (si veda \ref{ord_sonocat} e \ref{cat_sonopos}).
+	Si noti che \(\ctQ\) può essere pensato come un insieme ordinato, e precisamente l'insieme dei sottoinsiemi di un insieme con due elementi \(\{a,b\}\); in tal senso \((ij)\) rappresenta la funzione caratteristica \(\chi_U : \{a,b\}\to \{0,1\}\) di un sottoinsieme \(U\subseteq \{a,b\}\), nel senso che ad esempio \((10)=\{a\}, (00)=\varnothing\), eccetera. Si osservi anche che \(\ctQ\) è l'insieme parzialmente ordinato \(\genArrow\times \genArrow\), dotato dell'\emph{ordine prodotto} (si veda \ref{ord_sonocat} e \ref{cat_sonopos}).
 
 	Quindi possiamo definire induttivamente
-	\[P[0] = \Delta[0], \qquad P[n+1] = P[n]\times \Delta[1]\]
-	o (equivalentemente, nel senso che questa seconda definizione dà per ogni \(n\ge 0\) un \(P'[n]\) isomorfo a \(P[n]\) come insieme ordinato) \(P'[n] = 2^{\{1,\dots,n\}}\), cosicché \(P[n]\) è il `cubo commutativo \(n\)-dimensionale generico': alcune \(P[n]\) per \(n=0,1,2,3\) sono raffigurate in \ref{fig_n_cubo}.
+	\[P[0] = \Delta[0], \quad P[1] = \ctQ, \quad P[n+1] = P[n]\times \Delta[1]\]
+	o (equivalentemente, nel senso che questa seconda definizione dà per ogni \(n\ge 0\) un \(P'[n]\) in biiezione con \(P[n]\), con una mappa che rispetta l'ordine) \(P'[n] = 2^{[n]} = 2^{\{0,1,\dots,n\}}\), cosicché l'insieme delle parti \(P[n]\) è il \emph{cubo commutativo \(n+1\)-dimensionale generico}: alcune \(P[n]\) per \(n=0,1,2,3\) sono raffigurate in \ref{fig_n_cubo}.
 	\begin{figure}[h]
 		\begin{center}
 			\begin{tikzpicture}[x=8em, y=8em,
@@ -939,9 +939,9 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 \end{remark}
 \begin{esercizi}
 	\item Una categoria piccola si può vedere come un multigrafo con identità e composizione: riscrivere la definizione di categoria (piccola) in termini di multigrafi.  In che modo questa costruzione generalizza la definizione di monoide (come insieme con identità e composizione)?
-	\item Data una categoria \(\ctC\), possiamo definire una relazione sulla classe dei suoi oggetti ponendo
+	\item In \ref{cat_sonopos} abbiamo mostrato che data una categoria \(\ctC\), possiamo definire una relazione sulla classe dei suoi oggetti ponendo
 	\[A\preceq B \iff \Hom\ctC(A,B)\ne\varnothing\]
-	Mostrare che \(\preceq\) è riflessiva e transitiva; è antisimmetrica? A che proprietà di \(\ctC\) corrisponde il fatto che il preordine \(\ctC^\bfP=(\ctC_0,\preceq)\) (detto la \emph{riflessione ordinata} di \(\ctC\)) ha un elemento minimo? A che oggetti corrispondono gli elementi \emph{minimali} di \(\ctC^\bfP\)?
+	Abbiamo osservato che \(\preceq\) è riflessiva e transitiva; è antisimmetrica? A che proprietà di \(\ctC\) corrisponde il fatto che il preordine \(\ctC^\bfP=(\ctC_0,\preceq)\) (detto la \emph{riflessione ordinata} di \(\ctC\)) ha un elemento minimo? A che oggetti corrispondono gli elementi \emph{minimali} di \(\ctC^\bfP\)?
 	\item Dimostrare che se \((P,\le)\) è un insieme bene ordinato, ed \(f : P\to P\) è una funzione monotòna, allora \(a\le fa\) per ogni \(a\in P\) (cioè ogni endofunzione di un buon ordine è \emph{espansiva}); dimostrare che l'unica biiezione monotòna di un buon ordine è l'identità; più in generale, se esiste un isomorfismo d'ordine \(f : P\to Q\) tra due buon ordine, allora esso è unico.
 	\item Dare una dimostrazione alternativa di \ref{circ_thm} secondo questa falsariga: definire una funzione di `misura' \(\mu\) sull'insieme delle funzioni Booleane semplici, che manda \(f : \bbB^n\to\bbB\) nella cardinalità dell'insieme \(f^\leftarrow(0)\). Mostrare che \(f\) è esprimibile come composizione di AND e NOT nei tre casi:
 	\begin{itemize}
@@ -1725,14 +1725,14 @@ La nozione di isomorfismo in teoria delle categorie generalizza e precisa molte 
 
 	Se esiste un isomorfismo tra \(X\) e \(Y\) diciamo che i due oggetti sono \emph{isomorfi} (spesso tralasciando mediante quale coppia di morfismi, dato che è chiaro dal contesto) e scriviamo \(X\iso Y\).\footnote{Da un punto di vista costruttivo, \(X\iso Y\) consiste di una quadrupla \((f,g, i,j)\) dove \(f : X\to Y, g: Y\to X\) e \(i,\) sono rispettivamente due dimostrazioni, che \(f\cmp g= \id_Y\) e che \(g\cmp f=\id_X\), però non insisteremo mai su questo dettaglio. Spesso diremo che `\(f\) è un isomorfismo' sottintendendo l'esistenza di \(g\), e vice versa.}
 \end{definition}
-\`E utile, sebbene del tutto ovvio, rappresentare mediante dei diagrammi commutativi il fatto che \(X,Y\) siano oggetti isomorfi:
+\`E utile, sebbene del tutto ovvio, rappresentare mediante dei diagrammi commutativi il fatto che \(X,Y\) siano oggetti isomorfi: entrambi i triangoli
 \[
 	\begin{tikzcd}
 		X\ar[d, "f"'] \ar[dr, equal, "\id_X"]& & Y \ar[dr, equal, "\id_Y"]\ar[d,"g"']\\
 		Y \ar[r, "g"']& X & X \ar[r, "f"']& Y
 	\end{tikzcd}
 \]
-Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando l'inverso implicito (tale inverso, se esiste, è ovviamente unico, e ciò ci autorizza a usare il singolare nella definizione).
+sono commutativi. Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando l'inverso implicito (tale inverso, se esiste, è ovviamente unico, e ciò ci autorizza a usare il singolare nella definizione).
 \begin{examples}\label{esempi_di_iso}
 	Raccogliamo degli esempi di isomorfismi in varie categorie:
 	\begin{enumtag}{ei}
