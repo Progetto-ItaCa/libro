@@ -166,6 +166,7 @@ D'altra parte l'analisi funzionale studia quegli spazi \emph{vettoriali} (di dim
 
 La seconda di queste osservazioni non è meno importante: porterà alla definizione di funtore in \ref{def_funtore} come \emph{omomorfismo tra categorie}, alla definizione di \emph{diagramma} in \ref{def_diagramma_comm} come immagine di una categoria piccola in una categoria, non necessariamente piccola, e alla definizione di trasformazione naturale in \ref{sec_tnat}, vista come \emph{omomorfismo tra funtori}.
 \begin{esercizi}
+	\item \label{jgdasoh_4} Verificare gli assiomi di categoria per \(\ctFin\) e \(\ctVect\) come sono state presentate in \ref{protoex_finset}.
 	\item \label{jgdasoh_1} Definiamo un \emph{magma parziale} come una classe \(\ctM\) dotata di una operazione binaria parziale \(\cmp : \ctM\times\ctM\to\ctM\); scriviamo \(\checkmark(x\cmp y)\) quando \((x,y)\) appartengono al dominio di \(\circ\). Un elemento di un magma parziale è una \emph{unità} se \(x\cmp u = x\) quando \(\checkmark(x\cmp u)\), e \(u\cmp y = y\) quando \(\checkmark(u\cmp y)\). Una \emph{categoria senza oggetti} consiste di un magma parziale \((\ctM,\cmp)\) i cui elementi sono detti \emph{frecce}, tale che tutti i seguenti assiomi siano soddisfatti:
 	\begin{enumtag}{of}
 		\item per ogni \(f,g,h\in\ctM\) le condizioni seguenti sono equivalenti: (i) \(\checkmark(g\cmp f)\) e \(\checkmark(h\cmp g)\), (ii) \(\checkmark(h\cmp (g\cmp f))\), (iii) \(\checkmark((h\cmp g)\cmp f)\);
@@ -176,9 +177,12 @@ La seconda di queste osservazioni non è meno importante: porterà alla definizi
 		è un insieme.
 	\end{enumtag}
 	Mostrare che ogni categoria senza oggetti definisce una categoria nel senso di \ref{def_categ} e viceversa.
-	\item \label{jgdasoh_2} Descrivere in cosa consiste una struttura che soddisfa tutti gli assiomi di \ref{def_categ}, a parte il fatto che \(d,c : \ctC_1\to\ctC_0\) sono funzioni parziali: in una `categoria bucata', esistono frecce \(\xymatrix{{} \ar[r]^f & Y}\) di \(\ctC\) che non hanno dominio, e alcune \(\xymatrix{X \ar[r]^g & {}}\) che non hanno codominio (possono esistere anche frecce \(\xymatrix{{} \ar[r]^p & {}}\)? Quante?).
-	\item \label{jgdasoh_3} \Todo{categoria dove s,t sono relazioni?}
-	\item \label{jgdasoh_4} Verificare gli assiomi di categoria per \(\ctFin\) e \(\ctVect\) come sono state presentate in \ref{protoex_finset}.
+	\item \label{jgdasoh_2} Descrivere in cosa consiste una struttura che soddisfa tutti gli assiomi di \ref{def_categ}, a parte il fatto che \(d,c : \ctC_1\to\ctC_0\) sono funzioni parziali: in una `categoria bucata', esistono frecce \(\xymatrix{{} \ar[r]^f & Y}\) di \(\ctC\) che non hanno dominio, e alcune \(\xymatrix{X \ar[r]^g & {}}\) che non hanno codominio (possono esistere anche frecce \(\xymatrix{{} \ar[r]^p & {}}\)? Quante? Ci può essere più di una freccia \(\xymatrix{{} \ar[r]^f & {}}\) senza dominio né codominio?).
+	\item \label{jgdasoh_3} Costruire la categoria $\ctM$ con un solo oggetto $\{X\}$, dove i morfismi $\Hom\ctM(X,X)$ sono specificati ricorsivamente come 
+	\[t ::= z \mid c \mid f \, t \mid g \, t \]
+	dove $z,c$ sono dze costanti, cosicché i morfismi siano parole del tipo 
+	\[\ctM_1=\{z,c,fz,gz,fc,gc,ffz,gfz,fgz,\dots\}\]
+	La composizione $X \xto w X \xto v X$, dove $v,w\in\ctM_1$, è definita come la sostituzione di $w$ in tutte le occorrenze di $z$ nella parola $v$. Verificare gli assiomi di categoria per $\ctM$. In quanto categoria con un solo oggetto, esiste un isomorfismo di monoidi $\ctM(X,X) \cong (M,\ast,1_M)$ (nel senso di \ref{lem_end_monoide}): descrivere la struttura del monoide $M$ in termini di generatori e relazioni. (Suggerimento: a che elemento di $\ctM(X,X)$ corrisponde l'elemento neutro $1_M$ per l'operazione $*$ su $M$? Mostrare per induzione che un elemento di $\ctM(X,X)$ è della forma $pz$ o della forma $pc$ dove $p$ è una parola nell'alfabeto $\{f,g\}$; dedurre che è sufficiente esplicitare le composizioni $pu * p'c$, $pu * p'u$ e $pc * x$; quindi\dots)
 	\item \label{jgdasoh_5} Costruire esempi di strutture che soddisfano tutti gli assiomi di \ref{def_categ} meno uno: due classi \(\ctC_0,\ctC_1\), con funzioni di classe \(d,c,\id,\cmp\) ma la composizione non è sempre definita, non è sempre associativa, non sempre unitale.
 \end{esercizi}
 \section{Esempi di categorie nella pratica matematica}\label{sec_esempi_cats}
@@ -271,11 +275,15 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	\[\xymatrix@C=7ex{0 \ar@<.7ex>[r]^u \ar@(dl,ul)[] & 1 \ar@<.7ex>[l]^{u^{-1}} \ar@(ur,dr)[]}\]
 	I due endomorfismi su \(0\) ed \(1\) devono quindi essere le identità, ed entrambe le composizioni dei morfismi non identità \(u\) e \(u^{-1}\) sono forzate ad essere l'identità sull'oggetto corrispondente. \`E quindi la categoria con due oggetti ed un unico isomorfismo fra di essi.
 \end{example}
-\index{Categoria!--- doppia freccia generica}
-\begin{example}\label{ex_cat_doppiafreccia}
+\begin{example}[Doppia freccia generica]\label{ex_cat_doppiafreccia}\index{Categoria!--- doppia freccia generica}
 	La categoria \emph{doppia freccia generica} \(\{0\rightrightarrows 1\}\) ha due oggetti \(0,1\) ed esattamente due morfismi non identità e paralleli \(s,t : 0\to 1\). La composizione è definita, ancora una volta, nell'unico modo ovvio, chiedendo che \(x\cmp \id_0=x=\id_1\cmp x\) per \(x\in\{s,t\}\).
 
 	La doppia freccia è la `forma generica' di un grafo diretto (si veda \ref{ex_cat_libera}), dato che una coppia di funzioni \(s,t: E \rightrightarrows V\) tra due insiemi consta precisamente di un digrafo che ha \(V\) per insieme dei vertici e \(E\) per insieme dei lati.
+\end{example}
+\begin{example}[Turcasso generico]\label{ex_cat_turcasso}
+	Sia $S$ un insieme; la categoria $\turk$, detta \emph{turcasso generico} (con $S$ elementi)\footnote{Il nome \emph{turcasso} denota un particolare tipo di faretra in uso agli arcieri turchi, solitamente fissata alla cintura dei soldati anziché portata a tracolla.} ha due oggetti \(0,1\), e una freccia $s : 0\to 1$ per ogni $s\in S$. La composizione è possibile solo tra $s\in S$ e una identità, nel modo ovvio.
+
+	Chiaramente se $S=\varnothing$ si ottiene la categoria $\{0,1\}^\delta$, discreta su $\{0,1\}$; se $\#S=2$ si ottiene la doppia freccia generica di \ref{ex_cat_doppiafreccia}.
 \end{example}
 \index{Categoria!--- quadrato commutativo generico}
 \begin{example}\label{ex_quadcuboncubo}
@@ -810,6 +818,24 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 
 	Sebbene questa categoria somigli molto alla categoria delle matrici di \ref{ex_cat_matrici}, essa si comporta molto diversamente (per esempio: non è possibile sommare due matrici stocastiche per ottenerne una terza, né riscalare una matrice stocastica di un fattore \(\lambda\in\bbR\); però è possibile considerare \emph{combinazioni convesse} di matrici stocastiche, ossia la somma di matrici \(\alpha_1 A_1+\dots + \alpha_n A_n\) è una matrice stocastica quando lo sono tutte le \(\tup An,\) e \(\tup\alpha n+ = 1\)).
 \end{example}
+\begin{example}[Spazi di convessità]\index{Categoria!--- degli spazi di convessità}\index{Spazio convesso|see {Spazio di convessità}}\index{Spazio di convessità}\label{ex_cat_conv}
+	Uno \emph{spazio di convessità} consiste di una coppia $(X,p)$ dove $X$ è un insieme detto \emph{supporto} dello spazio, e per ogni $\lambda\in[0,1]$ viene data una funzione 
+	\[\dmFun{c_\lambda}{X\times X}{X.}\]
+	La famiglia delle $c_\lambda$ è soggetta agli assiomi seguenti: 
+	\begin{itemize}
+		\item per ogni $x,y\in X$, $c_0(x,y) = x$;
+\item per ogni $x\in[0,1],\lambda \in [0,1]$, $c_\lambda(x,x) = x$;
+\item per ogni $\lambda \in [0,1]$ e $x,y\in X$, $c_\lambda(x,y) = c_{1-\lambda}(y,x)$;
+\item per ogni $\lambda,\mu,\nu \in [0,1]$ tali che $\lambda(1 - \mu) = (1 - \lambda\mu)\nu$, $c_\lambda(x, c_\mu(y,z)) = c_{\lambda\mu}(c_\nu(x,y),z)$.
+	\end{itemize}
+	Gli omomorfismi $f : (X,p) \to (Y,q)$ tra spazi di convessità sono funzioni $f : X\to Y$ tra i supporti che rispettano le combinazioni convesse: per ogni $\lambda \in [0,1]$ si ha che $f(c_\lambda(x,y)) = c'_\lambda(fx, fy)$, o in altre parole (se $f\times f$ è la funzione ovvia $X\times X\to Y\times Y$ che manda $(x,y)\mapsto (fx,fy)$) il quadrato 
+	\[\xymatrix{
+		X \times X \ar[r]^-{c_\lambda}\ar[d]_{f\times f} & X \ar[d]^f\\
+		Y \times Y \ar[r]_-{c'_\lambda} & Y 
+	}\]
+	è commutativo.
+\end{example}
+Un esempio standard di struttura di convessità su un insieme è dato dagli spazi affini reali $\bbR^n$ (si veda \ref{ex_affini}): sui punti di uno spazio affine ha senso l'operazione di somma baricentrica, che definisce un unico punto $\lambda\cdot x + (1-\lambda)\cdot y$ lungo il  `segmento' convesso $[x,y]$.
 \index{Categoria!--- di `stream'}
 \begin{example}\label{example_streams}
 	La categoria \(\cate{Stream}\) ha
@@ -1223,9 +1249,7 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 \end{example}
 \begin{definition}[Incubi e succube sopra un oggetto]\label{def_cat_slice}\index{Categoria!--- incubo}\index{Categoria!--- succuba|see {incubo}}\index{Categoria!--- sopra un oggetto}\index{Categoria!--- sotto un oggetto|see {sopra un oggetto}}
 	Sia \(\ctC\) una categoria, e \(X\) un oggetto di \(\ctC\).
-	La \emph{categoria incubo} sopra \(X\), denotata \(\ctC/X\), o semplicemente \emph{categoria sopra} \(X\) è definita come segue:\footnote{Nel folklore medievale un \emph{incubo} è un demone maschile, che premendo sul petto dell'addormentato causa le paralisi notturne.
-
-		Una succuba, invece, è una entità demoniaca femminile, che appare nei sogni soggiogando il sognatore e lo obbliga a un rapporto sessuale.}
+	La \emph{categoria incubo} sopra \(X\), denotata \(\ctC/X\), o semplicemente \emph{categoria sopra} \(X\) è definita come segue:\footnote{Nel folklore medievale un \emph{incubo} è un demone maschile, che premendo sul petto dell'addormentato causa le paralisi notturne.	Una \emph{succuba}, invece, è una entità demoniaca femminile, che appare nei sogni soggiogando il sognatore e lo obbliga a un rapporto sessuale.}
 	\begin{itemize}
 		\item gli oggetti sono coppie \((A,p)\) dove \(A\) è un oggetto di \(\ctC\) e \(p : A\to X\) è un morfismo di \(\ctC\);
 		\item i morfismi \((A,p)\to(B,q)\) sono morfismi \(f:A\to B\) di \(\ctC\) tali che \(q\cmp f=p\), ovvero tali che il seguente diagramma commuta.
@@ -1471,10 +1495,10 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 	La sottocategoria \(\cate{Fib}/X\) dei fibrati sopra \(X\) è piena in \(\ctTop/X\). La sottocategoria dei \emph{rivestimenti} sopra \(X\), dove le fibre generiche sopra i punti \(x\in X\) sono spazi discreti, trova interessanti applicazioni in topologia algebrica.
 \end{example}
 \begin{example}[Spazi affini]\label{ex_affini}\index{Categoria!--- degli spazi affini}
-	Consideriamo la categoria \(\ctVect[k]\) degli spazi vettoriali su un campo \(k\); a partire dall'incubo \(\ctVect/k\) definiamo la categoria \(\ctA\) come segue:
+	Consideriamo la categoria \(\ctVect[k]\) degli spazi vettoriali su un campo \(k\); a partire dall'incubo \(\ctVect[k]/k\) definiamo la categoria \(\ctA\) come segue:
 	\begin{itemize}
 		\item gli oggetti sono mappe lineari \emph{suriettive} \(A : V\to k\);
-		\item i morfismi sono gli stessi di \(\ctVect/k\).
+		\item i morfismi sono gli stessi di \(\ctVect[k]/k\).
 	\end{itemize}
 	Ogni oggetto di \(\ctA\) determina uno spazio affine (non vuoto) modellato su \(k\) ottenuto considerando lo spazio vettoriale \(A_0 = \ker A\) la cui somma di vettori agisce in maniera transitiva sull'insieme di punti \(A_1 := A^{-1}(1_k)\) (\(0_k,1_k\) sono rispettivamente l'elemento neutro additivo e quello moltiplicativo del campo \(k\)).
 \end{example}
