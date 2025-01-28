@@ -2339,8 +2339,50 @@ La nozione di diagramma permette di formalizzare l'idea di diagramma commutativo
 \begin{lemma}\label{lem_funtori_preservano_comm}
 	\Todo{Funtori preservano i diagrammi commutativi} in particolare, preservano gli isomorfismi.
 \end{lemma}
+\begin{remark}[Sull'immagine di un funtore]\label{im_non_subcat}\index{Funtore!immagine di un ---}\index{Immagine}
+	L'immagine (stretta) di un funtore \(F : \ctC\fun\ctD\) può non essere una sottocategoria nel senso di \ref{}; un controesempio minimo è il seguente: il funtore $F$ definito da $Ff=v,Fg=u$ in
+% https://q.uiver.app/#q=WzAsNyxbMCwwLCJYIl0sWzEsMCwiWSJdLFsxLDEsIloiXSxbMiwxLCJXIl0sWzAsNSwiQSJdLFsxLDUsIkIiXSxbMiw1LCJDIl0sWzAsMSwiZiJdLFsyLDMsImciXSxbNCw1LCJ2Il0sWzUsNiwidSJdLFs0LDYsInVcXGNtcCB2IiwyLHsiY3VydmUiOjJ9XSxbMiw1LCJGIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjQwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dXQ==
+\[\begin{tikzcd}[row sep=tiny]
+	X & Y \\
+	& Z \ar[dddd, maps to, "F"]& W \\
+	\\
+	\\
+	\\
+	A & B & C
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["g", from=2-2, to=2-3]
+	% \arrow["F", shorten <=22pt, shorten >=30pt, maps to, from=2-2, to=6-2]
+	\arrow["v", from=6-1, to=6-2]
+	\arrow["{u\cmp v}"', curve={height=12pt}, from=6-1, to=6-3]
+	\arrow["u", from=6-2, to=6-3]
+\end{tikzcd}\]
+rende componibili morfismi di $\ctD$ che non hanno una composizione in $\ctC$, perché non appartengono al dominio della composizione. Questo mostra che per un funtore, essere iniettivo \emph{sui morfismi} senza esserlo sugli oggetti è una condizione insufficiente a renderlo una `immersione' (tale cioè che la sua immagine stretta sia una sottocategoria).
+\end{remark}
+Per questo si preferisce la nozione di \emph{immagine essenziale} di un funtore.
+\begin{definition}[Immagine essenziale di $F$]\label{def_fun_imess}\index{Immagine essenziale}
+	Sia $F : \ctC\fun\ctD$ un funtore; l'immagine essenziale di $F$ consiste della più piccola sottocategoria di $\ctD$ che contiene l'immagine di $F$ in quanto omomorfismo di multidigrafi. 
 
-\Todo{Un controesempio: l'immagine (stretta) di un funtore \(F : \ctC\fun\ctD\) può non essere una sottocategoria (la composizione può non stare nell'immagine).}
+	Più formalmente, diciamo che una sottocategoria $\ctA\subseteq\ctD$ è \emph{repleta}\footnote{Dal verbo latino \emph{repleo}; si veda Dante, Purg. XXV, 70--72:
+	\begin{verse}
+		[\dots\unkern] lo motor primo a lui si volge lieto \\
+  sovra tant’arte di natura, e spira \\
+  spirto novo, di vertù repleto 
+	\end{verse}} se per ogni $A\in\ctA_0$ e ogni isomorfismo $f : X\to A$, si ha che $X\in\ctA_0$, e $f \in \Hom\ctA(X,A)$. L'intersezione di sottocategorie replete è repleta, e l'\emph{immagine essenziale} $\essim F$ di $F : \ctC\to\ctD$ risulta da $\bigcap_{F(\ctC)\subseteq \ctA \text{ repleta}} \ctA$
+\end{definition}
+Spesso è utile studiare una categoria mediante la famiglia dei diagrammi $D : \ctJ \fun\ctC$ dove $\ctJ$ è una categoria con certe proprietà:
+\begin{itemize}
+	\item un diagramma \emph{discreto} ha per dominio una categoria discreta della forma $A^\delta$, come in \ref{};
+	\item un diagramma \emph{connesso} ha per dominio una categoria $\ctJ$ tale che $\pi_0^\ctCat(\ctJ)$ (si veda \ref{}) abbia un singolo elemento;
+	\item un diagramma \emph{diretto} ha per dominio un ordinale come in \ref{}, guardato come categoria;
+\end{itemize}
+Una classe importante in questo senso è fatta dai diagrammi filtrati, che hanno per dominio una categoria filtrata: 
+\begin{definition}[Categoria filtrata]\label{def_cat_filtrata}\index{Categoria!--- filtrata}
+	\Todo{}
+\end{definition}
+\begin{examples}
+	Esempi di categorie che sono filtrate: \Todo{}
+	Esempi di categorie che non sono filtrate: \Todo{}
+\end{examples}
 \begin{esercizi}
 	\item Se \(\ctC\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\ctC \fun \susp N\); farsi degli esempi scegliendo come \(\ctC\) una delle categorie di \ref{sec_esempi_cats}, e con \(N=(\bbN,+,0)\) il monoide dei numeri naturali.
 	\item Dualmente, se \(\ctD\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\susp M \fun \ctD\); farsi degli esempi scegliendo come \(\ctD\) una delle categorie di \ref{sec_esempi_cats}, e con \(M = (\bbN,+,0)\) il monoide dei numeri naturali.
