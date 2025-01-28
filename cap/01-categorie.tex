@@ -2824,9 +2824,22 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 \begin{example}[Co/puntature e co/moltiplicazioni]
 	\Todo{Raccogliamo alcuni esempi di funtori puntati e copuntati:
 		\begin{itemize}
-			\item valutazione
-			\item insieme potenza come in \ref{ex_fun_parti}
-			\item testa di liste non vuote
+			\item Nella categoria degli insiemi, per un $A\in\ctSet_0$ fissato, il funtore $FX := X^A\times A$ è copuntato dalla mappa di riduzione o \emph{valutazione}
+			\[\dmFun{\epsilon_X}{X^A\times A}X\]
+			che manda una coppia $\pair fa$ in $\epsilon(f,a) = f(a)$; il fatto che le funzioni $\epsilon_X$ formino una famiglia naturale in $X$ (ma non in $A$, si veda \ref{} per approfondire) si riduce al fatto che $(u\cmp f)(a) = u\big(f(a)\big)$ per ogni $u : X\to Y$ (oppure usando un formalismo diverso, nel fatto che coincidano le due assegnazioni 
+			% https://q.uiver.app/#q=WzAsNSxbMCwwLCIoe1xcbGFtYmRhIHQuZnR9XntBXFx0byBYfSxhKSJdLFsyLDAsIihcXGxhbWJkYSB0LmZ0KVthL3RdIl0sWzAsMiwie1xcbGFtYmRhIHQudWZ0fV57QVxcdG8gWX0iXSxbMiwyLCIoe1xcbGFtYmRhIHQudWZ0fV57QVxcdG8gWX0pW2EvdF0iXSxbMiwxLCJcXGxhbWJkYSBwLnVwW2YoYSkvcF0iXSxbMCwxXSxbMSw0XSxbMCwyXSxbMiwzXSxbNCwzLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}[ampersand replacement=\&]
+	{({\lambda t.ft}^{A\to X},a)} \&\& {(\lambda t.ft)[a/t]} \\
+	\&\& {\lambda p.up[f(a)/p]} \\
+	{{\lambda t.uft}^{A\to Y}} \&\& {({\lambda t.uft}^{A\to Y})[a/t]}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=3-1]
+	\arrow[from=1-3, to=2-3]
+	\arrow[equals, from=2-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+\end{tikzcd}\]
+			\item il funtore potenza covariante $\ctP : \ctSet\fun\ctSet$ di \ref{ex_fun_parti} è puntato dalla famiglia di mappe $\eta_X : X\to \ctP X$ date da $x\mapsto \{x\}$; la naturalità si traduce nel fatto (ovvio) che $\ctP_*(f)(\{x\}) = \{f(x)\}$ per ogni $f : X\to Y$. Similmente, assegnare a un insieme $X$ l'insieme delle liste in $X$, come in \ref{}, è un funtore puntato $(\_)^* : \ctSet\fun\ctSet$, dalla famiglia $\theta_X : X\to X^* : x\mapsto x\cons \emptyList = [x]$, e la naturalità di $\theta$ si traduce nel fatto (ovvio) che $f^*[x] = [f(x)]$ per ogni $f : X\to Y$;
+			\item mandare una lista \emph{non vuota} nella sua testa $h_X(x\cons xs) =x$ è una trasformazione naturale dal funtore $(\_)^+$ delle liste \emph{non vuote} all'identità.
 		\end{itemize}
 		In più, possiamo trovare
 		\begin{itemize}
@@ -3756,7 +3769,7 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 	Questo conclude la dimostrazione.
 \end{proof}
 \begin{definition}[Funtori iniziali e finali]\label{def_fun_initfin}\index{Funtore!--- iniziale}\index{Funtore!--- finale|see {Funtore iniziale}}
-	Un funtore \(F : \ctC\fun\ctD\) si dice \emph{iniziale} se per ogni oggetto \(D\in\ctD\) la categoria comma \((D/F)\) i cui oggetti sono coppie \((X,f : D\to FX)\) è non vuota e connessa (nel senso che \(\pi_0(U(D/F))\) ha un unico elemento).
+	Un funtore \(F : \ctC\fun\ctD\) si dice \emph{iniziale} se per ogni oggetto \(D\in\ctD\) la categoria comma \((D/F)\) i cui oggetti sono coppie \((X,f : D\to FX)\) è non vuota e connessa (nel senso che \(\pi_0^\ctCat(D/F)\), si veda \ref{exe_cpt_conn}, \ref{ex_fun_cpt_conn}, ha un unico elemento).
 
 	In altre parole, \(F : \ctC\fun\ctD\) si dice iniziale se le due condizioni seguenti sono soddisfatte:
 	\begin{itemize}
@@ -3781,6 +3794,21 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 	\end{itemize}
 	Diciamo che \(F : \ctC\fun\ctD\) è \emph{finale} se il funtore opposto \(F^\op : \ctC^\op\fun\ctD^\op\) (come in \ref{es_di_funtori}) è iniziale.
 \end{definition}
+\begin{remark}[Condizione di Ore]\label{condizione_ore}\index{Funtore!condizione di Ore per un ---}\index{Funtore!--- iniziale}
+	Una condizione più forte dell'inizialità, molto comune e più facile da verificare, è la \emph{condizione di Ore}: \(F : \ctC\fun\ctD\) soddisfa la condizione di Ore se 
+	\begin{itemize}
+		\item per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom\ctD(D,FX)\) è non vuoto;
+		\item per ogni $D$ e ogni $u : D\to FX$, $v : D\to FY$ esiste un modo di `completare il quadrato'
+		\[\xymatrix{
+			D\ar[r]^u\ar[d]_v & FX \ar@{.>}[d]^{Ff}\\ 
+			FY \ar@{.>}[r]_{Fg} & FZ
+		}\] 
+		con due frecce $X \xto fZ \xot g Y$ di $\ctC$.
+	\end{itemize}
+\end{remark}
+\begin{hTheorem}{skip}
+	Per ogni categoria $\ctD$ (piccola e) filtrata nel senso di \ref{}, esiste un funtore iniziale $K : P_\ctD\fun\ctD$, di dominio un insieme parzialmente ordinato.
+\end{hTheorem}
 \begin{definition}[Preservare e riflettere]\label{def_preserva_riflette}\index{Funtore!--- preserva proprietà}\index{Funtore!--- riflette proprietà|see {preserva proprietà}}
 	Sia \(\mathcal{P}\) una proprietà di un oggetto \(X\) o morfismo \(f : X\to Y\) di una categoria \(\ctC\); si dice che un funtore \(F : \ctC \fun\ctD\)
 	\begin{itemize}
