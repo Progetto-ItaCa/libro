@@ -281,12 +281,12 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	La doppia freccia è la `forma generica' di un grafo diretto (si veda \ref{ex_cat_libera}), dato che una coppia di funzioni \(s,t: E \rightrightarrows V\) tra due insiemi consta precisamente di un digrafo che ha \(V\) per insieme dei vertici e \(E\) per insieme dei lati.
 \end{example}
 \begin{example}[Turcasso generico]\label{ex_cat_turcasso}
-	Sia \(S\) un insieme; la categoria \(\turk\), detta \emph{turcasso generico} (con \(S\) elementi)\footnote{Il nome \emph{turcasso} denota un particolare tipo di faretra in uso agli arcieri turchi, solitamente fissata alla cintura dei soldati anziché portata a tracolla. Si veda \cite{}, 
-	\begin{verse}
-		Dietro alle spalle un arco avea legato,\\
-  Ed un turcasso di saette pieno,\\
-  Che era d’oro tutto lavorato [\dots\unkern]
-	\end{verse}} ha due oggetti \(0,1\), e una freccia \(s : 0\to 1\) per ogni \(s\in S\). La composizione è possibile solo tra \(s\in S\) e una identità, nel modo ovvio.
+	Sia \(S\) un insieme; la categoria \(\turk\), detta \emph{turcasso generico} (con \(S\) elementi)\footnote{Il nome \emph{turcasso} denota un particolare tipo di faretra in uso agli arcieri turchi, solitamente fissata alla cintura dei soldati anziché portata a tracolla. Si veda \cite{},
+		\begin{verse}
+			Dietro alle spalle un arco avea legato,\\
+			Ed un turcasso di saette pieno,\\
+			Che era d’oro tutto lavorato [\dots\unkern]
+		\end{verse}} ha due oggetti \(0,1\), e una freccia \(s : 0\to 1\) per ogni \(s\in S\). La composizione è possibile solo tra \(s\in S\) e una identità, nel modo ovvio.
 
 	Chiaramente se \(S=\varnothing\) si ottiene la categoria \(\{0,1\}^\delta\), discreta su \(\{0,1\}\); se \(\#S=2\) si ottiene la doppia freccia generica di \ref{ex_cat_doppiafreccia}.
 \end{example}
@@ -405,18 +405,18 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	Si noti che \(\Lambda^2_0=\{1,2\}^\lhd\) e \(\Lambda^2_2=\{0,1\}^\rhd\).
 \end{example}
 \index{Categoria!--- libera}
-Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di un insieme di vertici (o `oggetti') \(V\) e di un insieme di lati (o `morfismi') \(E\) generi una categoria \(F\ctG\). \`E effettivamente così, e la seguente costruzione in forma di esempio formalizza questa idea.
+Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di un insieme di vertici (o `oggetti') \(V\) e di un insieme di lati (o `morfismi') \(E\) generi una categoria \(\bfF\ctG\). \`E effettivamente così, e la seguente costruzione in forma di esempio formalizza questa idea.
 \index{Grafo}
 \begin{example}\label{ex_cat_libera}
-	Un \emph{multidigrafo} consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\rightrightarrows V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}, si veda \ref{ex_cat_grafi}. Dato un multidigrafo \(\ctG\) (spesso chiamato semplicemente \emph{grafo diretto}) possiamo definire la \emph{categoria libera} \(F\ctG\) su \(\ctG\) come segue:
+	Un \emph{multidigrafo} consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\rightrightarrows V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}, si veda \ref{ex_cat_grafi}. Dato un multidigrafo \(\ctG\) (spesso chiamato semplicemente \emph{grafo diretto}) possiamo definire la \emph{categoria libera} \(\bfF\ctG\) su \(\ctG\) come segue:
 	\begin{itemize}
-		\item gli oggetti di \(F\ctG\) sono esattamente gli elementi di \(V\);
+		\item gli oggetti di \(\bfF\ctG\) sono esattamente gli elementi di \(V\);
 		\item dati \(u,v\in V\), i morfismi da \(u\) a \(v\) sono i cammini nel grafo diretto che partono da \(u\) e arrivano in \(v\):
 		      \[\xymatrix{u \ar[r]^{e_1}& x_1 \ar[r]^{e_2}& x_2\ar[r]^{e_3}& \dots\ar[r]^{e_{n-1}}& x_{n-1}\ar[r]^{e_n}& v}.\]
 		      Più precisamente, per ogni \(n>0\), sia \(C_n\) l'insieme dei cammini di lunghezza \(n>0\)
 		      \[C_n=\{(e_1,\ldots,e_n)\in E^n \mid t(e_k)=s(e_{k+1}), k=1,\ldots,n-1\}\]
 		      e sia \(C_0=\{\emptyList_u \mid u\in V\}\) l'insieme dei cammini di lunghezza zero.
-		      L'insieme dei morfismi di \(F\ctG\) è
+		      L'insieme dei morfismi di \(\bfF\ctG\) è
 		      \[\sum_{n\ge0}C_n\]
 		      Il dominio e codominio di una sequenza \((e_1,\ldots,e_n)\) di lunghezza \(n>0\) sono rispettivamente \(s(e_1)\) e \(t(e_n)\).
 		      Il dominio e codominio di un cammino \(\emptyList_u\) di lunghezza zero sono entrambi il vertice \(u\) stesso.
@@ -447,7 +447,7 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 					}
 			\end{tikzpicture}
 		\end{center}
-		\caption{Composizione di due morfismi \((e_1,e_2,e_3,e_4)\) e \((f_1,f_2,f_3)\) in \(F\ctG\).}
+		\caption{Composizione di due morfismi \((e_1,e_2,e_3,e_4)\) e \((f_1,f_2,f_3)\) in \(\bfF\ctG\).}
 		\label{fig:enter-label}
 	\end{figure}
 \end{example}
@@ -778,7 +778,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 \begin{example}[Categoria dei sistemi dinamici discreti]\label{ex_cat_dyn}\index{Categoria!--- dei sistemi dinamici}\index{Sistema dinamico discreto}\index{Dyn@\(\ctDyn\)}
 	La categoria \(\ctDyn\) dei \emph{sistemi dinamici discreti} ha
 	\begin{itemize}
-		\item per oggetti le coppie \(((X,x_0),f)\) dove \((X,x_0)\) è un insieme puntato nel senso di \ref{}, ed \(f : X\to X\) è una endofunzione di \(X\);
+		\item per oggetti le coppie \(((X,x_0),f)\) dove \((X,x_0)\) è un insieme puntato nel senso di \ref{ex_cat_puntati}, ed \(f : X\to X\) è una endofunzione di \(X\);
 		\item  i morfismi tra \(((X,x_0),f)\) e \(((Y,y_0),g)\) consistono delle funzioni \(u : X \to Y\) tali che \(u(x_0)=y_0\) e \(u\circ f = g\circ u\), cioè entrambi i diagrammi di funzioni
 		      \[\xymatrix{
 				      1\ar[r]^{x_0}\ar[dr]_{y_0} & X\ar[r]^f\ar[d]_u & X \ar[d]_u\\
@@ -919,7 +919,7 @@ Consideriamo ora i seguenti esempi di categorie simili (che raccogliamo in dei t
 
 	Più in generale, un \emph{preordine} è una relazione riflessiva e transitiva, ma non necessariamente simmetrica o antisimmetrica. Ogni preordine si può vedere come una categoria alla stessa maniera di prima.
 \end{examples}
-\begin{remark}
+\begin{remark}\label{ord_sonocat_maenriched}
 	Due osservazioni sono a questo punto importanti:
 	\begin{itemize}
 		\item è facile fraintendere la definizione appena data, o perlomeno esserne confusi, perché la definizione di categoria data in \ref{def_categ} chiede che esista un \emph{insieme} di morfismi \(x\to y\) tra due oggetti \(x,y\) di \(\ctP(X,\le)\). Qual è quindi l'insieme di morfismi tra \(x\) e \(y\), in un insieme ordinato \((X,\le)\)? Una risposta possibile è che, in questo caso, tra due morfismi esiste una \emph{proposizione}, precisamente quella che asserisce se \(x\le y\) o meno. Una proposizione si può allora pensare come l'insieme i cui elementi sono tutte le dimostrazioni che quella proposizione è vera. Una maniera più intuitiva di pensare alla situazione è però questa: diciamo che \(\ctP(X,\le)\) è un insieme con un singolo elemento (lo chiamiamo \([x\le y]\)) se e solo se \(x\le y\) `è vera', ed è l'insieme vuoto altrimenti. In questo modo, dobbiamo definire una regola di composizione tra l'elemento \([x\le y]\) e l'elemento \([y\le z]\): questo non può che essere l'elemento \([x\le z]\), e a questo punto lasciamo i dettagli (tediosi: `fatelo, è più facile farlo che spiegare come farlo', \cite{zee2010quantum}) da scrivere a chi legge.
@@ -1898,7 +1898,7 @@ Più in generale, in virtù del fatto che ogni identità \(\id_X\) è un isomorf
 
 Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con identità e composizione).
 \begin{example}[Monoidi e gruppi liberi; gruppoidi liberi]\label{mongruppi_liberi}\index{Monoide!--- libero}\index{Monoide}\index{Categoria!--- libera}
-	In \ref{ex_cat_libera} abbiamo introdotto le categorie libere su un grafo. Quando il grafo \(\ctG=(\bullet,E)\) è composto di un unico vertice e ha \(E\) come insieme dei lati, la categoria libera \(F\ctG\) ha anch'essa un unico vertice, e in virtù di \ref{mon_sonocat} l'insieme \(E^* := F\ctG(\bullet,\bullet)\) è un monoide rispetto alla congiunzione di lacci. L'insieme \(E^*\) è il \emph{monoide libero} sull'insieme \(E\), detto solitamente `alfabeto', dato che il generico elemento di \(E^*\) è della forma
+	In \ref{ex_cat_libera} abbiamo introdotto le categorie libere su un grafo. Quando il grafo \(\ctG=(\bullet,E)\) è composto di un unico vertice e ha \(E\) come insieme dei lati, la categoria libera \(\bfF\ctG\) ha anch'essa un unico vertice, e in virtù di \ref{mon_sonocat} l'insieme \(E^* := \bfF\ctG(\bullet,\bullet)\) è un monoide rispetto alla congiunzione di lacci. L'insieme \(E^*\) è il \emph{monoide libero} sull'insieme \(E\), detto solitamente `alfabeto', dato che il generico elemento di \(E^*\) è della forma
 	\[[\tup en;]\qquad n\ge 0, \tup en,\in E\]
 	o più brevemente \([\tup en{}]\), una `parola' scritta con le `lettere' \(\tup en,\). La composizione è la giustapposizione di parole \([\tup en{}]\cmp[\tup {e'}n{}] = [\tup en{}\tup{e'}n{}]\), per cui l'identità è la parola vuota \(\emptyList\) (quando \(n=0\)).
 
@@ -2196,6 +2196,9 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	\end{tikzcd}
 \]
 è commutativo.
+\begin{notation}
+Similmente, possiamo definire un \emph{trifuntore} $\ctA_1\times\ctA_2\times\ctA_3\fun\ctB$, un funtore $n$-ario $\ctA_1\times\dots\times\ctA_n\fun\ctB$ e in generale, per ogni insieme $I$ di indici, un funtore di arietà $I$ come $\prod_{i\in I}\ctA_i\fun\ctB$ (la definizione di prodotto in \ref{def_cat_prodotto} si generalizza nel modo ovvio, in una maniera che sarà il \autoref{chap_limiti_colimiti} a precisare).
+\end{notation}
 \begin{hExample}[Funtore hom co- e controvariante, bifuntore hom]{fund}\label{ex_hom_funtore}\index{Funtore!hom --- covariante}\index{Funtore!hom --- controvariante}
 	Sia \(\ctC\) una categoria, e \(C\) un suo oggetto. Definiamo un funtore
 	\[\dmFun{\Hom{\ctC}(-,C)}{\ctC^\op}{\ctSet}\]
@@ -2228,20 +2231,38 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \end{hExample}
 \begin{examples}[Alcuni esempi di bifuntori]
 	\Todo{}
-	Raccogliamo alcuni esempi di funtori di due o più variabili, nelle categorie introdotte in \ref{}.
+	Raccogliamo alcuni esempi di funtori di due o più variabili, tra le categorie introdotte finora.
 	\begin{itemize}
-		\item il bifuntore hom di \ref{}, che esiste per ogni categoria $\ctC$;
-		\item 
+		\item il bifuntore hom di \ref{ex_hom_funtore}, che esiste per ogni categoria \(\ctC\);
 		\item Esiste un bifuntore \(\_\times\_ : \ctSet\times\ctSet \fun\ctSet\) che manda un oggetto \((X,Y)\) del prodotto di categorie \(\ctSet\times\ctSet\) nell'insieme \(X\times Y\) e i morfismi \((f :A \to X, g : B\to Y)\) nel morfismo \(f\times g : A\times B \to X\times Y : (a,b)\mapsto (f(a),g(b))\).
 		\item Esiste un bifuntore \(\_\oplus\_ : \ctVect\times\ctVect \fun\ctVect\) che, similmente a prima, manda due spazi vettoriali \(V,W\) nella loro \emph{somma diretta}, e due mappe lineari \(f : V\to V',g : W\to W'\) nella mappa lineare \(\left(\begin{smat} f & 0 \\ 0 & g \end{smat}\right) : V\oplus W \to V'\oplus W'\). Questo e il precedente esempio sono casi particolari del \emph{prodotto} di due oggetti rispettivamente nelle categorie \(\ctSet,\ctVect\).
-		\end{itemize}
-	\end{examples}
-%  Diciamo \emph{matrice di insiemi} di taglia $A\times B$ una famiglia $M(a,b)$ di
+		\item \ref{ex_cat_matrici} (le matrici a coefficienti in un campo) fornisce un esempio di categoria dove i morfismi sono bifuntori: una matrice \(m\times n\) a coefficienti in \(k\) infatti si può vedere come una funzione \(\bkt m\times \bkt n \to \bbF\), e considerare \(\bkt m = \{1,\dots,n\}\) come una categoria discreta (\ref{ex_cat_discreta}) motiva la definizione seguente.
+	\end{itemize}
+\end{examples}
+\begin{definition}[Categoria delle matrici di insiemi]
+	Definiamo la categoria \(\ctM(\ctSet)\) che ha
+	\begin{itemize}
+		\item per oggetti gli insiemi \(A,B,C,\dots\);
+		\item per morfismi \(A\to B\) i funtori
+		      \[\dmFun M{\ctSet/A}{\ctSet/B}\]
+		      che mandano un oggetto \(\var EA\) in un oggetto \(\var{M_0A}B\).
+	\end{itemize}
+	La composizione è la composizione di funtori:
+	\[\xymatrix{
+			\ctSet/A \ar[r]^M & \ctSet/B \ar[r]^N & \ctSet/C
+		}\]
+	è la composizione \(N\cmp M\).
+\end{definition}
+La definizione appena data merita alcune spiegazioni: si può considerare una freccia \(M\in\Hom{\ctM(\ctSet)}(A,B)\) come una `matrice di insiemi' \((\tilde M(a,b)\mid (a,b)\in A\times B)\), dove \(\tilde M(a,b)\) è definito a partire dai morfismi \(\var[\lceil a \rceil]{*}{A}\) che `scelgono' \(a\in A\),
+\[\tilde M(a,b) := \{x\in M_0a\mid (M\lceil a \rceil)(x)=b\}\]
+(\(M\lceil a \rceil\) è, per definizione, un oggetto \(\var{M_0a}{B}\) dell'incubo sopra \(B\)).
+Ora, dare una famiglia di insiemi \(\tilde M(a,b)\) al variare di \(A\times B\) è equivalente a dare un funtore \(\tilde M : A\times B \fun\ctSet\) dal prodotto di due categorie discrete; a sua volta questo è equivalente a dare un funtore \(M : \ctSet/A \fun\ctSet/B\) come sopra, il quale soddisfa una certa proprietà (è un `aggiunto sinistro', si veda il \autoref{cap_aggiunti}) che lo rende univocamente determinato dagli \(\tilde M(a,b)\).
+%  Diciamo \emph{matrice di insiemi} di taglia \(A\times B\) una famiglia \(M(a,b)\) di
 % \begin{example}[Matrici di insiemi]\label{ex_cat_matrici_insiemi}
-	
+
 % \end{example}
 % \begin{remark}
-% 	Nell'esempio precedente possiamo pensare a $M(a,b) \in \bbN$ come a una cardinalità, e rifrasare la definizione come segue: un \emph{bimodulo} consiste di una funzione
+% 	Nell'esempio precedente possiamo pensare a \(M(a,b) \in \bbN\) come a una cardinalità, e rifrasare la definizione come segue: un \emph{bimodulo} consiste di una funzione
 % \end{remark}
 \begin{remark}
 	\Todo{La dicotomia tra covarianza e controvarianza viene dalla fisica che, purtroppo, definisce i due concetti in maniera opposta alla convenzione in teoria delle categorie.}
@@ -2341,48 +2362,76 @@ In \ref{es_fun_repre} abbiamo visto che una \emph{rappresentazione} di un monoid
 \end{remark}
 La nozione di diagramma permette di formalizzare l'idea di diagramma commutativo (in tutte le sue parti) come un insieme di condizioni di commutatività. L'idea informale è ovviamente sufficiente a operare e ragionale proficuamente con i diagrammi: questa osservazione è pensata per chi desidera una spiegazione più tecnica.
 \begin{hRemark}[Che cos'è esattamente un diagramma commutativo?]{tech}\label{cos_diag_comm}
-	\Todo{...}
+	L'idea intuitiva di diagramma commutativo è semplice da afferrare graficamente, e difficile da formalizzare:
+	\begin{itemize}
+		\item guardando una categoria come un multidigrafo (\ref{ex_cat_grafi}) su cui è definita una legge di composizione associativa e unitale, un diagramma commutativo in \(\ctC\) consiste di una uguaglianza tra due cammini di frecce componibili di \(\ctC\);
+		\item in termini della formulazione `senza oggetti' degli assiomi di categoria (\ref{jgdasoh_1}), un diagramma commutativo in \(\ctC\) consiste di una equazione valida nel magma parziale definito dalla categoria stessa.
+	\end{itemize}
+	Il secondo punto di vista è però un po' oscuro, e il primo è complicato da formalizzare appieno (scopo che questa osservazione si prefigge).
+
+	Diciamo che un \emph{diagramma libero} in \(\ctC\) è un funtore \(\Phi : \bfF\ctJ \fun\ctC\) (si veda \ref{ex_cat_libera}); un diagramma libero è \emph{commutativo} se \(\Phi\) ammette una fattorizzazione \([\Phi_0,q]\)
+	\[\xymatrix{
+		\bfF\ctJ \ar[r]^-q & P \ar[r]^-{\Phi_0} & \ctC
+		}\]
+	dove \(q : \bfF\ctJ \fun P\) è un funtore verso un insieme preordinato.
+
+	Questa definizione è pensata per formalizzare l'idea che un diagramma sia un certo grafo con composizione, e che il diagramma sia `commutativo' se, comunque sia data una coppia di vertici \(X,Y\) in \(\bfF\ctJ\), e due cammini
+	\[\xymatrix@R=0cm{
+		\vec a : X \ar[r]^-{a_0} & A_1 \ar[r]^-{a_1} & A_2 \ar[r]^-{a_2}  & \dots \ar[r]^-{a_3} & A_n \ar[r]^-{a_n} & Y\\
+		\vec b : X \ar[r]_-{b_0} & B_1 \ar[r]_-{b_1} & B_2 \ar[r]_-{b_2} & \dots \ar[r]_-{b_3} & B_m \ar[r]_-{b_m} & Y
+		}\]
+	di dominio \(X\) e codominio \(Y\) in \(\bfF\ctJ\), applicare \(\Phi\) e comporre il risultato in \(\ctC\) dia lo stesso risultato su \(\vec a\) e su \(\vec b\). Con lieve abuso della notazione, ma in una formulazione facile da ricordare,
+	\begin{quote}
+		un diagramma commutativo è un funtore \(\Phi : \ctJ \fun\ctD\) tale che per ogni coppia di morfismi paralleli \(\vec a,\vec b\) del suo dominio, \(\Phi a = \Phi b\) in \(\ctC\).
+	\end{quote}
+
+	In un insieme preordinato, guardato come categoria al modo di \ref{ord_sonocat}, non esistono due frecce distinte aventi lo stesso dominio e codominio, quindi \emph{tutti} i diagrammi sono commutativi; questa proprietà dei preordini è recuperata per costruzione dalla definizione appena data.
 \end{hRemark}
 \begin{lemma}\label{lem_funtori_preservano_comm}
-	\Todo{Funtori preservano i diagrammi commutativi} in particolare, preservano gli isomorfismi.
+	Con una definizione precisa di diagramma commutativo, si può mostrare formalmente la seguente desiderabile ovvietà: ogni funtore \(F : \ctC \to\ctD\) manda diagrammi commutativi di \(\ctC\) in diagrammi commutativi di \(\ctD\) (della stessa forma, a patto di considerare `degeneri' i lati \(\vec a\) del diagramma \(F(\Phi)\) tali che \(F(\vec a) = a_n\cmp a_{n-1}\cmp\dots\cmp a_0\) sia l'identità di \(\ctD\)); infatti, la fattorizzazione \([\Phi_0,q]\) in
+	\[\xymatrix{
+		\bfF\ctJ\ar[rr]^\Phi\ar[dr]_q && \ctC \ar[r]^-F & \ctD \\
+		& P\ar[ur]_-{\Phi_0}
+		}\]
+	induce, per composizione, la fattorizzazione \([F\Phi_0,q]\).
 \end{lemma}
 \begin{remark}[Sull'immagine di un funtore]\label{im_non_subcat}\index{Funtore!immagine di un ---}\index{Immagine}
-	L'immagine (stretta) di un funtore \(F : \ctC\fun\ctD\) può non essere una sottocategoria nel senso di \ref{}; un controesempio minimo è il seguente: il funtore $F$ definito da $Ff=v,Fg=u$ in
-% https://q.uiver.app/#q=WzAsNyxbMCwwLCJYIl0sWzEsMCwiWSJdLFsxLDEsIloiXSxbMiwxLCJXIl0sWzAsNSwiQSJdLFsxLDUsIkIiXSxbMiw1LCJDIl0sWzAsMSwiZiJdLFsyLDMsImciXSxbNCw1LCJ2Il0sWzUsNiwidSJdLFs0LDYsInVcXGNtcCB2IiwyLHsiY3VydmUiOjJ9XSxbMiw1LCJGIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjQwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dXQ==
-\[\begin{tikzcd}[row sep=tiny]
-	X & Y \\
-	& Z \ar[dddd, maps to, "F"]& W \\
-	\\
-	\\
-	\\
-	A & B & C
-	\arrow["f", from=1-1, to=1-2]
-	\arrow["g", from=2-2, to=2-3]
-	% \arrow["F", shorten <=22pt, shorten >=30pt, maps to, from=2-2, to=6-2]
-	\arrow["v", from=6-1, to=6-2]
-	\arrow["{u\cmp v}"', curve={height=12pt}, from=6-1, to=6-3]
-	\arrow["u", from=6-2, to=6-3]
-\end{tikzcd}\]
-rende componibili morfismi di $\ctD$ che non hanno una composizione in $\ctC$, perché non appartengono al dominio della composizione. Questo mostra che per un funtore, essere iniettivo \emph{sui morfismi} senza esserlo sugli oggetti è una condizione insufficiente a renderlo una `immersione' (tale cioè che la sua immagine stretta sia una sottocategoria).
+	L'immagine (stretta) di un funtore \(F : \ctC\fun\ctD\) può non essere una sottocategoria nel senso di \ref{def_subcat}; un controesempio minimo è il seguente: il funtore \(F\) definito da \(Ff=v,Fg=u\) in
+	% https://q.uiver.app/#q=WzAsNyxbMCwwLCJYIl0sWzEsMCwiWSJdLFsxLDEsIloiXSxbMiwxLCJXIl0sWzAsNSwiQSJdLFsxLDUsIkIiXSxbMiw1LCJDIl0sWzAsMSwiZiJdLFsyLDMsImciXSxbNCw1LCJ2Il0sWzUsNiwidSJdLFs0LDYsInVcXGNtcCB2IiwyLHsiY3VydmUiOjJ9XSxbMiw1LCJGIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjQwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dXQ==
+	\[\begin{tikzcd}[row sep=tiny]
+			X & Y \\
+			& Z \ar[dddd, maps to, "F"]& W \\
+			\\
+			\\
+			\\
+			A & B & C
+			\arrow["f", from=1-1, to=1-2]
+			\arrow["g", from=2-2, to=2-3]
+			% \arrow["F", shorten <=22pt, shorten >=30pt, maps to, from=2-2, to=6-2]
+			\arrow["v", from=6-1, to=6-2]
+			\arrow["{u\cmp v}"', curve={height=12pt}, from=6-1, to=6-3]
+			\arrow["u", from=6-2, to=6-3]
+		\end{tikzcd}\]
+	rende componibili morfismi di \(\ctD\) che non hanno una composizione in \(\ctC\), perché non appartengono al dominio della composizione. Questo mostra che per un funtore, essere iniettivo \emph{sui morfismi} senza esserlo sugli oggetti è una condizione insufficiente a renderlo una `immersione' (tale cioè che la sua immagine stretta sia una sottocategoria).
 \end{remark}
 Per questo si preferisce la nozione di \emph{immagine essenziale} di un funtore.
-\begin{definition}[Immagine essenziale di $F$]\label{def_fun_imess}\index{Immagine essenziale}
-	Sia $F : \ctC\fun\ctD$ un funtore; l'immagine essenziale di $F$ consiste della più piccola sottocategoria di $\ctD$ che contiene l'immagine di $F$ in quanto omomorfismo di multidigrafi. 
+\begin{definition}[Immagine essenziale di \(F\)]\label{def_fun_imess}\index{Immagine essenziale}
+	Sia \(F : \ctC\fun\ctD\) un funtore; l'immagine essenziale di \(F\) consiste della più piccola sottocategoria di \(\ctD\) che contiene l'immagine di \(F\) in quanto omomorfismo di multidigrafi.
 
-	Più formalmente, diciamo che una sottocategoria $\ctA\subseteq\ctD$ è \emph{repleta}\footnote{Dal verbo latino \emph{repleo}; si veda Dante, Purg. XXV, 70--72:
-	\begin{verse}
-		[\dots\unkern] lo motor primo a lui si volge lieto \\
-  sovra tant’arte di natura, e spira \\
-  spirto novo, di vertù repleto 
-	\end{verse}} se per ogni $A\in\ctA_0$ e ogni isomorfismo $f : X\to A$, si ha che $X\in\ctA_0$, e $f \in \Hom\ctA(X,A)$. L'intersezione di sottocategorie replete è repleta, e l'\emph{immagine essenziale} $\essim F$ di $F : \ctC\to\ctD$ risulta da $\bigcap_{F(\ctC)\subseteq \ctA \text{ repleta}} \ctA$
+	Più formalmente, diciamo che una sottocategoria \(\ctA\subseteq\ctD\) è \emph{repleta}\footnote{Dal verbo latino \emph{repleo}; si veda Dante, Purg. XXV, 70--72:
+		\begin{verse}
+			[\dots\unkern] lo motor primo a lui si volge lieto \\
+			sovra tant’arte di natura, e spira \\
+			spirto novo, di vertù repleto
+		\end{verse}} se per ogni \(A\in\ctA_0\) e ogni isomorfismo \(f : X\to A\), si ha che \(X\in\ctA_0\), e \(f \in \Hom\ctA(X,A)\). L'intersezione di sottocategorie replete è repleta, e l'\emph{immagine essenziale} \(\essim F\) di \(F : \ctC\to\ctD\) risulta da \(\bigcap_{F(\ctC)\subseteq \ctA \text{ repleta}} \ctA\)
 \end{definition}
-Spesso è utile studiare una categoria mediante la famiglia dei diagrammi $D : \ctJ \fun\ctC$ dove $\ctJ$ è una categoria con certe proprietà:
+Spesso è utile studiare una categoria mediante la famiglia dei diagrammi \(D : \ctJ \fun\ctC\) dove \(\ctJ\) è una categoria con certe proprietà:
 \begin{itemize}
-	\item un diagramma \emph{discreto} ha per dominio una categoria discreta della forma $A^\delta$, come in \ref{};
-	\item un diagramma \emph{connesso} ha per dominio una categoria $\ctJ$ tale che $\pi_0^\ctCat(\ctJ)$ (si veda \ref{}) abbia un singolo elemento;
-	\item un diagramma \emph{diretto} ha per dominio un ordinale come in \ref{}, guardato come categoria;
+	\item un diagramma \emph{discreto} ha per dominio una categoria discreta della forma \(A^\delta\), come in \ref{ex_cat_discreta};
+	\item un diagramma \emph{connesso} ha per dominio una categoria \(\ctJ\) tale che \(\pi_0^\ctCat(\ctJ)\) (si veda \ref{exe_cpt_conn}) abbia un singolo elemento;
+	\item un diagramma \emph{diretto} ha per dominio un ordinale come in \ref{es_catena_trans}, guardato come categoria;
 \end{itemize}
-Una classe importante in questo senso è fatta dai diagrammi filtrati, che hanno per dominio una categoria filtrata: 
+Una classe importante in questo senso è fatta dai diagrammi filtrati, che hanno per dominio una categoria filtrata:
 \begin{definition}[Categoria filtrata]\label{def_cat_filtrata}\index{Categoria!--- filtrata}
 	\Todo{}
 \end{definition}
@@ -2440,7 +2489,7 @@ Una classe importante in questo senso è fatta dai diagrammi filtrati, che hanno
 	tra le categorie di \ref{ex_cat_monoidi} e di \ref{ex_cat_cat}; abbiamo in effetti già dimostrato in \ref{exa_funtori_da_gruppi} che i funtori tra categorie della forma \(\susp M\) sono tutti e soli gli omomorfismi di monoidi (e la composizione di omomorfismi \(M\to N\to R\) e di funtori \(\susp M \fun\susp N \fun\susp R\) coincidono), quindi la sottocategoria di \(\ctCat\) identificata come l'immagine di \(\susp\) è piena, e si identifica alla categoria dei monoidi. (Questa ultima osservazione sarà chiara quando avremo introdotto la nozione di \emph{funtore pienamente fedele} in \ref{fun_pienfed}.)
 \end{example}
 \begin{remark}[Ordini come categorie]\label{ord_come_cat}
-	In maniera analoga la corrispondenza che assegna a un insieme ordinato \((P,\le)\) la categoria definita in \ref{} è la parte sugli oggetti di un funtore
+	In maniera analoga la corrispondenza che assegna a un insieme ordinato \((P,\le)\) la categoria definita in \ref{ord_sonocat} è la parte sugli oggetti di un funtore
 	\[\dmFun{t}{\ctPos}{\ctCat.}\]
 	Grazie a \ref{exa_monotone_funtori}, i funtori tra categorie della forma \(t(P,\le)\) sono tutte e sole le funzioni monotòne nel senso di \ref{ex_cat_ordini}.
 
@@ -2459,9 +2508,9 @@ Una classe importante in questo senso è fatta dai diagrammi filtrati, che hanno
 	che su un omomorfismo di multidigrafi \(f : \ctG \to\ctH\) è definita mandando la componente connessa di \(v\in V_\ctG\) nella componente connessa di \(f_V(v)\in V_\ctH\) (è immediato verificare dal fatto che \(f_E(e : x\to y)=f_Ee : f_Vx\to f_Vy\) che questa è una buona definizione, cioè che \(f_V\) scende al quoziente).
 \end{example}
 \begin{example}[La categoria libera associata a un grafo]\index{Funtore!--- categoria libera}
-	Se \(\ctG\) è un multidigrafo come in \ref{ex_cat_grafi}, la costruzione della categoria libera \(F\ctG\) di \ref{ex_cat_libera} definisce la funzione sugli oggetti di un funtore
+	Se \(\ctG\) è un multidigrafo come in \ref{ex_cat_grafi}, la costruzione della categoria libera \(\bfF\ctG\) di \ref{ex_cat_libera} definisce la funzione sugli oggetti di un funtore
 	\[\dmFun F\ctdGph\ctCat\]
-	Un omomorfismo di grafi \((f_E,f_V) : \ctG \to \ctH\) infatti è il dato sufficiente per definire un funtore \(F(f_E,f_V) : F\ctG \fun F\ctH\) sugli oggetti (con \(f_V\)) e sui morfismi generatori (con \(f_E\)), mandando la successione di lati contigui \([\tup en;]\) in \(F\ctG\) in \([\tup {{f_E}e}n;]\) in \(F\ctH\) (se \(n=0\) questo significa che \(F(f_E,f_V)\emptyList = \emptyList\)).
+	Un omomorfismo di grafi \((f_E,f_V) : \ctG \to \ctH\) infatti è il dato sufficiente per definire un funtore \(F(f_E,f_V) : \bfF\ctG \fun F\ctH\) sugli oggetti (con \(f_V\)) e sui morfismi generatori (con \(f_E\)), mandando la successione di lati contigui \([\tup en;]\) in \(\bfF\ctG\) in \([\tup {{f_E}e}n;]\) in \(F\ctH\) (se \(n=0\) questo significa che \(F(f_E,f_V)\emptyList = \emptyList\)).
 \end{example}
 \begin{example}[Realizzare \(\ctMat\) in \(\ctVect\)]\index{Funtore!--- matrici reali}
 	La categoria delle matrici \(\ctMat\) è stata definita in \ref{ex_cat_matrici}; la categoria \(\ctVect\) è stata definita tra gli esempi di \ref{varie_categorie_nella_pratica}. Abbiamo già osservato che \(\ctMat\) si ottiene da \(\ctVect\) scegliendo un solo oggetto per ogni dimensione, e questo definisce un funtore ovvio \(\ctMat \to \ctVect\) (mandando \(n\) in \(\bbF^n\) e una matrice \(A\) nell'applicazione lineare che agisce come \(A\) nella base canonica). Esiste anche un funtore nella direzione opposta,
@@ -2829,38 +2878,44 @@ Inoltre, la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 \end{example}
 Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato}) da una trasformazione naturale \(\eta : \id_\ctC \nat F\) (risp., \(\epsilon : F \nat \id_\ctC\)).
 \begin{example}[Co/puntature e co/moltiplicazioni]
-	\Todo{Raccogliamo alcuni esempi di funtori puntati e copuntati:
-		\begin{itemize}
-			\item Nella categoria degli insiemi, per un $A\in\ctSet_0$ fissato, il funtore $FX := X^A\times A$ è copuntato dalla mappa di riduzione o \emph{valutazione}
-			\[\dmFun{\epsilon_X}{X^A\times A}X\]
-			che manda una coppia $\pair fa$ in $\epsilon(f,a) = f(a)$; il fatto che le funzioni $\epsilon_X$ formino una famiglia naturale in $X$ (ma non in $A$, si veda \ref{} per approfondire) si riduce al fatto che $(u\cmp f)(a) = u\big(f(a)\big)$ per ogni $u : X\to Y$ (oppure usando un formalismo diverso, nel fatto che coincidano le due assegnazioni 
-			% https://q.uiver.app/#q=WzAsNSxbMCwwLCIoe1xcbGFtYmRhIHQuZnR9XntBXFx0byBYfSxhKSJdLFsyLDAsIihcXGxhbWJkYSB0LmZ0KVthL3RdIl0sWzAsMiwie1xcbGFtYmRhIHQudWZ0fV57QVxcdG8gWX0iXSxbMiwyLCIoe1xcbGFtYmRhIHQudWZ0fV57QVxcdG8gWX0pW2EvdF0iXSxbMiwxLCJcXGxhbWJkYSBwLnVwW2YoYSkvcF0iXSxbMCwxXSxbMSw0XSxbMCwyXSxbMiwzXSxbNCwzLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
-\[\begin{tikzcd}[ampersand replacement=\&]
-	{({\lambda t.ft}^{A\to X},a)} \&\& {(\lambda t.ft)[a/t]} \\
-	\&\& {\lambda p.up[f(a)/p]} \\
-	{{\lambda t.uft}^{A\to Y}} \&\& {({\lambda t.uft}^{A\to Y})[a/t]}
-	\arrow[from=1-1, to=1-3]
-	\arrow[from=1-1, to=3-1]
-	\arrow[from=1-3, to=2-3]
-	\arrow[equals, from=2-3, to=3-3]
-	\arrow[from=3-1, to=3-3]
-\end{tikzcd}\]
-			\item il funtore potenza covariante $\ctP : \ctSet\fun\ctSet$ di \ref{ex_fun_parti} è puntato dalla famiglia di mappe $\eta_X : X\to \ctP X$ date da $x\mapsto \{x\}$; la naturalità si traduce nel fatto (ovvio) che $\ctP_*(f)(\{x\}) = \{f(x)\}$ per ogni $f : X\to Y$. Similmente, assegnare a un insieme $X$ l'insieme delle liste in $X$, come in \ref{}, è un funtore puntato $(\_)^* : \ctSet\fun\ctSet$, dalla famiglia $\theta_X : X\to X^* : x\mapsto x\cons \emptyList = [x]$, e la naturalità di $\theta$ si traduce nel fatto (ovvio) che $f^*[x] = [f(x)]$ per ogni $f : X\to Y$;
-			\item mandare una lista \emph{non vuota} nella sua testa $h_X(x\cons xs) =x$ è una trasformazione naturale dal funtore $(\_)^+$ delle liste \emph{non vuote} all'identità.
-		\end{itemize}
-		In più, possiamo trovare
-		\begin{itemize}
-			\item comoltiplicazione di \(X\times (-)^X\)
-			\item unione come moltiplicazione di \(P\)
-			\item ... % https://mathoverflow.net/questions/328513/big-list-of-comonads
-			\item % https://ieeexplore.ieee.org/document/8005129
-			\item % https://arxiv.org/pdf/1012.1220
-		\end{itemize}}
+	Raccogliamo alcuni esempi di funtori puntati e copuntati:
+	\begin{itemize}
+		\item Nella categoria degli insiemi, per un \(A\in\ctSet_0\) fissato, il funtore \(SX := X^A\times A\) è copuntato dalla mappa di riduzione o \emph{valutazione}
+		      \[\dmFun{\epsilon_X}{X^A\times A}X\]
+		      che manda una coppia \(\pair fa\) in \(\epsilon(f,a) = f(a)\); il fatto che le funzioni \(\epsilon_X\) formino una famiglia naturale in \(X\) (ma non in \(A\), si veda \ref{def_dinaturali} per approfondire) si riduce al fatto che \((u\cmp f)(a) = u\big(f(a)\big)\) per ogni \(u : X\to Y\) (oppure usando un formalismo diverso, nel fatto che coincidano le due assegnazioni
+		      % https://q.uiver.app/#q=WzAsNSxbMCwwLCIoe1xcbGFtYmRhIHQuZnR9XntBXFx0byBYfSxhKSJdLFsyLDAsIihcXGxhbWJkYSB0LmZ0KVthL3RdIl0sWzAsMiwie1xcbGFtYmRhIHQudWZ0fV57QVxcdG8gWX0iXSxbMiwyLCIoe1xcbGFtYmRhIHQudWZ0fV57QVxcdG8gWX0pW2EvdF0iXSxbMiwxLCJcXGxhbWJkYSBwLnVwW2YoYSkvcF0iXSxbMCwxXSxbMSw0XSxbMCwyXSxbMiwzXSxbNCwzLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+		      \[\begin{tikzcd}[ampersand replacement=\&]
+				      {({\lambda t.ft}^{A\to X},a)} \&\& {(\lambda t.ft)[a/t]} \\
+				      \&\& {\lambda p.up[f(a)/p]} \\
+				      {{\lambda t.uft}^{A\to Y}} \&\& {({\lambda t.uft}^{A\to Y})[a/t]}
+				      \arrow[from=1-1, to=1-3]
+				      \arrow[from=1-1, to=3-1]
+				      \arrow[from=1-3, to=2-3]
+				      \arrow[equals, from=2-3, to=3-3]
+				      \arrow[from=3-1, to=3-3]
+			      \end{tikzcd}\]
+		\item il funtore potenza covariante \(\ctP : \ctSet\fun\ctSet\) di \ref{ex_fun_parti} è puntato dalla famiglia di mappe \(\eta_X : X\to \ctP X\) date da \(x\mapsto \{x\}\); la naturalità si traduce nel fatto (ovvio) che \(\ctP_*(f)(\{x\}) = \{f(x)\}\) per ogni \(f : X\to Y\). Similmente, assegnare a un insieme \(X\) l'insieme delle liste in \(X\), come in \ref{mongruppi_liberi}, è un funtore puntato \((\_)^* : \ctSet\fun\ctSet\), dalla famiglia \(\theta_X : X\to X^* : x\mapsto x\cons \emptyList = [x]\), e la naturalità di \(\theta\) si traduce nel fatto (ovvio) che \(f^*[x] = [f(x)]\) per ogni \(f : X\to Y\);
+		\item mandare una lista \emph{non vuota} nella sua testa \(h_X(x\cons xs) =x\) è una trasformazione naturale dal funtore \((\_)^+\) delle liste \emph{non vuote} all'identità.
+	\end{itemize}
+	Oltre a essere puntati o copuntati, i funtori \(S\) e \(\ctP\) di prima hanno associate delle trasformazioni naturali, rispettivamente, di tipo
+	\[\xymatrix{
+			S \ar@{=>}[r]^-\sigma & S\cmp S & \ctP\cmp\ctP \ar@{=>}[r]^-\cup & \ctP
+		}\] definite come segue:
+	\begin{itemize}
+		\item \(\sigma_X\) è una mappa di `comoltiplicazione' \(\dmFun{\sigma_X}{X^A\times A}{(X^A\times A)^A\times A}\)
+		      definita mandando \(\pair{\lambda t.ft}a\) in \(\pair{\lambda a'.\pair{\lambda t.ft}{a'}}a\).
+		\item \(\cup_X\) è la mappa di `unione' \(\dmFun{\cup_X}{\pow{(\pow X)}}{\pow X}\)
+		      definita mandando \(\fkU = (U_\alpha\mid\alpha\in A) \subseteq \ctP(X)\) in \(\bigcup_{\alpha\in A} U_\alpha \subseteq X\).
+		      \Todo{}
+		\item ... % https://mathoverflow.net/questions/328513/big-list-of-comonads
+		\item % https://ieeexplore.ieee.org/document/8005129
+		\item % https://arxiv.org/pdf/1012.1220
+	\end{itemize}
 \end{example}
 \begin{example}
 
 \end{example}
-\begin{hExample}[Un esempio di isomorfismo naturale]{tech}\index{Trasformazione naturale!isomorfismo naturale}
+\begin{hExample}[Un esempio di isomorfismo naturale]{tech}\label{puniv_prodotto_naturale}\index{Trasformazione naturale!isomorfismo naturale}
 	(La natura di questo esempio sarà chiarita dal capitolo \ref{chap_limiti_colimiti}, sulle proprietà universali, e dal capitolo \ref{cap_aggiunti}, sui funtori aggiunti.)
 
 	Dati tre insiemi \(A,B,C\) possiamo formare il prodotto cartesiano \(B\times C = \{\pair bc\mid b\in B, c\in C\}\) e costruire una biiezione
@@ -3167,55 +3222,11 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 	\item Mostrare che la regola di scambio di \ref{interchangio} è equivalente al fatto che la composizione
 	\[\dmFun{\cmp}{\ctCat(\ctB,\ctC)\times\ctCat(\ctA,\ctB)}{\ctCat(\ctA,\ctC)}\]
 	sia un bifuntore (nel senso di \ref{def_bifuntore}) quando le tre categorie di funtori hanno per morfismi le trasformazioni naturali.
-	\item Per risolvere questo esercizio è necessario ricordare la definizione di una \emph{successione esatta} di omomorfismi di gruppo: se \(H,G,G',K\) sono gruppi abeliani, una successione esatta corta è una sequenza di mappe componibili
-	% https://q.uiver.app/#q=WzAsNixbMCwwLCIwIl0sWzEsMCwiSyJdLFsyLDAsIkciXSxbMywwLCJHJyJdLFs1LDAsIjAiXSxbNCwwLCJIIl0sWzAsMV0sWzEsMiwiaCJdLFsyLDMsImYiXSxbMyw1LCJnIl0sWzUsNF1d
-	\[\begin{tikzcd}
-			0 & K & G & {G'} & H & 0
-			\arrow[from=1-1, to=1-2]
-			\arrow["g", from=1-2, to=1-3]
-			\arrow["f", from=1-3, to=1-4]
-			\arrow["h", from=1-4, to=1-5]
-			\arrow[from=1-5, to=1-6]
-		\end{tikzcd}\]
-	tale che \(\ker f=\im g\), \(\ker h=\im f\), \(\ker g=(0)\) e \(\im h = H\). Chi non ha mai visto questo risultato, dimostri che ogni omomorfismo \(f : G\to G'\) tra due gruppi abeliani induce una successione esatta come questa, se \(K=\ker f\) e \(H=G'/\im f\), quando \(g : \ker f \mono G\) è l'inclusione ovvia, e \(h\) la proiezione al quoziente sul conucleo (si veda \ref{ker_e_coker}) di \(f\).
-
-	Sia ora \(\ctC\) una categoria piccola e consideriamo la categoria dei funtori \(F : \ctC\funto\ctAb\) di codominio la categoria dei gruppi abeliani. Questo esercizio chiede di definire e studiare una nozione di nucleo associato a una trasformazione naturale:
-	\begin{itemize}
-		\item Definire \(\ker\alpha\) come la trasformazione naturale associata ad \(\alpha : F \natto G\) e avente per componenti
-		      \[(\ker\alpha)_C := \ker(\alpha_C : FC\to GC) \to FC.\]
-		\item Mostrare che \(X\mapsto\ker(\alpha_X)\) definisce un funtore \(K : \ctC\fun\ctAb\), e che \(\kappa_X : \ker(\alpha_X) \to FX\) è naturale e ha ciascuna componente un omomorfismo iniettivo di gruppi; a questa maniera, esiste una successione esatta \emph{di trasformazioni naturali} (cioè una successione di trasformazioni naturali, esatta quando saturata in ogni componente) della forma
-		      \[0\natto\ker\alpha \overset\kappa\natto F \overset\alpha\natto G\]
-		      dove chiaramente `\(0\)' è il funtore costante nel gruppo abeliano nullo.
-		\item Dualizzare e definire il \emph{conucleo} di una trasformazione naturale; costruire la successione esatta
-		      \[\begin{tikzcd}
-				      0 & \ker\alpha & F & G & \coker\,\alpha & 0.
-				      \arrow[from=1-1, to=1-2, Rightarrow]
-				      \arrow["\kappa", from=1-2, to=1-3, Rightarrow]
-				      \arrow["\alpha", from=1-3, to=1-4, Rightarrow]
-				      \arrow["\pi", from=1-4, to=1-5, Rightarrow]
-				      \arrow[from=1-5, to=1-6, Rightarrow]
-			      \end{tikzcd}\]
-		\item Mostrare, o trovare un controesempio, al seguente enunciato: per ogni funtore \(H : \ctB\fun\ctC\) come nel diagramma
-		      % https://q.uiver.app/#q=WzAsMyxbMiwwLCJcXGN0QyJdLFs0LDAsIlxcY3REIl0sWzAsMCwiXFxjdEIiXSxbMiwwLCJIIl0sWzAsMSwiRiIsMCx7ImxhYmVsX3Bvc2l0aW9uIjozMH1dLFswLDEsIksiLDAseyJjdXJ2ZSI6LTN9XSxbMCwxLCJHIiwyLHsiY3VydmUiOjN9XSxbNSw0LCJcXGtlclxcYWxwaGEiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzQsNiwiXFxhbHBoYSIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
-		      \[\begin{tikzcd}
-				      \ctB && \ctC && \ctD
-				      \arrow["H", from=1-1, to=1-3]
-				      \arrow[""{name=0, anchor=center, inner sep=0}, "F"{pos=0.3}, from=1-3, to=1-5]
-				      \arrow[""{name=1, anchor=center, inner sep=0}, "K", curve={height=-18pt}, from=1-3, to=1-5]
-				      \arrow[""{name=2, anchor=center, inner sep=0}, "G"', curve={height=18pt}, from=1-3, to=1-5]
-				      \arrow["{\ker\alpha}", shorten <=2pt, shorten >=2pt, Rightarrow, from=1, to=0]
-				      \arrow["\alpha", shorten <=2pt, shorten >=2pt, Rightarrow, from=0, to=2]
-			      \end{tikzcd}\]
-		      esiste una successione esatta
-		      \[\begin{tikzcd}
-				      0 & \ker\alpha H & F H & G H & \coker\,\alpha H & 0.
-				      \arrow[from=1-1, to=1-2, Rightarrow]
-				      \arrow["\kappa*H", from=1-2, to=1-3, Rightarrow]
-				      \arrow["\alpha*H", from=1-3, to=1-4, Rightarrow]
-				      \arrow["\pi*H", from=1-4, to=1-5, Rightarrow]
-				      \arrow[from=1-5, to=1-6, Rightarrow]
-			      \end{tikzcd}\]
-	\end{itemize}
+	\item Adottando la stessa strategia di \ref{puniv_prodotto_naturale}, costruire un isomorfismo 
+	\[\xymatrix{
+		(A\times B)+(A\times C)\ar[r] & A\times(B+C) 
+	}\]
+	dove $\times$ indica il prodotto cartesiano, e $+$ la somma (unione disgiunta) di insiemi. Costruire una biiezione esplicita, e dimostrare la naturalità in $A,B,C$ separatamente (cosicché a essere isomorfi siano i `trifuntori' $({\_}_1\times {\_}_2)+({\_}_1\times {\_}_3)$ e ${\_}_1\times ({\_}_2+{\_}_3)$).
 	\item Per ogni insieme \(X\) definire la funzione \texttt{inits}
 	\[\xymatrix{\mathtt{inits}_X : X^* \ar[r] & (X^*)^*}\]
 	dove \(MX = X^*\) è il monoide libero delle liste di elementi di \(X\), come in \ref{mongruppi_liberi}, e
@@ -3734,10 +3745,13 @@ Gli isomorfismi di categorie sono relativamente rari; è più comune trovarsi ne
 	\Todo{Equivalenza di categorie }
 	Una equivalenza di categorie \(\ctC\simeq\ctD\) consiste di una quadrupla \((F,G,\eta,\epsilon)\), dove
 	\begin{itemize}
-		\item
-		\item
-		\item
-		\item
+		\item \(F : \ctC\fun\ctD\) e \(G : \ctD\fun\ctC\) sono funtori in direzioni opposte;
+		\item \(\eta : \Id[\ctC] \nat G\cmp F\) e \(\epsilon : F\cmp G \nat \Id[\ctD]\) sono isomorfismi naturali;
+		\item valgono le seguenti equazioni:
+		      \begin{itemize}
+			      \item (equazione zig) \(...\) è uguale alla trasformazione naturale identica di \(F\);
+			      \item (equazione zag) \(...\) è uguale alla trasformazione naturale identica di \(G\).
+		      \end{itemize}
 	\end{itemize}
 	Dato \(F\), il funtore \(G\) è detto lo \emph{pseudoinverso} di \(F\), e analogamente \(F\) è lo pseudoinverso del funtore \(G\); i due si caratterizzano a vicenda, ma non in maniera strettamente unica, bensì \emph{a meno di isomorfismo naturale}:
 	\begin{quote}
@@ -3802,19 +3816,19 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 	Diciamo che \(F : \ctC\fun\ctD\) è \emph{finale} se il funtore opposto \(F^\op : \ctC^\op\fun\ctD^\op\) (come in \ref{es_di_funtori}) è iniziale.
 \end{definition}
 \begin{remark}[Condizione di Ore]\label{condizione_ore}\index{Funtore!condizione di Ore per un ---}\index{Funtore!--- iniziale}
-	Una condizione più forte dell'inizialità, molto comune e più facile da verificare, è la \emph{condizione di Ore}: \(F : \ctC\fun\ctD\) soddisfa la condizione di Ore se 
+	Una condizione più forte dell'inizialità, molto comune e più facile da verificare, è la \emph{condizione di Ore}: \(F : \ctC\fun\ctD\) soddisfa la condizione di Ore se
 	\begin{itemize}
 		\item per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom\ctD(D,FX)\) è non vuoto;
-		\item per ogni $D$ e ogni $u : D\to FX$, $v : D\to FY$ esiste un modo di `completare il quadrato'
-		\[\xymatrix{
-			D\ar[r]^u\ar[d]_v & FX \ar@{.>}[d]^{Ff}\\ 
-			FY \ar@{.>}[r]_{Fg} & FZ
-		}\] 
-		con due frecce $X \xto fZ \xot g Y$ di $\ctC$.
+		\item per ogni \(D\) e ogni \(u : D\to FX\), \(v : D\to FY\) esiste un modo di `completare il quadrato'
+		      \[\xymatrix{
+				      D\ar[r]^u\ar[d]_v & FX \ar@{.>}[d]^{Ff}\\
+				      FY \ar@{.>}[r]_{Fg} & FZ
+			      }\]
+		      con due frecce \(X \xto fZ \xot g Y\) di \(\ctC\).
 	\end{itemize}
 \end{remark}
 \begin{hTheorem}{skip}
-	Per ogni categoria $\ctD$ (piccola e) filtrata nel senso di \ref{}, esiste un funtore iniziale $K : P_\ctD\fun\ctD$, di dominio un insieme parzialmente ordinato.
+	Per ogni categoria \(\ctD\) (piccola e) filtrata nel senso di \ref{def_cat_filtrata}, esiste un funtore iniziale \(K : P_\ctD\fun\ctD\), di dominio un insieme parzialmente ordinato.
 \end{hTheorem}
 \begin{definition}[Preservare e riflettere]\label{def_preserva_riflette}\index{Funtore!--- preserva proprietà}\index{Funtore!--- riflette proprietà|see {preserva proprietà}}
 	Sia \(\mathcal{P}\) una proprietà di un oggetto \(X\) o morfismo \(f : X\to Y\) di una categoria \(\ctC\); si dice che un funtore \(F : \ctC \fun\ctD\)
@@ -3854,11 +3868,11 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 		bla
 	\end{quote}
 	Mostrare che \(G\) è un generatore di \(\ctC\) se e solo se il funtore \(\Hom\ctC(G,-)\) è fedele.
-	\item \label{ex_monepi_5} Guardando un monoide come una categoria con un solo oggetto, al modo di \ref{mon_sonocat}, mostrare che 
+	\item \label{ex_monepi_5} Guardando un monoide come una categoria con un solo oggetto, al modo di \ref{mon_sonocat}, mostrare che
 	\begin{itemize}
-		\item se $M,N$ sono gruppi, \(\susp f : \susp N\to \susp M\) è un funtore iniziale se e solo se $f$ è un omomorfismo suriettivo;
-		\item se $M,N$ sono monoidi, ed $f : N\to M$ è un omomorfismo suriettivo, allora \(\susp f : \susp N\to \susp M\) è un funtore iniziale, ma non è vero il viceversa (esiste un omomorfismo non suriettivo, che induce un funtore iniziale). % l'inclusione di N in Z.
+		\item se \(M,N\) sono gruppi, \(\susp f : \susp N\to \susp M\) è un funtore iniziale se e solo se \(f\) è un omomorfismo suriettivo;
+		\item se \(M,N\) sono monoidi, ed \(f : N\to M\) è un omomorfismo suriettivo, allora \(\susp f : \susp N\to \susp M\) è un funtore iniziale, ma non è vero il viceversa (esiste un omomorfismo non suriettivo, che induce un funtore iniziale). % l'inclusione di N in Z.
 	\end{itemize}
-	L'omomorfismo $T(\bbR,2) \to M(\bbR,2)$ (rispetto alla moltiplicazione) che include le matrici $2\times 2$ triangolari superiori $\left(\begin{smallmatrix} a	&	b\\ 0 & c		\end{smallmatrix}\right)$	nelle matrici $2\times 2$ induce un funtore iniziale?
+	L'omomorfismo \(T(\bbR,2) \to M(\bbR,2)\) (rispetto alla moltiplicazione) che include le matrici \(2\times 2\) triangolari superiori \(\left(\begin{smallmatrix} a	&	b\\ 0 & c		\end{smallmatrix}\right)\)	nelle matrici \(2\times 2\) induce un funtore iniziale?
 	% \`E possibile trovare un criterio generale così che un omomorfismo di monoidi \(f : N\to M\) induca un funtore \(\susp f : \susp N\to \susp M\) iniziale?
 \end{esercizi}
