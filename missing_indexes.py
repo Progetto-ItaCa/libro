@@ -15,5 +15,5 @@ def find_missing_index(filename):
             print(f"> {next_line}\n")
 
 # Example usage:
-filename = "temp.tex"  # Replace with the actual filename
+filename = "cap/01-categorie.tex"  # Replace with the actual filename
 find_missing_index(filename)
