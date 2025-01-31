@@ -1,5 +1,5 @@
 \chapter{Categorie, funtori, trasformazioni naturali}\label{chap_cat_fun_nat}
-\section{Categorie}\label{sec_categorie}
+\section{La nozione di categoria}\label{sec_categorie}
 
 Prima di dare una definizione formale di categoria, può essere d'aiuto raccogliere alcuni esempi concreti per orientare chi legge.
 
@@ -104,6 +104,17 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 		      Dato che i vari \(\Hom{\ctC}(X,Y)\) sono a due a due disgiunti, la composizione \(\_\cmp\_\) si `spezza' in una classe di funzioni
 		      \[\xymatrix{\_\cmp_{XZ}^Y\_ : \Hom{\ctC}(Y,Z)\times\Hom{\ctC}(X,Y) \ar[r] & \Hom{\ctC}(X,Z)}\]
 		      dove ciascuna funzione manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in \(g\cmp f\) (in effetti, gli indici che indicano il dominio della particolare funzione \(\_\cmp_{XZ}^Y\_\) vengono \emph{sempre} lasciati sottintesi, e si scrive solo \(\_\cmp\_\)).
+	\end{itemize}
+\end{remark}
+\begin{remark}[Oggetti come particolari frecce]\index{Identità}\index{Frecce}
+	Un principio fondamentale su cui la teoria delle categorie è edificata suona come `le frecce sono più importanti degli oggetti', o meglio, `ciò che definisce veramente una categoria sono le sue frecce, più dei suoi oggetti'. 
+
+	Questo principio si può leggere in \ref{def_categ} nel modo che segue: dato che, come già osservato, l'assegnazione $X\mapsto\Id[X]$ è una funzione iniettiva tra classi, si può ignorare la distinzione tra la classe degli oggetti $\ctC_0$ e la sottoclasse fatta dall'immagine della funzione $\Id[-]$, contenente \emph{alcune} frecce di $\ctC$ che ne sono gli `oggetti', ovvero le frecce identiche su questi ultimi.
+
+	Come riconoscere, tra le frecce di $\ctC_1$, gli oggetti? Semplice: $u : X\to X$ è l'identità di un oggetto $X$ \emph{se e solo se}, congiuntamente, 
+	\begin{itemize}
+		\item per ogni $f : X\to Y$ si ha $f\cmp u = f$;
+		\item per ogni $g : A\to X$ si ha $u\cmp g = g$.
 	\end{itemize}
 \end{remark}
 \begin{hRemark}[A proposito dell'ordine di composizione]{skip}\label{sulla_compo}\index{Ordine!--- di composizione}
@@ -669,7 +680,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	Dati due spazi topologici \((X,\tau_X)\) e \((Y,\tau_Y)\), una funzione \(f:X\to Y\) è continua per le topologie \(\tau_X\) e \(\tau_Y\) se per ogni aperto \(V\in\tau_Y\), la sua preimmagine \(f^{-1}(V)\) è un aperto di \(\tau_X\).
 	Gli spazi topologici e le funzioni continue tra loro formano la categoria \(\ctTop\).
 \end{hExample}
-\begin{hExample}[Spazi topologici e classi di omotopia]{skip}\index{Categoria!--- dell'omotopia}\label{ex_cat_hotop}
+\begin{hExample}[Spazi topologici e classi di omotopia]{skip}\index{Categoria!--- dell'omotopia}\index{Equivalenza!--- a omotopica}\label{ex_cat_hotop}
 	La categoria \(\ctHoTop\) detta \emph{categoria dell'omotopia (di spazi topologici)} è così definita:
 	\begin{itemize}
 		\item gli oggetti di \(\ctHoTop\) sono gli spazi topologici di \ref{ex_cat_top};
@@ -3723,7 +3734,7 @@ Il risultato in questione propone anche le sezioni e le retrazioni come esempi f
 Abbiamo visto in precedenza che, in generale, un morfismo pu\`o essere sia epi che mono senza essere un isomorfismo (vedasi esempio~\ref{ex:mono-epi-preord}).
 Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzanti.
 
-\begin{proposition}\label{prop:iso-epi-mono}
+\begin{proposition}\label{prop:iso-epi-mono}\index{Monomorfismo!--- spezzante}\index{Epmorfismo!--- spezzante}
 	Sia \(f \colon A \to B\) un morfismo. Le seguenti condizioni sono equivalenti:
 	\begin{enumerate}
 		\item\label{prop:iso-epi-mono:item1} \(f\) \`e un isomorfismo.
@@ -3762,7 +3773,7 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	Tra i funtori finora introdotti, quello dell'esempio \ref{exfun_4} è pieno; quelli degli esempi \ref{exfun_3}, \ref{dom_e_cod}, e (per definizione) tutti i funtori che definiscono un costrutto come in \ref{def_costrutto}, sono fedeli; quelli degli esempi \ref{ex_fun_co_disc}, \ref{funtore_mon_to_cat}, \ref{ord_come_cat}, sono pienamente fedeli.
 \end{remark}
 \`E poi conveniente dare un nome esplicito a un'altra classe di funtori:
-\begin{definition}\label{funtore_essurj}
+\begin{definition}\label{funtore_essurj}\index{Funtore!--- essenzialmente suriettivo}
 	\(F : \ctC\fun\ctD\) si dice \emph{essenzialmente suriettivo} (\cite{acc} usa la terminologia \emph{funtore iso-denso}) se la seguente condizione è verificata:
 	\begin{quote}
 		Per ogni oggetto \(D\in\ctD_0\), esistono un oggetto \(C\in\ctC_0\) e un isomorfismo \(i_D : FC\cong D\).
@@ -3797,7 +3808,7 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 		\[\xymatrix{\hat G \ar@{=>}[r]^-{\tilde\eta\whi\hat G } & \hat G F \tilde G \ar@{=>}[r]^-{\tilde G \whi \hat\epsilon} & \tilde G}\]
 	\end{quote}
 \end{definition}
-\begin{hRemark}[A proposito dei nomi `zig' e `zag']{skip}
+\begin{hRemark}[A proposito dei nomi `zig' e `zag']{skip}\index{Identità!--- zig e zag}
 	Le due equazioni in \ref{funtore_equcat} si rappresentano come incollamenti naturali della forma seguente:
 	\[\xymatrix@R=3mm{
 		\ctC \ar@{->}[rd]^{F} \ar@/_/@{=}[dd] &  & \ctC \ar@{->}[rd]^{F} \ar@/_/@{=}[dd] &  &  & \ctD \ar@{->}[rd]^{G} \ar@/_/@{=}[dd]\ddtwocell<\omit>{<-2>\epsilon} &  & \ctD \ar@{->}[rd]^{G} \ar@/_/@{=}[dd] &  \\
@@ -3822,13 +3833,13 @@ Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempi
 \begin{example}
 	\Todo{L'esempio piu piccolo di cat non isomorfe ma equivalenti}
 \end{example}
-\begin{example}
+\begin{example}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
 	La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a Vect.
 \end{example}
 L'esercizio \ref{ex_monepi_2} chiederà di dimostrare che le due non possono essere isomorfe.
 
 Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di funtori \(F : \ctC \fun\ctD\) con la proprietà che sia \(F_0 : \ctC_0\to\ctD_0\) che ogni \(F_{XY} : \Hom\ctC(X,Y) \to \Hom\ctD(F_0X,F_0Y)\) sono funzioni iniettive.
-\begin{proposition}\label{mona_in_cat}
+\begin{proposition}\label{mona_in_cat}\index{Monomorfismo!--- in $\ctCat$}
 	La classe dei monomorfismi di \(\ctCat\) consiste dei funtori \(F : \ctC\fun\ctD\) che sono fedeli e iniettivi sugli oggetti (cioè \(F_0\) e tutte le \(F_{XY}\) in \ref{def_alternativa_funtore} sono entrambe funzioni iniettive).
 \end{proposition}
 \begin{proof}
@@ -3876,7 +3887,7 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 		      con due frecce \(X \xto fZ \xot g Y\) di \(\ctC\).
 	\end{itemize}
 \end{remark}
-\begin{hTheorem}[Inizialità degli ordinali tra i diagrammi filtrati]{skip}
+\begin{hTheorem}[Inizialità degli ordinali tra i diagrammi filtrati]{skip}\index{Funtore!--- iniziale}
 	Per ogni categoria \(\ctD\) (piccola e) filtrata nel senso di \ref{def_cat_filtrata}, esiste un funtore iniziale \(K : P_\ctD\fun\ctD\), di dominio un insieme parzialmente ordinato.
 \end{hTheorem}
 \begin{proof}
