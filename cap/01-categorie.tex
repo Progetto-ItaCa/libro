@@ -140,6 +140,18 @@ La categoria di \emph{tutti} gli insiemi finiti non è piccola (perché c'è una
 \begin{remark}\index{Categoria!--- loc. piccola}
 	Gli assiomi di categoria non impediscono di costruire `categorie' dove \(\ctC_0\) è un insieme (per esempio, finito) e dove alcuni o tutti \(\Hom{\ctC}(X,Y)\) sono classi proprie; queste costruzioni sono però relativamente innaturali, e non ne parleremo mai. In effetti, eviteremo di considerare anche le categorie grandi che non sono localmente piccole, di cui parleremo solo per mostrarne l'esistenza (ne risentirebbe irrimediabilmente il capitolo 4 del libro, e molti altri risultati). Perciò, da ora in poi adottiamo la convenzione che \emph{categoria}, senz'altro aggiungere, significhi sempre \emph{categoria localmente piccola}.
 \end{remark}
+Sempre riguardo alla `taglia' di una categoria, le seguenti definizioni saranno utili nel seguito.
+\begin{definition}[Categoria strettamente finita, finita, localmente finita]\index{Categoria!--- finita}\index{Categoria!--- localmente finita}\index{Categoria!--- strettamente finita}
+	Diciamo che una categoria $\ctC$ è 
+	\begin{itemize}
+		\item \emph{finita} se ha un numero finito di oggetti, cioè se $\ctC_0$ è un insieme finito;
+		\item \emph{strettamente finita} se ha un numero finito di frecce, cioè se $\ctC_1$ è un insieme finito;
+		(\item \emph{localmente finita} se ogni insieme $\Hom\ctC(X,Y)$ è finito.
+	\end{itemize}
+	Se $\ctC$ è strettamente finita, è finita, dato che $\ctC_0\subseteq\ctC_1$ e quest'ultimo è finito. Inoltre $\ctC$ è finita e localmente finita se e solo se è strettamente finita. 
+	
+	Un insieme ordinato (\ref{ord_sonocat}) infinito, per esempio $(\omega,\le)$ è una categoria localmente finita, non finita; lo stesso è vero per la categoria $\ctFin$ degli insiemi finiti, e per la categoria degli spazi vettoriali su un campo finito (ci sono infiniti spazi vettoriali su $\bbF_q$ ma c'è solo un insieme finito di mappe lineari tra due spazi vettoriali finiti). Un monoide (\ref{mon_sonocat}) con un numero infinito di elementi è una categoria finita, non localmente né strettamente finita.
+\end{definition}
 Concludiamo con un lemma apparentemente banale, ma che sarà utile in seguito (precisamente, nella dimostrazione di \ref{cat_sonomon}).
 \begin{lemma}\label{lem_end_monoide}\index{Monoide}\index{Categoria!monoidi come ---e}
 	Sia \(\ctC\) una categoria, \(A\in\ctC_0\) un suo oggetto; allora \(M=\Hom{\ctC}(A,A)\) è un monoide (indicato come \(\End[\ctC]{A}\), o semplicemente come \(\End{A}\)), con l'identità \(\id_A\) come elemento neutro e la composizione \(\cmp\) come prodotto.
@@ -1673,10 +1685,12 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
 		      \begin{quote}
 			      Per ogni \(C\in\ctC_0\), esiste un unica freccia \(C\to\infty\).
 		      \end{quote}
+								(Questa proprietà afferma che $\infty$ è un oggetto \emph{terminale} di $\ctC^\rhd$.)
 		\item il \emph{cono sinistro} \(\ctC^\lhd\) come il giunto \(\ctTerm\star \ctC\); è la categoria che ha gli stessi oggetti di \(\ctC + \{-\infty\}\), e dove \(-\infty\) è un nuovo oggetto che soddisfa la seguente proprietà:
 		      \begin{quote}
 			      Per ogni \(C\in\ctC_0\), esiste un unica freccia \(-\infty \to C\).
 		      \end{quote}
+								(Questa proprietà afferma che $\infty$ è un oggetto \emph{iniziale} di $\ctC^\lhd$.)
 	\end{itemize}
 	Si osservi che ci sono inclusioni ovvie \(i^\rhd : \ctC \subset \ctC^\rhd\) e \(i^\lhd : \ctC \subset \ctC^\lhd\) ottenute mandando un oggetto \(C \in\ctC_0\) nell'oggetto \(C\) di \(\ctC_0 + \{\pm\infty\}\).
 \end{definition}
@@ -2483,7 +2497,9 @@ Una classe importante in questo senso è fatta dai diagrammi filtrati, che hanno
 	\end{itemize}
 \end{theorem}
 \begin{proof}
-	\Todo{}
+	La seconda condizione implica la prima, perché è sufficiente prendere $\ctI=\bkt{n}^\delta$ finita e discreta, e $\ctI=\{0\rightrightarrows 1\}$ la freccia generica per ritrovare le condizioni \ref{cf_1}, \ref{cf_2}.
+
+	Vice versa, se $\ctJ$ è filtrata, 
 \end{proof}
 \begin{esercizi}
 	\item Se \(\ctC\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\ctC \fun \susp N\); farsi degli esempi scegliendo come \(\ctC\) una delle categorie di \ref{sec_esempi_cats}, e con \(N=(\bbN,+,0)\) il monoide dei numeri naturali.
@@ -3829,10 +3845,12 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	\end{itemize}
 \end{remark}
 Gli isomorfismi di categorie sono relativamente rari, poiché le proprietà di molte categorie sono invarianti per una nozione molto più debole di identificazione.
-Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempio, ogni gruppoide è equivalente a una unione disgiunta di gruppi (guardati come gruppoidi con un solo oggetto), senza che questa equivalenza sia un isomorfismo; e il gruppoide fondamentale \(\Pi_1(X)\) di uno spazio topologico \(X\) connesso per archi è una categoria equivalente, ma non isomorfa, a \(\pi_1(X,x_0)\) per una opportuna scelta di un punto di base \(x_0\in X\).
-\begin{example}
-	\Todo{L'esempio piu piccolo di cat non isomorfe ma equivalenti}
-\end{example}
+Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempio, ogni gruppoide è equivalente a una unione disgiunta di gruppi (guardati come gruppoidi con un solo oggetto), senza che questa equivalenza sia un isomorfismo; e il gruppoide fondamentale \(\Pi_1(X)\) di uno spazio topologico \(X\) connesso per archi è una categoria equivalente, ma non isomorfa, a \(\pi_1(X,x_0)\) per una opportuna scelta di un punto di base \(x_0\in X\). Questo suggerisce che due categorie piccole con due insiemi degli oggetti di diversa cardinalità possono essere equivalenti; un esempio estremo è questo: se $A$ è un insieme e $A^\chi$ il gruppoide caotico di \ref{ex_cat_codiscreta}, esiste un unico funtore $F : A^\chi \to \ctTerm$, definito nell'unico modo possibile, ed esso è un'equivalenza (debole). In particolare (invitiamo chi legge a completare i dettagli per esercizio) 
+\begin{remark}\index{Categoria!--- isomorfismo generico}
+	La categoria `isomorfismo generico' di \ref{ex_cat_iso},
+	\[\xymatrix@C=7ex{0 \ar@<.7ex>[r]^u \ar@(dl,ul)[] & 1 \ar@<.7ex>[l]^{u^{-1}} \ar@(ur,dr)[]}\]
+	è equivalente alla categoria $\ctTerm$.
+\end{remark}
 \begin{example}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
 	La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a Vect.
 \end{example}
