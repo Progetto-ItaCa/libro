@@ -3641,7 +3641,7 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 I funtori preservano sezioni e retrazioni,
 nel senso precisato dal seguente teorema:
 
-\begin{theorem}%
+\begin{theorem}\index{Retratto}%
 	\label{thm:fun-sezioni-retrazioni}
 	Dato un funtore \(F \colon \ctC \fun \ctD\) ed una coppia di sezione e retrazione \(s \colon A \to B\) e \(r \colon B \to A\),
 	allora \(F(s) \colon F(A) \to F(B)\) e \(F(r) \colon F(B) \to F(A)\) è una coppia di sezione e retrazione.
@@ -3657,7 +3657,7 @@ nel senso precisato dal seguente teorema:
 
 Di conseguenza, abbiamo i seguente corollari:
 
-\begin{corollary}%
+\begin{corollary}\index{Retratto}
 	\label{cor:fun-sezioni-retrazioni}
 	Sia \(F \colon \ctC \to \ctD\) un funtore.
 	Allora:
@@ -3678,14 +3678,14 @@ Di conseguenza, abbiamo i seguente corollari:
 Questo risultato, per quanto banale nella sua dimostrazione, ha conseguenze profonde: ci dice infatti che, sebbene abbiano proprietà simili, mono (risp., epi) e mono spezzanti (risp., epi spezzanti) sono distinti da una differenza fondamentale: l'essere o meno preservati dai funtori.
 
 Il risultato in questione propone anche le sezioni e le retrazioni come esempi fondamentali di \emph{strutture assolute}: una proprietà \(P\) di un morfismo in una categoria \(\ctC\) è `assoluta' se viene preservata da tutti i funtori di dominio \(\ctC\), ovvero: se \(f\in\hom(\ctC)\) ha la proprietà \(P\) in \(\ctC\), allora per ogni altra categoria \(\ctD\) e funtore \(F : \ctC\fun\ctD\) il morfismo \(Ff\) ha la proprietà \(P\) in \(\ctD\).
-\begin{example}
+\begin{example}\index{Monomorfismo}
 	Si consideri l'immersione \(\iota \colon \bbN \mono \bbZ\)
 	nella categoria \(\ctMon\) dei monoidi e omomorfismi di monoide.
 	Questa è mono in quanto la sua funzione sottogiacente è iniettiva,
 	ma non è spezzante.
 	Infatti, se avesse una retrazione,
 	questa sarebbe preservata dal funtore dimenticante \(U \colon \ctMon \fun \ctSet\),
-	per il \autoref{thm:fun-sezioni-retrazioni},
+	per \ref{thm:fun-sezioni-retrazioni},
 	e dunque sarebbe un'inversa sinistra della funzione \(\iota\).
 	Come omomorfismo di monoidi, però, tale inversa sinistra dovrebbe preservare gli elementi inversi,
 	e ciò non è possibile.
@@ -3853,9 +3853,9 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 	Un funtore \(F : \ctC\fun\ctD\) si dice \emph{iniziale} se per ogni oggetto \(D\in\ctD\) la categoria comma \((D/F)\) i cui oggetti sono coppie \((X,f : D\to FX)\) è non vuota e connessa (nel senso che \(\pi_0^\ctCat(D/F)\), si veda \ref{exe_cpt_conn}, \ref{ex_fun_cpt_conn}, ha un unico elemento).
 
 	In altre parole, \(F : \ctC\fun\ctD\) si dice iniziale se le due condizioni seguenti sono soddisfatte:
-	\begin{itemize}
-		\item per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom\ctD(D,FX)\) è non vuoto;
-		\item date due frecce \(D\to FX, D\to FY\) in \(\ctD\), esiste una successione finita di oggetti \(\tup An,\) e morfismi \(A_i \leftrightarrows A_{i+1}\) (in una delle due direzioni) tali che ogni triangolo nel diagramma
+	\begin{enumtag}{fi}
+		\item \label{fi_1} per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom\ctD(D,FX)\) è non vuoto;
+		\item \label{fi_2} date due frecce \(D\to FX, D\to FY\) in \(\ctD\), esiste una successione finita di oggetti \(\tup An,\) e morfismi \(A_i \leftrightarrows A_{i+1}\) (in una delle due direzioni) tali che ogni triangolo nel diagramma
 		      % https://q.uiver.app/#q=WzAsNyxbMCwxLCJGWCJdLFsxLDEsIkZBXzAiXSxbMiwxLCJGQV8xIl0sWzMsMSwiXFxkb3RzIl0sWzQsMSwiRkFfbiJdLFs1LDEsIkZZIl0sWzIsMCwiRCJdLFs2LDBdLFs2LDFdLFs2LDJdLFs2LDRdLFs2LDVdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
 		      \[\begin{tikzcd}
 				      && D \\
@@ -3872,9 +3872,14 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 				      \arrow[no head, from=2-5, to=2-6]
 			      \end{tikzcd}\]
 		      sia commutativo.
-	\end{itemize}
+	\end{enumtag}
 	Diciamo che \(F : \ctC\fun\ctD\) è \emph{finale} se il funtore opposto \(F^\op : \ctC^\op\fun\ctD^\op\) (come in \ref{es_di_funtori}) è iniziale.
 \end{definition}
+Si osservi che la composizione $G\cmp F$ di funtori iniziali $G,F$ è iniziale: 
+\begin{itemize}
+	\item nella categoria comma $(D/GF)$ esiste almeno una freccia $D \xto u GX \xto{Gv} GFY$;
+	\item \Todo{}
+\end{itemize}
 \begin{remark}[Condizione di Ore]\label{condizione_ore}\index{Funtore!condizione di Ore per un ---}\index{Funtore!--- iniziale}
 	Una condizione più forte dell'inizialità, molto comune e più facile da verificare, è la \emph{condizione di Ore}: \(F : \ctC\fun\ctD\) soddisfa la condizione di Ore se
 	\begin{itemize}
