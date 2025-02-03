@@ -141,16 +141,16 @@ La categoria di \emph{tutti} gli insiemi finiti non è piccola (perché c'è una
 	Gli assiomi di categoria non impediscono di costruire `categorie' dove \(\ctC_0\) è un insieme (per esempio, finito) e dove alcuni o tutti \(\Hom{\ctC}(X,Y)\) sono classi proprie; queste costruzioni sono però relativamente innaturali, e non ne parleremo mai. In effetti, eviteremo di considerare anche le categorie grandi che non sono localmente piccole, di cui parleremo solo per mostrarne l'esistenza (ne risentirebbe irrimediabilmente il capitolo 4 del libro, e molti altri risultati). Perciò, da ora in poi adottiamo la convenzione che \emph{categoria}, senz'altro aggiungere, significhi sempre \emph{categoria localmente piccola}.
 \end{remark}
 Sempre riguardo alla `taglia' di una categoria, le seguenti definizioni saranno utili nel seguito.
-\begin{definition}[Categoria strettamente finita, finita, localmente finita]\index{Categoria!--- finita}\index{Categoria!--- localmente finita}\index{Categoria!--- strettamente finita}
-	Diciamo che una categoria $\ctC$ è 
+\begin{definition}[Categoria strettamente finita, finita, localmente finita]\index{Categoria!--- finita}\index{Categoria!--- localmente finita}\index{Categoria!--- strettamente finita}\label{cat_finita_locfinita}
+	Diciamo che una categoria \(\ctC\) è
 	\begin{itemize}
-		\item \emph{finita} se ha un numero finito di oggetti, cioè se $\ctC_0$ è un insieme finito;
-		\item \emph{strettamente finita} se ha un numero finito di frecce, cioè se $\ctC_1$ è un insieme finito;
-		(\item \emph{localmente finita} se ogni insieme $\Hom\ctC(X,Y)$ è finito.
+		\item \emph{finita} se ha un numero finito di oggetti, cioè se \(\ctC_0\) è un insieme finito;
+		\item \emph{strettamente finita} se ha un numero finito di frecce, cioè se \(\ctC_1\) è un insieme finito;
+		      (\item \emph{localmente finita} se ogni insieme \(\Hom\ctC(X,Y)\) è finito.
 	\end{itemize}
-	Se $\ctC$ è strettamente finita, è finita, dato che $\ctC_0\subseteq\ctC_1$ e quest'ultimo è finito. Inoltre $\ctC$ è finita e localmente finita se e solo se è strettamente finita. 
-	
-	Un insieme ordinato (\ref{ord_sonocat}) infinito, per esempio $(\omega,\le)$ è una categoria localmente finita, non finita; lo stesso è vero per la categoria $\ctFin$ degli insiemi finiti, e per la categoria degli spazi vettoriali su un campo finito (ci sono infiniti spazi vettoriali su $\bbF_q$ ma c'è solo un insieme finito di mappe lineari tra due spazi vettoriali finiti). Un monoide (\ref{mon_sonocat}) con un numero infinito di elementi è una categoria finita, non localmente né strettamente finita.
+	Se \(\ctC\) è strettamente finita, è finita, dato che \(\ctC_0\subseteq\ctC_1\) e quest'ultimo è finito. Inoltre \(\ctC\) è finita e localmente finita se e solo se è strettamente finita.
+
+	Un insieme ordinato (\ref{ord_sonocat}) infinito, per esempio \((\omega,\le)\) è una categoria localmente finita, non finita; lo stesso è vero per la categoria \(\ctFin\) degli insiemi finiti, e per la categoria degli spazi vettoriali su un campo finito (ci sono infiniti spazi vettoriali su \(\bbF_q\) ma c'è solo un insieme finito di mappe lineari tra due spazi vettoriali finiti). Un monoide (\ref{mon_sonocat}) con un numero infinito di elementi è una categoria finita, non localmente né strettamente finita.
 \end{definition}
 Concludiamo con un lemma apparentemente banale, ma che sarà utile in seguito (precisamente, nella dimostrazione di \ref{cat_sonomon}).
 \begin{lemma}\label{lem_end_monoide}\index{Monoide}\index{Categoria!monoidi come ---e}
@@ -1685,12 +1685,12 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
 		      \begin{quote}
 			      Per ogni \(C\in\ctC_0\), esiste un unica freccia \(C\to\infty\).
 		      \end{quote}
-								(Questa proprietà afferma che $\infty$ è un oggetto \emph{terminale} di $\ctC^\rhd$.)
+		      (Questa proprietà afferma che \(\infty\) è un oggetto \emph{terminale} di \(\ctC^\rhd\).)
 		\item il \emph{cono sinistro} \(\ctC^\lhd\) come il giunto \(\ctTerm\star \ctC\); è la categoria che ha gli stessi oggetti di \(\ctC + \{-\infty\}\), e dove \(-\infty\) è un nuovo oggetto che soddisfa la seguente proprietà:
 		      \begin{quote}
 			      Per ogni \(C\in\ctC_0\), esiste un unica freccia \(-\infty \to C\).
 		      \end{quote}
-								(Questa proprietà afferma che $\infty$ è un oggetto \emph{iniziale} di $\ctC^\lhd$.)
+		      (Questa proprietà afferma che \(\infty\) è un oggetto \emph{iniziale} di \(\ctC^\lhd\).)
 	\end{itemize}
 	Si osservi che ci sono inclusioni ovvie \(i^\rhd : \ctC \subset \ctC^\rhd\) e \(i^\lhd : \ctC \subset \ctC^\lhd\) ottenute mandando un oggetto \(C \in\ctC_0\) nell'oggetto \(C\) di \(\ctC_0 + \{\pm\infty\}\).
 \end{definition}
@@ -1767,7 +1767,7 @@ La nozione di isomorfismo in teoria delle categorie generalizza e precisa molte 
 
 	Il morfismo \(f\) è chiamato l'\emph{inverso} \(g^{-1}\) di \(g\) (e specularmente, \(g\) è l'inverso \(f^{-1}\) di \(f\)).
 
-	Se esiste un isomorfismo tra \(X\) e \(Y\) diciamo che i due oggetti sono \emph{isomorfi} (spesso tralasciando mediante quale coppia di morfismi, dato che è chiaro dal contesto) e scriviamo \(X\iso Y\).\footnote{Da un punto di vista costruttivo, \(X\iso Y\) consiste di una quadrupla \((f,g, i,j)\) dove \(f : X\to Y, g: Y\to X\) e \(i,\) sono rispettivamente due dimostrazioni, che \(f\cmp g= \id_Y\) e che \(g\cmp f=\id_X\), però non insisteremo mai su questo dettaglio. Spesso diremo che `\(f\) è un isomorfismo' sottintendendo l'esistenza di \(g\), e vice versa.}
+	Se esiste un isomorfismo tra \(X\) e \(Y\) diciamo che i due oggetti sono \emph{isomorfi} (spesso tralasciando mediante quale coppia di morfismi, dato che è chiaro dal contesto) e scriviamo \(X\iso Y\).\footnote{Da un punto di vista costruttivo, \(X\iso Y\) consiste di una quadrupla \((f,g, i,j)\) dove \(f : X\to Y, g: Y\to X\) e \(i,\) sono rispettivamente due dimostrazioni, che \(f\cmp g= \id_Y\) e che \(g\cmp f=\id_X\), però non insisteremo mai su questo dettaglio. Spesso diremo che `\(f\) è un isomorfismo' sottintendendo l'esistenza di \(g\), e viceversa.}
 \end{definition}
 \`E utile, sebbene del tutto ovvio, rappresentare mediante dei diagrammi commutativi il fatto che \(X,Y\) siano oggetti isomorfi: entrambi i triangoli
 \[
@@ -2463,7 +2463,11 @@ Una classe importante in questo senso è fatta dai diagrammi filtrati, che hanno
 			}\]
 		è commutativo.
 	\end{enumtag}
-	In particolare, come conseguenza di \ref{cf_2}, una categoria filtrata \(\ctJ\) ha la seguente \emph{proprietà} (si veda \ref{condizione_ore}) \emph{di Ore}:\footnote{Øystein Ore, già menzionato nella nota a pié di pagina in \ref{def_gruppoide}.}
+	Le frecce \(k_i\) e l'oggetto \(J^*\) in \ref{cf_1} si dicono un \emph{cocono} per \(\tup Jn,\), e in modo simile \(k\) in \ref{cf_2} si dice un cocono per \(\tup un, : J\to J'\). Allora, le proprietà \ref{cf_1}, \ref{cf_2} si possono rifrasare così:
+	\begin{quote}
+		Una categoria è filtrata se ogni famiglia finita di oggetti \(\tup Jn,\) e ogni famiglia finita di morfismi \(\tup un, : J\to J'\) ammettono un cocono.
+	\end{quote}
+	Si osservi che, come conseguenza di \ref{cf_2}, una categoria filtrata \(\ctJ\) ha la seguente \emph{proprietà} (si veda \ref{condizione_ore}) \emph{di Ore}:\footnote{Øystein Ore, già menzionato nella nota a pié di pagina in \ref{def_gruppoide}.}
 	\begin{quote}
 		Per ogni \(J,X,Y\in\ctJ_0\) e ogni \(u : J\to X\), \(v : J\to Y\) esiste un modo di `completare il quadrato'
 		\[\xymatrix{
@@ -2473,6 +2477,14 @@ Una classe importante in questo senso è fatta dai diagrammi filtrati, che hanno
 		con due frecce \(X \xto fZ \xot g Y\).
 	\end{quote}
 \end{definition}
+Si può dimostrare (per induzione) che più in generale ogni spanna \(n\)-aria (nel senso di \ref{def_span_e_cospan}: una spanna \(n\)-aria è evidentemente una \(\{\iter n\}\)-spanna) può essere completata a un diagramma della forma
+\[\xymatrix@R=1mm{
+	& X_1\ar@{.>}[ddr]^{d_1}\\
+	& X_2\ar@{.>}[dr]\\
+	J \ar[uur]^-{v_1}\ar[ur]_{v_2}\ar[dr]_-{v_n} & \vdots & Z\\
+	& X_n\ar@{.>}[ur]_{d_n}
+	}\]
+tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia \(v : J\to Z\)
 \begin{examples}\label{contro_esempi_filt}\index{Categoria!--- filtrata}\index{Ordine parziale!--- diretto}
 	Esempi di categorie che sono filtrate:
 	\begin{itemize}
@@ -2497,9 +2509,28 @@ Una classe importante in questo senso è fatta dai diagrammi filtrati, che hanno
 	\end{itemize}
 \end{theorem}
 \begin{proof}
-	La seconda condizione implica la prima, perché è sufficiente prendere $\ctI=\bkt{n}^\delta$ finita e discreta, e $\ctI=\{0\rightrightarrows 1\}$ la freccia generica per ritrovare le condizioni \ref{cf_1}, \ref{cf_2}.
+	La seconda condizione implica la prima, perché è sufficiente prendere \(\ctI=\bkt{n}^\delta\) finita e discreta, e \(\ctI=\{0\rightrightarrows 1\}\) la freccia generica per ritrovare le condizioni \ref{cf_1}, \ref{cf_2}.
 
-	Vice versa, se $\ctJ$ è filtrata, 
+	Viceversa, se \(\ctJ\) è filtrata e \(D : \ctI \fun\ctJ\) un diagramma da una categoria finita, l'insieme finito \(\{\tup Jn,\}=\{DI_1,\dots, DI_n\}\) ammette un cocono \(\pair {k_i}{J^*}\); possiamo porre \(\bar D I := DI\), ma definire \(\bar D (\infty)\) e l'azione di \(\bar D\) sulle frecce è più complesso: non esiste garanzia che i triangoli della forma
+	\[\xymatrix@R=3mm{
+		**[l] DI=J\ar[dr]\ar[dd]_{D(I\to I')} \\
+		&J^* \\
+		**[l] DI'=J'\ar[ur]
+		}\]
+	siano commutativi. Si possono però definire gli oggetti \(B_0 := J^*\), e per ogni fissato \(i=\iter n\), e ogni \(f : I_i \to I'\) l'oggetto \(B_i\) come il cocono della famiglia di frecce parallele
+	\[\xymatrix@R=1mm{
+		&DI'\ar[dr]&\\
+		DI_i = J_i\ar[ur]\ar[r]\ar[dr]& DI''\ar[r]& B_0 \ar@{.>}[r]^-{u_i} & C_i\\
+		&DI'''\ar[ur]&
+		}\]
+	(ce ne sono solo un numero finito, dato che \(\ctI\) è finita, \ref{cat_finita_locfinita}). Le \(u_i\), prese come frecce solide nel seguente diagramma, danno una spanna \(n\)-aria, si veda \ref{ex_spancospan}:
+	\[\xymatrix@R=0mm{
+		& C_1\ar@{.>}[ddr]^{l_1}\\
+		& C_2\ar@{.>}[dr]\\
+		B_0 \ar[uur]^-{u_1}\ar[ur]_{u_2}\ar[dr]_-{u_n} & \vdots & B_\infty\\
+		& C_n\ar@{.>}[ur]_{l_n}
+		}\]
+	che ammette un cocono \(\pair{B_\infty}{l_i}\) (le frecce tratteggiate). Poniamo \(\bar D(\infty) := B_\infty\), e a questo punto la maniera in cui abbiamo costruito \(B_\infty\) assicura che \(\bar D\) sia un funtore.
 \end{proof}
 \begin{esercizi}
 	\item Se \(\ctC\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\ctC \fun \susp N\); farsi degli esempi scegliendo come \(\ctC\) una delle categorie di \ref{sec_esempi_cats}, e con \(N=(\bbN,+,0)\) il monoide dei numeri naturali.
@@ -3797,6 +3828,34 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	\index{Funtore!--- essenzialmente suriettivo}
 	\index{Funtore!--- iso-denso|see {--- essenzialmente suriettivo}}
 \end{definition}
+\begin{definition}[Preservare e riflettere]\label{def_preserva_riflette}\index{Funtore!--- preserva proprietà}\index{Funtore!--- riflette proprietà|see {preserva proprietà}}
+	Sia \(\mathcal{P}\) una proprietà di un oggetto \(X\) o morfismo \(f : X\to Y\) di una categoria \(\ctC\); si dice che un funtore \(F : \ctC \fun\ctD\)
+	\begin{itemize}
+		\item \emph{preserva} la proprietà \(\mathcal{P}\) se vale
+		      \[\mathcal{P}(X) \Rightarrow \mathcal{P}(FX) \quad \text{oppure} \quad
+			      \mathcal{P}(f) \Rightarrow \mathcal{P}(Ff) \]
+		      (a seconda che \(\mathcal P\) dipenda da un oggetto o morfismo);
+		\item \emph{riflette} la proprietà \(\mathcal{P}\) se vale
+		      \[\mathcal{P}(FX) \Rightarrow \mathcal{P}(X) \quad \text{oppure} \quad
+			      \mathcal{P}(Ff) \Rightarrow \mathcal{P}(f) \]
+	\end{itemize}
+	Un funtore preserva (per definizione) le proprietà
+	\begin{itemize}
+		\item \(\mathcal P_\cmp(f,g,h) := (g\cmp f = h)\);
+		\item \(\mathcal P_1(f) := (f = \id_X)\).
+	\end{itemize}
+\end{definition}
+\begin{proposition}\label{prop_preserva_riflette}
+	Tutti i funtori preservano la proprietà \(\mathcal P_e(f) := (f \text{ è un epi spezzante})\) e \(\mathcal P_m(f) := (f \text{ è un mono spezzante})\), per \ref{cor:fun-sezioni-retrazioni}. Gli hom funtori rappresentabili \(\Hom\ctC(C,-)\) preservano la proprietà `\(f\) è un monomorfismo' (diciamo che \(\Hom\ctC(C,-)\) \emph{preserva i monomorfismi}); nella categoria \(\ctSet\) degli insiemi, \(\Hom\ctSet(A,-)\) preserva anche la proprietà `\(f\) è un epimorfismo' se si assume l'assioma della scelta (come formulato in \ref{fig_assioma_scelta}).
+
+	Molte proprietà sono \emph{riflesse} dai funtori pienamente fedeli: per esempio,
+	\begin{itemize}
+		\item la proprietà \(\mathcal P_\cong(f) := (f \text{ è un isomorfismo})\);
+		\item la proprietà \(\mathcal P_e(f) := (f \text{ è un epi spezzante})\);
+		\item la proprietà \(\mathcal P_m(f) := (f \text{ è un mono spezzante})\).
+	\end{itemize}
+	Ogni funtore fedele \(F : \ctC\fun\ctD\) riflette la proprietà `\(f\) è un monomorfismo' (diciamo che \(F\) \emph{riflette i monomorfismi}) e gli epimorfismi.
+\end{proposition}
 \begin{definition}[Isomorfismo di categorie]\label{fun_isocat}\index{Categoria!isomorfismo di ---e}\index{Isomorfismo!--- di categorie}\index{Isomorfismo}
 	Un isomorfismo di categorie \(\ctC\cong\ctD\) consiste di una coppia di funtori
 	\[\xymatrix{
@@ -3804,9 +3863,15 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 		}\]
 	tali che \(F\cmp G = \Id[\ctD]\) e \(G\cmp F = \Id[\ctC]\).
 
-	Si tratta, evidentemente, di un isomorfismo nella categoria \(\ctCat\) di categorie e funtori di \ref{ex_cat_cat}.
+	Si tratta, evidentemente, di un isomorfismo nella categoria \(\ctCat\) di categorie e funtori di \ref{ex_cat_cat}. In particolare,
+	\begin{quote}
+		Ogni isomorfismo di categorie induce una biiezione di classi, \(F_0 : \ctC_0\to\ctD_0\), di inversa \(G_0 : \ctD_0\to\ctC_0\), e una biiezione di classi \(F_1 : \ctC_1 \to \ctD_1\), di inversa \(G_1 : \ctD_1\to\ctC_1\) che si decompone in una famiglia `indicizzata' di biiezioni \(F_{XY} : \Hom\ctC(X,Y)\to\Hom\ctD(FX,FY)\), di inversa
+		\[\xymatrix{
+			\Hom\ctD(FX,FY) \ar[r]^-{G_{FX,FY}} & \Hom\ctC(GFX,GFY) \ar@{=}[r] & \hom(X,Y).
+			}\]
+	\end{quote}
 \end{definition}
-\`E più comune trovarsi nella condizione in cui esistono due funtori \(F : \ctC \leftrightarrows \ctD: G\) con la proprietà che esistano \emph{isomorfismi naturali} \(\epsilon : F\cmp G \cong \Id[\ctD]\) ed \(\eta : \Id[\ctC]\cong G\cmp F\). Questa definizione più rilassata di identificazione tra due categorie si dice\emph{equivalenza}.
+\`E più comune trovarsi nella condizione in cui esistono due funtori \(F : \ctC \leftrightarrows \ctD: G\) con la proprietà che esistano \emph{isomorfismi naturali} \(\epsilon : F\cmp G \cong \Id[\ctD]\) ed \(\eta : \Id[\ctC]\cong G\cmp F\). Questa definizione più rilassata di identificazione tra due categorie si dice\emph{equivalenza}, denotata \(\ctC\simeq\ctD\). Vedremo presto che un'equivalenza di categorie \(\ctC\simeq\ctD\) induce biiezioni tra gli hom-insiemi di \(\ctC,\ctD\), ma che le classi degli oggetti di queste possono essere una radicalmente più grande dell'altra (per esempio, \(\ctC_0\) può essere una classe propria, e \(\ctD_0\) un insieme; oppure, esistono categorie dove \(\ctC_0\) ha cardinalità arbitrariamente alta, ma \(\ctD_0\) è un singoletto\dots)
 \begin{definition}[Equivalenza di categorie]\label{funtore_equcat}\index{Equivalenza}\index{Categoria!equivalenza di ---e}
 	Una \emph{equivalenza di categorie} \(\ctC\simeq\ctD\) consiste di una quadrupla \((F,G,\eta,\epsilon)\), dove
 	\begin{itemize}
@@ -3834,22 +3899,49 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 		}\]
 	A causa della forma di questi diagrammi (due triangoli sono incollati insieme ed \(F,G\) formano uno zig-zag di frecce in direzioni opposte), esse sono colloquialmente chiamate \emph{identità zig-zag} o identità triangolari (o identità \emph{di aggiunzione}, si vedrà nel \autoref{cap_aggiunti}).
 \end{hRemark}
+\begin{lemma}\label{eq_sono_eqadj}
+	Ogni equivalenza di categorie induce una equivalenza aggiunta.
+\end{lemma}
+\begin{proof}
+	\Todo{}
+\end{proof}
 \begin{definition}\label{funtore_wequcat}\index{Equivalenza debole}
 	Una equivalenza debole di categorie è un funtore \(F : \ctC \fun\ctD\) che sia pieno, fedele ed essenzialmente suriettivo.
 \end{definition}
 \begin{remark}\label{eq_implies_weq_AC_eq}
-	Ogni equivalenza di categorie è un'equivalenza debole di categorie. Il vice versa, che consiste nel costruire uno pseudoinverso per un funtore \(F : \ctC\fun\ctD\) che sia un'equivalenza debole, è dimostrabile assumendo l'assioma della scelta.
+	Ogni equivalenza di categorie è un'equivalenza debole di categorie. Il viceversa, che consiste nel costruire uno pseudoinverso per un funtore \(F : \ctC\fun\ctD\) che sia un'equivalenza debole, è dimostrabile assumendo un assioma della scelta (per classi: ogni funzione di classe \(K : \ctC_0 \to \ctD_0\) suriettiva ammette una sezione, ossia se ogni \(K^{-1}D\) è non vuota, è possibile definire una funzione di classe \(H : D\mapsto HD \in K^{-1}D\)).
 	\begin{itemize}
-		\item un verso\Todo{}
-		\item l'altro verso\Todo{}
+		\item Se \(F\) è un'equivalenza di categorie, per \ref{eq_sono_eqadj} possiamo metterci nella situazione in cui \(F\) è un'equivalenza aggiunta con pseudoinverso \(G : \ctD\fun\ctC\). Allora per ogni \(f : X\to Y\) in \(\ctC\) abbiamo un quadrato commutativo
+		      \[\xymatrix{
+			      X\ar[r]^-{\eta_X}\ar[d]_f & GFX \ar[d]\ar[d]^{GFf}\\
+			      Y \ar[r]_-{\eta_Y} & GFY
+			      }\]
+		      per la naturalità di \(\eta\); allora se \(Ff_1 = Ff_2\), anche \(GFf_1 = GFf_2\), cioè
+		      \[\eta_Y\cmp f_1 \cmp \eta_X^{-1} = GFf_1 = GFf_2 = \eta_Y\cmp f_2 \cmp \eta_X^{-1}\]
+		      Quindi, siccome tutti gli isomorfismi sono cancellabili a destra e a sinistra (\ref{}), \(f_1 = f_2\). Questo mostra che \(F\) è fedele. Data ora una freccia \(g : FA\to FB\) in \(\ctD\), la freccia \(Gg : GFA\to GFB\) è un morfismo di \(\ctC\), e possiamo considerare il diagramma
+		      \[\xymatrix{
+			      FA \ar@{=}[dr]\ar[r]^-{\eta_{FA}}& FGFA \ar[d]_{\epsilon_A}\ar[r]^-{FGg} & FGFB \ar[d]^{\epsilon_B}\ar[r]^-{\eta_{FB}^{-1}}& FB \\
+			      & FA \ar[r]_-g& FB \ar@{=}[ur]&
+			      }\]
+		      (per la naturalità di \(\epsilon\) e per l'equazione zig); Quindi \(F\big(\eta_B^{-1}\cmp Gg\cmp \eta_A\big) = g\); questo mostra che \(F\) è pieno.
+
+		      Ogni oggetto \(X\in\ctD_0\) poi è della forma \(F(GX) \cong X\) mediante l'isomorfismo (naturale in \(X\)!) dato da \(\epsilon\).
+		\item Nell'altro verso abbiamo bisogno di una forma di assioma della scelta: siccome \(F\) è essenzialmente suriettivo, possiamo scegliere un \(C\in F_0^{-1}D\) per ogni \(D\) (e degli isomorfismi \(\epsilon : FGC \cong C\)); questo definisce una funzione di classe \(G_0 : \ctD_0\to\ctC_0\) che è la corrispondenza sugli oggetti del funtore \(G : \ctD\fun\ctC\) che stiamo costruendo. Gli isomorfismi \(\epsilon : FGC \to C\) sono le componenti di una trasformazione naturale se definiamo \(G\) sulle frecce come segue: dato \(h : C\to C'\), il quadrato
+		      \[\xymatrix{
+				      FGC \ar[r]\ar[d]& C \ar[d]^h\\
+				      FGC' \ar[r]& C'
+			      }\]
+		      commuta quando la freccia verticale a sinistra sia \(\epsilon_{C'}^{-1}\cmp h\cmp \epsilon_C : FG\), e siccome \(F\) è pienamente fedele esiste un'unica freccia \(a : GC \to GC'\) tale che \(Fa = \epsilon_{C'}^{-1}\cmp h\cmp \epsilon_C\); chiamando \(Gh=a\), questo significa che \(\epsilon_{C'}\cmp FGh = h\cmp \epsilon_C\), che è la naturalità di \(\epsilon\) in \(h\).
+
+		      Per determinare \(\eta : \Id[\ctC] \nat GF\), consideriamo \(\epsilon_{FC} : FGFC \to FC\): siccome \(F\) è pienamente fedele, esiste un'unica freccia \(\eta^{-1}_C : GFC\to C\) tale che \(F(\eta^{-1}_C) = \epsilon_{FC}\), e (dato che un funtore pienamente fedele riflette gli isomorfismi, \ref{prop_preserva_riflette}) \(F(\eta^{-1}_C)=F(\eta_C)^{-1}_C\) per un'unica freccia \(\eta_C : C\to GFC\). Un ragionamento simile a prima ne mostra la naturalità.
 	\end{itemize}
 \end{remark}
 Gli isomorfismi di categorie sono relativamente rari, poiché le proprietà di molte categorie sono invarianti per una nozione molto più debole di identificazione.
-Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempio, ogni gruppoide è equivalente a una unione disgiunta di gruppi (guardati come gruppoidi con un solo oggetto), senza che questa equivalenza sia un isomorfismo; e il gruppoide fondamentale \(\Pi_1(X)\) di uno spazio topologico \(X\) connesso per archi è una categoria equivalente, ma non isomorfa, a \(\pi_1(X,x_0)\) per una opportuna scelta di un punto di base \(x_0\in X\). Questo suggerisce che due categorie piccole con due insiemi degli oggetti di diversa cardinalità possono essere equivalenti; un esempio estremo è questo: se $A$ è un insieme e $A^\chi$ il gruppoide caotico di \ref{ex_cat_codiscreta}, esiste un unico funtore $F : A^\chi \to \ctTerm$, definito nell'unico modo possibile, ed esso è un'equivalenza (debole). In particolare (invitiamo chi legge a completare i dettagli per esercizio) 
+Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempio, ogni gruppoide è equivalente a una unione disgiunta di gruppi (guardati come gruppoidi con un solo oggetto), senza che questa equivalenza sia un isomorfismo; e il gruppoide fondamentale \(\Pi_1(X)\) di uno spazio topologico \(X\) connesso per archi è una categoria equivalente, ma non isomorfa, a \(\pi_1(X,x_0)\) per una opportuna scelta di un punto di base \(x_0\in X\). Questo suggerisce che due categorie piccole con due insiemi degli oggetti di diversa cardinalità possono essere equivalenti; un esempio estremo è questo: se \(A\) è un insieme e \(A^\chi\) il gruppoide caotico di \ref{ex_cat_codiscreta}, esiste un unico funtore \(F : A^\chi \to \ctTerm\), definito nell'unico modo possibile, ed esso è un'equivalenza (debole). In particolare (invitiamo chi legge a completare i dettagli per esercizio)
 \begin{remark}\index{Categoria!--- isomorfismo generico}
 	La categoria `isomorfismo generico' di \ref{ex_cat_iso},
 	\[\xymatrix@C=7ex{0 \ar@<.7ex>[r]^u \ar@(dl,ul)[] & 1 \ar@<.7ex>[l]^{u^{-1}} \ar@(ur,dr)[]}\]
-	è equivalente alla categoria $\ctTerm$.
+	è equivalente alla categoria \(\ctTerm\).
 \end{remark}
 \begin{example}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
 	La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a Vect.
@@ -3921,32 +4013,7 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 \begin{proof}
 	\Todo{}
 \end{proof}
-\begin{definition}[Preservare e riflettere]\label{def_preserva_riflette}\index{Funtore!--- preserva proprietà}\index{Funtore!--- riflette proprietà|see {preserva proprietà}}
-	Sia \(\mathcal{P}\) una proprietà di un oggetto \(X\) o morfismo \(f : X\to Y\) di una categoria \(\ctC\); si dice che un funtore \(F : \ctC \fun\ctD\)
-	\begin{itemize}
-		\item \emph{preserva} la proprietà \(\mathcal{P}\) se vale
-		      \[\mathcal{P}(X) \Rightarrow \mathcal{P}(FX) \quad \text{oppure} \quad
-			      \mathcal{P}(f) \Rightarrow \mathcal{P}(Ff) \]
-		      (a seconda che \(\mathcal P\) dipenda da un oggetto o morfismo);
-		\item \emph{riflette} la proprietà \(\mathcal{P}\) se vale
-		      \[\mathcal{P}(FX) \Rightarrow \mathcal{P}(X) \quad \text{oppure} \quad
-			      \mathcal{P}(Ff) \Rightarrow \mathcal{P}(f) \]
-	\end{itemize}
-	Un funtore preserva (per definizione) le proprietà
-	\begin{itemize}
-		\item \(\mathcal P_\cmp(f,g,h) := (g\cmp f = h)\);
-		\item \(\mathcal P_1(f) := (f = \id_X)\).
-	\end{itemize}
-	Tutti i funtori preservano la proprietà \(\mathcal P_e(f) := (f \text{ è un epi spezzante})\) e \(\mathcal P_m(f) := (f \text{ è un mono spezzante})\), per \ref{cor:fun-sezioni-retrazioni}. Gli hom funtori rappresentabili \(\Hom\ctC(C,-)\) preservano la proprietà `\(f\) è un monomorfismo' (diciamo che \(\Hom\ctC(C,-)\) \emph{preserva i monomorfismi}); nella categoria \(\ctSet\) degli insiemi, \(\Hom\ctSet(A,-)\) preserva anche la proprietà `\(f\) è un epimorfismo' se si assume l'assioma della scelta (come formulato in \ref{fig_assioma_scelta}).
 
-	Molte proprietà sono \emph{riflesse} dai funtori pienamente fedeli: per esempio,
-	\begin{itemize}
-		\item la proprietà \(\mathcal P_\cong(f) := (f \text{ è un isomorfismo})\);
-		\item la proprietà \(\mathcal P_e(f) := (f \text{ è un epi spezzante})\);
-		\item la proprietà \(\mathcal P_m(f) := (f \text{ è un mono spezzante})\).
-	\end{itemize}
-	Ogni funtore fedele \(F : \ctC\fun\ctD\) riflette la proprietà `\(f\) è un monomorfismo' (diciamo che \(F\) \emph{riflette i monomorfismi}) e gli epimorfismi.
-\end{definition}
 \begin{esercizi}
 	\item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
 	\item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
