@@ -534,13 +534,14 @@
 }
 
 \def\radius{3.5pt}
-\NewDocumentCommand{\blank}{ O{black} }{
+\NewDocumentCommand{\doBlank}{ O{black} }{
 \begin{tikzpicture}%
-\node {{\dottedcirclefont ◌}};%
 \foreach \i in {0,...,15}%
   \fill[#1] (\i * 360/16:\radius) circle (.375pt);%
 \end{tikzpicture}%
 }
+
+\NewDocumentCommand{\blank}{ O{black} }{\mathop{\doBlank[#1]}}
 
 \NewDocumentCommand{\natHom}{ O{\ctC} O{\ctD} m m }{
   \Hom{[#1,#2](#3,#4)}

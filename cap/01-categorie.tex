@@ -110,14 +110,21 @@ Questo suggerisce la necessità di introdurre una (sottile, ma sostanziale) diff
 		\item Le classi \(\Hom{\ctC}(X,Y)\) al variare di \((X,Y)\in\ctC_0\times\ctC_0\) sono tutte disgiunte, perché la corrispondenza \(\ctC_1 \to \ctC_0\times\ctC_0\) che manda \(f\) nella coppia \((\dom{f},\cod{f})\) è una funzione (e allora la sua \emph{fibra} sopra \((X,Y)\) è proprio \(\Hom{\ctC}(X,Y)\), disgiunto da \(\Hom{\ctC}(X',Y')\));
 		\item come conseguenza immediata, se \(X\ne X'\) sono oggetti diversi, le identità \(\id_X,\id_{X'}\) sono morfismi diversi: si può cioè pensare la corrispondenza \(X\mapsto \id_X : \ctC_0\to\ctC_1\) come una funzione \emph{iniettiva} tra classi;
 		\item la composizione consta di una funzione \emph{parziale} (si noti la diversa freccia)
-		      \[\xymatrix{\_\cmp\_ : \ctC_1 \times \ctC_1 \ar@^{->}[r] & \ctC_1}\]
+		      \[\xymatrix{\blank\cmp\blank : \ctC_1 \times \ctC_1 \ar@^{->}[r] & \ctC_1}\]
 		      il cui dominio è la sotto-classe \(\sum_{XYZ} \{ X \xrightarrow f Y \xrightarrow g Z \}\subseteq\ctC_1 \times \ctC_1\) dei morfismi \emph{contigui} o \emph{componibili}, cioè
 		      \[\sum_{XYZ} \{ X \xrightarrow f Y \xrightarrow g Z \} = \{(f,g)\in \ctC_1 \times \ctC_1\mid c(f)=d(g)\}.\]
-		      Dato che i vari \(\Hom{\ctC}(X,Y)\) sono a due a due disgiunti, la composizione \(\_\cmp\_\) si `spezza' in una classe di funzioni
-		      \[\xymatrix{\_\cmp_{XZ}^Y\_ : \Hom{\ctC}(Y,Z)\times\Hom{\ctC}(X,Y) \ar[r] & \Hom{\ctC}(X,Z)}\]
-		      dove ciascuna funzione manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in \(g\cmp f\) (in effetti, gli indici che indicano il dominio della particolare funzione \(\_\cmp_{XZ}^Y\_\) vengono \emph{sempre} lasciati sottintesi, e si scrive solo \(\_\cmp\_\)).
+		      Dato che i vari \(\Hom{\ctC}(X,Y)\) sono a due a due disgiunti, la composizione \(\blank\cmp\blank\) si `spezza' in una classe di funzioni
+		      \[\xymatrix{\blank\cmp_{XZ}^Y\blank : \Hom{\ctC}(Y,Z)\times\Hom{\ctC}(X,Y) \ar[r] & \Hom{\ctC}(X,Z)}\]
+		      dove ciascuna funzione manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in \(g\cmp f\) (in effetti, gli indici che indicano il dominio della particolare funzione \(\blank\cmp_{XZ}^Y\blank\) vengono \emph{sempre} lasciati sottintesi, e si scrive solo \(\blank\cmp\blank\)).
 	\end{itemize}
 \end{remark}
+\begin{notation}
+	Il segnaposto `$\blank$' indica il `buco da riempire' in una funzione $x\mapsto f(x)$, cosicché $f(\blank)$ si riferisce alla funzione $f$ non saturata nel suo argomento: ad esempio, 
+	\[\blank+1 \qquad (\blank)^2 -7\cdot\blank + 2 \qquad \texttt{head}(\blank)\]
+	si riferiscono alle funzioni successore (`aggiungi 1'), al polinomio di secondo grado $X^2-7X+2$ (che definisce una parabola) e alla funzione $\texttt{head}$ che restituisce la testa (il primo elemento) di una lista non vuota. 
+
+	Altre notazioni comuni per lo stesso simbolo di `segnaposto' sono un trattino basso, $\_+1$, $(\_)^2 -7\cdot\_ + 2$ eccetera, o (facilmente confondibile col segno meno), il trattino a media altezza `$-$'.
+\end{notation}
 \begin{remark}[Oggetti come particolari frecce]\index{Identità}\index{Frecce}
 	Un principio fondamentale su cui la teoria delle categorie è edificata suona come `le frecce sono più importanti degli oggetti', o meglio, `ciò che definisce veramente una categoria sono le sue frecce, più dei suoi oggetti'.
 
@@ -797,10 +804,10 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	In un sistema dinamico discreto si considera l'\emph{orbita} \([x_0]:=\{x_0,f(x_0),f(f(x_0)),\dots\}\) del \emph{punto base} \(x_0\) della dinamica per studiarne, per esempio, le proprietà geometriche quando \(X\) ha una struttura di spazio metrico (ad esempio, \([x]\subseteq X\) può essere denso, per alcune scelte di \(x_0\), o finito, per altre; può essere preservato da una misura, quando \(X\) sia dotato di una struttura di spazio di probabilità).
 \end{example}
 \begin{example}[\(\mathrm{C}^*\)-algebre complesse]\index{Categoria!--- delle \(\mathrm{C}^*\)-algebre}\index{Cs-algebra@\(\mathrm{C}^*\)-algebra}
-	Una \emph{\(\mathrm{C}^*\)-algebra} consiste di uno spazio di Banach \(A\) (cioè di uno spazio vettoriale topologico sul campo dei complessi, dotato di una norma \(\norm{\_} : A \to \bbR_{\ge 0}\), e completo rispetto alla metrica indotta da \(\norm{\_}\)), che in più è dotato di
+	Una \emph{\(\mathrm{C}^*\)-algebra} consiste di uno spazio di Banach \(A\) (cioè di uno spazio vettoriale topologico sul campo dei complessi, dotato di una norma \(\norm{\blank} : A \to \bbR_{\ge 0}\), e completo rispetto alla metrica indotta da \(\norm{\blank}\)), che in più è dotato di
 	\begin{itemize}
-		\item una operazione di anello (possibilmente non unitario) \(\_\cdot\_ : A \times A \to A\) che sia \emph{submoltiplicativa}, cioè tale che \(\norm{x\cdot y} \le\norm x\norm y\) (questo assicura che la moltiplicazione sia una funzione continua);
-		\item una involuzione \((\_)^* : A\to A\) che soddisfa la \emph{proprietà fondamentale}
+		\item una operazione di anello (possibilmente non unitario) \(\blank\cdot\blank : A \times A \to A\) che sia \emph{submoltiplicativa}, cioè tale che \(\norm{x\cdot y} \le\norm x\norm y\) (questo assicura che la moltiplicazione sia una funzione continua);
+		\item una involuzione \((\blank)^* : A\to A\) che soddisfa la \emph{proprietà fondamentale}
 		      \[\norm{x^*\cdot x} = \norm{x}^2\]
 		      (questo assicura che \(x\mapsto x^*\) sia un'isometria, cioè \(\norm x = \norm{x^*}\)).
 	\end{itemize}
@@ -1202,7 +1209,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 		\item per costanti i simboli \(A,B,C,\dots : \ctC_0\) degli oggetti e i simboli \(f,g,h,\dots : \ctC_1\) dei morfismi (in particolare \(A,B,C,\dots\) hanno \emph{sorte} \(\ctC_0\) e \(f,g,h,\dots\) sorte \(\ctC_1\));
 		\item le funzioni dominio e codominio \(d,c : \ctC_1\to\ctC_0:f\mapsto d(f),c(f)\);
 		\item la funzione di costruzione dell'identità \(\id : \ctC_0\to \ctC_1 : A\mapsto \Id[A]\);
-		\item l'operazione di composizione \(\_\cmp\_ : \ctC_2 \to \ctC_1\) dove ricordiamo che
+		\item l'operazione di composizione \(\blank\cmp\blank : \ctC_2 \to \ctC_1\) dove ricordiamo che
 		      \[\ctC_2 := \{(f,g) : \ctC_1\times\ctC_1\mid c(f) = d(g)\}\subseteq\ctC_1\times\ctC_1\]
 	\end{itemize}
 	tutto ciò soggetto alle equazioni
@@ -1219,7 +1226,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 	Il principio di dualità si enuncia come segue.
 	Data una formula \(\Sigma\) nel linguaggio \(\mathsf{CT}\), possiamo costruire la formula duale per sostituzione, \(\Sigma^\op:=\Sigma[d/c,c/d,\cmp/\cmp^\op]\)\footnote{\`E chiaro cosa lo scambio di \(d,c\) significhi: prima si sostituisce \(d\) con un simbolo vergine \(\hat c\) e \(c\) con un simbolo vergine \(\hat d\), e poi si sosituisce \(\hat c\) con \(c\) e \(\hat d\) con \(d\):
 		\[\Sigma \squig \Sigma[d/\hat c,c/\hat d]\squig \Sigma[\hat c/c,\hat d/d] =:\Sigma^\op\]
-		ma questa pedanteria è eccessiva.} dove \(\_\cmp^\op\_\) è definita come \(u\cmp^\op v = v\cmp u\) (e questa è una buona definizione, dopo lo scambio \(d\leftrightarrows c\)).
+		ma questa pedanteria è eccessiva.} dove \(\blank\cmp^\op\blank\) è definita come \(u\cmp^\op v = v\cmp u\) (e questa è una buona definizione, dopo lo scambio \(d\leftrightarrows c\)).
 	\begin{quote}
 		Se \(\Sigma\) è valido in \(\mathsf{CT}\) (in simboli, \(\mathsf{CT}\vDash \Sigma\)) allora \(\Sigma^\op\) è valido in \(\mathsf{CT}\) (\(\mathsf{CT}\vDash \Sigma^\op\)).
 	\end{quote}
@@ -1521,9 +1528,9 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 \begin{example}[Implicazioni in contesto]\label{ex_boole_cpc}\index{Categoria!--- del calcolo proposizionale}
 	\`E noto dai corsi di logica elementare che l'insieme \(\ctB=\{\varphi,\psi,\dots\}\) delle formule ben formate del calcolo proposizionale (classico) forma un'algebra di Boole rispetto all'ordine
 	\[\varphi\le\psi \overset{\text{def}}\iff \varphi \to \psi\]
-	dove \(\_\to\_\) è l'implicazione logica. (A meno che non consideriamo le classi di equivalenza rispetto alla relazione
+	dove \(\blank\to\blank\) è l'implicazione logica. (A meno che non consideriamo le classi di equivalenza rispetto alla relazione
 	\[\varphi\equiv\psi \overset{\text{def}}\iff (\varphi\le \psi) \; \& \; (\psi\le\varphi)\]
-	questo insieme è solamente \emph{pre}ordinato.) Consideriamo la categoria \(\ctB/\varphi\); in base a \ref{ex_pos_slices} questa coincide con il segmento \(\{\alpha\le\varphi\}\), il quale in base alla definizione di \(\_\le\_\) si identifica all'insieme degli \(\alpha\) tali che \(\alpha\) implica \(\varphi\), dotato dell'ordine indotto.
+	questo insieme è solamente \emph{pre}ordinato.) Consideriamo la categoria \(\ctB/\varphi\); in base a \ref{ex_pos_slices} questa coincide con il segmento \(\{\alpha\le\varphi\}\), il quale in base alla definizione di \(\blank\le\blank\) si identifica all'insieme degli \(\alpha\) tali che \(\alpha\) implica \(\varphi\), dotato dell'ordine indotto.
 
 	La categoria-ordine \(\ctB/\varphi\) modella la struttura della classe delle proposizioni \(\alpha,\beta,\dots\) dove \(\alpha \to \beta\) (in \(\ctB/\varphi\)) se e solo se \(\alpha \land \varphi \to \beta\) (in \(\ctB\)). In breve, \(\varphi\) fa da \emph{contesto} in cui le proposizioni sono determinate.
 \end{example}
@@ -2273,8 +2280,8 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	Raccogliamo alcuni esempi di funtori di due o più variabili, tra le categorie introdotte finora.
 	\begin{itemize}
 		\item il bifuntore hom di \ref{ex_hom_funtore}, che esiste per ogni categoria \(\ctC\);
-		\item Esiste un bifuntore \(\_\times\_ : \ctSet\times\ctSet \fun\ctSet\) che manda un oggetto \((X,Y)\) del prodotto di categorie \(\ctSet\times\ctSet\) nell'insieme \(X\times Y\) e i morfismi \((f :A \to X, g : B\to Y)\) nel morfismo \(f\times g : A\times B \to X\times Y : (a,b)\mapsto (f(a),g(b))\).
-		\item Esiste un bifuntore \(\_\oplus\_ : \ctVect\times\ctVect \fun\ctVect\) che, similmente a prima, manda due spazi vettoriali \(V,W\) nella loro \emph{somma diretta}, e due mappe lineari \(f : V\to V',g : W\to W'\) nella mappa lineare \(\left(\begin{smat} f & 0 \\ 0 & g \end{smat}\right) : V\oplus W \to V'\oplus W'\). Questo e il precedente esempio sono casi particolari del \emph{prodotto} di due oggetti rispettivamente nelle categorie \(\ctSet,\ctVect\).
+		\item Esiste un bifuntore \(\blank\times\blank : \ctSet\times\ctSet \fun\ctSet\) che manda un oggetto \((X,Y)\) del prodotto di categorie \(\ctSet\times\ctSet\) nell'insieme \(X\times Y\) e i morfismi \((f :A \to X, g : B\to Y)\) nel morfismo \(f\times g : A\times B \to X\times Y : (a,b)\mapsto (f(a),g(b))\).
+		\item Esiste un bifuntore \(\blank\oplus\blank : \ctVect\times\ctVect \fun\ctVect\) che, similmente a prima, manda due spazi vettoriali \(V,W\) nella loro \emph{somma diretta}, e due mappe lineari \(f : V\to V',g : W\to W'\) nella mappa lineare \(\left(\begin{smat} f & 0 \\ 0 & g \end{smat}\right) : V\oplus W \to V'\oplus W'\). Questo e il precedente esempio sono casi particolari del \emph{prodotto} di due oggetti rispettivamente nelle categorie \(\ctSet,\ctVect\).
 		\item \ref{ex_cat_matrici} (le matrici a coefficienti in un campo) fornisce un esempio di categoria dove i morfismi sono bifuntori: una matrice \(m\times n\) a coefficienti in \(k\) infatti si può vedere come una funzione \(\bkt m\times \bkt n \to \bbF\), e considerare \(\bkt m = \{\iter n\}\) come una categoria discreta (\ref{ex_cat_discreta}) motiva la definizione seguente.
 	\end{itemize}
 \end{examples}
@@ -2358,7 +2365,7 @@ Ora, dare una famiglia di insiemi \(\tilde M(a,b)\) al variare di \(A\times B\) 
 	\end{itemize}
 	La composizione si fa come in \(\ctC\), \(\Id[C] : (C,x)\to (C,x)\) è l'identità dell'oggetto \((C,x)\).
 \end{definition}
-Più in generale, per ogni oggetto \(D\in\ctD_0\) e funtore \(F : \ctC\fun\ctD\), definiamo la categoria degli elementi di \(F\) in \(D\) come la categoria degli elementi \(\Elts\ctC{\Hom\ctD(D,F\_)}\) dove \(\Hom\ctD(D,F\_) : C\mapsto\Hom\ctD(D,FC)\); la \(\Elts\ctC F\) precedente si recupera quando \(F\) ha codominio \(\ctSet\), per \(D=\{*\}\) un singoletto.
+Più in generale, per ogni oggetto \(D\in\ctD_0\) e funtore \(F : \ctC\fun\ctD\), definiamo la categoria degli elementi di \(F\) in \(D\) come la categoria degli elementi \(\Elts\ctC{\Hom\ctD(D,F\blank)}\) dove \(\Hom\ctD(D,F\blank) : C\mapsto\Hom\ctD(D,FC)\); la \(\Elts\ctC F\) precedente si recupera quando \(F\) ha codominio \(\ctSet\), per \(D=\{*\}\) un singoletto.
 
 La costruzione si dà anche per un funtore controvariante \(F : \ctC^\op\fun\ctSet\), la cui categoria degli elementi ha oggetti \((C,x)\) come sopra, e morfismi \(f : (C,x)\to (C',y)\) tali che \(Ff : FC'\to FC\) manda \(y\) in \(x\).
 \subsection{Funtori come diagrammi}
@@ -2949,11 +2956,11 @@ Inoltre, la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 	Abbiamo visto nell'Esempio~\ref{exa_azioni_funtori} che dato un gruppo \(G\), un funtore \(\susp G\to\ctSet\) è un insieme \(X\) con un'azione di \(G\) su \(X\). Dati due funtori \(\susp G\to\ctSet\), i.e.\ due insiemi \(X\) e \(Y\) con un'azione di \(G\), una trasformazione naturale tra questi due funtori è una funzione \(f:X\to Y\) che commuta con l'azione di \(G\), nel senso che per ogni \(g\in G\), il seguente diagramma commuta,
 	\[
 		\begin{tikzcd}
-			X \ar[d, "f"'] \ar{r}{g\cdot\_} & X \ar{d}{f} \\
-			Y \ar[r, "g\cdot\_"'] & Y
+			X \ar[d, "f"'] \ar{r}{g\cdot\blank} & X \ar{d}{f} \\
+			Y \ar[r, "g\cdot\blank"'] & Y
 		\end{tikzcd}
 	\]
-	(abbiamo indicato con \(g\cdot\_\) la biiezione di \(X\) che corrisponde all'elemento \(g\) nella rappresentazione).
+	(abbiamo indicato con \(g\cdot\blank\) la biiezione di \(X\) che corrisponde all'elemento \(g\) nella rappresentazione).
 
 	In teoria delle rappresentazioni, la condizione su \(f\)
 	\[\text{per ogni } g\in G,\, f(g\cdot x)=g\cdot f(x)\]
@@ -3021,8 +3028,8 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 				      \arrow[equals, from=2-3, to=3-3]
 				      \arrow[from=3-1, to=3-3]
 			      \end{tikzcd}\]
-		\item il funtore potenza covariante \(\ctP : \ctSet\fun\ctSet\) di \ref{ex_fun_parti} è puntato dalla famiglia di mappe \(\eta_X : X\to \ctP X\) date da \(x\mapsto \{x\}\); la naturalità si traduce nel fatto (ovvio) che \(\ctP_*(f)(\{x\}) = \{f(x)\}\) per ogni \(f : X\to Y\). Similmente, assegnare a un insieme \(X\) l'insieme delle liste in \(X\), come in \ref{mongruppi_liberi}, è un funtore puntato \((\_)^* : \ctSet\fun\ctSet\), dalla famiglia \(\theta_X : X\to X^* : x\mapsto x\cons \emptyList = [x]\), e la naturalità di \(\theta\) si traduce nel fatto (ovvio) che \(f^*[x] = [f(x)]\) per ogni \(f : X\to Y\);
-		\item mandare una lista \emph{non vuota} nella sua testa \(h_X(x\cons xs) =x\) è una trasformazione naturale dal funtore \((\_)^+\) delle liste \emph{non vuote} all'identità.
+		\item il funtore potenza covariante \(\ctP : \ctSet\fun\ctSet\) di \ref{ex_fun_parti} è puntato dalla famiglia di mappe \(\eta_X : X\to \ctP X\) date da \(x\mapsto \{x\}\); la naturalità si traduce nel fatto (ovvio) che \(\ctP_*(f)(\{x\}) = \{f(x)\}\) per ogni \(f : X\to Y\). Similmente, assegnare a un insieme \(X\) l'insieme delle liste in \(X\), come in \ref{mongruppi_liberi}, è un funtore puntato \((\blank)^* : \ctSet\fun\ctSet\), dalla famiglia \(\theta_X : X\to X^* : x\mapsto x\cons \emptyList = [x]\), e la naturalità di \(\theta\) si traduce nel fatto (ovvio) che \(f^*[x] = [f(x)]\) per ogni \(f : X\to Y\);
+		\item mandare una lista \emph{non vuota} nella sua testa \(h_X(x\cons xs) =x\) è una trasformazione naturale dal funtore \((\blank)^+\) delle liste \emph{non vuote} all'identità.
 	\end{itemize}
 	Oltre a essere puntati o copuntati, i funtori \(S\) e \(\ctP\) di prima hanno associate delle trasformazioni naturali, rispettivamente, di tipo
 	\[\xymatrix{
@@ -3305,10 +3312,10 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 	\[\begin{tikzcd}[cramped]
 			{\Hom{\ctC}(X,C)} && {\Hom{\ctC}(X,C')} \\
 			{\Hom{\ctC}(Y,C)} && {\Hom{\ctC}(Y,C')}
-			\arrow["{u\cmp\_}", from=1-1, to=1-3]
-			\arrow["{\_\cmp g}", from=2-1, to=1-1]
-			\arrow["{u\cmp\_}"', from=2-1, to=2-3]
-			\arrow["{\_\cmp g}"', from=2-3, to=1-3]
+			\arrow["{u\cmp\blank}", from=1-1, to=1-3]
+			\arrow["{\blank\cmp g}", from=2-1, to=1-1]
+			\arrow["{u\cmp\blank}"', from=2-1, to=2-3]
+			\arrow["{\blank\cmp g}"', from=2-3, to=1-3]
 		\end{tikzcd}\]
 	è commutativo. Questo discende dall'associatività della composizione di funzioni. Il fatto che \(u\mapsto \yon_\ctC u\) soddisfi gli assiomi \ref{f_1}, \ref{f_2} di \ref{def_funtore} segue dalla definizione di composizione verticale: dati \(X \xto g Y \xto h Z\),
 	% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXEhvbXtcXGN0Q30oWCxDKSJdLFsyLDAsIlxcSG9te1xcY3RDfShYLEMnKSJdLFswLDEsIlxcSG9te1xcY3RDfShZLEMpIl0sWzIsMSwiXFxIb217XFxjdEN9KFksQycpIl0sWzAsMiwiXFxIb217XFxjdEN9KFosQykiXSxbMiwyLCJcXEhvbXtcXGN0Q30oWixDJykiXSxbMiwwLCJcXF9cXGNtcCBnIl0sWzIsMywidVxcY21wXFxfIiwyXSxbMCwxLCJ1XFxjbXBcXF8iXSxbMywxLCJcXF9cXGNtcCBnIiwyXSxbNCwyLCJcXF9cXGNtcCBoIl0sWzUsMywiXFxfXFxjbXAgaCIsMl0sWzQsNSwidVxcY21wXFxfIiwyXV0=
@@ -3316,13 +3323,13 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 			{\Hom{\ctC}(X,C)} && {\Hom{\ctC}(X,C')} \\
 			{\Hom{\ctC}(Y,C)} && {\Hom{\ctC}(Y,C')} \\
 			{\Hom{\ctC}(Z,C)} && {\Hom{\ctC}(Z,C')}
-			\arrow["{u\cmp\_}", from=1-1, to=1-3]
-			\arrow["{\_\cmp g}", from=2-1, to=1-1]
-			\arrow["{u\cmp\_}"', from=2-1, to=2-3]
-			\arrow["{\_\cmp g}"', from=2-3, to=1-3]
-			\arrow["{\_\cmp h}", from=3-1, to=2-1]
-			\arrow["{u\cmp\_}"', from=3-1, to=3-3]
-			\arrow["{\_\cmp h}"', from=3-3, to=2-3]
+			\arrow["{u\cmp\blank}", from=1-1, to=1-3]
+			\arrow["{\blank\cmp g}", from=2-1, to=1-1]
+			\arrow["{u\cmp\blank}"', from=2-1, to=2-3]
+			\arrow["{\blank\cmp g}"', from=2-3, to=1-3]
+			\arrow["{\blank\cmp h}", from=3-1, to=2-1]
+			\arrow["{u\cmp\blank}"', from=3-1, to=3-3]
+			\arrow["{\blank\cmp h}"', from=3-3, to=2-3]
 		\end{tikzcd}\]
 	è commutativo.
 \end{definition}
@@ -3349,7 +3356,7 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 	\[\dmFun{\N F}{\ctC^\op\times\ctD}\ctSet\]
 	detto il \emph{nervo} di $F$, e definito da $(C,D)\mapsto \Hom\ctD(FC,D)$ (e similmente sulle frecce). Se $\ctC$ è piccola, cosicché la categoria $\presh\ctC$ sia legittima, possiamo `trasporre' il nervo $\N F$ ad un funtore 
 	\[\dmFun{\N F}\ctD{\presh\ctC}\]
-	(indicato con lo stesso nome) che manda $D$ nel funtore $\Hom\ctD(F\_,D) : C\mapsto \Hom\ctD(FC,D)$
+	(indicato con lo stesso nome) che manda $D$ nel funtore $\Hom\ctD(F\blank,D) : C\mapsto \Hom\ctD(FC,D)$
 \end{definition}
 \begin{esercizi}
 	\item Mostrare che la regola di scambio di \ref{interchangio} è equivalente al fatto che la composizione
@@ -3359,7 +3366,7 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 	\[\xymatrix{
 			(A\times B)+(A\times C)\ar[r] & A\times(B+C)
 		}\]
-	dove \(\times\) indica il prodotto cartesiano, e \(+\) la somma (unione disgiunta) di insiemi. Costruire una biiezione esplicita, e dimostrare la naturalità in \(A,B,C\) separatamente (cosicché a essere isomorfi siano i `trifuntori' \(({\_}_1\times {\_}_2)+({\_}_1\times {\_}_3)\) e \({\_}_1\times ({\_}_2+{\_}_3)\)).
+	dove \(\times\) indica il prodotto cartesiano, e \(+\) la somma (unione disgiunta) di insiemi. Costruire una biiezione esplicita, e dimostrare la naturalità in \(A,B,C\) separatamente (cosicché a essere isomorfi siano i `trifuntori' \(({\blank}_1\times {\blank}_2)+({\blank}_1\times {\blank}_3)\) e \({\blank}_1\times ({\blank}_2+{\blank}_3)\)).
 	\item Per ogni insieme \(X\) definire la funzione \texttt{inits}
 	\[\xymatrix{\mathtt{inits}_X : X^* \ar[r] & (X^*)^*}\]
 	dove \(MX = X^*\) è il monoide libero delle liste di elementi di \(X\), come in \ref{mongruppi_liberi}, e
@@ -3369,7 +3376,7 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 	Domande analoghe (per chi sa interpretare questa notazione) per la trasformazione naturale \(\theta : M\nat M \cmp M\) definita da
 	\[\theta_X = \begin{cases}
 			\emptyList  & \mapsto [\emptyList]                                             \\
-			(x\cons xs) & \mapsto \texttt{map}\kern.5em (x\cons\_)\kern.5em \theta_X (xs).
+			(x\cons xs) & \mapsto \texttt{map}\kern.5em (x\cons\blank)\kern.5em \theta_X (xs).
 		\end{cases}
 	\]
 	% si controlla che un lato e l'altro dell'uguaglianza devono essere risp.
@@ -4033,7 +4040,7 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 \begin{esercizi}
 	\item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
 	\item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
-	\item \label{ex_monepi_3} Costruire un'equivalenza di categorie tra la categoria dei sistemi dinamici discreti di \ref{ex_cat_dyn} e la categoria delle rappresentazioni, \ref{es_fun_repre}, del monoide \((\bbN,+,0)\); è un isomorfismo? Mostrare che \(\bbN\) è in maniera naturale un oggetto \(\bsN=(* \xto 0 \bbN \xto{\_+1} \bbN)\) di \(\ctDyn\), che soddisfa la proprietà (\emph{universale}) seguente:
+	\item \label{ex_monepi_3} Costruire un'equivalenza di categorie tra la categoria dei sistemi dinamici discreti di \ref{ex_cat_dyn} e la categoria delle rappresentazioni, \ref{es_fun_repre}, del monoide \((\bbN,+,0)\); è un isomorfismo? Mostrare che \(\bbN\) è in maniera naturale un oggetto \(\bsN=(* \xto 0 \bbN \xto{\blank+1} \bbN)\) di \(\ctDyn\), che soddisfa la proprietà (\emph{universale}) seguente:
 	\begin{quote}
 		Per ogni oggetto \(\bsX=(X,x_0,f)\) di \(\ctDyn\) esiste uno e un solo morfismo nell'insieme \(\Hom\ctDyn(\bsN,\bsX)\).
 	\end{quote}
