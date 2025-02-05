@@ -92,17 +92,24 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 \begin{notation}\index{hom insieme}\index{aaa_CXY@\(\Hom\ctC(X,Y)\)}\index{Categoria!frecce di una ---}\index{Freccia}
 	Dati due oggetti \(X\) e \(Y\), indichiamo con \(\Hom{\ctC}(X,Y)\) la classe di morfismi da \(X\) a \(Y\). Altre notazioni, come \(\varHom(X,Y)\) o \(\vvarHom{\ctC}(X,Y)\), sono ugualmente comuni, e motivate dal fatto che le frecce di una categoria astraggono la nozione di \emph{omomorfismo} tra insiemi strutturati (si veda \ref{ex_cat_monoidi} e più in generale l'esempio \ref{ex_cat_sigma_strutture}). Questa notazione renderà chiara quella in \ref{ex_hom_funtore} per i \emph{funtori hom}. \`E anche comune indicare la classe \(\ctC_1\) dei morfismi di una categoria con \(\hom(\ctC)\) o \(\mathrm{ar}(\ctC)\).
 \end{notation}
+\begin{notation}
+	Presto useremo questa notazione. Il segnaposto `\(\blank\)' indica il `buco da riempire' in una funzione anonima \(x\mapsto f(x)\), cosicché \(f(\blank)\) si riferisce alla funzione \(f\) non saturata nel suo argomento: ad esempio,
+	\[\blank+1 \qquad (\blank)^2 -7\cdot\blank + 2 \qquad \texttt{head}(\blank)\]
+	si riferiscono alle funzioni successore (`aggiungi 1'), al polinomio di secondo grado \(X^2-7X+2\) (che definisce una parabola) e alla funzione \(\texttt{head}\) che restituisce la testa (il primo elemento) di una lista non vuota.
+
+	Altre notazioni comuni per lo stesso simbolo di `segnaposto' sono un trattino basso, \(\_+1\), \((\_)^2 -7\cdot\_ + 2\) eccetera, o (facilmente confondibile col segno meno), il trattino a media altezza `\(-\)'.
+\end{notation}
 \begin{remark}[Morfismi o frecce?]\label{frecce_o_morfismi}
-	Un modello tipico per il concetto di categoria dato in \ref{def_categ} realizza gli oggetti come istanze di un tipo di struttura (per esempio, una struttura algebrica, o un insieme dotato di una relazione d'ordine, uno spazio topologico, di misura, vettoriale, metrico\dots), e ne considera (con qualche accortezza fondazionale volta a evitare paradossi fastidiosi) la totalità, mentre le frecce sono applicazioni tra questi insiemi che \emph{preservano} tale struttura. Molte categorie quindi nascono considerando `tutti' gli insiemi dotati di una certa struttura, e le mappe che la preservano sono dette \emph{omomorfismi} (di gruppi, di anelli, di spazi vettoriali, di insiemi ordinati, di spazi metrici, eccetera). 
-	
+	Un modello tipico per il concetto di categoria dato in \ref{def_categ} realizza gli oggetti come istanze di un tipo di struttura (per esempio, una struttura algebrica, o un insieme dotato di una relazione d'ordine, uno spazio topologico, di misura, vettoriale, metrico\dots), e ne considera (con qualche accortezza fondazionale volta a evitare paradossi fastidiosi) la totalità, mentre le frecce sono applicazioni tra questi insiemi che \emph{preservano} tale struttura. Molte categorie quindi nascono considerando `tutti' gli insiemi dotati di una certa struttura, e le mappe che la preservano sono dette \emph{omomorfismi} (di gruppi, di anelli, di spazi vettoriali, di insiemi ordinati, di spazi metrici, eccetera).
+
 	Questo tipo di modello è perfetto per spiegare a chi ha già una certa formazione matematica come il concetto di categoria si intende utilizzato nella pratica matematica, e in effetti il punto di ingresso pedagogico più agile è proprio presentare esempi di categorie strutturate. Perché una spiegazione di questo tipo funzioni, è però necessario, in particolare, che la persona destinataria abbia un'idea chiara \emph{e pregressa} dell'uso previsto del termine `struttura'.
 
-Il concetto formale di categoria ha però altre istanze, in cui non si considerano come oggetti insiemi strutturati, e come frecce le corrispondenti funzioni tra insiemi che preservano la struttura: 
-\begin{itemize}
-	\item in alcuni casi, gli oggetti di queste istanze non sembrano insiemi strutturati e le frecce non sembrano funzioni tra tali insiemi; 
-	\item in altri casi, sebbene gli oggetti possano essere visti come insiemi con violazioni formali, le frecce \emph{non sono funzioni} nel senso della teoria degli insiemi definite sugli elementi di questi insiemi; oppure, infine, il termine `struttura' non si applica in alcun modo ragionevole, dato che (ad esempio) la compattezza (locale o globale) di uno spazio di Hausdorff è una \emph{proprietà} dello spazio, non una struttura ulteriore che lo spazio possiede; e in tal caso, la scelta giusta di omomorfismi tra spazi (Hausdorff e) compatti è fatta dalle mappe continue \emph{e proprie} (tali che la preimmagine di un compatto del codominio sia compatta nel dominio). 
-\end{itemize}
-Questo suggerisce la necessità di introdurre una (sottile, ma sostanziale) differenza terminologica tra `morfismo' (astrazione della nozione di \emph{omo}morfismo tra strutture) e `freccia' (un segno primitivo, da interpretare letteralmente come il simbolo `$\xymatrix{ \ar[r] & }$' infisso tra due oggetti). Le categorie del primo tipo hanno nomi diversi per diversi autori: in \cite[5.3.1.5]{kromer} sono dette `categorie strutturali' --e per antitesi, quelle del secondo tipo sono dette `non strutturali'; \cite{acc} preferisce invece la nozione più fine di \emph{costrutto} (che introdurremo in \ref{def_costrutto}).
+	Il concetto formale di categoria ha però altre istanze, in cui non si considerano come oggetti insiemi strutturati, e come frecce le corrispondenti funzioni tra insiemi che preservano la struttura:
+	\begin{itemize}
+		\item in alcuni casi, gli oggetti di queste istanze non sembrano insiemi strutturati e le frecce non sembrano funzioni tra tali insiemi;
+		\item in altri casi, sebbene gli oggetti possano essere visti come insiemi con violazioni formali, le frecce \emph{non sono funzioni} nel senso della teoria degli insiemi definite sugli elementi di questi insiemi; oppure, infine, il termine `struttura' non si applica in alcun modo ragionevole, dato che (ad esempio) la compattezza (locale o globale) di uno spazio di Hausdorff è una \emph{proprietà} dello spazio, non una struttura ulteriore che lo spazio possiede; e in tal caso, la scelta giusta di omomorfismi tra spazi (Hausdorff e) compatti è fatta dalle mappe continue \emph{e proprie} (tali che la preimmagine di un compatto del codominio sia compatta nel dominio).
+	\end{itemize}
+	Questo suggerisce la necessità di introdurre una (sottile, ma sostanziale) differenza terminologica tra `morfismo' (astrazione della nozione di \emph{omo}morfismo tra strutture) e `freccia' (un segno primitivo, da interpretare letteralmente come il simbolo `\(\xymatrix{ \ar[r] & }\)' infisso tra due oggetti). Le categorie del primo tipo hanno nomi diversi per diversi autori: in \cite[5.3.1.5]{kromer} sono dette `categorie strutturali' --e per antitesi, quelle del secondo tipo sono dette `non strutturali'; \cite{acc} preferisce invece la nozione più fine di \emph{costrutto} (che introdurremo in \ref{def_costrutto}).
 \end{remark}
 \begin{remark}\label{cor_def_categ}\index{Composizione}
 	Si osservi che dalla definizione appena data discendono alcuni corollari:
@@ -118,13 +125,6 @@ Questo suggerisce la necessità di introdurre una (sottile, ma sostanziale) diff
 		      dove ciascuna funzione manda \(( X \xrightarrow f Y, Y \xrightarrow g Z )\) in \(g\cmp f\) (in effetti, gli indici che indicano il dominio della particolare funzione \(\blank\cmp_{XZ}^Y\blank\) vengono \emph{sempre} lasciati sottintesi, e si scrive solo \(\blank\cmp\blank\)).
 	\end{itemize}
 \end{remark}
-\begin{notation}
-	Il segnaposto `$\blank$' indica il `buco da riempire' in una funzione $x\mapsto f(x)$, cosicché $f(\blank)$ si riferisce alla funzione $f$ non saturata nel suo argomento: ad esempio, 
-	\[\blank+1 \qquad (\blank)^2 -7\cdot\blank + 2 \qquad \texttt{head}(\blank)\]
-	si riferiscono alle funzioni successore (`aggiungi 1'), al polinomio di secondo grado $X^2-7X+2$ (che definisce una parabola) e alla funzione $\texttt{head}$ che restituisce la testa (il primo elemento) di una lista non vuota. 
-
-	Altre notazioni comuni per lo stesso simbolo di `segnaposto' sono un trattino basso, $\_+1$, $(\_)^2 -7\cdot\_ + 2$ eccetera, o (facilmente confondibile col segno meno), il trattino a media altezza `$-$'.
-\end{notation}
 \begin{remark}[Oggetti come particolari frecce]\index{Identità}\index{Frecce}
 	Un principio fondamentale su cui la teoria delle categorie è edificata suona come `le frecce sono più importanti degli oggetti', o meglio, `ciò che definisce veramente una categoria sono le sue frecce, più dei suoi oggetti'.
 
@@ -310,7 +310,7 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	La doppia freccia è la `forma generica' di un grafo diretto (si veda \ref{ex_cat_libera}), dato che una coppia di funzioni \(s,t: E \rightrightarrows V\) tra due insiemi consta precisamente di un digrafo che ha \(V\) per insieme dei vertici e \(E\) per insieme dei lati.
 \end{example}
 \begin{example}[Turcasso generico]\label{ex_cat_turcasso}\index{Turcasso}\index{Categoria!--- turcasso generico}
-	Sia \(S\) un insieme; la categoria \(\turk\), detta \emph{turcasso generico} (con \(S\) elementi)\footnote{Il nome \emph{turcasso} denota un particolare tipo di faretra in uso agli arcieri turchi, solitamente fissata alla cintura dei soldati anziché portata a tracolla. Si veda \cite{},
+	Sia \(S\) un insieme; la categoria \(\turk\), detta \emph{turcasso generico} (con \(S\) elementi)\footnote{Il nome \emph{turcasso} denota un particolare tipo di faretra in uso agli arcieri turchi, solitamente fissata alla cintura dei soldati anziché portata a tracolla. Si veda \cite{boccaccio1831teseide},
 		\begin{verse}
 			Dietro alle spalle un arco avea legato,\\
 			Ed un turcasso di saette pieno,\\
@@ -517,14 +517,14 @@ Vale il seguente teorema:
 In altre parole l'insieme \(\{\text{AND},\text{OR}\}\) è \emph{funzionalmente completo} (o un \emph{insieme universale di porte logiche}). Per una dimostrazione, si veda \cite[Teorema 1.4]{Crama2011}. In termini categoriali, stiamo affermando che un certo insieme di morfismi genera, insieme alle \(\tup{\pi}n,\) e \(\Delta_n\) per ogni \(n\ge 0\), l'intera categoria mediante le operazioni di prodotto e composizione.
 
 Il capitolo \ref{chap_limiti_colimiti} e in particolare la nozione di prodotto, introdotta in \ref{chap_limiti_colimiti}, renderanno chiaro il ruolo fondamentale delle mappe \(\Delta_n,\tup{\pi}n,\) in questa e molte altre costruzioni.
-\begin{example}[La categoria dei diagrammi di flusso]\label{ex_cat_flusso}\index{Categoria!--- dei diagrammi di flusso}
-	La categoria \(\ctFlux\) è definita come segue:
-	\begin{itemize}
-		\item gli oggetti di \(\ctFlux\) sono i numeri naturali \(0,1,2,\dots\);
-		\item l'insieme dei morfismi \(\ctFlux(n,m)\) consiste dell'insieme delle funzioni \(\bbR^n\to \bbR^m\), dove \(\bbR\) consta dell'usuale insieme dei numeri reali, e \(\bbR^n = \bbR\times\dots\times\bbR\) è il prodotto cartesiano iterato di \(\bbR\) con sé stesso.
-	\end{itemize}
-	\Todo{...}
-\end{example}
+% \begin{example}[La categoria dei diagrammi di flusso]\label{ex_cat_flusso}\index{Categoria!--- dei diagrammi di flusso}
+% 	La categoria \(\ctFlux\) è definita come segue:
+% 	\begin{itemize}
+% 		\item gli oggetti di \(\ctFlux\) sono i numeri naturali \(0,1,2,\dots\);
+% 		\item l'insieme dei morfismi \(\ctFlux(n,m)\) consiste dell'insieme delle funzioni \(\bbR^n\to \bbR^m\), dove \(\bbR\) consta dell'usuale insieme dei numeri reali, e \(\bbR^n = \bbR\times\dots\times\bbR\) è il prodotto cartesiano iterato di \(\bbR\) con sé stesso.
+% 	\end{itemize}
+% 	\Todo{...}
+% \end{example}
 \subsection{Categorie come universi}\label{ssec:categorie_universi}
 Proseguiamo con degli esempi di categorie grandi, che giustificano l'intuizione per le categorie come `universi del discorso matematico', ossia come classi i cui elementi sono collegati da relazioni reciproche. L'esempio fondamentale per tutta la sezione è \ref{ex_cat_insiemi}, la categoria di insiemi e funzioni. Usando questa categoria \(\ctSet\) come esempio paradigmatico, è possibile costruire
 \begin{itemize}
@@ -1938,7 +1938,7 @@ Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con 
 	\[[\tup en;]\qquad n\ge 0, \tup en,\in E\]
 	o più brevemente \([\tup en{}]\), una `parola' scritta con le `lettere' \(\tup en,\). La composizione è la giustapposizione di parole \([\tup en{}]\cmp[\tup {e'}n{}] = [\tup en{}\tup{e'}n{}]\), per cui l'identità è la parola vuota \(\emptyList\) (quando \(n=0\)).
 
-	Costruire i gruppi liberi (probabilmente noti a chi legge, dall'algebra elementare) come gruppo\emph{idi} liberi con un solo oggetto è più complicato. Per ogni categoria $\ctC$, esiste una costruzione che produce `il più piccolo' gruppoide, denotato $\ctC[\ctC_1^{-1}]$ e detto \emph{gruppoidificazione} di $\ctC$, dove ogni freccia di $\ctC$ è invertibile (ed esiste una inclusione $i : \ctC\subseteq \ctC[\ctC_1^{-1}]$), ma specificare questa costruzione richiede diversi strumenti avanzati (la nozione di \emph{funtore}, la nozione di \emph{localizzazione} di una categoria, e alcune accortezze di teoria degli insiemi).\index{Gruppoide!---ificazione}
+	Costruire i gruppi liberi (probabilmente noti a chi legge, dall'algebra elementare) come gruppo\emph{idi} liberi con un solo oggetto è più complicato. Per ogni categoria \(\ctC\), esiste una costruzione che produce `il più piccolo' gruppoide, denotato \(\ctC[\ctC_1^{-1}]\) e detto \emph{gruppoidificazione} di \(\ctC\), dove ogni freccia di \(\ctC\) è invertibile (ed esiste una inclusione \(i : \ctC\subseteq \ctC[\ctC_1^{-1}]\)), ma specificare questa costruzione richiede diversi strumenti avanzati (la nozione di \emph{funtore}, la nozione di \emph{localizzazione} di una categoria, e alcune accortezze di teoria degli insiemi).\index{Gruppoide!---ificazione}
 \end{example}
 \begin{definition}[Categoria scheletrica]\label{def_cat_scheletrica}\index{Categoria!--- scheletrica}
 	Una categoria \(\ctC\) si dice \emph{scheletrica} se vale la seguente proprietà:
@@ -2580,14 +2580,14 @@ tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia
 	che manda ogni oggetto \(f : X\to A\) nel suo codominio \(A\).
 \end{example}
 \begin{example}\index{Funtore!--- insieme delle parti}\label{ex_fun_parti}
-	Ad ogni insieme possiamo associare il suo \emph{insieme delle parti}, l'insieme \(\pow X\) delle funzioni $\chi : X \to \{0,1\}$; questo definisce l'azione sugli oggetti di un funtore \(\ctP : \ctSet\fun\ctSet\),	e in effetti, di due, uno covariante e uno controvariante:
+	Ad ogni insieme possiamo associare il suo \emph{insieme delle parti}, l'insieme \(\pow X\) delle funzioni \(\chi : X \to \{0,1\}\); questo definisce l'azione sugli oggetti di un funtore \(\ctP : \ctSet\fun\ctSet\),	e in effetti, di due, uno covariante e uno controvariante:
 	\begin{itemize}
 		\item il \emph{funtore potenza covariante}, che manda una funzione \(f : X\to Y\) nella funzione
 		      \[\dmFun{\ctP_* f}{\pow X}{\pow Y}\]
 		      definita mandando \(\chi : X\to \{0,1\}\) nella funzione \[\ctP_* f(\chi)(y) := \begin{cases}
-									1 & \exists x . (y = fx) \land (\chi(x) = 1)\\
-									0 & \text{altrimenti}\\
-								\end{cases}\]
+				      1 & \exists x . (y = fx) \land (\chi(x) = 1) \\
+				      0 & \text{altrimenti}                        \\
+			      \end{cases}\]
 		\item il \emph{funtore potenza controvariante}, che manda una funzione \(f : X\to Y\) nella funzione
 		      \[\dmFun{\ctP^* f}{\pow Y}{\pow X}\]
 		      definita mandando \(\varpi : Y \to \{0,1\}\) nella funzione \(\ctP^* f(\varpi)(x) := \varpi(f(x))\).
@@ -2595,25 +2595,25 @@ tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia
 	In entrambi i casi, è semplice verificare che \(\ctP_* (g\cmp f) = \ctP_* g\cmp \ctP_* f\) (risp., \(\ctP^* (g\cmp f) = \ctP^* f\cmp \ctP^* g\)) e \(\ctP_*(\Id[X]) = \Id[\pow X] = \ctP^*(\Id[X])\); lo si faccia per esercizio.
 \end{example}
 \begin{definition}[Il funtore dei sottoggetti]\label{def_fun_sub}\index{Funtore!--- dei sottoggetti}
-	Dato un insieme $X$ consideriamo la classe di tutti i monomorfismi di codominio $X$, cioè le funzioni iniettive $A\mono X$; dati due monomorfismi $m : A\mono X, n : B\mono X$, diciamo che $m\le n$ se esiste una funzione (necessariamente un mono) $h : A\to B$ tale che $n\cmp h = m$; il triangolo commutativo
+	Dato un insieme \(X\) consideriamo la classe di tutti i monomorfismi di codominio \(X\), cioè le funzioni iniettive \(A\mono X\); dati due monomorfismi \(m : A\mono X, n : B\mono X\), diciamo che \(m\le n\) se esiste una funzione (necessariamente un mono) \(h : A\to B\) tale che \(n\cmp h = m\); il triangolo commutativo
 	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJBIl0sWzAsMiwiQiJdLFsxLDEsIlgiXSxbMCwyLCJtIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCJuIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwxLCJoIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XV0=
-\[\begin{tikzcd}[row sep=2mm]
-	A \\
-	& X \\
-	B
-	\arrow["m", hook, from=1-1, to=2-2]
-	\arrow["h"', hook, from=1-1, to=3-1]
-	\arrow["n"', hook, from=3-1, to=2-2]
-\end{tikzcd}\]
-traduce il fatto che $A$ è un sottoinsieme di $X$, ma anche di un altro sottoinsieme $B$, possibilmente più piccolo. Diciamo poi che $m,n$ come sopra sono equivalenti, scritto $m\simeq n$, se $A$ e $B$ sono isomorfi (per il teorema di Cantor-Schröder-Bernstein questo equivale a $m\le n$ e $n\le m$). 
+	\[\begin{tikzcd}[row sep=2mm]
+			A \\
+			& X \\
+			B
+			\arrow["m", hook, from=1-1, to=2-2]
+			\arrow["h"', hook, from=1-1, to=3-1]
+			\arrow["n"', hook, from=3-1, to=2-2]
+		\end{tikzcd}\]
+	traduce il fatto che \(A\) è un sottoinsieme di \(X\), ma anche di un altro sottoinsieme \(B\), possibilmente più piccolo. Diciamo poi che \(m,n\) come sopra sono equivalenti, scritto \(m\simeq n\), se \(A\) e \(B\) sono isomorfi (per il teorema di Cantor-Schröder-Bernstein questo equivale a \(m\le n\) e \(n\le m\)).
 
-Il \emph{funtore dei sottoggetti}
-\[\dmFun{\Sub}{\ctSet^\op}{\ctSet}\] 
-assegna a un insieme $X$ l'insieme delle classi di equivalenza di mono $\{m : A\mono X\}$ (che questo sia un insieme, segue dall'assioma dell'insieme potenza di ZF). L'azione sulle frecce si determina come segue: data una funzione $f : X\to Y$, esiste una funzione 
-\[\dmFun{\Sub(f)}{\Sub(Y)}{\Sub(X)}\]
-che manda $U\subseteq Y$ nel sottoinsieme $\ctP^*(f)[U]$ come definito sopra.
+	Il \emph{funtore dei sottoggetti}
+	\[\dmFun{\Sub}{\ctSet^\op}{\ctSet}\]
+	assegna a un insieme \(X\) l'insieme delle classi di equivalenza di mono \(\{m : A\mono X\}\) (che questo sia un insieme, segue dall'assioma dell'insieme potenza di ZF). L'azione sulle frecce si determina come segue: data una funzione \(f : X\to Y\), esiste una funzione
+	\[\dmFun{\Sub(f)}{\Sub(Y)}{\Sub(X)}\]
+	che manda \(U\subseteq Y\) nel sottoinsieme \(\ctP^*(f)[U]\) come definito sopra.
 
-La presenza di un isomorfismo naturale tra il funtore dei sottoggetti $\Sub$ e $\ctP^*$, come funtori di tipo $\ctSet^\op\fun\ctSet$, si basa sull'esistenza di una famiglia di biiezioni $\chi_X : \ctP(X) = \pow X \cong \{U\subseteq X\}$
+	La presenza di un isomorfismo naturale tra il funtore dei sottoggetti \(\Sub\) e \(\ctP^*\), come funtori di tipo \(\ctSet^\op\fun\ctSet\), si basa sull'esistenza di una famiglia di biiezioni \(\chi_X : \ctP(X) = \pow X \cong \{U\subseteq X\}\)
 \end{definition}
 \begin{example}[Monoidi come categorie]\label{funtore_mon_to_cat}\index{Funtore!--- categoria associata a monoide}
 	La corrispondenza che assegna a un monoide \((M,\cdot,1)\) la categoria con un solo oggetto \(\susp(M,\cdot,1)\) come in \ref{mon_sonocat} è la parte sugli oggetti di un funtore
@@ -3352,11 +3352,11 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 	Per ogni categoria piccola \(\ctC\), l'immersione di Yoneda \(\yon_\ctC\) di \ref{def_yoneda_embeddu} e di coYoneda \(\coyon_\ctC\) sono funtori pienamente fedeli.
 \end{proposition}
 \begin{definition}[Il nervo di un funtore]
-	Ogni funtore $F : \ctC \fun\ctD$ induce un bifuntore 
+	Ogni funtore \(F : \ctC \fun\ctD\) induce un bifuntore
 	\[\dmFun{\N F}{\ctC^\op\times\ctD}\ctSet\]
-	detto il \emph{nervo} di $F$, e definito da $(C,D)\mapsto \Hom\ctD(FC,D)$ (e similmente sulle frecce). Se $\ctC$ è piccola, cosicché la categoria $\presh\ctC$ sia legittima, possiamo `trasporre' il nervo $\N F$ ad un funtore 
+	detto il \emph{nervo} di \(F\), e definito da \((C,D)\mapsto \Hom\ctD(FC,D)\) (e similmente sulle frecce). Se \(\ctC\) è piccola, cosicché la categoria \(\presh\ctC\) sia legittima, possiamo `trasporre' il nervo \(\N F\) ad un funtore
 	\[\dmFun{\N F}\ctD{\presh\ctC}\]
-	(indicato con lo stesso nome) che manda $D$ nel funtore $\Hom\ctD(F\blank,D) : C\mapsto \Hom\ctD(FC,D)$
+	(indicato con lo stesso nome) che manda \(D\) nel funtore \(\Hom\ctD(F\blank,D) : C\mapsto \Hom\ctD(FC,D)\)
 \end{definition}
 \begin{esercizi}
 	\item Mostrare che la regola di scambio di \ref{interchangio} è equivalente al fatto che la composizione
@@ -3375,7 +3375,7 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 	\[\mathtt{inits}_{MX}\cmp\mathtt{inits}_X = M(\mathtt{inits}_X)\cmp \mathtt{inits}_X.\]
 	Domande analoghe (per chi sa interpretare questa notazione) per la trasformazione naturale \(\theta : M\nat M \cmp M\) definita da
 	\[\theta_X = \begin{cases}
-			\emptyList  & \mapsto [\emptyList]                                             \\
+			\emptyList  & \mapsto [\emptyList]                                                 \\
 			(x\cons xs) & \mapsto \texttt{map}\kern.5em (x\cons\blank)\kern.5em \theta_X (xs).
 		\end{cases}
 	\]
@@ -3608,7 +3608,7 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	% una funzione surgettiva può avere più inverse destre (sezioni).
 \end{example}
 \begin{remark}
-	Qualcosa di simile avviene per gli spazi vettoriali (ovviamente, è la dimensione infinita a causare problemi): l'assioma della scelta (nella forma del lemma di Zorn) è equivalente al fatto che ogni spazio vettoriale ha una base. Se $f : V\to W$ è una funzione lineare e suriettiva, si può decomporre $V = \ker f \oplus W'$ (un complemento in somma diretta per $\ker f$ esiste solo con l'assioma della scelta), in modo tale che $f_0 := f|_{W'}$ sia invertibile; l'inversa $f_0^{-1}$, composta con l'inclusione $W'\mono \ker f \oplus W'\cong V$, dà una inversa destra per $f$ (per costruzione, $f_0^{-1}(w)$ è il vettore (unico) tale che $f(f_0^{-1}(w)) = w$), cosicché $f$ è un epi spezzante.
+	Qualcosa di simile avviene per gli spazi vettoriali (ovviamente, è la dimensione infinita a causare problemi): l'assioma della scelta (nella forma del lemma di Zorn) è equivalente al fatto che ogni spazio vettoriale ha una base. Se \(f : V\to W\) è una funzione lineare e suriettiva, si può decomporre \(V = \ker f \oplus W'\) (un complemento in somma diretta per \(\ker f\) esiste solo con l'assioma della scelta), in modo tale che \(f_0 := f|_{W'}\) sia invertibile; l'inversa \(f_0^{-1}\), composta con l'inclusione \(W'\mono \ker f \oplus W'\cong V\), dà una inversa destra per \(f\) (per costruzione, \(f_0^{-1}(w)\) è il vettore (unico) tale che \(f(f_0^{-1}(w)) = w\)), cosicché \(f\) è un epi spezzante.
 \end{remark}
 \begin{figure}[h]
 	\begin{center}
@@ -3740,25 +3740,25 @@ Il risultato in questione propone anche le sezioni e le retrazioni come esempi f
 
 	Inoltre, e più sorprendentemente, \(\iota\) è anche epi,	nonostante la sua funzione sottogiacente non sia surgettiva.	Infatti, se \(f, g \colon \bbZ \to M\) sono morfismi di monoidi tali che \(f \iota = g \iota\),	allora, per ogni \(n \in \bbZ\),	abbiamo due possibilità:
 	\begin{itemize}
-		\item Se \(n \in \bbZ_{\geq 0}\), allora \(n\) sta nell'immagine di \(\iota\), ovvero esiste \(n_0 \in \bbN\) tale che \(n = \iota(n_0)\). Per ipotesi abbiamo che \(f \iota (n_0) = g \iota (n_0)\), ovvero \(f (n) = g (n)\). Ne concludiamo che \(f\) e \(g\) coincidono sugli interi non-negativi.		
-		\item Se \(n \in \bbZ_{< 0}\), allora \(-n \in \bbZ_{\geq 0}\). 
-		
-		Analogamente al caso precedente, esiste \(n_0 \in \bbN\) tale che \(-n = \iota(n_0)\) e \(f \iota (-n) = g \iota (-n)\). Siccome gli omomorfismi di monoide preservano le inverse, \({(f (n))}^{-1} = f \iota {(-n)} = g \iota {(-n)} = {(g (n))}^{-1}\). Per l'unicità dell'inversa, concludiamo che \(f (n) = g (n)\), ovvero che \(f\) e \(g\) coincidono sugli interi negativi.
+		\item Se \(n \in \bbZ_{\geq 0}\), allora \(n\) sta nell'immagine di \(\iota\), ovvero esiste \(n_0 \in \bbN\) tale che \(n = \iota(n_0)\). Per ipotesi abbiamo che \(f \iota (n_0) = g \iota (n_0)\), ovvero \(f (n) = g (n)\). Ne concludiamo che \(f\) e \(g\) coincidono sugli interi non-negativi.
+		\item Se \(n \in \bbZ_{< 0}\), allora \(-n \in \bbZ_{\geq 0}\).
+
+		      Analogamente al caso precedente, esiste \(n_0 \in \bbN\) tale che \(-n = \iota(n_0)\) e \(f \iota (-n) = g \iota (-n)\). Siccome gli omomorfismi di monoide preservano le inverse, \({(f (n))}^{-1} = f \iota {(-n)} = g \iota {(-n)} = {(g (n))}^{-1}\). Per l'unicità dell'inversa, concludiamo che \(f (n) = g (n)\), ovvero che \(f\) e \(g\) coincidono sugli interi negativi.
 	\end{itemize}
 	Dunque, possiamo concludere che \(f = g\) e che, per l'arbitrarietà di \(f\) e \(g\), l'immersione \(\iota\) è un epi. Tuttavia, \(\iota\) non è un epi spezzante. Infatti, se esistesse, la sua sezione dovrebbe essere preservata dal funtore dimenticante \(U \colon \ctMon \fun \ctSet\), per il \autoref{thm:fun-sezioni-retrazioni}. Tuttavia, \(U(\iota)\) non è una funzione surgettiva, e dunque non può avere una sezione, per l'\autoref{exm:set-sezioni-retrazioni}.
 \end{example}
-Questa discussione fornisce alcuni utili controesempi:	un morfismo può essere sia epi che mono senza necessariamente essere epi spezzante o mono spezzante,	e in particolare senza essere un isomorfismo. Questo porta alla definizione seguente. 
+Questa discussione fornisce alcuni utili controesempi:	un morfismo può essere sia epi che mono senza necessariamente essere epi spezzante o mono spezzante,	e in particolare senza essere un isomorfismo. Questo porta alla definizione seguente.
 \begin{definition}[Categoria bilanciata]\label{def_cat_bilanciata}\index{Categoria!--- bilanciata}
-	Una categoria $\ctC$ si dice \emph{bilanciata} se vale l'implicazione 
+	Una categoria \(\ctC\) si dice \emph{bilanciata} se vale l'implicazione
 	\begin{quote}
-		$f$ è mono + $f$ è epi $\To$ $f$ è un isomorfismo.
+		\(f\) è mono + \(f\) è epi \(\To\) \(f\) è un isomorfismo.
 	\end{quote}
 \end{definition}
-Esempi di categorie bilanciate sono: tutti i gruppoidi (ovviamente\dots), la categoria di insiemi e funzioni, \ref{ex_cat_insiemi}, la categoria dei $G$-insiemi \ref{ex_cat_g_insiemi}, i multidigrafi \ref{ex_cat_grafi}, la categoria delle matrici di \ref{ex_cat_matrici} e come conseguenza quella degli spazi vettoriali di dimensione finita, ma anche quella degli spazi vettoriali di dimensione infinita e più in generale dei moduli su un anello $R$; la categoria dei gruppi.
+Esempi di categorie bilanciate sono: tutti i gruppoidi (ovviamente\dots), la categoria di insiemi e funzioni, \ref{ex_cat_insiemi}, la categoria dei \(G\)-insiemi \ref{ex_cat_g_insiemi}, i multidigrafi \ref{ex_cat_grafi}, la categoria delle matrici di \ref{ex_cat_matrici} e come conseguenza quella degli spazi vettoriali di dimensione finita, ma anche quella degli spazi vettoriali di dimensione infinita e più in generale dei moduli su un anello \(R\); la categoria dei gruppi.
 
-I controesempi più eclatanti di categorie \emph{non} bilanciate vengono dalla geometria, topologia e teoria degli ordini: nella categoria $\ctTop$ di \ref{ex_cat_top} i mono ed epi sono precisamente le funzioni $f : X\to Y$ che sono biiezioni continue --ma la loro inversa non è obbligata a esserlo. Abbiamo poi prodotto esempi di mono ed epi che non sono isomorfismi nella categoria dei monoidi (simile al ragionamento di \ref{mono_epi_noniso} è quello che dimostra che $\bbZ\to\bbQ$ è (un mono, ovviamente, ed) epi; ma $\bbZ$ non è un campo).
+I controesempi più eclatanti di categorie \emph{non} bilanciate vengono dalla geometria, topologia e teoria degli ordini: nella categoria \(\ctTop\) di \ref{ex_cat_top} i mono ed epi sono precisamente le funzioni \(f : X\to Y\) che sono biiezioni continue --ma la loro inversa non è obbligata a esserlo. Abbiamo poi prodotto esempi di mono ed epi che non sono isomorfismi nella categoria dei monoidi (simile al ragionamento di \ref{mono_epi_noniso} è quello che dimostra che \(\bbZ\to\bbQ\) è (un mono, ovviamente, ed) epi; ma \(\bbZ\) non è un campo).
 
-Però, e questo è un esempio importante (la cui dimostrazione usa dei fatti di topologia generale elementare), nella categoria degli spazi di Hausdorff compatti e mappe continue \emph{e proprie}, una freccia $f : X\to Y$ mono ed epi deve essere un isomorfismo: per quanto osservato prima, $f$ è una biiezione continua. Del resto, una biiezione continua tra spazi di Hausdorff compatti è una mappa chiusa, cosicché l'inversa insiemistica di $f$ è continua (sui chiusi).
+Però, e questo è un esempio importante (la cui dimostrazione usa dei fatti di topologia generale elementare), nella categoria degli spazi di Hausdorff compatti e mappe continue \emph{e proprie}, una freccia \(f : X\to Y\) mono ed epi deve essere un isomorfismo: per quanto osservato prima, \(f\) è una biiezione continua. Del resto, una biiezione continua tra spazi di Hausdorff compatti è una mappa chiusa, cosicché l'inversa insiemistica di \(f\) è continua (sui chiusi).
 \begin{hExample}[La categoria dei punti]{tech}\label{ex_cat_punti}\index{Categoria!--- dei punti su un oggetto}
 	Sia \(\ctC\) una categoria. Per ogni oggetto \(X\in\ctC_0\) definiamo la categoria \(\cate{Pt}_X(\ctC)\) dei \emph{punti su \(X\)} come segue:
 	\begin{itemize}
@@ -3836,7 +3836,7 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	\end{itemize}
 \end{definition}
 \begin{proposition}\label{prop_preserva_riflette}
-	Tutti i funtori preservano la proprietà \(\mathcal P_e(f) :=\) `$f$ è un epi spezzante' e \(\mathcal P_e(f) :=\) `$f$ è un mono spezzante', per \ref{cor:fun-sezioni-retrazioni}. Gli hom funtori rappresentabili \(\Hom\ctC(C,-)\) preservano la proprietà `\(f\) è un monomorfismo' (diciamo che \(\Hom\ctC(C,-)\) \emph{preserva i monomorfismi}); nella categoria \(\ctSet\) degli insiemi, \(\Hom\ctSet(A,-)\) preserva anche la proprietà `\(f\) è un epimorfismo' se si assume l'assioma della scelta (come formulato in \ref{fig_assioma_scelta}).
+	Tutti i funtori preservano la proprietà \(\mathcal P_e(f) :=\) `\(f\) è un epi spezzante' e \(\mathcal P_e(f) :=\) `\(f\) è un mono spezzante', per \ref{cor:fun-sezioni-retrazioni}. Gli hom funtori rappresentabili \(\Hom\ctC(C,-)\) preservano la proprietà `\(f\) è un monomorfismo' (diciamo che \(\Hom\ctC(C,-)\) \emph{preserva i monomorfismi}); nella categoria \(\ctSet\) degli insiemi, \(\Hom\ctSet(A,-)\) preserva anche la proprietà `\(f\) è un epimorfismo' se si assume l'assioma della scelta (come formulato in \ref{fig_assioma_scelta}).
 
 	Molte proprietà sono \emph{riflesse} dai funtori pienamente fedeli: per esempio,
 	\begin{itemize}
