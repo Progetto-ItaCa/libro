@@ -2504,7 +2504,7 @@ tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia
 	Esempi di categorie che sono filtrate:
 	\begin{itemize}
 		\item Alcuni esempi elementari sono i seguenti: la categoria codiscreta \(A^\chi\) su un insieme (non vuoto) è filtrata; la categoria terminale \(\ctTerm\) è filtrata; se due categorie \(\ctI,\ctJ\) sono filtrate, è filtrato il loro prodotto (questo permette di suddividere in due problemi indipendenti 'la verifica che \(\ctI\times\ctJ\) è filtrata).
-		\item la categoria-poset \((\omega=\{0\le 1\le 2\le\dots\},\le)\): la condizione \ref{cf_2} è ovvia (non esistono due frecce \(u,v\) parallele e distinte), e \ref{cf_1} è vera perché ogni insieme finito \(\{\tup pn,\}\) di numeri naturali è limitato superiormente da \(p^*=\max\{\tup pn,\}\); similmente, ogni ordinale (finito, nel senso di \ref{ex_cat_catena}, o infinito, nel senso di \ref{ex_cat_ordinali}) è una categoria filtrata; più in generale, un insieme parzialmente ordinato \((P,\le)\) è una categoria filtrata se e solo se è un \emph{ordine diretto}: ogni insieme finito di elementi \(\tup xn,\) ha un maggiorante \(\bar x\), cioè \(x_i\le \bar x\) per ogni \(i=\iter n\).
+		\item la categoria-poset \((\omega=\{0\le 1\le 2\le\dots\},\le)\): la condizione \ref{cf_2} è ovvia (non esistono due frecce \(u,v\) parallele e distinte), e \ref{cf_1} è vera perché ogni insieme finito \(\{\tup pn,\}\) di numeri naturali è limitato superiormente da \(p^*=\max\{\tup pn,\}\); similmente, ogni ordinale (finito, nel senso di \ref{ex_cat_catena}, o infinito, nel senso di \ref{ex_cat_ordinali}) è una categoria filtrata; più in generale, un preordine \((P,\le)\) è una categoria filtrata se e solo se è un \emph{ordine diretto}: ogni insieme finito di elementi \(\tup xn, \in P\) ha un maggiorante \(\bar x\), cioè \(x_i\le \bar x\) per ogni \(i=\iter n\).
 	\end{itemize}
 	Esempi di categorie che non sono filtrate:
 	\begin{itemize}
@@ -3789,6 +3789,12 @@ Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzant
 	Dunque \(f\) \`e un isomorfismo con inversa \(g\).
 	Dualmente, abbiamo che il punto~\ref{prop:iso-epi-mono:item3} implica il punto~\ref{prop:iso-epi-mono:item1}.
 \end{proof}
+Quando avremo introdotto la teoria dei limiti e dei colimiti nel \autoref{chap_limiti_colimiti} avremo gli strumenti per definire e studiare diverse classi di mono ed epi in una categoria $\ctC$ (i mono ed epi regolari, effettivi, ed altri saranno studiati nel \autoref{cap_fattorizzazione}); una delle prime sottigliezze che si incontrano quando si impara la teoria delle categorie è il fatto che esiste una gerarchia di mono ed epi, che nella categoria degli insiemi collassano tutte nelle funzioni (rispettivamente) iniettive e suriettive, ma che in una categoria con meno proprietà sono, in generale, tutte distinte.
+
+Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emph{estremale}, che non richiede particolari tecnologie per essere enunciata.
+\begin{definition}[Mono ed epi estremale]\label{def_monoepi_estrem}\index{Monomorfismo!--- estremale}\index{Epimorfismo!--- estremale|see {Monomorfismo estremale}}
+	\Todo{}
+\end{definition}
 \subsection{Classi di funtori}\label{ssec:classi_di_funtori}
 Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome speciale ai funtori \(F : \ctC\fun\ctD\) tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva:
 \begin{definition}\label{funtore_pieno}\index{Funtore!--- pieno}
@@ -3976,7 +3982,7 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 	Diciamo che \(F : \ctC\fun\ctD\) è \emph{finale} se il funtore opposto \(F^\op : \ctC^\op\fun\ctD^\op\) (come in \ref{es_di_funtori}) è iniziale.
 \end{definition}
 \begin{remark}[Condizione di Ore]\label{condizione_ore}\index{Funtore!condizione di Ore per un ---}\index{Funtore!--- iniziale}
-	Una condizione più forte dell'inizialità, molto comune e più facile da verificare, è la \emph{condizione di Ore}: \(F : \ctC\fun\ctD\) soddisfa la condizione di Ore se
+	Una condizione più forte dell'inizialità, molto comune e più facile da verificare, è la \emph{condizione di Ore}: \(F : \ctC\fun\ctD\) lasoddisfa se
 	\begin{itemize}
 		\item per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom\ctD(D,FX)\) è non vuoto;
 		\item per ogni \(D\) e ogni \(u : D\to FX\), \(v : D\to FY\) esiste un modo di `completare il quadrato'
@@ -3998,7 +4004,7 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 		      }\]
 \end{itemize}
 \begin{hTheorem}[Inizialità degli ordinali tra i diagrammi filtrati]{skip}\index{Funtore!--- iniziale}
-	Per ogni categoria \(\ctD\) (piccola e) filtrata nel senso di \ref{def_cat_filtrata}, esiste un funtore iniziale \(K : P_\ctD\fun\ctD\), di dominio un insieme (ordinato e) diretto.
+	Per ogni categoria \(\ctD\) (piccola e) filtrata nel senso di \ref{def_cat_filtrata}, esiste un funtore iniziale \(K : P_\ctD\fun\ctD\), di dominio un preordine (si veda \ref{ex_cat_ordini}) diretto (si veda \ref{contro_esempi_filt}).
 \end{hTheorem}
 \begin{proof}
 	\Todo{}
