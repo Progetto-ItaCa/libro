@@ -1,8 +1,8 @@
 watch:
-	texfot latexmk -pdf -pvc main.tex
+	texfot latexmk -pdf -pvc main.tex | grep -v "Missing character: There is no ; in font nullfont"
 
 book:
-	texfot latexmk -pdf main.tex
+	texfot latexmk -pdf main.tex | grep -v "Missing character: There is no ; in font nullfont"
 
 clean:
 	texfot latexmk -C
@@ -11,7 +11,7 @@ clean:
 view:
 	evince main.pdf &
 
-pretty:
+pretty: # TOFIX: THIS DOESNT WORK ANYMORE
 	for file in cap/*.tex ; do \
 		python3 beautifier.py $$file ; \
 		rm -f cap/*.bak cap/*.bak0 cap/*.log ; \
