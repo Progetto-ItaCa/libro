@@ -1,0 +1,649 @@
+\section{Monomorfismi ed epimorfismi}\label{sec_monoepi}
+
+Come visto nell'esempio \ref{mon_sonocat}, i monoidi corrispondono precisamente alle categorie con un solo oggetto; allora,
+la definizione di elemento \emph{cancellabile a sinistra} (o a destra) in un monoide \(M\) si può applicare direttamente ai morfismi della categoria \(\susp M\).
+\begin{definition}[Elemento cancellabile]\label{def_elem_cancel}\index{Cancellabile}
+	Ricordiamo che un elemento \(x\) di un monoide \((M, \cdot, 1)\) si dice cancellabile a sinistra (rispettivamente, destra) se,	per ogni coppia di elementi \(y_0\) e \(y_1\) in \(M\) tali che \(x \cdot y_0 = x \cdot y_1\) (rispettivamente, \(y_0 \cdot x = y_1 \cdot x\)), si ha che \(y_0 = y_1\).
+\end{definition}
+Se però vogliamo estendere tale definizione ad una categoria generica, la cui composizione è dunque un'operazione parziale, è necessario considerare solo le composizioni ben definite, ovvero tra frecce consecutive. Si arriva così alle seguenti definizioni.
+\begin{definition}[Monomorfismo]\label{def_Mono}\index{Monomorfismo}\index{Morfismo!mono---}
+	Una freccia \(m \colon B \to X\) in una categoria \(\ctC\) è un \emph{monomorfismo} (o una freccia \emph{mono}, si veda \ref{frecce_o_morfismi}) se,	per ogni coppia di frecce parallele \(f, g \colon A \to B\) in \(\ctC\) tali che \(m \cmp f = m \cmp g\), si ha che \(f = g\).
+\end{definition}
+\begin{definition}[Epimorfismo]\label{def_Epi}\index{Epimorfismo}\index{Morfismo!epi---}
+	Una freccia \(e \colon X \to A\) in una categoria \(\ctC\) è un \emph{epimorfismo} (o una freccia \emph{epi}, si veda \ref{frecce_o_morfismi}) se,	per ogni coppia di frecce parallele \(f, g \colon A \to B\) in \(\ctC\) tali che \(f \cmp e = g \cmp e\), si ha che \(f = g\).
+\end{definition}
+\begin{terminology}\index{Monomorfismo!etimologia di `---'}
+	Il prefisso greco \emph{mono-} significa `uno, singolo' (il prefisso greco \(\mu\acute{o}\nu o\varsigma\)- è imparentato al latino \emph{moenia}, un muro fatto di un solo pezzo); la scelta del nome `monomorfismo' si motiva quindi notando che una funzione \(f : A\to B\) è un monomorfismo se ogni valore \(b=f(a) \in B\) viene assunto per al più un \(a\in A\). Il prefisso \emph{epi-} significa invece `sopra, presso' (il prefisso greco \(\overset,\varepsilon\pi\acute{\iota}\)- è imparentato al latino \emph{apud}); la scelta del nome `epimorfismo' si motiva quindi pensando che una funzione \(f : A\to B\) che è un epimorfismo `stia sopra' il suo dominio coprendolo completamente, nel senso che ogni valore \(b=f(a)\) è assunto almeno una volta.
+\end{terminology}
+Dato che le definizioni categoriali di mono ed epi generalizzano, rispettivamente, quelle, algebriche, di elementi cancellabili a sinistra e a destra, otteniamo immediatamente il seguente esempio.
+\begin{example}[Mono ed epimorfismi in un monoide]\index{Monomorfismo!--- in un monoide}
+	Nella categoria \(\susp(M,\cdot,1)\) indotta da un monoide come in \ref{mon_sonocat}, i mono sono gli elementi cancellabili a sinistra,
+	e gli epi sono gli elementi cancellabili a destra.
+\end{example}
+Vediamo ora invece esempi in categorie non indotte da monoidi. Il primo caso, alquanto degenere, è dato dai preordini.
+\begin{example}\label{ex:mono-epi-preord}\index{Monomorfismo!--- in un ordine}
+	Nella categoria indotta da un preordine, come visto nell'esempio~\ref{ord_sonocat}, tutti i morfismi sono sia epi che mono. Infatti, la definizione di epi e mono è sempre soddisfatta banalmente, dato che, in un preordine, due frecce parallele sono necessariamente uguali.
+\end{example}
+Gli esempi precedenti mostrano come un morfismo possa essere sia epi che mono, e comunque non essere un isomorfismo. Il prossimo esempio, rispetto ai precedenti, è più complesso.
+
+\begin{example}\label{monoepi_in_set}\index{Monomorfismo!--- in \(\ctSet\)}
+	Nella categoria \(\ctSet\) di insiemi e funzioni, i monomorfismi sono precisamente le funzioni iniettive	e gli epimorfismi sono precisamente le funzioni surgettive.
+
+	Consideriamo il caso delle funzioni surgettive.	Se \(e \colon X \to A\) è una funzione surgettiva e \(f, g \colon A \to B\) sono funzioni tali che \(f \cmp e = g \cmp e\),	allora per ogni elemento \(a \in A\) esiste un \(x \in X\) tale che \(e(x) = a\), per la surgettività di \(e\).	Osserviamo che \((f \cmp e)(x) = (g \cmp e)(x)\), ovvero \(f(e(x)) = g(e(x))\),	ma allora \(f(a) = g(a)\).	Per la genericità di \(a\) concludiamo che \(f = g\), e dunque \(e\) è epi.
+
+	Nel caso opposto, in cui \(e \colon X \to A\) è epi, sia \(a \in A\).
+	Assumiamo per assurdo che non esista \(x \in X\) tale che \(f(x) = a\).
+	Allora siano \(k_0 \colon A \to \{0, 1\}\) la funzione costante in \(0\),
+	e \(\delta_a \colon A \to \{0, 1\}\) la funzione caratteristica di \(a\) in \(A\).
+	Siccome \(a\) non appartiene all'immagine di \(e\), abbiamo che \(k_0 \cmp e = \delta_a \cmp e\)
+	in quanto entrambe le composizioni assumono costantemente il valore \(0\) su tutto il dominio \(X\).
+	Dunque, \(k_0 = \delta_a\), il che è assurdo.
+	Dalla negazione dell'ipotesi per assurdo, concludiamo che \(e\) è surgettiva.
+\end{example}
+
+Si noti che la dimostrazione che le funzioni surgettive sono epi sarebbe immediata
+se usassimo il fatto che ogni funzione surgettiva ha un'inversa destra.
+L'esistenza dell'inversa destra, però, è una conseguenza dell'assioma di scelta,
+che invece non viene impiegato nella dimostrazione di cui sopra.
+
+Per ragioni che saranno evidenti nella prossima sezione,
+abbiamo evidenziato come l'equivalenza tra funzioni surgettive (iniettive)
+e epi (mono) in \(\ctSet\) sia indipendente dall'esistenza di un'inversa destra (sinistra).
+
+\begin{remark}
+	\label{rmk:mono-epi-duality}
+	Le nozioni di monomorfismo ed epimorfismo sono duali:
+	\begin{itemize}
+		\item un morfismo \(f : X\to Y\) in una categoria \(\ctC\) è mono se e solo se \(f^\op : Y\to X\) è epi in \(\ctC^{\op}\);
+		\item un morfismo \(f : X\to Y\) in una categoria \(\ctC\) è epi se e solo se \(f^\op : Y\to X\) è mono in \(\ctC^{\op}\).
+	\end{itemize}
+\end{remark}
+\begin{notation}[Notazione per mono ed epi]
+	Sia \(f : X\to Y\) un morfismo di una categoria \(\ctC\);
+	\begin{itemize}
+		\item se \(f\) è mono, decoriamo la freccia che lo raffigura come \(f : X\mono Y\);
+		\item se \(f\) è epi, decoriamo la freccia che lo raffigura come \(f : X\epi Y\).
+	\end{itemize}
+\end{notation}
+Dimostriamo ora alcuni risultati che rendono più agevole lavorare con mono ed epi,
+sfruttando la dualità a nostro vantaggio.
+
+\begin{proposition}\index{Monomorfismo!composizione di ---i}\index{Epimorfismo!composizione di ---i}
+	Siano \(f \colon A \to B\) e \(g \colon B \to C\) due frecce consecutive in una qualche categoria.
+	Allora:
+	\begin{enumerate}
+		\item Se \(f\) e \(g\) sono entrambe mono (epi), allora anche \(g \cmp f\) è mono (epi).
+		\item Se \(g \cmp f\) è mono, allora anche \(f\) è mono.
+		\item Se \(g \cmp f\) è epi, allora anche \(g\) è epi.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Grazie all'osservazione~\ref{rmk:mono-epi-duality},
+	ci basta dimostrare il risultato per i mono,
+	e il risultato per gli epi segue per dualità.
+	\begin{enumerate}
+		\item Siano \(f\) e \(g\) mono.
+		      Per dimostrare che \(g \cmp f\) è mono,
+		      consideriamo una coppia di frecce parallele \(h\) e \(k\) tali che \((g \cmp f) \cmp h = (g \cmp f) \cmp k\).
+		      Per associatività della composizione, \(g \cmp (f \cmp h) = g \cmp (f \cmp k)\).
+		      Allora, siccome \(g\) per ipotesi è mono, si ha che \(f \cmp h = f \cmp k\).
+		      Inoltre, siccome \(f\) per ipotesi è mono, si ha che \(h = k\).
+		      Quindi, per la generalità di \(h\) e \(k\), si ha che anche \(g \cmp f\) è mono.
+		\item Assumiamo che \(g \cmp f\) sia mono.
+		      Per dimostrare che \(f\) è mono,
+		      consideriamo una coppia di frecce parallele \(h\) e \(k\) tali che \(f \cmp h = f \cmp h\).
+		      Allora, post-componendo con \(g\) su ambo i lati e sfruttando la associatività della composizione,
+		      otteniamo che \((g \cmp f) \cmp h = (g \cmp f) \cmp k\).
+		      Siccome per ipotesi \(g \cmp f\) è mono, si ha che \(h = k\).
+		      Quindi, per la generalità di \(h\) e \(k\), si ha che anche \(f\) è mono. \qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}\label{mono_epi_ort}[Una proprietà di mono ed epi in \(\ctSet\)]
+	Dato un quadrato commutativo di funzioni
+	\[\begin{tikzcd}
+			E \ar[r,"f"]\ar[d, two heads, "e"']& A\ar[d, hook, "m"] \\
+			B \ar[r, "g"']\ar[ur,dashed,"u"] & X
+		\end{tikzcd}\]
+	dove \(e : E\epi B\) è un epi e \(m : A \mono X\) un mono, esiste un unica funzione \(u : B\to A\) (indicata con una freccia tratteggiata) con la proprietà di `spezzare il quadrato', cioè tale che \(u\cmp e=f\) e \(m\cmp u=g\).
+\end{proposition}
+\begin{proof}
+	Costruiamo \(u\) esplicitamente: ad un elemento \(b\in B\), che sappiamo essere della forma \(e(a)\) per qualche \(a\in A\), associamo l'elemento \(u(b)=f(a)\). Questa definizione è ben posta, perché se \(a,a'\) sono entrambi tali che \(e(a)=e(a')=b\), allora \(mu(b)=mf(a)=mf(a')\), così che \(f(a)=f(a')\), perché \(m\) è un mono. \`E evidente ora che \(u\cmp e= f\), per costruzione, ed \((m\cmp u)(b)=m(f(a))=g(e(a))=g(b)\); l'unicità segue ancora dal fatto che \(m\) è mono.
+\end{proof}
+Concludiamo la sezione enunciando un risultato che nel capitolo \ref{cap_fattorizzazione} avremo gli strumenti per dimostrare in modo elegante (dimostrare in maniera elementare il seguente risultato è possibile, ma va considerato un esercizio laborioso. Una parte dell'esercizio è però del tutto elementare e invitiamo chi legge a scoprire quale---e a cimentarvisi).
+\begin{proposition}\label{caratt_epi_con_ort}\index{Ortogonalità}
+	Sia \(p : E \to B\) una funzione tra insiemi; le seguenti condizioni sono equivalenti:
+	\begin{itemize}
+		\item \(p\) è un epimorfismo (si veda \ref{def_Mono})
+		\item in ogni diagramma commutativo di insiemi e funzioni come il seguente:
+		      \[\begin{tikzcd}
+				      E \ar[r, "f"]\ar[d, "p"']& X \ar[d,hook, "m"]\\
+				      B \ar[r, "g"'] \ar[ur, dashed, "u"]& Y
+			      \end{tikzcd}\]
+		      dove \(m : X\mono Y\) è un monomorfismo, esiste un unico \(u : B\to X\) tale che \(u\cmp p = f\) e \(m\cmp u = g\).
+	\end{itemize}
+\end{proposition}
+Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette una condizione equivalente in più, e dunque una formulazione più semplice:
+\begin{proposition}\label{caratt_epi_con_ort_duale}
+	Sia \(m : X\to Y\) una funzione tra insiemi; le seguenti condizioni sono equivalenti:
+	\begin{enumerate}
+		\item\label{caratt_epi_con_ort_duale:itm1} \(m\) è un monomorfismo (si veda \ref{def_Epi});
+		\item\label{caratt_epi_con_ort_duale:itm2} in ogni diagramma di insiemi e funzioni come il seguente:
+		      \[\begin{tikzcd}
+				      E \ar[r, "f"]\ar[d, two heads, "p"']& X \ar[d, "m"]\\
+				      B \ar[r, "g"'] \ar[ur, dashed, "u"]& Y
+			      \end{tikzcd}\]
+		      dove \(p : E\epi B\) è un epimorfismo, esiste un unico \(u : B\to X\) tale che \(u\cmp p = f\) e \(m\cmp u = g\);
+		\item\label{caratt_epi_con_ort_duale:itm3} la condizione del punto precedente vale per \(p : \{0,1\} \to \singleton\) (l'unica funzione \(0\mapsto\bullet, 1\mapsto\bullet\)).
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Delle condizioni dell'enunciato, \ref{caratt_epi_con_ort_duale:itm2} segue da \ref{caratt_epi_con_ort_duale:itm1} per la proposizione \ref{mono_epi_ort}.
+	Inoltre, \ref{caratt_epi_con_ort_duale:itm3} \`e un caso particolare di \ref{caratt_epi_con_ort_duale:itm2}.
+	Dunque, rimane da dimostrare che \ref{caratt_epi_con_ort_duale:itm1} segue da \ref{caratt_epi_con_ort_duale:itm3} .
+	Siano \(x, x' \in X\) tali che \(m(x) = m(x')\).
+	Allora, consideriamo la funzione \(f \colon \{0, 1\} \to X\) per cui \(0 \mapsto x\) e \(1 \mapsto x'\),
+	e la funzione \(g \colon \singleton \to Y\) per cui \(\bullet \mapsto m(x)\).
+	Per costruzione \(m \cmp f = g \cmp p\) e dunque, per l'ipotesi \ref{caratt_epi_con_ort_duale:itm3}, esiste un unico \(u : B\to X\) tale che \(u\cmp p = f\) (e \(m\cmp u = g\)).
+	Allora, \(x = f(0) = u(p(0)) = u(\bullet) = u(p(1)) = f(1) = x'\).
+	Per la genericit\`a di \(x\) e \(x'\), abbiamo che \(f\) \`e iniettiva,
+	e dunque un monomorfismo in \(\ctSet\).
+\end{proof}
+
+\subsection{Sezioni e retrazioni}\label{sec_sezretraz}\index{Sezione}
+Così come l'algebra ci ha suggerito di generalizzare all'ambito categoriale la nozione di elemento di un monoide cancellabile a sinistra/destra,
+similmente possiamo considerare la nozione di elemento invertibile a sinistra/destra.
+
+\begin{definition}[Sezione e retrazione]\index{Sezione}\index{Retrazione|see {Sezione}}
+	Sia \(f \colon A \to B\) un morfismo in una categoria.
+	Allora chiamiamo:
+	\begin{itemize}
+		\item \emph{sezione} di \(f\) una sua inversa destra, ovvero un morfismo \(s \colon B \to A\) tale che \(f \cmp s = \id_{B}\).
+		\item \emph{retrazione} di \(f\) una sua inversa sinistra, ovvero un morfismo \(r \colon B \to A\) tale che \(r \cmp f = \id_{A}\).
+	\end{itemize}
+\end{definition}
+\begin{definition}[Epi e mono spezzanti]\index{Epimorfismo!--- spezzante}\index{Monomorfismo!--- spezzante}
+	Una sezione di un qualche morfismo, essendo invertibile a sinistra, è anche cancellabile a sinistra.
+	Dunque, ogni sezione è, in particolare, un monomorfismo.
+	\index{Monomorfismo!--- spezzante}Un monomorfismo che è anche una sezione si dice \emph{mono spezzante}.
+	Dualmente, ogni retrazione è cancellabile a destra e dunque un epimorfismo.
+	\index{Epimorfismo!--- spezzante}Un epimorfismo che è anche una retrazione si dice \emph{epi spezzante}.
+	Inoltre, le nozioni di sezione e retrazione sono ovviamente dipendenti una dall'altra:
+	un morfismo \(f : A \to B\) che ha una sezione \(s : B\to A\) è una retrazione di \(s\),
+	e viceversa \(f\) è una sezione di ogni sua retrazione.
+\end{definition}
+\begin{definition}[Retratto]\index{Retratto}
+	Dati due oggetti \(A\) e \(B\) in una categoria,
+	diciamo che \(A\) è un \emph{retratto} di \(B\) se ci sono una coppia di morfismi detti \emph{sezione} e \emph{retrazione}, raffigurabili come
+	\begin{equation}
+		\begin{tikzcd}
+			A \ar[r, bend left, "s"] &B \ar[l, bend left, "r"]
+		\end{tikzcd}
+	\end{equation}
+	tali che \(r \cmp s = \id_A\).
+	In tal caso, diciamo che \(r\), che è un epi spezzante (dato che ha \(s\) come inversa destra), è un \emph{retratto} di \(B\) su \(A\), mentre \(s\) è un mono spezzante (perché ha \(r\) come inversa sinistra).
+\end{definition}
+\begin{remark}
+	Un endomorfismo \(e : X\to X\) si dice \emph{idempotente} se \(e\cmp e=e\); si osservi che, se \(s \colon A \to B\) e \(r \colon B \to A\) sono una coppia di sezione e retrazione,
+	allora il morfismo
+	\begin{equation}
+		\begin{tikzcd}
+			B \ar[r, "r"] & A \ar[r, "s"] &B
+		\end{tikzcd}
+	\end{equation}
+	è un morfismo idempotente, dato che
+	\[(s\cmp r)\cmp (s\cmp r) = s\cmp (r\cmp s)\cmp r = s\cmp 1\cmp r=s\cmp r.\]
+\end{remark}
+
+\begin{example}
+	\label{exm:set-sezioni-retrazioni}
+	In \(\ctSet\), una funzione ha una retrazione se e solo se è iniettiva.
+	Inoltre, le funzioni che hanno una sezione sono surgettive,
+	mentre l'implicazione inversa vale soltanto se assumiamo una forma di assioma di scelta.
+
+	Una giustificazione intuitiva di questo fatto si può dare mediante la figura \ref{fig_assioma_scelta}: data una funzione suriettiva \(g : E\to B\), una sua sezione \(s\) ammonta alla scelta, per ogni elemento \(b\) di \(B\), di un elemento di \(g^{-1}(b)\); questa scelta è possibile perché ciascuno di questi insiemi è non vuoto (questa è la cosa vera solo l'assioma di scelta: che \(\prod_{b\in B}g^{-1}(b)\) sia non vuoto); nulla vieta che per alcune fibre essa sia unica, ma ovviamente una stessa funzione suriettiva può avere molte inverse destre distinte.
+	% TODO: questo è il teorema di Cantor? Riferimento necessario?
+	% Questo esempio, inoltre, dimostra che sezioni e retrazioni non sono uniche:
+	% una funzione surgettiva può avere più inverse destre (sezioni).
+\end{example}
+\begin{remark}
+	Qualcosa di simile avviene per gli spazi vettoriali (ovviamente, è la dimensione infinita a causare problemi): l'assioma della scelta (nella forma del lemma di Zorn) è equivalente al fatto che ogni spazio vettoriale ha una base. Se \(f : V\to W\) è una funzione lineare e suriettiva, si può decomporre \(V = \ker f \oplus W'\) (un complemento in somma diretta per \(\ker f\) esiste solo con l'assioma della scelta), in modo tale che \(f_0 := f|_{W'}\) sia invertibile; l'inversa \(f_0^{-1}\), composta con l'inclusione \(W'\mono \ker f \oplus W'\cong V\), dà una inversa destra per \(f\) (per costruzione, \(f_0^{-1}(w)\) è il vettore (unico) tale che \(f(f_0^{-1}(w)) = w\)), cosicché \(f\) è un epi spezzante.
+\end{remark}
+\begin{figure}[h]
+	\begin{center}
+		\begin{tikzpicture}[
+				x=1em, y=1em,
+				dot/.style={
+						circle,
+						fill=#1,
+						inner sep=0pt,
+						outer sep=2pt,
+						minimum size=4pt,
+						draw=none,
+					},
+				wrap/.style={
+						fill=black!5,
+						rounded corners,
+						inner sep=.5em,
+					},
+			]
+
+			\def\sizeX{5}
+			\def\seedX{1}
+			\def\seedXS{
+				3/2,
+				1/3,
+				4/4,
+				1/5,
+				5/9%
+			}
+
+			\begin{scope}[local bounding box=X]
+				\GimmeBounds{\seedX}{\sizeX}
+				\let\xminC\xmin\let\xmidC\xmid\let\xmaxC\xmax
+				\let\yminC\ymin\let\ymidC\ymid\let\ymaxC\ymax
+
+				\pgfmathsetseed{\seedX}
+				\foreach \count/\seed [count=\n] in \seedXS {
+					\begin{scope}[xshift=(\n-\sizeX/2)*5em,local bounding box=X\n]
+						\pgfmathsetmacro{\dx}{(rnd-\xmidC)/(\xmaxC-\xminC)}
+						\pgfmathsetmacro{\dy}{(rnd-\ymidC)/(\ymaxC-\yminC)}
+
+						\GimmeBounds{\seed}{\count}
+						\pgfmathsetseed{\seed}
+						\foreach \i in {1,...,\count} {
+								\pgfmathsetmacro{\x}{\dx + 2*(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+								\pgfmathsetmacro{\y}{\dy + 2*(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+								\path node[dot=black] (X\n\i) at (\x,\y) {};
+							}
+
+						\pgfmathsetseed{\seedX}
+						\foreach \k in {1,...,\n} \pgfmathparse{rnd+rnd};
+
+					\end{scope}
+				}
+			\end{scope}
+
+			\begin{scope}[yshift=-8em,local bounding box=Y]
+				\GimmeBounds{\seedX}{\sizeX}
+				\pgfmathsetseed{\seedX}
+				\foreach \i/\c in {
+						1/ibmBlue,
+						2/ibmPurple,
+						3/ibmMagenta,
+						4/ibmOrange,
+						5/ibmYellow%
+					} {
+						\pgfmathsetmacro{\x}{(\i-\sizeX/2)*5+(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+						\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+						\path node[dot=\c] (Y\i) at (\x,\y) {};
+					}
+			\end{scope}
+
+			\begin{scope}[on background layer]
+				\path node[wrap, draw=gray, inner sep=2em, fit=(X)] (D) {};
+				\path node[wrap, draw=gray, inner sep=2em, fit=(Y)] (C) {};
+				\node[right=3pt of C] {$B$};
+				\node[right=3pt of D] {$E$};
+				\foreach \n/\c in {
+						1/ibmBlue,
+						2/ibmPurple,
+						3/ibmMagenta,
+						4/ibmOrange,
+						5/ibmYellow%
+					} {
+						\path node[wrap, shape=circle, fill=\c!20, draw=\c, fit=(X\n)] (W\n) {};
+						\draw [-latex, \c] (W\n) to[bend right=15] (Y\n);
+					}
+			\end{scope}
+
+			\foreach \s/\t in {
+					Y1/X11,
+					Y2/X21,
+					Y3/X31,
+					Y4/X41,
+					Y5/X51%
+				} \draw (\s) edge[-latex, bend right=15] (\t);
+		\end{tikzpicture}
+	\end{center}
+	\caption{Una funzione suriettiva \(g : E\to B\) dove \(B=\{\blueDot\,\purpleDot\,\redDot\,\orangeDot\,\yellowDot\}\). Ciascuna fibra di \(g\) è non vuota, e la scelta di una inversa destra \(s : B\to E\) ammonta esattamente alla scelta di un elemento in ciascuna di queste fibre.}
+	\label{fig_assioma_scelta}
+\end{figure}
+I funtori preservano sezioni e retrazioni, nel senso precisato dal seguente teorema:
+\begin{theorem}\index{Retratto}%
+	\label{thm:fun-sezioni-retrazioni}
+	Dato un funtore \(F \colon \ctC \fun \ctD\) ed una coppia di sezione e retrazione \(s \colon A \to B\) e \(r \colon B \to A\),
+	allora \(F(s) \colon F(A) \to F(B)\) e \(F(r) \colon F(B) \to F(A)\) è una coppia di sezione e retrazione.
+\end{theorem}
+\begin{proof}
+	La coppia di sezione e retrazione \(s\) e \(r\),	per definizione, è tale che \(r \cmp_{\ctC} s = \id_A\).	Dunque, applicando il funtore \(F\), abbiamo che \(F(r \cmp_{\ctC} s) = F(\id_A)\).	Siccome i funtori, per definizione, preservano composizione e identità,	otteniamo che \(F(r) \cmp_{\ctD} F(s) = \id_{F(A)}\),	ovvero che \(F(A)\) e \(F(B)\) sono una coppia di sezione/retrazione.
+\end{proof}
+Di conseguenza, abbiamo i seguente corollari:
+\begin{corollary}\index{Retratto}
+	\label{cor:fun-sezioni-retrazioni}
+	Sia \(F \colon \ctC \to \ctD\) un funtore.	Allora:
+	\begin{enumerate}
+		\item Se \(r \colon B \to A\) è un retratto di \(B\) su \(A\), allora \(F(r)\) è un retratto di \(F(B)\) su \(F(A)\).
+		\item Se \(A\) è un retratto di \(B\), allora \(F(A)\) è un retratto di \(F(B)\).
+		\item Se \(m \colon A \to B\) è un mono spezzante, allora \(F(m)\) è un mono spezzante.
+		\item Se \(e \colon B \to A\) è un epi spezzante, allora \(F(e)\) è un epi spezzante.
+	\end{enumerate}
+	Ovvero, i funtori preservano i retratti (sia nel senso di oggetti che di morfismi),
+	i mono spezzanti e gli epi spezzanti.
+\end{corollary}
+Questo risultato, per quanto banale nella sua dimostrazione, ha conseguenze profonde: ci dice infatti che, sebbene abbiano proprietà simili, mono (risp., epi) e mono spezzanti (risp., epi spezzanti) sono distinti da una differenza fondamentale: l'essere o meno preservati dai funtori.
+
+Il risultato in questione propone anche le sezioni e le retrazioni come esempi fondamentali di \emph{strutture assolute}: una proprietà \(P\) di un morfismo in una categoria \(\ctC\) è `assoluta' se viene preservata da tutti i funtori di dominio \(\ctC\), ovvero: se \(f\in\hom(\ctC)\) ha la proprietà \(P\) in \(\ctC\), allora per ogni altra categoria \(\ctD\) e funtore \(F : \ctC\fun\ctD\) il morfismo \(Ff\) ha la proprietà \(P\) in \(\ctD\).
+\begin{example}\label{mono_epi_noniso}\index{Monomorfismo}\index{Monomorfismo!--- ed epimorfismo non è iso}
+	Si consideri l'immersione \(\iota \colon \bbN \mono \bbZ\)	nella categoria \(\ctMon\) dei monoidi e omomorfismi di monoide.	Questa è mono in quanto la sua funzione sottogiacente è iniettiva,	ma non è spezzante.	Infatti, se avesse una retrazione,	questa sarebbe preservata dal funtore dimenticante \(U \colon \ctMon \fun \ctSet\),	per \ref{thm:fun-sezioni-retrazioni},	e dunque sarebbe un'inversa sinistra della funzione \(\iota\).	Come omomorfismo di monoidi, però, tale inversa sinistra dovrebbe preservare gli elementi inversi,	e ciò non è possibile.
+
+	Inoltre, e più sorprendentemente, \(\iota\) è anche epi,	nonostante la sua funzione sottogiacente non sia surgettiva.	Infatti, se \(f, g \colon \bbZ \to M\) sono morfismi di monoidi tali che \(f \iota = g \iota\),	allora, per ogni \(n \in \bbZ\),	abbiamo due possibilità:
+	\begin{itemize}
+		\item Se \(n \in \bbZ_{\geq 0}\), allora \(n\) sta nell'immagine di \(\iota\), ovvero esiste \(n_0 \in \bbN\) tale che \(n = \iota(n_0)\). Per ipotesi abbiamo che \(f \iota (n_0) = g \iota (n_0)\), ovvero \(f (n) = g (n)\). Ne concludiamo che \(f\) e \(g\) coincidono sugli interi non-negativi.
+		\item Se \(n \in \bbZ_{< 0}\), allora \(-n \in \bbZ_{\geq 0}\).
+
+		      Analogamente al caso precedente, esiste \(n_0 \in \bbN\) tale che \(-n = \iota(n_0)\) e \(f \iota (-n) = g \iota (-n)\). Siccome gli omomorfismi di monoide preservano le inverse, \({(f (n))}^{-1} = f \iota {(-n)} = g \iota {(-n)} = {(g (n))}^{-1}\). Per l'unicità dell'inversa, concludiamo che \(f (n) = g (n)\), ovvero che \(f\) e \(g\) coincidono sugli interi negativi.
+	\end{itemize}
+	Dunque, possiamo concludere che \(f = g\) e che, per l'arbitrarietà di \(f\) e \(g\), l'immersione \(\iota\) è un epi. Tuttavia, \(\iota\) non è un epi spezzante. Infatti, se esistesse, la sua sezione dovrebbe essere preservata dal funtore dimenticante \(U \colon \ctMon \fun \ctSet\), per il \autoref{thm:fun-sezioni-retrazioni}. Tuttavia, \(U(\iota)\) non è una funzione surgettiva, e dunque non può avere una sezione, per l'\autoref{exm:set-sezioni-retrazioni}.
+\end{example}
+Questa discussione fornisce alcuni utili controesempi:	un morfismo può essere sia epi che mono senza necessariamente essere epi spezzante o mono spezzante,	e in particolare senza essere un isomorfismo. Questo porta alla definizione seguente.
+\begin{definition}[Categoria bilanciata]\label{def_cat_bilanciata}\index{Categoria!--- bilanciata}
+	Una categoria \(\ctC\) si dice \emph{bilanciata} se vale l'implicazione
+	\begin{quote}
+		\(f\) è mono + \(f\) è epi \(\To\) \(f\) è un isomorfismo.
+	\end{quote}
+\end{definition}
+Esempi di categorie bilanciate sono: tutti i gruppoidi (ovviamente\dots), la categoria di insiemi e funzioni, \ref{ex_cat_insiemi}, la categoria dei \(G\)-insiemi \ref{ex_cat_g_insiemi}, i multidigrafi \ref{ex_cat_grafi}, la categoria delle matrici di \ref{ex_cat_matrici} e come conseguenza quella degli spazi vettoriali di dimensione finita, ma anche quella degli spazi vettoriali di dimensione infinita e più in generale dei moduli su un anello \(R\); la categoria dei gruppi.
+
+I controesempi più eclatanti di categorie \emph{non} bilanciate vengono dalla geometria, topologia e teoria degli ordini: nella categoria \(\ctTop\) di \ref{ex_cat_top} i mono ed epi sono precisamente le funzioni \(f : X\to Y\) che sono biiezioni continue --ma la loro inversa non è obbligata a esserlo. Abbiamo poi prodotto esempi di mono ed epi che non sono isomorfismi nella categoria dei monoidi (simile al ragionamento di \ref{mono_epi_noniso} è quello che dimostra che \(\bbZ\to\bbQ\) è (un mono, ovviamente, ed) epi; ma \(\bbZ\) non è un campo).
+
+Però, e questo è un esempio importante (la cui dimostrazione usa dei fatti di topologia generale elementare), nella categoria degli spazi di Hausdorff compatti e mappe continue \emph{e proprie}, una freccia \(f : X\to Y\) mono ed epi deve essere un isomorfismo: per quanto osservato prima, \(f\) è una biiezione continua. Del resto, una biiezione continua tra spazi di Hausdorff compatti è una mappa chiusa, cosicché l'inversa insiemistica di \(f\) è continua (sui chiusi).
+\begin{hExample}[La categoria dei punti]{tech}\label{ex_cat_punti}\index{Categoria!--- dei punti su un oggetto}
+	Sia \(\ctC\) una categoria. Per ogni oggetto \(X\in\ctC_0\) definiamo la categoria \(\cate{Pt}_X(\ctC)\) dei \emph{punti su \(X\)} come segue:
+	\begin{itemize}
+		\item gli oggetti \(\var [p]EX[\downuparrows]\) di \(\cate{Pt}_X(\ctC)\) sono epi spezzanti di codominio \(X\), cioè morfismi \(p : E \to X\) che ammettono una sezione \(\bar p : X\to E\) tale che \(p\cmp \bar p = \id_X\);
+		\item i morfismi \(f : \var [p] EX[\downuparrows]\to \var[q] FX[\downuparrows]\) sono morfismi \(f : E \to F\) tali che
+		      \[q\cmp f = p \qquad \qquad f\cmp \bar q = \bar p.\]
+	\end{itemize}
+\end{hExample}
+
+Abbiamo visto in precedenza che, in generale, un morfismo pu\`o essere sia epi che mono senza essere un isomorfismo (vedasi esempio~\ref{ex:mono-epi-preord}).
+Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzanti.
+
+\begin{proposition}\label{prop:iso-epi-mono}\index{Monomorfismo!--- spezzante}\index{Epmorfismo!--- spezzante}
+	Sia \(f \colon A \to B\) un morfismo. Le seguenti condizioni sono equivalenti:
+	\begin{enumerate}
+		\item\label{prop:iso-epi-mono:item1} \(f\) \`e un isomorfismo.
+		\item\label{prop:iso-epi-mono:item2} \(f\) \`e mono ed epi spezzante.
+		\item\label{prop:iso-epi-mono:item3} \(f\) \`e mono spezzante ed epi.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Ogni isomorfismo \`e, in particolare, epi spezzante e mono spezzante, dunque il punto~\ref{prop:iso-epi-mono:item1} implica i punti~\ref{prop:iso-epi-mono:item2} e~\ref{prop:iso-epi-mono:item3}.
+	Dimostriamo che il punto~\ref{prop:iso-epi-mono:item2} implica il punto~\ref{prop:iso-epi-mono:item1}.
+	Siccome \(f\) \`e epi spezzante, esiste una sua inversa destra \(g\), ovvero tale che \(f \cmp g = \id_{B}\).
+	Dimostriamo che \(g\) \`e anche inversa sinistra di \(f\), ovvero che \(g \cmp f = \id_{A}\).
+	Osserviamo infatti che \(f \cmp (g \cmp f) = (f \cmp g) \cmp f = \id_{B} \cmp f = f = f \cmp \id_{A}\).
+	Siccome per ipotesi \(f\) \`e mono, dalla osservazione precedente segue che \(g \cmp f = \id_{A}\).
+	Dunque \(f\) \`e un isomorfismo con inversa \(g\).
+	Dualmente, abbiamo che il punto~\ref{prop:iso-epi-mono:item3} implica il punto~\ref{prop:iso-epi-mono:item1}.
+\end{proof}
+Quando avremo introdotto la teoria dei limiti e dei colimiti nel \autoref{chap_limiti_colimiti} avremo gli strumenti per definire e studiare diverse classi di mono ed epi in una categoria $\ctC$ (i mono ed epi regolari, effettivi, forti ed altri saranno studiati nel \autoref{cap_fattorizzazione}); una delle prime sottigliezze che si incontrano quando si impara la teoria delle categorie è il fatto che esiste una gerarchia di mono ed epi, che nella categoria degli insiemi collassano tutte nelle funzioni (rispettivamente) iniettive e suriettive, ma che in una categoria con meno proprietà sono, in generale, tutte distinte.
+
+Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emph{estremale}, che non richiede particolari tecnologie per essere enunciata.
+\begin{definition}[Mono ed epi estremale]\label{def_monoepi_estrem}\index{Monomorfismo!--- estremale}\index{Epimorfismo!--- estremale|see {Monomorfismo estremale}}
+	\Todo{}
+\end{definition}
+Raccogliamo alcune proprietà degli epi estremali:
+\begin{proposition}
+	\begin{itemize}
+		\item Se la composizione $f \circ g$ è un epi estremale, allora $f$ è a sua volta un epimorfismo estremale.
+		\item L'intersezione delle classi di epi estremali e mono di una categoria è fatta dagli isomorfismi; in altre parole, se $f : X\to Y$ è una freccia mono ed epi estremale, allora è un isomorfismo.
+		\item In una categoria bilanciata nel senso di \ref{def_cat_bilanciata}, tutti gli epimorfismi sono estremali.
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\Todo{}
+\end{proof}
+\begin{definition}[Epi forti]
+	\Todo{}
+\end{definition}
+Raccogliamo alcune proprietà degli epi forti:
+\begin{proposition}
+	
+\end{proposition}
+\subsection{Classi di funtori}\label{ssec:classi_di_funtori}
+Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome speciale ai funtori \(F : \ctC\fun\ctD\) tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva:
+\begin{definition}\label{funtore_pieno}\index{Funtore!--- pieno}
+	Il funtore \(F : \ctC\fun\ctD\) si dice \emph{pieno} se ciascuna \(F_{XY}\) è una funzione suriettiva; questo significa che
+	\begin{quote}
+		per ogni \(g : FX\to FY\) in \(\ctD\) esiste almeno un \(f : X\to Y\) in \(\ctC\) tale che \(Ff=g\).
+	\end{quote}
+\end{definition}
+\begin{definition}\label{funtore_fedele}\index{Funtore!--- fedele}
+	Il funtore \(F : \ctC\fun\ctD\) si dice \emph{fedele} se ciascuna \(F_{XY}\) è una funzione iniettiva; questo significa che
+	\begin{quote}
+		Dati \(u,v : X\to Y\) morfismi paralleli in \(\ctC\), se \(Fu=Fv\) allora \(u=v\).
+	\end{quote}
+\end{definition}
+\begin{notation}\label{fun_pienfed}\index{Funtore!--- pienamente fedele}
+	Un funtore che sia allo stesso tempo pieno e fedele, ossia tale che ciascuna \(F_{XY}\) sia biiettiva, si dice \emph{pienamente fedele}.
+\end{notation}
+\begin{remark}
+	Tra i funtori finora introdotti, quello dell'esempio \ref{exfun_4} è pieno; quelli degli esempi \ref{exfun_3}, \ref{dom_e_cod}, e (per definizione) tutti i funtori che definiscono un costrutto come in \ref{def_costrutto}, sono fedeli; quelli degli esempi \ref{ex_fun_co_disc}, \ref{funtore_mon_to_cat}, \ref{ord_come_cat}, sono pienamente fedeli.
+\end{remark}
+\`E poi conveniente dare un nome esplicito a un'altra classe di funtori:
+\begin{definition}\label{funtore_essurj}\index{Funtore!--- essenzialmente suriettivo}
+	\(F : \ctC\fun\ctD\) si dice \emph{essenzialmente suriettivo} (\cite{acc} usa la terminologia \emph{funtore iso-denso}) se la seguente condizione è verificata:
+	\begin{quote}
+		Per ogni oggetto \(D\in\ctD_0\), esistono un oggetto \(C\in\ctC_0\) e un isomorfismo \(i_D : FC\cong D\).
+	\end{quote}
+	\index{Funtore!--- essenzialmente suriettivo}
+	\index{Funtore!--- iso-denso|see {--- essenzialmente suriettivo}}
+\end{definition}
+\begin{definition}[Preservare e riflettere]\label{def_preserva_riflette}\index{Funtore!--- preserva proprietà}\index{Funtore!--- riflette proprietà|see {preserva proprietà}}
+	Sia \(\mathcal{P}\) una proprietà di un oggetto \(X\) o morfismo \(f : X\to Y\) di una categoria \(\ctC\); si dice che un funtore \(F : \ctC \fun\ctD\)
+	\begin{itemize}
+		\item \emph{preserva} la proprietà \(\mathcal{P}\) se vale
+		      \[\mathcal{P}(X) \Rightarrow \mathcal{P}(FX) \quad \text{oppure} \quad
+			      \mathcal{P}(f) \Rightarrow \mathcal{P}(Ff) \]
+		      (a seconda che \(\mathcal P\) dipenda da un oggetto o morfismo);
+		\item \emph{riflette} la proprietà \(\mathcal{P}\) se vale
+		      \[\mathcal{P}(FX) \Rightarrow \mathcal{P}(X) \quad \text{oppure} \quad
+			      \mathcal{P}(Ff) \Rightarrow \mathcal{P}(f) \]
+	\end{itemize}
+	Un funtore preserva (per definizione) le proprietà
+	\begin{itemize}
+		\item \(\mathcal P_\cmp(f,g,h) := (g\cmp f = h)\);
+		\item \(\mathcal P_1(f) := (f = \id_X)\).
+	\end{itemize}
+\end{definition}
+\begin{proposition}\label{prop_preserva_riflette}
+	Tutti i funtori preservano la proprietà \(\mathcal P_e(f) :=\) `\(f\) è un epi spezzante' e \(\mathcal P_e(f) :=\) `\(f\) è un mono spezzante', per \ref{cor:fun-sezioni-retrazioni}. Gli hom funtori rappresentabili \(\Hom\ctC(C,-)\) preservano la proprietà `\(f\) è un monomorfismo' (diciamo che \(\Hom\ctC(C,-)\) \emph{preserva i monomorfismi}); nella categoria \(\ctSet\) degli insiemi, \(\Hom\ctSet(A,-)\) preserva anche la proprietà `\(f\) è un epimorfismo' se si assume l'assioma della scelta (come formulato in \ref{fig_assioma_scelta}).
+
+	Molte proprietà sono \emph{riflesse} dai funtori pienamente fedeli: per esempio,
+	\begin{itemize}
+		\item la proprietà \(\mathcal P_\cong(f) := (f \text{ è un isomorfismo})\);
+		\item la proprietà \(\mathcal P_e(f) := (f \text{ è un epi spezzante})\);
+		\item la proprietà \(\mathcal P_m(f) := (f \text{ è un mono spezzante})\).
+	\end{itemize}
+	Ogni funtore fedele \(F : \ctC\fun\ctD\) riflette la proprietà `\(f\) è un monomorfismo' (diciamo che \(F\) \emph{riflette i monomorfismi}) e gli epimorfismi.
+\end{proposition}
+\begin{definition}[Isomorfismo di categorie]\label{fun_isocat}\index{Categoria!isomorfismo di ---e}\index{Isomorfismo!--- di categorie}\index{Isomorfismo}
+	Un isomorfismo di categorie \(\ctC\cong\ctD\) consiste di una coppia di funtori
+	\[\xymatrix{
+			\ctC \ar[r]^-F & \ctD & \ctD \ar[r]^-G & \ctC
+		}\]
+	tali che \(F\cmp G = \Id[\ctD]\) e \(G\cmp F = \Id[\ctC]\).
+
+	Si tratta, evidentemente, di un isomorfismo nella categoria \(\ctCat\) di categorie e funtori di \ref{ex_cat_cat}. In particolare,
+	\begin{quote}
+		Ogni isomorfismo di categorie induce una biiezione di classi, \(F_0 : \ctC_0\to\ctD_0\), di inversa \(G_0 : \ctD_0\to\ctC_0\), e una biiezione di classi \(F_1 : \ctC_1 \to \ctD_1\), di inversa \(G_1 : \ctD_1\to\ctC_1\) che si decompone in una famiglia `indicizzata' di biiezioni \(F_{XY} : \Hom\ctC(X,Y)\to\Hom\ctD(FX,FY)\), di inversa
+		\[\xymatrix{
+			\Hom\ctD(FX,FY) \ar[r]^-{G_{FX,FY}} & \Hom\ctC(GFX,GFY) \ar@{=}[r] & \hom(X,Y).
+			}\]
+	\end{quote}
+\end{definition}
+\`E più comune trovarsi nella condizione in cui esistono due funtori \(F : \ctC \leftrightarrows \ctD: G\) con la proprietà che esistano \emph{isomorfismi naturali} \(\epsilon : F\cmp G \cong \Id[\ctD]\) ed \(\eta : \Id[\ctC]\cong G\cmp F\). Questa definizione più rilassata di identificazione tra due categorie si dice\emph{equivalenza}, denotata \(\ctC\simeq\ctD\). Vedremo presto che un'equivalenza di categorie \(\ctC\simeq\ctD\) induce biiezioni tra gli hom-insiemi di \(\ctC,\ctD\), ma che le classi degli oggetti di queste possono essere una radicalmente più grande dell'altra (per esempio, \(\ctC_0\) può essere una classe propria, e \(\ctD_0\) un insieme; oppure, esistono categorie dove \(\ctC_0\) ha cardinalità arbitrariamente alta, ma \(\ctD_0\) è un singoletto\dots)
+\begin{definition}[Equivalenza di categorie]\label{funtore_equcat}\index{Equivalenza}\index{Categoria!equivalenza di ---e}
+	Una \emph{equivalenza di categorie} \(\ctC\simeq\ctD\) consiste di una quadrupla \((F,G,\eta,\epsilon)\), dove
+	\begin{itemize}
+		\item \(F : \ctC\fun\ctD\) e \(G : \ctD\fun\ctC\) sono funtori in direzioni opposte;
+		\item \(\eta : \Id[\ctC] \nat G\cmp F\) e \(\epsilon : F\cmp G \nat \Id[\ctD]\) sono isomorfismi naturali.
+	\end{itemize}
+	Una equivalenza di categorie si dice \emph{equivalenza aggiunta} se, in più, valgono le seguenti equazioni:
+	\begin{itemize}
+		\item (equazione zig) la composizione \(\xymatrix{F \ar@{=>}[r]^-{F\whi\eta} & FGF \ar@{=>}[r]^-{\epsilon\whi F} & F}\) è uguale alla trasformazione naturale identica di \(F\);
+		\item (equazione zag) la composizione \(\xymatrix{G \ar@{=>}[r]^-{\eta\whi G} & GFG \ar@{=>}[r]^-{G\whi\epsilon} & G}\) è uguale alla trasformazione naturale identica di \(G\).
+	\end{itemize}
+	Dato \(F\), il funtore \(G\) è detto lo \emph{pseudoinverso} di \(F\), e analogamente \(F\) è lo pseudoinverso del funtore \(G\); i due si caratterizzano a vicenda, ma non in maniera strettamente unica, bensì \emph{a meno di isomorfismo naturale}:
+	\begin{quote}
+		Se \(\hat G,\tilde G\) sono pseudoinversi dello stesso \(F : \ctC\fun\ctD\), allora esiste un isomorfismo naturale \(\hat G\nat \tilde G\), ottenuto da
+		\[\xymatrix{\hat G \ar@{=>}[r]^-{\tilde\eta\whi\hat G } & \hat G F \tilde G \ar@{=>}[r]^-{\tilde G \whi \hat\epsilon} & \tilde G}\]
+	\end{quote}
+\end{definition}
+\begin{hRemark}[A proposito dei nomi `zig' e `zag']{skip}\index{Identità!--- zig e zag}
+	Le due equazioni in \ref{funtore_equcat} si rappresentano come incollamenti naturali della forma seguente:
+	\[\xymatrix@R=3mm{
+		\ctC \ar@{->}[rd]^{F} \ar@/_/@{=}[dd] &  & \ctC \ar@{->}[rd]^{F} \ar@/_/@{=}[dd] &  &  & \ctD \ar@{->}[rd]^{G} \ar@/_/@{=}[dd]\ddtwocell<\omit>{<-2>\epsilon} &  & \ctD \ar@{->}[rd]^{G} \ar@/_/@{=}[dd] &  \\
+		& \ctD \ar@{}[dr]|=\ar@{->}[ld]|-{G} \ar@/^/@{=}[dd] &  & \ctD \ar@/^/@{=}[dd] &  &  & \ctC \ar@{}[dr]|=\ar@{->}[ld]|-{F}\ddtwocell<\omit>{<2>\eta} \ar@/^/@{=}[dd] &  & \ctC\dltwocell<\omit>{\Id[G]\kern.75em} \ar@/^/@{=}[dd] \\
+		\ctC\uutwocell<\omit>{<2>\eta} \ar@{->}[rd]_{F} &  & \ctC \urtwocell<\omit>{\kern.75em\Id[F]}\ar@{->}[rd]_{F} &  &  & \ctD \ar@{->}[rd]_{G} &  & \ctD \ar@{->}[rd]_{G} &  \\
+		& \ctD\uutwocell<\omit>{<-2>\epsilon} &  & \ctD &  &  & \ctC &  & \ctC
+		}\]
+	A causa della forma di questi diagrammi (due triangoli sono incollati insieme ed \(F,G\) formano uno zig-zag di frecce in direzioni opposte), esse sono colloquialmente chiamate \emph{identità zig-zag} o identità triangolari (o identità \emph{di aggiunzione}, si vedrà nel \autoref{cap_aggiunti}).
+\end{hRemark}
+\begin{lemma}\label{eq_sono_eqadj}
+	Ogni equivalenza di categorie induce una equivalenza aggiunta.
+\end{lemma}
+\begin{proof}
+	\Todo{}
+\end{proof}
+\begin{definition}\label{funtore_wequcat}\index{Equivalenza debole}
+	Una equivalenza debole di categorie è un funtore \(F : \ctC \fun\ctD\) che sia pieno, fedele ed essenzialmente suriettivo.
+\end{definition}
+\begin{remark}\label{eq_implies_weq_AC_eq}
+	Ogni equivalenza di categorie è un'equivalenza debole di categorie. Il viceversa, che consiste nel costruire uno pseudoinverso per un funtore \(F : \ctC\fun\ctD\) che sia un'equivalenza debole, è dimostrabile assumendo un assioma della scelta (per classi: ogni funzione di classe \(K : \ctC_0 \to \ctD_0\) suriettiva ammette una sezione, ossia se ogni \(K^{-1}D\) è non vuota, è possibile definire una funzione di classe \(H : D\mapsto HD \in K^{-1}D\)).
+	\begin{itemize}
+		\item Se \(F\) è un'equivalenza di categorie, per \ref{eq_sono_eqadj} possiamo metterci nella situazione in cui \(F\) è un'equivalenza aggiunta con pseudoinverso \(G : \ctD\fun\ctC\). Allora per ogni \(f : X\to Y\) in \(\ctC\) abbiamo un quadrato commutativo
+		      \[\xymatrix{
+			      X\ar[r]^-{\eta_X}\ar[d]_f & GFX \ar[d]\ar[d]^{GFf}\\
+			      Y \ar[r]_-{\eta_Y} & GFY
+			      }\]
+		      per la naturalità di \(\eta\); allora se \(Ff_1 = Ff_2\), anche \(GFf_1 = GFf_2\), cioè
+		      \[\eta_Y\cmp f_1 \cmp \eta_X^{-1} = GFf_1 = GFf_2 = \eta_Y\cmp f_2 \cmp \eta_X^{-1}\]
+		      Quindi, siccome tutti gli isomorfismi sono mono ed epi, ovvero cancellabili sia destra che a sinistra, \(f_1 = f_2\). Questo mostra che \(F\) è fedele. Data ora una freccia \(g : FA\to FB\) in \(\ctD\), la freccia \(Gg : GFA\to GFB\) è un morfismo di \(\ctC\), e possiamo considerare il diagramma
+		      \[\xymatrix{
+			      FA \ar@{=}[dr]\ar[r]^-{\eta_{FA}}& FGFA \ar[d]_{\epsilon_A}\ar[r]^-{FGg} & FGFB \ar[d]^{\epsilon_B}\ar[r]^-{\eta_{FB}^{-1}}& FB \\
+			      & FA \ar[r]_-g& FB \ar@{=}[ur]&
+			      }\]
+		      (per la naturalità di \(\epsilon\) e per l'equazione zig); Quindi \(F\big(\eta_B^{-1}\cmp Gg\cmp \eta_A\big) = g\); questo mostra che \(F\) è pieno.
+
+		      Ogni oggetto \(X\in\ctD_0\) poi è della forma \(F(GX) \cong X\) mediante l'isomorfismo (naturale in \(X\)!) dato da \(\epsilon\).
+		\item Nell'altro verso abbiamo bisogno di una forma di assioma della scelta: siccome \(F\) è essenzialmente suriettivo, possiamo scegliere un \(C\in F_0^{-1}D\) per ogni \(D\) (e degli isomorfismi \(\epsilon : FGC \cong C\)); questo definisce una funzione di classe \(G_0 : \ctD_0\to\ctC_0\) che è la corrispondenza sugli oggetti del funtore \(G : \ctD\fun\ctC\) che stiamo costruendo. Gli isomorfismi \(\epsilon : FGC \to C\) sono le componenti di una trasformazione naturale se definiamo \(G\) sulle frecce come segue: dato \(h : C\to C'\), il quadrato
+		      \[\xymatrix{
+				      FGC \ar[r]\ar[d]& C \ar[d]^h\\
+				      FGC' \ar[r]& C'
+			      }\]
+		      commuta quando la freccia verticale a sinistra sia \(\epsilon_{C'}^{-1}\cmp h\cmp \epsilon_C : FG\), e siccome \(F\) è pienamente fedele esiste un'unica freccia \(a : GC \to GC'\) tale che \(Fa = \epsilon_{C'}^{-1}\cmp h\cmp \epsilon_C\); chiamando \(Gh=a\), questo significa che \(\epsilon_{C'}\cmp FGh = h\cmp \epsilon_C\), che è la naturalità di \(\epsilon\) in \(h\).
+
+		      Per determinare \(\eta : \Id[\ctC] \nat GF\), consideriamo \(\epsilon_{FC} : FGFC \to FC\): siccome \(F\) è pienamente fedele, esiste un'unica freccia \(\eta^{-1}_C : GFC\to C\) tale che \(F(\eta^{-1}_C) = \epsilon_{FC}\), e (dato che un funtore pienamente fedele riflette gli isomorfismi, \ref{prop_preserva_riflette}) \(F(\eta^{-1}_C)=F(\eta_C)^{-1}_C\) per un'unica freccia \(\eta_C : C\to GFC\). Un ragionamento simile a prima ne mostra la naturalità.
+	\end{itemize}
+\end{remark}
+Gli isomorfismi di categorie sono relativamente rari, poiché le proprietà di molte categorie sono invarianti per una nozione molto più debole di identificazione.
+Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempio, ogni gruppoide è equivalente a una unione disgiunta di gruppi (guardati come gruppoidi con un solo oggetto), senza che questa equivalenza sia un isomorfismo; e il gruppoide fondamentale \(\Pi_1(X)\) di uno spazio topologico \(X\) connesso per archi è una categoria equivalente, ma non isomorfa, a \(\pi_1(X,x_0)\) per una opportuna scelta di un punto di base \(x_0\in X\). Questo suggerisce che due categorie piccole con due insiemi degli oggetti di diversa cardinalità possono essere equivalenti; un esempio estremo è questo: se \(A\) è un insieme e \(A^\chi\) il gruppoide caotico di \ref{ex_cat_codiscreta}, esiste un unico funtore \(F : A^\chi \to \ctTerm\), definito nell'unico modo possibile, ed esso è un'equivalenza (debole). In particolare (invitiamo chi legge a completare i dettagli per esercizio)
+\begin{remark}\index{Categoria!--- isomorfismo generico}
+	La categoria `isomorfismo generico' di \ref{ex_cat_iso},
+	\[\xymatrix@C=7ex{0 \ar@<.7ex>[r]^u \ar@(dl,ul)[] & 1 \ar@<.7ex>[l]^{u^{-1}} \ar@(ur,dr)[]}\]
+	è equivalente alla categoria \(\ctTerm\).
+\end{remark}
+\begin{example}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
+	La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a Vect.
+\end{example}
+L'esercizio \ref{ex_monepi_2} chiederà di dimostrare che le due non possono essere isomorfe.
+
+Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di funtori \(F : \ctC \fun\ctD\) con la proprietà che sia \(F_0 : \ctC_0\to\ctD_0\) che ogni \(F_{XY} : \Hom\ctC(X,Y) \to \Hom\ctD(F_0X,F_0Y)\) sono funzioni iniettive.
+\begin{proposition}\label{mona_in_cat}\index{Monomorfismo!--- in \(\ctCat\)}
+	La classe dei monomorfismi di \(\ctCat\) consiste dei funtori \(F : \ctC\fun\ctD\) che sono fedeli e iniettivi sugli oggetti (cioè \(F_0\) e tutte le \(F_{XY}\) in \ref{def_alternativa_funtore} sono entrambe funzioni iniettive).
+\end{proposition}
+\begin{proof}
+	Se sono dati due funtori \(H,K:\ctJ \fun \ctC\), tali che \(F\cmp H = F\cmp K\), ed \(F\) è iniettivo sugli oggetti, allora per ogni \(J\in\ctJ_0\) si ha \(HJ=KJ\); similmente, se \(F\) è iniettivo sui morfismi, si ha \(Hf = Gf\) per ogni \(f : X\to Y\) in \(\ctC\).
+
+	Se \(F : \ctC \fun\ctD\) è un mono in \(\ctCat\), quando \(X,Y \in\ctC_0\) si rappresentano come funtori \(X,Y : \ctTerm \fun \ctC\) al modo di \ref{tante_cose_sono_diag}, è evidente che \(F\cmp X\) è l'oggetto \(F_0X\) (risp., \(F\cmp Y\) è \(F_0 Y\)): se questi ultimi sono uguali, allora \(X=Y\). In maniera simile, è possibile mostrare che ogni \(F_{XY}\) è iniettiva, presentando \(f,g : X\to Y\) come funtori \(\genArrow \fun \ctC\).
+
+	Questo conclude la dimostrazione.
+\end{proof}
+\begin{definition}[Funtori iniziali e finali]\label{def_fun_initfin}\index{Funtore!--- iniziale}\index{Funtore!--- finale|see {Funtore iniziale}}
+	Un funtore \(F : \ctC\fun\ctD\) si dice \emph{iniziale} se per ogni oggetto \(D\in\ctD\) la categoria comma \((D/F)\) i cui oggetti sono coppie \((X,f : D\to FX)\) è non vuota e connessa (nel senso che \(\pi_0^\ctCat(D/F)\), si veda \ref{exe_cpt_conn}, \ref{ex_fun_cpt_conn}, ha un unico elemento).
+
+	In altre parole, \(F : \ctC\fun\ctD\) si dice iniziale se le due condizioni seguenti sono soddisfatte:
+	\begin{enumtag}{fi}
+		\item \label{fi_1} per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom\ctD(D,FX)\) è non vuoto;
+		\item \label{fi_2} date due frecce \(D\to FX, D\to FY\) in \(\ctD\), esiste una successione finita di oggetti \(\tup An,\) e morfismi \(A_i \leftrightarrows A_{i+1}\) (in una delle due direzioni) tali che ogni triangolo nel diagramma
+		% https://q.uiver.app/#q=WzAsNyxbMCwxLCJGWCJdLFsxLDEsIkZBXzAiXSxbMiwxLCJGQV8xIl0sWzMsMSwiXFxkb3RzIl0sWzQsMSwiRkFfbiJdLFs1LDEsIkZZIl0sWzIsMCwiRCJdLFs2LDBdLFs2LDFdLFs2LDJdLFs2LDRdLFs2LDVdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+		\[\begin{tikzcd}
+				&& D \\
+				FX & {FA_0} & {FA_1} & \dots & {FA_n} & FY
+				\arrow[from=1-3, to=2-1]
+				\arrow[from=1-3, to=2-2]
+				\arrow[from=1-3, to=2-3]
+				\arrow[from=1-3, to=2-5]
+				\arrow[from=1-3, to=2-6]
+				\arrow[no head, from=2-1, to=2-2]
+				\arrow[no head, from=2-2, to=2-3]
+				\arrow[no head, from=2-3, to=2-4]
+				\arrow[no head, from=2-4, to=2-5]
+				\arrow[no head, from=2-5, to=2-6]
+			\end{tikzcd}\]
+		sia commutativo.
+	\end{enumtag}
+	Diciamo che \(F : \ctC\fun\ctD\) è \emph{finale} se il funtore opposto \(F^\op : \ctC^\op\fun\ctD^\op\) (come in \ref{es_di_funtori}) è iniziale.
+\end{definition}
+\begin{remark}[Condizione di Ore]\label{condizione_ore}\index{Funtore!condizione di Ore per un ---}\index{Funtore!--- iniziale}
+	Una condizione più forte dell'inizialità, molto comune e più facile da verificare, è la \emph{condizione di Ore}: \(F : \ctC\fun\ctD\) lasoddisfa se
+	\begin{itemize}
+		\item per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom\ctD(D,FX)\) è non vuoto;
+		\item per ogni \(D\) e ogni \(u : D\to FX\), \(v : D\to FY\) esiste un modo di `completare il quadrato'
+		      \[\xymatrix{
+				      D\ar[r]^u\ar[d]_v & FX \ar@{.>}[d]^{Ff}\\
+				      FY \ar@{.>}[r]_{Fg} & FZ
+			      }\]
+		      con due frecce \(X \xto fZ \xot g Y\) di \(\ctC\).
+	\end{itemize}
+\end{remark}
+Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la condizione di Ore ed \(F\) è tale che ogni categoria \((Z/F)\) è non vuota, soddisfa a sua volta la condizione di Ore:
+\begin{itemize}
+	\item nella categoria comma \((D/GF)\) esiste almeno una freccia \(D \xto u GX \xto{Gv} GFY\);
+	\item Se viene dato un diagramma \(\xymatrix{GFX & \ar[l]_-u D\ar[r]^-v & GFY}\) (dove non necessariamente \(u,v\) sono della forma \(D\to G\bullet\xto{G\bullet}GFX\) e \(D\to G\bullet\xto{G\bullet}GFY\)), esso si può completare come
+	      \[\xymatrix{
+		      D \ar[r]^u\ar[d]_v& GFX\ar@{.>}[d]\ar@{.>}@/^1pc/[ddr]\\
+		      GFY \ar@{.>}[r]\ar@{.>}@/_1pc/[drr] & GZ\ar[dr]_{\exists w} \\
+		      && GFV
+		      }\]
+\end{itemize}
+\begin{hTheorem}[Inizialità degli ordinali tra i diagrammi filtrati]{skip}\index{Funtore!--- iniziale}
+	Per ogni categoria \(\ctD\) (piccola e) filtrata nel senso di \ref{def_cat_filtrata}, esiste un funtore iniziale \(K : P_\ctD\fun\ctD\), di dominio un preordine (si veda \ref{ex_cat_ordini}) diretto (si veda \ref{contro_esempi_filt}).
+\end{hTheorem}
+\begin{proof}
+	\Todo{}
+\end{proof}
+
+\begin{esercizi}
+	\item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
+	\item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
+	\item \label{ex_monepi_3} Costruire un'equivalenza di categorie tra la categoria dei sistemi dinamici discreti di \ref{ex_cat_dyn} e la categoria delle rappresentazioni, \ref{es_fun_repre}, del monoide \((\bbN,+,0)\); è un isomorfismo? Mostrare che \(\bbN\) è in maniera naturale un oggetto \(\bsN=(* \xto 0 \bbN \xto{\blank+1} \bbN)\) di \(\ctDyn\), che soddisfa la proprietà (\emph{universale}) seguente:
+	\begin{quote}
+		Per ogni oggetto \(\bsX=(X,x_0,f)\) di \(\ctDyn\) esiste uno e un solo morfismo nell'insieme \(\Hom\ctDyn(\bsN,\bsX)\).
+	\end{quote}
+	\item \label{ex_monepi_4} Se \(\ctC\) è una categoria, un \emph{generatore} è un oggetto \(G\) con la proprietà che
+	\begin{quote}
+		bla
+	\end{quote}
+	Mostrare che \(G\) è un generatore di \(\ctC\) se e solo se il funtore \(\Hom\ctC(G,-)\) è fedele.
+	\item \label{ex_monepi_5} Guardando un monoide come una categoria con un solo oggetto, al modo di \ref{mon_sonocat}, mostrare che
+	\begin{itemize}
+		\item se \(M,N\) sono gruppi, \(\susp f : \susp N\to \susp M\) è un funtore iniziale se e solo se \(f\) è un omomorfismo suriettivo;
+		\item se \(M,N\) sono monoidi, ed \(f : N\to M\) è un omomorfismo suriettivo, allora \(\susp f : \susp N\to \susp M\) è un funtore iniziale, ma non è vero il viceversa (esiste un omomorfismo non suriettivo, che induce un funtore iniziale). % l'inclusione di N in Z.
+	\end{itemize}
+	L'omomorfismo \(T(\bbR,2) \to M(\bbR,2)\) (rispetto alla moltiplicazione) che include le matrici \(2\times 2\) triangolari superiori \(\left(\begin{smallmatrix} a	&	b\\ 0 & c		\end{smallmatrix}\right)\)	nelle matrici \(2\times 2\) induce un funtore iniziale?
+	% \`E possibile trovare un criterio generale così che un omomorfismo di monoidi \(f : N\to M\) induca un funtore \(\susp f : \susp N\to \susp M\) iniziale?
+\end{esercizi}
