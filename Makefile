@@ -11,11 +11,9 @@ clean:
 view:
 	evince main.pdf &
 
-pretty: # TOFIX: THIS DOESNT WORK ANYMORE
-	for file in cap/*.tex ; do \
-		python3 beautifier.py $$file ; \
-		rm -f cap/*.bak cap/*.bak0 cap/*.log ; \
-	done
+pretty:
+	find cap/ -type f -name "*.tex" -exec python3 beautifier.py {} \;
+	find cap/ -type f \( -name "*.bak" -o -name "*.bak0" -o -name "*.log" \) -delete
 
 indexing:
 	python3 missing_indexes.py > missing_indices.idx
