@@ -412,8 +412,15 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 \begin{remark}
 	Raccogliamo alcuni esempi di epi estremali in categorie note: 
 	\begin{itemize}
-		\item Nella categoria degli insiemi, ogni epimorfismo è estremale \Todo{}
-		\item nella categoria degli anelli un epi estremale è un omomorfismo suriettivo; se la funzione $Uf : UR\to US$ indotta da un omomorfismo di anelli $f : R\to S$ non è suriettiva, questo significa che il sottoanello generato da $f(R)$ è un sottoanello proprio di $S$, così che $f$ non può essere estremale. Nell'altra direzione, se $f : R\to S$ dà una funzione di insiemi $Uf : UR\to US$ suriettiva, e supponiamo che $f = m\cmp p$ sia una fattorizzazione con $m$ mono, allora $Um\cmp Up$ è una fattorizzazione di $Uf$ con $Um$ mono (\ref{}); del resto gli epi in $\ctSet$ sono tutti estremali (\ref{}), cosicché $Um$ deve essere un isomorfismo; ma $U$ riflette gli isomorfismi (\ref{}), cosicché è $m$ che deve essere un isomorfismo.
+		\item Nella categoria degli insiemi, ogni epimorfismo è estremale: infatti, se $f = m\cmp p : X \to E \mono Y$ allora, usando \ref{mono_epi_ort} troviamo un quadrato 
+		\[\xymatrix{
+			X \ar[r]^p\ar[d]_f & E\ar[d]^m \\ 
+			Y \ar@{=}[r]\ar@{.>}[ur] & Y
+		}\]   
+		spezzato da una diagonale $u : Y \to E$, che rende $m$ un mono e un epi spezzante; per \ref{prop:iso-epi-mono}.(\ref{prop:iso-epi-mono:item2}), deve quindi essere un isomorfismo.
+		\item nella categoria degli anelli un epi estremale è precisamente un omomorfismo suriettivo; se la funzione $Uf : UR\to US$ indotta da un omomorfismo di anelli $f : R\to S$ non è suriettiva, questo significa che il sottoanello immagine $f(R)$ è proprio in $S$, così che $f$ non può essere estremale. 
+		
+		Nell'altra direzione, se $f : R\to S$ dà una funzione di insiemi $Uf : UR\to US$ suriettiva, e supponiamo che $f = m\cmp p$ sia una fattorizzazione con $m$ mono, allora $Um\cmp Up$ è una fattorizzazione di $Uf$ con $Um$ mono (\ref{eserva_riflette}); del resto gli epi in $\ctSet$ sono tutti estremali, cosicché $Um$ deve essere un isomorfismo; ma $U$ riflette gli isomorfismi (\ref{}), cosicché è $m$ che deve essere un isomorfismo.
 		
 		Si noti che l'epimorfismo $\bbZ\to\bbQ$ non è estremale, perché fattorizza su ciascuna localizzazione di $\bbZ$ a un primo (per esempio, $\bbZ \to \bbZ[\frac 12]\mono \bbQ$).
 		\item 
@@ -532,7 +539,9 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 		\item la proprietà \(\mathcal P_e(f) := (f \text{ è un epi spezzante})\);
 		\item la proprietà \(\mathcal P_m(f) := (f \text{ è un mono spezzante})\).
 	\end{itemize}
-	Ogni funtore fedele \(F : \ctC\fun\ctD\) riflette la proprietà `\(f\) è un monomorfismo' (diciamo che \(F\) \emph{riflette i monomorfismi}) e gli epimorfismi.
+	Ogni funtore fedele \(F : \ctC\fun\ctD\) riflette la proprietà `\(f\) è un monomorfismo' (diciamo che \(F\) \emph{riflette i monomorfismi}) e gli epimorfismi (ma ci sono funtori fedeli che non preservano gli epimorfismi). I funtori della forma 
+	\[\dmFun{U}{\ctMod(\Omega,a)}{\ctSet}\]
+	che danno il supporto di una struttura algebrica fissata da una segnatura $(\Omega,a)$ come in \ref{}, (sono fedeli, e in più) riflettono gli isomorfismi.
 \end{proposition}
 \begin{definition}[Isomorfismo di categorie]\label{fun_isocat}\index{Categoria!isomorfismo di ---e}\index{Isomorfismo!--- di categorie}\index{Isomorfismo}
 	Un isomorfismo di categorie \(\ctC\cong\ctD\) consiste di una coppia di funtori
