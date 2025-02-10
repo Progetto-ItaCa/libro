@@ -79,7 +79,7 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 	La struttura che ha per oggetti le categorie piccole, per frecce i funtori tra esse, e per frecce tra frecce le trasformazioni naturali è un esempio di \emph{2-categoria} (di cui non diamo la definizione qui, si veda \cite{Kelly2005b}).
 \end{definition}
 \begin{notation}\index{Trasformazione naturale}
-	Coerentemente con la notazione usata finora, dovremmo denotare \(\Hom{\ctCat(\ctC,\ctD)}(F,G)\) la collezione delle trasformazioni naturali tra due funtori, cioè dei morfismi nella categoria \(\ctCat(\ctC,\ctD)\). \`E però più conveniente usare una notazione più compatta, specie quando \(\ctC,\ctD\) sono univocamente determinate dal contesto: una scelta comune è \(\Nat(F,G)\) (ma alcuni autori usano convenzioni ancora più compatte). \`E conveniente denotare esplicitamente dominio e codominio di \(F,G\), perciò noi introduciamo la notazione
+	Coerentemente con la notazione usata finora, dovremmo denotare \(\Hom{\ctCat(\ctC,\ctD)}(F,G)\) la collezione delle trasformazioni naturali tra due funtori, cioè dei morfismi nella categoria \(\ctCat(\ctC,\ctD)\). \`E però conveniente usare una notazione più compatta, specie quando \(\ctC,\ctD\) sono determinate dal contesto: una scelta comune per riferirsi a \(\Hom{\ctCat(\ctC,\ctD)}(F,G)\) è \(\Nat(F,G)\) (ma alcuni autori usano convenzioni ancora più compatte). \`E conveniente denotare esplicitamente dominio e codominio di \(F,G\), perciò noi introduciamo la notazione
 	\[\natHom FG :=\Hom{\ctCat(\ctC,\ctD)}(F,G)\]
 \end{notation}
 \begin{remark}
@@ -182,12 +182,12 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 	\end{itemize}
 	Oltre a essere puntati o copuntati, i funtori \(S\) e \(\ctP\) di prima hanno associate delle trasformazioni naturali, rispettivamente, di tipo
 	\[\xymatrix{
-			S \ar@{=>}[r]^-\sigma & S\cmp S & \ctP\cmp\ctP \ar@{=>}[r]^-\cup & \ctP
+			S \ar@{=>}[r]^-\sigma & S\cmp S & \ctP\cmp\ctP \ar@{=>}[r]^-\bigcup & \ctP
 		}\] definite come segue:
 	\begin{itemize}
 		\item \(\sigma_X\) è una mappa di `comoltiplicazione' \(\dmFun{\sigma_X}{X^A\times A}{(X^A\times A)^A\times A}\)
 		      definita mandando \(\pair{\lambda t.ft}a\) in \(\pair{\lambda a'.\pair{\lambda t.ft}{a'}}a\).
-		\item \(\cup_X\) è la mappa di `unione' \(\dmFun{\cup_X}{\pow{(\pow X)}}{\pow X}\)
+		\item \(\bigcup_X\) è la mappa di `unione' \(\dmFun{\bigcup_X}{\pow{(\pow X)}}{\pow X}\)
 		      definita mandando \(\fkU = (U_\alpha\mid\alpha\in A) \subseteq \ctP(X)\) in \(\bigcup_{\alpha\in A} U_\alpha \subseteq X\).
 		\item Da \ref{nat_tra_posets} sappiamo che una trasformazione naturale \(\alpha : f\nat g\) tra mappe monotòne consiste della disuguaglianza \(f(x)\le g(x)\) vera punto per punto nel loro codominio. Allora, una mappa monotòna \(f : X\to X\) di un insieme ordinato \((X,\le)\) è un funtore puntato se e solo se è una \emph{inflazione}:
 		      \[\forall x\in X.x\le f(x);\]
@@ -195,8 +195,18 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 		      \[\forall x\in X.g(x)\le x.\]
 	\end{itemize}
 \end{example}
+\begin{definition}[Legge distributiva]
+	Sia $\ctC$ una categoria, e $F,G : \ctC\fun\ctC$ due endofuntori; una \emph{legge distributiva} di $F$ su $G$ consta di una trasformazione naturale $\alpha : FG\nat GF$.
+\end{definition}
 \begin{example}
-
+	Esistono due funtori $F,G : \ctSet\fun\ctSet$ definiti come segue:
+	\begin{itemize}
+		\item $F$ manda un insieme $X$ nell'insieme delle liste non vuote $X^+ = \sum_{n\ge 1} X^n = X + X\times X + \dots + X^n + \dots$;
+		\item $G$ manda un insieme $A$ nell'insieme $1+A$, dove $1 = \{\bullet\}$ è un singoletto.
+	\end{itemize}
+	Esiste una legge distributiva $\alpha : FG\nat GF$ con componenti 
+	\[\dmFun{\alpha_A}{1+\sum_{n\ge 1} (1+A)^n}{1+\sum_{n\ge 1} A^n}\]
+	date dall'elidere tutte le occorrenze di $\bullet$ nell'argomento
 \end{example}
 \begin{hExample}[Un esempio di isomorfismo naturale]{tech}\label{puniv_prodotto_naturale}\index{Trasformazione naturale!isomorfismo naturale}
 	(La natura di questo esempio sarà chiarita dal capitolo \ref{chap_limiti_colimiti}, sulle proprietà universali, e dal capitolo \ref{cap_aggiunti}, sui funtori aggiunti.)
@@ -375,7 +385,7 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 \begin{definition}[Centro di \(\ctC\)]\label{def_centro}\index{Categoria!centro di una ---}\index{Centro}
 	Grazie a \ref{lem_end_monoide} sappiamo che, fissata una categoria \(\ctC\), la classe \(\Nat(\id_\ctC,\id_\ctC)\) è un monoide rispetto all'operazione di composizione; esso si dice il \emph{centro} di \(\ctC\) e viene denotato con \(\zentrum(\ctC)\). La motivazione: se \(\ctC\) ha un solo oggetto, ancora grazie a \ref{lem_end_monoide} essa è un monoide, e \(\zentrum(\ctC)\) ne è precisamente il \emph{centro}, ossia il sottomonoide \(\{x\in M\mid \forall a\in M, \, ax=xa\}\).
 \end{definition}
-\begin{proposition}
+\begin{proposition}\index{Centro!--- di un monoide}
 	Il fatto che il centro di una categoria con un solo oggetto sia il centro del monoide ad essa associato, secondo \ref{def_centro}, non è casuale. Infatti il centro di una qualsiasi categoria \(\ctC\) è \emph{sempre} un monoide commutativo.
 \end{proposition}
 \begin{proof}
@@ -500,7 +510,7 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 \begin{proposition}\index{Yoneda!lemma di ---}
 	Per ogni categoria piccola \(\ctC\), l'immersione di Yoneda \(\yon_\ctC\) di \ref{def_yoneda_embeddu} e di coYoneda \(\coyon_\ctC\) sono funtori pienamente fedeli.
 \end{proposition}
-\begin{definition}[Il nervo di un funtore]
+\begin{definition}[Il nervo di un funtore]\label{def_nervo_funtore}\index{Funtore!nervo di un ---}
 	Ogni funtore \(F : \ctC \fun\ctD\) induce un bifuntore
 	\[\dmFun{\N F}{\ctC^\op\times\ctD}\ctSet\]
 	detto il \emph{nervo} di \(F\), e definito da \((C,D)\mapsto \Hom\ctD(FC,D)\) (e similmente sulle frecce). Se \(\ctC\) è piccola, cosicché la categoria \(\presh\ctC\) sia legittima, possiamo `trasporre' il nervo \(\N F\) ad un funtore
