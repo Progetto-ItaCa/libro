@@ -137,7 +137,20 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
 	Per la genericit\`a di \(x\) e \(x'\), abbiamo che \(f\) \`e iniettiva,
 	e dunque un monomorfismo in \(\ctSet\).
 \end{proof}
-
+\begin{proposition}\label{monoepi_in_catCD}\index{Monomorfismo!--- in $\Hom\ctCat(\ctC,\ctD)$}
+	Nella categoria $\Hom\ctCat(\ctC,\ctD)$ dei funtori $\ctC\fun\ctD$ e trasformazioni naturali, $\alpha : F\nat G$ è un mono (epi, mono spezzante, epi spezzante) se e solo se ciascuna delle sue componenti $\alpha_C : FC\to GC$ è un mono (epi, mono spezzante, epi spezzante) in $\ctD$.
+\end{proposition}
+\begin{proof}
+	La condizione affinché $\alpha : F\nat G$ sia un mono è che per ogni $\gamma,\delta : H\nat F$ si abbia che se $\alpha\cmp \gamma = \alpha\cmp \delta$, allora $\gamma=\delta$. Del resto, questa condizione si riscrive come 
+	\begin{quote}
+		Per ogni $C\in\ctC_0$, se $\alpha_C\cmp \gamma_C = \alpha_C\cmp \delta_C$ allora $\gamma_C = \delta_C$,
+	\end{quote}
+	cosicché ogni $\alpha_C$ è un mono in $\ctD$. 
+	
+	Analogamente, $\alpha$ è un mono spezzante (cioè ha una inversa sinistra $\kappa : G\nat F$ tale che $\kappa\cmp\alpha=1_F$), se e solo se ogni componente $\alpha_C$ ha $\kappa_C$ per inversa sinistra.
+	
+	Le dimostrazioni nel caso di un epi ed epi spezzante si fanno analogamente.
+\end{proof}
 \subsection{Sezioni e retrazioni}\label{sec_sezretraz}\index{Sezione}
 Così come l'algebra ci ha suggerito di generalizzare all'ambito categoriale la nozione di elemento di un monoide cancellabile a sinistra/destra,
 similmente possiamo considerare la nozione di elemento invertibile a sinistra/destra.
@@ -343,7 +356,7 @@ Questa discussione fornisce alcuni utili controesempi:	un morfismo può essere s
 \end{definition}
 Esempi di categorie bilanciate sono: tutti i gruppoidi (ovviamente\dots), la categoria di insiemi e funzioni, \ref{ex_cat_insiemi}, la categoria dei \(G\)-insiemi \ref{ex_cat_g_insiemi}, i multidigrafi \ref{ex_cat_grafi}, la categoria delle matrici di \ref{ex_cat_matrici} e come conseguenza quella degli spazi vettoriali di dimensione finita, ma anche quella degli spazi vettoriali di dimensione infinita e più in generale dei moduli su un anello \(R\); la categoria dei gruppi.
 
-I controesempi più eclatanti di categorie \emph{non} bilanciate vengono dalla geometria, topologia e teoria degli ordini: nella categoria \(\ctTop\) di \ref{ex_cat_top} i mono ed epi sono precisamente le funzioni \(f : X\to Y\) che sono biiezioni continue --ma la loro inversa non è obbligata a esserlo. Abbiamo poi prodotto esempi di mono ed epi che non sono isomorfismi nella categoria dei monoidi (simile al ragionamento di \ref{mono_epi_noniso} è quello che dimostra che \(\bbZ\to\bbQ\) è (un mono, ovviamente, ed) epi; ma \(\bbZ\) non è un campo).
+I controesempi più eclatanti di categorie \emph{non} bilanciate vengono dalla geometria, topologia e teoria degli ordini: nella categoria \(\ctTop\) di \ref{ex_cat_top} i mono ed epi sono precisamente le funzioni \(f : X\to Y\) che sono biiezioni continue --può non esserlo la loro inversa insiemistica. Abbiamo poi prodotto esempi di mono ed epi che non sono isomorfismi nella categoria dei monoidi (simile al ragionamento di \ref{mono_epi_noniso} è quello che dimostra che \(\bbZ\to\bbQ\) è (un mono, ovviamente, ed) epi; ma \(\bbZ\) non è isomorfo a $\bbQ$, per esempio perché $\bbZ$ non è un campo).\footnote{La proprietà definente la freccia \(\bbZ\to\bbQ\) nella categoria degli anelli è di essere un mono \emph{essenziale}: $\bbZ$ interseca tutti i sottoanelli non banali di $\bbQ$ in un sottoanello non banale (ovvero: se $A\subseteq\bbQ$ è un sottoanello, ma $\bbZ\cap A=(0)$, allora $A=(0)$).}
 
 Però, e questo è un esempio importante (la cui dimostrazione usa dei fatti di topologia generale elementare), nella categoria degli spazi di Hausdorff compatti e mappe continue \emph{e proprie}, una freccia \(f : X\to Y\) mono ed epi deve essere un isomorfismo: per quanto osservato prima, \(f\) è una biiezione continua. Del resto, una biiezione continua tra spazi di Hausdorff compatti è una mappa chiusa, cosicché l'inversa insiemistica di \(f\) è continua (sui chiusi).
 \begin{hExample}[La categoria dei punti]{tech}\label{ex_cat_punti}\index{Categoria!--- dei punti su un oggetto}
@@ -586,11 +599,28 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 		}\]
 	A causa della forma di questi diagrammi (due triangoli sono incollati insieme ed \(F,G\) formano uno zig-zag di frecce in direzioni opposte), esse sono colloquialmente chiamate \emph{identità zig-zag} o identità triangolari (o identità \emph{di aggiunzione}, si vedrà nel \autoref{cap_aggiunti}).
 \end{hRemark}
+Sorprendentemente, la nozione di equivalenza di categorie non è più debole della nozione di equivalenza aggiunta, ossia, è sempre possibile indurre un'equivalenza aggiunta a partire da una equivalenza.
 \begin{lemma}\label{eq_sono_eqadj}
-	Ogni equivalenza di categorie induce una equivalenza aggiunta.
+	Ogni equivalenza di categorie $(F,G,\eta,\xi)$ induce una equivalenza aggiunta $(F,G,\eta,\epsilon)$, dove $\eta,\epsilon$ soddisfano le identità zig-zag.
 \end{lemma}
 \begin{proof}
-	\Todo{}
+	Data un'equivalenza di categorie $\ctC\simeq\ctD : (F,G,\eta,\epsilon)$ come in \ref{}, definiamo a partire da $\xi : FG\nat \Id[\ctD]$ una trasformazione naturale 
+	\[\xymatrix{
+		\epsilon : FG \ar@{=>}[r]^-{FG\whi \xi^{-1}} & FGFG \ar@{=>}[r]^-{F\whi\eta^{-1}\whi G} & FG \ar@{=>}[r]^-\xi & \Id[\ctD]
+	}\]   
+	per composizione verticale. Dobbiamo ora dimostrare che $\eta,\epsilon$ soddisfano le due identità di \ref{}. Per farlo, ragioniamo equazionalmente e troviamo che la naturalità di $\eta$ in $\xi$ implica che 
+	\begin{align*}
+		(G\whi\epsilon)\cmp(\eta \whi G) &= (G\whi\xi )\cmp(GF\whi\eta^{-1}\whi G)\cmp\underline{(GFG\whi\xi^{-1})\cmp(\eta\whi G)}\\ 
+		  &= (G\whi\xi )\cmp(GF\whi\eta^{-1}\whi G)\cmp(\eta\whi GFG)\cmp(G\whi \xi^{-1})\\ 
+		  &= (G\whi\xi )\cmp\underline{(\eta\whi G)\cmp(\eta^{-1}\whi G)}\cmp(G\whi \xi^{-1})\\ 
+		  &= \underline{(G\whi\xi )\cmp(G\whi \xi^{-1})}\\ 
+				&=\Id[G].
+		(\epsilon\whi F)\cmp(F\whi\eta) &= (\xi\whi F)\cmp\underline{(F\whi\eta^{-1}\whi GF)\cmp(FG\whi \xi^{-1}\whi F)}\cmp(F\whi\eta) \\ 
+		  &= \underline{(\xi\whi F)\cmp(\xi^{-1}\whi F)}\cmp(F\whi\eta^{-1})\cmp(F\whi\eta)\\
+		  &= \underline{(F\whi\eta^{-1})\cmp(F\whi\eta)}\\
+				&= \Id[F].
+	\end{align*}
+	Questo conclude la dimostrazione.
 \end{proof}
 \begin{definition}\label{funtore_wequcat}\index{Equivalenza debole}
 	Una equivalenza debole di categorie è un funtore \(F : \ctC \fun\ctD\) che sia pieno, fedele ed essenzialmente suriettivo.
