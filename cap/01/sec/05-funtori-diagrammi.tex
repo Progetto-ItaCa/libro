@@ -207,42 +207,42 @@ Consideriamo uno spazio topologico \(X\) e ad ogni aperto \(U\subseteq X\) assoc
 	\item \label{sheaf_2} per ogni famiglia \(s_i \in FU_i\), tale che \(r_{U_{ij}U_i}s_i = r_{U_{ij}U_j}s_j\), esiste un (unico, in virtù della proprietà precedente) \(s\in FU\) tale che \(r_{U_iU}s=s_i\).
 \end{enumtag}
 \begin{remark}\index{Fascio}\index{Prefascio!fascio}
-Un prefascio che soddisfa le proprietà appena enunciate si dice un \emph{fascio} (\emph{sheaf}: letteralmente, un covone di grano) sullo spazio \(X\). La teoria delle equazioni differenziali ordinarie conduce naturalmente alla nozione di fascio (che storicamente precede la nozione più generale di prefascio; questo spiega la terminologia peculiare), \cite[Cap. II]{mac1992sheaves}, \cite{Tennison1975,Borceux1994a,Borceux1989-gf,pedicchiofoundations}, e la geometria algebrica moderna è edificata su questa nozione (anche quando gli spazi topologici considerati possono avere topologie molto diverse da quella di una varietà reale o complessa).
+	Un prefascio che soddisfa le proprietà appena enunciate si dice un \emph{fascio} (\emph{sheaf}: letteralmente, un covone di grano) sullo spazio \(X\). La teoria delle equazioni differenziali ordinarie conduce naturalmente alla nozione di fascio (che storicamente precede la nozione più generale di prefascio; questo spiega la terminologia peculiare), \cite[Cap. II]{mac1992sheaves}, \cite{Tennison1975,Borceux1994a,Borceux1989-gf,pedicchiofoundations}, e la geometria algebrica moderna è edificata su questa nozione (anche quando gli spazi topologici considerati possono avere topologie molto diverse da quella di una varietà reale o complessa).
 
-Si può parlare più in generale di un fascio (sullo spazio \(X\)) a valori in una categoria \(\ctC\) che sia un costrutto nel senso di \ref{def_costrutto} (cosicché sia possibile parlare degli elementi \(s\in UC\) di un oggetto \(C\in \ctC\)): si tratta di un funtore
-\[\xymatrix{F : (P,\le)^\op \ar[r] & \ctC}\]
-che soddisfa le proprietà \ref{sheaf_1}, \ref{sheaf_2} rispetto agli oggetti di \(\ctC\); tra le scelte più comuni, \(\ctC=\ctAb\) (i gruppi abeliani di \ref{varie_categorie_nella_pratica}), \(\ctC=\ctTop\) (in \ref{ex_cat_top}), \(\ctC=\ctCat\) (in \ref{ex_cat_cat}), \(\ctC = \ctCh(\ctAb)\) (in \ref{ex_cat_chcomples}).
+	Si può parlare più in generale di un fascio (sullo spazio \(X\)) a valori in una categoria \(\ctC\) che sia un costrutto nel senso di \ref{def_costrutto} (cosicché sia possibile parlare degli elementi \(s\in UC\) di un oggetto \(C\in \ctC\)): si tratta di un funtore
+	\[\xymatrix{F : (P,\le)^\op \ar[r] & \ctC}\]
+	che soddisfa le proprietà \ref{sheaf_1}, \ref{sheaf_2} rispetto agli oggetti di \(\ctC\); tra le scelte più comuni, \(\ctC=\ctAb\) (i gruppi abeliani di \ref{varie_categorie_nella_pratica}), \(\ctC=\ctTop\) (in \ref{ex_cat_top}), \(\ctC=\ctCat\) (in \ref{ex_cat_cat}), \(\ctC = \ctCh(\ctAb)\) (in \ref{ex_cat_chcomples}).
 \end{remark}
 \begin{definition}[Endofuntore]\label{def_endofuntore}\index{Endofuntore}\index{Funtore!endo---}
-	Sia $\ctC$ una categoria; un \emph{endofuntore} consta di un funtore $F : \ctC\fun\ctC$.
+	Sia \(\ctC\) una categoria; un \emph{endofuntore} consta di un funtore \(F : \ctC\fun\ctC\).
 \end{definition}
-La teoria degli endofuntori su una categoria è molto vasta per diversi motivi: uno è che esistono molti esempi, su categorie ricche di struttura (ad esempio, sulla sola categoria degli insiemi, persino la teoria dei funtori `polinomiali', cioè scrivibili come $FX = \sum_{i\in I} A_i\times X^{E_i}$, per opportune famiglie di insiemi $(A_i,E_i\mid i\in I)$, è molto vasta). Un altro motivo è che la categoria i cui oggetti sono le frecce di $\ctC$ tra gli oggetti $FX , X$ è un invariante naturale da assegnare a $F$:
-\begin{definition}[Categoria delle co/algebre per un endofuntore]\index{Categoria!--- delle $F$-co/algebre}\index{Endofuntore!co/algebra per un ---}
-	Sia $F : \ctC\fun\ctC$ un endofuntore. 
-	
-	La categoria delle \emph{algebre per $F$}, o brevemente delle \emph{$F$-algebre}, ha 
+La teoria degli endofuntori su una categoria è molto vasta per diversi motivi: uno è che esistono molti esempi, su categorie ricche di struttura (ad esempio, sulla sola categoria degli insiemi, persino la teoria dei funtori `polinomiali', cioè scrivibili come \(FX = \sum_{i\in I} A_i\times X^{E_i}\), per opportune famiglie di insiemi \((A_i,E_i\mid i\in I)\), è molto vasta). Un altro motivo è che la categoria i cui oggetti sono le frecce di \(\ctC\) tra gli oggetti \(FX , X\) è un invariante naturale da assegnare a \(F\):
+\begin{definition}[Categoria delle co/algebre per un endofuntore]\index{Categoria!--- delle \(F\)-co/algebre}\index{Endofuntore!co/algebra per un ---}
+	Sia \(F : \ctC\fun\ctC\) un endofuntore.
+
+	La categoria delle \emph{algebre per \(F\)}, o brevemente delle \emph{\(F\)-algebre}, ha
 	\begin{itemize}
-		\item per oggetti le frecce di $\ctC$ della forma $a : FA\to A$ (l'oggetto $A$ è detto \emph{supporto} dell'algebra, e la freccia $a$ la \emph{mappa strutturale});
-		\item per frecce $(A,a)\to (B,b)$ le frecce $u : A\to B$ di $\ctC$ tra i supporti, tali che il quadrato 
-		\[\xymatrix{
-			FA \ar[r]^{Fu}\ar[d]_a & FB \ar[d]^b\\ 
-			A \ar[r]_-u & B
-		}\]  
-		sia commutativo.
+		\item per oggetti le frecce di \(\ctC\) della forma \(a : FA\to A\) (l'oggetto \(A\) è detto \emph{supporto} dell'algebra, e la freccia \(a\) la \emph{mappa strutturale});
+		\item per frecce \((A,a)\to (B,b)\) le frecce \(u : A\to B\) di \(\ctC\) tra i supporti, tali che il quadrato
+		      \[\xymatrix{
+				      FA \ar[r]^{Fu}\ar[d]_a & FB \ar[d]^b\\
+				      A \ar[r]_-u & B
+			      }\]
+		      sia commutativo.
 	\end{itemize}
-	Dualmente, la categoria delle \emph{coalgebre per $F$}, o brevemente delle \emph{$F$-coalgebre}, ha 
+	Dualmente, la categoria delle \emph{coalgebre per \(F\)}, o brevemente delle \emph{\(F\)-coalgebre}, ha
 	\begin{itemize}
-		\item per oggetti le frecce di $\ctC$ della forma $a : FA\to A$ (l'oggetto $A$ è detto \emph{supporto} della coalgebra, e la freccia $a$ la \emph{mappa strutturale});
-		\item per frecce $(A,a)\to (B,b)$ le frecce $u : A\to B$ di $\ctC$ tra i supporti, tali che il quadrato 
-		\[\xymatrix{
-			A \ar[d]_a\ar[r]^-u & B\ar[d]^b\\
-			FA \ar[r]_{Fu} & FB 
-		}\]  
-		sia commutativo.
+		\item per oggetti le frecce di \(\ctC\) della forma \(a : FA\to A\) (l'oggetto \(A\) è detto \emph{supporto} della coalgebra, e la freccia \(a\) la \emph{mappa strutturale});
+		\item per frecce \((A,a)\to (B,b)\) le frecce \(u : A\to B\) di \(\ctC\) tra i supporti, tali che il quadrato
+		      \[\xymatrix{
+				      A \ar[d]_a\ar[r]^-u & B\ar[d]^b\\
+				      FA \ar[r]_{Fu} & FB
+			      }\]
+		      sia commutativo.
 	\end{itemize}
 \end{definition}
 \begin{examples}
-	Raccogliamo alcuni esempi di endofuntori interessanti sulla categoria degli insiemi: 
+	Raccogliamo alcuni esempi di endofuntori interessanti sulla categoria degli insiemi:
 	\begin{itemize}
 		\item \Todo{}
 		\item \Todo{}

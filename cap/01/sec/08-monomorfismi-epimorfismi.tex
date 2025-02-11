@@ -13,7 +13,7 @@ Se però vogliamo estendere tale definizione ad una categoria generica, la cui c
 	Una freccia \(e \colon X \to A\) in una categoria \(\ctC\) è un \emph{epimorfismo} (o una freccia \emph{epi}, si veda \ref{frecce_o_morfismi}) se,	per ogni coppia di frecce parallele \(f, g \colon A \to B\) in \(\ctC\) tali che \(f \cmp e = g \cmp e\), si ha che \(f = g\).
 \end{definition}
 \begin{notation}\label{not_monoC_epiC}
-Se $\ctC$ è una categoria, denotiamo con $\Mono[\ctC]$ la sottoclasse di $\ctC_1$ i cui elementi sono tutti e soli i monomorfismi di $\ctC$, e analogamente denotiamo $\Epi[\ctC]$ la sottoclasse i cui elementi sono gli epimorfismi.
+	Se \(\ctC\) è una categoria, denotiamo con \(\Mono[\ctC]\) la sottoclasse di \(\ctC_1\) i cui elementi sono tutti e soli i monomorfismi di \(\ctC\), e analogamente denotiamo \(\Epi[\ctC]\) la sottoclasse i cui elementi sono gli epimorfismi.
 \end{notation}
 \begin{terminology}\index{Monomorfismo!etimologia di `---'}
 	Il prefisso greco \emph{mono-} significa `uno, singolo' (il prefisso greco \(\mu\acute{o}\nu o\varsigma\)- è imparentato al latino \emph{moenia}, un muro fatto di un solo pezzo); la scelta del nome `monomorfismo' si motiva quindi notando che una funzione \(f : A\to B\) è un monomorfismo se ogni valore \(b=f(a) \in B\) viene assunto per al più un \(a\in A\). Il prefisso \emph{epi-} significa invece `sopra, presso' (il prefisso greco \(\overset,\varepsilon\pi\acute{\iota}\)- è imparentato al latino \emph{apud}); la scelta del nome `epimorfismo' si motiva quindi pensando che una funzione \(f : A\to B\) che è un epimorfismo `stia sopra' il suo dominio coprendolo completamente, nel senso che ogni valore \(b=f(a)\) è assunto almeno una volta.
@@ -70,7 +70,7 @@ e epi (mono) in \(\ctSet\) sia indipendente dall'esistenza di un'inversa destra 
 \end{notation}
 Dimostriamo ora alcuni risultati per lavorare con mono ed epi.
 \begin{proposition}[Cancellabilità degli epi e dei mono]\label{canc_monoepi}\index{Monomorfismo!composizione di ---i}\index{Epimorfismo!composizione di ---i}
-	Sia $\ctC$ una categoria e \(f \colon A \to B\) e \(g \colon B \to C\) due frecce componibili in $\ctC$.
+	Sia \(\ctC\) una categoria e \(f \colon A \to B\) e \(g \colon B \to C\) due frecce componibili in \(\ctC\).
 	Allora:
 	\begin{enumtag}{pem}
 		\item \label{pem_1} Se \(f\) e \(g\) sono entrambe mono (epi), allora anche \(g \cmp f\) è mono (epi).
@@ -78,7 +78,7 @@ Dimostriamo ora alcuni risultati per lavorare con mono ed epi.
 		\item \label{pem_3} Se \(g \cmp f\) è epi, allora anche \(g\) è epi.
 	\end{enumtag}
 \end{proposition}
-Si osservi che una conseguenza immediata di \ref{pem_1} è che $\Mono[\ctC]$ e $\Epi[\ctC]$ sono sottocategorie di $\ctC$.
+Si osservi che una conseguenza immediata di \ref{pem_1} è che \(\Mono[\ctC]\) e \(\Epi[\ctC]\) sono sottocategorie di \(\ctC\).
 \begin{proof}
 	Grazie all'osservazione~\ref{rmk:mono-epi-duality},	ci basta dimostrare il risultato per i mono,	e il risultato per gli epi segue per dualità.
 	\begin{enumerate}
@@ -137,18 +137,18 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
 	Per la genericit\`a di \(x\) e \(x'\), abbiamo che \(f\) \`e iniettiva,
 	e dunque un monomorfismo in \(\ctSet\).
 \end{proof}
-\begin{proposition}\label{monoepi_in_catCD}\index{Monomorfismo!--- in $\Hom\ctCat(\ctC,\ctD)$}
-	Nella categoria $\Hom\ctCat(\ctC,\ctD)$ dei funtori $\ctC\fun\ctD$ e trasformazioni naturali, $\alpha : F\nat G$ è un mono (epi, mono spezzante, epi spezzante) se e solo se ciascuna delle sue componenti $\alpha_C : FC\to GC$ è un mono (epi, mono spezzante, epi spezzante) in $\ctD$.
+\begin{proposition}\label{monoepi_in_catCD}\index{Monomorfismo!--- in \(\Hom\ctCat(\ctC,\ctD)\)}
+	Nella categoria \(\Hom\ctCat(\ctC,\ctD)\) dei funtori \(\ctC\fun\ctD\) e trasformazioni naturali, \(\alpha : F\nat G\) è un mono (epi, mono spezzante, epi spezzante) se e solo se ciascuna delle sue componenti \(\alpha_C : FC\to GC\) è un mono (epi, mono spezzante, epi spezzante) in \(\ctD\).
 \end{proposition}
 \begin{proof}
-	La condizione affinché $\alpha : F\nat G$ sia un mono è che per ogni $\gamma,\delta : H\nat F$ si abbia che se $\alpha\cmp \gamma = \alpha\cmp \delta$, allora $\gamma=\delta$. Del resto, questa condizione si riscrive come 
+	La condizione affinché \(\alpha : F\nat G\) sia un mono è che per ogni \(\gamma,\delta : H\nat F\) si abbia che se \(\alpha\cmp \gamma = \alpha\cmp \delta\), allora \(\gamma=\delta\). Del resto, questa condizione si riscrive come
 	\begin{quote}
-		Per ogni $C\in\ctC_0$, se $\alpha_C\cmp \gamma_C = \alpha_C\cmp \delta_C$ allora $\gamma_C = \delta_C$,
+		Per ogni \(C\in\ctC_0\), se \(\alpha_C\cmp \gamma_C = \alpha_C\cmp \delta_C\) allora \(\gamma_C = \delta_C\),
 	\end{quote}
-	cosicché ogni $\alpha_C$ è un mono in $\ctD$. 
-	
-	Analogamente, $\alpha$ è un mono spezzante (cioè ha una inversa sinistra $\kappa : G\nat F$ tale che $\kappa\cmp\alpha=1_F$), se e solo se ogni componente $\alpha_C$ ha $\kappa_C$ per inversa sinistra.
-	
+	cosicché ogni \(\alpha_C\) è un mono in \(\ctD\).
+
+	Analogamente, \(\alpha\) è un mono spezzante (cioè ha una inversa sinistra \(\kappa : G\nat F\) tale che \(\kappa\cmp\alpha=1_F\)), se e solo se ogni componente \(\alpha_C\) ha \(\kappa_C\) per inversa sinistra.
+
 	Le dimostrazioni nel caso di un epi ed epi spezzante si fanno analogamente.
 \end{proof}
 \subsection{Sezioni e retrazioni}\label{sec_sezretraz}\index{Sezione}
@@ -356,7 +356,7 @@ Questa discussione fornisce alcuni utili controesempi:	un morfismo può essere s
 \end{definition}
 Esempi di categorie bilanciate sono: tutti i gruppoidi (ovviamente\dots), la categoria di insiemi e funzioni, \ref{ex_cat_insiemi}, la categoria dei \(G\)-insiemi \ref{ex_cat_g_insiemi}, i multidigrafi \ref{ex_cat_grafi}, la categoria delle matrici di \ref{ex_cat_matrici} e come conseguenza quella degli spazi vettoriali di dimensione finita, ma anche quella degli spazi vettoriali di dimensione infinita e più in generale dei moduli su un anello \(R\); la categoria dei gruppi.
 
-I controesempi più eclatanti di categorie \emph{non} bilanciate vengono dalla geometria, topologia e teoria degli ordini: nella categoria \(\ctTop\) di \ref{ex_cat_top} i mono ed epi sono precisamente le funzioni \(f : X\to Y\) che sono biiezioni continue --può non esserlo la loro inversa insiemistica. Abbiamo poi prodotto esempi di mono ed epi che non sono isomorfismi nella categoria dei monoidi (simile al ragionamento di \ref{mono_epi_noniso} è quello che dimostra che \(\bbZ\to\bbQ\) è (un mono, ovviamente, ed) epi; ma \(\bbZ\) non è isomorfo a $\bbQ$, per esempio perché $\bbZ$ non è un campo).\footnote{La proprietà definente la freccia \(\bbZ\to\bbQ\) nella categoria degli anelli è di essere un mono \emph{essenziale}: $\bbZ$ interseca tutti i sottoanelli non banali di $\bbQ$ in un sottoanello non banale (ovvero: se $A\subseteq\bbQ$ è un sottoanello, ma $\bbZ\cap A=(0)$, allora $A=(0)$).}
+I controesempi più eclatanti di categorie \emph{non} bilanciate vengono dalla geometria, topologia e teoria degli ordini: nella categoria \(\ctTop\) di \ref{ex_cat_top} i mono ed epi sono precisamente le funzioni \(f : X\to Y\) che sono biiezioni continue --può non esserlo la loro inversa insiemistica. Abbiamo poi prodotto esempi di mono ed epi che non sono isomorfismi nella categoria dei monoidi (simile al ragionamento di \ref{mono_epi_noniso} è quello che dimostra che \(\bbZ\to\bbQ\) è (un mono, ovviamente, ed) epi; ma \(\bbZ\) non è isomorfo a \(\bbQ\), per esempio perché \(\bbZ\) non è un campo).\footnote{La proprietà definente la freccia \(\bbZ\to\bbQ\) nella categoria degli anelli è di essere un mono \emph{essenziale}: \(\bbZ\) interseca tutti i sottoanelli non banali di \(\bbQ\) in un sottoanello non banale (ovvero: se \(A\subseteq\bbQ\) è un sottoanello, ma \(\bbZ\cap A=(0)\), allora \(A=(0)\)).}
 
 Però, e questo è un esempio importante (la cui dimostrazione usa dei fatti di topologia generale elementare), nella categoria degli spazi di Hausdorff compatti e mappe continue \emph{e proprie}, una freccia \(f : X\to Y\) mono ed epi deve essere un isomorfismo: per quanto osservato prima, \(f\) è una biiezione continua. Del resto, una biiezione continua tra spazi di Hausdorff compatti è una mappa chiusa, cosicché l'inversa insiemistica di \(f\) è continua (sui chiusi).
 \begin{hExample}[La categoria dei punti]{tech}\label{ex_cat_punti}\index{Categoria!--- dei punti su un oggetto}
@@ -391,103 +391,103 @@ Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzant
 \end{proof}
 Quando avremo introdotto la teoria dei limiti e dei colimiti nel \autoref{chap_limiti_colimiti} avremo gli strumenti per definire e studiare diverse classi di mono ed epi in una categoria \(\ctC\) (i mono ed epi regolari, effettivi, forti ed altri saranno studiati nel \autoref{cap_fattorizzazione}); una delle prime sottigliezze che si incontrano quando si impara la teoria delle categorie è il fatto che esiste una gerarchia di mono ed epi, che nella categoria degli insiemi collassano tutte nelle funzioni (rispettivamente) iniettive e suriettive, ma che in una categoria con meno proprietà sono, in generale, tutte distinte.
 
-Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emph{estremale}, che non richiede particolari tecnologie per essere enunciata. Gli epi astraggono l'idea di suriettività per una freccia di una categoria astratta, e però in molti costrutti (nel senso di \ref{def_costrutto}) essi non recuperano perfettamente l'idea di suriettività. Lo fanno in categorie come $\ctTop$, $\ctSet$ e $\ctGrp$, ma come mostra \ref{mono_epi_noniso}, la categoria $\ctcRing$ degli anelli commutativi e unitari è piena di frecce epi che non sono funzioni suriettive; invece, sono gli \emph{epi estremali} a corrispondere precisamente a omomorfismi suriettivi.% questi corrispondono esattamente agli omomorfismi di anelli suriettivi. Nel nostro controesempio precedente, l'inclusione degli interi nei razionali si fattorizza attraverso l'inclusione dei razionali diadici, che non è un isomorfismo (i razionali diadici non sono un campo). Inoltre, gli epimorfismi estremi implicano anche la suriettività in **Haus**, dove gli epimorfismi sono precisamente le mappe continue con immagine densa. Gli epimorfismi estremi non caratterizzano ancora la suriettività in tutte le categorie concrete, ma rappresentano un compromesso e implicano la suriettività nelle categorie più studiate.
+Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emph{estremale}, che non richiede particolari tecnologie per essere enunciata. Gli epi astraggono l'idea di suriettività per una freccia di una categoria astratta, e però in molti costrutti (nel senso di \ref{def_costrutto}) essi non recuperano perfettamente l'idea di suriettività. Lo fanno in categorie come \(\ctTop\), \(\ctSet\) e \(\ctGrp\), ma come mostra \ref{mono_epi_noniso}, la categoria \(\ctcRing\) degli anelli commutativi e unitari è piena di frecce epi che non sono funzioni suriettive; invece, sono gli \emph{epi estremali} a corrispondere precisamente a omomorfismi suriettivi.% questi corrispondono esattamente agli omomorfismi di anelli suriettivi. Nel nostro controesempio precedente, l'inclusione degli interi nei razionali si fattorizza attraverso l'inclusione dei razionali diadici, che non è un isomorfismo (i razionali diadici non sono un campo). Inoltre, gli epimorfismi estremi implicano anche la suriettività in **Haus**, dove gli epimorfismi sono precisamente le mappe continue con immagine densa. Gli epimorfismi estremi non caratterizzano ancora la suriettività in tutte le categorie concrete, ma rappresentano un compromesso e implicano la suriettività nelle categorie più studiate.
 \begin{definition}[Monomorfismo ed epimorfismo estremale]\label{def_monoepi_estrem}\index{Monomorfismo!--- estremale}\index{Epimorfismo!--- estremale|see {Monomorfismo estremale}}
-	Sia $\ctC$ una categoria; un epimorfismo $f : X \epi Y$ si dice \emph{estremale} se soddisfa la seguente proprietà: 
+	Sia \(\ctC\) una categoria; un epimorfismo \(f : X \epi Y\) si dice \emph{estremale} se soddisfa la seguente proprietà:
 	\begin{quote}
-		Se esiste una fattorizzazione $f = X \xto p E \overset m\mono Y$ con $m \in\Mono[\ctC]$, allora $m$ è un isomorfismo.
+		Se esiste una fattorizzazione \(f = X \xto p E \overset m\mono Y\) con \(m \in\Mono[\ctC]\), allora \(m\) è un isomorfismo.
 	\end{quote}
 	In altre parole, un epi estremale è una freccia che non si fattorizza attraverso nessun sottoggetto proprio del suo codominio.
 
-	Dualmente, un mono estremale soddisfa la stessa proprietà in $\ctC^\op$, cioè  
+	Dualmente, un mono estremale soddisfa la stessa proprietà in \(\ctC^\op\), cioè
 	\begin{quote}
-		Se esiste una fattorizzazione $f = X \overset e\epi E \xto q Y$ con $e \in\Epi[\ctC]$, allora $e$ è un isomorfismo.
+		Se esiste una fattorizzazione \(f = X \overset e\epi E \xto q Y\) con \(e \in\Epi[\ctC]\), allora \(e\) è un isomorfismo.
 	\end{quote}
 \end{definition}
 \begin{proposition}
 	Raccogliamo alcune proprietà degli epi estremali (e implicitamente, le loro duali per mono estremali):
 	\begin{enumtag}{ee}
-		\item \label{ee_1} Se la composizione \(f \circ g\) è un epi estremale, allora \(f\) è a sua volta un epimorfismo estremale. Si noti che questo non assume alcuna proprietà su $g$.
+		\item \label{ee_1} Se la composizione \(f \circ g\) è un epi estremale, allora \(f\) è a sua volta un epimorfismo estremale. Si noti che questo non assume alcuna proprietà su \(g\).
 		\item \label{ee_2} L'intersezione delle classi di epi estremali e mono di una categoria è fatta dagli isomorfismi; in altre parole, se \(f : X\to Y\) è una freccia mono ed epi estremale, allora è un isomorfismo.
 		\item \label{ee_3} In una categoria bilanciata nel senso di \ref{def_cat_bilanciata}, tutti gli epimorfismi sono estremali.
-		\item \label{ee_4} Se $f$ è un epi estremale e $g$ un epi spezzante, la composizione $f\cmp g$ è un epi estremale. Proveremo in \ref{compo_estremali} che la composizione di epi estremali può non essere estremale (ma in `tutti' gli esempi concreti questo fenomeno patologico non si verifica).
+		\item \label{ee_4} Se \(f\) è un epi estremale e \(g\) un epi spezzante, la composizione \(f\cmp g\) è un epi estremale. Proveremo in \ref{compo_estremali} che la composizione di epi estremali può non essere estremale (ma in `tutti' gli esempi concreti questo fenomeno patologico non si verifica).
 	\end{enumtag}
 \end{proposition}
 \begin{proof}
 	Tutti gli argomenti usati sono elementari; li esplicitamo per completezza e per dare un'idea a chi legge della natura di ragionamenti simili.
 	\begin{enumtag}{ee}
-		\item Se $f = m \cmp p$, allora $f\cmp g = m\cmp q$ per $q = p\cmp g$, cosicché $m$ deve essere un isomorfismo.
-		\item Se una freccia $f : X\to Y$ è epi estremale e mono, $f$ definisce un sottoggetto di $Y$, che non può essere non banale.
-		\item Se $f$ è un epimorfismo di una categoria bilanciata $\ctC$, e $f$ si decompone come $m\cmp p$, per \ref{pem_3} in \ref{canc_monoepi} $m$ deve essere un epi; allora, $m$ è un isomorfismo.
-		\item Se $g$ ha una inversa destra $s$ e $f\cmp g = m\cmp p$, allora $f = m\cmp p\cmp s$, quindi $m$ è un isomorfismo.
+		\item Se \(f = m \cmp p\), allora \(f\cmp g = m\cmp q\) per \(q = p\cmp g\), cosicché \(m\) deve essere un isomorfismo.
+		\item Se una freccia \(f : X\to Y\) è epi estremale e mono, \(f\) definisce un sottoggetto di \(Y\), che non può essere non banale.
+		\item Se \(f\) è un epimorfismo di una categoria bilanciata \(\ctC\), e \(f\) si decompone come \(m\cmp p\), per \ref{pem_3} in \ref{canc_monoepi} \(m\) deve essere un epi; allora, \(m\) è un isomorfismo.
+		\item Se \(g\) ha una inversa destra \(s\) e \(f\cmp g = m\cmp p\), allora \(f = m\cmp p\cmp s\), quindi \(m\) è un isomorfismo.
 	\end{enumtag}
 \end{proof}
 \begin{remark}
-	Raccogliamo alcuni esempi di epi estremali in categorie note: 
+	Raccogliamo alcuni esempi di epi estremali in categorie note:
 	\begin{itemize}
-		\item Nella categoria degli insiemi, ogni epimorfismo è estremale: infatti, se $f = m\cmp p : X \to E \mono Y$ allora, usando \ref{mono_epi_ort} troviamo un quadrato 
-		\[\xymatrix{
-			X \ar[r]^p\ar[d]_f & E\ar[d]^m \\ 
-			Y \ar@{=}[r]\ar@{.>}[ur] & Y
-		}\]   
-		spezzato da una diagonale $u : Y \to E$, che rende $m$ un mono e un epi spezzante; per \ref{prop:iso-epi-mono}.(\ref{prop:iso-epi-mono:item2}), deve quindi essere un isomorfismo.
-		\item nella categoria degli anelli un epi estremale è precisamente un omomorfismo suriettivo; se la funzione $Uf : UR\to US$ indotta da un omomorfismo di anelli $f : R\to S$ non è suriettiva, questo significa che il sottoanello immagine $f(R)$ è proprio in $S$, così che $f$ non può essere estremale. 
-		
-		Nell'altra direzione, se $f : R\to S$ dà una funzione di insiemi $Uf : UR\to US$ suriettiva, e supponiamo che $f = m\cmp p$ sia una fattorizzazione con $m$ mono, allora $Um\cmp Up$ è una fattorizzazione di $Uf$ con $Um$ mono (\ref{eserva_riflette}); del resto gli epi in $\ctSet$ sono tutti estremali, cosicché $Um$ deve essere un isomorfismo; ma $U$ riflette gli isomorfismi (\ref{}), cosicché è $m$ che deve essere un isomorfismo.
-		
-		Si noti che l'epimorfismo $\bbZ\to\bbQ$ non è estremale, perché fattorizza su ciascuna localizzazione di $\bbZ$ a un primo (per esempio, $\bbZ \to \bbZ[\frac 12]\mono \bbQ$).
-		\item 
-		\item 
+		\item Nella categoria degli insiemi, ogni epimorfismo è estremale: infatti, se \(f = m\cmp p : X \to E \mono Y\) allora, usando \ref{mono_epi_ort} troviamo un quadrato
+		      \[\xymatrix{
+				      X \ar[r]^p\ar[d]_f & E\ar[d]^m \\
+				      Y \ar@{=}[r]\ar@{.>}[ur] & Y
+			      }\]
+		      spezzato da una diagonale \(u : Y \to E\), che rende \(m\) un mono e un epi spezzante; per \ref{prop:iso-epi-mono}.(\ref{prop:iso-epi-mono:item2}), deve quindi essere un isomorfismo.
+		\item nella categoria degli anelli un epi estremale è precisamente un omomorfismo suriettivo; se la funzione \(Uf : UR\to US\) indotta da un omomorfismo di anelli \(f : R\to S\) non è suriettiva, questo significa che il sottoanello immagine \(f(R)\) è proprio in \(S\), così che \(f\) non può essere estremale.
+
+		      Nell'altra direzione, se \(f : R\to S\) dà una funzione di insiemi \(Uf : UR\to US\) suriettiva, e supponiamo che \(f = m\cmp p\) sia una fattorizzazione con \(m\) mono, allora \(Um\cmp Up\) è una fattorizzazione di \(Uf\) con \(Um\) mono (\ref{eserva_riflette}); del resto gli epi in \(\ctSet\) sono tutti estremali, cosicché \(Um\) deve essere un isomorfismo; ma \(U\) riflette gli isomorfismi (\ref{}), cosicché è \(m\) che deve essere un isomorfismo.
+
+		      Si noti che l'epimorfismo \(\bbZ\to\bbQ\) non è estremale, perché fattorizza su ciascuna localizzazione di \(\bbZ\) a un primo (per esempio, \(\bbZ \to \bbZ[\frac 12]\mono \bbQ\)).
+		\item
+		\item
 	\end{itemize}
 \end{remark}
 \begin{remark}[Composizione di epi estremali]\label{compo_estremali}
 	Questa osservazione raccoglie un controesempio alla componibilità degli epi estremali, e una dimostrazione che in categorie di modelli per segnature algebriche (dove, informalmente, possiamo costruire la minima sottoalgebra generata da un sottoinsieme) gli epi estremali sono invece chiusi per composizione.
 	\begin{itemize}
-		\item Iniziamo dal controesempio. L'idea è usare \ref{ee_2} per generare la categoria libera su una fattorizzazione $g\cmp f$ di due epi estremali lungo un sottoggetto proprio. 
-		
-		Si consideri la categoria libera sul grafo 
-% https://q.uiver.app/#q=WzAsNixbMSwxLCJcXGJ1bGxldCJdLFsyLDEsIlxcYnVsbGV0Il0sWzEsMiwiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFswLDEsIlxcYnVsbGV0Il0sWzIsMCwiXFxidWxsZXQiXSxbMSwzLCJnIl0sWzAsMSwiZiJdLFsyLDMsInYiLDJdLFswLDIsInUiLDJdLFs1LDEsInlfMiIsMCx7Im9mZnNldCI6LTJ9XSxbNSwxLCJ5XzEiLDIseyJvZmZzZXQiOjJ9XSxbNCwwLCJ4XzIiLDIseyJvZmZzZXQiOjJ9XSxbNCwwLCJ4XzEiLDAseyJvZmZzZXQiOi0yfV1d
-\[\begin{tikzcd}
-	&& X \\
-	Y & Z & W \\
-	& U & V
-	\arrow["{y_2}", shift left=1, from=1-3, to=2-3]
-	\arrow["{y_1}"', shift right=1, from=1-3, to=2-3]
-	\arrow["{x_2}"', shift right=1, from=2-1, to=2-2]
-	\arrow["{x_1}", shift left=1, from=2-1, to=2-2]
-	\arrow["f", from=2-2, to=2-3]
-	\arrow["u"', from=2-2, to=3-2]
-	\arrow["g", from=2-3, to=3-3]
-	\arrow["v"', from=3-2, to=3-3]
-\end{tikzcd}\]
-		e dove la legge di composizione è fissata dalle relazioni 
-		\[f \cmp x_1 = f \cmp x_2, \quad u \cmp x_1 = u \cmp x_2, \quad g \cmp y_1 = g \cmp y_2, \quad g \cmp f = v \cmp u.\]
-		Allora, sia $f$ che $g$ sono epi estremali,\footnote{Non sono invece epi estremali quando sono considerate come frecce nel quadrato generico: lì sono entrambe mono, ma non epi estremali dato che ammettono la fattorizzazione $f = f\cmp 1_Z$, $g = g\cmp 1_W$. Nessun'altra delle loro fattorizzazioni è della forma $\Mono[\ctC]\cmp \ctC_1$, cosicché quando $f,g$ sono stati forzati a non essere più mono con l'aggiunta di $x_1,x_2,y_1,y_2$, diventano (vacuamente) epi estremali.} ma la loro composizione fattorizza come $v\cmp u$, e $v$ è (vacuamente) un monomorfismo che non è un isomorfismo. Le frecce $f,g$ sono state `forzate' a essere epi estremali che non sono mono.
-		\item Invece, in un costrutto della forma $(\ctMod(\Omega,a),U)$ (si veda \ref{ex_cat_sigma_strutture} e \ref{def_costrutto}) gli epi estremali sono chiusi per composizione. Infatti, consideriamo una fattorizzazione 
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzEsMCwiQiJdLFswLDEsIlgiXSxbMSwxLCJDIl0sWzEsMywiZyJdLFswLDEsImYiXSxbMiwzLCJ2IiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCJwIiwyXV0=
-\[\begin{tikzcd}
-	A & B \\
-	X & C
-	\arrow["f", from=1-1, to=1-2]
-	\arrow["p"', from=1-1, to=2-1]
-	\arrow["g", from=1-2, to=2-2]
-	\arrow["m"', hook, from=2-1, to=2-2]
-\end{tikzcd}\]
-e la funzione insiemistica $g : UB\to UC$. Se $g\cmp f$ fattorizza lungo un sottoggetto $X$ di $C$, mediante un mono $v$, consideriamo l'insieme $\ctP^*g(UX) := g^\leftarrow X$ (si veda \ref{ex_fun_parti}) e la sotto-$(\Omega,a)$-algebra $X'$ generata da questo insieme; se $X'\subsetneq B$, esiste una freccia tratteggiata in
-% https://q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzIsMCwiQiJdLFswLDIsIlgiXSxbMiwyLCJDIl0sWzEsMSwiZ15cXGxlZnRhcnJvdyBYIl0sWzEsMywiZyJdLFswLDEsImYiXSxbMiwzLCJ2IiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCJwIiwyXSxbNCwxLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFswLDQsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs0LDIsInEiXV0=
-\[\begin{tikzcd}[sep=small]
-	A && B \\
-	& X' \\
-	X && C
-	\arrow["f", from=1-1, to=1-3]
-	\arrow[dotted, from=1-1, to=2-2]
-	\arrow["p"', from=1-1, to=3-1]
-	\arrow["g", from=1-3, to=3-3]
-	\arrow[hook, from=2-2, to=1-3]
-	\arrow["g'", from=2-2, to=3-1]
-	\arrow["m"', hook, from=3-1, to=3-3]
-\end{tikzcd}\]
-che fattorizza $f$ (e $g'$ applica $g$ agli elementi di $g^\leftarrow X$); del resto questo non può succedere perché $f$ è un epi estremale, e quindi $X' = B$; allora però $g$ fattorizza attraverso $m$, ed essendo $g$ un epi estremale, $m$ deve essere un isomorfismo.
+		\item Iniziamo dal controesempio. L'idea è usare \ref{ee_2} per generare la categoria libera su una fattorizzazione \(g\cmp f\) di due epi estremali lungo un sottoggetto proprio.
+
+		      Si consideri la categoria libera sul grafo
+		      % https://q.uiver.app/#q=WzAsNixbMSwxLCJcXGJ1bGxldCJdLFsyLDEsIlxcYnVsbGV0Il0sWzEsMiwiXFxidWxsZXQiXSxbMiwyLCJcXGJ1bGxldCJdLFswLDEsIlxcYnVsbGV0Il0sWzIsMCwiXFxidWxsZXQiXSxbMSwzLCJnIl0sWzAsMSwiZiJdLFsyLDMsInYiLDJdLFswLDIsInUiLDJdLFs1LDEsInlfMiIsMCx7Im9mZnNldCI6LTJ9XSxbNSwxLCJ5XzEiLDIseyJvZmZzZXQiOjJ9XSxbNCwwLCJ4XzIiLDIseyJvZmZzZXQiOjJ9XSxbNCwwLCJ4XzEiLDAseyJvZmZzZXQiOi0yfV1d
+		      \[\begin{tikzcd}
+				      && X \\
+				      Y & Z & W \\
+				      & U & V
+				      \arrow["{y_2}", shift left=1, from=1-3, to=2-3]
+				      \arrow["{y_1}"', shift right=1, from=1-3, to=2-3]
+				      \arrow["{x_2}"', shift right=1, from=2-1, to=2-2]
+				      \arrow["{x_1}", shift left=1, from=2-1, to=2-2]
+				      \arrow["f", from=2-2, to=2-3]
+				      \arrow["u"', from=2-2, to=3-2]
+				      \arrow["g", from=2-3, to=3-3]
+				      \arrow["v"', from=3-2, to=3-3]
+			      \end{tikzcd}\]
+		      e dove la legge di composizione è fissata dalle relazioni
+		      \[f \cmp x_1 = f \cmp x_2, \quad u \cmp x_1 = u \cmp x_2, \quad g \cmp y_1 = g \cmp y_2, \quad g \cmp f = v \cmp u.\]
+		      Allora, sia \(f\) che \(g\) sono epi estremali,\footnote{Non sono invece epi estremali quando sono considerate come frecce nel quadrato generico: lì sono entrambe mono, ma non epi estremali dato che ammettono la fattorizzazione \(f = f\cmp 1_Z\), \(g = g\cmp 1_W\). Nessun'altra delle loro fattorizzazioni è della forma \(\Mono[\ctC]\cmp \ctC_1\), cosicché quando \(f,g\) sono stati forzati a non essere più mono con l'aggiunta di \(x_1,x_2,y_1,y_2\), diventano (vacuamente) epi estremali.} ma la loro composizione fattorizza come \(v\cmp u\), e \(v\) è (vacuamente) un monomorfismo che non è un isomorfismo. Le frecce \(f,g\) sono state `forzate' a essere epi estremali che non sono mono.
+		\item Invece, in un costrutto della forma \((\ctMod(\Omega,a),U)\) (si veda \ref{ex_cat_sigma_strutture} e \ref{def_costrutto}) gli epi estremali sono chiusi per composizione. Infatti, consideriamo una fattorizzazione
+		      % https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzEsMCwiQiJdLFswLDEsIlgiXSxbMSwxLCJDIl0sWzEsMywiZyJdLFswLDEsImYiXSxbMiwzLCJ2IiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCJwIiwyXV0=
+		      \[\begin{tikzcd}
+				      A & B \\
+				      X & C
+				      \arrow["f", from=1-1, to=1-2]
+				      \arrow["p"', from=1-1, to=2-1]
+				      \arrow["g", from=1-2, to=2-2]
+				      \arrow["m"', hook, from=2-1, to=2-2]
+			      \end{tikzcd}\]
+		      e la funzione insiemistica \(g : UB\to UC\). Se \(g\cmp f\) fattorizza lungo un sottoggetto \(X\) di \(C\), mediante un mono \(v\), consideriamo l'insieme \(\ctP^*g(UX) := g^\leftarrow X\) (si veda \ref{ex_fun_parti}) e la sotto-\((\Omega,a)\)-algebra \(X'\) generata da questo insieme; se \(X'\subsetneq B\), esiste una freccia tratteggiata in
+		      % https://q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzIsMCwiQiJdLFswLDIsIlgiXSxbMiwyLCJDIl0sWzEsMSwiZ15cXGxlZnRhcnJvdyBYIl0sWzEsMywiZyJdLFswLDEsImYiXSxbMiwzLCJ2IiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCJwIiwyXSxbNCwxLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFswLDQsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs0LDIsInEiXV0=
+		      \[\begin{tikzcd}[sep=small]
+				      A && B \\
+				      & X' \\
+				      X && C
+				      \arrow["f", from=1-1, to=1-3]
+				      \arrow[dotted, from=1-1, to=2-2]
+				      \arrow["p"', from=1-1, to=3-1]
+				      \arrow["g", from=1-3, to=3-3]
+				      \arrow[hook, from=2-2, to=1-3]
+				      \arrow["g'", from=2-2, to=3-1]
+				      \arrow["m"', hook, from=3-1, to=3-3]
+			      \end{tikzcd}\]
+		      che fattorizza \(f\) (e \(g'\) applica \(g\) agli elementi di \(g^\leftarrow X\)); del resto questo non può succedere perché \(f\) è un epi estremale, e quindi \(X' = B\); allora però \(g\) fattorizza attraverso \(m\), ed essendo \(g\) un epi estremale, \(m\) deve essere un isomorfismo.
 	\end{itemize}
 \end{remark}
 \begin{definition}[Monomorfismo ed epimorfismo forte]
@@ -552,9 +552,9 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 		\item la proprietà \(\mathcal P_e(f) := (f \text{ è un epi spezzante})\);
 		\item la proprietà \(\mathcal P_m(f) := (f \text{ è un mono spezzante})\).
 	\end{itemize}
-	Ogni funtore fedele \(F : \ctC\fun\ctD\) riflette la proprietà `\(f\) è un monomorfismo' (diciamo che \(F\) \emph{riflette i monomorfismi}) e gli epimorfismi (ma ci sono funtori fedeli che non preservano gli epimorfismi). I funtori della forma 
+	Ogni funtore fedele \(F : \ctC\fun\ctD\) riflette la proprietà `\(f\) è un monomorfismo' (diciamo che \(F\) \emph{riflette i monomorfismi}) e gli epimorfismi (ma ci sono funtori fedeli che non preservano gli epimorfismi). I funtori della forma
 	\[\dmFun{U}{\ctMod(\Omega,a)}{\ctSet}\]
-	che danno il supporto di una struttura algebrica fissata da una segnatura $(\Omega,a)$ come in \ref{}, (sono fedeli, e in più) riflettono gli isomorfismi.
+	che danno il supporto di una struttura algebrica fissata da una segnatura \((\Omega,a)\) come in \ref{}, (sono fedeli, e in più) riflettono gli isomorfismi.
 \end{proposition}
 \begin{definition}[Isomorfismo di categorie]\label{fun_isocat}\index{Categoria!isomorfismo di ---e}\index{Isomorfismo!--- di categorie}\index{Isomorfismo}
 	Un isomorfismo di categorie \(\ctC\cong\ctD\) consiste di una coppia di funtori
@@ -601,24 +601,24 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 \end{hRemark}
 Sorprendentemente, la nozione di equivalenza di categorie non è più debole della nozione di equivalenza aggiunta, ossia, è sempre possibile indurre un'equivalenza aggiunta a partire da una equivalenza.
 \begin{lemma}\label{eq_sono_eqadj}
-	Ogni equivalenza di categorie $(F,G,\eta,\xi)$ induce una equivalenza aggiunta $(F,G,\eta,\epsilon)$, dove $\eta,\epsilon$ soddisfano le identità zig-zag.
+	Ogni equivalenza di categorie \((F,G,\eta,\xi)\) induce una equivalenza aggiunta \((F,G,\eta,\epsilon)\), dove \(\eta,\epsilon\) soddisfano le identità zig-zag.
 \end{lemma}
 \begin{proof}
-	Data un'equivalenza di categorie $\ctC\simeq\ctD : (F,G,\eta,\epsilon)$ come in \ref{}, definiamo a partire da $\xi : FG\nat \Id[\ctD]$ una trasformazione naturale 
+	Data un'equivalenza di categorie \(\ctC\simeq\ctD : (F,G,\eta,\epsilon)\) come in \ref{}, definiamo a partire da \(\xi : FG\nat \Id[\ctD]\) una trasformazione naturale
 	\[\xymatrix{
 		\epsilon : FG \ar@{=>}[r]^-{FG\whi \xi^{-1}} & FGFG \ar@{=>}[r]^-{F\whi\eta^{-1}\whi G} & FG \ar@{=>}[r]^-\xi & \Id[\ctD]
-	}\]   
-	per composizione verticale. Dobbiamo ora dimostrare che $\eta,\epsilon$ soddisfano le due identità di \ref{}. Per farlo, ragioniamo equazionalmente e troviamo che la naturalità di $\eta$ in $\xi$ implica che 
+		}\]
+	per composizione verticale. Dobbiamo ora dimostrare che \(\eta,\epsilon\) soddisfano le due identità di \ref{}. Per farlo, ragioniamo equazionalmente e troviamo che la naturalità di \(\eta\) in \(\xi\) implica che
 	\begin{align*}
-		(G\whi\epsilon)\cmp(\eta \whi G) &= (G\whi\xi )\cmp(GF\whi\eta^{-1}\whi G)\cmp\underline{(GFG\whi\xi^{-1})\cmp(\eta\whi G)}\\ 
-		  &= (G\whi\xi )\cmp(GF\whi\eta^{-1}\whi G)\cmp(\eta\whi GFG)\cmp(G\whi \xi^{-1})\\ 
-		  &= (G\whi\xi )\cmp\underline{(\eta\whi G)\cmp(\eta^{-1}\whi G)}\cmp(G\whi \xi^{-1})\\ 
-		  &= \underline{(G\whi\xi )\cmp(G\whi \xi^{-1})}\\ 
-				&=\Id[G].
-		(\epsilon\whi F)\cmp(F\whi\eta) &= (\xi\whi F)\cmp\underline{(F\whi\eta^{-1}\whi GF)\cmp(FG\whi \xi^{-1}\whi F)}\cmp(F\whi\eta) \\ 
-		  &= \underline{(\xi\whi F)\cmp(\xi^{-1}\whi F)}\cmp(F\whi\eta^{-1})\cmp(F\whi\eta)\\
-		  &= \underline{(F\whi\eta^{-1})\cmp(F\whi\eta)}\\
-				&= \Id[F].
+		(G\whi\epsilon)\cmp(\eta \whi G) & = (G\whi\xi )\cmp(GF\whi\eta^{-1}\whi G)\cmp\underline{(GFG\whi\xi^{-1})\cmp(\eta\whi G)}      \\
+		                                 & = (G\whi\xi )\cmp(GF\whi\eta^{-1}\whi G)\cmp(\eta\whi GFG)\cmp(G\whi \xi^{-1})                 \\
+		                                 & = (G\whi\xi )\cmp\underline{(\eta\whi G)\cmp(\eta^{-1}\whi G)}\cmp(G\whi \xi^{-1})             \\
+		                                 & = \underline{(G\whi\xi )\cmp(G\whi \xi^{-1})}                                                  \\
+		                                 & =\Id[G].
+		(\epsilon\whi F)\cmp(F\whi\eta)  & = (\xi\whi F)\cmp\underline{(F\whi\eta^{-1}\whi GF)\cmp(FG\whi \xi^{-1}\whi F)}\cmp(F\whi\eta) \\
+		                                 & = \underline{(\xi\whi F)\cmp(\xi^{-1}\whi F)}\cmp(F\whi\eta^{-1})\cmp(F\whi\eta)               \\
+		                                 & = \underline{(F\whi\eta^{-1})\cmp(F\whi\eta)}                                                  \\
+		                                 & = \Id[F].
 	\end{align*}
 	Questo conclude la dimostrazione.
 \end{proof}
