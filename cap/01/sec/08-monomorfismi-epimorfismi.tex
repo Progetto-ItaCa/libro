@@ -535,7 +535,7 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 		      \[\mathcal{P}(FX) \Rightarrow \mathcal{P}(X) \quad \text{oppure} \quad
 			      \mathcal{P}(Ff) \Rightarrow \mathcal{P}(f) \]
 	\end{itemize}
-	Un funtore preserva (per definizione) le proprietà
+	\`E chiaro come estendere questa definizione a una proprietà che dipenda da una famiglia di oggetti $X_i$ o di frecce $f_i : X_i\to Y_i$. Un funtore preserva (per definizione) le proprietà
 	\begin{itemize}
 		\item \(\mathcal P_\cmp(f,g,h) := (g\cmp f = h)\);
 		\item \(\mathcal P_1(f) := (f = \id_X)\).
@@ -546,18 +546,25 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 
 	Molte proprietà sono \emph{riflesse} dai funtori pienamente fedeli: per esempio,
 	\begin{itemize}
-		\item la proprietà \(\mathcal P_\cong(f) := (f \text{ è un isomorfismo})\);
+		\item la proprietà \(\mathcal P_\cong(f) := (f \text{ è un isomorfismo})\) (un funtore che riflette gli isomorfismi viene spesso chiamato \emph{conservativo});
 		\item la proprietà \(\mathcal P_e(f) := (f \text{ è un epi spezzante})\);
 		\item la proprietà \(\mathcal P_m(f) := (f \text{ è un mono spezzante})\).
 	\end{itemize}
-	Ogni funtore fedele \(F : \ctC\fun\ctD\) riflette la proprietà `\(f\) è un monomorfismo' (diciamo che \(F\) \emph{riflette i monomorfismi}) e gli epimorfismi (ma ci sono funtori fedeli che non preservano gli epimorfismi). I funtori della forma
+	Ogni funtore fedele \(F : \ctC\fun\ctD\) riflette la proprietà `\(f\) è un monomorfismo' (diciamo che \(F\) \emph{riflette i monomorfismi}) e gli epimorfismi (ma ci sono funtori fedeli che non \emph{preservano} gli epimorfismi). I funtori della forma
 	\[\dmFun{U}{\ctMod(\Omega,a)}{\ctSet}\]
-	che danno il supporto di una struttura algebrica fissata da una segnatura \((\Omega,a)\) come in \ref{}, (sono fedeli, e in più) riflettono gli isomorfismi.
+	che danno il supporto di una struttura algebrica fissata da una segnatura \((\Omega,a)\) come in \ref{ex_cat_sigma_strutture}, (sono fedeli, e in più) riflettono gli isomorfismi.
 \end{proposition}
+Una proprietà niente affatto banale dei funtori conservativi è che ogni categoria ne ammette almeno uno verso la categoria $\ctSet$ di insiemi e funzioni; questo rende l'isomorfismo in $\ctC$ `testabile' al livello di certe funzioni associate, ma l'interesse concreto per questa (seppur elegante) costruzione dovuta a Freyd \cite{fconc} è praticamente nullo.
+\begin{theorem}
+	Sia $\ctC$ una categoria (localmente piccola); allora, esiste un funtore conservativo $Q : \ctC\fun\ctSet$.
+\end{theorem}
+\begin{proof}
+	\Todo{}
+\end{proof}
 \begin{definition}[Isomorfismo di categorie]\label{fun_isocat}\index{Categoria!isomorfismo di ---e}\index{Isomorfismo!--- di categorie}\index{Isomorfismo}
 	Un isomorfismo di categorie \(\ctC\cong\ctD\) consiste di una coppia di funtori
 	\[\xymatrix{
-			\ctC \ar[r]^-F & \ctD & \ctD \ar[r]^-G & \ctC
+			\ctC \ar[r]^-F & \ctD, & \ctD \ar[r]^-G & \ctC
 		}\]
 	tali che \(F\cmp G = \Id[\ctD]\) e \(G\cmp F = \Id[\ctC]\).
 
