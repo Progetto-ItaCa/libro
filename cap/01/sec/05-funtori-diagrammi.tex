@@ -228,7 +228,7 @@ La teoria degli endofuntori su una categoria è molto vasta per diversi motivi: 
 				      FA \ar[r]^{Fu}\ar[d]_a & FB \ar[d]^b\\
 				      A \ar[r]_-u & B
 			      }\]
-		      sia commutativo.
+		      sia commutativo. La composizione si fa come in $\ctC$.
 	\end{itemize}
 	Dualmente, la categoria delle \emph{coalgebre per \(F\)}, o brevemente delle \emph{\(F\)-coalgebre}, ha
 	\begin{itemize}
@@ -238,20 +238,30 @@ La teoria degli endofuntori su una categoria è molto vasta per diversi motivi: 
 				      A \ar[d]_a\ar[r]^-u & B\ar[d]^b\\
 				      FA \ar[r]_{Fu} & FB
 			      }\]
-		      sia commutativo.
+		      sia commutativo. La composizione si fa come in $\ctC$.
 	\end{itemize}
 \end{definition}
 \begin{examples}
 	Raccogliamo alcuni esempi di endofuntori interessanti sulla categoria degli insiemi: spesso un funtore dalla forma molto semplice ha una interessante categoria delle co/algebre. 
 	\begin{itemize}
-		\item L'endofuntore $M : \ctSet\fun\ctSet$ che, sugli oggetti, assegna ad $A$ l'insieme `successore' $\{\bullet\}+A$, dove $\bullet\notin A$ così che l'unione sia disgiunta, e sui morfismi agisce concordemente: ad $f : A\to B$ corrisponde la funzione
+		\item Consideriamo l'endofuntore $M : \ctSet\fun\ctSet$ che, sugli oggetti, assegna ad $A$ l'insieme `successore' $\{\bullet\}+A$, dove $\bullet\notin A$ così che l'unione sia disgiunta, e sui morfismi agisce concordemente: ad $f : A\to B$ corrisponde la funzione
 		\[\xymatrix@R=0mm{
 			1+A \ar[r] & 1+B \\
 			\bullet \ar@{|->}[r] & \bullet \\ 
 			a \ar@{|->}[r] & f(a)
 		}\]
-		\item \Todo{}
-		\item \Todo{}
+		Una $M$-algebra consiste di un insieme $A$ e una funzione $a : 1+A\to A$; evidentemente, $a(\bullet)$ sceglie un elemento di $A$, e $a|_A : A\to A$ è una generica endofunzione, cosicché la categoria delle $M$-algebre si identifica alla categoria dei sistemi dinamici di \ref{}. Anche una $M$-coalgebra è un oggetto interessante: è una funzione $f : A\to 1+A$, che assegna a certi elementi di $A$ il valore $\bullet$; se interpretiamo $f$ come un algoritmo e $f(a_\times)=\bullet$ come `$f$ ha fallito nel dare un output, a partire da un input $a_\times$' (per esempio perché $f$ non è definita su $a_\times$), questo determina una funzione parziale nel senso di \ref{ex_cat_pfun}. Le $M$-coalgebre si identificano quindi alla categoria $\pSet$.
+		\item Consideriamo l'endofuntore $\ctP_\bbN:=\ctP(\bbN\times\blank):\ctSet\fun\ctSet$ che manda un insieme $X$ nell'insieme dei sottoinsiemi di $\bbN\times X$, dove $\bbN$ è l'insieme dei numeri naturali.
+		
+		Una $\ctP_\bbN$-coalgebra è una funzione $\theta : X\to \ctP_\bbN X$, che si identifica a un sottoinsieme $T$ di $X\times\bbN\times X$ (grazie a \ref{}), e che può venire rappresentato come un \emph{sistema di transizione} indicizzato sui numeri naturali: se denotiamo una terna $(x,a,y)\in T$ come `$x\xto ay$', e diciamo che $(x,a,y)\in T$ se `dallo stato $x$, una transizione di nome $a$ porta allo stato $y$', allora $\theta(x) = \{(a,y)\mid x\xto ay\}$ è l'insieme degli stati raggiungibili a partire da $x$. I sistemi di transizione sono un vasto capitolo dell'informatica teorica che si approvigiona continuamente alla teoria delle categorie per i suoi risultati; si veda \cite{alcune,ref_standard,tipo_jacobs}.
+		
+		Si noti che il funtore $\ctP_\bbN$ è puntato da una trasformazione naturale $\eta$ con componenti $\eta_X : X\to \ctP(\bbN\times X)$, definite da $x\mapsto\{(0,x)\}$. \`E allora naturale considerare le $\ctP_\bbN$-algebre \emph{puntate}, ma descriverle esplicitamente è complicato: se $U\subseteq \bbN\times X$ e $(x,n)\in U$ diciamo che $x$ ha peso $n$; una funzione $\alpha : \ctP_\bbN X\to X$ consiste di una funzione che ad ogni sottoinsieme di $\bbN\times X$ associa un elemento di $X$ che può essere pensato come \Todo{}
+		\item Consideriamo l'endofuntore $S=1+(A\times\blank):\ctSet\fun\ctSet$ che, fissato un insieme $A$ manda $X$ in $1+(A\times X)$.
+
+		Una $S$-coalgebra consiste di una funzione $\sigma : X\to 1+(A\times X)$ che ad ogni elemento di $X$ associa o l'unico elemento di $1=\{\bullet\}$ (in tal caso diciamo che $\sigma$ termina in $x$), o una coppia $(a,x')$, che va ancora interpretata come una transizione $x\xto ax'$.
+
+		Una $S$-algebra, invece, consiste di una funzione $\xi : 1+(A\times X)\to X$ che sceglie un elemento $\xi(\bullet)=x_0\in X$, e tale che $\xi|_{A\times X}\to A\times X\to X$ sia un \emph{semiautoma deterministico} (con stato iniziale $x_0$): l'insieme $A^*$ delle liste di elementi di $A$ agisce su $X$ definendo per induzione
+		\[\bar\xi(\emptyList,x):=x \qquad \bar\xi(a\cons as,x) := \xi(a, \bar\xi(as,x))\]
 	\end{itemize}
 \end{examples}
 \begin{definition}[Bifuntore]\label{def_bifuntore}\index{Bifuntore}\index{Funtore!bi---}

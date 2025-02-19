@@ -419,7 +419,7 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 		\item Se \(f = m \cmp p\), allora \(f\cmp g = m\cmp q\) per \(q = p\cmp g\), cosicché \(m\) deve essere un isomorfismo.
 		\item Se una freccia \(f : X\to Y\) è epi estremale e mono, \(f\) definisce un sottoggetto di \(Y\), che non può essere non banale.
 		\item Se \(f\) è un epimorfismo di una categoria bilanciata \(\ctC\), e \(f\) si decompone come \(m\cmp p\), per \ref{pem_3} in \ref{canc_monoepi} \(m\) deve essere un epi; allora, \(m\) è un isomorfismo.
-		\item Se \(g\) ha una inversa destra \(s\) e \(f\cmp g = m\cmp p\), allora \(f = m\cmp p\cmp s\), quindi \(m\) è un isomorfismo.
+		\item Se \(g\) ha una inversa destra \(s\) e \(f\cmp g = m\cmp p\), allora \(f = m\cmp p\cmp s\), quindi \(m\) è un isomorfismo.\qedhere
 	\end{enumtag}
 \end{proof}
 \begin{remark}
@@ -436,8 +436,6 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 		      Nell'altra direzione, se \(f : R\to S\) dà una funzione di insiemi \(Uf : UR\to US\) suriettiva, e supponiamo che \(f = m\cmp p\) sia una fattorizzazione con \(m\) mono, allora \(Um\cmp Up\) è una fattorizzazione di \(Uf\) con \(Um\) mono (\ref{eserva_riflette}); del resto gli epi in \(\ctSet\) sono tutti estremali, cosicché \(Um\) deve essere un isomorfismo; ma \(U\) riflette gli isomorfismi (\ref{}), cosicché è \(m\) che deve essere un isomorfismo.
 
 		      Si noti che l'epimorfismo \(\bbZ\to\bbQ\) non è estremale, perché fattorizza su ciascuna localizzazione di \(\bbZ\) a un primo (per esempio, \(\bbZ \to \bbZ[\frac 12]\mono \bbQ\)).
-		\item
-		\item
 	\end{itemize}
 \end{remark}
 \begin{remark}[Composizione di epi estremali]\label{compo_estremali}
@@ -605,7 +603,7 @@ Sorprendentemente, la nozione di equivalenza di categorie non è più debole del
 \end{lemma}
 \begin{proof}
 	Data un'equivalenza di categorie \(\ctC\simeq\ctD : (F,G,\eta,\epsilon)\) come in \ref{}, definiamo a partire da \(\xi : FG\nat \Id[\ctD]\) una trasformazione naturale
-	\[\xymatrix{
+	\[\xymatrix@C=2cm{
 		\epsilon : FG \ar@{=>}[r]^-{FG\whi \xi^{-1}} & FGFG \ar@{=>}[r]^-{F\whi\eta^{-1}\whi G} & FG \ar@{=>}[r]^-\xi & \Id[\ctD]
 		}\]
 	per composizione verticale. Dobbiamo ora dimostrare che \(\eta,\epsilon\) soddisfano le due identità di \ref{}. Per farlo, ragioniamo equazionalmente e troviamo che la naturalità di \(\eta\) in \(\xi\) implica che
@@ -703,7 +701,7 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 	Diciamo che \(F : \ctC\fun\ctD\) è \emph{finale} se il funtore opposto \(F^\op : \ctC^\op\fun\ctD^\op\) (come in \ref{es_di_funtori}) è iniziale.
 \end{definition}
 \begin{remark}[Condizione di Ore]\label{condizione_ore}\index{Funtore!condizione di Ore per un ---}\index{Funtore!--- iniziale}
-	Una condizione più forte dell'inizialità, molto comune e più facile da verificare, è la \emph{condizione di Ore}: \(F : \ctC\fun\ctD\) lasoddisfa se
+	Una condizione più forte dell'inizialità, molto comune e più facile da verificare, è la \emph{condizione di Ore}: \(F : \ctC\fun\ctD\) la soddisfa se
 	\begin{itemize}
 		\item per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom\ctD(D,FX)\) è non vuoto;
 		\item per ogni \(D\) e ogni \(u : D\to FX\), \(v : D\to FY\) esiste un modo di `completare il quadrato'
@@ -725,12 +723,95 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 		      }\]
 \end{itemize}
 \begin{hTheorem}[Inizialità degli ordinali tra i diagrammi filtrati]{skip}\index{Funtore!--- iniziale}
-	Per ogni categoria \(\ctD\) (piccola e) filtrata nel senso di \ref{def_cat_filtrata}, esiste un funtore iniziale \(K : P_\ctD\fun\ctD\), di dominio un preordine (si veda \ref{ex_cat_ordini}) diretto (si veda \ref{contro_esempi_filt}).
+	Per ogni categoria \(\ctJ\) (piccola e) filtrata nel senso di \ref{def_cat_filtrata}, esiste un funtore iniziale \(K : P_\ctJ\fun\ctJ\), di dominio un preordine (si veda \ref{ex_cat_ordini}) diretto (si veda \ref{contro_esempi_filt}).
 \end{hTheorem}
 \begin{proof}
-	\Todo{}
-\end{proof}
+	Grazie a \ref{}, sappiamo che ogni sottocategoria finita $\ctF\subseteq\ctJ$ ammette una estensione a un funtore $\ctF^\rhd\fun\ctJ$; in particolare (si veda \ref{def_cono_su_C}) il vertice del cocono così ottenuto è terminale in $\ctF$. Ora, il poset $P_\ctJ = (\{\ctF_\alpha\},\subseteq)$ delle sottocategorie finite $\ctF$ di $\ctJ$ (in ciascuna delle quali c'è un oggetto terminale $\infty_\alpha$) è diretto (è sufficiente considerare l'unione di due sottocategorie finite), e possiamo definire un funtore 
+	\[\dmFun{K}{P_\ctJ}{\ctJ}\]
+	ottenuto mandando $\ctF_\alpha$ nell'oggetto terminale $\infty_\alpha$ di $J_\alpha^*$, e una inclusione $\ctF_\alpha\subseteq\ctF_\beta$ nell'ovvia freccia $\infty_\alpha\to\infty_\beta$.
 
+	Questo funtore è iniziale: per ogni oggetto $J\in\ctJ_0$, $K\{J\}=J$, e quindi esiste $\Id[J] : J\to K\{J\}$. Se poi $f : J\to K\ctF_\alpha$ e $g : J\to K\ctF_\beta$, allora definiamo $\ctF_\gamma := \ctF_\alpha\cup\ctF_\beta\cup\{f,g\}$; evidentemente, le inclusioni $\ctF_\alpha,\ctF_\beta\subseteq\ctF_\gamma$ realizzano la seconda condizione di Ore \ref{condizione_ore}.
+\end{proof}
+\Todo{Commentata c'è una figura che spiega la situazione}
+% \begin{figure}[h]
+% 	\begin{center}
+% 		\begin{tikzpicture}[
+% 			x=2em, y=2em,
+% 			dot/.style={
+% 					circle,
+% 					fill=#1,
+% 					inner sep=0pt,
+% 					outer sep=2pt,
+% 					minimum size=4pt,
+% 					draw=none,
+% 				},
+% 			wrap/.style={
+% 					fill=black!5,
+% 					rounded corners,
+% 					inner sep=.5em,
+% 				},
+% 		]
+
+% 		\def\sizeX{5}
+% 		\def\seedX{1}
+
+% 						\GimmeBounds{\seedX}{\sizeX}
+% 			\let\xminC\xmin\let\xmidC\xmid\let\xmaxC\xmax
+% 			\let\yminC\ymin\let\ymidC\ymid\let\ymaxC\ymax
+
+% 			\pgfmathsetseed{\seedX}
+% 					\pgfmathsetmacro{\dx}{(rnd-\xmidC)/(\xmaxC-\xminC)}
+% 					\pgfmathsetmacro{\dy}{(rnd-\ymidC)/(\ymaxC-\yminC)}
+
+% 					\GimmeBounds{4}{4}
+% 					\pgfmathsetseed{12}
+% 					\foreach \i in {1,...,4} {
+% 							\pgfmathsetmacro{\x}{\dx + 2*(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+% 							\pgfmathsetmacro{\y}{\dy + 2*(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+% 							\path node[dot=black] (J\i) at (\x,\y) {};
+% 							}
+% 							\path node[dot=ibmOrange] (Jinfty) at (3,-.5) {};
+% 					\foreach \i in {1,...,4} {
+% 							\draw[-latex] (J\i) -- (Jinfty);
+% 							}
+% 							\begin{scope}[yshift=-2cm]
+% 										\def\sizeX{5}
+% 		\def\seedX{1}
+
+% 						\GimmeBounds{\seedX}{\sizeX}
+% 			\let\xminC\xmin\let\xmidC\xmid\let\xmaxC\xmax
+% 			\let\yminC\ymin\let\ymidC\ymid\let\ymaxC\ymax
+
+% 			\pgfmathsetseed{\seedX}
+% 					\pgfmathsetmacro{\dx}{(rnd-\xmidC)/(\xmaxC-\xminC)}
+% 					\pgfmathsetmacro{\dy}{(rnd-\ymidC)/(\ymaxC-\yminC)}
+
+% 					\GimmeBounds{4}{6}
+% 					\pgfmathsetseed{12}
+% 					\foreach \i in {1,...,4} {
+% 							\pgfmathsetmacro{\x}{\dx + 2*(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+% 							\pgfmathsetmacro{\y}{\dy + 2*(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+% 							\path node[dot=black] (J\i') at (\x,\y) {};
+% 							}
+% 			\foreach \i in {5,...,8} {
+% 							\pgfmathsetmacro{\x}{\dx + 2*(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+% 							\pgfmathsetmacro{\y}{\dy + 2*(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+% 							\path node[dot=gray] (J\i') at (\x,\y) {};
+% 							}
+% 							\path node[dot=ibmBlue] (Jinfty') at (3,-.5) {};
+							
+% 					\foreach \i in {1,...,8} {
+% 							\draw[-latex] (J\i') -- (Jinfty');
+% 							}
+% 							\end{scope}
+% 							\draw[-latex] (Jinfty) -- (Jinfty');
+% 			\begin{scope}[on background layer]
+% 				\path node[wrap, draw=gray, inner sep=2em, fit=(J1)(J4)] (D) {};
+% 				\path node[wrap, draw=gray, inner sep=2em, fit=(J1')(J4')] (C) {};
+% 			\end{scope}
+% 	\end{tikzpicture}
+% 	\end{center}
+% \end{figure}
 \begin{esercizi}
 	\item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
 	\item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
