@@ -1,0 +1,92 @@
+\documentclass[ paper=a4
+              % , pagesize
+              , fontsize=12pt
+              , twoside=true
+              , bibliography=totoc
+              , index=totoc
+              , version=last
+              ]{scrbook}
+\usepackage[all,2cell]{xy}\UseAllTwocells
+\usepackage{itaca}
+\usepackage{quiver}
+
+\recalctypearea
+\makeindex
+%%% debug area
+\tracinglostchars=3  % Increase verbosity
+\errorcontextlines=10 % Show more context around errors
+%%%
+
+\begin{document}
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[
+  x=4em, y=4em,
+  dot/.style={
+    circle,
+    fill=#1,
+    inner sep=0pt,
+    outer sep=2pt,
+    minimum size=4pt,
+    draw=none,
+    },
+  wrap/.style={
+    fill=black!5,
+    draw=gray,
+    rounded corners,
+    inner sep=.5em,
+    },
+]
+
+  \def\seedX{4}
+  \def\sizeX{5}
+  \pgfmathsetseed{\seedX}
+  \GimmeBounds{\seedX}{\sizeX}
+
+  \begin{scope}[local bounding box=UP]
+    \pgfmathsetseed{\seedX}
+    \foreach \i in {1,...,3} {
+      \pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+      \pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+      \path node[dot=black] (J\i) at (\x,\y) {};
+      }
+    \foreach \i in {4,...,5} {
+      \pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+      \pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+      \path node[dot=black!5] (J\i) at (\x,\y) {};
+    }
+
+    \path node[dot=ibmOrange] (Jinfty) at (-0.3,-0.3) {};
+  \end{scope}
+
+  \begin{scope}[yshift=-6em, local bounding box=DN]
+    \pgfmathsetseed{\seedX}
+    \foreach \i in {1,...,3} {
+      \pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+      \pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+      \path node[dot=black] (J\i') at (\x,\y) {};
+      }
+    \foreach \i in {4,...,5} {
+      \pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+      \pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+      \path node[dot=gray] (J\i') at (\x,\y) {};
+    }
+
+    \path node[dot=ibmBlue] (Jinfty') at (0.1,0.1) {};
+  \end{scope}
+
+  \foreach \i in {1,...,3} \draw[-Latex] (J\i) -- (Jinfty);
+  \foreach \i in {1,...,5} \draw[-Latex] (J\i') -- (Jinfty');
+  \draw[-Latex] (Jinfty) -- (Jinfty');
+
+  \begin{scope}[on background layer]
+    \path node[wrap, fit=(UP)] (D) {};
+    \path node[wrap, fit=(DN)] (C) {};
+  \end{scope}
+\end{tikzpicture}
+\caption{TODO}
+\label{fig_TODO}
+\end{center}
+\end{figure}
+\end{document}
+
