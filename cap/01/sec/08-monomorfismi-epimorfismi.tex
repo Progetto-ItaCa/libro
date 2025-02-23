@@ -742,86 +742,78 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 
 	Questo funtore è iniziale: per ogni oggetto $J\in\ctJ_0$, $K\{J\}=J$, e quindi esiste $\Id[J] : J\to K\{J\}$. Se poi $f : J\to K\ctF_\alpha$ e $g : J\to K\ctF_\beta$, allora definiamo $\ctF_\gamma := \ctF_\alpha\cup\ctF_\beta\cup\{f,g\}$; evidentemente, le inclusioni $\ctF_\alpha,\ctF_\beta\subseteq\ctF_\gamma$ realizzano la seconda condizione di Ore \ref{condizione_ore}.
 \end{proof}
-\Todo{Commentata c'è una figura che spiega la situazione}
-% \begin{figure}[h]
-% 	\begin{center}
-% 		\begin{tikzpicture}[
-% 			x=2em, y=2em,
-% 			dot/.style={
-% 					circle,
-% 					fill=#1,
-% 					inner sep=0pt,
-% 					outer sep=2pt,
-% 					minimum size=4pt,
-% 					draw=none,
-% 				},
-% 			wrap/.style={
-% 					fill=black!5,
-% 					rounded corners,
-% 					inner sep=.5em,
-% 				},
-% 		]
-
-% 		\def\sizeX{5}
-% 		\def\seedX{1}
-
-% 						\GimmeBounds{\seedX}{\sizeX}
-% 			\let\xminC\xmin\let\xmidC\xmid\let\xmaxC\xmax
-% 			\let\yminC\ymin\let\ymidC\ymid\let\ymaxC\ymax
-
-% 			\pgfmathsetseed{\seedX}
-% 					\pgfmathsetmacro{\dx}{(rnd-\xmidC)/(\xmaxC-\xminC)}
-% 					\pgfmathsetmacro{\dy}{(rnd-\ymidC)/(\ymaxC-\yminC)}
-
-% 					\GimmeBounds{4}{4}
-% 					\pgfmathsetseed{12}
-% 					\foreach \i in {1,...,4} {
-% 							\pgfmathsetmacro{\x}{\dx + 2*(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
-% 							\pgfmathsetmacro{\y}{\dy + 2*(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
-% 							\path node[dot=black] (J\i) at (\x,\y) {};
-% 							}
-% 							\path node[dot=ibmOrange] (Jinfty) at (3,-.5) {};
-% 					\foreach \i in {1,...,4} {
-% 							\draw[-latex] (J\i) -- (Jinfty);
-% 							}
-% 							\begin{scope}[yshift=-2cm]
-% 										\def\sizeX{5}
-% 		\def\seedX{1}
-
-% 						\GimmeBounds{\seedX}{\sizeX}
-% 			\let\xminC\xmin\let\xmidC\xmid\let\xmaxC\xmax
-% 			\let\yminC\ymin\let\ymidC\ymid\let\ymaxC\ymax
-
-% 			\pgfmathsetseed{\seedX}
-% 					\pgfmathsetmacro{\dx}{(rnd-\xmidC)/(\xmaxC-\xminC)}
-% 					\pgfmathsetmacro{\dy}{(rnd-\ymidC)/(\ymaxC-\yminC)}
-
-% 					\GimmeBounds{4}{6}
-% 					\pgfmathsetseed{12}
-% 					\foreach \i in {1,...,4} {
-% 							\pgfmathsetmacro{\x}{\dx + 2*(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
-% 							\pgfmathsetmacro{\y}{\dy + 2*(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
-% 							\path node[dot=black] (J\i') at (\x,\y) {};
-% 							}
-% 			\foreach \i in {5,...,8} {
-% 							\pgfmathsetmacro{\x}{\dx + 2*(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
-% 							\pgfmathsetmacro{\y}{\dy + 2*(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
-% 							\path node[dot=gray] (J\i') at (\x,\y) {};
-% 							}
-% 							\path node[dot=ibmBlue] (Jinfty') at (3,-.5) {};
-							
-% 					\foreach \i in {1,...,8} {
-% 							\draw[-latex] (J\i') -- (Jinfty');
-% 							}
-% 							\end{scope}
-% 							\draw[-latex] (Jinfty) -- (Jinfty');
-% 			\begin{scope}[on background layer]
-% 				\path node[wrap, draw=gray, inner sep=2em, fit=(J1)(J4)] (D) {};
-% 				\path node[wrap, draw=gray, inner sep=2em, fit=(J1')(J4')] (C) {};
-% 			\end{scope}
-% 	\end{tikzpicture}
-% 	\end{center}
-% \end{figure}
+\begin{figure}
+	\begin{center}
+	\begin{tikzpicture}[
+			x=4em, y=4em,
+			dot/.style={
+					circle,
+					fill=#1,
+					inner sep=0pt,
+					outer sep=2pt,
+					minimum size=4pt,
+					draw=none,
+					},
+			wrap/.style={
+					fill=black!5,
+					draw=gray,
+					rounded corners,
+					inner sep=.5em,
+					},
+	]
+	
+			\def\seedX{4}
+			\def\sizeX{5}
+			\pgfmathsetseed{\seedX}
+			\GimmeBounds{\seedX}{\sizeX}
+	
+			\begin{scope}[local bounding box=UP]
+					\pgfmathsetseed{\seedX}
+					\foreach \i in {1,...,3} {
+							\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+							\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+							\path node[dot=black] (J\i) at (\x,\y) {};
+							}
+					\foreach \i in {4,...,5} {
+							\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+							\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+							\path node[dot=black!5] (J\i) at (\x,\y) {};
+					}
+	
+					\path node[dot=ibmOrange] (Jinfty) at (-0.3,-0.3) {};
+			\end{scope}
+	
+			\begin{scope}[yshift=-6em, local bounding box=DN]
+					\pgfmathsetseed{\seedX}
+					\foreach \i in {1,...,3} {
+							\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+							\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+							\path node[dot=black] (J\i') at (\x,\y) {};
+							}
+					\foreach \i in {4,...,5} {
+							\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+							\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+							\path node[dot=gray] (J\i') at (\x,\y) {};
+					}
+	
+					\path node[dot=ibmBlue] (Jinfty') at (0.1,0.1) {};
+			\end{scope}
+	
+			\foreach \i in {1,...,3} \draw[-Latex] (J\i) -- (Jinfty);
+			\foreach \i in {1,...,5} \draw[-Latex] (J\i') -- (Jinfty');
+			\draw[-Latex] (Jinfty) -- (Jinfty');
+	
+			\begin{scope}[on background layer]
+					\path node[wrap, fit=(UP)] (D) {};
+					\path node[wrap, fit=(DN)] (C) {};
+					\node[left=.5em of D] {$\ctI'$};
+					\node[left=.5em of C] {$\ctI''$};
+			\end{scope}
+	\end{tikzpicture}
+	\caption{Costruzione di un funtore iniziale verso una categoria filtrata $\ctJ$; $\orangeDot$ è il vertice di un cocono nella categoria $\ctI'$, $\blueDot$ nella categoria $\ctI''$, e questa proprietà }
+	\label{fig_TODO}
+	\end{center}
+	\end{figure}
 \begin{esercizi}
 	\item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
 	\item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
