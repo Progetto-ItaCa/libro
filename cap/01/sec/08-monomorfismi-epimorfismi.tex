@@ -489,11 +489,31 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 	\end{itemize}
 \end{remark}
 \begin{definition}[Monomorfismo ed epimorfismo forte]
-	\Todo{}
+	Sia \(\ctC\) una categoria;
+	\begin{itemize}
+		\item un \emph{epimorfismo forte} è un epimorfismo \(p : E\epi B\) con la proprietà seguente:
+		      \begin{quote}
+			      Per ogni quadrato commutativo
+			      \[\xymatrix{
+					      E \ar[r]^u\ar[d]_p & A\ar[d]^m\\
+					      B \ar[r]_v \ar@{.>}[ur]_a & X
+				      }\]
+			      dove \(m : A\mono X\) è un mono in \(\ctC\), esiste un unica freccia \(a : B\to A\) tale che \(a\cmp p=u\) e \(m\cmp a =v\).
+		      \end{quote}
+		\item un \emph{monomorfismo forte} è un monomorfismo \(m : A\mono X\) con la proprietà seguente:
+		      \begin{quote}
+			      Per ogni quadrato commutativo
+			      \[\xymatrix{
+					      E \ar[r]^u\ar[d]_p & A\ar[d]^m\\
+					      B \ar[r]_v \ar@{.>}[ur]_a & X
+				      }\]
+			      dove \(p : E\epi B\) è un mono in \(\ctC\), esiste un unica freccia \(a : B\to A\) tale che \(a\cmp p=u\) e \(m\cmp a =v\).
+		      \end{quote}
+	\end{itemize}
 \end{definition}
 Raccogliamo alcune proprietà degli epi forti:
 \begin{proposition}
-
+	\Todo{}
 \end{proposition}
 \subsection{Classi di funtori}\label{ssec:classi_di_funtori}
 Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome speciale ai funtori \(F : \ctC\fun\ctD\) tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva:
@@ -535,7 +555,7 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 		      \[\mathcal{P}(FX) \Rightarrow \mathcal{P}(X) \quad \text{oppure} \quad
 			      \mathcal{P}(Ff) \Rightarrow \mathcal{P}(f) \]
 	\end{itemize}
-	\`E chiaro come estendere questa definizione a una proprietà che dipenda da una famiglia di oggetti $X_i$ o di frecce $f_i : X_i\to Y_i$. Un funtore preserva (per definizione) le proprietà
+	\`E chiaro come estendere questa definizione a una proprietà che dipenda da una famiglia di oggetti \(X_i\) o di frecce \(f_i : X_i\to Y_i\). Un funtore preserva (per definizione) le proprietà
 	\begin{itemize}
 		\item \(\mathcal P_\cmp(f,g,h) := (g\cmp f = h)\);
 		\item \(\mathcal P_1(f) := (f = \id_X)\).
@@ -554,14 +574,14 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	\[\dmFun{U}{\ctMod(\Omega,a)}{\ctSet}\]
 	che danno il supporto di una struttura algebrica fissata da una segnatura \((\Omega,a)\) come in \ref{ex_cat_sigma_strutture}, (sono fedeli, e in più) riflettono gli isomorfismi.
 \end{proposition}
-Una proprietà niente affatto banale dei funtori conservativi è che ogni categoria ne ammette almeno uno verso la categoria $\ctSet$ di insiemi e funzioni; questo rende l'isomorfismo in $\ctC$ `testabile' al livello di certe funzioni associate, ma l'interesse concreto per questa (seppur elegante) costruzione dovuta a Freyd \cite{fconc} è praticamente nullo.
+Una proprietà niente affatto banale dei funtori conservativi è che ogni categoria ne ammette almeno uno verso la categoria \(\ctSet\) di insiemi e funzioni; questo rende l'isomorfismo in \(\ctC\) `testabile' al livello di certe funzioni associate, ma l'interesse concreto per questa (seppur elegante) costruzione dovuta a Freyd \cite{fconc} è praticamente nullo.
 \begin{theorem}
-	Sia $\ctC$ una categoria (localmente piccola); allora, esiste un funtore conservativo $Q : \ctC\fun\ctSet$.
+	Sia \(\ctC\) una categoria (localmente piccola); allora, esiste un funtore conservativo \(Q : \ctC\fun\ctSet\).
 \end{theorem}
 \begin{proof}
-	Per ogni oggetto $A\in\ctC_0$ definiamo una relazione di equivalenza sulla classe $\sum_C\ctC(C,A)$, imponendo che $(f : C\to A)\asymp(f' : C\to A)$ ogni volta che per ogni $g :A\to B$, la composizione $g\cmp f$ è un isomorfismo se e solo se la composizione $g\cmp f'$ è un isomorfismo.
+	Per ogni oggetto \(A\in\ctC_0\) definiamo una relazione di equivalenza sulla classe \(\sum_C\ctC(C,A)\), imponendo che \((f : C\to A)\asymp(f' : C\to A)\) ogni volta che per ogni \(g :A\to B\), la composizione \(g\cmp f\) è un isomorfismo se e solo se la composizione \(g\cmp f'\) è un isomorfismo.
 
-	Si osservi che $f\asymp f'$ ogni volta che $f,f'$ non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle $g$ tali che $g\cmp f$ o $g\cmp f'$ è invertibile è vuota); si osservi anche che se $f\asymp f'$ e $f$ è uno split mono, allora lo è anche $f'$.
+	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è uno split mono, allora lo è anche \(f'\).
 	\Todo{}
 \end{proof}
 \begin{definition}[Isomorfismo di categorie]\label{fun_isocat}\index{Categoria!isomorfismo di ---e}\index{Isomorfismo!--- di categorie}\index{Isomorfismo}
@@ -622,7 +642,7 @@ Sorprendentemente, la nozione di equivalenza di categorie non è più debole del
 		                                 & = (G\whi\xi )\cmp(GF\whi\eta^{-1}\whi G)\cmp(\eta\whi GFG)\cmp(G\whi \xi^{-1})                 \\
 		                                 & = (G\whi\xi )\cmp\underline{(\eta\whi G)\cmp(\eta^{-1}\whi G)}\cmp(G\whi \xi^{-1})             \\
 		                                 & = \underline{(G\whi\xi )\cmp(G\whi \xi^{-1})}                                                  \\
-		                                 & =\Id[G].\\
+		                                 & =\Id[G].                                                                                       \\
 		(\epsilon\whi F)\cmp(F\whi\eta)  & = (\xi\whi F)\cmp\underline{(F\whi\eta^{-1}\whi GF)\cmp(FG\whi \xi^{-1}\whi F)}\cmp(F\whi\eta) \\
 		                                 & = \underline{(\xi\whi F)\cmp(\xi^{-1}\whi F)}\cmp(F\whi\eta^{-1})\cmp(F\whi\eta)               \\
 		                                 & = \underline{(F\whi\eta^{-1})\cmp(F\whi\eta)}                                                  \\
@@ -736,95 +756,95 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 	Per ogni categoria \(\ctJ\) (piccola e) filtrata nel senso di \ref{def_cat_filtrata}, esiste un funtore iniziale \(K : P_\ctJ\fun\ctJ\), di dominio un preordine (si veda \ref{ex_cat_ordini}) diretto (si veda \ref{contro_esempi_filt}).
 \end{hTheorem}
 \begin{proof}
-	Grazie a \ref{}, sappiamo che ogni sottocategoria finita $\ctF\subseteq\ctJ$ ammette una estensione a un funtore $\ctF^\rhd\fun\ctJ$; in particolare (si veda \ref{def_cono_su_C}) il vertice del cocono così ottenuto è terminale in $\ctF$. Ora, il poset $P_\ctJ = (\{\ctF_\alpha\},\subseteq)$ delle sottocategorie finite $\ctF$ di $\ctJ$ (in ciascuna delle quali c'è un oggetto terminale $\infty_\alpha$) è diretto (è sufficiente considerare l'unione di due sottocategorie finite), e possiamo definire un funtore 
+	Grazie a \ref{}, sappiamo che ogni sottocategoria finita \(\ctF\subseteq\ctJ\) ammette una estensione a un funtore \(\ctF^\rhd\fun\ctJ\); in particolare (si veda \ref{def_cono_su_C}) il vertice del cocono così ottenuto è terminale in \(\ctF\). Ora, il poset \(P_\ctJ = (\{\ctF_\alpha\},\subseteq)\) delle sottocategorie finite \(\ctF\) di \(\ctJ\) (in ciascuna delle quali c'è un oggetto terminale \(\infty_\alpha\)) è diretto (è sufficiente considerare l'unione di due sottocategorie finite), e possiamo definire un funtore
 	\[\dmFun{K}{P_\ctJ}{\ctJ}\]
-	ottenuto mandando $\ctF_\alpha$ nell'oggetto terminale $\infty_\alpha$ di $J_\alpha^*$, e una inclusione $\ctF_\alpha\subseteq\ctF_\beta$ nell'ovvia freccia $\infty_\alpha\to\infty_\beta$.
+	ottenuto mandando \(\ctF_\alpha\) nell'oggetto terminale \(\infty_\alpha\) di \(J_\alpha^*\), e una inclusione \(\ctF_\alpha\subseteq\ctF_\beta\) nell'ovvia freccia \(\infty_\alpha\to\infty_\beta\).
 
-	Questo funtore è iniziale: per ogni oggetto $J\in\ctJ_0$, $K\{J\}=J$, e quindi esiste $\Id[J] : J\to K\{J\}$. Se poi $f : J\to K\ctF_\alpha$ e $g : J\to K\ctF_\beta$, allora definiamo $\ctF_\gamma := \ctF_\alpha\cup\ctF_\beta\cup\{f,g\}$; evidentemente, le inclusioni $\ctF_\alpha,\ctF_\beta\subseteq\ctF_\gamma$ realizzano la seconda condizione di Ore \ref{condizione_ore}.
+	Questo funtore è iniziale: per ogni oggetto \(J\in\ctJ_0\), \(K\{J\}=J\), e quindi esiste \(\Id[J] : J\to K\{J\}\). Se poi \(f : J\to K\ctF_\alpha\) e \(g : J\to K\ctF_\beta\), allora definiamo \(\ctF_\gamma := \ctF_\alpha\cup\ctF_\beta\cup\{f,g\}\); evidentemente, le inclusioni \(\ctF_\alpha,\ctF_\beta\subseteq\ctF_\gamma\) realizzano la seconda condizione di Ore \ref{condizione_ore}.
 \end{proof}
 \begin{figure}
 	\begin{center}
 		\begin{tikzpicture}[
-			x=4em, y=4em,
-			dot/.style={
-					circle,
-					fill=#1,
-					inner sep=0pt,
-					outer sep=2pt,
-					minimum size=4pt,
-					draw=none,
+				x=4em, y=4em,
+				dot/.style={
+						circle,
+						fill=#1,
+						inner sep=0pt,
+						outer sep=2pt,
+						minimum size=4pt,
+						draw=none,
 					},
-			wrap/.style={
-					fill=black!5,
-					draw=gray,
-					rounded corners,
-					inner sep=.5em,
+				wrap/.style={
+						fill=black!5,
+						draw=gray,
+						rounded corners,
+						inner sep=.5em,
 					},
-	]
-	
+			]
+
 			\def\seedX{4}
 			\def\sizeX{5}
 			\pgfmathsetseed{\seedX}
 			\GimmeBounds{\seedX}{\sizeX}
-	
+
 			\begin{scope}[local bounding box=UP]
-					\pgfmathsetseed{\seedX}
-					\foreach \i in {1,...,3} {
-							\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
-							\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
-							\path node[dot=black] (J\i) at (\x,\y) {};
-							}
-					\foreach \i in {4,...,5} {
-							\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
-							\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
-							\path node[dot=black!5] (J\i) at (\x,\y) {};
+				\pgfmathsetseed{\seedX}
+				\foreach \i in {1,...,3} {
+						\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+						\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+						\path node[dot=black] (J\i) at (\x,\y) {};
 					}
-	
-					\path node[dot=ibmOrange] (Jinfty) at (-0.3,-0.3) {};
+				\foreach \i in {4,...,5} {
+						\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+						\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+						\path node[dot=black!5] (J\i) at (\x,\y) {};
+					}
+
+				\path node[dot=ibmOrange] (Jinfty) at (-0.3,-0.3) {};
 			\end{scope}
-	
+
 			\begin{scope}[yshift=-6em, local bounding box=DN]
-					\pgfmathsetseed{\seedX}
-					\foreach \i in {1,...,3} {
-							\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
-							\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
-							\path node[dot=black] (J\i') at (\x,\y) {};
-							}
-					\foreach \i in {4,...,5} {
-							\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
-							\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
-							\path node[dot=gray] (J\i') at (\x,\y) {};
+				\pgfmathsetseed{\seedX}
+				\foreach \i in {1,...,3} {
+						\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+						\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+						\path node[dot=black] (J\i') at (\x,\y) {};
 					}
-	
-					\path node[dot=ibmBlue] (Jinfty') at (0.1,0.1) {};
+				\foreach \i in {4,...,5} {
+						\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+						\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+						\path node[dot=gray] (J\i') at (\x,\y) {};
+					}
+
+				\path node[dot=ibmBlue] (Jinfty') at (0.1,0.1) {};
 			\end{scope}
-	
+
 			\foreach \i in {1,...,3} \draw[-latex, gray] (J\i) -- (Jinfty);
 			\foreach \i in {1,...,5} \draw[-latex, gray] (J\i') -- (Jinfty');
 			\draw[-latex] (Jinfty) -- (Jinfty');
 
-   \begin{scope}[xshift=4cm, local bounding box=JJ]
-    \pgfmathsetseed{\seedX}
-    \foreach \i in {1,...,10} {
-     \pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
-     \pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
-     \path node[dot=gray] (J\i') at (\x,\y) {};
-   }
-   \end{scope}
-   	
+			\begin{scope}[xshift=4cm, local bounding box=JJ]
+				\pgfmathsetseed{\seedX}
+				\foreach \i in {1,...,10} {
+						\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+						\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+						\path node[dot=gray] (J\i') at (\x,\y) {};
+					}
+			\end{scope}
+
 			\begin{scope}[on background layer]
-    \path node[wrap, fit=(UP)] (D) {};
-    \path node[wrap, fit=(DN)] (C) {};
-    \path node[wrap, fit=(JJ)] (ctJ) {};
-    \node[left=.25em of D] {$\ctI'$};
-    \node[left=.25em of C] {$\ctI''$};
-    \node[right=.25em of ctJ] {$\ctJ$};
-  \end{scope}
-	\end{tikzpicture}
-	\caption{Costruzione di un funtore iniziale verso una categoria filtrata $\ctJ$; $\orangeDot$ è il vertice di un cocono nella categoria $\ctI'$, $\blueDot$ nella categoria $\ctI''$, e questa proprietà }
-	\label{fig_TODO}
+				\path node[wrap, fit=(UP)] (D) {};
+				\path node[wrap, fit=(DN)] (C) {};
+				\path node[wrap, fit=(JJ)] (ctJ) {};
+				\node[left=.25em of D] {$\ctI'$};
+				\node[left=.25em of C] {$\ctI''$};
+				\node[right=.25em of ctJ] {$\ctJ$};
+			\end{scope}
+		\end{tikzpicture}
+		\caption{Costruzione di un funtore iniziale verso una categoria filtrata \(\ctJ\); \(\orangeDot\) è il vertice di un cocono nella categoria \(\ctI'\), \(\blueDot\) nella categoria \(\ctI''\), e questa proprietà }
+		\label{fig_TODO}
 	\end{center}
-	\end{figure}
+\end{figure}
 \begin{esercizi}
 	\item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
 	\item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
