@@ -223,7 +223,9 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	\end{itemize}
 \end{example}
 \index{Categoria!--- libera}
-Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di un insieme di vertici (o `oggetti') \(V\) e di un insieme di lati (o `morfismi') \(E\) generi una categoria \(\bfF[\ctG]\). \`E effettivamente così, e la seguente costruzione in forma di esempio formalizza questa idea.
+Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di un insieme di vertici (o `oggetti') \(V\) e di un insieme di lati (o `morfismi') \(E\) generi una categoria \(\bfF[\ctG]\) che può poi essere soggetta a delle relazioni, in modo del tutto analogo in cui un monoide o gruppo $G$ libero su un insieme $S$ di generatori può poi essere quozientato rispetto a un insieme di relazioni $R$, dando una presentazione $G = \langle S\mid R\rangle$. 
+
+\`E effettivamente così, e la seguente costruzione in forma di esempio formalizza l'esistenza di una categoria libera su un multidigrafo $\ctG$.
 \begin{example}\label{ex_cat_libera}\index{Grafo}
 	Un \emph{multidigrafo} consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\rightrightarrows V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}, si veda \ref{ex_cat_grafi}. Dato un multidigrafo \(\ctG\) (spesso chiamato semplicemente \emph{grafo diretto}) possiamo definire la \emph{categoria libera} \(\bfF[\ctG]\) su \(\ctG\) come segue:
 	\begin{itemize}
@@ -240,7 +242,7 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 	\end{itemize}
 	La composizione di due sequenze \((\tup en,)\) da \(x_0\) a \(x_n\) e \((\tup fm,)\) da \(x_n\) a \(x_{n+m}\) è data dalla loro \emph{concatenazione}, ovvero:
 	\[(\tup fm,)\cmp(\tup en,) = (\tup en, , \tup fm,).\]
-	Quando è definita, questa operazione è, evidentemente, associativa, e la sequenza vuota \(\emptyList_u\) soddisfa l'assioma di identità \ref{cp_1} nella \ref{def_categ}.
+	Quando è definita, questa operazione è associativa, e la sequenza vuota \(\emptyList_u\) soddisfa l'assioma di identità \ref{cp_1} nella \ref{def_categ}.
 	\begin{figure}
 		\begin{center}
 			\begin{tikzpicture}
@@ -260,7 +262,7 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 				\node (e\i) at (a\i) {$x_\i$};
 				\foreach \i in {0,...,6}{
 						\edef\ipp{\fpeval{\i + 1}}
-						\draw[->] (e\i) -- (e\ipp);
+						\draw[-latex] (e\i) -- (e\ipp);
 					}
 			\end{tikzpicture}
 		\end{center}
