@@ -478,6 +478,56 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 		\item Per la categoria di \emph{tutti} gli ordinali, anche quello vuoto, si usa la notazione $\bsDelta_+$, che viene chiamata la categoria dei \emph{simplessi aumentati}.
 	\end{itemize}
 \end{remark}
+\begin{figure}[h]
+	\begin{center}
+		\begin{tikzpicture}[
+				x=5em, y=5em,
+				wrap/.style={fill=black!5, rounded corners},
+				edge/.style={-latex},
+			]
+			\begin{scope}[xshift=0em,yshift=0.433*5em]
+				\node (0D0) at (0.0,0) {0};
+			\end{scope}
+			\begin{scope}[xshift=4em,yshift=0.433*5em]
+				\node (1D0) at (0.0,0) {0};
+				\node (1D1) at (1.0,0) {1};
+				\draw[edge, ibmMagenta] (1D0) -- (1D1);
+			\end{scope}
+			\begin{scope}[xshift=13em]
+				\node (2D0) at (0.0,0) {0};
+				\node (2D1) at (1.0,0) {1};
+				\node (2D2) at (0.5,0.866) {2};
+				\draw[edge, ibmMagenta] (2D0) -- (2D1);
+				\draw[edge] (2D0) -- (2D2);
+				\draw[edge, ibmMagenta] (2D1) -- (2D2);
+			\end{scope}
+			\begin{scope}[xshift=22em]
+				\node (3D0) at (0.0,0) {0};
+				\node (3D1) at (1.0,0) {1};
+				\node (3D2) at (0.5,0.866) {2};
+				\node (3D3) at (0.5,0.3) {3};
+				\draw[edge,ibmMagenta] (3D0) -- (3D1);
+				\draw[edge] (3D0) -- (3D2);
+				\draw[edge,ibmMagenta] (3D1) -- (3D2);
+				\draw[edge] (3D0) -- (3D3);
+				\draw[edge] (3D1) -- (3D3);
+				\draw[edge,ibmMagenta] (3D2) -- (3D3);
+			\end{scope}
+			\begin{scope}[on background layer]
+				\path node[wrap, fit=(0D0)] (W0) {};
+				\path node[wrap, fit=(1D0)(1D1)] (W1) {};
+				\path node[wrap, fit=(2D0)(2D1)(2D2)] (W2) {};
+				\path node[wrap, fit=(3D0)(3D1)(3D2)(3D3)] (W3) {};
+				\node [below=2.5em of W0] (L) {$\Delta[0]$};
+				\node at (L -| W1) {$\Delta[1]$};
+				\node at (L -| W2) {$\Delta[2]$};
+				\node at (L -| W3) {$\Delta[3]$};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+	\caption{Le categorie \(\Delta[0], \dots,\Delta[3]\) già viste in \ref{}, con le loro \emph{spine} in evidenza; la spina di un simplesso è la catena di frecce $0\to 1\to\cdots\to n$ che genera, per composizione, tutte le altre frecce di $\Delta[n]$.}
+	\label{fig:le_delta}
+\end{figure}
 \Todo{figura per la spina del simplesso generico --adattare quella vecchia}
 \begin{remark}\index{Universo}\index{Ordinale}
 	Senza un assioma dedicato a tale scopo, non si possono generare ordinali più grandi di quelli finiti; al contrario, assumendo che esista almeno un insieme \emph{induttivo} \(N\) (cioè tale che, se \(x\in N\), allora \(x^+:=x\cup\{x\}\in N\)), possiamo `accedere' a ordinali più grandi, e da qui generarne di \emph{molto} grandi (abbastanza da far sì che la categoria \(\ctOrd\) abbia una classe propria di oggetti).
