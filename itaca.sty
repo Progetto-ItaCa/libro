@@ -25,6 +25,9 @@
 \clist_new:N \g_itaca_lower_clist
 \clist_gset:Nn \g_itaca_lower_clist { a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z }
 
+\clist_new:N \g_itaca_greek_clist
+\clist_gset:Nn \g_itaca_greek_clist { alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,pi,rho, sigma,tau,upsilon,phi,chi,psi,omega,varphi,varpi,varepsilon,varrho,vartheta,Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Chi,Psi,Omega }
+
 \clist_new:N \g_itaca_both_clist
 \clist_concat:NNN \g_itaca_both_clist \g_itaca_upper_clist \g_itaca_lower_clist
 
@@ -59,6 +62,16 @@
 \itaca_makeabbrev:nnN { \mathbf } { ct#1 } \g_itaca_categories_clist
 \itaca_makeabbrev:nnN { \mathrm } { #1 } \g_itaca_operators_clist
 
+
+\cs_new_protected:Npn \itaca_make_macro_abbrev:nnN #1 #2 #3
+{
+	\clist_map_inline:Nn { #3 }
+	{
+		\cs_new_protected:cpn { #2 } { #1 { \csname ##1\endcsname } }
+	}
+}
+
+\itaca_make_macro_abbrev:nnN { \boldsymbol } { bs#1 } \g_itaca_greek_clist
 \ExplSyntaxOff
 
 \def\pSet{\partial\ctSet}
