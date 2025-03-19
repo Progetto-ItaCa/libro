@@ -472,7 +472,7 @@ Evidentemente, possiamo scrivere \(e : x\to y\) per denotare in maniera compatta
 \end{example}
 L'importanza della categoria degli ordinali sarà più evidente quando in \ref{sec_funtori} introdurremo la definizione di funtore. Per il momento, ci limitiamo ad alcune osservazioni.
 \begin{remark}\label{rmk_delta_e_deltaPlus}\index{Ordinale!--- finito}
-	Se \([n]=\{\iter n\}\) è un insieme finito, l'ordinamento \(\{\iter[1][<]n\}\) lo rende un buon ordine nel senso di \ref{po_wo_to}, e quindi \(\Delta[n]\) è in maniera naturale un oggetto di \(\ctPos\), ma anche di \(\ctOrd\); insieme alle funzioni monotòne tra questi insiemi finiti, ciò identifica la sottocategoria di \(\ctOrd\) generata da tutte le catene generiche \(\Delta[n]\) di \ref{ex_cat_catena} con la sottocategoria \(\ctFOrd\) di tutti gli ordinali finiti e non vuoti.
+	Se \([n]=\{\iter[0] n\}\) è un insieme finito, l'ordinamento \(\{\iter[0][<]n\}\) lo rende un woset nel senso di \ref{po_wo_to}, e quindi \(\Delta[n]\) è in maniera naturale un oggetto di \(\ctPos\), ma anche di \(\ctOrd\); insieme alle funzioni monotòne tra questi insiemi finiti, ciò identifica la sottocategoria di \(\ctOrd\) generata da tutte le catene generiche \(\Delta[n]\) di \ref{ex_cat_catena} con la sottocategoria \(\ctFOrd\) di tutti gli ordinali finiti e non vuoti.
 	\begin{itemize}
 		\item Una notazione alternativa e più comune, mutuata dalla topologia algebrica, per \(\ctFOrd\)	è \(\bsDelta\), che viene chiamata la categoria dei \emph{simplessi}.
 		\item Per la categoria di \emph{tutti} gli ordinali, anche quello vuoto, si usa la notazione \(\bsDelta_+\), che viene chiamata la categoria dei \emph{simplessi aumentati}.
@@ -525,10 +525,165 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 			\end{scope}
 		\end{tikzpicture}
 	\end{center}
-	\caption{Le categorie \(\Delta[0], \dots,\Delta[3]\) già viste in \ref{}, con le loro \emph{spine} in evidenza; la spina di un simplesso è la catena di frecce \(0\to 1\to\cdots\to n\) che genera, per composizione, tutte le altre frecce di \(\Delta[n]\).}
+	\caption{Le categorie \(\Delta[0], \dots,\Delta[3]\) già viste in \ref{ex_cat_catena}, con le loro \emph{spine} in evidenza; la spina di un simplesso è la catena di frecce \(0\to 1\to\cdots\to n\) che genera, per composizione, tutte le altre frecce di \(\Delta[n]\).}
 	\label{fig:spines}
 \end{figure}
-\Todo{figura per la spina del simplesso generico --adattare quella vecchia}
+\begin{hRemark}[Combinatoria della categoria \(\ctFOrd\)]{skip}\label{rmk_combinatoria_simplessi}\index{Categoria!--- dei simplessi}
+	La categoria \(\bsDelta\) possiede una sottoclasse di morfismi che generano tutti gli altri per composizione. Tra tutte le mappe monotòne \(f : [n]\to [m]\) in \(\bsDelta\) possiamo distinguere le \(n+1\) funzioni \emph{iniettive} \(\delta_n^i : [n-1]\mono [n]\) che evitano l'elemento \(i=\iter[0]n\), e le \(n+1\) funzioni \emph{suriettive} \(\sigma_n^j : [n+1]\epi [n]\) che assumono due volte il valore  \(j=\iter[0]m\):
+	\[
+		\delta_n^i(k) =
+		\begin{cases}
+			k,   & k < i    \\
+			k+1, & k \geq i
+		\end{cases}
+		\quad \quad
+		\sigma_n^j (k) =
+		\begin{cases}
+			k,   & k \leq i \\
+			k-1, & k > i
+		\end{cases}
+		\quad \text{per} \quad 0 \leq i \leq n.
+	\]
+	Per ogni \(n\ge 0\), \(\{\delta_n^0,\dots,\delta_n^{n+1}\}\) sono dette le \emph{cofacce} di \([n]\), e \(\{\sigma_n^0,\dots, \sigma_n^n\}\) le \emph{codegenerazioni} di \([n]\). Raffiguriamo alcune mappe di cofaccia e codegenerazione in \autoref{fig:cofa_code}. Tali funzioni soddisfano le seguenti relazioni, dette \emph{identità cosimpliciali}:
+	\begin{gather*}
+		\delta_n^j \cmp \delta_n^i = \delta_n^i \cmp \delta_n^{j-1}, \quad i < j\\
+		\sigma_n^j \cmp \sigma_n^i = \sigma_n^i \cmp \sigma_n^{j+1}, \quad i \leq j\\
+		\sigma_n^j \cmp \delta_n^i =
+		\begin{cases}
+			1,                              & i = j, j+1 \\
+			\delta_n^i \cmp \sigma_n^{j-1}, & i < j      \\
+			\delta_n^{i-1} \cmp \sigma_n^j, & i > j+1.
+		\end{cases}
+	\end{gather*}
+	Ogni freccia di \(\Hom\bsDelta([n],[m])\) si può scrivere, in maniera essenzialmente unica, come composizione di alcune mappe di codegenerazione, seguite da alcune mappe di cofaccia; l'idea è di fattorizzare \(f\) lungo la sua immagine (dotata dell'ordine indotto),
+	\[\xymatrix{
+			[n]\ar[rr]^f\ar[dr]_e &&	[m] \\
+			& \im(f) \ar[ur]_m
+		}\]
+	e conseguentemente immergere quest'ultima nel codominio. La funzione suriettiva \(e\) è composizione di codegenerazioni (precisamente quelle determinate dai valori che \(f\) assume molteplici volte), e la funzione iniettiva \(m\) è composizione di alcune cofacce (precisamente quelle determinate dai valori che \(f\) non assume).
+\end{hRemark}
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}[x=.5cm]
+			\foreach \i in {0,...,3}
+			\node[font=\tiny] (\i) at (\i,0) {$\i$};
+			\foreach \j in {0,1,2}
+			\node[font=\tiny] at (\j+0.5,0) {$<$};
+			\begin{pgfonlayer}{background}
+				\node[inner sep=0pt,fit=(0)(3),fill=gray!50,opacity=0.5] {};
+			\end{pgfonlayer}
+			\begin{scope}[yshift=-1cm]
+				\foreach \i/\j in {0,...,4}
+				\node[font=\tiny] (\i') at (\i,0) {$\i$};
+				\foreach \j in {0,1,2,3}
+				\node[font=\tiny] at (\j+0.5,0) {$<$};
+				\begin{pgfonlayer}{background}
+					\node[inner sep=0pt,fit=(1')(4'),fill=gray!50,opacity=0.5] {};
+				\end{pgfonlayer}
+			\end{scope}
+			\draw[-latex] (0) -- (1');
+			\draw[-latex] (1) -- (2');
+			\draw[-latex] (2) -- (3');
+			\draw[-latex] (3) -- (4');
+			\begin{scope}[xshift=3cm]
+				\foreach \i in {0,...,3}
+				\node[font=\tiny] (\i) at (\i,0) {$\i$};
+				\foreach \j in {0,1,2}
+				\node[font=\tiny] at (\j+0.5,0) {$<$};
+				\begin{pgfonlayer}{background}
+					\node[inner sep=0pt,fit=(0),fill=gray!50,opacity=0.5] {};
+					\node[inner sep=0pt,fit=(1)(3),fill=gray!50,opacity=0.5] {};
+				\end{pgfonlayer}
+				\begin{scope}[yshift=-1cm]
+					\foreach \i in {0,...,4}
+					\node[font=\tiny] (\i') at (\i,0) {$\i$};
+					\foreach \j in {0,1,2,3}
+					\node[font=\tiny] at (\j+0.5,0) {$<$};
+					\begin{pgfonlayer}{background}
+						\node[inner sep=0pt,fit=(0'),fill=gray!50,opacity=0.5] {};
+						\node[inner sep=0pt,fit=(2')(4'),fill=gray!50,opacity=0.5] {};
+					\end{pgfonlayer}
+				\end{scope}
+				\draw[-latex] (0) -- (0');
+				\draw[-latex] (1) -- (2');
+				\draw[-latex] (2) -- (3');
+				\draw[-latex] (3) -- (4');
+				\begin{scope}[xshift=3cm]
+					\foreach \i in {0,...,3}
+					\node[font=\tiny] (\i) at (\i,0) {$\i$};
+					\foreach \j in {0,1,2}
+					\node[font=\tiny] at (\j+0.5,0) {$<$};
+					\begin{pgfonlayer}{background}
+						\node[inner sep=0pt,fit=(0)(1),fill=gray!50,opacity=0.5] {};
+						\node[inner sep=0pt,fit=(2)(3),fill=gray!50,opacity=0.5] {};
+					\end{pgfonlayer}
+					\begin{scope}[yshift=-1cm]
+						\foreach \i in {0,...,4}
+						\node[font=\tiny] (\i') at (\i,0) {$\i$};
+						\foreach \j in {0,1,2,3}
+						\node[font=\tiny] at (\j+0.5,0) {$<$};
+						\begin{pgfonlayer}{background}
+							\node[inner sep=0pt,fit=(0')(1'),fill=gray!50,opacity=0.5] {};
+							\node[inner sep=0pt,fit=(3')(4'),fill=gray!50,opacity=0.5] {};
+						\end{pgfonlayer}
+					\end{scope}
+					\draw[-latex] (0) -- (0');
+					\draw[-latex] (1) -- (1');
+					\draw[-latex] (2) -- (3');
+					\draw[-latex] (3) -- (4');
+					\begin{scope}[xshift=3cm]
+						\foreach \i in {0,...,3}
+						\node[font=\tiny] (\i) at (\i,0) {$\i$};
+						\foreach \j in {0,1,2}
+						\node[font=\tiny] at (\j+0.5,0) {$<$};
+						\begin{pgfonlayer}{background}
+							\node[inner sep=0pt,fit=(0)(2),fill=gray!50,opacity=0.5] {};
+							\node[inner sep=0pt,fit=(3),fill=gray!50,opacity=0.5] {};
+						\end{pgfonlayer}
+						\begin{scope}[yshift=-1cm]
+							\foreach \i in {0,...,4}
+							\node[font=\tiny] (\i') at (\i,0) {$\i$};
+							\foreach \j in {0,1,2,3}
+							\node[font=\tiny] at (\j+0.5,0) {$<$};
+							\begin{pgfonlayer}{background}
+								\node[inner sep=0pt,fit=(0')(2'),fill=gray!50,opacity=0.5] {};
+								\node[inner sep=0pt,fit=(4'),fill=gray!50,opacity=0.5] {};
+							\end{pgfonlayer}
+						\end{scope}
+						\draw[-latex] (0) -- (0');
+						\draw[-latex] (1) -- (1');
+						\draw[-latex] (2) -- (2');
+						\draw[-latex] (3) -- (4');
+						\begin{scope}[xshift=3cm]
+							\foreach \i in {0,...,3}
+							\node[font=\tiny] (\i) at (\i,0) {$\i$};
+							\foreach \j in {0,1,2}
+							\node[font=\tiny] at (\j+0.5,0) {$<$};
+							\begin{pgfonlayer}{background}
+								\node[inner sep=0pt,fit=(0)(3),fill=gray!50,opacity=0.5] {};
+							\end{pgfonlayer}
+							\begin{scope}[yshift=-1cm]
+								\foreach \i in {0,...,4}
+								\node[font=\tiny] (\i') at (\i,0) {$\i$};
+								\foreach \j in {0,1,2,3}
+								\node[font=\tiny] at (\j+0.5,0) {$<$};
+								\begin{pgfonlayer}{background}
+									\node[inner sep=0pt,fit=(0')(3'),fill=gray!50,opacity=0.5] {};
+								\end{pgfonlayer}
+							\end{scope}
+							\draw[-latex] (0) -- (0');
+							\draw[-latex] (1) -- (1');
+							\draw[-latex] (2) -- (2');
+							\draw[-latex] (3) -- (3');
+						\end{scope}
+					\end{scope}
+				\end{scope}
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+	\caption{Le mappe di cofaccia \(\delta_4^0,\dots,\delta_4^4 : [3]\mono [4]\) in \(\bsDelta\). Ciascun segmento \(\{\iter[0][<]{i-1}\}\) viene mappato in sé stesso da \(\delta_n^i\); i \(k\) maggiori o uguali di \(i\) vengono mappati in \(k+1\).}
+	\label{fig:cofa_code}
+\end{figure}
 \begin{remark}\index{Universo}\index{Ordinale}
 	Senza un assioma dedicato a tale scopo, non si possono generare ordinali più grandi di quelli finiti; al contrario, assumendo che esista almeno un insieme \emph{induttivo} \(N\) (cioè tale che, se \(x\in N\), allora \(x^+:=x\cup\{x\}\in N\)), possiamo `accedere' a ordinali più grandi, e da qui generarne di \emph{molto} grandi (abbastanza da far sì che la categoria \(\ctOrd\) abbia una classe propria di oggetti).
 

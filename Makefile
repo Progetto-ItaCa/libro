@@ -18,3 +18,5 @@ pretty:
 indexing:
 	python3 missing_indexes.py > missing_indices.idx
 	# this *.idx file is highly volatile
+
+work: book	view watch
