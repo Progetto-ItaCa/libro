@@ -304,7 +304,7 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 	\begin{figure}
 		\begin{center}
 			\begin{tikzpicture}[
-					x=6em, y=6em,
+					x=4em, y=4em,
 					dot/.style={
 							circle,
 							fill=#1,
@@ -352,7 +352,7 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 							\pgfmathsetmacro{\x}{(rnd-\xmid)/(\xmax-\xmin)}
 							\pgfmathsetmacro{\y}{(rnd-\ymid)/(\ymax-\ymin)}
 							\ifnum\i=4\else
-								\path node (+\i/0) at (2*\x,\y+1) {\l};
+								\path node[font=\footnotesize] (+\i/0) at (2*\x,\y+1) {\l};
 							\fi
 						}
 				\end{scope}
@@ -363,15 +363,15 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 					\foreach \i/\l in {1/$p$,2/$q$,3/$r$,4/$s$} {
 							\pgfmathsetmacro{\x}{(rnd-\xmid)/(\xmax-\xmin)}
 							\pgfmathsetmacro{\y}{(rnd-\ymid)/(\ymax-\ymin)}
-							\path node (0/-\i) at (2*\x,\y-1) {\l};
+							\path node[font=\footnotesize] (0/-\i) at (2*\x,\y-1) {\l};
 						}
 				\end{scope}
 
 				\foreach \s/\l in {1/$f$,2/$g$,3/$h$,5/$i$} {
-						\draw[-latex,draw=ibmMagenta] (+\s) -- node[auto] {\l} (0);
+						\draw[-latex,draw=ibmMagenta,font=\footnotesize] (+\s) -- node[auto] {\l} (0);
 					}
 				\foreach \t/\l in {1/$p$,2/$q$,3/$r$,4/$s$} {
-						\draw[-latex,draw=ibmBlue] (0) -- node[auto] {\l} (-\t);
+						\draw[-latex,draw=ibmBlue,font=\footnotesize] (0) -- node[auto] {\l} (-\t);
 					}
 
 				\foreach \s/\t in {3/5,5/2} {
