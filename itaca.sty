@@ -577,5 +577,20 @@
 \NewDocumentCommand{\natHom}{ O{\ctC} O{\ctD} m m }{
   \Hom{[#1,#2](#3,#4)}
 }
+
+\NewDocumentCommand{\drawTuple}{m O{}}{
+\foreach \i in {0,...,#1} {
+    \node[font=\tiny] (\i#2) at (\i,0) {$\i$};
+}
+}
+
+\NewDocumentCommand{\drawChain}{m O{}}{
+\foreach \i in {0,...,#1} {
+    \node[font=\tiny] (\i#2) at (\i,0) {$\i$};
+    \ifnum\i<#1
+        \node[font=\tiny] at (\i+0.5,0) {$<$};
+    \fi
+}
+}
 % inutile riga di controllo
 % END OF FILE

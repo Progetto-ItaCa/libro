@@ -223,6 +223,19 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 		      \[s_k\cmp s_{k-1} = t_k\cmp s_{k-1}\qquad t_k\cmp t_{k-1} = s_k\cmp t_{k-1}.\]
 	\end{itemize}
 \end{example}
+\begin{remark}[Perché si chiama `globo'?]
+	\Todo{}
+	Si osservi che $\ctGl(1) = \{0\rightrightarrows 1\}$ è la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Da \ref{} deduciamo che `rappresentare' $\ctGl(1)$ nella categoria $\ctSet$ di insiemi e funzioni consiste precisamente nel dare un multidigrafo, con funzioni di dominio e codominio. I globi generici sono una generalizzazione dei multidigrafi, che permettono la rappresentazione di `celle' di dimensione maggiore di 1. Sarà la \autoref{def_insieme_globulare} a rendere precisa questa idea (a sua volta, mediante la nozione di funtore controvariante in \ref{def_funtore_contro}), ma per il momento, è già possibile osservare che una terna di insiemi 
+	\[\xymatrix{
+		C \ar@<.25em>[r]^-{s_2}\ar@<-.25em>[r]_-{t_2}& E \ar@<.25em>[r]^-{s_1}\ar@<-.25em>[r]_-{t_1}& V
+	}\]
+	di celle $C$, lati $E$ e vertici $V$, con funzioni $s_1,t_1,s_2,t_2$ consta di elementi $c\in C$, ciascuno dei quali ha un dominio $s_2(c) = F$ e un codominio $t_2(c)=G$, ciascuno dei quali ha un dominio e un codominio, 
+	\[s_1s_2(c) = s_1 F = X, t_1s_2(c) = t_1 F = Y, s_1t_2(c) = s_1 G = Z , t_1t_2(c) = t_1 G = W\]
+	Del resto valgono le relazioni in \ref{ex_globo}, di modo che $X=Z,	Y=W$, cosicché
+	\[\xymatrix{
+		X \rtwocell^F_G{c} & Y
+	}\]
+\end{remark}
 \index{Categoria!--- libera}
 Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di un insieme di vertici (o `oggetti') \(V\) e di un insieme di lati (o `morfismi') \(E\) generi una categoria \(\bfF[\ctG]\) che può poi essere soggetta a delle relazioni, in modo del tutto analogo in cui un monoide o gruppo \(G\) libero su un insieme \(S\) di generatori può poi essere quozientato rispetto a un insieme di relazioni \(R\), dando una presentazione \(G = \langle S\mid R\rangle\).
 
@@ -474,7 +487,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 \begin{remark}\label{rmk_delta_e_deltaPlus}\index{Ordinale!--- finito}
 	Se \([n]=\{\iter[0] n\}\) è un insieme finito, l'ordinamento \(\{\iter[0][<]n\}\) lo rende un woset nel senso di \ref{po_wo_to}, e quindi \(\Delta[n]\) è in maniera naturale un oggetto di \(\ctPos\), ma anche di \(\ctOrd\); insieme alle funzioni monotòne tra questi insiemi finiti, ciò identifica la sottocategoria di \(\ctOrd\) generata da tutte le catene generiche \(\Delta[n]\) di \ref{ex_cat_catena} con la sottocategoria \(\ctFOrd\) di tutti gli ordinali finiti e non vuoti.
 	\begin{itemize}
-		\item Una notazione alternativa e più comune, mutuata dalla topologia algebrica, per \(\ctFOrd\)	è \(\bsDelta\), che viene chiamata la categoria dei \emph{simplessi}.
+		\item Una notazione alternativa e più comune, mutuata dalla topologia algebrica, per \(\ctFOrd\)	è \(\bsDelta\) (la lettera greca delta maiuscola), che viene chiamata la categoria dei \emph{simplessi}.
 		\item Per la categoria di \emph{tutti} gli ordinali, anche quello vuoto, si usa la notazione \(\bsDelta_+\), che viene chiamata la categoria dei \emph{simplessi aumentati}.
 	\end{itemize}
 \end{remark}
@@ -539,14 +552,14 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 		\quad \quad
 		\sigma_n^j (k) =
 		\begin{cases}
-			k,   & k \leq i \\
-			k-1, & k > i
+			k,   & k \leq j \\
+			k-1, & k > j
 		\end{cases}
-		\quad \text{per} \quad 0 \leq i \leq n.
+		\quad \text{per} \quad 0 \leq j\leq n.
 	\]
-	Per ogni \(n\ge 0\), \(\{\delta_n^0,\dots,\delta_n^{n+1}\}\) sono dette le \emph{cofacce} di \([n]\), e \(\{\sigma_n^0,\dots, \sigma_n^n\}\) le \emph{codegenerazioni} di \([n]\). Raffiguriamo alcune mappe di cofaccia e codegenerazione in \autoref{fig:cofa_code}. Tali funzioni soddisfano le seguenti relazioni, dette \emph{identità cosimpliciali}:
+	Per ogni \(n\ge 0\), \(\{\delta_n^0,\dots,\delta_n^{n+1}\}\) sono dette le \emph{cofacce} di \([n]\), e \(\{\sigma_n^0,\dots, \sigma_n^n\}\) le \emph{codegenerazioni} di \([n]\). Raffiguriamo alcune mappe di cofaccia e codegenerazione in \autoref{fig:cofa} e \ref{fig:code}. Tali funzioni soddisfano le seguenti relazioni, dette \emph{identità cosimpliciali}:
 	\begin{gather*}
-		\delta_n^j \cmp \delta_n^i = \delta_n^i \cmp \delta_n^{j-1}, \quad i < j\\
+		\delta_n^j \cmp \delta_{n-1}^i = \delta_n^i \cmp \delta_{n-1}^{j-1}, \quad i < j\\
 		\sigma_n^j \cmp \sigma_n^i = \sigma_n^i \cmp \sigma_n^{j+1}, \quad i \leq j\\
 		\sigma_n^j \cmp \delta_n^i =
 		\begin{cases}
@@ -565,116 +578,79 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 \begin{figure}
 	\begin{center}
 		\begin{tikzpicture}[x=.5cm]
-			\foreach \i in {0,...,3}
-			\node[font=\tiny] (\i) at (\i,0) {$\i$};
-			\foreach \j in {0,1,2}
-			\node[font=\tiny] at (\j+0.5,0) {$<$};
+			\tikzset{
+				fitbg/.style={inner sep=0pt, fill=gray!50, opacity=0.5}
+			}
+			\drawChain{3}[up]
 			\begin{pgfonlayer}{background}
-				\node[inner sep=0pt,fit=(0)(3),fill=gray!50,opacity=0.5] {};
+				\node[fitbg,fit=(0up)(3up)] {};
 			\end{pgfonlayer}
 			\begin{scope}[yshift=-1cm]
-				\foreach \i/\j in {0,...,4}
-				\node[font=\tiny] (\i') at (\i,0) {$\i$};
-				\foreach \j in {0,1,2,3}
-				\node[font=\tiny] at (\j+0.5,0) {$<$};
+				\drawChain{4}[down]
 				\begin{pgfonlayer}{background}
-					\node[inner sep=0pt,fit=(1')(4'),fill=gray!50,opacity=0.5] {};
+					\node[fitbg,fit=(1down)(4down)] {};
 				\end{pgfonlayer}
 			\end{scope}
-			\draw[-latex] (0) -- (1');
-			\draw[-latex] (1) -- (2');
-			\draw[-latex] (2) -- (3');
-			\draw[-latex] (3) -- (4');
+			\foreach \i/\j in {0/1,1/2,2/3,3/4}
+			\draw[-latex] (\i up) -- (\j down);
 			\begin{scope}[xshift=3cm]
-				\foreach \i in {0,...,3}
-				\node[font=\tiny] (\i) at (\i,0) {$\i$};
-				\foreach \j in {0,1,2}
-				\node[font=\tiny] at (\j+0.5,0) {$<$};
+				\drawChain{3}[up]
 				\begin{pgfonlayer}{background}
-					\node[inner sep=0pt,fit=(0),fill=gray!50,opacity=0.5] {};
-					\node[inner sep=0pt,fit=(1)(3),fill=gray!50,opacity=0.5] {};
+					\node[fitbg,fit=(0up)] {};
+					\node[fitbg,fit=(1up)(3up)] {};
 				\end{pgfonlayer}
 				\begin{scope}[yshift=-1cm]
-					\foreach \i in {0,...,4}
-					\node[font=\tiny] (\i') at (\i,0) {$\i$};
-					\foreach \j in {0,1,2,3}
-					\node[font=\tiny] at (\j+0.5,0) {$<$};
+					\drawChain{4}[down]
 					\begin{pgfonlayer}{background}
-						\node[inner sep=0pt,fit=(0'),fill=gray!50,opacity=0.5] {};
-						\node[inner sep=0pt,fit=(2')(4'),fill=gray!50,opacity=0.5] {};
+						\node[fitbg,fit=(0down)] {};
+						\node[fitbg,fit=(2down)(4down)] {};
 					\end{pgfonlayer}
 				\end{scope}
-				\draw[-latex] (0) -- (0');
-				\draw[-latex] (1) -- (2');
-				\draw[-latex] (2) -- (3');
-				\draw[-latex] (3) -- (4');
+				\foreach \i/\j in {0/0,1/2,2/3,3/4}
+				\draw[-latex] (\i up) -- (\j down);
 				\begin{scope}[xshift=3cm]
-					\foreach \i in {0,...,3}
-					\node[font=\tiny] (\i) at (\i,0) {$\i$};
-					\foreach \j in {0,1,2}
-					\node[font=\tiny] at (\j+0.5,0) {$<$};
+					\drawChain{3}[up]
 					\begin{pgfonlayer}{background}
-						\node[inner sep=0pt,fit=(0)(1),fill=gray!50,opacity=0.5] {};
-						\node[inner sep=0pt,fit=(2)(3),fill=gray!50,opacity=0.5] {};
+						\node[fitbg,fit=(0up)(1up)] {};
+						\node[fitbg,fit=(2up)(3up)] {};
 					\end{pgfonlayer}
 					\begin{scope}[yshift=-1cm]
-						\foreach \i in {0,...,4}
-						\node[font=\tiny] (\i') at (\i,0) {$\i$};
-						\foreach \j in {0,1,2,3}
-						\node[font=\tiny] at (\j+0.5,0) {$<$};
+						\drawChain{4}[down]
 						\begin{pgfonlayer}{background}
-							\node[inner sep=0pt,fit=(0')(1'),fill=gray!50,opacity=0.5] {};
-							\node[inner sep=0pt,fit=(3')(4'),fill=gray!50,opacity=0.5] {};
+							\node[fitbg,fit=(0down)(1down)] {};
+							\node[fitbg,fit=(3down)(4down)] {};
 						\end{pgfonlayer}
 					\end{scope}
-					\draw[-latex] (0) -- (0');
-					\draw[-latex] (1) -- (1');
-					\draw[-latex] (2) -- (3');
-					\draw[-latex] (3) -- (4');
+					\foreach \i/\j in {0/0,1/1,2/3,3/4}
+					\draw[-latex] (\i up) -- (\j down);
 					\begin{scope}[xshift=3cm]
-						\foreach \i in {0,...,3}
-						\node[font=\tiny] (\i) at (\i,0) {$\i$};
-						\foreach \j in {0,1,2}
-						\node[font=\tiny] at (\j+0.5,0) {$<$};
+						\drawChain{3}[up]
 						\begin{pgfonlayer}{background}
-							\node[inner sep=0pt,fit=(0)(2),fill=gray!50,opacity=0.5] {};
-							\node[inner sep=0pt,fit=(3),fill=gray!50,opacity=0.5] {};
+							\node[fitbg,fit=(0up)(2up)] {};
+							\node[fitbg,fit=(3up)] {};
 						\end{pgfonlayer}
 						\begin{scope}[yshift=-1cm]
-							\foreach \i in {0,...,4}
-							\node[font=\tiny] (\i') at (\i,0) {$\i$};
-							\foreach \j in {0,1,2,3}
-							\node[font=\tiny] at (\j+0.5,0) {$<$};
+							\drawChain{4}[down]
 							\begin{pgfonlayer}{background}
-								\node[inner sep=0pt,fit=(0')(2'),fill=gray!50,opacity=0.5] {};
-								\node[inner sep=0pt,fit=(4'),fill=gray!50,opacity=0.5] {};
+								\node[fitbg,fit=(0down)(2down)] {};
+								\node[fitbg,fit=(4down)] {};
 							\end{pgfonlayer}
 						\end{scope}
-						\draw[-latex] (0) -- (0');
-						\draw[-latex] (1) -- (1');
-						\draw[-latex] (2) -- (2');
-						\draw[-latex] (3) -- (4');
+						\foreach \i/\j in {0/0,1/1,2/2,3/4}
+						\draw[-latex] (\i up) -- (\j down);
 						\begin{scope}[xshift=3cm]
-							\foreach \i in {0,...,3}
-							\node[font=\tiny] (\i) at (\i,0) {$\i$};
-							\foreach \j in {0,1,2}
-							\node[font=\tiny] at (\j+0.5,0) {$<$};
+							\drawChain{3}[up]
 							\begin{pgfonlayer}{background}
-								\node[inner sep=0pt,fit=(0)(3),fill=gray!50,opacity=0.5] {};
+								\node[fitbg,fit=(0up)(3up)] {};
 							\end{pgfonlayer}
 							\begin{scope}[yshift=-1cm]
-								\foreach \i in {0,...,4}
-								\node[font=\tiny] (\i') at (\i,0) {$\i$};
-								\foreach \j in {0,1,2,3}
-								\node[font=\tiny] at (\j+0.5,0) {$<$};
+								\drawChain{4}[down]
 								\begin{pgfonlayer}{background}
-									\node[inner sep=0pt,fit=(0')(3'),fill=gray!50,opacity=0.5] {};
+									\node[fitbg,fit=(0down)(3down)] {};
 								\end{pgfonlayer}
 							\end{scope}
-							\draw[-latex] (0) -- (0');
-							\draw[-latex] (1) -- (1');
-							\draw[-latex] (2) -- (2');
-							\draw[-latex] (3) -- (3');
+							\foreach \i/\j in {0/0,1/1,2/2,3/3}
+							\draw[-latex] (\i up) -- (\j down);
 						\end{scope}
 					\end{scope}
 				\end{scope}
@@ -682,7 +658,85 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 		\end{tikzpicture}
 	\end{center}
 	\caption{Le mappe di cofaccia \(\delta_4^0,\dots,\delta_4^4 : [3]\mono [4]\) in \(\bsDelta\). Ciascun segmento \(\{\iter[0][<]{i-1}\}\) viene mappato in sé stesso da \(\delta_n^i\); i \(k\) maggiori o uguali di \(i\) vengono mappati in \(k+1\).}
-	\label{fig:cofa_code}
+	\label{fig:code}
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}[x=.5cm]
+			\tikzset{
+			fitbg/.style={inner sep=0pt, fill=gray!50, opacity=0.5}
+			}
+			\drawChain{4}[up]
+			\begin{pgfonlayer}{background}
+				\node[fitbg,fit=(0up)(1up)] {};
+				\node[fitbg,fit=(2up)(4up)] {};
+			\end{pgfonlayer}
+			\begin{scope}[yshift=-1cm]
+				\drawChain{3}[down]
+				\begin{pgfonlayer}{background}
+					\node[fitbg,fit=(0down)] {};
+					\node[fitbg,fit=(1down)(3down)] {};
+				\end{pgfonlayer}
+			\end{scope}
+			\foreach \i/\j in {0/0,1/0,2/1,3/2,4/3}
+			\draw[-latex] (\i up) -- (\j down);
+			\begin{scope}[xshift=3cm]
+							\drawChain{4}[up]
+			\begin{pgfonlayer}{background}
+				\node[fitbg,fit=(0up)] {};
+				\node[fitbg,fit=(1up)(2up)] {};
+				\node[fitbg,fit=(3up)(4up)] {};
+			\end{pgfonlayer}
+			\begin{scope}[yshift=-1cm]
+				\drawChain{3}[down]
+				\begin{pgfonlayer}{background}
+					\node[fitbg,fit=(0down)] {};
+					\node[fitbg,fit=(1down)] {};
+					\node[fitbg,fit=(2down)(3down)] {};
+				\end{pgfonlayer}
+			\end{scope}
+			\foreach \i/\j in {0/0,1/1,2/1,3/2,4/3}
+			\draw[-latex] (\i up) -- (\j down);
+			\begin{scope}[xshift=3cm]
+							\drawChain{4}[up]
+			\begin{pgfonlayer}{background}
+				\node[fitbg,fit=(0up)(1up)] {};
+				\node[fitbg,fit=(2up)(3up)] {};
+				\node[fitbg,fit=(4up)] {};
+			\end{pgfonlayer}
+			\begin{scope}[yshift=-1cm]
+				\drawChain{3}[down]
+				\begin{pgfonlayer}{background}
+					\node[fitbg,fit=(0down)(1down)] {};
+					\node[fitbg,fit=(2down)] {};
+					\node[fitbg,fit=(3down)] {};
+				\end{pgfonlayer}
+			\end{scope}
+			\foreach \i/\j in {0/0,1/1,2/2,3/2,4/3}
+			\draw[-latex] (\i up) -- (\j down);
+			\begin{scope}[xshift=3cm]
+							\drawChain{4}[up]
+			\begin{pgfonlayer}{background}
+				\node[fitbg,fit=(0up)(2up)] {};
+				\node[fitbg,fit=(3up)(4up)] {};
+			\end{pgfonlayer}
+			\begin{scope}[yshift=-1cm]
+				\drawChain{3}[down]
+				\begin{pgfonlayer}{background}
+					\node[fitbg,fit=(0down)(2down)] {};
+					\node[fitbg,fit=(3down)] {};
+				\end{pgfonlayer}
+			\end{scope}
+			\foreach \i/\j in {0/0,1/1,2/2,3/3,4/3}
+			\draw[-latex] (\i up) -- (\j down);
+			\end{scope}
+			\end{scope}
+			\end{scope}
+			\end{tikzpicture}
+	\end{center}
+	\caption{Le mappe di codegenerazione \(\sigma_4^0,\dots,\sigma_4^4 : [4]\mono [3]\) in \(\bsDelta\). Ciascun valore $i=\iter[0] i$ viene assunto due volte da $\sigma_n^i$.}
+	\label{fig:cofa}
 \end{figure}
 \begin{remark}\index{Universo}\index{Ordinale}
 	Senza un assioma dedicato a tale scopo, non si possono generare ordinali più grandi di quelli finiti; al contrario, assumendo che esista almeno un insieme \emph{induttivo} \(N\) (cioè tale che, se \(x\in N\), allora \(x^+:=x\cup\{x\}\in N\)), possiamo `accedere' a ordinali più grandi, e da qui generarne di \emph{molto} grandi (abbastanza da far sì che la categoria \(\ctOrd\) abbia una classe propria di oggetti).

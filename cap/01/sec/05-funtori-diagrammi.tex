@@ -279,7 +279,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 		F(A',B) \ar[r, "{F(A',g)}"'] & F(A',B')
 	\end{tikzcd}
 \]
-è commutativo, così che $F(f,g)=F(f,B')\cmp F(A,g) = F(A',g)\cmp F(f,B)$.
+è commutativo, così che \(F(f,g)=F(f,B')\cmp F(A,g) = F(A',g)\cmp F(f,B)\).
 \begin{notation}\index{Funtore!--- \(n\)-ario|see {bifuntore}}
 	Similmente, possiamo definire un \emph{trifuntore} \(\ctA_1\times\ctA_2\times\ctA_3\fun\ctB\), un funtore \(n\)-ario \(\ctA_1\times\dots\times\ctA_n\fun\ctB\) e in generale, per ogni insieme \(I\) di indici, un funtore di arietà \(I\) come \(\prod_{i\in I}\ctA_i\fun\ctB\) (la definizione di prodotto in \ref{def_cat_prodotto} si generalizza nel modo ovvio, in una maniera che sarà il \autoref{chap_limiti_colimiti} a precisare).
 \end{notation}
@@ -432,7 +432,15 @@ In \ref{es_fun_repre} abbiamo visto che una \emph{rappresentazione} di un monoid
 \end{remark}
 \begin{definition}\label{def_insieme_simpliciale}
 	\index{Insieme!--- simpliciale}
-	Un \emph{insieme simpliciale} consta di un funtore \(X : \bsDelta^\op\fun\ctSet\), dove \(\bsDelta\) è la categoria dei simplessi di \ref{rmk_delta_e_deltaPlus}.
+	Un \emph{insieme simpliciale} consta di un funtore \(X_* : \bsDelta^\op\fun\ctSet\), dove \(\bsDelta\) è la categoria dei simplessi di \ref{rmk_delta_e_deltaPlus}.
+
+	Quando la definizione di insieme simpliciale viene data esplicitamente, essa consiste del dato di:
+	\begin{itemize}
+		\item Una famiglia di insiemi $X_0,X_1,\dots,X_n,\dots$; gli elementi di $X_n$ sono detti	\emph{$n$-simplessi} di $X_*$;
+		\item Una famiglia di funzioni $d_i^n : X_n\to X_{n-1}$, dette \emph{facce}, per $0\leq i\leq n$; la faccia $d_i^n(t)$ di un $n$-simplesso $t$ è detta \emph{$i$-esima faccia} di $t$;
+		\item Una famiglia di funzioni $s_i^n : X_n\to X_{n+1}$, dette \emph{degenerazioni}, per $0\leq i\leq n$.
+	\end{itemize}
+	La funtorialità di $X$, e la possibilità di decomporre ogni freccia di $\bsDelta$ come composizione di facce e degenerazioni ora implica 
 	\Todo{Fleshout della struttura di insieme simpliciale con le identità opportune}
 	%\Todo{def solo del funtore qui, la cat i cui morfismi sono trasformazioni naturali verrà definita dopo}
 \end{definition}
@@ -444,7 +452,15 @@ In \ref{es_fun_repre} abbiamo visto che una \emph{rappresentazione} di un monoid
 
 \begin{definition}\label{def_insieme_globulare}
 	\index{Insieme!--- globulare}
-	Insieme globulare\Todo{def solo del funtore qui, la cat i cui morfismi sono trasformazioni naturali verrà definita dopo}
+	Un \emph{insieme globulare} consta di un funtore \(G : \ctGl(n)^\op\fun\ctSet\), dove \(\ctGl(n)\) è la categoria `globo generico' di \ref{ex_globo}.
+
+	Quando la definizione di insieme simpliciale viene data esplicitamente, essa consiste del dato di:
+	\begin{itemize}
+		\item Una famiglia di insiemi $G_0,G_1,\dots,G_n$;
+		\item Una famiglia di funzioni $s^n,t^n : G_n\to G_{n-1}$, dette \emph{dominio} e \emph{codominio} $n$-dimensionale.
+	\end{itemize}
+	La funtorialità di $G$ ora implica che 
+	\Todo{def solo del funtore qui, la cat i cui morfismi sono trasformazioni naturali verrà definita dopo}
 \end{definition}
 
 \begin{remark}
@@ -557,13 +573,14 @@ tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia
 \begin{examples}\label{contro_esempi_filt}\index{Categoria!--- filtrata}\index{Ordine parziale!--- diretto}
 	Esempi di categorie che sono filtrate:
 	\begin{itemize}
-		\item Alcuni esempi elementari sono i seguenti: la categoria codiscreta \(A^\chi\) su un insieme (non vuoto) è filtrata; la categoria terminale \(\ctTerm\) è filtrata; se due categorie \(\ctI,\ctJ\) sono filtrate, è filtrato il loro prodotto (questo permette di suddividere in due problemi indipendenti 'la verifica che \(\ctI\times\ctJ\) è filtrata).
-		\item la categoria-poset \((\omega=\{0\le 1\le 2\le\dots\},\le)\): la condizione \ref{cf_2} è ovvia (non esistono due frecce \(u,v\) parallele e distinte), e \ref{cf_1} è vera perché ogni insieme finito \(\{\tup pn,\}\) di numeri naturali è limitato superiormente da \(p^*=\max\{\tup pn,\}\); similmente, ogni ordinale (finito, nel senso di \ref{ex_cat_catena}, o infinito, nel senso di \ref{ex_cat_ordinali}) è una categoria filtrata; più in generale, un preordine \((P,\le)\) è una categoria filtrata se e solo se è un \emph{ordine diretto}: ogni insieme finito di elementi \(\tup xn, \in P\) ha un maggiorante \(\bar x\), cioè \(x_i\le \bar x\) per ogni \(i=\iter n\).
+		\item Alcuni esempi elementari sono i seguenti: la categoria codiscreta \(A^\chi\) su un insieme (non vuoto) è filtrata; la categoria terminale \(\ctTerm\) è filtrata; se due categorie \(\ctI,\ctJ\) sono filtrate, è filtrato il loro prodotto (questo permette di suddividere in due problemi indipendenti la verifica che \(\ctI\times\ctJ\) è filtrata); ogni cono destro della forma $\ctJ^\rhd$ è una categoria filtrata, e più in generale ogni categoria che ha un oggetto terminale nel senso di \ref{} è filtrata.
+		\item la categoria-poset \((\omega=\{0\le 1\le 2\le\dots\},\le)\): la condizione \ref{cf_2} è ovvia (non esistono due frecce \(u,v\) parallele e distinte), e \ref{cf_1} è vera perché ogni insieme finito \(\{\tup pn,\}\) di numeri naturali è limitato superiormente da \(p^*=\max\{\tup pn,\}\); similmente, ogni ordinale (finito, nel senso di \ref{ex_cat_catena}, o infinito, nel senso di \ref{ex_cat_ordinali}) è una categoria filtrata; più in generale, un preordine \((P,\le)\) è una categoria filtrata se e solo se è un \emph{ordine diretto}: ogni insieme finito di elementi \(\tup xn, \in P\) ha un maggiorante \(\bar x\), cioè \(x_i\le \bar x\) per ogni \(i=\iter n\). La categoria $\bsDelta$ dei simplessi è filtrata, e più in generale ogni categoria di `forme' che contenga $\ctTerm$ è filtrata.
 	\end{itemize}
 	Esempi di categorie che non sono filtrate:
 	\begin{itemize}
-		\item\Todo{}
-		\item\Todo{}
+		\item L'esempio più semplice di categoria non filtrata è dato da un insieme parzialmente ordinato, dove esiste una coppia di elementi $a,b$ che non possiede un estremo superiore; l'esempio minimo è quindi l'insieme $\{0,a,b\}$ ordinato da $0\le a,b$ (ma $a,b$ non sono confrontabili, e quindi non esiste un cocono per $\{a,b\}$).
+		\item Se $A$ è un insieme con almeno due elementi, la categoria discreta $A^\delta$ di \ref{ex_cat_discreta} non è filtrata.
+		\item La categoria $\bsDelta_\text{inj}$ dei \emph{semisimplessi}, ossia la sottocategoria ottenuta da $\bsDelta$ prendendo gli stessi oggetti $[n]$ e solo le cofacce $\delta_n^i$ per morfismi, non è filtrata: infatti, nessuna funzione \emph{iniettiva} (le sole che sono ottenibili componendo mappe di cofaccia) $[1] \to [n]$ coequalizza la coppia di morfismi $\delta_1^0,\delta_1^1 : [0]\to [1]$, che quindi non ammette un cocono.
 	\end{itemize}
 \end{examples}
 \begin{theorem}\index{Funtore!--- iniziale}
