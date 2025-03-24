@@ -430,62 +430,6 @@ In \ref{es_fun_repre} abbiamo visto che una \emph{rappresentazione} di un monoid
 	\[\dmFun K\alpha\ctC\]
 	se \(\alpha\) è un numero ordinale, guardato come categoria rispetto alla sua relazione d'ordine, e così via per ogni altro genere di forma. Questo abuso di notazione è, ovviamente, molto conveniente quando ci si debba riferire a insiemi di oggetti e morfismi di \(\ctC\) connessi a una certa maniera.
 \end{remark}
-\begin{definition}\label{def_insieme_simpliciale}
-	\index{Insieme!--- simpliciale}
-	Un \emph{insieme simpliciale} consta di un funtore \(X_* : \bsDelta^\op\fun\ctSet\), dove \(\bsDelta\) è la categoria dei simplessi di \ref{rmk_delta_e_deltaPlus}.
-
-	Quando la definizione di insieme simpliciale viene data esplicitamente, essa consiste del dato di:
-	\begin{itemize}
-		\item Una famiglia di insiemi $X_0,X_1,\dots,X_n,\dots$; gli elementi di $X_n$ sono detti	\emph{$n$-simplessi} di $X_*$;
-		\item Una famiglia di funzioni $d_i^n : X_n\to X_{n-1}$, dette \emph{facce}, per $0\leq i\leq n$; la faccia $d_i^n(t)$ di un $n$-simplesso $t$ è detta \emph{$i$-esima faccia} di $t$;
-		\item Una famiglia di funzioni $s_i^n : X_n\to X_{n+1}$, dette \emph{degenerazioni}, per $0\leq i\leq n$.
-	\end{itemize}
-	Questi dati sono soggetti alle \emph{identità simpliciali}:
-	\[bla\]
-	La funtorialità di $X$, e la possibilità di decomporre ogni freccia di $\bsDelta$ come composizione di facce e degenerazioni ora implica che le identità simpliciali siano una condizione necessaria e sufficiente per definire un funtore $X : \bsDelta^\op\fun\ctSet$.
-\end{definition}
-\begin{hRemark}[Cos'è esattamente un $n$-simplesso?]{tech}
-	Gli elementi degli insiemi $X_0, X_1$ in un insieme simpliciale $X$ si possono pensare come lati di un grafo diretto con la coppia di funzioni $(d_1,d_0) : X_1 \to X_0\times X_0$ a fare da mappe di dominio e codominio (in \emph{questo} ordine: $d_i = X(\delta^1_i)$ restringe $X$ al vertice che \emph{non} contiene $i$), e gli elementi di $X_2$ si possono rappresentare come dei `triangoli diretti': se $t\in X_2$, possiamo considerare le sue facce $d_i = X(\delta^2_i)$, ciascuna definita restringendo $X$ al lato che \emph{non} contiene l'indice $i$; le tre identità simpliciali quando $n=1$ sono quindi
-	\[
-	d_0\cmp d_1 = d_0\cmp d_0,\quad
-	d_0\cmp d_2 = d_1\cmp d_0,\quad
-	d_1\cmp d_2 = d_1\cmp d_1 
-	\]
-	cosa che implica che i lati di $t$ si `incollino' a formare un triangolo del tipo
-	\[\xymatrix{
-		{\begin{smallmatrix}
-			d_1d_1t \\ 
-			d_1d_2t
-			\end{smallmatrix}}
-				\ar[rr]^{d_1t}\ar[dr]_{d_2t}&& {\begin{smallmatrix}
-					d_0d_1t \\ 
-					d_0d_0t
-					\end{smallmatrix}}
-						\\ 
-		 &{\begin{smallmatrix}
-				d_0d_2t \\ 
-				d_1d_0t
-				\end{smallmatrix}}\ar[ur]_{d_0t}\ar@{}[u]|-t &
-	}\]
-	Ovviamente, è assai sconveniente denotare i vertici di un 2-simplesso a questa maniera; perciò si nominano $a = d_1d_1t, c = d_0d_1t, b = d_0d_2t$ e si disegna più semplicemente un triangolo fatto da $a \xto{d_2t} b \xto{d_0t} c$ e $a \xto{d_1t} c$.
-\end{hRemark}
-\begin{definition}\label{def_insieme_cubico}
-	\index{Insieme!--- cubico}
-	Insieme cubico\Todo{def solo del funtore qui, la cat i cui morfismi sono trasformazioni naturali verrà definita dopo}
-\end{definition}
-
-\begin{definition}\label{def_insieme_globulare}
-	\index{Insieme!--- globulare}
-	Un \emph{insieme globulare} consta di un funtore \(G : \ctGl(n)^\op\fun\ctSet\), dove \(\ctGl(n)\) è la categoria `globo generico' di \ref{ex_globo}.
-
-	Quando la definizione di insieme simpliciale viene data esplicitamente, essa consiste del dato di:
-	\begin{itemize}
-		\item Una famiglia di insiemi $G_0,G_1,\dots,G_n$;
-		\item Una famiglia di funzioni $s^n,t^n : G_n\to G_{n-1}$, dette \emph{dominio} e \emph{codominio} $n$-dimensionale.
-	\end{itemize}
-	La funtorialità di $G$ ora implica che 
-	\Todo{def solo del funtore qui, la cat i cui morfismi sono trasformazioni naturali verrà definita dopo}
-\end{definition}
 
 \begin{remark}
 	Il termine `diagramma' è di solito riservato a funtori il cui dominio è una categoria piccola, e il cui codominio può essere una categoria larga, per suggerire il principio generale cui abbiamo già accennato in \ref{ssec:categorie_forme}, ossia la tensione tra categorie come forme e come universi: un diagramma di forma piccola \(\ctJ\) è `interpretato' in una categoria \(\ctC\), possibilmente larga, come un grafo connesso e diretto alla stessa maniera di \(\ctJ\). Possiamo quindi accedere a una porzione piccola di \(\ctC\) e operare su di essa i ragionamenti che faremmo in \(\ctJ\), \emph{specializzati ai morfismi di \(\ctC\)}.

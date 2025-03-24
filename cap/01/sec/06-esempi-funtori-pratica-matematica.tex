@@ -221,6 +221,73 @@
 	per \(n\ge 0\), e di coomologia (a coefficienti interi)
 	\[\dmFun{H^n(-,\bbZ)}{\ctHoTop^\op}{\ctAb.}\]
 \end{example}
+\begin{definition}\label{def_insieme_simpliciale}
+	\index{Insieme!--- simpliciale}
+	Un \emph{insieme simpliciale} consta di un funtore \(X_* : \bsDelta^\op\fun\ctSet\), dove \(\bsDelta\) è la categoria dei simplessi di \ref{rmk_delta_e_deltaPlus}.
+
+	Quando la definizione di insieme simpliciale viene data esplicitamente, essa consiste del dato di:
+	\begin{itemize}
+		\item Una famiglia di insiemi $X_0,X_1,\dots,X_n,\dots$; gli elementi di $X_n$ sono detti	\emph{$n$-simplessi} di $X_*$;
+		\item Una famiglia di funzioni $d_i^n : X_n\to X_{n-1}$, dette \emph{facce}, per $0\leq i\leq n$; la faccia $d_i^n(t)$ di un $n$-simplesso $t$ è detta \emph{$i$-esima faccia} di $t$;
+		\item Una famiglia di funzioni $s_i^n : X_n\to X_{n+1}$, dette \emph{degenerazioni}, per $0\leq i\leq n$.
+	\end{itemize}
+	Questi dati sono soggetti alle \emph{identità simpliciali}:
+	\[bla\]
+	La funtorialità di $X$, e la possibilità di decomporre ogni freccia di $\bsDelta$ come composizione di facce e degenerazioni ora implica che le identità simpliciali siano una condizione necessaria e sufficiente per definire un funtore $X : \bsDelta^\op\fun\ctSet$.
+\end{definition}
+\begin{hRemark}[Cos'è esattamente un $n$-simplesso?]{tech}
+	Gli elementi degli insiemi $X_0, X_1$ in un insieme simpliciale $X$ si possono pensare come lati di un grafo diretto con la coppia di funzioni $(d_1,d_0) : X_1 \to X_0\times X_0$ a fare da mappe di dominio e codominio (in \emph{questo} ordine: $d_i = X(\delta^1_i)$ restringe $X$ al vertice che \emph{non} contiene $i$), e gli elementi di $X_2$ si possono rappresentare come dei `triangoli diretti': se $t\in X_2$, possiamo considerare le sue facce $d_i = X(\delta^2_i)$, ciascuna definita restringendo $X$ al lato che \emph{non} contiene l'indice $i$; le tre identità simpliciali quando $n=1$ sono quindi
+	\[
+	d_0\cmp d_1 = d_0\cmp d_0,\quad
+	d_0\cmp d_2 = d_1\cmp d_0,\quad
+	d_1\cmp d_2 = d_1\cmp d_1 
+	\]
+	cosa che implica che i lati di $t$ si `incollino' a formare un triangolo del tipo
+	\[\xymatrix{
+		{\begin{smallmatrix}
+			d_1d_1t \\ 
+			d_1d_2t
+			\end{smallmatrix}}
+				\ar[rr]^{d_1t}\ar[dr]_{d_2t}&& {\begin{smallmatrix}
+					d_0d_1t \\ 
+					d_0d_0t
+					\end{smallmatrix}}
+						\\ 
+		 &{\begin{smallmatrix}
+				d_0d_2t \\ 
+				d_1d_0t
+				\end{smallmatrix}}\ar[ur]_{d_0t}\ar@{}[u]|-t &
+	}\]
+	Ovviamente, è assai sconveniente denotare i vertici di un 2-simplesso a questa maniera; perciò si nominano $a = d_1d_1t, c = d_0d_1t, b = d_0d_2t$ e si disegna più semplicemente un triangolo fatto da $a \xto{d_2t} b \xto{d_0t} c$ e $a \xto{d_1t} c$. Il triangolo quindi diventa
+	\begin{center}
+		\begin{tikzpicture}%[x=.5cm]
+			\node at (160:1) (a) {$a$};
+			\node[inner sep=2pt] at (-90:1) (b) {$b$};
+			\node at (20:1) (c) {$c$};
+			%
+			\draw[-latex] (a) -- (b) node[pos=.5,below left,font=\tiny] {$d_0t$}; 
+			\draw[-latex] (b) -- (c) node[pos=.5,below right,font=\tiny] {$d_0t$};
+			\draw[-latex] (a) -- (c) node[pos=.5, above, font=\tiny] {$d_0t$}; 
+			\end{tikzpicture}
+	\end{center}
+\end{hRemark}
+\begin{definition}\label{def_insieme_cubico}
+	\index{Insieme!--- cubico}
+	Insieme cubico\Todo{def solo del funtore qui, la cat i cui morfismi sono trasformazioni naturali verrà definita dopo}
+\end{definition}
+
+\begin{definition}\label{def_insieme_globulare}
+	\index{Insieme!--- globulare}
+	Un \emph{insieme globulare} consta di un funtore \(G : \ctGl(n)^\op\fun\ctSet\), dove \(\ctGl(n)\) è la categoria `globo generico' di \ref{ex_globo}.
+
+	Quando la definizione di insieme simpliciale viene data esplicitamente, essa consiste del dato di:
+	\begin{itemize}
+		\item Una famiglia di insiemi $G_0,G_1,\dots,G_n$;
+		\item Una famiglia di funzioni $s^n,t^n : G_n\to G_{n-1}$, dette \emph{dominio} e \emph{codominio} $n$-dimensionale.
+	\end{itemize}
+	La funtorialità di $G$ ora implica che 
+	\Todo{def solo del funtore qui, la cat i cui morfismi sono trasformazioni naturali verrà definita dopo}
+\end{definition}
 \begin{example}\index{Funtore!--- quoziente di uno pseudoinsieme}
 	Sia \((X,\sim)\) un prequoziente come in \ref{ex_cat_pseudoinsiemi}; l'assegnazione del quoziente \(X/_\sim\) definisce un funtore
 	\[\dmFun q{\cate{Bish}}{\ctSet}\]
