@@ -68,22 +68,86 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 		\item La categoria delle rappresentazioni (in \(\ctSet\)) di un monoide di \ref{ex_cat_g_insiemi} è la categoria dei funtori \(\susp M \fun\ctSet\); una trasformazione naturale tra rappresentazioni viste come funtori è precisamente un omomorfismo equivariante. Un fatto analogo è vero per le rappresentazioni di un monoide in \(\ctD\), come in \ref{es_fun_repre} (scrivere i dettagli per esercizio).
 	\end{itemize}
 \end{example}
-Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia; raccogliamo i più noti.
+Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia, data la presenza di funtori che le legano alle categorie di oggetti geometrici; raccogliamo alcuni esempi tra i più noti.
 \begin{example}\label{ex_cat_sset}
-	\Todo{}
+	La categoria \(\ctsSet=\presh{\bsDelta}\) degli insiemi simpliciali ha per oggetti i funtori \(\Delta^\op\fun\ctSet\), dove \(\Delta\) è la categoria dei simplessi di \ref{}, e per morfismi le trasformazioni naturali tra questi funtori. Questa categoria è di grande importanza in topologia algebrica, si veda \cite{a,b,c} dato che \(\presh{\bsDelta}\) ammette un funtore di \emph{realizzazione}
+	\[\dmFun{r}{\ctsSet}{\ctTop}\]
+	verso la categoria \(\ctTop\) degli spazi topologici, che porta un oggetto completamente combinatorio (il funtore \(X : \bsDelta^\op\fun\ctSet\)) in uno spazio topologico che può essere costruito iterativamente attaccando dischi di dimensione via via più alta (quello che in \cite{} è chiamato un CW-complesso; si veda \cite{fritsch1990cellular} per una introduzione elementare e \cite{} per una più indirizzata alle proprietà categoriali di \(\presh{\bsDelta}\) e del funtore \(r\) di realizzazione).
 \end{example}
 \begin{example}\label{ex_cat_gset}
 	\Todo{}
 \end{example}
 L'interesse per la categoria \(\ctsSet\) degli insiemi simpliciali risiede principalmente nel fatto che ogni categoria piccola \(\ctC\in\ctCat\) induce un insieme simpliciale \(N\ctC\) detto il \emph{nervo} di \(\ctC\), definito nel modo che segue:
 \begin{itemize}
-	\item \Todo{}
-	\item \Todo{}
+	\item Gli 0-simplessi di \(N\ctC\) sono gli oggetti di \(\ctC\); gli 1-simplessi	sono le frecce di \(\ctC\), e per \(n\ge 2\) gli \(n\)-simplessi di \(N\ctC\) consistono delle \(n\)-uple di frecce componibili di \(\ctC\), cioè
+	      \[(N\ctC)_n := \{C_0 \xto{f_1} C_1 \xto{f_2}C_2\xto{f_3}\cdots \xto{f_{n-1}} C_{n-1}\xto{f_n} C_n\mid \tup[0]Cn,\in\ctC_0\}.\]
+	      Perciò possiamo denotare il generico \(n\)-simplesso di \(N\ctC\) come una \(n\)-upla ordinata \([\tup fn,]\).
+	\item Le mappe di faccia \(d_i : (N\ctC)_n \to (N\ctC)_{n-1}\) sono definite, a seconda che \(i=0\) o \(i=n\), come l'omissione del primo o dell'ultimo termine della sequenza, e altrimenti come la composizione di due frecce adiacenti:
+	      \[\begin{cases}
+			      d_0[\tup fn,] := [\tup[2]fn,]                                           \\
+			      d_n[\tup fn,] := [\tup f{n-1},]                                         \\
+			      d_i[\tup fn,] := [\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]fn,] & 0<i<n.
+		      \end{cases}\]
+	\item Le mappe di degenerazione \(s_i : (N\ctC)_n \to (N\ctC)_{n+1}\)	sono definite come l'inserimento di una copia dell'\(i\)-esimo termine (cioè della sua freccia identica) nella sequenza:
+	      \[\begin{cases}
+			      s_0[\tup fn,] := [\Id[C_0],\tup fn,]                         \\
+			      s_n[\tup fn,] := [\tup fn,,\Id[C_n]]                         \\
+			      s_i[\tup fn,] := [\tup fi, ,\Id[C_i], \tup[i+1]fn,] & 0<i<n.
+		      \end{cases}\]
 \end{itemize}
 \begin{proposition}
-	Il nervo di \(\ctC\) è un insieme simpliciale, ovvero valgono le relazioni \eqref{} di \ref{def_insieme_simpliciale}.
+	Il nervo di \(\ctC\) è un insieme simpliciale, ovvero valgono le relazioni \eqref{idsim_1}--\eqref{idsim_3} di \ref{def_insieme_simpliciale}. In più, il funtore nervo è pienamente fedele nel senso di \ref{fun_pienfed}, cosicché la categoria \(\ctCat\) si può identificare ad una sottocategoria piena di \(\ctsSet\).
 \end{proposition}
 \begin{proof}
+	Vanno verificate le identità simpliciali: partiamo dalla mappe di faccia;
+	\begin{itemize}
+		\item per \(i=0\) si ha
+		      \begin{align*}
+			      d_0 d_j[\tup fn,]    & = d_0[\tup f{j-1}, ,f_{j+1}\cmp f_j, \tup[j+2]fn,] \\
+			                           & = [\tup[2]f{j-1}, ,f_{j+1}\cmp f_j, \tup[j+2]fn,]  \\
+			      d_{j-1}d_0[\tup fn,] & = d_{j-1}[\tup[2]fn,]                              \\
+			                           & =[\tup[2]f{j-1}, ,f_{j+1}\cmp f_j, \tup[j+2]fn,];
+		      \end{align*}
+		\item per \(j=n\) si ha
+		      \begin{align*}
+			      d_id_n[\tup fn,]     & = d_i[\tup f{n-1},]                                        \\
+			                           & =[\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]f{n-1},]         \\
+			      d_{n-1}d_i[\tup fn,] & = d_{n-1}[\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]f{n-1},] \\
+			                           & =[\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]f{n-1},];
+		      \end{align*}
+		\item per \(0<i<n\) si ragiona in maniera del tutto simile. Questo dimostra tutte le equazioni di \eqref{idsim_1}.
+	\end{itemize}
+	\Todo{}
+	Per le degenerazioni si hanno simili risultati:
+	\begin{itemize}
+		\item per \(i=0\) si ha
+		      \begin{align*}
+			      s_0 s_j[\tup fn,]    & = s_0[\tup fj, ,\Id[C_j], \tup[j+1]fn,]       \\
+			                           & =[\Id[C_0],\tup fj, ,\Id[C_j], \tup[j+1]fn,]  \\
+			      s_{j+1}s_0[\tup fn,] & = s_{j+1}[\Id[C_0],\tup fn,]                  \\
+			                           & =[\Id[C_0],\tup fj, ,\Id[C_j], \tup[j+1]fn,];
+		      \end{align*}
+		\item le identità \eqref{idsim_2} per \(j=n\) e \(0<i<n\) si dimostrano in maniera del tutto simile.
+	\end{itemize}
+	L'interazione tra facce e degenerazioni usa gli assiomi di categoria per \(\ctC\); in particolare,
+	\begin{align*}
+		d_js_j[\tup fn,]     & = d_j[\tup fj, ,\Id[C_j], \tup[j+1]fn,]         \\
+		                     & =[\tup f{j-1}, ,\Id[C_j]\cmp f_j, \tup[j+1]fn,] \\
+		                     & =[\tup f{j-1}, , f_j, \tup[j+1]fn,]             \\
+		d_{j+1}s_j[\tup fn,] & = d_{j+1}[\tup fj, ,\Id[C_j], \tup[j+1]fn,]     \\
+		                     & =[\tup fj, ,f_{j+1}\cmp\Id[C_j], \tup[j+2]fn,]  \\
+		                     & =[\tup fj, ,f_{j+1} , \tup[j+2]fn,]
+	\end{align*}
+	Se \(i > j+1\) si apprezza meglio l'equazione che va dimostrata in un suo caso particolare: poniamo quindi, ad esempio, \(n=5\), e \((i,j)=(4,2)\); si ha quindi
+	\begin{align*}
+		d_4s_2[\tup f5,] & = [f_1,f_2,\Id[C_2],f_3,f_4,f_5]     \\
+		                 & =[f_1,f_2,\Id[C_2],f_4\cmp f_3,f_5]  \\
+		s_2d_3[\tup f5,] & = s_2[f_1,f_2,f_4\cmp f_3,f_5]       \\
+		                 & =[f_1,f_2,\Id[C_2],f_4\cmp f_3,f_5].
+	\end{align*}
+	Lasciamo a chi legge l'onere di scrivere il caso generale (che non cambia in nulla la struttura di questo argomento), così come l'identità \(d_i\cmp s_j=s_{j-1}\cmp d_i\) quando \(i<j\), che si dimostra con una analoga quantità di tedio; questo conclude la dimostrazione.
+
+	Va ora dimostrato che la corrispondenza \(N : \ctCat \fun \ctsSet\) è un funtore, ovvero che un funtore tra categorie piccole \(F : \ctC\fun\ctD\) induce una trasformazione naturale \(NF: N\ctC\nat N\ctD\) tra i rispettivi nervi, e in più che \emph{ogni} mappa simpliciale \(N\ctC\nat N\ctD\) origina da un (unico) funtore.
 	\Todo{}
 \end{proof}
 La corrispondenza \(N : \ctC\mapsto N\ctC\) diventa un funtore \(N : \ctCat\to\ctsSet\) se si definisce \(NF\) come la trasformazione naturale indotta dall'azione di \(F\) sulle frecce di \(\ctC\).

@@ -225,16 +225,16 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 \end{example}
 \begin{remark}[Perché si chiama `globo'?]
 	\Todo{}
-	Si osservi che $\ctGl(1) = \{0\rightrightarrows 1\}$ è la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Da \ref{} deduciamo che `rappresentare' $\ctGl(1)$ nella categoria $\ctSet$ di insiemi e funzioni consiste precisamente nel dare un multidigrafo, con funzioni di dominio e codominio. I globi generici sono una generalizzazione dei multidigrafi, che permettono la rappresentazione di `celle' di dimensione maggiore di 1. Sarà la \autoref{def_insieme_globulare} a rendere precisa questa idea (a sua volta, mediante la nozione di funtore controvariante in \ref{def_funtore_contro}), ma per il momento, è già possibile osservare che una terna di insiemi 
+	Si osservi che \(\ctGl(1) = \{0\rightrightarrows 1\}\) è la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Da \ref{} deduciamo che `rappresentare' \(\ctGl(1)\) nella categoria \(\ctSet\) di insiemi e funzioni consiste precisamente nel dare un multidigrafo, con funzioni di dominio e codominio. I globi generici sono una generalizzazione dei multidigrafi, che permettono la rappresentazione di `celle' di dimensione maggiore di 1. Sarà la \autoref{def_insieme_globulare} a rendere precisa questa idea (a sua volta, mediante la nozione di funtore controvariante in \ref{def_funtore_contro}), ma per il momento, è già possibile osservare che una terna di insiemi
 	\[\xymatrix{
 		C \ar@<.25em>[r]^-{s_2}\ar@<-.25em>[r]_-{t_2}& E \ar@<.25em>[r]^-{s_1}\ar@<-.25em>[r]_-{t_1}& V
-	}\]
-	di celle $C$, lati $E$ e vertici $V$, con funzioni $s_1,t_1,s_2,t_2$ consta di elementi $c\in C$, ciascuno dei quali ha un dominio $s_2(c) = F$ e un codominio $t_2(c)=G$, ciascuno dei quali ha un dominio e un codominio, 
+		}\]
+	di celle \(C\), lati \(E\) e vertici \(V\), con funzioni \(s_1,t_1,s_2,t_2\) consta di elementi \(c\in C\), ciascuno dei quali ha un dominio \(s_2(c) = F\) e un codominio \(t_2(c)=G\), ciascuno dei quali ha un dominio e un codominio,
 	\[s_1s_2(c) = s_1 F = X, t_1s_2(c) = t_1 F = Y, s_1t_2(c) = s_1 G = Z , t_1t_2(c) = t_1 G = W\]
-	Del resto valgono le relazioni in \ref{ex_globo}, di modo che $X=Z,	Y=W$, cosicché
+	Del resto valgono le relazioni in \ref{ex_globo}, di modo che \(X=Z,	Y=W\), cosicché
 	\[\xymatrix{
 		X \rtwocell^F_G{c} & Y
-	}\]
+		}\]
 \end{remark}
 \index{Categoria!--- libera}
 Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di un insieme di vertici (o `oggetti') \(V\) e di un insieme di lati (o `morfismi') \(E\) generi una categoria \(\bfF[\ctG]\) che può poi essere soggetta a delle relazioni, in modo del tutto analogo in cui un monoide o gruppo \(G\) libero su un insieme \(S\) di generatori può poi essere quozientato rispetto a un insieme di relazioni \(R\), dando una presentazione \(G = \langle S\mid R\rangle\).
@@ -563,8 +563,8 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 		\sigma_n^j \cmp \sigma_n^i = \sigma_n^i \cmp \sigma_n^{j+1}, \quad i \leq j\\
 		\sigma_n^j \cmp \delta_n^i =
 		\begin{cases}
-			1,                              & i = j, j+1 \\
 			\delta_n^i \cmp \sigma_n^{j-1}, & i < j      \\
+			\id,                            & i = j, j+1 \\
 			\delta_n^{i-1} \cmp \sigma_n^j, & i > j+1.
 		\end{cases}
 	\end{gather*}
@@ -665,7 +665,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	\begin{center}
 		\begin{tikzpicture}[x=.5cm]
 			\tikzset{
-			fitbg/.style={inner sep=0pt, fill=gray!50, opacity=0.5}
+				fitbg/.style={inner sep=0pt, fill=gray!50, opacity=0.5}
 			}
 			\drawChain{4}[up]
 			\begin{pgfonlayer}{background}
@@ -682,60 +682,60 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 			\foreach \i/\j in {0/0,1/0,2/1,3/2,4/3}
 			\draw[-latex] (\i up) -- (\j down);
 			\begin{scope}[xshift=3cm]
-							\drawChain{4}[up]
-			\begin{pgfonlayer}{background}
-				\node[fitbg,fit=(0up)] {};
-				\node[fitbg,fit=(1up)(2up)] {};
-				\node[fitbg,fit=(3up)(4up)] {};
-			\end{pgfonlayer}
-			\begin{scope}[yshift=-1cm]
-				\drawChain{3}[down]
+				\drawChain{4}[up]
 				\begin{pgfonlayer}{background}
-					\node[fitbg,fit=(0down)] {};
-					\node[fitbg,fit=(1down)] {};
-					\node[fitbg,fit=(2down)(3down)] {};
+					\node[fitbg,fit=(0up)] {};
+					\node[fitbg,fit=(1up)(2up)] {};
+					\node[fitbg,fit=(3up)(4up)] {};
 				\end{pgfonlayer}
+				\begin{scope}[yshift=-1cm]
+					\drawChain{3}[down]
+					\begin{pgfonlayer}{background}
+						\node[fitbg,fit=(0down)] {};
+						\node[fitbg,fit=(1down)] {};
+						\node[fitbg,fit=(2down)(3down)] {};
+					\end{pgfonlayer}
+				\end{scope}
+				\foreach \i/\j in {0/0,1/1,2/1,3/2,4/3}
+				\draw[-latex] (\i up) -- (\j down);
+				\begin{scope}[xshift=3cm]
+					\drawChain{4}[up]
+					\begin{pgfonlayer}{background}
+						\node[fitbg,fit=(0up)(1up)] {};
+						\node[fitbg,fit=(2up)(3up)] {};
+						\node[fitbg,fit=(4up)] {};
+					\end{pgfonlayer}
+					\begin{scope}[yshift=-1cm]
+						\drawChain{3}[down]
+						\begin{pgfonlayer}{background}
+							\node[fitbg,fit=(0down)(1down)] {};
+							\node[fitbg,fit=(2down)] {};
+							\node[fitbg,fit=(3down)] {};
+						\end{pgfonlayer}
+					\end{scope}
+					\foreach \i/\j in {0/0,1/1,2/2,3/2,4/3}
+					\draw[-latex] (\i up) -- (\j down);
+					\begin{scope}[xshift=3cm]
+						\drawChain{4}[up]
+						\begin{pgfonlayer}{background}
+							\node[fitbg,fit=(0up)(2up)] {};
+							\node[fitbg,fit=(3up)(4up)] {};
+						\end{pgfonlayer}
+						\begin{scope}[yshift=-1cm]
+							\drawChain{3}[down]
+							\begin{pgfonlayer}{background}
+								\node[fitbg,fit=(0down)(2down)] {};
+								\node[fitbg,fit=(3down)] {};
+							\end{pgfonlayer}
+						\end{scope}
+						\foreach \i/\j in {0/0,1/1,2/2,3/3,4/3}
+						\draw[-latex] (\i up) -- (\j down);
+					\end{scope}
+				\end{scope}
 			\end{scope}
-			\foreach \i/\j in {0/0,1/1,2/1,3/2,4/3}
-			\draw[-latex] (\i up) -- (\j down);
-			\begin{scope}[xshift=3cm]
-							\drawChain{4}[up]
-			\begin{pgfonlayer}{background}
-				\node[fitbg,fit=(0up)(1up)] {};
-				\node[fitbg,fit=(2up)(3up)] {};
-				\node[fitbg,fit=(4up)] {};
-			\end{pgfonlayer}
-			\begin{scope}[yshift=-1cm]
-				\drawChain{3}[down]
-				\begin{pgfonlayer}{background}
-					\node[fitbg,fit=(0down)(1down)] {};
-					\node[fitbg,fit=(2down)] {};
-					\node[fitbg,fit=(3down)] {};
-				\end{pgfonlayer}
-			\end{scope}
-			\foreach \i/\j in {0/0,1/1,2/2,3/2,4/3}
-			\draw[-latex] (\i up) -- (\j down);
-			\begin{scope}[xshift=3cm]
-							\drawChain{4}[up]
-			\begin{pgfonlayer}{background}
-				\node[fitbg,fit=(0up)(2up)] {};
-				\node[fitbg,fit=(3up)(4up)] {};
-			\end{pgfonlayer}
-			\begin{scope}[yshift=-1cm]
-				\drawChain{3}[down]
-				\begin{pgfonlayer}{background}
-					\node[fitbg,fit=(0down)(2down)] {};
-					\node[fitbg,fit=(3down)] {};
-				\end{pgfonlayer}
-			\end{scope}
-			\foreach \i/\j in {0/0,1/1,2/2,3/3,4/3}
-			\draw[-latex] (\i up) -- (\j down);
-			\end{scope}
-			\end{scope}
-			\end{scope}
-			\end{tikzpicture}
+		\end{tikzpicture}
 	\end{center}
-	\caption{Le mappe di codegenerazione \(\sigma_4^0,\dots,\sigma_4^4 : [4]\mono [3]\) in \(\bsDelta\). Ciascun valore $i=\iter[0] n$ viene assunto due volte da $\sigma_n^i$.}
+	\caption{Le mappe di codegenerazione \(\sigma_4^0,\dots,\sigma_4^4 : [4]\mono [3]\) in \(\bsDelta\). Ciascun valore \(i=\iter[0] n\) viene assunto due volte da \(\sigma_n^i\).}
 	\label{fig:cofa}
 \end{figure}
 \begin{remark}\index{Universo}\index{Ordinale}
