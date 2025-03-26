@@ -70,14 +70,51 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 \end{example}
 Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia, data la presenza di funtori che le legano alle categorie di oggetti geometrici; raccogliamo alcuni esempi tra i più noti.
 \begin{example}\label{ex_cat_sset}
-	La categoria \(\ctsSet=\presh{\bsDelta}\) degli insiemi simpliciali ha per oggetti i funtori \(\Delta^\op\fun\ctSet\), dove \(\Delta\) è la categoria dei simplessi di \ref{}, e per morfismi le trasformazioni naturali tra questi funtori. Questa categoria è di grande importanza in topologia algebrica, si veda \cite{a,b,c} dato che \(\presh{\bsDelta}\) ammette un funtore di \emph{realizzazione}
+	La categoria \(\ctsSet=\presh{\bsDelta}\) degli insiemi simpliciali ha per oggetti i funtori \(\Delta^\op\fun\ctSet\), dove \(\Delta\) è la categoria dei simplessi di \ref{rmk_delta_e_deltaPlus}, e per morfismi le trasformazioni naturali tra questi funtori.
+
+	Una trasformazione naturale \(f : X_*\nat Y_*\) è detta una \emph{mappa simpliciale}, e consiste di una famiglia di funzioni \(f_n : X_n \to Y_n\) tra gli insiemi di \(n\)-simplessi, che sono compatibili con le mappe di faccia e di degenerazione: questo significa che ogni diagramma
+	% https://q.uiver.app/#q=WzAsOCxbMCwwLCJYX24iXSxbMCwxLCJYX3tuLTF9Il0sWzEsMCwiWV9uIl0sWzEsMSwiWV97bi0xfSJdLFsyLDAsIlhfbiJdLFszLDAsIllfbiJdLFsyLDEsIlhfe24rMX0iXSxbMywxLCJZX3tuKzF9Il0sWzAsMSwiZF9pIiwyXSxbMiwzLCJkX2knIl0sWzAsMiwiZl9uIl0sWzEsMywiZl97bi0xfSIsMl0sWzQsNiwic19pIiwyXSxbNiw3LCJmX3tuKzF9IiwyXSxbNSw3LCJzX2knIl0sWzQsNSwiZl9uIl1d
+	\[\begin{tikzcd}
+			{X_n} & {Y_n} & {X_n} & {Y_n} \\
+			{X_{n-1}} & {Y_{n-1}} & {X_{n+1}} & {Y_{n+1}}
+			\arrow["{f_n}", from=1-1, to=1-2]
+			\arrow["{d_i}"', from=1-1, to=2-1]
+			\arrow["{d_i'}", from=1-2, to=2-2]
+			\arrow["{f_n}", from=1-3, to=1-4]
+			\arrow["{s_i}"', from=1-3, to=2-3]
+			\arrow["{s_i'}", from=1-4, to=2-4]
+			\arrow["{f_{n-1}}"', from=2-1, to=2-2]
+			\arrow["{f_{n+1}}"', from=2-3, to=2-4]
+		\end{tikzcd}\]
+	è commutativo, scegliendo come frecce verticali le facce \(d_i,d_i'\) o le degenerazioni \(s_i,s_i'\) di \(X_*\) e di \(Y_*\) rispettivamente.
+
+	La categoria degli insiemi simpliciali è di grande rilevanza in topologia algebrica (si veda \cite{a,b,c}) dato che \(\presh{\bsDelta}\) ammette un funtore di \emph{realizzazione}
 	\[\dmFun{r}{\ctsSet}{\ctTop}\]
-	verso la categoria \(\ctTop\) degli spazi topologici, che porta un oggetto completamente combinatorio (il funtore \(X : \bsDelta^\op\fun\ctSet\)) in uno spazio topologico che può essere costruito iterativamente attaccando dischi di dimensione via via più alta (quello che in \cite{} è chiamato un CW-complesso; si veda \cite{fritsch1990cellular} per una introduzione elementare e \cite{} per una più indirizzata alle proprietà categoriali di \(\presh{\bsDelta}\) e del funtore \(r\) di realizzazione).
+	verso la categoria \(\ctTop\) degli spazi topologici, che porta un oggetto la cui struttura è puramente combinatoria\fshyp{}algebrica (il funtore \(X : \bsDelta^\op\fun\ctSet\)) in uno spazio topologico che può essere costruito iterativamente attaccando dischi di dimensione via via più alta (quello che in \cite{} è chiamato un CW-complesso; si veda \cite{fritsch1990cellular} per una introduzione elementare e \cite{} per una più indirizzata alle proprietà categoriali di \(\presh{\bsDelta}\) e del funtore \(r\) di realizzazione).
 \end{example}
-\begin{example}\label{ex_cat_gset}
-	\Todo{}
-\end{example}
-L'interesse per la categoria \(\ctsSet\) degli insiemi simpliciali risiede principalmente nel fatto che ogni categoria piccola \(\ctC\in\ctCat\) induce un insieme simpliciale \(N\ctC\) detto il \emph{nervo} di \(\ctC\), definito nel modo che segue:
+
+\begin{remark}[Perché si chiama `globo'?]\label{globi_come_sonfatti}
+	Ragionamenti simili si possono fare anche per la categoria degli insiemi \(n\)-globulari, cioè per la categoria \(\presh{\ctGl(n)}\) di funtori e trasformazioni naturali, contemporaneamente anche spiegando l'origine del termine `globo' per il suo oggetto generico.
+
+	Si osservi che \(\ctGl(1) = \{0\rightrightarrows 1\}\) è la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Da \ref{} deduciamo che `rappresentare' \(\ctGl(1)\) nella categoria \(\ctSet\) di insiemi e funzioni consiste precisamente nel dare un multidigrafo, con funzioni di dominio e codominio. I globi generici sono una generalizzazione dei multidigrafi, che permettono la rappresentazione di `celle' di dimensione maggiore di 1. Sarà la \autoref{def_insieme_globulare} a rendere precisa questa idea (a sua volta, mediante la nozione di funtore controvariante in \ref{def_funtore_contro}), ma per il momento, è già possibile osservare che una terna di insiemi
+	\[\xymatrix{
+		C \ar@<.25em>[r]^-{s_2}\ar@<-.25em>[r]_-{t_2}& E \ar@<.25em>[r]^-{s_1}\ar@<-.25em>[r]_-{t_1}& V
+		}\]
+	di celle \(C\), lati \(E\) e vertici \(V\), con funzioni \(s_1,t_1,s_2,t_2\) consta di elementi \(c\in C\), ciascuno dei quali ha un dominio \(s_2(c) = F\) e un codominio \(t_2(c)=G\), ciascuno dei quali ha un dominio e un codominio,
+	\begin{gather*}
+		s_1s_2(c) = s_1 F = X\\
+		t_1s_2(c) = t_1 F = Y\\
+		s_1t_2(c) = s_1 G = Z\\
+		t_1t_2(c) = t_1 G = W
+	\end{gather*}
+	Del resto valgono le relazioni in \ref{ex_globo}, di modo che \(X=Z,	Y=W\), cosicché la cella globulare \(c\in C\) si disegna come
+	\[\xymatrix{
+		X \rtwocell^F_G{c} & Y
+		}\]
+\end{remark}
+La categoria degli insiemi simpliciali è però decisamente più studiata di quella dei globi.
+
+Il maggiore interesse per \(\ctsSet\) risiede principalmente nel fatto che ogni categoria piccola \(\ctC\in\ctCat\) induce un insieme simpliciale \(N\ctC\) detto il \emph{nervo} di \(\ctC\), definito nel modo che segue:
 \begin{itemize}
 	\item Gli 0-simplessi di \(N\ctC\) sono gli oggetti di \(\ctC\); gli 1-simplessi	sono le frecce di \(\ctC\), e per \(n\ge 2\) gli \(n\)-simplessi di \(N\ctC\) consistono delle \(n\)-uple di frecce componibili di \(\ctC\), cioè
 	      \[(N\ctC)_n := \{C_0 \xto{f_1} C_1 \xto{f_2}C_2\xto{f_3}\cdots \xto{f_{n-1}} C_{n-1}\xto{f_n} C_n\mid \tup[0]Cn,\in\ctC_0\}.\]
@@ -115,9 +152,15 @@ L'interesse per la categoria \(\ctsSet\) degli insiemi simpliciali risiede princ
 			      d_{n-1}d_i[\tup fn,] & = d_{n-1}[\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]f{n-1},] \\
 			                           & =[\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]f{n-1},];
 		      \end{align*}
-		\item per \(0<i<n\) si ragiona in maniera del tutto simile. Questo dimostra tutte le equazioni di \eqref{idsim_1}.
+		\item per \(0<i<n\) si ragiona in maniera del tutto simile; si noti che l'equazione \eqref{idsim_1} quando \(j=i+1\) è vera per l'assioma di associatività della categoria \(\ctC\); per esempio, per \(n=5\) si ha
+		      \begin{align*}
+			      d_1d_2[\tup f5,] & = d_1[f_1,f_3\cmp f_2,f_4,f_5]   \\
+			                       & =[(f_3\cmp f_2)\cmp f_1,f_4,f_5] \\
+			      d_1d_1[\tup f5,] & = d_1[f_2\cmp f_1,f_3,f_4,f_5]   \\
+			                       & =[f_3\cmp (f_2\cmp f_1),f_4,f_5]
+		      \end{align*}
+		      Questo dimostra tutte le equazioni di \eqref{idsim_1}.
 	\end{itemize}
-	\Todo{}
 	Per le degenerazioni si hanno simili risultati:
 	\begin{itemize}
 		\item per \(i=0\) si ha
@@ -129,7 +172,7 @@ L'interesse per la categoria \(\ctsSet\) degli insiemi simpliciali risiede princ
 		      \end{align*}
 		\item le identità \eqref{idsim_2} per \(j=n\) e \(0<i<n\) si dimostrano in maniera del tutto simile.
 	\end{itemize}
-	L'interazione tra facce e degenerazioni usa gli assiomi di categoria per \(\ctC\); in particolare,
+	L'interazione tra facce e degenerazioni usa gli assiomi di identità per la categoria \(\ctC\); in particolare,
 	\begin{align*}
 		d_js_j[\tup fn,]     & = d_j[\tup fj, ,\Id[C_j], \tup[j+1]fn,]         \\
 		                     & =[\tup f{j-1}, ,\Id[C_j]\cmp f_j, \tup[j+1]fn,] \\
@@ -147,8 +190,9 @@ L'interesse per la categoria \(\ctsSet\) degli insiemi simpliciali risiede princ
 	\end{align*}
 	Lasciamo a chi legge l'onere di scrivere il caso generale (che non cambia in nulla la struttura di questo argomento), così come l'identità \(d_i\cmp s_j=s_{j-1}\cmp d_i\) quando \(i<j\), che si dimostra con una analoga quantità di tedio; questo conclude la dimostrazione.
 
-	Va ora dimostrato che la corrispondenza \(N : \ctCat \fun \ctsSet\) è un funtore, ovvero che un funtore tra categorie piccole \(F : \ctC\fun\ctD\) induce una trasformazione naturale \(NF: N\ctC\nat N\ctD\) tra i rispettivi nervi, e in più che \emph{ogni} mappa simpliciale \(N\ctC\nat N\ctD\) origina da un (unico) funtore.
-	\Todo{}
+	Va ora dimostrato che la corrispondenza \(N : \ctCat \fun \ctsSet\) è un funtore, ovvero che un funtore tra categorie piccole \(F : \ctC\fun\ctD\) induce una trasformazione naturale \(NF: N\ctC\nat N\ctD\) tra i rispettivi nervi, e in più che \emph{ogni} mappa simpliciale \(f : N\ctC\nat N\ctD\) origina da un (unico) funtore.
+
+	Del resto, una tale \(f\) è definita da delle componenti \((f_0,f_1,f_2,\dots)\), e dalla definizione sappiamo che \((N\ctC)_0,(N\ctC)_1,(N\ctC)_2\) sono rispettivamente gli oggetti, le frecce e le coppie di frecce componibili di \(\ctC\); altrettanto è vero per \(\ctD\), e allora \(f_0 : \ctC_0\to\ctD_0\) è la candidata funzione sugli oggetti di un funtore, \(f_1 : \ctC_1\to\ctD_1\) la funzione sulle frecce. La compatibilità di \(f_0,f_1\) con l'unica degenerazione \(s : (N\ctC)_0\to(N\ctC)_1\), definita da \(s[C] = [\Id[C]]\) afferma che \(f_1(\Id[C]) = \Id[f_0C]\). Similmente, la compatibilità di \(f_2\) con la faccia \(d_1\), che consiste della mappa di composizione \(N\ctC_2\to N\ctC_1\), afferma che \(f_1\) preserva anche le composizioni.
 \end{proof}
 La corrispondenza \(N : \ctC\mapsto N\ctC\) diventa un funtore \(N : \ctCat\to\ctsSet\) se si definisce \(NF\) come la trasformazione naturale indotta dall'azione di \(F\) sulle frecce di \(\ctC\).
 \begin{definition}\label{def_natutra}\index{Trasformazione naturale}\index{homCDFG@\(\Hom{\ctCat(\ctC,\ctD)}(F,G)\)}
