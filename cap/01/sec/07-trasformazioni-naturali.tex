@@ -96,7 +96,7 @@ Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia
 \begin{remark}[Perché si chiama `globo'?]\label{globi_come_sonfatti}\index{Globo}
 	Ragionamenti simili si possono fare anche per la categoria degli insiemi \(n\)-globulari, cioè per la categoria \(\presh{\ctGl(n)}\) di funtori e trasformazioni naturali, contemporaneamente anche spiegando l'origine del termine `globo' per il suo oggetto generico.
 
-	Si osservi che \(\ctGl(1) = \{0\rightrightarrows 1\}\) è la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Da \ref{} deduciamo che `rappresentare' \(\ctGl(1)\) nella categoria \(\ctSet\) di insiemi e funzioni consiste precisamente nel dare un multidigrafo, con funzioni di dominio e codominio. I globi generici sono una generalizzazione dei multidigrafi, che permettono la rappresentazione di `celle' di dimensione maggiore di 1. Sarà la \autoref{def_insieme_globulare} a rendere precisa questa idea (a sua volta, mediante la nozione di funtore controvariante in \ref{def_funtore_contro}), ma per il momento, è già possibile osservare che una terna di insiemi
+	Si osservi che \(\ctGl(1) = \{0\rightrightarrows 1\}\) è la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Da ciò deduciamo che `rappresentare' \(\ctGl(1)\) nella categoria \(\ctSet\) di insiemi e funzioni consiste precisamente nel dare un multidigrafo, con funzioni di dominio e codominio. I globi generici sono una generalizzazione dei multidigrafi, che permettono la rappresentazione di `celle' di dimensione maggiore di 1. Sarà la \autoref{def_insieme_globulare} a rendere precisa questa idea (a sua volta, mediante la nozione di funtore controvariante in \ref{def_funtore_contro}), ma per il momento, è già possibile osservare che una terna di insiemi
 	\[\xymatrix{
 		C \ar@<.25em>[r]^-{s_2}\ar@<-.25em>[r]_-{t_2}& E \ar@<.25em>[r]^-{s_1}\ar@<-.25em>[r]_-{t_1}& V
 		}\]
@@ -113,25 +113,26 @@ Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia
 		}\]
 \end{remark}
 La categoria degli insiemi simpliciali è però decisamente più studiata di quella dei globi.
-
-Il maggiore interesse per \(\ctsSet\) risiede principalmente nel fatto che ogni categoria piccola \(\ctC\in\ctCat\) induce un insieme simpliciale \(N\ctC\) detto il \emph{nervo} di \(\ctC\), definito nel modo che segue:
-\begin{itemize}
-	\item Gli 0-simplessi di \(N\ctC\) sono gli oggetti di \(\ctC\); gli 1-simplessi	sono le frecce di \(\ctC\), e per \(n\ge 2\) gli \(n\)-simplessi di \(N\ctC\) consistono delle \(n\)-uple di frecce componibili di \(\ctC\), cioè
-	      \[(N\ctC)_n := \{C_0 \xto{f_1} C_1 \xto{f_2}C_2\xto{f_3}\cdots \xto{f_{n-1}} C_{n-1}\xto{f_n} C_n\mid \tup[0]Cn,\in\ctC_0\}.\]
-	      Perciò possiamo denotare il generico \(n\)-simplesso di \(N\ctC\) come una \(n\)-upla ordinata \([\tup fn,]\).
-	\item Le mappe di faccia \(d_i : (N\ctC)_n \to (N\ctC)_{n-1}\) sono definite, a seconda che \(i=0\) o \(i=n\), come l'omissione del primo o dell'ultimo termine della sequenza, e altrimenti come la composizione di due frecce adiacenti:
-	      \[\begin{cases}
-			      d_0[\tup fn,] := [\tup[2]fn,]                                           \\
-			      d_n[\tup fn,] := [\tup f{n-1},]                                         \\
-			      d_i[\tup fn,] := [\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]fn,] & 0<i<n.
-		      \end{cases}\]
-	\item Le mappe di degenerazione \(s_i : (N\ctC)_n \to (N\ctC)_{n+1}\)	sono definite come l'inserimento di una copia dell'\(i\)-esimo termine (cioè della sua freccia identica) nella sequenza:
-	      \[\begin{cases}
-			      s_0[\tup fn,] := [\Id[C_0],\tup fn,]                         \\
-			      s_n[\tup fn,] := [\tup fn,,\Id[C_n]]                         \\
-			      s_i[\tup fn,] := [\tup fi, ,\Id[C_i], \tup[i+1]fn,] & 0<i<n.
-		      \end{cases}\]
-\end{itemize}
+\begin{remark}[Nervo di una categoria piccola]\label{def_nervo_di_una_cat}
+	Il maggiore interesse per \(\ctsSet\) risiede principalmente nel fatto che ogni categoria piccola \(\ctC\in\ctCat\) induce un insieme simpliciale \(N\ctC\) detto il \emph{nervo} di \(\ctC\), definito nel modo che segue:
+	\begin{itemize}
+		\item Gli 0-simplessi di \(N\ctC\) sono gli oggetti di \(\ctC\); gli 1-simplessi	sono le frecce di \(\ctC\), e per \(n\ge 2\) gli \(n\)-simplessi di \(N\ctC\) consistono delle \(n\)-uple di frecce componibili di \(\ctC\), cioè
+		      \[(N\ctC)_n := \{C_0 \xto{f_1} C_1 \xto{f_2}C_2\xto{f_3}\cdots \xto{f_{n-1}} C_{n-1}\xto{f_n} C_n\mid \tup[0]Cn,\in\ctC_0\}.\]
+		      Perciò possiamo denotare il generico \(n\)-simplesso di \(N\ctC\) come una \(n\)-upla ordinata \([\tup fn,]\).
+		\item Le mappe di faccia \(d_i : (N\ctC)_n \to (N\ctC)_{n-1}\) sono definite, a seconda che \(i=0\) o \(i=n\), come l'omissione del primo o dell'ultimo termine della sequenza, e altrimenti come la composizione di due frecce adiacenti:
+		      \[\begin{cases}
+				      d_0[\tup fn,] := [\tup[2]fn,]                                           \\
+				      d_n[\tup fn,] := [\tup f{n-1},]                                         \\
+				      d_i[\tup fn,] := [\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]fn,] & 0<i<n.
+			      \end{cases}\]
+		\item Le mappe di degenerazione \(s_i : (N\ctC)_n \to (N\ctC)_{n+1}\)	sono definite come l'inserimento di una copia dell'\(i\)-esimo termine (cioè della sua freccia identica) nella sequenza:
+		      \[\begin{cases}
+				      s_0[\tup fn,] := [\Id[C_0],\tup fn,]                         \\
+				      s_n[\tup fn,] := [\tup fn,,\Id[C_n]]                         \\
+				      s_i[\tup fn,] := [\tup fi, ,\Id[C_i], \tup[i+1]fn,] & 0<i<n.
+			      \end{cases}\]
+	\end{itemize}
+\end{remark}
 \begin{proposition}\index{Nervo!--- di una categoria}
 	Il nervo di \(\ctC\) è un insieme simpliciale, ovvero valgono le relazioni \eqref{idsim_1}--\eqref{idsim_3} di \ref{def_insieme_simpliciale}. In più, il funtore nervo è pienamente fedele nel senso di \ref{fun_pienfed}, cosicché la categoria \(\ctCat\) si può identificare ad una sottocategoria piena di \(\ctsSet\).
 \end{proposition}
@@ -644,7 +645,7 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 	\[\dmFun{\N F}\ctD{\presh\ctC}\]
 	(indicato con lo stesso nome) che manda \(D\) nel funtore \(\Hom\ctD(F\blank,D) : C\mapsto \Hom\ctD(FC,D)\)
 \end{definition}
-Si noti che il nervo di una categoria \(\ctC\), come definito in \ref{}, non è altro che il nervo del funtore canonico
+Si noti che il nervo di una categoria \(\ctC\), come definito in \ref{def_nervo_di_una_cat}, non è altro che il nervo del funtore canonico
 \[\dmFun{\boldsymbol{\Delta}}{\ctFOrd}{\ctCat}\]
 che riguarda un insieme totalmente ordinato \([n]\in\ctFOrd\) come la categoria \(\boldsymbol{\Delta}[n] :=\{0\to 1\to\cdots\to n\}\) (a sua volta, il funtore \(\boldsymbol{\Delta}\) è la restrizione \(t|_{\ctFOrd}\), nella terminologia di \ref{ord_come_cat}).
 \begin{esercizi}

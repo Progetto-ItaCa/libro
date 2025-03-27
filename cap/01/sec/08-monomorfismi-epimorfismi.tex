@@ -185,7 +185,7 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	In tal caso, diciamo che \(r\), che è un epi spezzante (dato che ha \(s\) come inversa destra), è un \emph{retratto} di \(B\) su \(A\), mentre \(s\) è un mono spezzante (perché ha \(r\) come inversa sinistra).
 \end{definition}
 \begin{remark}\index{Idempotente}\index{Freccia!--- idempotente}
-	Una freccia \(e : X\to X\) da $X$ in sé si dice \emph{idempotente} se \(e\cmp e=e\); si osservi che, se \(s \colon A \to B\) e \(r \colon B \to A\) sono una coppia di sezione e retrazione,
+	Una freccia \(e : X\to X\) da \(X\) in sé si dice \emph{idempotente} se \(e\cmp e=e\); si osservi che, se \(s \colon A \to B\) e \(r \colon B \to A\) sono una coppia di sezione e retrazione,
 	allora il morfismo
 	\begin{equation}
 		\begin{tikzcd}
@@ -433,7 +433,7 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 		      spezzato da una diagonale \(u : Y \to E\), che rende \(m\) un mono e un epi spezzante; per \ref{prop:iso-epi-mono}.(\ref{prop:iso-epi-mono:item2}), deve quindi essere un isomorfismo.
 		\item nella categoria degli anelli un epi estremale è precisamente un omomorfismo suriettivo; se la funzione \(Uf : UR\to US\) indotta da un omomorfismo di anelli \(f : R\to S\) non è suriettiva, questo significa che il sottoanello immagine \(f(R)\) è proprio in \(S\), così che \(f\) non può essere estremale.
 
-		      Nell'altra direzione, se \(f : R\to S\) dà una funzione di insiemi \(Uf : UR\to US\) suriettiva, e supponiamo che \(f = m\cmp p\) sia una fattorizzazione con \(m\) mono, allora \(Um\cmp Up\) è una fattorizzazione di \(Uf\) con \(Um\) mono (\ref{eserva_riflette}); del resto gli epi in \(\ctSet\) sono tutti estremali, cosicché \(Um\) deve essere un isomorfismo; ma \(U\) riflette gli isomorfismi (\ref{}), cosicché è \(m\) che deve essere un isomorfismo.
+		      Nell'altra direzione, se \(f : R\to S\) dà una funzione di insiemi \(Uf : UR\to US\) suriettiva, e supponiamo che \(f = m\cmp p\) sia una fattorizzazione con \(m\) mono, allora \(Um\cmp Up\) è una fattorizzazione di \(Uf\) con \(Um\) mono (\ref{eserva_riflette}); del resto gli epi in \(\ctSet\) sono tutti estremali, cosicché \(Um\) deve essere un isomorfismo; ma \(U\) riflette gli isomorfismi per \ref{prop_preserva_riflette}, cosicché è \(m\) che deve essere un isomorfismo.
 
 		      Si noti che l'epimorfismo \(\bbZ\to\bbQ\) non è estremale, perché fattorizza su ciascuna localizzazione di \(\bbZ\) a un primo (per esempio, \(\bbZ \to \bbZ[\frac 12]\mono \bbQ\)).
 	\end{itemize}
@@ -632,11 +632,11 @@ Sorprendentemente, la nozione di equivalenza di categorie non è più debole del
 	Ogni equivalenza di categorie \((F,G,\eta,\xi)\) induce una equivalenza aggiunta \((F,G,\eta,\epsilon)\), dove \(\eta,\epsilon\) soddisfano le identità zig-zag.
 \end{lemma}
 \begin{proof}
-	Data un'equivalenza di categorie \(\ctC\simeq\ctD : (F,G,\eta,\epsilon)\) come in \ref{}, definiamo a partire da \(\xi : FG\nat \Id[\ctD]\) una trasformazione naturale
+	Data un'equivalenza di categorie \(\ctC\simeq\ctD : (F,G,\eta,\epsilon)\) come in \ref{funtore_equcat}, definiamo a partire da \(\xi : FG\nat \Id[\ctD]\) una trasformazione naturale
 	\[\xymatrix@C=2cm{
 		\epsilon : FG \ar@{=>}[r]^-{FG\whi \xi^{-1}} & FGFG \ar@{=>}[r]^-{F\whi\eta^{-1}\whi G} & FG \ar@{=>}[r]^-\xi & \Id[\ctD]
 		}\]
-	per composizione verticale. Dobbiamo ora dimostrare che \(\eta,\epsilon\) soddisfano le due identità di \ref{}. Per farlo, ragioniamo equazionalmente e troviamo che la naturalità di \(\eta\) in \(\xi\) implica che
+	per composizione verticale. Dobbiamo ora dimostrare che \(\eta,\epsilon\) soddisfano le due identità zig e zag. Per farlo, ragioniamo equazionalmente e troviamo che la naturalità di \(\eta\) in \(\xi\) implica che
 	\begin{align*}
 		(G\whi\epsilon)\cmp(\eta \whi G) & = (G\whi\xi )\cmp(GF\whi\eta^{-1}\whi G)\cmp\underline{(GFG\whi\xi^{-1})\cmp(\eta\whi G)}      \\
 		                                 & = (G\whi\xi )\cmp(GF\whi\eta^{-1}\whi G)\cmp(\eta\whi GFG)\cmp(G\whi \xi^{-1})                 \\
@@ -756,7 +756,7 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 	Per ogni categoria \(\ctJ\) (piccola e) filtrata nel senso di \ref{def_cat_filtrata}, esiste un funtore iniziale \(K : P_\ctJ\fun\ctJ\), di dominio un preordine (si veda \ref{ex_cat_ordini}) diretto (si veda \ref{contro_esempi_filt}).
 \end{hTheorem}
 \begin{proof}
-	Grazie a \ref{}, sappiamo che ogni sottocategoria finita \(\ctF\subseteq\ctJ\) ammette una estensione a un funtore \(\ctF^\rhd\fun\ctJ\); in particolare (si veda \ref{def_cono_su_C}) il vertice del cocono così ottenuto è terminale in \(\ctF\). Ora, il poset \(P_\ctJ = (\{\ctF_\alpha\},\subseteq)\) delle sottocategorie finite \(\ctF\) di \(\ctJ\) (in ciascuna delle quali c'è un oggetto terminale \(\infty_\alpha\)) è diretto (è sufficiente considerare l'unione di due sottocategorie finite), e possiamo definire un funtore
+	Grazie a \ref{estensione_filtrate}, sappiamo che ogni sottocategoria finita \(\ctF\subseteq\ctJ\) ammette una estensione a un funtore \(\ctF^\rhd\fun\ctJ\); in particolare (si veda \ref{def_cono_su_C}) il vertice del cocono così ottenuto è terminale in \(\ctF\). Ora, il poset \(P_\ctJ = (\{\ctF_\alpha\},\subseteq)\) delle sottocategorie finite \(\ctF\) di \(\ctJ\) (in ciascuna delle quali c'è un oggetto terminale \(\infty_\alpha\)) è diretto (è sufficiente considerare l'unione di due sottocategorie finite), e possiamo definire un funtore
 	\[\dmFun{K}{P_\ctJ}{\ctJ}\]
 	ottenuto mandando \(\ctF_\alpha\) nell'oggetto terminale \(\infty_\alpha\) di \(J_\alpha^*\), e una inclusione \(\ctF_\alpha\subseteq\ctF_\beta\) nell'ovvia freccia \(\infty_\alpha\to\infty_\beta\).
 
