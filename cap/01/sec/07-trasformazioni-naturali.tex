@@ -69,7 +69,7 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 	\end{itemize}
 \end{example}
 Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia, data la presenza di funtori che le legano alle categorie di oggetti geometrici; raccogliamo alcuni esempi tra i più noti.
-\begin{example}\label{ex_cat_sset}
+\begin{example}\label{ex_cat_sset}\index{Insieme simpliciale}
 	La categoria \(\ctsSet=\presh{\bsDelta}\) degli insiemi simpliciali ha per oggetti i funtori \(\Delta^\op\fun\ctSet\), dove \(\Delta\) è la categoria dei simplessi di \ref{rmk_delta_e_deltaPlus}, e per morfismi le trasformazioni naturali tra questi funtori.
 
 	Una trasformazione naturale \(f : X_*\nat Y_*\) è detta una \emph{mappa simpliciale}, e consiste di una famiglia di funzioni \(f_n : X_n \to Y_n\) tra gli insiemi di \(n\)-simplessi, che sono compatibili con le mappe di faccia e di degenerazione: questo significa che ogni diagramma
@@ -93,7 +93,7 @@ Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia
 	verso la categoria \(\ctTop\) degli spazi topologici, che porta un oggetto la cui struttura è puramente combinatoria\fshyp{}algebrica (il funtore \(X : \bsDelta^\op\fun\ctSet\)) in uno spazio topologico che può essere costruito iterativamente attaccando dischi di dimensione via via più alta (quello che in \cite{} è chiamato un CW-complesso; si veda \cite{fritsch1990cellular} per una introduzione elementare e \cite{} per una più indirizzata alle proprietà categoriali di \(\presh{\bsDelta}\) e del funtore \(r\) di realizzazione).
 \end{example}
 
-\begin{remark}[Perché si chiama `globo'?]\label{globi_come_sonfatti}
+\begin{remark}[Perché si chiama `globo'?]\label{globi_come_sonfatti}\index{Globo}
 	Ragionamenti simili si possono fare anche per la categoria degli insiemi \(n\)-globulari, cioè per la categoria \(\presh{\ctGl(n)}\) di funtori e trasformazioni naturali, contemporaneamente anche spiegando l'origine del termine `globo' per il suo oggetto generico.
 
 	Si osservi che \(\ctGl(1) = \{0\rightrightarrows 1\}\) è la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Da \ref{} deduciamo che `rappresentare' \(\ctGl(1)\) nella categoria \(\ctSet\) di insiemi e funzioni consiste precisamente nel dare un multidigrafo, con funzioni di dominio e codominio. I globi generici sono una generalizzazione dei multidigrafi, che permettono la rappresentazione di `celle' di dimensione maggiore di 1. Sarà la \autoref{def_insieme_globulare} a rendere precisa questa idea (a sua volta, mediante la nozione di funtore controvariante in \ref{def_funtore_contro}), ma per il momento, è già possibile osservare che una terna di insiemi
@@ -209,7 +209,7 @@ La corrispondenza \(N : \ctC\mapsto N\ctC\) diventa un funtore \(N : \ctCat\to\c
 	Coerentemente con la notazione usata finora, dovremmo denotare \(\Hom{\ctCat(\ctC,\ctD)}(F,G)\) la collezione delle trasformazioni naturali tra due funtori, cioè dei morfismi nella categoria \(\ctCat(\ctC,\ctD)\). \`E però conveniente usare una notazione più compatta, specie quando \(\ctC,\ctD\) sono determinate dal contesto: una scelta comune per riferirsi a \(\Hom{\ctCat(\ctC,\ctD)}(F,G)\) è \(\Nat(F,G)\) (ma alcuni autori usano convenzioni ancora più compatte). \`E conveniente denotare esplicitamente dominio e codominio di \(F,G\), perciò noi introduciamo la notazione
 	\[\natHom FG :=\Hom{\ctCat(\ctC,\ctD)}(F,G)\]
 \end{notation}
-\begin{remark}
+\begin{remark}\index{Categoria!--- di funtori}
 	Sarà spesso utile considerare esempi in cui \(\ctD\) non è una categoria piccola (l'esempio più illustre e pervasivo è \ref{def_yoneda_embeddu}), e sarà altrettanto utile considerare esempi di funtori tra categorie entrambe larghe; però la definizione della `categoria' \(\ctCat(\ctC,\ctD)\) pone un problema di teoria degli insiemi quando \(\ctC\) non è piccola; infatti, in quel caso la classe delle trasformazioni naturali tra due funtori \(F,G:\ctC\funto\ctD\) è una sottoclasse di \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), che in generale può non essere un insieme (per esempio, può coincidere con \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), quando?).
 \end{remark}
 \begin{definition}[Isomorfismo naturale]\label{def_isonat}\index{Isomorfismo!--- naturale}\index{Trasformazione naturale!isomorfismo naturale}
@@ -325,7 +325,7 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 \begin{definition}[Legge distributiva]\index{Legge distributiva}\index{Funtore!Legge distributiva tra ---i}
 	Sia \(\ctC\) una categoria, e \(F,G : \ctC\fun\ctC\) due endofuntori; una \emph{legge distributiva} di \(F\) su \(G\) consta di una trasformazione naturale \(\alpha : FG\nat GF\).
 \end{definition}
-\begin{example}
+\begin{example}\index{Funtore!--- delle liste}\index{Legge distributiva}
 	Esistono due funtori \(F,G : \ctSet\fun\ctSet\) definiti come segue:
 	\begin{itemize}
 		\item \(F\) manda un insieme \(X\) nell'insieme delle liste non vuote \(X^+ = \sum_{n\ge 1} X^n = X + X\times X + \dots + X^n + \dots\);

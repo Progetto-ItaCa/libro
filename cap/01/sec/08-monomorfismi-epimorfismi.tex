@@ -87,7 +87,7 @@ Si osservi che una conseguenza immediata di \ref{pem_1} è che \(\Mono[\ctC]\) e
 	\end{enumerate}
 \end{proof}
 
-\begin{proposition}\label{mono_epi_ort}[Una proprietà di mono ed epi in \(\ctSet\)]
+\begin{proposition}\label{mono_epi_ort}[Una proprietà di mono ed epi in \(\ctSet\)]\index{Monomorfismo}\index{Epimorfismo}
 	Dato un quadrato commutativo di funzioni
 	\[\begin{tikzcd}
 			E \ar[r,"f"]\ar[d, two heads, "e"']& A\ar[d, hook, "m"] \\
@@ -112,7 +112,7 @@ Concludiamo la sezione enunciando un risultato che nel capitolo \ref{cap_fattori
 	\end{itemize}
 \end{proposition}
 Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette una condizione equivalente in più, e dunque una formulazione più semplice:
-\begin{proposition}\label{caratt_epi_con_ort_duale}
+\begin{proposition}\label{caratt_epi_con_ort_duale}\index{Monomorfismo}
 	Sia \(m : X\to Y\) una funzione tra insiemi; le seguenti condizioni sono equivalenti:
 	\begin{enumerate}
 		\item\label{caratt_epi_con_ort_duale:itm1} \(m\) è un monomorfismo (si veda \ref{def_Epi});
@@ -184,8 +184,8 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	tali che \(r \cmp s = \id_A\).
 	In tal caso, diciamo che \(r\), che è un epi spezzante (dato che ha \(s\) come inversa destra), è un \emph{retratto} di \(B\) su \(A\), mentre \(s\) è un mono spezzante (perché ha \(r\) come inversa sinistra).
 \end{definition}
-\begin{remark}
-	Un endomorfismo \(e : X\to X\) si dice \emph{idempotente} se \(e\cmp e=e\); si osservi che, se \(s \colon A \to B\) e \(r \colon B \to A\) sono una coppia di sezione e retrazione,
+\begin{remark}\index{Idempotente}\index{Freccia!--- idempotente}
+	Una freccia \(e : X\to X\) da $X$ in sé si dice \emph{idempotente} se \(e\cmp e=e\); si osservi che, se \(s \colon A \to B\) e \(r \colon B \to A\) sono una coppia di sezione e retrazione,
 	allora il morfismo
 	\begin{equation}
 		\begin{tikzcd}
@@ -196,7 +196,7 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	\[(s\cmp r)\cmp (s\cmp r) = s\cmp (r\cmp s)\cmp r = s\cmp 1\cmp r=s\cmp r.\]
 \end{remark}
 
-\begin{example}
+\begin{example}\index{Assioma della scelta}
 	\label{exm:set-sezioni-retrazioni}
 	In \(\ctSet\), una funzione ha una retrazione se e solo se è iniettiva.
 	Inoltre, le funzioni che hanno una sezione sono surgettive,
@@ -207,7 +207,7 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	% Questo esempio, inoltre, dimostra che sezioni e retrazioni non sono uniche:
 	% una funzione surgettiva può avere più inverse destre (sezioni).
 \end{example}
-\begin{remark}
+\begin{remark}\index{Assioma della scelta}
 	Qualcosa di simile avviene per gli spazi vettoriali (ovviamente, è la dimensione infinita a causare problemi): l'assioma della scelta (nella forma del lemma di Zorn) è equivalente al fatto che ogni spazio vettoriale ha una base. Se \(f : V\to W\) è una funzione lineare e suriettiva, si può decomporre \(V = \ker f \oplus W'\) (un complemento in somma diretta per \(\ker f\) esiste solo con l'assioma della scelta), in modo tale che \(f_0 := f|_{W'}\) sia invertibile; l'inversa \(f_0^{-1}\), composta con l'inclusione \(W'\mono \ker f \oplus W'\cong V\), dà una inversa destra per \(f\) (per costruzione, \(f_0^{-1}(w)\) è il vettore (unico) tale che \(f(f_0^{-1}(w)) = w\)), cosicché \(f\) è un epi spezzante.
 \end{remark}
 \begin{figure}[h]
@@ -392,7 +392,7 @@ Possiamo per\`o caratterizzare gli isomorfismi in termini di mono o epi spezzant
 Quando avremo introdotto la teoria dei limiti e dei colimiti nel \autoref{chap_limiti_colimiti} avremo gli strumenti per definire e studiare diverse classi di mono ed epi in una categoria \(\ctC\) (i mono ed epi regolari, effettivi, forti ed altri saranno studiati nel \autoref{cap_fattorizzazione}); una delle prime sottigliezze che si incontrano quando si impara la teoria delle categorie è il fatto che esiste una gerarchia di mono ed epi, che nella categoria degli insiemi collassano tutte nelle funzioni (rispettivamente) iniettive e suriettive, ma che in una categoria con meno proprietà sono, in generale, tutte distinte.
 
 Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emph{estremale}, che non richiede particolari tecnologie per essere enunciata. Gli epi astraggono l'idea di suriettività per una freccia di una categoria astratta, e però in molti costrutti (nel senso di \ref{def_costrutto}) essi non recuperano perfettamente l'idea di suriettività. Lo fanno in categorie come \(\ctTop\), \(\ctSet\) e \(\ctGrp\), ma come mostra \ref{mono_epi_noniso}, la categoria \(\ctcRing\) degli anelli commutativi e unitari è piena di frecce epi che non sono funzioni suriettive; invece, sono gli \emph{epi estremali} a corrispondere precisamente a omomorfismi suriettivi.% questi corrispondono esattamente agli omomorfismi di anelli suriettivi. Nel nostro controesempio precedente, l'inclusione degli interi nei razionali si fattorizza attraverso l'inclusione dei razionali diadici, che non è un isomorfismo (i razionali diadici non sono un campo). Inoltre, gli epimorfismi estremi implicano anche la suriettività in **Haus**, dove gli epimorfismi sono precisamente le mappe continue con immagine densa. Gli epimorfismi estremi non caratterizzano ancora la suriettività in tutte le categorie concrete, ma rappresentano un compromesso e implicano la suriettività nelle categorie più studiate.
-\begin{definition}[Monomorfismo ed epimorfismo estremale]\label{def_monoepi_estrem}\index{Monomorfismo!--- estremale}\index{Epimorfismo!--- estremale|see {Monomorfismo estremale}}
+\begin{definition}[Monomorfismo ed epimorfismo estremale]\label{def_monoepi_estrem}\index{Monomorfismo!--- estremale}\index{Epimorfismo!--- estremale}
 	Sia \(\ctC\) una categoria; un epimorfismo \(f : X \epi Y\) si dice \emph{estremale} se soddisfa la seguente proprietà:
 	\begin{quote}
 		Se esiste una fattorizzazione \(f = X \xto p E \overset m\mono Y\) con \(m \in\Mono[\ctC]\), allora \(m\) è un isomorfismo.
@@ -404,7 +404,7 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 		Se esiste una fattorizzazione \(f = X \overset e\epi E \xto q Y\) con \(e \in\Epi[\ctC]\), allora \(e\) è un isomorfismo.
 	\end{quote}
 \end{definition}
-\begin{proposition}
+\begin{proposition}\index{Epimorfismo!--- estremale}
 	Raccogliamo alcune proprietà degli epi estremali (e implicitamente, le loro duali per mono estremali):
 	\begin{enumtag}{ee}
 		\item \label{ee_1} Se la composizione \(f \circ g\) è un epi estremale, allora \(f\) è a sua volta un epimorfismo estremale. Si noti che questo non assume alcuna proprietà su \(g\).
@@ -422,7 +422,7 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 		\item Se \(g\) ha una inversa destra \(s\) e \(f\cmp g = m\cmp p\), allora \(f = m\cmp p\cmp s\), quindi \(m\) è un isomorfismo.\qedhere
 	\end{enumtag}
 \end{proof}
-\begin{remark}
+\begin{remark}\index{Epimorfismo!--- estremale}
 	Raccogliamo alcuni esempi di epi estremali in categorie note:
 	\begin{itemize}
 		\item Nella categoria degli insiemi, ogni epimorfismo è estremale: infatti, se \(f = m\cmp p : X \to E \mono Y\) allora, usando \ref{mono_epi_ort} troviamo un quadrato
@@ -438,8 +438,8 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 		      Si noti che l'epimorfismo \(\bbZ\to\bbQ\) non è estremale, perché fattorizza su ciascuna localizzazione di \(\bbZ\) a un primo (per esempio, \(\bbZ \to \bbZ[\frac 12]\mono \bbQ\)).
 	\end{itemize}
 \end{remark}
-\begin{remark}[Composizione di epi estremali]\label{compo_estremali}
-	Questa osservazione raccoglie un controesempio alla componibilità degli epi estremali, e una dimostrazione che in categorie di modelli per segnature algebriche (dove, informalmente, possiamo costruire la minima sottoalgebra generata da un sottoinsieme) gli epi estremali sono invece chiusi per composizione.
+\begin{remark}[Composizione di epi estremali]\label{compo_estremali}\index{Epimorfismo!--- estremale}
+	Questa osservazione contiene un controesempio alla componibilità degli epi estremali, e una dimostrazione che in categorie di modelli per segnature algebriche (dove, informalmente, possiamo costruire la minima sottoalgebra generata da un sottoinsieme) gli epi estremali sono invece una classe chiusa per composizione.
 	\begin{itemize}
 		\item Iniziamo dal controesempio. L'idea è usare \ref{ee_2} per generare la categoria libera su una fattorizzazione \(g\cmp f\) di due epi estremali lungo un sottoggetto proprio.
 
@@ -561,12 +561,12 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 		\item \(\mathcal P_1(f) := (f = \id_X)\).
 	\end{itemize}
 \end{definition}
-\begin{proposition}\label{prop_preserva_riflette}
+\begin{proposition}\label{prop_preserva_riflette}\index{Funtore!--- preserva proprietà}
 	Tutti i funtori preservano la proprietà \(\mathcal P_e(f) :=\) `\(f\) è un epi spezzante' e \(\mathcal P_e(f) :=\) `\(f\) è un mono spezzante', per \ref{cor:fun-sezioni-retrazioni}. Gli hom funtori rappresentabili \(\Hom\ctC(C,-)\) preservano la proprietà `\(f\) è un monomorfismo' (diciamo che \(\Hom\ctC(C,-)\) \emph{preserva i monomorfismi}); nella categoria \(\ctSet\) degli insiemi, \(\Hom\ctSet(A,-)\) preserva anche la proprietà `\(f\) è un epimorfismo' se si assume l'assioma della scelta (come formulato in \ref{fig_assioma_scelta}).
 
 	Molte proprietà sono \emph{riflesse} dai funtori pienamente fedeli: per esempio,
 	\begin{itemize}
-		\item la proprietà \(\mathcal P_\cong(f) := (f \text{ è un isomorfismo})\) (un funtore che riflette gli isomorfismi viene spesso chiamato \emph{conservativo});
+		\item la proprietà \(\mathcal P_\cong(f) := (f \text{ è un isomorfismo})\) (un funtore che riflette gli isomorfismi viene spesso chiamato \emph{conservativo});\index{Funtore!-- conservativo}
 		\item la proprietà \(\mathcal P_e(f) := (f \text{ è un epi spezzante})\);
 		\item la proprietà \(\mathcal P_m(f) := (f \text{ è un mono spezzante})\).
 	\end{itemize}
@@ -575,7 +575,7 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	che danno il supporto di una struttura algebrica fissata da una segnatura \((\Omega,a)\) come in \ref{ex_cat_sigma_strutture}, (sono fedeli, e in più) riflettono gli isomorfismi.
 \end{proposition}
 Una proprietà niente affatto banale dei funtori conservativi è che ogni categoria ne ammette almeno uno verso la categoria \(\ctSet\) di insiemi e funzioni; questo rende l'isomorfismo in \(\ctC\) `testabile' al livello di certe funzioni associate, ma l'interesse concreto per questa (seppur elegante) costruzione dovuta a Freyd \cite{fconc} è praticamente nullo.
-\begin{theorem}
+\begin{theorem}\index{Funtore!--- conservativo}
 	Sia \(\ctC\) una categoria (localmente piccola); allora, esiste un funtore conservativo \(Q : \ctC\fun\ctSet\).
 \end{theorem}
 \begin{proof}
@@ -628,7 +628,7 @@ Una proprietà niente affatto banale dei funtori conservativi è che ogni catego
 	A causa della forma di questi diagrammi (due triangoli sono incollati insieme ed \(F,G\) formano uno zig-zag di frecce in direzioni opposte), esse sono colloquialmente chiamate \emph{identità zig-zag} o identità triangolari (o identità \emph{di aggiunzione}, si vedrà nel \autoref{cap_aggiunti}).
 \end{hRemark}
 Sorprendentemente, la nozione di equivalenza di categorie non è più debole della nozione di equivalenza aggiunta, ossia, è sempre possibile indurre un'equivalenza aggiunta a partire da una equivalenza.
-\begin{lemma}\label{eq_sono_eqadj}
+\begin{lemma}\label{eq_sono_eqadj}\index{Equivalenza aggiunta}
 	Ogni equivalenza di categorie \((F,G,\eta,\xi)\) induce una equivalenza aggiunta \((F,G,\eta,\epsilon)\), dove \(\eta,\epsilon\) soddisfano le identità zig-zag.
 \end{lemma}
 \begin{proof}
@@ -653,7 +653,7 @@ Sorprendentemente, la nozione di equivalenza di categorie non è più debole del
 \begin{definition}\label{funtore_wequcat}\index{Equivalenza debole}
 	Una equivalenza debole di categorie è un funtore \(F : \ctC \fun\ctD\) che sia pieno, fedele ed essenzialmente suriettivo.
 \end{definition}
-\begin{remark}\label{eq_implies_weq_AC_eq}
+\begin{remark}\label{eq_implies_weq_AC_eq}\index{Assioma della scelta}\index{Equivalenza}
 	Ogni equivalenza di categorie è un'equivalenza debole di categorie. Il viceversa, che consiste nel costruire uno pseudoinverso per un funtore \(F : \ctC\fun\ctD\) che sia un'equivalenza debole, è dimostrabile assumendo un assioma della scelta (per classi: ogni funzione di classe \(K : \ctC_0 \to \ctD_0\) suriettiva ammette una sezione, ossia se ogni \(K^{-1}D\) è non vuota, è possibile definire una funzione di classe \(H : D\mapsto HD \in K^{-1}D\)).
 	\begin{itemize}
 		\item Se \(F\) è un'equivalenza di categorie, per \ref{eq_sono_eqadj} possiamo metterci nella situazione in cui \(F\) è un'equivalenza aggiunta con pseudoinverso \(G : \ctD\fun\ctC\). Allora per ogni \(f : X\to Y\) in \(\ctC\) abbiamo un quadrato commutativo
