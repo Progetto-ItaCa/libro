@@ -358,7 +358,7 @@ Esempi di categorie bilanciate sono: tutti i gruppoidi (ovviamente\dots), la cat
 
 I controesempi più eclatanti di categorie \emph{non} bilanciate vengono dalla geometria, topologia e teoria degli ordini: nella categoria \(\ctTop\) di \ref{ex_cat_top} i mono ed epi sono precisamente le funzioni \(f : X\to Y\) che sono biiezioni continue --può non esserlo la loro inversa insiemistica. Abbiamo poi prodotto esempi di mono ed epi che non sono isomorfismi nella categoria dei monoidi (simile al ragionamento di \ref{mono_epi_noniso} è quello che dimostra che \(\bbZ\to\bbQ\) è (un mono, ovviamente, ed) epi; ma \(\bbZ\) non è isomorfo a \(\bbQ\), per esempio perché \(\bbZ\) non è un campo).\footnote{La proprietà definente la freccia \(\bbZ\to\bbQ\) nella categoria degli anelli è di essere un mono \emph{essenziale}: \(\bbZ\) interseca tutti i sottoanelli non banali di \(\bbQ\) in un sottoanello non banale (ovvero: se \(A\subseteq\bbQ\) è un sottoanello, ma \(\bbZ\cap A=(0)\), allora \(A=(0)\)).}
 
-Però, e questo è un esempio importante (la cui dimostrazione usa dei fatti di topologia generale elementare), nella categoria degli spazi di Hausdorff compatti e mappe continue \emph{e proprie}, una freccia \(f : X\to Y\) mono ed epi deve essere un isomorfismo: per quanto osservato prima, \(f\) è una biiezione continua. Del resto, una biiezione continua tra spazi di Hausdorff compatti è una mappa chiusa, cosicché l'inversa insiemistica di \(f\) è continua (sui chiusi).
+Però, e questo è un esempio importante (la cui dimostrazione usa dei fatti di topologia generale elementare), nella categoria degli spazi di Hausdorff compatti e mappe continue \emph{e proprie}, una freccia \(f : X\to Y\) mono ed epi \emph{deve essere} un isomorfismo: per quanto osservato prima, \(f\) è una biiezione continua. Del resto, una biiezione continua tra spazi di Hausdorff compatti è una mappa chiusa, cosicché l'inversa insiemistica di \(f\) è continua (sui chiusi).
 \begin{hExample}[La categoria dei punti]{tech}\label{ex_cat_punti}\index{Categoria!--- dei punti su un oggetto}
 	Sia \(\ctC\) una categoria. Per ogni oggetto \(X\in\ctC_0\) definiamo la categoria \(\cate{Pt}_X(\ctC)\) dei \emph{punti su \(X\)} come segue:
 	\begin{itemize}
@@ -574,15 +574,19 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	\[\dmFun{U}{\ctMod(\Omega,a)}{\ctSet}\]
 	che danno il supporto di una struttura algebrica fissata da una segnatura \((\Omega,a)\) come in \ref{ex_cat_sigma_strutture}, (sono fedeli, e in più) riflettono gli isomorfismi.
 \end{proposition}
-Una proprietà niente affatto banale dei funtori conservativi è che ogni categoria ne ammette almeno uno verso la categoria \(\ctSet\) di insiemi e funzioni; questo rende l'isomorfismo in \(\ctC\) `testabile' al livello di certe funzioni associate, ma l'interesse concreto per questa (seppur elegante) costruzione dovuta a Freyd \cite{fconc} è praticamente nullo.
+Una proprietà niente affatto banale dei funtori conservativi è che ogni categoria localmente piccola (cioè, per il senso che noi diamo alla parola, \emph{ogni} categoria) ne ammette almeno uno verso la categoria \(\ctSet\) di insiemi e funzioni; questo rende la relazione di isomorfismo in \(\ctC\) `testabile' al livello di certe funzioni associate alle frecce astratte di $\ctC$, ma l'interesse concreto per questa (seppur elegante) costruzione dovuta a Freyd \cite{fconc} è praticamente nullo.
 \begin{theorem}\index{Funtore!--- conservativo}
 	Sia \(\ctC\) una categoria (localmente piccola); allora, esiste un funtore conservativo \(Q : \ctC\fun\ctSet\).
 \end{theorem}
 \begin{proof}
 	Per ogni oggetto \(A\in\ctC_0\) definiamo una relazione di equivalenza sulla classe \(\sum_C\ctC(C,A)\), imponendo che \((f : C\to A)\asymp(f' : C\to A)\) ogni volta che per ogni \(g :A\to B\), la composizione \(g\cmp f\) è un isomorfismo se e solo se la composizione \(g\cmp f'\) è un isomorfismo.
 
-	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è uno split mono, allora lo è anche \(f'\).
-	\Todo{}
+	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è uno split mono, allora lo è anche \(f'\). Restano da dimostare due cose.
+	\begin{itemize}
+		\item Il quoziente così ottenuto è un insieme, così che possiamo definire $QA$ come tale insieme;
+		\Todo{}
+		\item Il funtore $Q$ così ottenuto, estendendo l'azione sugli oggetti nel modo ovvio, è conservativo. Infatti, supponiamo che esista una funzione \(\sum_C\ctC(C,A) \to \sum_C\ctC(C,B)\) che induce una biiezione sui quozienti; allora \Todo{}
+	\end{itemize}
 \end{proof}
 \begin{definition}[Isomorfismo di categorie]\label{fun_isocat}\index{Categoria!isomorfismo di ---e}\index{Isomorfismo!--- di categorie}\index{Isomorfismo}
 	Un isomorfismo di categorie \(\ctC\cong\ctD\) consiste di una coppia di funtori
