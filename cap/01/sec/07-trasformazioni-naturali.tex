@@ -45,7 +45,7 @@ La nozione di \emph{trasformazione naturale} tra funtori rende precisa questa id
 \end{definition}
 \begin{definition}[Composizione verticale di trasformazioni naturali]\label{def_vcomp}\index{Composizione verticale!di trasformazioni naturali}
 	Consideriamo tre funtori \(F,G,H:\ctC\to\ctD\) e due trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\beta:G\Rightarrow H\).
-	La \emph{composizione verticale} \(\beta\circ\alpha:F\Rightarrow H\) delle transformazioni naturali \(\beta,\alpha\), rappresentate avendo il bordo \(G\) in comune,
+	La \emph{composizione verticale} \(\beta\cmp\alpha:F\Rightarrow H\) delle transformazioni naturali \(\beta,\alpha\), rappresentate avendo il bordo \(G\) in comune,
 	\[\xymatrix{
 		\ctC \ar[rr]|G\ar@/^1.5pc/[rr]^F\ar@/_1.5pc/[rr]_H
 		\rruppertwocell<\omit>{<-2>\alpha}
@@ -317,7 +317,7 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 		      definita mandando \(\pair{\lambda t.ft}a\) in \(\pair{\lambda a'.\pair{\lambda t.ft}{a'}}a\).
 		\item \(\bigcup_X\) è la mappa di `unione' \(\dmFun{\bigcup_X}{\pow{(\pow X)}}{\pow X}\)
 		      definita mandando \(\fkU = (U_\alpha\mid\alpha\in A) \subseteq \ctP(X)\) in \(\bigcup_{\alpha\in A} U_\alpha \subseteq X\).
-		\item Da \ref{nat_tra_posets} sappiamo che una trasformazione naturale \(\alpha : f\nat g\) tra mappe monotòne consiste della disuguaglianza \(f(x)\le g(x)\) vera punto per punto nel loro codominio. Allora, una mappa monotòna \(f : X\to X\) di un insieme ordinato \((X,\le)\) è un funtore puntato se e solo se è una \emph{inflazione}:
+		\item Da \ref{nat_tra_posets} sappiamo che una trasformazione naturale \(\alpha : f\nat g\) tra mappe monotòne consiste della disuguaglianza \(f(x)\le g(x)\) vera punto per punto nel loro codominio. Allora, una mappa monotòna \(f : X\to X\) di un insieme ordinato \((X,\le)\) è un funtore puntato se e solo se è una \emph{espansione}:
 		      \[\forall x\in X.x\le f(x);\]
 		      Dualmente, \(g : Y\to Y\) di un insieme ordinato \((Y,\le)\) è un funtore copuntato se e solo se è una \emph{contrazione}:
 		      \[\forall x\in X.g(x)\le x.\]
@@ -389,11 +389,17 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 	Chi legge vedrà presto che esempi del genere (solo, quasi sempre più elaborati di questo) pervadono la teoria delle categorie.
 \end{hExample}
 \begin{proposition}\index{Gruppo lineare}\index{Yoneda!lemma di ---}
-	Si ricordi che in \ref{il_determinante} e \ref{ex_fun_GLn} abbiamo definito un funtore \(\GL_2 : \ctcRing\fun\ctGrp\); proviamo ora che esiste un isomorfismo naturale (precisamente, una biiezione di insiemi, che però può essere promossa a un isomorfismo di gruppi) tra \(\GL_2\) e il funtore \(\Hom{\ctcRing}(S(\GL_2),-)\) per l'anello \(S(\GL_2)\) ottenuto dal quoziente
+	Si ricordi che in \ref{il_determinante} e \ref{ex_fun_GLn} abbiamo definito un funtore \(\GL_2 : \ctcRing\fun\ctGrp\); proviamo ora che esiste un isomorfismo naturale (precisamente, una biiezione naturale di insiemi, che però può essere promossa a un isomorfismo di gruppi) tra \(\GL_2\) e il funtore \(\Hom{\ctcRing}(S(\GL_2),-)\) per l'anello \(S(\GL_2)\) ottenuto dal quoziente
 	\[\bbZ[a,b,c,d,y]/(1-(ad-bc)y)\]
-	in poche parole, \(S(\GL_2)\) è ottenuto aggiungendo formalmente all'anello dei polinomi \(\bbZ[a,b,c,d]\) un inverso all'elemento \(y=ad-bc\). Si vede facilmente che un omomorfismo di anelli \(S(\GL_2) \to R\) è determinato dalla scelta di quattro elementi \(\alpha,\beta,\gamma,\delta\in R\) soggetti alla sola condizione che \(\alpha\delta-\beta\gamma\) sia un'unità, e questo fissa un unico elemento \(\left(\begin{smallmatrix}					\alpha	&	\beta \\					\gamma	&	\delta				\end{smallmatrix}\right)\) di \(\GL_2(R)\).
+	in poche parole, \(S(\GL_2)\) è ottenuto aggiungendo formalmente all'anello dei polinomi \(\bbZ[a,b,c,d]\) un inverso all'elemento \(y=ad-bc\). Un omomorfismo di anelli \(S(\GL_2) \to R\) è determinato da un omomorfismo $\varphi : \bbZ[a,b,c,d,y] \to R$ che scende al quoziente; questa è esattamente la scelta di quattro elementi \(\alpha,\beta,\gamma,\delta\in R\) soggetti alla condizione che \(\alpha\delta-\beta\gamma\) sia un'unità (l'immagine di $y$ mediante $\varphi$), e questo fissa un unico elemento \(\left(\begin{smallmatrix}					\alpha	&	\beta \\					\gamma	&	\delta				\end{smallmatrix}\right)\) di \(\GL_2(R)\).
+
+		La biiezione $\GL_2(R)\to \ctcRing(S(\GL_2),R)$ così determinata è naturale in $R$, come è facile vedere dal modo in cui un omomorfismo di anelli $f : R\to R'$ agisce mediante il funtore $\GL_2$.
+
+		Questo argomento si generalizza anche facilmente al caso del funtore $\GL_n$: in quel caso, $S(\GL_n)$ è il quoziente 
+		\[\bbZ[\{x_{ij}\mid 1\le i,j\le n\}\cup \{y\}]\big/(1-y\cdot\det)\]
+		dove $\det$ è il polinomio $\sum_{\sigma\in \fkS(n)}\prod_{i=1}^n x_{i,\sigma(i)}$ nelle indeterminate $x_{ij}$.
 \end{proposition}
-Si noti che la condizione di naturalità di \(\beta\circ\alpha\) si ottiene componendo quelle di \(\alpha\) e \(\beta\):
+Si noti che la condizione di naturalità di \(\beta\cmp\alpha\) si ottiene componendo quelle di \(\alpha\) e \(\beta\):
 \[
 	\begin{tikzcd}
 		FX \ar{d}{Ff} \ar{r}{\alpha_X} & GX \ar{d}{Gf} \ar{r}{\beta_X} & HX \ar{d}{Hf} \\
@@ -409,7 +415,7 @@ perché evidentemente, si ha
 	                              & =(\beta_Y\cmp \alpha_Y)\cmp Ff.
 \end{align*}
 \begin{definition}[Composizione orizzontale di trasformazioni naturali]\label{def_hcomp}\index{Composizione orizzontale!di trasformazioni naturali}
-	Si considerino tre categorie \(\ctC,\ctD,\ctE\), due funtori \(F,G:\ctC\to\ctD\) e due funtori \(F',G':\ctD\to\ctE\). Date due trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\alpha':F'\Rightarrow G'\), la \emph{trasformazione naturale composta orizzontalmente} \(\alpha'\horcomp\alpha:F'\circ F\Rightarrow G'\circ G\), rappresentata come segue,
+	Si considerino tre categorie \(\ctC,\ctD,\ctE\), due funtori \(F,G:\ctC\to\ctD\) e due funtori \(F',G':\ctD\to\ctE\). Date due trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\alpha':F'\Rightarrow G'\), la \emph{trasformazione naturale composta orizzontalmente} \(\alpha'\horcomp\alpha:F'\cmp F\Rightarrow G'\cmp G\), rappresentata come segue,
 	\[
 		\begin{tikzcd}[sep=large]
 			\ctC \ar[bend left, ""{name=F,below}]{r}{F} \ar[bend right, ""{name=G,above}]{r}[swap]{G}
@@ -522,27 +528,27 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 		\item prima dimostrazione: una trasformazione naturale \(\alpha : \id_\ctC\To\id_\ctC\) consiste di una famiglia di mappe \(\alpha_X : X\to X\) indicizzata dagli oggetti di \(\ctC\), con la proprietà che \(\alpha_Y \cmp f = f\cmp \alpha_X\) per ogni morfismo \(f : X\to Y\) in \(\ctC\); del resto, se \(\beta : \id_\ctC\To\id_\ctC\) è un altro elemento di \(\zentrum(\ctC)\), questo vuol dire che \(\alpha_X \cmp \beta_X = \beta_X\cmp \alpha_X\), cosicché \((\alpha\cmp\beta)_X = (\beta\cmp\alpha)_X\), ossia le trasformazioni naturali \(\alpha\cmp\beta\) e \(\beta\cmp\alpha\) coincidono.
 		\item seconda dimostrazione: si noti che vale la seguente catena di uguaglianze tra composizioni orizzontali e verticali (invocando \ref{interchangio} ogni volta che sia necessario):
 		      \begin{align*}
-			      \begin{tikzpicture}[baseline=(current bounding box.center)]
+			      \raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				      \almond\alpha\beta
-			      \end{tikzpicture}
-			       & \cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			      \end{tikzpicture}}
+			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				              \almonds\id\id\alpha\beta
-			              \end{tikzpicture} \\
-			       & \cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			              \end{tikzpicture}} \\
+			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				              \almonds\alpha\id\id\beta
-			              \end{tikzpicture} \\
-			       & \cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			              \end{tikzpicture}} \\
+			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				              \almonds\id\beta\alpha\id
-			              \end{tikzpicture} \\
-			       & \cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			              \end{tikzpicture}} \\
+			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				              \almonds\beta\id\id\alpha
-			              \end{tikzpicture} \\
-			       & \cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			              \end{tikzpicture}} \\
+			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				              \almonds\beta\alpha\id\id
-			              \end{tikzpicture} \\
-			       & \cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			              \end{tikzpicture}} \\
+			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				              \almond\beta\alpha
-			              \end{tikzpicture}
+			              \end{tikzpicture}}
 		      \end{align*}
 	\end{itemize}
 	Questo conclude la dimostrazione che \(\beta\cmp\alpha = \alpha\cmp\beta\).
