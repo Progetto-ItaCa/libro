@@ -30,9 +30,9 @@ Vediamo ora invece esempi in categorie non indotte da monoidi. Il primo caso, al
 Gli esempi precedenti mostrano come un morfismo possa essere sia epi che mono, e comunque non essere un isomorfismo. Il prossimo esempio, rispetto ai precedenti, è più complesso.
 
 \begin{example}\label{monoepi_in_set}\index{Monomorfismo!--- in \(\ctSet\)}
-	Nella categoria \(\ctSet\) di insiemi e funzioni, i monomorfismi sono precisamente le funzioni iniettive	e gli epimorfismi sono precisamente le funzioni surgettive.
+	Nella categoria \(\ctSet\) di insiemi e funzioni, i monomorfismi sono precisamente le funzioni iniettive	e gli epimorfismi sono precisamente le funzioni suriettive.
 
-	Consideriamo il caso delle funzioni surgettive.	Se \(e \colon X \to A\) è una funzione surgettiva e \(f, g \colon A \to B\) sono funzioni tali che \(f \cmp e = g \cmp e\),	allora per ogni elemento \(a \in A\) esiste un \(x \in X\) tale che \(e(x) = a\), per la surgettività di \(e\).	Osserviamo che \((f \cmp e)(x) = (g \cmp e)(x)\), ovvero \(f(e(x)) = g(e(x))\),	ma allora \(f(a) = g(a)\).	Per la genericità di \(a\) concludiamo che \(f = g\), e dunque \(e\) è epi.
+	Consideriamo il caso delle funzioni suriettive.	Se \(e \colon X \to A\) è una funzione suriettiva e \(f, g \colon A \to B\) sono funzioni tali che \(f \cmp e = g \cmp e\),	allora per ogni elemento \(a \in A\) esiste un \(x \in X\) tale che \(e(x) = a\), per la suriettività di \(e\).	Osserviamo che \((f \cmp e)(x) = (g \cmp e)(x)\), ovvero \(f(e(x)) = g(e(x))\),	ma allora \(f(a) = g(a)\).	Per la genericità di \(a\) concludiamo che \(f = g\), e dunque \(e\) è epi.
 
 	Nel caso opposto, in cui \(e \colon X \to A\) è epi, sia \(a \in A\).
 	Assumiamo per assurdo che non esista \(x \in X\) tale che \(f(x) = a\).
@@ -41,16 +41,16 @@ Gli esempi precedenti mostrano come un morfismo possa essere sia epi che mono, e
 	Siccome \(a\) non appartiene all'immagine di \(e\), abbiamo che \(k_0 \cmp e = \delta_a \cmp e\)
 	in quanto entrambe le composizioni assumono costantemente il valore \(0\) su tutto il dominio \(X\).
 	Dunque, \(k_0 = \delta_a\), il che è assurdo.
-	Dalla negazione dell'ipotesi per assurdo, concludiamo che \(e\) è surgettiva.
+	Dalla negazione dell'ipotesi per assurdo, concludiamo che \(e\) è suriettiva.
 \end{example}
 
-Si noti che la dimostrazione che le funzioni surgettive sono epi sarebbe immediata
-se usassimo il fatto che ogni funzione surgettiva ha un'inversa destra.
+Si noti che la dimostrazione che le funzioni suriettive sono epi sarebbe immediata
+se usassimo il fatto che ogni funzione suriettiva ha un'inversa destra.
 L'esistenza dell'inversa destra, però, è una conseguenza dell'assioma di scelta,
 che invece non viene impiegato nella dimostrazione di cui sopra.
 
 Per ragioni che saranno evidenti nella prossima sezione,
-abbiamo evidenziato come l'equivalenza tra funzioni surgettive (iniettive)
+abbiamo evidenziato come l'equivalenza tra funzioni suriettive (iniettive)
 e epi (mono) in \(\ctSet\) sia indipendente dall'esistenza di un'inversa destra (sinistra).
 
 \begin{remark}
@@ -199,13 +199,13 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 \begin{example}\index{Assioma della scelta}
 	\label{exm:set-sezioni-retrazioni}
 	In \(\ctSet\), una funzione ha una retrazione se e solo se è iniettiva.
-	Inoltre, le funzioni che hanno una sezione sono surgettive,
+	Inoltre, le funzioni che hanno una sezione sono suriettive,
 	mentre l'implicazione inversa vale soltanto se assumiamo una forma di assioma di scelta.
 
 	Una giustificazione intuitiva di questo fatto si può dare mediante la figura \ref{fig_assioma_scelta}: data una funzione suriettiva \(g : E\to B\), una sua sezione \(s\) ammonta alla scelta, per ogni elemento \(b\) di \(B\), di un elemento di \(g^{-1}(b)\); questa scelta è possibile perché ciascuno di questi insiemi è non vuoto (questa è la cosa vera solo l'assioma di scelta: che \(\prod_{b\in B}g^{-1}(b)\) sia non vuoto); nulla vieta che per alcune fibre essa sia unica, ma ovviamente una stessa funzione suriettiva può avere molte inverse destre distinte.
 	% TODO: questo è il teorema di Cantor? Riferimento necessario?
 	% Questo esempio, inoltre, dimostra che sezioni e retrazioni non sono uniche:
-	% una funzione surgettiva può avere più inverse destre (sezioni).
+	% una funzione suriettiva può avere più inverse destre (sezioni).
 \end{example}
 \begin{remark}\index{Assioma della scelta}
 	Qualcosa di simile avviene per gli spazi vettoriali (ovviamente, è la dimensione infinita a causare problemi): l'assioma della scelta (nella forma del lemma di Zorn) è equivalente al fatto che ogni spazio vettoriale ha una base. Se \(f : V\to W\) è una funzione lineare e suriettiva, si può decomporre \(V = \ker f \oplus W'\) (un complemento in somma diretta per \(\ker f\) esiste solo con l'assioma della scelta), in modo tale che \(f_0 := f|_{W'}\) sia invertibile; l'inversa \(f_0^{-1}\), composta con l'inclusione \(W'\mono \ker f \oplus W'\cong V\), dà una inversa destra per \(f\) (per costruzione, \(f_0^{-1}(w)\) è il vettore (unico) tale che \(f(f_0^{-1}(w)) = w\)), cosicché \(f\) è un epi spezzante.
@@ -338,14 +338,14 @@ Il risultato in questione propone anche le sezioni e le retrazioni come esempi f
 \begin{example}\label{mono_epi_noniso}\index{Monomorfismo}\index{Monomorfismo!--- ed epimorfismo non è iso}
 	Si consideri l'immersione \(\iota \colon \bbN \mono \bbZ\)	nella categoria \(\ctMon\) dei monoidi e omomorfismi di monoide.	Questa è mono in quanto la sua funzione sottogiacente è iniettiva,	ma non è spezzante.	Infatti, se avesse una retrazione,	questa sarebbe preservata dal funtore dimenticante \(U \colon \ctMon \fun \ctSet\),	per \ref{thm:fun-sezioni-retrazioni},	e dunque sarebbe un'inversa sinistra della funzione \(\iota\).	Come omomorfismo di monoidi, però, tale inversa sinistra dovrebbe preservare gli elementi inversi,	e ciò non è possibile.
 
-	Inoltre, e più sorprendentemente, \( j\) è anche epi,	nonostante la sua funzione sottogiacente non sia surgettiva.	Infatti, se \(f, g \colon \bbZ \to M\) sono morfismi di monoidi tali che \(f\cmp j = g\cmp j\),	allora, per ogni \(n \in \bbZ\),	abbiamo due possibilità:
+	Inoltre, e più sorprendentemente, \( j\) è anche epi,	nonostante la sua funzione sottogiacente non sia suriettiva.	Infatti, se \(f, g \colon \bbZ \to M\) sono morfismi di monoidi tali che \(f\cmp j = g\cmp j\),	allora, per ogni \(n \in \bbZ\),	abbiamo due possibilità:
 	\begin{itemize}
 		\item Se \(n \in \bbZ_{\geq 0}\), allora \(n\) sta nell'immagine di \( j\), ovvero esiste \(n_0 \in \bbN\) tale che \(n =  j(n_0)\). Per ipotesi abbiamo che \((f\cmp j) (n_0) = (g\cmp j) (n_0)\), ovvero \(f (n) = g (n)\). Ne concludiamo che \(f\) e \(g\) coincidono sugli interi non-negativi.
 		\item Se \(n \in \bbZ_{< 0}\), allora \(-n \in \bbZ_{\geq 0}\).
 
 		      Analogamente al caso precedente, esiste \(n_0 \in \bbN\) tale che \(-n =  j(n_0)\) e \((f\cmp j) (-n) = (g\cmp j) (-n)\). Siccome gli omomorfismi di monoide preservano le inverse, \({(f (n))}^{-1} = (f\cmp j) {(-n)} = (g\cmp j) (-n) = {(g (n))}^{-1}\). Per l'unicità dell'inversa, concludiamo che \(f (n) = g (n)\), ovvero che \(f\) e \(g\) coincidono sugli interi negativi.
 	\end{itemize}
-	Dunque, possiamo concludere che \(f = g\) e che, per l'arbitrarietà di \(f\) e \(g\), l'immersione \(\iota\) è un epi. Tuttavia, \(\iota\) non è un epi spezzante. Infatti, se esistesse, la sua sezione dovrebbe essere preservata dal funtore dimenticante \(U \colon \ctMon \fun \ctSet\), per il \autoref{thm:fun-sezioni-retrazioni}. Tuttavia, \(U(\iota)\) non è una funzione surgettiva, e dunque non può avere una sezione, per l'\autoref{exm:set-sezioni-retrazioni}.
+	Dunque, possiamo concludere che \(f = g\) e che, per l'arbitrarietà di \(f\) e \(g\), l'immersione \(\iota\) è un epi. Tuttavia, \(\iota\) non è un epi spezzante. Infatti, se esistesse, la sua sezione dovrebbe essere preservata dal funtore dimenticante \(U \colon \ctMon \fun \ctSet\), per il \autoref{thm:fun-sezioni-retrazioni}. Tuttavia, \(U(\iota)\) non è una funzione suriettiva, e dunque non può avere una sezione, per l'\autoref{exm:set-sezioni-retrazioni}.
 \end{example}
 Questa discussione fornisce alcuni utili controesempi:	un morfismo può essere sia epi che mono senza necessariamente essere epi spezzante o mono spezzante,	e in particolare senza essere un isomorfismo. Questo porta alla definizione seguente.
 \begin{definition}[Categoria bilanciata]\label{def_cat_bilanciata}\index{Categoria!--- bilanciata}
