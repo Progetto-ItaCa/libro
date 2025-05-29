@@ -2,14 +2,14 @@
 
 Prima di dare una definizione formale di categoria, può essere d'aiuto raccogliere alcuni esempi concreti per orientare chi legge.
 
-La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unificare due strutture matematiche apparentemente molto diverse tra loro:
+La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unificare due strutture matematiche, monoidi e insiemi ordinati, che sono apparentemente molto diverse tra loro.
 \begin{definition}\label{prelim_def_monoide}\index{Monoide}
 	Un \emph{monoide} consiste di un insieme \(M\) dotato di
 	\begin{itemize}
-		\item un elemento \(e\in M\) (spesso denotato anche: \(1_M\) o semplicemente \(1\)), chiamato \emph{elemento neutro}, \emph{unità} o \emph{identità} (si noti che da ciò segue, indirettamente ma immediatamente, che \(M\) è un insieme \emph{non vuoto}),
-		\item Un'operazione binaria \(M\times M\to M\), detta \emph{prodotto} o \emph{composizione}, e indicata con \((m,n)\mapsto m\cdot n\) o con simili simboli infissi come \(\star, \centerdot,\bullet\) eccetera,
+		\item un elemento \(e\in M\) (spesso denotato anche: \(1_M\) o semplicemente \(1\)), chiamato \emph{elemento neutro}, o \emph{unità} (in particolare da ciò segue, indirettamente ma immediatamente, che \(M\) deve essere un insieme \emph{non vuoto});
+		\item un'operazione binaria \(M\times M\to M\), detta \emph{prodotto} o \emph{composizione}, e indicata con \((m,n)\mapsto m\cdot n\), con simili simboli infissi (come \(\star, \centerdot,\bullet\) eccetera) oppure semplicemente con la giustapposizione	\(mn\) (in particolare questa operazione è \emph{chiusa} su \(M\), cioè il risultato di ogni prodotto di due elementi di \(M\) è ancora un elemento di \(M\)).
 	\end{itemize}
-	che soddisfano le seguenti proprietà:
+	Queste soddisfano le seguenti proprietà:
 	\begin{itemize}
 		\item \emph{Identità}: per ogni \(m\in M\), valgono le uguaglianze
 		      \[m\cdot e = m = e\cdot m.\]
@@ -17,9 +17,15 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 		      \[(m\cdot n)\cdot p = m\cdot (n\cdot p)\]
 	\end{itemize}
 \end{definition}
-\paolo{Forse potremmo già dare un esempio concreto di monoide, per esempio la parte moltiplicativa di un anello? Molti studenti di matematica purtroppo non hanno mai visto i monoidi (o non li chiamano così). }
-\begin{examples}[Alcuni esempi di monoidi]
-	\Todo{}
+\begin{examples}[Alcuni esempi di monoidi]\leavevmode
+	\begin{itemize}
+		\item l'insieme	\(\bbN\) dei numeri naturali con l'operazione di somma \(+\) e l'elemento neutro \(0\) è un monoide; la stessa cosa è vera per l'insieme \(\bbZ\) dei numeri interi, con l'operazione di somma e l'elemento neutro \(0\), per l'insieme \(\bbN\) con l'operazione di prodotto e l'elemento neutro $1$,	e per l'insieme \(\bbZ\) con l'operazione di prodotto e l'elemento neutro \(1\).
+	\item L'insieme delle matrici $2\times 2$ a coefficienti reali, con l'operazione di prodotto di matrici e l'elemento neutro la matrice identità $I_2 = \begin{smat} 1&0\\0&1\end{smat}$, è un monoide.
+		\item Non è un monoide l'insieme $\{n\in\bbZ\mid n\le 0\}$ dei numeri interi non positivi, rispetto al prodotto, dato che il prodotto $(-1)\cdot(-1)$ è uguale ad $1>0$. 
+		\item Per ogni funzione $f : \bbN\to\bbN$, definiamo il suo \emph{supporto} come 
+		\[S[f] := \{n\in\bbN\mid f(n)\ne 0\}.\]
+		Allora non è un monoide l'insieme $\bigoplus_\bbN \bbN$ delle funzioni $\bbN\to\bbN$ a supporto finito, cioè $\bigoplus_\bbN \bbN=\{f : \bbN\to\bbN\mid S[f] \text{ è finito}\}$, rispetto al prodotto puntuale (non esiste un elemento neutro, perché la funzione costante $f(n)=1$ per ogni $n\in\bbN$ evidentemente non fa parte di $\bigoplus_\bbN \bbN$).
+	\end{itemize}
 \end{examples}
 \begin{definition}\label{prelim_def_preset}\index{Poset}
 	Un \emph{insieme preordinato} (o \emph{preordine} o \emph{preset}) consiste di un insieme \(P\) dotato di una relazione binaria \(\le\), solitamente indicata come un simbolo infisso \(x\le y\) per significare che \((x,y)\) è un elemento di \(\le\), che soddisfa le seguenti due proprietà:
@@ -33,9 +39,9 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 	l'insieme \(P\), o meglio la coppia \((P,\le)\) si dice un insieme \emph{parzialmente ordinato} o \emph{poset}. La relazione \(\le\) in un poset si chiama un \emph{ordine parziale}.
 \end{definition}
 \begin{examples}[Alcuni esempi di insiemi ordinati]
-	\Todo{}
+	\Todo{naturali con l'ordine + altri numeri con l'ordine + parti di $A$ + qualcosa che non ha una rel transitiva + qualcosa che è solo un preset}
 \end{examples}
-Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogni monoide è una categoria, e ogni insieme preordinato (e a fortiori, ogni insieme parzialmente ordinato) è una categoria. (Gli enunciati in questione renderanno più precise queste ultime affermazioni.)
+Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogni monoide è una categoria, e ogni insieme preordinato (e a fortiori, ogni insieme parzialmente ordinato) è una categoria. (Gli enunciati in questione renderanno più precise queste ultime affermazioni.) Un primo modo di motivare la definizione di categoria è dunque quello di una simultanea generalizzazione di due strutture matematiche elementari e pervasive. Per procedere, analizziamo degli esempi di strutture che sono categorie, ma non sono né monoidi né insiemi ordinati.
 \begin{hExample}[Un primo esempio motivante]{fund}\label{protoex_finset}\index{Categoria!--- degli insiemi finiti}
 	Un esempio naturale di categoria nasce considerando la classe \(\ctFin\) di tutti gli insiemi finiti \(\bkt{n}\defeq \{\iter n\}\) (con la convenzione che \([0]=\varnothing\) sia l'insieme vuoto), e le funzioni \(f : \bkt{n} \to \bkt{m}\) tra di loro. \`E evidente che non tutte tali funzioni sono componibili: una condizione necessaria --e sufficiente!-- affinché la composizione tra due funzioni \(f : \bkt{p} \to \bkt{q},g : \bkt{m} \to \bkt{n}\) tra insiemi finiti sia possibile è che il dominio dell'una coincida con il codominio dell'altra, ovvero che \(q=m\). Quando questo accade, è possibile `giustapporre' le due funzioni come
 	\[\xymatrix{
@@ -96,12 +102,12 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 	\end{enumtag}
 \end{definition}
 \begin{notation}\index{hom insieme}\index{aaa_CXY@\(\Hom\ctC(X,Y)\)}\index{Categoria!frecce di una ---}\index{Freccia}
-	Dati due oggetti \(X\) e \(Y\), indichiamo con \(\Hom{\ctC}(X,Y)\) la classe di morfismi da \(X\) a \(Y\). Altre notazioni, come \(\varHom(X,Y)\) o \(\vvarHom{\ctC}(X,Y)\), sono ugualmente comuni, e motivate dal fatto che le frecce di una categoria astraggono la nozione di \emph{omomorfismo} tra insiemi strutturati (si veda \ref{ex_cat_monoidi} e più in generale l'esempio \ref{ex_cat_sigma_strutture}). Questa notazione renderà chiara quella in \ref{ex_hom_funtore} per i \emph{funtori hom}. \`E anche comune indicare la classe \(\ctC_1\) dei morfismi di una categoria con \(\hom(\ctC)\) o \(\mathrm{ar}(\ctC)\).
+	Dati due oggetti \(X\) e \(Y\), indichiamo con \(\Hom{\ctC}(X,Y)\) la classe di morfismi da \(X\) a \(Y\). Altre notazioni, come \(\varHom(X,Y)\) o variazioni come \(\vvarHom{\ctC}(X,Y),\vvarHom{}(X,Y)\), sono ugualmente comuni, e motivate dal fatto che le frecce di una categoria astraggono la nozione di \emph{omomorfismo} tra insiemi strutturati (si veda \ref{ex_cat_monoidi} e più in generale l'esempio \ref{ex_cat_sigma_strutture}); questa notazione renderà chiara quella in \ref{ex_hom_funtore} per i \emph{funtori hom}. \`E anche comune indicare la classe \(\ctC_1\) dei morfismi di una categoria con \(\hom(\ctC)\) o \(\mathrm{ar}(\ctC)\).
 \end{notation}
 \begin{notation}\index{aaa_blank@\(\blank\)}
 	Presto useremo questa notazione. Il segnaposto `\(\blank\)' indica il `buco da riempire' in una funzione anonima \(x\mapsto f(x)\), cosicché \(f(\blank)\) si riferisce alla funzione \(f\) non saturata nel suo argomento: ad esempio,
 	\[\blank+1 \qquad (\blank)^2 -7\cdot\blank + 2 \qquad \texttt{head}(\blank)\]
-	si riferiscono alle funzioni successore (`aggiungi 1'), al polinomio di secondo grado \(X^2-7X+2\) (che definisce una parabola) e alla funzione \(\texttt{head}\) che restituisce la testa (il primo elemento) di una lista non vuota.
+	si riferiscono alle funzioni successore (`aggiungi 1'), alla funzione polinomiale di secondo grado \(X^2-7X+2\) (che definisce una certa parabola) e alla funzione \(\texttt{head}\) che restituisce la testa (il primo elemento) di una lista non vuota. Evidentemente queste funzioni hanno senso solo quando sono state `tipate' dando loro un dominio e un codominio preciso.
 
 	Altre notazioni comuni per lo stesso simbolo di `segnaposto' sono un trattino basso, \(\_+1\), \((\_)^2 -7\cdot\_ + 2\) eccetera, o (facilmente confondibile col segno meno), il trattino a media altezza `\(-\)'.
 \end{notation}
