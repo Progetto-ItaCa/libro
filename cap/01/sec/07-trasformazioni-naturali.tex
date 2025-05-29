@@ -60,7 +60,7 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 	Molti degli esempi di categorie fatti lungo la sezione \ref{sec_esempi_cats} si descrivono come categorie di funtori:
 	\begin{itemize}
 		\item La categoria delle spanne in \(\ctC\) di \ref{def_span_e_cospan} è la categoria dei funtori \(\ctCat(\Lambda^2_0,\ctC)\) di dominio la spanna generica di \ref{ex_spancospan} e codominio \(\ctC\); dualmente, la categoria delle cospanne in \(\ctC\) è la categoria dei funtori \(\ctCat(\Lambda^2_2,\ctC)\).
-		\item La categoria dei multidigrafi di \ref{ex_cat_grafi} è la categoria dei funtori \(\ctCat((0\rightrightarrows 1)^\op,\ctSet)\); ciò rende precisa l'osservazione subito successiva alla definizione di \ref{ex_cat_doppiafreccia}. Lasciamo per esercizio a chi legge di mostrare che una trasformazione naturale tra funtori \(F,G\) che assumono rispettivamente per valori delle coppie di funzioni
+		\item La categoria dei multidigrafi di \ref{ex_cat_grafi} è la categoria dei funtori \(\ctCat((0\toto 1)^\op,\ctSet)\); ciò rende precisa l'osservazione subito successiva alla definizione di \ref{ex_cat_doppiafreccia}. Lasciamo per esercizio a chi legge di mostrare che una trasformazione naturale tra funtori \(F,G\) che assumono rispettivamente per valori delle coppie di funzioni
 		      \[\xymatrix{
 				      F_1\ar@<.25em>[r]^{Fs}\ar@<-.25em>[r]_{Ft} & F_0 & G_1\ar@<.25em>[r]^{Gs}\ar@<-.25em>[r]_{Gt} & G_0
 			      }\]
@@ -70,7 +70,7 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 \end{example}
 Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia, data la presenza di funtori che le legano alle categorie di oggetti geometrici; raccogliamo alcuni esempi tra i più noti.
 \begin{example}\label{ex_cat_sset}\index{Insieme simpliciale}
-	La categoria \(\ctsSet=\presh{\bsDelta}\) degli insiemi simpliciali ha per oggetti i funtori \(\Delta^\op\fun\ctSet\), dove \(\Delta\) è la categoria dei simplessi di \ref{rmk_delta_e_deltaPlus}, e per morfismi le trasformazioni naturali tra questi funtori.
+	La categoria \(\ctsSet=\presh{\bsDelta}\) degli insiemi simpliciali ha per oggetti i funtori \(\bsDelta^\op\fun\ctSet\) definiti in \ref{def_insieme_simpliciale}, dove \(\bsDelta\) è la categoria dei simplessi di \ref{rmk_delta_e_deltaPlus}, e per morfismi le trasformazioni naturali tra questi funtori.
 
 	Una trasformazione naturale \(f : X_*\nat Y_*\) è detta una \emph{mappa simpliciale}, e consiste di una famiglia di funzioni \(f_n : X_n \to Y_n\) tra gli insiemi di \(n\)-simplessi, che sono compatibili con le mappe di faccia e di degenerazione: questo significa che ogni diagramma
 	% https://q.uiver.app/#q=WzAsOCxbMCwwLCJYX24iXSxbMCwxLCJYX3tuLTF9Il0sWzEsMCwiWV9uIl0sWzEsMSwiWV97bi0xfSJdLFsyLDAsIlhfbiJdLFszLDAsIllfbiJdLFsyLDEsIlhfe24rMX0iXSxbMywxLCJZX3tuKzF9Il0sWzAsMSwiZF9pIiwyXSxbMiwzLCJkX2knIl0sWzAsMiwiZl9uIl0sWzEsMywiZl97bi0xfSIsMl0sWzQsNiwic19pIiwyXSxbNiw3LCJmX3tuKzF9IiwyXSxbNSw3LCJzX2knIl0sWzQsNSwiZl9uIl1d
@@ -88,15 +88,15 @@ Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia
 		\end{tikzcd}\]
 	è commutativo, scegliendo come frecce verticali le facce \(d_i,d_i'\) o le degenerazioni \(s_i,s_i'\) di \(X_*\) e di \(Y_*\) rispettivamente.
 
-	La categoria degli insiemi simpliciali è di grande rilevanza in topologia algebrica (si veda \cite{a,b,c}) dato che \(\presh{\bsDelta}\) ammette un funtore di \emph{realizzazione}
+	La categoria degli insiemi simpliciali è di grande rilevanza in topologia algebrica (si veda \cite{a,b,c}) dato che \(\ctsSet\) ammette un funtore di \emph{realizzazione}
 	\[\dmFun{r}{\ctsSet}{\ctTop}\]
-	verso la categoria \(\ctTop\) degli spazi topologici, che porta un oggetto la cui struttura è puramente combinatoria\fshyp{}algebrica (il funtore \(X : \bsDelta^\op\fun\ctSet\)) in uno spazio topologico che può essere costruito iterativamente attaccando dischi di dimensione via via più alta (quello che in \cite{} è chiamato un CW-complesso; si veda \cite{fritsch1990cellular} per una introduzione elementare e \cite{} per una più indirizzata alle proprietà categoriali di \(\presh{\bsDelta}\) e del funtore \(r\) di realizzazione).
+	verso la categoria \(\ctTop\) degli spazi topologici, che porta un oggetto la cui struttura è puramente combinatoria\fshyp{}algebrica (il funtore \(X : \bsDelta^\op\fun\ctSet\)) in uno spazio topologico che può essere costruito iterativamente attaccando dischi di dimensione via via più alta (quello che in \cite{} è chiamato un CW-complesso; si veda \cite{fritsch1990cellular} per una introduzione elementare e \cite{} per una più indirizzata alle proprietà categoriali di \(\ctsSet\) e del funtore \(r\) di realizzazione).
 \end{example}
 
 \begin{remark}[Perché si chiama `globo'?]\label{globi_come_sonfatti}\index{Globo}
 	Ragionamenti simili si possono fare anche per la categoria degli insiemi \(n\)-globulari, cioè per la categoria \(\presh{\ctGl(n)}\) di funtori e trasformazioni naturali, contemporaneamente anche spiegando l'origine del termine `globo' per il suo oggetto generico.
 
-	Si osservi che \(\ctGl(1) = \{0\rightrightarrows 1\}\) è la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Da ciò deduciamo che `rappresentare' \(\ctGl(1)\) nella categoria \(\ctSet\) di insiemi e funzioni consiste precisamente nel dare un multidigrafo, con funzioni di dominio e codominio. I globi generici sono una generalizzazione dei multidigrafi, che permettono la rappresentazione di `celle' di dimensione maggiore di 1. Sarà la \autoref{def_insieme_globulare} a rendere precisa questa idea (a sua volta, mediante la nozione di funtore controvariante in \ref{def_funtore_contro}), ma per il momento, è già possibile osservare che una terna di insiemi
+	Si osservi che \(\ctGl(1) = \{0\toto 1\}\) è la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Da ciò deduciamo che `rappresentare' \(\ctGl(1)\) nella categoria \(\ctSet\) di insiemi e funzioni consiste precisamente nel dare un multidigrafo, con funzioni di dominio e codominio. I globi generici sono una generalizzazione dei multidigrafi, che permettono la rappresentazione di `celle' di dimensione maggiore di 1. Sarà la \autoref{def_insieme_globulare} a rendere precisa questa idea (a sua volta, mediante la nozione di funtore controvariante in \ref{def_funtore_contro}), ma per il momento, è già possibile osservare che una terna di insiemi
 	\[\xymatrix{
 		C \ar@<.25em>[r]^-{s_2}\ar@<-.25em>[r]_-{t_2}& E \ar@<.25em>[r]^-{s_1}\ar@<-.25em>[r]_-{t_1}& V
 		}\]
@@ -189,13 +189,14 @@ La categoria degli insiemi simpliciali è però decisamente più studiata di que
 		s_2d_3[\tup f5,] & = s_2[f_1,f_2,f_4\cmp f_3,f_5]       \\
 		                 & =[f_1,f_2,\Id[C_2],f_4\cmp f_3,f_5].
 	\end{align*}
-	Lasciamo a chi legge l'onere di scrivere il caso generale (che non cambia in nulla la struttura di questo argomento), così come l'identità \(d_i\cmp s_j=s_{j-1}\cmp d_i\) quando \(i<j\), che si dimostra con una analoga quantità di tedio; questo conclude la dimostrazione.
+	Lasciamo a chi legge l'onere di scrivere il caso generale (che non cambia in nulla la struttura di questo argomento), così come l'identità \(d_i\cmp s_j=s_{j-1}\cmp d_i\) quando \(i<j\), che si dimostra con una analoga quantità di tedio; questo conclude la prima parte della dimostrazione.
 
+	\medskip
 	Va ora dimostrato che la corrispondenza \(N : \ctCat \fun \ctsSet\) è un funtore, ovvero che un funtore tra categorie piccole \(F : \ctC\fun\ctD\) induce una trasformazione naturale \(NF: N\ctC\nat N\ctD\) tra i rispettivi nervi, e in più che \emph{ogni} mappa simpliciale \(f : N\ctC\nat N\ctD\) origina da un (unico) funtore.
 
 	Del resto, una tale \(f\) è definita da delle componenti \((f_0,f_1,f_2,\dots)\), e dalla definizione sappiamo che \((N\ctC)_0,(N\ctC)_1,(N\ctC)_2\) sono rispettivamente gli oggetti, le frecce e le coppie di frecce componibili di \(\ctC\); altrettanto è vero per \(\ctD\), e allora \(f_0 : \ctC_0\to\ctD_0\) è la candidata funzione sugli oggetti di un funtore, \(f_1 : \ctC_1\to\ctD_1\) la funzione sulle frecce. La compatibilità di \(f_0,f_1\) con l'unica degenerazione \(s : (N\ctC)_0\to(N\ctC)_1\), definita da \(s[C] = [\Id[C]]\) afferma che \(f_1(\Id[C]) = \Id[f_0C]\). Similmente, la compatibilità di \(f_2\) con la faccia \(d_1\), che consiste della mappa di composizione \(N\ctC_2\to N\ctC_1\), afferma che \(f_1\) preserva anche le composizioni.
 \end{proof}
-La corrispondenza \(N : \ctC\mapsto N\ctC\) diventa un funtore \(N : \ctCat\to\ctsSet\) se si definisce \(NF\) come la trasformazione naturale indotta dall'azione di \(F\) sulle frecce di \(\ctC\).
+% La corrispondenza \(N : \ctC\mapsto N\ctC\) diventa un funtore \(N : \ctCat\to\ctsSet\) se si definisce \(NF\) come la trasformazione naturale indotta dall'azione di \(F\) sulle frecce di \(\ctC\). Chiaramente la funtorialità di $F$ induce una funzione $(NF)_n
 \begin{definition}\label{def_natutra}\index{Trasformazione naturale}\index{homCDFG@\(\Hom{\ctCat(\ctC,\ctD)}(F,G)\)}
 	Come visto in \ref{ex_cat_cat} i funtori sono i morfismi di una categoria \(\ctCat\) delle categorie (piccole); ma abbiamo appena trovato che anche le trasformazioni naturali tra funtori rendono la classe \(\ctCat(\ctC,\ctD)\) dei funtori \(F : \ctC\funto\ctD\) a sua volta una categoria, dove le trasformazioni naturali \(\alpha : F\nat G\) si pensano come ``frecce tra frecce'', o ``frecce di dimensione 2'', nel senso che andiamo a spiegare. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo \(\To\), a riempire un diagramma di funtori come segue:
 	\[
@@ -334,7 +335,7 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 	\end{itemize}
 	Esiste una legge distributiva \(\alpha : FG\nat GF\) con componenti
 	\[\dmFun{\alpha_A}{\sum_{n\ge 1} (1+A)^n}{1+\sum_{n\ge 1} A^n}\]
-	date dall'elidere tutte le occorrenze di \(\bullet\) nell'argomento
+	date dall'elidere tutte le occorrenze di \(\bullet\) nell'argomento (se la lista non vuota $(a\cons as)$ è fatta unicamente di $\bullet$, $\alpha_A(a\cons as) = \bullet$ nel codominio).
 \end{example}
 \begin{hExample}[Un esempio di isomorfismo naturale]{tech}\label{puniv_prodotto_naturale}\index{Trasformazione naturale!isomorfismo naturale}
 	(La natura di questo esempio sarà chiarita dal capitolo \ref{chap_limiti_colimiti}, sulle proprietà universali, e dal capitolo \ref{cap_aggiunti}, sui funtori aggiunti.)
@@ -652,8 +653,8 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 	(indicato con lo stesso nome) che manda \(D\) nel funtore \(\Hom\ctD(F\blank,D) : C\mapsto \Hom\ctD(FC,D)\)
 \end{definition}
 Si noti che il nervo di una categoria \(\ctC\), come definito in \ref{def_nervo_di_una_cat}, non è altro che il nervo del funtore canonico
-\[\dmFun{\boldsymbol{\Delta}}{\ctFOrd}{\ctCat}\]
-che riguarda un insieme totalmente ordinato \([n]\in\ctFOrd\) come la categoria \(\boldsymbol{\Delta}[n] :=\{0\to 1\to\cdots\to n\}\) (a sua volta, il funtore \(\boldsymbol{\Delta}\) è la restrizione \(t|_{\ctFOrd}\), nella terminologia di \ref{ord_come_cat}).
+\[\dmFun{\bsDelta}{\ctFOrd}{\ctCat}\]
+che riguarda un insieme totalmente ordinato \([n]\in\ctFOrd\) come la categoria \(\bsDelta[n] :=\{0\to 1\to\cdots\to n\}\) (a sua volta, il funtore \(\bsDelta\) è la restrizione \(t|_{\ctFOrd}\), nella terminologia di \ref{ord_come_cat}).
 \begin{esercizi}
 	\item Mostrare che la regola di scambio di \ref{interchangio} è equivalente al fatto che la composizione
 	\[\dmFun{\cmp}{\ctCat(\ctB,\ctC)\times\ctCat(\ctA,\ctB)}{\ctCat(\ctA,\ctC)}\]
