@@ -38,10 +38,25 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 	\[(x\le y)\;\&\;(y\le x) \quad\implies\quad x = y\]
 	l'insieme \(P\), o meglio la coppia \((P,\le)\) si dice un insieme \emph{parzialmente ordinato} o \emph{poset}. La relazione \(\le\) in un poset si chiama un \emph{ordine parziale}.
 \end{definition}
-\begin{examples}[Alcuni esempi di insiemi ordinati]
-	\Todo{naturali con l'ordine + altri numeri con l'ordine + parti di $A$ + qualcosa che non ha una rel transitiva + qualcosa che è solo un preset}
+\begin{examples}[Alcuni esempi di insiemi ordinati]\leavevmode
+	\begin{itemize}
+		\item L'insieme dei numeri naturali con l'ordine definito induttivamente da 
+		\[\begin{cases}
+			(i): 0\le n	& \text{per ogni } n\in\bbN,\\
+			(ii): n\le m \Rightarrow n+1\le m+1 & \text{ per ogni } n,m\in\bbN
+		\end{cases}\]
+		è un ordine \emph{totale} (cioè è sempre vero che $n\le m$ o che, alternativamente, $m\le n$). Infatti, da questa definizione induttiva si ricava che $n\le n$, per ogni	$n\in\bbN$, dato che $0\le 0$ per $(i)$, e che assumendo $n\le n$ si ha $n+1\le n+1$ per $(ii)$.
+
+		Una maniera alternativa di ordinare l'insieme dei naturali è mediante la relazione di \emph{divisibilità}: $m\div n$ se e solo se $n = km$ per qualche $k\in\bbN$. Questa relazione è un ordine parziale, non totale: ad esempio, $2\not\div 3$ e $3\not\div 2$.
+		\item Altri insiemi di numeri (interi, razionali, reali) ereditano un ordine totale	da quello dei naturali, e sono anch'essi ordini totali.
+		\item L'insieme $\pow S$ di tutti i sottoinsiemi di un insieme $S$ (detto \emph{insieme  delle parti} di $S$) è un poset rispetto all'ordine di inclusione $\subseteq$, cioè per ogni coppia di sottoinsiemi $A,B\subseteq S$, si ha $A\le B$ se e solo se $A\subseteq B$. Questo ordine non è totale.
+		\item L'ordine sull'insieme dei registri (\emph{nome}, \emph{data}) di un archivio anagrafico, definito da $P\preceq Q$ se e solo se la data di nascita di $Q$ precede la data di nascita di $P$, è solo un preordine: ovviamente, se $P\preceq Q$ e $Q\preceq P$, sappiamo solo che $P$ e $Q$ hanno la stessa data di nascita, senza dover essere la stessa persona.
+		\item \Todo{}
+	\end{itemize}
 \end{examples}
-Dimostreremo in \ref{mon_sonocat} e in \ref{cat_sonopos} rispettivamente che ogni monoide è una categoria, e ogni insieme preordinato (e a fortiori, ogni insieme parzialmente ordinato) è una categoria. (Gli enunciati in questione renderanno più precise queste ultime affermazioni.) Un primo modo di motivare la definizione di categoria è dunque quello di una simultanea generalizzazione di due strutture matematiche elementari e pervasive. Per procedere, analizziamo degli esempi di strutture che sono categorie, ma non sono né monoidi né insiemi ordinati.
+Dimostreremo in \ref{mon_sonocat} che ogni monoide è una categoria, e in \ref{cat_sonopos} che ogni insieme preordinato (e a fortiori, ogni insieme parzialmente ordinato) è una categoria. Un primo modo di motivare la definizione in \ref{def_categ} è dunque quello di una simultanea generalizzazione di due strutture matematiche abbastanza primitive, e pervasive nella pratica matematica. 
+
+Per procedere, analizziamo degli esempi di strutture che sono categorie, ma non sono né monoidi né insiemi ordinati.
 \begin{hExample}[Un primo esempio motivante]{fund}\label{protoex_finset}\index{Categoria!--- degli insiemi finiti}
 	Un esempio naturale di categoria nasce considerando la classe \(\ctFin\) di tutti gli insiemi finiti \(\bkt{n}\defeq \{\iter n\}\) (con la convenzione che \([0]=\varnothing\) sia l'insieme vuoto), e le funzioni \(f : \bkt{n} \to \bkt{m}\) tra di loro. \`E evidente che non tutte tali funzioni sono componibili: una condizione necessaria --e sufficiente!-- affinché la composizione tra due funzioni \(f : \bkt{p} \to \bkt{q},g : \bkt{m} \to \bkt{n}\) tra insiemi finiti sia possibile è che il dominio dell'una coincida con il codominio dell'altra, ovvero che \(q=m\). Quando questo accade, è possibile `giustapporre' le due funzioni come
 	\[\xymatrix{
@@ -111,6 +126,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 
 	Altre notazioni comuni per lo stesso simbolo di `segnaposto' sono un trattino basso, \(\_+1\), \((\_)^2 -7\cdot\_ + 2\) eccetera, o (facilmente confondibile col segno meno), il trattino a media altezza `\(-\)'.
 \end{notation}
+\fosco{Effettivamente, questa digressione è prematura qui; in attesa di sistemarla meglio la lascio qui, e ne parleremo.}
 \begin{remark}[Morfismi o frecce?]\label{frecce_o_morfismi}\index{Freccia}\index{Morfismo}
 	Un modello tipico per il concetto di categoria dato in \ref{def_categ} realizza gli oggetti come istanze di un tipo di struttura (per esempio, una struttura algebrica, o un insieme dotato di una relazione d'ordine, uno spazio topologico, di misura, vettoriale, metrico\dots), e ne considera (con qualche accortezza fondazionale volta a evitare paradossi fastidiosi) la totalità, mentre le frecce sono applicazioni tra questi insiemi che \emph{preservano} tale struttura. Molte categorie quindi nascono considerando `tutti' gli insiemi dotati di un certo tipo di struttura, e le mappe che la preservano sono dette \emph{omomorfismi} (di gruppi, di anelli, di spazi vettoriali, di insiemi ordinati, di spazi metrici, eccetera).
 
