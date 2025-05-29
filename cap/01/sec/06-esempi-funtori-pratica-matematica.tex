@@ -267,24 +267,28 @@
 						d_1d_0t
 					\end{smallmatrix}}\ar[ur]_{d_0t}\ar@{}[u]|-t &
 		}\]
-	Ovviamente, è assai sconveniente denotare i vertici di un 2-simplesso a questa maniera; perciò si nominano \(a = d_1d_1t, c = d_0d_1t, b = d_0d_2t\) e si disegna più semplicemente un triangolo fatto da \(a \xto{d_2t} b \xto{d_0t} c\) e \(a \xto{d_1t} c\). Il triangolo quindi diventa
-	\begin{center}
-		\begin{tikzpicture}%[x=.5cm]
-			\node at (160:1) (a) {$a$};
-			\node[inner sep=2pt] at (-90:1) (b) {$b$};
-			\node at (20:1) (c) {$c$};
-			%
-			\draw[-latex] (a) -- (b) node[pos=.5,below left,font=\tiny] {$d_0t$};
-			\draw[-latex] (b) -- (c) node[pos=.5,below right,font=\tiny] {$d_0t$};
-			\draw[-latex] (a) -- (c) node[pos=.5, above, font=\tiny] {$d_0t$};
-		\end{tikzpicture}
-	\end{center}
+	Ovviamente, è assai sconveniente denotare i vertici di un 2-simplesso a questa maniera; perciò si nominano \(a\) il valore comune \(d_1d_2t = d_1d_1t\), $c$ il valore comune $d_0d_0t = d_0d_1t$, e $b$ il valore comune $d_1d_0t = d_0d_2t$, e si disegna più semplicemente un triangolo fatto da \(a \xto{d_2t} b \xto{d_0t} c\) e \(a \xto{d_1t} c\). Il triangolo quindi diventa
+	\[\xymatrix{
+		a\ar[dr]_{d_2t} \ar[rr]^{d_1t} &\ar@{}[d]|-{t} & c \\
+		& b\ar[ur]_{d_0t}
+	}\]
+	% \begin{center}
+	% 	\begin{tikzpicture}%[x=.5cm]
+	% 		\node at (160:1) (a) {$a$};
+	% 		\node[inner sep=2pt] at (-90:1) (b) {$b$};
+	% 		\node at (20:1) (c) {$c$};
+	% 		%
+	% 		\draw[-latex] (a) -- (b) node[pos=.5,below left,font=\tiny] {$d_0t$};
+	% 		\draw[-latex] (b) -- (c) node[pos=.5,below right,font=\tiny] {$d_0t$};
+	% 		\draw[-latex] (a) -- (c) node[pos=.5, above, font=\tiny] {$d_0t$};
+	% 	\end{tikzpicture}
+	% \end{center}
 \end{hRemark}
 \begin{definition}\label{def_insieme_globulare}\index{Insieme!--- globulare}\index{Insieme globulare}
 	\index{Insieme!--- globulare}
 	Un \emph{insieme globulare} consta di un funtore \(G : \ctGl(n)^\op\fun\ctSet\), dove \(\ctGl(n)\) è la categoria `globo generico' di \ref{ex_globo}.
 
-	Quando la definizione di insieme simpliciale viene data esplicitamente, essa consiste del dato di:
+	Quando la definizione di insieme globulare viene data esplicitamente, essa consiste del dato di:
 	\begin{itemize}
 		\item Una famiglia di insiemi \(G_0,G_1,\dots,G_n\);
 		\item Una famiglia di funzioni \(s^n,t^n : G_n\to G_{n-1}\), dette \emph{dominio} e \emph{codominio} \(n\)-dimensionale.
