@@ -45,7 +45,7 @@ La nozione di \emph{trasformazione naturale} tra funtori rende precisa questa id
 \end{definition}
 \begin{definition}[Composizione verticale di trasformazioni naturali]\label{def_vcomp}\index{Composizione verticale!di trasformazioni naturali}
 	Consideriamo tre funtori \(F,G,H:\ctC\to\ctD\) e due trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\beta:G\Rightarrow H\).
-	La \emph{composizione verticale} \(\beta\circ\alpha:F\Rightarrow H\) delle transformazioni naturali \(\beta,\alpha\), rappresentate avendo il bordo \(G\) in comune,
+	La \emph{composizione verticale} \(\beta\cmp\alpha:F\Rightarrow H\) delle transformazioni naturali \(\beta,\alpha\), rappresentate avendo il bordo \(G\) in comune,
 	\[\xymatrix{
 		\ctC \ar[rr]|G\ar@/^1.5pc/[rr]^F\ar@/_1.5pc/[rr]_H
 		\rruppertwocell<\omit>{<-2>\alpha}
@@ -60,7 +60,7 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 	Molti degli esempi di categorie fatti lungo la sezione \ref{sec_esempi_cats} si descrivono come categorie di funtori:
 	\begin{itemize}
 		\item La categoria delle spanne in \(\ctC\) di \ref{def_span_e_cospan} è la categoria dei funtori \(\ctCat(\Lambda^2_0,\ctC)\) di dominio la spanna generica di \ref{ex_spancospan} e codominio \(\ctC\); dualmente, la categoria delle cospanne in \(\ctC\) è la categoria dei funtori \(\ctCat(\Lambda^2_2,\ctC)\).
-		\item La categoria dei multidigrafi di \ref{ex_cat_grafi} è la categoria dei funtori \(\ctCat((0\rightrightarrows 1)^\op,\ctSet)\); ciò rende precisa l'osservazione subito successiva alla definizione di \ref{ex_cat_doppiafreccia}. Lasciamo per esercizio a chi legge di mostrare che una trasformazione naturale tra funtori \(F,G\) che assumono rispettivamente per valori delle coppie di funzioni
+		\item La categoria dei multidigrafi di \ref{ex_cat_grafi} è la categoria dei funtori \(\ctCat((0\toto 1)^\op,\ctSet)\); ciò rende precisa l'osservazione subito successiva alla definizione di \ref{ex_cat_doppiafreccia}. Lasciamo per esercizio a chi legge di mostrare che una trasformazione naturale tra funtori \(F,G\) che assumono rispettivamente per valori delle coppie di funzioni
 		      \[\xymatrix{
 				      F_1\ar@<.25em>[r]^{Fs}\ar@<-.25em>[r]_{Ft} & F_0 & G_1\ar@<.25em>[r]^{Gs}\ar@<-.25em>[r]_{Gt} & G_0
 			      }\]
@@ -68,24 +68,135 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 		\item La categoria delle rappresentazioni (in \(\ctSet\)) di un monoide di \ref{ex_cat_g_insiemi} è la categoria dei funtori \(\susp M \fun\ctSet\); una trasformazione naturale tra rappresentazioni viste come funtori è precisamente un omomorfismo equivariante. Un fatto analogo è vero per le rappresentazioni di un monoide in \(\ctD\), come in \ref{es_fun_repre} (scrivere i dettagli per esercizio).
 	\end{itemize}
 \end{example}
-Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia; raccogliamo i più noti.
-\begin{example}\label{ex_cat_sset}
-	\Todo{}
+Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia, data la presenza di funtori che le legano alle categorie di oggetti geometrici; raccogliamo alcuni esempi tra i più noti.
+\begin{example}\label{ex_cat_sset}\index{Insieme simpliciale}
+	La categoria \(\ctsSet=\presh{\bsDelta}\) degli insiemi simpliciali ha per oggetti i funtori \(\bsDelta^\op\fun\ctSet\) definiti in \ref{def_insieme_simpliciale}, dove \(\bsDelta\) è la categoria dei simplessi di \ref{rmk_delta_e_deltaPlus}, e per morfismi le trasformazioni naturali tra questi funtori.
+
+	Una trasformazione naturale \(f : X_*\nat Y_*\) è detta una \emph{mappa simpliciale}, e consiste di una famiglia di funzioni \(f_n : X_n \to Y_n\) tra gli insiemi di \(n\)-simplessi, che sono compatibili con le mappe di faccia e di degenerazione: questo significa che ogni diagramma
+	% https://q.uiver.app/#q=WzAsOCxbMCwwLCJYX24iXSxbMCwxLCJYX3tuLTF9Il0sWzEsMCwiWV9uIl0sWzEsMSwiWV97bi0xfSJdLFsyLDAsIlhfbiJdLFszLDAsIllfbiJdLFsyLDEsIlhfe24rMX0iXSxbMywxLCJZX3tuKzF9Il0sWzAsMSwiZF9pIiwyXSxbMiwzLCJkX2knIl0sWzAsMiwiZl9uIl0sWzEsMywiZl97bi0xfSIsMl0sWzQsNiwic19pIiwyXSxbNiw3LCJmX3tuKzF9IiwyXSxbNSw3LCJzX2knIl0sWzQsNSwiZl9uIl1d
+	\[\begin{tikzcd}
+			{X_n} & {Y_n} & {X_n} & {Y_n} \\
+			{X_{n-1}} & {Y_{n-1}} & {X_{n+1}} & {Y_{n+1}}
+			\arrow["{f_n}", from=1-1, to=1-2]
+			\arrow["{d_i}"', from=1-1, to=2-1]
+			\arrow["{d_i'}", from=1-2, to=2-2]
+			\arrow["{f_n}", from=1-3, to=1-4]
+			\arrow["{s_i}"', from=1-3, to=2-3]
+			\arrow["{s_i'}", from=1-4, to=2-4]
+			\arrow["{f_{n-1}}"', from=2-1, to=2-2]
+			\arrow["{f_{n+1}}"', from=2-3, to=2-4]
+		\end{tikzcd}\]
+	è commutativo, scegliendo come frecce verticali le facce \(d_i,d_i'\) o le degenerazioni \(s_i,s_i'\) di \(X_*\) e di \(Y_*\) rispettivamente.
+
+	La categoria degli insiemi simpliciali è di grande rilevanza in topologia algebrica (si veda \cite{a,b,c}) dato che \(\ctsSet\) ammette un funtore di \emph{realizzazione}
+	\[\dmFun{r}{\ctsSet}{\ctTop}\]
+	verso la categoria \(\ctTop\) degli spazi topologici, che porta un oggetto la cui struttura è puramente combinatoria\fshyp{}algebrica (il funtore \(X : \bsDelta^\op\fun\ctSet\)) in uno spazio topologico che può essere costruito iterativamente attaccando dischi di dimensione via via più alta (quello che in \cite{} è chiamato un CW-complesso; si veda \cite{fritsch1990cellular} per una introduzione elementare e \cite{} per una più indirizzata alle proprietà categoriali di \(\ctsSet\) e del funtore \(r\) di realizzazione).
 \end{example}
-\begin{example}\label{ex_cat_gset}
-	\Todo{}
-\end{example}
-L'interesse per la categoria \(\ctsSet\) degli insiemi simpliciali risiede principalmente nel fatto che ogni categoria piccola \(\ctC\in\ctCat\) induce un insieme simpliciale \(N\ctC\) detto il \emph{nervo} di \(\ctC\), definito nel modo che segue:
-\begin{itemize}
-	\item \Todo{}
-	\item \Todo{}
-\end{itemize}
-\begin{proposition}
-	Il nervo di \(\ctC\) è un insieme simpliciale, ovvero valgono le relazioni \eqref{} di \ref{ex_cat_sset}.
+
+\begin{remark}[Perché si chiama `globo'?]\label{globi_come_sonfatti}\index{Globo}
+	Ragionamenti simili si possono fare anche per la categoria degli insiemi \(n\)-globulari, cioè per la categoria \(\presh{\ctGl(n)}\) di funtori e trasformazioni naturali, contemporaneamente anche spiegando l'origine del termine `globo' per il suo oggetto generico.
+
+	Si osservi che \(\ctGl(1) = \{0\toto 1\}\) è la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Da ciò deduciamo che `rappresentare' \(\ctGl(1)\) nella categoria \(\ctSet\) di insiemi e funzioni consiste precisamente nel dare un multidigrafo, con funzioni di dominio e codominio. I globi generici sono una generalizzazione dei multidigrafi, che permettono la rappresentazione di `celle' di dimensione maggiore di 1. Sarà la \autoref{def_insieme_globulare} a rendere precisa questa idea (a sua volta, mediante la nozione di funtore controvariante in \ref{def_funtore_contro}), ma per il momento, è già possibile osservare che una terna di insiemi
+	\[\xymatrix{
+		C \ar@<.25em>[r]^-{s_2}\ar@<-.25em>[r]_-{t_2}& E \ar@<.25em>[r]^-{s_1}\ar@<-.25em>[r]_-{t_1}& V
+		}\]
+	di celle \(C\), lati \(E\) e vertici \(V\), con funzioni \(s_1,t_1,s_2,t_2\) consta di elementi \(c\in C\), ciascuno dei quali ha un dominio \(s_2(c) = F\) e un codominio \(t_2(c)=G\), ciascuno dei quali ha un dominio e un codominio,
+	\begin{gather*}
+		s_1s_2(c) = s_1 F = X\\
+		t_1s_2(c) = t_1 F = Y\\
+		s_1t_2(c) = s_1 G = Z\\
+		t_1t_2(c) = t_1 G = W
+	\end{gather*}
+	Del resto valgono le relazioni in \ref{ex_globo}, di modo che \(X=Z,	Y=W\), cosicché la cella globulare \(c\in C\) si disegna come
+	\[\xymatrix{
+		X \rtwocell^F_G{c} & Y
+		}\]
+\end{remark}
+La categoria degli insiemi simpliciali è però decisamente più studiata di quella dei globi.
+\begin{remark}[Nervo di una categoria piccola]\label{def_nervo_di_una_cat}
+	Il maggiore interesse per \(\ctsSet\) risiede principalmente nel fatto che ogni categoria piccola \(\ctC\in\ctCat\) induce un insieme simpliciale \(N\ctC\) detto il \emph{nervo} di \(\ctC\), definito nel modo che segue:
+	\begin{itemize}
+		\item Gli 0-simplessi di \(N\ctC\) sono gli oggetti di \(\ctC\); gli 1-simplessi	sono le frecce di \(\ctC\), e per \(n\ge 2\) gli \(n\)-simplessi di \(N\ctC\) consistono delle \(n\)-uple di frecce componibili di \(\ctC\), cioè
+		      \[(N\ctC)_n := \{C_0 \xto{f_1} C_1 \xto{f_2}C_2\xto{f_3}\cdots \xto{f_{n-1}} C_{n-1}\xto{f_n} C_n\mid \tup[0]Cn,\in\ctC_0\}.\]
+		      Perciò possiamo denotare il generico \(n\)-simplesso di \(N\ctC\) come una \(n\)-upla ordinata \([\tup fn,]\).
+		\item Le mappe di faccia \(d_i : (N\ctC)_n \to (N\ctC)_{n-1}\) sono definite, a seconda che \(i=0\) o \(i=n\), come l'omissione del primo o dell'ultimo termine della sequenza, e altrimenti come la composizione di due frecce adiacenti:
+		      \[\begin{cases}
+				      d_0[\tup fn,] := [\tup[2]fn,]                                           \\
+				      d_n[\tup fn,] := [\tup f{n-1},]                                         \\
+				      d_i[\tup fn,] := [\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]fn,] & 0<i<n.
+			      \end{cases}\]
+		\item Le mappe di degenerazione \(s_i : (N\ctC)_n \to (N\ctC)_{n+1}\)	sono definite come l'inserimento di una copia dell'\(i\)-esimo termine (cioè della sua freccia identica) nella sequenza:
+		      \[\begin{cases}
+				      s_0[\tup fn,] := [\Id[C_0],\tup fn,]                         \\
+				      s_n[\tup fn,] := [\tup fn,,\Id[C_n]]                         \\
+				      s_i[\tup fn,] := [\tup fi, ,\Id[C_i], \tup[i+1]fn,] & 0<i<n.
+			      \end{cases}\]
+	\end{itemize}
+\end{remark}
+\begin{proposition}\index{Nervo!--- di una categoria}
+	Il nervo di \(\ctC\) è un insieme simpliciale, ovvero valgono le relazioni \eqref{idsim_1}--\eqref{idsim_3} di \ref{def_insieme_simpliciale}. In più, il funtore nervo è pienamente fedele nel senso di \ref{fun_pienfed}, cosicché la categoria \(\ctCat\) si può identificare ad una sottocategoria piena di \(\ctsSet\).
 \end{proposition}
 \begin{proof}
-	\Todo{}
+	Vanno verificate le identità simpliciali: partiamo dalla mappe di faccia;
+	\begin{itemize}
+		\item per \(i=0<j<n\) si ha
+		      \begin{align*}
+			      d_0 d_j[\tup fn,]    & = d_0[\tup f{j-1}, ,f_{j+1}\cmp f_j, \tup[j+2]fn,] \\
+			                           & = [\tup[2]f{j-1}, ,f_{j+1}\cmp f_j, \tup[j+2]fn,]  \\
+			      d_{j-1}d_0[\tup fn,] & = d_{j-1}[\tup[2]fn,]                              \\
+			                           & =[\tup[2]f{j-1}, ,f_{j+1}\cmp f_j, \tup[j+2]fn,];
+		      \end{align*}
+		\item per \(0<i<j=n\) si ha
+		      \begin{align*}
+			      d_id_n[\tup fn,]     & = d_i[\tup f{n-1},]                                        \\
+			                           & =[\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]f{n-1},]         \\
+			      d_{n-1}d_i[\tup fn,] & = d_{n-1}[\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]f{n-1},] \\
+			                           & =[\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]f{n-1},];
+		      \end{align*}
+		\item per \(0<i<n\), e negli altri casi, si ragiona in maniera del tutto simile; si noti che l'equazione \eqref{idsim_1} quando \(j=i+1\) è vera per l'assioma di associatività della categoria \(\ctC\); per esempio, per \(n=5\) si ha
+		      \begin{align*}
+			      d_1d_2[\tup f5,] & = d_1[f_1,f_3\cmp f_2,f_4,f_5]   \\
+			                       & =[(f_3\cmp f_2)\cmp f_1,f_4,f_5] \\
+			      d_1d_1[\tup f5,] & = d_1[f_2\cmp f_1,f_3,f_4,f_5]   \\
+			                       & =[f_3\cmp (f_2\cmp f_1),f_4,f_5]
+		      \end{align*}
+		      Questo dimostra tutte le equazioni di \eqref{idsim_1}.
+	\end{itemize}
+	Per le degenerazioni si hanno simili risultati:
+	\begin{itemize}
+		\item per \(i=0\) si ha
+		      \begin{align*}
+			      s_0 s_j[\tup fn,]    & = s_0[\tup fj, ,\Id[C_j], \tup[j+1]fn,]       \\
+			                           & =[\Id[C_0],\tup fj, ,\Id[C_j], \tup[j+1]fn,]  \\
+			      s_{j+1}s_0[\tup fn,] & = s_{j+1}[\Id[C_0],\tup fn,]                  \\
+			                           & =[\Id[C_0],\tup fj, ,\Id[C_j], \tup[j+1]fn,];
+		      \end{align*}
+		\item le identità \eqref{idsim_2} per \(j=n\) e \(0<i<n\) si dimostrano in maniera del tutto simile.
+	\end{itemize}
+	L'interazione tra facce e degenerazioni usa gli assiomi di identità per la categoria \(\ctC\); in particolare,
+	\begin{align*}
+		d_js_j[\tup fn,]     & = d_j[\tup fj, ,\Id[C_j], \tup[j+1]fn,]         \\
+		                     & =[\tup f{j-1}, ,\Id[C_j]\cmp f_j, \tup[j+1]fn,] \\
+		                     & =[\tup f{j-1}, , f_j, \tup[j+1]fn,]             \\
+		d_{j+1}s_j[\tup fn,] & = d_{j+1}[\tup fj, ,\Id[C_j], \tup[j+1]fn,]     \\
+		                     & =[\tup fj, ,f_{j+1}\cmp\Id[C_j], \tup[j+2]fn,]  \\
+		                     & =[\tup fj, ,f_{j+1} , \tup[j+2]fn,]
+	\end{align*}
+	Se \(i > j+1\) si apprezza meglio l'equazione che va dimostrata in un suo caso particolare: poniamo quindi, ad esempio, \(n=5\), e \((i,j)=(4,2)\); si ha quindi
+	\begin{align*}
+		d_4s_2[\tup f5,] & = [f_1,f_2,\Id[C_2],f_3,f_4,f_5]     \\
+		                 & =[f_1,f_2,\Id[C_2],f_4\cmp f_3,f_5]  \\
+		s_2d_3[\tup f5,] & = s_2[f_1,f_2,f_4\cmp f_3,f_5]       \\
+		                 & =[f_1,f_2,\Id[C_2],f_4\cmp f_3,f_5].
+	\end{align*}
+	Lasciamo a chi legge l'onere di scrivere il caso generale (che non cambia in nulla la struttura di questo argomento), così come l'identità \(d_i\cmp s_j=s_{j-1}\cmp d_i\) quando \(i<j\), che si dimostra con una analoga quantità di tedio; questo conclude la prima parte della dimostrazione.
+
+	\medskip
+	Va ora dimostrato che la corrispondenza \(N : \ctCat \fun \ctsSet\) è un funtore, ovvero che un funtore tra categorie piccole \(F : \ctC\fun\ctD\) induce una trasformazione naturale \(NF: N\ctC\nat N\ctD\) tra i rispettivi nervi, e in più che \emph{ogni} mappa simpliciale \(f : N\ctC\nat N\ctD\) origina da un (unico) funtore.
+
+	Del resto, una tale \(f\) è definita da delle componenti \((f_0,f_1,f_2,\dots)\), e dalla definizione sappiamo che \((N\ctC)_0,(N\ctC)_1,(N\ctC)_2\) sono rispettivamente gli oggetti, le frecce e le coppie di frecce componibili di \(\ctC\); altrettanto è vero per \(\ctD\), e allora \(f_0 : \ctC_0\to\ctD_0\) è la candidata funzione sugli oggetti di un funtore, \(f_1 : \ctC_1\to\ctD_1\) la funzione sulle frecce. La compatibilità di \(f_0,f_1\) con l'unica degenerazione \(s : (N\ctC)_0\to(N\ctC)_1\), definita da \(s[C] = [\Id[C]]\) afferma che \(f_1(\Id[C]) = \Id[f_0C]\). Similmente, la compatibilità di \(f_2\) con la faccia \(d_1\), che consiste della mappa di composizione \(N\ctC_2\to N\ctC_1\), afferma che \(f_1\) preserva anche le composizioni.
 \end{proof}
+% La corrispondenza \(N : \ctC\mapsto N\ctC\) diventa un funtore \(N : \ctCat\to\ctsSet\) se si definisce \(NF\) come la trasformazione naturale indotta dall'azione di \(F\) sulle frecce di \(\ctC\). Chiaramente la funtorialità di $F$ induce una funzione $(NF)_n
 \begin{definition}\label{def_natutra}\index{Trasformazione naturale}\index{homCDFG@\(\Hom{\ctCat(\ctC,\ctD)}(F,G)\)}
 	Come visto in \ref{ex_cat_cat} i funtori sono i morfismi di una categoria \(\ctCat\) delle categorie (piccole); ma abbiamo appena trovato che anche le trasformazioni naturali tra funtori rendono la classe \(\ctCat(\ctC,\ctD)\) dei funtori \(F : \ctC\funto\ctD\) a sua volta una categoria, dove le trasformazioni naturali \(\alpha : F\nat G\) si pensano come ``frecce tra frecce'', o ``frecce di dimensione 2'', nel senso che andiamo a spiegare. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo \(\To\), a riempire un diagramma di funtori come segue:
 	\[
@@ -100,7 +211,7 @@ L'interesse per la categoria \(\ctsSet\) degli insiemi simpliciali risiede princ
 	Coerentemente con la notazione usata finora, dovremmo denotare \(\Hom{\ctCat(\ctC,\ctD)}(F,G)\) la collezione delle trasformazioni naturali tra due funtori, cioè dei morfismi nella categoria \(\ctCat(\ctC,\ctD)\). \`E però conveniente usare una notazione più compatta, specie quando \(\ctC,\ctD\) sono determinate dal contesto: una scelta comune per riferirsi a \(\Hom{\ctCat(\ctC,\ctD)}(F,G)\) è \(\Nat(F,G)\) (ma alcuni autori usano convenzioni ancora più compatte). \`E conveniente denotare esplicitamente dominio e codominio di \(F,G\), perciò noi introduciamo la notazione
 	\[\natHom FG :=\Hom{\ctCat(\ctC,\ctD)}(F,G)\]
 \end{notation}
-\begin{remark}
+\begin{remark}\index{Categoria!--- di funtori}
 	Sarà spesso utile considerare esempi in cui \(\ctD\) non è una categoria piccola (l'esempio più illustre e pervasivo è \ref{def_yoneda_embeddu}), e sarà altrettanto utile considerare esempi di funtori tra categorie entrambe larghe; però la definizione della `categoria' \(\ctCat(\ctC,\ctD)\) pone un problema di teoria degli insiemi quando \(\ctC\) non è piccola; infatti, in quel caso la classe delle trasformazioni naturali tra due funtori \(F,G:\ctC\funto\ctD\) è una sottoclasse di \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), che in generale può non essere un insieme (per esempio, può coincidere con \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), quando?).
 \end{remark}
 \begin{definition}[Isomorfismo naturale]\label{def_isonat}\index{Isomorfismo!--- naturale}\index{Trasformazione naturale!isomorfismo naturale}
@@ -207,24 +318,24 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 		      definita mandando \(\pair{\lambda t.ft}a\) in \(\pair{\lambda a'.\pair{\lambda t.ft}{a'}}a\).
 		\item \(\bigcup_X\) è la mappa di `unione' \(\dmFun{\bigcup_X}{\pow{(\pow X)}}{\pow X}\)
 		      definita mandando \(\fkU = (U_\alpha\mid\alpha\in A) \subseteq \ctP(X)\) in \(\bigcup_{\alpha\in A} U_\alpha \subseteq X\).
-		\item Da \ref{nat_tra_posets} sappiamo che una trasformazione naturale \(\alpha : f\nat g\) tra mappe monotòne consiste della disuguaglianza \(f(x)\le g(x)\) vera punto per punto nel loro codominio. Allora, una mappa monotòna \(f : X\to X\) di un insieme ordinato \((X,\le)\) è un funtore puntato se e solo se è una \emph{inflazione}:
+		\item Da \ref{nat_tra_posets} sappiamo che una trasformazione naturale \(\alpha : f\nat g\) tra mappe monotòne consiste della disuguaglianza \(f(x)\le g(x)\) vera punto per punto nel loro codominio. Allora, una mappa monotòna \(f : X\to X\) di un insieme ordinato \((X,\le)\) è un funtore puntato se e solo se è una \emph{espansione}:
 		      \[\forall x\in X.x\le f(x);\]
 		      Dualmente, \(g : Y\to Y\) di un insieme ordinato \((Y,\le)\) è un funtore copuntato se e solo se è una \emph{contrazione}:
 		      \[\forall x\in X.g(x)\le x.\]
 	\end{itemize}
 \end{example}
-\begin{definition}[Legge distributiva]
+\begin{definition}[Legge distributiva]\index{Legge distributiva}\index{Funtore!Legge distributiva tra ---i}
 	Sia \(\ctC\) una categoria, e \(F,G : \ctC\fun\ctC\) due endofuntori; una \emph{legge distributiva} di \(F\) su \(G\) consta di una trasformazione naturale \(\alpha : FG\nat GF\).
 \end{definition}
-\begin{example}
+\begin{example}\index{Funtore!--- delle liste}\index{Legge distributiva}
 	Esistono due funtori \(F,G : \ctSet\fun\ctSet\) definiti come segue:
 	\begin{itemize}
 		\item \(F\) manda un insieme \(X\) nell'insieme delle liste non vuote \(X^+ = \sum_{n\ge 1} X^n = X + X\times X + \dots + X^n + \dots\);
 		\item \(G\) manda un insieme \(A\) nell'insieme \(1+A\), dove \(1 = \{\bullet\}\) è un singoletto.
 	\end{itemize}
 	Esiste una legge distributiva \(\alpha : FG\nat GF\) con componenti
-	\[\dmFun{\alpha_A}{1+\sum_{n\ge 1} (1+A)^n}{1+\sum_{n\ge 1} A^n}\]
-	date dall'elidere tutte le occorrenze di \(\bullet\) nell'argomento
+	\[\dmFun{\alpha_A}{\sum_{n\ge 1} (1+A)^n}{1+\sum_{n\ge 1} A^n}\]
+	date dall'elidere tutte le occorrenze di \(\bullet\) nell'argomento (se la lista non vuota $(a\cons as)$ è fatta unicamente di $\bullet$, $\alpha_A(a\cons as) = \bullet$ nel codominio).
 \end{example}
 \begin{hExample}[Un esempio di isomorfismo naturale]{tech}\label{puniv_prodotto_naturale}\index{Trasformazione naturale!isomorfismo naturale}
 	(La natura di questo esempio sarà chiarita dal capitolo \ref{chap_limiti_colimiti}, sulle proprietà universali, e dal capitolo \ref{cap_aggiunti}, sui funtori aggiunti.)
@@ -279,11 +390,17 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 	Chi legge vedrà presto che esempi del genere (solo, quasi sempre più elaborati di questo) pervadono la teoria delle categorie.
 \end{hExample}
 \begin{proposition}\index{Gruppo lineare}\index{Yoneda!lemma di ---}
-	Si ricordi che in \ref{il_determinante} e \ref{ex_fun_GLn} abbiamo definito un funtore \(\GL_2 : \ctcRing\fun\ctGrp\); proviamo ora che esiste un isomorfismo naturale (precisamente, una biiezione di insiemi, che però può essere promossa a un isomorfismo di gruppi) tra \(\GL_2\) e il funtore \(\Hom{\ctcRing}(S(\GL_2),-)\) per l'anello \(S(\GL_2)\) ottenuto dal quoziente
+	Si ricordi che in \ref{il_determinante} e \ref{ex_fun_GLn} abbiamo definito un funtore \(\GL_2 : \ctcRing\fun\ctGrp\); proviamo ora che esiste un isomorfismo naturale (precisamente, una biiezione naturale di insiemi, che però può essere promossa a un isomorfismo di gruppi) tra \(\GL_2\) e il funtore \(\Hom{\ctcRing}(S(\GL_2),-)\) per l'anello \(S(\GL_2)\) ottenuto dal quoziente
 	\[\bbZ[a,b,c,d,y]/(1-(ad-bc)y)\]
-	in poche parole, \(S(\GL_2)\) è ottenuto aggiungendo formalmente all'anello dei polinomi \(\bbZ[a,b,c,d]\) un inverso all'elemento \(y=ad-bc\). Si vede facilmente che un omomorfismo di anelli \(S(\GL_2) \to R\) è determinato dalla scelta di quattro elementi \(\alpha,\beta,\gamma,\delta\in R\) soggetti alla sola condizione che \(\alpha\delta-\beta\gamma\) sia un'unità, e questo fissa un unico elemento \(\left(\begin{smallmatrix}					\alpha	&	\beta \\					\gamma	&	\delta				\end{smallmatrix}\right)\) di \(\GL_2(R)\).
+	in poche parole, \(S(\GL_2)\) è ottenuto aggiungendo formalmente all'anello dei polinomi \(\bbZ[a,b,c,d]\) un inverso all'elemento \(y=ad-bc\). Un omomorfismo di anelli \(S(\GL_2) \to R\) è determinato da un omomorfismo $\varphi : \bbZ[a,b,c,d,y] \to R$ che scende al quoziente; questa è esattamente la scelta di quattro elementi \(\alpha,\beta,\gamma,\delta\in R\) soggetti alla condizione che \(\alpha\delta-\beta\gamma\) sia un'unità (l'immagine di $y$ mediante $\varphi$), e questo fissa un unico elemento \(\left(\begin{smallmatrix}					\alpha	&	\beta \\					\gamma	&	\delta				\end{smallmatrix}\right)\) di \(\GL_2(R)\).
+
+		La biiezione $\GL_2(R)\to \ctcRing(S(\GL_2),R)$ così determinata è naturale in $R$, come è facile vedere dal modo in cui un omomorfismo di anelli $f : R\to R'$ agisce mediante il funtore $\GL_2$.
+
+		Questo argomento si generalizza anche facilmente al caso del funtore $\GL_n$: in quel caso, $S(\GL_n)$ è il quoziente 
+		\[\bbZ[\{x_{ij}\mid 1\le i,j\le n\}\cup \{y\}]\big/(1-y\cdot\det)\]
+		dove $\det$ è il polinomio $\sum_{\sigma\in \fkS(n)}\prod_{i=1}^n x_{i,\sigma(i)}$ nelle indeterminate $x_{ij}$.
 \end{proposition}
-Si noti che la condizione di naturalità di \(\beta\circ\alpha\) si ottiene componendo quelle di \(\alpha\) e \(\beta\):
+Si noti che la condizione di naturalità di \(\beta\cmp\alpha\) si ottiene componendo quelle di \(\alpha\) e \(\beta\):
 \[
 	\begin{tikzcd}
 		FX \ar{d}{Ff} \ar{r}{\alpha_X} & GX \ar{d}{Gf} \ar{r}{\beta_X} & HX \ar{d}{Hf} \\
@@ -299,7 +416,7 @@ perché evidentemente, si ha
 	                              & =(\beta_Y\cmp \alpha_Y)\cmp Ff.
 \end{align*}
 \begin{definition}[Composizione orizzontale di trasformazioni naturali]\label{def_hcomp}\index{Composizione orizzontale!di trasformazioni naturali}
-	Si considerino tre categorie \(\ctC,\ctD,\ctE\), due funtori \(F,G:\ctC\to\ctD\) e due funtori \(F',G':\ctD\to\ctE\). Date tue trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\alpha':F'\Rightarrow G'\), la \emph{trasformazione naturale composta orizzontalmente} \(\alpha'\horcomp\alpha:F'\circ F\Rightarrow G'\circ G\), rappresentata come segue,
+	Si considerino tre categorie \(\ctC,\ctD,\ctE\), due funtori \(F,G:\ctC\to\ctD\) e due funtori \(F',G':\ctD\to\ctE\). Date due trasformazioni naturali \(\alpha:F\Rightarrow G\) e \(\alpha':F'\Rightarrow G'\), la \emph{trasformazione naturale composta orizzontalmente} \(\alpha'\horcomp\alpha:F'\cmp F\Rightarrow G'\cmp G\), rappresentata come segue,
 	\[
 		\begin{tikzcd}[sep=large]
 			\ctC \ar[bend left, ""{name=F,below}]{r}{F} \ar[bend right, ""{name=G,above}]{r}[swap]{G}
@@ -412,27 +529,27 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 		\item prima dimostrazione: una trasformazione naturale \(\alpha : \id_\ctC\To\id_\ctC\) consiste di una famiglia di mappe \(\alpha_X : X\to X\) indicizzata dagli oggetti di \(\ctC\), con la proprietà che \(\alpha_Y \cmp f = f\cmp \alpha_X\) per ogni morfismo \(f : X\to Y\) in \(\ctC\); del resto, se \(\beta : \id_\ctC\To\id_\ctC\) è un altro elemento di \(\zentrum(\ctC)\), questo vuol dire che \(\alpha_X \cmp \beta_X = \beta_X\cmp \alpha_X\), cosicché \((\alpha\cmp\beta)_X = (\beta\cmp\alpha)_X\), ossia le trasformazioni naturali \(\alpha\cmp\beta\) e \(\beta\cmp\alpha\) coincidono.
 		\item seconda dimostrazione: si noti che vale la seguente catena di uguaglianze tra composizioni orizzontali e verticali (invocando \ref{interchangio} ogni volta che sia necessario):
 		      \begin{align*}
-			      \begin{tikzpicture}[baseline=(current bounding box.center)]
+			      \raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				      \almond\alpha\beta
-			      \end{tikzpicture}
-			       & \cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			      \end{tikzpicture}}
+			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				              \almonds\id\id\alpha\beta
-			              \end{tikzpicture} \\
-			       & \cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			              \end{tikzpicture}} \\
+			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				              \almonds\alpha\id\id\beta
-			              \end{tikzpicture} \\
-			       & \cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			              \end{tikzpicture}} \\
+			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				              \almonds\id\beta\alpha\id
-			              \end{tikzpicture} \\
-			       & \cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			              \end{tikzpicture}} \\
+			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				              \almonds\beta\id\id\alpha
-			              \end{tikzpicture} \\
-			       & \cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			              \end{tikzpicture}} \\
+			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				              \almonds\beta\alpha\id\id
-			              \end{tikzpicture} \\
-			       & \cong\begin{tikzpicture}[baseline=(current bounding box.center)]
+			              \end{tikzpicture}} \\
+			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
 				              \almond\beta\alpha
-			              \end{tikzpicture}
+			              \end{tikzpicture}}
 		      \end{align*}
 	\end{itemize}
 	Questo conclude la dimostrazione che \(\beta\cmp\alpha = \alpha\cmp\beta\).
@@ -511,7 +628,7 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 	è commutativo.
 \end{definition}
 \begin{hRemark}[A proposito del simbolo \(\yon_\ctC\)]{skip}\index{Yoneda}\index{aaa_yo@\(\yon_\ctC\)}
-	L'immersione di Yoneda è l'unico funtore di questo testo denotato con un carattere non latino o greco. Si legge come lo `\emph{io}' di p\emph{io}ggia, ed è la prima sillaba, nel sistema di scrittura hiragana, del nome di famiglia `Yoneda' (\jap{米田 信夫}; in giapponese il cognome precede il nome), di Nobuo Yoneda (\(*\)1930-\(\dag\)1996), matematico e informatico teorico giapponese.
+	L'immersione di Yoneda è l'unico funtore di questo testo denotato con un carattere non latino o greco. Si legge come lo `\emph{io}' di p\emph{io}ggia, ed è la prima sillaba, nel sistema di trascrizione hiragana degli ideogrammi giapponesi, del nome di famiglia `Yoneda' (\jap{米田 信夫}; in giapponese il cognome precede il nome), di Nobuo Yoneda (\(*\)1930-\(\dag\)1996), matematico e informatico teorico giapponese.
 \end{hRemark}
 \begin{remark}\index{Prefascio}\index{Funtore!Prefascio}\index{coprefascio|see {Prefascio}}
 	In maniera simile a \ref{ex_cat_preschif} è interessante studiare la categoria (denotata \(\check{\ctC}\), \(\ctC^\lor\) o simili) dei funtori
@@ -528,16 +645,16 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 \begin{proposition}\index{Yoneda!lemma di ---}
 	Per ogni categoria piccola \(\ctC\), l'immersione di Yoneda \(\yon_\ctC\) di \ref{def_yoneda_embeddu} e di coYoneda \(\coyon_\ctC\) sono funtori pienamente fedeli.
 \end{proposition}
-\begin{definition}[Il nervo di un funtore]\label{def_nervo_funtore}\index{Funtore!nervo di un ---}
+\begin{definition}[Il nervo di un funtore]\label{def_nervo_funtore}\index{Funtore!nervo di un ---}\index{Nervo!---	di un funtore}
 	Ogni funtore \(F : \ctC \fun\ctD\) induce un bifuntore
 	\[\dmFun{\N F}{\ctC^\op\times\ctD}\ctSet\]
 	detto il \emph{nervo} di \(F\), e definito da \((C,D)\mapsto \Hom\ctD(FC,D)\) (e similmente sulle frecce). Se \(\ctC\) è piccola, cosicché la categoria \(\presh\ctC\) sia legittima, possiamo `trasporre' il nervo \(\N F\) ad un funtore
 	\[\dmFun{\N F}\ctD{\presh\ctC}\]
 	(indicato con lo stesso nome) che manda \(D\) nel funtore \(\Hom\ctD(F\blank,D) : C\mapsto \Hom\ctD(FC,D)\)
 \end{definition}
-Si noti che il nervo di una categoria $\ctC$, come definito in \ref{}, non è altro che il nervo del funtore canonico 
-\[\dmFun{\boldsymbol{\Delta}}{\ctFOrd}{\ctCat}\]
-che riguarda un insieme totalmente ordinato $[n]\in\ctFOrd$ come la categoria $\boldsymbol{\Delta}[n] :=\{0\to 1\to\cdots\to n\}$ (a sua volta, il funtore $\boldsymbol{\Delta}$ è la restrizione $t|_{\ctFOrd}$, nella terminologia di \ref{ord_come_cat}).
+Si noti che il nervo di una categoria \(\ctC\), come definito in \ref{def_nervo_di_una_cat}, non è altro che il nervo del funtore canonico
+\[\dmFun{\bsDelta}{\ctFOrd}{\ctCat}\]
+che riguarda un insieme totalmente ordinato \([n]\in\ctFOrd\) come la categoria \(\bsDelta[n] :=\{0\to 1\to\cdots\to n\}\) (a sua volta, il funtore \(\bsDelta\) è la restrizione \(t|_{\ctFOrd}\), nella terminologia di \ref{ord_come_cat}).
 \begin{esercizi}
 	\item Mostrare che la regola di scambio di \ref{interchangio} è equivalente al fatto che la composizione
 	\[\dmFun{\cmp}{\ctCat(\ctB,\ctC)\times\ctCat(\ctA,\ctB)}{\ctCat(\ctA,\ctC)}\]

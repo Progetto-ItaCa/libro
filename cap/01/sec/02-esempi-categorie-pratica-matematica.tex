@@ -9,6 +9,7 @@ Iniziamo ora a dare degli esempi di categorie piccole partendo dall'esempio più
 \end{example}
 \index{Categoria!--- discreta}
 \`E sempre possibile dotare un insieme \(A\) della topologia discreta (o `massimale'), dove ogni sottoinsieme \(U\) di \(A\) è aperto, e della topologia indiscreta (o `minimale'), dove solo \(\varnothing\) e \(A\) sono aperti. Similmente, esistono due maniere, massimale e minimale, di considerare un insieme\footnote{Riguardo al problema se sia possibile dotare una classe propria della struttura di categoria discreta, la questione \emph{sembra} banale, ma in realtà tutt'altro che semplice da discutere: sebbene non ci sia alcun apparente problema ad assumere l'esistenza di classi proprie discrete, queste spesso vengono proibite \emph{ab imis} assumendo un assioma a parte in aggiunta ai soliti della teoria degli insiemi/classi, detto \emph{principio di Vop\v enka}: questo assioma afferma, precisamente, che non esistono sottoclassi proprie discrete nella classe propria di tutti gli insiemi.} \(A\) una categoria.
+\paolo{c'è del materiale introduttivo sul principio di Vopenka a cui possiamo rimandare? (Il lettore potrebbe chiedersi che cosa significa "discreto" in teoria degli insiemi.)}
 \begin{example}\label{ex_cat_discreta}\index{Categoria!--- discreta}
 	Dato un insieme \(A\), la \emph{categoria discreta} su \(A\), denotata \(A^\delta\), ha per oggetti gli elementi \(a\in A\), un unico morfismo identità \(\id_a : a\to a\) per ogni \(a\), e nessun altro. La composizione è forzata a essere definita solamente tra identità, nel modo più ovvio possibile, e tutti gli assiomi di categoria sono ovviamente soddisfatti.
 \end{example}
@@ -26,35 +27,37 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 		\item C'è un unico morfismo \(i\to j\) in \(\Delta[n]\) se e solo se \(i\le j\), di modo che esista un unico morfismo \(i\to i\) (l'identità) per ogni \(i\in\{\iter[0]{n}\}\), e un unico morfismo \(i\to i+1\) per \(i\in\{\iter[0]{n-1}\}\); in particolare l'unico morfismo \(i\to j\) è ottenuto dalla composizione
 		      \[i\to i+1\to\dots\to j\]
 	\end{itemize}
+	\index{Simplesso}
 	Le categorie \(\Delta[n]\) per \(=0,1,2,3\) sono rappresentate in figura \ref{fig:le_delta}.
 	\begin{figure}[h]
 		\begin{center}
 			\begin{tikzpicture}[
-					x=5em, y=5em,
-					wrap/.style={fill=black!5, rounded corners},
-					edge/.style={-latex},
+				x=4em, y=4em,
+				wrap/.style={fill=black!5, rounded corners},
+				edge/.style={-latex},
+				0simplex/.style={font=\scriptsize,inner sep=2pt},
 				]
 				\begin{scope}[xshift=0em,yshift=0.433*5em]
-					\node (0D0) at (0.0,0) {0};
+					\node[0simplex] (0D0) at (0.0,0) {0};
 				\end{scope}
 				\begin{scope}[xshift=4em,yshift=0.433*5em]
-					\node (1D0) at (0.0,0) {0};
-					\node (1D1) at (1.0,0) {1};
+					\node[0simplex] (1D0) at (0.0,0) {0};
+					\node[0simplex] (1D1) at (1.0,0) {1};
 					\draw[edge] (1D0) -- (1D1);
 				\end{scope}
 				\begin{scope}[xshift=13em]
-					\node (2D0) at (0.0,0) {0};
-					\node (2D1) at (1.0,0) {1};
-					\node (2D2) at (0.5,0.866) {2};
+					\node[0simplex] (2D0) at (0.0,0) {0};
+					\node[0simplex] (2D1) at (1.0,0) {1};
+					\node[0simplex] (2D2) at (0.5,0.866) {2};
 					\draw[edge] (2D0) -- (2D1);
 					\draw[edge] (2D0) -- (2D2);
 					\draw[edge] (2D1) -- (2D2);
 				\end{scope}
 				\begin{scope}[xshift=22em]
-					\node (3D0) at (0.0,0) {0};
-					\node (3D1) at (1.0,0) {1};
-					\node (3D2) at (0.5,0.866) {2};
-					\node (3D3) at (0.5,0.3) {3};
+					\node[0simplex] (3D0) at (0.0,0) {0};
+					\node[0simplex] (3D1) at (1.0,0) {1};
+					\node[0simplex] (3D2) at (0.5,0.866) {2};
+					\node[0simplex] (3D3) at (0.5,0.3) {3};
 					\draw[edge] (3D0) -- (3D1);
 					\draw[edge] (3D0) -- (3D2);
 					\draw[edge] (3D1) -- (3D2);
@@ -78,18 +81,19 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 		\label{fig:le_delta}
 	\end{figure}
 \end{example}
+\paolo{non abbiamo ancora parlato di isomorfismi. Forse conviene rimandare il lettore a 2.4?}
 \begin{example}\label{ex_cat_iso}\index{Categoria!--- isomorfismo generico}
 	La categoria \emph{isomorfismo generico} \(\ctIso\) ha due oggetti ed esattamente una freccia fra ciascuna coppia di essi:
 	\[\xymatrix@C=7ex{0 \ar@<.7ex>[r]^u \ar@(dl,ul)[] & 1 \ar@<.7ex>[l]^{u^{-1}} \ar@(ur,dr)[]}\]
 	I due endomorfismi su \(0\) ed \(1\) devono quindi essere le identità, ed entrambe le composizioni dei morfismi non identità \(u\) e \(u^{-1}\) sono forzate ad essere l'identità sull'oggetto corrispondente. \`E quindi la categoria con due oggetti ed un unico isomorfismo fra di essi.
 \end{example}
 \begin{example}[Doppia freccia generica]\label{ex_cat_doppiafreccia}\index{Categoria!--- doppia freccia generica}
-	La categoria \emph{doppia freccia generica} \(\{0\rightrightarrows 1\}\) ha due oggetti \(0,1\) ed esattamente due morfismi non identità e paralleli \(s,t : 0\to 1\). La composizione è definita, ancora una volta, nell'unico modo ovvio, chiedendo che \(x\cmp \id_0=x=\id_1\cmp x\) per \(x\in\{s,t\}\).
+	La categoria \emph{doppia freccia generica} \(\{0\toto 1\}\) ha due oggetti \(0,1\) ed esattamente due morfismi non identità e paralleli \(s,t : 0\to 1\). La composizione è definita, ancora una volta, nell'unico modo ovvio, chiedendo che \(x\cmp \id_0=x=\id_1\cmp x\) per \(x\in\{s,t\}\).
 
-	La doppia freccia è la `forma generica' di un grafo diretto (si veda \ref{ex_cat_libera}), dato che una coppia di funzioni \(s,t: E \rightrightarrows V\) tra due insiemi consta precisamente di un digrafo che ha \(V\) per insieme dei vertici e \(E\) per insieme dei lati.
+	La doppia freccia è la `forma generica' di un grafo diretto (si veda \ref{ex_cat_libera}), dato che una coppia di funzioni \(s,t: E \toto V\) tra due insiemi consta precisamente di un digrafo che ha \(V\) per insieme dei vertici e \(E\) per insieme dei lati.
 \end{example}
 \begin{example}[Turcasso generico]\label{ex_cat_turcasso}\index{Turcasso}\index{Categoria!--- turcasso generico}
-	Sia \(S\) un insieme; la categoria \(\turk\), detta \emph{turcasso generico} (con \(S\) elementi)\footnote{Il nome \emph{turcasso} denota un particolare tipo di faretra in uso agli arcieri turchi, solitamente fissata alla cintura dei soldati anziché portata a tracolla. Si veda \cite{boccaccio1831teseide},
+	Sia \(S\) un insieme; la categoria \(\turk\), detta \emph{turcasso generico} (con \(S\) elementi)\footnote{Il nome \emph{turcasso} denota un particolare tipo di faretra in uso agli arcieri turchi, solitamente fissata alla cintura dei soldati anziché portata a tracolla. Boccaccio scrive \cite{boccaccio1831teseide},
 		\begin{verse}
 			Dietro alle spalle un arco avea legato,\\
 			Ed un turcasso di saette pieno,\\
@@ -210,7 +214,8 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 
 	Si noti che \(\Lambda^2_0=\{1,2\}^\lhd\) e \(\Lambda^2_2=\{0,1\}^\rhd\).
 \end{example}
-\begin{example}[Globo generico]
+\begin{example}[Globo generico]\index{Categoria!--- globo generico}
+	\label{ex_globo}
 	La categoria \emph{globo generico} di dimensione \(n\ge 1\), denotata \(\ctGl(n)\), ha
 	\begin{itemize}
 		\item per oggetti i numeri naturali \(\iter[0]n\);
@@ -223,11 +228,11 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	\end{itemize}
 \end{example}
 \index{Categoria!--- libera}
-Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di un insieme di vertici (o `oggetti') \(V\) e di un insieme di lati (o `morfismi') \(E\) generi una categoria \(\bfF[\ctG]\) che può poi essere soggetta a delle relazioni, in modo del tutto analogo in cui un monoide o gruppo $G$ libero su un insieme $S$ di generatori può poi essere quozientato rispetto a un insieme di relazioni $R$, dando una presentazione $G = \langle S\mid R\rangle$. 
+Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di un insieme di vertici (o `oggetti') \(V\) e di un insieme di lati (o `morfismi') \(E\) generi una categoria \(\bfF[\ctG]\) che può poi essere soggetta a delle relazioni, in modo del tutto analogo in cui un monoide o gruppo \(G\) libero su un insieme \(S\) di generatori può poi essere quozientato rispetto a un insieme di relazioni \(R\), dando una presentazione \(G = \langle S\mid R\rangle\).
 
-\`E effettivamente così, e la seguente costruzione in forma di esempio formalizza l'esistenza di una categoria libera su un multidigrafo $\ctG$.
+\`E effettivamente così, e la seguente costruzione in forma di esempio formalizza l'esistenza di una categoria libera su un multidigrafo \(\ctG\).
 \begin{example}\label{ex_cat_libera}\index{Grafo}
-	Un \emph{multidigrafo} consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\rightrightarrows V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}, si veda \ref{ex_cat_grafi}. Dato un multidigrafo \(\ctG\) (spesso chiamato semplicemente \emph{grafo diretto}) possiamo definire la \emph{categoria libera} \(\bfF[\ctG]\) su \(\ctG\) come segue:
+	Un \emph{multidigrafo} consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\toto V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}, si veda \ref{ex_cat_grafi}. Dato un multidigrafo \(\ctG\) (spesso chiamato semplicemente \emph{grafo diretto}) possiamo definire la \emph{categoria libera} \(\bfF[\ctG]\) su \(\ctG\) come segue:
 	\begin{itemize}
 		\item gli oggetti di \(\bfF[\ctG]\) sono esattamente gli elementi di \(V\);
 		\item dati \(u,v\in V\), i morfismi da \(u\) a \(v\) sono i cammini nel grafo diretto che partono da \(u\) e arrivano in \(v\):
@@ -338,6 +343,22 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 	\[V\subseteq R^*U \iff U\subseteq R_*V\label{aggiunti_in_disguise}\]
 	dal momento che il lato sinistro è equivalente a \(\forall v\in V.\forall u\in U.(v,u)\in R\) e il lato destro a \(\forall u\in U.\forall v\in V.(v,u)\in R\). Nel capitolo \ref{cap_aggiunti} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie.
 \end{remark}
+\begin{remark}\label{diff_pres_cat_rel}
+	L'osservazione precedente permette una differente presentazione per la categoria \(\ctRel\): gli oggetti di \(\ctRel\) sono ancora gli insiemi, ma una relazione \(R\subseteq X\times Y\) viene ora presentata come una \emph{funzione}
+	\[\dmFun RX{\pow Y}\]
+	definita mandando $x\in X$ nell'insieme $Rx = \{y\in Y\mid xRy\}$, e una tale relazione induce un'unica funzione $\hat R : \pow X\to \pow Y$ definita da $\hat R(U) = \bigcup_{x\in U}Rx = \{y\in Y\mid \exists x\in U,\, y\in Rx\}$, chiamata \emph{estensione di Kleisli} di $R$ (il capitolo \ref{}, sulle monadi, chiarirà questa terminologia).
+
+	La composizione di due relazioni \(R\subseteq X\times Y\) e \(S\subseteq Y\times Z\) è data dalla composizione \emph{di funzioni} $\hat S\cmp R$, cioè	
+	\[
+		x \mapsto \hat S(Rx) = \{z\in Z\mid \exists y\in Rx,\, ySz\}.
+	\]
+Le proprietà generali di una estensione di Kleisli, che permettono di dimostrare che la definizione data soddisfa gli assiomi di categoria, sono le seguenti (tutte di facile dimostrazione, che lasciamo per esercizio): 
+\begin{enumtag}{ek}
+	\item \label{ek_1} per ogni insieme $A$, esiste una \emph{relazione identica} $\eta_A : A\to \pow A$, e $\hat\eta_A$ è l'identità di $\pow A$;
+	\item \label{ek_2} se $R : B\to \pow A$ è una relazione, allora $\hat R\cmp \eta_B = R : B \to\pow A$;
+	\item \label{ek_3} se $R : B\to \pow A$ e $S : C\to \pow B$ sono due relazioni, allora $\hat S\cmp \hat R = \hat{S\cmp R} : C\to \pow A$.
+\end{enumtag} 
+\end{remark}
 \begin{example}[Insiemi e funzioni]\label{ex_cat_insiemi}\index{Categoria!--- degli insiemi}
 	\index{Categoria!--- degli insiemi finiti|see {--- degli insiemi}}\index{Insieme}
 	La categoria \(\ctSet\) ha
@@ -412,7 +433,7 @@ L'\emph{algebra universale} si occupa di rendere preciso il concetto di `insieme
 \begin{example}[Categoria dei multidigrafi]\label{ex_cat_grafi}\index{Categoria!--- dei grafi}
 	Questo esempio rende precise alcune osservazioni fatte in precedenza, \ref{ex_cat_doppiafreccia} e \ref{ex_cat_libera}. La categoria \(\ctdGph\) dei grafi è così definita:
 	\begin{itemize}
-		\item gli oggetti di \(\ctdGph\) sono i grafi, o più precisamente i \emph{multidigrafi}: un (multidi)grafo \(\ctG = (E,V,s,t)\) consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\rightrightarrows V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}.
+		\item gli oggetti di \(\ctdGph\) sono i grafi, o più precisamente i \emph{multidigrafi}: un (multidi)grafo \(\ctG = (E,V,s,t)\) consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\toto V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}.
 		\item Un omomorfismo di (multidi)grafi \((f_E,f_V) : (E,V,s,t)=\ctG\to\ctG'= (E', V',s',t')\) consiste in una coppia di funzioni \(f_E, f_V\) tali che
 		      \begin{gather*}
 			      s'\cmp f_E = f_V\cmp s\\
@@ -470,9 +491,262 @@ Evidentemente, possiamo scrivere \(e : x\to y\) per denotare in maniera compatta
 	La categoria \(\ctOrd\) ha per oggetti gli ordinali e per morfismi \(X\to Y\) le funzioni monotòne.
 \end{example}
 L'importanza della categoria degli ordinali sarà più evidente quando in \ref{sec_funtori} introdurremo la definizione di funtore. Per il momento, ci limitiamo ad alcune osservazioni.
-\begin{remark}\index{Ordinale!--- finito}
-	Se \([n]=\{\iter n\}\) è un insieme finito, l'ordinamento \(\{\iter[1][<]n\}\) lo rende un buon ordine nel senso di \ref{po_wo_to}, e quindi \(\Delta[n]\) è in maniera naturale un oggetto di \(\ctPos\), ma anche di \(\ctOrd\); insieme alle funzioni monotòne tra questi insiemi finiti, ciò identifica la sottocategoria di \(\ctOrd\) generata da tutte le catene generiche \(\Delta[n]\) di \ref{ex_cat_catena} con la sottocategoria \(\ctFOrd\) di tutti gli ordinali finiti.
+\begin{remark}\label{rmk_delta_e_deltaPlus}\index{Ordinale!--- finito}\index{Categoria!--- dei simplessi}
+	Se \([n]=\{\iter[0] n\}\) è un insieme finito, l'ordinamento \(\{\iter[0][<]n\}\) lo rende un woset nel senso di \ref{po_wo_to}, e quindi \(\Delta[n]\) è in maniera naturale un oggetto di \(\ctPos\), ma anche di \(\ctOrd\); insieme alle funzioni monotòne tra questi insiemi finiti, ciò identifica la sottocategoria di \(\ctOrd\) generata da tutte le catene generiche \(\Delta[n]\) di \ref{ex_cat_catena} con la sottocategoria \(\ctFOrd\) di tutti gli ordinali finiti e non vuoti.
+	\begin{itemize}
+		\item Una notazione alternativa e più comune, mutuata dalla topologia algebrica, per \(\ctFOrd\)	è \(\bsDelta\) (la lettera greca delta maiuscola), che viene chiamata la categoria dei \emph{simplessi}.
+		\item Per la categoria di \emph{tutti} gli ordinali, anche quello vuoto, si usa la notazione \(\bsDelta_+\), che viene chiamata la categoria dei \emph{simplessi aumentati}.
+	\end{itemize}
 \end{remark}
+\begin{figure}[h]
+	\begin{center}
+		\begin{tikzpicture}[
+				x=4em, y=4em,
+				wrap/.style={fill=black!5, rounded corners},
+				edge/.style={-latex},
+				0simplex/.style={font=\scriptsize,inner sep=2pt},
+			]
+			\begin{scope}[xshift=0em,yshift=0.433*5em]
+				\node[0simplex] (0D0) at (0.0,0) {0};
+			\end{scope}
+			\begin{scope}[xshift=4em,yshift=0.433*5em]
+				\node[0simplex] (1D0) at (0.0,0) {0};
+				\node[0simplex] (1D1) at (1.0,0) {1};
+				\draw[edge, ibmMagenta] (1D0) -- (1D1);
+			\end{scope}
+			\begin{scope}[xshift=13em]
+				\node[0simplex] (2D0) at (0.0,0) {0};
+				\node[0simplex] (2D1) at (1.0,0) {1};
+				\node[0simplex] (2D2) at (0.5,0.866) {2};
+				\draw[edge, ibmMagenta] (2D0) -- (2D1);
+				\draw[edge] (2D0) -- (2D2);
+				\draw[edge, ibmMagenta] (2D1) -- (2D2);
+			\end{scope}
+			\begin{scope}[xshift=22em]
+				\node[0simplex] (3D0) at (0.0,0) {0};
+				\node[0simplex] (3D1) at (1.0,0) {1};
+				\node[0simplex] (3D2) at (0.5,0.866) {2};
+				\node[0simplex] (3D3) at (0.5,0.3) {3};
+				\draw[edge,ibmMagenta] (3D0) -- (3D1);
+				\draw[edge] (3D0) -- (3D2);
+				\draw[edge,ibmMagenta] (3D1) -- (3D2);
+				\draw[edge] (3D0) -- (3D3);
+				\draw[edge] (3D1) -- (3D3);
+				\draw[edge,ibmMagenta] (3D2) -- (3D3);
+			\end{scope}
+			\begin{scope}[on background layer]
+				\path node[wrap, fit=(0D0)] (W0) {};
+				\path node[wrap, fit=(1D0)(1D1)] (W1) {};
+				\path node[wrap, fit=(2D0)(2D1)(2D2)] (W2) {};
+				\path node[wrap, fit=(3D0)(3D1)(3D2)(3D3)] (W3) {};
+				\node [below=2.5em of W0] (L) {$\Delta[0]$};
+				\node at (L -| W1) {$\Delta[1]$};
+				\node at (L -| W2) {$\Delta[2]$};
+				\node at (L -| W3) {$\Delta[3]$};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+	\caption{Le categorie \(\Delta[0], \dots,\Delta[3]\) già viste in \ref{ex_cat_catena}, con le loro \emph{spine} in evidenza; la spina di un simplesso è la catena di frecce \(0\to 1\to\cdots\to n\) che genera, per composizione, tutte le altre frecce di \(\Delta[n]\).}
+	\label{fig:spines}
+\end{figure}
+\begin{hRemark}[Combinatoria della categoria \(\ctFOrd\)]{skip}\label{rmk_combinatoria_simplessi}\index{Categoria!--- dei simplessi}
+	La categoria \(\bsDelta\) possiede una sottoclasse di morfismi che generano tutti gli altri per composizione. Tra tutte le mappe monotòne \(f : [n]\to [m]\) in \(\bsDelta\) possiamo distinguere le \(n+1\) funzioni \emph{iniettive} \(\delta_n^i : [n-1]\mono [n]\) che evitano l'elemento \(i=\iter[0]n\), e le \(n+1\) funzioni \emph{suriettive} \(\sigma_n^j : [n+1]\epi [n]\) che assumono due volte il valore  \(j=\iter[0]m\):
+	\[
+		\delta_n^i(k) =
+		\begin{cases}
+			k,   & k < i    \\
+			k+1, & k \geq i
+		\end{cases}
+		\quad \quad
+		\sigma_n^j (k) =
+		\begin{cases}
+			k,   & k \leq j \\
+			k-1, & k > j
+		\end{cases}
+		\quad \text{per} \quad 0 \leq j\leq n.
+	\]
+	\index{Insieme simpliciale}\index{Insieme!--- simpliciale}
+	Per ogni \(n\ge 0\), \(\{\delta_n^0,\dots,\delta_n^{n+1}\}\) sono dette le \emph{cofacce} di \([n]\), e \(\{\sigma_n^0,\dots, \sigma_n^n\}\) le \emph{codegenerazioni} di \([n]\). Raffiguriamo alcune mappe di cofaccia e codegenerazione in \autoref{fig:cofa} e \ref{fig:code}. Tali funzioni soddisfano le seguenti relazioni, dette \emph{identità cosimpliciali}:
+	\begin{gather*}
+		\delta_n^j \cmp \delta_{n-1}^i = \delta_n^i \cmp \delta_{n-1}^{j-1}, \quad i < j\\
+		\sigma_n^j \cmp \sigma_n^i = \sigma_n^i \cmp \sigma_n^{j+1}, \quad i \leq j\\
+		\sigma_n^j \cmp \delta_n^i =
+		\begin{cases}
+			\delta_n^i \cmp \sigma_n^{j-1}, & i < j      \\
+			\id,                            & i = j, j+1 \\
+			\delta_n^{i-1} \cmp \sigma_n^j, & i > j+1.
+		\end{cases}
+	\end{gather*}
+	Ogni freccia di \(\Hom\bsDelta([n],[m])\) si può scrivere, in maniera essenzialmente unica, come composizione di alcune mappe di codegenerazione, seguite da alcune mappe di cofaccia; l'idea è di fattorizzare \(f\) lungo la sua immagine (dotata dell'ordine indotto),
+	\[\xymatrix{
+			[n]\ar[rr]^f\ar[dr]_e &&	[m] \\
+			& \im(f) \ar[ur]_m
+		}\]
+	e conseguentemente immergere quest'ultima nel codominio. La funzione suriettiva \(e\) è composizione di codegenerazioni (precisamente quelle determinate dai valori che \(f\) assume molteplici volte), e la funzione iniettiva \(m\) è composizione di alcune cofacce (precisamente quelle determinate dai valori che \(f\) non assume).
+\end{hRemark}
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}[x=.5cm]
+			\tikzset{
+				fitbg/.style={inner sep=0pt, fill=gray!50, opacity=0.5}
+			}
+			\drawChain{3}[up]
+			\begin{pgfonlayer}{background}
+				\node[fitbg,fit=(0up)(3up)] {};
+			\end{pgfonlayer}
+			\begin{scope}[yshift=-1cm]
+				\drawChain{4}[down]
+				\begin{pgfonlayer}{background}
+					\node[fitbg,fit=(1down)(4down)] {};
+				\end{pgfonlayer}
+			\end{scope}
+			\foreach \i/\j in {0/1,1/2,2/3,3/4}
+			\draw[-latex] (\i up) -- (\j down);
+			\begin{scope}[xshift=3cm]
+				\drawChain{3}[up]
+				\begin{pgfonlayer}{background}
+					\node[fitbg,fit=(0up)] {};
+					\node[fitbg,fit=(1up)(3up)] {};
+				\end{pgfonlayer}
+				\begin{scope}[yshift=-1cm]
+					\drawChain{4}[down]
+					\begin{pgfonlayer}{background}
+						\node[fitbg,fit=(0down)] {};
+						\node[fitbg,fit=(2down)(4down)] {};
+					\end{pgfonlayer}
+				\end{scope}
+				\foreach \i/\j in {0/0,1/2,2/3,3/4}
+				\draw[-latex] (\i up) -- (\j down);
+				\begin{scope}[xshift=3cm]
+					\drawChain{3}[up]
+					\begin{pgfonlayer}{background}
+						\node[fitbg,fit=(0up)(1up)] {};
+						\node[fitbg,fit=(2up)(3up)] {};
+					\end{pgfonlayer}
+					\begin{scope}[yshift=-1cm]
+						\drawChain{4}[down]
+						\begin{pgfonlayer}{background}
+							\node[fitbg,fit=(0down)(1down)] {};
+							\node[fitbg,fit=(3down)(4down)] {};
+						\end{pgfonlayer}
+					\end{scope}
+					\foreach \i/\j in {0/0,1/1,2/3,3/4}
+					\draw[-latex] (\i up) -- (\j down);
+					\begin{scope}[xshift=3cm]
+						\drawChain{3}[up]
+						\begin{pgfonlayer}{background}
+							\node[fitbg,fit=(0up)(2up)] {};
+							\node[fitbg,fit=(3up)] {};
+						\end{pgfonlayer}
+						\begin{scope}[yshift=-1cm]
+							\drawChain{4}[down]
+							\begin{pgfonlayer}{background}
+								\node[fitbg,fit=(0down)(2down)] {};
+								\node[fitbg,fit=(4down)] {};
+							\end{pgfonlayer}
+						\end{scope}
+						\foreach \i/\j in {0/0,1/1,2/2,3/4}
+						\draw[-latex] (\i up) -- (\j down);
+						\begin{scope}[xshift=3cm]
+							\drawChain{3}[up]
+							\begin{pgfonlayer}{background}
+								\node[fitbg,fit=(0up)(3up)] {};
+							\end{pgfonlayer}
+							\begin{scope}[yshift=-1cm]
+								\drawChain{4}[down]
+								\begin{pgfonlayer}{background}
+									\node[fitbg,fit=(0down)(3down)] {};
+								\end{pgfonlayer}
+							\end{scope}
+							\foreach \i/\j in {0/0,1/1,2/2,3/3}
+							\draw[-latex] (\i up) -- (\j down);
+						\end{scope}
+					\end{scope}
+				\end{scope}
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+	\caption{Le mappe di cofaccia \(\delta_4^0,\dots,\delta_4^4 : [3]\mono [4]\) in \(\bsDelta\). Ciascun segmento \(\{\iter[0][<]{i-1}\}\) viene mappato in sé stesso da \(\delta_n^i\); i \(k\) maggiori o uguali di \(i\) vengono mappati in \(k+1\).}
+	\label{fig:code}
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}[x=.5cm]
+			\tikzset{
+				fitbg/.style={inner sep=0pt, fill=gray!50, opacity=0.5}
+			}
+			\drawChain{4}[up]
+			\begin{pgfonlayer}{background}
+				\node[fitbg,fit=(0up)(1up)] {};
+				\node[fitbg,fit=(2up)(4up)] {};
+			\end{pgfonlayer}
+			\begin{scope}[yshift=-1cm]
+				\drawChain{3}[down]
+				\begin{pgfonlayer}{background}
+					\node[fitbg,fit=(0down)] {};
+					\node[fitbg,fit=(1down)(3down)] {};
+				\end{pgfonlayer}
+			\end{scope}
+			\foreach \i/\j in {0/0,1/0,2/1,3/2,4/3}
+			\draw[-latex] (\i up) -- (\j down);
+			\begin{scope}[xshift=3cm]
+				\drawChain{4}[up]
+				\begin{pgfonlayer}{background}
+					\node[fitbg,fit=(0up)] {};
+					\node[fitbg,fit=(1up)(2up)] {};
+					\node[fitbg,fit=(3up)(4up)] {};
+				\end{pgfonlayer}
+				\begin{scope}[yshift=-1cm]
+					\drawChain{3}[down]
+					\begin{pgfonlayer}{background}
+						\node[fitbg,fit=(0down)] {};
+						\node[fitbg,fit=(1down)] {};
+						\node[fitbg,fit=(2down)(3down)] {};
+					\end{pgfonlayer}
+				\end{scope}
+				\foreach \i/\j in {0/0,1/1,2/1,3/2,4/3}
+				\draw[-latex] (\i up) -- (\j down);
+				\begin{scope}[xshift=3cm]
+					\drawChain{4}[up]
+					\begin{pgfonlayer}{background}
+						\node[fitbg,fit=(0up)(1up)] {};
+						\node[fitbg,fit=(2up)(3up)] {};
+						\node[fitbg,fit=(4up)] {};
+					\end{pgfonlayer}
+					\begin{scope}[yshift=-1cm]
+						\drawChain{3}[down]
+						\begin{pgfonlayer}{background}
+							\node[fitbg,fit=(0down)(1down)] {};
+							\node[fitbg,fit=(2down)] {};
+							\node[fitbg,fit=(3down)] {};
+						\end{pgfonlayer}
+					\end{scope}
+					\foreach \i/\j in {0/0,1/1,2/2,3/2,4/3}
+					\draw[-latex] (\i up) -- (\j down);
+					\begin{scope}[xshift=3cm]
+						\drawChain{4}[up]
+						\begin{pgfonlayer}{background}
+							\node[fitbg,fit=(0up)(2up)] {};
+							\node[fitbg,fit=(3up)(4up)] {};
+						\end{pgfonlayer}
+						\begin{scope}[yshift=-1cm]
+							\drawChain{3}[down]
+							\begin{pgfonlayer}{background}
+								\node[fitbg,fit=(0down)(2down)] {};
+								\node[fitbg,fit=(3down)] {};
+							\end{pgfonlayer}
+						\end{scope}
+						\foreach \i/\j in {0/0,1/1,2/2,3/3,4/3}
+						\draw[-latex] (\i up) -- (\j down);
+					\end{scope}
+				\end{scope}
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+	\caption{Le mappe di codegenerazione \(\sigma_4^0,\dots,\sigma_4^4 : [4]\mono [3]\) in \(\bsDelta\). Ciascun valore \(i=\iter[0] n\) viene assunto due volte da \(\sigma_n^i\).}
+	\label{fig:cofa}
+\end{figure}
 \begin{remark}\index{Universo}\index{Ordinale}
 	Senza un assioma dedicato a tale scopo, non si possono generare ordinali più grandi di quelli finiti; al contrario, assumendo che esista almeno un insieme \emph{induttivo} \(N\) (cioè tale che, se \(x\in N\), allora \(x^+:=x\cup\{x\}\in N\)), possiamo `accedere' a ordinali più grandi, e da qui generarne di \emph{molto} grandi (abbastanza da far sì che la categoria \(\ctOrd\) abbia una classe propria di oggetti).
 
@@ -579,7 +853,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	La categoria \(\ctDyn\) dei \emph{sistemi dinamici discreti} ha
 	\begin{itemize}
 		\item per oggetti le coppie \(((X,x_0),f)\) dove \((X,x_0)\) è un insieme puntato nel senso di \ref{ex_cat_puntati}, ed \(f : X\to X\) è una endofunzione di \(X\);
-		\item  i morfismi tra \(((X,x_0),f)\) e \(((Y,y_0),g)\) consistono delle funzioni \(u : X \to Y\) tali che \(u(x_0)=y_0\) e \(u\circ f = g\circ u\), cioè entrambi i diagrammi di funzioni
+		\item  i morfismi tra \(((X,x_0),f)\) e \(((Y,y_0),g)\) consistono delle funzioni \(u : X \to Y\) tali che \(u(x_0)=y_0\) e \(u\cmp f = g\cmp u\), cioè entrambi i diagrammi di funzioni
 		      \[\xymatrix{
 				      1\ar[r]^{x_0}\ar[dr]_{y_0} & X\ar[r]^f\ar[d]_u & X \ar[d]_u\\
 				      & Y \ar[r]_g & Y
@@ -757,11 +1031,11 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 \begin{corollary}\label{cor_cat_mon}\index{Gruppo!---i come categorie}
 	In particolare, un gruppo \((G,\cdot,1)\) si può ugualmente vedere come la categoria \(\susp G\) ad esso associata, che ha un solo oggetto e \(G\) come insieme di morfismi.
 \end{corollary}
-\begin{remark}
+\begin{remark}\index{Gottlob Frege}\index{Categoria!monoide come ---}
 	Del resto, una categoria con un solo oggetto non `è' un monoide, ma lo definisce naturalmente; e un monoide non `è' la categoria \(\susp M\), ma la definisce naturalmente (e qualcosa di simile si può dire per gli insiemi ordinati in \ref{ex_cat_ordini}).
 
 	In altre parole, eliminare la distinzione tra \(M\) e \(\susp M\) non segue da una tautologia, ma è una \emph{identità informativa} (il termine è in `Senso e significato' di Frege, \cite{frege1892sinn}) che non è \emph{strettamente} una identità, ma una \emph{identificazione} tra due concetti sintatticamente distinti: in maniera più vicina al gergo matematico, a patto che \(\#\ctC_0 = 1\), le assegnazioni \(M\mapsto \susp M\) e \(\ctC\mapsto \ctC_1\) sono inverse una dell'altra, nel senso che
-	\[(\susp M,\cdot,1)_1 = M\qquad\qquad\susp(\ctC_1,\circ,\id_\bullet) = \ctC.\]
+	\[(\susp M,\cdot,1)_1 = M\qquad\qquad\susp(\ctC_1,\cmp,\id_\bullet) = \ctC.\]
 \end{remark}
 \begin{esercizi}
 	\item Una categoria piccola si può vedere come un multigrafo con identità e composizione: riscrivere la definizione di categoria (piccola) in termini di multigrafi.  In che modo questa costruzione generalizza la definizione di monoide (come insieme con identità e composizione)?

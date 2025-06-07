@@ -25,6 +25,9 @@
 \clist_new:N \g_itaca_lower_clist
 \clist_gset:Nn \g_itaca_lower_clist { a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z }
 
+\clist_new:N \g_itaca_greek_clist
+\clist_gset:Nn \g_itaca_greek_clist { alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,pi,rho, sigma,tau,upsilon,phi,chi,psi,omega,varphi,varpi,varepsilon,varrho,vartheta,Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Chi,Psi,Omega }
+
 \clist_new:N \g_itaca_both_clist
 \clist_concat:NNN \g_itaca_both_clist \g_itaca_upper_clist \g_itaca_lower_clist
 
@@ -59,6 +62,16 @@
 \itaca_makeabbrev:nnN { \mathbf } { ct#1 } \g_itaca_categories_clist
 \itaca_makeabbrev:nnN { \mathrm } { #1 } \g_itaca_operators_clist
 
+
+\cs_new_protected:Npn \itaca_make_macro_abbrev:nnN #1 #2 #3
+{
+	\clist_map_inline:Nn { #3 }
+	{
+		\cs_new_protected:cpn { #2 } { #1 { \csname ##1\endcsname } }
+	}
+}
+
+\itaca_make_macro_abbrev:nnN { \boldsymbol } { bs#1 } \g_itaca_greek_clist
 \ExplSyntaxOff
 
 \def\pSet{\partial\ctSet}
@@ -299,7 +312,8 @@
 \newcommand{\init}{0}
 \newcommand{\term}{1}
 
-\NewDocumentCommand{\turk}{ O{S} }{\{0 \rightrightarrows^#1 1\}}
+\let\toto\rightrightarrows
+\NewDocumentCommand{\turk}{ O{S} }{\{0 \toto^#1 1\}}
 \newcommand{\id}{\mathrm{id}}
 \NewDocumentCommand{\Id}{O{}}{\mathrm{id}_{#1}}
 \newcommand{\dom}[1]{d(#1)}
@@ -359,11 +373,11 @@
 \let\pmap\divideontimes
 
 % un generico `todo`
-\newcommand{\Todo}[1]{\todo[inline, caption=0,color=green!20]{#1}}
+\newcommand{\Todo}[1]{\todo[inline, caption=0,color=green!20, bordercolor=white]{#1}}
 
 % un box dei commenti dedicato a ciascuno di noi
 \NewDocumentCommand{\bla}{ O{\textit{anonimo}} m O{red} }{
-  \todo[inline, caption=0, color=#3!10]{ \scriptsize #1 ha detto: #2 }
+  \todo[inline, caption=0, color=#3!10, bordercolor=white]{ \color{gray} \textsf{#1} ha detto: #2 }
 }
 
 \NewDocumentCommand{\fosco}{ m }{\bla[Fosco]{#1}[red]}
@@ -533,18 +547,51 @@
 \draw (C1) to[bend right=50] (C2);
 }
 
-\def\radius{3.5pt}
-\NewDocumentCommand{\doBlank}{ O{black} }{
-\begin{tikzpicture}%
+% \def\radius{3.5pt}
+\def\displayRadius{3.5pt}
+\def\textstyleRadius{3.0pt}
+\def\scriptstyleRadius{2.0pt}
+\def\scriptscriptstyleRadius{1.5pt}
+
+\def\displayDotSize{0.375pt}
+\def\textstyleDotSize{0.325pt}
+\def\scriptstyleDotSize{0.25pt}
+\def\scriptscriptstyleDotSize{0.175pt}
+
+\NewDocumentCommand{\doBlankInner}{ O{black} m m }{%
+\begin{tikzpicture}[baseline=(current bounding box.south)]%
 \foreach \i in {0,...,15}%
-  \fill[#1] (\i * 360/16:\radius) circle (.375pt);%
+  \fill[#1] (\i * 360/16:#2) circle (#3);%
 \end{tikzpicture}%
+}
+
+\NewDocumentCommand{\doBlank}{ O{black} }{%
+\mathchoice
+  {\doBlankInner[#1]{\displayRadius}{\displayDotSize}}
+  {\doBlankInner[#1]{\textstyleRadius}{\textstyleDotSize}}
+  {\doBlankInner[#1]{\scriptstyleRadius}{\scriptstyleDotSize}}
+  {\doBlankInner[#1]{\scriptscriptstyleRadius}{\scriptscriptstyleDotSize}}
 }
 
 \NewDocumentCommand{\blank}{ O{black} }{\mathop{\doBlank[#1]}}
 
 \NewDocumentCommand{\natHom}{ O{\ctC} O{\ctD} m m }{
   \Hom{[#1,#2](#3,#4)}
+}
+
+\NewDocumentCommand{\drawTuple}{m O{}}{
+\foreach \i in {0,...,#1} {
+    \node[font=\tiny] (\i#2) at (\i,0) {$\i$};
+}
+}
+
+\NewDocumentCommand{\drawChain}{m O{}}{
+\foreach \i in {0,...,#1} {
+    \node[font=\tiny] (\i#2) at (\i,0) {$\i$};
+    \ifnum\i<#1
+        \node[font=\tiny] at (\i+0.5,0) {$<$};
+    \fi
+}
 }
 % inutile riga di controllo
 % END OF FILE

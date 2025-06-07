@@ -1,7 +1,7 @@
 \section{Esempi di funtori nella pratica matematica}\label{sec_esempi_funtori}
 \`E chiaro che non si può compilare una lista esaustiva di funtori importanti nella pratica matematica. Possiamo però concentrarci su alcuni funtori che è immediato costruire tra le categorie di §\ref{sec_esempi_cats}. In particolare, ed è uno dei motivi per cui \ref{def_funtore} è interessante, diverse operazioni che guardano una struttura come esempio di un'altra struttura si possono rendere precise mediante la nozione di funtore.
 \begin{example}[Categorie discrete e codiscrete]\label{ex_fun_co_disc}\index{Categoria!--- discreta}\index{Categoria!--- codiscreta}\index{Funtore!--- categoria discreta}\index{Funtore!--- categoria codiscreta}
-	Mandare un insieme \(A\) nella sua categoria discreta \(A^\delta\) di \ref{ex_cat_discreta} è un funtore \((-)^\delta : \ctSet \fun \ctCat\): ogni funzione \(f : A \to B\) induce un funtore, tautologico, \(f^\delta : A \to B\) che agisce come \(f\) sugli oggetti, ed è univocamente determinato dalla richiesta che \(f^\delta(\id_a) = \id_{fa}\), imposta da \ref{p_1}.
+	Mandare un insieme \(A\) nella sua categoria discreta \(A^\delta\) di \ref{ex_cat_discreta} è un funtore \((\blank)^\delta : \ctSet \fun \ctCat\): ogni funzione \(f : A \to B\) induce un funtore, tautologico, \(f^\delta : A \to B\) che agisce come \(f\) sugli oggetti, ed è univocamente determinato dalla richiesta che \(f^\delta(\id_a) = \id_{fa}\), imposta da \ref{p_1}.
 
 	Similmente, mandare un insieme \(A\) nella sua categoria codiscreta \(A^\chi\) è un funtore \(\ctSet \fun\ctCat\); qui è meno immediato che esista un funtore \(f^\chi : A^\chi\fun B^\chi\), ma usando la caratterizzazione di un funtore in \ref{def_alternativa_funtore} è sufficiente trovare una famiglia di funzioni
 	\[\begin{tikzcd}
@@ -136,12 +136,12 @@
 \end{example}
 \begin{example}\index{Funtore!--- gruppo delle unità}
 	Assegnare a un anello unitario \((R,+,0\cdot,1)\) il gruppo \((R^\times,\cdot,1)\) dei suoi elementi invertibili è un funtore
-	\[\dmFun{(-)^\times}\ctRing{\ctGrp.}\]
+	\[\dmFun{(\blank)^\times}\ctRing{\ctGrp.}\]
 	Infatti ogni omomorfismo di anelli \(f : R\to S\) induce un omomorfismo di gruppi \(f^\times : R^\times \to S^\times\), dato che se \(u\in R\) è invertibile, tale è anche \(f(u)\) (e \(f(u)^{-1}=f(u^{-1})\)).
 \end{example}
 \begin{example}\index{Funtore!--- di abelianizzazione}
 	Dato un gruppo \(G\), il sottogruppo \([G,G]\) generato dai commutatori \([x,y] \defeq xyx^{-1}y^{-1}\) è il sottogruppo normale più piccolo tale che \(G/N\) sia abeliano; il quoziente \(G^\aa \defeq G/[G,G]\) si chiama \emph{abelianizzato} di \(G\) e l'assegnazione \(G\mapsto G^\aa\) definisce un funtore
-	\[\dmFun{(-)^\aa}\ctGrp\ctAb\]
+	\[\dmFun{(\blank)^\aa}\ctGrp\ctAb\]
 	di abelianizzazione. Un omomorfismo di gruppi \(f : G \to H\) infatti scende al quoziente ad un omomorfismo \(f^\aa : G^\aa \to H^\aa\) tale che
 	\[
 		\begin{tikzcd}
@@ -199,7 +199,7 @@
 	\begin{itemize}
 		\item \(X_\infty\) è compatto e contiene \(X\) come un sottospazio denso;
 		\item \(X\mapsto X_\infty\) è un funtore
-		      \[\dmFun{(-)_\infty}\ctTop\ctTop\]
+		      \[\dmFun{(\blank)_\infty}\ctTop\ctTop\]
 		      (la cui immagine però è la sottocategoria degli spazi compatti), che induce, per ogni mappa propria \(f : X\to Y\), una mappa propria tra le loro compattificazioni
 		      \[\begin{tikzcd}
 				      f_\infty : X_\infty \ar[r] & Y_\infty
@@ -221,6 +221,80 @@
 	per \(n\ge 0\), e di coomologia (a coefficienti interi)
 	\[\dmFun{H^n(-,\bbZ)}{\ctHoTop^\op}{\ctAb.}\]
 \end{example}
+\begin{definition}\label{def_insieme_simpliciale}
+	\index{Insieme!--- simpliciale}
+	Un \emph{insieme simpliciale} consta di un funtore \(X_* : \bsDelta^\op\fun\ctSet\), dove \(\bsDelta\) è la categoria dei simplessi di \ref{rmk_delta_e_deltaPlus}.
+
+	Quando la definizione di insieme simpliciale viene data esplicitamente, essa consiste del dato di:
+	\begin{itemize}
+		\item Una famiglia di insiemi \(X_0,X_1,\dots,X_n,\dots\); gli elementi di \(X_n\) sono detti	\emph{\(n\)-simplessi} di \(X_*\);
+		\item Una famiglia di funzioni \(d_i^n : X_n\to X_{n-1}\), dette \emph{facce}, per \(0\leq i\leq n\); la faccia \(d_i^n(t)\) di un \(n\)-simplesso \(t\) è detta \emph{\(i\)-esima faccia} di \(t\);
+		\item Una famiglia di funzioni \(s_i^n : X_n\to X_{n+1}\), dette \emph{degenerazioni}, per \(0\leq i\leq n\).
+	\end{itemize}
+	Questi dati sono soggetti (per funtorialità) alle \emph{identità simpliciali}: se \(X(\delta_n^i) := d_i\) e \(X(\sigma_n^i) := s_i\), allora
+	\begin{gather}
+		d_i\cmp d_j = d_{j-1}\cmp d_i, \quad i < j\label{idsim_1}\\
+		s_i \cmp s_j = s_{j+1} \cmp s_i, \quad i \leq j\label{idsim_2}\\
+		d_i\cmp s_j =
+		\begin{cases}
+			s_{j-1}\cmp d_i, & i < j      \\
+			\id,             & i = j, j+1 \\
+			s_j\cmp d_{i-1}, & i > j+1.
+		\end{cases}\label{idsim_3}
+	\end{gather}
+	\`E proprio la funtorialità di \(X\), e la possibilità di decomporre ogni freccia di \(\bsDelta\) mediante facce e degenerazioni che ora implica che le identità simpliciali siano una condizione necessaria e sufficiente per definire un funtore \(X : \bsDelta^\op\fun\ctSet\).
+\end{definition}
+\begin{hRemark}[Cos'è esattamente un \(n\)-simplesso?]{tech}\index{Simplesso}\index{Insieme simpliciale}
+	Gli elementi degli insiemi \(X_0, X_1\) in un insieme simpliciale \(X\) si possono pensare come lati di un grafo diretto con la coppia di funzioni \((d_1,d_0) : X_1 \to X_0\times X_0\) a fare da mappe di dominio e codominio (in \emph{questo} ordine: \(d_i = X(\delta^1_i)\) restringe \(X\) al vertice che \emph{non} contiene \(i\)), e gli elementi di \(X_2\) si possono rappresentare come dei `triangoli diretti': se \(t\in X_2\), possiamo considerare le sue facce \(d_i = X(\delta^2_i)\), ciascuna definita restringendo \(X\) al lato che \emph{non} contiene l'indice \(i\); le tre identità simpliciali quando \(n=1\) sono quindi
+	\[
+		d_0\cmp d_1 = d_0\cmp d_0,\quad
+		d_0\cmp d_2 = d_1\cmp d_0,\quad
+		d_1\cmp d_2 = d_1\cmp d_1
+	\]
+	cosa che implica che i lati di \(t\) si `incollino' a formare un triangolo del tipo
+	\[\xymatrix{
+			{\begin{smallmatrix}
+						d_1d_1t \\
+						d_1d_2t
+					\end{smallmatrix}}
+			\ar[rr]^{d_1t}\ar[dr]_{d_2t}&& {\begin{smallmatrix}
+						d_0d_1t \\
+						d_0d_0t
+					\end{smallmatrix}}
+			\\
+			&{\begin{smallmatrix}
+						d_0d_2t \\
+						d_1d_0t
+					\end{smallmatrix}}\ar[ur]_{d_0t}\ar@{}[u]|-t &
+		}\]
+	Ovviamente, è assai sconveniente denotare i vertici di un 2-simplesso a questa maniera; perciò si nominano \(a\) il valore comune \(d_1d_2t = d_1d_1t\), $c$ il valore comune $d_0d_0t = d_0d_1t$, e $b$ il valore comune $d_1d_0t = d_0d_2t$, e si disegna più semplicemente un triangolo fatto da \(a \xto{d_2t} b \xto{d_0t} c\) e \(a \xto{d_1t} c\). Il triangolo quindi diventa
+	\[\xymatrix{
+		a\ar[dr]_{d_2t} \ar[rr]^{d_1t} &\ar@{}[d]|-{t} & c \\
+		& b\ar[ur]_{d_0t}
+	}\]
+	% \begin{center}
+	% 	\begin{tikzpicture}%[x=.5cm]
+	% 		\node at (160:1) (a) {$a$};
+	% 		\node[inner sep=2pt] at (-90:1) (b) {$b$};
+	% 		\node at (20:1) (c) {$c$};
+	% 		%
+	% 		\draw[-latex] (a) -- (b) node[pos=.5,below left,font=\tiny] {$d_0t$};
+	% 		\draw[-latex] (b) -- (c) node[pos=.5,below right,font=\tiny] {$d_0t$};
+	% 		\draw[-latex] (a) -- (c) node[pos=.5, above, font=\tiny] {$d_0t$};
+	% 	\end{tikzpicture}
+	% \end{center}
+\end{hRemark}
+\begin{definition}\label{def_insieme_globulare}\index{Insieme!--- globulare}\index{Insieme globulare}
+	\index{Insieme!--- globulare}
+	Un \emph{insieme globulare} consta di un funtore \(G : \ctGl(n)^\op\fun\ctSet\), dove \(\ctGl(n)\) è la categoria `globo generico' di \ref{ex_globo}.
+
+	Quando la definizione di insieme globulare viene data esplicitamente, essa consiste del dato di:
+	\begin{itemize}
+		\item Una famiglia di insiemi \(G_0,G_1,\dots,G_n\);
+		\item Una famiglia di funzioni \(s^n,t^n : G_n\to G_{n-1}\), dette \emph{dominio} e \emph{codominio} \(n\)-dimensionale.
+	\end{itemize}
+	La funtorialità di \(G\) ora implica che gli elementi di \(G_n\) soddisfino a delle condizioni dette \emph{identità globulari}, che discendono da quelle di \ref{ex_globo}; questa osservazione è espansa in maggior dettaglio in \ref{globi_come_sonfatti}.
+\end{definition}
 \begin{example}\index{Funtore!--- quoziente di uno pseudoinsieme}
 	Sia \((X,\sim)\) un prequoziente come in \ref{ex_cat_pseudoinsiemi}; l'assegnazione del quoziente \(X/_\sim\) definisce un funtore
 	\[\dmFun q{\cate{Bish}}{\ctSet}\]

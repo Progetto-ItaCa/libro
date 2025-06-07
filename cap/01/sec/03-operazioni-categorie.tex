@@ -27,7 +27,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 	\begin{itemize}
 		\item le sottocategorie \(\cate{T}n\ctTop\) per \(n=0,1,2,3\) degli spazi che soddisfano gli assiomi di separazione \(Tn\) sono sottocategorie piene della categoria \(\ctTop\) di \ref{ex_cat_top}, una inclusa nell'altra,
 		      \[\ctTop\supseteq\cate{T}0\ctTop\supseteq\cate{T}1\ctTop\supseteq\cate{T}2\ctTop\supseteq\cate{T}3\ctTop\]
-		\item la sottocategoria degli spazi T2 e compatti ha per morfismi le mappe \(f : X\to Y\) continue e \emph{proprie}, tali cioè che la controimmagine di un sottoinsieme compatto \(K\Subset Y\) mediante \(f\) sia un sottoinsieme compatto di \(X\).
+		\item Per contro, la sottocategoria di \(\cate{T}2\ctTop\) fatta dagli spazi T2 e \emph{compatti} ha come scelta comune di frecce la classe delle mappe \(f : X\to Y\) continue e \emph{proprie}, tali cioè che la controimmagine di un sottoinsieme compatto \(K\Subset Y\) mediante \(f\) sia un sottoinsieme compatto di \(X\).
 	\end{itemize}
 \end{example}
 \begin{definition}\label{def_cat_prodotto}\index{Categoria!--- prodotto}
@@ -244,9 +244,9 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 
 	Solitamente, dei teoremi che caratterizzano \(\ctC^\op\) in termini concreti sono dei profondi teoremi di \emph{dualità}, che asseriscono che esiste una identificazione (nel senso di \ref{fun_isocat} o molto più spesso di \ref{funtore_equcat}) tra \(\ctC^\op\) e una categoria nota \(\ctD\). Esempi famosi sono:
 	\begin{itemize}
-		\item la dualità di Stone \cite{reffa_standard}, afferma che esiste una dualità tra la categoria \(\cate{Boole}\) delle algebre di Boole e loro omomorfismi, e una certa sottocategoria di spazi topologici (gli \emph{spazi di Stone});
-		\item la dualità di Pontrjagin \cite{reffa_standard}, afferma che esiste una auto-dualità sulla categoria dei gruppi topologici (Hausdorff e) localmente compatti, ossia una dualità tra la categoria e la categoria stessa;
-		\item la dualità di Gel'fand-Grothendieck \cite{reffa_standard}, afferma che esiste una dualità tra la categoria \(\ctCsAlg\) delle \(C^*\)-algebre commutative di \autoref{ex_cat_C_star_algebre} e una certa sottocategoria di spazi topologici (gli spazi T2 localmente compatti);
+		\item la dualità di Stone \cite{stone1936boolean,johnstone-stone}, afferma che esiste una dualità tra la categoria \(\cate{Boole}\) delle algebre di Boole e loro omomorfismi, e una certa sottocategoria di spazi topologici (gli \emph{spazi di Stone});
+		\item la dualità di Pontrjagin \cite{pontrjagin1946topological}, afferma che esiste una auto-dualità sulla categoria dei gruppi topologici (Hausdorff e) localmente compatti, ossia una dualità tra la categoria e la categoria stessa;
+		\item la dualità di Gel'fand-Grothendieck \cite{gelfand1941normierte,grothendieck1960ega1}, afferma che esiste una dualità tra la categoria \(\ctCsAlg\) delle \(C^*\)-algebre commutative di \autoref{ex_cat_C_star_algebre} e una certa sottocategoria di spazi topologici (gli spazi T2 localmente compatti);
 		\item etc.
 	\end{itemize}
 \end{remark}
@@ -304,7 +304,7 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 	\begin{figure}
 		\begin{center}
 			\begin{tikzpicture}[
-					x=6em, y=6em,
+					x=4em, y=4em,
 					dot/.style={
 							circle,
 							fill=#1,
@@ -352,7 +352,7 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 							\pgfmathsetmacro{\x}{(rnd-\xmid)/(\xmax-\xmin)}
 							\pgfmathsetmacro{\y}{(rnd-\ymid)/(\ymax-\ymin)}
 							\ifnum\i=4\else
-								\path node (+\i/0) at (2*\x,\y+1) {\l};
+								\path node[font=\footnotesize] (+\i/0) at (2*\x,\y+1) {\l};
 							\fi
 						}
 				\end{scope}
@@ -363,15 +363,15 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 					\foreach \i/\l in {1/$p$,2/$q$,3/$r$,4/$s$} {
 							\pgfmathsetmacro{\x}{(rnd-\xmid)/(\xmax-\xmin)}
 							\pgfmathsetmacro{\y}{(rnd-\ymid)/(\ymax-\ymin)}
-							\path node (0/-\i) at (2*\x,\y-1) {\l};
+							\path node[font=\footnotesize] (0/-\i) at (2*\x,\y-1) {\l};
 						}
 				\end{scope}
 
 				\foreach \s/\l in {1/$f$,2/$g$,3/$h$,5/$i$} {
-						\draw[-latex,draw=ibmMagenta] (+\s) -- node[auto] {\l} (0);
+						\draw[-latex,draw=ibmMagenta,font=\footnotesize] (+\s) -- node[auto] {\l} (0);
 					}
 				\foreach \t/\l in {1/$p$,2/$q$,3/$r$,4/$s$} {
-						\draw[-latex,draw=ibmBlue] (0) -- node[auto] {\l} (-\t);
+						\draw[-latex,draw=ibmBlue,font=\footnotesize] (0) -- node[auto] {\l} (-\t);
 					}
 
 				\foreach \s/\t in {3/5,5/2} {
@@ -703,7 +703,7 @@ Dalla definizione della composizione in \(\ctC\star\ctD\) si può mostrare per i
 L'operazione di giunto tra due categorie è essenziale alla loro teoria `combinatoria', e al trattarle come strutture, dato che molte costruzioni elementari si descrivono in termini di giunti: ad esempio, se \(S=\{a,b\}\) è un insieme con due elementi, la spanna generica di \ref{ex_spancospan} è il giunto \(\ctTerm\star S^\delta\), e la cospanna generica è \(S^\delta\star\ctTerm\), e relazioni analoghe valgono anche per le \(S\)-spanne ed \(S\)-cospanne generiche.
 
 Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp G\) è un gruppo guardato come categoria alla maniera di \ref{mon_sonocat}, Milnor \cite{milnor1,milnor2} ha studiato la successione \[\susp G, \susp G\star\susp G, \dots, \susp G \star\dots\star \susp G =:\susp G^{\star n}\] e il suo `limite' per dei problemi di topologia.
-\begin{definition}[Cono destro e sinistro]\label{def_cono_su_C}\index{Cono!--- destro di una categoria}
+\begin{definition}[Cono destro e sinistro]\label{def_cono_su_C}\index{Cono!--- destro di una categoria}\index{Oggetto!--- terminale}\index{Oggetto!--- iniziale}
 	Sia \(\ctC\) una categoria; definiamo
 	\begin{itemize}
 		\item il \emph{cono destro} \(\ctC^\rhd\) come il giunto \(\ctC\star \ctTerm\); è la categoria che ha gli stessi oggetti di \(\ctC + \{\infty\}\), e dove \(\infty\) è un nuovo oggetto che soddisfa la seguente proprietà:
