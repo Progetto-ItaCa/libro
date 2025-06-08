@@ -32,10 +32,10 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	\begin{figure}[h]
 		\begin{center}
 			\begin{tikzpicture}[
-				x=4em, y=4em,
-				wrap/.style={fill=black!5, rounded corners},
-				edge/.style={-latex},
-				0simplex/.style={font=\scriptsize,inner sep=2pt},
+					x=4em, y=4em,
+					wrap/.style={fill=black!5, rounded corners},
+					edge/.style={-latex},
+					0simplex/.style={font=\scriptsize,inner sep=2pt},
 				]
 				\begin{scope}[xshift=0em,yshift=0.433*5em]
 					\node[0simplex] (0D0) at (0.0,0) {0};
@@ -346,18 +346,18 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 \begin{remark}\label{diff_pres_cat_rel}
 	L'osservazione precedente permette una differente presentazione per la categoria \(\ctRel\): gli oggetti di \(\ctRel\) sono ancora gli insiemi, ma una relazione \(R\subseteq X\times Y\) viene ora presentata come una \emph{funzione}
 	\[\dmFun RX{\pow Y}\]
-	definita mandando $x\in X$ nell'insieme $Rx = \{y\in Y\mid xRy\}$, e una tale relazione induce un'unica funzione $\hat R : \pow X\to \pow Y$ definita da $\hat R(U) = \bigcup_{x\in U}Rx = \{y\in Y\mid \exists x\in U,\, y\in Rx\}$, chiamata \emph{estensione di Kleisli} di $R$ (il capitolo \ref{}, sulle monadi, chiarirà questa terminologia).
+	definita mandando \(x\in X\) nell'insieme \(Rx = \{y\in Y\mid xRy\}\), e una tale relazione induce un'unica funzione \(\hat R : \pow X\to \pow Y\) definita da \(\hat R(U) = \bigcup_{x\in U}Rx = \{y\in Y\mid \exists x\in U,\, y\in Rx\}\), chiamata \emph{estensione di Kleisli} di \(R\) (il capitolo \ref{}, sulle monadi, chiarirà questa terminologia).
 
-	La composizione di due relazioni \(R\subseteq X\times Y\) e \(S\subseteq Y\times Z\) è data dalla composizione \emph{di funzioni} $\hat S\cmp R$, cioè	
+	La composizione di due relazioni \(R\subseteq X\times Y\) e \(S\subseteq Y\times Z\) è data dalla composizione \emph{di funzioni} \(\hat S\cmp R\), cioè
 	\[
 		x \mapsto \hat S(Rx) = \{z\in Z\mid \exists y\in Rx,\, ySz\}.
 	\]
-Le proprietà generali di una estensione di Kleisli, che permettono di dimostrare che la definizione data soddisfa gli assiomi di categoria, sono le seguenti (tutte di facile dimostrazione, che lasciamo per esercizio): 
-\begin{enumtag}{ek}
-	\item \label{ek_1} per ogni insieme $A$, esiste una \emph{relazione identica} $\eta_A : A\to \pow A$, e $\hat\eta_A$ è l'identità di $\pow A$;
-	\item \label{ek_2} se $R : B\to \pow A$ è una relazione, allora $\hat R\cmp \eta_B = R : B \to\pow A$;
-	\item \label{ek_3} se $R : B\to \pow A$ e $S : C\to \pow B$ sono due relazioni, allora $\hat S\cmp \hat R = \hat{S\cmp R} : C\to \pow A$.
-\end{enumtag} 
+	Le proprietà generali di una estensione di Kleisli, che permettono di dimostrare che la definizione data soddisfa gli assiomi di categoria, sono le seguenti (tutte di facile dimostrazione, che lasciamo per esercizio):
+	\begin{enumtag}{ek}
+		\item \label{ek_1} per ogni insieme \(A\), esiste una \emph{relazione identica} \(\eta_A : A\to \pow A\), e \(\hat\eta_A\) è l'identità di \(\pow A\);
+		\item \label{ek_2} se \(R : B\to \pow A\) è una relazione, allora \(\hat R\cmp \eta_B = R : B \to\pow A\);
+		\item \label{ek_3} se \(R : B\to \pow A\) e \(S : C\to \pow B\) sono due relazioni, allora \(\hat S\cmp \hat R = \hat{S\cmp R} : C\to \pow A\).
+	\end{enumtag}
 \end{remark}
 \begin{example}[Insiemi e funzioni]\label{ex_cat_insiemi}\index{Categoria!--- degli insiemi}
 	\index{Categoria!--- degli insiemi finiti|see {--- degli insiemi}}\index{Insieme}

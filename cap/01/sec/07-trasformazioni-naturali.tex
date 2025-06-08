@@ -113,7 +113,7 @@ Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia
 		}\]
 \end{remark}
 La categoria degli insiemi simpliciali è però decisamente più studiata di quella dei globi.
-\begin{remark}[Nervo di una categoria piccola]\label{def_nervo_di_una_cat}
+\begin{remark}[Nervo di una categoria piccola]\label{def_nervo_di_una_cat}\index{Nervo!--- di una categoria}
 	Il maggiore interesse per \(\ctsSet\) risiede principalmente nel fatto che ogni categoria piccola \(\ctC\in\ctCat\) induce un insieme simpliciale \(N\ctC\) detto il \emph{nervo} di \(\ctC\), definito nel modo che segue:
 	\begin{itemize}
 		\item Gli 0-simplessi di \(N\ctC\) sono gli oggetti di \(\ctC\); gli 1-simplessi	sono le frecce di \(\ctC\), e per \(n\ge 2\) gli \(n\)-simplessi di \(N\ctC\) consistono delle \(n\)-uple di frecce componibili di \(\ctC\), cioè
@@ -196,7 +196,7 @@ La categoria degli insiemi simpliciali è però decisamente più studiata di que
 
 	Del resto, una tale \(f\) è definita da delle componenti \((f_0,f_1,f_2,\dots)\), e dalla definizione sappiamo che \((N\ctC)_0,(N\ctC)_1,(N\ctC)_2\) sono rispettivamente gli oggetti, le frecce e le coppie di frecce componibili di \(\ctC\); altrettanto è vero per \(\ctD\), e allora \(f_0 : \ctC_0\to\ctD_0\) è la candidata funzione sugli oggetti di un funtore, \(f_1 : \ctC_1\to\ctD_1\) la funzione sulle frecce. La compatibilità di \(f_0,f_1\) con l'unica degenerazione \(s : (N\ctC)_0\to(N\ctC)_1\), definita da \(s[C] = [\Id[C]]\) afferma che \(f_1(\Id[C]) = \Id[f_0C]\). Similmente, la compatibilità di \(f_2\) con la faccia \(d_1\), che consiste della mappa di composizione \(N\ctC_2\to N\ctC_1\), afferma che \(f_1\) preserva anche le composizioni.
 \end{proof}
-% La corrispondenza \(N : \ctC\mapsto N\ctC\) diventa un funtore \(N : \ctCat\to\ctsSet\) se si definisce \(NF\) come la trasformazione naturale indotta dall'azione di \(F\) sulle frecce di \(\ctC\). Chiaramente la funtorialità di $F$ induce una funzione $(NF)_n
+% La corrispondenza \(N : \ctC\mapsto N\ctC\) diventa un funtore \(N : \ctCat\to\ctsSet\) se si definisce \(NF\) come la trasformazione naturale indotta dall'azione di \(F\) sulle frecce di \(\ctC\). Chiaramente la funtorialità di \(F\) induce una funzione (NF)_n
 \begin{definition}\label{def_natutra}\index{Trasformazione naturale}\index{homCDFG@\(\Hom{\ctCat(\ctC,\ctD)}(F,G)\)}
 	Come visto in \ref{ex_cat_cat} i funtori sono i morfismi di una categoria \(\ctCat\) delle categorie (piccole); ma abbiamo appena trovato che anche le trasformazioni naturali tra funtori rendono la classe \(\ctCat(\ctC,\ctD)\) dei funtori \(F : \ctC\funto\ctD\) a sua volta una categoria, dove le trasformazioni naturali \(\alpha : F\nat G\) si pensano come ``frecce tra frecce'', o ``frecce di dimensione 2'', nel senso che andiamo a spiegare. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo \(\To\), a riempire un diagramma di funtori come segue:
 	\[
@@ -335,7 +335,7 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 	\end{itemize}
 	Esiste una legge distributiva \(\alpha : FG\nat GF\) con componenti
 	\[\dmFun{\alpha_A}{\sum_{n\ge 1} (1+A)^n}{1+\sum_{n\ge 1} A^n}\]
-	date dall'elidere tutte le occorrenze di \(\bullet\) nell'argomento (se la lista non vuota $(a\cons as)$ è fatta unicamente di $\bullet$, $\alpha_A(a\cons as) = \bullet$ nel codominio).
+	date dall'elidere tutte le occorrenze di \(\bullet\) nell'argomento (se la lista non vuota \((a\cons as)\) è fatta unicamente di \(\bullet\), \(\alpha_A(a\cons as) = \bullet\) nel codominio).
 \end{example}
 \begin{hExample}[Un esempio di isomorfismo naturale]{tech}\label{puniv_prodotto_naturale}\index{Trasformazione naturale!isomorfismo naturale}
 	(La natura di questo esempio sarà chiarita dal capitolo \ref{chap_limiti_colimiti}, sulle proprietà universali, e dal capitolo \ref{cap_aggiunti}, sui funtori aggiunti.)
@@ -392,13 +392,13 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 \begin{proposition}\index{Gruppo lineare}\index{Yoneda!lemma di ---}
 	Si ricordi che in \ref{il_determinante} e \ref{ex_fun_GLn} abbiamo definito un funtore \(\GL_2 : \ctcRing\fun\ctGrp\); proviamo ora che esiste un isomorfismo naturale (precisamente, una biiezione naturale di insiemi, che però può essere promossa a un isomorfismo di gruppi) tra \(\GL_2\) e il funtore \(\Hom{\ctcRing}(S(\GL_2),-)\) per l'anello \(S(\GL_2)\) ottenuto dal quoziente
 	\[\bbZ[a,b,c,d,y]/(1-(ad-bc)y)\]
-	in poche parole, \(S(\GL_2)\) è ottenuto aggiungendo formalmente all'anello dei polinomi \(\bbZ[a,b,c,d]\) un inverso all'elemento \(y=ad-bc\). Un omomorfismo di anelli \(S(\GL_2) \to R\) è determinato da un omomorfismo $\varphi : \bbZ[a,b,c,d,y] \to R$ che scende al quoziente; questa è esattamente la scelta di quattro elementi \(\alpha,\beta,\gamma,\delta\in R\) soggetti alla condizione che \(\alpha\delta-\beta\gamma\) sia un'unità (l'immagine di $y$ mediante $\varphi$), e questo fissa un unico elemento \(\left(\begin{smallmatrix}					\alpha	&	\beta \\					\gamma	&	\delta				\end{smallmatrix}\right)\) di \(\GL_2(R)\).
+	in poche parole, \(S(\GL_2)\) è ottenuto aggiungendo formalmente all'anello dei polinomi \(\bbZ[a,b,c,d]\) un inverso all'elemento \(y=ad-bc\). Un omomorfismo di anelli \(S(\GL_2) \to R\) è determinato da un omomorfismo \(\varphi : \bbZ[a,b,c,d,y] \to R\) che scende al quoziente; questa è esattamente la scelta di quattro elementi \(\alpha,\beta,\gamma,\delta\in R\) soggetti alla condizione che \(\alpha\delta-\beta\gamma\) sia un'unità (l'immagine di \(y\) mediante \(\varphi\)), e questo fissa un unico elemento \(\left(\begin{smallmatrix}					\alpha	&	\beta \\					\gamma	&	\delta				\end{smallmatrix}\right)\) di \(\GL_2(R)\).
 
-		La biiezione $\GL_2(R)\to \ctcRing(S(\GL_2),R)$ così determinata è naturale in $R$, come è facile vedere dal modo in cui un omomorfismo di anelli $f : R\to R'$ agisce mediante il funtore $\GL_2$.
+	La biiezione \(\GL_2(R)\to \ctcRing(S(\GL_2),R)\) così determinata è naturale in \(R\), come è facile vedere dal modo in cui un omomorfismo di anelli \(f : R\to R'\) agisce mediante il funtore \(\GL_2\).
 
-		Questo argomento si generalizza anche facilmente al caso del funtore $\GL_n$: in quel caso, $S(\GL_n)$ è il quoziente 
-		\[\bbZ[\{x_{ij}\mid 1\le i,j\le n\}\cup \{y\}]\big/(1-y\cdot\det)\]
-		dove $\det$ è il polinomio $\sum_{\sigma\in \fkS(n)}\prod_{i=1}^n x_{i,\sigma(i)}$ nelle indeterminate $x_{ij}$.
+	Questo argomento si generalizza anche facilmente al caso del funtore \(\GL_n\): in quel caso, \(S(\GL_n)\) è il quoziente
+	\[\bbZ[\{x_{ij}\mid 1\le i,j\le n\}\cup \{y\}]\big/(1-y\cdot\det)\]
+	dove \(\det\) è il polinomio \(\sum_{\sigma\in \fkS(n)}\prod_{i=1}^n x_{i,\sigma(i)}\) nelle indeterminate \(x_{ij}\).
 \end{proposition}
 Si noti che la condizione di naturalità di \(\beta\cmp\alpha\) si ottiene componendo quelle di \(\alpha\) e \(\beta\):
 \[
@@ -530,26 +530,26 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 		\item seconda dimostrazione: si noti che vale la seguente catena di uguaglianze tra composizioni orizzontali e verticali (invocando \ref{interchangio} ogni volta che sia necessario):
 		      \begin{align*}
 			      \raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				      \almond\alpha\beta
-			      \end{tikzpicture}}
+					                      \almond\alpha\beta
+				                      \end{tikzpicture}}
 			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				              \almonds\id\id\alpha\beta
-			              \end{tikzpicture}} \\
+					                          \almonds\id\id\alpha\beta
+				                          \end{tikzpicture}} \\
 			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				              \almonds\alpha\id\id\beta
-			              \end{tikzpicture}} \\
+					                          \almonds\alpha\id\id\beta
+				                          \end{tikzpicture}} \\
 			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				              \almonds\id\beta\alpha\id
-			              \end{tikzpicture}} \\
+					                          \almonds\id\beta\alpha\id
+				                          \end{tikzpicture}} \\
 			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				              \almonds\beta\id\id\alpha
-			              \end{tikzpicture}} \\
+					                          \almonds\beta\id\id\alpha
+				                          \end{tikzpicture}} \\
 			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				              \almonds\beta\alpha\id\id
-			              \end{tikzpicture}} \\
+					                          \almonds\beta\alpha\id\id
+				                          \end{tikzpicture}} \\
 			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				              \almond\beta\alpha
-			              \end{tikzpicture}}
+					                          \almond\beta\alpha
+				                          \end{tikzpicture}}
 		      \end{align*}
 	\end{itemize}
 	Questo conclude la dimostrazione che \(\beta\cmp\alpha = \alpha\cmp\beta\).
