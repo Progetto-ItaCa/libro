@@ -375,9 +375,16 @@
 % un generico `todo`
 \newcommand{\Todo}[1]{\todo[inline, caption=0,color=green!20, bordercolor=white]{#1}}
 
+\ExplSyntaxOn
+\NewExpandableDocumentCommand{\extract}{O{#2}mm}
+ {
+  \tl_range:nnn { #3 } { #1 } { #2 }
+ }
+\ExplSyntaxOff
+
 % un box dei commenti dedicato a ciascuno di noi
 \NewDocumentCommand{\bla}{ O{\textit{anonimo}} m O{red} }{
-  \todo[inline, caption=0, color=#3!10, bordercolor=white]{ \color{gray} \textsf{#1} ha detto: #2 }
+  \todo[inline, caption={#1 : \extract[1]{30}{#2}}, color=#3!10, bordercolor=white]{ \color{gray} \textsf{#1} ha detto: #2 }
 }
 
 \NewDocumentCommand{\fosco}{ m }{\bla[Fosco]{#1}[red]}
