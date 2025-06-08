@@ -16,7 +16,7 @@ Se però vogliamo estendere tale definizione ad una categoria generica, la cui c
 	Se \(\ctC\) è una categoria, denotiamo con \(\Mono[\ctC]\) la sottoclasse di \(\ctC_1\) i cui elementi sono tutti e soli i monomorfismi di \(\ctC\), e analogamente denotiamo \(\Epi[\ctC]\) la sottoclasse i cui elementi sono gli epimorfismi.
 \end{notation}
 \begin{terminology}\index{Monomorfismo!etimologia di `---'}
-	Il prefisso greco \emph{mono-} significa `uno, singolo' (il prefisso greco \(\mu\acute{o}\nu o\varsigma\)- è imparentato al latino \emph{moenia}, un muro fatto di un solo pezzo); la scelta del nome `monomorfismo' si motiva quindi notando che una funzione \(f : A\to B\) è un monomorfismo se ogni valore \(b=f(a) \in B\) viene assunto per al più un \(a\in A\). Il prefisso \emph{epi-} significa invece `sopra, presso' (il prefisso greco \(\overset,\varepsilon\pi\acute{\iota}\)- è imparentato al latino \emph{apud}); la scelta del nome `epimorfismo' si motiva quindi pensando che una funzione \(f : A\to B\) che è un epimorfismo `stia sopra' il suo dominio coprendolo completamente, nel senso che ogni valore \(b=f(a)\) è assunto almeno una volta.
+	Il prefisso greco \emph{mono-} significa `uno, singolo' (il prefisso greco \(\mu\acute{o}\nu o\varsigma\)- è imparentato al latino \emph{moenia}, un muro fatto di un solo pezzo); la scelta del nome `monomorfismo' si motiva quindi notando che una funzione \(f : A\to B\) è un monomorfismo se ogni valore \(b=f(a) \in B\) viene assunto per al più un \(a\in A\). Il prefisso \emph{epi-} significa invece `sopra, presso' (il prefisso greco \(\overset,\varepsilon\pi\acute{\iota}\)- è imparentato al latino \emph{apud}, che però significa `presso'); la scelta del nome `epimorfismo' si motiva quindi pensando che una funzione \(f : A\to B\) che è un epimorfismo `stia sopra' il suo dominio coprendolo completamente, nel senso che ogni valore \(b=f(a)\) è assunto almeno una volta.
 \end{terminology}
 Dato che le definizioni categoriali di mono ed epi generalizzano, rispettivamente, quelle, algebriche, di elementi cancellabili a sinistra e a destra, otteniamo immediatamente il seguente esempio.
 \begin{example}[Mono ed epimorfismi in un monoide]\index{Monomorfismo!--- in un monoide}
@@ -136,20 +136,6 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
 	Allora, \(x = f(0) = u(p(0)) = u(\bullet) = u(p(1)) = f(1) = x'\).
 	Per la genericit\`a di \(x\) e \(x'\), abbiamo che \(f\) \`e iniettiva,
 	e dunque un monomorfismo in \(\ctSet\).
-\end{proof}
-\begin{proposition}\label{monoepi_in_catCD}\index{Monomorfismo!--- in \(\Hom\ctCat(\ctC,\ctD)\)}
-	Nella categoria \(\Hom\ctCat(\ctC,\ctD)\) dei funtori \(\ctC\fun\ctD\) e trasformazioni naturali, \(\alpha : F\nat G\) è un mono (epi, mono spezzante, epi spezzante) se e solo se ciascuna delle sue componenti \(\alpha_C : FC\to GC\) è un mono (epi, mono spezzante, epi spezzante) in \(\ctD\).
-\end{proposition}
-\begin{proof}
-	La condizione affinché \(\alpha : F\nat G\) sia un mono è che per ogni \(\gamma,\delta : H\nat F\) si abbia che se \(\alpha\cmp \gamma = \alpha\cmp \delta\), allora \(\gamma=\delta\). Del resto, questa condizione si riscrive come
-	\begin{quote}
-		Per ogni \(C\in\ctC_0\), se \(\alpha_C\cmp \gamma_C = \alpha_C\cmp \delta_C\) allora \(\gamma_C = \delta_C\),
-	\end{quote}
-	cosicché ogni \(\alpha_C\) è un mono in \(\ctD\).
-
-	Analogamente, \(\alpha\) è un mono spezzante (cioè ha una inversa sinistra \(\kappa : G\nat F\) tale che \(\kappa\cmp\alpha=1_F\)), se e solo se ogni componente \(\alpha_C\) ha \(\kappa_C\) per inversa sinistra.
-
-	Le dimostrazioni nel caso di un epi ed epi spezzante si fanno analogamente.
 \end{proof}
 \subsection{Sezioni e retrazioni}\label{sec_sezretraz}\index{Sezione}
 Così come l'algebra ci ha suggerito di generalizzare all'ambito categoriale la nozione di elemento di un monoide cancellabile a sinistra/destra,
@@ -310,6 +296,20 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	\caption{Una funzione suriettiva \(g : E\to B\) dove \(B=\{\blueDot\,\purpleDot\,\redDot\,\orangeDot\,\yellowDot\}\). Ciascuna fibra di \(g\) è non vuota, e la scelta di una inversa destra \(s : B\to E\) ammonta esattamente alla scelta di un elemento in ciascuna di queste fibre.}
 	\label{fig_assioma_scelta}
 \end{figure}
+\begin{proposition}\label{monoepi_in_catCD}\index{Monomorfismo!--- in \(\Hom\ctCat(\ctC,\ctD)\)}
+	Nella categoria \(\Hom\ctCat(\ctC,\ctD)\) dei funtori \(\ctC\fun\ctD\) e trasformazioni naturali, \(\alpha : F\nat G\) è un mono (epi, mono spezzante, epi spezzante) se e solo se ciascuna delle sue componenti \(\alpha_C : FC\to GC\) è un mono (epi, mono spezzante, epi spezzante) in \(\ctD\).
+\end{proposition}
+\begin{proof}
+	La condizione affinché \(\alpha : F\nat G\) sia un mono è che per ogni \(\gamma,\delta : H\nat F\) si abbia che se \(\alpha\cmp \gamma = \alpha\cmp \delta\), allora \(\gamma=\delta\). Del resto, questa condizione si riscrive come
+	\begin{quote}
+		Per ogni \(C\in\ctC_0\), se \(\alpha_C\cmp \gamma_C = \alpha_C\cmp \delta_C\) allora \(\gamma_C = \delta_C\),
+	\end{quote}
+	cosicché ogni \(\alpha_C\) è un mono in \(\ctD\).
+
+	Analogamente, \(\alpha\) è un mono spezzante (cioè ha una inversa sinistra \(\kappa : G\nat F\) tale che \(\kappa\cmp\alpha=1_F\)), se e solo se ogni componente \(\alpha_C\) ha \(\kappa_C\) per inversa sinistra.
+
+	Le dimostrazioni nel caso di un epi ed epi spezzante si fanno analogamente.
+\end{proof}
 I funtori preservano sezioni e retrazioni, nel senso precisato dal seguente teorema:
 \begin{theorem}\index{Retratto}%
 	\label{thm:fun-sezioni-retrazioni}
@@ -404,6 +404,22 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 		Se esiste una fattorizzazione \(f = X \overset e\epi E \xto q Y\) con \(e \in\Epi[\ctC]\), allora \(e\) è un isomorfismo.
 	\end{quote}
 \end{definition}
+\begin{remark}\index{Epimorfismo!--- estremale}
+	Raccogliamo alcuni esempi di epi estremali in categorie note:
+	\begin{itemize}
+		\item Nella categoria degli insiemi, ogni epimorfismo è estremale: infatti, se \(f = m\cmp p : X \to E \mono Y\) allora, usando \ref{mono_epi_ort} troviamo un quadrato
+		      \[\xymatrix{
+				      X \ar[r]^p\ar[d]_f & E\ar[d]^m \\
+				      Y \ar@{=}[r]\ar@{.>}[ur] & Y
+			      }\]
+		      spezzato da una diagonale \(u : Y \to E\), che rende \(m\) un mono e un epi spezzante; per \ref{prop:iso-epi-mono}.(\ref{prop:iso-epi-mono:item2}), deve quindi essere un isomorfismo.
+		\item nella categoria degli anelli un epi estremale è precisamente un omomorfismo suriettivo; se la funzione \(Uf : UR\to US\) indotta da un omomorfismo di anelli \(f : R\to S\) non è suriettiva, questo significa che il sottoanello immagine \(f(R)\) è proprio in \(S\), così che \(f\) non può essere estremale.
+
+		      Nell'altra direzione, se \(f : R\to S\) dà una funzione di insiemi \(Uf : UR\to US\) suriettiva, e supponiamo che \(f = m\cmp p\) sia una fattorizzazione con \(m\) mono, allora \(Um\cmp Up\) è una fattorizzazione di \(Uf\) con \(Um\) mono (\ref{eserva_riflette}); del resto gli epi in \(\ctSet\) sono tutti estremali, cosicché \(Um\) deve essere un isomorfismo; ma \(U\) riflette gli isomorfismi per \ref{prop_preserva_riflette}, cosicché è \(m\) che deve essere un isomorfismo.
+
+		      Si noti che l'epimorfismo \(\bbZ\to\bbQ\) non è estremale, perché fattorizza su ciascuna localizzazione di \(\bbZ\) a un primo (per esempio, \(\bbZ \to \bbZ[\frac 12]\mono \bbQ\)).
+	\end{itemize}
+\end{remark}
 \begin{proposition}\index{Epimorfismo!--- estremale}
 	Raccogliamo alcune proprietà degli epi estremali (e implicitamente, le loro duali per mono estremali):
 	\begin{enumtag}{ee}
@@ -422,22 +438,6 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 		\item Se \(g\) ha una inversa destra \(s\) e \(f\cmp g = m\cmp p\), allora \(f = m\cmp p\cmp s\), quindi \(m\) è un isomorfismo.\qedhere
 	\end{enumtag}
 \end{proof}
-\begin{remark}\index{Epimorfismo!--- estremale}
-	Raccogliamo alcuni esempi di epi estremali in categorie note:
-	\begin{itemize}
-		\item Nella categoria degli insiemi, ogni epimorfismo è estremale: infatti, se \(f = m\cmp p : X \to E \mono Y\) allora, usando \ref{mono_epi_ort} troviamo un quadrato
-		      \[\xymatrix{
-				      X \ar[r]^p\ar[d]_f & E\ar[d]^m \\
-				      Y \ar@{=}[r]\ar@{.>}[ur] & Y
-			      }\]
-		      spezzato da una diagonale \(u : Y \to E\), che rende \(m\) un mono e un epi spezzante; per \ref{prop:iso-epi-mono}.(\ref{prop:iso-epi-mono:item2}), deve quindi essere un isomorfismo.
-		\item nella categoria degli anelli un epi estremale è precisamente un omomorfismo suriettivo; se la funzione \(Uf : UR\to US\) indotta da un omomorfismo di anelli \(f : R\to S\) non è suriettiva, questo significa che il sottoanello immagine \(f(R)\) è proprio in \(S\), così che \(f\) non può essere estremale.
-
-		      Nell'altra direzione, se \(f : R\to S\) dà una funzione di insiemi \(Uf : UR\to US\) suriettiva, e supponiamo che \(f = m\cmp p\) sia una fattorizzazione con \(m\) mono, allora \(Um\cmp Up\) è una fattorizzazione di \(Uf\) con \(Um\) mono (\ref{eserva_riflette}); del resto gli epi in \(\ctSet\) sono tutti estremali, cosicché \(Um\) deve essere un isomorfismo; ma \(U\) riflette gli isomorfismi per \ref{prop_preserva_riflette}, cosicché è \(m\) che deve essere un isomorfismo.
-
-		      Si noti che l'epimorfismo \(\bbZ\to\bbQ\) non è estremale, perché fattorizza su ciascuna localizzazione di \(\bbZ\) a un primo (per esempio, \(\bbZ \to \bbZ[\frac 12]\mono \bbQ\)).
-	\end{itemize}
-\end{remark}
 \begin{remark}[Composizione di epi estremali]\label{compo_estremali}\index{Epimorfismo!--- estremale}
 	Questa osservazione contiene un controesempio alla componibilità degli epi estremali, e una dimostrazione che in categorie di modelli per segnature algebriche (dove, informalmente, possiamo costruire la minima sottoalgebra generata da un sottoinsieme) gli epi estremali sono invece una classe chiusa per composizione.
 	\begin{itemize}

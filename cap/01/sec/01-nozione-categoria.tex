@@ -17,7 +17,7 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 		      \[(m\cdot n)\cdot p = m\cdot (n\cdot p)\]
 	\end{itemize}
 \end{definition}
-\begin{examples}[Alcuni esempi di monoidi]\leavevmode
+\begin{hExamples}[Alcuni esempi di monoidi]{fund}\leavevmode
 	\begin{itemize}
 		\item l'insieme	\(\bbN\) dei numeri naturali con l'operazione di somma \(+\) e l'elemento neutro \(0\) è un monoide; la stessa cosa è vera per l'insieme \(\bbZ\) dei numeri interi, con l'operazione di somma e l'elemento neutro \(0\), per l'insieme \(\bbN\) con l'operazione di prodotto e l'elemento neutro \(1\),	e per l'insieme \(\bbZ\) con l'operazione di prodotto e l'elemento neutro \(1\).
 		\item L'insieme delle matrici \(2\times 2\) a coefficienti reali, con l'operazione di prodotto di matrici e l'elemento neutro la matrice identità \(I_2 = \begin{smat} 1&0\\0&1\end{smat}\), è un monoide.
@@ -26,7 +26,7 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 		      \[S[f] := \{n\in\bbN\mid f(n)\ne 0\}.\]
 		      Allora non è un monoide l'insieme \(\bigoplus_\bbN \bbN\) delle funzioni \(\bbN\to\bbN\) a supporto finito, cioè \(\bigoplus_\bbN \bbN=\{f : \bbN\to\bbN\mid S[f] \text{ è finito}\}\), rispetto al prodotto puntuale (non esiste un elemento neutro, perché la funzione costante \(f(n)=1\) per ogni \(n\in\bbN\) evidentemente non fa parte di \(\bigoplus_\bbN \bbN\)).
 	\end{itemize}
-\end{examples}
+\end{hExamples}
 \begin{definition}\label{prelim_def_preset}\index{Poset}
 	Un \emph{insieme preordinato} (o \emph{preordine} o \emph{preset}) consiste di un insieme \(P\) dotato di una relazione binaria \(\le\), solitamente indicata come un simbolo infisso \(x\le y\) per significare che \((x,y)\) è un elemento di \(\le\), che soddisfa le seguenti due proprietà:
 	\begin{itemize}
@@ -38,7 +38,7 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 	\[(x\le y)\;\&\;(y\le x) \quad\implies\quad x = y\]
 	l'insieme \(P\), o meglio la coppia \((P,\le)\) si dice un insieme \emph{parzialmente ordinato} o \emph{poset}. La relazione \(\le\) in un poset si chiama un \emph{ordine parziale}.
 \end{definition}
-\begin{examples}[Alcuni esempi di insiemi ordinati]\leavevmode
+\begin{hExamples}[Alcuni esempi di insiemi ordinati]{fund}\leavevmode
 	\begin{itemize}
 		\item L'insieme dei numeri naturali con l'ordine definito induttivamente da
 		      \[\begin{cases}
@@ -47,13 +47,13 @@ La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unific
 			      \end{cases}\]
 		      è un ordine \emph{totale} (cioè è sempre vero che \(n\le m\) o che, alternativamente, \(m\le n\)). Infatti, da questa definizione induttiva si ricava che \(n\le n\), per ogni	\(n\in\bbN\), dato che \(0\le 0\) per \((i)\), e che assumendo \(n\le n\) si ha \(n+1\le n+1\) per \((ii)\).
 
-		      Una maniera alternativa di ordinare l'insieme dei naturali è mediante la relazione di \emph{divisibilità}: \(m\div n\) se e solo se \(n = km\) per qualche \(k\in\bbN\). Questa relazione è un ordine parziale, non totale: ad esempio, \(2\not\div 3\) e \(3\not\div 2\).
-		\item Altri insiemi di numeri (interi, razionali, reali) ereditano un ordine totale	da quello dei naturali, e sono anch'essi ordini totali.
-		\item L'insieme \(\pow S\) di tutti i sottoinsiemi di un insieme \(S\) (detto \emph{insieme  delle parti} di \(S\)) è un poset rispetto all'ordine di inclusione \(\subseteq\), cioè per ogni coppia di sottoinsiemi \(A,B\subseteq S\), si ha \(A\le B\) se e solo se \(A\subseteq B\). Questo ordine non è totale.
+		      Una maniera alternativa di ordinare l'insieme dei naturali è mediante la relazione di \emph{divisibilità}: \(m\div n\) se e solo se \(n = km\) per qualche \(k\in\bbN\). Questa relazione è un ordine parziale, non totale, perché alcuni numeri potrebbero essere \emph{incomparabili}: ad esempio, non è vero né che \(2\div 3\) né che \(3\div 2\).
+		\item Altri insiemi di numeri (gli interi $\bbZ$, i razionali $\bbQ$, i reali $\bbR$) ereditano un ordine totale	da quello dei naturali, e sono anch'essi totali.
+		\item L'insieme \(\pow S\) di tutti i sottoinsiemi di un insieme \(S\) (detto \emph{insieme  delle parti} di \(S\)) è un poset rispetto all'ordine di inclusione \(\subseteq\), cioè per ogni coppia di sottoinsiemi \(A,B\subseteq S\), si ha \(A\le B\) se e solo se \(A\subseteq B\). Questo ordine non è totale quando $S$ ha almeno due elementi distinti $x\ne y$ (infatti, $\{x\}\not\subseteq\{y\}$ e $\{y\}\not\subseteq\{x\}$).
 		\item L'ordine sull'insieme dei registri (\emph{nome}, \emph{data}) di un archivio anagrafico, definito da \(P\preceq Q\) se e solo se la data di nascita di \(Q\) precede la data di nascita di \(P\), è solo un preordine: ovviamente, se \(P\preceq Q\) e \(Q\preceq P\), sappiamo solo che \(P\) e \(Q\) hanno la stessa data di nascita, senza dover essere la stessa persona.
-		\item \Todo{}
+		\item Fissato un insieme $U$ detto \emph{universo}, un multi-insieme consiste di una coppia $(A,\epsilon_A)$ dove $A\subseteq U$ è un sottoinsieme di $U$ ed $\epsilon_A : U \to \bbN$ è una funzione, da pensare come `$\epsilon_A(x)=n$ se e solo se $x$ appare in $A$ esattamente $n$ volte' (e dunque $\epsilon_A(x)=0$ si interpreta come $x\notin A$). Si può definire un ordine (antisimmetrico, parziale) sui multi-insiemi pensati come tali coppie, dicendo che $(A,\epsilon_A)\preceq (B,\epsilon_B)$ se e solo se $\epsilon_A(x)\le \epsilon_B(x)$ per ogni $x\in U$.
 	\end{itemize}
-\end{examples}
+\end{hExamples}
 Dimostreremo in \ref{mon_sonocat} che ogni monoide è una categoria, e in \ref{cat_sonopos} che ogni insieme preordinato (e a fortiori, ogni insieme parzialmente ordinato) è una categoria. Un primo modo di motivare la definizione in \ref{def_categ} è dunque quello di una simultanea generalizzazione di due strutture matematiche abbastanza primitive, e pervasive nella pratica matematica.
 
 Per procedere, analizziamo degli esempi di strutture che sono categorie, ma non sono né monoidi né insiemi ordinati.
