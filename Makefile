@@ -19,4 +19,8 @@ indexing:
 	python3 missing_indexes.py > missing_indices.idx
 	# this *.idx file is highly volatile
 
+look_index:
+	@cd cap/01/sec && \
+	grep -i -r --color=auto "index.$(word)" .
+
 work: book	view watch
