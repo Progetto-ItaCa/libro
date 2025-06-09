@@ -21,6 +21,6 @@ indexing:
 
 look_index:
 	@cd cap/01/sec && \
-	grep -i -r --color=auto "index.$(word)" .
+	grep -i -r --color=auto "index.*$(word)" .
 
 work: book	view watch
