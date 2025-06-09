@@ -32,7 +32,7 @@
 \clist_concat:NNN \g_itaca_both_clist \g_itaca_upper_clist \g_itaca_lower_clist
 
 \clist_new:N \g_itaca_categories_clist
-\clist_gset:Nn \g_itaca_categories_clist { Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, sSet, gSet, Dyn, Ord, FOrd, Lat, HoTop, Fld, DInt, Ch, Gl }
+\clist_gset:Nn \g_itaca_categories_clist { Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, sSet, gSet, Dyn, Ord, FOrd, Lat, HoTop, Fld, DInt, Ch, Gl, Gpd }
 
 % \mathbf{#1} -> \bf#1
 
@@ -372,8 +372,6 @@
 \def\ddual#1{#1^{\ast\ast}}
 \let\pmap\divideontimes
 
-% un generico `todo`
-\newcommand{\Todo}[1]{\todo[inline, caption=0,color=green!20, bordercolor=white]{#1}}
 
 \ExplSyntaxOn
 \NewExpandableDocumentCommand{\extract}{O{#2}mm}
@@ -381,6 +379,9 @@
   \tl_range:nnn { #3 } { #1 } { #2 }
  }
 \ExplSyntaxOff
+
+% un generico `todo`
+\newcommand{\Todo}[1]{\todo[inline, caption={todo : \extract[1]{30}{#1}},color=green!20, bordercolor=white]{\color{gray} #1}}
 
 % un box dei commenti dedicato a ciascuno di noi
 \NewDocumentCommand{\bla}{ O{\textit{anonimo}} m O{red} }{
