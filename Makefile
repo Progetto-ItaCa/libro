@@ -4,6 +4,12 @@ itaca.sty: itaca.ins itaca.dtx
 itaca.pdf: itaca.dtx
 	latexmk -pdf -gg $<
 
+main.pdf: main.tex itaca.sty
+	latexmk \
+		-gg -interaction=nonstopmode -pdf \
+		-pretex="\pdftrailerid{}\relax" -usepretex  \
+	$<
+
 watch:
 	texfot latexmk -pdf -pvc main.tex | grep -v "Missing character: There is no ; in font nullfont"
 

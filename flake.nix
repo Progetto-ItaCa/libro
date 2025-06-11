@@ -90,10 +90,7 @@
                 TEXMFCACHE=$(pwd)/.texmf-cache \
                 TEXMFCONFIG=$(pwd)/.texmf-config \
                 SOURCE_DATE_EPOCH=${toString self.lastModified} \
-              latexmk \
-                -gg -interaction=nonstopmode -pdf \
-                -pretex="\pdftrailerid{}\relax" -usepretex  \
-              main.tex
+              make main.pdf
             '';
             installPhase = ''
               mkdir -p $out
