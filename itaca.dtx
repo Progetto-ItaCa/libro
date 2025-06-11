@@ -59,7 +59,611 @@
 %    \end{macrocode}
 %
 
-\relax
+\NeedsTeXFormat{LaTeX2e}[2020/12/01]
+\ProvidesPackage{itaca}
+  [lo .sty per il libro di ItaCa]
+
+% TODO:
+% - funziona tutto ma c'è molto refactoring da fare:
+% - [in progress] la parte in LaTeX3 è vecchia e farraginosa
+% - [todo] i nomi delle categorie sono un po' random e andrebbero razionalizzati
+% - [todo] le macro vanno raggruppate e separate per tipo
+% - [todo] alcune vanno ridefinite con meno hacks, codice più elegante
+% - [todo] va tutto documentato meglio, con dei commenti che spiegano come si usano le macro
+% - [todo] la testa di freccia per gli epi nei diagrammi va migliorata
+
+
+% questi vanno chiamati per primi
+\RequirePackage{ xparse
+               , mathrsfs
+               }
+
+\ExplSyntaxOn
+
+\clist_new:N \g_itaca_upper_clist
+\clist_gset:Nn \g_itaca_upper_clist { A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+
+\clist_new:N \g_itaca_lower_clist
+\clist_gset:Nn \g_itaca_lower_clist { a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z }
+
+\clist_new:N \g_itaca_greek_clist
+\clist_gset:Nn \g_itaca_greek_clist { alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,pi,rho, sigma,tau,upsilon,phi,chi,psi,omega,varphi,varpi,varepsilon,varrho,vartheta,Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Chi,Psi,Omega }
+
+\clist_new:N \g_itaca_both_clist
+\clist_concat:NNN \g_itaca_both_clist \g_itaca_upper_clist \g_itaca_lower_clist
+
+\clist_new:N \g_itaca_categories_clist
+\clist_gset:Nn \g_itaca_categories_clist { Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, sSet, gSet, Dyn, Ord, FOrd, Lat, HoTop, Fld, DInt, Ch, Gl, Gpd }
+
+% \mathbf{#1} -> \bf#1
+
+\clist_new:N \g_itaca_operators_clist
+\clist_gset:Nn \g_itaca_operators_clist { GL, lan, Lan, LAN, lft, Lft, LFT, Nat, ran, Aut, Ran, RAN, Rft, Yan, RFT, rft, op, co, coop, colim, coker, eq, coeq, PSh, sk, Sub, N }
+
+\cs_new_protected:Npn \itaca_makeabbrev:nnN #1 #2 #3
+ {
+  \clist_map_inline:Nn { #3 }
+   {
+    \cs_new_protected:cpn { #2 } { #1 { ##1 } }
+   }
+ }
+\itaca_makeabbrev:nnN { \textbf } { bf#1 } \g_itaca_both_clist
+\itaca_makeabbrev:nnN { \mathfrak } { fk#1 } \g_itaca_both_clist
+\itaca_makeabbrev:nnN { \boldsymbol } { mnd#1 } \g_itaca_both_clist
+\itaca_makeabbrev:nnN { \boldsymbol } { bs#1 } \g_itaca_both_clist
+\itaca_makeabbrev:nnN { \textsf } { sf#1 } \g_itaca_both_clist
+\itaca_makeabbrev:nnN { \underline } { un#1 } \g_itaca_both_clist
+
+\itaca_makeabbrev:nnN { \mathcal } { ct#1 } \g_itaca_upper_clist
+\itaca_makeabbrev:nnN { \mathscr } { ect#1 } \g_itaca_upper_clist
+\itaca_makeabbrev:nnN { \mathbb } { ict#1 } \g_itaca_upper_clist
+\itaca_makeabbrev:nnN { \mathbb } { bb#1 } \g_itaca_upper_clist
+\itaca_makeabbrev:nnN { \mathrm } { ob#1 } \g_itaca_upper_clist
+
+\itaca_makeabbrev:nnN { \mathbf } { ct#1 } \g_itaca_categories_clist
+\itaca_makeabbrev:nnN { \mathrm } { #1 } \g_itaca_operators_clist
+
+
+\cs_new_protected:Npn \itaca_make_macro_abbrev:nnN #1 #2 #3
+{
+	\clist_map_inline:Nn { #3 }
+	{
+		\cs_new_protected:cpn { #2 } { #1 { \csname ##1\endcsname } }
+	}
+}
+
+\itaca_make_macro_abbrev:nnN { \boldsymbol } { bs#1 } \g_itaca_greek_clist
+\ExplSyntaxOff
+
+\def\pSet{\partial\ctSet}
+\def\ctCsAlg{\mathrm{C}^*\emdash\cate{Alg}}
+
+% imprescindibile yoneda in hiragana, va caricato prima di `inputenc'
+\RequirePackage{CJKutf8}
+\newcommand{\yon}{\text{\begin{CJK}{UTF8}{min}よ\end{CJK}}}
+\newcommand{\coyon}{\reflectbox{\yon}}
+\newcommand{\jap}[1]{\text{\begin{CJK}{UTF8}{min}#1\end{CJK}}}
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T2A]{fontenc}
+
+\RequirePackage[svgnames]{xcolor}
+% NOTE: this is "Color Blind Safe Palette of IBM Design Language v1 Color"
+\definecolor{ibmBlue}{HTML}{648fff}
+\definecolor{ibmPurple}{HTML}{785ef0}
+\definecolor{ibmMagenta}{HTML}{dc267f}
+\definecolor{ibmOrange}{HTML}{fe6100}
+\definecolor{ibmYellow}{HTML}{ffb000}
+
+\NewDocumentCommand{\drawDot}{ O{black} }{%
+\begin{tikzpicture}
+  \node[circle, fill=#1, radius=2pt, inner sep=0pt, minimum size=4pt, draw=none] at (0,0) {};
+\end{tikzpicture}
+}
+\newcommand{\yellowDot}{ \drawDot[ibmYellow] }
+\newcommand{\redDot}{ \drawDot[ibmMagenta] }
+\newcommand{\blueDot}{ \drawDot[ibmBlue] }
+\newcommand{\purpleDot}{ \drawDot[ibmPurple] }
+\newcommand{\orangeDot}{ \drawDot[ibmOrange] }
+
+\RequirePackage[pdftex]{graphicx}
+\RequirePackage{ amsfonts
+               , amsmath
+               , amssymb
+               , amsthm
+               , enumitem
+               , microtype
+               , mathtools
+               , hyphenat
+               , todonotes
+               , stackrel
+               , stmaryrd
+               , tikz-cd
+               , turnstile
+               , xspace
+               }
+
+\RequirePackage{tikz}
+  \usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{calc,matrix,arrows,positioning,backgrounds,fit}
+
+% TikZ drawing helper for random point clouds
+\NewDocumentCommand{\GimmeBounds}{m m}{
+  \pgfmathsetmacro{\xmin}{1}
+  \pgfmathsetmacro{\xmax}{0}
+  \pgfmathsetmacro{\ymin}{1}
+  \pgfmathsetmacro{\ymax}{0}
+  \pgfmathsetseed{#1}
+  \foreach \i in {1,...,#2} {
+      \pgfmathsetmacro{\x}{rnd}
+      \pgfmathsetmacro{\y}{rnd}
+      \pgfmathparse{min(\x,\xmin)}\global\let\xmin\pgfmathresult
+      \pgfmathparse{max(\x,\xmax)}\global\let\xmax\pgfmathresult
+      \pgfmathparse{min(\y,\ymin)}\global\let\ymin\pgfmathresult
+      \pgfmathparse{max(\y,\ymax)}\global\let\ymax\pgfmathresult
+    }
+  \pgfmathparse{(\xmin + \xmax) / 2}\global\let\xmid\pgfmathresult
+  \pgfmathparse{(\ymin + \ymax) / 2}\global\let\ymid\pgfmathresult
+}
+
+\NewDocumentCommand{\PlaceholderFigure}{m}{%
+  \begin{figure}[h]
+		\begin{center}
+			\includegraphics[height=0.3\textwidth]{example-image}
+			\caption{#1}
+		\end{center}
+	\end{figure}%
+}
+
+\NewDocumentCommand{\ctVect}{O{\bbF}}{{#1}\emdash\cate{Vect}}
+\NewDocumentCommand{\ctMat}{O{\bbF}}{{#1}\emdash\cate{Mat}}
+
+
+% classi di frecce
+\let\mono\hookrightarrow
+\let\epi\twoheadrightarrow
+\NewDocumentCommand{\Epi}{ O{\ctSet} }{\mathrm{Epi}(#1)}
+\NewDocumentCommand{\Mono}{ O{\ctSet} }{\mathrm{Mono}(#1)}
+\def\pow#1{2^{#1}}
+\def\Elts#1#2{\nabla_{#1}(#2)}
+\DeclareMathOperator*{\essim}{ess\,im}
+
+\usetikzlibrary {arrows.meta}
+\pgfkeys{
+  cm to/.tip={
+    Classical TikZ Rightarrow[
+      length = +1.05pt 11,
+      width' = +0pt 0.65,
+      line width = 0pt 0.9 1,
+    ]
+  },
+  cm double to/.tip = {cm to[sep=+0pt -8.9]cm to},
+}
+% teoremi
+\makeatletter
+\def\defthm#1#2{%
+  \newtheorem{#1}{#2}[section]%
+  \expandafter\def\csname #1autorefname\endcsname{#2}%
+  \expandafter\let\csname c@#1\endcsname\c@theorem}
+\makeatother
+
+\theoremstyle{definition}
+% \theoremstyle{plain}
+% \theoremstyle{remark}
+% ^ commentato perché Ivan si lamenterà
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Teorema}[section]
+ \defthm{corollary}{Corollario}
+ \defthm{proposition}{Proposizione}
+ \defthm{lemma}{Lemma}
+ \defthm{definition}{Definizione}
+ \defthm{notation}{Notazione}
+ \defthm{remark}{Osservazione}
+ \defthm{conjecture}{Congettura}
+ \defthm{axiom}{Assioma}
+ \defthm{example}{Esempio}
+ \defthm{examples}{Esempi}
+ \defthm{exercise}{Esercizio}
+ \defthm{exercises}{Esercizi}
+ \defthm{counterexample}{Controesempio}
+ \defthm{construction}{Costruzione}
+ \defthm{warning}{Caveat}
+ \defthm{digression}{Digressione}
+ \defthm{perspective}{Prospettiva}
+ \defthm{discussion}{Discussione}
+ \defthm{terminology}{Terminologia}
+ \defthm{heuristics}{Euristica}
+
+\newtheorem*{proposition*}{Proposizione}
+
+\RequirePackage{fontawesome}
+\ExplSyntaxOn
+\NewDocumentCommand{\hands}{m}
+{
+  \str_case:nnTF { #1 }
+  {
+    { fund } { \faicon{hand-paper-o} }
+    { skip } { \faicon{hand-scissors-o} }
+    { tech } { \faicon{hand-spock-o} }
+  }{}
+  {
+    \msg_error:nnn { hands } { invalid-argument } { #1 }
+    % Error for invalid argument
+  }
+}
+
+% Custom error message if the argument is not recognized
+\msg_new:nnn { hands } { invalid-argument }
+  { The~argument~'#1'~is~invalid.~Valid~arguments~are~"fund",~"skip",~or~"tech".
+  }
+\ExplSyntaxOff
+
+\newenvironment{hCorollary}[2][]{\begin{corollary}[#1\,|\,\hands{#2}]}{\end{corollary}}
+\newenvironment{hProposition}[2][]{\begin{proposition}[#1\,|\,\hands{#2}]}{\end{proposition}}
+\newenvironment{hLemma}[2][]{\begin{lemma}[#1\,|\,\hands{#2}]}{\end{lemma}}
+\newenvironment{hDefinition}[2][]{\begin{definition}[#1\,|\,\hands{#2}]}{\end{definition}}
+\newenvironment{hNotation}[2][]{\begin{notation}[#1\,|\,\hands{#2}]}{\end{notation}}
+\newenvironment{hRemark}[2][]{\begin{remark}[#1\,|\,\hands{#2}]}{\end{remark}}
+\newenvironment{hConjecture}[2][]{\begin{conjecture}[#1\,|\,\hands{#2}]}{\end{conjecture}}
+\newenvironment{hAxiom}[2][]{\begin{axiom}[#1\,|\,\hands{#2}]}{\end{axiom}}
+\newenvironment{hExample}[2][]{\begin{example}[#1\,|\,\hands{#2}]}{\end{example}}
+\newenvironment{hExamples}[2][]{\begin{examples}[#1\,|\,\hands{#2}]}{\end{examples}}
+\newenvironment{hCounterexample}[2][]{\begin{counterexample}[#1\,|\,\hands{#2}]}{\end{counterexample}}
+\newenvironment{hConstruction}[2][]{\begin{construction}[#1\,|\,\hands{#2}]}{\end{construction}}
+\newenvironment{hWarning}[2][]{\begin{warning}[#1\,|\,\hands{#2}]}{\end{warning}}
+\newenvironment{hDigression}[2][]{\begin{digression}[#1\,|\,\hands{#2}]}{\end{digression}}
+\newenvironment{hPerspective}[2][]{\begin{perspective}[#1\,|\,\hands{#2}]}{\end{perspective}}
+\newenvironment{hDiscussion}[2][]{\begin{discussion}[#1\,|\,\hands{#2}]}{\end{discussion}}
+\newenvironment{hTerminology}[2][]{\begin{terminology}[#1\,|\,\hands{#2}]}{\end{terminology}}
+\newenvironment{hHeuristics}[2][]{\begin{heuristics}[#1\,|\,\hands{#2}]}{\end{heuristics}}
+\newenvironment{hTheorem}[2][]{\begin{theorem}[#1\,|\,\hands{#2}]}{\end{theorem}}
+
+\ProcessOptions\relax
+
+\newcommand{\Hom}[1]{#1}
+% NO: \ctC(X,Y)
+% \Hom{\ctC}(X,Y)
+\newcommand{\varHom}{\hom}
+\newcommand{\vvarHom}[1]{\mathrm{Hom}_{#1}}
+
+\def\fun{\longrightarrow}
+\let\funto\fun
+
+% funtore costante
+\def\const{\text{c}}
+
+\def\aa{\text{a}}
+\def\nat{\Rightarrow}
+\let\natto\nat
+\let\To\nat
+\def\implies{\Rightarrow}
+\def\whisk{innesto\@\xspace}
+\def\Whisk{Innesto\@\xspace}
+
+\def\xto#1{\xrightarrow{#1}}
+\def\xot#1{\xleftarrow{#1}}
+\def\xfun#1{\xlongrightarrow{#1}}
+\def\xnat#1{\xRightarrow{#1}}
+
+\def\genArrow{\{0\to 1\}}
+
+% == categorie che hanno un nome
+\newcommand{\cate}[1]{\mathbf{#1}}
+  \NewDocumentCommand{\ctEuc}{O{\bbR}}{\cate{Euc}^{#1}_*}
+  \newcommand{\ctInit}{\cate{0}}
+  \newcommand{\ctTerm}{\cate{1}}
+  \newcommand{\ctIso}{\cate{I}}
+
+\def\singleton{\{\bullet\}}
+\newcommand{\cop}{\coprod}
+
+% #1 #2 : gli oggetti che pulli
+% #3 : l'oggetto su cui #1 #2 arrivano
+\newcommand{\pull}[3]{#1 \times_{#3} #2}
+% X x_Z Y <- \pull XYZ oppure \pull{X}{Y}{Z}
+
+\newcommand{\varpull}[3]{#1 \underset{#3}\times #2}
+% X x_{f,g} Y <- \pull X{f,g}Z oppure \pull{X}{Y}{Z}
+
+% #1 #2 : gli oggetti che pushi
+% #3 : l'oggetto lungo cui incolli
+\newcommand{\push}[3]{#1 +_{#3} #2}
+
+\newcommand{\init}{0}
+\newcommand{\term}{1}
+
+\let\toto\rightrightarrows
+\NewDocumentCommand{\turk}{ O{S} }{\{0 \toto^#1 1\}}
+\newcommand{\id}{\mathrm{id}}
+\NewDocumentCommand{\Id}{O{}}{\mathrm{id}_{#1}}
+\newcommand{\dom}[1]{d(#1)}
+\newcommand{\cod}[1]{c(#1)}
+\newcommand{\cmp}{\circ}
+\let\vcmp\cmp
+\newcommand{\horcomp}{*}
+\let\whi\horcomp
+
+\def\op{\text{op}}
+\newcommand{\opp}[1]{#1^\op}
+
+\newcommand{\End}[2][]{\mathrm{End}_{#1}(#2)}
+
+% strutture monoidali
+\newcommand{\monProd}{\otimes}
+\newcommand{\monUnit}{I}
+\newcommand{\monSymm}{\sigma}
+\newcommand{\associator}{\alpha}
+\newcommand{\unitorL}{\lambda}
+\newcommand{\unitorR}{\varrho}
+
+% aggiunti
+\NewDocumentCommand{\adjunct}{O{} O{}}{\nsststile{#2}{#1}}
+
+% isomorfismi / equivalenze
+\newcommand{\iso}{\cong}
+\newcommand{\eqv}{\simeq}
+
+\newcommand{\defeq}{\coloneqq}
+\newcommand{\emptyList}{(\,)}
+\newcommand{\cons}{\mathbin{::}}
+\NewDocumentCommand{\tup}{O{1} m m m}{
+#2_{#1} #4 \dots #4 #2_{#3}
+}
+\NewDocumentCommand{\optup}{O{1} m m m}{
+#2_{#3} #4 \dots #4 #2_{#1}
+}
+% #1 : l'indice di partenza
+% #2 : la variabile indicizzata
+% #3 : l'indice di fine
+% #4 : il simbolo infisso ("," "\otimes" "+" etc)
+
+\NewDocumentCommand{\iter}{O{1} O{,} m}{
+{#1} #2 \dots #2 {#3}
+}
+
+% sospensione di una categoria
+\def\susp{\mathcal{B}}
+\def\pair#1#2{\langle #1,#2\rangle}
+
+% parentesi e notazione per mappe nel prodotto
+\def\bkt#1{\langle #1\rangle}
+\def\squig{\rightsquigarrow}
+\def\dual#1{#1^\ast}
+\def\ddual#1{#1^{\ast\ast}}
+\let\pmap\divideontimes
+
+
+\ExplSyntaxOn
+\NewExpandableDocumentCommand{\extract}{O{#2}mm}
+ {
+  \tl_range:nnn { #3 } { #1 } { #2 }
+ }
+\ExplSyntaxOff
+
+% un generico `todo`
+\newcommand{\Todo}[1]{\todo[inline, caption={todo : \extract[1]{30}{#1}},color=green!20, bordercolor=white]{\color{gray} #1}}
+
+% un box dei commenti dedicato a ciascuno di noi
+\NewDocumentCommand{\bla}{ O{\textit{anonimo}} m O{red} }{
+  \todo[inline, caption={#1 : \extract[1]{30}{#2}}, color=#3!10, bordercolor=white]{ \color{gray} \textsf{#1} ha detto: #2 }
+}
+
+\NewDocumentCommand{\fosco}{ m }{\bla[Fosco]{#1}[red]}
+\NewDocumentCommand{\paolo}{ m }{\bla[Paolo]{#1}[green]}
+\NewDocumentCommand{\beppe}{ m }{\bla[Beppe]{#1}[blue]}
+\NewDocumentCommand{\ivan}{ m }{\bla[Ivan]{#1}[yellow]}
+\NewDocumentCommand{\enricoV}{ m }{\bla[Enrico V.]{#1}[black]}
+\NewDocumentCommand{\enricoG}{ m }{\bla[Enrico G.]{#1}[cyan]}
+% ... poi aggiungerò gli altri.
+
+\DeclareDocumentEnvironment{enumtag}{m}{%
+	\begin{enumerate}[ label = \textsc{#1}\oldstylenums{\arabic*}), ref = \textsc{#1}\oldstylenums{\arabic*} ] }{ \end{enumerate} }
+
+\DeclareDocumentEnvironment{esercizi}{ O{E.\thesection.\arabic*} }%
+  { \subsubsection*{Esercizi della sezione \thesection} \begin{enumerate}[ label = #1 , ref = #1 ] }
+  { \end{enumerate} }
+
+
+\newcommand{\emdash}{\text{-}}
+\setlist[itemize,enumerate]{itemsep=0pt}
+
+\def\pto{\rightarrowtriangle}
+\DeclareMathOperator{\im}{im}
+
+\def\longmor#1#2{\begin{tikzcd}[ampersand replacement=\&] #1 \ar[r] \& #2 \end{tikzcd}}
+
+\newenvironment{xsmallmatrix}[1]
+{\renewcommand\thickspace{\kern#1}\smallmatrix}
+{\endsmallmatrix}
+
+\NewDocumentCommand{\prevar}{o m m O{\downarrow}}{
+	\IfNoValueTF{#1}{
+	  \begin{smallmatrix}
+	  	#2 \\ % dom
+      #4 \\ %  ↓
+      #3    % cod
+	  \end{smallmatrix}}
+	{
+		\begin{xsmallmatrix}{0em}
+			   & #2 \\ %  dom
+			#1 & #4 \\ % f ↓
+			   & #3    %  cod
+		\end{xsmallmatrix}
+	}
+}
+
+\newenvironment{smat}{\left(\begin{smallmatrix}}{\end{smallmatrix}\right)}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\var}{ o m O{s} m O{\downarrow} }{
+	\str_case:nn { #3 } {
+    {r}{\left(       \prevar[#1]{#2}{#4}[#5] \right)}
+    {s}{\left[       \prevar[#1]{#2}{#4}[#5] \right]}
+    {c}{\left\{      \prevar[#1]{#2}{#4}[#5] \right\}}
+    {a}{\left\langle \prevar[#1]{#2}{#4}[#5] \right\rangle}
+	}}
+	\newcommand{\precop}[2]{
+		\begin{smallmatrix}
+			#1 \\ #2
+		\end{smallmatrix}
+	}
+	\NewDocumentCommand{\copmap}{O{r} m m}{
+		\str_case:nn { #1 } {
+			{r}{\left(       \precop{#2}{#3} \right)}
+			{s}{\left[       \precop{#2}{#3} \right]}
+			{c}{\left\{      \precop{#2}{#3} \right\}}
+			{a}{\left\langle \precop{#2}{#3} \right\rangle}
+		}}
+
+\ExplSyntaxOff
+
+\RequirePackage{adjustbox}
+\newenvironment{adju}[1][0.925]{%
+\begin{center}%
+	\begin{adjustbox}{max height=0.5\textheight, max width=#1\textwidth}%
+}{%
+  \end{adjustbox}\end{center}%
+}
+
+\NewDocumentCommand{\lort}{ m }{
+  {}^\perp #1
+}
+
+\NewDocumentCommand{\rort}{ m }{
+  #1^\perp
+}
+
+\NewDocumentCommand{\act}{ m }{
+  #1/\!\!/#1
+}
+
+% [d]isplay[m]ath[Fun]ctor
+\NewDocumentCommand{\dmFun}{m m m}{
+  \begin{tikzcd}[ampersand replacement=\&]
+    #1 : #2 \ar[r] \& #3
+  \end{tikzcd}
+}
+
+\def\norm#1{\|#1\|}
+
+\NewDocumentCommand{\matrici}{ m m m }{\mathrm{M}_{#1\times #2}(#3)}
+
+\RequirePackage{imakeidx}
+\RequirePackage[automark]{scrlayer-scrpage}
+\RequirePackage[italian]{babel}
+\RequirePackage{microtype,multirow,booktabs}
+\RequirePackage{hyperref}
+\let\second\relax
+\let\parto\rightharpoonup
+\RequirePackage{mathabx}
+\RequirePackage[color]{showkeys}
+\RequirePackage{circuitikz}
+
+\ctikzset{tripoles/thickness=1}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    urlcolor=black,
+    citecolor=black,
+    }
+\pagestyle{scrheadings}
+
+% KOMA-classes have a weird default for footnotes
+\deffootnote{1em}{1em}{\textsuperscript{\thefootnotemark}}
+% ... and captions
+\renewcommand*{\figureformat}{%
+  \figurename~\thefigure%
+%  \autodot% DELETED
+}
+\renewcommand*{\tableformat}{%
+  \tablename~\thetable%
+%  \autodot% DELETED
+}
+%==
+\NewDocumentCommand{\hammock}{ O{\ctSet} m m }{ #2 \leftrightarroweq_{#1} #3 }
+\RequirePackage[font={small}]{caption}
+\RequirePackage{datetime}
+
+\NewDocumentCommand{\presh}{ m }{ \Hom{\ctCat}({#1}^\op,\ctSet) }
+\NewDocumentCommand{\copresh}{ m }{ \Hom{\ctCat}({#1},\ctSet) }
+\NewDocumentCommand{\zentrum}{ }{ \fkz }
+
+\NewDocumentCommand{\almond}{ m m O{\bullet} }{
+\node[inner sep=1pt] (C0) at (0,0) {$#3$};
+\node[inner sep=1pt] (C1) at (1.5,0) {$#3$};
+\draw (C0) -- (C1)
+  node[font=\tiny,pos=.5,above] {$#1$}
+  node[font=\tiny,pos=.5,below] {$#2$};
+\draw (C0) to[bend left=50] (C1);
+\draw (C0) to[bend right=50] (C1);
+}
+\NewDocumentCommand{\almonds}{ m m m m O{\bullet} }{
+\node[inner sep=1pt] (C0) at (0,0) {$#5$};
+\node[inner sep=1pt] (C1) at (1.5,0) {$#5$};
+\node[inner sep=1pt] (C2) at (3,0) {$#5$};
+\draw (C0) -- (C1)
+  node[font=\tiny,pos=.5,above] {$#1$}
+  node[font=\tiny,pos=.5,below] {$#2$};
+\draw (C0) to[bend left=50] (C1);
+\draw (C0) to[bend right=50] (C1);
+%
+\draw (C1) -- (C2)
+  node[font=\tiny,pos=.5,above] {$#3$}
+  node[font=\tiny,pos=.5,below] {$#4$};
+\draw (C1) to[bend left=50] (C2);
+\draw (C1) to[bend right=50] (C2);
+}
+
+% \def\radius{3.5pt}
+\def\displayRadius{3.5pt}
+\def\textstyleRadius{3.0pt}
+\def\scriptstyleRadius{2.0pt}
+\def\scriptscriptstyleRadius{1.5pt}
+
+\def\displayDotSize{0.375pt}
+\def\textstyleDotSize{0.325pt}
+\def\scriptstyleDotSize{0.25pt}
+\def\scriptscriptstyleDotSize{0.175pt}
+
+\NewDocumentCommand{\doBlankInner}{ O{black} m m }{%
+\begin{tikzpicture}[baseline=(current bounding box.south)]%
+\foreach \i in {0,...,15}%
+  \fill[#1] (\i * 360/16:#2) circle (#3);%
+\end{tikzpicture}%
+}
+
+\NewDocumentCommand{\doBlank}{ O{black} }{%
+\mathchoice
+  {\doBlankInner[#1]{\displayRadius}{\displayDotSize}}
+  {\doBlankInner[#1]{\textstyleRadius}{\textstyleDotSize}}
+  {\doBlankInner[#1]{\scriptstyleRadius}{\scriptstyleDotSize}}
+  {\doBlankInner[#1]{\scriptscriptstyleRadius}{\scriptscriptstyleDotSize}}
+}
+
+\NewDocumentCommand{\blank}{ O{black} }{\mathop{\doBlank[#1]}}
+
+\NewDocumentCommand{\natHom}{ O{\ctC} O{\ctD} m m }{
+  \Hom{[#1,#2](#3,#4)}
+}
+
+\NewDocumentCommand{\drawTuple}{m O{}}{
+\foreach \i in {0,...,#1} {
+    \node[font=\tiny] (\i#2) at (\i,0) {$\i$};
+}
+}
+
+\NewDocumentCommand{\drawChain}{m O{}}{
+\foreach \i in {0,...,#1} {
+    \node[font=\tiny] (\i#2) at (\i,0) {$\i$};
+    \ifnum\i<#1
+        \node[font=\tiny] at (\i+0.5,0) {$<$};
+    \fi
+}
+}
+% inutile riga di controllo
+% END OF FILE
 
 %
 % Close the \pkg{DocStrip} guards and call it a day.
