@@ -21,6 +21,7 @@
             collection-latex
             collection-fontsrecommended
             adjustbox
+            alphalph
             babel-italian
             booktabs
             caption
@@ -28,12 +29,16 @@
             cm-super
             collectbox
             cjk
+            csquotes
             cyrillic
             datetime
             enumitem
             etoolbox
+            fancyvrb
             fmtcount
             fontawesome
+            hologo
+            hypdoc
             hyphenat
             ifoddpage
             imakeidx
@@ -58,6 +63,7 @@
             todonotes
             turnstile
             ucs
+            underscore
             varwidth
             xcolor
             xkeyval
