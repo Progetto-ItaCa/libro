@@ -592,14 +592,15 @@ Una proprietà niente affatto banale dei funtori conservativi è che ogni catego
 	Sia \(\ctC\) una categoria (localmente piccola); allora, esiste un funtore conservativo \(Q : \ctC\fun\ctSet\).
 \end{theorem}
 \begin{proof}
-	Per ogni oggetto \(A\in\ctC_0\) definiamo una relazione di equivalenza sulla classe \(\sum_C\ctC(C,A)\), imponendo che \((f : C\to A)\asymp(f' : C\to A)\) ogni volta che per ogni \(g :A\to B\), la composizione \(g\cmp f\) è un isomorfismo se e solo se la composizione \(g\cmp f'\) è un isomorfismo.
+	Per ogni oggetto \(A\in\ctC_0\) definiamo una relazione di equivalenza sulla classe \(\sum_C\Hom\ctC(C,A)\), imponendo che \((f : C\to A)\asymp(f' : C\to A)\) ogni volta che per ogni \(g :A\to B\), la composizione \(g\cmp f\) è un isomorfismo se e solo se la composizione \(g\cmp f'\) è un isomorfismo.
 
-	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è uno split mono, allora lo è anche \(f'\). Restano da dimostare due cose.
-	\begin{itemize}
-		\item Il quoziente così ottenuto è un insieme, così che possiamo definire \(QA\) come tale insieme;
-		      \Todo{}
-		\item Il funtore \(Q\) così ottenuto, estendendo l'azione sugli oggetti nel modo ovvio, è conservativo. Infatti, supponiamo che esista una funzione \(\sum_C\ctC(C,A) \to \sum_C\ctC(C,B)\) che induce una biiezione sui quozienti; allora \Todo{}
-	\end{itemize}
+	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è un mono spezzante, allora lo è anche \(f'\). Prese insieme, queste osservazioni implicano che $QA$ è un insieme. Ora, definiamo il funtore \(Q_\star : \ctC\fun\ctSet\) mandando $A$ in $QA$, a parte quando tutti gli elementi di $\Hom\ctC(C,A)$ sono mono spezzanti, nel qual caso $Q_\star(A)=1+QA$.
+
+	Il funtore $Q_\star$ è conservativo ...
+	\begin{center}
+		\includegraphics[scale=.5]{freyd.png}
+	\end{center}
+	\Todo{}
 \end{proof}
 \begin{definition}[Isomorfismo di categorie]\label{fun_isocat}\index{Categoria!isomorfismo di ---e}\index{Isomorfismo!--- di categorie}\index{Isomorfismo}
 	Un isomorfismo di categorie \(\ctC\cong\ctD\) consiste di una coppia di funtori
@@ -706,7 +707,7 @@ Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempi
 	è equivalente alla categoria \(\ctTerm\).
 \end{remark}
 \begin{example}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
-	La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a Vect.
+	\Todo{La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a $\ctVect$.}
 \end{example}
 L'esercizio \ref{ex_monepi_2} chiederà di dimostrare che le due non possono essere isomorfe.
 
@@ -778,6 +779,14 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 	ottenuto mandando \(\ctF_\alpha\) nell'oggetto terminale \(\infty_\alpha\) di \(J_\alpha^*\), e una inclusione \(\ctF_\alpha\subseteq\ctF_\beta\) nell'ovvia freccia \(\infty_\alpha\to\infty_\beta\).
 
 	Questo funtore è iniziale: per ogni oggetto \(J\in\ctJ_0\), \(K\{J\}=J\), e quindi esiste \(\Id[J] : J\to K\{J\}\). Se poi \(f : J\to K\ctF_\alpha\) e \(g : J\to K\ctF_\beta\), allora definiamo \(\ctF_\gamma := \ctF_\alpha\cup\ctF_\beta\cup\{f,g\}\); evidentemente, le inclusioni \(\ctF_\alpha,\ctF_\beta\subseteq\ctF_\gamma\) realizzano la seconda condizione di Ore \ref{condizione_ore}.
+\end{proof}
+\begin{theorem}
+	Una categoria $\ctJ$ è setacciata nel senso di \ref{def_cat_setacciata} se e solo se il funtore diagonale di \ref{es_di_funtori}.\ref{exfun_3}
+	\[\dmFun{\Delta}{\ctJ}{\ctJ\times\ctJ}\]
+	è iniziale nel senso di \ref{def_fun_initfin}.
+\end{theorem}
+\begin{proof}
+	\Todo{setacciata iff diagonale iniziale}
 \end{proof}
 \begin{figure}
 	\begin{center}
