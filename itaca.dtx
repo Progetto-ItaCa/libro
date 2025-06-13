@@ -93,7 +93,7 @@
 \clist_concat:NNN \g_itaca_both_clist \g_itaca_upper_clist \g_itaca_lower_clist
 
 \clist_new:N \g_itaca_categories_clist
-\clist_gset:Nn \g_itaca_categories_clist { Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, sSet, gSet, Dyn, Ord, FOrd, Lat, HoTop, Fld, DInt, Ch, Gl, Gpd }
+\clist_gset:Nn \g_itaca_categories_clist { Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, sSet, gSet, Dyn, Ord, FOrd, Lat, HoTop, Fld, DInt, Ch, Gl, Gpd, Alg }
 
 % \mathbf{#1} -> \bf#1
 
@@ -136,7 +136,11 @@
 \ExplSyntaxOff
 
 \def\pSet{\partial\ctSet}
-\def\ctCsAlg{\mathrm{C}^*\emdash\cate{Alg}}
+\def\ctAlgT{\ctT\emdash\ctAlg}
+\def\ctCsAlg{\mathrm{C}^*\emdash\ctAlg}
+\def\ctSAlg{\Sigma\emdash\ctAlg}
+\NewDocumentCommand{\ctSEAlg}{O{E}}{(\Sigma,#1)\emdash\ctAlg}
+\NewDocumentCommand{\ctSEEAlg}{O{E}}{\ctSEAlg[E']}
 
 % imprescindibile yoneda in hiragana, va caricato prima di `inputenc'
 \RequirePackage{CJKutf8}
