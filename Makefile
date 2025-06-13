@@ -2,6 +2,8 @@ watch:
 	texfot latexmk -pdf -pvc main.tex | grep -v "Missing character: There is no ; in font nullfont"
 
 book:
+	for f in cap/*.tex; do touch "${f%.tex}.aux"; done
+	for f in cap/01/*.tex; do touch "${f%.tex}.aux"; done
 	texfot latexmk -pdf main.tex | grep -v "Missing character: There is no ; in font nullfont"
 
 clean:
