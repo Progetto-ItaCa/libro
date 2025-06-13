@@ -1,15 +1,76 @@
+% \iffalse meta-comment
+%
+% %%%=[ DRIVER ]================================================================
+%
+%<*driver>
+\documentclass[a4paper,full]{l3doc}
+
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+
+\begin{document}
+\DocInput{\jobname.dtx}
+\PrintChanges
+\PrintIndex
+\end{document}
+%</driver>
+%
+% \fi
+%
+% \changes{0.1.0}{2025/06/11}{initial version}
+%
+% \GetFileInfo{\jobname.sty}
+%
+% \title{^^A
+%   The \pkg{\jobname} package^^A
+%   \fileinfo^^A
+% }
+%
+% \author{^^A
+%   Progetto ItaCa\\^^A
+%   \texttt{\href{https://progetto-itaca.github.io/}{progetto-itaca.github.io}}^^A
+% }
+%
+% \date{\fileversion~(\filedate)}
+%
+% \maketitle
+%
+% ^^A=[ DOCUMENTATION ]=========================================================
+%
+% \begin{documentation}
+%
+% \section{Documentation}
+%
+% \relax
+%
+% \end{documentation}
+%
+% ^^A=[ IMPLEMENTATION ]========================================================
+%
+% \begin{implementation}
+%
+% \section{Implementation}
+%
+% Open the \pkg{DocStrip} guards and set the internal namespace prefix (as per \LaTeX3 \pkg{DocStrip} convention).
+%    \begin{macrocode}
+%<*package>
+%<@@=itaca>
+%    \end{macrocode}
+%
+
 \NeedsTeXFormat{LaTeX2e}[2020/12/01]
 \ProvidesPackage{itaca}
   [lo .sty per il libro di ItaCa]
 
 % TODO:
 % - funziona tutto ma c'è molto refactoring da fare:
-  % - [in progress] la parte in LaTeX3 è vecchia e farraginosa
-  % - [todo] i nomi delle categorie sono un po' random e andrebbero razionalizzati
-  % - [todo] le macro vanno raggruppate e separate per tipo
-  % - [todo] alcune vanno ridefinite con meno hacks, codice più elegante
-  % - [todo] va tutto documentato meglio, con dei commenti che spiegano come si usano le macro
-  % - [todo] la testa di freccia per gli epi nei diagrammi va migliorata
+% - [in progress] la parte in LaTeX3 è vecchia e farraginosa
+% - [todo] i nomi delle categorie sono un po' random e andrebbero razionalizzati
+% - [todo] le macro vanno raggruppate e separate per tipo
+% - [todo] alcune vanno ridefinite con meno hacks, codice più elegante
+% - [todo] va tutto documentato meglio, con dei commenti che spiegano come si usano le macro
+% - [todo] la testa di freccia per gli epi nei diagrammi va migliorata
 
 
 % questi vanno chiamati per primi
@@ -257,7 +318,7 @@
 \newenvironment{hTerminology}[2][]{\begin{terminology}[#1\,|\,\hands{#2}]}{\end{terminology}}
 \newenvironment{hHeuristics}[2][]{\begin{heuristics}[#1\,|\,\hands{#2}]}{\end{heuristics}}
 \newenvironment{hTheorem}[2][]{\begin{theorem}[#1\,|\,\hands{#2}]}{\end{theorem}}
- 
+
 \ProcessOptions\relax
 
 \newcommand{\Hom}[1]{#1}
@@ -532,7 +593,7 @@
 \NewDocumentCommand{\almond}{ m m O{\bullet} }{
 \node[inner sep=1pt] (C0) at (0,0) {$#3$};
 \node[inner sep=1pt] (C1) at (1.5,0) {$#3$};
-\draw (C0) -- (C1) 
+\draw (C0) -- (C1)
   node[font=\tiny,pos=.5,above] {$#1$}
   node[font=\tiny,pos=.5,below] {$#2$};
 \draw (C0) to[bend left=50] (C1);
@@ -542,13 +603,13 @@
 \node[inner sep=1pt] (C0) at (0,0) {$#5$};
 \node[inner sep=1pt] (C1) at (1.5,0) {$#5$};
 \node[inner sep=1pt] (C2) at (3,0) {$#5$};
-\draw (C0) -- (C1) 
+\draw (C0) -- (C1)
   node[font=\tiny,pos=.5,above] {$#1$}
   node[font=\tiny,pos=.5,below] {$#2$};
 \draw (C0) to[bend left=50] (C1);
 \draw (C0) to[bend right=50] (C1);
 %
-\draw (C1) -- (C2) 
+\draw (C1) -- (C2)
   node[font=\tiny,pos=.5,above] {$#3$}
   node[font=\tiny,pos=.5,below] {$#4$};
 \draw (C1) to[bend left=50] (C2);
@@ -603,3 +664,11 @@
 }
 % inutile riga di controllo
 % END OF FILE
+
+%
+% Close the \pkg{DocStrip} guards and call it a day.
+%    \begin{macrocode}
+%</package>
+%    \end{macrocode}
+%
+% \end{implementation}
