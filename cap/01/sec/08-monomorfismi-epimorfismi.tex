@@ -594,9 +594,9 @@ Una proprietà niente affatto banale dei funtori conservativi è che ogni catego
 \begin{proof}
 	Per ogni oggetto \(A\in\ctC_0\) definiamo una relazione di equivalenza sulla classe \(\sum_C\Hom\ctC(C,A)\), imponendo che \((f : C\to A)\asymp(f' : C\to A)\) ogni volta che per ogni \(g :A\to B\), la composizione \(g\cmp f\) è un isomorfismo se e solo se la composizione \(g\cmp f'\) è un isomorfismo.
 
-	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è un mono spezzante, allora lo è anche \(f'\). Prese insieme, queste osservazioni implicano che $QA$ è un insieme. Ora, definiamo il funtore \(Q_\star : \ctC\fun\ctSet\) mandando $A$ in $QA$, a parte quando tutti gli elementi di $\Hom\ctC(C,A)$ sono mono spezzanti, nel qual caso $Q_\star(A)=1+QA$.
+	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è un mono spezzante, allora lo è anche \(f'\). Prese insieme, queste osservazioni implicano che \(QA\) è un insieme. Ora, definiamo il funtore \(Q_\star : \ctC\fun\ctSet\) mandando \(A\) in \(QA\), a parte quando tutti gli elementi di \(\Hom\ctC(C,A)\) sono mono spezzanti, nel qual caso \(Q_\star(A)=1+QA\).
 
-	Il funtore $Q_\star$ è conservativo ...
+	Il funtore \(Q_\star\) è conservativo ...
 	\begin{center}
 		\includegraphics[scale=.5]{freyd.png}
 	\end{center}
@@ -707,7 +707,7 @@ Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempi
 	è equivalente alla categoria \(\ctTerm\).
 \end{remark}
 \begin{example}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
-	\Todo{La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a $\ctVect$.}
+	\Todo{La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a \(\ctVect\).}
 \end{example}
 L'esercizio \ref{ex_monepi_2} chiederà di dimostrare che le due non possono essere isomorfe.
 
@@ -766,25 +766,54 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 	\item Se viene dato un diagramma \(\xymatrix{GFX & \ar[l]_-u D\ar[r]^-v & GFY}\) (dove non necessariamente \(u,v\) sono della forma \(D\to G\bullet\xto{G\bullet}GFX\) e \(D\to G\bullet\xto{G\bullet}GFY\)), esso si può completare come
 	      \[\xymatrix{
 		      D \ar[r]^u\ar[d]_v& GFX\ar@{.>}[d]\ar@{.>}@/^1pc/[ddr]\\
-		      GFY \ar@{.>}[r]\ar@{.>}@/_1pc/[drr] & GZ\ar[dr]_{\exists w} \\
+		      GFY \ar@{.>}[r]\ar@{.>}@/_1pc/[drr] & GZ\ar@{.>}[dr]_{\exists w} \\
 		      && GFV
 		      }\]
 \end{itemize}
 \begin{theorem}
-	\Todo{Prodotto di iniziali è iniziale}
+	Il \emph{prodotto} di due funtori \(F : \ctI\fun\ctC\) e	\(G : \ctJ\fun\ctD\) è il funtore
+	\[\xymatrix@R=0cm{
+		\ctI\times\ctJ \ar[r] & \ctC\times\ctD \\
+		(I,J) \ar@{|->}[r] & (FI,GJ)
+		}\]
+	(notazione come in \ref{}).
+
+	Nelle stesse notazioni, se \(F,G\) sono funtori iniziali come in \ref{}, allora \(F\times G\) è iniziale.
 \end{theorem}
+\begin{proof}
+	\Todo{Prodotto di iniziali è iniziale}
+	Va dimostrato che per ogni oggetto \((C,D)\) la categoria comma \(((C,D)/F\times G)\) è non vuota e connessa. Evidentemente è non vuota dato che dei morfismi \(C\to FX\) e \(D\to GY\) esistono separatamente in \((C/F)\) e \((D/G)\). Va mostrato, poi, che ogni coppia di oggetti in \(((C,D)/F\times G)\) è connessa da uno zigzag di morfismi. Per fare questo, va risolto il seguente problema: esistono certamente delle successioni finite
+	\[\xymatrix@C=8mm{
+		&&C\ar[dr]\ar[dl]\ar[dll]\ar[drr] &&&&& D\ar[dr]\ar[dl]\ar[dll]\ar[drr]\\
+		FI\ar@{-}[r] & FX_1\ar@{-}[r] & \dots\ar@{-}[r] & FX_\ell\ar@{-}[r] & FI' & GJ\ar@{-}[r] & GY_1\ar@{-}[r] & \dots\ar@{-}[r] & GY_m\ar@{-}[r] & GJ'
+		}
+	\]
+	di triangoli commutativi in \(\ctC\) e \(\ctD\) separatamente, e però non si può garantire che esse siano della stessa lunghezza (come è invece richiesto per assemblare uno zig-zag di morfismi in \(((C,D)/F\times G)\)). Non è difficile risolvere il problema, `degenerando' alcuni pezzi delle successioni per adattarne la lunghezza; se ad esempio \(\ell=2,m=1\) le successioni sopra sono della forma
+	\[\xymatrix{
+		&C\ar[dr]|{x_2}\ar[dl]_{c}\ar[d]|{x_1}\ar[drr]^{c'} &&&& D\ar[d]|{y_1}\ar[dr]^{d'}\ar[dl]_d \\
+		FI\ar@{->}[r]_{u_0} & FX_1\ar@{<-}[r]_{u_1} & FX_2\ar@{->}[r]_{u_2} & FI' &
+		GJ\ar@{<-}[r]_{v_0} & GY_1 \ar@{->}[r]_{v_1} & GJ'
+		}\]
+	è semplice generare la successione seguente dove indichiamo i morfismi di \(\ctC\times\ctD\) come doppie frecce per chiarezza:
+	\[\xymatrix@C=1.2cm@R=1.5cm{
+		&&(C,D)\ar@/_.5pc/@<.25em>[dll]\ar@/_.5pc/@<-.25em>[dll]_{(c,d)}\ar@<-.25em>[dl]\ar@<.25em>[dl]^{(x_1,d)}\ar@<-.25em>[d]|\hole\ar@<.25em>[d]|{(x_2,y_1)}\ar@<-.25em>[dr]\ar@<.25em>[dr]^{(c',d')}\\
+		(FI,GJ)\ar@<.225em>[r]\ar@<-.225em>@{=}[r]_{(u_0,\id)} & (FX_1,GJ) & (FX_2,GY_1)\ar@<.225em>[l]^{(u_1,v_0)}\ar@<-.225em>[l] \ar@<.225em>[r]\ar@<-.225em>[r]_{(u_2,v_1)} & (FI',GJ').
+		}
+	\]
+	Si noti in particolare che se \(\ell,m\) sono le rispettive lunghezze delle successioni trovare in \(\ctC,\ctD\) separatamente, la stima \(k\le \ell+m\) della lunghezza \(k\)	della successione di triangoli in \(((C,D)/F\times G)\) è solo un limite superiore. Si provi, per esecizio, a formalizzare il caso generale con una ricetta `induttiva' per lunghezze e orientazioni generiche (concordanti, e discordanti\dots).
+\end{proof}
 \begin{hTheorem}[Inizialità degli ordinali tra i diagrammi filtrati]{skip}\index{Funtore!--- iniziale}
 	Per ogni categoria \(\ctJ\) (piccola e) filtrata nel senso di \ref{def_cat_filtrata}, esiste un funtore iniziale \(K : P_\ctJ\fun\ctJ\), di dominio un preordine (si veda \ref{ex_cat_ordini}) diretto (si veda \ref{contro_esempi_filt}).
 \end{hTheorem}
 \begin{proof}
-	Grazie a \ref{estensione_filtrate}, sappiamo che ogni sottocategoria finita \(\ctF\subseteq\ctJ\) ammette una estensione a un funtore \(\ctF^\rhd\fun\ctJ\); in particolare (si veda \ref{def_cono_su_C}) il vertice del cocono così ottenuto è terminale in \(\ctF\). Ora, il poset \(P_\ctJ = (\{\ctF_\alpha\},\subseteq)\) delle sottocategorie finite \(\ctF\) di \(\ctJ\) (in ciascuna delle quali c'è un oggetto terminale \(\infty_\alpha\)) è diretto (è sufficiente considerare l'unione di due sottocategorie finite), e possiamo definire un funtore
+	Grazie a \ref{estensione_filtrata}, sappiamo che ogni sottocategoria finita \(\ctF\subseteq\ctJ\) ammette una estensione a un funtore \(\ctF^\rhd\fun\ctJ\); in particolare (si veda \ref{def_cono_su_C}) il vertice del cocono così ottenuto è terminale in \(\ctF\). Ora, il poset \(P_\ctJ = (\{\ctF_\alpha\},\subseteq)\) delle sottocategorie finite \(\ctF\) di \(\ctJ\) (in ciascuna delle quali c'è un oggetto terminale \(\infty_\alpha\)) è diretto (è sufficiente considerare l'unione di due sottocategorie finite), e possiamo definire un funtore
 	\[\dmFun{K}{P_\ctJ}{\ctJ}\]
 	ottenuto mandando \(\ctF_\alpha\) nell'oggetto terminale \(\infty_\alpha\) di \(J_\alpha^*\), e una inclusione \(\ctF_\alpha\subseteq\ctF_\beta\) nell'ovvia freccia \(\infty_\alpha\to\infty_\beta\).
 
 	Questo funtore è iniziale: per ogni oggetto \(J\in\ctJ_0\), \(K\{J\}=J\), e quindi esiste \(\Id[J] : J\to K\{J\}\). Se poi \(f : J\to K\ctF_\alpha\) e \(g : J\to K\ctF_\beta\), allora definiamo \(\ctF_\gamma := \ctF_\alpha\cup\ctF_\beta\cup\{f,g\}\); evidentemente, le inclusioni \(\ctF_\alpha,\ctF_\beta\subseteq\ctF_\gamma\) realizzano la seconda condizione di Ore \ref{condizione_ore}.
 \end{proof}
 \begin{theorem}
-	Una categoria $\ctJ$ è setacciata nel senso di \ref{def_cat_setacciata} se e solo se il funtore diagonale di \ref{es_di_funtori}.\ref{exfun_3}
+	Una categoria \(\ctJ\) è setacciata nel senso di \ref{def_cat_setacciata} se e solo se il funtore diagonale di \ref{es_di_funtori}.\ref{exfun_3}
 	\[\dmFun{\Delta}{\ctJ}{\ctJ\times\ctJ}\]
 	è iniziale nel senso di \ref{def_fun_initfin}.
 \end{theorem}
@@ -792,10 +821,13 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 	\Todo{setacciata iff diagonale iniziale}
 \end{proof}
 \begin{theorem}
-	Prodotto di setacciate è	setacciata.
+	Se \(\ctI,\ctJ\) sono due categorie setacciate, il prodotto \(\ctI\times\ctJ\) è una categoria setacciata.
 \end{theorem}
 \begin{proof}
-	\Todo{...segue dal fatto che prodotto di iniziali è iniziale, e che il funtore diagonale di un prodotto è il prodotto dei funtori diagonali...}
+	\`E un corollario immediato del fatto che il prodotto di funtori iniziali è iniziale, si veda \ref{}, insieme al fatto che il funtore prodotto \(\Delta_{\ctI\times\ctJ}\) risulta dalla composizione
+	\[\xymatrix{
+			\ctI\times\ctJ \ar[r] & \ctI\times\ctI\times \ctJ\times\ctJ\ar[r] & \ctI\times\ctJ\times \ctI\times\ctJ
+		}\]
 \end{proof}
 \begin{figure}
 	\begin{center}
