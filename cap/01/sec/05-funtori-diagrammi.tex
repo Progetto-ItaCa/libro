@@ -508,7 +508,7 @@ Nel guardare un funtore \(D : \ctJ \fun\ctC\) come una rappresentazione della ca
 \begin{itemize}
 	\item \(D\) è un diagramma \emph{discreto}, ovvero ha per dominio una categoria discreta della forma \(A^\delta\), come in \ref{ex_cat_discreta}; \(D\) allora specifica una famiglia di oggetti \(\{C_a\mid a\in A\}\) indicizzata dagli elementi di \(A\);
 	\item un diagramma \emph{connesso} ha per dominio una categoria \(\ctJ\) tale che \(\pi_0^\ctCat(\ctJ)\) (si veda \ref{exe_cpt_conn}) abbia un singolo elemento; per diagrammi del genere vale un risultato di `continuità': se \(D\) è un diagramma connesso, allora la sottocategoria \(\essim D\) di \(\ctC\) è connessa (si confronti questo con l'analogo enunciato in topologia: se \(f : X\to Y\) è una funzione continua, l'immagine \(f(C)\) di qualsiasi sottoinsieme connesso di \(X\) è	connessa in \(Y\));
-	\item un diagramma \emph{in catena} ha per dominio un ordinale come in \ref{es_catena_trans}, guardato come categoria; un caso molto importante di diagrammi in catena si incontra in algebra astratta o algebra lineare: sia \(k\) un campo e denotiamo \(k[X]_{\le n}\)	l'insieme dei polinomi di grado al più \(n\) in una variabile \(X\) a coefficienti in \(k\); allora possiamo considerare il diagramma in catena di dominio \(\omega=\{0\le1\le 2\le\dots\le n\le n+1\le\dots\}\) e codominio la categoria \(\ctVect\) di \ref{}, che ha per immagine
+	\item un diagramma \emph{in catena} ha per dominio un ordinale come in \ref{es_catena_trans}, guardato come categoria; un caso molto importante di diagrammi in catena si incontra in algebra astratta o algebra lineare: sia \(k\) un campo e denotiamo \(k[X]_{\le n}\)	l'insieme dei polinomi di grado al più \(n\) in una variabile \(X\) a coefficienti in \(k\); allora possiamo considerare il diagramma in catena di dominio \(\omega=\{0\le1\le 2\le\dots\le n\le n+1\le\dots\}\) e codominio la categoria \(\ctVect\) di \ref{varie_categorie_nella_pratica}, che ha per immagine
 	      \[
 		      k = k[X]_{\le 0} \subseteq
 		      k[X]_{\le 1} \subseteq
@@ -601,14 +601,14 @@ tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia
 \end{proof}
 Una classe di categorie più generale, che contiene le categorie filtrate, è quella delle \emph{categorie setacciate}:
 \begin{definition}\label{def_cat_setacciata}\index{Categoria!--- setacciata}
-	\Todo{categoria setacciata}
+	\Todo{categoria setacciata: ogni famiglia finita di oggetti ammette un cocono}
 \end{definition}
-\Todo{forse qualcos'altro: prodotto di setacciate è setacciato, etc?}
+% \Todo{forse qualcos'altro: prodotto di setacciate è setacciato, etc?}
 \begin{theorem}
 	\Todo{Ogni categoria filtrata è setacciata, e la categoria ... è setacciata ma non filtrata}
 \end{theorem}
 \begin{remark}[Perché categorie `filtrate' e `setacciate'?]
-	L'idea è che una categoria filtrata \(\ctJ\)  dispone di un filtro che seleziona un cocono per ogni sottocategoria finita di \(\ctJ\); un setaccio è invece capace, più in generale, di selezionare un cocono per ogni famiglia finita di oggetti, e un filtro è poi un tipo di setaccio particolarmente sottile.
+	L'idea è che una categoria setacciata \(\ctJ\) dispone di un filtro che seleziona un cocono per ogni sottocategoria discreta e finita di \(\ctJ\); un filtro è invece capace, in maniera più forte, di selezionare un cocono per ogni sottocategoria finita di $\ctJ$, anche non discreta, cosicché un filtro è solo un tipo di setaccio particolarmente sottile. La figura \ref{fig_filtro_setaccio} disegna questa situazione.
 	\begin{figure}
 		\begin{center}
 			\begin{tikzpicture}[
@@ -650,7 +650,7 @@ Una classe di categorie più generale, che contiene le categorie filtrate, è qu
 						}
 				\end{scope}
 				\begin{scope}[on background layer]
-					\path node[wrap, fit=(JJ)] (ctJ) {\color{gray}$\ctJ$};
+					\path node[wrap, fit=(JJ)] (ctJ) {\color{gray}$\ctI$};
 				\end{scope}
 				\begin{scope}[xshift=2cm,yshift=-2cm]
 					% Draw the square outline
@@ -660,36 +660,28 @@ Una classe di categorie più generale, che contiene le categorie filtrate, è qu
 							\draw[ibmBlue!50] (J\i) -- ($(J\i)!.95!(cocone)$);
 						}
 
-					% Poisson disc sampling parameters
 					\pgfmathsetmacro{\minDist}{0.1}  % Minimum distance between points
 					\pgfmathsetmacro{\maxAttempts}{15} % Maximum attempts per point
 
-					% Initialize with first point
 					\coordinate (p0) at (0.5, 0.5);
 					\fill (p0) circle (0.01);
 
-					% Define arrays to store active and final points
 					\pgfmathsetmacro{\activeCount}{1}
 					\pgfmathsetmacro{\pointCount}{1}
 
-					% Store first point as active
 					\coordinate (active0) at (0.5, 0.5);
 					\def\randomNess{15}
-					% Poisson disc sampling algorithm (simplified version)
-					% Pre-generate a grid of candidate points with minimum distance constraint
 					\foreach \i in {0.04, 0.08, ..., 0.92} {
 							\foreach \j in {0.04, 0.08, ..., 1.999} {
-									% Add some randomness to grid positions
 									\pgfmathsetmacro{\randX}{\i + (random(-\randomNess,\randomNess)/1000)}
 									\pgfmathsetmacro{\randY}{\j + (random(-\randomNess,\randomNess)/1000)}
 
-									% Check if point is within bounds
 									\pgfmathparse{(\randX > 0.01) && (\randX < 0.999) && (\randY > 0.01) && (\randY < 1.9)}
 									\ifnum\pgfmathresult=1
 										% Add random rejection to create more natural distribution
 										\pgfmathparse{random(0,100)}
 										\ifnum\pgfmathresult>1  % 80% chance to place dot
-											\fill (\randX, \randY) circle (0.01);
+											\fill[ibmBlue!50!black] (\randX, \randY) circle (0.01);
 										\fi
 									\fi
 								}
@@ -697,7 +689,7 @@ Una classe di categorie più generale, che contiene le categorie filtrate, è qu
 				\end{scope}
 			\end{tikzpicture}
 		\end{center}
-		\caption{TODO}
+		\caption{In una categoria filtrata $\ctJ$, ogni sottocategoria finita $\ctI$ ammette un cocono; la categoria $\ctJ$ dispone di un filtro sottile abbastanza da selezionare un cocono $J^*$ per $\ctI$, estendendo un diagramma $D : \ctI \fun\ctJ$ a $D^* : \ctI^\rhd \fun \ctJ$ come in \ref{estensione_filtrata}.}\label{fig_filtro_setaccio}
 	\end{figure}
 \end{remark}
 \begin{esercizi}
