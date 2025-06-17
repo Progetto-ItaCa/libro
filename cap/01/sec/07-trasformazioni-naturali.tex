@@ -374,7 +374,7 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 		      \[\pair{\lambda a.\pi_{B'}(\pair {vf_Ba}{wf_Ca})}{\lambda a.\pi_{C'}(\pair {vf_Ba}{wf_Ca})} \in \Hom{\ctSet}(A',B')\times \Hom{\ctSet}(A',C')\]
 		      è uguale a\dots{})
 	\end{itemize}
-	Usando il funtore `diagonale' \(\Delta : \ctSet^\op \fun\ctSet^\op\times\ctSet^\op\) di \ref{es_di_funtori} e accettando (ma è semplice dimostrarlo!) il fatto che esiste un funtore prodotto \(\Pi : \ctSet\times\ctSet \fun\ctSet\) definito mandando \(X,Y\mapsto X\times Y\) e \(u : X\to X',v : Y\to Y'\) in \(u\times v : \pair xy\mapsto \pair{ux}{vy}\), \(\varpi\) consta di una trasformazione naturale invertibile che `riempie' il diagramma
+	Usando il funtore `diagonale' \(\Delta : \ctSet^\op \fun\ctSet^\op\times\ctSet^\op\) di \ref{es_di_funtori} e ricordando da \ref{exam_bifuntori}.\ref{eb_2} che esiste un funtore prodotto \(\blank\times\blank : \ctSet\times\ctSet \fun\ctSet\) definito mandando \(X,Y\mapsto X\times Y\) e \(u : X\to X',v : Y\to Y'\) in \(u\times v : \pair xy\mapsto \pair{ux}{vy}\), \(\varpi\) consta di una trasformazione naturale invertibile che `riempie' il diagramma
 	% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXGN0U2V0Xlxcb3BcXHRpbWVzXFxjdFNldFxcdGltZXNcXGN0U2V0Il0sWzAsMiwiXFxjdFNldF5cXG9wXFx0aW1lc1xcY3RTZXQiXSxbMSwyLCJcXGN0U2V0Il0sWzIsMiwiXFxjdFNldFxcdGltZXNcXGN0U2V0Il0sWzIsMSwiXFxjdFNldF5cXG9wXFx0aW1lc1xcY3RTZXRcXHRpbWVzXFxjdFNldF5cXG9wXFx0aW1lc1xcY3RTZXQiXSxbMiwwLCJcXGN0U2V0Xlxcb3BcXHRpbWVzXFxjdFNldF5cXG9wXFx0aW1lc1xcY3RTZXRcXHRpbWVzXFxjdFNldCJdLFswLDEsIlxcY3RTZXReXFxvcFxcdGltZXNcXFBpIiwyXSxbMSwyLCJcXEhvbXtcXGN0U2V0fSIsMl0sWzMsMiwiXFxQaSJdLFs1LDQsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMywiXFxIb217XFxjdFNldH1cXHRpbWVzXFxIb217XFxjdFNldH0iXSxbMCw1LCJcXERlbHRhXFx0aW1lc1xcY3RTZXRcXHRpbWVzXFxjdFNldCJdLFsxLDUsIlxcdmFycGkiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6NDAsInRhcmdldCI6NDB9LCJsZXZlbCI6Mn1dXQ==
 	\[\begin{tikzcd}
 			{\ctSet^\op\times(\ctSet\times\ctSet)} && {(\ctSet^\op\times\ctSet^\op)\times\ctSet\times\ctSet} \\
@@ -390,6 +390,22 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 		\end{tikzcd}\]
 	Chi legge vedrà presto che esempi del genere (solo, quasi sempre più elaborati di questo) pervadono la teoria delle categorie.
 \end{hExample}
+\begin{remark}[Isomorfismi `aritmetici']
+	Anche questo esempio verrà chiarito dalla teoria dei limiti e colimiti, e dei funtori aggiunti; questi isomorfismi sono però di grande aiuto in varie dimostrazioni nel seguito, e quindi li presentiamo qui.
+	Se \(A,B,C\) sono insiemi, tutti gli isomorfismi seguenti sono naturali, in tutti i loro argomenti, tra opportuni funtori somma e prodotto:
+	\begin{enumtag}{as}
+		\item\label{as_1} \(A+\varnothing\cong \varnothing + A \cong A\) (naturale in \(A\), e \(\varnothing\) è l'insieme vuoto);
+		\item\label{as_2} \(A+B\cong B+A\) (naturale in \(A,B\));
+		\item\label{as_3} \((A+B)+C\cong A+(B+C)\) (naturale in \(A,B,C\));
+		%
+		\item\label{as_4} \(A\times \ctTerm\cong \ctTerm \times  A \cong A\) (naturale in \(A\), e \(\ctTerm\) è un insieme singoletto);
+		\item\label{as_5} \(A\times B\cong B\times A\) (naturale in \(A,B\));
+		\item\label{as_6} \((A\times B)\times C\cong A\times (B\times C)\) (naturale in \(A,B,C\));
+		%
+		\item\label{as_7} \(A\times(B+C)\cong (A\times B) + (A\times C)\) (naturale in \(A,B,C\)).\footnote{Più precisamente, sono i funtori \(\blank_1\times(\blank_2+\blank_3)\) e \((\blank_1\times \blank_2) + (\blank_1\times \blank_3)\) ad essere isomorfi, dove nel lato destro dell'equazione il secondo funtore fa variare \(\blank_1\) contemporaneamente in entrambi i posti.}
+	\end{enumtag}
+	Se \(\ctA,\ctB,\ctC\) sono categorie, isomorfismi del tutto analoghi valgono, naturali in tutti gli argomenti, in \ref{as_1} per la categoria vuota di \ref{ex_cat_vuota} e in \ref{as_4} per la categoria terminale di \ref{ex_cat_term}.
+\end{remark}
 \begin{proposition}\index{Gruppo lineare}\index{Yoneda!lemma di ---}
 	Si ricordi che in \ref{il_determinante} e \ref{ex_fun_GLn} abbiamo definito un funtore \(\GL_2 : \ctcRing\fun\ctGrp\); proviamo ora che esiste un isomorfismo naturale (precisamente, una biiezione naturale di insiemi, che però può essere promossa a un isomorfismo di gruppi) tra \(\GL_2\) e il funtore \(\Hom{\ctcRing}(S(\GL_2),-)\) per l'anello \(S(\GL_2)\) ottenuto dal quoziente
 	\[\bbZ[a,b,c,d,y]/(1-(ad-bc)y)\]
