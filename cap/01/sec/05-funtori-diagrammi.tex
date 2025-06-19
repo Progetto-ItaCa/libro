@@ -601,12 +601,60 @@ tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia
 \end{proof}
 Una classe di categorie più generale, che contiene le categorie filtrate, è quella delle \emph{categorie setacciate}:
 \begin{definition}\label{def_cat_setacciata}\index{Categoria!--- setacciata}
-	\Todo{categoria setacciata: ogni famiglia finita di oggetti ammette un cocono}
+	Una categoria \(\ctJ\) si dice \emph{setacciata} se per ogni coppia di oggetti $X,Y\in\ctJ$ la categoria delle cospanne $\ctCospan_\ctJ(X,Y)$ che ha 
+	\begin{itemize}
+		\item per oggetti le cospanne	\(\pair fg : X\xto{f} Z\xot{g} Y\) in \(\ctJ\),
+		\item per frecce tra cospanne	\(\pair fg : X\to Z\leftarrow Y\) e \(\pair{f'}{g'} : X\to Z'\leftarrow Y\) le frecce $h : Z\to Z'$ di $\ctJ$ tali che $h\cmp f = f'$ e $h\cmp g=g'$, cioè tali che il diagramma
+		\[\xymatrix@R=1mm{
+			&Z\ar[dd]_h & \\
+				X \ar[dr]_{f'}\ar[ur]^f&& Y\ar[ul]_g\ar[dl]^{g'}\\
+				& Z'
+			}\]
+		sia commutativo,
+	\end{itemize}
+	e composizione e identità ovvie, è connessa nel senso di \ref{exe_cpt_conn}.
 \end{definition}
 % \Todo{forse qualcos'altro: prodotto di setacciate è setacciato, etc?}
 \begin{theorem}
-	\Todo{Ogni categoria filtrata è setacciata, e la categoria ... è setacciata ma non filtrata}
+	Ogni categoria filtrata è setacciata; la categoria \Todo{} è setacciata ma non è filtrata.
 \end{theorem}
+\begin{proof}
+	Se $\ctJ$ è filtrata soddisfa la proprietà di Ore; allora mostriamo che ogni coppia di cospanne della forma  
+			\[\xymatrix@R=1mm{
+			&Z  & \\
+				X \ar[dr]_{f'}\ar[ur]^f&& Y\ar[ul]_g\ar[dl]^{g'}\\
+				& Z'
+			}\]
+			è connessa da un cospan di frecce in $\ctJ$, cioè esiste un diagramma
+					\[\xymatrix@R=7mm{
+			&Z\ar[d]|z & \\
+				X \ar[r]|x \ar[dr]_{f'}\ar[ur]^f& K & Y\ar[ul]_g\ar[dl]^{g'}\ar[l]|y\\
+				& Z'\ar[u]|{z'}
+			}\]
+			Evidentemente esistono quadrati commutativi della forma
+\[\xymatrix{
+	X \ar[r]^f\ar[d]_{f'}& Z\ar@{.>}[d]^u & Y \ar[r]^g\ar[d]_{g'}& Z\ar@{.>}[d]^v\\
+	Z' \ar@{.>}[r]_{u'} & U & Z' \ar@{.>}[r]_{v'}& V
+}\]
+per certi oggetti $U,V$ e frecce $u,v,u',v'$; ripetendo questo argomento riusciamo a costruire un diagramma commutativo
+% https://q.uiver.app/#q=WzAsNyxbMiwwLCJaIl0sWzAsMSwiWCJdLFsxLDEsIlUiXSxbMiwxLCJLIl0sWzMsMSwiViJdLFs0LDEsIlkiXSxbMiwyLCJaJyJdLFswLDIsInUiXSxbMCw0LCJ2IiwyXSxbMSwwLCJmIiwwLHsiY3VydmUiOi0yfV0sWzEsNiwie2YnfSIsMix7ImN1cnZlIjoyfV0sWzIsMywiXFxlbGwiLDFdLFs0LDMsInIiLDFdLFs1LDAsImciLDIseyJjdXJ2ZSI6Mn1dLFs1LDYsIntnJ30iLDAseyJjdXJ2ZSI6LTJ9XSxbNiwyLCJ7dSd9IiwyXSxbNiw0LCJ7did9Il1d
+\[\begin{tikzcd}
+	&& Z \\
+	X & U & K & V & Y \\
+	&& {Z'}
+	\arrow["u", from=1-3, to=2-2]
+	\arrow["v"', from=1-3, to=2-4]
+	\arrow["f", curve={height=-12pt}, from=2-1, to=1-3]
+	\arrow["{{f'}}"', curve={height=12pt}, from=2-1, to=3-3]
+	\arrow["\ell"{description}, from=2-2, to=2-3]
+	\arrow["r"{description}, from=2-4, to=2-3]
+	\arrow["g"', curve={height=12pt}, from=2-5, to=1-3]
+	\arrow["{{g'}}", curve={height=-12pt}, from=2-5, to=3-3]
+	\arrow["{{u'}}"', from=3-3, to=2-2]
+	\arrow["{{v'}}", from=3-3, to=2-4]
+\end{tikzcd}\]
+(servono due applicazioni del fatto che $\ctJ$ è filtrata, e una applicazione della proprietà di Ore, per scegliere $K$ in modo che $\ell,r$ siano tali per cui $\ell\cmp u = r\cmp v$ e $\ell\cmp u' = r\cmp v'$ allo stesso tempo); ora basta porre $z = \ell\cmp u = r\cmp v$, $z' =	\ell\cmp u' = r\cmp v'$ e $x = \ell\cmp u\cmp f$, $y = r\cmp v\cmp g$.
+\end{proof}
 \begin{remark}[Perché categorie `filtrate' e `setacciate'?]
 	L'idea è che una categoria setacciata \(\ctJ\) dispone di un filtro che seleziona un cocono per ogni sottocategoria discreta e finita di \(\ctJ\); un filtro è invece capace, in maniera più forte, di selezionare un cocono per ogni sottocategoria finita di $\ctJ$, anche non discreta, cosicché un filtro è solo un tipo di setaccio particolarmente sottile. La figura \ref{fig_filtro_setaccio} disegna questa situazione.
 	\begin{figure}
