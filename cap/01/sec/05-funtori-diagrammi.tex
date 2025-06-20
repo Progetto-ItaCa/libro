@@ -555,7 +555,7 @@ tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia
 	Esempi di categorie che sono filtrate:
 	\begin{itemize}
 		\item Alcuni esempi elementari sono i seguenti: la categoria codiscreta \(A^\chi\) su un insieme (non vuoto) è filtrata; la categoria terminale \(\ctTerm\) è filtrata; se due categorie \(\ctI,\ctJ\) sono filtrate, è filtrato il loro prodotto (questo permette di suddividere in due problemi indipendenti la verifica che \(\ctI\times\ctJ\) è filtrata); ogni cono destro della forma \(\ctJ^\rhd\) è una categoria filtrata, e più in generale ogni categoria che ha un oggetto terminale nel senso di \ref{def_cono_su_C} è filtrata.
-		\item la categoria-poset \((\omega=\{0\le 1\le 2\le\dots\},\le)\): la condizione \ref{cf_2} è ovvia (non esistono due frecce \(u,v\) parallele e distinte), e \ref{cf_1} è vera perché ogni insieme finito \(\{\tup pn,\}\) di numeri naturali è limitato superiormente da \(p^*=\max\{\tup pn,\}\); similmente, ogni ordinale (finito, nel senso di \ref{ex_cat_catena}, o infinito, nel senso di \ref{ex_cat_ordinali}) è una categoria filtrata; più in generale, un preordine \((P,\le)\) è una categoria filtrata se e solo se è un \emph{ordine diretto}: ogni insieme finito di elementi \(\tup xn, \in P\) ha un maggiorante \(\bar x\), cioè \(x_i\le \bar x\) per ogni \(i=\iter n\). La categoria \(\bsDelta\) dei simplessi è filtrata, e più in generale ogni categoria di `forme' che contenga \(\ctTerm\) è filtrata.
+		\item la categoria-poset \(\omega=\{0\le 1\le 2\le\dots\}\): la condizione \ref{cf_2} è banalmente ovvia (non esistono due frecce \(u,v\) parallele e distinte), e \ref{cf_1} è vera perché ogni insieme finito \(\{\tup pn,\}\) di numeri naturali è limitato superiormente da \(p^*=\max\{\tup pn,\}\); similmente, ogni ordinale (finito, nel senso di \ref{ex_cat_catena}, o infinito, nel senso di \ref{ex_cat_ordinali}) è una categoria filtrata; più in generale, un preordine \((P,\le)\) è una categoria filtrata se e solo se è un \emph{ordine diretto}: ogni insieme finito di elementi \(\tup xn, \in P\) ha un maggiorante \(\bar x\), cioè \(x_i\le \bar x\) per ogni \(i=\iter n\). La categoria \(\bsDelta\) dei simplessi è filtrata, e più in generale ogni categoria di `forme' come in \ref{} che contenga \(\ctTerm\) tra i suoi oggetti è filtrata.
 	\end{itemize}
 	Esempi di categorie che non sono filtrate:
 	\begin{itemize}
@@ -601,18 +601,7 @@ tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia
 \end{proof}
 Una classe di categorie più generale, che contiene le categorie filtrate, è quella delle \emph{categorie setacciate}:
 \begin{definition}\label{def_cat_setacciata}\index{Categoria!--- setacciata}
-	Una categoria \(\ctJ\) si dice \emph{setacciata} se per ogni coppia di oggetti $X,Y\in\ctJ$ la categoria delle cospanne $\ctCospan_\ctJ(X,Y)$ che ha 
-	\begin{itemize}
-		\item per oggetti le cospanne	\(\pair fg : X\xto{f} Z\xot{g} Y\) in \(\ctJ\),
-		\item per frecce tra cospanne	\(\pair fg : X\to Z\leftarrow Y\) e \(\pair{f'}{g'} : X\to Z'\leftarrow Y\) le frecce $h : Z\to Z'$ di $\ctJ$ tali che $h\cmp f = f'$ e $h\cmp g=g'$, cioè tali che il diagramma
-		\[\xymatrix@R=1mm{
-			&Z\ar[dd]_h & \\
-				X \ar[dr]_{f'}\ar[ur]^f&& Y\ar[ul]_g\ar[dl]^{g'}\\
-				& Z'
-			}\]
-		sia commutativo,
-	\end{itemize}
-	e composizione e identità ovvie, è connessa nel senso di \ref{exe_cpt_conn}.
+	Una categoria \(\ctJ\) si dice \emph{setacciata} se per ogni coppia di oggetti $X,Y\in\ctJ$ la categoria delle cospanne di \ref{def_span_e_cospan} è connessa nel senso di \ref{ex_fun_cpt_conn}, \ref{exe_cpt_conn}.
 \end{definition}
 % \Todo{forse qualcos'altro: prodotto di setacciate è setacciato, etc?}
 \begin{theorem}
@@ -627,11 +616,11 @@ Una classe di categorie più generale, che contiene le categorie filtrate, è qu
 			}\]
 			è connessa da un cospan di frecce in $\ctJ$, cioè esiste un diagramma
 					\[\xymatrix@R=7mm{
-			&Z\ar[d]|z & \\
-				X \ar[r]|x \ar[dr]_{f'}\ar[ur]^f& K & Y\ar[ul]_g\ar[dl]^{g'}\ar[l]|y\\
-				& Z'\ar[u]|{z'}
+			&Z\ar[d]^z & \\
+				X \ar[r]_x \ar[dr]_{f'}\ar[ur]^f& K & Y\ar[ul]_g\ar[dl]^{g'}\ar[l]^y\\
+				& Z'\ar[u]_{z'}
 			}\]
-			Evidentemente esistono quadrati commutativi della forma
+			Per la proprietà di Ore esistono quadrati commutativi della forma
 \[\xymatrix{
 	X \ar[r]^f\ar[d]_{f'}& Z\ar@{.>}[d]^u & Y \ar[r]^g\ar[d]_{g'}& Z\ar@{.>}[d]^v\\
 	Z' \ar@{.>}[r]_{u'} & U & Z' \ar@{.>}[r]_{v'}& V
@@ -653,7 +642,7 @@ per certi oggetti $U,V$ e frecce $u,v,u',v'$; ripetendo questo argomento riuscia
 	\arrow["{{u'}}"', from=3-3, to=2-2]
 	\arrow["{{v'}}", from=3-3, to=2-4]
 \end{tikzcd}\]
-(servono due applicazioni del fatto che $\ctJ$ è filtrata, e una applicazione della proprietà di Ore, per scegliere $K$ in modo che $\ell,r$ siano tali per cui $\ell\cmp u = r\cmp v$ e $\ell\cmp u' = r\cmp v'$ allo stesso tempo); ora basta porre $z = \ell\cmp u = r\cmp v$, $z' =	\ell\cmp u' = r\cmp v'$ e $x = \ell\cmp u\cmp f$, $y = r\cmp v\cmp g$.
+(servono due applicazioni di \ref{cf_2}, e una applicazione della proprietà di Ore, per scegliere $K$ in modo che $\ell,r$ siano tali per cui $\ell\cmp u = r\cmp v$ e $\ell\cmp u' = r\cmp v'$ allo stesso tempo); ora basta porre $z = \ell\cmp u $, $z' =	\ell\cmp u'$ e $x = \ell\cmp u\cmp f$, $y = r\cmp v\cmp g$.
 \end{proof}
 \begin{remark}[Perché categorie `filtrate' e `setacciate'?]
 	L'idea è che una categoria setacciata \(\ctJ\) dispone di un filtro che seleziona un cocono per ogni sottocategoria discreta e finita di \(\ctJ\); un filtro è invece capace, in maniera più forte, di selezionare un cocono per ogni sottocategoria finita di $\ctJ$, anche non discreta, cosicché un filtro è solo un tipo di setaccio particolarmente sottile. La figura \ref{fig_filtro_setaccio} disegna questa situazione.
