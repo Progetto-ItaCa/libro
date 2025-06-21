@@ -796,11 +796,11 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 		}\]
 	è semplice generare la successione seguente dove indichiamo i morfismi di \(\ctC\times\ctD\) come doppie frecce per chiarezza:
 	\[\xymatrix@C=1.2cm@R=1.5cm{
-		&&(C,D)\ar@/_.5pc/@<.25em>[dll]\ar@/_.5pc/@<-.25em>[dll]_{(c,d)}\ar@<-.25em>[dl]\ar@<.25em>[dl]^{(x_1,d)}\ar@<-.25em>[d]|\hole\ar@<.25em>[d]|{(x_2,y_1)}\ar@<-.25em>[dr]\ar@<.25em>[dr]^{(c',d')}\\
+		&(C,D)\ar@/_.5pc/@<.25em>[dl]\ar@/_.5pc/@<-.25em>[dl]_{(c,d)}\ar@<-.25em>[d]|\hole\ar@<.25em>[d]|{(x_1,d)}\ar@<-.25em>[dr]_{(x_2,y_1)}\ar@<.25em>[dr]\ar[drr]\ar@<.5em>[drr]^{(c',d')}\\
 		(FI,GJ)\ar@<.225em>[r]\ar@<-.225em>@{=}[r]_{(u_0,\id)} & (FX_1,GJ) & (FX_2,GY_1)\ar@<.225em>[l]^{(u_1,v_0)}\ar@<-.225em>[l] \ar@<.225em>[r]\ar@<-.225em>[r]_{(u_2,v_1)} & (FI',GJ').
 		}
 	\]
-	Si noti in particolare che se \(\ell,m\) sono le rispettive lunghezze delle successioni trovare in \(\ctC,\ctD\) separatamente, la stima \(k\le \ell+m\) della lunghezza \(k\)	della successione di triangoli in \(((C,D)/F\times G)\) è solo un limite superiore. Si provi, per esecizio, a formalizzare il caso generale con una ricetta `induttiva' per lunghezze e orientazioni generiche (concordanti, e discordanti\dots).
+	Si noti in particolare che se \(\ell,m\) sono le rispettive lunghezze delle successioni trovare in \(\ctC,\ctD\) separatamente, la stima \(k\le \ell+m\) della lunghezza \(k\)	della successione di triangoli in \(((C,D)/F\times G)\) è solo un limite superiore. Si provi, per esercizio, a formalizzare il caso generale con una ricetta `induttiva' per lunghezze e orientazioni generiche (concordanti, e discordanti\dots).
 \end{proof}
 \begin{hTheorem}[Inizialità degli ordinali tra i diagrammi filtrati]{skip}\index{Funtore!--- iniziale}
 	Per ogni categoria \(\ctJ\) (piccola e) filtrata nel senso di \ref{def_cat_filtrata}, esiste un funtore iniziale \(K : P_\ctJ\fun\ctJ\), di dominio un preordine (si veda \ref{ex_cat_ordini}) diretto (si veda \ref{contro_esempi_filt}).
@@ -826,7 +826,7 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 \begin{proof}
 	\`E un corollario immediato del fatto che il prodotto di funtori iniziali è iniziale, si veda \ref{}, insieme al fatto che il funtore prodotto \(\Delta_{\ctI\times\ctJ}\) risulta dalla composizione
 	\[\xymatrix{
-			\ctI\times\ctJ \ar[r] & \ctI\times\ctI\times \ctJ\times\ctJ\ar[r] & \ctI\times\ctJ\times \ctI\times\ctJ
+			\ctI\times\ctJ \ar[r]^{\Delta_\ctI\times\Delta_\ctJ} & \ctI\times\ctI\times \ctJ\times\ctJ\ar@{=}[r]^\sim & \ctI\times\ctJ\times \ctI\times\ctJ
 		}\]
 \end{proof}
 \begin{figure}
@@ -913,7 +913,7 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 	\end{center}
 \end{figure}
 \begin{esercizi}
-	\item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
+	\item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Si faccia lo stesso per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
 	\item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
 	\item \label{ex_monepi_3} Costruire un'equivalenza di categorie tra la categoria dei sistemi dinamici discreti di \ref{ex_cat_dyn} e la categoria delle rappresentazioni, \ref{es_fun_repre}, del monoide \((\bbN,+,0)\); è un isomorfismo? Mostrare che \(\bbN\) è in maniera naturale un oggetto \(\bsN=(* \xto 0 \bbN \xto{\blank+1} \bbN)\) di \(\ctDyn\), che soddisfa la proprietà (\emph{universale}) seguente:
 	\begin{quote}
