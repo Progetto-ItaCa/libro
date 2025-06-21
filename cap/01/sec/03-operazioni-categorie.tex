@@ -583,21 +583,33 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 		\item Come oggetti, le \emph{cospanne} di \(\ctC\), ovvero coppie di frecce \(f,g\) di \(\ctC\) con lo stesso codominio:
 		      \[
 			      \begin{tikzcd}[row sep=small]
-				      A \ar{dr}{f} && B \ar{dl}[swap]{g} \\
+				      X \ar{dr}{f} && Y \ar{dl}[swap]{g} \\
 				      & C
 			      \end{tikzcd}
 		      \]
-		\item Come morfismi \((f,g)\to (f',g')\), triple di frecce \(p:A\to A'\), \(q:B\to B'\) e \(r:C\to C'\) che fanno commutare il seguente diagramma,
+		\item Come morfismi \((p,q,r):(f,g)\to (f',g')\), triple di frecce \(p:A\to A'\), \(q:B\to B'\) e \(r:C\to C'\) che fanno commutare il seguente diagramma,
 		      \[
 			      \begin{tikzcd}[row sep=small]
-				      A \ar{dd}{p} \ar{dr}{f} && B \ar{dd}{q} \ar{dl}[swap]{g} \\
+				      X \ar{dd}{p} \ar{dr}{f} && Y \ar{dd}{q} \ar{dl}[swap]{g} \\
 				      & C \ar{dd}{r} \\
-				      A' \ar{dr}[swap]{f'} && B' \ar{dl}{g'} \\
+				      X' \ar{dr}[swap]{f'} && Y' \ar{dl}{g'} \\
 				      & C'
 			      \end{tikzcd}
 		      \]
 		      ossia tali che \(r\cmp f=f'\cmp p\) e \(r\cmp g=g'\cmp q\).
 	\end{itemize}
+	Un'altra definizione possibile è quella della categoria $\ctCospan_\ctC(X,Y)$ di cospanne \emph{a estremi fissati} $X$ e $Y$, che ha 
+	\begin{itemize}
+		\item per oggetti le cospanne	\(\pair fg : X\xto{f} C\xot{g} Y\) in \(\ctC\),
+		\item per frecce tra cospanne	\(\pair fg : X\to C\leftarrow Y\) e \(\pair{f'}{g'} : X\to C'\leftarrow Y\) le frecce $r : C\to C'$ di $\ctC$ tali che $r\cmp f = f'$ e $r\cmp g=g'$, cioè tali che il diagramma
+		\[\xymatrix@R=1mm{
+			&C\ar[dd]_r & \\
+				X \ar[dr]_{f'}\ar[ur]^f&& Y\ar[ul]_g\ar[dl]^{g'}\\
+				& C'
+			}\]
+		sia commutativo.
+	\end{itemize}
+	Si noti che la categoria \(\ctCospan_\ctC(X,Y)\) è una sottocategoria della \(\ctCospan(\ctC)\) definita prima, precisamente fatta dagli oggetti della forma $X\to C\leftarrow Y$ e dalle frecce dove $p,q$ sono identità 
 \end{definition}
 Chi legge rifletta su questa domanda: la categoria \(\ctCospan(\ctC)\) è \(\ctSpan(\ctC)^\op\) oppure \(\ctSpan(\ctC^\op)^\op\)? C'è differenza tra le due?
 \begin{definition}[Giunto di categorie]\label{cat_def_giunto}\index{Categoria!giunto di due ---e}
