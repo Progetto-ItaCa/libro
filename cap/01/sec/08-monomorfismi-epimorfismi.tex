@@ -770,18 +770,16 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 		      && GFV
 		      }\]
 \end{itemize}
-\begin{theorem}
+\begin{theorem}\label{prod_inizi_iniziale}\index{Prodotto!--- di funtori iniziali}
+	\index{Funtore!--- prodotto}
 	Il \emph{prodotto} di due funtori \(F : \ctI\fun\ctC\) e	\(G : \ctJ\fun\ctD\) è il funtore
 	\[\xymatrix@R=0cm{
 		\ctI\times\ctJ \ar[r] & \ctC\times\ctD \\
 		(I,J) \ar@{|->}[r] & (FI,GJ)
 		}\]
-	(notazione come in \ref{}).
-
-	Nelle stesse notazioni, se \(F,G\) sono funtori iniziali come in \ref{}, allora \(F\times G\) è iniziale.
+	(notazione come in \ref{}).	Nelle stesse notazioni, se \(F,G\) sono funtori iniziali come in \ref{def_fun_initfin}, allora \(F\times G\) è iniziale.
 \end{theorem}
 \begin{proof}
-	\Todo{Prodotto di iniziali è iniziale}
 	Va dimostrato che per ogni oggetto \((C,D)\) la categoria comma \(((C,D)/F\times G)\) è non vuota e connessa. Evidentemente è non vuota dato che dei morfismi \(C\to FX\) e \(D\to GY\) esistono separatamente in \((C/F)\) e \((D/G)\). Va mostrato, poi, che ogni coppia di oggetti in \(((C,D)/F\times G)\) è connessa da uno zigzag di morfismi. Per fare questo, va risolto il seguente problema: esistono certamente delle successioni finite
 	\[\xymatrix@C=8mm{
 		&&C\ar[dr]\ar[dl]\ar[dll]\ar[drr] &&&&& D\ar[dr]\ar[dl]\ar[dll]\ar[drr]\\
@@ -824,10 +822,11 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 	Se \(\ctI,\ctJ\) sono due categorie setacciate, il prodotto \(\ctI\times\ctJ\) è una categoria setacciata.
 \end{theorem}
 \begin{proof}
-	\`E un corollario immediato del fatto che il prodotto di funtori iniziali è iniziale, si veda \ref{}, insieme al fatto che il funtore prodotto \(\Delta_{\ctI\times\ctJ}\) risulta dalla composizione
+	\`E un corollario immediato del fatto che il prodotto di funtori iniziali è iniziale,  insieme al fatto che il funtore prodotto \(\Delta_{\ctI\times\ctJ}\) risulta dalla composizione
 	\[\xymatrix@C=1.5cm{
 			\ctI\times\ctJ \ar[r]^-{\Delta_\ctI\times\Delta_\ctJ} & \ctI\times\ctI\times \ctJ\times\ctJ\ar@{=}[r]^\sim & \ctI\times\ctJ\times \ctI\times\ctJ
 		}\]
+		che è un funtore iniziale grazie a \ref{prod_inizi_iniziale} composto con un isomorfismo (non abbiamo dimostrato che un isomorfismo di categorie è iniziale, ma è semplice usando la definizione\dots).
 \end{proof}
 Grazie a \ref{} otteniamo una dimostrazione alternativa del fatto che ogni categoria filtrata $\ctJ$ è setacciata, perché possiamo mostrare (cosa che in \ref{} non potevamo usare, dato che ci mancava la nozione di funtore	iniziale) che se $\ctJ$ è una categoria filtrata, $\Delta_\ctJ$ è iniziale. 
 \begin{proof}
