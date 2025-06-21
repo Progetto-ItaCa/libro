@@ -137,6 +137,34 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
 	Per la genericit\`a di \(x\) e \(x'\), abbiamo che \(f\) \`e iniettiva,
 	e dunque un monomorfismo in \(\ctSet\).
 \end{proof}
+\begin{definition}[Il funtore dei sottoggetti]\label{def_fun_sub_onset}\index{Funtore!--- dei sottoggetti di \(\ctSet\)}
+	Dato un insieme \(X\) consideriamo la classe di tutti i monomorfismi di codominio \(X\), cioè le funzioni iniettive \(A\mono X\); dati due monomorfismi \(m : A\mono X, n : B\mono X\), diciamo che \(m\le n\) se esiste una funzione (necessariamente un mono) \(h : A\to B\) tale che \(n\cmp h = m\); il triangolo commutativo
+	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJBIl0sWzAsMiwiQiJdLFsxLDEsIlgiXSxbMCwyLCJtIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCJuIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwxLCJoIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XV0=
+	\[\begin{tikzcd}[row sep=2mm]
+			A \\
+			& X \\
+			B
+			\arrow["m", hook, from=1-1, to=2-2]
+			\arrow["h"', hook, from=1-1, to=3-1]
+			\arrow["n"', hook, from=3-1, to=2-2]
+		\end{tikzcd}\]
+	traduce il fatto che \(A\) è un sottoinsieme di \(X\), ma anche di un altro sottoinsieme \(B\), possibilmente più piccolo. Diciamo poi che \(m,n\) come sopra sono equivalenti, scritto \(m\simeq n\), se \(A\) e \(B\) sono isomorfi (per il teorema di Cantor-Schröder-Bernstein questo equivale a \(m\le n\) e \(n\le m\)).
+
+	Il \emph{funtore dei sottoggetti}
+	\[\dmFun{\Sub}{\ctSet^\op}{\ctSet}\]
+	assegna a un insieme \(X\) l'insieme delle classi di equivalenza di mono \(\{m : A\mono X\}\) (che questo sia un insieme, segue dall'assioma dell'insieme potenza di ZF). L'azione sulle frecce si determina come segue: data una funzione \(f : X\to Y\), esiste una funzione
+	\[\dmFun{\Sub(f)}{\Sub(Y)}{\Sub(X)}\]
+	che manda \(U\subseteq Y\) nel sottoinsieme \(\ctP^*(f)[U]\) come definito sopra.
+
+	La presenza di un isomorfismo naturale tra il funtore dei sottoggetti \(\Sub\) e \(\ctP^*\), come funtori di tipo \(\ctSet^\op\fun\ctSet\), si basa sull'esistenza di una famiglia di biiezioni \(\chi_X : \ctP(X) = \pow X \cong \{U\subseteq X\}\)
+\end{definition}
+\begin{definition}\label{def_sottoggetto}\index{Oggetto!sotto---}
+	\Todo{sottoggetti in cat arbitrarie; non è un funtore, servono i pullback}
+\end{definition}
+\begin{definition}\label{def_cat_ben_potenziata}\index{Categoria!--- ben potenziata}
+	\Todo{Categoria ben potenziata }
+	\Todo{Categoria ben copotenziata}
+\end{definition}
 \subsection{Sezioni e retrazioni}\label{sec_sezretraz}\index{Sezione}
 Così come l'algebra ci ha suggerito di generalizzare all'ambito categoriale la nozione di elemento di un monoide cancellabile a sinistra/destra,
 similmente possiamo considerare la nozione di elemento invertibile a sinistra/destra.
@@ -810,35 +838,33 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 
 	Questo funtore è iniziale: per ogni oggetto \(J\in\ctJ_0\), \(K\{J\}=J\), e quindi esiste \(\Id[J] : J\to K\{J\}\). Se poi \(f : J\to K\ctF_\alpha\) e \(g : J\to K\ctF_\beta\), allora definiamo \(\ctF_\gamma := \ctF_\alpha\cup\ctF_\beta\cup\{f,g\}\); evidentemente, le inclusioni \(\ctF_\alpha,\ctF_\beta\subseteq\ctF_\gamma\) realizzano la seconda condizione di Ore \ref{condizione_ore}.
 \end{proof}
-\begin{theorem}
+Si osservi che la definizione di categoria setacciata data in \ref{def_cat_setacciata} è equivalente a richiedere che il funtore diagonale \(\Delta_\ctJ\) sia iniziale nel senso di \ref{def_fun_initfin}. Infatti, fissato un oggetto \((X,Y)\in\ctJ_0\times\ctJ_0\), la categoria comma \((X,Y)/\Delta_\ctJ\) è precisamente la categoria delle cospanne \(\ctCospan_\ctJ(X,Y)\); quindi,
+\begin{theorem}\label{thm_catprod_setacciata}\index{Categoria!--- setacciata}
 	Una categoria \(\ctJ\) è setacciata nel senso di \ref{def_cat_setacciata} se e solo se il funtore diagonale di \ref{es_di_funtori}.\ref{exfun_3}
 	\[\dmFun{\Delta}{\ctJ}{\ctJ\times\ctJ}\]
 	è iniziale nel senso di \ref{def_fun_initfin}.
 \end{theorem}
-\begin{proof}
-	\Todo{setacciata iff diagonale iniziale}
-\end{proof}
 \begin{theorem}
 	Se \(\ctI,\ctJ\) sono due categorie setacciate, il prodotto \(\ctI\times\ctJ\) è una categoria setacciata.
 \end{theorem}
 \begin{proof}
 	\`E un corollario immediato del fatto che il prodotto di funtori iniziali è iniziale,  insieme al fatto che il funtore prodotto \(\Delta_{\ctI\times\ctJ}\) risulta dalla composizione
 	\[\xymatrix@C=1.5cm{
-			\ctI\times\ctJ \ar[r]^-{\Delta_\ctI\times\Delta_\ctJ} & \ctI\times\ctI\times \ctJ\times\ctJ\ar@{=}[r]^\sim & \ctI\times\ctJ\times \ctI\times\ctJ
+		\ctI\times\ctJ \ar[r]^-{\Delta_\ctI\times\Delta_\ctJ} & \ctI\times\ctI\times \ctJ\times\ctJ\ar@{=}[r]^\sim & \ctI\times\ctJ\times \ctI\times\ctJ
 		}\]
-		che è un funtore iniziale grazie a \ref{prod_inizi_iniziale} composto con un isomorfismo (non abbiamo dimostrato che un isomorfismo di categorie è iniziale, ma è semplice usando la definizione\dots).
+	che è un funtore iniziale grazie a \ref{prod_inizi_iniziale} composto con un isomorfismo (non abbiamo dimostrato che un isomorfismo di categorie è iniziale, ma è semplice usando la definizione\dots).
 \end{proof}
-Grazie a \ref{} otteniamo una dimostrazione alternativa del fatto che ogni categoria filtrata $\ctJ$ è setacciata, perché possiamo mostrare (cosa che in \ref{} non potevamo usare, dato che ci mancava la nozione di funtore	iniziale) che se $\ctJ$ è una categoria filtrata, $\Delta_\ctJ$ è iniziale. 
+Grazie a \ref{thm_catprod_setacciata} otteniamo una dimostrazione alternativa del fatto che ogni categoria filtrata \(\ctJ\) è setacciata, perché possiamo mostrare (cosa che in \ref{filtr_setacciata} non potevamo usare, dato che ci mancava la nozione di funtore iniziale) che se \(\ctJ\) è una categoria filtrata, \(\Delta_\ctJ\) è iniziale.
 \begin{proof}
-	Se $\ctJ$ è filtrata, dobbiamo mostrare che per ogni oggetto $(J,J')$ di $\ctJ_0\times\ctJ_0$, la categoria	comma \((J,J')/\Delta_\ctJ\) è non vuota e connessa. Del resto, il fatto che esista almeno una freccia $(u,v) : (J,J') \to (J^*,J^*)$ è esattamente la proprietà \ref{cf_1} di \ref{def_cat_filtrata}; la proprietà \ref{cf_2} consiste nel dimostrare che ogni coppia di oggetti 
+	Se \(\ctJ\) è filtrata, dobbiamo mostrare che per ogni oggetto \((J,J')\) di \(\ctJ_0\times\ctJ_0\), la categoria	comma \((J,J')/\Delta_\ctJ\) è non vuota e connessa. Del resto, il fatto che esista almeno una freccia \((u,v) : (J,J') \to (J^*,J^*)\) è esattamente la proprietà \ref{cf_1} di \ref{def_cat_filtrata}; la proprietà \ref{cf_2} consiste nel dimostrare che ogni coppia di oggetti
 	\[\xymatrix{
 		(X,Y) & (J,J') \ar[r]^-{(u,v)}\ar[l]_-{(u',v')}& (A,B)
-	}\]
-	di \((J,J')/\Delta_\ctJ\) è connessa da uno \zzg di triangoli commutativi; chiaramente, per definizione di cosa sia la categoria prodotto $\ctJ\times\ctJ$, va dimostrato che esiste uno \zzg di frecceche connette $(X,Y)$ e $(A,B)$. Questo si può fare usando un argomento del tutto analogo a \ref{}, che permette di trovare, a partire da degli \zzg $\vec U = (\tup Un,)$ e $\vec V = (\tup Vm,)$
+		}\]
+	di \((J,J')/\Delta_\ctJ\) è connessa da uno \zzg di triangoli commutativi; chiaramente, per definizione di cosa sia la categoria prodotto \(\ctJ\times\ctJ\), va dimostrato che esiste uno \zzg di frecceche connette \((X,Y)\) e \((A,B)\). Questo si può fare usando un argomento del tutto analogo a \ref{}, che permette di trovare, a partire da degli \zzg \(\vec U = (\tup Un,)\) e \(\vec V = (\tup Vm,)\)
 	\[\xymatrix{
- & J \ar@{->}[rd]^{u'} \ar@{->}[ld]_{u} &  &  & J' \ar@{->}[rd]^{v'} \ar@{->}[ld]_{v} &  \\
-A \ar@{.}[rr]_{\vec U} &  & X & B \ar@{.}[rr]_{\vec V} &  & Y
-}\]
+			& J \ar@{->}[rd]^{u'} \ar@{->}[ld]_{u} &  &  & J' \ar@{->}[rd]^{v'} \ar@{->}[ld]_{v} &  \\
+			A \ar@{.}[rr]_{\vec U} &  & X & B \ar@{.}[rr]_{\vec V} &  & Y
+		}\]
 	eventualmente di lunghezza diversa, uno \zzg di triangoli come voluto.
 \end{proof}
 \begin{figure}

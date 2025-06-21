@@ -528,7 +528,7 @@ Una classe importante che generalizza i diagrammi in catena è fatta dai diagram
 			}\]
 		è commutativo.
 	\end{enumtag}
-	Le frecce \(k_i\) e l'oggetto \(J^*\) in \ref{cf_1} si dicono un \emph{cocono} per \(\tup Jn,\) ($J^*$ è la `punta' del cocono e le $k_i$ le sue `componenti'), e in modo simile \(k\) in \ref{cf_2} si dice un cocono per \(\tup un, : J\to J'\). Allora, le proprietà \ref{cf_1}, \ref{cf_2} si possono rifrasare così:
+	Le frecce \(k_i\) e l'oggetto \(J^*\) in \ref{cf_1} si dicono un \emph{cocono} per \(\tup Jn,\) (\(J^*\) è la `punta' del cocono e le \(k_i\) le sue `componenti'), e in modo simile \(k\) in \ref{cf_2} si dice un cocono per \(\tup un, : J\to J'\). Allora, le proprietà \ref{cf_1}, \ref{cf_2} si possono rifrasare così:
 	\begin{quote}
 		Una categoria è filtrata se ogni famiglia finita di oggetti \(\tup Jn,\) e ogni famiglia finita di morfismi \(\tup un, : J\to J'\) ammettono un cocono.
 	\end{quote}
@@ -601,134 +601,126 @@ tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia
 \end{proof}
 Una classe di categorie più generale, che contiene le categorie filtrate, è quella delle \emph{categorie setacciate}:
 \begin{definition}\label{def_cat_setacciata}\index{Categoria!--- setacciata}
-	Una categoria \(\ctJ\) si dice \emph{setacciata} se per ogni coppia di oggetti $X,Y\in\ctJ$ la categoria delle cospanne di \ref{def_span_e_cospan} è connessa nel senso di \ref{ex_fun_cpt_conn}, \ref{exe_cpt_conn}.
+	Una categoria \(\ctJ\) si dice \emph{setacciata} se per ogni coppia di oggetti \(X,Y\in\ctJ\) la categoria delle cospanne di \ref{def_span_e_cospan} è connessa nel senso di \ref{ex_fun_cpt_conn}, \ref{exe_cpt_conn}.
 \end{definition}
 % \Todo{forse qualcos'altro: prodotto di setacciate è setacciato, etc?}
-\begin{theorem}
+\begin{theorem}\label{filtr_setacciata}\index{Categoria!--- filtrata}
 	Ogni categoria filtrata è setacciata; la categoria \Todo{} è setacciata ma non è filtrata.
 \end{theorem}
 \begin{proof}
-	Se $\ctJ$ è filtrata soddisfa la proprietà di Ore; allora mostriamo che ogni coppia di cospanne della forma  
-			\[\xymatrix@R=1mm{
-			&Z  & \\
-				X \ar[dr]_{f'}\ar[ur]^f&& Y\ar[ul]_g\ar[dl]^{g'}\\
-				& Z'
-			}\]
-			è connessa da un cospan di frecce in $\ctJ$, cioè esiste un diagramma
-					\[\xymatrix@R=7mm{
-			&Z\ar[d]^z & \\
-				X \ar[r]_x \ar[dr]_{f'}\ar[ur]^f& K & Y\ar[ul]_g\ar[dl]^{g'}\ar[l]^y\\
-				& Z'\ar[u]_{z'}
-			}\]
-			Per la proprietà di Ore esistono quadrati commutativi della forma
-\[\xymatrix{
-	X \ar[r]^f\ar[d]_{f'}& Z\ar@{.>}[d]^u & Y \ar[r]^g\ar[d]_{g'}& Z\ar@{.>}[d]^v\\
-	Z' \ar@{.>}[r]_{u'} & U & Z' \ar@{.>}[r]_{v'}& V
-}\]
-per certi oggetti $U,V$ e frecce $u,v,u',v'$; ripetendo questo argomento riusciamo a costruire un diagramma commutativo
-% https://q.uiver.app/#q=WzAsNyxbMiwwLCJaIl0sWzAsMSwiWCJdLFsxLDEsIlUiXSxbMiwxLCJLIl0sWzMsMSwiViJdLFs0LDEsIlkiXSxbMiwyLCJaJyJdLFswLDIsInUiXSxbMCw0LCJ2IiwyXSxbMSwwLCJmIiwwLHsiY3VydmUiOi0yfV0sWzEsNiwie2YnfSIsMix7ImN1cnZlIjoyfV0sWzIsMywiXFxlbGwiLDFdLFs0LDMsInIiLDFdLFs1LDAsImciLDIseyJjdXJ2ZSI6Mn1dLFs1LDYsIntnJ30iLDAseyJjdXJ2ZSI6LTJ9XSxbNiwyLCJ7dSd9IiwyXSxbNiw0LCJ7did9Il1d
-\[\begin{tikzcd}
-	&& Z \\
-	X & U & K & V & Y \\
-	&& {Z'}
-	\arrow["u", from=1-3, to=2-2]
-	\arrow["v"', from=1-3, to=2-4]
-	\arrow["f", curve={height=-12pt}, from=2-1, to=1-3]
-	\arrow["{{f'}}"', curve={height=12pt}, from=2-1, to=3-3]
-	\arrow["\ell"{description}, from=2-2, to=2-3]
-	\arrow["r"{description}, from=2-4, to=2-3]
-	\arrow["g"', curve={height=12pt}, from=2-5, to=1-3]
-	\arrow["{{g'}}", curve={height=-12pt}, from=2-5, to=3-3]
-	\arrow["{{u'}}"', from=3-3, to=2-2]
-	\arrow["{{v'}}", from=3-3, to=2-4]
-\end{tikzcd}\]
-(servono due applicazioni di \ref{cf_2}, e una applicazione della proprietà di Ore, per scegliere $K$ in modo che $\ell,r$ siano tali per cui $\ell\cmp u = r\cmp v$ e $\ell\cmp u' = r\cmp v'$ allo stesso tempo); ora basta porre $z = \ell\cmp u $, $z' =	\ell\cmp u'$ e $x = \ell\cmp u\cmp f$, $y = r\cmp v\cmp g$.
+	Se \(\ctJ\) è filtrata soddisfa la proprietà di Ore; allora mostriamo che ogni coppia di cospanne della forma
+	\[\xymatrix@R=1mm{
+		&Z  & \\
+		X \ar[dr]_{f'}\ar[ur]^f&& Y\ar[ul]_g\ar[dl]^{g'}\\
+		& Z'
+		}\]
+	è connessa da un cospan di frecce in \(\ctJ\), cioè esiste un diagramma
+	\[\xymatrix@R=7mm{
+		&Z\ar[d]^z & \\
+		X \ar[r]_x \ar[dr]_{f'}\ar[ur]^f& K & Y\ar[ul]_g\ar[dl]^{g'}\ar[l]^y\\
+		& Z'\ar[u]_{z'}
+		}\]
+	Per la proprietà di Ore esistono quadrati commutativi della forma
+	\[\xymatrix{
+			X \ar[r]^f\ar[d]_{f'}& Z\ar@{.>}[d]^u & Y \ar[r]^g\ar[d]_{g'}& Z\ar@{.>}[d]^v\\
+			Z' \ar@{.>}[r]_{u'} & U & Z' \ar@{.>}[r]_{v'}& V
+		}\]
+	per certi oggetti \(U,V\) e frecce \(u,v,u',v'\); ripetendo questo argomento riusciamo a costruire un diagramma commutativo
+	\[
+		\xymatrix{
+		&  & Z \ar@{->}[ld]_{u} \ar@{->}[rd]^{v} &  &  \\
+		X \ar@/^/@{->}[rru]^{f} \ar@/_/@{->}[rrd]_{g} & U \ar@{->}[r]|-{\ell} & K & V \ar@{->}[l]|-{r} & Y \ar@/_/@{->}[llu]_{f'} \ar@/^/@{->}[lld]^{g'} \\
+		&  & Z' \ar@{->}[lu]^{u'} \ar@{->}[ru]_{v'} &  &
+		}
+	\]
+	(servono due applicazioni di \ref{cf_2}, e una applicazione della proprietà di Ore, per scegliere \(K\) in modo che \(\ell,r\) siano tali per cui \(\ell\cmp u = r\cmp v\) e \(\ell\cmp u' = r\cmp v'\) allo stesso tempo); ora basta porre \(z = \ell\cmp u \), \(z' =	\ell\cmp u'\) e \(x = \ell\cmp u\cmp f\), \(y = r\cmp v\cmp g\).
 \end{proof}
 \begin{remark}[Perché categorie `filtrate' e `setacciate'?]
-	L'idea è che una categoria setacciata \(\ctJ\) dispone di un filtro che seleziona un cocono per ogni sottocategoria discreta e finita di \(\ctJ\); un filtro è invece capace, in maniera più forte, di selezionare un cocono per ogni sottocategoria finita di $\ctJ$, anche non discreta, cosicché un filtro è solo un tipo di setaccio particolarmente sottile. La figura \ref{fig_filtro_setaccio} disegna questa situazione.
-	\begin{figure}
-		\begin{center}
-			\begin{tikzpicture}[
-					x=4em, y=4em,
-					dot/.style={
-							circle,
-							fill=#1,
-							inner sep=0pt,
-							outer sep=2pt,
-							minimum size=4pt,
-							draw=none,
-						},
-					microdot/.style={
-							circle,
-							fill=#1,
-							inner sep=0pt,
-							outer sep=0pt,
-							minimum size=1pt,
-							draw=none,
-						},
-					wrap/.style={
-							fill=black!5,
-							draw=gray,
-							rounded corners,
-							inner sep=.5em,
-						},
-				]
-
-				\def\seedX{4}
-				\def\sizeX{5}
-				\pgfmathsetseed{\seedX}
-				\GimmeBounds{\seedX}{\sizeX}
-				\begin{scope}[local bounding box=JJ]
-					\pgfmathsetseed{\seedX}
-					\foreach \i in {1,...,10} {
-							\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
-							\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
-							\path node[dot=gray] (J\i) at (\x,\y) {};
-						}
-				\end{scope}
-				\begin{scope}[on background layer]
-					\path node[wrap, fit=(JJ)] (ctJ) {\color{gray}$\ctI$};
-				\end{scope}
-				\begin{scope}[xshift=2cm,yshift=-2cm]
-					% Draw the square outline
-					\fill[ibmBlue!50] (0,0) rectangle (.95,1.95) node[above left] {\color{black}filtro};
-					\node[right] (cocone) at (2.5, 1) {$J^*$};
-					\foreach \i in {1,...,10} {
-							\draw[ibmBlue!50] (J\i) -- ($(J\i)!.95!(cocone)$);
-						}
-
-					\pgfmathsetmacro{\minDist}{0.1}  % Minimum distance between points
-					\pgfmathsetmacro{\maxAttempts}{15} % Maximum attempts per point
-
-					\coordinate (p0) at (0.5, 0.5);
-					\fill (p0) circle (0.01);
-
-					\pgfmathsetmacro{\activeCount}{1}
-					\pgfmathsetmacro{\pointCount}{1}
-
-					\coordinate (active0) at (0.5, 0.5);
-					\def\randomNess{15}
-					\foreach \i in {0.04, 0.08, ..., 0.92} {
-							\foreach \j in {0.04, 0.08, ..., 1.999} {
-									\pgfmathsetmacro{\randX}{\i + (random(-\randomNess,\randomNess)/1000)}
-									\pgfmathsetmacro{\randY}{\j + (random(-\randomNess,\randomNess)/1000)}
-
-									\pgfmathparse{(\randX > 0.01) && (\randX < 0.999) && (\randY > 0.01) && (\randY < 1.9)}
-									\ifnum\pgfmathresult=1
-										% Add random rejection to create more natural distribution
-										\pgfmathparse{random(0,100)}
-										\ifnum\pgfmathresult>1  % 80% chance to place dot
-											\fill[ibmBlue!50!black] (\randX, \randY) circle (0.01);
-										\fi
-									\fi
-								}
-						}
-				\end{scope}
-			\end{tikzpicture}
-		\end{center}
-		\caption{In una categoria filtrata $\ctJ$, ogni sottocategoria finita $\ctI$ ammette un cocono; la categoria $\ctJ$ dispone di un filtro sottile abbastanza da selezionare un cocono $J^*$ per $\ctI$, estendendo un diagramma $D : \ctI \fun\ctJ$ a $D^* : \ctI^\rhd \fun \ctJ$ come in \ref{estensione_filtrata}. Nella figura, gli oggetti di $\ctI$ `percolano' attraverso il filtro e `convergono' alla punta $J^*$ del cocono.}\label{fig_filtro_setaccio}
-	\end{figure}
+	L'idea è che una categoria setacciata \(\ctJ\) dispone di un filtro che seleziona un cocono per ogni sottocategoria discreta e finita di \(\ctJ\); un filtro è invece capace, in maniera più forte, di selezionare un cocono per ogni sottocategoria finita di \(\ctJ\), anche non discreta, cosicché un filtro è solo un tipo di setaccio particolarmente sottile. La figura \ref{fig_filtro_setaccio} disegna questa situazione.
 \end{remark}
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}[
+				x=4em, y=4em,
+				dot/.style={
+						circle,
+						fill=#1,
+						inner sep=0pt,
+						outer sep=2pt,
+						minimum size=4pt,
+						draw=none,
+					},
+				microdot/.style={
+						circle,
+						fill=#1,
+						inner sep=0pt,
+						outer sep=0pt,
+						minimum size=1pt,
+						draw=none,
+					},
+				wrap/.style={
+						fill=black!5,
+						draw=gray,
+						rounded corners,
+						inner sep=.5em,
+					},
+			]
+
+			\def\seedX{4}
+			\def\sizeX{5}
+			\pgfmathsetseed{\seedX}
+			\GimmeBounds{\seedX}{\sizeX}
+			\begin{scope}[local bounding box=JJ]
+				\pgfmathsetseed{\seedX}
+				\foreach \i in {1,...,10} {
+						\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+						\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+						\path node[dot=gray] (J\i) at (\x,\y) {};
+					}
+			\end{scope}
+			\begin{scope}[on background layer]
+				\path node[wrap, fit=(JJ)] (ctJ) {\color{gray}$\ctI$};
+			\end{scope}
+			\begin{scope}[xshift=2cm,yshift=-2cm]
+				% Draw the square outline
+				\fill[ibmBlue!50] (0,0) rectangle (.95,1.95) node[above left] {\color{black}filtro};
+				\node[right] (cocone) at (2.5, 1) {$J^*$};
+				\foreach \i in {1,...,10} {
+						\draw[ibmBlue!50] (J\i) -- ($(J\i)!.95!(cocone)$);
+					}
+
+				\pgfmathsetmacro{\minDist}{0.1}  % Minimum distance between points
+				\pgfmathsetmacro{\maxAttempts}{15} % Maximum attempts per point
+
+				\coordinate (p0) at (0.5, 0.5);
+				\fill (p0) circle (0.01);
+
+				\pgfmathsetmacro{\activeCount}{1}
+				\pgfmathsetmacro{\pointCount}{1}
+
+				\coordinate (active0) at (0.5, 0.5);
+				\def\randomNess{15}
+				\foreach \i in {0.04, 0.08, ..., 0.92} {
+						\foreach \j in {0.04, 0.08, ..., 1.999} {
+								\pgfmathsetmacro{\randX}{\i + (random(-\randomNess,\randomNess)/1000)}
+								\pgfmathsetmacro{\randY}{\j + (random(-\randomNess,\randomNess)/1000)}
+
+								\pgfmathparse{(\randX > 0.01) && (\randX < 0.999) && (\randY > 0.01) && (\randY < 1.9)}
+								\ifnum\pgfmathresult=1
+									% Add random rejection to create more natural distribution
+									\pgfmathparse{random(0,100)}
+									\ifnum\pgfmathresult>1  % 80% chance to place dot
+										\fill[ibmBlue!50!black] (\randX, \randY) circle (0.01);
+									\fi
+								\fi
+							}
+					}
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+	\label{fig_filtro_setaccio}
+	\caption{In una categoria filtrata \(\ctJ\), ogni sottocategoria finita \(\ctI\) ammette un cocono; la categoria \(\ctJ\) dispone di un filtro sottile abbastanza da selezionare un cocono \(J^*\) per \(\ctI\), estendendo un diagramma \(D : \ctI \fun\ctJ\) a \(D^* : \ctI^\rhd \fun \ctJ\) come in \ref{estensione_filtrata}. Nella figura, gli oggetti di \(\ctI\) `percolano' attraverso il filtro e `convergono' alla punta \(J^*\) del cocono.}
+\end{figure}
 \begin{esercizi}
 	\item Se \(\ctC\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\ctC \fun \susp N\); farsi degli esempi scegliendo come \(\ctC\) una delle categorie di \ref{sec_esempi_cats}, e con \(N=(\bbN,+,0)\) il monoide dei numeri naturali.
 	\item Dualmente, se \(\ctD\) è una categoria con più di un oggetto, scrivere quali proprietà deve avere un funtore \(\susp M \fun \ctD\); farsi degli esempi scegliendo come \(\ctD\) una delle categorie di \ref{sec_esempi_cats}, e con \(M = (\bbN,+,0)\) il monoide dei numeri naturali.
