@@ -1,15 +1,76 @@
+% \iffalse meta-comment
+%
+% %%%=[ DRIVER ]================================================================
+%
+%<*driver>
+\documentclass[a4paper,full]{l3doc}
+
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+
+\begin{document}
+\DocInput{\jobname.dtx}
+\PrintChanges
+\PrintIndex
+\end{document}
+%</driver>
+%
+% \fi
+%
+% \changes{0.1.0}{2025/06/11}{initial version}
+%
+% \GetFileInfo{\jobname.sty}
+%
+% \title{^^A
+%   The \pkg{\jobname} package^^A
+%   \fileinfo^^A
+% }
+%
+% \author{^^A
+%   Progetto ItaCa\\^^A
+%   \texttt{\href{https://progetto-itaca.github.io/}{progetto-itaca.github.io}}^^A
+% }
+%
+% \date{\fileversion~(\filedate)}
+%
+% \maketitle
+%
+% ^^A=[ DOCUMENTATION ]=========================================================
+%
+% \begin{documentation}
+%
+% \section{Documentation}
+%
+% \relax
+%
+% \end{documentation}
+%
+% ^^A=[ IMPLEMENTATION ]========================================================
+%
+% \begin{implementation}
+%
+% \section{Implementation}
+%
+% Open the \pkg{DocStrip} guards and set the internal namespace prefix (as per \LaTeX3 \pkg{DocStrip} convention).
+%    \begin{macrocode}
+%<*package>
+%<@@=itaca>
+%    \end{macrocode}
+%
+
 \NeedsTeXFormat{LaTeX2e}[2020/12/01]
 \ProvidesPackage{itaca}
   [lo .sty per il libro di ItaCa]
 
 % TODO:
 % - funziona tutto ma c'è molto refactoring da fare:
-  % - [in progress] la parte in LaTeX3 è vecchia e farraginosa
-  % - [todo] i nomi delle categorie sono un po' random e andrebbero razionalizzati
-  % - [todo] le macro vanno raggruppate e separate per tipo
-  % - [todo] alcune vanno ridefinite con meno hacks, codice più elegante
-  % - [todo] va tutto documentato meglio, con dei commenti che spiegano come si usano le macro
-  % - [todo] la testa di freccia per gli epi nei diagrammi va migliorata
+% - [in progress] la parte in LaTeX3 è vecchia e farraginosa
+% - [todo] i nomi delle categorie sono un po' random e andrebbero razionalizzati
+% - [todo] le macro vanno raggruppate e separate per tipo
+% - [todo] alcune vanno ridefinite con meno hacks, codice più elegante
+% - [todo] va tutto documentato meglio, con dei commenti che spiegano come si usano le macro
+% - [todo] la testa di freccia per gli epi nei diagrammi va migliorata
 
 
 % questi vanno chiamati per primi
@@ -32,12 +93,12 @@
 \clist_concat:NNN \g_itaca_both_clist \g_itaca_upper_clist \g_itaca_lower_clist
 
 \clist_new:N \g_itaca_categories_clist
-\clist_gset:Nn \g_itaca_categories_clist { Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, sSet, gSet, Dyn, Ord, FOrd, Lat, HoTop, Fld, DInt, Ch, Gl }
+\clist_gset:Nn \g_itaca_categories_clist { Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Flux, POrd, Pre, Span, Cospan, sSet, gSet, Dyn, Ord, FOrd, Lat, HoTop, Fld, DInt, Ch, Gl, Gpd, Alg }
 
 % \mathbf{#1} -> \bf#1
 
 \clist_new:N \g_itaca_operators_clist
-\clist_gset:Nn \g_itaca_operators_clist { GL, lan, Lan, LAN, lft, Lft, LFT, Nat, ran, Aut, Ran, RAN, Rft, Yan, RFT, rft, op, co, coop, colim, coker, eq, coeq, PSh, sk, Sub, N }
+\clist_gset:Nn \g_itaca_operators_clist { GL, lan, Lan, LAN, lft, Lft, LFT, Nat, ran, Aut, Ran, RAN, Rft, Yan, RFT, rft, op, co, coop, colim, coker, eq, coeq, PSh, sk, Sub, Quot, N }
 
 \cs_new_protected:Npn \itaca_makeabbrev:nnN #1 #2 #3
  {
@@ -75,7 +136,11 @@
 \ExplSyntaxOff
 
 \def\pSet{\partial\ctSet}
-\def\ctCsAlg{\mathrm{C}^*\emdash\cate{Alg}}
+\def\ctAlgT{\ctT\emdash\ctAlg}
+\def\ctCsAlg{\mathrm{C}^*\emdash\ctAlg}
+\def\ctSAlg{\Sigma\emdash\ctAlg}
+\NewDocumentCommand{\ctSEAlg}{O{E}}{(\Sigma,#1)\emdash\ctAlg}
+\NewDocumentCommand{\ctSEEAlg}{O{E}}{\ctSEAlg[E']}
 
 % imprescindibile yoneda in hiragana, va caricato prima di `inputenc'
 \RequirePackage{CJKutf8}
@@ -257,7 +322,7 @@
 \newenvironment{hTerminology}[2][]{\begin{terminology}[#1\,|\,\hands{#2}]}{\end{terminology}}
 \newenvironment{hHeuristics}[2][]{\begin{heuristics}[#1\,|\,\hands{#2}]}{\end{heuristics}}
 \newenvironment{hTheorem}[2][]{\begin{theorem}[#1\,|\,\hands{#2}]}{\end{theorem}}
- 
+
 \ProcessOptions\relax
 
 \newcommand{\Hom}[1]{#1}
@@ -279,6 +344,7 @@
 \def\implies{\Rightarrow}
 \def\whisk{innesto\@\xspace}
 \def\Whisk{Innesto\@\xspace}
+\def\zzg{zig-zag\@\xspace}
 
 \def\xto#1{\xrightarrow{#1}}
 \def\xot#1{\xleftarrow{#1}}
@@ -372,12 +438,20 @@
 \def\ddual#1{#1^{\ast\ast}}
 \let\pmap\divideontimes
 
+
+\ExplSyntaxOn
+\NewExpandableDocumentCommand{\extract}{O{#2}mm}
+ {
+  \tl_range:nnn { #3 } { #1 } { #2 }
+ }
+\ExplSyntaxOff
+
 % un generico `todo`
-\newcommand{\Todo}[1]{\todo[inline, caption=0,color=green!20, bordercolor=white]{#1}}
+\newcommand{\Todo}[1]{\todo[inline, caption={todo : \extract[1]{30}{#1}},color=green!20, bordercolor=white]{\color{gray} #1}}
 
 % un box dei commenti dedicato a ciascuno di noi
 \NewDocumentCommand{\bla}{ O{\textit{anonimo}} m O{red} }{
-  \todo[inline, caption=0, color=#3!10, bordercolor=white]{ \color{gray} \textsf{#1} ha detto: #2 }
+  \todo[inline, caption={#1 : \extract[1]{30}{#2}}, color=#3!10, bordercolor=white]{ \color{gray} \textsf{#1} ha detto: #2 }
 }
 
 \NewDocumentCommand{\fosco}{ m }{\bla[Fosco]{#1}[red]}
@@ -524,7 +598,7 @@
 \NewDocumentCommand{\almond}{ m m O{\bullet} }{
 \node[inner sep=1pt] (C0) at (0,0) {$#3$};
 \node[inner sep=1pt] (C1) at (1.5,0) {$#3$};
-\draw (C0) -- (C1) 
+\draw (C0) -- (C1)
   node[font=\tiny,pos=.5,above] {$#1$}
   node[font=\tiny,pos=.5,below] {$#2$};
 \draw (C0) to[bend left=50] (C1);
@@ -534,13 +608,13 @@
 \node[inner sep=1pt] (C0) at (0,0) {$#5$};
 \node[inner sep=1pt] (C1) at (1.5,0) {$#5$};
 \node[inner sep=1pt] (C2) at (3,0) {$#5$};
-\draw (C0) -- (C1) 
+\draw (C0) -- (C1)
   node[font=\tiny,pos=.5,above] {$#1$}
   node[font=\tiny,pos=.5,below] {$#2$};
 \draw (C0) to[bend left=50] (C1);
 \draw (C0) to[bend right=50] (C1);
 %
-\draw (C1) -- (C2) 
+\draw (C1) -- (C2)
   node[font=\tiny,pos=.5,above] {$#3$}
   node[font=\tiny,pos=.5,below] {$#4$};
 \draw (C1) to[bend left=50] (C2);
@@ -595,3 +669,11 @@
 }
 % inutile riga di controllo
 % END OF FILE
+
+%
+% Close the \pkg{DocStrip} guards and call it a day.
+%    \begin{macrocode}
+%</package>
+%    \end{macrocode}
+%
+% \end{implementation}

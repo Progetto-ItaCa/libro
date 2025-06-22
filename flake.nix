@@ -21,6 +21,7 @@
             collection-latex
             collection-fontsrecommended
             adjustbox
+            alphalph
             babel-italian
             booktabs
             caption
@@ -28,12 +29,16 @@
             cm-super
             collectbox
             cjk
+            csquotes
             cyrillic
             datetime
             enumitem
             etoolbox
+            fancyvrb
             fmtcount
             fontawesome
+            hologo
+            hypdoc
             hyphenat
             ifoddpage
             imakeidx
@@ -58,6 +63,7 @@
             todonotes
             turnstile
             ucs
+            underscore
             varwidth
             xcolor
             xkeyval
@@ -84,10 +90,7 @@
                 TEXMFCACHE=$(pwd)/.texmf-cache \
                 TEXMFCONFIG=$(pwd)/.texmf-config \
                 SOURCE_DATE_EPOCH=${toString self.lastModified} \
-              latexmk \
-                -gg -interaction=nonstopmode -pdf \
-                -pretex="\pdftrailerid{}\relax" -usepretex  \
-              main.tex
+              make main.pdf
             '';
             installPhase = ''
               mkdir -p $out

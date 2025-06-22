@@ -1,4 +1,5 @@
 \section{Trasformazioni naturali}\label{sec_tnat}
+\paolo{Sarebbe bello connettere questa sezione all'introduzione spiegando in che senso formalizza l'idea di naturalità (almeno in certi casi).}
 In \ref{tante_cose_sono_diag} abbiamo osservato che le spanne e cospanne in \(\ctC\) si possono vedere come funtori; del resto, in \ref{def_span_e_cospan} abbiamo costruito una \emph{categoria} di spanne in \(\ctC\). Un omomorfismo di spanne consiste, secondo quella definizione, di una famiglia di tre morfismi di \(\ctC\) tra i vertici omonimi delle due spanne \((X_1\overset l\leftarrow X_0\overset r\to X_2)\) e \((Y_1\overset{l'}\leftarrow Y_0\overset{r'}\to Y_2)\):
 \[\alpha_0 : X_0\to Y_0,\quad \alpha_1 : X_1\to Y_1,\quad \alpha_2 : X_2\to Y_2\]
 che rendono commutativi i diagrammi in \ref{mor_spanne}. Riguardando le spanne \(X_\bullet,Y_\bullet\) come diagrammi di forma \(\Lambda^2_0 \to\ctC\), la terna \(\underline\alpha = (\alpha_0,\alpha_1,\alpha_2)\) si può vedere come una freccia \(X_\bullet \nat Y_\bullet\), nel senso seguente:
@@ -88,9 +89,9 @@ Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia
 		\end{tikzcd}\]
 	è commutativo, scegliendo come frecce verticali le facce \(d_i,d_i'\) o le degenerazioni \(s_i,s_i'\) di \(X_*\) e di \(Y_*\) rispettivamente.
 
-	La categoria degli insiemi simpliciali è di grande rilevanza in topologia algebrica (si veda \cite{a,b,c}) dato che \(\ctsSet\) ammette un funtore di \emph{realizzazione}
+	La categoria degli insiemi simpliciali è di grande rilevanza in topologia algebrica (si veda \cite{goerss-jardine,May1999,strom2011modern,DK1}) dato che \(\ctsSet\) ammette un funtore di \emph{realizzazione}
 	\[\dmFun{r}{\ctsSet}{\ctTop}\]
-	verso la categoria \(\ctTop\) degli spazi topologici, che porta un oggetto la cui struttura è puramente combinatoria\fshyp{}algebrica (il funtore \(X : \bsDelta^\op\fun\ctSet\)) in uno spazio topologico che può essere costruito iterativamente attaccando dischi di dimensione via via più alta (quello che in \cite{} è chiamato un CW-complesso; si veda \cite{fritsch1990cellular} per una introduzione elementare e \cite{} per una più indirizzata alle proprietà categoriali di \(\ctsSet\) e del funtore \(r\) di realizzazione).
+	verso la categoria \(\ctTop\) degli spazi topologici, che porta un oggetto la cui struttura è puramente combinatoria\fshyp{}algebrica (il funtore \(X : \bsDelta^\op\fun\ctSet\)) in uno spazio topologico che può essere costruito iterativamente attaccando dischi di dimensione via via più alta (quello che in \cite{Whitehead1978,May1999} e molti altri è chiamato un CW-complesso; si veda \cite{fritsch1990cellular} per una introduzione elementare o \cite{goerss-jardine,riehl2014categorical} per una più indirizzata alle proprietà categoriali di \(\ctsSet\) e del funtore \(r\) di realizzazione topologica).
 \end{example}
 
 \begin{remark}[Perché si chiama `globo'?]\label{globi_come_sonfatti}\index{Globo}
@@ -113,7 +114,7 @@ Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia
 		}\]
 \end{remark}
 La categoria degli insiemi simpliciali è però decisamente più studiata di quella dei globi.
-\begin{remark}[Nervo di una categoria piccola]\label{def_nervo_di_una_cat}
+\begin{remark}[Nervo di una categoria piccola]\label{def_nervo_di_una_cat}\index{Nervo!--- di una categoria}
 	Il maggiore interesse per \(\ctsSet\) risiede principalmente nel fatto che ogni categoria piccola \(\ctC\in\ctCat\) induce un insieme simpliciale \(N\ctC\) detto il \emph{nervo} di \(\ctC\), definito nel modo che segue:
 	\begin{itemize}
 		\item Gli 0-simplessi di \(N\ctC\) sono gli oggetti di \(\ctC\); gli 1-simplessi	sono le frecce di \(\ctC\), e per \(n\ge 2\) gli \(n\)-simplessi di \(N\ctC\) consistono delle \(n\)-uple di frecce componibili di \(\ctC\), cioè
@@ -196,7 +197,7 @@ La categoria degli insiemi simpliciali è però decisamente più studiata di que
 
 	Del resto, una tale \(f\) è definita da delle componenti \((f_0,f_1,f_2,\dots)\), e dalla definizione sappiamo che \((N\ctC)_0,(N\ctC)_1,(N\ctC)_2\) sono rispettivamente gli oggetti, le frecce e le coppie di frecce componibili di \(\ctC\); altrettanto è vero per \(\ctD\), e allora \(f_0 : \ctC_0\to\ctD_0\) è la candidata funzione sugli oggetti di un funtore, \(f_1 : \ctC_1\to\ctD_1\) la funzione sulle frecce. La compatibilità di \(f_0,f_1\) con l'unica degenerazione \(s : (N\ctC)_0\to(N\ctC)_1\), definita da \(s[C] = [\Id[C]]\) afferma che \(f_1(\Id[C]) = \Id[f_0C]\). Similmente, la compatibilità di \(f_2\) con la faccia \(d_1\), che consiste della mappa di composizione \(N\ctC_2\to N\ctC_1\), afferma che \(f_1\) preserva anche le composizioni.
 \end{proof}
-% La corrispondenza \(N : \ctC\mapsto N\ctC\) diventa un funtore \(N : \ctCat\to\ctsSet\) se si definisce \(NF\) come la trasformazione naturale indotta dall'azione di \(F\) sulle frecce di \(\ctC\). Chiaramente la funtorialità di $F$ induce una funzione $(NF)_n
+% La corrispondenza \(N : \ctC\mapsto N\ctC\) diventa un funtore \(N : \ctCat\to\ctsSet\) se si definisce \(NF\) come la trasformazione naturale indotta dall'azione di \(F\) sulle frecce di \(\ctC\). Chiaramente la funtorialità di \(F\) induce una funzione (NF)_n
 \begin{definition}\label{def_natutra}\index{Trasformazione naturale}\index{homCDFG@\(\Hom{\ctCat(\ctC,\ctD)}(F,G)\)}
 	Come visto in \ref{ex_cat_cat} i funtori sono i morfismi di una categoria \(\ctCat\) delle categorie (piccole); ma abbiamo appena trovato che anche le trasformazioni naturali tra funtori rendono la classe \(\ctCat(\ctC,\ctD)\) dei funtori \(F : \ctC\funto\ctD\) a sua volta una categoria, dove le trasformazioni naturali \(\alpha : F\nat G\) si pensano come ``frecce tra frecce'', o ``frecce di dimensione 2'', nel senso che andiamo a spiegare. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo \(\To\), a riempire un diagramma di funtori come segue:
 	\[
@@ -230,20 +231,20 @@ Inoltre, la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 	Una trasformazione naturale tra funtori che sono insiemi ordinati è perciò una \emph{proposizione}: quella che asserisce che \(f\) e \(g\) sono minori una dell'altra, punto per punto.
 \end{example}
 
-\begin{example}\index{Equivarianza}\index{Trasformazione naturale!--- tra monoidi}
-	Abbiamo visto nell'Esempio~\ref{exa_azioni_funtori} che dato un gruppo \(G\), un funtore \(\susp G\to\ctSet\) è un insieme \(X\) con un'azione di \(G\) su \(X\). Dati due funtori \(\susp G\to\ctSet\), i.e.\ due insiemi \(X\) e \(Y\) con un'azione di \(G\), una trasformazione naturale tra questi due funtori è una funzione \(f:X\to Y\) che commuta con l'azione di \(G\), nel senso che per ogni \(g\in G\), il seguente diagramma commuta,
-	\[
-		\begin{tikzcd}
-			X \ar[d, "f"'] \ar{r}{g\cdot\blank} & X \ar{d}{f} \\
-			Y \ar[r, "g\cdot\blank"'] & Y
-		\end{tikzcd}
-	\]
-	(abbiamo indicato con \(g\cdot\blank\) la biiezione di \(X\) che corrisponde all'elemento \(g\) nella rappresentazione).
+% \begin{example}\index{Equivarianza}\index{Trasformazione naturale!--- tra monoidi}
+% 	Abbiamo visto nell'Esempio~\ref{exa_azioni_funtori} che dato un gruppo \(G\), un funtore \(\susp G\to\ctSet\) è un insieme \(X\) con un'azione di \(G\) su \(X\). Dati due funtori \(\susp G\to\ctSet\), i.e.\ due insiemi \(X\) e \(Y\) con un'azione di \(G\), una trasformazione naturale tra questi due funtori è una funzione \(f:X\to Y\) che commuta con l'azione di \(G\), nel senso che per ogni \(g\in G\), il seguente diagramma commuta,
+% 	\[
+% 		\begin{tikzcd}
+% 			X \ar[d, "f"'] \ar{r}{g\cdot\blank} & X \ar{d}{f} \\
+% 			Y \ar[r, "g\cdot\blank"'] & Y
+% 		\end{tikzcd}
+% 	\]
+% 	(abbiamo indicato con \(g\cdot\blank\) la biiezione di \(X\) che corrisponde all'elemento \(g\) nella rappresentazione).
 
-	In teoria delle rappresentazioni, la condizione su \(f\)
-	\[\text{per ogni } g\in G,\, f(g\cdot x)=g\cdot f(x)\]
-	si chiama \emph{equivarianza}, ed è esattamente la condizione di naturalità istanziata in questo caso. Una conseguenza immediata della condizione è che \(f\) si restringe all'insieme \(X^G:=\{x\in X\mid \forall g\in G . g\cdot x = x\}\) dei punti fissi dell'azione di \(G\) su \(X\); infatti, per ogni \(x\in X^G\) si ha \(g\cdot f(x) = f(g\cdot x) = f(x)\).
-\end{example}
+% 	In teoria delle rappresentazioni, la condizione su \(f\)
+% 	\[\text{per ogni } g\in G,\, f(g\cdot x)=g\cdot f(x)\]
+% 	si chiama \emph{equivarianza}, ed è esattamente la condizione di naturalità istanziata in questo caso. Una conseguenza immediata della condizione è che \(f\) si restringe all'insieme \(X^G:=\{x\in X\mid \forall g\in G . g\cdot x = x\}\) dei punti fissi dell'azione di \(G\) su \(X\); infatti, per ogni \(x\in X^G\) si ha \(g\cdot f(x) = f(g\cdot x) = f(x)\).
+% \end{example}
 \begin{example}\label{doppio_duale}\index{Trasformazione naturale!--- sul biduale}
 	Dato uno spazio vettoriale \(V\) di dimensione finita su un campo \(k\), ogni primo corso di algebra lineare mostra che è possibile definire un isomorfismo
 	% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGVwc2lsb24gOiBWIl0sWzEsMCwiXFxkdWFse1xcZHVhbCBWfSJdLFswLDFdXQ==
@@ -335,7 +336,7 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 	\end{itemize}
 	Esiste una legge distributiva \(\alpha : FG\nat GF\) con componenti
 	\[\dmFun{\alpha_A}{\sum_{n\ge 1} (1+A)^n}{1+\sum_{n\ge 1} A^n}\]
-	date dall'elidere tutte le occorrenze di \(\bullet\) nell'argomento (se la lista non vuota $(a\cons as)$ è fatta unicamente di $\bullet$, $\alpha_A(a\cons as) = \bullet$ nel codominio).
+	date dall'elidere tutte le occorrenze di \(\bullet\) nell'argomento (se la lista non vuota \((a\cons as)\) è fatta unicamente di \(\bullet\), \(\alpha_A(a\cons as) = \bullet\) nel codominio).
 \end{example}
 \begin{hExample}[Un esempio di isomorfismo naturale]{tech}\label{puniv_prodotto_naturale}\index{Trasformazione naturale!isomorfismo naturale}
 	(La natura di questo esempio sarà chiarita dal capitolo \ref{chap_limiti_colimiti}, sulle proprietà universali, e dal capitolo \ref{cap_aggiunti}, sui funtori aggiunti.)
@@ -373,7 +374,7 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 		      \[\pair{\lambda a.\pi_{B'}(\pair {vf_Ba}{wf_Ca})}{\lambda a.\pi_{C'}(\pair {vf_Ba}{wf_Ca})} \in \Hom{\ctSet}(A',B')\times \Hom{\ctSet}(A',C')\]
 		      è uguale a\dots{})
 	\end{itemize}
-	Usando il funtore `diagonale' \(\Delta : \ctSet^\op \fun\ctSet^\op\times\ctSet^\op\) di \ref{es_di_funtori} e accettando (ma è semplice dimostrarlo!) il fatto che esiste un funtore prodotto \(\Pi : \ctSet\times\ctSet \fun\ctSet\) definito mandando \(X,Y\mapsto X\times Y\) e \(u : X\to X',v : Y\to Y'\) in \(u\times v : \pair xy\mapsto \pair{ux}{vy}\), \(\varpi\) consta di una trasformazione naturale invertibile che `riempie' il diagramma
+	Usando il funtore `diagonale' \(\Delta : \ctSet^\op \fun\ctSet^\op\times\ctSet^\op\) di \ref{es_di_funtori} e ricordando da \ref{exam_bifuntori}.\ref{eb_2} che esiste un funtore prodotto \(\blank\times\blank : \ctSet\times\ctSet \fun\ctSet\) definito mandando \(X,Y\mapsto X\times Y\) e \(u : X\to X',v : Y\to Y'\) in \(u\times v : \pair xy\mapsto \pair{ux}{vy}\), \(\varpi\) consta di una trasformazione naturale invertibile che `riempie' il diagramma
 	% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXGN0U2V0Xlxcb3BcXHRpbWVzXFxjdFNldFxcdGltZXNcXGN0U2V0Il0sWzAsMiwiXFxjdFNldF5cXG9wXFx0aW1lc1xcY3RTZXQiXSxbMSwyLCJcXGN0U2V0Il0sWzIsMiwiXFxjdFNldFxcdGltZXNcXGN0U2V0Il0sWzIsMSwiXFxjdFNldF5cXG9wXFx0aW1lc1xcY3RTZXRcXHRpbWVzXFxjdFNldF5cXG9wXFx0aW1lc1xcY3RTZXQiXSxbMiwwLCJcXGN0U2V0Xlxcb3BcXHRpbWVzXFxjdFNldF5cXG9wXFx0aW1lc1xcY3RTZXRcXHRpbWVzXFxjdFNldCJdLFswLDEsIlxcY3RTZXReXFxvcFxcdGltZXNcXFBpIiwyXSxbMSwyLCJcXEhvbXtcXGN0U2V0fSIsMl0sWzMsMiwiXFxQaSJdLFs1LDQsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMywiXFxIb217XFxjdFNldH1cXHRpbWVzXFxIb217XFxjdFNldH0iXSxbMCw1LCJcXERlbHRhXFx0aW1lc1xcY3RTZXRcXHRpbWVzXFxjdFNldCJdLFsxLDUsIlxcdmFycGkiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6NDAsInRhcmdldCI6NDB9LCJsZXZlbCI6Mn1dXQ==
 	\[\begin{tikzcd}
 			{\ctSet^\op\times(\ctSet\times\ctSet)} && {(\ctSet^\op\times\ctSet^\op)\times\ctSet\times\ctSet} \\
@@ -389,16 +390,32 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 		\end{tikzcd}\]
 	Chi legge vedrà presto che esempi del genere (solo, quasi sempre più elaborati di questo) pervadono la teoria delle categorie.
 \end{hExample}
+\begin{remark}[Isomorfismi `aritmetici']
+	Anche questo esempio verrà chiarito dalla teoria dei limiti e colimiti, e dei funtori aggiunti; questi isomorfismi sono però di grande aiuto in varie dimostrazioni nel seguito, e quindi li presentiamo qui.
+	Se \(A,B,C\) sono insiemi, tutti gli isomorfismi seguenti sono naturali, in tutti i loro argomenti, tra opportuni funtori somma e prodotto:
+	\begin{enumtag}{as}
+		\item\label{as_1} \(A+\varnothing\cong \varnothing + A \cong A\) (naturale in \(A\), e \(\varnothing\) è l'insieme vuoto);
+		\item\label{as_2} \(A+B\cong B+A\) (naturale in \(A,B\));
+		\item\label{as_3} \((A+B)+C\cong A+(B+C)\) (naturale in \(A,B,C\));
+		%
+		\item\label{as_4} \(A\times \ctTerm\cong \ctTerm \times  A \cong A\) (naturale in \(A\), e \(\ctTerm\) è un insieme singoletto);
+		\item\label{as_5} \(A\times B\cong B\times A\) (naturale in \(A,B\));
+		\item\label{as_6} \((A\times B)\times C\cong A\times (B\times C)\) (naturale in \(A,B,C\));
+		%
+		\item\label{as_7} \(A\times(B+C)\cong (A\times B) + (A\times C)\) (naturale in \(A,B,C\)).\footnote{Più precisamente, sono i funtori \(\blank_1\times(\blank_2+\blank_3)\) e \((\blank_1\times \blank_2) + (\blank_1\times \blank_3)\) ad essere isomorfi, dove nel lato destro dell'equazione il secondo funtore fa variare \(\blank_1\) contemporaneamente in entrambi i posti.}
+	\end{enumtag}
+	Se \(\ctA,\ctB,\ctC\) sono categorie, isomorfismi del tutto analoghi valgono, naturali in tutti gli argomenti, in \ref{as_1} per la categoria vuota di \ref{ex_cat_vuota} e in \ref{as_4} per la categoria terminale di \ref{ex_cat_term}.
+\end{remark}
 \begin{proposition}\index{Gruppo lineare}\index{Yoneda!lemma di ---}
 	Si ricordi che in \ref{il_determinante} e \ref{ex_fun_GLn} abbiamo definito un funtore \(\GL_2 : \ctcRing\fun\ctGrp\); proviamo ora che esiste un isomorfismo naturale (precisamente, una biiezione naturale di insiemi, che però può essere promossa a un isomorfismo di gruppi) tra \(\GL_2\) e il funtore \(\Hom{\ctcRing}(S(\GL_2),-)\) per l'anello \(S(\GL_2)\) ottenuto dal quoziente
 	\[\bbZ[a,b,c,d,y]/(1-(ad-bc)y)\]
-	in poche parole, \(S(\GL_2)\) è ottenuto aggiungendo formalmente all'anello dei polinomi \(\bbZ[a,b,c,d]\) un inverso all'elemento \(y=ad-bc\). Un omomorfismo di anelli \(S(\GL_2) \to R\) è determinato da un omomorfismo $\varphi : \bbZ[a,b,c,d,y] \to R$ che scende al quoziente; questa è esattamente la scelta di quattro elementi \(\alpha,\beta,\gamma,\delta\in R\) soggetti alla condizione che \(\alpha\delta-\beta\gamma\) sia un'unità (l'immagine di $y$ mediante $\varphi$), e questo fissa un unico elemento \(\left(\begin{smallmatrix}					\alpha	&	\beta \\					\gamma	&	\delta				\end{smallmatrix}\right)\) di \(\GL_2(R)\).
+	in poche parole, \(S(\GL_2)\) è ottenuto aggiungendo formalmente all'anello dei polinomi \(\bbZ[a,b,c,d]\) un inverso all'elemento \(y=ad-bc\). Un omomorfismo di anelli \(S(\GL_2) \to R\) è determinato da un omomorfismo \(\varphi : \bbZ[a,b,c,d,y] \to R\) che scende al quoziente; questa è esattamente la scelta di quattro elementi \(\alpha,\beta,\gamma,\delta\in R\) soggetti alla condizione che \(\alpha\delta-\beta\gamma\) sia un'unità (l'immagine di \(y\) mediante \(\varphi\)), e questo fissa un unico elemento \(\left(\begin{smallmatrix}					\alpha	&	\beta \\					\gamma	&	\delta				\end{smallmatrix}\right)\) di \(\GL_2(R)\).
 
-		La biiezione $\GL_2(R)\to \ctcRing(S(\GL_2),R)$ così determinata è naturale in $R$, come è facile vedere dal modo in cui un omomorfismo di anelli $f : R\to R'$ agisce mediante il funtore $\GL_2$.
+	La biiezione \(\GL_2(R)\to \ctcRing(S(\GL_2),R)\) così determinata è naturale in \(R\), come è facile vedere dal modo in cui un omomorfismo di anelli \(f : R\to R'\) agisce mediante il funtore \(\GL_2\).
 
-		Questo argomento si generalizza anche facilmente al caso del funtore $\GL_n$: in quel caso, $S(\GL_n)$ è il quoziente 
-		\[\bbZ[\{x_{ij}\mid 1\le i,j\le n\}\cup \{y\}]\big/(1-y\cdot\det)\]
-		dove $\det$ è il polinomio $\sum_{\sigma\in \fkS(n)}\prod_{i=1}^n x_{i,\sigma(i)}$ nelle indeterminate $x_{ij}$.
+	Questo argomento si generalizza anche facilmente al caso del funtore \(\GL_n\): in quel caso, \(S(\GL_n)\) è il quoziente
+	\[\bbZ[\{x_{ij}\mid 1\le i,j\le n\}\cup \{y\}]\big/(1-y\cdot\det)\]
+	dove \(\det\) è il polinomio \(\sum_{\sigma\in \fkS(n)}\prod_{i=1}^n x_{i,\sigma(i)}\) nelle indeterminate \(x_{ij}\).
 \end{proposition}
 Si noti che la condizione di naturalità di \(\beta\cmp\alpha\) si ottiene componendo quelle di \(\alpha\) e \(\beta\):
 \[
@@ -530,26 +547,26 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 		\item seconda dimostrazione: si noti che vale la seguente catena di uguaglianze tra composizioni orizzontali e verticali (invocando \ref{interchangio} ogni volta che sia necessario):
 		      \begin{align*}
 			      \raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				      \almond\alpha\beta
-			      \end{tikzpicture}}
+					                      \almond\alpha\beta
+				                      \end{tikzpicture}}
 			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				              \almonds\id\id\alpha\beta
-			              \end{tikzpicture}} \\
+					                          \almonds\id\id\alpha\beta
+				                          \end{tikzpicture}} \\
 			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				              \almonds\alpha\id\id\beta
-			              \end{tikzpicture}} \\
+					                          \almonds\alpha\id\id\beta
+				                          \end{tikzpicture}} \\
 			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				              \almonds\id\beta\alpha\id
-			              \end{tikzpicture}} \\
+					                          \almonds\id\beta\alpha\id
+				                          \end{tikzpicture}} \\
 			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				              \almonds\beta\id\id\alpha
-			              \end{tikzpicture}} \\
+					                          \almonds\beta\id\id\alpha
+				                          \end{tikzpicture}} \\
 			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				              \almonds\beta\alpha\id\id
-			              \end{tikzpicture}} \\
+					                          \almonds\beta\alpha\id\id
+				                          \end{tikzpicture}} \\
 			       & =\raisebox{.3ex}{\begin{tikzpicture}[baseline=(current bounding box.center)]
-				              \almond\beta\alpha
-			              \end{tikzpicture}}
+					                          \almond\beta\alpha
+				                          \end{tikzpicture}}
 		      \end{align*}
 	\end{itemize}
 	Questo conclude la dimostrazione che \(\beta\cmp\alpha = \alpha\cmp\beta\).

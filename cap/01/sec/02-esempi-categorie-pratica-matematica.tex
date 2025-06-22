@@ -32,10 +32,10 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	\begin{figure}[h]
 		\begin{center}
 			\begin{tikzpicture}[
-				x=4em, y=4em,
-				wrap/.style={fill=black!5, rounded corners},
-				edge/.style={-latex},
-				0simplex/.style={font=\scriptsize,inner sep=2pt},
+					x=4em, y=4em,
+					wrap/.style={fill=black!5, rounded corners},
+					edge/.style={-latex},
+					0simplex/.style={font=\scriptsize,inner sep=2pt},
 				]
 				\begin{scope}[xshift=0em,yshift=0.433*5em]
 					\node[0simplex] (0D0) at (0.0,0) {0};
@@ -346,18 +346,18 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 \begin{remark}\label{diff_pres_cat_rel}
 	L'osservazione precedente permette una differente presentazione per la categoria \(\ctRel\): gli oggetti di \(\ctRel\) sono ancora gli insiemi, ma una relazione \(R\subseteq X\times Y\) viene ora presentata come una \emph{funzione}
 	\[\dmFun RX{\pow Y}\]
-	definita mandando $x\in X$ nell'insieme $Rx = \{y\in Y\mid xRy\}$, e una tale relazione induce un'unica funzione $\hat R : \pow X\to \pow Y$ definita da $\hat R(U) = \bigcup_{x\in U}Rx = \{y\in Y\mid \exists x\in U,\, y\in Rx\}$, chiamata \emph{estensione di Kleisli} di $R$ (il capitolo \ref{}, sulle monadi, chiarirà questa terminologia).
+	definita mandando \(x\in X\) nell'insieme \(Rx = \{y\in Y\mid xRy\}\), e una tale relazione induce un'unica funzione \(\hat R : \pow X\to \pow Y\) definita da \(\hat R(U) = \bigcup_{x\in U}Rx = \{y\in Y\mid \exists x\in U,\, y\in Rx\}\), chiamata \emph{estensione di Kleisli} di \(R\) (il capitolo \ref{cap_monadi}, sulle monadi, chiarirà questa terminologia).
 
-	La composizione di due relazioni \(R\subseteq X\times Y\) e \(S\subseteq Y\times Z\) è data dalla composizione \emph{di funzioni} $\hat S\cmp R$, cioè	
+	La composizione di due relazioni \(R\subseteq X\times Y\) e \(S\subseteq Y\times Z\) è data dalla composizione \emph{di funzioni} \(\hat S\cmp R\), cioè
 	\[
 		x \mapsto \hat S(Rx) = \{z\in Z\mid \exists y\in Rx,\, ySz\}.
 	\]
-Le proprietà generali di una estensione di Kleisli, che permettono di dimostrare che la definizione data soddisfa gli assiomi di categoria, sono le seguenti (tutte di facile dimostrazione, che lasciamo per esercizio): 
-\begin{enumtag}{ek}
-	\item \label{ek_1} per ogni insieme $A$, esiste una \emph{relazione identica} $\eta_A : A\to \pow A$, e $\hat\eta_A$ è l'identità di $\pow A$;
-	\item \label{ek_2} se $R : B\to \pow A$ è una relazione, allora $\hat R\cmp \eta_B = R : B \to\pow A$;
-	\item \label{ek_3} se $R : B\to \pow A$ e $S : C\to \pow B$ sono due relazioni, allora $\hat S\cmp \hat R = \hat{S\cmp R} : C\to \pow A$.
-\end{enumtag} 
+	Le proprietà generali di una estensione di Kleisli, che permettono di dimostrare che la definizione data soddisfa gli assiomi di categoria, sono le seguenti (tutte di facile dimostrazione, che lasciamo per esercizio):
+	\begin{enumtag}{ek}
+		\item \label{ek_1} per ogni insieme \(A\), esiste una \emph{relazione identica} \(\eta_A : A\to \pow A\), e \(\hat\eta_A\) è l'identità di \(\pow A\);
+		\item \label{ek_2} se \(R : B\to \pow A\) è una relazione, allora \(\hat R\cmp \eta_B = R : B \to\pow A\);
+		\item \label{ek_3} se \(R : B\to \pow A\) e \(S : C\to \pow B\) sono due relazioni, allora \(\hat S\cmp \hat R = \hat{S\cmp R} : C\to \pow A\).
+	\end{enumtag}
 \end{remark}
 \begin{example}[Insiemi e funzioni]\label{ex_cat_insiemi}\index{Categoria!--- degli insiemi}
 	\index{Categoria!--- degli insiemi finiti|see {--- degli insiemi}}\index{Insieme}
@@ -955,17 +955,33 @@ Un esempio standard di struttura di convessità su un insieme è dato dagli spaz
 	\end{itemize}
 	La composizione di omomorfismi di pseudoinsiemi è la composizione di funzioni; la funzione identità è l'identità di \((S,\sim)\) (e se \(\sim'\) è una relazione di equivalenza più fine di \(\sim\) sullo stesso insieme \(S\), la funzione identità \((S,\sim) \to (S,\sim')\) è un omomorfismo, ma non è un isomorfismo, nel senso di \ref{def_isomorfismo}).
 \end{example}
-\begin{terminology}[Sul nome `pseudoinsieme']\index{Pseudoinsieme}
+\begin{terminology}[A proposito del nome `pseudoinsieme']\index{Pseudoinsieme}
 	La nomenclatura `insieme di Bishop' viene da \cite{Bishop1985}, dove quello che è chiamato qui pseudoinsieme consiste di un insieme per cui sia data una regola esplicita che costruisce i suoi elementi, e questi elementi possono essere uguagliati mediante una relazione \(\sim\), che astrae l'uguaglianza sintattica.\footnote{In Bishop la costruibilità dei suoi elementi è il punto centrale nella definizione di pseudoinsieme: elementi esibiti mediante procedure differenti sono però uguali ad ogni fine pratico, e vanno quindi identificati.}
 
 	In questo senso va intesa la nomenclatura `pseudoinsieme': gli elementi di un insieme di Bishop non sono strettamente uguali ma equivalenti mediante \(\sim\); analogamente va inteso il termine `prequoziente': un insieme di Bishop consta della struttura `precedente al quoziente' \(S/_\sim\).
 \end{terminology}
+Concludiamo con una ultima digressione terminologica, che vuole fissare una terminologia elusiva ora che disponiamo di molti esempi di categorie larghe come universi.
+\begin{remark}[Morfismi o frecce?]\label{frecce_o_morfismi}\index{Freccia}\index{Morfismo}
+	Un modello tipico per il concetto di categoria dato in \ref{def_categ} realizza gli oggetti come istanze di un tipo di struttura (per esempio, una struttura algebrica come quelle di \ref{ex_cat_sigma_strutture}, o un insieme dotato di una relazione d'ordine, uno spazio topologico, con una misura di probabilità, metrico\dots), e ne considera la totalità; in questo caso le frecce sono applicazioni tra questi insiemi che \emph{preservano} tale struttura. Molte categorie quindi nascono considerando `tutti' gli insiemi dotati di un certo tipo dato di struttura, e le mappe che la preservano dette \emph{omomorfismi} (di gruppi, di anelli, di spazi vettoriali, di insiemi ordinati, di spazi metrici, eccetera).
+
+	Questo tipo di modello è perfetto per spiegare a chi ha già una certa formazione matematica come il concetto di categoria si intende utilizzato nella pratica matematica, e in effetti il punto di ingresso pedagogico più agile è proprio presentare esempi di queste \emph{categorie di strutture}. Perché una spiegazione di questo tipo funzioni, è però necessario, in particolare, che la persona destinataria abbia un'idea chiara \emph{e pregressa} dell'uso previsto del termine `struttura'.
+
+	In più, il concetto astratto di categoria ha altre istanze, in cui non si considerano come oggetti degli insiemi strutturati, e le corrispondenti funzioni tra insiemi che la preservano.
+	\begin{itemize}
+		\item In alcuni casi, gli oggetti di queste istanze non si presentano naturalmente come insiemi strutturati, ma come elementi di altri insiemi; un esempio verrà dato in \ref{ord_sonocat}, vedendo ogni poset \((P,\le)\) come una categoria --i cui oggetti sono gli elementi di \(P\).
+		\item In altri casi, sebbene gli oggetti possano essere visti come insiemi, le frecce non sono funzioni definite sugli elementi di questi insiemi; questo problema è irrimediabile dato che si possono costruire (anche se non è banale) esempi in cui le frecce di una categoria \(\ctC\) \emph{non possono essere} funzioni. Esempi di questo tipo sono le categorie di \ref{ex_cat_hotop} e \ref{ex_cat_meas}.
+		      \Todo{mi sono ricordato perché questo paragrafo suona male, non ho finito di scriverlo; qui volevo menzionare un esempio (che al momento manca), la categoria i cui oggetti sono triple \((X,\Sigma,N)\) di uno spazio misrabile e un ideale di eventi nulli (tecnicamente, un insieme: un insieme di terne...), e le frecce sono però classi di equivalenza di funzioni uguali quasi-\(N\)-ovunque...}
+		\item oppure, infine, il termine `struttura' non si applica in alcun modo ragionevole. Ad esempio: la compattezza (locale o globale) di uno spazio di Hausdorff è una \emph{proprietà} dello spazio, non una struttura ulteriore che lo spazio possiede; e in tal caso, una scelta naturale di omomorfismi tra spazi (Hausdorff e) compatti è fatta dalle mappe continue \emph{e proprie} (tali che la preimmagine di un compatto del codominio sia compatta nel dominio).
+	\end{itemize}
+	Questo suggerisce la necessità di introdurre una (sottile, ma sostanziale) differenza terminologica tra `morfismo' (astrazione della nozione di \emph{omo}morfismo tra strutture) e `freccia' (un segno primitivo, da interpretare letteralmente come il simbolo `\(\xymatrix{ \ar[r] & }\)' infisso tra due oggetti). Le categorie del primo tipo hanno nomi diversi per diversi autori: in \cite[5.3.1.5]{kromer} sono dette `categorie strutturali' --e per antitesi, quelle del secondo tipo sono dette `non strutturali'; \cite{acc} preferisce invece la nozione più fine di \emph{costrutto} (che introdurremo in \ref{def_costrutto}).
+\end{remark}
+Questa prima osservazione	terminologica permette di approfondire la nozione di categoria come struttura.
 \subsection{Categorie come strutture}\label{ssec:categorie_strutture}
 Fin qui, l'osservazione che le strutture matematiche di un dato tipo, con la definizione appropriata di omomorfismo, formino una categoria, è nient'altro che una banalità della prassi matematica. Una osservazione decisamente meno banale è che alcune delle strutture della pratica matematica sono \emph{esse stesse} delle categorie.
 
 In più, l'esempio \ref{ex_cat_sigma_strutture} potrebbe far sospettare che gli oggetti di una categoria siano alla fine sempre insiemi dotati di strutture ulteriori (operazioni o relazioni, soggette a equazioni), e i morfismi funzioni che preservano queste operazioni e relazioni.
 
-Invece, le categorie che hanno questa proprietà si dicono \emph{concrete}, ed esistono esempi di categorie non concrete (sebbene essi siano sorprendentemente ardui da definire); chi legge può consultare \cite{Freyd1973,Kuera1971} per maggiori informazioni.
+Invece, le categorie che hanno questa proprietà si dicono \emph{concrete}, ed esistono esempi di categorie non concrete (sebbene essi siano sorprendentemente ardui da definire); chi legge e cerca maggiori informazioni può consultare il lavoro di Peter Freyd e Lud\v{e}k Ku\v{c}era \cite{Freyd1973,Kuera1971}.
 
 Negli esempi \ref{ex_cat_vuota}--\ref{ex_cat_libera} gli oggetti si possono vedere, più che come insiemi strutturati, come \emph{vertici di un grafo}.
 

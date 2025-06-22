@@ -33,27 +33,6 @@
 	\end{itemize}
 	In entrambi i casi, è semplice verificare che \(\ctP_* (g\cmp f) = \ctP_* g\cmp \ctP_* f\) (risp., \(\ctP^* (g\cmp f) = \ctP^* f\cmp \ctP^* g\)) e \(\ctP_*(\Id[X]) = \Id[\pow X] = \ctP^*(\Id[X])\); lo si faccia per esercizio.
 \end{example}
-\begin{definition}[Il funtore dei sottoggetti]\label{def_fun_sub}\index{Funtore!--- dei sottoggetti}
-	Dato un insieme \(X\) consideriamo la classe di tutti i monomorfismi di codominio \(X\), cioè le funzioni iniettive \(A\mono X\); dati due monomorfismi \(m : A\mono X, n : B\mono X\), diciamo che \(m\le n\) se esiste una funzione (necessariamente un mono) \(h : A\to B\) tale che \(n\cmp h = m\); il triangolo commutativo
-	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJBIl0sWzAsMiwiQiJdLFsxLDEsIlgiXSxbMCwyLCJtIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCJuIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwxLCJoIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XV0=
-	\[\begin{tikzcd}[row sep=2mm]
-			A \\
-			& X \\
-			B
-			\arrow["m", hook, from=1-1, to=2-2]
-			\arrow["h"', hook, from=1-1, to=3-1]
-			\arrow["n"', hook, from=3-1, to=2-2]
-		\end{tikzcd}\]
-	traduce il fatto che \(A\) è un sottoinsieme di \(X\), ma anche di un altro sottoinsieme \(B\), possibilmente più piccolo. Diciamo poi che \(m,n\) come sopra sono equivalenti, scritto \(m\simeq n\), se \(A\) e \(B\) sono isomorfi (per il teorema di Cantor-Schröder-Bernstein questo equivale a \(m\le n\) e \(n\le m\)).
-
-	Il \emph{funtore dei sottoggetti}
-	\[\dmFun{\Sub}{\ctSet^\op}{\ctSet}\]
-	assegna a un insieme \(X\) l'insieme delle classi di equivalenza di mono \(\{m : A\mono X\}\) (che questo sia un insieme, segue dall'assioma dell'insieme potenza di ZF). L'azione sulle frecce si determina come segue: data una funzione \(f : X\to Y\), esiste una funzione
-	\[\dmFun{\Sub(f)}{\Sub(Y)}{\Sub(X)}\]
-	che manda \(U\subseteq Y\) nel sottoinsieme \(\ctP^*(f)[U]\) come definito sopra.
-
-	La presenza di un isomorfismo naturale tra il funtore dei sottoggetti \(\Sub\) e \(\ctP^*\), come funtori di tipo \(\ctSet^\op\fun\ctSet\), si basa sull'esistenza di una famiglia di biiezioni \(\chi_X : \ctP(X) = \pow X \cong \{U\subseteq X\}\)
-\end{definition}
 \begin{example}[Monoidi come categorie]\label{funtore_mon_to_cat}\index{Funtore!--- categoria associata a monoide}
 	La corrispondenza che assegna a un monoide \((M,\cdot,1)\) la categoria con un solo oggetto \(\susp(M,\cdot,1)\) come in \ref{mon_sonocat} è la parte sugli oggetti di un funtore
 	\[\dmFun{\susp}{\ctMon}{\ctCat}\]
@@ -267,11 +246,11 @@
 						d_1d_0t
 					\end{smallmatrix}}\ar[ur]_{d_0t}\ar@{}[u]|-t &
 		}\]
-	Ovviamente, è assai sconveniente denotare i vertici di un 2-simplesso a questa maniera; perciò si nominano \(a\) il valore comune \(d_1d_2t = d_1d_1t\), $c$ il valore comune $d_0d_0t = d_0d_1t$, e $b$ il valore comune $d_1d_0t = d_0d_2t$, e si disegna più semplicemente un triangolo fatto da \(a \xto{d_2t} b \xto{d_0t} c\) e \(a \xto{d_1t} c\). Il triangolo quindi diventa
+	Ovviamente, è assai sconveniente denotare i vertici di un 2-simplesso a questa maniera; perciò si nominano \(a\) il valore comune \(d_1d_2t = d_1d_1t\), \(c\) il valore comune \(d_0d_0t = d_0d_1t\), e \(b\) il valore comune \(d_1d_0t = d_0d_2t\), e si disegna più semplicemente un triangolo fatto da \(a \xto{d_2t} b \xto{d_0t} c\) e \(a \xto{d_1t} c\). Il triangolo quindi diventa
 	\[\xymatrix{
 		a\ar[dr]_{d_2t} \ar[rr]^{d_1t} &\ar@{}[d]|-{t} & c \\
 		& b\ar[ur]_{d_0t}
-	}\]
+		}\]
 	% \begin{center}
 	% 	\begin{tikzpicture}%[x=.5cm]
 	% 		\node at (160:1) (a) {$a$};

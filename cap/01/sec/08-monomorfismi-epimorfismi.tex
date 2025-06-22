@@ -16,7 +16,7 @@ Se però vogliamo estendere tale definizione ad una categoria generica, la cui c
 	Se \(\ctC\) è una categoria, denotiamo con \(\Mono[\ctC]\) la sottoclasse di \(\ctC_1\) i cui elementi sono tutti e soli i monomorfismi di \(\ctC\), e analogamente denotiamo \(\Epi[\ctC]\) la sottoclasse i cui elementi sono gli epimorfismi.
 \end{notation}
 \begin{terminology}\index{Monomorfismo!etimologia di `---'}
-	Il prefisso greco \emph{mono-} significa `uno, singolo' (il prefisso greco \(\mu\acute{o}\nu o\varsigma\)- è imparentato al latino \emph{moenia}, un muro fatto di un solo pezzo); la scelta del nome `monomorfismo' si motiva quindi notando che una funzione \(f : A\to B\) è un monomorfismo se ogni valore \(b=f(a) \in B\) viene assunto per al più un \(a\in A\). Il prefisso \emph{epi-} significa invece `sopra, presso' (il prefisso greco \(\overset,\varepsilon\pi\acute{\iota}\)- è imparentato al latino \emph{apud}); la scelta del nome `epimorfismo' si motiva quindi pensando che una funzione \(f : A\to B\) che è un epimorfismo `stia sopra' il suo dominio coprendolo completamente, nel senso che ogni valore \(b=f(a)\) è assunto almeno una volta.
+	Il prefisso greco \emph{mono-} significa `uno, singolo' (il prefisso greco \(\mu\acute{o}\nu o\varsigma\)- è imparentato al latino \emph{moenia}, un muro fatto di un solo pezzo); la scelta del nome `monomorfismo' si motiva quindi notando che una funzione \(f : A\to B\) è un monomorfismo se ogni valore \(b=f(a) \in B\) viene assunto per al più un \(a\in A\). Il prefisso \emph{epi-} significa invece `sopra, presso' (il prefisso greco \(\overset,\varepsilon\pi\acute{\iota}\)- è imparentato al latino \emph{apud}, che però significa `presso'); la scelta del nome `epimorfismo' si motiva quindi pensando che una funzione \(f : A\to B\) che è un epimorfismo `stia sopra' il suo dominio coprendolo completamente, nel senso che ogni valore \(b=f(a)\) è assunto almeno una volta.
 \end{terminology}
 Dato che le definizioni categoriali di mono ed epi generalizzano, rispettivamente, quelle, algebriche, di elementi cancellabili a sinistra e a destra, otteniamo immediatamente il seguente esempio.
 \begin{example}[Mono ed epimorfismi in un monoide]\index{Monomorfismo!--- in un monoide}
@@ -137,20 +137,35 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
 	Per la genericit\`a di \(x\) e \(x'\), abbiamo che \(f\) \`e iniettiva,
 	e dunque un monomorfismo in \(\ctSet\).
 \end{proof}
-\begin{proposition}\label{monoepi_in_catCD}\index{Monomorfismo!--- in \(\Hom\ctCat(\ctC,\ctD)\)}
-	Nella categoria \(\Hom\ctCat(\ctC,\ctD)\) dei funtori \(\ctC\fun\ctD\) e trasformazioni naturali, \(\alpha : F\nat G\) è un mono (epi, mono spezzante, epi spezzante) se e solo se ciascuna delle sue componenti \(\alpha_C : FC\to GC\) è un mono (epi, mono spezzante, epi spezzante) in \(\ctD\).
-\end{proposition}
-\begin{proof}
-	La condizione affinché \(\alpha : F\nat G\) sia un mono è che per ogni \(\gamma,\delta : H\nat F\) si abbia che se \(\alpha\cmp \gamma = \alpha\cmp \delta\), allora \(\gamma=\delta\). Del resto, questa condizione si riscrive come
-	\begin{quote}
-		Per ogni \(C\in\ctC_0\), se \(\alpha_C\cmp \gamma_C = \alpha_C\cmp \delta_C\) allora \(\gamma_C = \delta_C\),
-	\end{quote}
-	cosicché ogni \(\alpha_C\) è un mono in \(\ctD\).
+\begin{definition}[Il funtore dei sottoggetti]\label{def_fun_sub_onset}\index{Funtore!--- dei sottoggetti di \(\ctSet\)}
+	Dato un insieme \(X\) consideriamo la classe di tutti i monomorfismi di codominio \(X\), cioè le funzioni iniettive \(A\mono X\); dati due monomorfismi \(m : A\mono X, n : B\mono X\), diciamo che \(m\le n\) se esiste una funzione (necessariamente un mono) \(h : A\to B\) tale che \(n\cmp h = m\); il triangolo commutativo
+	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJBIl0sWzAsMiwiQiJdLFsxLDEsIlgiXSxbMCwyLCJtIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCJuIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwxLCJoIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XV0=
+	\[\begin{tikzcd}[row sep=2mm]
+			A \\
+			& X \\
+			B
+			\arrow["m", hook, from=1-1, to=2-2]
+			\arrow["h"', hook, from=1-1, to=3-1]
+			\arrow["n"', hook, from=3-1, to=2-2]
+		\end{tikzcd}\]
+	traduce il fatto che \(A\) è un sottoinsieme di \(X\), ma anche di un altro sottoinsieme \(B\), possibilmente più piccolo. Diciamo poi che \(m,n\) come sopra sono equivalenti, scritto \(m\simeq n\), se \(A\) e \(B\) sono isomorfi (per il teorema di Cantor-Schröder-Bernstein questo equivale a \(m\le n\) e \(n\le m\)).
 
-	Analogamente, \(\alpha\) è un mono spezzante (cioè ha una inversa sinistra \(\kappa : G\nat F\) tale che \(\kappa\cmp\alpha=1_F\)), se e solo se ogni componente \(\alpha_C\) ha \(\kappa_C\) per inversa sinistra.
+	Il \emph{funtore dei sottoggetti}
+	\[\dmFun{\Sub}{\ctSet^\op}{\ctSet}\]
+	assegna a un insieme \(X\) l'insieme delle classi di equivalenza di mono \(\{m : A\mono X\}\) (che questo sia un insieme, segue dall'assioma dell'insieme potenza di ZF). L'azione sulle frecce si determina come segue: data una funzione \(f : X\to Y\), esiste una funzione
+	\[\dmFun{\Sub(f)}{\Sub(Y)}{\Sub(X)}\]
+	che manda \(U\subseteq Y\) nel sottoinsieme \(\ctP^*(f)[U]\) come definito sopra.
 
-	Le dimostrazioni nel caso di un epi ed epi spezzante si fanno analogamente.
-\end{proof}
+	La presenza di un isomorfismo naturale tra il funtore dei sottoggetti \(\Sub\) e \(\ctP^*\), come funtori di tipo \(\ctSet^\op\fun\ctSet\), si basa sull'esistenza di una famiglia di biiezioni \(\chi_X : \ctP(X) = \pow X \cong \{U\subseteq X\}\)
+\end{definition}
+\begin{definition}\label{def_sottoggetto}\index{Oggetto!sotto---}
+	Più in generalele possiamo definire un sottoggetto di \(X\in\ctC_0\) come una classe di isomorfismo di	monomorfismi di codominio \(X\), cioè una classe di equivalenza \([m : A\mono X]\) come sopra, dove \(A\) è un oggetto di \(\ctC_0\). Non è in generale vero che esiste un funtore
+	\[\dmFun{\Sub}{\ctC^\op}{\ctSet}\]
+	per due motivi: il primo, che serve assumere un po' di struttura aggiuntiva perché \(\Sub\) sia definito sui morfismi (deve avere tutti i pullback di frecce lungo un mono, nel linguaggio dei limiti del capitolo \ref{chap_limiti_colimiti}), e il secondo, più importante, che (sebbene sia vero per la categoria degli insiemi, come visto sopra, e per tante altre categorie) nessun assioma di categoria assicura che, partendo da una categoria larga \(\ctC\), la classe dei sottoggetti di ogni \(X\) sia un insieme e non una classe propria.\footnote{Per chi legge ed ha interesse a questo tipo di problemi, possiamo dualmente definire anche la classe dei \emph{quozienti} di \(X\in\ctC_0\) come una classe di isomorfismo di epimorfismi di dominio \(X\), ma questa dualizzazione è delicata. Una categoria si dirà \emph{ben copotenziata} (in inglese, \emph{well-copowered}) se, per ogni oggetto \(X\in\ctC_0\), la classe \(\Quot(X)\) dei quozienti di \(X\) è un insieme. Si osservi che, in generale, non è vero che una categoria ben potenziata è ben copotenziata né il viceversa.}
+\end{definition}
+\begin{definition}\label{def_cat_ben_potenziata}\index{Categoria!--- ben potenziata}
+	Una categoria \(\ctC\) si dice \emph{ben potenziata} (in inglese, \emph{well-powered}) se, per ogni oggetto \(X\in\ctC_0\), la classe \(\Sub(X)\) dei sottoggetti di \(X\) è un insieme.
+\end{definition}
 \subsection{Sezioni e retrazioni}\label{sec_sezretraz}\index{Sezione}
 Così come l'algebra ci ha suggerito di generalizzare all'ambito categoriale la nozione di elemento di un monoide cancellabile a sinistra/destra,
 similmente possiamo considerare la nozione di elemento invertibile a sinistra/destra.
@@ -310,6 +325,20 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	\caption{Una funzione suriettiva \(g : E\to B\) dove \(B=\{\blueDot\,\purpleDot\,\redDot\,\orangeDot\,\yellowDot\}\). Ciascuna fibra di \(g\) è non vuota, e la scelta di una inversa destra \(s : B\to E\) ammonta esattamente alla scelta di un elemento in ciascuna di queste fibre.}
 	\label{fig_assioma_scelta}
 \end{figure}
+\begin{proposition}\label{monoepi_in_catCD}\index{Monomorfismo!--- in \(\Hom\ctCat(\ctC,\ctD)\)}
+	Nella categoria \(\Hom\ctCat(\ctC,\ctD)\) dei funtori \(\ctC\fun\ctD\) e trasformazioni naturali, \(\alpha : F\nat G\) è un mono (epi, mono spezzante, epi spezzante) se e solo se ciascuna delle sue componenti \(\alpha_C : FC\to GC\) è un mono (epi, mono spezzante, epi spezzante) in \(\ctD\).
+\end{proposition}
+\begin{proof}
+	La condizione affinché \(\alpha : F\nat G\) sia un mono è che per ogni \(\gamma,\delta : H\nat F\) si abbia che se \(\alpha\cmp \gamma = \alpha\cmp \delta\), allora \(\gamma=\delta\). Del resto, questa condizione si riscrive come
+	\begin{quote}
+		Per ogni \(C\in\ctC_0\), se \(\alpha_C\cmp \gamma_C = \alpha_C\cmp \delta_C\) allora \(\gamma_C = \delta_C\),
+	\end{quote}
+	cosicché ogni \(\alpha_C\) è un mono in \(\ctD\).
+
+	Analogamente, \(\alpha\) è un mono spezzante (cioè ha una inversa sinistra \(\kappa : G\nat F\) tale che \(\kappa\cmp\alpha=1_F\)), se e solo se ogni componente \(\alpha_C\) ha \(\kappa_C\) per inversa sinistra.
+
+	Le dimostrazioni nel caso di un epi ed epi spezzante si fanno analogamente.
+\end{proof}
 I funtori preservano sezioni e retrazioni, nel senso precisato dal seguente teorema:
 \begin{theorem}\index{Retratto}%
 	\label{thm:fun-sezioni-retrazioni}
@@ -404,6 +433,22 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 		Se esiste una fattorizzazione \(f = X \overset e\epi E \xto q Y\) con \(e \in\Epi[\ctC]\), allora \(e\) è un isomorfismo.
 	\end{quote}
 \end{definition}
+\begin{remark}\index{Epimorfismo!--- estremale}
+	Raccogliamo alcuni esempi di epi estremali in categorie note:
+	\begin{itemize}
+		\item Nella categoria degli insiemi, ogni epimorfismo è estremale: infatti, se \(f = m\cmp p : X \to E \mono Y\) allora, usando \ref{mono_epi_ort} troviamo un quadrato
+		      \[\xymatrix{
+				      X \ar[r]^p\ar[d]_f & E\ar[d]^m \\
+				      Y \ar@{=}[r]\ar@{.>}[ur] & Y
+			      }\]
+		      spezzato da una diagonale \(u : Y \to E\), che rende \(m\) un mono e un epi spezzante; per \ref{prop:iso-epi-mono}.(\ref{prop:iso-epi-mono:item2}), deve quindi essere un isomorfismo.
+		\item nella categoria degli anelli un epi estremale è precisamente un omomorfismo suriettivo; se la funzione \(Uf : UR\to US\) indotta da un omomorfismo di anelli \(f : R\to S\) non è suriettiva, questo significa che il sottoanello immagine \(f(R)\) è proprio in \(S\), così che \(f\) non può essere estremale.
+
+		      Nell'altra direzione, se \(f : R\to S\) dà una funzione di insiemi \(Uf : UR\to US\) suriettiva, e supponiamo che \(f = m\cmp p\) sia una fattorizzazione con \(m\) mono, allora \(Um\cmp Up\) è una fattorizzazione di \(Uf\) con \(Um\) mono (dato che i mono nella categoria degli anelli sono precisamente gli omomorfismi tali che \(Um\) sia una funzione iniettiva); del resto gli epi in \(\ctSet\) sono tutti estremali, cosicché \(Um\) deve essere un isomorfismo; ma \(U\) riflette gli isomorfismi per \ref{prop_preserva_riflette}, cosicché è \(m\) che deve essere un isomorfismo.
+
+		      Si noti che l'epimorfismo \(\bbZ\to\bbQ\) non è estremale, perché fattorizza su ciascuna localizzazione di \(\bbZ\) a un primo (per esempio, \(\bbZ \to \bbZ[\frac 12]\mono \bbQ\)).
+	\end{itemize}
+\end{remark}
 \begin{proposition}\index{Epimorfismo!--- estremale}
 	Raccogliamo alcune proprietà degli epi estremali (e implicitamente, le loro duali per mono estremali):
 	\begin{enumtag}{ee}
@@ -422,22 +467,6 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 		\item Se \(g\) ha una inversa destra \(s\) e \(f\cmp g = m\cmp p\), allora \(f = m\cmp p\cmp s\), quindi \(m\) è un isomorfismo.\qedhere
 	\end{enumtag}
 \end{proof}
-\begin{remark}\index{Epimorfismo!--- estremale}
-	Raccogliamo alcuni esempi di epi estremali in categorie note:
-	\begin{itemize}
-		\item Nella categoria degli insiemi, ogni epimorfismo è estremale: infatti, se \(f = m\cmp p : X \to E \mono Y\) allora, usando \ref{mono_epi_ort} troviamo un quadrato
-		      \[\xymatrix{
-				      X \ar[r]^p\ar[d]_f & E\ar[d]^m \\
-				      Y \ar@{=}[r]\ar@{.>}[ur] & Y
-			      }\]
-		      spezzato da una diagonale \(u : Y \to E\), che rende \(m\) un mono e un epi spezzante; per \ref{prop:iso-epi-mono}.(\ref{prop:iso-epi-mono:item2}), deve quindi essere un isomorfismo.
-		\item nella categoria degli anelli un epi estremale è precisamente un omomorfismo suriettivo; se la funzione \(Uf : UR\to US\) indotta da un omomorfismo di anelli \(f : R\to S\) non è suriettiva, questo significa che il sottoanello immagine \(f(R)\) è proprio in \(S\), così che \(f\) non può essere estremale.
-
-		      Nell'altra direzione, se \(f : R\to S\) dà una funzione di insiemi \(Uf : UR\to US\) suriettiva, e supponiamo che \(f = m\cmp p\) sia una fattorizzazione con \(m\) mono, allora \(Um\cmp Up\) è una fattorizzazione di \(Uf\) con \(Um\) mono (\ref{eserva_riflette}); del resto gli epi in \(\ctSet\) sono tutti estremali, cosicché \(Um\) deve essere un isomorfismo; ma \(U\) riflette gli isomorfismi per \ref{prop_preserva_riflette}, cosicché è \(m\) che deve essere un isomorfismo.
-
-		      Si noti che l'epimorfismo \(\bbZ\to\bbQ\) non è estremale, perché fattorizza su ciascuna localizzazione di \(\bbZ\) a un primo (per esempio, \(\bbZ \to \bbZ[\frac 12]\mono \bbQ\)).
-	\end{itemize}
-\end{remark}
 \begin{remark}[Composizione di epi estremali]\label{compo_estremali}\index{Epimorfismo!--- estremale}
 	Questa osservazione contiene un controesempio alla componibilità degli epi estremali, e una dimostrazione che in categorie di modelli per segnature algebriche (dove, informalmente, possiamo costruire la minima sottoalgebra generata da un sottoinsieme) gli epi estremali sono invece una classe chiusa per composizione.
 	\begin{itemize}
@@ -516,6 +545,8 @@ Raccogliamo alcune proprietà degli epi forti:
 	\Todo{}
 \end{proposition}
 \subsection{Classi di funtori}\label{ssec:classi_di_funtori}
+Spesso le proprietà delle due corrispondenze \(F_0,F_1\) (of \(F_{XY}\)), su oggetti e morfismi, che formano un funtore valgono allo stesso un nome speciale, dato che è possibile studiare in generale alcune caratteristiche di quei funtori dove (ad esempio) ciascuna \(F_{XY}\) è iniettiva, o suriettiva, o biiettiva.
+
 Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome speciale ai funtori \(F : \ctC\fun\ctD\) tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva:
 \begin{definition}\label{funtore_pieno}\index{Funtore!--- pieno}
 	Il funtore \(F : \ctC\fun\ctD\) si dice \emph{pieno} se ciascuna \(F_{XY}\) è una funzione suriettiva; questo significa che
@@ -540,9 +571,20 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	\(F : \ctC\fun\ctD\) si dice \emph{essenzialmente suriettivo} (\cite{acc} usa la terminologia \emph{funtore iso-denso}) se la seguente condizione è verificata:
 	\begin{quote}
 		Per ogni oggetto \(D\in\ctD_0\), esistono un oggetto \(C\in\ctC_0\) e un isomorfismo \(i_D : FC\cong D\).
+		\index{Funtore!--- iso-denso|see {--- essenzialmente suriettivo}}
 	\end{quote}
-	\index{Funtore!--- essenzialmente suriettivo}
-	\index{Funtore!--- iso-denso|see {--- essenzialmente suriettivo}}
+	\begin{remark}
+		La terminologia \emph{iso-denso} è poco usata e si dovrebbe preferire standardizzare la nomenclatura al modo che segue: sia \(\mathcal{P}\) una proprietà di una funzione tra insiemi o classi; un funtore \(F : \ctC\fun\ctD\) si dice
+		\begin{itemize}
+			\item \emph{localmente \(\mathcal{P}\)} se ogni funzione \(F_{XY}\) come in \ref{def_alternativa_funtore} ha la proprietà \(\mathcal{P}\);
+			      % quando ogni F_XY è \mathcal{P}
+			\item \emph{essenzialmente \(\mathcal{P}\)} se la funzione \(\pi_0(F_\cong) : \pi_0(\ctC_\cong)\to\pi_0(\ctD_\cong)\) ottenuta applicando il funtore composto \(\pi_0\circ (\blank)_\cong\) come in \ref{ex_fun_cpt_conn} (notando che mandare \(\ctC\) in \(\ctC_\cong\) è un funtore \((\blank)_\cong : \ctCat\fun\ctGpd\)), ha la proprietà \(\mathcal{P}\);
+			      % quando la funzione \pi_0(F) è \mathcal{P}
+			\item \emph{\(\mathcal{P}\) sugli oggetti} se la funzione \(F_0\) di \ref{def_funtore}.\ref{f_1} ha la proprietà \(\mathcal{P}\).
+			      % quando F_0 è \mathcal{P}
+		\end{itemize}
+		Allora ad esempio, un funtore pienamente fedele è localmente biiettivo, un funtore essenzialmente suriettivo è tale che ogni oggetto di \(\ctD\) è isomorfo ad uno della forma \(FX\).
+	\end{remark}
 \end{definition}
 \begin{definition}[Preservare e riflettere]\label{def_preserva_riflette}\index{Funtore!--- preserva proprietà}\index{Funtore!--- riflette proprietà|see {preserva proprietà}}
 	Sia \(\mathcal{P}\) una proprietà di un oggetto \(X\) o morfismo \(f : X\to Y\) di una categoria \(\ctC\); si dice che un funtore \(F : \ctC \fun\ctD\)
@@ -574,19 +616,20 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	\[\dmFun{U}{\ctMod(\Omega,a)}{\ctSet}\]
 	che danno il supporto di una struttura algebrica fissata da una segnatura \((\Omega,a)\) come in \ref{ex_cat_sigma_strutture}, (sono fedeli, e in più) riflettono gli isomorfismi.
 \end{proposition}
-Una proprietà niente affatto banale dei funtori conservativi è che ogni categoria localmente piccola (cioè, per il senso che noi diamo alla parola, \emph{ogni} categoria) ne ammette almeno uno verso la categoria \(\ctSet\) di insiemi e funzioni; questo rende la relazione di isomorfismo in \(\ctC\) `testabile' al livello di certe funzioni associate alle frecce astratte di $\ctC$, ma l'interesse concreto per questa (seppur elegante) costruzione dovuta a Freyd \cite{fconc} è praticamente nullo.
+Una proprietà niente affatto banale dei funtori conservativi è che ogni categoria localmente piccola (cioè, per il senso che noi diamo alla parola, \emph{ogni} categoria) ne ammette uno verso la categoria \(\ctSet\) di insiemi e funzioni; questo risultato è concettualmente molto importante, perché rende la relazione di isomorfismo in \(\ctC\) `testabile' al livello di certe funzioni associate alle frecce astratte di \(\ctC\), ma l'interesse concreto per questa seppur elegante costruzione dovuta a Peter Freyd \cite{fconc} è praticamente nullo.
 \begin{theorem}\index{Funtore!--- conservativo}
 	Sia \(\ctC\) una categoria (localmente piccola); allora, esiste un funtore conservativo \(Q : \ctC\fun\ctSet\).
 \end{theorem}
 \begin{proof}
-	Per ogni oggetto \(A\in\ctC_0\) definiamo una relazione di equivalenza sulla classe \(\sum_C\ctC(C,A)\), imponendo che \((f : C\to A)\asymp(f' : C\to A)\) ogni volta che per ogni \(g :A\to B\), la composizione \(g\cmp f\) è un isomorfismo se e solo se la composizione \(g\cmp f'\) è un isomorfismo.
+	Per ogni oggetto \(A\in\ctC_0\) definiamo una relazione di equivalenza sulla classe \(\sum_C\Hom\ctC(C,A)\), imponendo che \((f : C\to A)\asymp(f' : C\to A)\) ogni volta che per ogni \(g :A\to B\), la composizione \(g\cmp f\) è un isomorfismo se e solo se la composizione \(g\cmp f'\) è un isomorfismo.
 
-	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è uno split mono, allora lo è anche \(f'\). Restano da dimostare due cose.
-	\begin{itemize}
-		\item Il quoziente così ottenuto è un insieme, così che possiamo definire $QA$ come tale insieme;
-		\Todo{}
-		\item Il funtore $Q$ così ottenuto, estendendo l'azione sugli oggetti nel modo ovvio, è conservativo. Infatti, supponiamo che esista una funzione \(\sum_C\ctC(C,A) \to \sum_C\ctC(C,B)\) che induce una biiezione sui quozienti; allora \Todo{}
-	\end{itemize}
+	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è un mono spezzante, allora lo è anche \(f'\). Prese insieme, queste osservazioni implicano che \(QA\) è un insieme. Ora, definiamo il funtore \(Q_\star : \ctC\fun\ctSet\) mandando \(A\) in \(QA\), a parte quando tutti gli elementi di \(\Hom\ctC(C,A)\) sono mono spezzanti, nel qual caso \(Q_\star(A)=1+QA\).
+
+	Il funtore \(Q_\star\) è conservativo ...
+	\begin{center}
+		\includegraphics[scale=.5]{freyd.png}
+	\end{center}
+	\Todo{}
 \end{proof}
 \begin{definition}[Isomorfismo di categorie]\label{fun_isocat}\index{Categoria!isomorfismo di ---e}\index{Isomorfismo!--- di categorie}\index{Isomorfismo}
 	Un isomorfismo di categorie \(\ctC\cong\ctD\) consiste di una coppia di funtori
@@ -629,11 +672,11 @@ Una proprietà niente affatto banale dei funtori conservativi è che ogni catego
 		\ctC\uutwocell<\omit>{<2>\eta} \ar@{->}[rd]_{F} &  & \ctC \urtwocell<\omit>{\kern.75em\Id[F]}\ar@{->}[rd]_{F} &  &  & \ctD \ar@{->}[rd]_{G} &  & \ctD \ar@{->}[rd]_{G} &  \\
 		& \ctD\uutwocell<\omit>{<-2>\epsilon} &  & \ctD &  &  & \ctC &  & \ctC
 		}\]
-	A causa della forma di questi diagrammi (due triangoli sono incollati insieme ed \(F,G\) formano uno zig-zag di frecce in direzioni opposte), esse sono colloquialmente chiamate \emph{identità zig-zag} o identità triangolari (o identità \emph{di aggiunzione}, si vedrà nel \autoref{cap_aggiunti}).
+	A causa della forma di questi diagrammi (due triangoli sono incollati insieme ed \(F,G\) formano uno \zzg di frecce in direzioni opposte), esse sono colloquialmente chiamate \emph{identità \zzg} o identità triangolari (o identità \emph{di aggiunzione}, si vedrà nel \autoref{cap_aggiunti}).
 \end{hRemark}
 Sorprendentemente, la nozione di equivalenza di categorie non è più debole della nozione di equivalenza aggiunta, ossia, è sempre possibile indurre un'equivalenza aggiunta a partire da una equivalenza.
 \begin{lemma}\label{eq_sono_eqadj}\index{Equivalenza aggiunta}
-	Ogni equivalenza di categorie \((F,G,\eta,\xi)\) induce una equivalenza aggiunta \((F,G,\eta,\epsilon)\), dove \(\eta,\epsilon\) soddisfano le identità zig-zag.
+	Ogni equivalenza di categorie \((F,G,\eta,\xi)\) induce una equivalenza aggiunta \((F,G,\eta,\epsilon)\), dove \(\eta,\epsilon\) soddisfano le identità \zzg.
 \end{lemma}
 \begin{proof}
 	Data un'equivalenza di categorie \(\ctC\simeq\ctD : (F,G,\eta,\epsilon)\) come in \ref{funtore_equcat}, definiamo a partire da \(\xi : FG\nat \Id[\ctD]\) una trasformazione naturale
@@ -693,7 +736,7 @@ Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempi
 	è equivalente alla categoria \(\ctTerm\).
 \end{remark}
 \begin{example}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
-	La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a Vect.
+	\Todo{La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a \(\ctVect\).}
 \end{example}
 L'esercizio \ref{ex_monepi_2} chiederà di dimostrare che le due non possono essere isomorfe.
 
@@ -714,7 +757,7 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
 	In altre parole, \(F : \ctC\fun\ctD\) si dice iniziale se le due condizioni seguenti sono soddisfatte:
 	\begin{enumtag}{fi}
 		\item \label{fi_1} per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom\ctD(D,FX)\) è non vuoto;
-		\item \label{fi_2} date due frecce \(D\to FX, D\to FY\) in \(\ctD\), esiste una successione finita di oggetti \(\tup An,\) e morfismi \(A_i \leftrightarrows A_{i+1}\) (in una delle due direzioni) tali che ogni triangolo nel diagramma
+		\item \label{fi_2} date due frecce \(D\to FX, D\to FY\) in \(\ctD\), esiste una successione finita di oggetti \(\vec A = \tup An,\) e frecce \(A_i \text{---} A_{i+1}\) (la notazione `senza testa' significa che esiste una freccia in una delle due direzioni) tali che ogni triangolo nel diagramma
 		% https://q.uiver.app/#q=WzAsNyxbMCwxLCJGWCJdLFsxLDEsIkZBXzAiXSxbMiwxLCJGQV8xIl0sWzMsMSwiXFxkb3RzIl0sWzQsMSwiRkFfbiJdLFs1LDEsIkZZIl0sWzIsMCwiRCJdLFs2LDBdLFs2LDFdLFs2LDJdLFs2LDRdLFs2LDVdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
 		\[\begin{tikzcd}
 				&& D \\
@@ -752,19 +795,78 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 	\item Se viene dato un diagramma \(\xymatrix{GFX & \ar[l]_-u D\ar[r]^-v & GFY}\) (dove non necessariamente \(u,v\) sono della forma \(D\to G\bullet\xto{G\bullet}GFX\) e \(D\to G\bullet\xto{G\bullet}GFY\)), esso si può completare come
 	      \[\xymatrix{
 		      D \ar[r]^u\ar[d]_v& GFX\ar@{.>}[d]\ar@{.>}@/^1pc/[ddr]\\
-		      GFY \ar@{.>}[r]\ar@{.>}@/_1pc/[drr] & GZ\ar[dr]_{\exists w} \\
+		      GFY \ar@{.>}[r]\ar@{.>}@/_1pc/[drr] & GZ\ar@{.>}[dr]_{\exists w} \\
 		      && GFV
 		      }\]
 \end{itemize}
+\begin{theorem}\label{prod_inizi_iniziale}\index{Prodotto!--- di funtori iniziali}
+	\index{Funtore!--- prodotto}
+	Il \emph{prodotto} di due funtori \(F : \ctI\fun\ctC\) e	\(G : \ctJ\fun\ctD\) è il funtore
+	\[\xymatrix@R=0cm{
+		**[l] F\times G : 	\ctI\times\ctJ \ar[r] & \ctC\times\ctD \\
+		(I,J) \ar@{|->}[r] & (FI,GJ)
+		}\]
+	Se \(F,G\) sono funtori iniziali come in \ref{def_fun_initfin}, allora \(F\times G\) è iniziale.
+\end{theorem}
+\begin{proof}
+	Va dimostrato che per ogni oggetto \((C,D)\) la categoria comma \(((C,D)/F\times G)\) è non vuota e connessa. Evidentemente è non vuota dato che dei morfismi \(C\to FX\) e \(D\to GY\) esistono separatamente in \((C/F)\) e \((D/G)\). Va mostrato, poi, che ogni coppia di oggetti in \(((C,D)/F\times G)\) è connessa da uno zigzag di morfismi. Per fare questo, va risolto il seguente problema: esistono certamente delle successioni finite
+	\[\xymatrix@C=8mm{
+		&&C\ar[dr]\ar[dl]\ar[dll]\ar[drr] &&&&& D\ar[dr]\ar[dl]\ar[dll]\ar[drr]\\
+		FI\ar@{-}[r] & FX_1\ar@{-}[r] & \dots\ar@{-}[r] & FX_\ell\ar@{-}[r] & FI' & GJ\ar@{-}[r] & GY_1\ar@{-}[r] & \dots\ar@{-}[r] & GY_m\ar@{-}[r] & GJ'
+		}
+	\]
+	di triangoli commutativi in \(\ctC\) e \(\ctD\) separatamente, e però non si può garantire che esse siano della stessa lunghezza (come è invece richiesto per assemblare uno \zzg di morfismi in \(((C,D)/F\times G)\)). Non è difficile risolvere il problema, `degenerando' alcuni pezzi delle successioni per adattarne la lunghezza; se ad esempio \(\ell=2,m=1\) le successioni sopra sono della forma
+	\[\xymatrix{
+		&C\ar[dr]|{x_2}\ar[dl]_{c}\ar[d]|{x_1}\ar[drr]^{c'} &&&& D\ar[d]|{y_1}\ar[dr]^{d'}\ar[dl]_d \\
+		FI\ar@{->}[r]_{u_0} & FX_1\ar@{<-}[r]_{u_1} & FX_2\ar@{->}[r]_{u_2} & FI' &
+		GJ\ar@{<-}[r]_{v_0} & GY_1 \ar@{->}[r]_{v_1} & GJ'
+		}\]
+	è semplice generare la successione seguente dove indichiamo i morfismi di \(\ctC\times\ctD\) come doppie frecce per chiarezza:
+	\[\xymatrix@C=1.2cm@R=1.5cm{
+		&(C,D)\ar@/_.5pc/@<.25em>[dl]\ar@/_.5pc/@<-.25em>[dl]_{(c,d)}\ar@<-.25em>[d]|\hole\ar@<.25em>[d]|{(x_1,d)}\ar@<-.25em>[dr]_{(x_2,y_1)}\ar@<.25em>[dr]\ar[drr]\ar@<.5em>[drr]^{(c',d')}\\
+		(FI,GJ)\ar@<.225em>[r]\ar@<-.225em>@{=}[r]_{(u_0,\id)} & (FX_1,GJ) & (FX_2,GY_1)\ar@<.225em>[l]^{(u_1,v_0)}\ar@<-.225em>[l] \ar@<.225em>[r]\ar@<-.225em>[r]_{(u_2,v_1)} & (FI',GJ').
+		}
+	\]
+	Si noti in particolare che se \(\ell,m\) sono le rispettive lunghezze delle successioni trovare in \(\ctC,\ctD\) separatamente, la stima \(k\le \ell+m\) della lunghezza \(k\)	della successione di triangoli in \(((C,D)/F\times G)\) è solo un limite superiore. Si provi, per esercizio, a formalizzare il caso generale con una ricetta `induttiva' per lunghezze e orientazioni generiche (concordanti, e discordanti\dots).
+\end{proof}
 \begin{hTheorem}[Inizialità degli ordinali tra i diagrammi filtrati]{skip}\index{Funtore!--- iniziale}
 	Per ogni categoria \(\ctJ\) (piccola e) filtrata nel senso di \ref{def_cat_filtrata}, esiste un funtore iniziale \(K : P_\ctJ\fun\ctJ\), di dominio un preordine (si veda \ref{ex_cat_ordini}) diretto (si veda \ref{contro_esempi_filt}).
 \end{hTheorem}
 \begin{proof}
-	Grazie a \ref{estensione_filtrate}, sappiamo che ogni sottocategoria finita \(\ctF\subseteq\ctJ\) ammette una estensione a un funtore \(\ctF^\rhd\fun\ctJ\); in particolare (si veda \ref{def_cono_su_C}) il vertice del cocono così ottenuto è terminale in \(\ctF\). Ora, il poset \(P_\ctJ = (\{\ctF_\alpha\},\subseteq)\) delle sottocategorie finite \(\ctF\) di \(\ctJ\) (in ciascuna delle quali c'è un oggetto terminale \(\infty_\alpha\)) è diretto (è sufficiente considerare l'unione di due sottocategorie finite), e possiamo definire un funtore
+	Grazie a \ref{estensione_filtrata}, sappiamo che ogni sottocategoria finita \(\ctF\subseteq\ctJ\) ammette una estensione a un funtore \(\ctF^\rhd\fun\ctJ\); in particolare (si veda \ref{def_cono_su_C}) il vertice del cocono così ottenuto è terminale in \(\ctF\). Ora, il poset \(P_\ctJ = (\{\ctF_\alpha\},\subseteq)\) delle sottocategorie finite \(\ctF\) di \(\ctJ\) (in ciascuna delle quali c'è un oggetto terminale \(\infty_\alpha\)) è diretto (è sufficiente considerare l'unione di due sottocategorie finite), e possiamo definire un funtore
 	\[\dmFun{K}{P_\ctJ}{\ctJ}\]
 	ottenuto mandando \(\ctF_\alpha\) nell'oggetto terminale \(\infty_\alpha\) di \(J_\alpha^*\), e una inclusione \(\ctF_\alpha\subseteq\ctF_\beta\) nell'ovvia freccia \(\infty_\alpha\to\infty_\beta\).
 
 	Questo funtore è iniziale: per ogni oggetto \(J\in\ctJ_0\), \(K\{J\}=J\), e quindi esiste \(\Id[J] : J\to K\{J\}\). Se poi \(f : J\to K\ctF_\alpha\) e \(g : J\to K\ctF_\beta\), allora definiamo \(\ctF_\gamma := \ctF_\alpha\cup\ctF_\beta\cup\{f,g\}\); evidentemente, le inclusioni \(\ctF_\alpha,\ctF_\beta\subseteq\ctF_\gamma\) realizzano la seconda condizione di Ore \ref{condizione_ore}.
+\end{proof}
+Si osservi che la definizione di categoria setacciata data in \ref{def_cat_setacciata} è equivalente a richiedere che il funtore diagonale \(\Delta_\ctJ\) sia iniziale nel senso di \ref{def_fun_initfin}. Infatti, fissato un oggetto \((X,Y)\in\ctJ_0\times\ctJ_0\), la categoria comma \((X,Y)/\Delta_\ctJ\) è precisamente la categoria delle cospanne \(\ctCospan_\ctJ(X,Y)\); quindi,
+\begin{theorem}\label{thm_catprod_setacciata}\index{Categoria!--- setacciata}
+	Una categoria \(\ctJ\) è setacciata nel senso di \ref{def_cat_setacciata} se e solo se il funtore diagonale di \ref{es_di_funtori}.\ref{exfun_3}
+	\[\dmFun{\Delta}{\ctJ}{\ctJ\times\ctJ}\]
+	è iniziale nel senso di \ref{def_fun_initfin}.
+\end{theorem}
+\begin{theorem}
+	Se \(\ctI,\ctJ\) sono due categorie setacciate, il prodotto \(\ctI\times\ctJ\) è una categoria setacciata.
+\end{theorem}
+\begin{proof}
+	\`E un corollario immediato del fatto che il prodotto di funtori iniziali è iniziale,  insieme al fatto che il funtore prodotto \(\Delta_{\ctI\times\ctJ}\) risulta dalla composizione
+	\[\xymatrix@C=1.5cm{
+		\ctI\times\ctJ \ar[r]^-{\Delta_\ctI\times\Delta_\ctJ} & \ctI\times\ctI\times \ctJ\times\ctJ\ar@{=}[r]^\sim & \ctI\times\ctJ\times \ctI\times\ctJ
+		}\]
+	che è un funtore iniziale grazie a \ref{prod_inizi_iniziale} composto con un isomorfismo (non abbiamo dimostrato che un isomorfismo di categorie è iniziale, ma è semplice usando la definizione\dots).
+\end{proof}
+Grazie a \ref{thm_catprod_setacciata} otteniamo una dimostrazione alternativa del fatto che ogni categoria filtrata \(\ctJ\) è setacciata, perché possiamo mostrare (cosa che in \ref{filtr_setacciata} non potevamo usare, dato che ci mancava la nozione di funtore iniziale) che se \(\ctJ\) è una categoria filtrata, \(\Delta_\ctJ\) è iniziale.
+\begin{proof}
+	Se \(\ctJ\) è filtrata, dobbiamo mostrare che per ogni oggetto \((J,J')\) di \(\ctJ_0\times\ctJ_0\), la categoria	comma \((J,J')/\Delta_\ctJ\) è non vuota e connessa. Del resto, il fatto che esista almeno una freccia \((u,v) : (J,J') \to (J^*,J^*)\) è esattamente la proprietà \ref{cf_1} di \ref{def_cat_filtrata}; la proprietà \ref{cf_2} consiste nel dimostrare che ogni coppia di oggetti
+	\[\xymatrix{
+		(X,Y) & (J,J') \ar[r]^-{(u,v)}\ar[l]_-{(u',v')}& (A,B)
+		}\]
+	di \((J,J')/\Delta_\ctJ\) è connessa da uno \zzg di triangoli commutativi; chiaramente, per definizione di cosa sia la categoria prodotto \(\ctJ\times\ctJ\), va dimostrato che esiste uno \zzg di frecceche connette \((X,Y)\) e \((A,B)\). Questo si può fare usando un argomento del tutto analogo a \ref{prod_inizi_iniziale}, che permette di trovare, a partire da degli \zzg \(\vec U = (\tup Un,)\) e \(\vec V = (\tup Vm,)\)
+	\[\xymatrix{
+			& J \ar@{->}[rd]^{u'} \ar@{->}[ld]_{u} &  &  & J' \ar@{->}[rd]^{v'} \ar@{->}[ld]_{v} &  \\
+			A \ar@{.}[rr]_{\vec U} &  & X & B \ar@{.}[rr]_{\vec V} &  & Y
+		}\]
+	eventualmente di lunghezza diversa, uno \zzg di triangoli come voluto.
 \end{proof}
 \begin{figure}
 	\begin{center}
@@ -850,7 +952,7 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
 	\end{center}
 \end{figure}
 \begin{esercizi}
-	\item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Idem per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
+	\item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Si faccia lo stesso per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
 	\item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
 	\item \label{ex_monepi_3} Costruire un'equivalenza di categorie tra la categoria dei sistemi dinamici discreti di \ref{ex_cat_dyn} e la categoria delle rappresentazioni, \ref{es_fun_repre}, del monoide \((\bbN,+,0)\); è un isomorfismo? Mostrare che \(\bbN\) è in maniera naturale un oggetto \(\bsN=(* \xto 0 \bbN \xto{\blank+1} \bbN)\) di \(\ctDyn\), che soddisfa la proprietà (\emph{universale}) seguente:
 	\begin{quote}
