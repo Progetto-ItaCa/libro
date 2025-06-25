@@ -327,7 +327,7 @@ e insieme a queste, molte altre. Esiste una dicotomia forte tra queste due class
 \begin{quote}
 	Non tutte le categorie larghe si possono vedere come categorie di insiemi strutturati. Ad esempio, la categoria di \ref{ex_cat_hotop} non ha la proprietà di essere \emph{concreta} (si veda \ref{ssec:categorie_strutture}, \ref{def_costrutto}).
 \end{quote}
-\begin{example}[Insiemi e relazioni]\label{ex_cat_rels}\index{Categoria!--- delle relazioni}
+\begin{example}[Insiemi e relazioni]\label{ex_cat_rels}\index{Categoria!--- delle relazioni}\index{Rel@$\ctRel$}
 	La categoria \(\ctRel\) ha
 	\begin{itemize}
 		\item per oggetti gli insiemi, denotati con le lettere \(A,B,C,\dots\);
@@ -343,7 +343,7 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 	\[V\subseteq R^*U \iff U\subseteq R_*V\label{aggiunti_in_disguise}\]
 	dal momento che il lato sinistro è equivalente a \(\forall v\in V.\forall u\in U.(v,u)\in R\) e il lato destro a \(\forall u\in U.\forall v\in V.(v,u)\in R\). Nel capitolo \ref{cap_aggiunti} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie.
 \end{remark}
-\begin{remark}\label{diff_pres_cat_rel}
+\begin{remark}\label{diff_pres_cat_rel}\index{Categoria!--- delle relazioni}\index{Rel@$\ctRel$}
 	L'osservazione precedente permette una differente presentazione per la categoria \(\ctRel\): gli oggetti di \(\ctRel\) sono ancora gli insiemi, ma una relazione \(R\subseteq X\times Y\) viene ora presentata come una \emph{funzione}
 	\[\dmFun RX{\pow Y}\]
 	definita mandando \(x\in X\) nell'insieme \(Rx = \{y\in Y\mid xRy\}\), e una tale relazione induce un'unica funzione \(\hat R : \pow X\to \pow Y\) definita da \(\hat R(U) = \bigcup_{x\in U}Rx = \{y\in Y\mid \exists x\in U,\, y\in Rx\}\), chiamata \emph{estensione di Kleisli} di \(R\) (il capitolo \ref{cap_monadi}, sulle monadi, chiarirà questa terminologia).
@@ -463,8 +463,7 @@ Evidentemente, possiamo scrivere \(e : x\to y\) per denotare in maniera compatta
 
 	Un omomorfismo di grafi non diretti è una funzione tra i vertici \(f_V : V\to V'\) compatibile con le relazioni \(E,E'\): se \((u,v)\in E\), allora \((fu,fv)\in E'\).
 \end{example}
-\begin{example}\label{ex_cat_ordini}\index{Categoria!--- di insiemi ordinati}
-	\index{Preordine}
+\begin{example}\label{ex_cat_ordini}\index{Categoria!--- di insiemi ordinati}\index{Preordine}
 	Si ricordi da \ref{prelim_def_preset} che un \emph{insieme preordinato} è un insieme \(P\) dotato di una relazione riflessiva e transitiva \(\le\) che si dice la \emph{(relazione d')ordine} su \(P\); una funzione \(f : (P,\le)\to (Q,\preceq)\) si dice \emph{monotòna} o si dice che \(f\) \emph{preserva l'ordine} se vale
 	\[\forall x,y(x\le y\Rightarrow fx\preceq fy).\]
 
@@ -1014,7 +1013,7 @@ Consideriamo ora i seguenti esempi di categorie simili (che raccogliamo in dei t
 	\end{itemize}
 \end{remark}
 Occupiamoci ora di dimostrare che una categoria dove tra due oggetti esiste al più una freccia è \emph{precisamente} un insieme (pre)ordinato. Indichiamo \(\# A\) la cardinalità di un insieme \(A\).
-\begin{theorem}\label{cat_sonopos}\index{Poset!--- come categoria}
+\begin{theorem}\label{cat_sonopos}\index{Ordine!--- come categoria}
 	Sia \(\ctC\) una categoria, con la proprietà che \(\#\Hom{\ctC}(X,Y) \le 1\) (cioè \(\Hom{\ctC}(X,Y)\) ha al più un elemento). Allora, la relazione
 	\[X\le Y \iff \Hom{\ctC}(X,Y) \text{ non è vuoto}\]
 	definisce una struttura di insieme preordinato su \(\ctC_0\).
