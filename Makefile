@@ -38,3 +38,7 @@ look_index:
 	grep -i -r --color=auto "index.*$(word)" .
 
 work: book	view watch
+
+board:
+	evince whiteboard.pdf &
+	texfot latexmk -pvc -pdf whiteboard.tex

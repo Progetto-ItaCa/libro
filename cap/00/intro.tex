@@ -72,30 +72,48 @@ La parola \emph{funtore}, invece, è invece attestata per la prima volta nel lav
 In questo preciso senso il prestito terminologico ha senso: la matematica è un linguaggio, si sente ripetere ovunque; allora un funtore è una regola che trasforma alcuni componenti fondamentali \(A,B,C,\dots\) del linguaggio \(\mathcal{L}\), eventualmente alterando la loro struttura interna, ma preservando le \emph{relazioni} che sussistono tra quelle componenti e l'esterno.
 \begin{figure}
 	\begin{center}
-		\begin{tikzpicture}
-			\fill[rounded corners, gray!40] (0,0) rectangle (3,4);
-			\fill[rounded corners, blue!20] (4,0) rectangle ++(3,4);
-			%--
-			\node[fill=white,inner sep=1mm,circle, draw, font=\small] (A) at (1,1) {\(A\)};
-			\node[fill=white,inner sep=1mm,circle, draw, font=\small] (B) at (1,2.75) {\(B\)};
-			\node[fill=white,inner sep=1mm,circle, draw, font=\small] (C) at (2.25,2) {\(C\)};
-			\begin{scope}[xshift=4cm]
-				\node[fill=white,inner sep=1mm, draw, font=\small] (A') at (1,1) {\(C'\)};
-				\node[fill=white,inner sep=1mm, draw, font=\small] (B') at (1,2.75) {\(B'\)};
-				\node[fill=white,inner sep=1mm, draw, font=\small] (C') at (2.25,2) {\(A'\)};
-			\end{scope}
-			\draw[->] (A) |- ++(4,-.5) -- (A');
-			\draw[->] (B) |- ++ (4,.5) -- (B');
-			\draw[->] (C) -- (C');
-			%--
-			\draw[-latex,gray] (A) -- (C);
-			\draw[-latex,blue!60] (A') -- (C');
-			\draw[-latex,gray] (A) to[bend left] (B);
-			\draw[-latex,gray] (B) to[bend left] (A);
-			\draw[-latex,blue!60] (B') -- (A');
-		\end{tikzpicture}
+\begin{tikzpicture}[
+    % Node styles
+    circle_node/.style={circle, draw, fill=white, minimum size=0.8cm, font=\small},
+    square_node/.style={rectangle, draw, fill=white, minimum size=0.8cm, font=\small},
+    % Domain styles
+    left_domain/.style={rounded corners=8pt, inner sep=15pt, fill=gray!40, opacity=0.3},
+    right_domain/.style={rounded corners=8pt, inner sep=15pt, fill=blue!30, opacity=0.3},
+    % Arrow style
+    mapping/.style={-latex, dashed, thick, color=gray!70}
+]
+
+% Left domain nodes
+\node[circle_node] (A) at (0, 0) {$A$};
+\node[circle_node] (B) at (0, 2) {$B$};
+\node[circle_node] (C) at (1.5, 1) {$C$};
+
+% Right domain nodes
+\node[square_node] (Ap) at (6, 1) {$A'$};
+\node[square_node] (Bp) at (5, 2) {$B'$};
+\node[square_node] (Cp) at (5, 0) {$C'$};
+
+% Domain boundaries
+\node[left_domain, fit=(A) (B) (C)] (left_box) {};
+\node[right_domain, fit=(Ap) (Bp) (Cp)] (right_box) {};
+
+% Connections within left domain
+\draw[thick, gray!60,->] (A.70) -- (B.-70) node[right, font=\small, pos=.5] {$f$};
+\draw[thick, gray!60,->] (B.-120) -- (A.120) node[left, font=\small, pos=.5] {$g$};
+\draw[thick, gray!60,->] (A) -- (C) node[below, font=\small, pos=.6] {$h$};
+
+% Mappings between domains
+\draw[mapping] (B) -- (Bp);
+\draw[mapping] (C) -- (Ap);
+\draw[mapping] (A) -- (Cp);
+
+% Connection within right domain
+\draw[thick, blue!60,->] (Bp) -- (Cp) node[pos=.3,left, font=\small] {$v$};
+\draw[thick, blue!60,->] (Cp.east) -| (Ap.south) node[pos=.5,right, font=\small] {$u$};
+
+\end{tikzpicture}
 	\end{center}
-	\caption{\Todo{captione}}
+	\caption{La teoria delle categorie come teoria di \emph{sistemi e processi}: le relazioni all'interno di un dato ambito linguistico si rappresentano mediante lati di un grafo diretto, e un \emph{funtore} preserva (la direzione e) la \emph{componibilità in serie} di questi lati.}
 \end{figure}
 Le componenti \(A,B,C,\dots\) però ora non sono parte del discorso in un linguaggio naturale; sono `elementi' di una collezione --spesso gigantesca: \emph{tutti} i gruppi, \emph{tutte} le varietà differenziabili, senza eccezione-- \(\mathcal{L}\), che si chiamerà una `categoria'.
 

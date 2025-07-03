@@ -10,6 +10,7 @@
 \usepackage{itaca}
 \usepackage{quiver}
 \usetikzlibrary{intersections}
+\usetikzlibrary{shapes.geometric, positioning, fit}
 \recalctypearea
 \makeindex
 %%% debug area
@@ -38,9 +39,44 @@
 %   ]
 
 % \end{tikzpicture}
-\xymatrix{
-& Z \ar[dr]^g \ar[dl]^u & \\
-X \ar[ur]^f \ar[dr]_{f'} & U \ar[r]|{\ell} & K & V \ar[l]|r \ar[u]_v & Y \ar[ul]_g \ar[dl]^{g'} \\
-& Z' \ar[ur]_{u'} & & \ar[ul]^{v'} & 
-}
+\begin{tikzpicture}[
+    % Node styles
+    circle_node/.style={circle, draw, fill=white, minimum size=0.8cm, font=\small},
+    square_node/.style={rectangle, draw, fill=white, minimum size=0.8cm, font=\small},
+    % Domain styles
+    left_domain/.style={rounded corners=8pt, inner sep=15pt, fill=gray!40, opacity=0.3},
+    right_domain/.style={rounded corners=8pt, inner sep=15pt, fill=blue!30, opacity=0.3},
+    % Arrow style
+    mapping/.style={-latex', dashed, thick, color=gray!70}
+]
+
+% Left domain nodes
+\node[circle_node] (A) at (0, 0) {$A$};
+\node[circle_node] (B) at (0, 2) {$B$};
+\node[circle_node] (C) at (1.5, 1) {$C$};
+
+% Right domain nodes
+\node[square_node] (Ap) at (6, 1) {$A'$};
+\node[square_node] (Bp) at (5, 2) {$B'$};
+\node[square_node] (Cp) at (5, 0) {$C'$};
+
+% Domain boundaries
+\node[left_domain, fit=(A) (B) (C)] (left_box) {};
+\node[right_domain, fit=(Ap) (Bp) (Cp)] (right_box) {};
+
+% Connections within left domain
+\draw[thick, gray!60,->] (A.70) -- (B.-70) node[right, font=\small, pos=.5] {$f$};
+\draw[thick, gray!60,->] (B.-120) -- (A.120) node[left, font=\small, pos=.5] {$g$};
+\draw[thick, gray!60,->] (A) -- (C) node[below, font=\small, pos=.6] {$h$};
+
+% Mappings between domains
+\draw[mapping] (B) -- (Bp);
+\draw[mapping] (C) -- (Ap);
+\draw[mapping] (A) -- (Cp);
+
+% Connection within right domain
+\draw[thick, blue!60,->] (Bp) -- (Cp) node[pos=.3,left, font=\small] {$v$};
+\draw[thick, blue!60,->] (Cp.east) -| (Ap.south) node[pos=.5,right, font=\small] {$u$};
+
+\end{tikzpicture}
 \end{document}
