@@ -734,6 +734,59 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
 \begin{definition}[Categoria delle frecce ritorte]
 	\Todo{}
 \end{definition}
+\begin{figure}
+	\begin{center}
+		 \begin{tikzpicture}[
+   x=4em, y=4em,
+   dot/.style={
+     circle,
+     fill=#1,
+     inner sep=0pt,
+     outer sep=2pt,
+     minimum size=4pt,
+     draw=none,
+    },
+   wrap/.style={
+     fill=black!5,
+     draw=gray,
+     rounded corners,
+     inner sep=.5em,
+    },
+  ]
+
+\node (A) at (0,0) {$A$};
+\node (B) at (0,-1) {$B$};
+\node (X) at (1,0) {$X$};
+\node (Y) at (1,-1) {$Y$};
+\draw[-latex] (A) -- (B);
+\draw[-latex] (X) -- (Y);
+\draw[-latex] (B) -- (Y);
+\draw[-latex] (X) -- (A);
+\begin{scope}[xshift=4cm]
+\node (A) at (.25,0) {$A$};
+\node (B) at (0,-1) {$B$};
+\node (X) at (.75,0) {$X$};
+\node (Y) at (1,-1) {$Y$};
+\draw[-latex] (A) -- (B);
+\draw[-latex] (X) -- (Y);
+\draw[-latex] (B) -- (Y);
+\draw[-latex] (X) -- (A);
+\end{scope}
+\begin{scope}[xshift=8cm]
+\node (A) at (1,0) {$A$};
+\node (B) at (0,-1) {$B$};
+\node (X) at (0,0) {$X$};
+\node (Y) at (1,-1) {$Y$};
+\draw[-latex] (A) -- (B);
+\draw[-latex] (B) -- (Y);
+\draw[-latex] (X) -- (A);
+\draw[line width=3pt,white,-] (X) -- (Y);
+\draw[-latex] (X) -- (Y);
+\end{scope}
+\end{tikzpicture}
+	\end{center}
+	\caption{\Todo{categoria delle frecce ritorte}}
+\end{figure}
 \begin{esercizi}
 	\item Sia \(\ctC\) una categoria, \(X\in\ctC_0\) un oggetto, \(f : A\to X\) una freccia: dimostrare che il doppio incubo \((\ctC/X)/f\) è un incubo di \(\ctC\) (su quale oggetto?). Questa `riduzione' di un incubo iterato resta vera per l'incubo della succuba \((A/\ctC)/f\), per \(f/(\ctC/X)\), e per \(f/(A/\ctC)\)?
 	\item Un \emph{segmento binario} \((n_0,n_1,t,H)\) consiste di una coppia di interi positivi \(n_0 \le n_1\),con una funzione suriettiva e monotòna \(t : [n_1] \to [n_0]\), e un sottoinsieme \(H\subseteq [n_0]\). Un omomorfismo tra segmenti binari \((n_0,n_1,t,H) \to (n_0',n_1',t',H')\) consiste di una coppia \((f_0,f_1)\) dove
