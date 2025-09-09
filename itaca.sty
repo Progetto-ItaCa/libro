@@ -79,12 +79,11 @@
 \NewDocumentCommand{\ctSEEAlg}{O{E}}{\ctSEAlg[E']}
 
 \RequirePackage{CJKutf8}
-\newcommand{\yon}{\text{\begin{CJK}{UTF8}{min}よ\end{CJK}}}
+\newcommand{\yon}{\text{\begin{CJK}{UTF8}{min}^^e3^^82^^88\end{CJK}}}
 \newcommand{\coyon}{\reflectbox{\yon}}
 \newcommand{\jap}[1]{\text{\begin{CJK}{UTF8}{min}#1\end{CJK}}}
 
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T2A]{fontenc}
+\RequirePackage[T1]{fontenc}
 
 \RequirePackage[svgnames]{xcolor}
 \definecolor{ibmBlue}{HTML}{648fff}
@@ -388,13 +387,13 @@
 \IfNoValueTF{#1}{
   \begin{smallmatrix}
    #2 \\ % dom
-      #4 \\ %  ↓
+      #4 \\ %  ^^e2^^86^^93
       #3    % cod
   \end{smallmatrix}}
 {
 \begin{xsmallmatrix}{0em}
    & #2 \\ %  dom
-#1 & #4 \\ % f ↓
+#1 & #4 \\ % f ^^e2^^86^^93
    & #3    %  cod
 \end{xsmallmatrix}
 }
