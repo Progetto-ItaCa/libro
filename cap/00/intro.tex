@@ -72,46 +72,46 @@ La parola \emph{funtore}, invece, è invece attestata per la prima volta nel lav
 In questo preciso senso il prestito terminologico ha senso: la matematica è un linguaggio, si sente ripetere ovunque; allora un funtore è una regola che trasforma alcuni componenti fondamentali \(A,B,C,\dots\) del linguaggio \(\mathcal{L}\), eventualmente alterando la loro struttura interna, ma preservando le \emph{relazioni} che sussistono tra quelle componenti e l'esterno.
 \begin{figure}
 	\begin{center}
-\begin{tikzpicture}[
-    % Node styles
-    circle_node/.style={circle, draw, fill=white, minimum size=0.8cm, font=\small},
-    square_node/.style={rectangle, draw, fill=white, minimum size=0.8cm, font=\small},
-    % Domain styles
-    left_domain/.style={rounded corners=8pt, inner sep=15pt, fill=gray!40, opacity=0.3},
-    right_domain/.style={rounded corners=8pt, inner sep=15pt, fill=blue!30, opacity=0.3},
-    % Arrow style
-    mapping/.style={-latex, dashed, thick, color=gray!70}
-]
+		\begin{tikzpicture}[
+				% Node styles
+				circle_node/.style={circle, draw, fill=white, minimum size=0.8cm, font=\small},
+				square_node/.style={rectangle, draw, fill=white, minimum size=0.8cm, font=\small},
+				% Domain styles
+				left_domain/.style={rounded corners=8pt, inner sep=15pt, fill=gray!40, opacity=0.3},
+				right_domain/.style={rounded corners=8pt, inner sep=15pt, fill=blue!30, opacity=0.3},
+				% Arrow style
+				mapping/.style={-latex, dashed, thick, color=gray!70}
+			]
 
-% Left domain nodes
-\node[circle_node] (A) at (0, 0) {$A$};
-\node[circle_node] (B) at (0, 2) {$B$};
-\node[circle_node] (C) at (1.5, 1) {$C$};
+			% Left domain nodes
+			\node[circle_node] (A) at (0, 0) {$A$};
+			\node[circle_node] (B) at (0, 2) {$B$};
+			\node[circle_node] (C) at (1.5, 1) {$C$};
 
-% Right domain nodes
-\node[square_node] (Ap) at (6, 1) {$A'$};
-\node[square_node] (Bp) at (5, 2) {$B'$};
-\node[square_node] (Cp) at (5, 0) {$C'$};
+			% Right domain nodes
+			\node[square_node] (Ap) at (6, 1) {$A'$};
+			\node[square_node] (Bp) at (5, 2) {$B'$};
+			\node[square_node] (Cp) at (5, 0) {$C'$};
 
-% Domain boundaries
-\node[left_domain, fit=(A) (B) (C)] (left_box) {};
-\node[right_domain, fit=(Ap) (Bp) (Cp)] (right_box) {};
+			% Domain boundaries
+			\node[left_domain, fit=(A) (B) (C)] (left_box) {};
+			\node[right_domain, fit=(Ap) (Bp) (Cp)] (right_box) {};
 
-% Connections within left domain
-\draw[thick, gray!60,->] (A.70) -- (B.-70) node[right, font=\small, pos=.5] {$f$};
-\draw[thick, gray!60,->] (B.-120) -- (A.120) node[left, font=\small, pos=.5] {$g$};
-\draw[thick, gray!60,->] (A) -- (C) node[below, font=\small, pos=.6] {$h$};
+			% Connections within left domain
+			\draw[thick, gray!60,->] (A.70) -- (B.-70) node[right, font=\small, pos=.5] {$f$};
+			\draw[thick, gray!60,->] (B.-120) -- (A.120) node[left, font=\small, pos=.5] {$g$};
+			\draw[thick, gray!60,->] (A) -- (C) node[below, font=\small, pos=.6] {$h$};
 
-% Mappings between domains
-\draw[mapping] (B) -- (Bp);
-\draw[mapping] (C) -- (Ap);
-\draw[mapping] (A) -- (Cp);
+			% Mappings between domains
+			\draw[mapping] (B) -- (Bp);
+			\draw[mapping] (C) -- (Ap);
+			\draw[mapping] (A) -- (Cp);
 
-% Connection within right domain
-\draw[thick, blue!60,->] (Bp) -- (Cp) node[pos=.3,left, font=\small] {$v$};
-\draw[thick, blue!60,->] (Cp.east) -| (Ap.south) node[pos=.5,right, font=\small] {$u$};
+			% Connection within right domain
+			\draw[thick, blue!60,->] (Bp) -- (Cp) node[pos=.3,left, font=\small] {$v$};
+			\draw[thick, blue!60,->] (Cp.east) -| (Ap.south) node[pos=.5,right, font=\small] {$u$};
 
-\end{tikzpicture}
+		\end{tikzpicture}
 	\end{center}
 	\caption{La teoria delle categorie come teoria di \emph{sistemi e processi}: le relazioni all'interno di un dato ambito linguistico si rappresentano mediante lati di un grafo diretto, e un \emph{funtore} preserva (la direzione e) la \emph{componibilità in serie} di questi lati.}
 \end{figure}
@@ -223,11 +223,11 @@ Nelle stesse notazioni, si osservi anche che la definizione di \(f^\text{a} : G^
 	}\]
 sia commutativo.
 
-La famiglia di omomorfismi \(\{\pi^G : G\to G^\text{a}\}\) è quindi specificata in maniera `uniforme' nel parametro da cui dipende, ossia è determinata, per un qualsiasi gruppo \(G\), dalla proiezione al quoziente \(\pi^G : G\to G/[G,G] : x\mapsto x\cdot[G,G]\) che manda un dato elemento nella sua classe laterale. Per \emph{ogni} gruppo \(G\) è possibile costruire una funzione \(\pi^G : G\to G/[G,G]\), definita sempre alla stessa maniera trattando \(G\) come un parametro, e tale che il quadrato precedente sia commutativo. Questa costruzione rende $\pi$ quella che si chiama una \emph{famiglia polimorfa}: per ogni gruppo $G$, si dà una funzione \(\pi^G : G\to G/[G,G]\).
+La famiglia di omomorfismi \(\{\pi^G : G\to G^\text{a}\}\) è quindi specificata in maniera `uniforme' nel parametro da cui dipende, ossia è determinata, per un qualsiasi gruppo \(G\), dalla proiezione al quoziente \(\pi^G : G\to G/[G,G] : x\mapsto x\cdot[G,G]\) che manda un dato elemento nella sua classe laterale. Per \emph{ogni} gruppo \(G\) è possibile costruire una funzione \(\pi^G : G\to G/[G,G]\), definita sempre alla stessa maniera trattando \(G\) come un parametro, e tale che il quadrato precedente sia commutativo. Questa costruzione rende \(\pi\) quella che si chiama una \emph{famiglia polimorfa}: per ogni gruppo \(G\), si dà una funzione \(\pi^G : G\to G/[G,G]\).
 
-In situazioni simili, diciamo che l'assegnazione \(G\mapsto (\pi^G : G\to G^\text{a})\) è \emph{naturale}, o più precisamente che \(\pi^G\) è (la componente di) una \emph{trasformazione naturale}, rappresentata come una freccia dove il parametro $G$ è stato astratto:
+In situazioni simili, diciamo che l'assegnazione \(G\mapsto (\pi^G : G\to G^\text{a})\) è \emph{naturale}, o più precisamente che \(\pi^G\) è (la componente di) una \emph{trasformazione naturale}, rappresentata come una freccia dove il parametro \(G\) è stato astratto:
 \[\text{da}\quad\forall G : \pi^G : G\to G^\text{a} \quad \text{ si passa a }
-\quad\pi : \id \nat (\_)^\text{a}.\]
+	\quad\pi : \id \nat (\_)^\text{a}.\]
 % \[\xymatrix{\boldsymbol\pi  : (\_) \ar@{=>}[r] & (\_)^\text{a}.}\]
 Il dominio e il codominio di una trasformazione naturale sono dei \emph{funtori}: non daremo qui la definizione (che seguirà in \ref{sec_funtori}), ma l'idea che chi legge dovrebbe trattenere è che sappiamo trasformare un gruppo \(G\) in un altro gruppo \(F(G)\), e ogni omomorfismo di gruppi \(f : G\to H\) in un omomorfismo \(F(f) : F(G)\to F(H)\), in modo tale che le condizioni \ref{fct_1} e \ref{fct_2} siano verificate: quindi,
 \begin{enumerate}

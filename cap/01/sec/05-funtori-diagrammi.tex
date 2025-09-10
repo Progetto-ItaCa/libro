@@ -230,7 +230,7 @@ La teoria degli endofuntori su una categoria è molto vasta per diversi motivi: 
 	\end{itemize}
 \end{definition}
 \begin{examples}
-	Raccogliamo alcuni esempi di endofuntori interessanti sulla categoria degli insiemi: spesso un funtore dalla forma molto semplice ha una interessante categoria delle co/algebre.
+	Raccogliamo alcuni esempi di endofuntori interessanti, per lo più sulla categoria degli insiemi: spesso un funtore dalla forma molto semplice ha una interessante categoria delle co/algebre.
 	\begin{itemize}
 		\item Consideriamo l'endofuntore \(M : \ctSet\fun\ctSet\) che, sugli oggetti, assegna ad \(A\) l'insieme `successore' \(\{\bullet\}+A\), dove \(\bullet\notin A\) così che l'unione sia disgiunta, e sui morfismi agisce concordemente: ad \(f : A\to B\) corrisponde la funzione
 		      \[\xymatrix@R=0mm{
@@ -250,7 +250,7 @@ La teoria degli endofuntori su una categoria è molto vasta per diversi motivi: 
 
 		      Una \(S\)-algebra, invece, consiste di una funzione \(\xi : 1+(A\times X)\to X\) che sceglie un elemento \(\xi(\bullet)=x_0\in X\), e tale che \(\xi|_{A\times X}\to A\times X\to X\) sia un \emph{semiautoma deterministico} (con stato iniziale \(x_0\)): l'insieme \(A^*\) delle liste di elementi di \(A\) agisce su \(X\) definendo per induzione
 		      \[\bar\xi(\emptyList,x):=x \qquad \bar\xi(a\cons as,x) := \xi(a, \bar\xi(as,x))\]
-								\item Algebre e coalgebre per $f : (P,\le) \to (P,\le)$, guardando $P$ come categoria\fosco{......}
+		\item Quando si considera un preordine \((P,\le)\) come una categoria, alla maniera di \ref{}, un endofuntore consiste di una mappa monotòna \(f : (P,\le) \to (P,\le)\); allora, una \(f\)-algebra consiste di un elemento \(a\in P\) tale che \(f(a) \le a\) (quello che si dice un \emph{punto prefisso} per \(f\)), mentre una \(f\)-coalgebra è un elemento \(a\in P\) tale che \(a \le f(a)\) (quello che si dice un \emph{punto postfisso} per \(f\)). Nella teoria classica degli ordini hanno rilevanza gli elementi \(x_0=\inf\{x\in P \mid f(x) \le x\}\) e \(x_1=\sup\{x\in P \mid x \le f(x)\}\) (quando esistono), che sono rispettivamente la più piccola \(f\)-algebra e la più grande \(f\)-coalgebra. Si noti che in particolare, \(fx_0=x_0\) e \(f(x_1)=x_1\).
 	\end{itemize}
 \end{examples}
 \begin{definition}[Bifuntore]\label{def_bifuntore}\index{Bifuntore}\index{Funtore!bi---}
@@ -553,12 +553,12 @@ Si può dimostrare (per induzione) che più in generale ogni spanna \(n\)-aria (
 	J \ar[uur]^-{v_1}\ar[ur]_{v_2}\ar[dr]_-{v_n} & \vdots & Z\\
 	& X_n\ar@{.>}[ur]_{d_n}
 	}\]
-tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia \(v : J\to Z\)
-\paolo{Ci aggiungerei la categoria degli insiemi finiti, (o degli insiemi finiti e delle funzioni iniettive).}
+tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia \(v : J\to Z\).
+% \paolo{Ci aggiungerei la categoria degli insiemi finiti, (o degli insiemi finiti e delle funzioni iniettive).}
 \begin{examples}\label{contro_esempi_filt}\index{Categoria!--- filtrata}\index{Ordine parziale!--- diretto}
 	Esempi di categorie che sono filtrate:
 	\begin{itemize}
-		\item Alcuni esempi elementari sono i seguenti: la categoria codiscreta \(A^\chi\) su un insieme (non vuoto) è filtrata; la categoria terminale \(\ctTerm\) è filtrata; se due categorie \(\ctI,\ctJ\) sono filtrate, è filtrato il loro prodotto (questo permette di suddividere in due problemi indipendenti la verifica che \(\ctI\times\ctJ\) è filtrata); ogni cono destro della forma \(\ctJ^\rhd\) è una categoria filtrata, e più in generale ogni categoria che ha un oggetto terminale nel senso di \ref{def_cono_su_C} è filtrata.
+		\item Alcuni esempi elementari sono i seguenti: la categoria codiscreta \(A^\chi\) su un insieme (non vuoto) è filtrata; la categoria terminale \(\ctTerm\) è filtrata; se due categorie \(\ctI,\ctJ\) sono filtrate, è filtrato il loro prodotto (questo permette di suddividere in due problemi indipendenti la verifica che \(\ctI\times\ctJ\) è filtrata); ogni cono destro della forma \(\ctJ^\rhd\) è una categoria filtrata, e più in generale ogni categoria che ammette un oggetto terminale nel senso di \ref{def_cono_su_C} è filtrata.\footnote{In particolare, lo è la categoria degli insiemi finiti, dove ogni singoletto è un oggetto terminale; si veda il capitolo sui limiti e colimiti per maggiori informazioni.}
 		\item la categoria-poset \(\omega=\{0\le 1\le 2\le\dots\}\): la condizione \ref{cf_2} è banalmente ovvia (non esistono due frecce \(u,v\) parallele e distinte), e \ref{cf_1} è vera perché ogni insieme finito \(\{\tup pn,\}\) di numeri naturali è limitato superiormente da \(p^*=\max\{\tup pn,\}\); similmente, ogni ordinale (finito, nel senso di \ref{ex_cat_catena}, o infinito, nel senso di \ref{ex_cat_ordinali}) è una categoria filtrata; più in generale, un preordine \((P,\le)\) è una categoria filtrata se e solo se è un \emph{ordine diretto}: ogni insieme finito di elementi \(\tup xn, \in P\) ha un maggiorante \(\bar x\), cioè \(x_i\le \bar x\) per ogni \(i=\iter n\). La categoria \(\bsDelta\) dei simplessi è filtrata, e più in generale ogni categoria di `forme' come in §\ref{ssec:categorie_forme} che contenga \(\ctTerm\) tra i suoi oggetti è filtrata.
 	\end{itemize}
 	Esempi di categorie che non sono filtrate:

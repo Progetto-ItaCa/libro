@@ -731,61 +731,80 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
 	\end{itemize}
 	Si osservi che ci sono inclusioni ovvie \(i^\rhd : \ctC \subset \ctC^\rhd\) e \(i^\lhd : \ctC \subset \ctC^\lhd\) ottenute mandando un oggetto \(C \in\ctC_0\) nell'oggetto \(C\) di \(\ctC_0 + \{\pm\infty\}\).
 \end{definition}
-\begin{definition}[Categoria delle frecce ritorte]
-	\Todo{}
+\begin{definition}[Categoria delle frecce ritorte]\label{def_cat_frecce_ritorte}\index{Categoria!--- delle frecce ritorte}
+	Data una categoria \(\ctC\), la \emph{categoria delle frecce ritorte} di \(\ctC\), denotata \(\ctTw(\ctC)\), è la categoria che ha
+	\begin{itemize}
+		\item come oggetti, le frecce	\(f : A \to B\) di \(\ctC\), denotate \([A,B;f]\);
+		\item come frecce \((u,v) : [A,B;f]\rightleftarrows [X,Y;g]\) le coppie \(v : B\to Y\) e \(u : X \to A\) di frecce di \(\ctC\) tali che il quadrato
+		      \[
+			      \begin{tikzcd}
+				      A \ar{d}[swap]{f} & X \ar{l}[swap]{u} \ar{d}{g} \\
+				      B  \ar{r}{v} & Y
+			      \end{tikzcd}
+		      \]
+		      sia commutativo, ossia tali che \(f\cmp u = v\cmp g\).
+	\end{itemize}
+	L'identità è chiaramente \((\id_A,\id_B) : [A,b;f] \rightleftarrows [A,B;f]\); la composizione è definita incollando i quadrati
+	\[
+		\begin{tikzcd}
+			A \ar{d}[swap]{f} & X \ar{l}[swap]{u} \ar{d}{g} & Z \ar{d}{h}\ar{l}[swap]{u'} \\
+			B  \ar{r}{v} & Y \ar{r}{v'}& T
+		\end{tikzcd}
+	\]
+	Gli asssiomi di categoria sono evidentemente soddisfatti da questa definizione.
 \end{definition}
 \begin{figure}
 	\begin{center}
-		 \begin{tikzpicture}[
-   x=4em, y=4em,
-   dot/.style={
-     circle,
-     fill=#1,
-     inner sep=0pt,
-     outer sep=2pt,
-     minimum size=4pt,
-     draw=none,
-    },
-   wrap/.style={
-     fill=black!5,
-     draw=gray,
-     rounded corners,
-     inner sep=.5em,
-    },
-  ]
+		\begin{tikzpicture}[
+				x=4em, y=4em,
+				dot/.style={
+						circle,
+						fill=#1,
+						inner sep=0pt,
+						outer sep=2pt,
+						minimum size=4pt,
+						draw=none,
+					},
+				wrap/.style={
+						fill=black!5,
+						draw=gray,
+						rounded corners,
+						inner sep=.5em,
+					},
+			]
 
-\node (A) at (0,0) {$A$};
-\node (B) at (0,-1) {$B$};
-\node (X) at (1,0) {$X$};
-\node (Y) at (1,-1) {$Y$};
-\draw[-latex] (A) -- (B);
-\draw[-latex] (X) -- (Y);
-\draw[-latex] (B) -- (Y);
-\draw[-latex] (X) -- (A);
-\begin{scope}[xshift=4cm]
-\node (A) at (.25,0) {$A$};
-\node (B) at (0,-1) {$B$};
-\node (X) at (.75,0) {$X$};
-\node (Y) at (1,-1) {$Y$};
-\draw[-latex] (A) -- (B);
-\draw[-latex] (X) -- (Y);
-\draw[-latex] (B) -- (Y);
-\draw[-latex] (X) -- (A);
-\end{scope}
-\begin{scope}[xshift=8cm]
-\node (A) at (1,0) {$A$};
-\node (B) at (0,-1) {$B$};
-\node (X) at (0,0) {$X$};
-\node (Y) at (1,-1) {$Y$};
-\draw[-latex] (A) -- (B);
-\draw[-latex] (B) -- (Y);
-\draw[-latex] (X) -- (A);
-\draw[line width=3pt,white,-] (X) -- (Y);
-\draw[-latex] (X) -- (Y);
-\end{scope}
-\end{tikzpicture}
+			\node (A) at (0,0) {$A$};
+			\node (B) at (0,-1) {$B$};
+			\node (X) at (1,0) {$X$};
+			\node (Y) at (1,-1) {$Y$};
+			\draw[-latex] (A) -- (B);
+			\draw[-latex] (X) -- (Y);
+			\draw[-latex] (B) -- (Y) node[below, pos=.5, font=\scriptsize] {$v$};
+			\draw[-latex] (X) -- (A) node[above, pos=.5, font=\scriptsize] {$u$};
+			\begin{scope}[xshift=4cm]
+				\node (A) at (.25,0) {$A$};
+				\node (B) at (0,-1) {$B$};
+				\node (X) at (.75,0) {$X$};
+				\node (Y) at (1,-1) {$Y$};
+				\draw[-latex] (A) -- (B);
+				\draw[-latex] (X) -- (Y);
+				\draw[-latex] (B) -- (Y) node[below, pos=.5, font=\scriptsize] {$v$};
+				\draw[-latex] (X) -- (A) node[above, pos=.5, font=\scriptsize] {$u$};
+			\end{scope}
+			\begin{scope}[xshift=8cm]
+				\node (A) at (1,0) {$A$};
+				\node (B) at (0,-1) {$B$};
+				\node (X) at (0,0) {$X$};
+				\node (Y) at (1,-1) {$Y$};
+				\draw[-latex] (A) -- (B);
+				\draw[-latex] (B) -- (Y) node[below, pos=.5, font=\scriptsize] {$v$};
+				\draw[-latex] (X) -- (A) node[above, pos=.5, font=\scriptsize] {$u$};
+				\draw[line width=3pt,white,-] (X) -- (Y);
+				\draw[-latex] (X) -- (Y);
+			\end{scope}
+		\end{tikzpicture}
 	\end{center}
-	\caption{\Todo{categoria delle frecce ritorte}}
+	\caption{La ragione dietro la terminologia `freccia ritorta' per la Definizione \ref{def_cat_frecce_ritorte} è che i suoi morfismi si possono pensare come quadrati commutativi dove il dominio orizzontale $u$ è stato ruotato di mezzo giro.}
 \end{figure}
 \begin{esercizi}
 	\item Sia \(\ctC\) una categoria, \(X\in\ctC_0\) un oggetto, \(f : A\to X\) una freccia: dimostrare che il doppio incubo \((\ctC/X)/f\) è un incubo di \(\ctC\) (su quale oggetto?). Questa `riduzione' di un incubo iterato resta vera per l'incubo della succuba \((A/\ctC)/f\), per \(f/(\ctC/X)\), e per \(f/(A/\ctC)\)?
