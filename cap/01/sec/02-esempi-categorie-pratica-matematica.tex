@@ -777,6 +777,20 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	\end{itemize}
 	La composizione di classi di omotopia di mappe continue è definita grazie al fatto che l'omotopia tra mappe è una congruenza su ogni \(\ctTop(X,Y)\) (cioè, se \(f\simeq g\), allora \(h\cmp f\cmp k\simeq h\cmp g\cmp k\)): si veda anche \ref{fun_ex_omoto_omolo} più avanti.
 \end{hExample}
+\begin{hExample}[La categoria degli spazi di misura]{skip}\label{ex_cat_meas}\index{Categoria!--- degli spazi misurabili}
+	Nel definire una categoria appropriata dove fare teoria della misura, si vorrebbe prendere come oggetti le coppie \((X, \fkM)\), dove \(X\) è un insieme e \(\fkM\) è una \(\sigma\)-algebra di sottoinsiemi misurabili di \(X\). Le frecce \((X, \fkM) \to (X', \fkM')\) allora dovrebbero essere funzioni \(f: X \to X'\) tra gli insiemi sottostanti, tali che per ogni \(E \in \fkM'\) si abbia \(f^{-1}(E) \in \fkM\), ossia le controimmagini di insiemi misurabili sono misurabili. Questo è del tutto in linea con ciò che si fa in topologia, e si apprende in qualsiasi introduzione alla teoria della misura.
+
+	Un problema insito in questo approccio, che però la nozione di continuità non pone, è l'intuizione dietro gli elementi di \(\fkM\), che si pensano come insiemi `grandi' o `piccoli' a seconda della loro misura.\footnote{\dots Laddove gli aperti \(U\) di una topologia si pensano come regioni che, per ogni \(x\in U\), affermano che un altro \(y\in U\) è `vicino' a \(x\), a prescindere da quanto \(U\) sia `grande'.} Formulare un teorema non banale di teoria della misura usando questa categoria è molto arduo, perché la nozione di \emph{insieme trascurabile} compare in modo rilevante in tutti i principali risultati di teoria della misura. Inoltre, in teoria della misura è una prassi generale \emph{identificare} funzioni che differiscono su un insieme di misura \(0\), cioè considerare non le funzioni \(f,f' : X\to X'\) vere e proprie, ma le classi di equivalenza rispetto alla relazione
+	\[f\sim g \iff \{x\in X\mid f(x)\ne g(x)\} \text{ ha misura } 0\]
+	Per risolvere il problema, la prassi è di definire una categoria \(\ctMeas\) i cui oggetti sono \emph{terne} \((X, \fkM, \fkN)\), dove \(X\) e \(\fkM\) sono come sopra, e \(\fkN \subset \fkM\) è un \emph{\(\sigma\)-ideale di insiemi trascurabili}. (Un \(\sigma\)-ideale è una \(\sigma\)-algebra che in più è chiusa rispetto al passaggio a sottoinsiemi; ciò riflette il fatto che i sottoinsiemi di insiemi di misura \(0\) hanno anch'essi misura \(0\).) Osserviamo che i dati contenuti in \(N\) codificano esattamente le stesse informazioni di una \emph{classe di misure}, cioè di una classe di equivalenza di misure su \((X, M)\) rispetto alla seguente relazione di equivalenza: \(\mu \sim \nu\) se \(\mu \ll \nu\) e \(\nu \ll \mu\).
+
+	I morfismi \((X, \fkM, \fkN) \to (X', \fkM', \fkN')\) sono ora classi di equivalenza di funzioni \(f: X \to X'\) tali che \(f^{-1}E \in \fkM'\) per ogni \(E\in \fkM\), e \(f^{-1}V \in \fkN'\) per ogni \(V\in \fkN\). La relazione di equivalenza data dal differire su un insieme trascurabile è compatibile con la composizione di funzioni: se \(f \sim g\) per alcune
+	\[
+		f,g : (X_1, \fkM_1, \fkN_1) \to (X_2, \fkM_2, \fkN_2),
+	\]
+	allora \(fe \sim ge\) per ogni \(e: (X_0, \fkM_0, \fkN_0) \to (X_1, \fkM_1, \fkN_1)\) e \(hf \sim hg\) per ogni \(h: (X_2, \fkM_2, \fkN_2) \to (X_3, \fkM_3, \fkN_3)\).
+\end{hExample}
+Tutte le categorie considerate in precedenza hanno il seguente schema: gli oggetti sono insiemi dotati di struttura aggiuntiva, i morfismi sono funzioni che preservano tale struttura. La categoria \(\ctMeas\) non è di questo tipo perché identifichiamo funzioni che differiscono su un insieme di misura zero. In particolare, si può dimostrare che dato un morfismo in \(\ctMeas\), non esiste modo di scegliere una funzione rappresentante in modo che tali scelte rispettino la composizione (cioè, che la composizione di due rappresentanti sia ancora un rappresentante). In altre parole, non c’è alcuna nozione ragionevole di `insieme sottostante' in \(\ctMeas\).
 \begin{example}[La categoria dei complessi di catene]\label{ex_cat_chcomples}\index{Categoria!--- dei complessi di catene}\index{ChAb@\(\ctCh(\ctAb)\)}
 	Un \emph{complesso di catene} \((A_\bullet, d_\bullet)\) di gruppi abeliani è una catena di omomorfismi tra gruppi abeliani della forma
 	\[\begin{tikzcd}
@@ -814,7 +828,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando in \ref{s
 	\end{itemize}
 \end{example}
 \begin{example}[Categoria dei \(G\)-insiemi]\label{ex_cat_g_insiemi}\index{Categoria!--- di azioni di gruppo}
-	Dato un monoide \(G\) (di solito la definizine di azione su un insieme si vede per i gruppi), un'\emph{azione sinistra di \(G\) su un insieme \(X\)} è una funzione
+	Dato un monoide \(G\) (di solito la definizione di azione su un insieme si vede per i gruppi), un'\emph{azione sinistra di \(G\) su un insieme \(X\)} è una funzione
 	\[
 		\begin{tikzcd}[row sep=0]
 			G\times X \ar{r}{a_X} & X \\

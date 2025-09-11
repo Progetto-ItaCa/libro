@@ -96,13 +96,13 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
 \begin{example}\label{exa_funtori_da_gruppi}\index{Funtore!omomorfismi di monoidi come ---}
 	Dati due monoidi \(M\) e \(N\) guardati come categorie nel senso di \ref{mon_sonocat}, un funtore \(\susp M\fun \susp N\) è precisamente un omomorfismo di monoidi nel senso di \ref{ex_cat_monoidi}.
 
-	Innanzitutto, un funtore \(\susp M\fun \susp N\) deve mappare l'unico oggetto di \(\susp M\) in quello di \(\susp N\) nell'unico modo possibile, e questo vale per tutti i funtori il cui codominio è della forma \(\susp N\) per qualche monoide \(N\).
+	Innanzitutto, un funtore \(F : \susp M\fun \susp N\) deve mappare l'unico oggetto di \(\susp M\) in quello di \(\susp N\) nell'unico modo possibile (ovviamente questo vale per tutti i funtori il cui codominio è della forma \(\susp N\) per qualche monoide \(N\): la loro funzione \(F_0\) sugli oggetti è costante).
 
-	Sulle frecce, il funtore deve assegnare ad ogni morfismo di \(\susp M\) (ossia, ogni elemento del monoide \(M\)) una freccia di \(\susp N\) (elemento di \(N\)). In altre parole, abbiamo una funzione \(f:M\to N\).
+	Sulle frecce, il funtore deve assegnare ad ogni morfismo di \(\susp M\) (ossia, ogni elemento del monoide \(M\)) una freccia di \(\susp N\) (elemento di \(N\)). In altre parole \(F_1\) definisce una funzione \(f:M\to N\).
 
-	In questo caso, le condizioni \ref{def_funtore}.\ref{p_1} e \ref{def_funtore}.\ref{p_2} non sono automaticamente vere: la preservazione dell'identità ci dice che \(f(1_M)=1_N\), e la preservazione delle composizioni ci dice che per ogni \(m,m'\in M\) abbiamo \(f(m\cdot m')=f(m)\cdot f(m')\).
+	Le condizioni \ref{def_funtore}.\ref{p_1} e \ref{def_funtore}.\ref{p_2} sono precisamente le condizioni che affermano che \(F_1=f\) preserva l'identità di \(M\), \(f(1_M)=1_N\), e le composizioni, per ogni \(m,m'\in M\) abbiamo \(f(m\cdot m')=f(m)\cdot f(m')\).
 \end{example}
-\paolo{ottima, ma c'è già qualcosa a proposito nell'intro. Meglio tenerne una sola.}
+% \paolo{ottima, ma c'è già qualcosa a proposito nell'intro. Meglio tenerne una sola.}
 \begin{terminology}[A proposito del nome `funtore']\index{Funtore!etimoogia di `---'}
 	\`E sorprendentemente difficile attribuire con precisione la creazione del termine `funtore' a un singolo individuo.
 
@@ -361,7 +361,7 @@ Ora, dare una famiglia di insiemi \(\tilde M(a,b)\) al variare di \(A\times B\) 
 	Per rimarcare la distinzione tra categorie legittime e illegittime, vari autori ricorrono a diverse terminologie: Mac Lane in \cite{working-categories} le chiama `metacategorie' e \cite{acc} le chiama `quasicategorie' (termine che, però, ha radicalmente cambiato significato nel corso degli ultimi quindici anni, riferendosi a strutture definibili in topologia algebrica, che somigliano a categorie ma dove gli assiomi \ref{cp_1}, \ref{cp_2} `valgono a meno di omotopia'). Raramente faremo riferimento a \(\ctCAT\), e mai parlando della sua struttura di `categoria'; avremo invece spesso bisogno di formare categorie del tipo \([\ctC,\ctSet]\) (o simili: \([\ctC,\ctAb]\), \([\ctC,\ctVect]\) eccetera, ma \emph{solo quando \(\ctC\) è piccola} (in questo caso queste categorie sono tutte legittime).
 \end{remark}
 \begin{definition}[La categoria dei gruppoidi]\index{Categoria!--- dei gruppoidi}\label{ex_cat_gruppoidi}
-	\fosco{def della categoria	dei gruppoidi}
+	La categoria \(\ctGpd\) dei gruppoidi (piccoli) è definita analogamente a \(\ctCat\); i suoi oggetti sono i gruppoidi (nel senso di \ref{def_gruppoide}),	e i suoi morfismi sono i funtori tra gruppoidi (la sottocategoria \(\ctGpd\) è piena in \(\ctCat\), dato che i funtori tra gruppoidi sono tutti e soli i funtori  tra le categorie sottostanti; qualcosa di simile accade per la sottocategoria, piena, dei gruppi dentro quella dei monoidi).
 \end{definition}
 \begin{definition}\label{def_cat_cocomma}\index{Categoria!--- comma}
 	Consideriamo una cospanna di funtori
