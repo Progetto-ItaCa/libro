@@ -1,14 +1,15 @@
 itaca.sty: itaca.ins itaca.dtx
 	tex $<
 
+hash:
+	echo "\\\\newcommand{\\gitAbbrevHash}{\\\\texttt{`git rev-parse --short HEAD`}}" > gitcommit.tex
+	$(MAKE) main.pdf
+
 itaca.pdf: itaca.dtx
 	latexmk -pdf -gg $<
 
 main.pdf: main.tex itaca.sty
-	latexmk \
-		-gg -interaction=nonstopmode -pdf \
-		-pretex="\pdftrailerid{}\relax" -usepretex  \
-	$<
+	latexmk -pdf main.tex
 
 watch:
 	texfot latexmk -pdf -pvc main.tex | grep -v "Missing character: There is no ; in font nullfont"
@@ -38,3 +39,7 @@ look_index:
 	grep -i -r --color=auto "index.*$(word)" .
 
 work: book	view watch
+
+board:
+	evince whiteboard.pdf &
+	texfot latexmk -pvc -pdf whiteboard.tex

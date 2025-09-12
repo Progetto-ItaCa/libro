@@ -616,20 +616,25 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	\[\dmFun{U}{\ctMod(\Omega,a)}{\ctSet}\]
 	che danno il supporto di una struttura algebrica fissata da una segnatura \((\Omega,a)\) come in \ref{ex_cat_sigma_strutture}, (sono fedeli, e in più) riflettono gli isomorfismi.
 \end{proposition}
+\`E molto semplice dimostrare il seguente risultato, come conseguenza del fatto che una freccia di una categoria \(\ctC\) è un isomorfismo se e solo se è sia un epi spezzante che un mono spezzante, se e solo se è un mono e un epi spezzante, se e solo se è un epi e un mono spezzante.
+\begin{lemma}\label{lemma_conservativo_iff_monoepi_spez}\index{Funtore!--- conservativo}
+	Un funtore \(F : \ctC\fun\ctD\) è conservativo se e solo se una di queste condizioni equivalenti è verificata:
+	\begin{itemize}
+		\item \(F\) riflette gli epi spezzanti e i mono spezzanti;
+		\item \(F\) riflette gli epi e i mono spezzanti;
+		\item \(F\) riflette gli epi spezzanti e i mono.
+	\end{itemize}
+\end{lemma}
 Una proprietà niente affatto banale dei funtori conservativi è che ogni categoria localmente piccola (cioè, per il senso che noi diamo alla parola, \emph{ogni} categoria) ne ammette uno verso la categoria \(\ctSet\) di insiemi e funzioni; questo risultato è concettualmente molto importante, perché rende la relazione di isomorfismo in \(\ctC\) `testabile' al livello di certe funzioni associate alle frecce astratte di \(\ctC\), ma l'interesse concreto per questa seppur elegante costruzione dovuta a Peter Freyd \cite{fconc} è praticamente nullo.
 \begin{theorem}\index{Funtore!--- conservativo}
-	Sia \(\ctC\) una categoria (localmente piccola); allora, esiste un funtore conservativo \(Q : \ctC\fun\ctSet\).
+	Sia \(\ctC\) una categoria (localmente piccola); allora, esiste un funtore conservativo \(Q_\star : \ctC\fun\ctSet\).
 \end{theorem}
 \begin{proof}
 	Per ogni oggetto \(A\in\ctC_0\) definiamo una relazione di equivalenza sulla classe \(\sum_C\Hom\ctC(C,A)\), imponendo che \((f : C\to A)\asymp(f' : C\to A)\) ogni volta che per ogni \(g :A\to B\), la composizione \(g\cmp f\) è un isomorfismo se e solo se la composizione \(g\cmp f'\) è un isomorfismo.
 
-	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è un mono spezzante, allora lo è anche \(f'\). Prese insieme, queste osservazioni implicano che \(QA\) è un insieme. Ora, definiamo il funtore \(Q_\star : \ctC\fun\ctSet\) mandando \(A\) in \(QA\), a parte quando tutti gli elementi di \(\Hom\ctC(C,A)\) sono mono spezzanti, nel qual caso \(Q_\star(A)=1+QA\).
+	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è un mono spezzante, allora lo è anche \(f'\). Prese insieme, queste osservazioni implicano che \(QA\) è un insieme, dato che la classe delle classi di isomorfismo di mono spezzanti dentro \(A\) è un insieme.\footnote{Se \((\alpha,\beta)\) e \((\alpha',\beta')\) sono coppie di frecce con \(\beta : C\to A\) e \(\beta' : C'\to A\), tali che \(\alpha\cmp\beta = \alpha'\cmp\beta'\), allora \(\alpha\cmp\beta'\) è un isomorfismo, con inversa \(\alpha'\cmp\beta\).} Ora, definiamo il funtore \(Q_\star : \ctC\fun\ctSet\) mandando \(A\) in \(QA\), a parte quando tutti gli elementi di \(\Hom\ctC(C,A)\) sono mono spezzanti, nel qual caso \(Q_\star(A):=1+QA = \{\bullet_A\}+QA\). Sulle frecce, \(Q_\star\) agisce come segue: se \(h : A\to B\) è una freccia in \(\ctC\), la post-composizione con \(h\) scende al quoziente, e la classe di \(f : C\to A\) viene mandata nella classe di \(h\cmp f : C\to B\); questo è sufficiente a definire \(Q_\star h : Q_\star A \to Q_\star B\) mediante \(QA\to QB\) o mediante la mappa costante in \(\bullet_B\).
 
-	Il funtore \(Q_\star\) è conservativo ...
-	\begin{center}
-		\includegraphics[scale=.5]{freyd.png}
-	\end{center}
-	\Todo{}
+	Il funtore \(Q_\star\) è conservativo, in virtù di \ref{lemma_conservativo_iff_monoepi_spez}, perché per costruzione riflette sia i mono spezzanti che gli epi spezzanti.
 \end{proof}
 \begin{definition}[Isomorfismo di categorie]\label{fun_isocat}\index{Categoria!isomorfismo di ---e}\index{Isomorfismo!--- di categorie}\index{Isomorfismo}
 	Un isomorfismo di categorie \(\ctC\cong\ctD\) consiste di una coppia di funtori

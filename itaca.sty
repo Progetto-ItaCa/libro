@@ -1,79 +1,17 @@
-% \iffalse meta-comment
-%
-% %%%=[ DRIVER ]================================================================
-%
-%<*driver>
-\documentclass[a4paper,full]{l3doc}
-
-\EnableCrossrefs
-\CodelineIndex
-\RecordChanges
-
-\begin{document}
-\DocInput{\jobname.dtx}
-\PrintChanges
-\PrintIndex
-\end{document}
-%</driver>
-%
-% \fi
-%
-% \changes{0.1.0}{2025/06/11}{initial version}
-%
-% \GetFileInfo{\jobname.sty}
-%
-% \title{^^A
-%   The \pkg{\jobname} package^^A
-%   \fileinfo^^A
-% }
-%
-% \author{^^A
-%   Progetto ItaCa\\^^A
-%   \texttt{\href{https://progetto-itaca.github.io/}{progetto-itaca.github.io}}^^A
-% }
-%
-% \date{\fileversion~(\filedate)}
-%
-% \maketitle
-%
-% ^^A=[ DOCUMENTATION ]=========================================================
-%
-% \begin{documentation}
-%
-% \section{Documentation}
-%
-% \relax
-%
-% \end{documentation}
-%
-% ^^A=[ IMPLEMENTATION ]========================================================
-%
-% \begin{implementation}
-%
-% \section{Implementation}
-%
-% Open the \pkg{DocStrip} guards and set the internal namespace prefix (as per \LaTeX3 \pkg{DocStrip} convention).
-%    \begin{macrocode}
-%<*package>
-%<@@=itaca>
-%    \end{macrocode}
-%
+%%
+%% This is file `itaca.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% itaca.dtx  (with options: `package')
+%% 
 
 \NeedsTeXFormat{LaTeX2e}[2020/12/01]
 \ProvidesPackage{itaca}
   [lo .sty per il libro di ItaCa]
 
-% TODO:
-% - funziona tutto ma c'è molto refactoring da fare:
-% - [in progress] la parte in LaTeX3 è vecchia e farraginosa
-% - [todo] i nomi delle categorie sono un po' random e andrebbero razionalizzati
-% - [todo] le macro vanno raggruppate e separate per tipo
-% - [todo] alcune vanno ridefinite con meno hacks, codice più elegante
-% - [todo] va tutto documentato meglio, con dei commenti che spiegano come si usano le macro
-% - [todo] la testa di freccia per gli epi nei diagrammi va migliorata
 
-
-% questi vanno chiamati per primi
 \RequirePackage{ xparse
                , mathrsfs
                }
@@ -95,7 +33,6 @@
 \clist_new:N \g_itaca_categories_clist
 \clist_gset:Nn \g_itaca_categories_clist { Set, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Ring, cRing, Mon, Pos, Circ, Meas, Flux, POrd, Pre, Span, Cospan, sSet, gSet, Dyn, Ord, FOrd, Lat, HoTop, Fld, DInt, Ch, Gl, Gpd, Alg, Tw }
 
-% \mathbf{#1} -> \bf#1
 
 \clist_new:N \g_itaca_operators_clist
 \clist_gset:Nn \g_itaca_operators_clist { GL, lan, Lan, LAN, lft, Lft, LFT, Nat, ran, Aut, Ran, RAN, Rft, Yan, RFT, rft, op, co, coop, colim, coker, eq, coeq, PSh, sk, Sub, Quot, N }
@@ -123,13 +60,12 @@
 \itaca_makeabbrev:nnN { \mathbf } { ct#1 } \g_itaca_categories_clist
 \itaca_makeabbrev:nnN { \mathrm } { #1 } \g_itaca_operators_clist
 
-
 \cs_new_protected:Npn \itaca_make_macro_abbrev:nnN #1 #2 #3
 {
-	\clist_map_inline:Nn { #3 }
-	{
-		\cs_new_protected:cpn { #2 } { #1 { \csname ##1\endcsname } }
-	}
+\clist_map_inline:Nn { #3 }
+{
+\cs_new_protected:cpn { #2 } { #1 { \csname ##1\endcsname } }
+}
 }
 
 \itaca_make_macro_abbrev:nnN { \boldsymbol } { bs#1 } \g_itaca_greek_clist
@@ -142,9 +78,8 @@
 \NewDocumentCommand{\ctSEAlg}{O{E}}{(\Sigma,#1)\emdash\ctAlg}
 \NewDocumentCommand{\ctSEEAlg}{O{E}}{\ctSEAlg[E']}
 
-% imprescindibile yoneda in hiragana, va caricato prima di `inputenc'
 \RequirePackage{CJKutf8}
-\newcommand{\yon}{\text{\begin{CJK}{UTF8}{min}よ\end{CJK}}}
+\newcommand{\yon}{\text{\begin{CJK}{UTF8}{min}^^e3^^82^^88\end{CJK}}}
 \newcommand{\coyon}{\reflectbox{\yon}}
 \newcommand{\jap}[1]{\text{\begin{CJK}{UTF8}{min}#1\end{CJK}}}
 
@@ -152,7 +87,6 @@
 \RequirePackage[T1]{fontenc}
 
 \RequirePackage[svgnames]{xcolor}
-% NOTE: this is "Color Blind Safe Palette of IBM Design Language v1 Color"
 \definecolor{ibmBlue}{HTML}{648fff}
 \definecolor{ibmPurple}{HTML}{785ef0}
 \definecolor{ibmMagenta}{HTML}{dc267f}
@@ -191,7 +125,6 @@
   \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{calc,matrix,arrows,positioning,backgrounds,fit}
 
-% TikZ drawing helper for random point clouds
 \NewDocumentCommand{\GimmeBounds}{m m}{
   \pgfmathsetmacro{\xmin}{1}
   \pgfmathsetmacro{\xmax}{0}
@@ -212,18 +145,16 @@
 
 \NewDocumentCommand{\PlaceholderFigure}{m}{%
   \begin{figure}[h]
-		\begin{center}
-			\includegraphics[height=0.3\textwidth]{example-image}
-			\caption{#1}
-		\end{center}
-	\end{figure}%
+\begin{center}
+\includegraphics[height=0.3\textwidth]{example-image}
+\caption{#1}
+\end{center}
+\end{figure}%
 }
 
 \NewDocumentCommand{\ctVect}{O{\bbF}}{{#1}\emdash\cate{Vect}}
 \NewDocumentCommand{\ctMat}{O{\bbF}}{{#1}\emdash\cate{Mat}}
 
-
-% classi di frecce
 \let\mono\hookrightarrow
 \let\epi\twoheadrightarrow
 \NewDocumentCommand{\Epi}{ O{\ctSet} }{\mathrm{Epi}(#1)}
@@ -243,7 +174,6 @@
   },
   cm double to/.tip = {cm to[sep=+0pt -8.9]cm to},
 }
-% teoremi
 \makeatletter
 \def\defthm#1#2{%
   \newtheorem{#1}{#2}[section]%
@@ -252,9 +182,6 @@
 \makeatother
 
 \theoremstyle{definition}
-% \theoremstyle{plain}
-% \theoremstyle{remark}
-% ^ commentato perché Ivan si lamenterà
 
 \numberwithin{equation}{section}
 \newtheorem{theorem}{Teorema}[section]
@@ -297,7 +224,6 @@
   }
 }
 
-% Custom error message if the argument is not recognized
 \msg_new:nnn { hands } { invalid-argument }
   { The~argument~'#1'~is~invalid.~Valid~arguments~are~"fund",~"skip",~or~"tech".
   }
@@ -326,15 +252,12 @@
 \ProcessOptions\relax
 
 \newcommand{\Hom}[1]{#1}
-% NO: \ctC(X,Y)
-% \Hom{\ctC}(X,Y)
 \newcommand{\varHom}{\hom}
 \newcommand{\vvarHom}[1]{\mathrm{Hom}_{#1}}
 
 \def\fun{\longrightarrow}
 \let\funto\fun
 
-% funtore costante
 \def\const{\text{c}}
 
 \def\aa{\text{a}}
@@ -353,7 +276,6 @@
 
 \def\genArrow{\{0\to 1\}}
 
-% == categorie che hanno un nome
 \newcommand{\cate}[1]{\mathbf{#1}}
   \NewDocumentCommand{\ctEuc}{O{\bbR}}{\cate{Euc}^{#1}_*}
   \newcommand{\ctInit}{\cate{0}}
@@ -363,16 +285,10 @@
 \def\singleton{\{\bullet\}}
 \newcommand{\cop}{\coprod}
 
-% #1 #2 : gli oggetti che pulli
-% #3 : l'oggetto su cui #1 #2 arrivano
 \newcommand{\pull}[3]{#1 \times_{#3} #2}
-% X x_Z Y <- \pull XYZ oppure \pull{X}{Y}{Z}
 
 \newcommand{\varpull}[3]{#1 \underset{#3}\times #2}
-% X x_{f,g} Y <- \pull X{f,g}Z oppure \pull{X}{Y}{Z}
 
-% #1 #2 : gli oggetti che pushi
-% #3 : l'oggetto lungo cui incolli
 \newcommand{\push}[3]{#1 +_{#3} #2}
 
 \newcommand{\init}{0}
@@ -394,7 +310,6 @@
 
 \newcommand{\End}[2][]{\mathrm{End}_{#1}(#2)}
 
-% strutture monoidali
 \newcommand{\monProd}{\otimes}
 \newcommand{\monUnit}{I}
 \newcommand{\monSymm}{\sigma}
@@ -402,10 +317,8 @@
 \newcommand{\unitorL}{\lambda}
 \newcommand{\unitorR}{\varrho}
 
-% aggiunti
 \NewDocumentCommand{\adjunct}{O{} O{}}{\nsststile{#2}{#1}}
 
-% isomorfismi / equivalenze
 \newcommand{\iso}{\cong}
 \newcommand{\eqv}{\simeq}
 
@@ -418,26 +331,19 @@
 \NewDocumentCommand{\optup}{O{1} m m m}{
 #2_{#3} #4 \dots #4 #2_{#1}
 }
-% #1 : l'indice di partenza
-% #2 : la variabile indicizzata
-% #3 : l'indice di fine
-% #4 : il simbolo infisso ("," "\otimes" "+" etc)
 
 \NewDocumentCommand{\iter}{O{1} O{,} m}{
 {#1} #2 \dots #2 {#3}
 }
 
-% sospensione di una categoria
 \def\susp{\mathcal{B}}
 \def\pair#1#2{\langle #1,#2\rangle}
 
-% parentesi e notazione per mappe nel prodotto
 \def\bkt#1{\langle #1\rangle}
 \def\squig{\rightsquigarrow}
 \def\dual#1{#1^\ast}
 \def\ddual#1{#1^{\ast\ast}}
 \let\pmap\divideontimes
-
 
 \ExplSyntaxOn
 \NewExpandableDocumentCommand{\extract}{O{#2}mm}
@@ -446,10 +352,8 @@
  }
 \ExplSyntaxOff
 
-% un generico `todo`
 \newcommand{\Todo}[1]{\todo[inline, caption={todo : \extract[1]{30}{#1}},color=green!20, bordercolor=white]{\color{gray} #1}}
 
-% un box dei commenti dedicato a ciascuno di noi
 \NewDocumentCommand{\bla}{ O{\textit{anonimo}} m O{red} }{
   \todo[inline, caption={#1 : \extract[1]{30}{#2}}, color=#3!10, bordercolor=white]{ \color{gray} \textsf{#1} ha detto: #2 }
 }
@@ -460,15 +364,13 @@
 \NewDocumentCommand{\ivan}{ m }{\bla[Ivan]{#1}[yellow]}
 \NewDocumentCommand{\enricoV}{ m }{\bla[Enrico V.]{#1}[black]}
 \NewDocumentCommand{\enricoG}{ m }{\bla[Enrico G.]{#1}[cyan]}
-% ... poi aggiungerò gli altri.
 
 \DeclareDocumentEnvironment{enumtag}{m}{%
-	\begin{enumerate}[ label = \textsc{#1}\oldstylenums{\arabic*}), ref = \textsc{#1}\oldstylenums{\arabic*} ] }{ \end{enumerate} }
+\begin{enumerate}[ label = \textsc{#1}\oldstylenums{\arabic*}), ref = \textsc{#1}\oldstylenums{\arabic*} ] }{ \end{enumerate} }
 
 \DeclareDocumentEnvironment{esercizi}{ O{E.\thesection.\arabic*} }%
   { \subsubsection*{Esercizi della sezione \thesection} \begin{enumerate}[ label = #1 , ref = #1 ] }
   { \end{enumerate} }
-
 
 \newcommand{\emdash}{\text{-}}
 \setlist[itemize,enumerate]{itemsep=0pt}
@@ -483,50 +385,50 @@
 {\endsmallmatrix}
 
 \NewDocumentCommand{\prevar}{o m m O{\downarrow}}{
-	\IfNoValueTF{#1}{
-	  \begin{smallmatrix}
-	  	#2 \\ % dom
-      #4 \\ %  ↓
+\IfNoValueTF{#1}{
+  \begin{smallmatrix}
+   #2 \\ % dom
+      #4 \\ %  ^^e2^^86^^93
       #3    % cod
-	  \end{smallmatrix}}
-	{
-		\begin{xsmallmatrix}{0em}
-			   & #2 \\ %  dom
-			#1 & #4 \\ % f ↓
-			   & #3    %  cod
-		\end{xsmallmatrix}
-	}
+  \end{smallmatrix}}
+{
+\begin{xsmallmatrix}{0em}
+   & #2 \\ %  dom
+#1 & #4 \\ % f ^^e2^^86^^93
+   & #3    %  cod
+\end{xsmallmatrix}
+}
 }
 
 \newenvironment{smat}{\left(\begin{smallmatrix}}{\end{smallmatrix}\right)}
 
 \ExplSyntaxOn
 \NewDocumentCommand{\var}{ o m O{s} m O{\downarrow} }{
-	\str_case:nn { #3 } {
+\str_case:nn { #3 } {
     {r}{\left(       \prevar[#1]{#2}{#4}[#5] \right)}
     {s}{\left[       \prevar[#1]{#2}{#4}[#5] \right]}
     {c}{\left\{      \prevar[#1]{#2}{#4}[#5] \right\}}
     {a}{\left\langle \prevar[#1]{#2}{#4}[#5] \right\rangle}
-	}}
-	\newcommand{\precop}[2]{
-		\begin{smallmatrix}
-			#1 \\ #2
-		\end{smallmatrix}
-	}
-	\NewDocumentCommand{\copmap}{O{r} m m}{
-		\str_case:nn { #1 } {
-			{r}{\left(       \precop{#2}{#3} \right)}
-			{s}{\left[       \precop{#2}{#3} \right]}
-			{c}{\left\{      \precop{#2}{#3} \right\}}
-			{a}{\left\langle \precop{#2}{#3} \right\rangle}
-		}}
+}}
+\newcommand{\precop}[2]{
+\begin{smallmatrix}
+#1 \\ #2
+\end{smallmatrix}
+}
+\NewDocumentCommand{\copmap}{O{r} m m}{
+\str_case:nn { #1 } {
+{r}{\left(       \precop{#2}{#3} \right)}
+{s}{\left[       \precop{#2}{#3} \right]}
+{c}{\left\{      \precop{#2}{#3} \right\}}
+{a}{\left\langle \precop{#2}{#3} \right\rangle}
+}}
 
 \ExplSyntaxOff
 
 \RequirePackage{adjustbox}
 \newenvironment{adju}[1][0.925]{%
 \begin{center}%
-	\begin{adjustbox}{max height=0.5\textheight, max width=#1\textwidth}%
+\begin{adjustbox}{max height=0.5\textheight, max width=#1\textwidth}%
 }{%
   \end{adjustbox}\end{center}%
 }
@@ -543,7 +445,6 @@
   #1/\!\!/#1
 }
 
-% [d]isplay[m]ath[Fun]ctor
 \NewDocumentCommand{\dmFun}{m m m}{
   \begin{tikzcd}[ampersand replacement=\&]
     #1 : #2 \ar[r] \& #3
@@ -575,18 +476,13 @@
     }
 \pagestyle{scrheadings}
 
-% KOMA-classes have a weird default for footnotes
 \deffootnote{1em}{1em}{\textsuperscript{\thefootnotemark}}
-% ... and captions
 \renewcommand*{\figureformat}{%
   \figurename~\thefigure%
-%  \autodot% DELETED
 }
 \renewcommand*{\tableformat}{%
   \tablename~\thetable%
-%  \autodot% DELETED
 }
-%==
 \NewDocumentCommand{\hammock}{ O{\ctSet} m m }{ #2 \leftrightarroweq_{#1} #3 }
 \RequirePackage[font={small}]{caption}
 \RequirePackage{datetime}
@@ -613,7 +509,6 @@
   node[font=\tiny,pos=.5,below] {$#2$};
 \draw (C0) to[bend left=50] (C1);
 \draw (C0) to[bend right=50] (C1);
-%
 \draw (C1) -- (C2)
   node[font=\tiny,pos=.5,above] {$#3$}
   node[font=\tiny,pos=.5,below] {$#4$};
@@ -621,7 +516,6 @@
 \draw (C1) to[bend right=50] (C2);
 }
 
-% \def\radius{3.5pt}
 \def\displayRadius{3.5pt}
 \def\textstyleRadius{3.0pt}
 \def\scriptstyleRadius{2.0pt}
@@ -667,13 +561,4 @@
     \fi
 }
 }
-% inutile riga di controllo
-% END OF FILE
 
-%
-% Close the \pkg{DocStrip} guards and call it a day.
-%    \begin{macrocode}
-%</package>
-%    \end{macrocode}
-%
-% \end{implementation}
