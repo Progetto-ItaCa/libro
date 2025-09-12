@@ -1,8 +1,6 @@
 \section{La nozione di categoria}\label{sec_categorie}
 
-Prima di dare una definizione formale di categoria, può essere d'aiuto raccogliere alcuni esempi concreti per orientare chi legge. Per forza di cose, questo primo capitolo deve introdurre un sacco di notazione completamente nuova ed è inevitabile che esso diventi lungo e `cerebrale'.
-
-La nozione di categoria, che introdurremo in \ref{def_categ}, riuscirà a unificare due strutture matematiche, monoidi e insiemi ordinati, che sono apparentemente molto diverse tra loro.
+Prima di dare una definizione formale di categoria, può essere d'aiuto raccogliere alcuni esempi concreti per orientare chi legge. Per forza di cose, questo primo capitolo deve introdurre un sacco di notazione completamente nuova ed è inevitabile che esso diventi lungo e `cerebrale': chi desidera andare al punto e vedere alcune conseguenze immediate della definizione di categoria, perché conosce già quali motivazioni portano a essa, può iniziare da \ref{def_categ} e proseguire con \ref{cor_def_categ}, \ref{def_cat_piccola_locpiccola}. I risultati cardinali di questo capitolo (a parte gli esempi e le costruzioni delle sezioni \ref{sec_esempi_cats} e \ref{sec_operazioni}) sono due, \ref{ord_sonocat} e \ref{mon_sonocat}: la nozione di categoria riuscirà a unificare due strutture matematiche, monoidi e insiemi ordinati, che sono apparentemente molto diverse tra loro, ma entrambe esempi particolari di categorie.
 \begin{definition}\label{prelim_def_monoide}
 	Un \emph{monoide} consiste di un insieme \(M\) dotato di
 	\begin{itemize}
@@ -153,7 +151,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 		\item per ogni \(g : A\to X\) si ha \(u\cmp g = g\).
 	\end{itemize}
 \end{remark}
-\begin{hRemark}[A proposito dell'ordine di composizione]{skip}\label{sulla_compo}\index{Ordine!--- di composizione}
+\begin{hRemark}[Ordine di composizione tra frecce]{skip}\label{sulla_compo}\index{Ordine!--- di composizione}
 	La forma diagrammatica di rappresentazione di una freccia in \ref{c_3} pone un problema notazionale riguardo la composizione di morfismi in \ref{c_5}; in matematica è una convenzione \emph{quasi} universale applicare le funzioni a sinistra degli argomenti, cioè scrivere \(g(f(x))\) per denotare che la prima funzione ad \emph{agire} su un elemento \(x\in X\) è \(f\), e la seconda è \(g\). Ma \(g\) è la prima funzione a essere \emph{letta} enunciando la composizione di \(f\) con \(g\) (che non ha senso se non come in \ref{c_5}, quando \(X\ne Z\)): come conseguenza, i diagrammi si leggono `al contrario' rispetto a come si disegnano, scrivendo per primo il morfismo che viene composto per ultimo.  Sorprendentemente, questa semplice inversione è sufficiente a confondere una minoranza di matematici, che vorrebbero applicare le funzioni a destra del loro argomento, scrivendo cioè \((xf)g\) per ciò che noi denotiamo \(g(fx)\). Essendo il problema generato da una scelta del tutto soggettiva e legata al progresso storico (la scrittura in occidente procede da sinistra a destra, e leggiamo \(\cos(z)\), `il coseno di \(z\)', e non brutture come \((x)\!\cos\) o \(x^{\cos}\), `l'elemento \(x\) su cui ha agito la funzione coseno') è impossibile stabilire chi ha ragione o torto: si può solo fare una scelta e mantenerla coerentemente. Tra le varie soluzioni possibili, la più elementare è rovesciare il verso delle frecce, cioè scrivere
 	\[
 		\begin{tikzcd}
@@ -163,7 +161,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 	\]
 	per la composizione che appare in \ref{c_5} (e fare altrettanto per diagrammi più complessi): ora la composizione di \(g\) e di \(f\) è effettivamente \(g\cmp f\); però questo sposta semplicemente il problema, dato che ora le frecce scorrono in senso contrario al verso di lettura\dots
 \end{hRemark}
-\begin{definition}[Categoria piccola, categoria localmente piccola]\index{Categoria!--- piccola}\index{Categoria!--- loc. piccola}
+\begin{definition}[Categoria piccola, categoria localmente piccola]\label{def_cat_piccola_locpiccola}\index{Categoria!--- piccola}\index{Categoria!--- loc. piccola}
 	Quando la classe \(\ctC_1\) è un insieme, come conseguenza della seconda osservazione fatta, è un insieme anche \(\ctC_0\) (dato che una sottoclasse di una classe che è un insieme, è a sua volta un insieme): in tal caso chiamiamo la categoria \(\ctC\) \emph{piccola}; per contro	una categoria che non è piccola si dice \emph{grande}, \emph{larga} o simili.
 
 	Invece, \(\ctC\) si dice \emph{localmente piccola} se dati ogni due oggetti \(X\) e \(Y\), la classe \(\Hom{\ctC}(X,Y)\) dei morfismi da \(X\) a \(Y\) è un insieme.
@@ -233,11 +231,11 @@ L'ultima di queste osservazioni non è meno importante: porterà alla definizion
 		è un insieme.
 	\end{enumtag}
 	Mostrare che ogni categoria senza oggetti definisce una categoria nel senso di \ref{def_categ} e viceversa.
-	\item \label{jgdasoh_2} Descrivere in cosa consiste una struttura che soddisfa tutti gli assiomi di \ref{def_categ}, a parte il fatto che \(d,c : \ctC_1\to\ctC_0\) sono funzioni parziali: in una `categoria bucata', esistono frecce \(\xymatrix{{} \ar[r]^f & Y}\) di \(\ctC\) che non hanno dominio, e alcune \(\xymatrix{X \ar[r]^g & {}}\) che non hanno codominio (possono esistere anche frecce \(\xymatrix{{} \ar[r]^p & {}}\)? Quante? Ci può essere più di una freccia \(\xymatrix{{} \ar[r]^f & {}}\) senza dominio né codominio?).
+	\item \label{jgdasoh_2} Descrivere in cosa consiste una struttura che soddisfa tutti gli assiomi di \ref{def_categ}, a parte il fatto che \(d,c : \ctC_1\to\ctC_0\) sono funzioni parziali: in una `categoria bucata', esistono frecce \(\xymatrix{{} \ar[r]^f & Y}\) di \(\ctC\) che non hanno dominio, e alcune \(\xymatrix{X \ar[r]^g & {}}\) che non hanno codominio (ci può essere una freccia \(\xymatrix{{} \ar[r]^f & {}}\) senza dominio né codominio? Più di una?).
 	\item \label{jgdasoh_3} Costruire la categoria \(\ctM\) con un solo oggetto \(\{X\}\), dove i morfismi \(\Hom\ctM(X,X)\) sono specificati ricorsivamente come
 	\[t ::= z \mid c \mid f \, t \mid g \, t \]
 	dove \(z,c\) sono dze costanti, cosicché i morfismi siano parole del tipo
 	\[\ctM_1=\{z,c,fz,gz,fc,gc,ffz,gfz,fgz,\dots\}\]
-	La composizione \(X \xto w X \xto v X\), dove \(v,w\in\ctM_1\), è definita come la sostituzione di \(w\) in tutte le occorrenze di \(z\) nella parola \(v\). Verificare gli assiomi di categoria per \(\ctM\). In quanto categoria con un solo oggetto, esiste un isomorfismo di monoidi \(\ctM(X,X) \cong (M,\ast,1_M)\) (nel senso di \ref{lem_end_monoide}): descrivere la struttura del monoide \(M\) in termini di generatori e relazioni. (Suggerimento: a che elemento di \(\ctM(X,X)\) corrisponde l'elemento neutro \(1_M\) per l'operazione \(*\) su \(M\)? Mostrare per induzione che un elemento di \(\ctM(X,X)\) è della forma \(pz\) o della forma \(pc\) dove \(p\) è una parola nell'alfabeto \(\{f,g\}\); dedurre che è sufficiente esplicitare le composizioni \(pu * p'c\), \(pu * p'u\) e \(pc * x\); quindi\dots)
+	La composizione \(X \xto w X \xto v X\), dove \(v,w\in\ctM_1\), è definita come la sostituzione di \(w\) in tutte le occorrenze di \(z\) nella parola \(v\). Verificare gli assiomi di categoria per \(\ctM\). In quanto categoria con un solo oggetto, esiste un isomorfismo di monoidi \(\ctM(X,X) \cong (M,\ast,1_M)\) (nel senso di \ref{lem_end_monoide}): descrivere la struttura del monoide \(M\) in termini di generatori e relazioni. (Suggerimento: a che elemento di \(\ctM(X,X)\) corrisponde l'elemento neutro \(1_M\) per l'operazione \(*\) su \(M\)? Mostrare per induzione che un elemento di \(\ctM(X,X)\) è della forma \(pz\) o della forma \(pc\) dove \(p\) è una parola qualsiasi nell'alfabeto \(\{f,g\}\); dedurre che è sufficiente esplicitare le composizioni \(pu * p'c\), \(pu * p'u\) e \(pc * x\); quindi\dots)
 	\item \label{jgdasoh_5} Costruire esempi di strutture che soddisfano tutti gli assiomi di \ref{def_categ} meno uno: due classi \(\ctC_0,\ctC_1\), con funzioni di classe \(d,c,\id,\cmp\) ma la composizione non è sempre definita, non è sempre associativa, non sempre unitale.
 \end{esercizi}
