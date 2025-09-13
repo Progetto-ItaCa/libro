@@ -33,6 +33,7 @@
             cyrillic
             datetime
             enumitem
+            epigraph
             etoolbox
             fancyvrb
             fmtcount
@@ -54,6 +55,7 @@
             metafont
             microtype
             multirow
+            nextpage
             pgf
             snapshot
             stmaryrd
