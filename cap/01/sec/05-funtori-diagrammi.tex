@@ -250,7 +250,7 @@ La teoria degli endofuntori su una categoria è molto vasta per diversi motivi: 
 
 		      Una \(S\)-algebra, invece, consiste di una funzione \(\xi : 1+(A\times X)\to X\) che sceglie un elemento \(\xi(\bullet)=x_0\in X\), e tale che \(\xi|_{A\times X}\to A\times X\to X\) sia un \emph{semiautoma deterministico} (con stato iniziale \(x_0\)): l'insieme \(A^*\) delle liste di elementi di \(A\) agisce su \(X\) definendo per induzione
 		      \[\bar\xi(\emptyList,x):=x \qquad \bar\xi(a\cons as,x) := \xi(a, \bar\xi(as,x))\]
-		\item Quando si considera un preordine \((P,\le)\) come una categoria, alla maniera di \ref{}, un endofuntore consiste di una mappa monotòna \(f : (P,\le) \to (P,\le)\); allora, una \(f\)-algebra consiste di un elemento \(a\in P\) tale che \(f(a) \le a\) (quello che si dice un \emph{punto prefisso} per \(f\)), mentre una \(f\)-coalgebra è un elemento \(a\in P\) tale che \(a \le f(a)\) (quello che si dice un \emph{punto postfisso} per \(f\)). Nella teoria classica degli ordini hanno rilevanza gli elementi \(x_0=\inf\{x\in P \mid f(x) \le x\}\) e \(x_1=\sup\{x\in P \mid x \le f(x)\}\) (quando esistono), che sono rispettivamente la più piccola \(f\)-algebra e la più grande \(f\)-coalgebra. Si noti che in particolare, \(fx_0=x_0\) e \(f(x_1)=x_1\).
+		\item Quando si considera un preordine \((P,\le)\) come una categoria, alla maniera di \ref{ord_sonocat}, un endofuntore consiste di una mappa monotòna \(f : (P,\le) \to (P,\le)\); allora, una \(f\)-algebra consiste di un elemento \(a\in P\) tale che \(f(a) \le a\) (quello che si dice un \emph{punto prefisso} per \(f\)), mentre una \(f\)-coalgebra è un elemento \(a\in P\) tale che \(a \le f(a)\) (quello che si dice un \emph{punto postfisso} per \(f\)). Nella teoria classica degli ordini hanno rilevanza gli elementi \(x_0=\inf\{x\in P \mid f(x) \le x\}\) e \(x_1=\sup\{x\in P \mid x \le f(x)\}\) (quando esistono), che sono rispettivamente la più piccola \(f\)-algebra e la più grande \(f\)-coalgebra. Si noti che in particolare, \(fx_0=x_0\) e \(f(x_1)=x_1\).
 	\end{itemize}
 \end{examples}
 \begin{definition}[Bifuntore]\label{def_bifuntore}\index{Bifuntore}\index{Funtore!bi---}
@@ -384,7 +384,7 @@ Ora, dare una famiglia di insiemi \(\tilde M(a,b)\) al variare di \(A\times B\) 
 		\end{tikzcd}\]
 \end{definition}
 \begin{remark}[Alcuni esempi di categorie comma]\index{Categoria!--- comma}
-	Importanti esempi di categorie sono particolari categorie comma per opportune scelte di \(F\) o \(G\); l'esercizio \ref{gfdpgubai_5} invita chi legge a esplicitare, tra le altre, \((F/E)\) e \((E/G)\) dove \(E\) è un oggetto guardato come funtore \(E : \ctTerm \fun\ctE\) alla maniera di \ref{tante_cose_sono_diag}.
+	Importanti esempi di categorie sono particolari categorie comma per opportune scelte di \(F\) o \(G\); l'esercizio \ref{gfdpgubai_5} invita chi legge a esplicitare, tra le altre, \((F/E)\) e \((E/G)\) dove \(E\) è un oggetto guardato come funtore \(E : \ctTerm \fun\ctE\) alla maniera di \ref{tante_cose_sono_diag}. In particolare, quando uno tra $F,G$ è un funtore costante, esiste un lieve sovraccarico di terminologia: per una categoria $\ctE$, la categoria incubo $\ctE/E$ di \ref{def_cat_slice} consiste esattamente della comma $(\id/E)$ e la succuba $E/\ctE$ consiste esattamente	della comma $(E/\id)$.
 \end{remark}
 \begin{definition}[La categoria degli elementi di un funtore]\label{elts_F}\index{Categoria!--- degli elementi}\index{aaa_EltsF@\(\Elts{}F\)}
 	Ad ogni funtore \(F : \ctC\fun\ctSet\) si associa una categoria \(\Elts \ctC F\), detta \emph{categoria degli elementi} di \(F\), che ha
@@ -414,6 +414,22 @@ La costruzione si dà anche per un funtore controvariante \(F : \ctC^\op\fun\ctS
 
 	Dato un costrutto \((\ctC,U)\) la \emph{fibra} sopra un insieme \(X\) è la sottocategoria formata dagli oggetti \(C\) tali che \(UC=X\) (tutti i \(\ctC\)-oggetti che hanno un dato supporto \(X\)), dove è definita una relazione di preordine \(C\le C'\) se e solo se \(\id_X : UC \to UC'\) è immagine di una freccia \(i : C\to C'\) in \(\ctC\). In categorie del tipo definito in \ref{varie_categorie_nella_pratica}, la fibra sopra un oggetto è preordinata in modo banale, nel senso che \(C\le C'\) se e solo se \(C=C'\); per contro, nelle categorie definite in \ref{po_wo_to} e \ref{ex_cat_top} la fibra sopra un insieme ordinato (risp., uno spazio topologico) è fatta dal poset delle relazioni d'ordine (risp., delle topologie) su un dato insieme \(X\), ordinato dalla relazione di finezza (ossia dalla relazione di inclusione in \(\pow {\pow X}\)).
 \end{hDigression}
+\begin{hDefinition}[Comma di frecce ritorte]{skip}
+	Più in generale possiamo definire la categoria comma di frecce ritorte tra due funtori \(F : \ctA \to \ctC\) e \(G : \ctB \to \ctC\), denotata \(\ctTw(F/G)\), come la categoria che ha 
+	\begin{itemize}
+		\item per oggetti le terne $(A,B;\varphi : FA \to GB)$ dove $\varphi$ è una freccia di $\ctC$;
+		\item per frecce $(u,v) : (A,B;\varphi) \leftrightarrows (X,Y;\psi)$ le coppie di frecce	$u : X \to A$ in $\ctA$ e $v : B \to	Y$ in $\ctB$ tali che il seguente quadrato commuta:
+		      \[
+			      \begin{tikzcd}
+				      FA \ar{d}[swap]{\varphi} & FX \ar{l}[swap]{Fu} \ar{d}{\psi} \\
+				      GB  \ar{r}[swap]{Gv} & GY
+			      \end{tikzcd}
+		      \]
+	\end{itemize}
+	Evidentemente $\ctTw(\id_\ctC/\id_\ctC)$ è la categoria $\ctTw(\ctC)$ di \ref{def_cat_frecce_ritorte}; se $F$ è costante in $C$, allora $\ctTw(F/G)$ è la comma (non ritorta) $C/G$ di \ref{def_cat_cocomma}; se $G$ è costante in $C$, allora $\ctTw(F/G)$ è la comma (non ritorta) $F/C$.
+
+	Siano $\id_\ctSet$ il funtore identico, e $j : \ctFin\fun\ctSet$ l'inclusione della sottocategoria degli insiemi finiti: si descrivano, sempre per esercizio, le comma di frecce ritorte $\ctTw(j/\id)$ e $\ctTw(\id/j)$; si determini \(\ctTw(\Delta/\Delta)\) dove \(\Delta : \ctC \to \ctC\times\ctC\) è il funtore diagonale di \ref{es_di_funtori}.\ref{exfun_3}.
+\end{hDefinition}
 \subsection{Funtori come diagrammi}
 In \ref{es_fun_repre} abbiamo visto che una \emph{rappresentazione} di un monoide \(M\) consiste di un funtore \(\susp M \fun\ctSet\), e più in generale un funtore \(\ctC\fun\ctSet\) può essere pensato come una rappresentazione di \(\ctC\); se una categoria \(\ctJ\) è pensata come una \emph{forma} nel senso di \ref{ssec:categorie_forme}, e soprattutto quando è una forma generica nel senso di \ref{ex_cat_freccia}, \ref{ex_spancospan}, \ref{es_catena_trans}, possiamo dare la definizione seguente.
 \begin{definition}\label{def_diagramma_comm}\index{Diagramma}
