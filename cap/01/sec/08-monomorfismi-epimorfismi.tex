@@ -738,12 +738,58 @@ Sorprendentemente, la nozione di equivalenza di categorie non è più debole del
 	\end{itemize}
 \end{remark}
 Gli isomorfismi di categorie sono relativamente rari, poiché le proprietà di molte categorie sono invarianti per una nozione molto più debole di identificazione.
-Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempio, ogni gruppoide è equivalente a una unione disgiunta di gruppi (guardati come gruppoidi con un solo oggetto), senza che questa equivalenza sia un isomorfismo; e il gruppoide fondamentale \(\Pi_1(X)\) di uno spazio topologico \(X\) connesso per archi è una categoria equivalente, ma non isomorfa, a \(\pi_1(X,x_0)\) per una opportuna scelta di un punto di base \(x_0\in X\). Questo suggerisce che due categorie piccole con due insiemi degli oggetti di diversa cardinalità possono essere equivalenti; un esempio estremo è questo: se \(A\) è un insieme e \(A^\chi\) il gruppoide caotico di \ref{ex_cat_codiscreta}, esiste un unico funtore \(F : A^\chi \to \ctTerm\), definito nell'unico modo possibile, ed esso è un'equivalenza (debole). In particolare (invitiamo chi legge a completare i dettagli per esercizio)
+Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempio, ogni gruppoide è equivalente a una unione disgiunta di gruppi (guardati come gruppoidi con un solo oggetto), senza che questa equivalenza sia un isomorfismo; e il gruppoide fondamentale \(\Pi_1(X)\) di uno spazio topologico \(X\) connesso per archi è una categoria equivalente, ma non isomorfa, a \(\pi_1(X,x_0)\) per una opportuna scelta di un punto di base \(x_0\in X\). Questo suggerisce che due categorie piccole con due insiemi degli oggetti di diversa cardinalità possono essere equivalenti; un esempio estremo è questo: se \(A\) è un insieme (anche molto grande) e \(A^\chi\) il gruppoide caotico di \ref{ex_cat_codiscreta}, esiste un unico funtore \(F : A^\chi \to \ctTerm\), definito nell'unico modo possibile, ed esso è un'equivalenza (debole). In particolare (invitiamo chi legge a completare i dettagli per esercizio), vale che
 \begin{remark}\index{Categoria!--- isomorfismo generico}
 	La categoria `isomorfismo generico' di \ref{ex_cat_iso},
 	\[\xymatrix@C=7ex{0 \ar@<.7ex>[r]^u \ar@(dl,ul)[] & 1 \ar@<.7ex>[l]^{u^{-1}} \ar@(ur,dr)[]}\]
 	è equivalente alla categoria \(\ctTerm\).
 \end{remark}
+Si noti anche che un risultato analogo è falso per la categoria discreta $A^\delta$, che è anch'essa un gruppoide: è la `connessione massima possibile' tra due qualsiasi oggetti di $A^\chi$ il fatto che rende vero il risultato precedente.
+\begin{figure}
+	\begin{center}
+		 \begin{tikzpicture}[
+   x=4em, y=4em,
+   dot/.style={
+     circle,
+     fill=#1,
+     inner sep=0pt,
+     outer sep=2pt,
+     minimum size=4pt,
+     draw=none,
+    },
+   wrap/.style={
+     fill=black!5,
+     draw=gray,
+     rounded corners,
+     inner sep=.5em,
+    },
+  ]
+ \foreach \i in {0,...,6}
+\node[dot=gray!80] (C-\i) at (\i*360/7:1.5) {};
+\node[dot] (one) at (3,0) {};
+\draw[gray!80] (C-1) -- (C-2) -- (C-3)  (C-4) -- (C-5) -- (C-6) -- (C-0);
+\draw[gray!80] (C-1) -- (C-6)
+      (C-1) -- (C-5)
+      (C-1) -- (C-4)
+      (C-1) -- (C-3);
+\draw[gray!80] (C-0) -- (C-2)
+      (C-0) -- (C-3)
+      (C-0) -- (C-4)
+      (C-0) -- (C-5);
+\draw[gray!80] (C-3) -- (C-5)
+      (C-3) -- (C-6);
+\draw[gray!80] (C-2) -- (C-4)
+      (C-2) -- (C-6);
+\foreach \i/\j/\col/\k in {0/1/Blue/u,3/4/Magenta/v,2/5/Orange/w} {
+\draw[ibm\col] (C-\i) -- (C-\j) node[left,pos=.4,ibm\col] {$\k$};
+\draw[ibm\col, dashed, -latex'] (C-\i) -- (one);
+\draw[ibm\col, dashed, -latex'] (C-\j) -- (one);
+}
+
+\end{tikzpicture}
+	\end{center}
+	\caption{Il gruppoide caotico su un insieme $A$ con sette elementi, e l'unico funtore $F^! : A^\chi \fun\ctTerm$ verso la categoria $\ctTerm$ che è un'equivalenza, a dispetto del fatto che non induce una biiezione sugli insiemi di oggetti di $A^\chi$ e di $\ctTerm$; ciascuna funzione $F_{ij}^! : A^\chi(i,j) \to \ctTerm(\bullet,\bullet)$ è biiettiva, dato che nell'hom insieme a sinistra esiste sempre uno e un solo elemento; questo rende $F^!$ pienamente fedele. Tre frecce distinte di $A^\chi$ sono state evidenziate.}
+\end{figure}
 \begin{example}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
 	Sia \(n\ge 1\) un intero, e \(k\) un campo qualsiasi. Definiamo due categorie \(\ctC_{n,k},\ctD_{n,k}\) come segue:
 	\begin{itemize}
