@@ -16,7 +16,7 @@
 
 Uno dei paradigmi della teoria delle categorie è che, per indagare le proprietà di un determinato oggetto matematico, si guarda in che modo esso interagisca con  altri oggetti.
 
-Illustriamo questo punto di vista con un esempio. Nella teoria classica degli insiemi\footnote{Ad esempio, secondo l'assiomatica ZF(C), vedi \cite{ZFC}}, l'insieme vuoto \(\emptyset\) è definito come \emph{l'insieme privo di elementi}. Questa definizione, tuttavia, non si presta a essere tradotta in un contesto categoriale più generale perché, sebbene gli insiemi siano gli oggetti di una categoria, \(\ctSet\), gli elementi di cui essi sono composti non possono essere indagati direttamente in \(\ctSet\). D'altro canto, l'insieme vuoto è caratterizzato dalla  proprietà, di essere sottoinsieme di qualunque altro insieme \(S\). Equivalentemente, per ogni insieme \(S\), l'hom-insieme \(\Hom\ctSet(\emptyset,S)\) contiene un solo elemento: la  \emph{funzione inclusione}  \(\emptyset \hookrightarrow S\). Dal punto di vista categoriale, quest'ultima formulazione si presta a essere adottata come definizione---e qui entra in gioco l'espressività della teoria delle categorie. Infatti, quando si perviene a una definizione espressa puramente in termini di oggetti e morfismi,  tale definizione può essere data in qualunque categoria, ed è naturale chiedersi cosa essa descriva in categorie diverse. 
+Illustriamo questo punto di vista con un esempio. Nella teoria classica degli insiemi\footnote{Ad esempio, secondo l'assiomatica ZF(C), vedi \cite{ZFC}}, l'insieme vuoto \(\emptyset\) è definito come \emph{l'insieme privo di elementi}. Questa definizione, tuttavia, non si presta a essere tradotta in un contesto categoriale più generale perché, sebbene gli insiemi siano gli oggetti di una categoria, \(\ctSet\), gli elementi di cui essi sono composti non possono essere indagati direttamente in \(\ctSet\). D'altro canto, l'insieme vuoto è caratterizzato dalla  proprietà di essere sottoinsieme di qualunque altro insieme \(S\). Equivalentemente, per ogni insieme \(S\), l'hom-insieme \(\Hom\ctSet(\emptyset,S)\) contiene un solo elemento: la  \emph{funzione inclusione}  \(\emptyset \hookrightarrow S\). Dal punto di vista categoriale, quest'ultima formulazione si presta a essere adottata come definizione---e qui entra in gioco l'espressività della teoria delle categorie. Infatti, quando si perviene a una definizione espressa puramente in termini di oggetti e morfismi,  tale definizione può essere data in qualunque categoria, ed è naturale chiedersi cosa essa descriva in categorie diverse. 
 
 \begin{example}(oggetto iniziale)\label{ex_oggetto_iniziale}
 	Data una categoria \(\ctC\), un \emph{oggetto iniziale} è un oggetto \(O\) di \(\ctC\) tale che, per ogni altro oggetto \(C\) di \(\ctC\), ci sia una e una sola freccia \(O\to C\), o, in altre parole, si abbia 
@@ -51,11 +51,11 @@ In conclusione, tornando alla citazione con cui abbiamo aperto il capitolo, la t
 
 \subsection*{Prodotti in \(\ctSet\)}\label{prod_in_Set}
 Iniziamo da una nozione classica. 
-Dati due insiemi \(A\) e \(B\), il loro \emph{prodotto} \(A\times B\), detto \emph{cartesiano}, consiste nell'insieme di tutte le coppie ordinate di elementi di \(A\) e di \(B\):
+Dati due insiemi \(A\) e \(B\), il loro \emph{prodotto} \(A\times B\), chiamato \emph{cartesiano}, consiste nell'insieme di tutte le coppie ordinate di elementi di \(A\) e di \(B\):
 \[
 A\times B= \{(a,b)\mid a\in A, b\in B\}
 \]
-In questi termini, il prodotto è descritto come una operazione, che, da due insiemi, ne produce uno nuovo che può avere caratteristiche e proprietà anche molto diverse da quelle degli insiemi di partenza. Ad esempio, il piano cartesiano ortogonale della geometria analitica può essere identificato con \(\bbR^2=\bbR\times\bbR\), l'insieme delle coppie ordinate di numeri reali. Il fatto che le coppie siano ordinate è cruciale: ad esempio, il punto \(P=(1,0)\in \bbR\times\bbR\) è un elemento distinto dal punto \(Q=(0,1)\in \bbR\times\bbR\), anche se sia $P$ che $Q$ sono formati dalla stessa coppia di numeri reali. Per confrontare gli elementi di \(\bbR\times\bbR\) ci serviamo di due funzioni, \(\pi_1,\pi_2\), che restituiscono, rispettivamente, la prima e la seconda coordinata, o componente, di un dato punto:
+In questi termini, il prodotto è descritto come una operazione: dati due insiemi, ne produce uno nuovo che può avere caratteristiche e proprietà anche molto diverse da quelle degli insiemi di partenza. Ad esempio, il piano cartesiano ortogonale della geometria analitica può essere identificato con \(\bbR^2=\bbR\times\bbR\), l'insieme delle coppie ordinate di numeri reali. Il fatto che le coppie siano ordinate è cruciale: ad esempio, il punto \(P=(1,0)\in \bbR\times\bbR\) è un elemento distinto dal punto \(Q=(0,1)\in \bbR\times\bbR\), anche se sia $P$ che $Q$ sono formati dalla stessa coppia di numeri reali. Per confrontare gli elementi di \(\bbR\times\bbR\) ci serviamo di due funzioni, \(\pi_1,\pi_2\), che restituiscono, rispettivamente, la prima e la seconda coordinata, o componente, di un dato punto:
 \[
 \pi_1(P)=1\qquad \pi_2(P)=0
 \]
@@ -102,7 +102,7 @@ La seconda costruzione che vogliamo esaminare è quella dell'\emph{insieme quozi
 \[
 S/R=\{[s]_R\mid s\in S\}
 \]
-dove \([s]_R=\{s'\in S\mid sRs'\}\). Anche in questo caso, come per il prodotto, l'insieme che abbiamo definito ci racconta solo una parte della storia. Infatti, perché \(S/R\) sia considerato un quoziente di \(S\), bisogna registrare in che modo i suoi elementi rappresentino quelli di \(S\). In altre parole, è necessario specificare una funzione \(q_R\colon S\to S/R\),  chiamata proiezione canonica sul quoziente. Nel caso in esame, avremo \(q_R(s)=[s]_R\), per ogni elemento \(s\in S\). La coppia \((S/R, q_R\colon S\to S/R)\) gode anch'essa di una proprietà caratterizzante che può essere formulata in termini di solo insiemi e funzioni; vediamo come.  Se chiamiamo $i$ la funzione inclusione di \(R\) in \(S\times  S\), possiamo definire due nuove funzioni \(r_1=\pi_1\circ i\) e \(r_2=\pi_2\circ i\):
+dove \([s]_R=\{s'\in S\mid sRs'\}\). Anche in questo caso, come per il prodotto, l'insieme che abbiamo definito ci racconta solo una parte della storia. Infatti, perché \(S/R\) sia considerato un quoziente di \(S\), bisogna tenere traccia di come i suoi elementi rappresentino quelli di \(S\). In altre parole, è necessario specificare una funzione \(q_R\colon S\to S/R\),  chiamata proiezione canonica sul quoziente. Nel caso in esame, avremo \(q_R(s)=[s]_R\), per ogni elemento \(s\in S\). La coppia \((S/R, q_R\colon S\to S/R)\) gode anch'essa di una proprietà caratterizzante che può essere formulata in termini di soli insiemi e funzioni; vediamo come.  Se chiamiamo $i$ la funzione inclusione di \(R\) in \(S\times  S\), possiamo definire due nuove funzioni \(r_1=\pi_1\circ i\) e \(r_2=\pi_2\circ i\):
 \[
 r_1, r_2\colon R\to S
 \] 
@@ -169,7 +169,7 @@ tale che \(p_1\circ h=f\) e \(p_2\circ h=g\).
 dove la freccia \(h\) è tratteggiata perché la sua esistenza è conseguenza della definizione di prodotto, e i due i triangoli commutativi corrispondono alle due equazioni che concludono la definizione.
 
 \medskip
-Introduciamo ora un linguaggio che useremo nel seguito. Per riferirci al prodotto di due oggetti \(A\) e \(B\) diremo che la tripla \((P,p_1,p_2)\) è una \emph{spanna universale} su  \(A\) e \(B\). Inoltre, chiamiamo la proprietà che definisce il prodotto di due oggetti \emph{proprietà universale del prodotto}.
+Per riferirci al prodotto di due oggetti \(A\) e \(B\) diremo che la tripla \((P,p_1,p_2)\) è una \emph{spanna universale} su  \(A\) e \(B\). Inoltre, chiamiamo la proprietà che definisce il prodotto di due oggetti \emph{proprietà universale del prodotto}.
 
 \begin{example}\label{esempio_spanna_universale_in_Set}
 Consideriamo gli insiemi
@@ -189,7 +189,7 @@ Dimostriamolo. Sia \(Q\) un insieme e \(f\colon Q\to A\), \(g\colon Q\to B\) due
 \[
 h(q)\equiv p_1(q) \pmod 2\qquad\text{e}\qquad h(q)\equiv p_2(q) \pmod 3
 \]
-Il fatto che tale intero esista e sia unico è conseguenza del ben noto teorema \emph{teorema cinese dei resti}\footnote{Si veda su qualunque buon manuale di algebra o matematica discreta.} Nel caso in esame, può valere la pena verificarlo direttamente sulla tabella qui sotto
+Il fatto che tale intero esista e sia unico è conseguenza del ben noto teorema \emph{teorema cinese dei resti}\footnote{Si veda su qualunque manuale di algebra o matematica discreta.} Nel caso in esame, può valere la pena verificarlo direttamente sulla tabella qui sotto
 \begin{center}
 \begin{tabular}{|l|c|c|c|c|c|c|c|c|}
 \hline
@@ -218,11 +218,13 @@ insieme alle funzioni
 \]
 e questa costruzione è chiamata talvolta canonica\footnote{Sul termine \emph{canonico} non ci dilunghiamo; basti osservare che esso è di solito utilizzato in modo informale per intendere la costruzione più semplice o più utilizzata, non essendoci una definizione \emph{canonica} di canonico!}, così come canoniche sono dette le proiezioni \(\pi_1\) e \(\pi_1\). 
 
-Diversamente, si può considerare la spanna universale \((P,p_1,p_2)\), come abbiamo fatto in \ref{esempio_spanna_universale_in_Set}. Ora, la tabella qui sopra può essere interpretata come un definente un a funzione biettiva
+Diversamente, si può considerare la spanna universale \((P,p_1,p_2)\), come abbiamo fatto in \ref{esempio_spanna_universale_in_Set}. Ora, la tabella qui sopra può essere interpretata come una funzione biettiva
 \[
 \varphi\colon P\to A\times B \qquad n\mapsto (n\pmod2,n\pmod3)
 \]
-che commuta con le proiezioni, cioè  tale che \(\pi_1\circ\varphi=p_1\) e \(\pi_2\circ\varphi=p_2\). Questa è una proprietà generale.
+che commuta con le proiezioni, cioè  tale che \(\pi_1\circ\varphi=p_1\) e \(\pi_2\circ\varphi=p_2\). 
+
+Questa è una proprietà generale.
 
 \begin{proposition}[Il prodotto è unico a meno di un unico isomorfismo)]
 	In una categoria \(\ctC\), date due spanne universali \((P,p_1,p_1)\) e \((Q,q_1,q_2)\) che insistano sulla stessa coppia di oggetti \(A,B\), esiste un unico isomorfismo \(h\colon P\to Q\) tale che \(q_1\circ h=p_1\) e \(q_2\circ h=p_2\).
