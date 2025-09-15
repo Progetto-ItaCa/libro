@@ -629,27 +629,21 @@
 \def\scriptstyleRadius{2.0pt}
 \def\scriptscriptstyleRadius{1.5pt}
 
-\def\displayDotSize{0.375pt}
-\def\textstyleDotSize{0.325pt}
-\def\scriptstyleDotSize{0.25pt}
-\def\scriptscriptstyleDotSize{0.175pt}
-
-\NewDocumentCommand{\doBlankInner}{ O{black} m m }{%
+\NewDocumentCommand{\doBlankInner}{ O{gray!20} m }{%
 \begin{tikzpicture}[baseline=(current bounding box.south)]%
-\foreach \i in {0,...,15}%
-  \fill[#1] (\i * 360/16:#2) circle (#3);%
+  \fill[#1] (0,0) rectangle (#2,#2);
 \end{tikzpicture}%
 }
 
-\NewDocumentCommand{\doBlank}{ O{black} }{%
+\NewDocumentCommand{\doBlank}{ O{gray} }{%
 \mathchoice
-  {\doBlankInner[#1]{\displayRadius}{\displayDotSize}}
-  {\doBlankInner[#1]{\textstyleRadius}{\textstyleDotSize}}
-  {\doBlankInner[#1]{\scriptstyleRadius}{\scriptstyleDotSize}}
-  {\doBlankInner[#1]{\scriptscriptstyleRadius}{\scriptscriptstyleDotSize}}
+  {\doBlankInner[#1]{\displayRadius}}
+  {\doBlankInner[#1]{\textstyleRadius}}
+  {\doBlankInner[#1]{\scriptstyleRadius}}
+  {\doBlankInner[#1]{\scriptscriptstyleRadius}}
 }
 
-\NewDocumentCommand{\blank}{ O{black} }{\mathop{\doBlank[#1]}}
+\NewDocumentCommand{\blank}{ O{gray} }{\mathop{\doBlank[#1]}}
 
 \NewDocumentCommand{\natHom}{ O{\ctC} O{\ctD} m m }{
   \Hom{[#1,#2](#3,#4)}
