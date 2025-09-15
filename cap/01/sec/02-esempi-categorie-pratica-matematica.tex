@@ -85,7 +85,7 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 \begin{example}\label{ex_cat_iso}\index{Categoria!--- isomorfismo generico}
 	La categoria \emph{isomorfismo generico} \(\ctIso\) ha due oggetti ed esattamente una freccia fra ciascuna coppia di essi:
 	\[\xymatrix@C=7ex{0 \ar@<.7ex>[r]^u \ar@(dl,ul)[] & 1 \ar@<.7ex>[l]^{u^{-1}} \ar@(ur,dr)[]}\]
-	I due endomorfismi su \(0\) ed \(1\) devono quindi essere le identità, ed entrambe le composizioni dei morfismi non identità \(u\) e \(u^{-1}\) sono forzate ad essere l'identità sull'oggetto corrispondente. \`E quindi la categoria con due oggetti ed un unico isomorfismo fra di essi.
+	I due endomorfismi su \(0\) ed \(1\) sono obbligati a essere le rispettive identità, ed entrambe le composizioni \(u\cmp u^{-1}\) e \(u^{-1}\cmp u\) sono forzate ad essere le identità sull'oggetto corrispondente. \(\ctIso\) è quindi la categoria con due oggetti, ed un unico `isomorfismo' (nel senso che sarà precisato dalla sezione \ref{sec_isomorfismi}) fra di essi.
 \end{example}
 \begin{example}[Doppia freccia generica]\label{ex_cat_doppiafreccia}\index{Categoria!--- doppia freccia generica}
 	La categoria \emph{doppia freccia generica} \(\{0\toto 1\}\) ha due oggetti \(0,1\) ed esattamente due morfismi non identità e paralleli \(s,t : 0\to 1\). La composizione è definita, ancora una volta, nell'unico modo ovvio, chiedendo che \(x\cmp \id_0=x=\id_1\cmp x\) per \(x\in\{s,t\}\).
@@ -428,7 +428,7 @@ L'\emph{algebra universale} si occupa di rendere preciso il concetto di `insieme
 \end{example}
 \`E un esercizio tedioso nella manipolazione delle tuple ordinate, ora, dimostrare che gli assiomi di categoria sono tutti soddisfatti. Un esercizio analogamente tedioso è di trovare segnature algebriche opportune che esprimono le categorie dei gruppi, dei monoidi, degli anelli e degli spazi vettoriali ecc.\ come esempi particolari di categorie di modelli di una segnatura algebrica.\footnote{Tedioso, e a volte non proprio banale: ad esempio, come si descrivono le operazioni di moltiplicazione per scalare in uno spazio vettoriale usando la definizione di segnatura algebrica? Si noti anche che la richiesta che un omomorfismo di modelli rispetti \emph{tutti} gli elementi della segnatura a volte è ridondante: ogni omomorfismo di gruppi \(f : G\to H\) manda l'identità del dominio nell'identità del codominio perché \(f(e_G)\) deve essere un elemento idempotente di \(H\), e preserva gli inversi come corollario.}
 \begin{remark}\label{varie_categorie_nella_pratica}\index{Categoria!---e di strutture algebriche}
-	Categorie di modelli come in \ref{ex_cat_sigma_strutture} sono tra le più comuni da considerare nella pratica matematica: i monoidi e i loro omomorfismi, i gruppi e i loro omomorfismi (tra essi, la sottocategoria dei gruppi abeliani), gli anelli e i loro omomorfismi (tra essi, la sottocategoria degli anelli commutativi), gli spazi vettoriali su un campo \(k\) e le funzioni \(k\)-lineari, formano tutte esempi di categorie, che denotiamo con \(\ctMon\), \(\ctGrp\), \(\ctAb\), \(\ctRing\), \(\ctcRing\), \(\ctVect[k]\),\dots
+	Categorie di modelli come in \ref{ex_cat_sigma_strutture} sono tra le più comuni da considerare nella pratica matematica: i monoidi e i loro omomorfismi, i gruppi e i loro omomorfismi (tra essi, la sottocategoria dei gruppi abeliani), gli anelli e i loro omomorfismi (tra essi, la sottocategoria degli anelli commutativi), gli spazi vettoriali su un qualsiasi campo \(k\) e le funzioni \(k\)-lineari, formano tutte esempi di categorie, che denotiamo con \(\ctMon\), \(\ctGrp\), \(\ctAb\), \(\ctRing\), \(\ctcRing\), \(\ctVect[k]\),\dots
 \end{remark}
 \begin{example}[Categoria dei multidigrafi]\label{ex_cat_grafi}\index{Categoria!--- dei grafi}
 	Questo esempio rende precise alcune osservazioni fatte in precedenza, \ref{ex_cat_doppiafreccia} e \ref{ex_cat_libera}. La categoria \(\ctdGph\) dei grafi è così definita:
@@ -489,7 +489,7 @@ Evidentemente, possiamo scrivere \(e : x\to y\) per denotare in maniera compatta
 
 	La categoria \(\ctOrd\) ha per oggetti gli ordinali e per morfismi \(X\to Y\) le funzioni monotòne.
 \end{example}
-L'importanza della categoria degli ordinali sarà più evidente quando in \ref{sec_funtori} introdurremo la definizione di funtore. Per il momento, ci limitiamo ad alcune osservazioni.
+L'importanza della categoria degli ordinali sarà più evidente quando nella sezione \ref{sec_funtori} introdurremo la definizione di funtore. Per il momento, ci limitiamo ad alcune osservazioni.
 \begin{remark}\label{rmk_delta_e_deltaPlus}\index{Ordinale!--- finito}\index{Categoria!--- dei simplessi}
 	Se \([n]=\{\iter[0] n\}\) è un insieme finito, l'ordinamento \(\{\iter[0][<]n\}\) lo rende un woset nel senso di \ref{po_wo_to}, e quindi \(\Delta[n]\) è in maniera naturale un oggetto di \(\ctPos\), ma anche di \(\ctOrd\); insieme alle funzioni monotòne tra questi insiemi finiti, ciò identifica la sottocategoria di \(\ctOrd\) generata da tutte le catene generiche \(\Delta[n]\) di \ref{ex_cat_catena} con la sottocategoria \(\ctFOrd\) di tutti gli ordinali finiti e non vuoti.
 	\begin{itemize}

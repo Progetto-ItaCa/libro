@@ -651,23 +651,27 @@ Una proprietà niente affatto banale dei funtori conservativi è che ogni catego
 			}\]
 	\end{quote}
 \end{definition}
-\`E più comune trovarsi nella condizione in cui esistono due funtori \(F : \ctC \leftrightarrows \ctD: G\) con la proprietà che esistano \emph{isomorfismi naturali} \(\epsilon : F\cmp G \cong \Id[\ctD]\) ed \(\eta : \Id[\ctC]\cong G\cmp F\). Questa definizione più rilassata di identificazione tra due categorie si dice\emph{equivalenza}, denotata \(\ctC\simeq\ctD\). Vedremo presto che un'equivalenza di categorie \(\ctC\simeq\ctD\) induce biiezioni tra gli hom-insiemi di \(\ctC,\ctD\), ma che le classi degli oggetti di queste possono essere una radicalmente più grande dell'altra (per esempio, \(\ctC_0\) può essere una classe propria, e \(\ctD_0\) un insieme; oppure, esistono categorie dove \(\ctC_0\) ha cardinalità arbitrariamente alta, ma \(\ctD_0\) è un singoletto\dots)
+\`E più comune trovarsi nella condizione in cui esistono due funtori \(F : \ctC \leftrightarrows \ctD: G\) con la proprietà che esistano \emph{isomorfismi naturali} \(\epsilon : F\cmp G \cong \Id[\ctD]\) ed \(\eta : \Id[\ctC]\cong G\cmp F\). Questa definizione più rilassata di identificazione tra due categorie si dice \emph{equivalenza}, denotata \(\ctC\simeq\ctD\). Vedremo presto che un'equivalenza di categorie \(\ctC\simeq\ctD\) induce biiezioni tra gli hom-insiemi di \(\ctC,\ctD\), ma che le classi degli oggetti di queste possono essere una radicalmente più grande dell'altra (per esempio, \(\ctC_0\) può essere una classe propria, e \(\ctD_0\) un insieme; oppure, esistono categorie dove \(\ctC_0\) ha cardinalità arbitrariamente alta, ma \(\ctD_0\) è un singoletto\dots). Questo è un primo indizio che approcciare l'apprendimento della teoria delle categorie avendo la teoria degli insiemi come modello privilegiato può essere fuorviante.
 \begin{definition}[Equivalenza di categorie]\label{funtore_equcat}\index{Equivalenza}\index{Categoria!equivalenza di ---e}
 	Una \emph{equivalenza di categorie} \(\ctC\simeq\ctD\) consiste di una quadrupla \((F,G,\eta,\epsilon)\), dove
 	\begin{itemize}
 		\item \(F : \ctC\fun\ctD\) e \(G : \ctD\fun\ctC\) sono funtori in direzioni opposte;
 		\item \(\eta : \Id[\ctC] \nat G\cmp F\) e \(\epsilon : F\cmp G \nat \Id[\ctD]\) sono isomorfismi naturali.
 	\end{itemize}
-	Una equivalenza di categorie si dice \emph{equivalenza aggiunta} se, in più, valgono le seguenti equazioni:
+	Una equivalenza di categorie \((F,G,\eta,\epsilon)\) si dice \emph{equivalenza aggiunta} se, in più, valgono le seguenti equazioni:
 	\begin{itemize}
 		\item (equazione zig) la composizione \(\xymatrix{F \ar@{=>}[r]^-{F\whi\eta} & FGF \ar@{=>}[r]^-{\epsilon\whi F} & F}\) è uguale alla trasformazione naturale identica di \(F\);
 		\item (equazione zag) la composizione \(\xymatrix{G \ar@{=>}[r]^-{\eta\whi G} & GFG \ar@{=>}[r]^-{G\whi\epsilon} & G}\) è uguale alla trasformazione naturale identica di \(G\).
 	\end{itemize}
 	Dato \(F\), il funtore \(G\) è detto lo \emph{pseudoinverso} di \(F\), e analogamente \(F\) è lo pseudoinverso del funtore \(G\); i due si caratterizzano a vicenda, ma non in maniera strettamente unica, bensì \emph{a meno di isomorfismo naturale}:
-	\begin{quote}
-		Se \(\hat G,\tilde G\) sono pseudoinversi dello stesso \(F : \ctC\fun\ctD\), allora esiste un isomorfismo naturale \(\hat G\nat \tilde G\), ottenuto da
-		\[\xymatrix{\hat G \ar@{=>}[r]^-{\tilde\eta\whi\hat G } & \hat G F \tilde G \ar@{=>}[r]^-{\tilde G \whi \hat\epsilon} & \tilde G}\]
-	\end{quote}
+	\begin{lemma}
+		Se \(\hat G,\tilde G\) sono pseudoinversi dello stesso \(F : \ctC\fun\ctD\), allora esiste un isomorfismo naturale \(\hat G\nat \tilde G\), ottenuto componendo
+		\[\xymatrix{\gamma : \hat G \ar@{=>}[r]^-{\tilde\eta\whi\hat G } & \tilde G F \hat G \ar@{=>}[r]^-{\tilde G \whi \hat\epsilon} & \tilde G}\]
+		In più, qualora \((F, \tilde G,\eta,\epsilon)\) sia un'equivalenza aggiunta, altrettanto è vero per \((F, \hat G,\hat\eta,\hat\epsilon)\), dove
+		\[\xymatrix{
+			\hat\epsilon : F\hat G \ar@{=>}[r]^-{F\whi \gamma} & F\tilde G \ar@{=>}[r]^-{\tilde\epsilon} & \Id[\ctD] & \hat\eta : \Id[\ctC] \ar@{=>}[r]^-{\tilde\eta} & \tilde GF \ar@{=>}[r]^-{\gamma^{-1}\whi F} & \hat G F.
+			}\]
+	\end{lemma}
 \end{definition}
 \begin{hRemark}[A proposito dei nomi `zig' e `zag']{skip}\index{Identità!--- zig e zag}
 	Le due equazioni in \ref{funtore_equcat} si rappresentano come incollamenti naturali della forma seguente:
@@ -741,9 +745,14 @@ Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempi
 	è equivalente alla categoria \(\ctTerm\).
 \end{remark}
 \begin{example}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
-	\Todo{La categoria delle matrici di \ref{ex_cat_matrici} è equivalente, senza essere isomorfa, a \(\ctVect\).}
+	Sia \(n\ge 1\) un intero, e \(k\) un campo qualsiasi. Definiamo due categorie \(\ctC_{n,k},\ctD_{n,k}\) come segue:
+	\begin{itemize}
+		\item La categoria \(\ctC_{n,k}\) ha un solo oggetto \([n]\), è il monoide degli endomorfismi dell'oggetto \([n]\), nella categoria delle matrici di \ref{ex_cat_matrici}; evidentemente, questa categoria consiste del monoide delle matrici \(n\times n\) a ingressi in \(k\).
+		\item La categoria \(\ctD_{n,k}\) ha per oggetti tutti gli spazi vettoriali \(V,W,\dots\) di dimensione \(n\) sul campo \(k\), e per morfismi le mappe \(k\)-lineari \(f : V\to W\); in altre parole, è la sottocategoria piena \(\ctVect[n]\) della categoria \(\ctVect[k]\) degli spazi vettoriali di \ref{varie_categorie_nella_pratica}.
+	\end{itemize}
+	Esiste un'equivalenza di categorie tra \(\ctC_{n,k}\) e \(\ctD_{n,k}\), ma non può esistere alcun isomorfismo, dato che questo implicherebbe l'esistenza di una biiezione tra la classe degli oggetti di \(\ctD_{n,k}\) e il singoletto \(\{[n]\}\) (e ci sono almeno due oggetti distinti in \(\ctD_{n,k}\): lo spazio vettoriale di dimensione \(n\) dei polinomi di grado strettamente minore di \(n\), e lo spazio vettoriale delle funzioni \(C^\infty(\bbR,\bbR)\) generato dalle funzioni \(\{e^{m_1 x},\dots,e^{m_n x} \mid (\tup mn,)\}\) dove \(\tup mn,\) è una \(n\)-upla di interi positivi a due a due distinti).
 \end{example}
-L'esercizio \ref{ex_monepi_2} chiederà di dimostrare che le due non possono essere isomorfe.
+L'esercizio \ref{ex_monepi_2} contiene un altro esempio di due categorie che non possono essere isomorfe.
 
 Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di funtori \(F : \ctC \fun\ctD\) con la proprietà che sia \(F_0 : \ctC_0\to\ctD_0\) che ogni \(F_{XY} : \Hom\ctC(X,Y) \to \Hom\ctD(F_0X,F_0Y)\) sono funzioni iniettive.
 \begin{proposition}\label{mona_in_cat}\index{Monomorfismo!--- in \(\ctCat\)}
@@ -958,7 +967,7 @@ Grazie a \ref{thm_catprod_setacciata} otteniamo una dimostrazione alternativa de
 \end{figure}
 \begin{esercizi}
 	\item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Si faccia lo stesso per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
-	\item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che \(\ctMat\) e \(\ctVect\) \emph{non possono essere} categorie isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
+	\item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che la categoria \(\ctMat\) di \ref{ex_cat_matrici} e la categoria \(\ctVect\) di \ref{varie_categorie_nella_pratica} non possono essere isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
 	\item \label{ex_monepi_3} Costruire un'equivalenza di categorie tra la categoria dei sistemi dinamici discreti di \ref{ex_cat_dyn} e la categoria delle rappresentazioni, \ref{es_fun_repre}, del monoide \((\bbN,+,0)\); è un isomorfismo? Mostrare che \(\bbN\) è in maniera naturale un oggetto \(\bsN=(* \xto 0 \bbN \xto{\blank+1} \bbN)\) di \(\ctDyn\), che soddisfa la proprietà (\emph{universale}) seguente:
 	\begin{quote}
 		Per ogni oggetto \(\bsX=(X,x_0,f)\) di \(\ctDyn\) esiste uno e un solo morfismo nell'insieme \(\Hom\ctDyn(\bsN,\bsX)\).
