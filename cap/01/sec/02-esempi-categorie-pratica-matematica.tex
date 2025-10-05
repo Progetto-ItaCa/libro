@@ -17,8 +17,8 @@ Iniziamo ora a dare degli esempi di categorie piccole partendo dall'esempio più
 	Dato un insieme \(A\), la \emph{categoria codiscreta} su \(A\), denotata \(A^\chi\) ha per oggetti gli elementi \(a\in A\), per ogni coppia di oggetti \(a,a'\in A\) un unico morfismo \(u_{aa'}:a\to a'\), e la composizione è definita da \(u_{a'a''}\cmp u_{aa'}=u_{aa''}\) (in particolare, da questo segue che esiste un unico elemento \(\id_a=u_{aa}\in A^\chi(a,a)\)).
 \end{example}
 Alcune categorie che è spesso utile considerare si rappresentano mediante dei grafi:
-\begin{example}\label{ex_cat_freccia}\index{Categoria!--- freccia generica}
-	La categoria \(\genArrow\) detta \emph{freccia generica} ha due oggetti \(0,1\) e un unico morfismo non identità \(u : 0\to 1\) (che di solito non ha nome). La composizione è forzata a essere definita solamente tra le identità ed \(u\), nell'unico modo ovvio, e tutti gli assiomi di categoria sono banalmente soddisfatti.
+\begin{example}\label{ex_cat_freccia}\index{Categoria!--- freccia generica}\index{Freccia generica}
+	La categoria \(\genArrow=\{0\to 1\}\) detta \emph{freccia generica} ha due oggetti \(0,1\) e un unico morfismo non identità \(u : 0\to 1\) (che di solito non ha nome). La composizione è forzata a essere definita solamente tra le identità ed \(u\), nell'unico modo ovvio, e tutti gli assiomi di categoria sono banalmente soddisfatti.
 \end{example}
 \begin{example}\label{ex_cat_catena}\index{Categoria!--- catena generica}
 	Più in generale, la categoria \(\Delta[n]\) detta \emph{catena generica di lunghezza \(n+1\)} è definita come segue:
@@ -87,8 +87,8 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 	\[\xymatrix@C=7ex{0 \ar@<.7ex>[r]^u \ar@(dl,ul)[] & 1 \ar@<.7ex>[l]^{u^{-1}} \ar@(ur,dr)[]}\]
 	I due endomorfismi su \(0\) ed \(1\) sono obbligati a essere le rispettive identità, ed entrambe le composizioni \(u\cmp u^{-1}\) e \(u^{-1}\cmp u\) sono forzate ad essere le identità sull'oggetto corrispondente. \(\ctIso\) è quindi la categoria con due oggetti, ed un unico `isomorfismo' (nel senso che sarà precisato dalla sezione \ref{sec_isomorfismi}) fra di essi.
 \end{example}
-\begin{example}[Doppia freccia generica]\label{ex_cat_doppiafreccia}\index{Categoria!--- doppia freccia generica}
-	La categoria \emph{doppia freccia generica} \(\{0\toto 1\}\) ha due oggetti \(0,1\) ed esattamente due morfismi non identità e paralleli \(s,t : 0\to 1\). La composizione è definita, ancora una volta, nell'unico modo ovvio, chiedendo che \(x\cmp \id_0=x=\id_1\cmp x\) per \(x\in\{s,t\}\).
+\begin{example}[Doppia freccia generica]\label{ex_cat_doppiafreccia}\index{Categoria!--- doppia freccia generica}\index{Freccia generica!doppia ---}
+	La categoria \emph{doppia freccia generica} \(\genAArrow=\{0\toto 1\}\) ha due oggetti \(0,1\) ed esattamente due morfismi non identità e paralleli \(s,t : 0\to 1\). La composizione è definita, ancora una volta, nell'unico modo ovvio, chiedendo che \(x\cmp \id_0=x=\id_1\cmp x\) per \(x\in\{s,t\}\).
 
 	La doppia freccia è la `forma generica' di un grafo diretto (si veda \ref{ex_cat_libera}), dato che una coppia di funzioni \(s,t: E \toto V\) tra due insiemi consta precisamente di un digrafo che ha \(V\) per insieme dei vertici e \(E\) per insieme dei lati.
 \end{example}
@@ -247,7 +247,7 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 	\end{itemize}
 	La composizione di due sequenze \((\tup en,)\) da \(x_0\) a \(x_n\) e \((\tup fm,)\) da \(x_n\) a \(x_{n+m}\) è data dalla loro \emph{concatenazione}, ovvero:
 	\[(\tup fm,)\cmp(\tup en,) = (\tup en, , \tup fm,).\]
-	Quando è definita, questa operazione è associativa, e la sequenza vuota \(\emptyList_u\) soddisfa l'assioma di identità \ref{cp_1} nella \ref{def_categ}.
+	(Deve essere definita così perché la composizione è denotata in questo modo, si veda \ref{sulla_compo}.) Quando è definita, questa operazione è associativa, e la sequenza vuota \(\emptyList_u\) soddisfa l'assioma di identità \ref{cp_1} nella \ref{def_categ}.
 	\begin{figure}
 		\begin{center}
 			\begin{tikzpicture}
@@ -267,11 +267,13 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
 				\node (e\i) at (a\i) {$x_\i$};
 				\foreach \i in {0,...,6}{
 						\edef\ipp{\fpeval{\i + 1}}
-						\draw[-latex] (e\i) -- (e\ipp);
+						\draw[latex-] (e\i) -- (e\ipp);
 					}
 			\end{tikzpicture}
 		\end{center}
-		\caption{Composizione di due morfismi \((e_1,e_2,e_3,e_4)\) e \((f_1,f_2,f_3)\) in \(\bfF[\ctG]\).}
+		\caption{Composizione di due morfismi \((x_0 \xot{e_1} x_1, x_1 \xot{e_2} x_2 ,x_2 \xot{e_3} x_3, x_3 \xot{e_4} x_4)\) e \((x_4 \xot{f_1} x_5,x_5 \xot{f_2} x_6, x_6 \xot{f_3} x_7)\) in \(\bfF[\ctG]\). Abbiamo usato il trucco di denotare le frecce da destra a sinistra qui, per rendere la composizione delle tue tuple la letterale concatenazione delle liste associate,
+			\((\tup e4,)\circ (\tup f3,) = (\tup e4,,\tup f3,)\)
+			(dando così a chi legge la libertà di decidere quale notazione sia meno confusionaria; purtroppo, secondo chi scrive, nessuna lo è davvero fino in fondo).}
 		\label{fig:enter-label}
 	\end{figure}
 \end{example}
@@ -494,7 +496,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando nella sez
 	Se \([n]=\{\iter[0] n\}\) è un insieme finito, l'ordinamento \(\{\iter[0][<]n\}\) lo rende un woset nel senso di \ref{po_wo_to}, e quindi \(\Delta[n]\) è in maniera naturale un oggetto di \(\ctPos\), ma anche di \(\ctOrd\); insieme alle funzioni monotòne tra questi insiemi finiti, ciò identifica la sottocategoria di \(\ctOrd\) generata da tutte le catene generiche \(\Delta[n]\) di \ref{ex_cat_catena} con la sottocategoria \(\ctFOrd\) di tutti gli ordinali finiti e non vuoti.
 	\begin{itemize}
 		\item Una notazione alternativa e più comune, mutuata dalla topologia algebrica, per \(\ctFOrd\)	è \(\bsDelta\) (la lettera greca delta maiuscola), che viene chiamata la categoria dei \emph{simplessi}.
-		\item Per la categoria di \emph{tutti} gli ordinali, anche quello vuoto, si usa la notazione \(\bsDelta_+\), che viene chiamata la categoria dei \emph{simplessi aumentati}.
+		\item Per la categoria di \emph{tutti} gli ordinali finiti, anche quello vuoto, si usa la notazione \(\bsDelta_+\), che viene chiamata la categoria dei \emph{simplessi aumentati}.
 	\end{itemize}
 \end{remark}
 \begin{figure}[h]
@@ -746,7 +748,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando nella sez
 	\caption{Le mappe di codegenerazione \(\sigma_4^0,\dots,\sigma_4^4 : [4]\mono [3]\) in \(\bsDelta\). Ciascun valore \(i=\iter[0] n\) viene assunto due volte da \(\sigma_n^i\).}
 	\label{fig:cofa}
 \end{figure}
-\begin{remark}\index{Universo}\index{Ordinale}
+\begin{remark}\index{Universo}\index{Ordinale}\label{tipi_di_ordinaly}
 	Senza un assioma dedicato a tale scopo, non si possono generare ordinali più grandi di quelli finiti; al contrario, assumendo che esista almeno un insieme \emph{induttivo} \(N\) (cioè tale che, se \(x\in N\), allora \(x^+:=x\cup\{x\}\in N\)), possiamo `accedere' a ordinali più grandi, e da qui generarne di \emph{molto} grandi (abbastanza da far sì che la categoria \(\ctOrd\) abbia una classe propria di oggetti).
 
 	Questa è una maniera un po' semplificata di introdurre l'ordinale \(\omega\) ottenuto come `limite' di tutti gli ordinali finiti \([n]\): rinviamo chi legge a un corso di logica elementare per approfondire la questione in modo più tecnico, e ci limitiamo a osservare che la dicotomia importante nella definizione di un numero ordinale è la seguente: un ordinale \(\alpha\in\ctOrd_0\) può essere di due tipi: un \emph{successore}, se esiste \(\beta\) tale che \(\alpha=\beta^+\), e un \emph{limite} se, invece, \(\alpha=\bigcup\alpha=\sup\{\gamma\mid \gamma < \alpha\}\).
@@ -803,7 +805,10 @@ Tutte le categorie considerate in precedenza hanno il seguente schema: gli ogget
 		\end{tikzcd}\]
 	sia commutativo.
 
-	La categoria \(\ctCh(\ctAb)\) dei complessi di catene è una importante costruzione in topologia algebrica: ad ogni complesso di catene \((A_\bullet, d_\bullet)\) si possono associare vari gruppi abeliani detti gruppi di \emph{omologia}. La definizione di \emph{funtore} approfondirà la questione in \ref{def_funtore}.
+	La categoria \(\ctCh(\ctAb)\) dei complessi di catene è una importante costruzione in topologia algebrica: ad ogni complesso di catene \((A_\bullet, d_\bullet)\) si possono associare vari gruppi abeliani detti gruppi di \emph{omologia}: il gruppo di omologia in grado \(n\) del complesso \((A_\bullet, d_\bullet)\) è definito come il quoziente tra gruppi abeliani
+	\[H_n(A_\bullet, d_\bullet) : \frac{\ker d_n}{\im d_{n+1}}\]
+	\Todo{...}
+	La definizione di \emph{funtore} approfondirà la questione in \ref{def_funtore}.
 \end{example}
 \index{Categoria!--- di funzioni parziali}
 \begin{example}\label{ex_cat_pfun}\index{Funzione!--- parziale}
