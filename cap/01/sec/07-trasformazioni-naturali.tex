@@ -1,4 +1,6 @@
 \section{Trasformazioni naturali}\label{sec_tnat}
+\fosco{L'esempio che, storicamente, ha motivato la definizione di `trasformazione naturale' tra funtori ha ben poco di pedagogico o elementare, ma vale la pena ricordarlo lo stesso; la domanda è: qui o altrove?}
+
 \paolo{Sarebbe bello connettere questa sezione all'introduzione spiegando in che senso formalizza l'idea di naturalità (almeno in certi casi).}
 In \ref{tante_cose_sono_diag} abbiamo osservato che le spanne e cospanne in \(\ctC\) si possono vedere come funtori; del resto, in \ref{def_span_e_cospan} abbiamo costruito una \emph{categoria} di spanne in \(\ctC\). Un omomorfismo di spanne consiste, secondo quella definizione, di una famiglia di tre morfismi di \(\ctC\) tra i vertici omonimi delle due spanne \((X_1\overset l\leftarrow X_0\overset r\to X_2)\) e \((Y_1\overset{l'}\leftarrow Y_0\overset{r'}\to Y_2)\):
 \[\alpha_0 : X_0\to Y_0,\quad \alpha_1 : X_1\to Y_1,\quad \alpha_2 : X_2\to Y_2\]
@@ -70,6 +72,16 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 	\end{itemize}
 \end{example}
 Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia, data la presenza di funtori che le legano alle categorie di oggetti geometrici; raccogliamo alcuni esempi tra i più noti.
+\begin{hExample}[Trasformazione di Hurewicz in topologia]{tech}
+	Questo esempio fa uso di alcuni concetti elementari della teoria dell'omologia singolare, e delle definizioni \ref{fun_ex_omoto_omolo} dei funtori di omotopia e omologia:
+	\begin{itemize}
+		\item se \(X\) è uno spazio topologico, abbiamo definito in \ref{} il gruppo \(\pi_n(X)\) che ha per elementi le classi di omotopia di funzioni continue \(S^n \to X\);
+		\item quando \(X=S^n\), il gruppo \(H_n(S^n)\) è ciclico infinito; fissiamo un suo generatore \(\upsilon\) (cosicché per ogni altra classe di omologia \(\kappa\in H_n(S^n)\) esiste un unico intero \(k\in\bbZ\) tale che \(\kappa = k\cdot \upsilon\)).
+	\end{itemize}
+	Nel 1935, il topologo polacco Witold Hurewicz ha definito un esempio di trasformazione naturale tra il funtore `\(n\)-esimo gruppo di omotopia' ed `\(n\)-esimo gruppo di omologia singolare', \(h : \pi_n \nat H_n\),\footnote{Ha definito, pochi anni prima, anche i funtori \(\pi_n\) di \ref{fun_ex_omoto_omolo}. Hurewicz è un pensatore di fondamentale importanza per la teoria delle categorie, perché è il primo a introdurre la notazione che rappresenta gli omomorfismi come frecce \(f : X \to Y\), come viene ricordato anche nelle Note Storiche del capitolo 1 di \cite{working-categories}.} assegnando a un elemento di \(\pi_n(X) = [S^n,X]\), cioè alla classe di omotopia di una certa \(f : S^ \to X\), l'elemento \(f_*(\upsilon)\) immagine del generatore sopra fissato mediante \(f_* : H_n(S^n) \to H_n(X)\).
+	\Todo{mappa di Hurewicz}
+	\fosco{in attesa di una collocazione migliore}
+\end{hExample}
 \begin{example}\label{ex_cat_sset}\index{Insieme simpliciale}
 	La categoria \(\ctsSet=\presh{\bsDelta}\) degli insiemi simpliciali ha per oggetti i funtori \(\bsDelta^\op\fun\ctSet\) definiti in \ref{def_insieme_simpliciale}, dove \(\bsDelta\) è la categoria dei simplessi di \ref{rmk_delta_e_deltaPlus}, e per morfismi le trasformazioni naturali tra questi funtori.
 
@@ -97,7 +109,7 @@ Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia
 \begin{remark}[Perché si chiama `globo'?]\label{globi_come_sonfatti}\index{Globo}
 	Ragionamenti simili si possono fare anche per la categoria degli insiemi \(n\)-globulari, cioè per la categoria \(\presh{\ctGl(n)}\) di funtori e trasformazioni naturali, contemporaneamente anche spiegando l'origine del termine `globo' per il suo oggetto generico.
 
-	Si osservi che \(\ctGl(1) = \{0\toto 1\}\) è la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Da ciò deduciamo che `rappresentare' \(\ctGl(1)\) nella categoria \(\ctSet\) di insiemi e funzioni consiste precisamente nel dare un multidigrafo, con funzioni di dominio e codominio. I globi generici sono una generalizzazione dei multidigrafi, che permettono la rappresentazione di `celle' di dimensione maggiore di 1. Sarà la \autoref{def_insieme_globulare} a rendere precisa questa idea (a sua volta, mediante la nozione di funtore controvariante in \ref{def_funtore_contro}), ma per il momento, è già possibile osservare che una terna di insiemi
+	Si osservi che \(\ctGl(1) = \genAArrow\) è la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Da ciò deduciamo che `rappresentare' \(\ctGl(1)\) nella categoria \(\ctSet\) di insiemi e funzioni consiste precisamente nel dare un multidigrafo, con funzioni di dominio e codominio. I globi generici sono una generalizzazione dei multidigrafi, che permettono la rappresentazione di `celle' di dimensione maggiore di 1. Sarà la \autoref{def_insieme_globulare} a rendere precisa questa idea (a sua volta, mediante la nozione di funtore controvariante in \ref{def_funtore_contro}), ma per il momento, è già possibile osservare che una terna di insiemi
 	\[\xymatrix{
 		C \ar@<.25em>[r]^-{s_2}\ar@<-.25em>[r]_-{t_2}& E \ar@<.25em>[r]^-{s_1}\ar@<-.25em>[r]_-{t_1}& V
 		}\]
@@ -198,8 +210,8 @@ La categoria degli insiemi simpliciali è però decisamente più studiata di que
 	Del resto, una tale \(f\) è definita da delle componenti \((f_0,f_1,f_2,\dots)\), e dalla definizione sappiamo che \((N\ctC)_0,(N\ctC)_1,(N\ctC)_2\) sono rispettivamente gli oggetti, le frecce e le coppie di frecce componibili di \(\ctC\); altrettanto è vero per \(\ctD\), e allora \(f_0 : \ctC_0\to\ctD_0\) è la candidata funzione sugli oggetti di un funtore, \(f_1 : \ctC_1\to\ctD_1\) la funzione sulle frecce. La compatibilità di \(f_0,f_1\) con l'unica degenerazione \(s : (N\ctC)_0\to(N\ctC)_1\), definita da \(s[C] = [\Id[C]]\) afferma che \(f_1(\Id[C]) = \Id[f_0C]\). Similmente, la compatibilità di \(f_2\) con la faccia \(d_1\), che consiste della mappa di composizione \(N\ctC_2\to N\ctC_1\), afferma che \(f_1\) preserva anche le composizioni.
 \end{proof}
 \begin{definition}\label{def_natutra}\index{Trasformazione naturale}\index{homCDFG@\(\Hom{\ctCat(\ctC,\ctD)}(F,G)\)}
-	Come visto in \ref{ex_cat_cat} i funtori sono i morfismi di una categoria \(\ctCat\) delle categorie (piccole); ma abbiamo appena trovato che anche le trasformazioni naturali tra funtori rendono la classe \(\ctCat(\ctC,\ctD)\) dei funtori \(F : \ctC\funto\ctD\) a sua volta una categoria; in più la legge di composizione orizzontale $\blank\horcomp\blank :\ctCat(\ctD,\ctE)\times\ctCat(\ctC,\ctD) \to \ctCat(\ctC,\ctE)$ di \ref{} è un bifuntore (la regola di interscambio di \ref{} equivale ad affermare questo). 
-	
+	Come visto in \ref{ex_cat_cat} i funtori sono i morfismi di una categoria \(\ctCat\) delle categorie (piccole); ma abbiamo appena trovato che anche le trasformazioni naturali tra funtori rendono la classe \(\ctCat(\ctC,\ctD)\) dei funtori \(F : \ctC\funto\ctD\) a sua volta una categoria; in più la legge di composizione orizzontale \(\blank\horcomp\blank :\ctCat(\ctD,\ctE)\times\ctCat(\ctC,\ctD) \to \ctCat(\ctC,\ctE)\) di \ref{} è un bifuntore (la regola di interscambio di \ref{} equivale ad affermare questo).
+
 	Allora le trasformazioni naturali \(\alpha : F\nat G\) si pensano come ``frecce tra frecce'', o ``frecce di dimensione 2'', nel senso che andiamo a spiegare. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo \(\To\), a riempire un diagramma di funtori come segue:
 	\[
 		\xymatrix{\ctC \rrtwocell^F_G{\alpha}&& \ctD.}
@@ -216,9 +228,10 @@ La categoria degli insiemi simpliciali è però decisamente più studiata di que
 \begin{remark}\index{Categoria!--- di funtori}
 	Sarà spesso utile considerare esempi in cui \(\ctD\) non è una categoria piccola (l'esempio più illustre e pervasivo è \ref{def_yoneda_embeddu}), e sarà altrettanto utile considerare esempi di funtori tra categorie entrambe larghe; però la definizione della `categoria' \(\ctCat(\ctC,\ctD)\) pone un problema di teoria degli insiemi quando \(\ctC\) non è piccola; infatti, in quel caso la classe delle trasformazioni naturali tra due funtori \(F,G:\ctC\funto\ctD\) è una sottoclasse di \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), che in generale può non essere un insieme (per esempio, può coincidere con \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), quando?).
 \end{remark}
-\begin{definition}[Isomorfismo naturale]\label{def_isonat}\index{Isomorfismo!--- naturale}\index{Trasformazione naturale!isomorfismo naturale}
+Passiamo ora alla definizione di isomorfismo nella categoria formata da funtori e trasformazioni naturali.
+\begin{hDefinition}[Isomorfismo naturale]{fund}\label{def_isonat}\index{Isomorfismo!--- naturale}\index{Trasformazione naturale!isomorfismo naturale}
 	Dati due funtori \(F,G : \ctC\fun\ctD\) tra categorie, un \emph{isomorfismo naturale} consiste di una trasformazione naturale \(\alpha : F\nat G\) che possieda una inversa per l'operazione di composizione verticale di \ref{def_vcomp}; in altre parole, \(\alpha\) è un isomorfismo naturale se esiste una trasformazione naturale \(\bar\alpha : G\nat F\) tale che \(\alpha\vcmp\bar\alpha = 1_G\) e \(\bar\alpha\vcmp\alpha =1_F\). Evidentemente tale \(\bar\alpha\) è unica e si può denotare con \(\alpha^{-1}\).
-\end{definition}
+\end{hDefinition}
 Inoltre, la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 \begin{lemma}\index{Isomorfismo!--- naturale}
 	Una trasformazione naturale \(\alpha : F\nat G\) è invertibile se e solo se ciascuna delle sue componenti è un isomorfismo di \(\ctD\); infatti, la condizione di naturalità per \(\alpha\) è il fatto che per ogni \(u : X\to Y\) si abbia
@@ -226,7 +239,52 @@ Inoltre, la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 	da cui segue la condizione di naturalità per \(\alpha^{-1}\) componendo da entrambi i lati questa equazione:
 	\[Fu\cmp \alpha_X^{-1}=\alpha_Y^{-1}\cmp \alpha_Y \cmp Fu\cmp \alpha_X^{-1} = \alpha_Y^{-1}\cmp Gu\cmp \alpha_X\cmp \alpha_X^{-1}=\alpha_Y^{-1}\cmp Gu.\]
 \end{lemma}
-\begin{example}[Trasformazioni naturali tra mappe monotòne]\label{nat_tra_posets}\index{Trasformazione naturale!--- tra ordini}
+\begin{hLemma}[Presentazione equivalente di trasformazioni naturali]{fund}\index{Categoria!--- freccia generica}\index{Freccia generica}
+	Si considerino due categorie \(\ctC,\ctD\). \`E equivalente dare:
+	\begin{enumtag}{tn}
+		\item \label{tn_1} una trasformazione naturale \(\alpha : F\nat G\), per due funtori \(F,G : \ctC\toto\ctD\) paralleli;
+		\item \label{tn_2} un funtore \(A : \ctC\times \genArrow \fun \ctD\), dove \(\ctC\times \genArrow\) è il prodotto di categorie (si veda \ref{def_cat_prodotto}) tra \(\ctC\) e la freccia generica (si veda \ref{ex_cat_freccia}).
+	\end{enumtag}
+	Più in particolare, è equivalente dare:
+	\begin{enumtag}{in}
+		\item \label{in_1} un isomorfismo naturale \(\alpha : F\nat G\), per due funtori \(F,G : \ctC\toto\ctD\) paralleli;
+		\item \label{in_2} un funtore \(J : \ctC\times \ctIso \fun \ctD\), dove \(\ctC\times \ctIso\) è il prodotto di categorie (si veda \ref{def_cat_prodotto}) tra \(\ctC\) e l'isomorfismo generico (si veda \ref{ex_cat_iso}).
+	\end{enumtag}
+	\begin{proof}
+		Dato un funtore \(A\) come in \ref{tn_2}, la restrizione \(A|_{\{0\}}\) di \(A\) alla sottocategoria generata da \(\{0\}\subset\genArrow\) è un funtore \(\{0\}\times\ctC\cong \ctC \fun\ctD\); chiamiamolo \(F\); altrettanto è vero per il funtore \(G = A|_{\{1\}} : \{1\}\times\ctC\cong \ctC \fun\ctD\). Sia poi \(u : 0\to 1\) l'unica freccia non identica; allora \(A(\id_C,u) : A(C,0) \to A(C,1)\) è una freccia di \(\ctD\) della forma \(FC \to GC\) per la definizione appena data. Del resto, in \(\ctC\times \genArrow\) esiste un ovvio quadrato commutativo,
+		% https://q.uiver.app/#q=WzAsNCxbMCwwLCIoQywwKSJdLFswLDEsIihDLDEpIl0sWzEsMCwiKEQsMCkiXSxbMSwxLCIoRCwxKSJdLFswLDIsIihmLFxcaWRfMCkiXSxbMiwzLCIoXFxpZF9ELHUpIl0sWzAsMSwiKFxcaWRfQyx1KSIsMl0sWzEsMywiKGYsXFxpZF8xKSIsMl1d
+		\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+				{(C,0)} \& {(C',0)} \\
+				{(C,1)} \& {(C',1)}
+				\arrow["{(f,\id_0)}", from=1-1, to=1-2]
+				\arrow["{(\id_C,u)}"', from=1-1, to=2-1]
+				\arrow["{(\id_{C'},u)}", from=1-2, to=2-2]
+				\arrow["{(f,\id_1)}"', from=2-1, to=2-2]
+			\end{tikzcd}\]
+		per ogni \(f : C \to C'\) (la cui diagonale è \((f,u) : (C,0) \to (C',1)\)); la funtorialità di \(A\) manda questo quadrato in un quadrato commutativo della forma
+		% https://q.uiver.app/#q=WzAsNCxbMCwwLCJGQyJdLFswLDEsIkdDIl0sWzEsMCwiRkMnIl0sWzEsMSwiR0MnIl0sWzAsMiwiRmYiXSxbMiwzLCIoXFxpZF9ELHUpIl0sWzAsMSwiKFxcaWRfQyx1KSIsMl0sWzEsMywiR2YiLDJdXQ==
+		\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+				FC \& {FC'} \\
+				GC \& {GC'}
+				\arrow["Ff", from=1-1, to=1-2]
+				\arrow["{(\id_C,u)}"', from=1-1, to=2-1]
+				\arrow["{(\id_D,u)}", from=1-2, to=2-2]
+				\arrow["Gf"', from=2-1, to=2-2]
+			\end{tikzcd}\]
+		Cosicché le componenti \(\alpha_{A,C} := A(\id_C,u)\) definiscono una trasformazione naturale \(\alpha_A : F\nat G\).
+
+		Vice versa, una trasformazione naturale \(\alpha : F \nat G\) definisce un funtore \(A_\alpha\) ponendo
+		\begin{itemize}
+			\item \(A_\alpha(X,0) := FX\) e \(A_\alpha(Y,1)=GY\) per ogni \(X,Y\in\ctC_0\);
+			\item \(A_\alpha(f,\id_0) := Ff\) e \(A_\alpha(g,\id_1)=Gg\) per ogni \(f,g\in\ctC_1\);
+			\item \(A_\alpha(C,u) := \alpha_C : FC \to GC\) per la definizione appena data di \(A_\alpha\) sugli oggetti.
+		\end{itemize}
+		La naturalità di \(\alpha\) implica che \(A\) sia un bifuntore nel senso di \ref{def_bifuntore}. Infine, è facile verificare che \(\alpha_{A_\alpha}\) coincide, componente per componente, con \(\alpha\), e che \(A_{\alpha_A}\) coincide, sugli oggetti e sulle frecce di \(\ctC\times\genArrow\), con \(A\).
+
+		La dimostrazione dell'equivalenza tra \ref{in_1} e \ref{in_2}, quando a \(\genArrow\) si sostituisca l'isomorfismo generico è del tutto analoga; semplicemente, ora le componenti di \(\alpha_A\) dovranno essere invertibili.
+	\end{proof}
+\end{hLemma}
+\begin{example}[Naturali tra mappe monotòne]\label{nat_tra_posets}\index{Trasformazione naturale!--- tra ordini}
 	Abbiamo visto in \ref{exa_monotone_funtori} che una funzione monotòna \(f:(X,\le)\to(Y,\le)\) si può vedere come un funtore. In questo contesto, date due funzioni monotone \(f,g:(X,\le)\to(Y,\le)\), si ha una (unica) trasformazione naturale \(f\Rightarrow g\), o \(f\le g\), se e solo se per ogni \(x\in X\), \(f(x)\le g(x)\). (Quest'ultima disuguaglianza rappresenta la componente della trasformazione nell'oggetto \(x\).)
 
 	Una trasformazione naturale tra funtori che sono insiemi ordinati è perciò una \emph{proposizione}: quella che asserisce che \(f\) e \(g\) sono minori una dell'altra, punto per punto.
@@ -391,7 +449,7 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 		\end{tikzcd}\]
 	Chi legge vedrà presto che esempi del genere (solo, quasi sempre più elaborati di questo) pervadono la teoria delle categorie.
 \end{hExample}
-\begin{remark}[Gli isomorfismi dell'aritmetica sono naturali]
+\begin{remark}[Gli isomorfismi dell'aritmetica sono naturali]\label{iso_aritmetici}
 	Anche questo esempio verrà chiarito dalla teoria dei limiti e colimiti, e dei funtori aggiunti; questi isomorfismi sono però di grande aiuto in varie dimostrazioni nel seguito, e quindi li presentiamo qui.
 	Se \(A,B,C\) sono insiemi, tutti gli isomorfismi seguenti sono naturali, in tutti i loro argomenti, tra opportuni funtori somma e prodotto:
 	\begin{enumtag}{as}
