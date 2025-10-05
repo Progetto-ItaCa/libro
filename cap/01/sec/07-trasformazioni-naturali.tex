@@ -72,14 +72,26 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 	\end{itemize}
 \end{example}
 Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia, data la presenza di funtori che le legano alle categorie di oggetti geometrici; raccogliamo alcuni esempi tra i più noti.
-\begin{hExample}[Trasformazione di Hurewicz in topologia]{tech}
+\begin{hExample}[Trasformazione di Hurewicz in topologia]{tech}\index{Hurewicz!mappa di ---}
+	\index{Witold Hurewicz}
 	Questo esempio fa uso di alcuni concetti elementari della teoria dell'omologia singolare, e delle definizioni \ref{fun_ex_omoto_omolo} dei funtori di omotopia e omologia:
 	\begin{itemize}
 		\item se \(X\) è uno spazio topologico, abbiamo definito in \ref{} il gruppo \(\pi_n(X)\) che ha per elementi le classi di omotopia di funzioni continue \(S^n \to X\);
 		\item quando \(X=S^n\), il gruppo \(H_n(S^n)\) è ciclico infinito; fissiamo un suo generatore \(\upsilon\) (cosicché per ogni altra classe di omologia \(\kappa\in H_n(S^n)\) esiste un unico intero \(k\in\bbZ\) tale che \(\kappa = k\cdot \upsilon\)).
 	\end{itemize}
-	Nel 1935, il topologo polacco Witold Hurewicz ha definito un esempio di trasformazione naturale tra il funtore `\(n\)-esimo gruppo di omotopia' ed `\(n\)-esimo gruppo di omologia singolare', \(h : \pi_n \nat H_n\),\footnote{Ha definito, pochi anni prima, anche i funtori \(\pi_n\) di \ref{fun_ex_omoto_omolo}. Hurewicz è un pensatore di fondamentale importanza per la teoria delle categorie, perché è il primo a introdurre la notazione che rappresenta gli omomorfismi come frecce \(f : X \to Y\), come viene ricordato anche nelle Note Storiche del capitolo 1 di \cite{working-categories}.} assegnando a un elemento di \(\pi_n(X) = [S^n,X]\), cioè alla classe di omotopia di una certa \(f : S^ \to X\), l'elemento \(f_*(\upsilon)\) immagine del generatore sopra fissato mediante \(f_* : H_n(S^n) \to H_n(X)\).
-	\Todo{mappa di Hurewicz}
+	Nel 1935, il topologo polacco Witold Hurewicz ha definito un esempio di trasformazione naturale tra il funtore `\(n\)-esimo gruppo di omotopia' ed `\(n\)-esimo gruppo di omologia singolare', \(h : \pi_n \nat H_n\),\footnote{Ha definito, pochi anni prima, anche i funtori \(\pi_n\) di \ref{fun_ex_omoto_omolo}. Hurewicz è un pensatore di fondamentale importanza per la teoria delle categorie, perché è il primo a introdurre la notazione che rappresenta gli omomorfismi come frecce \(f : X \to Y\), come viene ricordato anche nelle Note Storiche del capitolo 1 di \cite{working-categories}.} assegnando a un elemento di \(\pi_n(X) = [S^n,X]\), cioè alla classe di omotopia di una certa \(f : S^n \to X\), l'elemento \(f_*(\upsilon)\) immagine del generatore sopra fissato mediante \(f_* : H_n(S^n) \to H_n(X)\).
+
+	Questa trasformazione è naturale: data una funzione continua \(g : X\to Y\) va mostrato che per ogni \(n\ge 0\) il quadrato
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXHBpX24oWCkiXSxbMCwxLCJcXHBpX24oWSkiXSxbMSwwLCJIX24oWCxcXGJiWikiXSxbMSwxLCJIX24oWSxcXGJiWikiXSxbMCwxXSxbMCwyXSxbMiwzXSxbMSwzXV0=
+	\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+			{\pi_n(X)} \& {H_n(X,\bbZ)} \\
+			{\pi_n(Y)} \& {H_n(Y,\bbZ)}
+			\arrow[from=1-1, to=1-2]
+			\arrow[from=1-1, to=2-1, "g_*"]
+			\arrow[from=1-2, to=2-2, "H_n(g)"]
+			\arrow[from=2-1, to=2-2]
+		\end{tikzcd}\]
+	è commutativo (nella categoria dei gruppi, dato che per \(n=1\) non c'è motivo \(\pi_1(X),\pi_1(Y)\) siano abeliani). Questo segue dalla definizione delle mappe coinvolte: come detto, in orizzontale, una classe di omotopia \([f : S^n \to X]\) viene mandata in \(H_n(f)(\upsilon)\); in verticale, \([f]\) viene mandata in \([g\cmp f : S^n \to X\to Y]\), cosicché la funtorialità di \(H_n\) (e la sua invarianza per omotopia), permette di concludere.
 	\fosco{in attesa di una collocazione migliore}
 \end{hExample}
 \begin{example}\label{ex_cat_sset}\index{Insieme simpliciale}
