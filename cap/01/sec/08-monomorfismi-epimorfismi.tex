@@ -166,6 +166,22 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
 \begin{definition}\label{def_cat_ben_potenziata}\index{Categoria!--- ben potenziata}
 	Una categoria \(\ctC\) si dice \emph{ben potenziata} (in inglese, \emph{well-powered}) se, per ogni oggetto \(X\in\ctC_0\), la classe \(\Sub(X)\) dei sottoggetti di \(X\) è un insieme.
 \end{definition}
+\begin{hExample}{tech}
+	Un esempio di categoria che non è ben potenziata necessita di un qualche lemma che asserisce che una classe \(K\) è propria (=non è un insieme) per poi costruire un oggetto che ha \(K\) sottoggetti; ad esempio: la classe \(\ctOrd_0\) di tutti gli ordinali è propria (ossia: la categoria \(\ctOrd\) di \ref{ex_cat_ordinali} non è piccola, si veda \ref{tipi_di_ordinaly}), ed è possibile definire la categoria \(\ctSet^\ctOrd_b\) come segue:
+	\begin{itemize}
+		\item gli oggetti sono i funtori
+		      \[\dmFun{F}{\ctOrd}{\ctSet}\]
+		      `definitivamente costanti', cioè i funtori \(F\) di quel tipo per i quali esiste un ordinale \(\alpha\) tale che \(F(\beta) = F(\gamma)\) per ogni \(\alpha \leq \beta \leq \gamma\).
+	\end{itemize}
+	Questa condizione garantisce che questa sia una categoria localmente piccola. Tuttavia, non è ben potenziata, poiché per ogni ordinale \(\alpha\), il funtore costante nel singoletto \(\{\star\}\) possiede un sottofuntore \(F_\alpha\) definito da
+	\[
+		F_\alpha(\beta)=
+		\begin{cases}
+			\varnothing & \text{se } \beta<\alpha,    \\
+			\{\star\}   & \text{se } \beta\geq\alpha.
+		\end{cases}
+	\]
+\end{hExample}
 \subsection{Sezioni e retrazioni}\label{sec_sezretraz}\index{Sezione}
 Così come l'algebra ci ha suggerito di generalizzare all'ambito categoriale la nozione di elemento di un monoide cancellabile a sinistra/destra,
 similmente possiamo considerare la nozione di elemento invertibile a sinistra/destra.
@@ -744,51 +760,51 @@ Gli esempi di categorie equivalenti ma non isomorfe sono molto comuni. Ad esempi
 	\[\xymatrix@C=7ex{0 \ar@<.7ex>[r]^u \ar@(dl,ul)[] & 1 \ar@<.7ex>[l]^{u^{-1}} \ar@(ur,dr)[]}\]
 	è equivalente alla categoria \(\ctTerm\).
 \end{remark}
-Si noti anche che un risultato analogo è falso per la categoria discreta $A^\delta$, che è anch'essa un gruppoide: è la `connessione massima possibile' tra due qualsiasi oggetti di $A^\chi$ il fatto che rende vero il risultato precedente.
+Si noti anche che un risultato analogo è falso per la categoria discreta \(A^\delta\), che è anch'essa un gruppoide: è la `connessione massima possibile' tra due qualsiasi oggetti di \(A^\chi\) il fatto che rende vero il risultato precedente.
 \begin{figure}
 	\begin{center}
-		 \begin{tikzpicture}[
-   x=4em, y=4em,
-   dot/.style={
-     circle,
-     fill=#1,
-     inner sep=0pt,
-     outer sep=2pt,
-     minimum size=4pt,
-     draw=none,
-    },
-   wrap/.style={
-     fill=black!5,
-     draw=gray,
-     rounded corners,
-     inner sep=.5em,
-    },
-  ]
- \foreach \i in {0,...,6}
-\node[dot=gray!80] (C-\i) at (\i*360/7:1.5) {};
-\node[dot] (one) at (3,0) {};
-\draw[gray!80] (C-1) -- (C-2) -- (C-3)  (C-4) -- (C-5) -- (C-6) -- (C-0);
-\draw[gray!80] (C-1) -- (C-6)
-      (C-1) -- (C-5)
-      (C-1) -- (C-4)
-      (C-1) -- (C-3);
-\draw[gray!80] (C-0) -- (C-2)
-      (C-0) -- (C-3)
-      (C-0) -- (C-4)
-      (C-0) -- (C-5);
-\draw[gray!80] (C-3) -- (C-5)
-      (C-3) -- (C-6);
-\draw[gray!80] (C-2) -- (C-4)
-      (C-2) -- (C-6);
-\foreach \i/\j/\col/\k in {0/1/Blue/u,3/4/Magenta/v,2/5/Orange/w} {
-\draw[ibm\col] (C-\i) -- (C-\j) node[left,pos=.4,ibm\col] {$\k$};
-\draw[ibm\col, dashed, -latex'] (C-\i) -- (one);
-\draw[ibm\col, dashed, -latex'] (C-\j) -- (one);
-}
+		\begin{tikzpicture}[
+				x=4em, y=4em,
+				dot/.style={
+						circle,
+						fill=#1,
+						inner sep=0pt,
+						outer sep=2pt,
+						minimum size=4pt,
+						draw=none,
+					},
+				wrap/.style={
+						fill=black!5,
+						draw=gray,
+						rounded corners,
+						inner sep=.5em,
+					},
+			]
+			\foreach \i in {0,...,6}
+			\node[dot=gray!80] (C-\i) at (\i*360/7:1.5) {};
+			\node[dot] (one) at (3,0) {};
+			\draw[gray!80] (C-1) -- (C-2) -- (C-3)  (C-4) -- (C-5) -- (C-6) -- (C-0);
+			\draw[gray!80] (C-1) -- (C-6)
+			(C-1) -- (C-5)
+			(C-1) -- (C-4)
+			(C-1) -- (C-3);
+			\draw[gray!80] (C-0) -- (C-2)
+			(C-0) -- (C-3)
+			(C-0) -- (C-4)
+			(C-0) -- (C-5);
+			\draw[gray!80] (C-3) -- (C-5)
+			(C-3) -- (C-6);
+			\draw[gray!80] (C-2) -- (C-4)
+			(C-2) -- (C-6);
+			\foreach \i/\j/\col/\k in {0/1/Blue/u,3/4/Magenta/v,2/5/Orange/w} {
+					\draw[ibm\col] (C-\i) -- (C-\j) node[left,pos=.4,ibm\col] {$\k$};
+					\draw[ibm\col, dashed, -latex'] (C-\i) -- (one);
+					\draw[ibm\col, dashed, -latex'] (C-\j) -- (one);
+				}
 
-\end{tikzpicture}
+		\end{tikzpicture}
 	\end{center}
-	\caption{Il gruppoide caotico su un insieme $A$ con sette elementi, e l'unico funtore $F^! : A^\chi \fun\ctTerm$ verso la categoria $\ctTerm$ che è un'equivalenza, a dispetto del fatto che non induce una biiezione sugli insiemi di oggetti di $A^\chi$ e di $\ctTerm$; ciascuna funzione $F_{ij}^! : A^\chi(i,j) \to \ctTerm(\bullet,\bullet)$ è biiettiva, dato che nell'hom insieme a sinistra esiste sempre uno e un solo elemento; questo rende $F^!$ pienamente fedele. Tre frecce distinte di $A^\chi$ sono state evidenziate.}
+	\caption{Il gruppoide caotico su un insieme \(A\) con sette elementi, e l'unico funtore \(F^! : A^\chi \fun\ctTerm\) verso la categoria \(\ctTerm\) che è un'equivalenza, a dispetto del fatto che non induce una biiezione sugli insiemi di oggetti di \(A^\chi\) e di \(\ctTerm\); ciascuna funzione \(F_{ij}^! : A^\chi(i,j) \to \ctTerm(\bullet,\bullet)\) è biiettiva, dato che nell'hom insieme a sinistra esiste sempre uno e un solo elemento; questo rende \(F^!\) pienamente fedele. Tre frecce distinte di \(A^\chi\) sono state evidenziate.}
 \end{figure}
 \begin{example}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
 	Sia \(n\ge 1\) un intero, e \(k\) un campo qualsiasi. Definiamo due categorie \(\ctC_{n,k},\ctD_{n,k}\) come segue:
