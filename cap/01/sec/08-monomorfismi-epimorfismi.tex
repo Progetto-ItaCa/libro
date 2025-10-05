@@ -166,14 +166,13 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
 \begin{definition}\label{def_cat_ben_potenziata}\index{Categoria!--- ben potenziata}
 	Una categoria \(\ctC\) si dice \emph{ben potenziata} (in inglese, \emph{well-powered}) se, per ogni oggetto \(X\in\ctC_0\), la classe \(\Sub(X)\) dei sottoggetti di \(X\) è un insieme.
 \end{definition}
-\begin{hExample}{tech}
-	Un esempio di categoria che non è ben potenziata necessita di un qualche lemma che asserisce che una classe \(K\) è propria (=non è un insieme) per poi costruire un oggetto che ha \(K\) sottoggetti; ad esempio: la classe \(\ctOrd_0\) di tutti gli ordinali è propria (ossia: la categoria \(\ctOrd\) di \ref{ex_cat_ordinali} non è piccola, si veda \ref{tipi_di_ordinaly}), ed è possibile definire la categoria \(\ctSet^\ctOrd_b\) come segue:
-	\begin{itemize}
-		\item gli oggetti sono i funtori
-		      \[\dmFun{F}{\ctOrd}{\ctSet}\]
-		      `definitivamente costanti', cioè i funtori \(F\) di quel tipo per i quali esiste un ordinale \(\alpha\) tale che \(F(\beta) = F(\gamma)\) per ogni \(\alpha \leq \beta \leq \gamma\).
-	\end{itemize}
-	Questa condizione garantisce che questa sia una categoria localmente piccola. Tuttavia, non è ben potenziata, poiché per ogni ordinale \(\alpha\), il funtore costante nel singoletto \(\{\star\}\) possiede un sottofuntore \(F_\alpha\) definito da
+\begin{hExample}[Una categoria non ben potenziata]{tech}
+	Costruiamo una categoria \(\ctC\) e un oggetto di \(\ctC\) che ha una classe propria di sottoggetti --più precisamente, un oggetto i cui sottoggetti sono tanti quanti quelli della classe \(\ctOrd_0\) di tutti gli ordinali, che è propria, si veda \ref{tipi_di_ordinaly}. Definiamo la categoria \(\ctSet^\ctOrd_b\) che ha per oggetti i funtori
+	\[\dmFun{F}{\ctOrd}{\ctSet}\]
+	che sono `definitivamente costanti', cioè i funtori \(F\) per i quali esiste un ordinale \(\alpha\) tale che \(F(\beta) = F(\gamma)\) per ogni \(\alpha \leq \beta \leq \gamma\); per ogni \(F\) esiste un minimo tale ordinale, denotiamolo \(\delta(F)\) (`supporto' di \(F\)). Le frecce tra oggetti di questo tipo sono le trasformazioni naturali.
+	La condizione di limitatezza garantisce che \(\ctSet^\ctOrd_b\) sia una categoria localmente piccola, dato che una trasformazione naturale tra due funtori definitivamente costanti è un elemento dell'insieme \(\prod_{x\le\max\{\delta F,\delta G\}} \Hom\ctSet(Fx,Gx)\).
+
+	Tuttavia, \(\ctSet^\ctOrd_b\) non è ben potenziata poiché per ogni ordinale \(\alpha\), il funtore costante nel singoletto \(\{\star\}\) possiede un sottofuntore \(F_\alpha\) definito da
 	\[
 		F_\alpha(\beta)=
 		\begin{cases}
@@ -589,17 +588,19 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 		Per ogni oggetto \(D\in\ctD_0\), esistono un oggetto \(C\in\ctC_0\) e un isomorfismo \(i_D : FC\cong D\).
 		\index{Funtore!--- iso-denso|see {--- essenzialmente suriettivo}}
 	\end{quote}
-	\begin{remark}
+	\begin{remark}\index{Funtore!--- localmente \(\mathcal{P}\)}
+		\index{Funtore!--- essenzialmente \(\mathcal{P}\)}
+		\index{Funtore!--- \(\mathcal{P}\) sugli oggetti}
 		La terminologia \emph{iso-denso} è poco usata e si dovrebbe preferire standardizzare la nomenclatura al modo che segue: sia \(\mathcal{P}\) una proprietà di una funzione tra insiemi o classi; un funtore \(F : \ctC\fun\ctD\) si dice
 		\begin{itemize}
-			\item \emph{localmente \(\mathcal{P}\)} se ogni funzione \(F_{XY}\) come in \ref{def_alternativa_funtore} ha la proprietà \(\mathcal{P}\);
+			\item `\emph{localmente \(\mathcal{P}\)}' se ogni funzione \(F_{XY}\) come in \ref{def_alternativa_funtore} ha la proprietà \(\mathcal{P}\);
 			      % quando ogni F_XY è \mathcal{P}
-			\item \emph{essenzialmente \(\mathcal{P}\)} se la funzione \(\pi_0(F_\cong) : \pi_0(\ctC_\cong)\to\pi_0(\ctD_\cong)\) ottenuta applicando il funtore composto \(\pi_0\circ (\blank)_\cong\) come in \ref{ex_fun_cpt_conn} (notando che mandare \(\ctC\) in \(\ctC_\cong\) è un funtore \((\blank)_\cong : \ctCat\fun\ctGpd\)), ha la proprietà \(\mathcal{P}\);
+			\item `\emph{essenzialmente \(\mathcal{P}\)}' se la funzione \(\pi_0(F_\cong) : \pi_0(\ctC_\cong)\to\pi_0(\ctD_\cong)\) ottenuta applicando il funtore composto \(\pi_0\circ (\blank)_\cong\) come in \ref{ex_fun_cpt_conn} (notando che mandare \(\ctC\) in \(\ctC_\cong\) è un funtore \((\blank)_\cong : \ctCat\fun\ctGpd\)), ha la proprietà \(\mathcal{P}\);
 			      % quando la funzione \pi_0(F) è \mathcal{P}
-			\item \emph{\(\mathcal{P}\) sugli oggetti} se la funzione \(F_0\) di \ref{def_funtore}.\ref{f_1} ha la proprietà \(\mathcal{P}\).
+			\item `\emph{\(\mathcal{P}\) sugli oggetti}' se la funzione \(F_0\) di \ref{def_funtore}.\ref{f_1} ha la proprietà \(\mathcal{P}\).
 			      % quando F_0 è \mathcal{P}
 		\end{itemize}
-		Allora ad esempio, un funtore pienamente fedele è localmente biiettivo, un funtore essenzialmente suriettivo è tale che ogni oggetto di \(\ctD\) è isomorfo ad uno della forma \(FX\).
+		Allora ad esempio, un funtore pienamente fedele è localmente biiettivo, un funtore essenzialmente suriettivo è tale che ogni oggetto di \(\ctD\) è isomorfo ad uno della forma \(FX\), e un funtore biiettivo sugli oggetti è tale che \(F_0\) è una biiezione.
 	\end{remark}
 \end{definition}
 \begin{definition}[Preservare e riflettere]\label{def_preserva_riflette}\index{Funtore!--- preserva proprietà}\index{Funtore!--- riflette proprietà|see {preserva proprietà}}
@@ -680,7 +681,8 @@ Una proprietà niente affatto banale dei funtori conservativi è che ogni catego
 		\item (equazione zag) la composizione \(\xymatrix{G \ar@{=>}[r]^-{\eta\whi G} & GFG \ar@{=>}[r]^-{G\whi\epsilon} & G}\) è uguale alla trasformazione naturale identica di \(G\).
 	\end{itemize}
 	Dato \(F\), il funtore \(G\) è detto lo \emph{pseudoinverso} di \(F\), e analogamente \(F\) è lo pseudoinverso del funtore \(G\); i due si caratterizzano a vicenda, ma non in maniera strettamente unica, bensì \emph{a meno di isomorfismo naturale}:
-	\begin{lemma}
+	\begin{lemma}\index{Funtore!--- pseudoinverso}
+		\index{Pseudoinverso}
 		Se \(\hat G,\tilde G\) sono pseudoinversi dello stesso \(F : \ctC\fun\ctD\), allora esiste un isomorfismo naturale \(\hat G\nat \tilde G\), ottenuto componendo
 		\[\xymatrix{\gamma : \hat G \ar@{=>}[r]^-{\tilde\eta\whi\hat G } & \tilde G F \hat G \ar@{=>}[r]^-{\tilde G \whi \hat\epsilon} & \tilde G}\]
 		In più, qualora \((F, \tilde G,\eta,\epsilon)\) sia un'equivalenza aggiunta, altrettanto è vero per \((F, \hat G,\hat\eta,\hat\epsilon)\), dove
