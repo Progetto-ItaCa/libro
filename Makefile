@@ -32,6 +32,7 @@ pretty:
 
 indexing:
 	python3 missing_indexes.py > missing_indices.idx
+	code missing_indices.idx
 	# this *.idx file is highly volatile
 
 look_index:
