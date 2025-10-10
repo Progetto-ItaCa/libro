@@ -203,7 +203,7 @@
 	\[\dmFun{H_n(-,\bbZ)}\ctHoTop\ctAb\]
 	per \(n\ge 0\), e di coomologia (a coefficienti interi)
 	\[\dmFun{H^n(-,\bbZ)}{\ctHoTop^\op}{\ctAb.}\]
-	Per una definizione precisa dei gruppi di omologia e coomologia rimandiamo chi legge a \ref{} e a \cite[pp. 5--6]{Vick73a}.
+	Per una definizione precisa dei gruppi di omologia e coomologia rimandiamo chi legge a testi classici come \ref{Cartan1956,Rotman1979} e a \cite[pp. 5--6]{Vick73a}.
 	% 	Per l'omologia, va mostrato che ogni omomorfismo tra complessi \(f_\bullet : (A_\bullet,d_\bullet) \to (B_\bullet,d'_\bullet)\) induce un omomorfismo di gruppi abeliani in maniera che valgano le proprietà di funtorialità; si definisce 
 	% 	\[\dmFun{H_n(f)}{\ker d_n}{H_n(B_\bullet,d'_\bullet)}\]
 	% mandando \(t\in \ker d_n\) nella classe \(f_n(t) + \im d'_{n+1}\), ed è poi facile mostrare che questo è un omomorfismo di gruppi, e soddisfa \ref{def_funtore}.\ref{p_1} e \ref{p_2}.\footnote{Ovviamente, preliminare a questo è la dimostrazione che \(H_n(f)\) è ben definito: si vede facilmente che se due classi \(t,t'\) sono tali che \(t' = t + d_{n+1}x\), cioè definiscono lo stesso elemento in \(H_n(A_\bullet,d_\bullet)\), allora \(f_n(t') = f_nt + f_nd_{n+1}x = f_nt + d'_{n+1}(f_{n+1}x)\), cosicché \(f_nt,f_nt'\) sono equivalenti modulo \(\im d'_{n+1}\).}
@@ -218,7 +218,7 @@
 		\item Una famiglia di funzioni \(d_i^n : X_n\to X_{n-1}\), dette \emph{facce}, per \(0\leq i\leq n\); la faccia \(d_i^n(t)\) di un \(n\)-simplesso \(t\) è detta \emph{\(i\)-esima faccia} di \(t\);
 		\item Una famiglia di funzioni \(s_i^n : X_n\to X_{n+1}\), dette \emph{degenerazioni}, per \(0\leq i\leq n\).
 	\end{itemize}
-	Questi dati sono soggetti (per funtorialità) alle \emph{identità simpliciali}: se \(X(\delta_n^i) := d_i\) e \(X(\sigma_n^i) := s_i\), allora
+	Questi dati sono soggetti (per funtorialità) alle \emph{identità simpliciali}: se \(X(\delta_n^i) := d_i^n\) e \(X(\sigma_n^i) := s_i^n\), allora
 	\begin{gather}
 		d_i\cmp d_j = d_{j-1}\cmp d_i, \quad i < j\label{idsim_1}\\
 		s_i \cmp s_j = s_{j+1} \cmp s_i, \quad i \leq j\label{idsim_2}\\
@@ -274,17 +274,40 @@
 \begin{definition}[Realizzazione topologica di simplessi]\label{def_real_geom}
 	Definiamo un funtore
 	\[\dmFun{{|\blank|}}{\bsDelta}{\ctTop}\]
-	che produce uno spazio	topologico a partire da un simplesso astratto; lo spazio \(|\Delta[n]|\) il \emph{simplesso geometrico standard}.
+	che produce uno spazio	topologico a partire da un simplesso astratto; lo spazio \(|\Delta[n]|\) si dice il \emph{simplesso geometrico standard}.
 
-	La procedura che descriviamo qui potrà essere estesa a un funtore che ad ogni \emph{insieme simpliciale} associa uno spazio topologico (la \emph{realizzazione topologica} dell'insieme simpliciale), ma per poterla definire serve il linguaggio dei colimiti, esposto nel capitolo \ref{}.
+	La procedura che descriviamo qui potrà essere estesa a un funtore che ad ogni \emph{insieme simpliciale} associa uno spazio topologico (la \emph{realizzazione topologica} dell'insieme simpliciale), ma per poterla definire serve il linguaggio dei colimiti, esposto nel capitolo \ref{chap_limiti_colimiti}.
 
-	Ricordiamo che l'oggetto tipico di \(\bsDelta\)	è della forma \([n]=\{0,1,\dots,n\}\) per un certo \(n\ge 0\); definiamo poi \(|\Delta[n]|\) come sottoinsieme di \(\bbR^{n+1}\) dato da
-	\[\textstyle|\Delta[n]| = \Delta^n \defeq \left\{(t_0,t_1,\dots,t_n)\in\bbR^{n+1} \mid t_i\ge 0, \sum_{i=0}^n t_i = 1\right\}\]
-	e dotato della topologia indotta da quella euclidea di \(\bbR^{n+1}\). Gli elementi di \(|\Delta[n]|\) si possono quindi pensare come \emph{combinazioni convesse}, e in effetti \(|\Delta[n]|\) così ottenuto è l'\emph{inviluppo convesso} di \(n\) punti in \(\bbR^{n+1}\) che si trovano in `posizione generale'; ogni punto di \(\Delta^n\) è dunque identificato univocamente dalle sue coordinate baricentriche \((\tup tn,)\) e in particolare, il vertice \(i\)-esimo è il punto in cui \(t_i=1\) e tutti gli altri coefficienti sono nulli.
+	Ricordiamo da \ref{rmk_delta_e_deltaPlus} che l'oggetto tipico di \(\bsDelta\)	è della forma \([n]=\{\iter[0][<]n\}\) per un certo \(n\ge 0\); definiamo poi \(|\Delta[n]|= \Delta^n\) come sottoinsieme di \(\bbR^{n+1}\) dato da
+	\[\left\{(t_0,t_1,\dots,t_n)\in\bbR^{n+1} \mid t_i\ge 0, \sum_{i=0}^n t_i = 1\right\}\]
+	e dotato della topologia indotta da quella euclidea di \(\bbR^{n+1}\). Gli elementi di \(|\Delta[n]|\) si possono quindi pensare come \emph{combinazioni convesse}, e in effetti \(|\Delta[n]|\) così ottenuto è precisamente l'\emph{inviluppo convesso} di \(n\) punti in \(\bbR^{n+1}\) che si trovano in `posizione generale'; ogni punto di \(\Delta^n\) è dunque identificato univocamente dalle sue coordinate baricentriche \((\tup[0]tn,)\) e in particolare, il vertice \(i\)-esimo è il punto in cui \(t_i=1\) e tutti gli altri coefficienti sono nulli.
 
-	Ora, per dimostrare che la realizzazione topologica induce un funtore, va mostrato che una funzione monotona \(f : [m]\to [n]\) in \(\bsDelta\) induce una funzione continua \(|f| : |\Delta[m]|\to |\Delta[n]|\). Dato che, come si è visto in \ref{rmk_combinatoria_simplessi}, \(f\) risulta da una composizione, essenzialmente unica, di cofacce e codegenerazioni, è sufficiente dimostrare che queste ultime inducono tutte funzioni continue. Per le cofacce questo è semplicissimo: \(|\delta_n^i|\) non è altro che l'inclusione	insiemistrica di \(\Delta^{n-1}\) in \(\Delta^n\) come la faccia opposta al vertice \(i\)-esimo, e quindi è continua. Per le codegenerazioni, si osservi che \(|\sigma_n^i|\) è la funzione continua che manda il punto \((t_0,\dots,t_n)\in\Delta^{n+1}\) nel punto \((t_0,\dots,t_{i-1},t_i+t_{i+1},t_{i+2},\dots,t_n)\in\Delta^n\) (ossia, `accorpa' le coordinate \(t_i\) e \(t_{i+1}\)). Quindi, la codegenerazione è la restrizione di una certa applicazione	lineare continua (ad esempio: le due codegenerazioni per \(n=2\) sono le matrici \(\begin{smat}1	&	1	&	0 \\ 0	&	0	&	1\end{smat}\) e \(\begin{smat}1	&	0	&	0 \\ 0	&	1	&	1\end{smat}\)), e pertanto è continua.
-	\Todo{Realizzazione topologica di simplessi permette di definire il \emph{complesso singolare} di uno spazio topologico, e da esso l'omologia singolare...}
+	Ora, per dimostrare che la realizzazione topologica induce un funtore, va mostrato che una funzione monotòna \(f : [m]\to [n]\) in \(\bsDelta\) induce una funzione continua \(|f| : |\Delta[m]|\to |\Delta[n]|\). Dato che, come si è visto in \ref{rmk_combinatoria_simplessi}, \(f\) risulta da una composizione \(\delta^{i_1} \cmp\dots\cmp \delta^{i_k}\cmp \sigma^{j_1} \cmp\dots\cmp \sigma^{j_h}\), essenzialmente unica, di cofacce e codegenerazioni, è sufficiente dimostrare che queste ultime inducono tutte funzioni continue. La tesi seguirà dal definire \(|f|:=|\delta^{i_1}|\cmp\dots\cmp|\delta^{i_k}|\cmp|\sigma^{j_1}|\cmp\dots\cmp|\sigma^{j_h}|\).
+
+	Per le cofacce questo è semplicissimo: \(|\delta_n^i|\) non è altro che l'inclusione	insiemistica di \(\Delta^{n-1}\) in \(\Delta^n\) come la faccia opposta al vertice \(i\)-esimo, e quindi è continua. Per le codegenerazioni, si osservi che \(|\sigma_n^i|\) è la funzione continua che manda il punto \((t_0,\dots,t_n)\in\Delta^{n+1}\) nel punto \((t_0,\dots,t_{i-1},t_i+t_{i+1},t_{i+2},\dots,t_n)\in\Delta^n\) (ossia, `accorpa' le coordinate \(t_i\) e \(t_{i+1}\)). Quindi, la codegenerazione è la restrizione di una certa applicazione	lineare continua (ad esempio: le due codegenerazioni per \(n=2\) sono le matrici \(\begin{smat}1	&	1	&	0 \\ 0	&	0	&	1\end{smat}\) e \(\begin{smat}1	&	0	&	0 \\ 0	&	1	&	1\end{smat}\)), e pertanto è continua.
 \end{definition}
+Il funtore di realizzazione topologica di simplessi permette di definire il \emph{complesso singolare} di uno spazio topologico, e da esso l'omologia singolare. Non entriamo nel merito, ma per esercizio:
+\begin{itemize}
+	\item si trovi una rappresentazione matriciale delle cofacce e si verifichino le identità cosimpliciali di \ref{rmk_combinatoria_simplessi}; suggerimento, queste sono le matrici associate alle tre cofacce \(\delta_2^0,\delta_2^1,\delta_2^2\):
+	      \[
+		      |\delta_2^0| = \begin{smat}
+			      0 & 0 \\
+			      1 & 0 \\
+			      0 & 1
+		      \end{smat},\quad
+		      |\delta_2^1| = \begin{smat}
+			      1 & 0 \\
+			      0 & 0 \\
+			      0 & 1
+		      \end{smat},\quad
+		      |\delta_2^2| = \begin{smat}
+			      1 & 0 \\
+			      0 & 1 \\
+			      0 & 0
+		      \end{smat};
+	      \]
+	\item si dimostri, in questa rappresentazione matriciale, che la somma a segni alterni \(\partial_n \defeq \sum_{i=0}^n (-1)^i |\delta_n^i|\) è tale che \(\partial_n	\cmp \partial_{n-1}\) è la matrice nulla (nel lievissimo abuso di notazione che pensa queste matrici a coefficienti interi).
+\end{itemize}
 \begin{figure}
 	\begin{center}
 
