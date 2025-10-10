@@ -272,15 +272,56 @@
 	% \end{center}
 \end{hRemark}
 \begin{definition}[Realizzazione topologica di simplessi]\label{def_real_geom}
-	Definiamo un funtore 
-	\[\dmFun{\bkt\blank}{\bsDelta}{\ctTop}\]
-	che produce uno spazio	topologico a partire da un simplesso astratto. Questo spazio topologico è il \emph{simplesso geometrico standard}.
+	Definiamo un funtore
+	\[\dmFun{{|\blank|}}{\bsDelta}{\ctTop}\]
+	che produce uno spazio	topologico a partire da un simplesso astratto; lo spazio \(|\Delta[n]|\) il \emph{simplesso geometrico standard}.
 
-	Questa procedura potrà essere estesa a un funtore che ad ogni \emph{insieme simpliciale} associa uno spazio topologico (la \emph{realizzazione topologica} dell'insieme simpliciale), ma per poterla definire serve il linguaggio dei colimiti esposto nel capitolo \ref{}.
+	La procedura che descriviamo qui potrà essere estesa a un funtore che ad ogni \emph{insieme simpliciale} associa uno spazio topologico (la \emph{realizzazione topologica} dell'insieme simpliciale), ma per poterla definire serve il linguaggio dei colimiti, esposto nel capitolo \ref{}.
 
-	Ricordiamo che l'oggetto tipico di $\bsDelta$	è della forma \([n]=\{0,1,\dots,n\}\) per un certo \(n\ge 0\); definiamo poi $|\Delta[n]|$ come
-	\Todo{Realizzazione topologica di simplessi}
+	Ricordiamo che l'oggetto tipico di \(\bsDelta\)	è della forma \([n]=\{0,1,\dots,n\}\) per un certo \(n\ge 0\); definiamo poi \(|\Delta[n]|\) come sottoinsieme di \(\bbR^{n+1}\) dato da
+	\[\textstyle|\Delta[n]| = \Delta^n \defeq \left\{(t_0,t_1,\dots,t_n)\in\bbR^{n+1} \mid t_i\ge 0, \sum_{i=0}^n t_i = 1\right\}\]
+	e dotato della topologia indotta da quella euclidea di \(\bbR^{n+1}\). Gli elementi di \(|\Delta[n]|\) si possono quindi pensare come \emph{combinazioni convesse}, e in effetti \(|\Delta[n]|\) così ottenuto è l'\emph{inviluppo convesso} di \(n\) punti in \(\bbR^{n+1}\) che si trovano in `posizione generale'; ogni punto di \(\Delta^n\) è dunque identificato univocamente dalle sue coordinate baricentriche \((\tup tn,)\) e in particolare, il vertice \(i\)-esimo è il punto in cui \(t_i=1\) e tutti gli altri coefficienti sono nulli.
+
+	Ora, per dimostrare che la realizzazione topologica induce un funtore, va mostrato che una funzione monotona \(f : [m]\to [n]\) in \(\bsDelta\) induce una funzione continua \(|f| : |\Delta[m]|\to |\Delta[n]|\). Dato che, come si è visto in \ref{rmk_combinatoria_simplessi}, \(f\) risulta da una composizione, essenzialmente unica, di cofacce e codegenerazioni, è sufficiente dimostrare che queste ultime inducono tutte funzioni continue. Per le cofacce questo è semplicissimo: \(|\delta_n^i|\) non è altro che l'inclusione	insiemistrica di \(\Delta^{n-1}\) in \(\Delta^n\) come la faccia opposta al vertice \(i\)-esimo, e quindi è continua. Per le codegenerazioni, si osservi che \(|\sigma_n^i|\) è la funzione continua che manda il punto \((t_0,\dots,t_n)\in\Delta^{n+1}\) nel punto \((t_0,\dots,t_{i-1},t_i+t_{i+1},t_{i+2},\dots,t_n)\in\Delta^n\) (ossia, `accorpa' le coordinate \(t_i\) e \(t_{i+1}\)). Quindi, la codegenerazione è la restrizione di una certa applicazione	lineare continua (ad esempio: le due codegenerazioni per \(n=2\) sono le matrici \(\begin{smat}1	&	1	&	0 \\ 0	&	0	&	1\end{smat}\) e \(\begin{smat}1	&	0	&	0 \\ 0	&	1	&	1\end{smat}\)), e pertanto è continua.
+	\Todo{Realizzazione topologica di simplessi permette di definire il \emph{complesso singolare} di uno spazio topologico, e da esso l'omologia singolare...}
 \end{definition}
+\begin{figure}
+	\begin{center}
+
+		\begin{tikzpicture}[yscale=5,xscale=6]
+
+			% --- vertices of the equilateral triangle ---
+			\coordinate (v0) at (0,0);
+			\coordinate (v1) at (1,0);
+			\coordinate (v2) at (0.5,{sqrt(3)/2});
+
+			% draw the triangle
+			\filldraw[thick,fill=gray!20, draw=gray] (v0) -- (v1) -- (v2) -- cycle;
+
+			% draw the base (1-simplex)
+			\begin{scope}[yshift=-.5cm]
+				\draw[thick,gray] (0,0) -- (1,0);
+			\end{scope}
+			% --- a line inside the triangle ---
+			% barycentric coordinates: t0 = 0.2, t1 = s, t2 = 0.8 - s,  s ∈ [0,0.8]
+			\foreach \s in {0,0.1,...,0.7} {
+					% 2D coordinates of the original point
+					\pgfmathsetmacro{\xorig}{0*0.2 + 1*\s + 0.5*(0.8-\s)}
+					\pgfmathsetmacro{\yorig}{0*0.2 + 0*\s + (sqrt(3)/2)*(0.8-\s)}
+					% image under σ₀ : merge t0 + t1
+					\pgfmathsetmacro{\ximage}{0.2 + \s}
+					\pgfmathsetmacro{\yimage}{0}
+					% draw arrow
+					\draw[gray,->,>=stealth,thin] (\xorig,\yorig) -- (\ximage,\yimage-.5);
+					% draw original and image points
+					\fill[ibmBlue] (\xorig,\yorig) circle (0.2pt);
+					\fill[ibmMagenta] (\ximage,\yimage-.5) circle (0.2pt);
+				}
+
+		\end{tikzpicture}
+	\end{center}
+	\caption{Rappresentazione di una codegenerazione topologica \(|\sigma_n^i|	: |\Delta^{n+1}|\to |\Delta^n|\) che agisce sulle coordinate baricentriche di un simplesso geometrico. Viene disegnata l'immagine di una linea mediante la matrice di \(|\sigma_n^i|\).}\label{fig_codegen_top}
+\end{figure}
 \begin{definition}\label{def_insieme_globulare}\index{Insieme!--- globulare}\index{Insieme globulare}
 	\index{Insieme!--- globulare}
 	Un \emph{insieme globulare} consta di un funtore \(G : \ctGl(n)^\op\fun\ctSet\), dove \(\ctGl(n)\) è la categoria `globo generico' di \ref{ex_globo}.
