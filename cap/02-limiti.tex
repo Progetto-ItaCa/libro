@@ -12,12 +12,60 @@ rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
 % \end{quotation}
 
 
+Anche questo capitolo inizia raccogliendo degli esempi che la nozione di limite e di colimite organizzeranno come casi particolari di una stessa costruzione. L'intera teoria, al cui cuore sta la nozione di \emph{proprietà universale}, si riassume in modo estremamente conciso, mediante le nozioni di inizialità e terminalità che sono già state introdotte rapidamente in \ref{def_cono_su_C}:
+\begin{definition}
+	Sia $\ctC$ una categoria. Un oggetto $\init_\ctC\in\ctC_0$ si dice \emph{iniziale} in $\ctC$ se soddisfa la seguente proprietà:
+		      \begin{quote}
+			      Per ogni \(C\in\ctC_0\), esiste un unica freccia \(\init_\ctC \to C\).
+		      \end{quote}
+	Dualmente, un oggetto $\term_\ctC\in\ctC_0$ si dice \emph{terminale} in $\ctC$ se soddisfa la seguente proprietà:
+			      \begin{quote}
+			      Per ogni \(C\in\ctC_0\), esiste un unica freccia \(C\to\term\).
+		      \end{quote}
+\end{definition}
+Evidentemente, la proprietà di essere iniziale in $\ctC$ è precisamente la proprietà di essere terminale in $\ctC^\op$, e viceversa, la proprietà di essere terminale in $\ctC$ è precisamente la proprietà di essere iniziale in $\ctC^\op$.
 
+In maniera molto informale, una \emph{proprietà universale} è una proprietà di terminalità in una opportuna categoria, e dualmente una proprietà \emph{couniversale} è di inizialità. Chiaramente questo è impreciso, e fuorviante se preso troppo alla lettera; si dovrebbe dire che un oggetto $X\in\ctC_0$ è universale in $\ctC$ quando è possibile costruire un certo diagramma, e da esso un `cono' la cui `origine' è $X$, 
+\[\xymatrix@R=0mm{
+ & Di \\
+X \ar@{->}[ru] \ar@{->}[r] \ar@{->}[rdd] & Dj \\
+ & \vdots \\
+ & Dk
+}\]
+che è terminale in una categoria i cui oggetti sono coni. Al variare del diagramma $D$ (quanto è complesso il suo dominio, quanto è complessa la sua azione su oggetti e frecce dello stesso), varia la complessità interna dell'oggetto terminale, che riesce a descrivere oggetti molto strutturati (i numeri $p$-adici; i frattali; i nuclei di omomorfismi; i grafici di funzioni reali o complesse; etc). L'oggetto $X$ si dice allora il \emph{limite} del diagramma $D$.
 
-Uno dei paradigmi della teoria delle categorie è che, per indagare le proprietà di un determinato oggetto matematico, si guarda in che modo esso interagisca con  altri oggetti.
+Dualmente, un oggetto $X\in\ctC_0$ è couniversale in $\ctC$ quando è il bersaglio di un cocono \emph{iniziale}, 
+\[\xymatrix@R=0mm{
+Di \ar@{->}[rd] &  \\
+Dj \ar@{->}[r] & X \\
+\vdots &  \\
+Dk \ar@{->}[ruu] & 
+}\] 
+ossia di un oggetto iniziale in una categoria di coconi per $D$. L'oggetto $X$ si dice allora il \emph{colimite} del diagramma $D$. Anche i colimiti riescono a descrivere oggetti molto strutturati (i numeri naturali; i prodotti liberi di gruppi e monoidi; le liste a valori in un alfabeto $S$; etc).
 
-
-Illustriamo questo punto di vista con un esempio. Nella teoria classica degli insiemi\footnote{Ad esempio, secondo l'assiomatica ZF(C), vedi \cite{ZFC}}, l'insieme vuoto \(\emptyset\) è definito come \emph{l'insieme privo di elementi}. Questa definizione, tuttavia, non si presta a essere tradotta in un contesto categoriale più generale perché, sebbene gli insiemi siano gli oggetti di una categoria, \(\ctSet\), gli elementi di cui essi sono composti non possono essere indagati direttamente in \(\ctSet\). D'altro canto, l'insieme vuoto è caratterizzato dalla  proprietà di essere sottoinsieme di qualunque altro insieme \(S\). Equivalentemente, per ogni insieme \(S\), l'hom-insieme \(\Hom\ctSet(\emptyset,S)\) contiene un solo elemento: la  \emph{funzione inclusione}  \(\emptyset \hookrightarrow S\). Dal punto di vista categoriale, quest'ultima formulazione si presta a essere adottata come definizione---e qui entra in gioco l'espressività della teoria delle categorie. Infatti, quando si perviene a una definizione espressa puramente in termini di oggetti e morfismi,  tale definizione può essere data in qualunque categoria, ed è naturale chiedersi cosa essa descriva in categorie diverse. 
+Questo punto di vista tuttavia non è l'unico, né il più pedagogicamente efficace: sarebbe altrettanto valido introdurre la nozione di limite e di colimite come `soluzioni' a problemi di min-max: 
+\begin{itemize}
+	\item Il limite del diagramma $D : \ctJ\fun\ctC$ è il `massimo dei minoranti' tra diagrammi della forma \eqref{}; ciò vuol dire che per un diagramma $D$ fissato, il limite $\lim D$ realizza la proprietà seguente:
+	\Todo{}
+	\item Il colimite del diagramma $D : \ctJ\fun\ctC$ è il `minimo dei maggioranti' tra diagrammi della forma \eqref{}; ciò vuol dire che per un diagramma $D$ fissato, il colimite $\colim D$ realizza la proprietà seguente:
+	\Todo{}
+\end{itemize}
+Un punto di vista del genere privilegia (ed è motivato da) la teoria degli insiemi ordinati come fonte di intuizione per le definizioni, più generali, della teoria delle categorie: la descrizione di limiti e colimiti in una categoria-preordine nel senso di \ref{} verrà delineata in \ref{}.
+\Todo{}
+Uno dei paradigmi della teoria delle categorie è che, per indagare le proprietà di un determinato oggetto matematico, si guarda in che modo esso interagisca con  altri oggetti, e anche questa è una maniera valida di introdurre la teoria dei limiti e dei colimiti. Data una famiglia di oggetti di $\ctC$, soggetta a determinate relazioni (il `diagramma'), si può trovare `l'oggetto più grande che è soluzione delle equazioni imposte dalla relazioni'? (E qual è il significato di questa qualificazione?) Dualmente: si può trovare `l'oggetto più piccolo in cui le equazioni imposte dalle relazioni sono verificate'?
+\Todo{}
+Esempi essenziali di limiti e colimiti (nella categoria degli insiemi) saranno 
+\begin{itemize}
+	\item l'equalizzatore di due funzioni $f,g : A \to B$, definito come 
+	\Todo{}
+	\item il coequalizzatore di due funzioni $f,g : A \to B$, definito come 
+	\Todo{}
+\end{itemize}
+Risulta allora evidente il senso dell'idea su esposta: l'equalizzatore di $f,g$ consiste del \emph{sottoinsieme} di $A$ dove l'equazione $f=g$ è valida. Invece, il coequalizzatore delle stesse $f,g$ consiste del \emph{quoziente} di $B$ rispetto alla relazione più piccola che \emph{impone} l'uguaglianza $f=g$.
+\Todo{}
+Questi, e molti altri esempi, appariranno chiari quando avremo delineato la teoria generale.
+\Todo{}
+Partiamo a illustrare la situazione con un esempio. Nella teoria classica degli insiemi\footnote{Ad esempio, secondo l'assiomatica ZF(C), vedi \cite{ZFC}}, l'insieme vuoto \(\emptyset\) è definito come \emph{l'insieme privo di elementi}. Questa definizione, tuttavia, non si presta a essere tradotta in un contesto categoriale più generale perché, sebbene gli insiemi siano gli oggetti di una categoria, \(\ctSet\), gli elementi di cui essi sono composti non possono essere indagati direttamente in \(\ctSet\). D'altro canto, l'insieme vuoto è caratterizzato dalla  proprietà di essere sottoinsieme di qualunque altro insieme \(S\). Equivalentemente, per ogni insieme \(S\), l'hom-insieme \(\Hom\ctSet(\emptyset,S)\) contiene un solo elemento: la  \emph{funzione inclusione}  \(\emptyset \hookrightarrow S\). Dal punto di vista categoriale, quest'ultima formulazione si presta a essere adottata come definizione---e qui entra in gioco l'espressività della teoria delle categorie. Infatti, quando si perviene a una definizione espressa puramente in termini di oggetti e morfismi,  tale definizione può essere data in qualunque categoria, ed è naturale chiedersi cosa essa descriva in categorie diverse. 
 
 \begin{example}(oggetto iniziale)\label{ex_oggetto_iniziale}
 	Data una categoria \(\ctC\), un \emph{oggetto iniziale} è un oggetto \(O\) di \(\ctC\) tale che, per ogni altro oggetto \(C\) di \(\ctC\), ci sia una e una sola freccia \(O\to C\), o, in altre parole, si abbia
@@ -48,7 +96,7 @@ In conclusione, tornando alla citazione con cui abbiamo aperto il capitolo, la t
 
 
 
-\section{Introduzione a limiti e colimiti: prodotti e quozienti in \(\ctSet\)}
+\section{Prodotti e somme in \(\ctSet\)}
 
 \subsection*{Prodotti in \(\ctSet\)}\label{prod_in_Set}
 
@@ -114,9 +162,23 @@ dove \([s]_R=\{s'\in S\mid sRs'\}\). Anche in questo caso, come per il prodotto,
 Allora, \(s R s'\) se, e solo se, esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\); e dunque, \(q_R(s)=q_R(s')\) se, e solo se, esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\).
 
 Si osservi che \(q_R\circ r_1=q_R\circ r_2 \), ossia \(q_R\) \emph{equalizza} \(r_1\) e \(r_2\). Di più. Con un linguaggio che impareremo a utilizzare in questo capitolo, affermiamo che la coppia \((S/R,q_R\colon S\to S/R)\) \emph{è universale rispetto a questa proprietà}, cioè, per ogni altra coppia \((X,f\colon S\to X)\) tale che  \(f\circ r_1=f\circ r_2 \), esiste un'unica funzione \(\bar f\colon S/R\to X\) tale che \(\bar f\circ q_R= f\). Si noti che questa funzione \(\bar f\) non è altro che la funzione \(f\) definita sulle classi, i.e.\ \(\bar f([s]_R)= f(s)\). Nel linguaggio matematico corrente si dice che \(f\) \emph{passa al quoziente}, mentre la condizione imposta corrisponde al fatto che \(f\) sia ben definita sulle classi di equivalenza di \(R\).
-
-
-\section{Prodotti  in una categoria}
+\begin{esercizi}
+	\item
+	\item
+	\item
+	\item
+	\item
+\end{esercizi}
+\section{Equalizzatori e coequalizzatori in $\ctSet$}
+\Todo{}
+\begin{esercizi}
+	\item
+	\item
+	\item
+	\item
+	\item
+\end{esercizi}
+\section{Prodotti e somme in una categoria}
 
 \subsection{Prodotti binari, proprietà universale del prodotto}
 La descrizione del prodotto di due insiemi data in \ref{prod_in_Set} si presta a essere generalizzata a una generica categoria.
@@ -232,7 +294,7 @@ che commuta con le proiezioni, cioè  tale che \(\pi_1\circ\varphi=p_1\) e \(\pi
 
 Questa è una proprietà generale.
 
-\begin{proposition}[Il prodotto è unico a meno di un unico isomorfismo)]
+\begin{proposition}[Il prodotto è unico a meno di un unico isomorfismo]
 	In una categoria \(\ctC\), date due spanne universali \((P,p_1,p_1)\) e \((Q,q_1,q_2)\) che insistano sulla stessa coppia di oggetti \(A,B\), esiste un unico isomorfismo \(h\colon P\to Q\) tale che \(q_1\circ h=p_1\) e \(q_2\circ h=p_2\).
 \end{proposition}
 Questa proprietà non è specifica dei prodotti binari, ma riguarda tutti i limiti e tutti i colimiti, e può essere facilmente ottenuta come caso particolare della \ref{???}. Riteniamo utile esplicitarne la dimostrazione, a fini didattici.
@@ -318,7 +380,7 @@ In \(\ctSet\), ad esempio, il prodotto di due funzioni \(f,g\) fa esattamente qu
 	Una categoria \(\ctC\) ammette (o possiede, o ha) prodotti binari se per ogni coppia di suoi oggetti \(A,B\), esiste una spanna universale sopra di essi.
 \end{definition}
 
-\subsection{Esempi e non-esempi di prodotti.}
+\subsection{Esempi e non-esempi di prodotti}
 \begin{example}[Monoidi, gruppi, gruppi abeliani]
 	Le categorie \(\ctMon\), \(\ctCat\) e \(\ctAb\) definite in \ref{ex_cat_monoidi} hanno prodotti. La costruzione canonica del prodotto di due monoidi \(A=(A, \cdot_A, e_A)\) e \(B=(B, \cdot_B, e_B)\)   si ottiene considerando il prodotto cartesiano \((A\times B,\pi_1, \pi_2)\), ovvero calcolato in \(\ctSet\)), degli insiemi supporto. Esso viene dotato della struttura di monoide ereditata da quelle di \(A\) e \(B\) componente per componente:
 	\[
@@ -333,19 +395,16 @@ In \(\ctSet\), ad esempio, il prodotto di due funzioni \(f,g\) fa esattamente qu
 \end{example}
 
 
-\subsection{Prodotti finiti, prodotti di famiglie}
+\subsection{Prodotti $I$-ari}
 
 
-\begin{esercizi}
-	\item
-\end{esercizi}
 
 \bigskip
-esempi grandi: Set, Top, k-Vect, gruppi, anelli etc., Cat,
+esempi grandi: in Set, Top, k-Vect, gruppi, anelli etc., Cat, e molte altre categorie del cap 1
 
 esempi piccoli: un (pre)ordine, (ordini, insiemi di parti etc...)
 
-non esempi: categorie senza prodotti, prodotti non categoriali (tensore)
+non esempi: categorie senza prodotti, prodotti non categoriali (tensore --che comunque ha una proprietà universale)
 
 unicità
 
@@ -353,9 +412,16 @@ prodotto di famiglie
 
 oggetti terminali.
 
-\section{coprodotti binari, come sopra. finiti, infiniti.}
+% \section{coprodotti binari, come sopra. finiti, infiniti.}
 
-\section{altri limiti e colimiti di interesse}
+\begin{esercizi}
+	\item
+	\item
+	\item
+	\item
+	\item
+\end{esercizi}
+\section{Altre forme di limiti e colimiti}
 
 equalizzatori e coequalizzatori (coppie nucleo e il quoziente di una relazione di equivalenza interna, fattorizzazione di un morfismo)
 
@@ -368,32 +434,47 @@ categorie puntate, nuclei e conuclei
 esempi e non esempi
 
 perché si chiamano limiti?
+\begin{theorem}
+	Teorema di struttura sui limiti. Limiti in funzione di altri limiti, Coroll: <lim fin> = <prodotti, equalizzatori> = <prod.fib., terminale>
+\end{theorem}
 
+\section{Costruzioni che usano limiti}
+\subsection{Limiti in algebra, topologia e logica}
+\subsection{Colimiti in algebra, topologia e logica}
+\subsection{Limiti in categorie concrete}
+\subsection{Colimiti in categorie algebriche}
+\begin{esercizi}
+	\item
+	\item
+	\item
+	\item
+	\item
+\end{esercizi}
 
-\section{Costruzioni che usano limiti: cenni su categorie interne}
-
-Esercizi, anche molto semplici...
-
-\section{limiti su diagrammi. la categoria de coni e dei coconi. (co)coni universali}
-
+\section{Teoria generale dei limiti}
+\subsection{Coni e coconi di diagrammi}
 Limiti piccoli, finiti, connessi.
 
 Esempi.
 
-Limiti in funzione di altri limiti, Coroll: <lim fin> = <prodotti, equalizzatori> = <prod.fib., terminale>
+
 oss su coequalizzatori riflessivi
 
 
 
-\section{(co)limiti e funtori: preservazione/riflessione/creazione. criteri. esempi. (teorie algebriche ??)}
+\section{Limiti e funtori} 
+
+preservazione/riflessione/creazione. criteri di preservazione/riflessione/creazione. esempi. 
+
+teorie algebriche ed essenzialmente algebriche (??)
 
 Limiti assoluti.
 
-Oggetti presentabili.
-
 Limiti filtranti ??
 
-\section{categorie complete/cocomplete, funtori continui e cocontinui.}
+Oggetti presentabili.
+
+\section{Categorie piccolo-complete e piccolo-cocomplete}
 
 thm: una categoria piccola (co)completa è un poset (Freyd).
 
@@ -403,6 +484,11 @@ rappresentabilità dei (co)limiti, esplicitamente.
 
 limiti in Set (prefasci)
 
-limiti filtranti e interazioni tra limiti e colimiti
-completamenti??
+Interazioni tra limiti e colimiti; 
+
+colimiti filtrati e limiti finiti
+
+colimiti setacciati e prodotti
+
+completamenti (completamento per prodotti e per coprodotti)
 
