@@ -41,10 +41,9 @@ L'esempio più importante (sebbene non l'unico interessante) di fattorizzazione 
 	In effetti, non è nemmeno vero che \((\Epi,\Mono)\) è sempre una coppia di classi ortogonali nel senso di \ref{def_ortogona} (si pensi al caso dei preordini, dove \emph{ogni} morfismo è sia un monomorfismo che un epimorfismo, cosicché \(\Epi[\ctPos]\cap\Mono[\ctPos]=\hom(\ctPos)\), ma non tutti gli oggetti di un preordine sono tra loro isomorfi).
 \end{remark}
 \color{black}
-% \section[Ortogonalità]{La relazione di ortogonalità}
 Sulla classe dei morfismi di una generica categoria \(\ctC\) è possibile definire una relazione binaria detta \emph{ortogonalità}, nel modo che segue.
 \begin{definition}[Relazione di ortogonalità]\label{def_ortogona}\index{Ortogonalità}\index{Morfismi!--- ortogonali}\index{Relazione!---di ortogonalità}
-	Dati due morfismi \(f : X\to Y\) e \(g : A\to B\) diciamo che \(f\) è ortogonale a sinistra a \(g\), o che \(g\) è ortogonale a destra a \(f\), o che \(f\) e \(g\) sono \emph{ortogonali} se in ogni quadrato commutativo della forma
+	Dati due morfismi \(f : X\to Y\) e \(g : A\to B\) di una categoria $\ctC$, diciamo che \(f\) è \emph{ortogonale a sinistra} a \(g\), o che \(g\) è \emph{ortogonale a destra} a \(f\), o che \(f\) e \(g\) sono \emph{ortogonali} se in ogni quadrato commutativo della forma
 	\[
 		\begin{tikzcd}
 			X \ar[d, "f"']\ar[r, "u"]& A\ar[d, "g"] \\
@@ -60,24 +59,22 @@ La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetric
 	Sia \(\ctC\) una categoria che ha un oggetto terminale \(\term\). Allora, dati un morfismo \(f : X\to Y\), e un oggetto \(A\in \ctC_0\), le condizioni seguenti sono equivalenti:
 	\begin{enumtag}{ot}
 		\item\label{ot_1} il morfismo \(f\) è ortogonale a sinistra al morfismo terminale \(A\to \term\);
-		\item\label{ot_2} il funtore \(\Hom{\ctC}(\_,A)\) manda il morfismo \(f\) in una biiezione
+		\item\label{ot_2} il funtore \(\Hom{\ctC}(\blank,A)\) manda il morfismo \(f\) in una biiezione
 		\[\begin{tikzcd}
-				\Hom{\ctC}(Y,A) \ar[r, "{g\cmp \_}"] & \Hom{\ctC}(X,A).
+				\Hom{\ctC}(Y,A) \ar[r, "{g\cmp \blank}"] & \Hom{\ctC}(X,A).
 			\end{tikzcd}\]
 	\end{enumtag}
 	Dualmente, sia \(\ctC\) una categoria con un oggetto iniziale \(\init\). Allora, dati un morfismo \(g : A\to B\), e un oggetto \(Y\in\ctC_0\), le condizioni seguenti sono equivalenti:
 	\begin{enumtag}{oi}
 		\item \label{oi_1} il morfismo \(g\) è ortogonale a destra al morfismo iniziale \(\init\to Y\);
-		\item \label{oi_2} il funtore \(\Hom{\ctC}(B,\_)\) manda il morfismo \(g\) in una biiezione
+		\item \label{oi_2} il funtore \(\Hom{\ctC}(B,\blank)\) manda il morfismo \(g\) in una biiezione
 		\[\begin{tikzcd}
-				\Hom{\ctC}(Y,A) \ar[r, "{\_\cmp f}"] & \Hom{\ctC}(Y,B).
+				\Hom{\ctC}(Y,A) \ar[r, "{\blank\cmp f}"] & \Hom{\ctC}(Y,B).
 			\end{tikzcd}\]
 	\end{enumtag}
 \end{proposition}
 \begin{proof}
-	Dimostriamo l'equivalenza di \ref{ot_1} e \ref{ot_2}, e dualizzare questo argomento dimostrerà l'equivalenza di \ref{oi_1} e \ref{oi_2}.
-
-	Del resto, la condizione per cui per ogni \(u : X\to A\) esista un unico morfismo \(\bar u : Y\to A\) tale che \(\bar u\cmp f = u\) è esattamente la richiesta che la funzione \(u\mapsto u\cmp f\) sia suriettiva (esistenza) e iniettiva (unicità).
+	La condizione che per ogni data freccia \(u : X\to A\), esista un unico morfismo \(\bar u : Y\to A\) tale che \(\bar u\cmp f = u\) è esattamente la richiesta che la funzione \(u\mapsto u\cmp f\) sia suriettiva (esistenza) e iniettiva (unicità). Questo dimostra l'equivalenza di \ref{ot_1} e \ref{ot_2}, e similmente si procede per l'equivalenza di \ref{oi_1} e \ref{oi_2}.
 \end{proof}
 \begin{remark}\label{perche_ortogonale}
 	\Todo{Diverse intuizioni sulla nomenclatura `ortogonale'.}
@@ -170,6 +167,13 @@ Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limi
 \begin{examples}
 	\Todo{Esempi di classi ampie, sature, etc. in varie categorie}
 \end{examples}
+\begin{esercizi}
+	\item
+	\item
+	\item
+	\item
+	\item
+\end{esercizi}
 \section[Proprietà ed esempi]{Proprietà fondamentali ed esempi}
 \begin{remark}
 	Grazie a \ref{klext_delle_relazioni} possiamo estendere la relazione di ortogonalità a una coppia di funzioni sulle sottoclassi di \(\hom(\ctC)\),
@@ -188,8 +192,8 @@ Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limi
 	Siano \(f : A \to B\) e \(g : X\to Y\) due morfismi di ua categoria \(\ctC\). Il \emph{prodotto di Leibniz} di \(f\) e \(g\), denotato \(f\oast g\), si costruisce a partire dal prodotto fibrato
 	\[
 		\begin{tikzcd}
-			\pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)} \ar[r]\ar[d] & \Hom{\ctC}(B,Y) \ar[d, "\_\cmp f"]\\
-			\Hom{\ctC}(A,X) \ar[r, "g\cmp\_"'] & \Hom{\ctC}(A,Y)
+			\pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)} \ar[r]\ar[d] & \Hom{\ctC}(B,Y) \ar[d, "\blank\cmp f"]\\
+			\Hom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \Hom{\ctC}(A,Y)
 		\end{tikzcd}
 	\]
 	e consiste della mappa di confronto \(f\oast g : \Hom{\ctC}(B,X) \to \pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)}\) indotta dalla proprietà universale.
@@ -197,8 +201,8 @@ Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limi
 	Diciamo che il prodotto di Leibniz di \(f,g\) è \emph{esatto} se \(f\oast g\) è una biiezione. Questo è equivalente ad affermare che il quadrato
 	\[
 		\begin{tikzcd}
-			\Hom{\ctC}(B,X) \ar[d]\ar[r,"g\cmp\_"]& \Hom{\ctC}(B,Y)\ar[d, "\_\cmp f"]\\
-			\Hom{\ctC}(A,X) \ar[r, "g\cmp\_"'] & \Hom{\ctC}(A,Y)
+			\Hom{\ctC}(B,X) \ar[d]\ar[r,"g\cmp\blank"]& \Hom{\ctC}(B,Y)\ar[d, "\blank\cmp f"]\\
+			\Hom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \Hom{\ctC}(A,Y)
 		\end{tikzcd}
 	\]
 	è un prodotto fibrato.
@@ -223,13 +227,13 @@ Il prodotto di Leibniz permette di ridefinire la relazione di ortogonalità medi
 \end{proposition}
 \begin{definition}\label{fat_funno}\index{Fattorizzazione!--- funtoriale}
 	Fattorizzazione funtoriale
+	(Remark: ci occuperemo solo di sistemi di fattorizzazione funtoriali in questo senso)
 \end{definition}
 \begin{definition}
 	L'operatore punto e virgola e le sue proprietà
 \end{definition}
 \begin{definition}
-	Sistema di fattorizzazione: due classi, tra loro esattamente ortogonali, tali che \(\ctC_1 = \ctM \fatsemi \ctE\).
-	(Remark: ci occuperemo solo di sistemi di fattorizzazione funtoriali in questo senso)
+	Sistema di fattorizzazione: due classi, tra loro strettamente ortogonali, tali che \(\ctC_1 = \ctM \fatsemi \ctE\).
 \end{definition}
 \Todo{missing figure here}
 % \begin{figure}[h]
@@ -361,14 +365,13 @@ Più in generale, epi e mono in ogni categoria di modelli per una segnatura
 	Induzione di (pre-)FS su categorie di funtori, slice, coslice, ecc.
 \end{example}
 
-\subsubsection*{Esercizi}
-\begin{enumerate}
+\begin{esercizi}
 	\item
 	\item
 	\item
 	\item
 	\item
-\end{enumerate}
+\end{esercizi}
 \section[Fattorizzazione]{Sistemi di fattorizzazione forti e deboli}
 Ortogonalità non-unica
 \begin{itemize}
@@ -378,49 +381,44 @@ Ortogonalità non-unica
 	\item indurre sistemi di fattorizzazione (argomento degli oggetti piccini)
 	\item
 \end{itemize}
-\subsubsection*{Esercizi}
-\begin{enumerate}
+\begin{esercizi}
 	\item
 	\item
 	\item
 	\item
 	\item
-\end{enumerate}
+\end{esercizi}
 \section[Riflessività]{Sistemi di fattorizzazione riflessivi}
-\subsubsection*{Esercizi}
-\begin{enumerate}
+\begin{esercizi}
 	\item
 	\item
 	\item
 	\item
 	\item
-\end{enumerate}
+\end{esercizi}
 \section[Mono ed epimorfismi]{Classi di mono ed epimorfismi}
-\subsubsection*{Esercizi}
-\begin{enumerate}
+\begin{esercizi}
 	\item
 	\item
 	\item
 	\item
 	\item
-\end{enumerate}
+\end{esercizi}
 \section[Iniettivi e proiettivi]{Oggetti iniettivi e proiettivi}
 \Todo{Teorema di Gleason sui proiettivi in Top, da qualche parte, qui}
-\subsubsection*{Esercizi}
-\begin{enumerate}
+\begin{esercizi}
 	\item
 	\item
 	\item
 	\item
 	\item
-\end{enumerate}
+\end{esercizi}
 \section[Fattorizzazione e algebre]{Sistemi di fattorizzazione come algebre}
-\subsubsection*{Esercizi}
-\begin{enumerate}
+\begin{esercizi}
 	\item
 	\item
 	\item
 	\item
 	\item
-\end{enumerate}
+\end{esercizi}
 
