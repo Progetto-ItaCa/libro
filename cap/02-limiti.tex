@@ -60,50 +60,52 @@ Risulta allora evidente il senso di un'idea su esposta: l'equalizzatore di \(f,g
 Questi, e molti altri concetti, appariranno chiari quando avremo delineato la teoria generale.
 \Todo{}
 \begin{hExamples}[Alcuni esempi di oggetti iniziali e terminali]{fund}
-	Partiamo ora con l'illustrare alcuni semplici esempi di oggetti iniziali e terminali in varie categorie. Vi sono diverse lezioni da trarre da questa lista di esempi, una delle più importanti è che un oggetto iniziale non ha motivo di essere `piccolo', né un oggetto terminale ha motivo di essere grande.
+	Vi sono diverse lezioni da trarre da questa lista di esempi, una delle più importanti è che un oggetto iniziale non ha motivo di essere `piccolo', né un oggetto terminale ha motivo di essere grande.
 	\begin{itemize}
-		\item
-		\item
-		\item
-		\item
-		\item
-		\item
-		\item
-		\item
-		\item
-		\item
+		\item Nella categoria \(\ctSet\) di \ref{}, fatta da insiemi e funzioni, l'insieme vuoto \(\emptyset\) (senza elementi) è iniziale, dato che la condizione
+		      \[\forall S\in\ctSet_0 \text{ esiste uno e un solo sottoinsieme } f\subseteq \emptyset\times S \]
+		      è realizzata (banalmente) solo dall'insieme vuoto dato che \(\emptyset\times S = \emptyset\). Per contro, si osservi che una funzione \(S \to \emptyset\) esiste se e solo se \(S=\emptyset\). Ragionando in modo simile si ottiene che anche nella categoria di spazi topologici l'insieme vuoto \(\emptyset\), con l'unica topologia possibile, è un oggetto iniziale. Dualmente, ogni insieme \(\{\bullet\}\) che abbia un solo elemento è terminale, dato che per ogni \(S\in\ctSet_0\), la funzione \(f : S \to \{\bullet\}\) che mappa \(s\in S\) in \(\bullet\) è l'unica possibile. Analogamente, nella categoria degli spazi topologici, per ogni spazio topologico \((X,\tau)\) esiste un'unica funzione continua \(X \to \{\bullet\}\) quando il codominio ha la topologia banale (che coincide con quella discreta).
+		\item Nella categoria di modelli di una segnatura algebrica \(\Sigma\) che contiene solo una operazione binaria, l'insieme vuoto (definendo l'operazione come la funzione vuota) è un oggetto iniziale, e lo stesso accade se l'operazione è associativa o commutativa; le cose cambiano non appena la segnatura contenga una \emph{costante}, perché questo obbliga ogni modello a interpretate almeno quella costante, e quindi a contenere almeno un elemento (questo è il caso dei monoidi, dei gruppi, e gruppi abeliani\dots). Nella categoria dei gruppi abeliani, è il gruppo banale \(0_\ctAb=\{0\}\) a essere iniziale, ma accade qualcosa di peculiare: \(0_\ctAb\) è anche \emph{terminale} (è quello che si dice un \emph{oggetto zero}).
+		\item Nella categoria degli anelli unitari \(\ctRing_1\) di \ref{}, l'oggetto iniziale è l'anello degli interi \(\bbZ\): dato un anello unitario \(R\), un omomorfismo di anelli \(\varphi : \bbZ \to R\) deve mandare \(0\) in \(0_R\) e \(1\) in \(1_R\); del resto deve anche essere tale che \(\varphi(n) = \varphi(n\cdot 1) = n \cdot 1_R = \iter[1][+]1\) ed è quindi definito su tutti gli altri interi.
+		\item Nella categoria delle algebre di Boole o di Heyting \Todo{}
+		\item Nella categoria dei sistemi dinamici di \ref{} succede qualcosa di interessante: \Todo{}
+		\item Data una categoria \(\ctC\), la categoria incubo \(\ctC/X\) sopra un oggetto possiede sempre un oggetto terminale, e la succuba sotto un oggetto \(X/\ctC\) possiede sempre un oggetto iniziale: la freccia identità di \(X\). Infatti (si ragiona dualmente per \(X/\ctC\)), se \(u : A \to X\) è un oggetto della categoria incubo su \(X\), la stessa \(u\) è l'unica freccia \(u : (A,u) \to (X,\id_X)\).
+		\item In un preordine (come in \ref{}) guardato come categoria, un oggetto iniziale consiste di un elemento \(\bot\in P\) con la proprietà che per ogni \(x\in P\) si abbia \(\bot\le x\); quindi un oggetto iniziale è un elemento \emph{minimo}. Dualmente, un oggetto terminale è un massimo \(\top\), con la proprietà che per ogni \(x\in P\) si abbia \(x\le \top\). L'ordine stretto e totale \((\bbN,\le)\) ha iniziale/minimo ma non terminale/massimo, e altrettanto è vero per \(\bbR_\ge := [0,\infty)\); L'ordine stretto e totale \((\bbZ,\le)\) non ha né minimo né massimo; l'ordine di divisibilità \((\bbN,\div)\) accennato in \ref{} ha per oggetto iniziale \(1\) (ogni \(m\in\bbN\) è tale che \(m = 1\cdot m\)) e \(0\) per oggetto terminale (ogni \(m\in\bbN\) è tale che \(0 = m\cdot 0\)). L'ordine stretto e parziale sull'insieme delle parti \(PS\) di un insieme \(S\) ha il sottoinsieme vuoto come minimo/iniziale e il sottoinsieme \(S\subseteq S\) come massimo/terminale.
 		\item
 	\end{itemize}
 \end{hExamples}
-\color{red}
-Nella teoria classica degli insiemi\footnote{Ad esempio, secondo l'assiomatica ZF(C), vedi \cite{ZFC}}, l'insieme vuoto \(\emptyset\) è definito come \emph{l'insieme privo di elementi}. Questa definizione, tuttavia, non si presta a essere tradotta in un contesto categoriale più generale perché, sebbene gli insiemi siano gli oggetti di una categoria, \(\ctSet\), gli elementi di cui essi sono composti non possono essere indagati direttamente in \(\ctSet\). D'altro canto, l'insieme vuoto è caratterizzato dalla  proprietà di essere sottoinsieme di qualunque altro insieme \(S\). Equivalentemente, per ogni insieme \(S\), l'hom-insieme \(\Hom\ctSet(\emptyset,S)\) contiene un solo elemento: la  \emph{funzione inclusione}  \(\emptyset \hookrightarrow S\). Dal punto di vista categoriale, quest'ultima formulazione si presta a essere adottata come definizione---e qui entra in gioco l'espressività della teoria delle categorie. Infatti, quando si perviene a una definizione espressa puramente in termini di oggetti e morfismi,  tale definizione può essere data in qualunque categoria, ed è naturale chiedersi cosa essa descriva in categorie diverse.
+% \color{red}
+% Nella teoria classica degli insiemi\footnote{Ad esempio, secondo l'assiomatica ZF(C), vedi \cite{ZFC}}, l'insieme vuoto \(\emptyset\) è definito come \emph{l'insieme privo di elementi}. Questa definizione, tuttavia, non si presta a essere tradotta in un contesto categoriale più generale perché, sebbene gli insiemi siano gli oggetti di una categoria, \(\ctSet\), gli elementi di cui essi sono composti non possono essere indagati direttamente in \(\ctSet\). D'altro canto, l'insieme vuoto è caratterizzato dalla  proprietà di essere sottoinsieme di qualunque altro insieme \(S\). Equivalentemente, per ogni insieme \(S\), l'hom-insieme \(\Hom\ctSet(\emptyset,S)\) contiene un solo elemento: la  \emph{funzione inclusione}  \(\emptyset \hookrightarrow S\). Dal punto di vista categoriale, quest'ultima formulazione si presta a essere adottata come definizione---e qui entra in gioco l'espressività della teoria delle categorie. Infatti, quando si perviene a una definizione espressa puramente in termini di oggetti e morfismi,  tale definizione può essere data in qualunque categoria, ed è naturale chiedersi cosa essa descriva in categorie diverse.
 
-\begin{example}[oggetto iniziale]\label{ex_oggetto_iniziale}
-	Data una categoria \(\ctC\), un \emph{oggetto iniziale} è un oggetto \(O\) di \(\ctC\) tale che, per ogni altro oggetto \(C\) di \(\ctC\), ci sia una e una sola freccia \(O\to C\), o, in altre parole, si abbia
-	\begin{equation}\label{def_oggetto_iniziale}
-		\#\Hom\ctC(O,C)=1\,.
-	\end{equation}
+% \begin{example}[oggetto iniziale]\label{ex_oggetto_iniziale}
+% 	Data una categoria \(\ctC\), un \emph{oggetto iniziale} è un oggetto \(O\) di \(\ctC\) tale che, per ogni altro oggetto \(C\) di \(\ctC\), ci sia una e una sola freccia \(O\to C\), o, in altre parole, si abbia
+% 	\begin{equation}\label{def_oggetto_iniziale}
+% 		\#\Hom\ctC(O,C)=1\,.
+% 	\end{equation}
 
-	Quindi, per quanto abbiamo visto sopra, se la categoria \(\ctC\) è la categoria degli insiemi, l'insieme vuoto \(\emptyset\)  è un oggetto iniziale.
+% 	Quindi, per quanto abbiamo visto sopra, se la categoria \(\ctC\) è la categoria degli insiemi, l'insieme vuoto \(\emptyset\)  è un oggetto iniziale.
 
-	Nel caso di un insieme parzialmente ordinato \((X, \leqslant)\) visto come categoria (vedi \ref{ord_sonocat}), un oggetto iniziale è l'elemento minimo, se esiste, rispetto alla relazione d'ordine. Infatti, sviluppando la definizione i questo caso specifico, l'oggetto iniziale è un elemento \(x_0\in X\) tale che, per ogni altro elemento \(x\in X\), esista un'unica freccia \(x_0\to x\), ovvero \(x_0\leqslant x\).
+% 	Nel caso di un insieme parzialmente ordinato \((X, \leqslant)\) visto come categoria (vedi \ref{ord_sonocat}), un oggetto iniziale è l'elemento minimo, se esiste, rispetto alla relazione d'ordine. Infatti, sviluppando la definizione i questo caso specifico, l'oggetto iniziale è un elemento \(x_0\in X\) tale che, per ogni altro elemento \(x\in X\), esista un'unica freccia \(x_0\to x\), ovvero \(x_0\leqslant x\).
 
-	Nella categoria \(\ctRing\) degli anelli unitari, invece, la situazione è un po' più complessa. In effetti, dato un qualunque anello  unitario \(A\), si può vedere che esiste sempre un unico omomorfismo di anelli di \(\bbZ\to A\): quello che manda \(0\) in \(0_A\) e \(1\) in \(1_A\). L'anello \(\bbZ\) degli interi è allora un oggetto iniziale nella categoria degli anelli unitari, e questa può essere presa come una definizione molto sintetica di \(\bbZ\).
-\end{example}
+% 	Nella categoria \(\ctRing\) degli anelli unitari, invece, la situazione è un po' più complessa. In effetti, dato un qualunque anello  unitario \(A\), si può vedere che esiste sempre un unico omomorfismo di anelli di \(\bbZ\to A\): quello che manda \(0\) in \(0_A\) e \(1\) in \(1_A\). L'anello \(\bbZ\) degli interi è allora un oggetto iniziale nella categoria degli anelli unitari, e questa può essere presa come una definizione molto sintetica di \(\bbZ\).
+% \end{example}
 
-Dagli esempi descritti in  \ref{ex_oggetto_iniziale} si possono trarre delle conclusioni interessanti. Infatti, dalla stessa definizione formale si ottengono, nei diversi contesti, delle nozioni simili, ma non identiche.
+% Dagli esempi descritti in  \ref{ex_oggetto_iniziale} si possono trarre delle conclusioni interessanti. Infatti, dalla stessa definizione formale si ottengono, nei diversi contesti, delle nozioni simili, ma non identiche.
 
-Per cominciare, non tutte le categorie posseggono oggetto iniziale. Si pensi l'insieme ordinato dei reali \((\bbR,\leqslant)\) visto come categoria. In tale caso,  un oggetto iniziale sarebbe un numero reale \(\alpha\) tale che, per ogni altro numero reale \(r\) esista un'unica freccia \(\alpha\to r\). Interpretando le frecce di \((\bbR,\leqslant)\) come relazione d'ordine, questo si traduce nell'esistenza di un numero reale \(\alpha\) tale che, per ogni altro numero reale \(r\) si abbia \(\alpha\leqslant r\). Ma questo non è possibile, perché \((\bbR,\leqslant)\) non ammette elemento minimo.
+% Per cominciare, non tutte le categorie posseggono oggetto iniziale. Si pensi l'insieme ordinato dei reali \((\bbR,\leqslant)\) visto come categoria. In tale caso,  un oggetto iniziale sarebbe un numero reale \(\alpha\) tale che, per ogni altro numero reale \(r\) esista un'unica freccia \(\alpha\to r\). Interpretando le frecce di \((\bbR,\leqslant)\) come relazione d'ordine, questo si traduce nell'esistenza di un numero reale \(\alpha\) tale che, per ogni altro numero reale \(r\) si abbia \(\alpha\leqslant r\). Ma questo non è possibile, perché \((\bbR,\leqslant)\) non ammette elemento minimo.
 
-In secondo luogo, se una categoria possiede oggetto iniziale, non è detto che esso sia unico, come nel caso dell'insieme vuoto. In \(\ctRing\), ad esempio, qualunque anello isomorfo all'anello  \(\bbZ\) degli interi è a sua volta un oggetto iniziale. Vedremo che questa proprietà vale in generale, ossia, l'oggetto iniziale è definito \emph{a meno di isomorfismi}.
+% In secondo luogo, se una categoria possiede oggetto iniziale, non è detto che esso sia unico, come nel caso dell'insieme vuoto. In \(\ctRing\), ad esempio, qualunque anello isomorfo all'anello  \(\bbZ\) degli interi è a sua volta un oggetto iniziale. Vedremo che questa proprietà vale in generale, ossia, l'oggetto iniziale è definito \emph{a meno di isomorfismi}.
 
-Tornando al caso generale, la definizione di oggetto iniziale cattura la natura comune delle diverse nozioni che produce nei diversi contesti, per cui la proprietà descritta da (\ref{def_oggetto_iniziale}) viene detta \emph{proprietà universale dell'oggetto iniziale}.
+% Tornando al caso generale, la definizione di oggetto iniziale cattura la natura comune delle diverse nozioni che produce nei diversi contesti, per cui la proprietà descritta da (\ref{def_oggetto_iniziale}) viene detta \emph{proprietà universale dell'oggetto iniziale}.
 
 
 
-In conclusione, tornando alla citazione con cui abbiamo aperto il capitolo, la teoria delle categorie può essere descritta come una corposa teoria degli oggetti universali. Osserviamo qui per la prima volta questo punto di vista, che sarà ricorrente anche nei capitoli successivi.
-\color{black}
-
+% In conclusione, tornando alla citazione con cui abbiamo aperto il capitolo, la teoria delle categorie può essere descritta come una corposa teoria degli oggetti universali. Osserviamo qui per la prima volta questo punto di vista, che sarà ricorrente anche nei capitoli successivi.
+% \color{black}
+Il seguente risultato meriterebbe il nome di \emph{teorema fondamentale sulle proprietà universali}, dato che virtualmente ogni proprietà universale nota si può ricondurre a questo fatto.\footnote{L'idea che chi legge dovrà trattenere fino a \ref{}, in cui avrà un enunciato preciso e una dimostrazione, è: un oggetto universale \(X_u\) di \(\ctC\) è terminale in una certa categoria \(\Pi\ctC\) costruita a partire da \(\ctC\). Più complicata è \(\Pi\ctC\), più sofisticata la proprietà di \(X_u\): la proprietà di \(X_u\) (essere terminale) non cambia mai, quello che cambia è la complessità dell'ambiente dove esso è terminale.}
+\begin{proposition}
+	\Todo{Proprietà universale di un oggetto iniziale e terminale}
+\end{proposition}
 \begin{remark}[Notazioni alternative per oggetti iniziali e terminali]
 	\Todo{Notazioni alternative per oggetti iniziali e terminali}
 \end{remark}
@@ -447,55 +449,64 @@ categorie puntate, nuclei e conuclei
 esempi e non esempi
 
 perché si chiamano limiti?
+\begin{remark}
+	\Todo{Limiti in analisi come limiti categoriali}
+\end{remark}
 \subsection{Limiti in algebra, topologia e logica}
 \begin{example}
-	Nuclei di omomorfismi
+	\Todo{Nuclei di omomorfismi}
 \end{example}
 \begin{example}
-	Il funtore dei sottoggetti
+	\Todo{Il funtore dei sottoggetti}
 \end{example}
 \begin{example}
-	Punti fissi come limiti
+	\Todo{Punti fissi come limiti}
 \end{example}
 \begin{example}
-	La categoria degli elementi come limite
+	\Todo{La categoria degli elementi come limite}
 \end{example}
 \begin{example}
-	\((F/G)\) come limite
+	\Todo{\((F/G)\) come limite}
 \end{example}
 \begin{example}
-	\(Nat(F,G)\) come limite
+	\Todo{\(Nat(F,G)\) come limite}
 \end{example}
 \begin{example}
-	Estensione destra di \(F\) lungo \(G\)
+	\Todo{Spazi di lacci come limite}
+\end{example}
+\begin{example}
+	\Todo{Estensione destra di F lungo G}
 \end{example}
 \begin{examples}
 	Esempi di estensioni destre
 \end{examples}
 \subsection{Colimiti in algebra, topologia e logica}
 \begin{example}
-	Prodotto semidiretto di gruppi e monoidi
+	\Todo{Prodotto semidiretto di gruppi e monoidi}
 \end{example}
 \begin{example}
-
+	\Todo{}
 \end{example}
 \begin{example}
-	Conuclei e quozienti
+	\Todo{Conuclei e quozienti}
 \end{example}
 \begin{example}
-	Spazi di orbite come colimiti
+	\Todo{Spazi di orbite come colimiti}
 \end{example}
 \begin{example}
-	\(\pi_0\) come colimite.
+	\Todo{\(\pi_0\) come colimite.}
 \end{example}
 \begin{example}
-	La categoria degli elementi come colimite
+	\Todo{La categoria degli elementi come colimite}
 \end{example}
 \begin{example}
-	\(\ctC\star\ctD\) come colimite
+	\Todo{\(\ctC\star\ctD\) come colimite}
 \end{example}
 \begin{example}
-	Estensione sinistra di \(F\) lungo \(G\)
+	\Todo{Sospensione e Sospensione ridotta come colimite}
+\end{example}
+\begin{example}
+	\Todo{Estensione sinistra di F lungo G}
 \end{example}
 \begin{examples}
 	Esempi di estensioni sinistre
@@ -574,7 +585,7 @@ oss su coequalizzatori riflessivi
 \subsection{Categorie piccolo-complete e piccolo-cocomplete}
 
 \section{Limiti e funtori}
-Limiti e colimiti in categorie di funtori. Il caso particolare di limiti in Set (prefasci): per $F : \ctC^\op\fun\ctSet$, $\colim F\cong \pi_0(\Elts\ctC F)$. E il limite?
+Limiti e colimiti in categorie di funtori. Il caso particolare di limiti in Set (prefasci): per \(F : \ctC^\op\fun\ctSet\), \(\colim F\cong \pi_0(\Elts\ctC F)\). E il limite?
 
 preservazione/riflessione/creazione. criteri di preservazione/riflessione/creazione. esempi.
 
@@ -587,7 +598,7 @@ Oggetti presentabili.
 
 Invarianza dell'esistenza di co/limiti per equivalenza di categorie.
 
-Se $\ctI$ e $\ctJ$ sono equivalenti, $\lim_\ctI D\cong\lim_\ctJ D$?
+Se \(\ctI\) e \(\ctJ\) sono equivalenti, \(\lim_\ctI D\cong\lim_\ctJ D\)?
 
 thm: una categoria piccola (co)completa è un poset (Freyd).
 
