@@ -15,8 +15,14 @@ Anche questo capitolo inizia raccogliendo degli esempi che la nozione di limite 
 		Per ogni \(C\in\ctC_0\), esiste una e una sola freccia \(C\to\term_\ctC\).
 	\end{quote}
 \end{definition}
-Evidentemente, la proprietà di essere iniziale in \(\ctC\) è precisamente la proprietà di essere terminale in \(\ctC^\op\), e viceversa, la proprietà di essere terminale in \(\ctC\) è precisamente la proprietà di essere iniziale in \(\ctC^\op\).
-
+\begin{lemma}\label{init_ha_solo_id}
+	Sia $\ctC$ una categoria. Se $\term$ è un oggetto terminale, l'unica freccia $\term\to\term$ è l'identità $\id_\term$. Se $\init$ è un oggetto iniziale, l'unica freccia $\init\to\init$ è l'identità $\id_\init$.
+\end{lemma}
+\begin{proof}
+	Evidentemente, deve esistere \emph{almeno} l'identità $\id_\term : \term\to\term$, e del resto la proprietà definiente di $\term$ vieta l'esistenza di un'altra freccia. Del tutto analoga è la dimostrazione per $\init$.
+\end{proof}
+La natura duale dei due enunciati che compongono \ref{init_ha_solo_id} è un fatto molto generale. Evidentemente, la proprietà di essere iniziale in \(\ctC\) è precisamente la proprietà di essere terminale in \(\ctC^\op\), e viceversa, la proprietà di essere terminale in \(\ctC\) è precisamente la proprietà di essere iniziale in \(\ctC^\op\). Per questo motivo, la maggior parte dei risultati che vedremo nel capitolo sono dualizzabili; per ragioni pedagogiche insisteremo a enunciare le due forme duali dei primi risultati per poi lasciare la dualizzazione come un (quasi sempre semplice) esercizio per chi legge.
+\paragraph*{Proprietà universali.}
 In maniera molto informale, una \emph{proprietà universale} è una proprietà di terminalità in una opportuna categoria, e dualmente una proprietà \emph{couniversale} è di inizialità. Chiaramente questo è impreciso, e fuorviante se preso troppo alla lettera; si dovrebbe dire che un oggetto \(X\in\ctC_0\) è universale in \(\ctC\) quando è possibile costruire un certo diagramma, e da esso un `cono' la cui `origine' è \(X\),
 \[\xymatrix@R=0mm{
 	& Di \\
@@ -35,6 +41,7 @@ Dualmente, un oggetto \(X\in\ctC_0\) è couniversale in \(\ctC\) quando è il be
 	}\]
 ossia di un oggetto iniziale in una categoria di coconi per \(D\). L'oggetto \(X\) si dice allora il \emph{colimite} del diagramma \(D\). Anche i colimiti riescono a descrivere oggetti molto strutturati (i numeri naturali; i prodotti liberi di gruppi e monoidi; le liste a valori in un alfabeto \(S\); etc).
 
+\paragraph*{Problemi di minimo-massimo.}
 Questo punto di vista tuttavia non è l'unico, né il più pedagogicamente efficace: sarebbe altrettanto valido introdurre la nozione di limite e di colimite come `soluzioni' a problemi di min-max:
 \begin{itemize}
 	\item Il limite del diagramma \(D : \ctJ\fun\ctC\) è il `massimo dei minoranti' tra diagrammi della forma \eqref{}; ciò vuol dire che per un diagramma \(D\) fissato, il limite \(\lim D\) realizza la proprietà seguente:
@@ -44,6 +51,7 @@ Questo punto di vista tuttavia non è l'unico, né il più pedagogicamente effic
 \end{itemize}
 Un punto di vista del genere privilegia (ed è motivato da) la teoria degli insiemi ordinati come fonte di intuizione per le definizioni, più generali, della teoria delle categorie: la descrizione di limiti e colimiti in una categoria-preordine nel senso di \ref{} verrà delineata in \ref{}.
 \Todo{}
+\paragraph*{Natura relazionale delle categorie.}
 Un terzo modo di introdurre la teoria dei limiti e dei colimiti parte dal fatto che uno dei paradigmi essenziali della teoria delle categorie vuole che, per indagare le proprietà di un determinato oggetto \(X\in\ctC_0\), si debba guardare al modo in cui esso interagisce con gli altri oggetti di \(\ctC\); anche questa è una maniera valida di introdurre la teoria dei limiti e dei colimiti, e lo scopo di questo capitolo sarà di conciliare queste tre prospettive.
 
 Data una famiglia di oggetti di \(\ctC\), soggetta a determinate relazioni (il `diagramma'), si può trovare `l'oggetto più grande che è soluzione delle equazioni imposte dalla relazioni'? (E qual è il significato di questa qualificazione?) Dualmente: si può trovare `l'oggetto più piccolo in cui le equazioni imposte dalle relazioni sono verificate'?
@@ -105,7 +113,12 @@ Questi, e molti altri concetti, appariranno chiari quando avremo delineato la te
 Il seguente risultato meriterebbe il nome di \emph{teorema fondamentale sulle proprietà universali}, dato che virtualmente ogni proprietà universale nota si può ricondurre a questo fatto.\footnote{L'idea che chi legge dovrà trattenere fino a \ref{}, in cui avrà un enunciato preciso e una dimostrazione, è: un oggetto universale \(X_u\) di \(\ctC\) è terminale in una certa categoria \(\Pi\ctC\) costruita a partire da \(\ctC\). Più complicata è \(\Pi\ctC\), più sofisticata la proprietà di \(X_u\): la proprietà di \(X_u\) (essere terminale) non cambia mai, quello che cambia è la complessità dell'ambiente dove esso è terminale.}
 \begin{proposition}
 	\Todo{Proprietà universale di un oggetto iniziale e terminale}
+	Sia $\ctC$ una categoria. Se $\term,\term'$ (risp., $\init,\init'$) sono entrambi oggetti terminali (risp., iniziali) di $\ctC$, allora esiste un \emph{unico} isomorfismo $\term\cong\term'$ (risp., $\init\cong \init'$).
 \end{proposition}
+Si noti l'aggettivo \emph{unico} nell'enunciato: se tra $\term$ e $\term'$ esiste uno e un solo isomorfismo, essi non sono uguali, ma (per così dire) `unici in un unico modo'. Non va però frainteso questo punto: l'isomorfismo è unico \emph{una volta fissati $\term$ e $\term'$}.
+\begin{proof}
+	La dimostrazione ricorda, in spirito, l'argomento che mostra che l'elemento neutro in un monoide (o l'identità $\id_X$ di un oggetto in una categoria) è unico. Siccome $\term$ è terminale, esiste un'unica freccia $u : \term'\to \term$, e siccome $\term'$ è terminale, esiste un'unica freccia $u' : \term\to\term'$. Del resto ora per \ref{init_ha_solo_id} concludiamo che le composizioni $u'\cmp u$ e $u\cmp u'$ sono rispettivamente le identità di $\term'$ e di $\term$.
+\end{proof}
 \begin{remark}[Notazioni alternative per oggetti iniziali e terminali]
 	\Todo{Notazioni alternative per oggetti iniziali e terminali}
 \end{remark}
