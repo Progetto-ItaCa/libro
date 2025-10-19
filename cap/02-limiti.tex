@@ -115,10 +115,17 @@ Il seguente risultato meriterebbe il nome di \emph{teorema fondamentale sulle pr
 	\Todo{Proprietà universale di un oggetto iniziale e terminale}
 	Sia \(\ctC\) una categoria. Se \(\term,\term'\) (risp., \(\init,\init'\)) sono entrambi oggetti terminali (risp., iniziali) di \(\ctC\), allora esiste un \emph{unico} isomorfismo \(\term\cong\term'\) (risp., \(\init\cong \init'\)).
 \end{proposition}
-Si noti l'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) esiste uno e un solo isomorfismo, essi non sono uguali, ma (per così dire) `unici in un unico modo'. Non va però frainteso questo punto: l'isomorfismo è unico \emph{una volta fissati \(\term\) e \(\term'\)}.
+Si noti l'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) esiste uno e un solo isomorfismo, essi non sono uguali, ma (per così dire) `unici in un unico modo'. Non va però frainteso questo punto: l'isomorfismo è unico \emph{una volta fissati \(\term\) e \(\term'\)} e varia insieme ad essi.
 \begin{proof}
 	La dimostrazione ricorda, in spirito, l'argomento che mostra che l'elemento neutro in un monoide (o l'identità \(\id_X\) di un oggetto in una categoria) è unico. Siccome \(\term\) è terminale, esiste un'unica freccia \(u : \term'\to \term\), e siccome \(\term'\) è terminale, esiste un'unica freccia \(u' : \term\to\term'\). Del resto ora per \ref{init_ha_solo_id} concludiamo che le composizioni \(u'\cmp u\) e \(u\cmp u'\) sono rispettivamente le identità di \(\term'\) e di \(\term\).
 \end{proof}
+\begin{example}
+	Nella categoria $\ctSet$ di insiemi e funzioni di \ref{}, l'assioma di estensionalità implica che esiste un solo oggetto iniziale (l'insieme vuoto), laddove \emph{ogni} insieme con un solo elemento è un oggetto terminale, non importa `quale sia l'elemento', e ve ne sono in effetti molti tutti diversi: 
+	\[\{\emptyset\},\{\{\emptyset\}\},\{\{\{\emptyset\}\}\},\dots\]
+	sono tutti terminali a due a due distinti. C'è quindi una sottigliezza di cui tenere conto: la teoria degli insiemi postula che esista un unico insieme vuoto, e per contro non si cura di creare, iterando l'operazione $y\mapsto\{y\}$, una molteplicità di insiemi singoletti tutti isomorfi tra loro (illusoria nel nostro linguaggio, perché la teoria delle categorie non sa stabilire una differenza che sia `interna' a due di loro, può vederli solo da fuori). 
+	
+	Questo è un pregio o un difetto del formalismo categoriale? Come in ogni cosa, dipende: qual è il significato delle variabili che denotano gli elementi di un insieme?
+\end{example}
 \begin{remark}[Notazioni alternative per oggetti iniziali e terminali]
 	\Todo{Notazioni alternative per oggetti iniziali e terminali}
 \end{remark}
