@@ -136,9 +136,9 @@ Quando, nel secondo esercizio, prendiamo \(\ctD=\ctSet\) di \ref{ex_cat_insiemi}
 \end{example}
 In maniera simile, un funtore \(\susp G\fun\ctVect[\bbR]\) consiste precisamente di una rappresentazione (lineare) di \(G\) su uno spazio vettoriale nel senso che è noto dall'algebra o dalla fisica matematica; le stesse costruzioni si possono fare con un monoide invece di un gruppo, e ciò giustifica la definizione seguente.
 \begin{definition}[Rappresentazione di \(M\)]\label{es_fun_repre}\index{Rappresentazione}
-	Sia \(\ctD\) una categoria, ed \((M,\cdot,1)\) un monoide; una \emph{rappresentazione} di \(M\) in \(\ctD\) consiste di un funtore \(\susp M \fun \ctD\).
+	Sia \(\ctD\) una categoria, ed \((M,\cdot,1)\) un monoide; una \emph{rappresentazione} di \(M\) in \(\ctD\) consiste di un funtore \(X : \susp M \fun \ctD\).
 \end{definition}
-La teoria classica delle equazioni differenziali ordinarie dà un esempio importante di rappresentazione di \(G\) in una categoria di spazi topologici, mediante i \emph{gruppi a un parametro} di diffeomorfismi,\footnote{Il nome `gruppo a un parametro' è un relitto ottocentesco dovuto al fatto che si preferiva pensare a un'azione del gruppo additivo \(\bbR\) su una varietà \(X\) come a una famiglia di diffeomorfismi \(\{\varphi_t : X\to X\}_t\) dipendenti --appunto-- da un parametro reale \(t\in\bbR\) (o \(t\in [a,b]\), o \(t\in [0,\infty)\)\dots). Chiaramente, \(\varphi_t = \varphi(t,-)\) per un'azione \(\varphi : \bbR\times X\to X\) mediante diffeomorfismi, cioè per un funtore \(\susp(\bbR,+,0)\fun\cate{Mfd}\) verso una categoria di varietà differenziabili e mappe lisce. La lezione per chi legge è che qualsiasi corso introduttivo ai sistemi dinamici fa uso, più o meno nascostamente, più o meno ammettendolo, del concetto di funtore.} o mediante i campi vettoriali a loro associati.
+La teoria classica delle equazioni differenziali ordinarie dà un esempio importante di rappresentazione di \(G\) in una categoria di spazi topologici, mediante i \emph{gruppi a un parametro} di diffeomorfismi,\footnote{Il nome `gruppo a un parametro' è un relitto ottocentesco dovuto al fatto che si preferiva pensare a un'azione del gruppo additivo \(\bbR\) su una varietà \(X\) come a una famiglia di diffeomorfismi \(\{\varphi_t : X\to X\}_t\) dipendenti --appunto-- da un parametro reale \(t\in\bbR\) (o \(t\in [a,b]\), o \(t\in [0,\infty)\)\dots). Chiaramente, \(\varphi_t = \varphi(t,-)\) per un'azione \(\varphi : \bbR\times X\to X\) mediante diffeomorfismi, cioè per un funtore \(\susp(\bbR,+,0)\fun\cate{Mfd}\) verso una categoria di varietà differenziabili e mappe lisce. La lezione per chi legge è che qualsiasi corso introduttivo ai sistemi dinamici fa uso, più o meno nascostamente, più o meno ammettendolo, del concetto di funtore.} o mediante i campi vettoriali a loro associati. Si noti che questo linguaggio è molto conciso ed elegante: se \(G\) è un gruppo, una rappresentazione \(X : \susp G \fun \ctD\) determina (per	la definizione di funtore) inequivocabilmente quale struttura devono preservare gli automorfismi \(X \xto{g\cdot\blank} X\) dell'oggetto `supporto' dell'azione: se \(\ctD\) è la categoria degli spazi topologici, ciascuna \(g\cdot	\blank\) deve essere un omeomorfismo; se \(\ctD\) è la categoria delle varietà differenziabili, ciascuna \(g\cdot\blank\) deve essere un \emph{diffeo}morfismo; se \(\ctD\) è la categoria degli spazi vettoriali, ciascuna \(g\cdot\blank\) deve essere un isomorfismo lineare, se \(\ctD\) è la categoria \(\ctCsAlg\) delle \(\mathrm{C}^*\)-algebre deve essere un automorfismo compatibile con la norma, e se \(\ctD\) è la categoria delle matrici stocastiche ad ogni elemento del gruppo è associata una matrice stocastica invertibile\dots
 \begin{example}\label{exa_derivata_funtore}\index{Funtore!differenziale come ---}\index{Differenziale}
 	Sia \(\ctEuc\) la categoria degli \emph{spazi reali Euclidei puntati}, definita come segue:
 	\begin{itemize}
@@ -274,7 +274,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 \end{notation}
 \begin{hExample}[Funtore hom co- e controvariante, bifuntore hom]{fund}\label{ex_hom_funtore}\index{Funtore!hom --- covariante}\index{Funtore!hom --- controvariante}
 	Sia \(\ctC\) una categoria, e \(C\) un suo oggetto. Definiamo un funtore
-	\[\dmFun{\Hom{\ctC}(-,C)}{\ctC^\op}{\ctSet}\]
+	\[\dmFun{\Hom{\ctC}(\blank,C)}{\ctC^\op}{\ctSet}\]
 	come segue:
 	\begin{itemize}
 		\item un oggetto \(Y\) viene mandato nell'insieme \(\Hom{\ctC}(Y,C)\) dei morfismi \(u : Y\to C\);
@@ -292,7 +292,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 	Dualmente, possiamo definire un funtore hom covariante \(\Hom{\ctC}(C,-)\), fissando un oggetto \(C\in\ctC_0\) e definendo la funzione sugli oggetti come \(\Hom{\ctC}(C,-)_0 : Y\mapsto \Hom{\ctC}(C,Y)\) e \(\Hom{\ctC}(C,f) : (u : C\to Y)\mapsto f\cmp u\) per \(f : Y\to Y'\).
 
 	\index{Funtore!hom ---} In effetti, entrambi i funtori hom covarianti e controvarianti nascono fissando la componente (destra per il funtore hom controvariante, sinistra per il covariante) del \emph{bifuntore hom} di \(\ctC\),
-	\[\xymatrix{\Hom\ctC(-,-) : \ctC^\op\times\ctC \ar[r] & \ctSet}\]
+	\[\xymatrix{\Hom\ctC(\blank,\blank) : \ctC^\op\times\ctC \ar[r] & \ctSet}\]
 	definito come segue:
 	\begin{itemize}
 		\item Sugli oggetti, \((X,Y)\mapsto \Hom{\ctC}(X,Y)\);
@@ -748,7 +748,7 @@ Una classe di categorie più generale, che contiene le categorie filtrate, è qu
 	\item \label{gfdpgubai_5} Determinare la categoria comma \((F/G)\) nelle varie combinazioni in cui: \(F\) è il funtore identità; \(G\) è il funtore identità; \(F\) è un funtore costante in un oggetto \(E\in\ctE_0\); \(G\) è un funtore costante in un oggetto \(E\in\ctE_0\). Chi è \((E_1/E_2)\) se \(E_1,E_2\) sono due oggetti, guardati come funtori \(\ctTerm \fun\ctE\) (cf. il primo esercizio di questa sezione)?
 	\item Descrivere la categoria degli elementi nei seguenti casi particolari:
 	\begin{itemize}
-		\item il funtore hom controvariante \(\Hom\ctC(-,C)\) di \ref{ex_hom_funtore}, e il \emph{bifuntore} hom \(\Hom\ctC(-,-)\);
+		\item il funtore hom controvariante \(\Hom\ctC(\blank,C)\) di \ref{ex_hom_funtore}, e il \emph{bifuntore} hom \(\Hom\ctC(\blank,\blank)\);
 		\item Un prefascio come in \ref{exa_funtori_da_poset}, quando \(P\) è l'insieme ordinato degli aperti di uno spazio topologico \((X,\tau_X)\);
 		\item il funtore dimenticante \(U : \ctMon \fun\ctSet\) come in \ref{exa_funtori_liberi_forgetti} che ad ogni monoide associa il suo insieme sottostante.
 	\end{itemize}
