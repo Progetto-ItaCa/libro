@@ -2,8 +2,8 @@ itaca.sty: itaca.ins itaca.dtx
 	tex $<
 
 hash:
-	echo "\\newcommand{\\gHash}{\\texttt{`git rev-parse --short HEAD`}}" > gitcommit.tex
-	$(MAKE) main.pdf
+	echo "\\\\newcommand{\\gHash}{\\\\texttt{`git rev-parse --short HEAD`}}" > gitcommit.tex
+	$(MAKE) -B main.pdf
 
 itaca.pdf: itaca.dtx
 	latexmk -pdf -gg $<
