@@ -20,8 +20,9 @@ book:
 	texfot latexmk -pdf main.tex | grep -v "Missing character: There is no ; in font nullfont"
 
 clean:
-	texfot latexmk -C
-	rm *.bbl
+	texfot latexmk -C main.tex
+	texfot latexmk -C itaca.dtx
+	rm -rf *.bbl *.tdo
 
 view:
 	evince main.pdf &
