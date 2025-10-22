@@ -120,14 +120,19 @@ Si noti l'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) e
 	La dimostrazione ricorda, in spirito, l'argomento che mostra che l'elemento neutro in un monoide (o l'identità \(\id_X\) di un oggetto in una categoria) è unico. Siccome \(\term\) è terminale, esiste un'unica freccia \(u : \term'\to \term\), e siccome \(\term'\) è terminale, esiste un'unica freccia \(u' : \term\to\term'\). Del resto ora per \ref{init_ha_solo_id} concludiamo che le composizioni \(u'\cmp u\) e \(u\cmp u'\) sono rispettivamente le identità di \(\term'\) e di \(\term\).
 \end{proof}
 \begin{example}
-	Nella categoria $\ctSet$ di insiemi e funzioni di \ref{}, l'assioma di estensionalità implica che esiste un solo oggetto iniziale (l'insieme vuoto), laddove \emph{ogni} insieme con un solo elemento è un oggetto terminale, non importa `quale sia l'elemento', e ve ne sono in effetti molti tutti diversi: 
+	Nella categoria \(\ctSet\) di insiemi e funzioni di \ref{}, l'assioma di estensionalità implica che esiste un solo oggetto iniziale (l'insieme vuoto), laddove \emph{ogni} insieme con un solo elemento è un oggetto terminale, non importa `quale sia l'elemento', e ve ne sono in effetti molti diversi: gli insiemi
 	\[\{\emptyset\},\{\{\emptyset\}\},\{\{\{\emptyset\}\}\},\dots\]
-	sono tutti terminali a due a due distinti. C'è quindi una sottigliezza di cui tenere conto: la teoria degli insiemi postula che esista un unico insieme vuoto, e per contro non si cura di creare, iterando l'operazione $y\mapsto\{y\}$, una molteplicità di insiemi singoletti tutti isomorfi tra loro (illusoria nel nostro linguaggio, perché la teoria delle categorie non sa stabilire una differenza che sia `interna' a due di loro, può vederli solo da fuori). 
-	
-	Questo è un pregio o un difetto del formalismo categoriale? Come in ogni cosa, dipende: qual è il significato delle variabili che denotano gli elementi di un insieme?
+	sono tutti terminali a due a due distinti. C'è quindi una sottigliezza di cui tenere conto qui: la teoria degli insiemi postula che esista un unico insieme vuoto, e per contro non si cura di creare, iterando l'operazione \(y\mapsto\{y\}\), una molteplicità di insiemi singoletti tutti isomorfi tra loro (molteplicità illusoria nel linguaggio di questo libro, perché la teoria delle categorie non sa stabilire una differenza che sia `interna' a due di loro, può vederli solo da fuori, mediante frecce che ci puntano o ne escono).
+
+	Questo è un pregio o un difetto del formalismo categoriale? Come in ogni cosa, dipende: qual è il `significato' delle variabili che denotano gli elementi di un insieme? Esiste una proprietà che l'insieme \(\{\emptyset\}\) soddisfa, che l'insieme \(\{\{\emptyset\}\}\) non soddisfa?
 \end{example}
 \begin{remark}[Notazioni alternative per oggetti iniziali e terminali]
-	\Todo{Notazioni alternative per oggetti iniziali e terminali}
+	La varietà di situazioni in cui un oggetto iniziale o terminale può dover essere identificato comporta una uguale varietà di notazioni diverse per evitare confusioni:
+	\begin{itemize}
+		\item Se si vuole creare un parallelo con la teoria degli ordini o la logica, le notazioni \(\bot,\top\) sono comuni; del resto,
+		\item `\(0\)' e `\(1\)' possono facilmente essere confusi con il numero zero e con un'identità (moltiplicativa o per composizione);
+		\item una notazione troppo vicina a `\(\emptyset\)', `\(\bullet\)' potrebbe suggerire che un oggetto iniziale è sempre concettualizzabile come vuoto (e questo è falso, ce ne sono di infiniti: \ref{} e \ref{}), e che un terminale è sempre concettualizzabile come un singoletto (e questo è falso, ci sono oggetti terminali molto grandi, \ref{} e \ref{}).
+	\end{itemize}
 \end{remark}
 
 
@@ -591,6 +596,7 @@ Il teorema di struttura è molto utile nel decomporre un limite o colimite di fo
 Def di limite mediante coni e coconi
 
 rappresentabilità dei (co)limiti, esplicitamente.
+Esempi.
 
 Limiti e colimiti finiti, limiti e colimiti connessi.
 Limiti cofiltrati, colimiti filtrati.
@@ -598,13 +604,22 @@ Limiti assoluti.
 
 Funtorialità dei limiti e dei colimiti.
 
-Esempi.
+Invarianza dell'esistenza di co/limiti per equivalenza di categorie.
 
+Se \(\ctI\) e \(\ctJ\) sono equivalenti, \(\lim_\ctI D\cong\lim_\ctJ D\)?
+
+thm: una categoria piccola (co)completa è un poset (Freyd).
+
+\subsection{Mono, epi e limiti}
 Epimorfismi come colimiti; monomorfismi come limiti. Chiusura degli epi per colimiti, chiusura dei mono per limiti. Coincidenza di alcune classi di mono-epi in presenza di co/limiti.
 
-oss su coequalizzatori riflessivi
+oss su coequalizzatori riflessivi; epi regolari; coppia nucleo, coppia conucleo; esattezza.
 
+\subsection{}
 
+Interazioni tra limiti e colimiti: commutatività di colimiti filtrati e limiti finiti, commutatività di colimiti setacciati e prodotti. Polinomi (`limiti e colimiti interagiscono per formare un polinomio')
+
+completamenti (il completamento per iniziale è \(\ctC^\lhd\), quello per terminale è il cono destro \(\ctC^\rhd\); descrivere in casi semplici il completamento per prodotti e per coprodotti, gli altri sono più difficili...)
 
 \subsection{Categorie piccolo-complete e piccolo-cocomplete}
 
@@ -613,25 +628,16 @@ Limiti e colimiti in categorie di funtori. Il caso particolare di limiti in Set 
 
 preservazione/riflessione/creazione. criteri di preservazione/riflessione/creazione. esempi.
 
-teorie algebriche ed essenzialmente algebriche (??)
-
-
+\subsection{}
+teorie-prodotto (cioè: teorie algebriche) e teorie-finlimite (cioè: teorie essenzialmente algebriche)
+\subsection{Coincidenza di limiti e colimiti}
+Biprodotti, quadrati esatti in \(\ctAb\)
+\subsection{Proprietà di oggetti specificate da limiti}
 Inizialità, finalità (il contenuto della sezione \ref{} su funtori iniziali e finali ora è in contesto), densità (ogni oggetto di \(C\) è colimite di oggetti nella subcat densa) e codensità (più difficile dare un'intuizione, proviamoci)
 
-Oggetti presentabili.
-
-Invarianza dell'esistenza di co/limiti per equivalenza di categorie.
-
-Se \(\ctI\) e \(\ctJ\) sono equivalenti, \(\lim_\ctI D\cong\lim_\ctJ D\)?
-
-thm: una categoria piccola (co)completa è un poset (Freyd).
-
-\section{Cosa manca:}
+Oggetti presentabili, oggetti connessi, oggetti minuscoli, oggetti \(\bbD\)-presentabili.
 
 
 
 
-Interazioni tra limiti e colimiti: commutatività di colimiti filtrati e limiti finiti, commutatività di colimiti setacciati e prodotti. Polinomi (`limiti e colimiti interagiscono per formare un polinomio')
-
-completamenti (il completamento per iniziale è \(\ctC^\lhd\), quello per terminale è il cono destro \(\ctC^\rhd\); descrivere in casi semplici il completamento per prodotti e per coprodotti, gli altri sono più difficili...)
 

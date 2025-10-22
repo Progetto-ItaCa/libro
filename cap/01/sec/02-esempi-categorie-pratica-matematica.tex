@@ -230,8 +230,8 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 \index{Categoria!--- libera}
 Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di un insieme di vertici (o `oggetti') \(V\) e di un insieme di lati (o `morfismi') \(E\) generi una categoria \(\bfF[\ctG]\) che può poi essere soggetta a delle relazioni, in modo del tutto analogo in cui un monoide o gruppo \(G\) libero su un insieme \(S\) di generatori può poi essere quozientato rispetto a un insieme di relazioni \(R\), dando una presentazione \(G = \langle S\mid R\rangle\).
 
-\`E effettivamente così, e la seguente costruzione in forma di esempio formalizza l'esistenza di una categoria libera su un multidigrafo \(\ctG\).
-\begin{example}\label{ex_cat_libera}\index{Grafo}
+\`E effettivamente così, e la seguente costruzione in forma di esempio formalizza l'esistenza di una categoria libera su un \emph{multidigrafo} \(\ctG\).
+\begin{example}\label{ex_cat_libera}\index{Grafo}\index{Multidigrafo|see {Grafo}}
 	Un \emph{multidigrafo} consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\toto V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}, si veda \ref{ex_cat_grafi}. Dato un multidigrafo \(\ctG\) (spesso chiamato semplicemente \emph{grafo diretto}) possiamo definire la \emph{categoria libera} \(\bfF[\ctG]\) su \(\ctG\) come segue:
 	\begin{itemize}
 		\item gli oggetti di \(\bfF[\ctG]\) sono esattamente gli elementi di \(V\);
@@ -432,7 +432,7 @@ L'\emph{algebra universale} si occupa di rendere preciso il concetto di `insieme
 \begin{remark}\label{varie_categorie_nella_pratica}\index{Categoria!---e di strutture algebriche}
 	Categorie di modelli come in \ref{ex_cat_sigma_strutture} sono tra le più comuni da considerare nella pratica matematica: i monoidi e i loro omomorfismi, i gruppi e i loro omomorfismi (tra essi, la sottocategoria dei gruppi abeliani), gli anelli e i loro omomorfismi (tra essi, la sottocategoria degli anelli commutativi), gli spazi vettoriali su un qualsiasi campo \(k\) e le funzioni \(k\)-lineari, formano tutte esempi di categorie, che denotiamo con \(\ctMon\), \(\ctGrp\), \(\ctAb\), \(\ctRing\), \(\ctcRing\), \(\ctVect[k]\),\dots
 \end{remark}
-\begin{example}[Categoria dei multidigrafi]\label{ex_cat_grafi}\index{Categoria!--- dei grafi}
+\begin{example}[Categoria dei multidigrafi]\label{ex_cat_grafi}\index{Categoria!--- dei grafi}\index{Grafo}
 	Questo esempio rende precise alcune osservazioni fatte in precedenza, \ref{ex_cat_doppiafreccia} e \ref{ex_cat_libera}. La categoria \(\ctdGph\) dei grafi è così definita:
 	\begin{itemize}
 		\item gli oggetti di \(\ctdGph\) sono i grafi, o più precisamente i \emph{multidigrafi}: un (multidi)grafo \(\ctG = (E,V,s,t)\) consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\toto V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}.
@@ -460,7 +460,7 @@ L'\emph{algebra universale} si occupa di rendere preciso il concetto di `insieme
 	Si noti che questo significa che questo impone precisamente che per ogni \(e\in E\), \(f_E(e)\) sia un lato in \(E'\) di vertici \(f_V(se), f_V(te)\) rispettivamente.
 \end{example}
 Evidentemente, possiamo scrivere \(e : x\to y\) per denotare in maniera compatta il fatto che \(e \in E\) è un lato tale che \(se=x,te=y\); allora un omomorfismo di multidigrafi è tale che se \(e : x\to y\), allora \(f_Ee : f_Vx\to f_Vy\).
-\begin{example}[Categoria dei grafi]\label{ex_cat_grafi_nondiretti}\index{Categoria!--- dei grafi non diretti}
+\begin{example}[Categoria dei grafi]\label{ex_cat_grafi_nondiretti}\index{Categoria!--- dei grafi non diretti}\index{Grafo!--- non diretto}
 	In maniera simile possiamo definire la categoria \(\ctGph\) dei grafi non diretti; un grafo non diretto è un insieme \(V\) di vertici, su cui sia definita una relazione \(E\subseteq V\times V\), simmetrica e irriflessiva (cioè \(\forall v\in V.(v,v)\notin E\)).
 
 	Un omomorfismo di grafi non diretti è una funzione tra i vertici \(f_V : V\to V'\) compatibile con le relazioni \(E,E'\): se \((u,v)\in E\), allora \((fu,fv)\in E'\).
