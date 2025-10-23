@@ -1,7 +1,4 @@
 \section{Trasformazioni naturali}\label{sec_tnat}
-\fosco{L'esempio che, storicamente, ha motivato la definizione di `trasformazione naturale' tra funtori ha ben poco di pedagogico o elementare, ma vale la pena ricordarlo lo stesso; la domanda è: qui o altrove?}
-
-\paolo{Sarebbe bello connettere questa sezione all'introduzione spiegando in che senso formalizza l'idea di naturalità (almeno in certi casi).}
 In \ref{tante_cose_sono_diag} abbiamo osservato che le spanne e cospanne in \(\ctC\) si possono vedere come funtori; del resto, in \ref{def_span_e_cospan} abbiamo costruito una \emph{categoria} di spanne in \(\ctC\). Un omomorfismo di spanne consiste, secondo quella definizione, di una famiglia di tre morfismi di \(\ctC\) tra i vertici omonimi delle due spanne \((X_1\overset l\leftarrow X_0\overset r\to X_2)\) e \((Y_1\overset{l'}\leftarrow Y_0\overset{r'}\to Y_2)\):
 \[\alpha_0 : X_0\to Y_0,\quad \alpha_1 : X_1\to Y_1,\quad \alpha_2 : X_2\to Y_2\]
 che rendono commutativi i diagrammi in \ref{mor_spanne}. Riguardando le spanne \(X_\bullet,Y_\bullet\) come diagrammi di forma \(\Lambda^2_0 \to\ctC\), la terna \(\underline\alpha = (\alpha_0,\alpha_1,\alpha_2)\) si può vedere come una freccia \(X_\bullet \nat Y_\bullet\), nel senso seguente:
@@ -79,9 +76,8 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 
 		      In entrambi i casi, la funtorialità di una corrispondenza \(\ctR\ctG\) o \(\ctL\ctG\) impone le condizioni che realizzano il tipo di grafo in questione:
 		      \begin{itemize}
-			      \item nel primo caso, un funtore \(\ctR\ctG^\op\to\ctSet\) consta di \Todo{}
-			      \item nel secondo caso, un funtore \(\ctR\ctG^\op\to\ctSet\) consta di \Todo{}
-			            \Todo{}
+			      \item nel primo caso, un funtore \(G : \ctR\ctG^\op\to\ctSet\) consta di una coppia di insiemi \(G_0 = V\) e \(G_1 = E\) che, oltre alle solite funzioni dominio e codominio, hanno una sezione comune \(j' = G(j) : V\to E\) che ad ogni vertice \(v\in G_0\) associa un lato \(j'(v)\) di dominio e codominio \(v\);
+			      \item nel secondo caso, un funtore \(\ctL\ctG^\op\to\ctSet\) consta di una coppia di insiemi \(G_0=V\) e \(G_1=E\) che, oltre alle solite funzioni dominio e codominio, possiedono una involuzione \(\ell = G(l) : E\to E\)  dell'insieme dei lati, che scambia tra loro dominio e codominio. Una maniera di rappresentare un grafo non diretto è come un grafo diretto, dove ad ogni lato \(e : v\to v'\) corrisponde un lato omonimo \(\ell(e) : v'\to v\) --e dunque, a tutti gli effetti al lato \(e\) manca un'orientazione perché `collega \(v\) e \(v'\) in entrambe le direzioni.
 		      \end{itemize}
 		\item La categoria delle rappresentazioni (in \(\ctSet\)) di un monoide di \ref{ex_cat_g_insiemi} è la categoria dei funtori \(\susp M \fun\ctSet\); una trasformazione naturale tra rappresentazioni viste come funtori è precisamente un omomorfismo equivariante. Un fatto analogo è vero per le rappresentazioni di un monoide in \(\ctD\), come in \ref{es_fun_repre} (scrivere i dettagli per esercizio).
 	\end{itemize}
@@ -108,7 +104,6 @@ Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia
 			\arrow[from=2-1, to=2-2]
 		\end{tikzcd}\]
 	è commutativo (nella categoria dei gruppi, dato che per \(n=1\) non c'è motivo \(\pi_1(X),\pi_1(Y)\) siano abeliani). Questo segue dalla definizione delle mappe coinvolte: come detto, in orizzontale, una classe di omotopia \([f : S^n \to X]\) viene mandata in \(H_n(f)(\upsilon)\); in verticale, \([f]\) viene mandata in \([g\cmp f : S^n \to X\to Y]\), cosicché la funtorialità di \(H_n\) (e la sua invarianza per omotopia), permette di concludere.
-	\fosco{in attesa di una collocazione migliore}
 \end{hExample}
 \begin{example}\label{ex_cat_sset}\index{Insieme simpliciale}
 	La categoria \(\ctsSet=\presh{\bsDelta}\) degli insiemi simpliciali ha per oggetti i funtori \(\bsDelta^\op\fun\ctSet\) definiti in \ref{def_insieme_simpliciale}, dove \(\bsDelta\) è la categoria dei simplessi di \ref{rmk_delta_e_deltaPlus}, e per morfismi le trasformazioni naturali tra questi funtori.
