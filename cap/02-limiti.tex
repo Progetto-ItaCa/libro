@@ -19,18 +19,20 @@ Anche questo capitolo inizia raccogliendo degli esempi che la nozione di limite 
 	Sia \(\ctC\) una categoria. Se \(\term\) è un oggetto terminale, l'unica freccia \(\term\to\term\) è l'identità \(\id_\term\). Se \(\init\) è un oggetto iniziale, l'unica freccia \(\init\to\init\) è l'identità \(\id_\init\).
 \end{lemma}
 \begin{proof}
-	Evidentemente, deve esistere \emph{almeno} l'identità \(\id_\term : \term\to\term\), e del resto la proprietà definiente di \(\term\) vieta l'esistenza di un'altra freccia. Del tutto analoga è la dimostrazione per \(\init\).
+	Evidentemente, deve esistere \emph{almeno} l'identità \(\id_\term : \term\to\term\), e del resto non può esistere nessun'altra freccia. Del tutto analoga è la dimostrazione per \(\init\).
 \end{proof}
 La natura duale dei due enunciati che compongono \ref{init_ha_solo_id} è un fatto molto generale. Evidentemente, la proprietà di essere iniziale in \(\ctC\) è precisamente la proprietà di essere terminale in \(\ctC^\op\), e viceversa, la proprietà di essere terminale in \(\ctC\) è precisamente la proprietà di essere iniziale in \(\ctC^\op\). Per questo motivo, la maggior parte dei risultati che vedremo nel capitolo sono dualizzabili; per ragioni pedagogiche insisteremo a enunciare le due forme duali dei primi risultati per poi lasciare la dualizzazione come un (quasi sempre semplice) esercizio per chi legge.
 \paragraph*{Proprietà universali.}
-In maniera molto informale, una \emph{proprietà universale} è una proprietà di terminalità in una opportuna categoria, e dualmente una proprietà \emph{couniversale} è di inizialità. Chiaramente questo è impreciso, e fuorviante se preso troppo alla lettera; si dovrebbe dire che un oggetto \(X\in\ctC_0\) è universale in \(\ctC\) quando è possibile costruire un certo diagramma, e da esso un `cono' la cui `origine' è \(X\),
+In maniera molto informale, una \emph{proprietà universale} è la proprietà di essere terminale in una opportuna categoria, e dualmente una proprietà \emph{couniversale} è la proprietà di essere iniziale. 
+
+Chiaramente questo è impreciso (gli oggetti sono sempre tipati dalla categoria cui appartengono, si veda la nota \ref{fn_tipati} a pagina \pageref{fn_tipati} nel capitolo precedente), e fuorviante se preso troppo alla lettera; si dovrebbe dire che un oggetto \(X\in\ctC_0\) è universale in \(\ctC\) quando è possibile costruire un certo diagramma, e da esso un `cono' la cui `origine' è \(X\),
 \[\xymatrix@R=0mm{
 	& Di \\
 	X \ar@{->}[ru] \ar@{->}[r] \ar@{->}[rdd] & Dj \\
 	& \vdots \\
 	& Dk
 	}\]
-che è terminale in una categoria i cui oggetti sono coni. Al variare del diagramma \(D\) (quanto è complesso il suo dominio, quanto è complessa la sua azione su oggetti e frecce dello stesso), varia la complessità interna dell'oggetto terminale, che riesce a descrivere oggetti molto strutturati (i numeri \(p\)-adici; i frattali; i nuclei di omomorfismi; i grafici di funzioni reali o complesse; etc). L'oggetto \(X\) si dice allora il \emph{limite} del diagramma \(D\).
+che è terminale in una categoria i cui oggetti sono coni della stessa forma. Al variare del diagramma \(D\) (quanto è complesso il suo dominio, quanto è complessa la sua azione su oggetti e frecce dello stesso), varia la complessità interna dell'oggetto terminale, che riesce a descrivere oggetti molto strutturati (i numeri \(p\)-adici, si veda \ref{ex_lim_padici}; i frattali, si veda \ref{ex_lim_frattali}; i nuclei di omomorfismi, si veda \ref{ex_lim_kernel}; i grafici di funzioni reali o complesse, si veda \ref{ex_lim_grafici}; etc). L'oggetto \(X\) si dice allora il \emph{limite} del diagramma \(D\).
 
 Dualmente, un oggetto \(X\in\ctC_0\) è couniversale in \(\ctC\) quando è il bersaglio di un cocono \emph{iniziale},
 \[\xymatrix@R=0mm{
@@ -39,15 +41,18 @@ Dualmente, un oggetto \(X\in\ctC_0\) è couniversale in \(\ctC\) quando è il be
 	\vdots &  \\
 	Dk \ar@{->}[ruu] &
 	}\]
-ossia di un oggetto iniziale in una categoria di coconi per \(D\). L'oggetto \(X\) si dice allora il \emph{colimite} del diagramma \(D\). Anche i colimiti riescono a descrivere oggetti molto strutturati (i numeri naturali; i prodotti liberi di gruppi e monoidi; le liste a valori in un alfabeto \(S\); etc).
-
+ossia di un oggetto iniziale in una categoria di coconi per \(D\). L'oggetto \(X\) si dice allora il \emph{colimite} del diagramma \(D\). Anche i colimiti riescono a descrivere oggetti molto strutturati (i numeri naturali, si veda \ref{ex_colim_nat}; i prodotti liberi di gruppi e monoidi, si veda \ref{ex_colim_liberi}; le liste a valori in un alfabeto \(S\), si veda \ref{ex_colim_liste}; i cosiddetti \emph{catamorfismi}, si veda \ref{ex_colim_cata};\dots).
 \paragraph*{Problemi di minimo-massimo.}
 Questo punto di vista tuttavia non è l'unico, né il più pedagogicamente efficace: sarebbe altrettanto valido introdurre la nozione di limite e di colimite come `soluzioni' a problemi di min-max:
 \begin{itemize}
 	\item Il limite del diagramma \(D : \ctJ\fun\ctC\) è il `massimo dei minoranti' tra diagrammi della forma \eqref{}; ciò vuol dire che per un diagramma \(D\) fissato, il limite \(\lim D\) realizza la proprietà seguente:
-	      \Todo{}
+	      \perogniEsiste
+							<X>
+							{Y}
 	\item Il colimite del diagramma \(D : \ctJ\fun\ctC\) è il `minimo dei maggioranti' tra diagrammi della forma \eqref{}; ciò vuol dire che per un diagramma \(D\) fissato, il colimite \(\colim D\) realizza la proprietà seguente:
-	      \Todo{}
+	      \perogniEsiste
+							<X>
+							{Y}
 \end{itemize}
 Un punto di vista del genere privilegia (ed è motivato da) la teoria degli insiemi ordinati come fonte di intuizione per le definizioni, più generali, della teoria delle categorie: la descrizione di limiti e colimiti in una categoria-preordine nel senso di \ref{} verrà delineata in \ref{}.
 \Todo{}
