@@ -23,7 +23,7 @@ Anche questo capitolo inizia raccogliendo degli esempi che la nozione di limite 
 \end{proof}
 La natura duale dei due enunciati che compongono \ref{init_ha_solo_id} è un fatto molto generale. Evidentemente, la proprietà di essere iniziale in \(\ctC\) è precisamente la proprietà di essere terminale in \(\ctC^\op\), e viceversa, la proprietà di essere terminale in \(\ctC\) è precisamente la proprietà di essere iniziale in \(\ctC^\op\). Per questo motivo, la maggior parte dei risultati che vedremo nel capitolo sono dualizzabili; per ragioni pedagogiche insisteremo a enunciare le due forme duali dei primi risultati per poi lasciare la dualizzazione come un (quasi sempre semplice) esercizio per chi legge.
 \paragraph*{Proprietà universali.}
-In maniera molto informale, una \emph{proprietà universale} è la proprietà di essere terminale in una opportuna categoria, e dualmente una proprietà \emph{couniversale} è la proprietà di essere iniziale. 
+In maniera molto informale, una \emph{proprietà universale} è la proprietà di essere terminale in una opportuna categoria, e dualmente una proprietà \emph{couniversale} è la proprietà di essere iniziale.
 
 Chiaramente questo è impreciso (gli oggetti sono sempre tipati dalla categoria cui appartengono, si veda la nota \ref{fn_tipati} a pagina \pageref{fn_tipati} nel capitolo precedente), e fuorviante se preso troppo alla lettera; si dovrebbe dire che un oggetto \(X\in\ctC_0\) è universale in \(\ctC\) quando è possibile costruire un certo diagramma, e da esso un `cono' la cui `origine' è \(X\),
 \[\xymatrix@R=0mm{
@@ -47,15 +47,23 @@ Questo punto di vista tuttavia non è l'unico, né il più pedagogicamente effic
 \begin{itemize}
 	\item Il limite del diagramma \(D : \ctJ\fun\ctC\) è il `massimo dei minoranti' tra diagrammi della forma \eqref{}; ciò vuol dire che per un diagramma \(D\) fissato, il limite \(\lim D\) realizza la proprietà seguente:
 	      \perogniEsiste
-							<X>
-							{Y}
+	      <X>
+	      {Y}
 	\item Il colimite del diagramma \(D : \ctJ\fun\ctC\) è il `minimo dei maggioranti' tra diagrammi della forma \eqref{}; ciò vuol dire che per un diagramma \(D\) fissato, il colimite \(\colim D\) realizza la proprietà seguente:
 	      \perogniEsiste
-							<X>
-							{Y}
+	      <X>
+	      {Y}
 \end{itemize}
 Un punto di vista del genere privilegia (ed è motivato da) la teoria degli insiemi ordinati come fonte di intuizione per le definizioni, più generali, della teoria delle categorie: la descrizione di limiti e colimiti in una categoria-preordine nel senso di \ref{} verrà delineata in \ref{}.
-\Todo{}
+
+Questa filosofia sui limiti tuttavia va al di là della `pura' teoria degli insiemi; la nozione di proprietà universale spiega infatti il motivo per cui (ad esempio) nel definire una topologia sul prodotto cartesiano di due spazi \(X,Y\) la scelta `naturale' sia la topologia prodotto: non è una scelta di comodo né una scelta dettata dalla consuetudine, ma \emph{l'unica risposta giusta} se si desidera che lo \emph{spazio} \(X\times Y\) abbia la proprietà universale di un prodotto nella categoria \(\ctTop\). Allo stesso modo, la definizione di proprietà universale spiega
+\begin{itemize}
+	\item il motivo per cui quando si definisce un `gruppo topologico' (per esempio i gruppi di Lie in fisica matematica) le operazioni di gruppo (moltiplicazione e inversione) devono essere continue. \`E certamente una scelta `ovvia', ma essa è anche \emph{obbligata} dal fatto che la moltiplicazione deve essere una freccia della categoria \(\ctTop\ctGrp\), cioè \emph{sia} una freccia di \(\ctTop\), quando si dimentica la struttura di gruppo, sia una freccia di \(\ctGrp\), quando si dimentica la topologia;
+	\item il motivo per cui su certi oggetti complicati, ad esempio i gruppi profiniti che sono limiti di catene della forma
+	      \[bau\]
+	      in generale compare una topologia non discreta \emph{anche se tutte le componenti del diagramma sono spazi discreti}.
+	      \Todo{}
+\end{itemize}
 \paragraph*{Natura relazionale delle categorie.}
 Un terzo modo di introdurre la teoria dei limiti e dei colimiti parte dal fatto che uno dei paradigmi essenziali della teoria delle categorie vuole che, per indagare le proprietà di un determinato oggetto \(X\in\ctC_0\), si debba guardare al modo in cui esso interagisce con gli altri oggetti di \(\ctC\); anche questa è una maniera valida di introdurre la teoria dei limiti e dei colimiti, e lo scopo di questo capitolo sarà di conciliare queste tre prospettive.
 
@@ -92,9 +100,9 @@ Questi, e molti altri concetti, appariranno chiari quando avremo delineato la te
 
 % \begin{example}[oggetto iniziale]\label{ex_oggetto_iniziale}
 % 	Data una categoria \(\ctC\), un \emph{oggetto iniziale} è un oggetto \(O\) di \(\ctC\) tale che, per ogni altro oggetto \(C\) di \(\ctC\), ci sia una e una sola freccia \(O\to C\), o, in altre parole, si abbia
-% 	\begin{equation}\label{def_oggetto_iniziale}
+% 	\[\label{def_oggetto_iniziale}
 % 		\#\Hom\ctC(O,C)=1\,.
-% 	\end{equation}
+% 	\]
 
 % 	Quindi, per quanto abbiamo visto sopra, se la categoria \(\ctC\) è la categoria degli insiemi, l'insieme vuoto \(\emptyset\)  è un oggetto iniziale.
 
@@ -117,7 +125,7 @@ Questi, e molti altri concetti, appariranno chiari quando avremo delineato la te
 % \color{black}
 Il seguente risultato meriterebbe il nome di \emph{teorema fondamentale sulle proprietà universali}, dato che virtualmente ogni proprietà universale nota si può ricondurre a questo fatto.\footnote{L'idea che chi legge dovrà trattenere fino a \ref{}, in cui avrà un enunciato preciso e una dimostrazione, è: un oggetto universale \(X_u\) di \(\ctC\) è terminale in una certa categoria \(\Pi\ctC\) costruita a partire da \(\ctC\). Più complicata è \(\Pi\ctC\), più sofisticata la proprietà di \(X_u\): la proprietà di \(X_u\) (essere terminale) non cambia mai, quello che cambia è la complessità dell'ambiente dove esso è terminale.}
 \begin{proposition}
-	\Todo{Proprietà universale di un oggetto iniziale e terminale}
+	% \Todo{Proprietà universale di un oggetto iniziale e terminale}
 	Sia \(\ctC\) una categoria. Se \(\term,\term'\) (risp., \(\init,\init'\)) sono entrambi oggetti terminali (risp., iniziali) di \(\ctC\), allora esiste un \emph{unico} isomorfismo \(\term\cong\term'\) (risp., \(\init\cong \init'\)).
 \end{proposition}
 Si noti l'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) esiste uno e un solo isomorfismo, essi non sono uguali, ma (per così dire) `unici in un unico modo'. Non va però frainteso questo punto: l'isomorfismo è unico \emph{una volta fissati \(\term\) e \(\term'\)} e varia insieme ad essi.
@@ -145,76 +153,89 @@ Si noti l'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) e
 
 \subsection*{Prodotti in \(\ctSet\)}\label{prod_in_Set}
 
-\`E ragionevole supporre che chi legge abbia familiarità con le operazioni insiemistiche di base, soprattutto dato che in una loro versione intuitiva sono già state impiegate diverse volte; lo scopo di questa prima sezione è metterle in prospettiva e descriverle come primi esempi di costruzioni universali.
+Le operazioni insiemistiche di somma e prodotto sono già state impiegate diverse volte nel capitolo \ref{} in una versione intuitiva (che dopotutto è quella con cui sono state introdotte in algebra o analisi); lo scopo di questa prima sezione è `decostruirle' in prospettiva categoriale, e descriverle come primi importanti esempi di costruzioni universali.
+\begin{hExample}[Regole di introduzione ed eliminazione per il prodotto cartesiano]{fund}
+	Dati due insiemi \(A\) e \(B\), il loro \emph{prodotto cartesiano} \(A\times B\) consiste nell'insieme di tutte le coppie ordinate di elementi di \(A\) e di \(B\):\footnote{Il prodotto è chiamato così in onore di Pierre Descartes (\(*\)1596-\(\dag\)1650) che per primo si accorse (si dice, osservando il soffitto dove si era posata una mosca) che un punto del piano può essere univocamente determinato da una coppia di coordinate \((x,y)\in\bbR\times\bbR\).}
+	\[
+		A\times B= \{\pair ab \mid a\in A, b\in B\}
+	\]
+	Per chi è familiare con questa nomenclatura, \(A\times B\) è il `tipo' i cui `termini' sono destrutturabili come coppie: le seguenti `frazioni'
+	\[\frac{t : A\times B}{\pi_A\, t : A}\qquad \frac{t : A\times B}{\pi_B\, t : B}\qquad \frac{a : A\quad b : B}{\pair ab : A\times B}\qquad \frac{t : A\times B}{t = \pair{\pi_A\, t}{\pi_B\, t}}\]
+	si leggono come deduzioni (supponendo che <numeratore>, allora <denominatore>), e dicono quattro cose:
+	\begin{itemize}
+		\item
+		\item
+		\item
+		\item
+	\end{itemize}
+\end{hExample}
+In questi termini, il prodotto è descritto come una operazione di costruzione di un insieme a partire da due dati: questo è ragionevole, dato che abbiamo già visto in \ref{} che esiste un funtore
+\[\dmFun{\blank\times\blank}{\ctSet\times\ctSet}{\ctSet.}\]
+Come già detto, il piano cartesiano ortogonale della geometria analitica può essere identificato con \(\bbR^2=\bbR\times\bbR\), l'insieme delle coppie \emph{ordinate} (questa condizione è cruciale) di numeri reali.
 
-Dati due insiemi \(A\) e \(B\), il loro \emph{prodotto} \(A\times B\), chiamato \emph{cartesiano}, consiste nell'insieme di tutte le coppie ordinate di elementi di \(A\) e di \(B\):
-\[
-	A\times B= \{(a,b)\mid a\in A, b\in B\}
-\]
-Per chi è familiare con questa nomenclatura, \(A\times B\) è il `tipo' i cui `termini' sono destrutturabili come coppie: le seguenti frazioni
-\[\frac{t : A\times B}{\pi_A\, t : A}\qquad \frac{t : A\times B}{\pi_B\, t : B}\qquad \frac{a : A\quad b : B}{(a,b) : A\times B}\qquad \frac{t : A\times B}{t = (\pi_A\, t,\pi_B\, t)}\]
-dicono quattro cose:
-\begin{itemize}
-	\item
-	\item
-	\item
-	\item
-\end{itemize}
-In questi termini, il prodotto è descritto come una operazione di costruzione di un insieme a partire da due dati: il risultato di questa operazione può avere caratteristiche e proprietà anche molto diverse da quelle degli insiemi di partenza. Ad esempio, il piano cartesiano ortogonale della geometria analitica può essere identificato con \(\bbR^2=\bbR\times\bbR\), l'insieme delle coppie ordinate di numeri reali. Il fatto che le coppie siano ordinate è cruciale: ad esempio, il punto \(P=(1,0)\in \bbR\times\bbR\) è un elemento distinto dal punto \(Q=(0,1)\in \bbR\times\bbR\), anche se sia \(P\) che \(Q\) sono formati dalla stessa coppia di numeri reali. Per confrontare gli elementi di \(\bbR\times\bbR\) ci serviamo di due funzioni, \(\pi_1,\pi_2\), che restituiscono, rispettivamente, la prima e la seconda coordinata, o componente, di un dato punto:
-\[
-	\pi_1(P)=1\qquad \pi_2(P)=0
-\]
-\[
-	\pi_1(Q)=0\qquad \pi_2(Q)=1
-\]
-Ritornando al più generale prodotto di \(A\) e \(B\), esso può essere più correttamente presentato come la tripla
+L'esempio \ref{} lascia poi intendere che ci si debba più correttamente riferire al prodotto \(A\times B\) come la terna
 \[
 	A\times B\,,\quad \pi_1\colon A\times B\to A\,,\quad \pi_2\colon A\times B\to B\,,
 \]
-dove le funzioni \(\pi_1,\pi_2\) sono chiamate \emph{proiezioni canoniche}, e sono date dalle posizioni
-\[
-	\pi_1(a,b)=a\,,\qquad \pi_2(a,b)=b\,.
-\]
+specificata insieme alle funzioni \(\pi_1,\pi_2\) di \emph{proiezione} sui due fattori \(A\) e \(B\), definite in \ref{}.
 
-Analogamente a quanto abbiamo visto nell'introduzione per l'oggetto iniziale, anche i prodotti cartesiani di insiemi possono essere caratterizzati da una proprietà che non riguarda direttamente gli elementi di cui essi sono composti. Per evidenziare questo aspetto, consideriamo le funzioni che hanno il prodotto come codominio. Una funzione
-\begin{equation}\label{prodotti_h}
+Anche il prodotto cartesiano di insiemi può essere caratterizzato da una proprietà che non riguarda direttamente i suoi elementi, ma li caratterizza in termini delle funzioni verso \(A\times B\). Per chiarire questo aspetto, consideriamo una funzione che ha \(A\times B\) come codominio,
+\[\label{prodotti_h}
 	h\colon X\to A\times B
-\end{equation}
-può essere data esibendo, per ogni \(x\in X\), la prima e la seconda componente di \(h(x)\), ovvero, \(\pi_1(h(x))\in A\) e \(\pi_2(h(x))\in B\). Viceversa, date due funzioni
-\begin{equation}\label{prodotti_f_e_g}
-	f\colon X\to A\,,\qquad g\colon X\to B
-\end{equation}
-esiste un'unica funzione \(h\) come sopra, tale che le sue componenti siano \(f\) e \(g\), cioè tali che, per ogni \(x\in X\), si abbia
-\[
-	\pi_1(h(x))=f(x)\qquad\text{e}\qquad \pi_2(h(x))=g(x)\,.
 \]
-Questa proprietà è caratterizzante: una tripla costituita da un insieme e due funzioni
-\[
-	(P,\,  p_1\colon P\to A,\,  p_2\colon P\to B)
+Essa può essere composta con le proiezioni \(\pi_1,\pi_2\) per ottenere due funzioni
+\[\label{prodotti_f_e_g}
+	\pi_1\cmp h\colon X\to A \qquad \pi_2\cmp h\colon X\to B
 \]
-è (isomorfa a) un prodotto di \(A\) e \(B\), se, e solo se, per ogni insieme \(X\) e per ogni coppia di funzioni \(f\) e \(g\) come in (\ref{prodotti_f_e_g}), esiste un'unica funzione \(h\) (spesso denotata \(\langle f,g\rangle\)) come in (\ref{prodotti_h}) tale che
-\[
-	p_1\circ h = f\,,\qquad p_2\circ h=g\,.
-\]
-In effetti, è immediato verificare che prodotto e proiezioni canoniche soddisfano questa proprietà. Viceversa, se noi prendiamo come \(X\) l'insieme singoletto \(\{*\}\),  le funzioni \(g\colon \{*\}\to B\), \(f\colon \{*\}\to A\)  e \(h\colon \{*\}\to P\) si possono identificare con le immagini di \(*\)
-\[
-	a:= f(*)\,,\quad  b:= g(*) \quad \text{e}\quad c:= h(*)\,.
-\]
-e la proprietà si traduce in: per ogni coppia di elementi \(a\in A\) e \(b\in B\), esiste un unico elemento \(c\in P\) tale che \(p_1(c)=a\) e \(p_2(c)=b\). Per concludere, la posizione \(c\mapsto (a,b)\) definisce una biiezione \(\tau \colon P\to A\times B\) che \emph{commuta con le proiezioni}, cioè tale che \(\pi_1\circ \tau =p_1\) e \(\pi_2\circ \tau =p_2\).
+che determinano univocamente \(h\). Infatti, si osservi come
+\begin{itemize}
+	\item grazie a \ref{eq_comprule} l'immagine di \(h(x)\) può essere \emph{ridotta} alla coppia ordinata
+	      \[\pair{(\pi_1\cmp h)(x)}{(\pi_2\cmp h)(x)};\]
+	\item comunque siano date due funzioni \(f : X\to A\) e \(g : X \to B\), è possibile \emph{costruire} la coppia ordinata \(\pair{f(x)}{g(x)}\) e la funzione \(f\pmap g\) che abbiamo già introdotto in \ref{puniv_prodotto_naturale} che ne risulta è l'immagine di \(\pair fg\), nell'insieme a sinistra, rispetto alla biiezione natuarle (già dimostrata)
+	      \[\Hom\ctSet(X,A\times B)\cong\Hom\ctSet(X,A)\times\Hom\ctSet(X,B).\]
+\end{itemize}
+\Todo{}
+\begin{remark}\label{rmk_prodotto}
+	Questa proprietà è caratterizzante del prodotto cartesiano: una terna costituita da un insieme \(P\) e due funzioni \(p_1,p_2\) del tipo
+	\[
+		(P,\,  p_1\colon P\to A,\,  p_2\colon P\to B)
+	\]
+	si dice un \emph{prodotto cartesiano} di \(A\) e \(B\), se, e solo se, per ogni insieme \(X\) e per ogni coppia di funzioni \(f : X \to A\) e \(g : X \to B\) come in \eqref{prodotti_f_e_g}, esiste un'unica funzione \(f\pmap g : X \to P\) come in \eqref{prodotti_h} tale che
+	\[
+		p_1\cmp (f\pmap g) = f\,,\qquad p_2\cmp (f\pmap g)=g.
+	\]
+\end{remark}
+In effetti, è immediato verificare che \(A\times B\) e le proiezioni canoniche \(\pi_1,\pi_2\) soddisfano questa proprietà. Ma se \(P\) soddisfa questa proprietà, possiamo dimostrare quanto segue.
+\begin{lemma}
+	\Todo{Essenziale unicità del prodotto cartesiano}
+	Se \(P\) soddisfa la proprietà enunciata in \ref{rmk_prodotto}, allora esiste un'unica biiezione \(P\cong A\times B\).
+\end{lemma}
+Si osservi di nuovo il ruolo dell'aggettivo \emph{unica}: fissate le terne \(()\) e \(()\) (e solo allora), la biiezione possibile è \emph{solo una}.
+\begin{proof}
+	\Todo{C'è una biiezione}
+	\Todo{E' unica}
+\end{proof}
+Si osservi che in particolare, istanziando la proprietà di \ref{rmk_prodotto} quando \(X = \{\bullet\}\) è un insieme con un solo elemento, le funzioni \(g\colon \{*\}\to B\), \(f\colon \{*\}\to A\) scelgono rispettivamente un elemento \(g(\bullet) = b \in B\) e \(f(\bullet) = a \in A\); la funzione \(f\pmap g\colon \{*\}\to P\) sceglie a sua volta un elemento \((f\pmap g)(\bullet) = t \in P\), che però ora deve essere della forma \(\pair{p_1 t}{p_2 t}\).
 
+La proprietà di \ref{} si traduce allora in: per ogni coppia di elementi \(a\in A\) e \(b\in B\), esiste (suriettività) un unico (iniettività) elemento \(c\in P\) tale che \(p_1 t=a\) e \(p_2 t=b\). Questo è un modo alternativo di stabilire una biiezione \(\tau : P\to A\times B\) soggetta alla proprietà addizionale di commutare con le proiezioni, cioè tale che \(\pi_1\cmp \tau =p_1\) e \(\pi_2\cmp \tau =p_2\).
+
+In sintesi, abbiamo enunciato e dimostrato la
+\begin{definition}[Proprietà universale del prodotto cartesiano di insiemi]
+	\Todo{Proprietà universale del prodotto cartesiano di insiemi}
+\end{definition}
 \subsection*{Quozienti in \(\ctSet\)}\label{quoz_in_set}
 La seconda costruzione che vogliamo esaminare è quella dell'\emph{insieme quoziente}. Il punto di partenza, in questo caso, è una relazione di equivalenza \(R\) su un insieme \(S\), ovvero una relazione \(R\subseteq S\times S\) che sia riflessiva, simmetrica e transitiva. L'insieme quoziente, di solito denotato \(S/R\), è l'insieme delle \emph{classi di equivalenza}:
 \[
 	S/R=\{[s]_R\mid s\in S\}
 \]
 
-dove \([s]_R=\{s'\in S\mid sRs'\}\). Anche in questo caso, come per il prodotto, l'insieme che abbiamo definito ci racconta solo una parte della storia. Infatti, perché \(S/R\) sia considerato un quoziente di \(S\), bisogna tenere traccia di come i suoi elementi rappresentino quelli di \(S\). In altre parole, è necessario specificare una funzione \(q_R\colon S\to S/R\),  chiamata proiezione canonica sul quoziente. Nel caso in esame, avremo \(q_R(s)=[s]_R\), per ogni elemento \(s\in S\). La coppia \((S/R, q_R\colon S\to S/R)\) gode anch'essa di una proprietà caratterizzante che può essere formulata in termini di soli insiemi e funzioni; vediamo come.  Se chiamiamo \(i\) la funzione inclusione di \(R\) in \(S\times  S\), possiamo definire due nuove funzioni \(r_1=\pi_1\circ i\) e \(r_2=\pi_2\circ i\):
+dove \([s]_R=\{s'\in S\mid sRs'\}\). Anche in questo caso, come per il prodotto, l'insieme che abbiamo definito ci racconta solo una parte della storia. Infatti, perché \(S/R\) sia considerato un quoziente di \(S\), bisogna tenere traccia di come i suoi elementi rappresentino quelli di \(S\). In altre parole, è necessario specificare una funzione \(q_R\colon S\to S/R\),  chiamata proiezione canonica sul quoziente. Nel caso in esame, avremo \(q_R(s)=[s]_R\), per ogni elemento \(s\in S\). La coppia \((S/R, q_R\colon S\to S/R)\) gode anch'essa di una proprietà caratterizzante che può essere formulata in termini di soli insiemi e funzioni; vediamo come.  Se chiamiamo \(i\) la funzione inclusione di \(R\) in \(S\times  S\), possiamo definire due nuove funzioni \(r_1=\pi_1\cmp i\) e \(r_2=\pi_2\cmp i\):
 \[
 	r_1, r_2\colon R\to S
 \]
 Allora, \(s R s'\) se, e solo se, esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\); e dunque, \(q_R(s)=q_R(s')\) se, e solo se, esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\).
 
-Si osservi che \(q_R\circ r_1=q_R\circ r_2 \), ossia \(q_R\) \emph{equalizza} \(r_1\) e \(r_2\). Di più. Con un linguaggio che impareremo a utilizzare in questo capitolo, affermiamo che la coppia \((S/R,q_R\colon S\to S/R)\) \emph{è universale rispetto a questa proprietà}, cioè, per ogni altra coppia \((X,f\colon S\to X)\) tale che  \(f\circ r_1=f\circ r_2 \), esiste un'unica funzione \(\bar f\colon S/R\to X\) tale che \(\bar f\circ q_R= f\). Si noti che questa funzione \(\bar f\) non è altro che la funzione \(f\) definita sulle classi, i.e.\ \(\bar f([s]_R)= f(s)\). Nel linguaggio matematico corrente si dice che \(f\) \emph{passa al quoziente}, mentre la condizione imposta corrisponde al fatto che \(f\) sia ben definita sulle classi di equivalenza di \(R\).
+Si osservi che \(q_R\cmp r_1=q_R\cmp r_2 \), ossia \(q_R\) \emph{equalizza} \(r_1\) e \(r_2\). Di più. Con un linguaggio che impareremo a utilizzare in questo capitolo, affermiamo che la coppia \((S/R,q_R\colon S\to S/R)\) \emph{è universale rispetto a questa proprietà}, cioè, per ogni altra coppia \((X,f\colon S\to X)\) tale che  \(f\cmp r_1=f\cmp r_2 \), esiste un'unica funzione \(\bar f\colon S/R\to X\) tale che \(\bar f\cmp q_R= f\). Si noti che questa funzione \(\bar f\) non è altro che la funzione \(f\) definita sulle classi, i.e.\ \(\bar f([s]_R)= f(s)\). Nel linguaggio matematico corrente si dice che \(f\) \emph{passa al quoziente}, mentre la condizione imposta corrisponde al fatto che \(f\) sia ben definita sulle classi di equivalenza di \(R\).
 \begin{esercizi}
 	\item
 	\item
@@ -252,7 +273,7 @@ La descrizione del prodotto di due insiemi data in \ref{prod_in_Set} si presta a
 	\begin{tikzcd}
 		h\colon Q\ar[r] &P
 	\end{tikzcd}
-	tale che \(p_1\circ h=f\) e \(p_2\circ h=g\).
+	tale che \(p_1\cmp h=f\) e \(p_2\cmp h=g\).
 \end{definition}
 \`E utile seguire la definizione sui  diagrammi:\\[2ex]
 \begin{tikzpicture}
@@ -279,7 +300,7 @@ La descrizione del prodotto di due insiemi data in \ref{prod_in_Set} si presta a
 					\\
 					A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
 				\end{tikzcd}\\[2ex]
-				...\emph{esiste un'unica freccia \(h\)\\ tale che \(p_1\circ h=f\) e \(p_2\circ h=g\)}
+				...\emph{esiste un'unica freccia \(h\)\\ tale che \(p_1\cmp h=f\) e \(p_2\cmp h=g\)}
 			\end{center}
 		\end{minipage}
 	};
@@ -343,16 +364,16 @@ Diversamente, si può considerare la spanna universale \((P,p_1,p_2)\), come abb
 \[
 	\varphi\colon P\to A\times B \qquad n\mapsto (n\pmod2,n\pmod3)
 \]
-che commuta con le proiezioni, cioè  tale che \(\pi_1\circ\varphi=p_1\) e \(\pi_2\circ\varphi=p_2\).
+che commuta con le proiezioni, cioè  tale che \(\pi_1\cmp\varphi=p_1\) e \(\pi_2\cmp\varphi=p_2\).
 
 Questa è una proprietà generale.
 
 \begin{proposition}[Il prodotto è unico a meno di un unico isomorfismo]
-	In una categoria \(\ctC\), date due spanne universali \((P,p_1,p_1)\) e \((Q,q_1,q_2)\) che insistano sulla stessa coppia di oggetti \(A,B\), esiste un unico isomorfismo \(h\colon P\to Q\) tale che \(q_1\circ h=p_1\) e \(q_2\circ h=p_2\).
+	In una categoria \(\ctC\), date due spanne universali \((P,p_1,p_1)\) e \((Q,q_1,q_2)\) che insistano sulla stessa coppia di oggetti \(A,B\), esiste un unico isomorfismo \(h\colon P\to Q\) tale che \(q_1\cmp h=p_1\) e \(q_2\cmp h=p_2\).
 \end{proposition}
 Questa proprietà non è specifica dei prodotti binari, ma riguarda tutti i limiti e tutti i colimiti, e può essere facilmente ottenuta come caso particolare della \ref{???}. Riteniamo utile esplicitarne la dimostrazione, a fini didattici.
 \begin{proof}
-	Poiché la spanna \((P,p_1,p_1)\) è universale, esiste un unica freccia  \(h\colon Q\to P\) tale che \(p_1\circ h=q_1\) e \(p_2\circ h=q_2\). Dimostriamo che \(h\) è un isomorfismo esibendo un suo inverso. Per trovarlo ripetiamo il ragionamento precedente, questa volta utilizzando la spanna universale \((Q,q_1,q_2)\), e ottenendo un unica freccia \(k\colon P\to Q\) tale che \(q_1\circ =p_1\) e \(q_2\circ h=p_2\). Sostituendo le nelle relazioni trovate (o \emph{impastando} i diagrammi in basso a sinistra) si ottiene che:\\[2ex]
+	Poiché la spanna \((P,p_1,p_1)\) è universale, esiste un unica freccia  \(h\colon Q\to P\) tale che \(p_1\cmp h=q_1\) e \(p_2\cmp h=q_2\). Dimostriamo che \(h\) è un isomorfismo esibendo un suo inverso. Per trovarlo ripetiamo il ragionamento precedente, questa volta utilizzando la spanna universale \((Q,q_1,q_2)\), e ottenendo un unica freccia \(k\colon P\to Q\) tale che \(q_1\cmp =p_1\) e \(q_2\cmp h=p_2\). Sostituendo le nelle relazioni trovate (o \emph{impastando} i diagrammi in basso a sinistra) si ottiene che:\\[2ex]
 	\begin{tikzpicture}
 		\node [mybox] (box){%
 			\begin{minipage}[t][28ex]{0.40\textwidth}
@@ -364,9 +385,9 @@ Questa proprietà non è specifica dei prodotti binari, ma riguarda tutti i limi
 						\\
 						A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
 					\end{tikzcd}\\[2ex]
-					\(h\circ k\) soddisfa le relazioni\\
-					\(p_1\circ h\circ k = q_1\circ k=p_1\)\\
-					\(p_2\circ h\circ k = q_2\circ k=p_2\)
+					\(h\cmp k\) soddisfa le relazioni\\
+					\(p_1\cmp h\cmp k = q_1\cmp k=p_1\)\\
+					\(p_2\cmp h\cmp k = q_2\cmp k=p_2\)
 				\end{center}
 			\end{minipage}
 		};
@@ -383,14 +404,14 @@ Questa proprietà non è specifica dei prodotti binari, ma riguarda tutti i limi
 						A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
 					\end{tikzcd}\\[4ex]
 					...ma anche \(\id_P\) è tale che \\
-					\(p_1\circ \id_P =p_1\)\\
-					\(p_2\circ \id_P =p_2\)
+					\(p_1\cmp \id_P =p_1\)\\
+					\(p_2\cmp \id_P =p_2\)
 				\end{center}
 			\end{minipage}
 		};
 	\end{tikzpicture}%
 	\\[2ex]
-	Quindi, per l'unicità data dalla proprietà universale della spanna \((P,p_1,p_2)\) si ottiene \(h\circ k=\id_P\). Invertendo i ruoli di \(h\) e \(k\), e sfruttando la proprietà universale della spanna \((Q,q_1,q_2)\), si ottiene \(k\circ h=\id_Q\), e si conclude quindi che la freccia \(h\) è un isomorfismo, con inverso \(h^{-1}=k\).
+	Quindi, per l'unicità data dalla proprietà universale della spanna \((P,p_1,p_2)\) si ottiene \(h\cmp k=\id_P\). Invertendo i ruoli di \(h\) e \(k\), e sfruttando la proprietà universale della spanna \((Q,q_1,q_2)\), si ottiene \(k\cmp h=\id_Q\), e si conclude quindi che la freccia \(h\) è un isomorfismo, con inverso \(h^{-1}=k\).
 \end{proof}
 \begin{remark}[Il prodotto \emph{vs} un prodotto]
 	Anticipiamo un'osservazione, che riguarda tutti i limiti e tutti i colimiti. Quando ci si riferisce a un prodotto di due oggetti, si utilizza di norma l'articolo indeterminativo (\emph{un} prodotto di \(A\) e \(B\)), poiché la definizione categoriale---cioè mediante una proprietà universale---definisce gli oggetti a meno di un unico isomorfismo. Tuttavia, anche nella letteratura, talvolta si cede alla tentazione di usare l'articolo determinativo (\emph{il} prodotto di \(A\) e \(B\)), dando per scontato il fatto di aver scelto una particolare istanza, ad esempio una specifica costruzione, del prodotto considerato, o più comunemente, riferendosi al concetto generale, come nella frase: ``nella categoria \(\ctSet\), esiste sempre \emph{il} prodotto due insiemi''.  Queste formulazioni, soprattutto la prima, sono da considerarsi un abuso di linguaggio, e perciò andrebbero evitate.
@@ -417,7 +438,7 @@ Questa proprietà non è specifica dei prodotti binari, ma riguarda tutti i limi
 
 \medskip
 Mediante la sua proprietà universale, il prodotto categoriale si estende naturalmente alle frecce. Sia \(\ctC\) una categoria, e \(A,B,C,D\) oggetti tali che esistano i prodotti \(A\times B\) e \(C\times D\). Allora, date due frecce \(f\colon A\to C\) e \(g\colon B\to D\), definiamo \(f\times g\) come l'unica freccia (tratteggiata) che rende commutativo il diagramma seguente:
-\begin{equation}
+\[
 	\begin{aligned}
 		\begin{tikzcd}
 			A\ar[d, "f"']&A\times B\ar[l, "\pi_1"']\ar[r, "\pi_2"]\ar[d, "f\times g", dashed]&B\ar[d, "g"]
@@ -425,7 +446,7 @@ Mediante la sua proprietà universale, il prodotto categoriale si estende natura
 			C&C\times D\ar[l, "\pi_1"']\ar[r, "\pi_2"]&D
 		\end{tikzcd}
 	\end{aligned}
-\end{equation}
+\]
 
 In \(\ctSet\), ad esempio, il prodotto di due funzioni \(f,g\) fa esattamente quello che ci si aspetta: per ogni \((a,b)\in A\times B\) si ha che \((f\times g)(a,b)=(f(a),g(b))\).
 
