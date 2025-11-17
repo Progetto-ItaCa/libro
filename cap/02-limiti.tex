@@ -151,9 +151,9 @@ Si noti l'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) e
 
 \section{Prodotti e somme in \(\ctSet\)}
 
-\subsection*{Prodotti in \(\ctSet\)}\label{prod_in_Set}
+\subsection{Prodotti in \(\ctSet\)}\label{prod_in_Set}
 
-Le operazioni insiemistiche di somma e prodotto sono già state impiegate diverse volte nel capitolo \ref{} in una versione intuitiva (che dopotutto è quella con cui sono state introdotte in algebra o analisi); lo scopo di questa prima sezione è `decostruirle' in prospettiva categoriale, e descriverle come primi importanti esempi di costruzioni universali.
+Le operazioni insiemistiche di somma e prodotto sono già state impiegate diverse volte nel capitolo \ref{} in una versione intuitiva (che dopotutto è quella con cui sono state introdotte in algebra o analisi); lo scopo di questa prima sezione è `ristrutturarle' in prospettiva categoriale, e descriverle come primi importanti esempi di costruzioni universali.
 \begin{hExample}[Regole di introduzione ed eliminazione per il prodotto cartesiano]{fund}
 	Dati due insiemi \(A\) e \(B\), il loro \emph{prodotto cartesiano} \(A\times B\) consiste nell'insieme di tutte le coppie ordinate di elementi di \(A\) e di \(B\):\footnote{Il prodotto è chiamato così in onore di Pierre Descartes (\(*\)1596-\(\dag\)1650) che per primo si accorse (si dice, osservando il soffitto dove si era posata una mosca) che un punto del piano può essere univocamente determinato da una coppia di coordinate \((x,y)\in\bbR\times\bbR\).}
 	\[
@@ -163,11 +163,17 @@ Le operazioni insiemistiche di somma e prodotto sono già state impiegate divers
 	\[\frac{t : A\times B}{\pi_A\, t : A}\qquad \frac{t : A\times B}{\pi_B\, t : B}\qquad \frac{a : A\quad b : B}{\pair ab : A\times B}\qquad \frac{t : A\times B}{t = \pair{\pi_A\, t}{\pi_B\, t}}\]
 	si leggono come deduzioni (supponendo che <numeratore>, allora <denominatore>), e dicono quattro cose:
 	\begin{itemize}
-		\item
-		\item
-		\item
-		\item
+		\item ogni volta che viene dato un elemento $t : A\times B$, si ottiene un elemento $\pi_A t$ la `prima componente di $t$';
+		\item ogni volta che viene dato un elemento $t : A\times B$, si ottiene un elemento $\pi_B t$ la `seconda componente di $t$';
+		\item ogni volta che vengono dati due elementi $a : A, b : B$, si ottiene un elemento $\pair ab : A\times B$;
+		\item ogni elemento $t : A\times B$ è della forma $\pair{\pi_A\, t}{\pi_B\, t}$.
 	\end{itemize}
+L'ultima di queste condizioni a sua volta dice due cose:
+\begin{itemize}
+	\item in $A\times B$ non ci sono che elementi della forma $\pair ab$ per qualche $a : A$ e $b : B$;
+	\item le uguaglianze in \ref{}, \ref{}, \ref{} valgono `lambda-astraendo' $t$, cioè 
+	\[\pair{\pi_A}{\pi_B} = \id_{A\times B} \]
+\end{itemize}
 \end{hExample}
 In questi termini, il prodotto è descritto come una operazione di costruzione di un insieme a partire da due dati: questo è ragionevole, dato che abbiamo già visto in \ref{} che esiste un funtore
 \[\dmFun{\blank\times\blank}{\ctSet\times\ctSet}{\ctSet.}\]
@@ -223,7 +229,18 @@ In sintesi, abbiamo enunciato e dimostrato la
 \begin{definition}[Proprietà universale del prodotto cartesiano di insiemi]
 	\Todo{Proprietà universale del prodotto cartesiano di insiemi}
 \end{definition}
-\subsection*{Quozienti in \(\ctSet\)}\label{quoz_in_set}
+\subsection{Prodotti in altre categorie `concrete'}
+\subsection{Somme (coprodotti) in \(\ctSet\)}\label{sum_in_set}
+
+\begin{esercizi}
+	\item
+	\item
+	\item
+	\item
+	\item
+\end{esercizi}
+\section{Equalizzatori e coequalizzatori in \(\ctSet\)}
+\Todo{}
 La seconda costruzione che vogliamo esaminare è quella dell'\emph{insieme quoziente}. Il punto di partenza, in questo caso, è una relazione di equivalenza \(R\) su un insieme \(S\), ovvero una relazione \(R\subseteq S\times S\) che sia riflessiva, simmetrica e transitiva. L'insieme quoziente, di solito denotato \(S/R\), è l'insieme delle \emph{classi di equivalenza}:
 \[
 	S/R=\{[s]_R\mid s\in S\}
@@ -236,15 +253,8 @@ dove \([s]_R=\{s'\in S\mid sRs'\}\). Anche in questo caso, come per il prodotto,
 Allora, \(s R s'\) se, e solo se, esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\); e dunque, \(q_R(s)=q_R(s')\) se, e solo se, esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\).
 
 Si osservi che \(q_R\cmp r_1=q_R\cmp r_2 \), ossia \(q_R\) \emph{equalizza} \(r_1\) e \(r_2\). Di più. Con un linguaggio che impareremo a utilizzare in questo capitolo, affermiamo che la coppia \((S/R,q_R\colon S\to S/R)\) \emph{è universale rispetto a questa proprietà}, cioè, per ogni altra coppia \((X,f\colon S\to X)\) tale che  \(f\cmp r_1=f\cmp r_2 \), esiste un'unica funzione \(\bar f\colon S/R\to X\) tale che \(\bar f\cmp q_R= f\). Si noti che questa funzione \(\bar f\) non è altro che la funzione \(f\) definita sulle classi, i.e.\ \(\bar f([s]_R)= f(s)\). Nel linguaggio matematico corrente si dice che \(f\) \emph{passa al quoziente}, mentre la condizione imposta corrisponde al fatto che \(f\) sia ben definita sulle classi di equivalenza di \(R\).
-\begin{esercizi}
-	\item
-	\item
-	\item
-	\item
-	\item
-\end{esercizi}
-\section{Equalizzatori e coequalizzatori in \(\ctSet\)}
 \Todo{}
+\subsection{Equalizzatori e coequalizzatori in categorie `concrete'}
 \begin{esercizi}
 	\item
 	\item
@@ -253,10 +263,24 @@ Si osservi che \(q_R\cmp r_1=q_R\cmp r_2 \), ossia \(q_R\) \emph{equalizza} \(r_
 	\item
 \end{esercizi}
 \section{Prodotti e somme in una categoria}
-
-\subsection{Prodotti binari, proprietà universale del prodotto}
 La descrizione del prodotto di due insiemi data in \ref{prod_in_Set} si presta a essere generalizzata a una generica categoria.
-
+\begin{definition}
+	\Todo{Prodotto in $\ctC$}
+\end{definition}
+\begin{definition}
+	\Todo{Coprodotto in $\ctC$}
+\end{definition}
+Si vede ora che le due definizioni sono duali in questo senso:
+\begin{lemma}
+	prodotti in $\ctC$ sono coprodotti in $\ctC^\op$; coprodotti in $\ctC$ sono prodotti in $\ctC^\op$.
+\end{lemma}
+\begin{theorem}
+	\Todo{Prodotto come oggetto terminale.}
+\end{theorem}
+\begin{corollary}
+	\Todo{Unicità a meno di iso del prodotto.}
+\end{corollary}
+\color{red}
 \begin{definition}[Prodotti binari]
 	Sia \(\ctC\) una categoria, e siano \(A\) e \(B\) due oggetti di \(\ctC\). Un prodotto di \(A\) e \(B\) è una spanna
 	\[
@@ -467,7 +491,7 @@ In \(\ctSet\), ad esempio, il prodotto di due funzioni \(f,g\) fa esattamente qu
 	\]
 	In modo del tutto analogo si definiscono i prodotti binari nelle categorie di modelli  \ref{ex_cat_sigma_strutture}, come \(\ctRing\), \(\ctRng\), \(\ctcRing\), \(\ctVect\), \dots
 \end{example}
-
+\color{black}
 
 \subsection{Prodotti \(I\)-ari}
 
