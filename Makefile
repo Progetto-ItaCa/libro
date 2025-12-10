@@ -6,18 +6,18 @@ hash:
 # 	$(MAKE) -B main.pdf
 
 itaca.pdf: itaca.dtx
-	latexmk -pdf -gg $<
+	latexmk -shell-escape -pdf -gg $<
 
 main.pdf: main.tex itaca.sty
-	latexmk -pdf main.tex
+	latexmk -shell-escape -pdf main.tex
 
 watch:
-	texfot latexmk -pdf -pvc main.tex | grep -v "Missing character: There is no ; in font nullfont"
+	texfot latexmk -shell-escape -pdf -pvc main.tex | grep -v "Missing character: There is no ; in font nullfont"
 
 book:
 	for f in cap/*.tex; do touch "${f%.tex}.aux"; done
 	for f in cap/01/*.tex; do touch "${f%.tex}.aux"; done
-	texfot latexmk -pdf main.tex | grep -v "Missing character: There is no ; in font nullfont"
+	texfot latexmk -shell-escape -pdf main.tex | grep -v "Missing character: There is no ; in font nullfont"
 
 clean:
 	texfot latexmk -C main.tex
