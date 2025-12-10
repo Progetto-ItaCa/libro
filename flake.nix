@@ -54,7 +54,6 @@
             mathtools
             metafont
             microtype
-            minted
             multirow
             nextpage
             pgf
@@ -67,7 +66,6 @@
             turnstile
             ucs
             underscore
-            upquote
             varwidth
             xcolor
             xkeyval
