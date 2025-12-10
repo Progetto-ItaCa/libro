@@ -40,7 +40,11 @@ look_index:
 	@cd cap/01/sec && \
 	grep -i -r --color=auto "index.*$(word)" .
 
-work: book	view watch
+work: 
+	git pull
+	$(MAKE) book	
+	$(MAKE) view 
+	$(MAKE) watch
 
 board:
 	evince whiteboard.pdf &
