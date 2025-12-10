@@ -67,6 +67,7 @@
             turnstile
             ucs
             underscore
+            upquote
             varwidth
             xcolor
             xkeyval
