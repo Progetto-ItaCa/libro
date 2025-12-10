@@ -346,13 +346,14 @@ Ora, dare una famiglia di insiemi \(\tilde M(a,b)\) al variare di \(A\times B\) 
 \end{example}
 \begin{example}[Sui funtori liberi]\label{funtori_liberi}\index{Funtore!--- monoide libero}
 	Ogni segnatura algebrica \((\Omega,a)\) ammette \emph{modelli liberi}, nel senso che è possibile definire un funtore \(\ctSet\fun\ctMod(\Omega,a)\) che soddisfa una certa proprietà (di `aggiunzione', si vedrà nel capitolo \ref{cap_aggiunti}). Esiste un modo uniforme di costruire questo funtore data la segnatura \((\Omega,a)\), ma questo livello di generalità è prematuro ora. Ci concentriamo su un esempio tra i più elementari, e tuttavia esemplificativo della procedura generale, che è stato già delineato in \ref{mongruppi_liberi}: il \emph{monoide libero} \(E^*\) su un insieme \(E\) definisce un funtore \(\ctSet\fun\ctMon\), dato che una funzione \(f : X\to Y\) ha l'ovvia `estensione' \(f^* : X^*\to Y^*\) che manda una parola \([\tup xn{}]\) nella parola \([\tup {fx}n{}]\). Le proprietà \ref{f_1} ed \ref{f_2} di \ref{def_funtore} sono immediate da verificare. Nella maggior parte dei linguaggi di programmazione funzionale si vede la definizione di una funzione $\textsf{map } f : X^* \to Y^*$ per `induzione strutturale' sulle liste. Similmente a come i numeri naturali sono definiti `per induzione' dalla regola $n$ è zero, oppure è il successore di un numero naturale (che a sua volta, è zero, e allora $n$ era quel che si chiama `1'; oppure è il successore di un numero naturale, che a sua volta\dots) le liste di $X^*$ sono definite così: una lista è vuota, oppure è della forma $x$ concatenato con una coda, che è a sua volta una lista. Allora, 
-	\begin{minted}{haskell}
-map :: (a -> b) -> [a] -> [b]
--- Caso base
-map f [] = []
--- Passo induttivo
-map f (x : xs) = f x : map f xs
-	\end{minted}
+% 	\begin{minted}{haskell}
+% map :: (a -> b) -> [a] -> [b]
+% -- Caso base
+% map f [] = []
+% -- Passo induttivo
+% map f (x : xs) = f x : map f xs
+% 	\end{minted}
+\Todo{c'è uno snippet di codice commentato qui dentro}
 	definisce proprio la funzione \([\tup xn{}]\mapsto [\tup {fx}n{}]\).
 \end{example}
 \begin{definition}[La categoria delle categorie]\label{ex_cat_cat}\index{Categoria!--- delle categorie}
