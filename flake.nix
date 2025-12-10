@@ -54,6 +54,7 @@
             mathtools
             metafont
             microtype
+            minted
             multirow
             nextpage
             pgf
