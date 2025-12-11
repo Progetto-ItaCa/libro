@@ -6,42 +6,42 @@ Classicamente, l'oggetto di studio dell'algebra sono le strutture algebriche. Un
 ognuna delle quali dipende da un numero finito di variabili, che soddisfano certe equazioni.
 
 \begin{examples}\label{esempi_strutture_alg}\leavevmode
-	\begin{enumerate}
-		\item Un monoide è un insieme \(A\) con un'operazione binaria \(\circ \colon A \times A \to A\) e un elemento specificato \(e \in A\). Tali
-		      operazioni devono soddisfare tre equazioni:
-		      \[
-			      x \circ (y \circ z) = (x \circ y) \circ z, \; x \circ e = x = e \circ x
-		      \]
-		\item Per ottenere un gruppo, si aggiunge alla struttura di monoide un'operazione unaria \((-)^{-1} \colon A \to A\) e si richiedono, in più
-		      delle equazioni di monoide, le due equazioni
-		      \[
-			      x \circ x^{-1} = e = x^{-1} \circ x
-		      \]
-		\item Un gruppo abeliano è definito come un gruppo a cui si aggiunge l'equazione
-		      \[
-			      x \circ y = y \circ x
-		      \]
-	\end{enumerate}
+ \begin{enumerate}
+  \item Un monoide è un insieme \(A\) con un'operazione binaria \(\circ \colon A \times A \to A\) e un elemento specificato \(e \in A\). Tali
+        operazioni devono soddisfare tre equazioni:
+        \[
+         x \circ (y \circ z) = (x \circ y) \circ z, \; x \circ e = x = e \circ x
+        \]
+  \item Per ottenere un gruppo, si aggiunge alla struttura di monoide un'operazione unaria \((-)^{-1} \colon A \to A\) e si richiedono, in più
+        delle equazioni di monoide, le due equazioni
+        \[
+         x \circ x^{-1} = e = x^{-1} \circ x
+        \]
+  \item Un gruppo abeliano è definito come un gruppo a cui si aggiunge l'equazione
+        \[
+         x \circ y = y \circ x
+        \]
+ \end{enumerate}
 \end{examples}
 
 Tre approcci che cercano di studiare in modo unificato le proprietà generali delle strutture algebriche sono proposti, con livelli diversi di
 accuratezza, in questo capitolo.
 \begin{enumerate}
-	\item L'approccio più intuitivo, proprio dell'algebra universale. Storicamente, è il primo a essere stato sviluppato.
-	\item L'approccio della semantica funtoriale, introdotto, nella sua versione originale, de F.W. Lawvere. è più generale e, per certi versi, più
-	      maneggevole dell'approccio dell'algebra universale.
-	\item L'approccio più generale che usa le monadi (soprattutto le monadi finitarie sulla categoria degli insiemi).
+ \item L'approccio più intuitivo, proprio dell'algebra universale. Storicamente, è il primo a essere stato sviluppato.
+ \item L'approccio della semantica funtoriale, introdotto, nella sua versione originale, de F.W. Lawvere. è più generale e, per certi versi, più
+       maneggevole dell'approccio dell'algebra universale.
+ \item L'approccio più generale che usa le monadi (soprattutto le monadi finitarie sulla categoria degli insiemi).
 \end{enumerate}
 
 \begin{warning}\label{caveat_monadi_libro_relative}
-	Per non dimenticare di parlarne.
-	\begin{enumerate}
-		\item Il contenuto del capitolo segue il libro con Adamek e Rosicky per i risultati, la presentazione se ne discosta e segue piuttosto il corso di
-		      algebra universale che insegno a LLN.
-		\item Ho accennato all'approccio monadico, ma per ora non l'ho incluso e non so se lo farò. Da discutere insieme.
-		\item Non ci sono risultati originali. Se si vuole includere qualcosa di un pochino originale posso cercare di relativizzare alcuni risultati passando
-		      alle teorie algebriche basate su una teoria algebrica di base, un po' come le teorie algebriche a una sorte sono basate sulla ``teoria degli insiemi''.
-	\end{enumerate}
+ Per non dimenticare di parlarne.
+ \begin{enumerate}
+  \item Il contenuto del capitolo segue il libro con Adamek e Rosicky per i risultati, la presentazione se ne discosta e segue piuttosto il corso di
+        algebra universale che insegno a LLN.
+  \item Ho accennato all'approccio monadico, ma per ora non l'ho incluso e non so se lo farò. Da discutere insieme.
+  \item Non ci sono risultati originali. Se si vuole includere qualcosa di un pochino originale posso cercare di relativizzare alcuni risultati passando
+        alle teorie algebriche basate su una teoria algebrica di base, un po' come le teorie algebriche a una sorte sono basate sulla ``teoria degli insiemi''.
+ \end{enumerate}
 \end{warning}
 
 \section{Le \(\Sigma\)-algebre}\label{sec_sigma-alg}
@@ -49,81 +49,81 @@ accuratezza, in questo capitolo.
 In algebra universale si comincia formalizzando l'idea di insieme munito di operazioni finitarie.
 
 \begin{definition}\label{def_sigma_alg}
-	\hfill
-	\begin{enumerate}
-		\item Una segnatura è una coppia data da un insieme, i cui elementi sono da pensare come simboli di operazioni, e da una funzione che
-		      attribuisce a ogni simbolo di funzione la sua arietà, cioè il numero di variabili da cui dipende l'operazione
-		      \[
-			      (\Sigma \in \ctSet, \mathrm{ar} \colon \Sigma \to \mathbb N)
-		      \]
-		\item Se \((\Sigma, \mathrm{ar})\) è una segnatura, una \(\Sigma\)-algebra è un insieme munito di una famiglia di operazioni
-		      \[
-			      (X \in \ctSet, \{\sigma^X \colon X^{n} \to X\}_{\sigma \in \Sigma})
-		      \]
-		      dove \(n = \mathrm{ar}(\sigma)\) e \(X^n\) è il prodotto di \(n\) copie di \(X\).
-		\item Un morfismo di \(\Sigma\)-algebre
-		      \[
-			      f \colon (X,\{\sigma^X\}_{\sigma \in \Sigma}) \to (Y,\{\sigma^Y\}_{\sigma \in \Sigma})
-		      \]
-		      è una funzione \(f \colon X \to Y\) tale che, per ogni \(n \in \mathbb N\) e per ogni simbolo di operazione \(\sigma \in \Sigma\) di arietà \(n\),
-		      il diagramma seguente commuta
-		      \[
-			      \xymatrix{ X^{n} \ar[r]^-{f^n} \ar[d]_{\sigma^X} & Y^{n} \ar[d]^{\sigma^Y} \\
-			      X \ar[r]_-{f} & Y
-			      }
-		      \]
-	\end{enumerate}
-	Nel seguito, scriveremo semplicemente \(\Sigma\) per denotare una segnatura e \((X,\sigma^X)\) per denotare una \(\Sigma\)-algebra.
-	Le tre nozioni definite qui sopra compaiono già, a titolo di esempi, nel primo capitolo.
+ \hfill
+ \begin{enumerate}
+  \item Una segnatura è una coppia data da un insieme, i cui elementi sono da pensare come simboli di operazioni, e da una funzione che
+        attribuisce a ogni simbolo di funzione la sua arietà, cioè il numero di variabili da cui dipende l'operazione
+        \[
+         (\Sigma \in \ctSet, \mathrm{ar} \colon \Sigma \to \mathbb N)
+        \]
+  \item Se \((\Sigma, \mathrm{ar})\) è una segnatura, una \(\Sigma\)-algebra è un insieme munito di una famiglia di operazioni
+        \[
+         (X \in \ctSet, \{\sigma^X \colon X^{n} \to X\}_{\sigma \in \Sigma})
+        \]
+        dove \(n = \mathrm{ar}(\sigma)\) e \(X^n\) è il prodotto di \(n\) copie di \(X\).
+  \item Un morfismo di \(\Sigma\)-algebre
+        \[
+         f \colon (X,\{\sigma^X\}_{\sigma \in \Sigma}) \to (Y,\{\sigma^Y\}_{\sigma \in \Sigma})
+        \]
+        è una funzione \(f \colon X \to Y\) tale che, per ogni \(n \in \mathbb N\) e per ogni simbolo di operazione \(\sigma \in \Sigma\) di arietà \(n\),
+        il diagramma seguente commuta
+        \[
+         \xymatrix{ X^{n} \ar[r]^-{f^n} \ar[d]_{\sigma^X} & Y^{n} \ar[d]^{\sigma^Y} \\
+         X \ar[r]_-{f} & Y
+         }
+        \]
+ \end{enumerate}
+ Nel seguito, scriveremo semplicemente \(\Sigma\) per denotare una segnatura e \((X,\sigma^X)\) per denotare una \(\Sigma\)-algebra.
+ Le tre nozioni definite qui sopra compaiono già, a titolo di esempi, nel primo capitolo.
 \end{definition}
 
 \begin{examples}\label{esempi_sigma_alg}
-	\hfill
-	\begin{enumerate}
-		\item Se \(\Sigma\) è l'insieme vuoto, una \(\Sigma\)-algebra è semplicemente un insieme e un morfismo di \(\Sigma\)-algebre è
-		      semplicemente una funzione.
-		\item Per descrivere certe strutture algebriche occorrono un'infinità di operazioni. Per esempio, se \(R\) è un anello, per descrivere un
-		      \(R\)-modulo occorre aggiungere alla segnatura dei gruppi abeliani un simbolo di operazione unaria \(\widehat{r}\) per ogni elemento \(r \in R\).
-		      Tali simboli si interpretano come le funzioni \(\widehat{r} \colon M \to M, \widehat{r}(x) = r \cdot x\), dove il simbolo \(\cdot\) è l'azione di \(R\)
-		      sul gruppo abeliano \(M\).
-		\item Attenzione, se \(\Sigma\) è, per esempio, la segnatura dei monoidi, ogni monoide fornisce una \(\Sigma\)-algebra, ma una \(\Sigma\)-algebra
-		      non è automaticamente un monoide: mancano le equazioni di associatività e di elemento neutro.
-	\end{enumerate}
+ \hfill
+ \begin{enumerate}
+  \item Se \(\Sigma\) è l'insieme vuoto, una \(\Sigma\)-algebra è semplicemente un insieme e un morfismo di \(\Sigma\)-algebre è
+        semplicemente una funzione.
+  \item Per descrivere certe strutture algebriche occorrono un'infinità di operazioni. Per esempio, se \(R\) è un anello, per descrivere un
+        \(R\)-modulo occorre aggiungere alla segnatura dei gruppi abeliani un simbolo di operazione unaria \(\widehat{r}\) per ogni elemento \(r \in R\).
+        Tali simboli si interpretano come le funzioni \(\widehat{r} \colon M \to M, \widehat{r}(x) = r \cdot x\), dove il simbolo \(\cdot\) è l'azione di \(R\)
+        sul gruppo abeliano \(M\).
+  \item Attenzione, se \(\Sigma\) è, per esempio, la segnatura dei monoidi, ogni monoide fornisce una \(\Sigma\)-algebra, ma una \(\Sigma\)-algebra
+        non è automaticamente un monoide: mancano le equazioni di associatività e di elemento neutro.
+ \end{enumerate}
 \end{examples}
 
 \begin{proposition}\label{prop_cat_sigma_alg}
-	Sia \(\Sigma\) una segnatura.
-	\begin{enumerate}
-		\item Le \(\Sigma\)-algebre e i loro morfismi costituiscono una categoria che denoteremo \(\ctSAlg\).
-		\item L'azione di associare a ogne \(\Sigma\)-algebra \((X,\sigma^X)\) l'insieme soggiacente \(X\) si estende a un funtore concreto, cioè fedele e
-		      conservativo
-		      \[
-			      U_{\Sigma} \colon \ctSAlg \fun \ctSet
-		      \]
-	\end{enumerate}
+ Sia \(\Sigma\) una segnatura.
+ \begin{enumerate}
+  \item Le \(\Sigma\)-algebre e i loro morfismi costituiscono una categoria che denoteremo \(\ctSAlg\).
+  \item L'azione di associare a ogne \(\Sigma\)-algebra \((X,\sigma^X)\) l'insieme soggiacente \(X\) si estende a un funtore concreto, cioè fedele e
+        conservativo
+        \[
+         U_{\Sigma} \colon \ctSAlg \fun \ctSet
+        \]
+ \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{proposition}\label{prop_alg_libera}
-	Sia \(\Sigma\) una segnatura. Il funtore dimenticante \(U_{\Sigma} \colon \ctSAlg \fun \ctSet\) ammette aggiunto sinistro
-	\[
-		F_{\Sigma} \colon \ctSet \fun \ctSAlg
-	\]
+ Sia \(\Sigma\) una segnatura. Il funtore dimenticante \(U_{\Sigma} \colon \ctSAlg \fun \ctSet\) ammette aggiunto sinistro
+ \[
+  F_{\Sigma} \colon \ctSet \fun \ctSAlg
+ \]
 \end{proposition}
 
 \begin{proof}
-	Costruzione esplicita del funtore \(F_{\Sigma}\). To be inserted.
+ Costruzione esplicita del funtore \(F_{\Sigma}\). To be inserted.
 \end{proof}
 
 \begin{proposition}\label{prop_alg_compl}
-	Sia \(\Sigma\) una segnatura. La categoria \(\ctSAlg\) è completa.
+ Sia \(\Sigma\) una segnatura. La categoria \(\ctSAlg\) è completa.
 \end{proposition}
 
 \begin{proof}
-	Poiché il funtore dimenticante \(U_{\Sigma}\) preserva i limiti \ldots To be inseted.
+ Poiché il funtore dimenticante \(U_{\Sigma}\) preserva i limiti \ldots To be inseted.
 \end{proof}
 
 La categoria delle \(\Sigma\)-algebre è anche cocompleta. La prova di tale fatto è più elaborata e sarà vista più tardi in questo capitolo.
@@ -134,85 +134,85 @@ Una varietà (equazionale) di \(\Sigma\)-algebre è la sottocategoria piena di \
 assegnato di equazioni. Per esempio, se \(\Sigma\) è la segnatura dei monoidi, i monoidi sono esattamente la varietà delle \(\Sigma\)-algebre
 che soddisfano le tre vequazioni
 \[
-	x \circ (y \circ z) = (x \circ y) \circ z, \; x \circ e = x = e \circ x
+ x \circ (y \circ z) = (x \circ y) \circ z, \; x \circ e = x = e \circ x
 \]
 Per esprimere in tutta generalità questa idea, bisogna formalizzare la nozione di equazione.
 
 \begin{definition}\label{def_equaz_alg}
-	Sia \(\Sigma\) una segnatura.
-	\begin{enumerate}
-		\item Un'equazione (in \(n\) variabili) è una coppia
-		      \[
-			      t_1,t_2 \in F_{\Sigma}(\{x_1,\ldots,x_n\})
-		      \]
-		\item Una \(\Sigma\)-algebra \((A,\sigma^A)\) soddisfa l'equazione \((t_1;t_2)\) se, per ogni interpretazione (= funzione)
-		      \(f \colon \{x_1,\ldots,x_n\} \to A\),
-		      si ha \(\overline{f}(t_1) = \overline{f}(t_2)\), dove
-		      \[
-			      \overline{f} \colon F_{\Sigma}(\{x_1,\ldots,x_n\}) \to A
-		      \]
-		      è il morfismo che corrisponde alla funzione \(f\) nell'aggiunzion \(F_{\Sigma} \dashv U_{\Sigma}\).
-		\item Se \(E\) è un insieme di equazioni, denotiamo con
-		      \[
-			      \ctSEAlg
-		      \]
-		      la sottocategoria piena di \(\ctSAlg\) delle \(\Sigma\)-algebre che soddisfano tutte le equazioni dell'insieme \(E\).
-	\end{enumerate}
+ Sia \(\Sigma\) una segnatura.
+ \begin{enumerate}
+  \item Un'equazione (in \(n\) variabili) è una coppia
+        \[
+         t_1,t_2 \in F_{\Sigma}(\{x_1,\ldots,x_n\})
+        \]
+  \item Una \(\Sigma\)-algebra \((A,\sigma^A)\) soddisfa l'equazione \((t_1;t_2)\) se, per ogni interpretazione (= funzione)
+        \(f \colon \{x_1,\ldots,x_n\} \to A\),
+        si ha \(\overline{f}(t_1) = \overline{f}(t_2)\), dove
+        \[
+         \overline{f} \colon F_{\Sigma}(\{x_1,\ldots,x_n\}) \to A
+        \]
+        è il morfismo che corrisponde alla funzione \(f\) nell'aggiunzion \(F_{\Sigma} \dashv U_{\Sigma}\).
+  \item Se \(E\) è un insieme di equazioni, denotiamo con
+        \[
+         \ctSEAlg
+        \]
+        la sottocategoria piena di \(\ctSAlg\) delle \(\Sigma\)-algebre che soddisfano tutte le equazioni dell'insieme \(E\).
+ \end{enumerate}
 \end{definition}
 
 A questo punto possiamo porci due problemi fondamentali che ci guideranno nello studio delle strutture algebriche.
 \begin{enumerate}
-	\item Sia \(\Sigma\) una segnatura ed \(E\) un insieme di equazioni. La restrizione del funtore dimenticante \(U_{\Sigma}\)
-	      alla sottocategoria \(\ctSEAlg\)
-	      \[
-		      U_{(\Sigma,E)} \colon \ctSEAlg \fun \ctSet
-	      \]
-	      ammette aggiunto sinistro? Poichè le aggiunzioni si compongono, un modo per abbordare tale problema è chidersi
-	      se il funtore d'inclusione
-	      \[
-		      \ctSEAlg \fun \ctSAlg
-	      \]
-	      ammette un aggiunto sinistro. Più in generale, ci si può chiedere se, dati due insieme di equazioni \(E' \subseteq E\),
-	      il funtore d'inclusione piena
-	      \[
-		      \ctSEAlg \fun \ctSEEAlg
-	      \]
-	      ammette un aggiunto a sinistra.
-	\item Come si può riconoscere una varietà di \(\Sigma\)-algebre? Più precisamente, data una sottocategoria piena
-	      \[
-		      \ctA \fun \ctSAlg
-	      \]
-	      quali condizioni su \(\ctA\) assicurano che esista un insieme \(E\) di equazioni e un'equivalenza di categorie \(\ctA \simeq \ctSEAlg\)?
+ \item Sia \(\Sigma\) una segnatura ed \(E\) un insieme di equazioni. La restrizione del funtore dimenticante \(U_{\Sigma}\)
+       alla sottocategoria \(\ctSEAlg\)
+       \[
+        U_{(\Sigma,E)} \colon \ctSEAlg \fun \ctSet
+       \]
+       ammette aggiunto sinistro? Poichè le aggiunzioni si compongono, un modo per abbordare tale problema è chidersi
+       se il funtore d'inclusione
+       \[
+        \ctSEAlg \fun \ctSAlg
+       \]
+       ammette un aggiunto sinistro. Più in generale, ci si può chiedere se, dati due insieme di equazioni \(E' \subseteq E\),
+       il funtore d'inclusione piena
+       \[
+        \ctSEAlg \fun \ctSEEAlg
+       \]
+       ammette un aggiunto a sinistra.
+ \item Come si può riconoscere una varietà di \(\Sigma\)-algebre? Più precisamente, data una sottocategoria piena
+       \[
+        \ctA \fun \ctSAlg
+       \]
+       quali condizioni su \(\ctA\) assicurano che esista un insieme \(E\) di equazioni e un'equivalenza di categorie \(\ctA \simeq \ctSEAlg\)?
 \end{enumerate}
 
 Una risposta al secondo problema è fornita dal teorema di Borkhoff che enunciamo qui di seguito ma di cui, per il momento,
 diamo solo una dimostrazione parziale. La dimostrazione completa sarè data più tardi nel corso di questo capitolo.
 
 \begin{theorem}\label{teo_Birkhoff_v1}
-	Sia \(\Sigma\) una segnatura e sia
-	\[
-		\ctA \fun \ctSAlg
-	\]
-	una sottocategoria piena. Le condizioni seguenti sono equivalenti:
-	\begin{enumerate}
-		\item esiste un insieme \(E\) di equazioni e un'equivalenza di categorie \(\ctA \simeq \ctSEAlg\);
-		\item \(\ctA\) è chiusa in \(\ctSAlg\) per
-		      \begin{enumerate}
-			      \item prodotti,
-			      \item sottoggetti,
-			      \item immagini epimorfiche.
-		      \end{enumerate}
-	\end{enumerate}
+ Sia \(\Sigma\) una segnatura e sia
+ \[
+  \ctA \fun \ctSAlg
+ \]
+ una sottocategoria piena. Le condizioni seguenti sono equivalenti:
+ \begin{enumerate}
+  \item esiste un insieme \(E\) di equazioni e un'equivalenza di categorie \(\ctA \simeq \ctSEAlg\);
+  \item \(\ctA\) è chiusa in \(\ctSAlg\) per
+        \begin{enumerate}
+         \item prodotti,
+         \item sottoggetti,
+         \item immagini epimorfiche.
+        \end{enumerate}
+ \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-	Ci limitiamo per il momento all'implicazione più semplice da dimostrare, cioè 1. \(\Rightarrow\) 2. To be inserted.
+ Ci limitiamo per il momento all'implicazione più semplice da dimostrare, cioè 1. \(\Rightarrow\) 2. To be inserted.
 \end{proof}
 
 \begin{warning}\label{caveat_reg_ex}
-	A questo punto, per procedere, mi occorrono le nozioni di epi regolare, categoria regolare, categoria esatta, categoria
-	ben copotenziata nel senso di \ref{def_cat_ben_potenziata}. Introdurrò, con qualche esempio, quello che non compare già
-	nei capitoli precedenti.
+ A questo punto, per procedere, mi occorrono le nozioni di epi regolare, categoria regolare, categoria esatta, categoria
+ ben copotenziata nel senso di \ref{def_cat_ben_potenziata}. Introdurrò, con qualche esempio, quello che non compare già
+ nei capitoli precedenti.
 \end{warning}
 
 Torniamo ora al problema dell'esistenza dell'aggiunto sinistro al funtore dimenticante \(U_{(\Sigma,E)} \colon \ctSEAlg \fun \ctSet\)
@@ -223,110 +223,110 @@ s'ispira alla situazione dell'inclusione \(\ctAb \fun \ctGrp\). La seconda prova
 Cominciamo con l'approfondire un po' la nostra conoscenza della categoria delle \(\Sigma\)-algebre.
 
 \begin{proposition}\label{prop_alg_reg}
-	Sia \(\Sigma\) una segnatura.
-	\begin{enumerate}
-		\item Gli epi regolari in \(\ctSAlg\) sono esattamente i morfismi suriettivi.
-		\item La categoria \(\ctSAlg\) è regolare.
-		\item La categoria \(\ctSAlg\) è ben copotenziata.
-	\end{enumerate}
+ Sia \(\Sigma\) una segnatura.
+ \begin{enumerate}
+  \item Gli epi regolari in \(\ctSAlg\) sono esattamente i morfismi suriettivi.
+  \item La categoria \(\ctSAlg\) è regolare.
+  \item La categoria \(\ctSAlg\) è ben copotenziata.
+ \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 Occorrono ora due lemmi di carattere generale sulle categorie regolari. Per esprimerli abbiamo bisogno della nozione di
 sottocategoria epiriflessiva.
 
 \begin{definition}\label{def_sottocat_epirifl}
-	Una sottocategoria riflessiva
-	\[
-		\ctA \fun \ctB
-	\]
-	con riflettore \(r \colon \ctB \fun \ctA\) è detta epiriflessiva se, per ogni oggetto \(B \in \ctB\), l'unità \(\eta_B \colon B \to r(B)\)
-	dell'aggiunzione è un epi regolare.
+ Una sottocategoria riflessiva
+ \[
+  \ctA \fun \ctB
+ \]
+ con riflettore \(r \colon \ctB \fun \ctA\) è detta epiriflessiva se, per ogni oggetto \(B \in \ctB\), l'unità \(\eta_B \colon B \to r(B)\)
+ dell'aggiunzione è un epi regolare.
 \end{definition}
 
 \begin{lemma}\label{lemma_caract_epirifl}
-	Sia \(\ctB\) una categoria completa, regolare e ben copotenziata. Una sottocategoria
-	\[
-		\ctA \fun \ctB
-	\]
-	piena e chiusa per isomorfismi è epiriflessiva se e solo se è chiusa per prodotti e sottoggetti.
+ Sia \(\ctB\) una categoria completa, regolare e ben copotenziata. Una sottocategoria
+ \[
+  \ctA \fun \ctB
+ \]
+ piena e chiusa per isomorfismi è epiriflessiva se e solo se è chiusa per prodotti e sottoggetti.
 \end{lemma}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{lemma}\label{lemma_epirifl_reg}
-	Sia \(\ctA \fun \ctB\) una sottocategoria epiriflessiva. Se \(\ctB\) è regolare, allora anche \(\ctA\) è regolare.
+ Sia \(\ctA \fun \ctB\) una sottocategoria epiriflessiva. Se \(\ctB\) è regolare, allora anche \(\ctA\) è regolare.
 \end{lemma}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{corollary}\label{cor_alg_reg}
-	Sia \(\Sigma\) una segnatura.
-	\begin{enumerate}
-		\item La sottocategoria piena \(\ctSEAlg \fun \ctSAlg\) è epiriflessiva.
-		\item Il funtore dimenticante \(U_{(\Sigma,E)} \colon \ctSEAlg \to \ctSet\) ha un aggiunto sinistro che denoteremo
-		      \[
-			      F_{(\Sigma,E)} \colon \ctSet \to \ctSEAlg
-		      \]
-		\item La categoria \(\ctSEAlg\) è completa e regolare.
-	\end{enumerate}
+ Sia \(\Sigma\) una segnatura.
+ \begin{enumerate}
+  \item La sottocategoria piena \(\ctSEAlg \fun \ctSAlg\) è epiriflessiva.
+  \item Il funtore dimenticante \(U_{(\Sigma,E)} \colon \ctSEAlg \to \ctSet\) ha un aggiunto sinistro che denoteremo
+        \[
+         F_{(\Sigma,E)} \colon \ctSet \to \ctSEAlg
+        \]
+  \item La categoria \(\ctSEAlg\) è completa e regolare.
+ \end{enumerate}
 \end{corollary}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 Terminiamo questa sezione con una proprietà la cui dimostrazione si basa sulla descrizione delle coppie nucleo e degli
 epi regolari in \(\ctSEAlg\).
 
 \begin{proposition}\label{prop_alg_ex}
-	Sia \(\Sigma\) una segnatura e \(E\) un insieme di equazioni. La categoria \(\ctSEAlg\) è esatta.
+ Sia \(\Sigma\) una segnatura e \(E\) un insieme di equazioni. La categoria \(\ctSEAlg\) è esatta.
 \end{proposition}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \section{Esempi a proposito del teorema di Birkhoff}\label{sec_ex_th_Birkhoff}
 
 \begin{example}\label{esempio_torsionfree}
-	Questo esempio mostra che essere una sottocategoria epiriflessiva di una varietà di algebre non garantisce che la categoria
-	sia lei stessa una varietà di algebre. Consideriamo la categoria \(\ctAb\) dei gruppi abeliani e la sottocategoria poena dei gruppi
-	abeliani privi di torsione \ldots To be inserted.
+ Questo esempio mostra che essere una sottocategoria epiriflessiva di una varietà di algebre non garantisce che la categoria
+ sia lei stessa una varietà di algebre. Consideriamo la categoria \(\ctAb\) dei gruppi abeliani e la sottocategoria poena dei gruppi
+ abeliani privi di torsione \ldots To be inserted.
 \end{example}
 
 \begin{example}\label{esempio_Birkhoff_reticoli}
-	In questo esempio ci facciamo guidare dal teorema di Birkhoff per riscoprire la ben nota descrizione equazionale dei reticoli \ldots
-	To be inserted.
+ In questo esempio ci facciamo guidare dal teorema di Birkhoff per riscoprire la ben nota descrizione equazionale dei reticoli \ldots
+ To be inserted.
 \end{example}
 
 \begin{example}\label{esempio_grafi_riflessivi}
-	Questo esempio è la versione insiemistica di un risultato più complesso che riguarda i moduli incrociati di gruppi. Quello che
-	vogliamo ottenere è una descrizione equazionale della categoria dei grafi riflessivi \ldots To be inserted.
+ Questo esempio è la versione insiemistica di un risultato più complesso che riguarda i moduli incrociati di gruppi. Quello che
+ vogliamo ottenere è una descrizione equazionale della categoria dei grafi riflessivi \ldots To be inserted.
 \end{example}
 
 \begin{example}\label{esempio_grafi_noneq}
-	In considerazione dell'esempio precedente, ci si potrebbe chiedere se la categoria dei grafi può essere anche lei descritta come una
-	varietà di \(\Sigma\)-algebre. La risposta è negativa. Infatti il seguente diagramma motra che, nella categoria dei grafi, l'oggetto terminale
-	ha un sottoggetto che non è né iniziale né terminale, in contraddizione con il lemma \ref{lemma_sottogg_term}
-	\[
-		diagramma
-	\]
+ In considerazione dell'esempio precedente, ci si potrebbe chiedere se la categoria dei grafi può essere anche lei descritta come una
+ varietà di \(\Sigma\)-algebre. La risposta è negativa. Infatti il seguente diagramma motra che, nella categoria dei grafi, l'oggetto terminale
+ ha un sottoggetto che non è né iniziale né terminale, in contraddizione con il lemma \ref{lemma_sottogg_term}
+ \[
+  diagramma
+ \]
 \end{example}
 
 \begin{lemma}\label{lemma_sottogg_term}
-	In una varietà di \(\Sigma\)-algebre, gli unici sottoggetti dell'oggetto terminale sono l'oggetto terminale e l'oggetto iniziale.
+ In una varietà di \(\Sigma\)-algebre, gli unici sottoggetti dell'oggetto terminale sono l'oggetto terminale e l'oggetto iniziale.
 \end{lemma}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \section{Le teorie algebriche}\label{sec_teorie_alg}
@@ -339,55 +339,55 @@ categoria equivalente a una categoria piccola può non essere piccola. Chiamiamo
 che è equivalente a una categoria piccola.
 
 \begin{definition}\label{def_teoria_alg}
-	Una teoria algebrica è una categoria essenzialmente piccola e con i prodotti finiti.
+ Una teoria algebrica è una categoria essenzialmente piccola e con i prodotti finiti.
 \end{definition}
 
 \begin{example}\label{esempio_teoria_set}
-	La teoria degli insiemi è la categoria \(\ctN\) duale della categoria \(\ctFin\) degli insiemi finiti. La categoria \(\ctFin\) ha i coprodotti
-	finiti poiché ogni \(n \in \mathbb N\) è il coprodotto di \(n\) copie di 1. Ne segue que la sua duale \(\ctN\) è una teoria algebrica.
+ La teoria degli insiemi è la categoria \(\ctN\) duale della categoria \(\ctFin\) degli insiemi finiti. La categoria \(\ctFin\) ha i coprodotti
+ finiti poiché ogni \(n \in \mathbb N\) è il coprodotto di \(n\) copie di 1. Ne segue que la sua duale \(\ctN\) è una teoria algebrica.
 \end{example}
 
 \begin{example}\label{esempio_teoria_sigma}
-	Sia \(\Sigma\) una segnatura. Consideriamo la restrizione del funtore \(\Sigma\)-algebra libera alla sottocategoria degli insiemi finiti
-	\[
-		\xymatrix{\ctFin \ar[r] & \ctSet \ar[rr]^-{F_{\Sigma}} & & \ctSAlg}
-	\]
-	e la sottocategoria piena \(\ctSAlg_{\mathrm{lfg}}\) delle \(\Sigma\)-algebre libere finitamente generate: gli oggetti sono i numeri naturali e le frecce
-	\(n \to m\) sono i morfismi \(F_{\Sigma}(n) \to F_{\Sigma}(m)\). Poiché \(F_{\Sigma}\) preserva i coprodotti (è un aggiunto sinistro), la
-	categoria \(\ctSAlg_{\mathrm{lfg}}\) ha i coprodotti finiti. La sua duale è dunque una teoria algebrica che denotiamo con \(\ctT_{\Sigma}\) e
-	chiamiamo la teoria algebrica associata alla segnatura \(\Sigma\).
+ Sia \(\Sigma\) una segnatura. Consideriamo la restrizione del funtore \(\Sigma\)-algebra libera alla sottocategoria degli insiemi finiti
+ \[
+  \xymatrix{\ctFin \ar[r] & \ctSet \ar[rr]^-{F_{\Sigma}} & & \ctSAlg}
+ \]
+ e la sottocategoria piena \(\ctSAlg_{\mathrm{lfg}}\) delle \(\Sigma\)-algebre libere finitamente generate: gli oggetti sono i numeri naturali e le frecce
+ \(n \to m\) sono i morfismi \(F_{\Sigma}(n) \to F_{\Sigma}(m)\). Poiché \(F_{\Sigma}\) preserva i coprodotti (è un aggiunto sinistro), la
+ categoria \(\ctSAlg_{\mathrm{lfg}}\) ha i coprodotti finiti. La sua duale è dunque una teoria algebrica che denotiamo con \(\ctT_{\Sigma}\) e
+ chiamiamo la teoria algebrica associata alla segnatura \(\Sigma\).
 
-	Osserviamo subito che
-	\begin{align*}
-		\ctT_{\Sigma}(n,m) & = \ctT_{\Sigma}(n,1 \times \ldots \times 1) \simeq \ctT_{\Sigma}(n,1)^m                    \\
-		\ctT_{\Sigma}(n,1) & = \ctSAlg(F_{\Sigma}(1),F_{\Sigma}(n)) \simeq \ctSet(1,F_{\Sigma}(n)) \simeq F_{\Sigma}(n)
-	\end{align*}
-	e che, in tale biiezione, la variabile \(x_i \in \{x_1,\ldots,x_n\} \subseteq F_{\Sigma}(n)\) corrisponde alla proiezione
-	\(\pi_i \in \ctT_{\Sigma}(n,1) = \ctT_{\Sigma}(1 \times \ldots \times 1,1)\). \\
-	Osserviamo anche che questo esempio generalizza l'esempio \ref{esempio_teoria_set}: se \(\Sigma = \emptyset\), allora \(\ctSAlg = \ctSet\),
-	il funtore \(F_{\Sigma}\) è il funtore identico e quindi \(\ctT_{\Sigma} = \ctN\).
+ Osserviamo subito che
+ \begin{align*}
+  \ctT_{\Sigma}(n,m) & = \ctT_{\Sigma}(n,1 \times \ldots \times 1) \simeq \ctT_{\Sigma}(n,1)^m                    \\
+  \ctT_{\Sigma}(n,1) & = \ctSAlg(F_{\Sigma}(1),F_{\Sigma}(n)) \simeq \ctSet(1,F_{\Sigma}(n)) \simeq F_{\Sigma}(n)
+ \end{align*}
+ e che, in tale biiezione, la variabile \(x_i \in \{x_1,\ldots,x_n\} \subseteq F_{\Sigma}(n)\) corrisponde alla proiezione
+ \(\pi_i \in \ctT_{\Sigma}(n,1) = \ctT_{\Sigma}(1 \times \ldots \times 1,1)\). \\
+ Osserviamo anche che questo esempio generalizza l'esempio \ref{esempio_teoria_set}: se \(\Sigma = \emptyset\), allora \(\ctSAlg = \ctSet\),
+ il funtore \(F_{\Sigma}\) è il funtore identico e quindi \(\ctT_{\Sigma} = \ctN\).
 \end{example}
 
 \begin{definition}\label{def_Talg}
-	\hfill
-	\begin{enumerate}
-		\item Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) delle \(\ctT\)-algebre è la sottocategoria piena della categoria dei funtori
-		      \(\ctSet^{\ctT}\) determinata dai funtori \(\ctT \fun \ctSet\) che preservano i prodotti finiti.
-		\item Diciamo che una categoria \(\ctA\) è algebrica se è equivalente alla categoria \(\ctAlgT\) per una teoria algebrica \(\ctT\).
-	\end{enumerate}
+ \hfill
+ \begin{enumerate}
+  \item Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) delle \(\ctT\)-algebre è la sottocategoria piena della categoria dei funtori
+        \(\ctSet^{\ctT}\) determinata dai funtori \(\ctT \fun \ctSet\) che preservano i prodotti finiti.
+  \item Diciamo che una categoria \(\ctA\) è algebrica se è equivalente alla categoria \(\ctAlgT\) per una teoria algebrica \(\ctT\).
+ \end{enumerate}
 \end{definition}
 
 Grazie all'esempio \ref{esempio_teoria_sigma}, possiamo stabilire un primo legame preciso fra le \(\Sigma\)-algebre e le \(\ctT\)-algebre.
 
 \begin{proposition}\label{prop_sigma_T_alg}
-	Sia \(\Sigma\) una segnatura e sia \(\ctT_{\Sigma}\) la teoria algebrica associata a \(\Sigma\). Si ha un'equivalenza di categorie
-	\[
-		\ctSAlg \simeq \ctAlgT_{\Sigma}
-	\]
+ Sia \(\Sigma\) una segnatura e sia \(\ctT_{\Sigma}\) la teoria algebrica associata a \(\Sigma\). Si ha un'equivalenza di categorie
+ \[
+  \ctSAlg \simeq \ctAlgT_{\Sigma}
+ \]
 \end{proposition}
 
 \begin{proof}
-	Costruzione esplicita dell'equivalenza \(E \colon \ctSAlg \fun \ctAlgT_{\Sigma}\) To be inserted.
+ Costruzione esplicita dell'equivalenza \(E \colon \ctSAlg \fun \ctAlgT_{\Sigma}\) To be inserted.
 \end{proof}
 
 Come caso particolare della proprietà \ref{prop_sigma_T_alg}, otteniamo che \(\ctSet \simeq \ctAlg\ctN\) (si prenda \(\Sigma = \emptyset\)),
@@ -398,79 +398,79 @@ dimostrare tale proprietà, osserviamo che ne segue che la nozione di categoria 
 categoria non è una varietà di \(\Sigma\)-algebre.
 
 \begin{proposition}\label{prop_compl_finprod}
-	Sia \(\ctC\) una categoria piccola. Esiste una teoria algebrica \(\ctT_{\ctC}\) e un funtore
-	\[
-		E_{\mathrm{Th}} \colon \ctC \fun \ctT_{\ctC}
-	\]
-	tale che il funtore di composizione
-	\[
-		- \circ E_{\mathrm{Th}} \colon \ctAlgT_{\ctC} \fun \ctSet^{\ctC}
-	\]
-	è un'equivalenza di categorie.
+ Sia \(\ctC\) una categoria piccola. Esiste una teoria algebrica \(\ctT_{\ctC}\) e un funtore
+ \[
+  E_{\mathrm{Th}} \colon \ctC \fun \ctT_{\ctC}
+ \]
+ tale che il funtore di composizione
+ \[
+  - \circ E_{\mathrm{Th}} \colon \ctAlgT_{\ctC} \fun \ctSet^{\ctC}
+ \]
+ è un'equivalenza di categorie.
 \end{proposition}
 
 \begin{proof}
-	Costruzione della teoria algebrica \(\ctT_{\ctC}\) e del funtore \(\ctC \fun \ctT_{\ctC}\). To be inserted.
+ Costruzione della teoria algebrica \(\ctT_{\ctC}\) e del funtore \(\ctC \fun \ctT_{\ctC}\). To be inserted.
 \end{proof}
 
 \begin{remark}\label{oss_compl_finprod}
-	A una lettura attenta della dimostrazione della proprietà \ref{prop_compl_finprod} ci si rende conto che abbiamo dimostrato un fatto più
-	generale. Se \(\ctB\) è una categoria con i prodotti finiti, la composizione con il funtore \(E_{\mathrm{Th}}\) induce un'equivalenza fra la
-	categoria dei funtori \(\ctT_{\ctC} \fun \ctB\) che preservano i prodotti finiti e la categoria dei funtori \(\ctC \fun \ctB\). Se si sceglie
-	\(\ctB = \ctSet\), si ottiene l'enunciato della proprietà \ref{prop_compl_finprod}. Per questo motivo, il funtore
-	\[
-		E_{\mathrm{Th}} \colon \ctC \fun \ctT_{\ctC}
-	\]
-	merita il nome di completamento per prodotti finiti. è anche chiaro come si deve adattare la costruzione per ottenere il completamento per
-	prodotti arbitrari (piccoli).
+ A una lettura attenta della dimostrazione della proprietà \ref{prop_compl_finprod} ci si rende conto che abbiamo dimostrato un fatto più
+ generale. Se \(\ctB\) è una categoria con i prodotti finiti, la composizione con il funtore \(E_{\mathrm{Th}}\) induce un'equivalenza fra la
+ categoria dei funtori \(\ctT_{\ctC} \fun \ctB\) che preservano i prodotti finiti e la categoria dei funtori \(\ctC \fun \ctB\). Se si sceglie
+ \(\ctB = \ctSet\), si ottiene l'enunciato della proprietà \ref{prop_compl_finprod}. Per questo motivo, il funtore
+ \[
+  E_{\mathrm{Th}} \colon \ctC \fun \ctT_{\ctC}
+ \]
+ merita il nome di completamento per prodotti finiti. è anche chiaro come si deve adattare la costruzione per ottenere il completamento per
+ prodotti arbitrari (piccoli).
 \end{remark}
 
 \section{Limiti in \(\ctAlgT\)}\label{sec_lim_AlgT}
 
 \begin{warning}\label{caveat_lim_functcat}
-	L'esistenza dei limiti nelle categorie algebriche è semplice da stabilire, ma si basa su due argomenti generali :
-	\begin{enumerate}
-		\item Se \(\ctC\) è piccola, la categoria dei funtori \(\ctB^{\ctC}\) è completa (cocompleta) se \(\ctB\) lo è e, in questo caso, i limiti (i
-		      colimiti) in \(\ctB^{\ctC}\) si calcolano punto a punto in \(\ctB\).
-		\item In particolare, la categoria \(\ctSet^{\ctC}\) è completa e cocompleta.
-	\end{enumerate}
-	Questi due argomenti potrebbero trovarsi nei capitoli precedenti. Lo stesso vale per il prossimo lemma, che però è già più specifico.
+ L'esistenza dei limiti nelle categorie algebriche è semplice da stabilire, ma si basa su due argomenti generali :
+ \begin{enumerate}
+  \item Se \(\ctC\) è piccola, la categoria dei funtori \(\ctB^{\ctC}\) è completa (cocompleta) se \(\ctB\) lo è e, in questo caso, i limiti (i
+        colimiti) in \(\ctB^{\ctC}\) si calcolano punto a punto in \(\ctB\).
+  \item In particolare, la categoria \(\ctSet^{\ctC}\) è completa e cocompleta.
+ \end{enumerate}
+ Questi due argomenti potrebbero trovarsi nei capitoli precedenti. Lo stesso vale per il prossimo lemma, che però è già più specifico.
 \end{warning}
 
 \begin{lemma}\label{lemma_Fubini}
-	Siano \(\ctC\) e \(\ctD\) due categorie piccole e sia \(\ctA\) una categoria completa. Consideriamo un funtore
-	\[
-		F \colon \ctC \times \ctD \fun \ctA
-	\]
-	I due morfismi indotti dalle proprietà universali dei limiti
-	\[
-		\lim_{C \in \ctC}(\lim_{D \in \ctD}F(C,D)) \leftrightarrows \lim_{D \in \ctD}(\lim_{C \in \ctC}F(C,D))
-	\]
-	realizzano un isomorfismo. Inoltre, ognuno di tali oggetti è un limite del funtore \(F\).
+ Siano \(\ctC\) e \(\ctD\) due categorie piccole e sia \(\ctA\) una categoria completa. Consideriamo un funtore
+ \[
+  F \colon \ctC \times \ctD \fun \ctA
+ \]
+ I due morfismi indotti dalle proprietà universali dei limiti
+ \[
+  \lim_{C \in \ctC}(\lim_{D \in \ctD}F(C,D)) \leftrightarrows \lim_{D \in \ctD}(\lim_{C \in \ctC}F(C,D))
+ \]
+ realizzano un isomorfismo. Inoltre, ognuno di tali oggetti è un limite del funtore \(F\).
 \end{lemma}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{proposition}\label{prop_lim_AlgT}
-	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è chiusa per limiti in \(\ctSet^{\ctT}\) e quindi è completa e l'inclusione
-	\[
-		\ctAlgT \fun \ctSet^{\ctT}
-	\]
-	preserva i limiti.
+ Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è chiusa per limiti in \(\ctSet^{\ctT}\) e quindi è completa e l'inclusione
+ \[
+  \ctAlgT \fun \ctSet^{\ctT}
+ \]
+ preserva i limiti.
 \end{proposition}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{corollary}\label{cor_mono_AlgT}
-	Sia \(\ctT\) una teoria algebrica. I mono in \(\ctAlgT\) sono le trasformazioni naturali le cui componenti sono funzioni iniettive.
+ Sia \(\ctT\) una teoria algebrica. I mono in \(\ctAlgT\) sono le trasformazioni naturali le cui componenti sono funzioni iniettive.
 \end{corollary}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \section{Colimiti in \(\ctAlgT\)}\label{sec_colim_AlgT}
@@ -479,211 +479,211 @@ La prova che la categoria \(\ctAlgT\) è cocompleta richiede più lavoro che l'a
 molto particolare.
 
 \begin{proposition}\label{prop_Yoneda_alg}
-	Sia \(\ctT\) una teoria algebrica.
-	\begin{enumerate}
-		\item Per ogni oggetto \(X \in \ctT\), il funtore rappresentabile
-		      \[
-			      \ctT(X,-) \colon \ctT \to \ctSet
-		      \]
-		      preserva i prodotti finiti, cioè l'immersione di Yoneda si fattorizza attraverso la sottocategoria delle \(\ctT\)-algebre
-		      \[\xymatrix{\ctT^{\mathrm{op}} \ar[rr]^-{Y_{\ctT}} \ar@{-->}[rd] & & \ctSet^{\ctT} \\
-			      & \ctAlgT \ar[ru] }\]
-		\item Il funtore \(Y_{\ctT} \colon \ctT^{\mathrm{op}} \fun \ctAlgT\) è pieno, fedele e preserva i coprodotti finiti. In particolare,
-		      \(\ctT^{\mathrm{op}}\) è equivalente alla sottocategoria piena di \(\ctAlgT\) dei coprodotti finiti delle \(\ctT\)-algebre rappresentabili
-	\end{enumerate}
+ Sia \(\ctT\) una teoria algebrica.
+ \begin{enumerate}
+  \item Per ogni oggetto \(X \in \ctT\), il funtore rappresentabile
+        \[
+         \ctT(X,-) \colon \ctT \to \ctSet
+        \]
+        preserva i prodotti finiti, cioè l'immersione di Yoneda si fattorizza attraverso la sottocategoria delle \(\ctT\)-algebre
+        \[\xymatrix{\ctT^{\mathrm{op}} \ar[rr]^-{Y_{\ctT}} \ar@{-->}[rd] & & \ctSet^{\ctT} \\
+         & \ctAlgT \ar[ru] }\]
+  \item Il funtore \(Y_{\ctT} \colon \ctT^{\mathrm{op}} \fun \ctAlgT\) è pieno, fedele e preserva i coprodotti finiti. In particolare,
+        \(\ctT^{\mathrm{op}}\) è equivalente alla sottocategoria piena di \(\ctAlgT\) dei coprodotti finiti delle \(\ctT\)-algebre rappresentabili
+ \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{warning}\label{caveat_filtr_sift}
-	Il seguito della sezione si basa sulle nozioni di categoria filtrante e di categoria setacciante (nome da discutere). Introdurrò qua
-	quello che non è già stato trattato a questo proposito nei capitoli precedenti.
+ Il seguito della sezione si basa sulle nozioni di categoria filtrante e di categoria setacciante (nome da discutere). Introdurrò qua
+ quello che non è già stato trattato a questo proposito nei capitoli precedenti.
 \end{warning}
 
 \begin{definition}\label{def_filtr_sift}
-	Siano \(\ctD\) e \(\ctJ\) due categorie piccole e sia
-	\[
-		F \colon \ctD \times \ctJ \fun \ctSet
-	\]
-	un funtore. Consideriamo l'unico morfismo \(\delta\) tale che, per ogni oggetto \(D \in \ctD\) e per ogni oggetto \(j \in \ctJ\), il diagramma seguente commuta
-	\[\xymatrix{\colim_{D \in \ctD}((\lim_{j \in \ctJ}F(D,j)) \ar[rr]^-{\delta} & & \lim_{j \in \ctJ}(\colim_{D \in \ctD}F(D,j)) \ar[d]^{\pi_j} \\
-		\lim_{j \in \ctJ}F(D,j) \ar[u]^{\sigma_D} \ar[rd]_{p_j} & & \colim_{D \in \ctD}F(D,j) \\
-		& F(D,j) \ar[ru]_{s_D} }
-	\]
-	\begin{enumerate}
-		\item Diciamo che la categoria \(\ctD\) è filtrante se \(\delta\) è un isomorfismo per ogni funtore \(F \colon \ctD \times \ctJ \fun \ctSet\)
-		      ogniqualvolta \(\ctJ\) sia finita.
-		\item Diciamo che la categoria \(\ctD\) è setacciante se \(\delta\) è un isomorfismo per ogni funtore \(F \colon \ctD \times \ctJ \fun \ctSet\)
-		      ogniqualvolta \(\ctJ\) sia finita e discreta.
-		\item Un colimite filtrante (setacciante) è il colimite di un funtore il cui dominio è una categoria filtrante (setacciante).
-	\end{enumerate}
+ Siano \(\ctD\) e \(\ctJ\) due categorie piccole e sia
+ \[
+  F \colon \ctD \times \ctJ \fun \ctSet
+ \]
+ un funtore. Consideriamo l'unico morfismo \(\delta\) tale che, per ogni oggetto \(D \in \ctD\) e per ogni oggetto \(j \in \ctJ\), il diagramma seguente commuta
+ \[\xymatrix{\colim_{D \in \ctD}((\lim_{j \in \ctJ}F(D,j)) \ar[rr]^-{\delta} & & \lim_{j \in \ctJ}(\colim_{D \in \ctD}F(D,j)) \ar[d]^{\pi_j} \\
+  \lim_{j \in \ctJ}F(D,j) \ar[u]^{\sigma_D} \ar[rd]_{p_j} & & \colim_{D \in \ctD}F(D,j) \\
+  & F(D,j) \ar[ru]_{s_D} }
+ \]
+ \begin{enumerate}
+  \item Diciamo che la categoria \(\ctD\) è filtrante se \(\delta\) è un isomorfismo per ogni funtore \(F \colon \ctD \times \ctJ \fun \ctSet\)
+        ogniqualvolta \(\ctJ\) sia finita.
+  \item Diciamo che la categoria \(\ctD\) è setacciante se \(\delta\) è un isomorfismo per ogni funtore \(F \colon \ctD \times \ctJ \fun \ctSet\)
+        ogniqualvolta \(\ctJ\) sia finita e discreta.
+  \item Un colimite filtrante (setacciante) è il colimite di un funtore il cui dominio è una categoria filtrante (setacciante).
+ \end{enumerate}
 \end{definition}
 
 \begin{examples}\label{esempi_cat_fltr_set}
-	\hfill
-	\begin{enumerate}
-		\item Ogni categoria filtrante è setacciante.
-		\item Ogni categoria piccola con i coprodotti finiti è setacciante.
-		\item Un grafo riflessivo è una categoria setacciante (ma non filtrante)
-		      \[
-			      diagramma
-		      \]
-		      con \(f \circ d = \id_B = g \circ d\).
-	\end{enumerate}
+ \hfill
+ \begin{enumerate}
+  \item Ogni categoria filtrante è setacciante.
+  \item Ogni categoria piccola con i coprodotti finiti è setacciante.
+  \item Un grafo riflessivo è una categoria setacciante (ma non filtrante)
+        \[
+         diagramma
+        \]
+        con \(f \circ d = \id_B = g \circ d\).
+ \end{enumerate}
 \end{examples}
 
 \begin{proof}
-	Under construction.
+ Under construction.
 \end{proof}
 
 \begin{proposition}\label{prop_colim_sift_AlgT}
-	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è chiusa per colimiti setaccianti in \(\ctSet^{\ctT}\) e quindi l'inclusione
-	\[
-		\ctAlgT \fun \ctSet^{\ctT}
-	\]
-	preserva tali colimiti.
+ Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è chiusa per colimiti setaccianti in \(\ctSet^{\ctT}\) e quindi l'inclusione
+ \[
+  \ctAlgT \fun \ctSet^{\ctT}
+ \]
+ preserva tali colimiti.
 \end{proposition}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 Nell'ottica di dimostrare che la categoria \(\ctAlgT\) è cocompleta, l'interesse delle categorie filtranti e setaccianti viene dal
 seguente lemma generale.
 
 \begin{lemma}\label{lemma_cocompl_sift}
-	Affinché una categoria \(\ctA\) sia cocompleta, è necessario e sufficiente che \(\ctA\) abbia
-	\begin{enumerate}
-		\item i colimiti filtranti,
-		\item i coequalizzatori riflessivi,
-		\item i coprodotti finiti.
-	\end{enumerate}
+ Affinché una categoria \(\ctA\) sia cocompleta, è necessario e sufficiente che \(\ctA\) abbia
+ \begin{enumerate}
+  \item i colimiti filtranti,
+  \item i coequalizzatori riflessivi,
+  \item i coprodotti finiti.
+ \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{warning}\label{caveat_colim_rappr}
-	Ora ho bisogno del fatto che, se \(\ctC\) è piccola e \(F \in \ctSet^{\ctC}\), allora
-	\[
-		F = \colim\left(\xymatrix{\Elts\ctC F \ar[r]^-{\phi_F} & \ctC^{\mathrm{op}} \ar[r]^-{Y_{\ctC}} & \ctSet^{\ctC}}\right)
-	\]
-	che dovrebbe trovarsi nei capitoli precedenti.
+ Ora ho bisogno del fatto che, se \(\ctC\) è piccola e \(F \in \ctSet^{\ctC}\), allora
+ \[
+  F = \colim\left(\xymatrix{\Elts\ctC F \ar[r]^-{\phi_F} & \ctC^{\mathrm{op}} \ar[r]^-{Y_{\ctC}} & \ctSet^{\ctC}}\right)
+ \]
+ che dovrebbe trovarsi nei capitoli precedenti.
 \end{warning}
 
 \begin{lemma}\label{lemma_alg_sift_rapp}
-	Sia \(\ctT\) una teoria algebrica e sia \(A \in \ctSet^{\ctT}\). Le condizioni seguenti sono equivalenti:
-	\begin{enumerate}
-		\item \(A\) è una \(\ctT\)-algebra,
-		\item la categoria degli elementi \(\Elts{\ctT}A\) è setacciante,
-		\item \(A\) è un colimite setacciante di algebre rappresentabili.
-	\end{enumerate}
+ Sia \(\ctT\) una teoria algebrica e sia \(A \in \ctSet^{\ctT}\). Le condizioni seguenti sono equivalenti:
+ \begin{enumerate}
+  \item \(A\) è una \(\ctT\)-algebra,
+  \item la categoria degli elementi \(\Elts{\ctT}A\) è setacciante,
+  \item \(A\) è un colimite setacciante di algebre rappresentabili.
+ \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{proposition}\label{prop_AlgT_cocompl}
-	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è cocompleta.
+ Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è cocompleta.
 \end{proposition}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{corollary}\label{cor_epi_AlgT}
-	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è chiusa in \(\ctSet^{\ctT}\) per epi regolari e quindi gli epi regolari in
-	\(\ctAlgT\) sono le trasformazioni naturali le cui componenti sono funzioni suriettive.
+ Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è chiusa in \(\ctSet^{\ctT}\) per epi regolari e quindi gli epi regolari in
+ \(\ctAlgT\) sono le trasformazioni naturali le cui componenti sono funzioni suriettive.
 \end{corollary}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{corollary}\label{cor_AlgT_esatta}
-	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è esatta.
+ Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è esatta.
 \end{corollary}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{warning}\label{caveat_prop_univ_AlgT}
-	Un risultato che si potrebbe presentare sotto forma di esercizi è mostrare che il teorema (che dovrebbe trovarsi nei
-	capitoli precedenti) che dice che se \(\ctC\) è piccola allora
-	\[
-		Y_{\ctC} \colon \ctC \fun \ctSet^{\ctC^{\mathrm{op}}}
-	\]
-	è il completamento di \(\ctC\) rispetto ai colimiti, si adatta al caso delle teorie algebriche per ottenere che, se \(\ctT\)
-	è una teoria algebrica, allora
-	\[
-		Y_{\ctT} \colon \ctT^{\mathrm{op}} \fun \ctAlgT
-	\]
-	è il completamento di \(\ctT\) rispetto ai colimiti setaccianti. Per arrivarci occorre un lemma generale che si può
-	ugualmente trattare come esercizio (in questo capitolo o altrove): i funtori rappresentabili
-	\[
-		\ctB(-,B) \colon \ctB^{\mathrm{op}} \fun \ctSet
-	\]
-	riflettono collettivamente i colimiti.
+ Un risultato che si potrebbe presentare sotto forma di esercizi è mostrare che il teorema (che dovrebbe trovarsi nei
+ capitoli precedenti) che dice che se \(\ctC\) è piccola allora
+ \[
+  Y_{\ctC} \colon \ctC \fun \ctSet^{\ctC^{\mathrm{op}}}
+ \]
+ è il completamento di \(\ctC\) rispetto ai colimiti, si adatta al caso delle teorie algebriche per ottenere che, se \(\ctT\)
+ è una teoria algebrica, allora
+ \[
+  Y_{\ctT} \colon \ctT^{\mathrm{op}} \fun \ctAlgT
+ \]
+ è il completamento di \(\ctT\) rispetto ai colimiti setaccianti. Per arrivarci occorre un lemma generale che si può
+ ugualmente trattare come esercizio (in questo capitolo o altrove): i funtori rappresentabili
+ \[
+  \ctB(-,B) \colon \ctB^{\mathrm{op}} \fun \ctSet
+ \]
+ riflettono collettivamente i colimiti.
 \end{warning}
 
 \section{Una caratterizzazione delle categorie algebriche}\label{sec_caract_AlgT}
 
 \begin{warning}\label{caveat_sec_caract_AlgT}
-	Questa sezione è opzionale. Non sono sicuro che si debba includere perchè richiede parecchi prerequisiti di carattere
-	generale e il risultato centrale ha una dimostrazione assai elaborata. Bisognerà decidere insieme. Comunque lo scopo
-	sarebbe di dimostrare il seguente teorema di caratterizzazione.
+ Questa sezione è opzionale. Non sono sicuro che si debba includere perchè richiede parecchi prerequisiti di carattere
+ generale e il risultato centrale ha una dimostrazione assai elaborata. Bisognerà decidere insieme. Comunque lo scopo
+ sarebbe di dimostrare il seguente teorema di caratterizzazione.
 \end{warning}
 
 \begin{theorem}\label{teo_caract_AlgT}
-	Sia \(\ctA\) una categoria. Le condizioni seguenti sono equivalenti:
-	\begin{enumerate}
-		\item \(\ctA\) è algebrica,
-		\item \(\ctA\) è cocompleta e ammette un insieme \(\ctG\) di oggetti perfettamente presentabili tale che ogni
-		      oggetto di \(\ctA\) è un colimite setacciante di oggetti di \(\ctG\),
-		\item \(\ctA\) è cocompleta e ha un generatore forte formato da oggetti perfettamente presentabili.
-	\end{enumerate}
+ Sia \(\ctA\) una categoria. Le condizioni seguenti sono equivalenti:
+ \begin{enumerate}
+  \item \(\ctA\) è algebrica,
+  \item \(\ctA\) è cocompleta e ammette un insieme \(\ctG\) di oggetti perfettamente presentabili tale che ogni
+        oggetto di \(\ctA\) è un colimite setacciante di oggetti di \(\ctG\),
+  \item \(\ctA\) è cocompleta e ha un generatore forte formato da oggetti perfettamente presentabili.
+ \end{enumerate}
 \end{theorem}
 
 \begin{remark}\label{oss_pres_can}
-	Una volta introdotte, con qualche esempio e piccole prpprietà, tutte le nozioni che intervengono nel teorema, si desume
-	dalla dimostrazione che se \(\ctA\) è algebrica, allora
-	\[
-		\ctA \simeq \ctAlg(\ctA_{\mathrm{pp}}^{\mathrm{op}})
-	\]
-	dove \(\ctA_{\mathrm{pp}}\) è la sottocategoria piena di \(\ctA\) degli oggetti perfettamente presentabili. Questo fornisce
-	una presentazione canonica di \(\ctA \colon\)fra tutte le teorie algebriche \(\ctT\) tali che
-	\[
-		\ctA \simeq \ctAlgT
-	\]
-	la teoria \(\ctA_{\mathrm{pp}}^{\mathrm{op}}\) è l'unica Cauchy completa (completa per idempotenti).
+ Una volta introdotte, con qualche esempio e piccole prpprietà, tutte le nozioni che intervengono nel teorema, si desume
+ dalla dimostrazione che se \(\ctA\) è algebrica, allora
+ \[
+  \ctA \simeq \ctAlg(\ctA_{\mathrm{pp}}^{\mathrm{op}})
+ \]
+ dove \(\ctA_{\mathrm{pp}}\) è la sottocategoria piena di \(\ctA\) degli oggetti perfettamente presentabili. Questo fornisce
+ una presentazione canonica di \(\ctA \colon\)fra tutte le teorie algebriche \(\ctT\) tali che
+ \[
+  \ctA \simeq \ctAlgT
+ \]
+ la teoria \(\ctA_{\mathrm{pp}}^{\mathrm{op}}\) è l'unica Cauchy completa (completa per idempotenti).
 \end{remark}
 
 Altre conseguenze semplici del teorema di caratterizzazione sono i seguenti fatti.
 
 \begin{proposition}\label{prop_comma_alg}
-	Se \(\ctA\) è algebrica e \(A \in \ctA\) è un oggetto fissato, la categoria
-	\[
-		\ctA \downarrow A
-	\]
-	è algebrica.
+ Se \(\ctA\) è algebrica e \(A \in \ctA\) è un oggetto fissato, la categoria
+ \[
+  \ctA \downarrow A
+ \]
+ è algebrica.
 \end{proposition}
 
 \begin{proposition}\label{prop_repr_aAlgT}
-	Una categoria è algebrica se e solo se è equivalente a una sottocategoria riflessiva e chiusa rispetto ai colimiti setaccianti
-	di una categoria del tipo \(\ctSet^{\ctC}\) con \(\ctC\) piccola.
+ Una categoria è algebrica se e solo se è equivalente a una sottocategoria riflessiva e chiusa rispetto ai colimiti setaccianti
+ di una categoria del tipo \(\ctSet^{\ctC}\) con \(\ctC\) piccola.
 \end{proposition}
 
 \begin{proposition}\label{prop_stab_alg_exp}
-	Se \(\ctA\) è una categoria algebrica e \(\ctC\) è una categoria piccola, la categoria di funtori \(\ctA^{\ctC}\) è algebrica.
+ Se \(\ctA\) è una categoria algebrica e \(\ctC\) è una categoria piccola, la categoria di funtori \(\ctA^{\ctC}\) è algebrica.
 \end{proposition}
 
 \begin{example}\label{esempio_chain}
-	Se \(R\) è un anello unitario, la categoria dei complessi di catena di \(R\)-moduli è algebrica.
+ Se \(R\) è un anello unitario, la categoria dei complessi di catena di \(R\)-moduli è algebrica.
 \end{example}
 
 \section{Il teorema di Birkhoff per le categorie algebriche}\label{sec_th_Birkhoff}
@@ -694,37 +694,37 @@ nella sezione \ref{sec_var_alg} sarà esaminato nella prossima sezione. Comincia
 per le teorie algebriche.
 
 \begin{definition}\label{def_equaz_th_alg}
-	Sia \(\ctT\) una teoria algebrica e sia \(A\) una \(\ctT\)-algebra.
-	\begin{enumerate}
-		\item Un'equazione \((u,v)\) in \(\ctT\) è una coppia di frecce parallele \(u,v \in \ctT(s,t)\).
-		\item L'algebra \(A\) soddisfa l'equazione \((u,v)\) se \(A(u)=A(v) \colon A(s) \to A(t)\) in \(\ctSet\).
-	\end{enumerate}
+ Sia \(\ctT\) una teoria algebrica e sia \(A\) una \(\ctT\)-algebra.
+ \begin{enumerate}
+  \item Un'equazione \((u,v)\) in \(\ctT\) è una coppia di frecce parallele \(u,v \in \ctT(s,t)\).
+  \item L'algebra \(A\) soddisfa l'equazione \((u,v)\) se \(A(u)=A(v) \colon A(s) \to A(t)\) in \(\ctSet\).
+ \end{enumerate}
 \end{definition}
 
 \begin{remark}\label{oss_conf_equaz}
-	è importante che la nuova nozione di equazione coincida con quella introdotta nella sezione \ref{sec_var_alg} qualora la teoria algebrica
-	\(\ctT\) sia \(\ctT_{\Sigma}\), cioè la teoria algebrica associata a una segnatura \(\Sigma\). Per questo, consideriamo un'equazione
-	\[
-		t_1,t_2 \in F_{\Sigma}(\{x_1,\ldots,x_n\}) = \ctT_{\Sigma}(n,1)
-	\]
-	una \(\Sigma\)-algebra \((A, \sigma^A)\) e la \(\ctT\)-algebra \(E(A,\sigma^A)\) che gli corrisponde via l'equivalenza
-	\[
-		E \colon \ctSAlg \fun \ctAlgT_{\Sigma}
-	\]
-	Si ha allora che \((A,\sigma^A)\) soddisfa l'equazione \((t_1,t_2) \in F_{\Sigma}(\{x_1,\ldots,x_n\})\) se e solo se \(E(A,\sigma^A)\) soddisfa
-	l'equazione \((t_1,t_2) \in \ctT_{\Sigma}(n,1)\).
+ è importante che la nuova nozione di equazione coincida con quella introdotta nella sezione \ref{sec_var_alg} qualora la teoria algebrica
+ \(\ctT\) sia \(\ctT_{\Sigma}\), cioè la teoria algebrica associata a una segnatura \(\Sigma\). Per questo, consideriamo un'equazione
+ \[
+  t_1,t_2 \in F_{\Sigma}(\{x_1,\ldots,x_n\}) = \ctT_{\Sigma}(n,1)
+ \]
+ una \(\Sigma\)-algebra \((A, \sigma^A)\) e la \(\ctT\)-algebra \(E(A,\sigma^A)\) che gli corrisponde via l'equivalenza
+ \[
+  E \colon \ctSAlg \fun \ctAlgT_{\Sigma}
+ \]
+ Si ha allora che \((A,\sigma^A)\) soddisfa l'equazione \((t_1,t_2) \in F_{\Sigma}(\{x_1,\ldots,x_n\})\) se e solo se \(E(A,\sigma^A)\) soddisfa
+ l'equazione \((t_1,t_2) \in \ctT_{\Sigma}(n,1)\).
 \end{remark}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{definition}\label{def_var_AlgT}
-	Sia \(\ctT\) una teoria algebrica ed \(E\) un insieme di equazioni in \(\ctT\).
-	\begin{enumerate}
-		\item Denotiamo con \(\ctAlg(\ctT,E)\) la sottocategoria piena di \(\ctAlgT\) delle \(\ctT\)-algebre tali che \(A(u)=A(v)\) per ogni \((u,v) \in E\).
-		\item Diciamo che una categoria \(\ctA\) è una varietà di \(\ctT\)-algebre se \(\ctA \simeq \ctAlg(\ctT,E)\) per un insieme di equazioni \(E\) in \(\ctT\).
-	\end{enumerate}
+ Sia \(\ctT\) una teoria algebrica ed \(E\) un insieme di equazioni in \(\ctT\).
+ \begin{enumerate}
+  \item Denotiamo con \(\ctAlg(\ctT,E)\) la sottocategoria piena di \(\ctAlgT\) delle \(\ctT\)-algebre tali che \(A(u)=A(v)\) per ogni \((u,v) \in E\).
+  \item Diciamo che una categoria \(\ctA\) è una varietà di \(\ctT\)-algebre se \(\ctA \simeq \ctAlg(\ctT,E)\) per un insieme di equazioni \(E\) in \(\ctT\).
+ \end{enumerate}
 \end{definition}
 
 Prima di enunciare il teorema di Birkhoff, mettiamo in evidenza una differenza importante fra le varietà di \(\Sigma\)-algebre e le varietà di
@@ -733,56 +733,56 @@ segnature \(\Sigma'\) tale che \(\ctSEAlg \simeq \Sigma'\mbox{-}\ctAlg\). Invece
 \(\ctT\)-algebre è una categoria algebrica, come indicato nella prossima proprietà.
 
 \begin{proposition}\label{prop_var_alg_alg}
-	Sia \(\ctT\) una teoria algebrica ed \(E\) un insieme di equazioni in \(\ctT\). Esiste una teoria algebrica \(\ctT_E\) tale che
-	\[
-		\ctAlg(\ctT,E) \simeq \ctAlgT_{E}
-	\]
+ Sia \(\ctT\) una teoria algebrica ed \(E\) un insieme di equazioni in \(\ctT\). Esiste una teoria algebrica \(\ctT_E\) tale che
+ \[
+  \ctAlg(\ctT,E) \simeq \ctAlgT_{E}
+ \]
 \end{proposition}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 Concludiamo questa sezione con il teorema di Birkhoff e un suo corollario.
 
 \begin{theorem}\label{teo_Birkhoff_AlgT}
-	Sia \(\ctT\) una teoria algebrica e
-	\[
-		\ctA \fun \ctAlgT
-	\]
-	una sottocategoria piena. La categoria \(\ctA\) è una varietà di \(\ctT\)-algebre se e solo se è chiusa in \(\ctAlgT\) per
-	\begin{enumerate}
-		\item prodotti,
-		\item sottoggetti,
-		\item quozienti regolari,
-		\item unioni dirette.
-	\end{enumerate}
+ Sia \(\ctT\) una teoria algebrica e
+ \[
+  \ctA \fun \ctAlgT
+ \]
+ una sottocategoria piena. La categoria \(\ctA\) è una varietà di \(\ctT\)-algebre se e solo se è chiusa in \(\ctAlgT\) per
+ \begin{enumerate}
+  \item prodotti,
+  \item sottoggetti,
+  \item quozienti regolari,
+  \item unioni dirette.
+ \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{corollary}\label{cor_th_Birkhoff_AlgT}
-	Sia \(\ctT\) una teoria algebrica e
-	\[
-		\ctA \fun \ctAlgT
-	\]
-	una sottocategoria piena. La categoria \(\ctA\) è una varietà di \(\ctT\)-algebre se e solo se è una sottocategoria epiriflessiva
-	chiusa per quozienti regolari e unioni dirette.
+ Sia \(\ctT\) una teoria algebrica e
+ \[
+  \ctA \fun \ctAlgT
+ \]
+ una sottocategoria piena. La categoria \(\ctA\) è una varietà di \(\ctT\)-algebre se e solo se è una sottocategoria epiriflessiva
+ chiusa per quozienti regolari e unioni dirette.
 \end{corollary}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \section{Confronto con le \(\Sigma\)-algebre}\label{sec_confr_sigma_T}
 
 Abbiamo già due risultati che stabiliscono un rapporto fra le \(\Sigma\)-algebre e le \(\ctT\)-algebre:
 \begin{enumerate}
-	\item \(\ctSAlg \simeq \ctAlgT_{\Sigma}\), vedi la proprietà \ref{prop_sigma_T_alg},
-	\item \(\ctSEAlg \simeq \ctAlg(\ctT_{\Sigma},E) \simeq \ctAlgT_{\Sigma,E}\), vedi, rispettivamente, l'osservazione
-	      \ref{oss_conf_equaz} e la proprietà \ref{prop_var_alg_alg}.
+ \item \(\ctSAlg \simeq \ctAlgT_{\Sigma}\), vedi la proprietà \ref{prop_sigma_T_alg},
+ \item \(\ctSEAlg \simeq \ctAlg(\ctT_{\Sigma},E) \simeq \ctAlgT_{\Sigma,E}\), vedi, rispettivamente, l'osservazione
+       \ref{oss_conf_equaz} e la proprietà \ref{prop_var_alg_alg}.
 \end{enumerate}
 
 Quello che manca nel caso delle teorie algebriche, ma che in effetti è impossibile da farsi, è di trovare un analogo
@@ -793,82 +793,82 @@ perché una categoria algebrica \(\ctAlgT\) non permette di construire in modo c
 teorie algebriche a una sorte.
 
 \begin{definition}\label{def_th_alg_unasorte}
-	Una teoria algebrica a una sorte è una coppia
-	\[
-		(\ctT, T \colon \ctN \fun \ctT)
-	\]
-	dove \(\ctN\) è la teoria degli insiemi, \(\ctT\) è una teoria algebrica i cui oggetti sono gli stessi che quelli di \(\ctN\) e \(T\)
-	è un funtore che preserva i prodotti finiti e che è l'identità sugli oggetti.
+ Una teoria algebrica a una sorte è una coppia
+ \[
+  (\ctT, T \colon \ctN \fun \ctT)
+ \]
+ dove \(\ctN\) è la teoria degli insiemi, \(\ctT\) è una teoria algebrica i cui oggetti sono gli stessi che quelli di \(\ctN\) e \(T\)
+ è un funtore che preserva i prodotti finiti e che è l'identità sugli oggetti.
 \end{definition}
 
 \begin{proposition}\label{prop_funt_ind_unasorte}
-	Sia \((\ctT, T \colon \ctN \fun \ctT)\) una teoria algebrica a una sorte. Il funtore indotto
-	\[
-		\ctAlg(T) \colon \ctAlgT \fun \ctAlg\ctN \simeq \ctSet , \;\; A \mapsto A(1)
-	\]
-	soddisfa le seguenti proprietà:
-	\begin{enumerate}
-		\item è fedele e conservativo,
-		\item ammette un aggiunto a sinistra,
-		\item preserva e riflette i limiti, i colimiti setaccianti, i mono e gli epi regolari.
-	\end{enumerate}
+ Sia \((\ctT, T \colon \ctN \fun \ctT)\) una teoria algebrica a una sorte. Il funtore indotto
+ \[
+  \ctAlg(T) \colon \ctAlgT \fun \ctAlg\ctN \simeq \ctSet , \;\; A \mapsto A(1)
+ \]
+ soddisfa le seguenti proprietà:
+ \begin{enumerate}
+  \item è fedele e conservativo,
+  \item ammette un aggiunto a sinistra,
+  \item preserva e riflette i limiti, i colimiti setaccianti, i mono e gli epi regolari.
+ \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-	To be inserted.
+ To be inserted.
 \end{proof}
 
 \begin{proposition}\label{prop_confr_sigma_tunasorte}
-	Sia \(\Sigma\) una segnature ed \(E\) un insieme di equazioni in \(\Sigma\). Le teorie algebriche \(\ctT_{\Sigma}\) e \(\ctT_{\Sigma,E}\)
-	sono delle teorie algebriche a una sorte. Inoltre le equivalenze
-	\[
-		\ctSAlg \simeq \ctAlgT_{\Sigma} \qquad\qquad \ctSEAlg \simeq \ctAlgT_{\Sigma,E}
-	\]
-	sono concrete, cioè commutano con i rispettivi funtori dimenticanti.
+ Sia \(\Sigma\) una segnature ed \(E\) un insieme di equazioni in \(\Sigma\). Le teorie algebriche \(\ctT_{\Sigma}\) e \(\ctT_{\Sigma,E}\)
+ sono delle teorie algebriche a una sorte. Inoltre le equivalenze
+ \[
+  \ctSAlg \simeq \ctAlgT_{\Sigma} \qquad\qquad \ctSEAlg \simeq \ctAlgT_{\Sigma,E}
+ \]
+ sono concrete, cioè commutano con i rispettivi funtori dimenticanti.
 \end{proposition}
 
 \begin{proof}
-	Costruzione di \(T \colon \ctN \fun \ctT_{\Sigma}\) e di \(T_E \colon \ctN \fun \ctT_{\Sigma,E}\). To be inserted.
+ Costruzione di \(T \colon \ctN \fun \ctT_{\Sigma}\) e di \(T_E \colon \ctN \fun \ctT_{\Sigma,E}\). To be inserted.
 \end{proof}
 
 Possiamo ora concludere la dimostrazione del teorema di Birkhoff per le varietà di \(\Sigma\)-algebre via il teorema di Borkhoff
 per le categorie algebriche e usando la seguente proprietà.
 
 \begin{proposition}\label{prop_rid_Birkhoff}
-	Sia \((\ctT, T \colon \ctN \fun \ctT)\) una teoria algebrica a una sorte e sia \(\ctA \fun \ctAlgT\) una sottocategoria piena e chiusa
-	per prodotti, sottoggetti e quozienti regolari. Allora \(\ctA\) è chiusa in \(\ctAlgT\) anche per unioni dirette.
+ Sia \((\ctT, T \colon \ctN \fun \ctT)\) una teoria algebrica a una sorte e sia \(\ctA \fun \ctAlgT\) una sottocategoria piena e chiusa
+ per prodotti, sottoggetti e quozienti regolari. Allora \(\ctA\) è chiusa in \(\ctAlgT\) anche per unioni dirette.
 \end{proposition}
 
 \begin{proof}
-	To be inserted;
+ To be inserted;
 \end{proof}
 
 Per terminare il confronto fra le \((\Sigma,E)\)-algebre e le \(\ctT\)-algebre, rimane da invertire la proprietè \ref{prop_confr_sigma_tunasorte}.
 
 \begin{proposition}\label{prop_confr_sigma_tunasorte_bis}
-	Sia \((\ctT, T \colon \ctN \fun \ctT)\) una teoria algebrica a una sorte. Si possono cosruire una segnature \(\Sigma\) e un insieme \(E\) di equazioni
-	in \(\Sigma\) in modo da ottenere un'equivalenza di categorie
-	\[
-		\ctSEAlg \simeq \ctAlgT
-	\]
-	Inoltre tale equivalenza è concreta, cioè il seguente diagramma commuta
-	\[\xymatrix{
-		\ctSEAlg \ar[rr]^-{\simeq} \ar[rd]_{U_{(\Sigma,E)}} & & \ctAlgT \ar[ld]^{\ctAlg(T)} \\
-		& \ctSet
-		}
-	\]
+ Sia \((\ctT, T \colon \ctN \fun \ctT)\) una teoria algebrica a una sorte. Si possono cosruire una segnature \(\Sigma\) e un insieme \(E\) di equazioni
+ in \(\Sigma\) in modo da ottenere un'equivalenza di categorie
+ \[
+  \ctSEAlg \simeq \ctAlgT
+ \]
+ Inoltre tale equivalenza è concreta, cioè il seguente diagramma commuta
+ \[\xymatrix{
+  \ctSEAlg \ar[rr]^-{\simeq} \ar[rd]_{U_{(\Sigma,E)}} & & \ctAlgT \ar[ld]^{\ctAlg(T)} \\
+  & \ctSet
+  }
+ \]
 \end{proposition}
 
 \begin{proof}
-	Costruzione di \(\Sigma\) e di \(E\). To be inserted.
+ Costruzione di \(\Sigma\) e di \(E\). To be inserted.
 \end{proof}
 
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
-	\item
-	\item
-	\item
-	\item
-	\item
+ \item
+ \item
+ \item
+ \item
+ \item
 \end{enumerate}

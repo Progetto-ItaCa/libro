@@ -6,29 +6,29 @@ La nozione di \emph{sistema di fattorizzazione} in una categoria è uno dei conc
 \medskip
 L'intuizione fondamentale dietro la definizione è la seguente osservazione/lemma:
 \begin{lemma}\label{fatt_in_set}
-	Nella categoria \(\ctSet\) di insiemi e funzioni, descritta in \ref{ex_cat_insiemi}, ogni funzione \(f : X \to Y\) si fattorizza come \(f = m \cmp e\), dove \(m\) è iniettiva (un mono, si veda \ref{monoepi_in_set}) ed \(e\) è suriettiva.% (un epi, si veda \ref{def_Epi}).
+ Nella categoria \(\ctSet\) di insiemi e funzioni, descritta in \ref{ex_cat_insiemi}, ogni funzione \(f : X \to Y\) si fattorizza come \(f = m \cmp e\), dove \(m\) è iniettiva (un mono, si veda \ref{monoepi_in_set}) ed \(e\) è suriettiva.% (un epi, si veda \ref{def_Epi}).
 \end{lemma}
 In più, abbiamo preannunciato in \ref{caratt_epi_con_ort} che la nozione di epi e di mono ammettono una ulteriore caratterizzazione nei termini seguenti (rammentiamo il contenuto di \ref{caratt_epi_con_ort} per facilità di lettura): il lemma \ref{fatt_in_set} permette di dimostrare questo fatto in modo molto elegante.
 \begin{proposition*}
-	Sia \(p : E \to B\) una funzione tra insiemi; le seguenti condizioni sono equivalenti:
-	\begin{itemize}
-		\item \(p\) è un epi (si veda \ref{def_Mono});
-		\item in ogni diagramma di insiemi e funzioni come il seguente:
-		      \[\begin{tikzcd}
-				      E \ar[r, "f"]\ar[d, "p"']& X \ar[d, "m"]\\
-				      B \ar[r, "g"'] \ar[ur, dashed, "u"]& Y
-			      \end{tikzcd}\]
-		      dove \(m : X\to Y\) è un mono, esiste un'unica freccia \(u : B\to X\) tale che \(u\cmp p = f\) e \(m\cmp u = g\).
-	\end{itemize}
+ Sia \(p : E \to B\) una funzione tra insiemi; le seguenti condizioni sono equivalenti:
+ \begin{itemize}
+  \item \(p\) è un epi (si veda \ref{def_Mono});
+  \item in ogni diagramma di insiemi e funzioni come il seguente:
+        \[\begin{tikzcd}
+          E \ar[r, "f"]\ar[d, "p"']& X \ar[d, "m"]\\
+          B \ar[r, "g"'] \ar[ur, dashed, "u"]& Y
+         \end{tikzcd}\]
+        dove \(m : X\to Y\) è un mono, esiste un'unica freccia \(u : B\to X\) tale che \(u\cmp p = f\) e \(m\cmp u = g\).
+ \end{itemize}
 \end{proposition*}
 \begin{proof}
-	\Todo{Qual era la dimostrazione elegante che avevo in mente? Non me lo ricordo più}
+ \Todo{Qual era la dimostrazione elegante che avevo in mente? Non me lo ricordo più}
 \end{proof}
 Questo motiva la nozione di \emph{ortogonalità} tra frecce (si veda \ref{def_ortogona} sotto) e di \emph{fattorizzazione} di ogni freccia \(f : X\to Y\) di una categoria \(\ctC\) come una certa composizione in termini di due sottoclassi \(\ctE,\ctM\subseteq\ctC\)
 \[
-	\begin{tikzcd}
-		f : X \ar[r, "e", two heads]& F \ar[r, "m", hook] & Y.
-	\end{tikzcd}
+ \begin{tikzcd}
+  f : X \ar[r, "e", two heads]& F \ar[r, "m", hook] & Y.
+ \end{tikzcd}
 \]
 dove \(e\in\ctE\) e \(m\in\ctM\) sono frecce nelle due sottoclassi.
 
@@ -36,204 +36,204 @@ L'intuizione che chi sta leggendo dovrebbe avere sulla definizione è che una st
 \color{red}
 L'esempio più importante (sebbene non l'unico interessante) di fattorizzazione di questo tipo sarà proprio quando \(\ctE\) è la classe \(\Epi\) degli epi ed \(\ctM\) è la classe \(\Mono\) dei mono di \(\ctC\). Quando le proprietà di ortogonalità e fattorizzazione valgono per la coppia \((\ctE,\ctM)\) questa si dice un \emph{sistema di fattorizzazione} su \(\ctC\).
 \begin{remark}
-	Chi legge non deve con questo pensare che data una qualsiasi categoria \(\ctC\), la coppia di classi \((\Epi,\Mono)\) formi sempre un sistema di fattorizzazione su \(\ctC\).
+ Chi legge non deve con questo pensare che data una qualsiasi categoria \(\ctC\), la coppia di classi \((\Epi,\Mono)\) formi sempre un sistema di fattorizzazione su \(\ctC\).
 
-	In effetti, non è nemmeno vero che \((\Epi,\Mono)\) è sempre una coppia di classi ortogonali nel senso di \ref{def_ortogona} (si pensi al caso dei preordini, dove \emph{ogni} freccia è sia un mono che un epi, cosicché \(\Epi[\ctPos]\cap\Mono[\ctPos]=\hom(\ctPos)\), ma non tutti gli oggetti di un preordine sono tra loro isomorfi).
+ In effetti, non è nemmeno vero che \((\Epi,\Mono)\) è sempre una coppia di classi ortogonali nel senso di \ref{def_ortogona} (si pensi al caso dei preordini, dove \emph{ogni} freccia è sia un mono che un epi, cosicché \(\Epi[\ctPos]\cap\Mono[\ctPos]=\hom(\ctPos)\), ma non tutti gli oggetti di un preordine sono tra loro isomorfi).
 \end{remark}
 \color{black}
 Sulla classe delle frecce di una generica categoria \(\ctC\) è possibile definire una relazione binaria detta \emph{ortogonalità}, nel modo che segue.
 \begin{definition}[Relazione di ortogonalità]\label{def_ortogona}\index{Ortogonalità}\index{Frecce!--- ortogonali}\index{Relazione!---di ortogonalità}
-	Date due frecce \(f : X\to Y\) e \(g : A\to B\) di una categoria \(\ctC\), diciamo che \(f\) è \emph{ortogonale a sinistra} a \(g\), o che \(g\) è \emph{ortogonale a destra} a \(f\), o che \(f\) e \(g\) sono \emph{ortogonali} se in ogni quadrato commutativo della forma
-	\[
-		\begin{tikzcd}
-			X \ar[d, "f"']\ar[r, "u"]& A\ar[d, "g"] \\
-			Y \ar[r, "v"']& B
-		\end{tikzcd}
-	\]
-	esiste un'unica freccia \(a : Y\to A\) tale che \(a\cmp f=u\) e \(g\cmp a=v\).
+ Date due frecce \(f : X\to Y\) e \(g : A\to B\) di una categoria \(\ctC\), diciamo che \(f\) è \emph{ortogonale a sinistra} a \(g\), o che \(g\) è \emph{ortogonale a destra} a \(f\), o che \(f\) e \(g\) sono \emph{ortogonali} se in ogni quadrato commutativo della forma
+ \[
+  \begin{tikzcd}
+   X \ar[d, "f"']\ar[r, "u"]& A\ar[d, "g"] \\
+   Y \ar[r, "v"']& B
+  \end{tikzcd}
+ \]
+ esiste un'unica freccia \(a : Y\to A\) tale che \(a\cmp f=u\) e \(g\cmp a=v\).
 \end{definition}
 La relazione di ortogonalità è una sottoclasse \(O^\ctC \subseteq \hom(\ctC)\times\hom(\ctC)\) e il fatto che \((f,g)\in O^\ctC\) verrà sempre denotato con un simbolo infisso \(f\perp^\ctC g\), o semplicemente come \(f\perp g\) quando il contesto permette di determinare quale sia la categoria \(\ctC\) di riferimento (ossia, quasi sempre).
 
 La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetrica o transitiva; \ref{} sostanzia questa osservazione con delle maniere di costruire dei controesempi.
 \begin{proposition}\label{ort_to_terminale}
-	Sia \(\ctC\) una categoria che ha un oggetto terminale \(\term\). Allora, dati una freccia \(f : X\to Y\), e un oggetto \(A\in \ctC_0\), le condizioni seguenti sono equivalenti:
-	\begin{enumtag}{ot}
-		\item\label{ot_1} la freccia \(f\) è ortogonale a sinistra alla freccia terminale \(A\to \term\);
-		\item\label{ot_2} il funtore \(\Hom{\ctC}(\blank,A)\) manda la freccia \(f\) in una biiezione
-		\[\begin{tikzcd}
-				\Hom{\ctC}(Y,A) \ar[r, "{g\cmp \blank}"] & \Hom{\ctC}(X,A).
-			\end{tikzcd}\]
-	\end{enumtag}
-	Dualmente, sia \(\ctC\) una categoria con un oggetto iniziale \(\init\). Allora, dati una freccia \(g : A\to B\), e un oggetto \(Y\in\ctC_0\), le condizioni seguenti sono equivalenti:
-	\begin{enumtag}{oi}
-		\item \label{oi_1} la freccia \(g\) è ortogonale a destra alla freccia iniziale \(\init\to Y\);
-		\item \label{oi_2} il funtore \(\Hom{\ctC}(B,\blank)\) manda la freccia \(g\) in una biiezione
-		\[\begin{tikzcd}
-				\Hom{\ctC}(Y,A) \ar[r, "{\blank\cmp f}"] & \Hom{\ctC}(Y,B).
-			\end{tikzcd}\]
-	\end{enumtag}
+ Sia \(\ctC\) una categoria che ha un oggetto terminale \(\term\). Allora, dati una freccia \(f : X\to Y\), e un oggetto \(A\in \ctC_0\), le condizioni seguenti sono equivalenti:
+ \begin{enumtag}{ot}
+  \item\label{ot_1} la freccia \(f\) è ortogonale a sinistra alla freccia terminale \(A\to \term\);
+  \item\label{ot_2} il funtore \(\Hom{\ctC}(\blank,A)\) manda la freccia \(f\) in una biiezione
+  \[\begin{tikzcd}
+    \Hom{\ctC}(Y,A) \ar[r, "{g\cmp \blank}"] & \Hom{\ctC}(X,A).
+   \end{tikzcd}\]
+ \end{enumtag}
+ Dualmente, sia \(\ctC\) una categoria con un oggetto iniziale \(\init\). Allora, dati una freccia \(g : A\to B\), e un oggetto \(Y\in\ctC_0\), le condizioni seguenti sono equivalenti:
+ \begin{enumtag}{oi}
+  \item \label{oi_1} la freccia \(g\) è ortogonale a destra alla freccia iniziale \(\init\to Y\);
+  \item \label{oi_2} il funtore \(\Hom{\ctC}(B,\blank)\) manda la freccia \(g\) in una biiezione
+  \[\begin{tikzcd}
+    \Hom{\ctC}(Y,A) \ar[r, "{\blank\cmp f}"] & \Hom{\ctC}(Y,B).
+   \end{tikzcd}\]
+ \end{enumtag}
 \end{proposition}
 \begin{proof}
-	La condizione che per ogni data freccia \(u : X\to A\), esista un'unica freccia \(\bar u : Y\to A\) tale che \(\bar u\cmp f = u\) è esattamente la richiesta che la funzione \(u\mapsto u\cmp f\) sia suriettiva (esistenza) e iniettiva (unicità). Questo dimostra l'equivalenza di \ref{ot_1} e \ref{ot_2}, e similmente si procede per l'equivalenza di \ref{oi_1} e \ref{oi_2}.
+ La condizione che per ogni data freccia \(u : X\to A\), esista un'unica freccia \(\bar u : Y\to A\) tale che \(\bar u\cmp f = u\) è esattamente la richiesta che la funzione \(u\mapsto u\cmp f\) sia suriettiva (esistenza) e iniettiva (unicità). Questo dimostra l'equivalenza di \ref{ot_1} e \ref{ot_2}, e similmente si procede per l'equivalenza di \ref{oi_1} e \ref{oi_2}.
 \end{proof}
 \begin{remark}\label{perche_ortogonale}
-	\Todo{Diverse intuizioni sulla nomenclatura `ortogonale'.}
+ \Todo{Diverse intuizioni sulla nomenclatura `ortogonale'.}
 
-	Una intuizione a proposito del nome `ortogonale' scelto per \ref{} viene dall'algebra lineare: così come due sottospazi \(U,W\) di uno stesso spazio vettoriale sono in somma ortogonale, scritto \(U\perp W\), se \(u\cdot w=0\) per ogni \((u,w)\in U\times W\); questo è equivalente alla condizione \(U\le W^\perp\), o alla condizione \(W\le U^\perp\), dove per un sottospazio \(Z\) si definisce \(Z^\perp = \{v\in V\mid \forall z\in Z,\,z\cdot v=0\}\). Questa analogia formale verrà sostanziata in \ref{} dove vedremo che mandare una classe di frecce nel suo ortogonale definisce un operatore di chiusura (così come accade per l'ortogonale di sottospazi vettoriali).
+ Una intuizione a proposito del nome `ortogonale' scelto per \ref{} viene dall'algebra lineare: così come due sottospazi \(U,W\) di uno stesso spazio vettoriale sono in somma ortogonale, scritto \(U\perp W\), se \(u\cdot w=0\) per ogni \((u,w)\in U\times W\); questo è equivalente alla condizione \(U\le W^\perp\), o alla condizione \(W\le U^\perp\), dove per un sottospazio \(Z\) si definisce \(Z^\perp = \{v\in V\mid \forall z\in Z,\,z\cdot v=0\}\). Questa analogia formale verrà sostanziata in \ref{} dove vedremo che mandare una classe di frecce nel suo ortogonale definisce un operatore di chiusura (così come accade per l'ortogonale di sottospazi vettoriali).
 
-	Una analogia meno formale ma suggestiva: grazie a \ref{ort_to_terminale} la relazione di ortogonalità può essere considerata tra una freccia e un \emph{oggetto}. Da qui\dots
-	%   It means X
-	%  “thinks” f
-	%  is an isomorphism in the sense that hom(f,X):hom(B,X)→hom(A,X)
-	%  is an isomorphism (i.e., as far as X
-	% -probes or coprobes are concerned, f
-	%  is an iso). If we think of an isomorphism as a notion of sameness, then f
-	%  makes A
-	%  and B
-	%  look just the same as gauged by the instrument X
-	% .
-	%
-	% Now in elementary physics, say if we are measuring temperature by a thermometer X
-	% , there are certain trajectories f:A→B
-	%  between points A,B
-	%  in space which exhibit sameness as gauged by X
-	% , namely by traveling along isothermal lines. These are orthogonal to the “direction” of X
-	%  given by gradients (really the ⊥
-	%  here is a relation between tangent vectors which are infinitesimal f
-	%  and 1-forms dX
-	% , but hopefully you get the idea).
-	%
-	% When you transport all this to the slice category over Y
-	% , you get the standard notion of an object g:X→Y
-	%  being orthogonal to an arrow f
-	%  in the slice.
+ Una analogia meno formale ma suggestiva: grazie a \ref{ort_to_terminale} la relazione di ortogonalità può essere considerata tra una freccia e un \emph{oggetto}. Da qui\dots
+ %   It means X
+ %  “thinks” f
+ %  is an isomorphism in the sense that hom(f,X):hom(B,X)→hom(A,X)
+ %  is an isomorphism (i.e., as far as X
+ % -probes or coprobes are concerned, f
+ %  is an iso). If we think of an isomorphism as a notion of sameness, then f
+ %  makes A
+ %  and B
+ %  look just the same as gauged by the instrument X
+ % .
+ %
+ % Now in elementary physics, say if we are measuring temperature by a thermometer X
+ % , there are certain trajectories f:A→B
+ %  between points A,B
+ %  in space which exhibit sameness as gauged by X
+ % , namely by traveling along isothermal lines. These are orthogonal to the “direction” of X
+ %  given by gradients (really the ⊥
+ %  here is a relation between tangent vectors which are infinitesimal f
+ %  and 1-forms dX
+ % , but hopefully you get the idea).
+ %
+ % When you transport all this to the slice category over Y
+ % , you get the standard notion of an object g:X→Y
+ %  being orthogonal to an arrow f
+ %  in the slice.
 \end{remark}
 Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limiti, cancellative a sinistra (destra, bilatere).
 \begin{definition}
-	Una \emph{successione transfinita} di frecce in una categoria \(\ctC\) consiste di un funtore \(f : \ctOrd \to \ctC\), dove \(\ctOrd\) è la categoria di \ref{}, che preserva i colimiti; in parole semplici, una successione transfinita in \(\ctC\) consiste di una successione di oggetti \(X_\lambda\), uno per ogni ordinale \(\lambda\), e di frecce
-	\[
-		\begin{tikzcd}
-			X_0 \ar[r] & X_1\ar[r] & X_2 \ar[r]& \dots \ar[r] & X_\alpha \ar[r] & X_{\alpha+1}\ar[r] & \dots
-		\end{tikzcd}
-	\]
-	tale che per ogni ordinale limite \(\lambda = \colim_{\beta<\lambda}\beta\) si abbia che \(X_\lambda\cong \colim_{\beta < \lambda} X_\beta\). Le frecce di questa catena sono quindi essenzialmente di due tipi:
-	\begin{itemize}
-		\item \(X_\alpha \to X_{\alpha+1}\) ogni volta che \(\beta=\alpha+1\) è un ordinale successore;
-		\item frecce da un ordinale \(\theta<\lambda\) dentro l'`oggetto limite' \(\colim_{\beta<\lambda}X_\beta\cong X_\lambda\).
-	\end{itemize}
-	Spesso si limita la taglia di queste successioni a uno specifico ordinale limite \(\lambda\), cioè si considerano solo funtori \(\ctOrd_{<\lambda}\to\ctC\) (in questo modo, la categoria delle successioni transfinite \(\ctOrd \to \ctC\) è legittima); in questo caso parliamo di una \emph{\(\lambda\)-successione in \(\ctC\)}. Data una (\(\lambda\)-)successione \(f : X_0\to X_1 \to \dots\) chiamiamo la sua \emph{composizione} l'unica freccia \(X_0\to \colim_{\beta<\lambda} X_\beta\).
+ Una \emph{successione transfinita} di frecce in una categoria \(\ctC\) consiste di un funtore \(f : \ctOrd \to \ctC\), dove \(\ctOrd\) è la categoria di \ref{}, che preserva i colimiti; in parole semplici, una successione transfinita in \(\ctC\) consiste di una successione di oggetti \(X_\lambda\), uno per ogni ordinale \(\lambda\), e di frecce
+ \[
+  \begin{tikzcd}
+   X_0 \ar[r] & X_1\ar[r] & X_2 \ar[r]& \dots \ar[r] & X_\alpha \ar[r] & X_{\alpha+1}\ar[r] & \dots
+  \end{tikzcd}
+ \]
+ tale che per ogni ordinale limite \(\lambda = \colim_{\beta<\lambda}\beta\) si abbia che \(X_\lambda\cong \colim_{\beta < \lambda} X_\beta\). Le frecce di questa catena sono quindi essenzialmente di due tipi:
+ \begin{itemize}
+  \item \(X_\alpha \to X_{\alpha+1}\) ogni volta che \(\beta=\alpha+1\) è un ordinale successore;
+  \item frecce da un ordinale \(\theta<\lambda\) dentro l'`oggetto limite' \(\colim_{\beta<\lambda}X_\beta\cong X_\lambda\).
+ \end{itemize}
+ Spesso si limita la taglia di queste successioni a uno specifico ordinale limite \(\lambda\), cioè si considerano solo funtori \(\ctOrd_{<\lambda}\to\ctC\) (in questo modo, la categoria delle successioni transfinite \(\ctOrd \to \ctC\) è legittima); in questo caso parliamo di una \emph{\(\lambda\)-successione in \(\ctC\)}. Data una (\(\lambda\)-)successione \(f : X_0\to X_1 \to \dots\) chiamiamo la sua \emph{composizione} l'unica freccia \(X_0\to \colim_{\beta<\lambda} X_\beta\).
 \end{definition}
 \begin{proposition}
-	Se una \(\omega\)-successione \(f : \ctOrd_{<\omega}\to\ctSet\) ha la proprietà che ogni \(X_n \to X_{n+1}\) è una funzione iniettiva, è iniettiva anche la composizione transfinita \(f_\infty : X_0\to \colim_{n<\omega} X_n\).
+ Se una \(\omega\)-successione \(f : \ctOrd_{<\omega}\to\ctSet\) ha la proprietà che ogni \(X_n \to X_{n+1}\) è una funzione iniettiva, è iniettiva anche la composizione transfinita \(f_\infty : X_0\to \colim_{n<\omega} X_n\).
 \end{proposition}
 \begin{proof}
-	La mappa \(f_\infty\) è definita dalla proprietà universale del colimite \(\colim_{n<\omega} X_n\); se \(f_\infty(x)=f_\infty(x')\), allora esiste un \(n<\omega\) tale che \(f_{0n}(x) = f_{:n}(x')\) dove \(f_{:n}\) è la funzione composta
-	\[\begin{tikzcd}
-			X_0 \ar[r, "f_1"]& X_1\ar[r, "f_2"] & \dots \ar[r, "f_n"] & X_n
-		\end{tikzcd}\]
-	che è iniettiva; allora, \(x=x'\).
+ La mappa \(f_\infty\) è definita dalla proprietà universale del colimite \(\colim_{n<\omega} X_n\); se \(f_\infty(x)=f_\infty(x')\), allora esiste un \(n<\omega\) tale che \(f_{0n}(x) = f_{:n}(x')\) dove \(f_{:n}\) è la funzione composta
+ \[\begin{tikzcd}
+   X_0 \ar[r, "f_1"]& X_1\ar[r, "f_2"] & \dots \ar[r, "f_n"] & X_n
+  \end{tikzcd}\]
+ che è iniettiva; allora, \(x=x'\).
 
-	(Evidentemente un argomento simile dimostra, per induzione transfinita, che la composizione di ogni \(\lambda\)-successione \(f : \ctOrd_{<\lambda}\to\ctSet\) tale che ogni \(f_\alpha\) sia un mono è ancora un mono.)
+ (Evidentemente un argomento simile dimostra, per induzione transfinita, che la composizione di ogni \(\lambda\)-successione \(f : \ctOrd_{<\lambda}\to\ctSet\) tale che ogni \(f_\alpha\) sia un mono è ancora un mono.)
 \end{proof}
 \begin{definition}
-	Una classe di frecce \(\ctK\subseteq\ctC_1\) di una category \(\ctC\) si dice \emph{chiusa per composizioni transfinite} se, per ogni \(\lambda\)-successione \(f : \ctOrd_{<\lambda}\to\ctK\) la composizione transfinita \(f_{:\lambda} : X_0\to \colim_{\alpha < \lambda} X_\alpha\) è ancora una freccia di \(\ctK\).
+ Una classe di frecce \(\ctK\subseteq\ctC_1\) di una category \(\ctC\) si dice \emph{chiusa per composizioni transfinite} se, per ogni \(\lambda\)-successione \(f : \ctOrd_{<\lambda}\to\ctK\) la composizione transfinita \(f_{:\lambda} : X_0\to \colim_{\alpha < \lambda} X_\alpha\) è ancora una freccia di \(\ctK\).
 \end{definition}
 \begin{definition}[Classi speciali di frecce]
-	Sia \(\ctC\) una categoria. Una classe di frecce \(\ctK\subseteq\ctC_1\) si dice
-	\begin{itemize}
-		\item \emph{ampia} se la sottocategoria individuata da \(\ctK\) è ampia nel senso di \ref{def_subcat}; in particolare, \(\ctK\) contiene tutte le identità, e quindi tutti gli oggetti di \(\ctC\), ed è chiusa per composizione.
-		\item \emph{presatura} se ogni volta che sia dato un diagramma
-		      \[
-			      \begin{tikzcd}
-				      A \ar[d, "k"']\ar[r, "f"]& X \\
-				      B &
-			      \end{tikzcd}
-		      \]
-		      tale che \(k\in\ctK\), se la somma amalgamata \(\push BXA\) esiste, allora la freccia \(k' : B\to \push BXA\) è anch'esso in \(\ctK\).
-		\item \emph{quasisatura} se è presatura e chiusa per retratti (nella categoria delle frecce \(\ctC^\to\), si veda \ref{def_cat_frecce}): significa che, dato un diagramma
-		      \[
-			      \begin{tikzcd}
-				      A \ar[r, "i"]\ar[d, "k'"'] & K \ar[r, "r"]\ar[d, "k"]& A \ar[d, "k'"']\\
-				      B \ar[r, "i'"'] & K' \ar[r, "r'"'] & B
-			      \end{tikzcd}
-		      \]
-		      dove \(r\cmp i = 1_A\) e \(r'\cmp i' = 1_B\), se \(k\in \ctK\), allora anche \(k'\in\ctK\).
-		\item \emph{cellulare} se è presatura e chiusa per composizione transfinita nel senso di \ref{}.
-		\item \emph{satura} se è quasisatura e cellulare.
-		\item \emph{cancellativa a destra} (risp., \emph{a sinistra}) se\dots; cancellativa, se lo è da entrambi i lati.
-		\item \emph{chiusa per limiti} (risp., \emph{per colimiti}) se\dots
-	\end{itemize}
+ Sia \(\ctC\) una categoria. Una classe di frecce \(\ctK\subseteq\ctC_1\) si dice
+ \begin{itemize}
+  \item \emph{ampia} se la sottocategoria individuata da \(\ctK\) è ampia nel senso di \ref{def_subcat}; in particolare, \(\ctK\) contiene tutte le identità, e quindi tutti gli oggetti di \(\ctC\), ed è chiusa per composizione.
+  \item \emph{presatura} se ogni volta che sia dato un diagramma
+        \[
+         \begin{tikzcd}
+          A \ar[d, "k"']\ar[r, "f"]& X \\
+          B &
+         \end{tikzcd}
+        \]
+        tale che \(k\in\ctK\), se la somma amalgamata \(\push BXA\) esiste, allora la freccia \(k' : B\to \push BXA\) è anch'esso in \(\ctK\).
+  \item \emph{quasisatura} se è presatura e chiusa per retratti (nella categoria delle frecce \(\ctC^\to\), si veda \ref{def_cat_frecce}): significa che, dato un diagramma
+        \[
+         \begin{tikzcd}
+          A \ar[r, "i"]\ar[d, "k'"'] & K \ar[r, "r"]\ar[d, "k"]& A \ar[d, "k'"']\\
+          B \ar[r, "i'"'] & K' \ar[r, "r'"'] & B
+         \end{tikzcd}
+        \]
+        dove \(r\cmp i = 1_A\) e \(r'\cmp i' = 1_B\), se \(k\in \ctK\), allora anche \(k'\in\ctK\).
+  \item \emph{cellulare} se è presatura e chiusa per composizione transfinita nel senso di \ref{}.
+  \item \emph{satura} se è quasisatura e cellulare.
+  \item \emph{cancellativa a destra} (risp., \emph{a sinistra}) se\dots; cancellativa, se lo è da entrambi i lati.
+  \item \emph{chiusa per limiti} (risp., \emph{per colimiti}) se\dots
+ \end{itemize}
 \end{definition}
 \begin{examples}
-	\Todo{Esempi di classi ampie, sature, etc. in varie categorie}
+ \Todo{Esempi di classi ampie, sature, etc. in varie categorie}
 \end{examples}
 \begin{esercizi}
-	\item
-	\item
-	\item
-	\item
-	\item
+ \item
+ \item
+ \item
+ \item
+ \item
 \end{esercizi}
 \section[Proprietà ed esempi]{Proprietà fondamentali ed esempi}
 \begin{remark}
-	Grazie a \ref{klext_delle_relazioni} possiamo estendere la relazione di ortogonalità a una coppia di funzioni sulle sottoclassi di \(\hom(\ctC)\),
-	\[\lort{(-)} : 2^{\hom(\ctC)} \leftrightarrows 2^{\hom(\ctC)} : \rort{(-)}\]
-	tali che \(\rort\ctU\subseteq\ctV\) se e solo se \(\ctU\subseteq\lort\ctV\) e definite alla maniera seguente: data una sottoclasse \(\ctU\subseteq \ctC_1\),
-	\begin{gather*}
-		\rort{\ctU} := \{f\in\ctC_1\mid \forall u\in\ctU.(u\perp f)\}\\
-		\lort{\ctU} := \{f\in\ctC_1\mid \forall u\in\ctU.(f\perp u)\}
-	\end{gather*}
-	Così, possiamo definire la relazione di ortogonalità estesa alle sottoclassi di \(\hom(\ctC)\),
-	\[\ctL\perp \ctR := \forall l\in\ctL,r\in\ctR.(l\perp r).\]
-	Si osservi che le seguenti tre condizioni sono equivalenti (lo si dimostri come esercizio per familiarizzare con la definizione):
-	\[\ctL\perp\ctR\qquad \ctL\subseteq\lort\ctR\qquad \rort\ctL\subseteq \ctR\]
+ Grazie a \ref{klext_delle_relazioni} possiamo estendere la relazione di ortogonalità a una coppia di funzioni sulle sottoclassi di \(\hom(\ctC)\),
+ \[\lort{(-)} : 2^{\hom(\ctC)} \leftrightarrows 2^{\hom(\ctC)} : \rort{(-)}\]
+ tali che \(\rort\ctU\subseteq\ctV\) se e solo se \(\ctU\subseteq\lort\ctV\) e definite alla maniera seguente: data una sottoclasse \(\ctU\subseteq \ctC_1\),
+ \begin{gather*}
+  \rort{\ctU} := \{f\in\ctC_1\mid \forall u\in\ctU.(u\perp f)\}\\
+  \lort{\ctU} := \{f\in\ctC_1\mid \forall u\in\ctU.(f\perp u)\}
+ \end{gather*}
+ Così, possiamo definire la relazione di ortogonalità estesa alle sottoclassi di \(\hom(\ctC)\),
+ \[\ctL\perp \ctR := \forall l\in\ctL,r\in\ctR.(l\perp r).\]
+ Si osservi che le seguenti tre condizioni sono equivalenti (lo si dimostri come esercizio per familiarizzare con la definizione):
+ \[\ctL\perp\ctR\qquad \ctL\subseteq\lort\ctR\qquad \rort\ctL\subseteq \ctR\]
 \end{remark}
 \begin{definition}[Prodotto di Leibniz]
-	Siano \(f : A \to B\) e \(g : X\to Y\) due frecce di una categoria \(\ctC\). Il \emph{prodotto di Leibniz} di \(f\) e \(g\), denotato \(f\oast g\), si costruisce a partire dal prodotto fibrato
-	\[
-		\begin{tikzcd}
-			\pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)} \ar[r]\ar[d] & \Hom{\ctC}(B,Y) \ar[d, "\blank\cmp f"]\\
-			\Hom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \Hom{\ctC}(A,Y)
-		\end{tikzcd}
-	\]
-	e consiste della mappa di confronto \(f\oast g : \Hom{\ctC}(B,X) \to \pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)}\) indotta dalla proprietà universale.
+ Siano \(f : A \to B\) e \(g : X\to Y\) due frecce di una categoria \(\ctC\). Il \emph{prodotto di Leibniz} di \(f\) e \(g\), denotato \(f\oast g\), si costruisce a partire dal prodotto fibrato
+ \[
+  \begin{tikzcd}
+   \pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)} \ar[r]\ar[d] & \Hom{\ctC}(B,Y) \ar[d, "\blank\cmp f"]\\
+   \Hom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \Hom{\ctC}(A,Y)
+  \end{tikzcd}
+ \]
+ e consiste della mappa di confronto \(f\oast g : \Hom{\ctC}(B,X) \to \pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)}\) indotta dalla proprietà universale.
 
-	Diciamo che il prodotto di Leibniz di \(f,g\) è \emph{esatto} se \(f\oast g\) è una biiezione. Questo è equivalente ad affermare che il quadrato
-	\[
-		\begin{tikzcd}
-			\Hom{\ctC}(B,X) \ar[d]\ar[r,"g\cmp\blank"]& \Hom{\ctC}(B,Y)\ar[d, "\blank\cmp f"]\\
-			\Hom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \Hom{\ctC}(A,Y)
-		\end{tikzcd}
-	\]
-	è un prodotto fibrato.
+ Diciamo che il prodotto di Leibniz di \(f,g\) è \emph{esatto} se \(f\oast g\) è una biiezione. Questo è equivalente ad affermare che il quadrato
+ \[
+  \begin{tikzcd}
+   \Hom{\ctC}(B,X) \ar[d]\ar[r,"g\cmp\blank"]& \Hom{\ctC}(B,Y)\ar[d, "\blank\cmp f"]\\
+   \Hom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \Hom{\ctC}(A,Y)
+  \end{tikzcd}
+ \]
+ è un prodotto fibrato.
 \end{definition}
 Per orientare chi legge, è utile rendere esplicita la definizione del prodotto di Leibniz \(f\oast g\): una freccia \(u : B\to X\) viene mandata nella coppia \((u\cmp f, g\cmp u)\), che appartiene al prodotto fibrato in questione vista l'associatività della composizione: \(g\cmp (u\cmp f) = (g\cmp u)\cmp f\).
 
 Il prodotto di Leibniz permette di ridefinire la relazione di ortogonalità mediante l'esattezza, ossia l'invertibilità di \(f\oast g\); la dimostrazione del seguente fatto consiste nel riscrivere le due condizioni in modo che entrambe si rifrasino così:
 \begin{quote}
-	Per ogni coppia di frecce \(u : X\to A\), \(v : Y\to B\) tali che \(g\cmp u=v\cmp f\), esiste un'unica freccia \(a : Y\to A\) tale che \(g\cmp a=v\) e \(a\cmp f=u\).
+ Per ogni coppia di frecce \(u : X\to A\), \(v : Y\to B\) tali che \(g\cmp u=v\cmp f\), esiste un'unica freccia \(a : Y\to A\) tale che \(g\cmp a=v\) e \(a\cmp f=u\).
 \end{quote}
 \begin{proposition}
-	Due frecce \(f,g\) sono ortogonali (cioè \(f\perp g\) nel senso di \ref{def_ortogona}) se e solo se il prodotto di Leibniz \(f\oast g\) è esatto.
+ Due frecce \(f,g\) sono ortogonali (cioè \(f\perp g\) nel senso di \ref{def_ortogona}) se e solo se il prodotto di Leibniz \(f\oast g\) è esatto.
 \end{proposition}
 \begin{proof}
-	Evidente: la condizione su \(a\) in \ref{def_ortogona} si traduce in esistenza (suriettività di \(f\oast g\)) e unicità (iniettività).
+ Evidente: la condizione su \(a\) in \ref{def_ortogona} si traduce in esistenza (suriettività di \(f\oast g\)) e unicità (iniettività).
 \end{proof}
 \begin{definition}[Sistema di prefattorizzazione]
-	\Todo{}
+ \Todo{}
 \end{definition}
 \begin{proposition}
-	Ciascuna classe in un prefact definisce l'altra --dunque la def di prefact è ridondante
+ Ciascuna classe in un prefact definisce l'altra --dunque la def di prefact è ridondante
 \end{proposition}
 \begin{definition}\label{fat_funno}\index{Fattorizzazione!--- funtoriale}
-	Fattorizzazione funtoriale
-	(Remark: ci occuperemo solo di sistemi di fattorizzazione funtoriali in questo senso)
+ Fattorizzazione funtoriale
+ (Remark: ci occuperemo solo di sistemi di fattorizzazione funtoriali in questo senso)
 \end{definition}
 \begin{definition}
-	L'operatore punto e virgola e le sue proprietà
+ L'operatore punto e virgola e le sue proprietà
 \end{definition}
 \begin{definition}
-	Sistema di fattorizzazione: due classi, tra loro strettamente ortogonali, tali che \(\ctC_1 = \ctM \fatsemi \ctE\).
+ Sistema di fattorizzazione: due classi, tra loro strettamente ortogonali, tali che \(\ctC_1 = \ctM \fatsemi \ctE\).
 \end{definition}
 \Todo{missing figure here}
 % \begin{figure}[h]
@@ -329,20 +329,20 @@ Il prodotto di Leibniz permette di ridefinire la relazione di ortogonalità medi
 % 	\end{center}
 % \end{figure}
 \begin{itemize}
-	% \item estensione ai sottoinsiemi dell'ortogonalità
-	% \item Caratterizzazioni equivalenti della relazione di ortogonalità
-	% \item def di prefact, interdefinibilità delle due classi
-	% \item funtorialità della fattorizzazione
-	% \item stabilità per lim/colim
-	% \item proprietà di cancellazione
-	% \item classi ampie, sature, cellulari
-	\item induzione di pre-FS su categorie di funtori, slice, coslice, (comma, cocomma?)
-	\item esempi in algebra, topologia, geometria, logica, eccetera (epi e mono in set; verticali e cartesiani; etc)
-	\item il poset dei sistemi di fattorizzazione
+ % \item estensione ai sottoinsiemi dell'ortogonalità
+ % \item Caratterizzazioni equivalenti della relazione di ortogonalità
+ % \item def di prefact, interdefinibilità delle due classi
+ % \item funtorialità della fattorizzazione
+ % \item stabilità per lim/colim
+ % \item proprietà di cancellazione
+ % \item classi ampie, sature, cellulari
+ \item induzione di pre-FS su categorie di funtori, slice, coslice, (comma, cocomma?)
+ \item esempi in algebra, topologia, geometria, logica, eccetera (epi e mono in set; verticali e cartesiani; etc)
+ \item il poset dei sistemi di fattorizzazione
 \end{itemize}
 \subsection{Esempi di sistemi di fattorizzazione}
 \begin{example}
-	Epi e mono in Set
+ Epi e mono in Set
 \end{example}
 Più in generale, epi e mono in ogni categoria di modelli per una segnatura
 \begin{example}
@@ -362,63 +362,63 @@ Più in generale, epi e mono in ogni categoria di modelli per una segnatura
 \end{example}
 
 \begin{example}
-	Induzione di (pre-)FS su categorie di funtori, slice, coslice, ecc.
+ Induzione di (pre-)FS su categorie di funtori, slice, coslice, ecc.
 \end{example}
 
 \begin{esercizi}
-	\item
-	\item
-	\item
-	\item
-	\item
+ \item
+ \item
+ \item
+ \item
+ \item
 \end{esercizi}
 \section[Fattorizzazione]{Sistemi di fattorizzazione forti e deboli}
 Ortogonalità non-unica
 \begin{itemize}
-	\item fattorizzabilità unica ed essenzialmente unica;
-	\item fattorizzabilità non-unica
-	\item esempi di sistemi con fattorizzabilità non-unica
-	\item indurre sistemi di fattorizzazione (argomento degli oggetti piccini)
-	\item
+ \item fattorizzabilità unica ed essenzialmente unica;
+ \item fattorizzabilità non-unica
+ \item esempi di sistemi con fattorizzabilità non-unica
+ \item indurre sistemi di fattorizzazione (argomento degli oggetti piccini)
+ \item
 \end{itemize}
 \begin{esercizi}
-	\item
-	\item
-	\item
-	\item
-	\item
+ \item
+ \item
+ \item
+ \item
+ \item
 \end{esercizi}
 \section[Riflessività]{Sistemi di fattorizzazione riflessivi}
 \begin{esercizi}
-	\item
-	\item
-	\item
-	\item
-	\item
+ \item
+ \item
+ \item
+ \item
+ \item
 \end{esercizi}
 \section[Mono ed epi]{Classi di mono ed epi}
 \begin{esercizi}
-	\item
-	\item
-	\item
-	\item
-	\item
+ \item
+ \item
+ \item
+ \item
+ \item
 \end{esercizi}
 \section[Iniettivi e proiettivi]{Oggetti iniettivi e proiettivi}
 \Todo{Teorema di Gleason sui proiettivi in Top, da qualche parte, qui}
 \begin{esercizi}
-	\item
-	\item
-	\item
-	\item
-	\item
+ \item
+ \item
+ \item
+ \item
+ \item
 \end{esercizi}
 \section[Fattorizzazione e algebre]{Sistemi di fattorizzazione come algebre}
 \begin{esercizi}
-	\item
-	\item
-	\item
-	\item
-	\item
+ \item
+ \item
+ \item
+ \item
+ \item
 \end{esercizi}
 
