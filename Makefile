@@ -49,3 +49,8 @@ work:
 board:
 	evince whiteboard.pdf &
 	texfot latexmk -pvc -pdf whiteboard.tex
+
+addnix:
+	nix develop 
+	latexmk -C
+	$(MAKE) work

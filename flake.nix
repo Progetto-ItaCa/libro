@@ -43,6 +43,7 @@
             hyphenat
             ifoddpage
             imakeidx
+            inconsolata
             infwarerr
             itnumpar
             jknapltx
@@ -50,6 +51,7 @@
             latexmk
             latexindent
             lh
+            listings
             mathabx
             mathtools
             metafont
@@ -65,6 +67,7 @@
             todonotes
             turnstile
             ucs
+            upquote
             underscore
             varwidth
             xcolor
