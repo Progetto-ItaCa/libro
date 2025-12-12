@@ -19,53 +19,108 @@
 %%%
 
 \begin{document}
-% \begin{center}
- \begin{tikzpicture}[
-   x=4em, y=4em,
-   dot/.style={
-     circle,
-     fill=#1,
-     inner sep=0pt,
-     outer sep=2pt,
-     minimum size=4pt,
-     draw=none,
-    },
-   wrap/.style={
-     fill=black!5,
-     draw=gray,
-     rounded corners,
-     inner sep=.5em,
-    },
-  ]
+\begin{center}
+	\begin{tikzpicture}[
+			x=6em, y=6em,
+			dot/.style={
+					circle,
+					fill=#1,
+					inner sep=0pt,
+					outer sep=2pt,
+					minimum size=4pt,
+					draw=none,
+				},
+			microdot/.style={
+					circle,
+					fill=#1,
+					inner sep=0pt,
+					outer sep=0pt,
+					minimum size=1pt,
+					draw=none,
+				},
+			wrap/.style={
+					fill=black!5,
+					draw=gray,
+					rounded corners,
+					inner sep=2em,
+				},
+		]
 
-\node (A) at (0,0) {$A$};
-\node (B) at (0,-1) {$B$};
-\node (X) at (1,0) {$X$};
-\node (Y) at (1,-1) {$Y$};
-\draw[-latex] (A) -- (B);
-\draw[-latex] (X) -- (Y);
-\draw[-latex] (B) -- (Y);
-\draw[-latex] (X) -- (A);
-\begin{scope}[xshift=4cm]
-\node (A) at (.25,0) {$A$};
-\node (B) at (0,-1) {$B$};
-\node (X) at (.75,0) {$X$};
-\node (Y) at (1,-1) {$Y$};
-\draw[-latex] (A) -- (B);
-\draw[-latex] (X) -- (Y);
-\draw[-latex] (B) -- (Y);
-\draw[-latex] (X) -- (A);
-\end{scope}
-\begin{scope}[xshift=8cm]
-\node (A) at (1,0) {$A$};
-\node (B) at (0,-1) {$B$};
-\node (X) at (0,0) {$X$};
-\node (Y) at (1,-1) {$Y$};
-\draw[-latex] (A) -- (B);
-\draw[-latex] (B) -- (Y);
-\draw[-latex] (X) -- (A);
-\draw[line width=3pt,white,-] (X) -- (Y);
-\draw[-latex] (X) -- (Y);
-\end{scope}
-\end{tikzpicture}
+		\def\seedX{14}
+		\def\sizeX{5}
+		%  \pgfmathsetseed{\seedX}
+		\GimmeBounds{\seedX}{\sizeX}
+		\begin{scope}[local bounding box=JJ]
+			\pgfmathsetseed{\seedX}
+			\foreach \i in {1,...,5} {
+					\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+					\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+					\path node[dot=lightgray] (J\i) at (\x,\y) {};
+				}
+		\end{scope}
+		\draw[-latex] (J2) -- (J4);
+		\draw[-latex] (J4) -- (J1);
+		\draw[-latex] (J2) -- (J3);
+		\draw[-latex] (J5) -- (J3);
+		\draw[-latex] (J5) -- (J4);
+		% loops 
+		\draw [-latex] (J2) to [out=-45,in=45,looseness=8] (J2);
+		\draw [-latex] (J4) to [in=45,out=45+90,looseness=8] (J4);
+		\draw [-latex] (J5) to [out=135,in=135+90,looseness=8] (J5);
+		\begin{scope}[on background layer]
+			\path node[wrap, fit=(JJ)] (ctJ) {} node[below=2.25cm] {$\ctG$};
+		\end{scope}
+		% inviluppo riflessivo
+		\begin{scope}[xshift=5cm]
+			\GimmeBounds{\seedX}{\sizeX}
+			\begin{scope}[local bounding box=tJ]
+				\pgfmathsetseed{\seedX}
+				\foreach \i in {1,...,5} {
+						\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+						\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+						\path node[dot=lightgray] (J\i) at (\x,\y) {};
+					}
+			\end{scope}
+			\draw[-latex] (J2) -- (J4);
+			\draw[-latex] (J4) -- (J1);
+			\draw[-latex] (J2) -- (J3);
+			\draw[-latex] (J5) -- (J3);
+			\draw[-latex] (J5) -- (J4);
+			% loops 
+			\draw [-latex] (J2) to [out=-45,in=45,looseness=8] (J2);
+			\draw [-latex] (J4) to [in=45,out=45+90,looseness=8] (J4);
+			\draw [-latex] (J5) to [out=135,in=135+90,looseness=8] (J5);
+			% nuovi loops 
+			\draw [-latex,ibmMagenta] (J1) to [out=-45,in=45,looseness=8] (J1);
+			\draw [-latex,ibmMagenta] (J2) to [out=-45,in=-135,looseness=8] (J2);
+			\draw [-latex,ibmMagenta] (J3) to [out=135,in=135+90,looseness=8] (J3);
+			\draw [-latex,ibmMagenta] (J4) to [out=135,in=135+90,looseness=8] (J4);
+			\draw [-latex,ibmMagenta] (J5) to [out=-45,in=45,looseness=8] (J5);
+			\begin{scope}[on background layer]
+				\path node[wrap, fit=(tJ)] (ctJ) {} node[below=2.25cm] {$\widetilde{\ctG}$};
+			\end{scope}
+		\end{scope}
+		% cuore riflessivo 
+		\begin{scope}[xshift=-5cm]
+			\GimmeBounds{\seedX}{\sizeX}
+			\begin{scope}[local bounding box=rJ]
+				\pgfmathsetseed{\seedX}
+				\foreach \i/\j in { 1/none, 2/lightgray, 3/none, 4/lightgray, 5/lightgray} {
+						\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+						\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+						\path node[dot={\j}] (J\i) at (\x,\y) {};
+					}
+			\end{scope}
+			\draw[-latex] (J2) -- (J4);
+			\draw[-latex] (J5) -- (J4);
+			% loops 
+			\draw [-latex] (J2) to [out=-45,in=45,looseness=8] (J2);
+			\draw [-latex] (J4) to [in=45,out=45+90,looseness=8] (J4);
+			\draw [-latex] (J5) to [out=135,in=135+90,looseness=8] (J5);
+			\begin{scope}[on background layer]
+				\path node[wrap, fit=(rJ)] (ctJ) {} node[below=2.25cm] {$\ctG^r$};
+			\end{scope}
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
 \end{document}

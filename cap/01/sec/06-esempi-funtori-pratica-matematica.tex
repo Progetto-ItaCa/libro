@@ -67,7 +67,7 @@
 
  Questa condizione si traduce nel fatto seguente: in un grafo riflessivo ogni vertice ammette un \emph{cappio} cioè per ogni vertice esiste un lato \(jv : s(jv)=v \to v=t(jv)\). Ad ogni grafo è possibile associare un grafo riflessivo in due modi complementari:
  \begin{itemize}
-  \item il \emph{cuore riflessivo} di un grafo \(\ctG\) consiste del massimo sottografo \(\ctG^r \subseteq\ctG\) generato da quei vertici che ammettono un cappio; formalmente,\Todo{va definito con attenzione}
+  \item il \emph{cuore riflessivo} di un grafo \(\ctG\) consiste del massimo sottografo \(\ctG^r \subseteq\ctG\) generato da quei vertici che ammettono un cappio; formalmente, si considerano come vertici di $\ctG^r$ solo i vertici di $\ctG$ tali che esiste un lato \(e\in E\) con \(s(e)=t(e)=v\), e come lati di \(\ctG^r\) tutti i lati di \(\ctG\) tra questi ultimi. (Farsi dei disegni, e confrontarli con la Figura \ref{} che contiene un semplice esempio di inviluppo e cuore riflessivo di un grafo dato.)
   \item l'\emph{inviluppo riflessivo} \(\widetilde{\ctG}\) di \(\ctG\) si ottiene definendo un nuovo grafo che ha lo stesso insieme di vertici di \(\ctG\) e l'unione disgiunta \(E+V\) per insieme dei lati; le nuove funzioni dominio e codominio di \(\widetilde\ctG\) sono definite da
         \[\tilde s = \begin{cases}
           e \mapsto s(e) \\
@@ -79,8 +79,133 @@
          \end{cases}\]
         Evidentemente l'inclusione \(j : V \mono E+V\) è la sezione comune di \(\tilde s,\tilde t\).
  \end{itemize}
- \Todo{\(\ctG^r \subseteq\ctG \subseteq \widetilde\ctG\)}
+ Si noti che esistono delle inclusioni \(\ctG^r \subseteq\ctG \subseteq \widetilde\ctG\); inoltre, il cuore riflessivo di un grafo riflessivo è uguale al grafo stesso, ma non al suo inviluppo riflessivo (viene aggiunto un nuovo cappio a ogni vertice, non importa se ne esisteva già uno o meno).
+
+ Mostriamo che le operazioni di prendere il cuore riflessivo e l'inviluppo riflessivo definiscono due funtori
+ \[\dmFun{(\blank)^r,\widetilde{(\blank)}}{\ctdGph}{\cate{r}\ctdGph}\]
+ dove la categoria $\cate{r}\ctdGph$ è piena in $\ctdGph$ e ha per oggetti i grafi riflessivi. Evidentemente un omomorfismo di grafi $f=(f_V,f_E) : \ctG \to \ctH$ induce un omomorfismo $f^r : \ctG^r \to \ctH^r$ per restrizione (perché se $v$ è tale che esiste un cappio $e : v \to v$, allora $f_Ee : f_Vv\to f_Vv$ è a sua volta un cappio). Le proprietà di funtorialità sono ovvie. Per quanto riguarda l'inviluppo riflessivo, resta indotto anche un omomorfismo di grafi $\tilde f$ tale che i diagrammi di \ref{ex_cat_grafi} siano commutativi:
+ % https://q.uiver.app/#q=WzAsOCxbMCwwLCJFK1YiXSxbMSwwLCJFJytWJyJdLFswLDEsIlYiXSxbMSwxLCJWJyJdLFszLDAsIkUrViJdLFs0LDAsIkUnK1YnIl0sWzMsMSwiViJdLFs0LDEsIlYnIl0sWzAsMiwiW3NcXCwxXSIsMl0sWzEsMywiW3MnXFwsMV0iXSxbMCwxLCJmXzErZl8wIl0sWzIsMywiZl8wIiwyXSxbNCw2LCJbdFxcLDFdIiwyXSxbNCw1LCJmXzErZl8wIl0sWzUsNywiW3QnXFwsMV0iXSxbNiw3LCJmXzAiLDJdXQ==
+\[\begin{tikzcd}
+	{E+V} & {E'+V'} && {E+V} & {E'+V'} \\
+	V & {V'} && V & {V'}
+	\arrow["{f_1+f_0}", from=1-1, to=1-2]
+	\arrow["{[s\,1]}"', from=1-1, to=2-1]
+	\arrow["{[s'\,1]}", from=1-2, to=2-2]
+	\arrow["{f_1+f_0}", from=1-4, to=1-5]
+	\arrow["{[t\,1]}"', from=1-4, to=2-4]
+	\arrow["{[t'\,1]}", from=1-5, to=2-5]
+	\arrow["{f_0}"', from=2-1, to=2-2]
+	\arrow["{f_0}"', from=2-4, to=2-5]
+\end{tikzcd}\]
+(La funzione $\tilde s=[s\, 1]$ è l'unica tale che $[s\,1]|_E = s$ e $[s\,1]|_V = \id_V$; si definiscono in modo analogo $[t\, 1], [s'\, 1], [t'\, 1]$. Con questa definizione la verifica delle commutatività appena disegnate è immediata.)
 \end{example}
+\begin{figure}
+  \begin{center}
+	\begin{tikzpicture}[
+			x=6em, y=6em,
+			dot/.style={
+					circle,
+					fill=#1,
+					inner sep=0pt,
+					outer sep=2pt,
+					minimum size=4pt,
+					draw=none,
+				},
+			microdot/.style={
+					circle,
+					fill=#1,
+					inner sep=0pt,
+					outer sep=0pt,
+					minimum size=1pt,
+					draw=none,
+				},
+			wrap/.style={
+					fill=black!5,
+					draw=gray,
+					rounded corners,
+					inner sep=2em,
+				},
+		]
+
+		\def\seedX{14}
+		\def\sizeX{5}
+		%  \pgfmathsetseed{\seedX}
+		\GimmeBounds{\seedX}{\sizeX}
+		\begin{scope}[local bounding box=JJ]
+			\pgfmathsetseed{\seedX}
+			\foreach \i in {1,...,5} {
+					\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+					\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+					\path node[dot=lightgray] (J\i) at (\x,\y) {};
+				}
+		\end{scope}
+		\draw[-latex] (J2) -- (J4);
+		\draw[-latex] (J4) -- (J1);
+		\draw[-latex] (J2) -- (J3);
+		\draw[-latex] (J5) -- (J3);
+		\draw[-latex] (J5) -- (J4);
+		% loops 
+		\draw [-latex] (J2) to [out=-45,in=45,looseness=8] (J2);
+		\draw [-latex] (J4) to [in=45,out=45+90,looseness=8] (J4);
+		\draw [-latex] (J5) to [out=135,in=135+90,looseness=8] (J5);
+		\begin{scope}[on background layer]
+			\path node[wrap, fit=(JJ)] (ctJ) {} node[below=2.25cm] {$\ctG$};
+		\end{scope}
+		% inviluppo riflessivo
+		\begin{scope}[xshift=5cm]
+			\GimmeBounds{\seedX}{\sizeX}
+			\begin{scope}[local bounding box=tJ]
+				\pgfmathsetseed{\seedX}
+				\foreach \i in {1,...,5} {
+						\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+						\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+						\path node[dot=lightgray] (J\i) at (\x,\y) {};
+					}
+			\end{scope}
+			\draw[-latex] (J2) -- (J4);
+			\draw[-latex] (J4) -- (J1);
+			\draw[-latex] (J2) -- (J3);
+			\draw[-latex] (J5) -- (J3);
+			\draw[-latex] (J5) -- (J4);
+			% loops 
+			\draw [-latex] (J2) to [out=-45,in=45,looseness=8] (J2);
+			\draw [-latex] (J4) to [in=45,out=45+90,looseness=8] (J4);
+			\draw [-latex] (J5) to [out=135,in=135+90,looseness=8] (J5);
+			% nuovi loops 
+			\draw [-latex,ibmMagenta] (J1) to [out=-45,in=45,looseness=8] (J1);
+			\draw [-latex,ibmMagenta] (J2) to [out=-45,in=-135,looseness=8] (J2);
+			\draw [-latex,ibmMagenta] (J3) to [out=135,in=135+90,looseness=8] (J3);
+			\draw [-latex,ibmMagenta] (J4) to [out=135,in=135+90,looseness=8] (J4);
+			\draw [-latex,ibmMagenta] (J5) to [out=-45,in=45,looseness=8] (J5);
+			\begin{scope}[on background layer]
+				\path node[wrap, fit=(tJ)] (ctJ) {} node[below=2.25cm] {$\widetilde{\ctG}$};
+			\end{scope}
+		\end{scope}
+		% cuore riflessivo 
+		\begin{scope}[xshift=-5cm]
+			\GimmeBounds{\seedX}{\sizeX}
+			\begin{scope}[local bounding box=rJ]
+				\pgfmathsetseed{\seedX}
+				\foreach \i/\j in { 1/none, 2/lightgray, 3/none, 4/lightgray, 5/lightgray} {
+						\pgfmathsetmacro{\x}{(rnd-\xmid)/ifthenelse(\xmax==\xmin,1,\xmax-\xmin)}
+						\pgfmathsetmacro{\y}{(rnd-\ymid)/ifthenelse(\ymax==\ymin,1,\ymax-\ymin)}
+						\path node[dot={\j}] (J\i) at (\x,\y) {};
+					}
+			\end{scope}
+			\draw[-latex] (J2) -- (J4);
+			\draw[-latex] (J5) -- (J4);
+			% loops 
+			\draw [-latex] (J2) to [out=-45,in=45,looseness=8] (J2);
+			\draw [-latex] (J4) to [in=45,out=45+90,looseness=8] (J4);
+			\draw [-latex] (J5) to [out=135,in=135+90,looseness=8] (J5);
+			\begin{scope}[on background layer]
+				\path node[wrap, fit=(rJ)] (ctJ) {} node[below=2.25cm] {$\ctG^r$};
+			\end{scope}
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+  \caption{Esempio di cuore e inviluppo riflessivo di un grafo (semplice, cioè senza lati multipli tra due vertici fissati).}
+\end{figure}
 \begin{example}[Realizzare \(\ctMat\) in \(\ctVect\)]\index{Funtore!--- matrici reali}
  La categoria delle matrici \(\ctMat\) è stata definita in \ref{ex_cat_matrici}; la categoria \(\ctVect\) è stata definita tra gli esempi di \ref{varie_categorie_nella_pratica}. Abbiamo già osservato che \(\ctMat\) si ottiene da \(\ctVect\) scegliendo un solo oggetto per ogni dimensione, e questo definisce un funtore ovvio \(\ctMat \to \ctVect\) (mandando \(n\) in \(\bbF^n\) e una matrice \(A\) nell'applicazione lineare che agisce come \(A\) nella base canonica). Esiste anche un funtore nella direzione opposta,
  \[\dmFun{Q}{\ctVect}{\ctMat}\]
