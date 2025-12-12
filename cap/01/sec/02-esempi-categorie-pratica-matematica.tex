@@ -2,29 +2,29 @@
 Iniziamo ora a dare degli esempi di categorie piccole partendo dall'esempio più semplice, anche quello più banale.
 \subsection{Categorie come forme}\label{ssec:categorie_forme}
 \begin{example}\label{ex_cat_vuota}\index{Categoria!--- vuota}
- La \emph{categoria vuota} o \emph{categoria iniziale} \(\ctInit\) non ha oggetti né morfismi. Più formalmente, \(\ctC_0,\ctC_1\) sono le classi vuote, e non è necessario specificare altra struttura per soddisfare (vacuamente) tutti gli assiomi di categoria.
+ La \emph{categoria vuota} o \emph{categoria iniziale} \(\ctInit\) non ha oggetti né frecce. Più formalmente, \(\ctC_0,\ctC_1\) sono le classi vuote, e non è necessario specificare altra struttura per soddisfare (vacuamente) tutti gli assiomi di categoria.
 \end{example}
 \begin{example}\label{ex_cat_term}\index{Categoria!--- terminale}
- La \emph{categoria terminale} \(\ctTerm\) ha un solo oggetto \(\bullet\), e un unico morfismo \(\id_\bullet : \bullet\to\bullet\) che fa da identità. Chiaramente, non si può fare altro che porre \(\id_\bullet\cmp\id_\bullet=\id_\bullet\), e tutti gli assiomi di categoria sono soddisfatti.
+ La \emph{categoria terminale} \(\ctTerm\) ha un solo oggetto \(\bullet\), e un'unica freccia \(\id_\bullet : \bullet\to\bullet\) che fa da identità. Chiaramente, non si può fare altro che porre \(\id_\bullet\cmp\id_\bullet=\id_\bullet\), e tutti gli assiomi di categoria sono soddisfatti.
 \end{example}
 \index{Categoria!--- discreta}
 \`E sempre possibile dotare un insieme \(A\) della topologia discreta (o `massimale'), dove ogni sottoinsieme \(U\) di \(A\) è aperto, e della topologia indiscreta (o `minimale'), dove solo \(\emptyset\) e \(A\) sono aperti. Similmente, esistono due maniere, massimale e minimale, di considerare un insieme\footnote{Riguardo al problema se sia possibile dotare una classe propria della struttura di categoria discreta, la questione \emph{sembra} banale, ma in realtà tutt'altro che semplice da discutere: sebbene non ci sia alcun apparente problema ad assumere l'esistenza di classi proprie discrete, queste spesso vengono proibite \emph{ab imis} assumendo un assioma detto \emph{principio di Vop\v enka}: questo assioma afferma, precisamente, che non esistono sottoclassi proprie che formano categorie `discrete' nel senso di \ref{ex_cat_discreta}, nella classe propria di tutti gli insiemi. Questo assioma è estremamente forte; si può vedere il testo di Kanamori \cite{} per un confronto con altri assiomi sui `grandi cardinali'.} \(A\) una categoria.
 %\paolo{c'è del materiale introduttivo sul principio di Vopenka a cui possiamo rimandare? (Il lettore potrebbe chiedersi che cosa significa "discreto" in teoria degli insiemi.)}
 \begin{example}\label{ex_cat_discreta}\index{Categoria!--- discreta}
- Dato un insieme \(A\), la \emph{categoria discreta} su \(A\), denotata \(A^\delta\), ha per oggetti gli elementi \(a\in A\), un unico morfismo identità \(\id_a : a\to a\) per ogni \(a\), e nessun altro. La composizione è forzata a essere definita solamente tra identità, nel modo più ovvio possibile, e tutti gli assiomi di categoria sono ovviamente soddisfatti.
+ Dato un insieme \(A\), la \emph{categoria discreta} su \(A\), denotata \(A^\delta\), ha per oggetti gli elementi \(a\in A\), un'unica freccia identità \(\id_a : a\to a\) per ogni \(a\), e nessun altro. La composizione è forzata a essere definita solamente tra identità, nel modo più ovvio possibile, e tutti gli assiomi di categoria sono ovviamente soddisfatti.
 \end{example}
 \begin{example}\label{ex_cat_codiscreta}\index{Categoria!--- codiscreta}
- Dato un insieme \(A\), la \emph{categoria codiscreta} su \(A\), denotata \(A^\chi\) ha per oggetti gli elementi \(a\in A\), per ogni coppia di oggetti \(a,a'\in A\) un unico morfismo \(u_{aa'}:a\to a'\), e la composizione è definita da \(u_{a'a''}\cmp u_{aa'}=u_{aa''}\) (in particolare, da questo segue che esiste un unico elemento \(\id_a=u_{aa}\in A^\chi(a,a)\)).
+ Dato un insieme \(A\), la \emph{categoria codiscreta} su \(A\), denotata \(A^\chi\) ha per oggetti gli elementi \(a\in A\), per ogni coppia di oggetti \(a,a'\in A\) un'unica freccia \(u_{aa'}:a\to a'\), e la composizione è definita da \(u_{a'a''}\cmp u_{aa'}=u_{aa''}\) (in particolare, da questo segue che esiste un unico elemento \(\id_a=u_{aa}\in A^\chi(a,a)\)).
 \end{example}
 Alcune categorie che è spesso utile considerare si rappresentano mediante dei grafi:
 \begin{example}\label{ex_cat_freccia}\index{Categoria!--- freccia generica}\index{Freccia generica}
- La categoria \(\genArrow=\{0\to 1\}\) detta \emph{freccia generica} ha due oggetti \(0,1\) e un unico morfismo non identità \(u : 0\to 1\) (che di solito non ha nome). La composizione è forzata a essere definita solamente tra le identità ed \(u\), nell'unico modo ovvio, e tutti gli assiomi di categoria sono banalmente soddisfatti.
+ La categoria \(\genArrow=\{0\to 1\}\) detta \emph{freccia generica} ha due oggetti \(0,1\) e un'unica freccia non identità \(u : 0\to 1\) (che di solito non ha nome). La composizione è forzata a essere definita solamente tra le identità ed \(u\), nell'unico modo ovvio, e tutti gli assiomi di categoria sono banalmente soddisfatti.
 \end{example}
 \begin{example}\label{ex_cat_catena}\index{Categoria!--- catena generica}
  Più in generale, la categoria \(\Delta[n]\) detta \emph{catena generica di lunghezza \(n+1\)} è definita come segue:
  \begin{itemize}
   \item gli oggetti di \(\Delta[n]\) sono gli elementi di \(\{\iter[0]{n}\}\) (ci sono quindi \(n+1\) oggetti, per ogni \(n\ge 1\));\footnote{Si presti attenzione alla differente notazione per due insiemi finiti distinti: \(\bkt n := \{\iter n\}\), ma \([n] := \{\iter [0]n\}\) A volte è utile adottare la convenzione per cui quando \(n=-1\), l'insieme \(\{\iter[0]{n}\}\) è vuoto, e quindi la categoria `catena di lunghezza \(0\)' è la categoria vuota \(\ctInit\) di \ref{ex_cat_vuota}.}
-  \item C'è un unico morfismo \(i\to j\) in \(\Delta[n]\) se e solo se \(i\le j\), di modo che esista un unico morfismo \(i\to i\) (l'identità) per ogni \(i\in\{\iter[0]{n}\}\), e un unico morfismo \(i\to i+1\) per \(i\in\{\iter[0]{n-1}\}\); in particolare l'unico morfismo \(i\to j\) è ottenuto dalla composizione
+  \item C'è un'unica freccia \(i\to j\) in \(\Delta[n]\) se e solo se \(i\le j\), di modo che esista un'unica freccia \(i\to i\) (l'identità) per ogni \(i\in\{\iter[0]{n}\}\), e un'unica freccia \(i\to i+1\) per \(i\in\{\iter[0]{n-1}\}\); in particolare l'unico morfismo \(i\to j\) è ottenuto dalla composizione
         \[i\to i+1\to\dots\to j\]
  \end{itemize}
  \index{Simplesso}
@@ -200,14 +200,14 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
  Più in generale, sia \(S\) un insieme; la categoria \emph{\(S\)-spanna generica} \(S^\lhd\) è definita come segue:
  \begin{itemize}
   \item gli oggetti di \(S^\lhd\) sono gli elementi di \(S^+ := S\cup \{-\infty\}\);
-  \item esiste un unico morfismo \(f_s : -\infty\to s\), per ogni \(s\in S\).
+  \item esiste un'unica freccia \(f_s : -\infty\to s\), per ogni \(s\in S\).
  \end{itemize}
  La composizione è ancora una volta definita solamente quando almeno una delle due frecce è l'identità. Questo definisce una categoria in cui da un oggetto chiamato `\(-\infty\)' spiccano tante frecce \(f_s\) quanti sono gli elementi di \(S\).
 
  Dualmente, definiamo la categoria \emph{\(S\)-cospanna generica} \(S^\rhd\) come segue:
  \begin{itemize}
   \item gli oggetti di \(S^\rhd\) sono gli elementi di \(S^+ := S\cup \{+\infty\}\);
-  \item esiste un unico morfismo \(f_s : s\to+\infty\), per ogni \(s\in S\).
+  \item esiste un'unica freccia \(f_s : s\to+\infty\), per ogni \(s\in S\).
  \end{itemize}
  La composizione è ancora una volta definita solamente quando almeno una delle due frecce è l'identità. Questo definisce una categoria in cui verso un oggetto chiamato `\(\infty\)' puntano tante frecce \(f_s\) quanti sono gli elementi di \(S\).
 
@@ -1009,10 +1009,10 @@ I seguenti esempi sono simili, e vanno a rinforzare l'idea che una maniera aggiu
  Definiamo la seguente categoria \(\susp(X,\sim)\):
  \begin{itemize}
   \item Gli oggetti di \(\susp(X,\sim)\) sono gli elementi di \(X\);
-  \item Esiste un unico morfismo \(x\to y\) se e solo se \(x\sim y\) (e allora esiste anche un unico morfismo \(y\to x\) come conseguenza del fatto che \(\sim\) è simmetrica).
+  \item Esiste un'unica freccia \(x\to y\) se e solo se \(x\sim y\) (e allora esiste anche un'unica freccia \(y\to x\) come conseguenza del fatto che \(\sim\) è simmetrica).
  \end{itemize}
  Per ogni oggetto \(x\), l'identità è l'unico morfismo \(x\to x\) dato dal fatto che la relazione è riflessiva (\(x\sim x\)).
- La composizione è data dalla transitività: se abbiamo morfismi \(x\to y\) e \(y\to z\) significa, in particolare, che \(x\sim y\) e \(y\sim z\). Per transitività, \(x\sim z\), e quindi c'è un unico morfismo \(x\to z\), che possiamo definire come composizione \(x\sim y\sim z\).
+ La composizione è data dalla transitività: se abbiamo morfismi \(x\to y\) e \(y\to z\) significa, in particolare, che \(x\sim y\) e \(y\sim z\). Per transitività, \(x\sim z\), e quindi c'è un'unica freccia \(x\to z\), che possiamo definire come composizione \(x\sim y\sim z\).
 
  Gli assiomi di identità e associatività sono automaticamente soddisfatti: per esempio, la composizione \((w\to x\to y)\to z\) e la composizione \(w\to (x\to y\to z)\) coincidono, constando dell'unico morfismo \(w\to z\) che esiste usando due volte la transitività di \(\sim\).
 \end{example}
@@ -1020,7 +1020,7 @@ Quelle della forma \(\susp(X,\sim)\) per qualche insieme \(X\) e relazione di eq
 
 Consideriamo ora i seguenti esempi di categorie simili (che raccogliamo in dei teoremi, di cui diamo una dimostrazione completa, perché questi esempi sono pedagogicamente rilevanti).
 \begin{examples}\label{ord_sonocat}\index{Categoria!--- da una relazione}
- Ogni relazione d'ordine \((X,\le)\) forma una categoria, ancora una volta con un unico morfismo \(x\to y\) se e solo se \(x\le y\). Come nel caso delle relazioni di equivalenza, gli oggetti di \(\ctP(X,\le)\) sono gli elementi di \(X\), le identità sono date dalla proprietà riflessiva \(x\le x\) e la composizione dalla proprietà transitiva. Ciò è sufficiente a soddisfare tutti gli assiomi di categoria.
+ Ogni relazione d'ordine \((X,\le)\) forma una categoria, ancora una volta con un'unica freccia \(x\to y\) se e solo se \(x\le y\). Come nel caso delle relazioni di equivalenza, gli oggetti di \(\ctP(X,\le)\) sono gli elementi di \(X\), le identità sono date dalla proprietà riflessiva \(x\le x\) e la composizione dalla proprietà transitiva. Ciò è sufficiente a soddisfare tutti gli assiomi di categoria.
 
  Più in generale, un \emph{preordine} è una relazione riflessiva e transitiva, ma non necessariamente simmetrica o antisimmetrica. Ogni preordine si può vedere come una categoria alla stessa maniera di prima.
 \end{examples}
