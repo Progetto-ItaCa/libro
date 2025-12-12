@@ -54,11 +54,14 @@ Dato che i monoidi e i poset si possono guardare come categorie, è una buona do
   \[
    G(F(g\cmp f)) = G(Ff\cmp Fg) = GFf\cmp GFg .
   \]
-  \item Ogni funtore \(F : \ctC\fun\ctD\) definisce il \emph{funtore opposto}
+  \item \label{exfun_6} Ogni funtore \(F : \ctC\fun\ctD\) definisce il \emph{funtore opposto}
   \[\dmFun{F^\op}{\ctC^\op}{\ctD^\op}\]
   ponendo \(F^\op C=FC\) e \(F^\op(Y \xot f X) = FY \xot {(Ff)^\op} FX\); in termini della specifica di un funtore come in \ref{def_alternativa_funtore}, la funzione tra classi \(F^\op_0 : \ctC^\op_0\to\ctD^\op_0\) coincide con \(F_0\), e
   \[\dmFun{F_{XY}^\op}{\Hom{\ctC^\op}(Y,X)}{\Hom{\ctD^\op}(FY,FX)}\]
   è la funzione \(F_{YX} : \Hom{\ctC}(X,Y)\to \Hom{\ctD}(FX,FY)\).
+  \item \label{exfun_7} Per ogni categoria incubo $\ctC/C$ sopra $C$ come in \ref{def_cat_slice} esiste un funtore `dominio' 
+  \[\dmFun{d}{\ctC/C}{\ctC}\]
+  che restituisce (appunto) il dominio $X$ di $\var XC$; le proprietà di funtorialità sono evidenti. Analogamente, esiste un funtore `codominio' $c : C/\ctC \to \ctC$ dalla categoria succuba sotto $C$.
  \end{enumtag}
 \end{examples}
 \begin{definition}[Funtori pieni, fedeli, pienamente fedeli]\label{classi_di_funtori}\index{Funtore!classi di ---i}\index{Funtore!--- pieno}\index{Funtore!--- fedele}\index{Funtore!--- pienamente fedele}
@@ -311,25 +314,27 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
   \item\label{eb_4} \ref{ex_cat_matrici} (le matrici a coefficienti in un campo) fornisce un esempio di categoria dove i morfismi sono bifuntori: una matrice \(m\times n\) a coefficienti in \(k\) infatti si può vedere come una funzione \(\bkt m\times \bkt n \to \bbF\), e considerare \(\bkt m = \{\iter n\}\) come una categoria discreta (\ref{ex_cat_discreta}) motiva la definizione seguente.
  \end{enumtag}
 \end{examples}
-\begin{definition}[Categoria delle matrici di insiemi]\index{Categoria!--- delle matrici}
- \Todo{questo esempio è un po' brutto}
- Definiamo la categoria \(\ctM(\ctSet)\) che ha
- \begin{itemize}
-  \item per oggetti gli insiemi \(A,B,C,\dots\);
-  \item per morfismi \(A\to B\) i funtori
-        \[\dmFun M{\ctSet/A}{\ctSet/B}\]
-        che mandano un oggetto \(\var EA\) in un oggetto \(\var{M_0A}B\).
- \end{itemize}
- La composizione è la composizione di funtori:
- \[\xymatrix{
-   \ctSet/A \ar[r]^M & \ctSet/B \ar[r]^N & \ctSet/C
-  }\]
- è la composizione \(N\cmp M\).
-\end{definition}
-La definizione appena data merita alcune spiegazioni: si può considerare una freccia \(M\in\Hom{\ctM(\ctSet)}(A,B)\) come una `matrice di insiemi' \((\tilde M(a,b)\mid (a,b)\in A\times B)\), dove \(\tilde M(a,b)\) è definito a partire dai morfismi \(\var[\lceil a \rceil]{*}{A}\) che `scelgono' \(a\in A\),
-\[\tilde M(a,b) := \{x\in M_0a\mid (M\lceil a \rceil)(x)=b\}\]
-(\(M\lceil a \rceil\) è, per definizione, un oggetto \(\var{M_0a}{B}\) dell'incubo sopra \(B\)).
-Ora, dare una famiglia di insiemi \(\tilde M(a,b)\) al variare di \(A\times B\) è equivalente a dare un funtore \(\tilde M : A\times B \fun\ctSet\) dal prodotto di due categorie discrete; a sua volta questo è equivalente a dare un funtore \(M : \ctSet/A \fun\ctSet/B\) come sopra, il quale soddisfa una certa proprietà (è un `aggiunto sinistro', si veda il \autoref{cap_aggiunti}) che lo rende univocamente determinato dagli \(\tilde M(a,b)\).
+% \begin{definition}[Categoria delle matrici di insiemi]\index{Categoria!--- delle matrici}
+%  Definiamo la categoria \(\ctM(\ctSet)\) che ha
+%  \begin{itemize}
+%   \item per oggetti gli insiemi \(A,B,C,\dots\);
+%   \item per morfismi \(A\to B\) i funtori
+%         \[\dmFun M{\ctSet/A}{\ctSet/B}\]
+%         tra categorie incubo, che mandano un oggetto \(\var EA\) in un oggetto \(\var{M_0A}B\) (la corrispondenza $M_0 = M\cmp d$ è essa stessa funtoriale, di tipo $\ctSet/A \fun\ctSet/B \fun \ctSet$; si veda \ref{exfun_7} per la notazione $d : \ctSet/B \to \ctSet$).
+%  \end{itemize}
+%  La composizione in \(\ctM(\ctSet)\) è la composizione di funtori:
+%  \[\xymatrix{
+%    \ctSet/A \ar[r]^M & \ctSet/B \ar[r]^N & \ctSet/C.
+%   }\]
+% \end{definition}
+% La definizione appena data merita alcune spiegazioni (soprattutto, perché si chiamano matrici?). Il fatto è che si può considerare una freccia \(M\in\Hom{\ctM(\ctSet)}(A,B)\) come una `matrice di insiemi' \((M_{ab}\mid (a,b)\in A\times B)\), nel modo che segue. 
+% \begin{itemize}
+%   \item Si considerano gli oggetti \(\var[\lceil a \rceil]{*}{A}\) che `scelgono' \(a\in A\): ogni oggetto di $\ctSet^A$ è una unione disgiunta di oggetti di questo tipo, che sono gli `atomi' della categoria;
+%   \item \(M_{ab}\) è definito a partire dagli atomi \(\var[\lceil a \rceil]{*}{A}\) ponendo
+% \[M_{ab} := \{x\in M_0a\mid (M\lceil a \rceil)(x)=b\}\]
+% dove (\(M\lceil a \rceil\) è, per definizione, un oggetto \(\var{M_0a}{B}\) dell'incubo sopra \(B\)).
+% \end{itemize}
+% Ora, dare una famiglia di insiemi \(M_{ab}\) al variare di \(A\times B\) è equivalente a dare un funtore \(\tilde M : A\times B \fun\ctSet\) dal prodotto di due categorie discrete; a sua volta questo è equivalente a dare un funtore \(M : \ctSet/A \fun\ctSet/B\) come sopra, il quale soddisfa una certa proprietà (è un `aggiunto sinistro', si veda il \autoref{cap_aggiunti}) che lo rende univocamente determinato dagli \(M_{ab}\).
 \begin{remark}\index{Funtore!--- controvariante}
  Ogni funtore \(F : \ctC\fun\ctD\) definisce un funtore \(F^\op : \ctC^\op \fun\ctD^\op\) che coincide con \(F\) sugli oggetti, e che è definito sui morfismi mandando \(f^\op\in\ctC^\op\) in \(F(f)^\op\in\ctD^\op\). \`E semplice (e noioso) verificare le proprietà \ref{p_1}, \ref{p_2}.
 
