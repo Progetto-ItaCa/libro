@@ -23,18 +23,18 @@ Anche questo capitolo inizia raccogliendo degli esempi che la nozione di limite 
 \end{proof}
 La natura duale dei due enunciati che compongono \ref{init_ha_solo_id} è un fatto molto generale. Evidentemente, la proprietà di essere iniziale in \(\ctC\) è precisamente la proprietà di essere terminale in \(\ctC^\op\), e viceversa, la proprietà di essere terminale in \(\ctC\) è precisamente la proprietà di essere iniziale in \(\ctC^\op\). La maggior parte dei risultati che vedremo nel capitolo sono dualizzabili; per ragioni pedagogiche insisteremo a enunciare le due forme duali dei primi risultati per poi lasciare la dualizzazione come un (quasi sempre semplice) esercizio per chi legge. Imparare a dualizzare un enunciato, e a farlo correttamente (si veda \ref{ocio_al_duale}), è una parte inevitabile del percorso di apprendimento di chi studia la teoria delle categorie.
 \paragraph*{Proprietà universali.}
-In maniera molto informale, una \emph{proprietà universale} è la proprietà di essere terminale in una opportuna categoria, e dualmente una proprietà \emph{couniversale} è la proprietà di essere iniziale.
+In maniera molto informale, si dice \emph{universale} la proprietà di essere terminale in una opportuna categoria, e dualmente avere una proprietà \emph{couniversale} significa essere iniziale.
 
-Chiaramente questo è impreciso (gli oggetti sono sempre tipati dalla categoria cui appartengono, si veda la nota \ref{fn_tipati} a pagina \pageref{fn_tipati} nel capitolo precedente), e fuorviante se preso troppo alla lettera; si dovrebbe dire che un oggetto \(X\in\ctC_0\) è universale in \(\ctC\) quando è possibile costruire un certo diagramma, e da esso un `cono' la cui `origine' è \(X\),
+Chiaramente questo è impreciso (gli oggetti sono sempre tipati dalla categoria cui appartengono, si veda la nota \ref{fn_tipati} a pagina \pageref{fn_tipati} nel capitolo precedente), e fuorviante se preso troppo alla lettera; si dovrebbe dire che un oggetto \(X\in\ctC_0\) è universale in \(\ctC\) quando è possibile costruire un certo diagramma, e da esso un `cono' la cui `origine' è \(X\), la cui forma somiglia a
 \[\xymatrix@R=0mm{
  & Di \\
  X \ar@{->}[ru] \ar@{->}[r] \ar@{->}[rdd] & Dj \\
  & \vdots \\
  & Dk
  }\]
-che è terminale in una categoria i cui oggetti sono coni della stessa forma. Al variare del diagramma \(D\) (quanto è complesso il suo dominio, quanto è complessa la sua azione su oggetti e frecce dello stesso), varia la complessità interna dell'oggetto terminale, che riesce a descrivere oggetti molto strutturati (i numeri \(p\)-adici, si veda \ref{ex_lim_padici}; i frattali, si veda \ref{ex_lim_frattali}; i nuclei di omomorfismi, si veda \ref{ex_lim_kernel}; i grafici di funzioni reali o complesse, si veda \ref{ex_lim_grafici}; etc). L'oggetto \(X\) si dice allora il \emph{limite} del diagramma \(D\).
+che è terminale in una categoria i cui oggetti sono questi `coni' della stessa forma. Al variare del diagramma \(D\) (quanto è complesso il suo dominio, quanto è complessa la sua azione su oggetti e frecce dello stesso), varia la complessità interna dell'oggetto terminale, che riesce a descrivere oggetti molto strutturati (i nuclei di omomorfismi, si veda \ref{ex_lim_kernel}; i grafici di funzioni reali o complesse, si veda \ref{ex_lim_grafici}; ma anche i numeri \(p\)-adici, si veda \ref{ex_lim_padici}; alcuni frattali, si veda \ref{ex_lim_frattali}; etc). L'oggetto \(X\) si dice allora il \emph{limite} del diagramma \(D\).
 
-Dualmente, un oggetto \(X\in\ctC_0\) è couniversale in \(\ctC\) quando è il bersaglio di un cocono \emph{iniziale},
+Dualmente, un oggetto \(X\in\ctC_0\) è \emph{co}universale in \(\ctC\) quando è il bersaglio di un \emph{co}cono \emph{iniziale},
 \[\xymatrix@R=0mm{
  Di \ar@{->}[rd] &  \\
  Dj \ar@{->}[r] & X \\
@@ -43,55 +43,78 @@ Dualmente, un oggetto \(X\in\ctC_0\) è couniversale in \(\ctC\) quando è il be
  }\]
 ossia di un oggetto iniziale in una categoria di coconi per \(D\). L'oggetto \(X\) si dice allora il \emph{colimite} del diagramma \(D\). Anche i colimiti riescono a descrivere oggetti molto strutturati (i numeri naturali, si veda \ref{ex_colim_nat}; i prodotti liberi di gruppi e monoidi, si veda \ref{ex_colim_liberi}; le liste a valori in un alfabeto \(S\), si veda \ref{ex_colim_liste}; i cosiddetti \emph{catamorfismi}, si veda \ref{ex_colim_cata};\dots).
 \paragraph*{Problemi di minimo-massimo.}
-Questo punto di vista tuttavia non è l'unico, né il più pedagogicamente efficace: sarebbe altrettanto valido introdurre la nozione di limite e di colimite come `soluzioni' a problemi di min-max:
+Il punto di vista appena esposto, seppure profondamente utile, tuttavia non è l'unico, né il più pedagogicamente efficace in assoluto. Sarebbe altrettanto valido introdurre la nozione di limite e di colimite come `soluzione' a un problema di `ottimizzazione', o di minimo-massimo:
 \begin{itemize}
- \item Il limite del diagramma \(D : \ctJ\fun\ctC\) è il `massimo dei minoranti' tra diagrammi della forma \eqref{}; ciò vuol dire che per un diagramma \(D\) fissato, il limite \(\lim D\) realizza la proprietà seguente:
-       \perogniEsiste
-       <X>
-       {Y}
- \item Il colimite del diagramma \(D : \ctJ\fun\ctC\) è il `minimo dei maggioranti' tra diagrammi della forma \eqref{}; ciò vuol dire che per un diagramma \(D\) fissato, il colimite \(\colim D\) realizza la proprietà seguente:
-       \perogniEsiste
-       <X>
-       {Y}
+ \item Il limite del diagramma \(D : \ctJ\fun\ctC\) è il `massimo dei minoranti' tra diagrammi della forma \eqref{}; in effetti, in un insieme ordinato (che sappiamo essere una categoria per \ref{ord_sonocat}), l'estremo inferiore di un sottoinsieme $S\subseteq P$ è un elemento $\inf S$ con la proprietà 
+	\Todo{}
+ \item Dualmente, il colimite del diagramma \(D : \ctJ\fun\ctC\) è il `minimo dei maggioranti' tra diagrammi della forma \eqref{}; in effetti, in un insieme ordinato l'estremo superiore di un sottoinsieme $S\subseteq P$ è un elemento $\sup S$ con la proprietà
+ \Todo{}
 \end{itemize}
-Un punto di vista del genere privilegia (ed è motivato da) la teoria degli insiemi ordinati come fonte di intuizione per le definizioni, più generali, della teoria delle categorie: la descrizione di limiti e colimiti in una categoria-preordine nel senso di \ref{} verrà delineata in \ref{}.
+In ogni insieme ordinato, quindi, la proprietà di essere estremo superiore	o inferiore si esprime come una proprietà universale, e si riduce alla nozione di colimite o limite in una categoria-preordine. La descrizione di limiti e colimiti in una categoria-preordine nel senso generale verrà delineata più in dettaglio in \ref{}, ma invitiamo già chi legge a immaginare come essa si possa sviluppare.\footnote{Un semplice esercizio per cui non serve alcun prerequisito	non elementare, è mostrare i fatti seguenti: se $\le$ è un preordine su $P$, un oggetto iniziale della categoria $(P,\le)$ è un elemento $\le$-minimo di $P$ o equivalentemente $\sup \varnothing$; dualmente, un oggetto terminale di $(P,\le)$ è un elemento $\le$-massimo di $P$, o equivalentemente $\inf\varnothing$; se l'ordine è antisimmetrico, poi, $\sup\varnothing$ e $\inf\varnothing$ sono \emph{strettamente} unici quando esistono.}
 
-Questa filosofia sui limiti tuttavia va al di là della `pura' teoria degli insiemi; la nozione di proprietà universale spiega infatti il motivo per cui (ad esempio) nel definire una topologia sul prodotto cartesiano di due spazi \(X,Y\) la scelta `naturale' sia la topologia prodotto: non è una scelta di comodo né una scelta dettata dalla consuetudine, ma \emph{l'unica risposta giusta} se si desidera che lo \emph{spazio} \(X\times Y\) abbia la proprietà universale di un prodotto nella categoria \(\ctTop\). Allo stesso modo, la definizione di proprietà universale spiega
+La teoria dei limiti e dei colimiti si può vedere come la teoria di estremi superiori e inferiori, per categorie che non sono preordini (cioè che non sono nell'immagine del funtore di \ref{ord_come_cat}).
+
+\medskip
+Questa filosofia sui limiti tuttavia va al di là della `pura' teoria degli insiemi; la nozione di proprietà universale spiega infatti il motivo per cui (ad esempio) nel definire una topologia sul prodotto cartesiano di due spazi \(X,Y\) la scelta `naturale' sia la topologia prodotto: non è una scelta di comodo né dettata dalla consuetudine, ma \emph{l'unica risposta giusta} se si desidera che lo \emph{spazio} \(X\times Y\) abbia la proprietà universale di un prodotto nella categoria \(\ctTop\). Allo stesso modo, la definizione di proprietà universale spiega
 \begin{itemize}
- \item il motivo per cui quando si definisce un `gruppo topologico' (per esempio i gruppi di Lie in fisica matematica) le operazioni di gruppo (moltiplicazione e inversione) devono essere continue. \`E certamente una scelta `ovvia', ma essa è anche \emph{obbligata} dal fatto che la moltiplicazione deve essere una freccia della categoria \(\ctTop\ctGrp\), cioè \emph{sia} una freccia di \(\ctTop\), quando si dimentica la struttura di gruppo, sia una freccia di \(\ctGrp\), quando si dimentica la topologia;
- \item il motivo per cui su certi oggetti complicati, ad esempio i gruppi profiniti che sono limiti di catene della forma
-       \[bau\]
-       in generale compare una topologia non discreta \emph{anche se tutte le componenti del diagramma sono spazi discreti}.
-       \Todo{}
+ \item il motivo per cui quando si definisce un `gruppo topologico' (per esempio i gruppi di Lie che sono ubiquitari in fisica matematica) le operazioni di gruppo, moltiplicazione e inversione, devono essere continue. \`E certamente una scelta `ovvia', ma essa è anche \emph{obbligata} dal fatto che la moltiplicazione deve essere una freccia della categoria \(\ctTop\ctGrp\), cioè \emph{sia} una freccia di \(\ctTop\), quando si dimentica la struttura di gruppo, sia una freccia di \(\ctGrp\), quando si dimentica la topologia;
+ \item il motivo per cui su certi oggetti complicati, ad esempio il gruppo profinito degli interi $p$-adici (con $p$ un numero primo) è il limite $\bbZ_p$ della catena
+       \[\xymatrix{
+								0 & \ar[l]_-{\varphi_1} \bbZ/p\bbZ & \bbZ/p^2\bbZ \ar[l]_-{\varphi_2} & \bbZ/p^3\bbZ \ar[l]_-{\varphi_3} & \bbZ/p^4\bbZ \ar[l]_-{\varphi_4} & \cdots \ar[l]_-{\varphi_5}
+							}\]
+							dove ciascuna mappa $\varphi_n : \bbZ/p^n\bbZ \to \bbZ/p^{n-1}\bbZ$ è la mappa di riduzione modulo $p$, suriettiva e di nucleo $p^{n-1}\bbZ/p^n\bbZ$; la topologia naturale su \(\bbZ_p\) (che lo rende uno \emph{spazio di Stone} oltre che un gruppo topologico) è universale a rendere continue tutte le proiezioni canoniche \(\bbZ_p \to \bbZ/p^n\bbZ\), e quindi che conferisce a \(\bbZ_p\) la proprietà universale di limite in \(\ctTop\); su certi oggetti quindi compare una topologia non discreta \emph{anche se tutte le componenti del diagramma sono spazi discreti}. Gli elementi di \(\bbZ_p\) si possono vedere come `serie di potenze nella variabile $p$' nel senso che un elemento \(x\in\bbZ_p\) è una successione	$(x_0,x_1,x_2,x_3\dots)$ tale che per ogni $n\ge 0$ si abbia $x_n\equiv x_{n+1}\pmod{p^n}$; del resto, se $x_0 = k_0+x_1$, $x_1 = k_1p+x_2$, $x_2 = k_2p^2+x_3$, \dots, si ha che 
+							\[\overline x \approx k_0 + k_1p + k_2p^2 + k_3p^3 + k_4p^4 + k_5p^5 + \dots \]
 \end{itemize}
 \paragraph*{Natura relazionale delle categorie.}
-Un terzo modo di introdurre la teoria dei limiti e dei colimiti parte dal fatto che uno dei paradigmi essenziali della teoria delle categorie vuole che, per indagare le proprietà di un determinato oggetto \(X\in\ctC_0\), si debba guardare al modo in cui esso interagisce con gli altri oggetti di \(\ctC\); anche questa è una maniera valida di introdurre la teoria dei limiti e dei colimiti, e lo scopo di questo capitolo sarà di conciliare queste tre prospettive.
+Uno dei paradigmi essenziali della teoria delle categorie vuole che, per indagare le proprietà di un determinato oggetto \(X\in\ctC_0\), si debba guardare al modo in cui esso interagisce con gli altri oggetti di \(\ctC\); anche questa è una maniera valida di introdurre la teoria dei limiti e dei colimiti, e lo scopo principale di questo capitolo sarà di conciliare queste tre prospettive.
 
 Data una famiglia di oggetti di \(\ctC\), soggetta a determinate relazioni (il `diagramma'), si può trovare `l'oggetto più grande che è soluzione delle equazioni imposte dalla relazioni'? (E qual è il significato di questa qualificazione?) Dualmente: si può trovare `l'oggetto più piccolo in cui le equazioni imposte dalle relazioni sono verificate'?
 \Todo{}
 Esempi essenziali di limiti e colimiti nella categoria \(\ctSet\) di insiemi e funzioni coinvolgono le costruzioni fondamentali di \emph{sottoinsieme} e di \emph{insieme quoziente} (rispetto a una relazione di equivalenza):
 \begin{itemize}
  \item l'equalizzatore di due funzioni \(f,g : A \to B\), definito come
-       \Todo{}
- \item il coequalizzatore di due funzioni \(f,g : A \to B\), definito come
-       \Todo{}
+       \[E(f,g) := \{ a \in A \mid fa = ga\} \subseteq A\]
+							che in virtù di questa definizione ha la proprietà per cui ogni funzione \(h : X \to A\) tale che \(f\cmp h = g\cmp h\) assume valori in $E$, ciò si fattorizza in modo unico come
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJFKGYsZykiXSxbMiwxLCJBIl0sWzEsMCwiWCJdLFszLDEsIkIiXSxbMiwxLCJoIl0sWzAsMSwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiwwLCJcXGJhciBoIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzEsMywiZyIsMix7Im9mZnNldCI6Mn1dLFsxLDMsImYiLDAseyJvZmZzZXQiOi0yfV1d
+\[\begin{tikzcd}
+	& X \\
+	{E(f,g)} && A & B
+	\arrow["{\bar h}"', dotted, from=1-2, to=2-1]
+	\arrow["h", from=1-2, to=2-3]
+	\arrow[hook, from=2-1, to=2-3]
+	\arrow["g"', shift right=1, from=2-3, to=2-4]
+	\arrow["f", shift left=1, from=2-3, to=2-4]
+\end{tikzcd}\]
+ \item il coequalizzatore di due funzioni \(f,g : A \to B\), definito considerando la relazione di equivalenza $\sim_{f,g}$ su $B$ generata dalle coppie $(fa,ga)$ per ogni \(a\in A\) (si veda \ref{rel_equiv_generata}), e ponendo poi $Q(f,g) := B/_{\!\sim_{f,g}}$; per definizione, la proiezione canonica \(\pi : B \to Q(f,g)\) ha la proprietà seguente: ogni funzione \(h : B \to Y\) tale che \(h\cmp f = h\cmp g\) `scende al quoziente' (perché è costante sulle classi di equivalenza di $\sim_{f,g}$) si fattorizza in modo unico come
+\[\begin{tikzcd}
+	& X \\
+	{Q(f,g)} && B & A
+	\arrow["{\bar h}"', dotted, to=1-2, from=2-1]
+	\arrow["h", to=1-2, from=2-3]
+	\arrow[two heads, to=2-1, from=2-3]
+	\arrow["g"', shift right=1, to=2-3, from=2-4]
+	\arrow["f", shift left=1, to=2-3, from=2-4]
+\end{tikzcd}\]
 \end{itemize}
-Risulta allora evidente il senso di un'idea su esposta: l'equalizzatore di \(f,g\) consiste del più grande \emph{sottoinsieme} di \(A\) dove l'equazione \(f=g\) è valida. Invece, il coequalizzatore delle stesse \(f,g\) consiste del \emph{quoziente} di \(B\) rispetto alla relazione più piccola dove viene imposta l'uguaglianza \(f=g\) (chi legge ed è familiare con la nozione di classe laterale, o con la più semplice definizione di spazio vettoriale quoziente, rifletta sul modo in cui \(V/W\) si realizza a questa maniera, e confronti \ref{quozienti_in_vect} con la sua idea).
+Risulta allora evidente il senso di un'idea su esposta: l'equalizzatore di \(f,g\) consiste del più grande \emph{sottoinsieme} di \(A\) dove l'equazione \(f=g\) è valida. Invece, il coequalizzatore delle stesse \(f,g\) consiste del più piccolo \emph{quoziente} di \(B\) rispetto alla relazione più piccola dove viene imposta l'uguaglianza \(f=g\) (chi legge ed è familiare con la nozione di classe laterale, o con la più semplice definizione di spazio vettoriale quoziente, rifletta sul modo in cui \(V/W\) si realizza a questa maniera, e confronti \ref{quozienti_in_vect} con la sua idea). 
+\begin{remark}
+	Una importante osservazione (che sebbene del tutto elementare, confonde molta gente\dots) è questa: ovviamente, il minimo sottoinsieme dove l'equazione $f=g$ è valida è facile da determinare: è il vuoto, dove l'antecedente in $\forall a\in\varnothing.(fa=ga)$ è banalmente vero. Altrettanto semplice è determinare il \emph{massimo} quoziente di $B$ dove le immagini di $f$ e $g$ coincidono: è il quoziente banale $B/_{\!\sim} = 1$ dove ogni elemento di $B$ è equivalente a ogni altro elemento di $B$. Perciò, queste due combinazioni di massimo/minimo e sottoinsieme/insieme quoziente non sono interessanti: vanno considerati \emph{tutti} gli elementi $a$ tali che $fa=ga$, e vanno identificati \emph{solo} gli elementi della chiusura riflessiva, simmetrica e transitiva di $(fa,ga)\subseteq B\times B$.
+\end{remark}
 \Todo{}
-Questi, e molti altri concetti, appariranno chiari quando avremo delineato la teoria generale.
+Questi, e molti altri concetti, appariranno più chiari quando avremo delineato la teoria generale.
 \Todo{}
 \begin{hExamples}[Alcuni esempi di oggetti iniziali e terminali]{fund}
  Vi sono diverse lezioni da trarre da questa lista di esempi, una delle più importanti è che un oggetto iniziale non ha motivo di essere `piccolo', né un oggetto terminale ha motivo di essere grande.
  \begin{itemize}
-  \item Nella categoria \(\ctSet\) di \ref{}, fatta da insiemi e funzioni, l'insieme vuoto \(\emptyset\) (senza elementi) è iniziale, dato che la condizione
+  \item Nella categoria \(\ctSet\) di \ref{ex_cat_insiemi}, fatta da insiemi e funzioni, l'insieme vuoto \(\emptyset\) (senza elementi) è iniziale, dato che la condizione
         \[\forall S\in\ctSet_0 \text{ esiste uno e un solo sottoinsieme } f\subseteq \emptyset\times S \]
-        è realizzata (banalmente) solo dall'insieme vuoto dato che \(\emptyset\times S = \emptyset\). Per contro, si osservi che una funzione \(S \to \emptyset\) esiste se e solo se \(S=\emptyset\). Ragionando in modo simile si ottiene che anche nella categoria di spazi topologici l'insieme vuoto \(\emptyset\), con l'unica topologia possibile, è un oggetto iniziale. Dualmente, ogni insieme \(\{\bullet\}\) che abbia un solo elemento è terminale, dato che per ogni \(S\in\ctSet_0\), la funzione \(f : S \to \{\bullet\}\) che mappa \(s\in S\) in \(\bullet\) è l'unica possibile. Analogamente, nella categoria degli spazi topologici, per ogni spazio topologico \((X,\tau)\) esiste un'unica funzione continua \(X \to \{\bullet\}\) quando il codominio ha la topologia banale (che coincide con quella discreta).
-  \item Nella categoria di modelli di una segnatura algebrica \(\Sigma\) che contiene solo una operazione binaria, l'insieme vuoto (definendo l'operazione come la funzione vuota) è un oggetto iniziale, e lo stesso accade se l'operazione è associativa o commutativa; le cose cambiano non appena la segnatura contenga una \emph{costante}, perché questo obbliga ogni modello a interpretate almeno quella costante, e quindi a contenere almeno un elemento (questo è il caso dei monoidi, dei gruppi, e gruppi abeliani\dots). Nella categoria dei gruppi abeliani, è il gruppo banale \(0_\ctAb=\{0\}\) a essere iniziale, ma accade qualcosa di peculiare: \(0_\ctAb\) è anche \emph{terminale} (è quello che si dice un \emph{oggetto zero}).
-  \item Nella categoria degli anelli unitari \(\ctRing_1\) di \ref{}, l'oggetto iniziale è l'anello degli interi \(\bbZ\): dato un anello unitario \(R\), un omomorfismo di anelli \(\varphi : \bbZ \to R\) deve mandare \(0\) in \(0_R\) e \(1\) in \(1_R\); del resto deve anche essere tale che \(\varphi(n) = \varphi(n\cdot 1) = n \cdot 1_R = \iter[1][+]1\) ed è quindi definito su tutti gli altri interi.
-  \item Nella categoria delle algebre di Boole o di Heyting \Todo{}
-  \item Nella categoria dei sistemi dinamici di \ref{} succede qualcosa di interessante, osservato nell'esercizio \ref{ex_monepi_3}: \Todo{}
+        è realizzata (banalmente) solo dall'insieme vuoto dato che \(\emptyset\times S = \emptyset\). Per contro, si osservi che una funzione \(S \to \emptyset\) esiste se e solo se \(S=\emptyset\). Ragionando in modo simile si ottiene che anche nella categoria di spazi topologici l'insieme vuoto \(\emptyset\), con l'unica topologia possibile, è un oggetto iniziale. Dualmente, ogni insieme \(\{\bullet\}\) che abbia un solo elemento è terminale, dato che per ogni \(S\in\ctSet_0\), esiste un'unica possibile funzione \(f : S \to \{\bullet\}\) che mappa tutto \(s\in S\) in \(\bullet\). Analogamente, nella categoria degli spazi topologici, per ogni spazio topologico \((X,\tau)\) esiste un'unica funzione continua \(X \to \{\bullet\}\) quando il codominio ha la topologia banale (che coincide con quella discreta).
+  \item Nella categoria di modelli di una segnatura algebrica \(\Sigma\) che contiene solo una operazione binaria, l'insieme vuoto (definendo l'operazione come la funzione vuota) è un oggetto iniziale, e lo stesso accade se l'operazione è associativa o commutativa; le cose cambiano non appena la segnatura contenga una \emph{costante}, perché questo obbliga ogni modello a contenere una interpretazione di almeno quella costante, e quindi ogni supporto del modello deve contenere almeno un elemento (questo è il caso dei monoidi, dei gruppi, gruppi abeliani, insiemi puntati\dots --in questi ultimi l'unica operazione è proprio una costante). Nella categoria dei gruppi abeliani è il gruppo banale \(\init_\ctAb=\{0\}\) a essere iniziale, ma accade qualcosa di peculiare: \(\init_\ctAb\) è anche \emph{terminale} (è quello che si dice un \emph{oggetto zero}).
+  \item Nella categoria degli anelli unitari \(\ctRing_1\) di \ref{varie_categorie_nella_pratica} (in cui $0\ne 1$ e gli omomorfismi rispettano entrambi, di modo che non esiste l'anello $\{0\}$), l'oggetto iniziale è l'anello degli interi \(\bbZ\): dato un anello unitario \(R\), un omomorfismo di anelli \(\varphi : \bbZ \to R\) deve mandare \(0\) in \(0_R\) e \(1\) in \(1_R\); del resto deve anche essere tale che \(\varphi(n) = \varphi(n\cdot 1) = n \cdot 1_R = \iter[1][+]1\) ed è quindi definito su tutti gli altri interi. Nella sottocategoria degli anelli con divisione, però, un oggetto iniziale non esiste: per quale motivo? (sugg.: quale dovrebbe essere la caratteristica di $\init_\ctFld$?)
+  \item Nella categoria delle algebre di Boole di \ref{varie_categorie_nella_pratica}, l'oggetto iniziale è l'algebra con due elementi \(\bbB=\{0 < 1\}\) (con le operazioni di congiunzione, disgiunzione e complemento usuali): se $H$ è un'altra algebra di Boole, dato che un omomorfismo di algebre di Boole/Heyting deve mandare \(0\) in \(0\) e \(1\) in \(1\), deve esistere un unico $\bang_H : \bbB \to H$.
+  \item Nella categoria dei sistemi dinamici di \ref{ex_cat_dyn} succede qualcosa di interessante, osservato nell'esercizio \ref{ex_monepi_3}: \Todo{}
   \item Data una categoria \(\ctC\), la categoria incubo \(\ctC/X\) sopra un oggetto possiede sempre un oggetto terminale, e la succuba sotto un oggetto \(X/\ctC\) possiede sempre un oggetto iniziale: la freccia identità di \(X\). Infatti (si ragiona dualmente per \(X/\ctC\)), se \(u : A \to X\) è un oggetto della categoria incubo su \(X\), la stessa \(u\) è l'unica freccia \(u : (A,u) \to (X,\id_X)\).
-  \item In un preordine (come in \ref{}) guardato come categoria, un oggetto iniziale consiste di un elemento \(\bot\in P\) con la proprietà che per ogni \(x\in P\) si abbia \(\bot\le x\); quindi un oggetto iniziale è un elemento \emph{minimo}. Dualmente, un oggetto terminale è un massimo \(\top\), con la proprietà che per ogni \(x\in P\) si abbia \(x\le \top\). L'ordine stretto e totale \((\bbN,\le)\) ha iniziale/minimo ma non terminale/massimo, e altrettanto è vero per \(\bbR_\ge := [0,\infty)\); L'ordine stretto e totale \((\bbZ,\le)\) non ha né minimo né massimo; l'ordine di divisibilità \((\bbN,\div)\) accennato in \ref{} ha per oggetto iniziale \(1\) (ogni \(m\in\bbN\) è tale che \(m = 1\cdot m\)) e \(0\) per oggetto terminale (ogni \(m\in\bbN\) è tale che \(0 = m\cdot 0\)). L'ordine stretto e parziale sull'insieme delle parti \(PS\) di un insieme \(S\) ha il sottoinsieme vuoto come minimo/iniziale e il sottoinsieme \(S\subseteq S\) come massimo/terminale.
+  \item In un preordine guardato come categoria, un oggetto iniziale consiste di un elemento \(\bot\in P\) con la proprietà che per ogni \(x\in P\) si abbia \(\bot\le x\); quindi un oggetto iniziale è un elemento \emph{minimo}. Dualmente, un oggetto terminale è un massimo \(\top\), con la proprietà che per ogni \(x\in P\) si abbia \(x\le \top\). L'ordine stretto e totale \((\bbN,\le)\) ha iniziale/minimo ma non terminale/massimo, e altrettanto è vero per \(\bbR_\ge := [0,\infty)\); L'ordine stretto e totale \((\bbZ,\le)\) non ha né minimo né massimo; l'ordine di divisibilità \((\bbN,\div)\) accennato in \ref{alcuni_es_ordini} ha per oggetto iniziale \(1\) (ogni \(m\in\bbN\) è tale che \(m = 1\cdot m\)) e \(0\) per oggetto terminale (ogni \(m\in\bbN\) è tale che \(0 = m\cdot 0\)). L'ordine stretto e parziale sull'insieme delle parti \(PS\) di un insieme \(S\) ha il sottoinsieme vuoto come minimo/iniziale e il sottoinsieme \(S\subseteq S\) come massimo/terminale.
   \item
  \end{itemize}
 \end{hExamples}
@@ -128,12 +151,14 @@ Il seguente risultato meriterebbe il nome di \emph{teorema fondamentale sulle pr
  % \Todo{Proprietà universale di un oggetto iniziale e terminale}
  Sia \(\ctC\) una categoria. Se \(\term,\term'\) (risp., \(\init,\init'\)) sono entrambi oggetti terminali (risp., iniziali) di \(\ctC\), allora esiste un \emph{unico} isomorfismo \(\term\cong\term'\) (risp., \(\init\cong \init'\)).
 \end{proposition}
-Si noti l'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) esiste uno e un solo isomorfismo, essi non sono uguali, ma (per così dire) `unici in un unico modo'. Non va però frainteso questo punto: l'isomorfismo è unico \emph{una volta fissati \(\term\) e \(\term'\)} e varia insieme ad essi.
+Si noti l'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) esiste uno e un solo isomorfismo, essi non sono uguali, ma (per così dire) `unici in un unico modo'. Non va però frainteso questo punto: l'isomorfismo è unico \emph{solo una volta fissati \(\term\) e \(\term'\)} e varia insieme ad essi.
+
+La dimostrazione ricorda, in spirito, l'argomento che mostra che l'elemento neutro in un monoide (o l'identità \(\id_X\) di un oggetto in una categoria) è unico. 
 \begin{proof}
- La dimostrazione ricorda, in spirito, l'argomento che mostra che l'elemento neutro in un monoide (o l'identità \(\id_X\) di un oggetto in una categoria) è unico. Siccome \(\term\) è terminale, esiste un'unica freccia \(u : \term'\to \term\), e siccome \(\term'\) è terminale, esiste un'unica freccia \(u' : \term\to\term'\). Del resto ora per \ref{init_ha_solo_id} concludiamo che le composizioni \(u'\cmp u\) e \(u\cmp u'\) sono rispettivamente le identità di \(\term'\) e di \(\term\).
+	Siccome \(\term\) è terminale, esiste un'unica freccia \(u : \term'\to \term\), e siccome \(\term'\) è terminale, esiste un'unica freccia \(u' : \term\to\term'\). Del resto ora per \ref{init_ha_solo_id} concludiamo che le composizioni \(u'\cmp u\) e \(u\cmp u'\) sono rispettivamente le identità di \(\term'\) e di \(\term\).
 \end{proof}
 \begin{example}
- Nella categoria \(\ctSet\) di insiemi e funzioni di \ref{}, l'assioma di estensionalità implica che esiste un solo oggetto iniziale (l'insieme vuoto), laddove \emph{ogni} insieme con un solo elemento è un oggetto terminale, non importa `quale sia l'elemento', e ve ne sono in effetti molti diversi: gli insiemi
+ Nella categoria \(\ctSet\) di insiemi e funzioni di \ref{ex_cat_insiemi}, l'assioma di estensionalità implica che esiste un solo oggetto iniziale (l'insieme vuoto), laddove \emph{ogni} insieme con un solo elemento è un oggetto terminale, non importa `quale sia l'elemento', e ve ne sono in effetti molti diversi: gli insiemi
  \[\{\emptyset\},\{\{\emptyset\}\},\{\{\{\emptyset\}\}\},\dots\]
  sono tutti terminali a due a due distinti. C'è quindi una sottigliezza di cui tenere conto qui: la teoria degli insiemi postula che esista un unico insieme vuoto, e per contro non si cura di creare, iterando l'operazione \(y\mapsto\{y\}\), una molteplicità di insiemi singoletti tutti isomorfi tra loro (molteplicità illusoria nel linguaggio di questo libro, perché la teoria delle categorie non sa stabilire una differenza che sia `interna' a due di loro, può vederli solo da fuori, mediante frecce che ci puntano o ne escono).
 
@@ -147,10 +172,13 @@ Si noti l'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) e
   \item una notazione troppo vicina a `\(\emptyset\)', `\(\bullet\)' potrebbe suggerire che un oggetto iniziale è sempre concettualizzabile come vuoto (e questo è falso, ce ne sono di infiniti: \ref{} e \ref{}), e che un terminale è sempre concettualizzabile come un singoletto (e questo è falso, ci sono oggetti terminali molto grandi, \ref{} e \ref{}).
  \end{itemize}
 \end{remark}
-
-
+\begin{esercizi}
+\item Ricordando che $\bbZ$ e $\bbB$ sono iniziali, rispettivamente, nella categoria degli anelli unitari e delle algebre di Boole, determinare gli insiemi
+\[\Hom{\ctRing_1}(R,\bbZ) \qquad \Hom{\ctBAlg}(H,\bbB)\]
+per $R$ un anello (commutativo e) unitario, e $H$ un'algebra di Boole.
+\end{esercizi}
 \section{Prodotti e somme in \(\ctSet\)}
-Le operazioni insiemistiche di somma e prodotto sono già state impiegate diverse volte nel capitolo \ref{} in una versione intuitiva (che dopotutto è quella con cui sono state introdotte in algebra o analisi); lo scopo di questa prima sezione è `ristrutturarle' in prospettiva categoriale, e descriverle come primi importanti esempi di costruzioni universali.
+Le operazioni insiemistiche di somma e prodotto sono già state impiegate diverse volte nel capitolo \ref{chap_cat_fun_nat} in una versione intuitiva (che dopotutto è quella con cui sono state introdotte in algebra o analisi); lo scopo di questa prima sezione è `ristrutturarle' in prospettiva categoriale, e descriverle come primi importanti esempi di costruzioni universali.
 \subsection{Prodotti in \(\ctSet\)}\label{prod_in_Set}
 Per produrre un \emph{prodotto cartesiano} \(A\times B\), viene costruito un insieme di coppie ordinate di elementi presi da due \emph{fattori}  \(A,B\). Come ogni insieme, \(A\times B\) è caratterizzato da quali sono i suoi elementi. Le regole di `introduzione' di un tipo/insieme permettono di costruire un suo elemento a partire da dati più semplici; le regole di `eliminazione' lo destrutturano nelle sue componenti; una o più regole di `computazione' prescrivono il modo in cui introduzione ed eliminazione si annullano a vicenda.
 \begin{hExample}[Regole di introduzione ed eliminazione per il prodotto cartesiano]{fund}
