@@ -38,8 +38,17 @@ VERBATIM_ENVS = {"verbatim", "Verbatim", "lstlisting", "minted"}
 IGNORED_MACROS = {
     "index",
     "label",
-    # se vuoi puoi aggiungere:
-    # "ref", "eqref", "cite", "pageref"
+    "ref", 
+    "eqref", 
+    "cite", 
+    "pageref",
+    "Todo",
+    "fosco",
+    "paolo",
+    "beppe",
+    "ivan",
+    "enricoV",
+    "enricoG"
 }
 def macro_regex(name):
     return re.compile(
