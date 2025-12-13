@@ -30,6 +30,12 @@ DEFAULT_PATTERNS = [
         "is_regex": True,
         "flags": "i",
         "message": "Considerare 'freccia' invece di 'morfismo'."
+    },
+    {
+    "pattern": r'\\ct[A-Za-z]+\([A-Za-z]+,[A-Za-z]+\)',
+    "is_regex": True,
+    "flags": "",
+    "message": "Va preferita una macro semantica \\Hom{#1}(#2,#3)."
     }
 ]
 
