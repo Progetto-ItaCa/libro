@@ -26,10 +26,10 @@ DEFAULT_PATTERNS = [
         "message": "E' preferibile usare 'chi legge' al posto di 'lettore'"
     },
     {
-        "pattern": r"\bmorfismo\b",
+        "pattern": r"\bmorfism",
         "is_regex": True,
         "flags": "i",
-        "message": "Considerare 'freccia' invece di 'morfismo'."
+        "message": "Considerare 'freccia/e' invece di 'morfismo/i'."
     },
     {
     "pattern": r'\\ct[A-Za-z]+\([A-Za-z]+,[A-Za-z]+\)',
