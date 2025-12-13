@@ -24,7 +24,7 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
  Più in generale, la categoria \(\Delta[n]\) detta \emph{catena generica di lunghezza \(n+1\)} è definita come segue:
  \begin{itemize}
   \item gli oggetti di \(\Delta[n]\) sono gli elementi di \(\{\iter[0]{n}\}\) (ci sono quindi \(n+1\) oggetti, per ogni \(n\ge 1\));\footnote{Si presti attenzione alla differente notazione per due insiemi finiti distinti: \(\bkt n := \{\iter n\}\), ma \([n] := \{\iter [0]n\}\) A volte è utile adottare la convenzione per cui quando \(n=-1\), l'insieme \(\{\iter[0]{n}\}\) è vuoto, e quindi la categoria `catena di lunghezza \(0\)' è la categoria vuota \(\ctInit\) di \ref{ex_cat_vuota}.}
-  \item C'è un'unica freccia \(i\to j\) in \(\Delta[n]\) se e solo se \(i\le j\), di modo che esista un'unica freccia \(i\to i\) (l'identità) per ogni \(i\in\{\iter[0]{n}\}\), e un'unica freccia \(i\to i+1\) per \(i\in\{\iter[0]{n-1}\}\); in particolare l'unico morfismo \(i\to j\) è ottenuto dalla composizione
+  \item C'è un'unica freccia \(i\to j\) in \(\Delta[n]\) se e solo se \(i\le j\), di modo che esista un'unica freccia \(i\to i\) (l'identità) per ogni \(i\in\{\iter[0]{n}\}\), e un'unica freccia \(i\to i+1\) per \(i\in\{\iter[0]{n-1}\}\); in particolare l'unica freccia \(i\to j\) è ottenuta dalla composizione
         \[i\to i+1\to\dots\to j\]
  \end{itemize}
  \index{Simplesso}
@@ -234,12 +234,12 @@ Questi ultimi esempi lasciano supporre che \emph{ogni} grafo \(\ctG\), fatto di 
  Un \emph{multidigrafo} consiste di una coppia di insiemi \(E,V\) dotati di due funzioni \(s,t : E\toto V\) che associano ad ogni \emph{lato} \(e\in E\) una coppia ordinata di \emph{vertici} \(s(e),t(e)\in V\) detti il suo dominio o \emph{source} e il suo codominio o \emph{target}, si veda \ref{ex_cat_grafi}. Dato un multidigrafo \(\ctG\) (spesso chiamato semplicemente \emph{grafo diretto}) possiamo definire la \emph{categoria libera} \(\bfF[\ctG]\) su \(\ctG\) come segue:
  \begin{itemize}
   \item gli oggetti di \(\bfF[\ctG]\) sono esattamente gli elementi di \(V\);
-  \item dati \(u,v\in V\), i morfismi da \(u\) a \(v\) sono i cammini nel grafo diretto che partono da \(u\) e arrivano in \(v\):
+  \item dati \(u,v\in V\), le frecce da \(u\) a \(v\) sono i cammini nel grafo diretto che partono da \(u\) e arrivano in \(v\):
         \[\xymatrix{u \ar[r]^{e_1}& x_1 \ar[r]^{e_2}& x_2\ar[r]^{e_3}& \dots\ar[r]^{e_{n-1}}& x_{n-1}\ar[r]^{e_n}& v}.\]
         Più precisamente, per ogni \(n>0\), sia \(C_n\) l'insieme dei cammini di lunghezza \(n>0\)
         \[C_n=\{(e_1,\ldots,e_n)\in E^n \mid t(e_k)=s(e_{k+1}), k=1,\ldots,n-1\}\]
         e sia \(C_0=\{\emptyList_u \mid u\in V\}\) l'insieme dei cammini di lunghezza zero.
-        L'insieme dei morfismi di \(\bfF[\ctG]\) è
+        L'insieme delle frecce di \(\bfF[\ctG]\) è
         \[\sum_{n\ge0}C_n = C_0 + C_1 + C_2 + \dots\]
         Il dominio e codominio di una sequenza \((\tup en,)\) di lunghezza \(n>0\) sono rispettivamente \(s(e_1)\) e \(t(e_n)\).
         Il dominio e codominio di un cammino \(\emptyList_u\) di lunghezza zero sono entrambi il vertice \(u\) stesso.
@@ -281,7 +281,7 @@ Dopo questa digressione veniamo a due esempi più elaborati, ma molto `concreti'
  La categoria \(\ctCirc\) ha
  \begin{itemize}
   \item per oggetti i numeri naturali \(0,1,2,\dots\);
-  \item l'insieme dei morfismi \(\ctCirc(m,n)\) consiste dell'insieme delle funzioni \(\bbB^n\to \bbB^m\), dove \(\bbB=\{0,1\}\) è l'insieme dei \emph{Booleani}\footnote{L'insieme \(\bbB\) può essere interpretato come: l'insieme degli interi positivi modulo 2, l'insieme degli stati di un singolo bit di informazione; l'insieme \{sì, no\} delle risposte a una domanda; l'insieme \(\{-1,1\}\) dei \emph{segni} assunti dagli elementi dell'immagine di una funzione reale, l'insieme \{acceso, spento\} degli stati di un interruttore, eccetera.} e \(\bbB^0\defeq \{*\}, \bbB^{n+1}\defeq \bbB^n\times \bbB\) sono i prodotti cartesiani iterati di \(\bbB\) con sé stesso.
+  \item l'insieme delle frecce \(\ctCirc(m,n)\) consiste dell'insieme delle funzioni \(\bbB^n\to \bbB^m\), dove \(\bbB=\{0,1\}\) è l'insieme dei \emph{Booleani}\footnote{L'insieme \(\bbB\) può essere interpretato come: l'insieme degli interi positivi modulo 2, l'insieme degli stati di un singolo bit di informazione; l'insieme \{sì, no\} delle risposte a una domanda; l'insieme \(\{-1,1\}\) dei \emph{segni} assunti dagli elementi dell'immagine di una funzione reale, l'insieme \{acceso, spento\} degli stati di un interruttore, eccetera.} e \(\bbB^0\defeq \{*\}, \bbB^{n+1}\defeq \bbB^n\times \bbB\) sono i prodotti cartesiani iterati di \(\bbB\) con sé stesso.
  \end{itemize}
  Si noti che ogni funzione Booleana \(f : \bbB^n\to\bbB^m\) risulta dal `prodotto' di \(m\) funzioni Booleane \emph{semplici} \(\tup fm, : \bbB^n\to\bbB\), di modo che
  \[f(\tup xn,)=(f_1(\tup xn,),\dots,f_m(\tup xn,)).\]
@@ -407,7 +407,7 @@ L'idea da trattenere dopo questi primi esempi è che tutte le categorie di insie
  \item l'identità è un omomorfismo;
  \item la composizione di due omomorfismi è ancora un omomorfismo;
 \end{itemize}
-si riesce a definire la classe degli oggetti e dei morfismi di una categoria.
+si riesce a definire la classe degli oggetti e delle frecce/morfismi di una categoria.
 
 L'\emph{algebra universale} si occupa di rendere preciso il concetto di `insieme dotato di operazioni', codificando una struttura algebrica mediante una \emph{funzione di arietà}:\footnote{Le parole \emph{arietà}, così come \emph{nullario} e \emph{unario} e \(n\)-ario (ma non binario, ternario, quaternario, etc.) sono retroformazioni che il lessico matematico ha introdotto a partire dal suffisso latino \emph{-\={a}rius, -\=aria, -\=arium}, usato per formare aggettivi a partire da nomi o numerali. Una operazione `\(n\)-aria' accetta \(n\) argomenti a dominio.} innanzitutto, si ricordi che una operazione \(n\)-aria su un insieme \(X\) consta di una funzione \(X\times X\times\dots\times X \to X\) dove il prodotto cartesiano è fatto \(n\) volte.
 \begin{example}\label{ex_cat_sigma_strutture}\index{Categoria!---}
@@ -1011,10 +1011,10 @@ I seguenti esempi sono simili, e vanno a rinforzare l'idea che una maniera aggiu
   \item Gli oggetti di \(\susp(X,\sim)\) sono gli elementi di \(X\);
   \item Esiste un'unica freccia \(x\to y\) se e solo se \(x\sim y\) (e allora esiste anche un'unica freccia \(y\to x\) come conseguenza del fatto che \(\sim\) è simmetrica).
  \end{itemize}
- Per ogni oggetto \(x\), l'identità è l'unico morfismo \(x\to x\) dato dal fatto che la relazione è riflessiva (\(x\sim x\)).
+ Per ogni oggetto \(x\), l'identità è l'unica freccia \(x\to x\) data dal fatto che la relazione è riflessiva (\(x\sim x\)).
  La composizione è data dalla transitività: se abbiamo morfismi \(x\to y\) e \(y\to z\) significa, in particolare, che \(x\sim y\) e \(y\sim z\). Per transitività, \(x\sim z\), e quindi c'è un'unica freccia \(x\to z\), che possiamo definire come composizione \(x\sim y\sim z\).
 
- Gli assiomi di identità e associatività sono automaticamente soddisfatti: per esempio, la composizione \((w\to x\to y)\to z\) e la composizione \(w\to (x\to y\to z)\) coincidono, constando dell'unico morfismo \(w\to z\) che esiste usando due volte la transitività di \(\sim\).
+ Gli assiomi di identità e associatività sono automaticamente soddisfatti: per esempio, la composizione \((w\to x\to y)\to z\) e la composizione \(w\to (x\to y\to z)\) coincidono, constando dell'unica freccia \(w\to z\) che esiste usando due volte la transitività di \(\sim\).
 \end{example}
 Quelle della forma \(\susp(X,\sim)\) per qualche insieme \(X\) e relazione di equivalenza \(\sim\) sono un esempio elementare di categoria in cui gli oggetti non sono insiemi strutturati, ma non è quello più semplice possibile: la proprietà di simmetria di \(\sim\) non è essenziale per ottenere una categoria.
 
