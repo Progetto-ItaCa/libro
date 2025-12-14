@@ -1,7 +1,7 @@
 \section{Monomorfismi ed epimorfismi}\label{sec_monoepi}
 
 Come visto nell'esempio \ref{mon_sonocat}, i monoidi corrispondono precisamente alle categorie con un solo oggetto; allora,
-la definizione di elemento \emph{cancellabile a sinistra} (o a destra) in un monoide \(M\) si può applicare direttamente ai morfismi della categoria \(\susp M\).
+la definizione di elemento \emph{cancellabile a sinistra} (o a destra) in un monoide \(M\) si può applicare direttamente alle frecce della categoria \(\susp M\).
 \begin{definition}[Elemento cancellabile]\label{def_elem_cancel}\index{Cancellabile}
  Ricordiamo che un elemento \(x\) di un mo\-no\-i\-de \((M, \cdot, 1)\) si dice \emph{cancellabile a sinistra} (rispettivamente, \emph{a destra}) se,	per ogni coppia di elementi \(y_0\) e \(y_1\) in \(M\) tali che \(x \cdot y_0 = x \cdot y_1\) (rispettivamente, \(y_0 \cdot x = y_1 \cdot x\)), si ha che \(y_0 = y_1\).
 \end{definition}
@@ -25,7 +25,7 @@ Dato che le definizioni categoriali di mono ed epi generalizzano, rispettivament
 \end{example}
 Vediamo ora invece esempi in categorie non indotte da monoidi. Il primo caso, alquanto degenere, è dato dai preordini.
 \begin{example}\label{ex:mono-epi-preord}\index{Monomorfismo!--- in un ordine}
- Nella categoria indotta da un preordine, come visto nell'esempio~\ref{ord_sonocat}, tutti i morfismi sono sia epi che mono. Infatti, la definizione di epi e mono è sempre soddisfatta banalmente, dato che, in un preordine, due frecce parallele sono necessariamente uguali.
+ Nella categoria indotta da un preordine, come visto nell'esempio~\ref{ord_sonocat}, tutte le frecce sono sia epi che mono. Infatti, la definizione di epi e mono è sempre soddisfatta banalmente, dato che, in un preordine, due frecce parallele sono necessariamente uguali.
 \end{example}
 Gli esempi precedenti mostrano come un morfismo possa essere sia epi che mono, e comunque non essere un isomorfismo. Il prossimo esempio, rispetto ai precedenti, è più complesso.
 
@@ -163,7 +163,7 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
 \begin{definition}\label{def_sottoggetto}\index{Oggetto!sotto---}
  Più in generalele possiamo definire un sottoggetto di \(X\in\ctC_0\) come una classe di isomorfismo di	monomorfismi di codominio \(X\), cioè una classe di equivalenza \([m : A\mono X]\) come sopra, dove \(A\) è un oggetto di \(\ctC_0\). Non è in generale vero che esiste un funtore
  \[\dmFun{\Sub}{\ctC^\op}{\ctSet}\]
- per due motivi: il primo, che serve assumere un po' di struttura aggiuntiva perché \(\Sub\) sia definito sui morfismi (deve avere tutti i pullback di frecce lungo un mono, nel linguaggio dei limiti del capitolo \ref{chap_limiti_colimiti}), e il secondo, più importante, che (sebbene sia vero per la categoria degli insiemi, come visto sopra, e per tante altre categorie) nessun assioma di categoria assicura che, partendo da una categoria larga \(\ctC\), la classe dei sottoggetti di ogni \(X\) sia un insieme e non una classe propria.\footnote{Per chi legge ed ha interesse a questo tipo di problemi, possiamo dualmente definire anche la classe dei \emph{quozienti} di \(X\in\ctC_0\) come una classe di isomorfismo di epimorfismi di dominio \(X\), ma questa dualizzazione è delicata. Una categoria si dirà \emph{ben copotenziata} (in inglese, \emph{well-copowered}) se, per ogni oggetto \(X\in\ctC_0\), la classe \(\Quot(X)\) dei quozienti di \(X\) è un insieme. Si osservi che, in generale, non è vero che una categoria ben potenziata è ben copotenziata né il viceversa.}
+ per due motivi: il primo, che serve assumere un po' di struttura aggiuntiva perché \(\Sub\) sia definito sulle frecce (deve avere tutti i pullback di frecce lungo un mono, nel linguaggio dei limiti del capitolo \ref{chap_limiti_colimiti}), e il secondo, più importante, che (sebbene sia vero per la categoria degli insiemi, come visto sopra, e per tante altre categorie) nessun assioma di categoria assicura che, partendo da una categoria larga \(\ctC\), la classe dei sottoggetti di ogni \(X\) sia un insieme e non una classe propria.\footnote{Per chi legge ed ha interesse a questo tipo di problemi, possiamo dualmente definire anche la classe dei \emph{quozienti} di \(X\in\ctC_0\) come una classe di isomorfismo di epimorfismi di dominio \(X\), ma questa dualizzazione è delicata. Una categoria si dirà \emph{ben copotenziata} (in inglese, \emph{well-copowered}) se, per ogni oggetto \(X\in\ctC_0\), la classe \(\Quot(X)\) dei quozienti di \(X\) è un insieme. Si osservi che, in generale, non è vero che una categoria ben potenziata è ben copotenziata né il viceversa.}
 \end{definition}
 \begin{definition}\label{def_cat_ben_potenziata}\index{Categoria!--- ben potenziata}
  Una categoria \(\ctC\) si dice \emph{ben potenziata} (in inglese, \emph{well-powered}) se, per ogni oggetto \(X\in\ctC_0\), la classe \(\Sub(X)\) dei sottoggetti di \(X\) è un insieme.
@@ -207,7 +207,7 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 \end{definition}
 \begin{definition}[Retratto]\index{Retratto}
  Dati due oggetti \(A\) e \(B\) in una categoria,
- diciamo che \(A\) è un \emph{retratto} di \(B\) se ci sono una coppia di morfismi detti \emph{sezione} e \emph{retrazione}, raffigurabili come
+ diciamo che \(A\) è un \emph{retratto} di \(B\) se ci sono una coppia di frecce dette \emph{sezione} e \emph{retrazione}, raffigurabili come
  \begin{equation}
   \begin{tikzcd}
    A \ar[r, bend left, "s"] &B \ar[l, bend left, "r"]
@@ -375,8 +375,7 @@ Di conseguenza, abbiamo i seguente corollari:
   \item Se \(m \colon A \to B\) è un mono spezzante, allora \(F(m)\) è un mono spezzante.
   \item Se \(e \colon B \to A\) è un epi spezzante, allora \(F(e)\) è un epi spezzante.
  \end{enumerate}
- Ovvero, i funtori preservano i retratti (sia nel senso di oggetti che di morfismi),
- i mono spezzanti e gli epi spezzanti.
+ Ovvero, i funtori preservano i retratti (sia nel senso di oggetti che di frecce), i mono spezzanti e gli epi spezzanti.
 \end{corollary}
 Questo risultato, per quanto banale nella sua dimostrazione, ha conseguenze profonde: ci dice infatti che, sebbene abbiano proprietà simili, mono (risp., epi) e mono spezzanti (risp., epi spezzanti) sono distinti da una differenza fondamentale: l'essere o meno preservati dai funtori.
 
@@ -384,7 +383,7 @@ Il risultato in questione propone anche le sezioni e le retrazioni come esempi f
 \begin{example}\label{mono_epi_noniso}\index{Monomorfismo}\index{Monomorfismo!--- ed epimorfismo non è iso}
  Si consideri l'immersione \(\iota \colon \bbN \mono \bbZ\)	nella categoria \(\ctMon\) dei monoidi e omomorfismi di monoide.	Questa è mono in quanto la sua funzione sottogiacente è iniettiva,	ma non è spezzante.	Infatti, se avesse una retrazione,	questa sarebbe preservata dal funtore dimenticante \(U \colon \ctMon \fun \ctSet\),	per \ref{thm:fun-sezioni-retrazioni},	e dunque sarebbe un'inversa sinistra della funzione \(\iota\).	Come omomorfismo di monoidi, però, tale inversa sinistra dovrebbe preservare gli elementi inversi,	e ciò non è possibile.
 
- Inoltre, e più sorprendentemente, \( j\) è anche epi,	nonostante la sua funzione sottogiacente non sia suriettiva.	Infatti, se \(f, g \colon \bbZ \to M\) sono morfismi di monoidi tali che \(f\cmp j = g\cmp j\),	allora, per ogni \(n \in \bbZ\),	abbiamo due possibilità:
+ Inoltre, e più sorprendentemente, \( j\) è anche epi,	nonostante la sua funzione sottogiacente non sia suriettiva.	Infatti, se \(f, g \colon \bbZ \to M\) sono omomorfismi di monoidi tali che \(f\cmp j = g\cmp j\),	allora, per ogni \(n \in \bbZ\),	abbiamo due possibilità:
  \begin{itemize}
   \item Se \(n \in \bbZ_{\geq 0}\), allora \(n\) sta nell'immagine di \( j\), ovvero esiste \(n_0 \in \bbN\) tale che \(n =  j(n_0)\). Per ipotesi abbiamo che \((f\cmp j) (n_0) = (g\cmp j) (n_0)\), ovvero \(f (n) = g (n)\). Ne concludiamo che \(f\) e \(g\) coincidono sugli interi non-negativi.
   \item Se \(n \in \bbZ_{< 0}\), allora \(-n \in \bbZ_{\geq 0}\).
@@ -408,8 +407,8 @@ Però, e questo è un esempio importante (la cui dimostrazione usa dei fatti di 
 \begin{hExample}[La categoria dei punti]{tech}\label{ex_cat_punti}\index{Categoria!--- dei punti su un oggetto}
  Sia \(\ctC\) una categoria. Per ogni oggetto \(X\in\ctC_0\) definiamo la categoria \(\cate{Pt}_X(\ctC)\) dei \emph{punti su \(X\)} come segue:
  \begin{itemize}
-  \item gli oggetti \(\var [p]EX[\downuparrows]\) di \(\cate{Pt}_X(\ctC)\) sono epi spezzanti di codominio \(X\), cioè morfismi \(p : E \to X\) che ammettono una sezione \(\bar p : X\to E\) tale che \(p\cmp \bar p = \id_X\);
-  \item i morfismi \(f : \var [p] EX[\downuparrows]\to \var[q] FX[\downuparrows]\) sono morfismi \(f : E \to F\) tali che
+  \item gli oggetti \(\var [p]EX[\downuparrows]\) di \(\cate{Pt}_X(\ctC)\) sono epi spezzanti di codominio \(X\), cioè frecce \(p : E \to X\) che ammettono una sezione \(\bar p : X\to E\) tale che \(p\cmp \bar p = \id_X\);
+  \item le frecce \(f : \var [p] EX[\downuparrows]\to \var[q] FX[\downuparrows]\) sono frecce \(f : E \to F\) tali che
         \[q\cmp f = p \qquad \qquad f\cmp \bar q = \bar p.\]
  \end{itemize}
 \end{hExample}
@@ -562,7 +561,7 @@ Raccogliamo alcune proprietà degli epi forti:
  \Todo{}
 \end{proposition}
 \subsection{Classi di funtori}\label{ssec:classi_di_funtori}
-Spesso le proprietà delle due corrispondenze \(F_0,F_1\) (of \(F_{XY}\)), su oggetti e morfismi, che formano un funtore valgono allo stesso un nome speciale, dato che è possibile studiare in generale alcune caratteristiche di quei funtori dove (ad esempio) ciascuna \(F_{XY}\) è iniettiva, o suriettiva, o biiettiva.
+Spesso le proprietà delle due corrispondenze \(F_0,F_1\) (of \(F_{XY}\)), su oggetti e frecce, che formano un funtore valgono allo stesso un nome speciale, dato che è possibile studiare in generale alcune caratteristiche di quei funtori dove (ad esempio) ciascuna \(F_{XY}\) è iniettiva, o suriettiva, o biiettiva.
 
 Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome speciale ai funtori \(F : \ctC\fun\ctD\) tali che, nelle stesse notazioni di sopra, ogni funzione \(F_{XY}\) sia rispettivamente iniettiva, suriettiva, e biiettiva:
 \begin{definition}\label{funtore_pieno}\index{Funtore!--- pieno}
@@ -574,7 +573,7 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 \begin{definition}\label{funtore_fedele}\index{Funtore!--- fedele}
  Il funtore \(F : \ctC\fun\ctD\) si dice \emph{fedele} se ciascuna \(F_{XY}\) è una funzione iniettiva; questo significa che
  \begin{quote}
-  Dati \(u,v : X\to Y\) morfismi paralleli in \(\ctC\), se \(Fu=Fv\) allora \(u=v\).
+  Date \(u,v : X\to Y\) frecce parallele in \(\ctC\), se \(Fu=Fv\) allora \(u=v\).
  \end{quote}
 \end{definition}
 \begin{notation}\label{fun_pienfed}\index{Funtore!--- pienamente fedele}
@@ -817,7 +816,7 @@ Si noti anche che un risultato analogo è falso per la categoria discreta \(A^\d
  Sia \(n\ge 1\) un intero, e \(k\) un campo qualsiasi. Definiamo due categorie \(\ctC_{n,k},\ctD_{n,k}\) come segue:
  \begin{itemize}
   \item La categoria \(\ctC_{n,k}\) ha un solo oggetto \([n]\), è il monoide degli endomorfismi dell'oggetto \([n]\), nella categoria delle matrici di \ref{ex_cat_matrici}; evidentemente, questa categoria consiste del monoide delle matrici \(n\times n\) a ingressi in \(k\).
-  \item La categoria \(\ctD_{n,k}\) ha per oggetti tutti gli spazi vettoriali \(V,W,\dots\) di dimensione \(n\) sul campo \(k\), e per morfismi le mappe \(k\)-lineari \(f : V\to W\); in altre parole, è la sottocategoria piena \(\ctVect[n]\) della categoria \(\ctVect[k]\) degli spazi vettoriali di \ref{varie_categorie_nella_pratica}.
+  \item La categoria \(\ctD_{n,k}\) ha per oggetti tutti gli spazi vettoriali \(V,W,\dots\) di dimensione \(n\) sul campo \(k\), e per frecce le mappe \(k\)-lineari \(f : V\to W\); in altre parole, è la sottocategoria piena \(\ctVect[n]\) della categoria \(\ctVect[k]\) degli spazi vettoriali di \ref{varie_categorie_nella_pratica}.
  \end{itemize}
  Esiste un'equivalenza di categorie tra \(\ctC_{n,k}\) e \(\ctD_{n,k}\), ma non può esistere alcun isomorfismo, dato che questo implicherebbe l'esistenza di una biiezione tra la classe degli oggetti di \(\ctD_{n,k}\) e il singoletto \(\{[n]\}\) (e ci sono almeno due oggetti distinti in \(\ctD_{n,k}\): lo spazio vettoriale di dimensione \(n\) dei polinomi di grado strettamente minore di \(n\), e lo spazio vettoriale delle funzioni \(C^\infty(\bbR,\bbR)\) generato dalle funzioni \(\{e^{m_1 x},\dots,e^{m_n x} \mid (\tup mn,)\}\) dove \(\tup mn,\) è una \(n\)-upla di interi positivi a due a due distinti).
 \end{example}
@@ -858,7 +857,7 @@ Finiamo la sezione caratterizzando i monomorfismi in \(\ctCat\): si tratta di fu
  La classe dei monomorfismi di \(\ctCat\) consiste dei funtori \(F : \ctC\fun\ctD\) che sono fedeli e iniettivi sugli oggetti (cioè \(F_0\) e tutte le \(F_{XY}\) in \ref{def_alternativa_funtore} sono entrambe funzioni iniettive).
 \end{proposition}
 \begin{proof}
- Se sono dati due funtori \(H,K:\ctJ \fun \ctC\), tali che \(F\cmp H = F\cmp K\), ed \(F\) è iniettivo sugli oggetti, allora per ogni \(J\in\ctJ_0\) si ha \(HJ=KJ\); similmente, se \(F\) è iniettivo sui morfismi, si ha \(Hf = Gf\) per ogni \(f : X\to Y\) in \(\ctC\).
+ Se sono dati due funtori \(H,K:\ctJ \fun \ctC\), tali che \(F\cmp H = F\cmp K\), ed \(F\) è iniettivo sugli oggetti, allora per ogni \(J\in\ctJ_0\) si ha \(HJ=KJ\); similmente, se \(F\) è iniettivo sulle frecce, si ha \(Hf = Gf\) per ogni \(f : X\to Y\) in \(\ctC\).
 
  Se \(F : \ctC \fun\ctD\) è un mono in \(\ctCat\), quando \(X,Y \in\ctC_0\) si rappresentano come funtori \(X,Y : \ctTerm \fun \ctC\) al modo di \ref{tante_cose_sono_diag}, è evidente che \(F\cmp X\) è l'oggetto \(F_0X\) (risp., \(F\cmp Y\) è \(F_0 Y\)): se questi ultimi sono uguali, allora \(X=Y\). In maniera simile, è possibile mostrare che ogni \(F_{XY}\) è iniettiva, presentando \(f,g : X\to Y\) come funtori \(\genArrow \fun \ctC\).
 
@@ -922,19 +921,19 @@ Si osservi che la composizione \(G\cmp F\) di funtori dove \(G\) soddisfa la con
  Se \(F,G\) sono funtori iniziali come in \ref{def_fun_initfin}, allora \(F\times G\) è iniziale.
 \end{theorem}
 \begin{proof}
- Va dimostrato che per ogni oggetto \((C,D)\) la categoria comma \(((C,D)/F\times G)\) è non vuota e connessa. Evidentemente è non vuota dato che dei morfismi \(C\to FX\) e \(D\to GY\) esistono separatamente in \((C/F)\) e \((D/G)\). Va mostrato, poi, che ogni coppia di oggetti in \(((C,D)/F\times G)\) è connessa da uno zigzag di morfismi. Per fare questo, va risolto il seguente problema: esistono certamente delle successioni finite
+ Va dimostrato che per ogni oggetto \((C,D)\) la categoria comma \(((C,D)/F\times G)\) è non vuota e connessa. Evidentemente è non vuota dato che delle frecce \(C\to FX\) e \(D\to GY\) esistono separatamente in \((C/F)\) e \((D/G)\). Va mostrato, poi, che ogni coppia di oggetti in \(((C,D)/F\times G)\) è connessa da uno zigzag di frecce. Per fare questo, va risolto il seguente problema: esistono certamente delle successioni finite
  \[\xymatrix@C=8mm{
   &&C\ar[dr]\ar[dl]\ar[dll]\ar[drr] &&&&& D\ar[dr]\ar[dl]\ar[dll]\ar[drr]\\
   FI\ar@{-}[r] & FX_1\ar@{-}[r] & \dots\ar@{-}[r] & FX_\ell\ar@{-}[r] & FI' & GJ\ar@{-}[r] & GY_1\ar@{-}[r] & \dots\ar@{-}[r] & GY_m\ar@{-}[r] & GJ'
   }
  \]
- di triangoli commutativi in \(\ctC\) e \(\ctD\) separatamente, e però non si può garantire che esse siano della stessa lunghezza (come è invece richiesto per assemblare uno \zzg di morfismi in \(((C,D)/F\times G)\)). Non è difficile risolvere il problema, `degenerando' alcuni pezzi delle successioni per adattarne la lunghezza; se ad esempio \(\ell=2,m=1\) le successioni sopra sono della forma
+ di triangoli commutativi in \(\ctC\) e \(\ctD\) separatamente, e però non si può garantire che esse siano della stessa lunghezza (come è invece richiesto per assemblare uno \zzg di frecce in \(((C,D)/F\times G)\)). Non è difficile risolvere il problema, `degenerando' alcuni pezzi delle successioni per adattarne la lunghezza; se ad esempio \(\ell=2,m=1\) le successioni sopra sono della forma
  \[\xymatrix{
   &C\ar[dr]|{x_2}\ar[dl]_{c}\ar[d]|{x_1}\ar[drr]^{c'} &&&& D\ar[d]|{y_1}\ar[dr]^{d'}\ar[dl]_d \\
   FI\ar@{->}[r]_{u_0} & FX_1\ar@{<-}[r]_{u_1} & FX_2\ar@{->}[r]_{u_2} & FI' &
   GJ\ar@{<-}[r]_{v_0} & GY_1 \ar@{->}[r]_{v_1} & GJ'
   }\]
- è semplice generare la successione seguente dove indichiamo i morfismi di \(\ctC\times\ctD\) come doppie frecce per chiarezza:
+ è semplice generare la successione seguente dove indichiamo le frecce di \(\ctC\times\ctD\) come doppie frecce per chiarezza:
  \[\xymatrix@C=1.2cm@R=1.5cm{
   &(C,D)\ar@/_.5pc/@<.25em>[dl]\ar@/_.5pc/@<-.25em>[dl]_{(c,d)}\ar@<-.25em>[d]|\hole\ar@<.25em>[d]|{(x_1,d)}\ar@<-.25em>[dr]_{(x_2,y_1)}\ar@<.25em>[dr]\ar[drr]\ar@<.5em>[drr]^{(c',d')}\\
   (FI,GJ)\ar@<.225em>[r]\ar@<-.225em>@{=}[r]_{(u_0,\id)} & (FX_1,GJ) & (FX_2,GY_1)\ar@<.225em>[l]^{(u_1,v_0)}\ar@<-.225em>[l] \ar@<.225em>[r]\ar@<-.225em>[r]_{(u_2,v_1)} & (FI',GJ').
@@ -1065,7 +1064,7 @@ Grazie a \ref{thm_catprod_setacciata} otteniamo una dimostrazione alternativa de
  \end{center}
 \end{figure}
 \begin{esercizi}
- \item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sui morfismi}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sui morfismi, e mostrare che non è un mono. Si faccia lo stesso per un funtore che non è iniettivo sui morfismi, ma lo è sugli oggetti.
+ \item \label{ex_monepi_1} In \ref{mona_in_cat} abbiamo dimostrato che i monomorfismi in \(\ctCat\) sono i funtori iniettivi \emph{sugli oggetti e sulle frecce}. Trovare un funtore che non è iniettivo sugli oggetti, ma lo è sulle frecce, e mostrare che non è un mono. Si faccia lo stesso per un funtore che non è iniettivo sulle frecce, ma lo è sugli oggetti.
  \item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che la categoria \(\ctMat\) di \ref{ex_cat_matrici} e la categoria \(\ctVect\) di \ref{varie_categorie_nella_pratica} non possono essere isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
  \item \label{ex_monepi_3} Costruire un'equivalenza di categorie tra la categoria dei sistemi dinamici discreti di \ref{ex_cat_dyn} e la categoria delle rappresentazioni, \ref{es_fun_repre}, del monoide \((\bbN,+,0)\); è un isomorfismo? Mostrare che \(\bbN\) è in maniera naturale un oggetto \(\bsN=(* \xto 0 \bbN \xto{\blank+1} \bbN)\) di \(\ctDyn\), che soddisfa la proprietà (\emph{universale}) seguente:
  \begin{quote}
