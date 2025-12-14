@@ -5,234 +5,234 @@ Quando due gruppi sono isomorfi, `tutte' le proprietà che si esprimono in termi
 
 La nozione di isomorfismo in teoria delle categorie generalizza e precisa molte di queste idee.
 \begin{definition}[Isomorfismo]\label{def_isomorfismo}\index{Isomorfismo}\index{Morfismo!isomorfismo}
- Dati due oggetti \(X\) e \(Y\) in una categoria \(\ctC\), un \emph{isomorfismo} o una \emph{freccia iso} tra \(X\) e \(Y\) consiste di una coppia di frecce \(f:X\to Y\) e \(g:Y\to X\) in direzioni opposte, tali che \(g\cmp f=\id_X\) e \(f\cmp g=\id_Y\).
+	Dati due oggetti \(X\) e \(Y\) in una categoria \(\ctC\), un \emph{isomorfismo} o una \emph{freccia iso} tra \(X\) e \(Y\) consiste di una coppia di frecce \(f:X\to Y\) e \(g:Y\to X\) in direzioni opposte, tali che \(g\cmp f=\id_X\) e \(f\cmp g=\id_Y\).
 
- La freccia \(f\) è chiamata l'\emph{inversa} \(g^{-1}\) di \(g\) (e specularmente, \(g\) è l'inversa \(f^{-1}\) di \(f\)). Questa notazione suggerisce (ed è vero) che data \(f\) la sua freccia inversa sia unica quando esiste.
+	La freccia \(f\) è chiamata l'\emph{inversa} \(g^{-1}\) di \(g\) (e specularmente, \(g\) è l'inversa \(f^{-1}\) di \(f\)). Questa notazione suggerisce (ed è vero) che data \(f\) la sua freccia inversa sia unica quando esiste.
 
- Se esiste un isomorfismo tra \(X\) e \(Y\) diciamo che i due oggetti sono \emph{isomorfi} (spesso tralasciando mediante quale coppia di frecce, dato che è chiaro dal contesto) e scriviamo \(X\iso Y\).\footnote{Da un punto di vista costruttivo, \(X\iso Y\) consiste di una quadrupla \((f,g, i,j)\) dove \(f : X\to Y, g: Y\to X\) e \(i,\) sono rispettivamente due dimostrazioni, che \(f\cmp g= \id_Y\) e che \(g\cmp f=\id_X\), però non insisteremo mai su questo dettaglio. Spesso diremo che `\(f\) è un isomorfismo' sottintendendo l'esistenza di \(g\), e viceversa.}
+	Se esiste un isomorfismo tra \(X\) e \(Y\) diciamo che i due oggetti sono \emph{isomorfi} (spesso tralasciando mediante quale coppia di frecce, dato che è chiaro dal contesto) e scriviamo \(X\iso Y\).\footnote{Da un punto di vista costruttivo, \(X\iso Y\) consiste di una quadrupla \((f,g, i,j)\) dove \(f : X\to Y, g: Y\to X\) e \(i,\) sono rispettivamente due dimostrazioni, che \(f\cmp g= \id_Y\) e che \(g\cmp f=\id_X\), però non insisteremo mai su questo dettaglio. Spesso diremo che `\(f\) è un isomorfismo' sottintendendo l'esistenza di \(g\), e viceversa.}
 \end{definition}
 \`E utile, sebbene del tutto ovvio, rappresentare mediante dei diagrammi commutativi il fatto che \(X,Y\) siano oggetti isomorfi: entrambi i triangoli
 \[
- \begin{tikzcd}
-  X\ar[d, "f"'] \ar[dr, equal, "\id_X"]& & Y \ar[dr, equal, "\id_Y"]\ar[d,"g"']\\
-  Y \ar[r, "g"']& X & X \ar[r, "f"']& Y
- \end{tikzcd}
+	\begin{tikzcd}
+		X\ar[d, "f"'] \ar[dr, equal, "\id_X"]& & Y \ar[dr, equal, "\id_Y"]\ar[d,"g"']\\
+		Y \ar[r, "g"']& X & X \ar[r, "f"']& Y
+	\end{tikzcd}
 \]
 sono commutativi. Normalmente si indica la coppia \((f,g)\) solo con \(f\) o con \(g\), lasciando l'inverso implicito (tale inverso, se esiste, è ovviamente unico, e ciò ci autorizza a usare il singolare nella definizione).
 \begin{examples}\label{esempi_di_iso}\index{Isomorfismo}
- Raccogliamo degli esempi di isomorfismi in varie categorie:
- \begin{enumtag}{ei}
-  \item \label{ei_1} \`E evidente che in ogni categoria \(\ctC\), tutte le identità \(\id_X : X\to X\) sono isomorfismi che coincidono col loro inverso, e che la composizione di isomorfismi \(f_1\cmp f_2\) è un isomorfismo di inverso \(g_2\cmp g_1\), cioè \((f_1\cmp f_2)^{-1} = f_2 {-1}\cmp f_1^{-1}\).
-  \item \label{ei_2} In \(\ctSet\), gli isomorfismi sono esattamente le biiezioni, o `corrispondenze biunivoche'. Per la definizione solitamente data di cardinalità, due insiemi sono isomorfi se e solo se hanno lo stesso numero cardinale, che quindi risulta essere una scelta privilegiata di un oggetto di \(\ctSet\), rappresentante della classe di isomorfismo di un dato insieme.
-  \item \label{ei_3} In \(\ctVect\), gli isomorfismi sono le biiezioni lineari. In particolare, due spazi vettoriali \(V,W\) di dimensione finita \(\dim V=n,\dim W=m\) sono isomorfi se e solo se \(n=m\). Similmente, in \(\ctMat\) gli isomorfismi sono elementi dell'unione \(\bigcup_{n\ge 0}\text{GL}(n,\bbF)\) di tutti i gruppi delle matrici a coefficienti in \(\bbF\), di taglia \(n\), invertibili.
-  \item \label{ei_4} In \(\ctTop\), gli isomorfismi sono gli \emph{omeomorfismi}: funzioni continue con un'inversa insiemistica anch'essa continua. In generale, può non accadere che, se \(f : X\to Y\) è un omomorfismo biiettivo, la \emph{funzione} inversa \(g : Y\to X\) sia anch'essa un isomorfismo; per esempio, l'identità \(\id_X : (X,\delta)\to (X,\gamma)\) su un insieme con tre punti \(X=\{a,b,c\}\) è continua quando \(\delta\) è la topologia discreta e \(\gamma\) è la topologia banale, ma la sua inversa insiemistica \(\id_X : (X,\gamma)\to(X,\delta)\) \emph{non} è continua.
-  \item \label{ei_5} In ogni categoria di strutture algebriche (si veda \ref{ex_cat_sigma_strutture}), gli isomorfismi sono gli \emph{isomorfismi di \(\Sigma\)-strutture}, cioè le funzioni \(f : A\to B\) che sono \(\Sigma\)-omomorfismi biiettivi. Quindi non può accadere quanto succede negli spazi topologici: se \(f : A\to B\) è un omomorfismo biiettivo, la sua inversa insiemistica deve a sua volta essere un omomorfismo dato che (ad esempio, quando \(\cdot\) è una operazione binaria specificata dalla segnatura \(\Sigma\) in questione)
-  \[f^{-1}(x\cdot y) = f^{-1}(fa\cdot fa') = f^{-1}(f(a\cdot a')) = a\cdot a' = f^{-1}(x)\cdot f^{-1}(y).\]
-  Questa è una importante differenza tra categorie di tipo `algebrico' e categorie di tipo `topologico', su cui per ora non insistiamo (si veda \ref{def_costrutto}).
- \end{enumtag}
+	Raccogliamo degli esempi di isomorfismi in varie categorie:
+	\begin{enumtag}{ei}
+		\item \label{ei_1} \`E evidente che in ogni categoria \(\ctC\), tutte le identità \(\id_X : X\to X\) sono isomorfismi che coincidono col loro inverso, e che la composizione di isomorfismi \(f_1\cmp f_2\) è un isomorfismo di inverso \(g_2\cmp g_1\), cioè \((f_1\cmp f_2)^{-1} = f_2 {-1}\cmp f_1^{-1}\).
+		\item \label{ei_2} In \(\ctSet\), gli isomorfismi sono esattamente le biiezioni, o `corrispondenze biunivoche'. Per la definizione solitamente data di cardinalità, due insiemi sono isomorfi se e solo se hanno lo stesso numero cardinale, che quindi risulta essere una scelta privilegiata di un oggetto di \(\ctSet\), rappresentante della classe di isomorfismo di un dato insieme.
+		\item \label{ei_3} In \(\ctVect\), gli isomorfismi sono le biiezioni lineari. In particolare, due spazi vettoriali \(V,W\) di dimensione finita \(\dim V=n,\dim W=m\) sono isomorfi se e solo se \(n=m\). Similmente, in \(\ctMat\) gli isomorfismi sono elementi dell'unione \(\bigcup_{n\ge 0}\text{GL}(n,\bbF)\) di tutti i gruppi delle matrici a coefficienti in \(\bbF\), di taglia \(n\), invertibili.
+		\item \label{ei_4} In \(\ctTop\), gli isomorfismi sono gli \emph{omeomorfismi}: funzioni continue con un'inversa insiemistica anch'essa continua. In generale, può non accadere che, se \(f : X\to Y\) è un omomorfismo biiettivo, la \emph{funzione} inversa \(g : Y\to X\) sia anch'essa un isomorfismo; per esempio, l'identità \(\id_X : (X,\delta)\to (X,\gamma)\) su un insieme con tre punti \(X=\{a,b,c\}\) è continua quando \(\delta\) è la topologia discreta e \(\gamma\) è la topologia banale, ma la sua inversa insiemistica \(\id_X : (X,\gamma)\to(X,\delta)\) \emph{non} è continua.
+		\item \label{ei_5} In ogni categoria di strutture algebriche (si veda \ref{ex_cat_sigma_strutture}), gli isomorfismi sono gli \emph{isomorfismi di \(\Sigma\)-strutture}, cioè le funzioni \(f : A\to B\) che sono \(\Sigma\)-omomorfismi biiettivi. Quindi non può accadere quanto succede negli spazi topologici: se \(f : A\to B\) è un omomorfismo biiettivo, la sua inversa insiemistica deve a sua volta essere un omomorfismo dato che (ad esempio, quando \(\cdot\) è una operazione binaria specificata dalla segnatura \(\Sigma\) in questione)
+		\[f^{-1}(x\cdot y) = f^{-1}(fa\cdot fa') = f^{-1}(f(a\cdot a')) = a\cdot a' = f^{-1}(x)\cdot f^{-1}(y).\]
+		Questa è una importante differenza tra categorie di tipo `algebrico' e categorie di tipo `topologico', su cui per ora non insistiamo (si veda \ref{def_costrutto}).
+	\end{enumtag}
 \end{examples}
 \begin{warning}\index{Vect@\(\ctVect\)}
- Spesso una categoria viene chiamata con il nome dei suoi oggetti (\(\ctVect\), \(\ctGrp\), eccetera), ma per decidere se due oggetti di una categoria \(\ctC\) sono isomorfi è essenziale sapere \emph{rispetto a quale scelta di frecce}, per sapere che struttura in particolare vogliamo preservare. Per esempio, tutte le potenze \(\bbR,\bbR^2,\bbR^3,\dots\) sono isomorfe come insiemi (hanno la stessa cardinalità \(2^{\aleph_0}\)); ma non come spazi vettoriali reali (hanno dimensioni diverse) né come varietà differenziabili (hanno dimensioni diverse; ma il teorema di invarianza della dimensione per varietà non è completamente ovvio). Questi oggetti sono isomorfi anche come gruppi abeliani (o come spazi vettoriali \emph{sui razionali}, il che è leggermente controintuitivo: infatti la dimostrazione dipende dall'assioma della scelta).
+	Spesso una categoria viene chiamata con il nome dei suoi oggetti (\(\ctVect\), \(\ctGrp\), eccetera), ma per decidere se due oggetti di una categoria \(\ctC\) sono isomorfi è essenziale sapere \emph{rispetto a quale scelta di frecce}, per sapere che struttura in particolare vogliamo preservare. Per esempio, tutte le potenze \(\bbR,\bbR^2,\bbR^3,\dots\) sono isomorfe come insiemi (hanno la stessa cardinalità \(2^{\aleph_0}\)); ma non come spazi vettoriali reali (hanno dimensioni diverse) né come varietà differenziabili (hanno dimensioni diverse; ma il teorema di invarianza della dimensione per varietà non è completamente ovvio). Questi oggetti sono isomorfi anche come gruppi abeliani (o come spazi vettoriali \emph{sui razionali}, il che è leggermente controintuitivo: infatti la dimostrazione dipende dall'assioma della scelta).
 
- Per cui, nelle categorie \(\ctSet\) e \(\ctVect[\bbQ]\), gli oggetti \(\bbR\) e \(\bbR^2\) sono isomorfi, ma non sono isomorfi se li intendiamo come oggetti della categoria \(\ctVect[\bbR]\).
+	Per cui, nelle categorie \(\ctSet\) e \(\ctVect[\bbQ]\), gli oggetti \(\bbR\) e \(\bbR^2\) sono isomorfi, ma non sono isomorfi se li intendiamo come oggetti della categoria \(\ctVect[\bbR]\).
 \end{warning}
 
 \begin{definition}[Gruppoide]\label{def_gruppoide}\index{Categoria!Gruppoide}
- Una categoria in cui tutte le frecce sono iso si chiama \emph{gruppoide}.\footnote{In inglese \emph{groupoid}. Da notare che una vecchissima terminologia coniata dal matematico norvegese Øystein Ore chiama `gruppoidi' quelli che oggi sono detti \emph{magmi}, insiemi dotati di una operazione binaria --e nessun altro assioma. Noi non useremo mai la terminologia di Ore.}
+	Una categoria in cui tutte le frecce sono iso si chiama \emph{gruppoide}.\footnote{In inglese \emph{groupoid}. Da notare che una vecchissima terminologia coniata dal matematico norvegese Øystein Ore chiama `gruppoidi' quelli che oggi sono detti \emph{magmi}, insiemi dotati di una operazione binaria --e nessun altro assioma. Noi non useremo mai la terminologia di Ore.}
 \end{definition}
 \begin{example}[\(\susp(X,\sim)\) come gruppoide]\label{exa_releq_groupoid}\index{Gruppoide}
- Abbiamo visto che un preordine (una relazione riflessiva e transitiva) si può vedere come una categoria. Questa categoria è un gruppoide se e solo se la relazione è anche simmetrica (cioè, è un'equivalenza). Se \(x\sim y\), abbiamo un'unica freccia \(x\to y\), che è invertibile se e solo se esiste una freccia \(y\to x\), cioè, se anche \(y\sim x\). (Si noti che non ci sono altre condizioni da soddisfare per avere un inverso: per esempio, la freccia composta \(x\to y\to x\) è necessariamente uguale a \(\id_x\) per unicità.)
+	Abbiamo visto che un preordine (una relazione riflessiva e transitiva) si può vedere come una categoria. Questa categoria è un gruppoide se e solo se la relazione è anche simmetrica (cioè, è un'equivalenza). Se \(x\sim y\), abbiamo un'unica freccia \(x\to y\), che è invertibile se e solo se esiste una freccia \(y\to x\), cioè, se anche \(y\sim x\). (Si noti che non ci sono altre condizioni da soddisfare per avere un inverso: per esempio, la freccia composta \(x\to y\to x\) è necessariamente uguale a \(\id_x\) per unicità.)
 \end{example}
 \begin{remark}\index{Preordine!--- caotico}\index{Gruppoide}
- Il preordine caotico su un insieme \(X\) (dove \(x\mathrel{\le^\chi} y\) per ogni \(x,x'\in X\)) può essere visto come un esempio di \ref{exa_releq_groupoid} dove le relazione è la relazione \emph{totale} \(\forall x,x'\in X.x\sim x'\). C'è quindi una identificazione
- \[\susp(X,\sim) = (X,\le^\chi)\]
- per ogni insieme \(X\).
+	Il preordine caotico su un insieme \(X\) (dove \(x\mathrel{\le^\chi} y\) per ogni \(x,x'\in X\)) può essere visto come un esempio di \ref{exa_releq_groupoid} dove le relazione è la relazione \emph{totale} \(\forall x,x'\in X.x\sim x'\). C'è quindi una identificazione
+	\[\susp(X,\sim) = (X,\le^\chi)\]
+	per ogni insieme \(X\).
 \end{remark}
 \begin{example}[\(\susp(G,\cdot,1)\) come gruppoide]\label{exa_grp_groupoid}\index{Gruppoide}
- Abbiamo visto che ogni monoide \(M\) si può considerare una categoria con un solo oggetto. Questa categoria è un gruppoide se e solo se \(M\) è un gruppo. Infatti, una freccia \(m\) ammette un inverso nel senso della teoria delle categorie se e solo se ammette un inverso nel senso della teoria dei gruppi: \(g\cdot g^{-1}=g^{-1}\cdot g = e\).
+	Abbiamo visto che ogni monoide \(M\) si può considerare una categoria con un solo oggetto. Questa categoria è un gruppoide se e solo se \(M\) è un gruppo. Infatti, una freccia \(m\) ammette un inverso nel senso della teoria delle categorie se e solo se ammette un inverso nel senso della teoria dei gruppi: \(g\cdot g^{-1}=g^{-1}\cdot g = e\).
 \end{example}
 \begin{example}[Gruppoide d'azione]\label{action_groupoid}\index{Gruppoide!--- d'azione}
- A ogni gruppo \((G,\cdot,1)\) si può associare il suo \emph{gruppoide delle traslazioni} (o \emph{d'azione}), denotato \(\act G\):
- \begin{itemize}
-  \item gli oggetti di \(\act G\) sono gli elementi di \(G\);
-  \item le frecce di \(\act G\) sono a loro volta elementi di \(G\), determinati come segue: per ogni \(g,x\in G\) esiste una freccia \(\langle g\rangle_x : x\to g\cdot x\).
- \end{itemize}
- Ovviamente \(\langle 1_G\rangle_x : x \to 1_G\cdot x=x\) ha il ruolo di identità \(\id_x\), e la composizione è definita da \(\langle h\rangle_{gx}\cmp \langle g\rangle_x = \langle h\cdot g\rangle_x\),
- \[\begin{tikzcd}
-   x \ar[r] & g\cdot x \ar[r] & h\cdot (g\cdot x) = (h\cdot g)\cdot x
-  \end{tikzcd}\]
- L'associatività dell'operazione di \(G\) rende \(\act G\) una categoria.
- \begin{figure}[h]
-  \begin{center}
-   \begin{tikzpicture}[
-     x=4em, y=4em,
-     dot/.style={
-       circle,
-       fill=#1,
-       draw=black,
-       inner sep=0pt,
-       outer sep=4pt,
-       minimum size=8pt,
-       draw=none,
-      },
-     wrap/.style={
-       shape=circle,
-       inner sep=0,
-      },
-     fR/.style={fill=ibmMagenta},
-     fG/.style={fill=ibmYellow},
-     fB/.style={fill=ibmBlue},
-     dR/.style={draw=ibmMagenta},
-     dG/.style={draw=ibmYellow},
-     dB/.style={draw=ibmBlue},
-     dK/.style={draw=black},
-    ]
+	A ogni gruppo \((G,\cdot,1)\) si può associare il suo \emph{gruppoide delle traslazioni} (o \emph{d'azione}), denotato \(\act G\):
+	\begin{itemize}
+		\item gli oggetti di \(\act G\) sono gli elementi di \(G\);
+		\item le frecce di \(\act G\) sono a loro volta elementi di \(G\), determinati come segue: per ogni \(g,x\in G\) esiste una freccia \(\langle g\rangle_x : x\to g\cdot x\).
+	\end{itemize}
+	Ovviamente \(\langle 1_G\rangle_x : x \to 1_G\cdot x=x\) ha il ruolo di identità \(\id_x\), e la composizione è definita da \(\langle h\rangle_{gx}\cmp \langle g\rangle_x = \langle h\cdot g\rangle_x\),
+	\[\begin{tikzcd}
+			x \ar[r] & g\cdot x \ar[r] & h\cdot (g\cdot x) = (h\cdot g)\cdot x
+		\end{tikzcd}\]
+	L'associatività dell'operazione di \(G\) rende \(\act G\) una categoria.
+	\begin{figure}[h]
+		\begin{center}
+			\begin{tikzpicture}[
+					x=4em, y=4em,
+					dot/.style={
+							circle,
+							fill=#1,
+							draw=black,
+							inner sep=0pt,
+							outer sep=4pt,
+							minimum size=8pt,
+							draw=none,
+						},
+					wrap/.style={
+							shape=circle,
+							inner sep=0,
+						},
+					fR/.style={fill=ibmMagenta},
+					fG/.style={fill=ibmYellow},
+					fB/.style={fill=ibmBlue},
+					dR/.style={draw=ibmMagenta},
+					dG/.style={draw=ibmYellow},
+					dB/.style={draw=ibmBlue},
+					dK/.style={draw=black},
+				]
 
-    \foreach \n/\a/\b/\c in {%
-      0/R/G/B,
-      1/B/R/G,
-      2/G/B/R,
-      3/B/G/R,
-      4/G/R/B,
-      5/R/B/G%
-     } {
-      \foreach \i/\col in {0/\a,1/\b,2/\c} {
-        \node[dot,f\col,shift=(60*\n-30:2)] (T-\n-\i) at ({120*\i-30}:0.2) {};
-       };
-      \path node[wrap, fit=(T-\n-0)(T-\n-1)(T-\n-2)] (O\n) {};
-     };
+				\foreach \n/\a/\b/\c in {%
+						0/R/G/B,
+						1/B/R/G,
+						2/G/B/R,
+						3/B/G/R,
+						4/G/R/B,
+						5/R/B/G%
+					} {
+						\foreach \i/\col in {0/\a,1/\b,2/\c} {
+								\node[dot,f\col,shift=(60*\n-30:2)] (T-\n-\i) at ({120*\i-30}:0.2) {};
+							};
+						\path node[wrap, fit=(T-\n-0)(T-\n-1)(T-\n-2)] (O\n) {};
+					};
 
-    \foreach \i/\j/\c in {
-      0/1/K,
-      1/2/K,
-      2/0/K,
-      %
-      0/3/G,
-      0/4/B,
-      0/5/R,
-      %
-      1/3/B,
-      1/4/R,
-      1/5/G,
-      %
-      2/3/R,
-      2/4/G,
-      2/5/B,
-      %
-      4/3/K,
-      3/5/K,
-      5/4/K%
-     } {
-      \draw[draw=white] (O\i) -- (O\j);
-      \draw[-latex,d\c] (O\i) -- (O\j);
-     };
-   \end{tikzpicture}
-  \end{center}
-  \caption{Il gruppoide d'azione del gruppo diedrale \(D_3\) (il gruppo delle simmetrie di un triangolo); le frecce nere sono rotazioni \(r\) di \(2\pi/3\); chiaramente una sola di tali rotazioni è sufficiente a generare tutte le altre per composizione ed \(r^3=1\); gli altri sono riflessioni \(s_{\yellowDot},s_{\redDot},s_{\blueDot}\) lungo un asse, e ciascuno è denotato col colore del suo unico punto fisso. Le relazioni \(s_{\blueDot}\cmp r = s_{\yellowDot}\) e \(r\cmp s_{\redDot} = s_{\blueDot}\), ben note nel gruppo diedrale, diventano commutatività di diagrammi nel gruppoide d'azione: lo si verifichi. Il gruppo \(D_3\) viene presentato mediante generatori e relazioni in diversi modi; si verifichi che ciascuna di queste presentazioni determina un sottografo nella figura data, che genera (nel senso di \ref{ex_cat_libera}) il gruppoide d'azione \(\act{D_3}\)}
-  \label{fig_gruppoide_d_azione}
- \end{figure}
+				\foreach \i/\j/\c in {
+						0/1/K,
+						1/2/K,
+						2/0/K,
+						%
+						0/3/G,
+						0/4/B,
+						0/5/R,
+						%
+						1/3/B,
+						1/4/R,
+						1/5/G,
+						%
+						2/3/R,
+						2/4/G,
+						2/5/B,
+						%
+						4/3/K,
+						3/5/K,
+						5/4/K%
+					} {
+						\draw[draw=white] (O\i) -- (O\j);
+						\draw[-latex,d\c] (O\i) -- (O\j);
+					};
+			\end{tikzpicture}
+		\end{center}
+		\caption{Il gruppoide d'azione del gruppo diedrale \(D_3\) (il gruppo delle simmetrie di un triangolo); le frecce nere sono rotazioni \(r\) di \(2\pi/3\); chiaramente una sola di tali rotazioni è sufficiente a generare tutte le altre per composizione ed \(r^3=1\); gli altri sono riflessioni \(s_{\yellowDot},s_{\redDot},s_{\blueDot}\) lungo un asse, e ciascuno è denotato col colore del suo unico punto fisso. Le relazioni \(s_{\blueDot}\cmp r = s_{\yellowDot}\) e \(r\cmp s_{\redDot} = s_{\blueDot}\), ben note nel gruppo diedrale, diventano commutatività di diagrammi nel gruppoide d'azione: lo si verifichi. Il gruppo \(D_3\) viene presentato mediante generatori e relazioni in diversi modi; si verifichi che ciascuna di queste presentazioni determina un sottografo nella figura data, che genera (nel senso di \ref{ex_cat_libera}) il gruppoide d'azione \(\act{D_3}\)}
+		\label{fig_gruppoide_d_azione}
+	\end{figure}
 \end{example}
 \begin{definition}\label{def_automorfismo}\index{Automorfismo}\index{Morfismo!auto---}
- Un \emph{automorfismo} è un endomorfismo (una freccia da un oggetto a sé stesso) che è un isomorfismo (non si usa mai la locuzione `freccia auto', anche se sarebbe coerente con la nomenclatura di questa sezione e di \ref{sec_monoepi}). In un gruppo \((G,\cdot)\) guardato come una categoria \(\susp(G,\cdot,1)\) tutte le frecce/morfismi \(g : \star\to\star\) sono automorfismi.
+	Un \emph{automorfismo} è un endomorfismo (una freccia da un oggetto a sé stesso) che è un isomorfismo (non si usa mai la locuzione `freccia auto', anche se sarebbe coerente con la nomenclatura di questa sezione e di \ref{sec_monoepi}). In un gruppo \((G,\cdot)\) guardato come una categoria \(\susp(G,\cdot,1)\) tutte le frecce/morfismi \(g : \star\to\star\) sono automorfismi.
 \end{definition}
 Per ogni categoria \(\ctC\) e ogni oggetto \(C\in\ctC_0\), l'insieme \(\Aut(C)\) degli automorfismi di \(C\) è un gruppo.
 \begin{example}\label{ex_cat_gruppoide_naturali}\index{Gruppoide!--- dei numeri naturali}
- La categoria \(\cate{Bij}\) i cui oggetti sono gli insiemi e le cui frecce sono biiezioni è un gruppoide. Quando si prendono solo gli insiemi finiti, la categoria \(\cate{FBij}\subset\cate{Bij}\) diventa molto interessante: consta della `unione disgiunta' (o più precisamente, la \emph{categoria somma}, Definizione \ref{def_cat_somma}) di tutti i gruppi simmetrici \(S_n\), ciascuno guardato come una categoria nel senso di \ref{mon_sonocat}:
- \[\cate{FBij}\cong \sum_{n=0}^\infty \susp(S_n,\cmp)\]
- dove la notazione è quella di \ref{mon_sonocat}.
+	La categoria \(\cate{Bij}\) i cui oggetti sono gli insiemi e le cui frecce sono biiezioni è un gruppoide. Quando si prendono solo gli insiemi finiti, la categoria \(\cate{FBij}\subset\cate{Bij}\) diventa molto interessante: consta della `unione disgiunta' (o più precisamente, la \emph{categoria somma}, Definizione \ref{def_cat_somma}) di tutti i gruppi simmetrici \(S_n\), ciascuno guardato come una categoria nel senso di \ref{mon_sonocat}:
+	\[\cate{FBij}\cong \sum_{n=0}^\infty \susp(S_n,\cmp)\]
+	dove la notazione è quella di \ref{mon_sonocat}.
 \end{example}
 
 L'esempio precedente si può vedere come una sottocategoria di \(\ctSet\).
 Più in generale, in virtù del fatto che ogni identità \(\id_X\) è un isomorfismo, e del fatto che la composizione di isomorfismi è un isomorfismo, data una categoria \(\ctC\) possiamo sempre prendere la sottocategoria che contiene tutti gli oggetti e tutti i suoi isomorfismi.
 \begin{definition}[Cuore di \(\ctC\)]\label{def_cuore}\index{Cuore}\index{Categoria!Cuore di una ---}
- Il \emph{cuore} (in inglese, \emph{core}) di una categoria \(\ctC\) è il gruppoide \(\ctC_\cong\) ottenuto prendendo
- \begin{itemize}
-  \item come oggetti gli stessi di \(\ctC\),
-  \item come frecce \(X\to Y\) gli isomorfismi di \(\ctC\) da \(X\) a \(Y\).
- \end{itemize}
+	Il \emph{cuore} (in inglese, \emph{core}) di una categoria \(\ctC\) è il gruppoide \(\ctC_\cong\) ottenuto prendendo
+	\begin{itemize}
+		\item come oggetti gli stessi di \(\ctC\),
+		\item come frecce \(X\to Y\) gli isomorfismi di \(\ctC\) da \(X\) a \(Y\).
+	\end{itemize}
 \end{definition}
 \begin{notation}[Anima di \(\ctC\)]\label{def_anima}\index{Categoria!anima di una ---}\index{Anima}
- Una notazione per riferirsi agli isomorfismi \(X\to Y\) tra due oggetti \(X,Y\in\ctC_0\) che è in accordo con la nomenclatura finora esposta è \(\ctC_\cong(X,Y)\); si noti che questo insieme può essere vuoto, ma che contiene almeno l'identità se \(X=Y\) (è un gruppo, il \emph{gruppo degli automorfismi} di \(X\)). Di tanto in tanto sarà conveniente riferirsi all'\emph{anima} di \(\ctC\) come la somma (nel senso di \ref{def_cat_somma}) di tutti i gruppi di automorfismi dei suoi oggetti, \(\ctC^\text{an} := \sum_{C\in\ctC_0}\ctC_\cong(C,C)\).
+	Una notazione per riferirsi agli isomorfismi \(X\to Y\) tra due oggetti \(X,Y\in\ctC_0\) che è in accordo con la nomenclatura finora esposta è \(\ctC_\cong(X,Y)\); si noti che questo insieme può essere vuoto, ma che contiene almeno l'identità se \(X=Y\) (è un gruppo, il \emph{gruppo degli automorfismi} di \(X\)). Di tanto in tanto sarà conveniente riferirsi all'\emph{anima} di \(\ctC\) come la somma (nel senso di \ref{def_cat_somma}) di tutti i gruppi di automorfismi dei suoi oggetti, \(\ctC^\text{an} := \sum_{C\in\ctC_0}\ctC_\cong(C,C)\).
 \end{notation}
 
 Si vedano gli esercizi sul perché in questo modo si ottenga una categoria (con identità e composizione).
 \begin{example}[Monoidi, gruppi e gruppoidi liberi]\label{mongruppi_liberi}\index{Monoide!--- libero}\index{Monoide}\index{Categoria!--- libera}
- In \ref{ex_cat_libera} abbiamo introdotto le categorie libere su un grafo. Quando il grafo \(\ctG=(\bullet,E)\) è composto di un unico vertice e ha \(E\) come insieme dei lati, la categoria libera \(\bfF\ctG\) ha anch'essa un unico vertice, e in virtù di \ref{mon_sonocat} l'insieme \(E^* := \bfF\ctG(\bullet,\bullet)\) è un monoide rispetto alla congiunzione di lacci. L'insieme \(E^*\) è il \emph{monoide libero} sull'insieme \(E\), detto solitamente `alfabeto', dato che il generico elemento di \(E^*\) è della forma
- \[[\tup en;]\qquad n\ge 0, \tup en,\in E\]
- o più brevemente \([\tup en{}]\), una `parola' scritta con le `lettere' \(\tup en,\). La composizione è la giustapposizione di parole \([\tup en{}]\cmp[\tup {e'}n{}] = [\tup en{}\tup{e'}n{}]\), per cui l'identità è la parola vuota \(\emptyList\) (quando \(n=0\)).
+	In \ref{ex_cat_libera} abbiamo introdotto le categorie libere su un grafo. Quando il grafo \(\ctG=(\bullet,E)\) è composto di un unico vertice e ha \(E\) come insieme dei lati, la categoria libera \(\bfF\ctG\) ha anch'essa un unico vertice, e in virtù di \ref{mon_sonocat} l'insieme \(E^* := \bfF\ctG(\bullet,\bullet)\) è un monoide rispetto alla congiunzione di lacci. L'insieme \(E^*\) è il \emph{monoide libero} sull'insieme \(E\), detto solitamente `alfabeto', dato che il generico elemento di \(E^*\) è della forma
+	\[[\tup en;]\qquad n\ge 0, \tup en,\in E\]
+	o più brevemente \([\tup en{}]\), una `parola' scritta con le `lettere' \(\tup en,\). La composizione è la giustapposizione di parole \([\tup en{}]\cmp[\tup {e'}n{}] = [\tup en{}\tup{e'}n{}]\), per cui l'identità è la parola vuota \(\emptyList\) (quando \(n=0\)).
 
- Costruire i gruppi liberi (probabilmente noti a chi legge, dall'algebra elementare) come gruppo\emph{idi} liberi con un solo oggetto è più complicato. Per ogni categoria \(\ctC\), esiste una costruzione che produce `il più piccolo' gruppoide che contiene \(\ctC\), denotato \(\ctC[\ctC_1^{-1}]\) e detto \emph{gruppoidificazione} di \(\ctC\), dove ogni freccia di \(\ctC\) è invertibile (ed esiste una inclusione \(i : \ctC\subseteq \ctC[\ctC_1^{-1}]\)), ma specificare questa costruzione richiede diversi strumenti avanzati (la nozione di \emph{funtore}, la nozione di \emph{localizzazione} di una categoria, e alcune accortezze di teoria degli insiemi se \(\ctC\) non è piccola).\index{Gruppoide!---ificazione}
+	Costruire i gruppi liberi (probabilmente noti a chi legge, dall'algebra elementare) come gruppo\emph{idi} liberi con un solo oggetto è più complicato. Per ogni categoria \(\ctC\), esiste una costruzione che produce `il più piccolo' gruppoide che contiene \(\ctC\), denotato \(\ctC[\ctC_1^{-1}]\) e detto \emph{gruppoidificazione} di \(\ctC\), dove ogni freccia di \(\ctC\) è invertibile (ed esiste una inclusione \(i : \ctC\subseteq \ctC[\ctC_1^{-1}]\)), ma specificare questa costruzione richiede diversi strumenti avanzati (la nozione di \emph{funtore}, la nozione di \emph{localizzazione} di una categoria, e alcune accortezze di teoria degli insiemi se \(\ctC\) non è piccola).\index{Gruppoide!---ificazione}
 \end{example}
 \begin{definition}[Categoria scheletrica]\label{def_cat_scheletrica}\index{Categoria!--- scheletrica}
- Una categoria \(\ctC\) si dice \emph{scheletrica} se vale la seguente proprietà:
- \[X\iso Y \, (\text{mediante } f,g) \,\Rightarrow\, X=Y\]
- cioè se due oggetti isomorfi sono uguali, o ancora in altre parole se ogni \emph{iso}morfismo è un \emph{auto}morfismo. Se in più gli unici isomorfismi che esistono tra due oggetti sono le identità, diciamo che \(\ctC\) è scarna (in inglese \emph{gaunt}). Alcuni esempi di categorie che sono scarne (e quindi scheletriche): \ref{ex_cat_vuota}, \ref{ex_cat_term}, \ref{ex_cat_discreta}, \ref{ex_cat_doppiafreccia}, \ref{ex_cat_catena}, \ref{ex_cat_codiscreta}, \ref{ex_cat_ordinali}.
+	Una categoria \(\ctC\) si dice \emph{scheletrica} se vale la seguente proprietà:
+	\[X\iso Y \, (\text{mediante } f,g) \,\Rightarrow\, X=Y\]
+	cioè se due oggetti isomorfi sono uguali, o ancora in altre parole se ogni \emph{iso}morfismo è un \emph{auto}morfismo. Se in più gli unici isomorfismi che esistono tra due oggetti sono le identità, diciamo che \(\ctC\) è scarna (in inglese \emph{gaunt}). Alcuni esempi di categorie che sono scarne (e quindi scheletriche): \ref{ex_cat_vuota}, \ref{ex_cat_term}, \ref{ex_cat_discreta}, \ref{ex_cat_doppiafreccia}, \ref{ex_cat_catena}, \ref{ex_cat_codiscreta}, \ref{ex_cat_ordinali}.
 \end{definition}
 Chiaramente esistono categorie che non sono scheletriche (per esempio perché esistono molte strutture algebriche con gruppi di automorfismi molto complicati), ma da ogni categoria se ne può ottenere una scheletrica in maniera canonica, lo \emph{scheletro} \(\sk(\ctC)\) di \(\ctC\), che gli è `equivalente' (si veda \ref{funtore_equcat}); la nozione di categoria scarna è invece più rigida: esistono categorie che non sono equivalenti a una categoria scarna.
 
 Per iniziare, si noti (o si dimostri, come semplice esercizio) che `essere isomorfi' è una relazione di equivalenza sulla classe degli oggetti \(\ctC_0\).
 \begin{definition}\label{def_scheletro}\index{Categoria!scheletro di una ---}
- Data una categoria \(\ctC\), lo \emph{scheletro} di \(\ctC\) è la categoria scheletrica \(\sk(\ctC)\) dove
- \begin{itemize}
-  \item Gli oggetti sono le classi di isomorfismo \([X],[Y],\dots\) definite sulla base del fatto che `essere isomorfi' è una relazione di equivalenza sulla classe \(\ctC_0\);
-  \item esiste una freccia \([X]\to[Y]\) per ogni freccia \(X\to Y\) di \(\ctC\) (questo non dipende dalla scelta dei rappresentanti \(X\) e \(Y\), si veda il seguente Esercizio \ref{isounico});
-  \item le identità e la composizione sono indotte da quelle di \(\ctC\).
- \end{itemize}
+	Data una categoria \(\ctC\), lo \emph{scheletro} di \(\ctC\) è la categoria scheletrica \(\sk(\ctC)\) dove
+	\begin{itemize}
+		\item Gli oggetti sono le classi di isomorfismo \([X],[Y],\dots\) definite sulla base del fatto che `essere isomorfi' è una relazione di equivalenza sulla classe \(\ctC_0\);
+		\item esiste una freccia \([X]\to[Y]\) per ogni freccia \(X\to Y\) di \(\ctC\) (questo non dipende dalla scelta dei rappresentanti \(X\) e \(Y\), si veda il seguente Esercizio \ref{isounico});
+		\item le identità e la composizione sono indotte da quelle di \(\ctC\).
+	\end{itemize}
 \end{definition}
 % FIX{Ho introdotto la distinzione tra scheletrica (\emph{skeletal}) e scarna (\emph{gaunt}); gaunt è più stringente, ed è evil. Skeletal si può costruire (con AC). Penseremo a quale è più conveniente tenere.}
 \begin{definition}[Il gruppoide fondamentale di uno spazio]\label{es_gruppoide_fondamentale}\index{Categoria!Gruppoide fondamentale}\index{Gruppoide!--- fondamentale}
- Un esempio motivante per la teoria dei gruppoidi viene dalla topologia algebrica: sia \(X\) uno spazio topologico, e definiamo il \emph{gruppoide fondamentale} \(\Pi_1(X)\) come la categoria che ha
- \begin{itemize}
-  \item per oggetti i punti \(x\in X\);
-  \item per frecce \(x\to y\) le classi di omotopia di cammini \(\gamma : [0,1] \to X\) di estremi \(x,y\), cioè le classi di omotopia di funzioni continue \(\gamma\) tali che \(\gamma(0)=x, \gamma(1)=y\).
- \end{itemize}
- La composizione di cammini è la loro giunzione
- \[
-  (\gamma\cmp \delta)(t) =
-  \begin{cases}
-   \delta(2t)   & \text{se } 0\le t\le \frac 12  \\
-   \gamma(2t-1) & \text{se } \frac 12 \le t\le 1 \\
-  \end{cases}\]
- ed è associativa e unitale \emph{solo} considerando classi di omotopia \([\gamma]\) di tali cammini, cioè è vero che \([\alpha] \cmp \left([\beta] \cmp [\gamma]\right) = \left([\alpha] \cmp [\beta]\right) \cmp [\gamma]\) solamente a meno di omotopia (che riscala la velocità di percorrenza dei due cammini che si ottengono dalla composizione iterata), e analogamente \([\alpha]\cmp [c_x] = [\alpha] = [c_y]\cmp [\alpha]\) per ogni \(\alpha : x\to y\), dato che la composizione \([\alpha]\cmp [c_x]\) `sta ferma metà del tempo'.
+	Un esempio motivante per la teoria dei gruppoidi viene dalla topologia algebrica: sia \(X\) uno spazio topologico, e definiamo il \emph{gruppoide fondamentale} \(\Pi_1(X)\) come la categoria che ha
+	\begin{itemize}
+		\item per oggetti i punti \(x\in X\);
+		\item per frecce \(x\to y\) le classi di omotopia di cammini \(\gamma : [0,1] \to X\) di estremi \(x,y\), cioè le classi di omotopia di funzioni continue \(\gamma\) tali che \(\gamma(0)=x, \gamma(1)=y\).
+	\end{itemize}
+	La composizione di cammini è la loro giunzione
+	\[
+		(\gamma\cmp \delta)(t) =
+		\begin{cases}
+			\delta(2t)   & \text{se } 0\le t\le \frac 12  \\
+			\gamma(2t-1) & \text{se } \frac 12 \le t\le 1 \\
+		\end{cases}\]
+	ed è associativa e unitale \emph{solo} considerando classi di omotopia \([\gamma]\) di tali cammini, cioè è vero che \([\alpha] \cmp \left([\beta] \cmp [\gamma]\right) = \left([\alpha] \cmp [\beta]\right) \cmp [\gamma]\) solamente a meno di omotopia (che riscala la velocità di percorrenza dei due cammini che si ottengono dalla composizione iterata), e analogamente \([\alpha]\cmp [c_x] = [\alpha] = [c_y]\cmp [\alpha]\) per ogni \(\alpha : x\to y\), dato che la composizione \([\alpha]\cmp [c_x]\) `sta ferma metà del tempo'.
 
- \(\Pi_1(X)\) è un gruppoide perché ogni cammino \(\gamma : x\to y\) può venire percorso a rovescio, definendo \(\gamma^{-1} : y\to x\) come \(t\mapsto\gamma(1-t)\); allora, \([\gamma]\cmp[\gamma^{-1}] = [c_y]\) e \([\gamma^{-1}]\cmp [\gamma] = [c_x]\).
+	\(\Pi_1(X)\) è un gruppoide perché ogni cammino \(\gamma : x\to y\) può venire percorso a rovescio, definendo \(\gamma^{-1} : y\to x\) come \(t\mapsto\gamma(1-t)\); allora, \([\gamma]\cmp[\gamma^{-1}] = [c_y]\) e \([\gamma^{-1}]\cmp [\gamma] = [c_x]\).
 \end{definition}
 Un particolare esempio di gruppoide è già stato ottenuto in \ref{ex_cat_pseudoinsiemi}, dove interpretiamo la presenza di un cammino (invertibile) \(x\to y\) con il fatto che \(x,y\) sono nello stesso sottoinsieme della partizione data dalla relazione sullo pseudoinsieme. La partizione di uno pseudoinsieme in classi di equivalenza è un analogo della costruzione delle componenti connesse: infatti, guardando uno pseudoinsieme come gruppoide, l'insieme \(\pi_0^\ctCat(S,\sim)\) consiste di un trasversale nella partizione associata a \(\sim\) (e quindi è in biiezione con il quoziente \(S/\sim\)), e allo stesso modo \(\pi_0^\ctCat(\Pi_1(X))\) è l'insieme delle componenti connesse per archi di \(X\) come spazio topologico.
 
 Esiste una ampia letteratura che guarda \(\pi_0^\ctCat(\ctG)\) come a un analogo, più fine e adattato ai gruppoidi, della cardinalità di un insieme, \cite{a,b,c}.
 \begin{definition}\index{Automorfismo}
- Se \(\ctC\) è una categoria, per ogni oggetto \(X\) denotiamo con \(\Aut(X)\) l'insieme degli automorfismi (\ref{def_automorfismo}, \ref{def_anima}) dell'oggetto \(X\), e con \(\# A\) la cardinalità di un insieme \(A\). La \emph{cardinalità} di un gruppoide \(\ctG\) è definita come la somma della serie
- \[\sum_{x\in \pi_0(\ctG)} \frac 1{\#(\Aut(x))}\]
- qualora essa converga, e \(\infty\) altrimenti.
+	Se \(\ctC\) è una categoria, per ogni oggetto \(X\) denotiamo con \(\Aut(X)\) l'insieme degli automorfismi (\ref{def_automorfismo}, \ref{def_anima}) dell'oggetto \(X\), e con \(\# A\) la cardinalità di un insieme \(A\). La \emph{cardinalità} di un gruppoide \(\ctG\) è definita come la somma della serie
+	\[\sum_{x\in \pi_0(\ctG)} \frac 1{\#(\Aut(x))}\]
+	qualora essa converga, e \(\infty\) altrimenti.
 \end{definition}
 Dato che \(\# S_n = n!\), la cardinalità del gruppoide degli insiemi finiti di \ref{ex_cat_gruppoide_naturali} è \(\sum_n \frac 1{n!} = e \approx 2.7182\); si rifletta se esiste un gruppoide la cui cardinalità sia il numero aureo \(\varphi = \frac{1+\sqrt 5}{2}\)\dots
 \begin{esercizi}
- \item Mostrare che la composizione nella categoria \(\cate{Stream}\) definita in \ref{example_streams} è effettivamente associativa, e l'assioma di identità è effettivamente valido.
- \item Caratterizzare gli isomorfismi nelle seguenti categorie:
- \begin{itemize}
-  \item la categoria dei modelli di una segnatura algebrica \((\Omega,a)\);
-  \item la categoria degli ordinali di \ref{ex_cat_ordinali};
-  \item la categoria dell'omotopia \(\ctHoTop\) di \ref{ex_cat_hotop};
-  \item la categoria delle mappe stocastiche di \ref{cat_stocazziche};
-  \item la categoria libera su un grafo \(\ctG\) (prenderlo finito!);
-  \item la categoria dei \(G\)-insiemi di \ref{exa_azioni_funtori}.
- \end{itemize}
- Mostrare che in un incubo \(\ctC/X\) la seguente condizione caratterizza gli isomorfismi: \(t : T\to X\) è un isomorfismo in \(\ctC\) se e solo se per ogni altro oggetto \(f : E\to X\) esiste un unica freccia \(h : E\to T\) tale che \(t\cmp h=f\). La stessa dimostrazione vale anche in una categoria succuba \(X/\ctC\)?
- \item Dati due spazi metrici \((X,d)\) e \((Y,d')\), una funzione \(f:X\to Y\) si dice \emph{Lipschitz continua} se soddisfa la disuguaglianza
- \[
-  d'(fx,fx')\le \alpha d(x,x')
- \]
- per ogni \(x,x'\in X\) e per qualche \(\alpha\in\bbR_{>0}\); in tal caso, l'inf di tutti questi \(\alpha\) si chiama la \emph{costante di Lipschitz} di \(f\); dimostrare che gli spazi metrici e le funzioni Lipschitz continua sono oggetti e frecce di una categoria, chiamata \(\cate{MetLip}\); caratterizzare gli isomorfismi di \(\cate{MetLip}\). Fornire un esempio di due spazi metrici isomorfi in \(\ctTop\), ma non in \(\cate{MetLip}\).
+	\item Mostrare che la composizione nella categoria \(\cate{Stream}\) definita in \ref{example_streams} è effettivamente associativa, e l'assioma di identità è effettivamente valido.
+	\item Caratterizzare gli isomorfismi nelle seguenti categorie:
+	\begin{itemize}
+		\item la categoria dei modelli di una segnatura algebrica \((\Omega,a)\);
+		\item la categoria degli ordinali di \ref{ex_cat_ordinali};
+		\item la categoria dell'omotopia \(\ctHoTop\) di \ref{ex_cat_hotop};
+		\item la categoria delle mappe stocastiche di \ref{cat_stocazziche};
+		\item la categoria libera su un grafo \(\ctG\) (prenderlo finito!);
+		\item la categoria dei \(G\)-insiemi di \ref{exa_azioni_funtori}.
+	\end{itemize}
+	Mostrare che in un incubo \(\ctC/X\) la seguente condizione caratterizza gli isomorfismi: \(t : T\to X\) è un isomorfismo in \(\ctC\) se e solo se per ogni altro oggetto \(f : E\to X\) esiste un unica freccia \(h : E\to T\) tale che \(t\cmp h=f\). La stessa dimostrazione vale anche in una categoria succuba \(X/\ctC\)?
+	\item Dati due spazi metrici \((X,d)\) e \((Y,d')\), una funzione \(f:X\to Y\) si dice \emph{Lipschitz continua} se soddisfa la disuguaglianza
+	\[
+		d'(fx,fx')\le \alpha d(x,x')
+	\]
+	per ogni \(x,x'\in X\) e per qualche \(\alpha\in\bbR_{>0}\); in tal caso, l'inf di tutti questi \(\alpha\) si chiama la \emph{costante di Lipschitz} di \(f\); dimostrare che gli spazi metrici e le funzioni Lipschitz continua sono oggetti e frecce di una categoria, chiamata \(\cate{MetLip}\); caratterizzare gli isomorfismi di \(\cate{MetLip}\). Fornire un esempio di due spazi metrici isomorfi in \(\ctTop\), ma non in \(\cate{MetLip}\).
 
- Ripetere tutte queste domande rispetto alla definizione, più generale, di funzioni \emph{H\"olderiane} tra spazi metrici, ricordando che una funzione \(f : (X,d)\to (Y,d')\) si dice \(K\emdash\alpha\)-H\"olderiana quando
- \[d'(fx,fx')\le Kd(x,x')^\alpha\]
- per \(K\in \bbR_{\ge 0}\) e \(\alpha\in \bbR_{>0}\).
- (La composizione di una funzione \(K\emdash\alpha\)-H\"olderiana e di una \(H\emdash\beta\)-H\"olderiana ne dà una \(KH\emdash\alpha\beta\)-H\"olderiana.)
- \item\label{isounico} In una categoria localmente piccola \(\ctC\), dati due oggetti isomorfi \(X\) e \(Y\), dimostrare che per ogni oggetto \(A\), gli insiemi \(\Hom{\ctC}(A,X)\) e \(\Hom{\ctC}(A,Y)\) sono in biiezione.
- \item Generalizzare \ref{action_groupoid} come segue: dato un monoide \((M,\cdot,1)\), e un insieme \(X\) con una azione di \(M\) nel senso di \ref{ex_cat_g_insiemi}, definire la \emph{categoria d'azione} \(M/\!\!/X\) come segue:
- \begin{itemize}
-  \item gli oggetti sono gli elementi di \(X\);
-  \item c'è una freccia \(\langle m\rangle_x : x\to m\cdot x\), dove \(m\cdot x\) denota l'azione di \(m\in M\) su \(x\).
- \end{itemize}
- Mostrare esplicitamente gli assiomi di categoria (rendendo così precisa questa definizione informale). Recuperare \(\act G\)  come caso particolare di questa definizione; mostrare che, quando \(M\) è un monoide libero (su un insieme \(A\) di generatori) nel senso di \ref{mongruppi_liberi}, allora \(M/\!\!/X\) è una categoria libera nel senso di \ref{ex_cat_libera} (su un grafo \(\ctG[A]\) determinato come\dots).
+	Ripetere tutte queste domande rispetto alla definizione, più generale, di funzioni \emph{H\"olderiane} tra spazi metrici, ricordando che una funzione \(f : (X,d)\to (Y,d')\) si dice \(K\emdash\alpha\)-H\"olderiana quando
+	\[d'(fx,fx')\le Kd(x,x')^\alpha\]
+	per \(K\in \bbR_{\ge 0}\) e \(\alpha\in \bbR_{>0}\).
+	(La composizione di una funzione \(K\emdash\alpha\)-H\"olderiana e di una \(H\emdash\beta\)-H\"olderiana ne dà una \(KH\emdash\alpha\beta\)-H\"olderiana.)
+	\item\label{isounico} In una categoria localmente piccola \(\ctC\), dati due oggetti isomorfi \(X\) e \(Y\), dimostrare che per ogni oggetto \(A\), gli insiemi \(\Hom{\ctC}(A,X)\) e \(\Hom{\ctC}(A,Y)\) sono in biiezione.
+	\item Generalizzare \ref{action_groupoid} come segue: dato un monoide \((M,\cdot,1)\), e un insieme \(X\) con una azione di \(M\) nel senso di \ref{ex_cat_g_insiemi}, definire la \emph{categoria d'azione} \(M/\!\!/X\) come segue:
+	\begin{itemize}
+		\item gli oggetti sono gli elementi di \(X\);
+		\item c'è una freccia \(\langle m\rangle_x : x\to m\cdot x\), dove \(m\cdot x\) denota l'azione di \(m\in M\) su \(x\).
+	\end{itemize}
+	Mostrare esplicitamente gli assiomi di categoria (rendendo così precisa questa definizione informale). Recuperare \(\act G\)  come caso particolare di questa definizione; mostrare che, quando \(M\) è un monoide libero (su un insieme \(A\) di generatori) nel senso di \ref{mongruppi_liberi}, allora \(M/\!\!/X\) è una categoria libera nel senso di \ref{ex_cat_libera} (su un grafo \(\ctG[A]\) determinato come\dots).
 \end{esercizi}
