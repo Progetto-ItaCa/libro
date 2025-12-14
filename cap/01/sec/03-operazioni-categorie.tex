@@ -6,9 +6,9 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 \begin{definition}\label{def_subcat}\index{Categoria!sotto---}
  Data una categoria \(\ctC\), una \emph{sottocategoria} \(\ctS\) di \(\ctC\), che scriviamo \(\ctS\subseteq \ctC\), consiste di sottoclassi \(\ctS_0\subseteq\ctC_0\) e \(\ctS_1\subseteq\ctS_1\) tali che
  \begin{itemize}
-  \item Per ogni morfismo \(f\) in \(\ctS_1\), il suo dominio e il suo codominio sono in \(\ctS_0\);
-  \item Per ogni oggetto \(X\) in \(\ctS_0\), il suo morfismo identità è in \(\ctS_1\);
-  \item Per ogni coppia di morfismi \(f,g\) in \(\ctS_1\) che si possono comporre in \(C\), la loro composizione \(g\cmp f\) è anch'essa in \(\ctS_1\).
+  \item Per ogni freccia \(f\) in \(\ctS_1\), il suo dominio e il suo codominio sono in \(\ctS_0\);
+  \item Per ogni oggetto \(X\) in \(\ctS_0\), la freccia identità $\id_X$ è in \(\ctS_1\);
+  \item Per ogni coppia di frecce \(f,g\) in \(\ctS_1\) che si possono comporre in \(C\), la loro composizione \(g\cmp f\) è anch'essa in \(\ctS_1\).
  \end{itemize}
  In questo modo, \(\ctS\) è anch'essa una categoria, con identità e composizione indotte da \(\ctC\). (Si paragoni una sottocategoria a un sottogruppo.)
 
@@ -16,14 +16,14 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
  \index{Categoria!sotto--- piena}\index{Sottocategoria!--- piena}
  \index{Categoria!sotto--- ampia}\index{Sottocategoria!--- ampia}
  \begin{itemize}
-  \item \emph{piena} se per ogni coppia di oggetti \(X\) e \(Y\) di \(\ctS\), tutti i morfismi \(X\to Y\) di \(\ctC\) sono anch'essi in \(\ctS\);
+  \item \emph{piena} se per ogni coppia di oggetti \(X\) e \(Y\) di \(\ctS\), tutte le frecce \(X\to Y\) di \(\ctC\) sono anch'esse in \(\ctS\);
   \item \emph{ampia} se tutti gli oggetti di \(\ctC\) sono in \(\ctS\). Un esempio di sottocategoria	ampia è dato dal cuore di \(\ctC\), definito in \ref{def_cuore}.
  \end{itemize}
 \end{definition}
 \begin{example}\index{Sottocategoria}\index{Categoria!sotto---}
  Raccogliamo in un unico paragrafo diversi esempi di sottocategorie: la sottocategoria degli insiemi finiti di \ref{protoex_finset} è una sottocategoria (piena) della categoria \(\ctSet\) di \ref{ex_cat_insiemi}; la categoria dei gruppi abeliani è una sottocategoria piena della categoria di tutti i gruppi; la categoria degli insiemi totalmente ordinati è una sottocategoria di \(\ctPos\) definita in \ref{po_wo_to}.
 
- A volte le sottocategorie costruite su una sottoclasse di oggetti sono piene (ad esempio, la sottocategoria \(\ctFld\) i cui oggetti sono i campi è piena nella categoria \(\ctcRing\) degli anelli unitari: un omomorfismo di campi è un omomorfismo tra i particolari anelli che quei campi sono); altre volte, per motivi `tecnici' si restringe anche la classe dei morfismi ammissibili: per esempio
+ A volte le sottocategorie costruite su una sottoclasse di oggetti sono piene (ad esempio, la sottocategoria \(\ctFld\) i cui oggetti sono i campi è piena nella categoria \(\ctcRing\) degli anelli unitari: un omomorfismo di campi è un omomorfismo tra i particolari anelli che quei campi sono); altre volte, per motivi `tecnici' si restringe anche la classe delle frecce ammissibili: per esempio
  \begin{itemize}
   \item le sottocategorie \(\cate{T}n\ctTop\) per \(n=0,1,2,3\) degli spazi che soddisfano gli assiomi di separazione \(Tn\) sono sottocategorie piene della categoria \(\ctTop\) di \ref{ex_cat_top}, una inclusa nell'altra,
         \[\ctTop\supseteq\cate{T}0\ctTop\supseteq\cate{T}1\ctTop\supseteq\cate{T}2\ctTop\supseteq\cate{T}3\ctTop\]
@@ -34,17 +34,17 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
  Date due categorie \(\ctC\) e \(\ctD\), la \emph{categoria prodotto} \(\ctC\times\ctD\) ha
  \begin{itemize}
   \item Per oggetti, coppie \((C,D)\) dove \(C\) è un oggetto di \(\ctC\), e \(D\) è un oggetto di \(\ctD\);
-  \item Per morfismi, ogni morfismo \((C,D)\to(C',D')\) è una coppia \((f,g)\) dove \(f:C\to C'\) è una freccia di \(\ctC\) e \(g:D\to D'\) è una freccia di \(\ctD\);
-  \item L'identità di \((C,D)\) è data dal morfismo \((\id_C,\id_D)\);
-  \item La composizione di morfismi è data dalla composizione delle ciascune componenti.
+  \item una freccia \((C,D)\to(C',D')\) è una coppia \((f,g)\) dove \(f:C\to C'\) è una freccia di \(\ctC\) e \(g:D\to D'\) è una freccia di \(\ctD\);
+  \item L'identità di \((C,D)\) è data dalla freccia \((\id_C,\id_D)\);
+  \item La composizione è data dalla composizione in ciascuna delle componenti.
  \end{itemize}
 \end{definition}
 \begin{definition}\label{def_cat_somma}\index{Categoria!--- somma}
  Date due categorie \(\ctC\) e \(\ctD\), la \emph{categoria somma} \(\ctC+\ctD\) è definita come segue.
  \begin{itemize}
   \item Come classe di oggetti,  ha l'unione disgiunta di \(\ctC_0\) e \(\ctD_0\); gli oggetti \((\ctC+\ctD)_0\) sono quindi indicizzati da due lettere \(l,r\) (`sinistra' e `destra') della forma \((X,\epsilon)\) dove \(X=C\in\ctC_0\) se \(\epsilon = l\) e \(X=D\in\ctD_0\) se \(\epsilon=r\).
-  \item Dati due oggetti \(C\) e \(C'\) presi da \(\ctC\), i morfismi tra loro corrispondono a quelli in \(\ctC\), lo stesso succede per gli oggetti presi da \(\ctD\);
-  \item Non ci sono morfismi tra un oggetto preso da \(\ctC\) e uno preso da \(\ctD\) o viceversa;
+  \item Dati due oggetti \(C\) e \(C'\) presi da \(\ctC\), le frecce tra loro corrispondono a quelle in \(\ctC\), lo stesso succede per gli oggetti presi da \(\ctD\);
+  \item Non ci sono frecce tra un oggetto preso da \(\ctC\) e uno preso da \(\ctD\) o viceversa;
   \item Le identità e le composizioni sono ancora una volta indotte da quelle di \(\ctC\) e \(\ctD\).
  \end{itemize}
 \end{definition}
@@ -181,9 +181,9 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
  Data una categoria \(\ctC\), la \emph{categoria opposta} o \emph{duale} \(\ctC^\op\) ha
  \begin{itemize}
   \item come oggetti, gli stessi oggetti di \(\ctC\);
-  \item come morfismi, una freccia \(f^\op:Y\to X\) per ogni freccia \(f:X\to Y\) di \(\ctC\);
+  \item come frecce, una freccia \(f^\op:Y\to X\) per ogni freccia \(f:X\to Y\) di \(\ctC\);
   \item per ogni oggetto \(X\), l'identità è data da \((\id_X)^\op\);
-  \item dati due morfismi \(f\) e \(g\) componibili in \(\ctC\), la composizione di \(f^\op\cmp g^\op\) è data da \((g\cmp f)^\op\). Si noti l'ordine inverso della composizione:
+  \item date due frecce \(f\) e \(g\) componibili in \(\ctC\), la composizione di \(f^\op\cmp g^\op\) è data da \((g\cmp f)^\op\). Si noti l'ordine inverso della composizione:
         % https://q.uiver.app/#q=WzAsOCxbMCwxLCJcXHRleHR7aW4gfVxcY3RDOiJdLFsxLDAsIlgiXSxbMSwxLCJZIl0sWzIsMSwiWiJdLFszLDEsIlxcdGV4dHtpbiB9XFxjdENeXFxvcDoiXSxbNCwwLCJYIl0sWzQsMSwiWSJdLFs1LDEsIloiXSxbMSwyLCJmIiwyXSxbMiwzLCJnIiwyXSxbNyw2LCJnXlxcb3AiXSxbNiw1LCJmXlxcb3AiXSxbMSwzLCJnXFxjbXAgZiJdLFs3LDUsImZeXFxvcFxcY21wIGdeXFxvcCA9IChnXFxjbXAgZileXFxvcCIsMl1d
         \[\begin{tikzcd}
           & X &&& X \\
@@ -212,7 +212,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 
  Per rendere preciso questo principio dobbiamo fare uso di alcune nozioni elementari di logica; svolgere davvero questo compito (cioè scrivere un linguaggio al primo ordine, dove esprimere veramente la teoria delle categorie) sarebbe fuorviante (ma chi legge può consultare \cite{ETCC}), quindi ci limitiamo a una esposizione semi-formale, definendo il \emph{linguaggio \(\mathsf{CT}\)} come quello che ha
  \begin{itemize}
-  \item per costanti i simboli \(A,B,C,\dots : \ctC_0\) degli oggetti e i simboli \(f,g,h,\dots : \ctC_1\) dei morfismi (in particolare \(A,B,C,\dots\) hanno \emph{sorte} \(\ctC_0\) e \(f,g,h,\dots\) sorte \(\ctC_1\));
+  \item per costanti i simboli \(A,B,C,\dots : \ctC_0\) degli oggetti e i simboli \(f,g,h,\dots : \ctC_1\) delle frecce (in particolare \(A,B,C,\dots\) hanno \emph{sorte} \(\ctC_0\) e \(f,g,h,\dots\) sorte \(\ctC_1\));
   \item le funzioni dominio e codominio \(d,c : \ctC_1\to\ctC_0:f\mapsto d(f),c(f)\);
   \item la funzione di costruzione dell'identità \(\id : \ctC_0\to \ctC_1 : A\mapsto \Id[A]\);
   \item l'operazione di composizione \(\blank\cmp\blank : \ctC_2 \to \ctC_1\) dove ricordiamo che
@@ -253,7 +253,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 \begin{remark}\index{Categoria!--- opposta}\label{ocio_al_duale}
  Il principio di dualità è molto lontano dall'affermare che un asserto è vero in una categoria \(\ctC\) se e solo se esso è vero in \(\ctC^\op\); l'asserto va (formalizzato, cioè espresso come un enunciato nel linguaggio \(\mathsf{CT}\)) \emph{e dualizzato}, ed è solo dopo questa dualizzazione che esso vale (in \(\ctC^\op\), non necessariamente in \(\ctC\)!).
 
- Ad esempio: nell'insieme parzialmente ordinato dei numeri naturali ogni sottoinsieme \(S\subseteq\bbN\) non vuoto ammette un minimo \(\min S\). L'ordine parziale \((\bbN,\le)\) è una categoria, e il minimo di un insieme (non vuoto e) ordinato si descrive in termini della relazione d'ordine (cioè della classe dei suoi morfismi) come
+ Ad esempio: nell'insieme parzialmente ordinato dei numeri naturali ogni sottoinsieme \(S\subseteq\bbN\) non vuoto ammette un minimo \(\min S\). L'ordine parziale \((\bbN,\le)\) è una categoria, e il minimo di un insieme (non vuoto e) ordinato si descrive in termini della relazione d'ordine (cioè della classe delle sue frecce) come
  \[z = \min S \iff (z\in S)\land (\forall k\in S.z\le k)\]
  del resto, \(\bbN^\op = \{\dots\le 2 \le 1 \le 0\}\) non ha un \emph{minimo}, bensì un \emph{massimo}.
 \end{remark}
@@ -281,7 +281,7 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
  La \emph{categoria incubo} sopra \(X\), denotata \(\ctC/X\), o semplicemente \emph{categoria sopra} \(X\) è definita come segue:\footnote{Nel folklore medievale un \emph{incubo} è un demone maschile, che premendo sul petto dell'addormentato causa le paralisi notturne.	Una \emph{succuba}, invece, è una entità demoniaca femminile, che appare nei sogni soggiogando il sognatore (rigorosamente uomo) e lo obbliga a un rapporto sessuale.}
  \begin{itemize}
   \item gli oggetti sono coppie \((A,p)\) dove \(A\) è un oggetto di \(\ctC\) e \(p : A\to X\) è una freccia di \(\ctC\);
-  \item i morfismi \((A,p)\to(B,q)\) sono morfismi \(f:A\to B\) di \(\ctC\) tali che \(q\cmp f=p\), ovvero tali che il seguente diagramma commuta.
+  \item le frecce \((A,p)\to(B,q)\) sono morfismi \(f:A\to B\) di \(\ctC\) tali che \(q\cmp f=p\), ovvero tali che il seguente diagramma commuta.
         \[
          \begin{tikzcd}[column sep=small]
           A \ar{rr}{f} \ar{dr}[swap]{p} && B \ar{dl}{q} \\
@@ -416,7 +416,7 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
   \item i vertici di \(\ctK_n\) sono gli elementi di \(\{\iter n\}\);
   \item due vertici \(i,j\) sono in relazione se e solo se \(i\ne j\).
  \end{itemize}
- Da ciò segue che la categoria dei grafi \(n\)-colorati, i cui oggetti sono grafi con una \(n\)-colorazione, e i cui morfismi rispettano la colorazione, è precisamente la categoria incubo di \(\ctGph\) sopra \(\ctK_n\).
+ Da ciò segue che la categoria dei grafi \(n\)-colorati, i cui oggetti sono grafi con una \(n\)-colorazione, e le cui frecce rispettano la colorazione, è precisamente la categoria incubo di \(\ctGph\) sopra \(\ctK_n\).
  \begin{figure}[h]
   \begin{center}
    \begin{tikzpicture}[
@@ -527,7 +527,7 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
  Consideriamo la categoria \(\ctVect[k]\) degli spazi vettoriali su un campo \(k\); a partire dall'incubo \(\ctVect[k]/k\) definiamo la categoria \(\ctA\) come segue:
  \begin{itemize}
   \item gli oggetti sono mappe lineari \emph{suriettive} \(A : V\to k\);
-  \item i morfismi sono gli stessi di \(\ctVect[k]/k\).
+  \item le frecce sono le stesse di \(\ctVect[k]/k\).
  \end{itemize}
  Ogni oggetto di \(\ctA\) determina uno spazio affine (non vuoto) modellato su \(k\) ottenuto considerando lo spazio vettoriale \(A_0 = \ker A\) la cui somma di vettori agisce in maniera transitiva sull'insieme di punti \(A_1 := A^{-1}(1_k)\) (\(0_k,1_k\) sono rispettivamente l'elemento neutro additivo e quello moltiplicativo del campo \(k\)).
 \end{example}
@@ -541,10 +541,10 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
  La categoria-ordine \(\ctB/\varphi\) modella la struttura della classe delle proposizioni \(\alpha,\beta,\dots\) dove \(\alpha \to \beta\) (in \(\ctB/\varphi\)) se e solo se \(\alpha \land \varphi \to \beta\) (in \(\ctB\)). In breve, \(\varphi\) fa da \emph{contesto} in cui le proposizioni sono determinate.
 \end{example}
 \begin{definition}\label{def_cat_frecce}\index{Categoria!--- delle frecce}
- Data una categoria \(\ctC\), la \emph{categoria delle frecce} o \emph{dei morfismi} di \(\ctC\), denotata \(\ctC^\to\), ha
+ Data una categoria \(\ctC\), la \emph{categoria delle frecce} (o \emph{dei morfismi}) di \(\ctC\), denotata \(\ctC^\to\), ha
  \begin{itemize}
   \item come oggetti, le frecce \(f:A\to B\) di \(\ctC\);
-  \item come morfismi \(f\to f'\), coppie di frecce \(p:A\to A'\) e \(q:B\to B'\) che fanno commutare il seguente quadrato,
+  \item come frecce \(f\to f'\), coppie di frecce \(p:A\to A'\) e \(q:B\to B'\) che fanno commutare il seguente quadrato,
         \[
          \begin{tikzcd}
           A \ar{r}{f} \ar{d}{p} & B \ar{d}{q} \\
@@ -616,7 +616,7 @@ Chi legge rifletta su questa domanda: la categoria \(\ctCospan(\ctC)\) è \(\ctS
  Date due categorie \(\ctC,\ctD\) il \emph{giunto} (in inglese, \emph{join}) di \(\ctC\) e \(\ctD\), denotato con \(\ctC\star\ctD\), è la categoria definita come segue:
  \begin{itemize}
   \item gli oggetti sono l'unione disgiunta di \(\ctC_0\) e \(\ctD_0\) (cioè gli stessi oggetti di \(\ctC+\ctD\) in \ref{def_cat_somma});
-  \item i morfismi \(\Hom{(\ctC\star\ctD)}(X,Y)\) sono specificati per casi:
+  \item le frecce \(\Hom{(\ctC\star\ctD)}(X,Y)\) sono specificate per casi:
         \begin{itemize}
          \item se \(X,Y\in\ctC_0\), \(\Hom{(\ctC\star\ctD)}(X,Y)=\Hom{\ctC}(X,Y)\);
          \item se \(X,Y\in\ctD_0\), \(\Hom{(\ctC\star\ctD)}(X,Y)=\Hom{\ctD}(X,Y)\);
@@ -624,7 +624,7 @@ Chi legge rifletta su questa domanda: la categoria \(\ctCospan(\ctC)\) è \(\ctS
          \item se \(X\in\ctD_0\) e \(Y\in\ctC_0\), \(\Hom{(\ctC\star\ctD)}(X,Y)\) è vuoto.
         \end{itemize}
  \end{itemize}
- La composizione è definita come in \(\ctC\) (o come in \(\ctD\)) quando i morfismi sono entrambi in \(\ctC\) (o in \(\ctD\)); la composizione con un eteromorfismo è un eteromorfismo:
+ La composizione è definita come in \(\ctC\) (o come in \(\ctD\)) quando le frecce sono entrambe in \(\ctC\) (o in \(\ctD\)); la composizione con un eteromorfismo è un eteromorfismo:
  \[\begin{tikzcd}[row sep=2pt]
    C \ar[r] & C' \ar[r,rightsquigarrow, "u_{C'D}"] & D \ar[r,phantom, "="] & C\ar[r,rightsquigarrow, "u_{CD}"] & D\\
    C \ar[r,rightsquigarrow, "u_{CD}"'] & D \ar[r] & D' \ar[r,phantom, "="]& C \ar[r,rightsquigarrow, "u_{CD'}"'] & D'
@@ -710,7 +710,7 @@ Chi legge rifletta su questa domanda: la categoria \(\ctCospan(\ctC)\) è \(\ctS
   \end{center}
  \end{figure}
 \end{definition}
-Dalla definizione della composizione in \(\ctC\star\ctD\) si può mostrare per induzione che la composizione di una \(n\)-upla di morfismi di \(\ctC\star\ctD\) di cui almeno uno è un eteromorfismo, è un eteromorfismo (tra gli appropriati dominio e codominio). Questo dimostra la proprietà associativa (e la buona definizione) della composizione con eteromorfismi.
+Dalla definizione della composizione in \(\ctC\star\ctD\) si può mostrare per induzione che la composizione di una \(n\)-upla di frecce di \(\ctC\star\ctD\) di cui almeno uno è un eteromorfismo, è un eteromorfismo (tra gli appropriati dominio e codominio). Questo dimostra la proprietà associativa (e la buona definizione) della composizione con eteromorfismi.
 
 L'operazione di giunto tra due categorie è essenziale alla loro teoria `combinatoria', e al trattarle come strutture, dato che molte costruzioni elementari si descrivono in termini di giunti: ad esempio, se \(S=\{a,b\}\) è un insieme con due elementi, la spanna generica di \ref{ex_spancospan} è il giunto \(\ctTerm\star S^\delta\), e la cospanna generica è \(S^\delta\star\ctTerm\), e relazioni analoghe valgono anche per le \(S\)-spanne ed \(S\)-cospanne generiche.
 
@@ -804,7 +804,7 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
    \end{scope}
   \end{tikzpicture}
  \end{center}
- \caption{La ragione dietro la terminologia `freccia ritorta' per la Definizione \ref{def_cat_frecce_ritorte} è che i suoi morfismi si possono pensare come quadrati commutativi dove il dominio orizzontale \(u\) è stato ruotato di mezzo giro.}
+ \caption{La ragione dietro la terminologia `freccia ritorta' per la Definizione \ref{def_cat_frecce_ritorte} è che le sue frecce si possono pensare come quadrati commutativi dove il dominio orizzontale \(u\) è stato ruotato di mezzo giro.}
 \end{figure}
 \begin{esercizi}
  \item Sia \(\ctC\) una categoria, \(X\in\ctC_0\) un oggetto, \(f : A\to X\) una freccia: dimostrare che il doppio incubo \((\ctC/X)/f\) è un incubo di \(\ctC\) (su quale oggetto?). Questa `riduzione' di un incubo iterato resta vera per l'incubo della succuba \((A/\ctC)/f\), per \(f/(\ctC/X)\), e per \(f/(A/\ctC)\)?
