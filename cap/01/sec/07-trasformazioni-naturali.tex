@@ -68,7 +68,7 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 		      \[\ctR\ctG=\left\{\xymatrix{
 				      0 \ar@<.5em>[r]^-s\ar@<-.5em>[r]_-t& 1 \ar[l]|j
 			      }\right\}\]
-		      dove \(j\) è una retrazione comune a \(s,t\): \(j\cmp s = j\cmp t = \id_0\). \index{Grafo!--- non diretto} Invece, la categoria dei grafi non diretti di \ref{} consiste della categoria dei funtori (controvarianti) e trasformazioni naturali di forma
+		      dove \(j\) è una retrazione comune a \(s,t\): \(j\cmp s = j\cmp t = \id_0\). \index{Grafo!--- non diretto} Invece, la categoria dei grafi non diretti di \ref{ex_cat_grafi_nondiretti} consiste della categoria dei funtori (controvarianti) e trasformazioni naturali di forma
 		      \[\ctL\ctG=\left\{\xymatrix{
 				      0 	\ar@<.25em>[r]^-s\ar@<-.25em>[r]_-t& 1 \ar@(ur,dr)^l
 			      }\right\}\]
@@ -81,14 +81,14 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 		      \end{itemize}
 		\item La categoria delle rappresentazioni (in \(\ctSet\)) di un monoide di \ref{ex_cat_g_insiemi} è la categoria dei funtori \(\susp M \fun\ctSet\); una trasformazione naturale tra rappresentazioni viste come funtori è precisamente un omomorfismo equivariante. Un fatto analogo è vero per le rappresentazioni di un monoide in \(\ctD\), come in \ref{es_fun_repre} (scrivere i dettagli per esercizio).
 	\end{itemize}
-	Si noti come tutti i vantaggi esposti in \ref{} dell'avere descritto una struttura come una categoria di `rappresentazioni di forme astratte' rimangono validi: un `(multidi)grafo lineare' consiste di un funtore \(\genArrow^\op \fun \ctVect\), e le mappe di dominio e codominio sono omomorfismi lineari; un `grafo topologico' di un funtore \(\genArrow^\op\fun\ctTop\), e le mappe di dominio e codominio sono continue; similmente per grafi riflessivi e non diretti, lineari, topologici o altro.
+	Si noti come tutti i vantaggi esposti in \ref{es_fun_repre_vantaggi} dell'avere descritto una struttura come una categoria di `rappresentazioni di forme astratte' rimangono validi: un `(multidi)grafo lineare' consiste di un funtore \(\genArrow^\op \fun \ctVect\), e le mappe di dominio e codominio sono omomorfismi lineari; un `grafo topologico' di un funtore \(\genArrow^\op\fun\ctTop\), e le mappe di dominio e codominio sono continue; similmente per grafi riflessivi e non diretti, lineari, topologici o altro.
 \end{example}
 Alcuni esempi di categorie di funtori sono ricchi di applicazioni alla topologia, data la presenza di funtori che le legano alle categorie di oggetti geometrici; raccogliamo alcuni esempi tra i più noti.
 \begin{hExample}[Trasformazione di Hurewicz in topologia]{tech}\index{Hurewicz!mappa di ---}
 	\index{Hurewicz@Witold Hurewicz}
 	Questo esempio fa uso di alcuni concetti elementari della teoria dell'omologia singolare, e delle definizioni \ref{fun_ex_omoto_omolo} dei funtori di omotopia e omologia:
 	\begin{itemize}
-		\item se \(X\) è uno spazio topologico, abbiamo definito in \ref{} il gruppo \(\pi_n(X)\) che ha per elementi le classi di omotopia di funzioni continue \(S^n \to X\);
+		\item se \(X\) è uno spazio topologico, abbiamo definito in \ref{fun_ex_omoto_omolo} il gruppo \(\pi_n(X)\) che ha per elementi le classi di omotopia di funzioni continue \(S^n \to X\);
 		\item quando \(X=S^n\), il gruppo \(H_n(S^n)\) è ciclico infinito; fissiamo un suo generatore \(\upsilon\) (cosicché per ogni altra classe di omologia \(\kappa\in H_n(S^n)\) esiste un unico intero \(k\in\bbZ\) tale che \(\kappa = k\cdot \upsilon\)).
 	\end{itemize}
 	Nel 1935, il topologo polacco Witold Hurewicz ha definito un esempio di trasformazione naturale tra il funtore `\(n\)-esimo gruppo di omotopia' ed `\(n\)-esimo gruppo di omologia singolare', \(h : \pi_n \nat H_n\),\footnote{Ha definito, pochi anni prima, anche i funtori \(\pi_n\) di \ref{fun_ex_omoto_omolo}. Hurewicz è un pensatore di fondamentale importanza per la teoria delle categorie, perché è il primo a introdurre la notazione che rappresenta gli omomorfismi come frecce \(f : X \to Y\), come viene ricordato anche nelle Note Storiche del capitolo 1 di \cite{working-categories}.} assegnando a un elemento di \(\pi_n(X) = [S^n,X]\), cioè alla classe di omotopia di una certa \(f : S^n \to X\), l'elemento \(f_*(\upsilon)\) immagine del generatore sopra fissato mediante \(f_* : H_n(S^n) \to H_n(X)\).
@@ -233,7 +233,7 @@ La categoria degli insiemi simpliciali è però decisamente più studiata di que
 	Del resto, una tale \(f\) è definita da delle componenti \((f_0,f_1,f_2,\dots)\), e dalla definizione sappiamo che \((N\ctC)_0,(N\ctC)_1,(N\ctC)_2\) sono rispettivamente gli oggetti, le frecce e le coppie di frecce componibili di \(\ctC\); altrettanto è vero per \(\ctD\), e allora \(f_0 : \ctC_0\to\ctD_0\) è la candidata funzione sugli oggetti di un funtore, \(f_1 : \ctC_1\to\ctD_1\) la funzione sulle frecce. La compatibilità di \(f_0,f_1\) con l'unica degenerazione \(s : (N\ctC)_0\to(N\ctC)_1\), definita da \(s[C] = [\Id[C]]\) afferma che \(f_1(\Id[C]) = \Id[f_0C]\). Similmente, la compatibilità di \(f_2\) con la faccia \(d_1\), che consiste della mappa di composizione \(N\ctC_2\to N\ctC_1\), afferma che \(f_1\) preserva anche le composizioni.
 \end{proof}
 \begin{definition}\label{def_natutra}\index{Trasformazione naturale}\index{homCDFG@\(\Hom{\ctCat(\ctC,\ctD)}(F,G)\)}
-	Come visto in \ref{ex_cat_cat} i funtori sono le frecce di una categoria \(\ctCat\) delle categorie (piccole); ma abbiamo appena trovato che anche le trasformazioni naturali tra funtori rendono la classe \(\ctCat(\ctC,\ctD)\) dei funtori \(F : \ctC\funto\ctD\) a sua volta una categoria; in più la legge di composizione orizzontale \(\blank\horcomp\blank :\ctCat(\ctD,\ctE)\times\ctCat(\ctC,\ctD) \to \ctCat(\ctC,\ctE)\) di \ref{} è un bifuntore (la regola di interscambio di \ref{} equivale ad affermare questo).
+	Come visto in \ref{ex_cat_cat} i funtori sono le frecce di una categoria \(\ctCat\) delle categorie (piccole); ma abbiamo appena trovato che anche le trasformazioni naturali tra funtori rendono la classe \(\ctCat(\ctC,\ctD)\) dei funtori \(F : \ctC\funto\ctD\) a sua volta una categoria; in più la legge di composizione orizzontale \(\blank\horcomp\blank :\ctCat(\ctD,\ctE)\times\ctCat(\ctC,\ctD) \to \ctCat(\ctC,\ctE)\) di \ref{def_hcomp} è un bifuntore (la regola di interscambio di \ref{interchangio} equivale ad affermare questo).
 
 	Allora le trasformazioni naturali \(\alpha : F\nat G\) si pensano come ``frecce tra frecce'', o ``frecce di dimensione 2'', nel senso che andiamo a spiegare. La definizione \ref{def_nat} ha introdotto una notazione per le trasformazioni naturali: è comune rappresentarle con delle frecce del tipo \(\To\), a riempire un diagramma di funtori come segue:
 	\[
@@ -727,7 +727,7 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 	è commutativo.
 \end{definition}
 \begin{hRemark}[A proposito del simbolo \(\yon_\ctC\)]{skip}\index{Yoneda@Nobuo Yoneda}\index{aaa_yo@\(\yon_\ctC\)}
-	L'immersione di Yoneda è l'unico funtore di questo testo denotato con un carattere non latino o greco. Si legge come lo `\emph{io}' di p\emph{io}ggia, ed è la prima sillaba, nel sistema di trascrizione hiragana degli ideogrammi giapponesi, del nome di famiglia `Yoneda' (\jap{米田 信夫}; in giapponese il cognome precede il nome), di Nobuo Yoneda (\(*\)1930-\(\dag\)1996), matematico e informatico teorico giapponese.
+	L'immersione di Yoneda è l'unico funtore di questo testo denotato con un carattere non latino o greco. Si legge come lo `\emph{io}' di p\emph{io}ggia, ed è la prima sillaba, nel sistema di trascrizione hiragana degli ideogrammi giapponesi, del nome di famiglia `Yoneda' (\jap{米田 信夫}; in giapponese il cognome precede il nome), di Nobuo Yoneda (\(*\)1930-\(\dag\)1996), matematico e informatico teorico giapponese. \`E difficile riassumere il profilo e i contributi di Yoneda alla matematica in poche righe: a parte il celebre \emph{lemma di Yoneda}, egli è stato uno dei pionieri nello studio delle categorie abeliane e dei loro usi in algebra omologica \cite{foo}, nonché uno dei primi a verificare i primi casi della congettura di Collatz \cite{foo}.
 \end{hRemark}
 \begin{remark}\index{Prefascio}\index{Funtore!Prefascio}\index{coprefascio|see {Prefascio}}
 	In maniera simile a \ref{ex_cat_preschif} è interessante studiare la categoria (denotata \(\check{\ctC}\), \(\ctC^\lor\) o simili) dei funtori

@@ -67,7 +67,7 @@
 
 	Questa condizione si traduce nel fatto seguente: in un grafo riflessivo ogni vertice ammette un \emph{cappio} cioè per ogni vertice esiste un lato \(jv : s(jv)=v \to v=t(jv)\). Ad ogni grafo è possibile associare un grafo riflessivo in due modi complementari:
 	\begin{itemize}
-		\item il \emph{cuore riflessivo} di un grafo \(\ctG\) consiste del massimo sottografo \(\ctG^r \subseteq\ctG\) generato da quei vertici che ammettono un cappio; formalmente, si considerano come vertici di \(\ctG^r\) solo i vertici di \(\ctG\) tali che esiste un lato \(e\in E\) con \(s(e)=t(e)=v\), e come lati di \(\ctG^r\) tutti i lati di \(\ctG\) tra questi ultimi. (Farsi dei disegni, e confrontarli con la Figura \ref{} che contiene un semplice esempio di inviluppo e cuore riflessivo di un grafo dato.)
+		\item il \emph{cuore riflessivo} di un grafo \(\ctG\) consiste del massimo sottografo \(\ctG^r \subseteq\ctG\) generato da quei vertici che ammettono un cappio; formalmente, si considerano come vertici di \(\ctG^r\) solo i vertici di \(\ctG\) tali che esiste un lato \(e\in E\) con \(s(e)=t(e)=v\), e come lati di \(\ctG^r\) tutti i lati di \(\ctG\) tra questi ultimi. (Farsi dei disegni, e confrontarli con la Figura \ref{fig_cuoreluppo} che contiene un semplice esempio di inviluppo e cuore riflessivo di un grafo dato.)
 		\item l'\emph{inviluppo riflessivo} \(\widetilde{\ctG}\) di \(\ctG\) si ottiene definendo un nuovo grafo che ha lo stesso insieme di vertici di \(\ctG\) e l'unione disgiunta \(E+V\) per insieme dei lati; le nuove funzioni dominio e codominio di \(\widetilde\ctG\) sono definite da
 		      \[\tilde s = \begin{cases}
 				      e \mapsto s(e) \\
@@ -204,7 +204,8 @@
 			\end{scope}
 		\end{tikzpicture}
 	\end{center}
-	\caption{Esempio di cuore e inviluppo riflessivo di un grafo (semplice, cioè senza lati multipli tra due vertici fissati).}
+	\caption{Esempio di cuore e inviluppo riflessivo di un grafo (semplice, cioè senza lati multipli tra due vertici fissati). Si notino le inclusioni naturali	\(\ctG^r \subseteq \ctG \subseteq \widetilde{\ctG}\). Si noti che in $\widetilde{\ctG}$ ad ogni vertice è stato aggiunto un cappio, anche se ne esisteva già uno; in $\ctG^r$ sono stati considerati solo i vertici che avevano già un cappio in $\ctG$, e tutti i lati tra questi ultimi.}
+	\label{fig_cuoreluppo}
 \end{figure}
 \begin{example}[Realizzare \(\ctMat\) in \(\ctVect\)]\index{Funtore!--- matrici reali}
 	La categoria delle matrici \(\ctMat\) è stata definita in \ref{ex_cat_matrici}; la categoria \(\ctVect\) è stata definita tra gli esempi di \ref{varie_categorie_nella_pratica}. Abbiamo già osservato che \(\ctMat\) si ottiene da \(\ctVect\) scegliendo un solo oggetto per ogni dimensione, e questo definisce un funtore ovvio \(\ctMat \to \ctVect\) (mandando \(n\) in \(\bbF^n\) e una matrice \(A\) nell'applicazione lineare che agisce come \(A\) nella base canonica). Esiste anche un funtore nella direzione opposta,
@@ -251,7 +252,7 @@
 \begin{example}[Insieme dei punti fissi]
 	Esiste un funtore
 	\[\dmFun{\fix}{\ctDyn}{\ctSet}\]
-	che assegna a ogni sistema dinamico discreto, come in \ref{}, l'insieme \(\fix((X,x_0),f)\) dei punti fissi di \(((X,x_0),f)\), cioè il sottoinsieme \(\{\bar x\in X\mid f(\bar x)=\bar x\}\) di \(X\). Questa corrispondenza è funtoriale, dato che ogni omomorfismo di sistemi dinamici \(u ((X,x_0),f) \to ((Y,y_0),g)\) restringe, grazie alla proprietà di equivarianza, a una funzione
+	che assegna a ogni sistema dinamico discreto, come in \ref{ex_cat_dyn}, l'insieme \(\fix((X,x_0),f)\) dei punti fissi di \(((X,x_0),f)\), cioè il sottoinsieme \(\{\bar x\in X\mid f(\bar x)=\bar x\}\) di \(X\). Questa corrispondenza è funtoriale, dato che ogni omomorfismo di sistemi dinamici \(u ((X,x_0),f) \to ((Y,y_0),g)\) restringe, grazie alla proprietà di equivarianza, a una funzione
 	\[\dmFun{\fix(u)}{\fix((X,x_0),f)}{\fix((Y,y_0),g).}\]
 \end{example}
 \begin{example}[Spazio delle orbite di un \(G\)-insieme]\index{Funtore!--- orbite di un \(G\)-insieme}\label{ex_fun_orbite}
