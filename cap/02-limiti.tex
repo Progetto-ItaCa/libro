@@ -62,7 +62,7 @@ Questa filosofia sui limiti tuttavia va al di là della `pura' teoria degli insi
 	      \[\xymatrix{
 		      0 & \ar[l]_-{\varphi_1} \bbZ/p\bbZ & \bbZ/p^2\bbZ \ar[l]_-{\varphi_2} & \bbZ/p^3\bbZ \ar[l]_-{\varphi_3} & \bbZ/p^4\bbZ \ar[l]_-{\varphi_4} & \cdots \ar[l]_-{\varphi_5}
 		      }\]
-	      dove ciascuna mappa \(\varphi_n : \bbZ/p^n\bbZ \to \bbZ/p^{n-1}\bbZ\) è la mappa di riduzione modulo \(p\), suriettiva e di nucleo \(p^{n-1}\bbZ/p^n\bbZ\); la topologia naturale su \(\bbZ_p\) (che lo rende uno \emph{spazio di Stone} oltre che un gruppo topologico) è universale a rendere continue tutte le proiezioni canoniche \(\bbZ_p \to \bbZ/p^n\bbZ\), e quindi che conferisce a \(\bbZ_p\) la proprietà universale di limite in \(\ctTop\); su certi oggetti quindi compare una topologia non discreta \emph{anche se tutte le componenti del diagramma sono spazi discreti}. Gli elementi di \(\bbZ_p\) si possono vedere come `serie di potenze nella variabile \(p\)' nel senso che un elemento \(x\in\bbZ_p\) è una successione	\((x_0,x_1,x_2,x_3\dots)\) tale che per ogni \(n\ge 0\) si abbia \(x_n\equiv x_{n+1}\pmod{p^n}\); del resto, se \(x_0 = k_0+x_1\), \(x_1 = k_1p+x_2\), \(x_2 = k_2p^2+x_3\), \dots, si ha che
+	      dove ciascuna mappa \(\varphi_n : \bbZ/p^n\bbZ \to \bbZ/p^{n-1}\bbZ\) è la mappa di riduzione modulo \(p\), suriettiva e di nucleo \(p^{n-1}\bbZ/p^n\bbZ\); la topologia naturale su \(\bbZ_p\) (che lo rende uno \emph{spazio di Stone} oltre che un gruppo topologico) è universale a rendere continue tutte le proiezioni canoniche \(\bbZ_p \to \bbZ/p^n\bbZ\), e quindi che conferisce a \(\bbZ_p\) la proprietà universale di limite in \(\ctTop\); su certi oggetti quindi compare una topologia non discreta \emph{anche se tutte le componenti del diagramma sono spazi discreti}. Gli elementi di \(\bbZ_p\) si possono vedere come `serie di potenze nella variabile \(p\)' nel senso che un elemento \(x\in\bbZ_p\) è una successione	\(\overline x = (x_0,x_1,x_2,x_3\dots)\) tale che per ogni \(n\ge 0\) si abbia \(x_n\equiv x_{n+1}\pmod{p^n}\); del resto, se \(x_0 = k_0+x_1\), \(x_1 = k_1p+x_2\), \(x_2 = k_2p^2+x_3\), \dots, si ha che
 	      \[\overline x \approx k_0 + k_1p + k_2p^2 + k_3p^3 + k_4p^4 + k_5p^5 + \dots \]
 \end{itemize}
 \paragraph*{Natura relazionale delle categorie.}
@@ -129,13 +129,33 @@ Questi, e molti altri concetti, appariranno più chiari quando avremo delineato 
 		\item\label{it_7} In un preordine guardato come categoria, un oggetto iniziale consiste di un elemento \(\bot\in P\) con la proprietà che per ogni \(x\in P\) si abbia \(\bot\le x\); quindi un oggetto iniziale è un elemento \emph{minimo}. Dualmente, un oggetto terminale è un massimo \(\top\), con la proprietà che per ogni \(x\in P\) si abbia \(x\le \top\). L'ordine stretto e totale \((\bbN,\le)\) ha iniziale/minimo ma non terminale/massimo, e altrettanto è vero per \(\bbR_\ge := [0,\infty)\); L'ordine stretto e totale \((\bbZ,\le)\) non ha né minimo né massimo; l'ordine di divisibilità \((\bbN,\div)\) accennato in \ref{alcuni_es_ordini} ha per oggetto iniziale \(1\) (ogni \(m\in\bbN\) è tale che \(m = 1\cdot m\)) e \(0\) per oggetto terminale (ogni \(m\in\bbN\) è tale che \(0 = m\cdot 0\)). L'ordine stretto e parziale sull'insieme delle parti \(PS\) di un insieme \(S\) ha il sottoinsieme vuoto come minimo/iniziale e il sottoinsieme \(S\subseteq S\) come massimo/terminale.
 	\end{enumtag}
 \end{hExamples}
-Questi esempi sono importanti per fissare l'idea in chi legge che un oggetto iniziale o terminale può essere `grande' o `complicato' e che sebbene la sua definizione sia semplice, in molti casi concreti la sua esistenza è un fatto altamente non banale.
-\begin{example}
+I due esempi che seguono sono importanti per fissare l'idea in chi legge che un oggetto iniziale o terminale può essere `grande' o `complicato' e che sebbene la sua definizione sia semplice, in molti casi concreti la sua esistenza è un fatto altamente non banale.
+\begin{example}\label{init_term_elements}
+	Sia $\ctC$ una categoria. Le condizioni seguenti sono equivalenti, per un funtore $F : \ctC \fun\ctSet$:
+	\begin{itemize}
+		\item Esiste un isomorfismo naturale $F\natIso \Hom\ctC(X_F,\blank)$ (cioè, nella terminologia di \ref{def_rappre_fun} $F$ è rappresentabile da un oggetto $X_F$)
+		\item 
+	\end{itemize}
+	Dualmente, le condizioni seguenti sono equivalenti, per un funtore $G : \ctC^\op \fun\ctSet$:
+	\begin{itemize}
+		\item 
+		\item 
+	\end{itemize}
 	\Todo{oggetto iniziale/terminale di una categoria degli elementi}
 \end{example}
-\begin{example}
-	\Todo{oggetto terminale di coalgebre per $1+A\times\blank$}
+\begin{proof}
+	
+\end{proof}
+\begin{example}\label{term_coalgebra_maybe}
+L'oggetto terminale della categoria delle $S$-coalgebre, dove $S=1+(A\times\blank) : \ctSet\fun\ctSet$, esiste ed è dato da $\term=(A^*,\xi : A^* \to 1+A\times A^* )$, dove 
+\[\xi(\emptyList) := \bullet \in 1 \qquad \xi(a\cons as) = (a, as) \in A\times A^*.\]
 \end{example}
+\begin{remark}
+	Si noti che non è possibile derivare \ref{term_coalgebra_maybe} da \ref{init_term_elements} come caso particolare quando $\ctC=\ctSet$, perché $S$ è covariante e quest'ultimo risultato garantirebbe l'esistenza di un oggetto \emph{iniziale} in $\Elts{}S$. 
+\end{remark}
+\begin{proof}
+	
+\end{proof}
 % \color{red}
 % Nella teoria classica degli insiemi\footnote{Ad esempio, secondo l'assiomatica ZF(C), vedi \cite{ZFC}}, l'insieme vuoto \(\emptyset\) è definito come \emph{l'insieme privo di elementi}. Questa definizione, tuttavia, non si presta a essere tradotta in un contesto categoriale più generale perché, sebbene gli insiemi siano gli oggetti di una categoria, \(\ctSet\), gli elementi di cui essi sono composti non possono essere indagati direttamente in \(\ctSet\). D'altro canto, l'insieme vuoto è caratterizzato dalla  proprietà di essere sottoinsieme di qualunque altro insieme \(S\). Equivalentemente, per ogni insieme \(S\), l'hom-insieme \(\Hom\ctSet(\emptyset,S)\) contiene un solo elemento: la  \emph{funzione inclusione}  \(\emptyset \hookrightarrow S\). Dal punto di vista categoriale, quest'ultima formulazione si presta a essere adottata come definizione---e qui entra in gioco l'espressività della teoria delle categorie. Infatti, quando si perviene a una definizione espressa puramente in termini di oggetti e morfismi,  tale definizione può essere data in qualunque categoria, ed è naturale chiedersi cosa essa descriva in categorie diverse.
 
@@ -242,7 +262,7 @@ che determinano univocamente \(h\). Infatti, si osservi come
 \begin{itemize}
 	\item grazie a \ref{eq_comprule} l'immagine di \(h(x)\) può essere \emph{ridotta} alla coppia ordinata
 	      \[\pair{(\pi_1\cmp h)(x)}{(\pi_2\cmp h)(x)};\]
-	\item comunque siano date due funzioni \(f : X\to A\) e \(g : X \to B\), è possibile \emph{costruire} la coppia ordinata \(\pair{f(x)}{g(x)}\) e la funzione \(f\pmap g\) che abbiamo già introdotto in \ref{puniv_prodotto_naturale} che ne risulta è l'immagine di \(\pair fg\), nell'insieme a sinistra, rispetto alla biiezione natuarle (già dimostrata)
+	\item comunque siano date due funzioni \(f : X\to A\) e \(g : X \to B\), è possibile \emph{costruire} la coppia ordinata \(\pair{f(x)}{g(x)}\) e la funzione \(f\pmap g\) che abbiamo già introdotto in \ref{puniv_prodotto_naturale} che ne risulta è l'immagine di \(\pair fg\), nell'insieme a sinistra, rispetto alla biiezione naturale (già dimostrata)
 	      \[\Hom\ctSet(X,A\times B)\cong\Hom\ctSet(X,A)\times\Hom\ctSet(X,B).\]
 \end{itemize}
 \Todo{}

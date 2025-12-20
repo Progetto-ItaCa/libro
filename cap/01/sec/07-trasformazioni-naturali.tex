@@ -253,15 +253,20 @@ La categoria degli insiemi simpliciali è però decisamente più studiata di que
 \end{remark}
 Passiamo ora alla definizione di isomorfismo nella categoria formata da funtori e trasformazioni naturali.
 \begin{hDefinition}[Isomorfismo naturale]{fund}\label{def_isonat}\index{Isomorfismo!--- naturale}\index{Trasformazione naturale!isomorfismo naturale}
-	Dati due funtori \(F,G : \ctC\fun\ctD\) tra categorie, un \emph{isomorfismo naturale} consiste di una trasformazione naturale \(\alpha : F\nat G\) che possieda una inversa per l'operazione di composizione verticale di \ref{def_vcomp}; in altre parole, \(\alpha\) è un isomorfismo naturale se esiste una trasformazione naturale \(\bar\alpha : G\nat F\) tale che \(\alpha\vcmp\bar\alpha = 1_G\) e \(\bar\alpha\vcmp\alpha =1_F\). Evidentemente tale \(\bar\alpha\) è unica e si può denotare con \(\alpha^{-1}\).
+	Dati due funtori \(F,G : \ctC\fun\ctD\) tra categorie, un \emph{isomorfismo naturale} consiste di una trasformazione naturale \(\alpha : F\nat G\) che possieda una inversa per l'operazione di composizione verticale di \ref{def_vcomp}; in altre parole, \(\alpha\) è un isomorfismo naturale se esiste una trasformazione naturale \(\bar\alpha : G\nat F\) tale che \(\alpha\vcmp\bar\alpha = 1_G\) e \(\bar\alpha\vcmp\alpha =1_F\). 	
 \end{hDefinition}
-Inoltre, la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
+Evidentemente tale \(\bar\alpha\) è unica e si può denotare con \(\alpha^{-1}\). Indichiamo con $F\natIso G$ la presenza di un isomorfismo naturale (il cui nome $\alpha$ è sottinteso) tra i funtori $F$ e $G$; questo è un modo di suggerire l'idea che l'isomorfismo tra $F$ e $G$ (nella categoria $\Hom\ctCat(\ctC,\ctD)$, tra gli oggetti $F$ e $G$) sia fatto di diverse componenti (le $\alpha_X$), ciascuna delle quali è un isomorfismo $\alpha_X : FX\iso GX$.
+
+Osserviamo poi la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 \begin{lemma}\index{Isomorfismo!--- naturale}
 	Una trasformazione naturale \(\alpha : F\nat G\) è invertibile se e solo se ciascuna delle sue componenti è un isomorfismo di \(\ctD\); infatti, la condizione di naturalità per \(\alpha\) è il fatto che per ogni \(u : X\to Y\) si abbia
 	\[\alpha_Y \cmp Fu = Gu\cmp \alpha_X\]
 	da cui segue la condizione di naturalità per \(\alpha^{-1}\) componendo da entrambi i lati questa equazione:
 	\[Fu\cmp \alpha_X^{-1}=\alpha_Y^{-1}\cmp \alpha_Y \cmp Fu\cmp \alpha_X^{-1} = \alpha_Y^{-1}\cmp Gu\cmp \alpha_X\cmp \alpha_X^{-1}=\alpha_Y^{-1}\cmp Gu.\]
 \end{lemma}
+\begin{definition}[Funtore rappresentabile]\label{def_rappre_fun}\index{Funtore!--- rappresentabile}\index{Rappresentabilità}
+	Una famiglia importante di isomorfismi naturali sono quelli che sussistono tra un funtore $F : \ctC \fun\ctSet$ e uno dei \emph{funtori hom} di \ref{ex_hom_funtore}; qualora esista un isomorfismo naturale $F\natIso \Hom\ctC(X_F,\blank)$ per un qualche oggetto $X_F\in\ctC_0$, diciamo che $F$ è \emph{rappresentabile} (da $X_F$), o che $X_F$ è l'\emph{oggetto rappresentante} per $F$. Questa terminologia è indicativa del fatto che la rappresentabilità sia una proprietà di $F$, ossia che se $F$ è rappresentabile, lo sia in modo essenzialmente unico. Questo è vero (ed è il cuore del capitolo \ref{cap_yoneda}, sul lemma di Yoneda), ma bisogna sviluppare più teoria per poterlo dimostrare. Gli esempi di funtori rappresentabili abbondano in algebra, geometria e logica e sono raccolti nelle prime sezioni del capitolo \ref{cap_yoneda}.
+\end{definition}
 \begin{hLemma}[Presentazione equivalente di trasformazioni naturali]{fund}\index{Categoria!--- freccia generica}\index{Freccia generica}
 	Si considerino due categorie \(\ctC,\ctD\). \`E equivalente dare:
 	\begin{enumtag}{tn}
@@ -307,7 +312,7 @@ Inoltre, la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 		La dimostrazione dell'equivalenza tra \ref{in_1} e \ref{in_2}, quando a \(\genArrow\) si sostituisca l'isomorfismo generico è del tutto analoga; semplicemente, ora le componenti di \(\alpha_A\) dovranno essere invertibili.
 	\end{proof}
 \end{hLemma}
-\begin{example}[Naturali tra mappe monotòne]\label{nat_tra_posets}\index{Trasformazione naturale!--- tra ordini}
+\begin{example}[Trasformazioni naturali tra mappe monotòne]\label{nat_tra_posets}\index{Trasformazione naturale!--- tra ordini}
 	Abbiamo visto in \ref{exa_monotone_funtori} che una funzione monotòna \(f:(X,\le)\to(Y,\le)\) si può vedere come un funtore. In questo contesto, date due funzioni monotone \(f,g:(X,\le)\to(Y,\le)\), si ha una (unica) trasformazione naturale \(f\Rightarrow g\), o \(f\le g\), se e solo se per ogni \(x\in X\), \(f(x)\le g(x)\). (Quest'ultima disuguaglianza rappresenta la componente della trasformazione nell'oggetto \(x\).)
 
 	Una trasformazione naturale tra funtori che sono insiemi ordinati è perciò una \emph{proposizione}: quella che asserisce che \(f\) e \(g\) sono minori una dell'altra, punto per punto.
