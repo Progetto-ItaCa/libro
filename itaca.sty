@@ -31,7 +31,7 @@
 \clist_concat:NNN \g_itaca_both_clist \g_itaca_upper_clist \g_itaca_lower_clist
 
 \clist_new:N \g_itaca_categories_clist
-\clist_gset:Nn \g_itaca_categories_clist { Set, BAlg, Rel, FRel, Fin, Top, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Rng, Ring, cRing, Mon, Pos, Circ, Meas, Flux, POrd, Pre, Span, Cospan, sSet, gSet, Dyn, Ord, FOrd, Lat, HoTop, Fld, DInt, Ch, Gl, Gpd, Alg, Tw }
+\clist_gset:Nn \g_itaca_categories_clist { Set, BAlg, Rel, FRel, Fin, Top, coAlg, Ab, Gph, dGph, Grp, Cat, CAT, Mod, Rng, Ring, cRing, Mon, Pos, Circ, Meas, Flux, POrd, Pre, Span, Cospan, sSet, gSet, Dyn, Ord, FOrd, Lat, HoTop, Fld, DInt, Ch, Gl, Gpd, Alg, Tw }
 
 
 \clist_new:N \g_itaca_operators_clist
@@ -72,9 +72,11 @@
 \ExplSyntaxOff
 
 \def\pSet{\partial\ctSet}
-\def\ctAlgT{\ctT\emdash\ctAlg}
-\def\ctCsAlg{\mathrm{C}^*\emdash\ctAlg}
-\def\ctSAlg{\Sigma\emdash\ctAlg}
+\NewDocumentCommand{\falg}{ m }{#1\emdash\ctAlg}
+\NewDocumentCommand{\fcoalg}{ m }{#1\emdash\ctcoAlg}
+\def\fAlgT{\falg{\ctT}}
+\def\ctCsAlg{\falg{\mathrm{C}^*}}
+\def\ctSAlg{\falg{\Sigma}}
 \NewDocumentCommand{\ctSEAlg}{O{E}}{(\Sigma,#1)\emdash\ctAlg}
 \NewDocumentCommand{\ctSEEAlg}{O{E}}{\ctSEAlg[E']}
 
