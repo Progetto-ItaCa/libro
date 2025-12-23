@@ -130,32 +130,150 @@ Questi, e molti altri concetti, appariranno più chiari quando avremo delineato 
 	\end{enumtag}
 \end{hExamples}
 I due esempi che seguono sono importanti per fissare l'idea in chi legge che un oggetto iniziale o terminale può essere `grande' o `complicato' e che sebbene la sua definizione sia semplice, in molti casi concreti la sua esistenza è un fatto altamente non banale.
-\begin{example}\label{init_term_elements}
-	Sia $\ctC$ una categoria. Le condizioni seguenti sono equivalenti, per un funtore $F : \ctC \fun\ctSet$:
+\begin{proposition}\label{init_term_elements}
+	Sia \(\ctC\) una categoria. Le condizioni seguenti sono equivalenti, per un funtore \(F : \ctC \fun\ctSet\):
 	\begin{itemize}
-		\item Esiste un isomorfismo naturale $F\natIso \Hom\ctC(X_F,\blank)$ (cioè, nella terminologia di \ref{def_rappre_fun} $F$ è rappresentabile da un oggetto $X_F$)
-		\item 
+		\item Esiste un isomorfismo naturale \(F\natIso \Hom\ctC(X_F,\blank)\) (cioè, nella terminologia di \ref{def_rappre_fun} \(F\) è corappresentabile da un oggetto \(X_F\));
+		\item la categoria degli elementi \(\Elts{\ctC}F\) ha un oggetto iniziale \((\init,h\in F\init)\).
 	\end{itemize}
-	Dualmente, le condizioni seguenti sono equivalenti, per un funtore $G : \ctC^\op \fun\ctSet$:
+	Dualmente, le condizioni seguenti sono equivalenti, per un funtore \(G : \ctC^\op \fun\ctSet\):
 	\begin{itemize}
-		\item 
-		\item 
+		\item Esiste un isomorfismo naturale \(G\natIso \Hom\ctC(\blank,Y_G)\) (cioè, nella terminologia di \ref{def_rappre_fun} \(G\) è rappresentabile da un oggetto \(Y_G\));
+		\item la categoria degli elementi \(\Elts{\ctC}G\) ha un oggetto terminale \((\term,b\in G\term)\).
 	\end{itemize}
 	\Todo{oggetto iniziale/terminale di una categoria degli elementi}
-\end{example}
+\end{proposition}
 \begin{proof}
-	
+
 \end{proof}
-\begin{example}\label{term_coalgebra_maybe}
-L'oggetto terminale della categoria delle $S$-coalgebre, dove $S=1+(A\times\blank) : \ctSet\fun\ctSet$, esiste ed è dato da $\term=(A^*,\xi : A^* \to 1+A\times A^* )$, dove 
-\[\xi(\emptyList) := \bullet \in 1 \qquad \xi(a\cons as) = (a, as) \in A\times A^*.\]
-\end{example}
+\begin{proposition}\label{term_coalgebra_maybe}
+	L'oggetto terminale della categoria delle \(S\)-coalgebre, dove \(S=1+(A\times\blank) : \ctSet\fun\ctSet\), esiste ed è dato da \(\term=(A^\omega,\xi_! : A^\omega \to 1+A\times A^\omega )\), dove \(A^\omega := A^\bbN + A^* = A^\bbN + \{\emptyList\} + A + (A \times A) + (A\times A\times A) + \dots\) è l'insieme delle liste (potenzialmente infinite) di \(A\) (composto dalla unione disgiunta delle liste propriamente dette, \(A^*\), e degli \emph{stream} \(A^\bbN := \prod_{n\in\bbN} A\)) e
+	\[\xi_!(\emptyList) := \bullet \in 1 \qquad \xi_!(a\cons as) = (a, as) \in A\times A^\omega.\]
+\end{proposition}
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}[
+				x=4em, y=4em,
+				dot/.style={
+						circle,
+						fill=#1,
+						draw=black,
+						inner sep=0pt,
+						outer sep=2pt,
+						minimum size=4pt,
+						draw=none,
+					},
+				wrap/.style={
+						inner sep=0,
+						fill=black!5,
+						rounded corners,
+						inner sep=1em,
+					},
+			]
+			\begin{scope}[xshift=-4cm]
+				\fill[lightgray!70]
+				(0,0)
+				.. controls (-1.2,0.2) and (-1.3,1.2) .. (-0.7,1.4)
+				.. controls (-1.1,2.2) and (-0.6,2.6) .. (-0.2,1.8)
+				.. controls (-0.1,2.0) and (0.1,2.0) .. (0.2,1.8)
+				.. controls (0.6,2.6) and (1.1,2.2) .. (0.7,1.4)
+				.. controls (1.3,1.2) and (1.2,0.2) .. (0,0)
+				-- cycle;
+			\end{scope}
+			%
+			\foreach \i/\x in {10/0,20/1,40/2,60/3} {
+					\begin{scope}[xshift=1.5*\x cm,yshift=-0.25*\x cm]
+						\fill[lightgray!\i]
+						(0,0)
+						.. controls (-1.2,0.2) and (-1.3,1.2) .. (-0.7,1.4)
+						.. controls (-1.1,2.2) and (-0.6,2.6) .. (-0.2,1.8)
+						.. controls (-0.1,2.0) and (0.1,2.0) .. (0.2,1.8)
+						.. controls (0.6,2.6) and (1.1,2.2) .. (0.7,1.4)
+						.. controls (1.3,1.2) and (1.2,0.2) .. (0,0)
+						-- cycle;
+					\end{scope}
+				}
+			\node[dot] (x0) at (-2.5,1) {};
+			\node[font=\tiny] (x1) at (-.5,1) {$(a_1,x_1)$};
+			\node[font=\tiny] (x2) at (.5,1.5) {$(a_2,x_2)$};
+			\node[font=\tiny] (x3) at (1.35,.275) {$(a_3,x_3)$};
+			\node[font=\tiny] (x4) at (2.5,.725) {$(a_4,x_4)$};
+			\draw[-latex] (x0) -- (x1)
+			(x1) -- (x2)
+			(x2) -- (x3)
+			(x3) -- (x4);
+			\draw (-.75,-1) -- ++(3.25,0);
+			\fill ($(x1 |- 0,-1)$) circle (2pt) node[below] {$a_1$};
+			\fill ($(x2 |- 0,-1)$) circle (2pt) node[below] {$a_2$};
+			\fill ($(x3 |- 0,-1)$) circle (2pt) node[below] {$a_3$};
+			\fill ($(x4 |- 0,-1)$) circle (2pt) node[below] {$a_4$};
+			\draw[dotted] (x1) -- ($(x1 |- 0,-1)$);
+			\draw[dotted] (x2) -- ($(x2 |- 0,-1)$);
+			\draw[dotted] (x3) -- ($(x3 |- 0,-1)$);
+			\draw[dotted] (x4) -- ($(x4 |- 0,-1)$);
+			\node (beh) at (4.5,-1) {$(a_1,a_2,a_3,a_4)$};
+			\draw[|->,shorten <=1em,shorten >=.5em] ($(x4 |- 0,-1)$.east) -- node[below,font=\footnotesize] {$b_{(X,\alpha)}$} (beh);
+		\end{tikzpicture}
+	\end{center}
+	\caption{Evoluzione di un punto iniziale in una \(S\)-coalgebra \((X,\alpha)\), se \(SX = 1+A\times X\); in questo esempio \(X\) è un insieme a forma di gatto, e il comportamento \(b_{(X,\alpha)} : X \to A^\omega\) esibisce la freccia universale verso l'oggetto terminale di \(\fcoalg S\).}
+\end{figure}
 \begin{remark}
-	Si noti che non è possibile derivare \ref{term_coalgebra_maybe} da \ref{init_term_elements} come caso particolare quando $\ctC=\ctSet$, perché $S$ è covariante e quest'ultimo risultato garantirebbe l'esistenza di un oggetto \emph{iniziale} in $\Elts{}S$. 
+	Si noti che non è possibile derivare \ref{term_coalgebra_maybe} da \ref{init_term_elements} come caso particolare quando \(\ctC=\ctSet\), perché \(S\) è covariante e quest'ultimo risultato garantirebbe l'esistenza di un oggetto \emph{iniziale} in \(\Elts{\ctSet}S\). Tuttavia con strumenti appena più sofisticati (si veda \ref{rep_preservano_lim}) possiamo dimostrare che \(S\) non può essere rappresentabile --e dunque nella sua categoria degli elementi manca un oggetto iniziale.
 \end{remark}
-\begin{proof}
-	
+\begin{proof}[Dimostrazione di \ref{term_coalgebra_maybe}]
+	Consideriamo una generica altra \(S\)-coalgebra \((X, \alpha : A \to SX)\): adottiamo la stenografia
+	\[\begin{cases}
+			x \overset a\leadsto x'     & \text{ se } \alpha(x) = (a,x')   \\
+			x \overset \leadsto \bullet & \text{ se } \alpha(x) = \bullet.
+		\end{cases}\]
+	Così risulta chiaro come dare senso a scritture del tipo
+	\begin{equation}\label{iter_coalgebra}
+		x_0 \overset{a_0}\leadsto
+		x_1 \overset{a_1}\leadsto
+		x_2 \overset{a_2}\leadsto
+		\dots\overset{a_{n-1}}\leadsto
+		x_n \overset{a_n}\leadsto \dots
+	\end{equation}
+	(al netto del fatto che queste concatenazioni possono avere lunghezza infinita, ma questo è semplice da precisare). Allora esiste un'unica freccia \(b_{(X,\alpha)} : X \to A^\omega\) (detta \emph{comportamento} della coalgebra) definita come segue:
+	\[
+		b_{(X,\alpha)}(x) =
+		\begin{cases}
+			\emptyList                     & \text{ se } x\leadsto\bullet                                                                                                  \\
+			(a_1,a_2,\dots, a_n)           & \text{ se } x \overset{a_1}\leadsto x_1 \overset{a_2}\leadsto\dots \leadsto x_{n-1} \overset{a_n}\leadsto x_n\leadsto \bullet \\
+			(a_0,a_1,a_2,\dots, a_n,\dots) & \text{ se } x \overset{a_1}\leadsto x_2 \overset{a_2}\leadsto x_3 \overset{a_3}\leadsto
+			\dots
+			\overset{a_{n-1}}\leadsto x_n \overset{a_n}\leadsto \dots
+		\end{cases}\]
+	Va ora dimostrato che il quadrato di insiemi e funzioni
+	\[\xymatrix{
+		X\ar[r]^{b_{(X,\alpha)}}\ar[d]_\alpha & A^\omega \ar[d]^{\xi_!}\\
+		1+A\times X \ar[r]_-{1+A\times b_{(X,\alpha)}} & 1+A\times A^\omega
+		}\]
+	è commutativo:
+	\begin{itemize}
+		\item se \(x\leadsto\bullet\) la condizione esprime il fatto che \(\xi_!(b_{(X,\alpha)}(x)) = \alpha(x) = \bullet\); questo è vero.
+		      % \[\xymatrix@R=1cm@C=1cm{
+		      %  x \ar@{|->}[r]^{b_{(X,\alpha)}}\ar@{|->}[d]_\alpha& \emptyList \ar@{|->}[d]^{\xi_!}\\
+		      %  \bullet \ar@{|->}[r]_-{\id_\bullet}& \bullet
+		      %  }\]
+		\item Se \(x \overset{a_1}\leadsto x_1 \overset{a_2}\leadsto\dots \leadsto x_{n-1} \overset{a_n}\leadsto x_n\leadsto \bullet\), la condizione esprime il fatto che coincidono le due composizioni
+		      \[\xymatrix@R=0mm@C=1cm{
+			      x \ar@{|->}[r]\ar@{|->}[dddd]& (\tup an,) \ar@{|->}[ddd]\\
+			      &\\
+			      &\\
+			      & (a_1;\tup[2] an,)\\
+			      (a_1;x_1) \ar@{|->}[r]& (a_1;b_{(X,\alpha)}(x_1))
+			      }\]
+		      e anche questo è vero. Similmente si ragiona nell'ultimo caso e questo conclude la dimostrazione.\qedhere
+	\end{itemize}
 \end{proof}
+\begin{remark}
+	Il nome `comportamento' per la freccia universale \(b_{(X,\alpha)}\) è dovuto al fatto che si può pensare alla successione \eqref{iter_coalgebra} come a una vera e propria traiettoria nello `spazio' \(X\times A\), tale che
+	\[\xymatrix@R=0cm{
+		x \ar@{|->}[r]& a_1\\&x_1 \ar@{|->}[r]& a_2\\&&x_2 \ar@{|->}[r]& \\&&&\dots &
+		}\]
+	La Figura \ref{} chiarisce questa idea intuitiva.
+\end{remark}
 % \color{red}
 % Nella teoria classica degli insiemi\footnote{Ad esempio, secondo l'assiomatica ZF(C), vedi \cite{ZFC}}, l'insieme vuoto \(\emptyset\) è definito come \emph{l'insieme privo di elementi}. Questa definizione, tuttavia, non si presta a essere tradotta in un contesto categoriale più generale perché, sebbene gli insiemi siano gli oggetti di una categoria, \(\ctSet\), gli elementi di cui essi sono composti non possono essere indagati direttamente in \(\ctSet\). D'altro canto, l'insieme vuoto è caratterizzato dalla  proprietà di essere sottoinsieme di qualunque altro insieme \(S\). Equivalentemente, per ogni insieme \(S\), l'hom-insieme \(\Hom\ctSet(\emptyset,S)\) contiene un solo elemento: la  \emph{funzione inclusione}  \(\emptyset \hookrightarrow S\). Dal punto di vista categoriale, quest'ultima formulazione si presta a essere adottata come definizione---e qui entra in gioco l'espressività della teoria delle categorie. Infatti, quando si perviene a una definizione espressa puramente in termini di oggetti e morfismi,  tale definizione può essere data in qualunque categoria, ed è naturale chiedersi cosa essa descriva in categorie diverse.
 
