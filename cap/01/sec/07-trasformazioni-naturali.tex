@@ -253,11 +253,11 @@ La categoria degli insiemi simpliciali è però decisamente più studiata di que
 \end{remark}
 Passiamo ora alla definizione di isomorfismo nella categoria formata da funtori e trasformazioni naturali.
 \begin{hDefinition}[Isomorfismo naturale]{fund}\label{def_isonat}\index{Isomorfismo!--- naturale}\index{Trasformazione naturale!isomorfismo naturale}
-	Dati due funtori \(F,G : \ctC\fun\ctD\) tra categorie, un \emph{isomorfismo naturale} consiste di una trasformazione naturale \(\alpha : F\nat G\) che possieda una inversa per l'operazione di composizione verticale di \ref{def_vcomp}; in altre parole, \(\alpha\) è un isomorfismo naturale se esiste una trasformazione naturale \(\bar\alpha : G\nat F\) tale che \(\alpha\vcmp\bar\alpha = 1_G\) e \(\bar\alpha\vcmp\alpha =1_F\). 	
+	Dati due funtori \(F,G : \ctC\fun\ctD\) tra categorie, un \emph{isomorfismo naturale} consiste di una trasformazione naturale \(\alpha : F\nat G\) che possieda una inversa per l'operazione di composizione verticale di \ref{def_vcomp}; in altre parole, \(\alpha\) è un isomorfismo naturale se esiste una trasformazione naturale \(\bar\alpha : G\nat F\) tale che \(\alpha\vcmp\bar\alpha = 1_G\) e \(\bar\alpha\vcmp\alpha =1_F\).
 \end{hDefinition}
-Evidentemente tale \(\bar\alpha\) è unica e si può denotare con \(\alpha^{-1}\). Indichiamo con $F\natIso G$ la presenza di un isomorfismo naturale (il cui nome $\alpha$ è sottinteso) tra i funtori $F$ e $G$; questo è un modo di suggerire l'idea che l'isomorfismo tra $F$ e $G$ (nella categoria $\Hom\ctCat(\ctC,\ctD)$, tra gli oggetti $F$ e $G$) sia fatto di diverse componenti (le $\alpha_X$), ciascuna delle quali è un isomorfismo $\alpha_X : FX\iso GX$.
+Evidentemente tale \(\bar\alpha\) è unica e si può denotare con \(\alpha^{-1}\). Indichiamo con \(F\natIso G\) la presenza di un isomorfismo naturale (il cui nome \(\alpha\) è sottinteso) tra i funtori \(F\) e \(G\); questo è un modo di suggerire l'idea che l'isomorfismo tra \(F\) e \(G\) (nella categoria \(\Hom\ctCat(\ctC,\ctD)\), tra gli oggetti \(F\) e \(G\)) sia fatto di diverse componenti (le \(\alpha_X\)), ciascuna delle quali è un isomorfismo \(\alpha_X : FX\iso GX\).
 
-Osserviamo poi la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
+Osserviamo poi che la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 \begin{lemma}\index{Isomorfismo!--- naturale}
 	Una trasformazione naturale \(\alpha : F\nat G\) è invertibile se e solo se ciascuna delle sue componenti è un isomorfismo di \(\ctD\); infatti, la condizione di naturalità per \(\alpha\) è il fatto che per ogni \(u : X\to Y\) si abbia
 	\[\alpha_Y \cmp Fu = Gu\cmp \alpha_X\]
@@ -265,7 +265,12 @@ Osserviamo poi la condizione di naturalità per \(\alpha^{-1}\) può essere omes
 	\[Fu\cmp \alpha_X^{-1}=\alpha_Y^{-1}\cmp \alpha_Y \cmp Fu\cmp \alpha_X^{-1} = \alpha_Y^{-1}\cmp Gu\cmp \alpha_X\cmp \alpha_X^{-1}=\alpha_Y^{-1}\cmp Gu.\]
 \end{lemma}
 \begin{definition}[Funtore rappresentabile]\label{def_rappre_fun}\index{Funtore!--- rappresentabile}\index{Rappresentabilità}
-	Una famiglia importante di isomorfismi naturali sono quelli che sussistono tra un funtore $F : \ctC \fun\ctSet$ e uno dei \emph{funtori hom} di \ref{ex_hom_funtore}; qualora esista un isomorfismo naturale $F\natIso \Hom\ctC(X_F,\blank)$ per un qualche oggetto $X_F\in\ctC_0$, diciamo che $F$ è \emph{rappresentabile} (da $X_F$), o che $X_F$ è l'\emph{oggetto rappresentante} per $F$. Questa terminologia è indicativa del fatto che la rappresentabilità sia una proprietà di $F$, ossia che se $F$ è rappresentabile, lo sia in modo essenzialmente unico. Questo è vero (ed è il cuore del capitolo \ref{cap_yoneda}, sul lemma di Yoneda), ma bisogna sviluppare più teoria per poterlo dimostrare. Gli esempi di funtori rappresentabili abbondano in algebra, geometria e logica e sono raccolti nelle prime sezioni del capitolo \ref{cap_yoneda}.
+	Una famiglia importante di isomorfismi naturali sono quelli che sussistono tra un funtore \(F : \ctC \fun\ctSet\) (covariante o controvarinte) e uno dei \emph{funtori hom} (covariante o controvariante) di \ref{ex_hom_funtore};
+	\begin{itemize}
+		\item Se \(G : \ctC^\op\fun\ctSet\) è controvariante, qualora esista un isomorfismo naturale \(G\natIso \Hom\ctC(\blank,Y_G)\) per un qualche oggetto \(Y_G\in\ctC_0\), diciamo che \(G\) è \emph{rappresentabile} (da \(Y_G\)), o che \(Y_G\) è l'\emph{oggetto rappresentante} per \(G\).
+		\item Dualmente, se \(F : \ctC\fun\ctSet\) è covarinte, qualora esista un isomorfismo naturale \(F\natIso \Hom\ctC(X_F,\blank)\) per un qualche oggetto \(X_F\in\ctC_0\), diciamo che \(F\) è \emph{corappresentabile} (da \(X_F\)), o che \(X_F\) è l'\emph{oggetto corappresentante} per \(F\).
+	\end{itemize}
+	Questa terminologia è indicativa del fatto che la (co)rappresentabilità sia una proprietà di \(G\) (di \(F\)), ossia che se \(G\) è rappresentabile, lo sia in modo essenzialmente unico. Questo è vero (ed è il cuore del capitolo \ref{cap_yoneda}, sul lemma di Yoneda), ma bisogna sviluppare più teoria per poterlo dimostrare. Gli esempi di funtori (co)rappresentabili abbondano in algebra, geometria e logica e sono raccolti nelle prime sezioni del capitolo \ref{cap_yoneda}.
 \end{definition}
 \begin{hLemma}[Presentazione equivalente di trasformazioni naturali]{fund}\index{Categoria!--- freccia generica}\index{Freccia generica}
 	Si considerino due categorie \(\ctC,\ctD\). \`E equivalente dare:
@@ -628,13 +633,13 @@ Osserviamo che dalla definizione di composizione orizzontale in \ref{def_hcomp} 
 	Il fatto che il centro di una categoria con un solo oggetto sia il centro del monoide ad essa associato, secondo \ref{def_centro}, non è casuale. Infatti il centro di una qualsiasi categoria \(\ctC\) è \emph{sempre} un monoide commutativo.
 \end{proposition}
 \begin{proof}
-	Diamo due dimostrazioni di questo risultato; chi legge ed è a suo agio con una, dovrebbe cercare di familiarizzare con l'altra. Chi conosce in che cosa consista il \emph{trucco di Eckmann-Hilton}\index{Eckmann@Beno Eckmann}\index{Hilton@Peter Hilton}\index{Eckmann-Hilton!trucco di ---} riconoscerà la seconda dimostrazione come un suo caso particolare.\footnote{Il `trucco di Eckmann-Hilton', che non è un trucco ma un vero e proprio teorema, prende il nome da un matematico svizzero, Beno Eckmann, e uno britannico, Peter Hilton; entrambi hanno dato importanti contributi alla topologia algebrica. L'enunciato è il seguente: sia $X$ un insieme dotato di due operazioni binarie $\circ,\star$; si assuma che entrambe $\circ$ e $\star$ abbiano un elemento neutro e che valga la regola di interscambio: per $a,b,c,d\in X$ si ha $(a\star b)\circ(c\star d)=(a\circ c)\star (b\circ d)$; allora 
-	\begin{itemize}
-		\item $1_\circ=1_\star$;
-		\item $\circ$ e $\star$ sono entrambe commutative e associative;
-		\item per ogni $x,y\in X$, $x\circ y = x\star y$ (ossia, le due operazioni coincidono!).
-	\end{itemize}
-	Tra i corollari di questo (solo apparentemente) innocente risultato, il fatto che i gruppi di omotopia $\pi_n$ di uno spazio topologico $A$ sono tutti abeliani per $n\ge 2$.}
+	Diamo due dimostrazioni di questo risultato; chi legge ed è a suo agio con una, dovrebbe cercare di familiarizzare con l'altra. Chi conosce in che cosa consista il \emph{trucco di Eckmann-Hilton}\index{Eckmann@Beno Eckmann}\index{Hilton@Peter Hilton}\index{Eckmann-Hilton!trucco di ---} riconoscerà la seconda dimostrazione come un suo caso particolare.\footnote{Il `trucco di Eckmann-Hilton', che non è un trucco ma un vero e proprio teorema, prende il nome da un matematico svizzero, Beno Eckmann, e uno britannico, Peter Hilton; entrambi hanno dato importanti contributi alla topologia algebrica. L'enunciato è il seguente: sia \(X\) un insieme dotato di due operazioni binarie \(\circ,\star\); si assuma che entrambe \(\circ\) e \(\star\) abbiano un elemento neutro e che valga la regola di interscambio: per \(a,b,c,d\in X\) si ha \((a\star b)\circ(c\star d)=(a\circ c)\star (b\circ d)\); allora
+		\begin{itemize}
+			\item \(1_\circ=1_\star\);
+			\item \(\circ\) e \(\star\) sono entrambe commutative e associative;
+			\item per ogni \(x,y\in X\), \(x\circ y = x\star y\) (ossia, le due operazioni coincidono!).
+		\end{itemize}
+		Tra i corollari di questo (solo apparentemente) innocente risultato, il fatto che i gruppi di omotopia \(\pi_n\) di uno spazio topologico \(A\) sono tutti abeliani per \(n\ge 2\).}
 	\begin{itemize}
 		\item prima dimostrazione: una trasformazione naturale \(\alpha : \id_\ctC\To\id_\ctC\) consiste di una famiglia di mappe \(\alpha_X : X\to X\) indicizzata dagli oggetti di \(\ctC\), con la proprietà che \(\alpha_Y \cmp f = f\cmp \alpha_X\) per ogni morfismo \(f : X\to Y\) in \(\ctC\); del resto, se \(\beta : \id_\ctC\To\id_\ctC\) è un altro elemento di \(\zentrum(\ctC)\), questo vuol dire che \(\alpha_X \cmp \beta_X = \beta_X\cmp \alpha_X\), cosicché \((\alpha\cmp\beta)_X = (\beta\cmp\alpha)_X\), ossia le trasformazioni naturali \(\alpha\cmp\beta\) e \(\beta\cmp\alpha\) coincidono.
 		\item seconda dimostrazione: si noti che vale la seguente catena di uguaglianze tra composizioni orizzontali e verticali (invocando la legge di interscambio in \ref{interchangio} ogni volta che sia necessario):
