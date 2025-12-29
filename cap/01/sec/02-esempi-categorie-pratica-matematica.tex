@@ -281,7 +281,7 @@ Dopo questa digressione veniamo a due esempi più elaborati, ma molto `concreti'
 	La categoria \(\ctCirc\) ha
 	\begin{itemize}
 		\item per oggetti i numeri naturali \(0,1,2,\dots\);
-		\item l'insieme delle frecce \(\ctCirc(m,n)\) consiste dell'insieme delle funzioni \(\bbB^n\to \bbB^m\), dove \(\bbB=\{0,1\}\) è l'insieme dei \emph{Booleani}\footnote{L'insieme \(\bbB\) può essere interpretato come: l'insieme degli interi positivi modulo 2, l'insieme degli stati di un singolo bit di informazione; l'insieme \{sì, no\} delle risposte a una domanda; l'insieme \(\{-1,1\}\) dei \emph{segni} assunti dagli elementi dell'immagine di una funzione reale, l'insieme \{acceso, spento\} degli stati di un interruttore, eccetera.} e \(\bbB^0\defeq \{*\}, \bbB^{n+1}\defeq \bbB^n\times \bbB\) sono i prodotti cartesiani iterati di \(\bbB\) con sé stesso.
+		\item l'insieme delle frecce \(\Hom{\ctCirc}(m,n)\) consiste dell'insieme delle funzioni \(\bbB^n\to \bbB^m\), dove \(\bbB=\{0,1\}\) è l'insieme dei \emph{Booleani}\footnote{L'insieme \(\bbB\) può essere interpretato come: l'insieme degli interi positivi modulo 2, l'insieme degli stati di un singolo bit di informazione; l'insieme \{sì, no\} delle risposte a una domanda; l'insieme \(\{-1,1\}\) dei \emph{segni} assunti dagli elementi dell'immagine di una funzione reale, l'insieme \{acceso, spento\} degli stati di un interruttore, eccetera.} e \(\bbB^0\defeq \{*\}, \bbB^{n+1}\defeq \bbB^n\times \bbB\) sono i prodotti cartesiani iterati di \(\bbB\) con sé stesso.
 	\end{itemize}
 	Si noti che ogni funzione Booleana \(f : \bbB^n\to\bbB^m\) risulta dal `prodotto' di \(m\) funzioni Booleane \emph{semplici} \(\tup fm, : \bbB^n\to\bbB\), di modo che
 	\[f(\tup xn,)=(f_1(\tup xn,),\dots,f_m(\tup xn,)).\]
@@ -377,7 +377,7 @@ Evidentemente, possiamo restringerci a considerare la categoria dei soli insiemi
 	\begin{itemize}
 		\item per oggetti i numeri naturali \(0,1,2,\dots\);
 		\item per frecce \(n\to m\) le matrici con \(m\) righe ed \(n\) colonne a coefficienti in \(\bbF\), ossia:
-		      \[\ctMat(n,m) = \matrici mn\bbF = \text{Lin}_{\bbF}(\bbF^n,\bbF^m)\]
+		      \[\Hom{\ctMat}(n,m) = \matrici mn\bbF = \text{Lin}_{\bbF}(\bbF^n,\bbF^m)\]
 		      dove \(\bbF^n:=\bbF \times\dots\times\bbF\) è il prodotto cartesiano iterato di \(\bbF\) con sé stesso \(n\) volte (quindi \(\bbF^0\) contiene il solo vettore nullo), e \(\text{Lin}_{\bbF}(\bbF^n,\bbF^m)\) è l'insieme delle funzioni \(\bbF\)-lineari \(\bbF^n\to\bbF^m\) (che scegliendo su dominio e codominio le basi canoniche, si identifica alle matrici a componenti in \(\bbF\) di taglia \(m\times n\)).
 	\end{itemize}
 	La composizione è il prodotto di matrici: se \(A : n\to m\) e \(B : m\to p\) sono matrici di entrate \((A_{ij}\mid 1\le i\le m,1\le j\le n)\) e \((B_{rs}\mid 1\le r\le p,1\le s\le m)\), la loro composizione \(BA : n\to p\) è la matrice \(BA\in \matrici pn\bbF\) definita da \((BA)_{ij} = \sum_{k=1}^m B_{ik}A_{kj}\).
@@ -1076,7 +1076,7 @@ Di converso, i monoidi sono esattamente tutte e sole le categorie che hanno un s
 \begin{esercizi}
 	\item Una categoria piccola si può vedere come un multigrafo con identità e composizione: riscrivere la definizione di categoria (piccola) in termini di multigrafi.  In che modo questa costruzione generalizza la definizione di monoide (come insieme con identità e composizione)?
 	\item In \ref{cat_sonopos} abbiamo mostrato che data una categoria \(\ctC\), possiamo definire una relazione sulla classe dei suoi oggetti ponendo
-	\[A\preceq B \iff \Hom\ctC(A,B)\ne\emptyset\]
+	\[A\preceq B \iff \Hom{\ctC}(A,B)\ne\emptyset\]
 	Abbiamo osservato che \(\preceq\) è riflessiva e transitiva; è antisimmetrica? A che proprietà di \(\ctC\) corrisponde il fatto che il preordine \(\ctC^\bfP=(\ctC_0,\preceq)\) (detto la \emph{riflessione ordinata} di \(\ctC\)) ha un elemento minimo? A che oggetti corrispondono gli elementi \emph{minimali} di \(\ctC^\bfP\)?
 	\item Se \(h : S\to S\) è una endofunzione di un insieme \(S\), un \emph{punto fisso parametrico} (PFP) per \(h\) è una funzione \(t : T\to S\) con la proprietà che \(h\cmp t = t\) (si disegni un diagramma). Siano \(f : X\to Y\) e \(g : Y \to X\) due funzioni tra insiemi; si mostri che la composizione \(g\cmp f : X\to X\) ha un PFP se e solo se la composizione \(f\cmp g : Y\to Y\) ha un PFP.
 	\item Dimostrare che se \((P,\le)\) è un insieme bene ordinato, ed \(f : P\to P\) è una funzione monotòna, allora \(a\le fa\) per ogni \(a\in P\) (cioè ogni endofunzione di un buon ordine è \emph{espansiva}); dimostrare che l'unica biiezione monotòna di un buon ordine è l'identità; più in generale, se esiste un isomorfismo d'ordine \(f : P\to Q\) tra due buon ordine, allora esso è unico.

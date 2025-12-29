@@ -95,7 +95,7 @@ Si osservi che una conseguenza immediata di \ref{pem_1} è che \(\Mono[\ctC]\) e
 			E \ar[r,"f"]\ar[d, two heads, "e"']& A\ar[d, hook, "m"] \\
 			B \ar[r, "g"']\ar[ur,dashed,"u"] & X
 		\end{tikzcd}\]
-	dove \(e : E\epi B\) è un epi e \(m : A \mono X\) un mono, esiste un unica funzione \(u : B\to A\) (indicata con una freccia tratteggiata) con la proprietà di `spezzare il quadrato', cioè tale che \(u\cmp e=f\) e \(m\cmp u=g\).
+	dove \(e : E\epi B\) è un epi e \(m : A \mono X\) un mono, esiste un'unica funzione \(u : B\to A\) (indicata con una freccia tratteggiata) con la proprietà di `spezzare il quadrato', cioè tale che \(u\cmp e=f\) e \(m\cmp u=g\).
 \end{proposition}
 \begin{proof}
 	Costruiamo \(u\) esplicitamente: ad un elemento \(b\in B\), che sappiamo essere della forma \(e(a)\) per qualche \(a\in A\), associamo l'elemento \(u(b)=f(a)\). Questa definizione è ben posta, perché se \(a,a'\) sono entrambi tali che \(e(a)=e(a')=b\), allora \(mu(b)=mf(a)=mf(a')\), così che \(f(a)=f(a')\), perché \(m\) è un mono. \`E evidente ora che \(u\cmp e= f\), per costruzione, ed \((m\cmp u)(b)=m(f(a))=g(e(a))=g(b)\); l'unicità segue ancora dal fatto che \(m\) è mono.
@@ -172,7 +172,7 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
 	Costruiamo una categoria \(\ctC\) e un oggetto di \(\ctC\) che ha una classe propria di sottoggetti --più precisamente, un oggetto i cui sottoggetti sono tanti quanti quelli della classe \(\ctOrd_0\) di tutti gli ordinali, che è propria, si veda \ref{tipi_di_ordinaly}. Definiamo la categoria \(\ctSet^\ctOrd_b\) che ha per oggetti i funtori
 	\[\dmFun{F}{\ctOrd}{\ctSet}\]
 	che sono `definitivamente costanti', cioè i funtori \(F\) per i quali esiste un ordinale \(\alpha\) tale che \(F(\beta) = F(\gamma)\) per ogni \(\alpha \leq \beta \leq \gamma\); per ogni \(F\) esiste un minimo tale ordinale, denotiamolo \(\delta(F)\) (`supporto' di \(F\)). Le frecce tra oggetti di questo tipo sono le trasformazioni naturali.
-	La condizione di limitatezza garantisce che \(\ctSet^\ctOrd_b\) sia una categoria localmente piccola, dato che una trasformazione naturale tra due funtori definitivamente costanti è un elemento dell'insieme \(\prod_{x\le\max\{\delta F,\delta G\}} \Hom\ctSet(Fx,Gx)\).
+	La condizione di limitatezza garantisce che \(\ctSet^\ctOrd_b\) sia una categoria localmente piccola, dato che una trasformazione naturale tra due funtori definitivamente costanti è un elemento dell'insieme \(\prod_{x\le\max\{\delta F,\delta G\}} \Hom{\ctSet}(Fx,Gx)\).
 
 	Tuttavia, \(\ctSet^\ctOrd_b\) non è ben potenziata poiché per ogni ordinale \(\alpha\), il funtore costante nel singoletto \(\{\star\}\) possiede un sottofuntore \(F_\alpha\) definito da
 	\[
@@ -240,7 +240,29 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	% una funzione suriettiva può avere più inverse destre (sezioni).
 \end{example}
 \begin{remark}\index{Assioma della scelta}
-	Qualcosa di simile avviene per gli spazi vettoriali (ovviamente, è la dimensione infinita a causare problemi): l'assioma della scelta (nella forma del lemma di Zorn) è equivalente al fatto che ogni spazio vettoriale ha una base. Se \(f : V\to W\) è una funzione lineare e suriettiva, si può decomporre \(V = \ker f \oplus W'\) (un complemento in somma diretta per \(\ker f\) esiste solo con l'assioma della scelta), in modo tale che \(f_0 := f|_{W'}\) sia invertibile; l'inversa \(f_0^{-1}\), composta con l'inclusione \(W'\mono \ker f \oplus W'\cong V\), dà una inversa destra per \(f\) (per costruzione, \(f_0^{-1}(w)\) è il vettore (unico) tale che \(f(f_0^{-1}(w)) = w\)), cosicché \(f\) è un epi spezzante.
+	Qualcosa di simile avviene per gli spazi vettoriali (ovviamente, è la dimensione infinita a causare problemi): l'assioma della scelta (nella forma del lemma di Zorn) è equivalente al fatto che ogni spazio vettoriale ha una base. Se \(f : V\to W\) è una funzione lineare e suriettiva, si può decomporre \(V = \ker f \oplus W'\) (un complemento in somma diretta per \(\ker f\) esiste solo con l'assioma della scelta perché $W'$ potrebbe avere dimensione infinita), in modo tale che \(f_0 := f|_{W'}\) sia invertibile; l'inversa \(f_0^{-1}\), composta con l'inclusione \(W'\mono \ker f \oplus W'\cong V\), dà una inversa destra per \(f\) (per costruzione, \(f_0^{-1}(w)\) è il vettore (unico) tale che \(f(f_0^{-1}(w)) = w\)), cosicché \(f\) è un epi spezzante.
+\end{remark}
+\begin{remark}
+	Gli esempi \ref{} e \ref{} dovrebbero avere suggerito a chi legge che la proprietà di essere un epi spezzante è piuttosto forte (per esempio implica tutte le altre nozioni di epi che introduciamo in questa sezione). La categoria dei gruppi abeliani offre un altro esempio di questa meta-regola, perché quando si studia una successione esatta 
+	% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiQSJdLFsyLDAsIkIiXSxbMywwLCJDIl0sWzQsMCwiMCJdLFswLDFdLFsxLDJdLFsyLDNdLFszLDRdXQ==
+\[\begin{tikzcd}[ampersand replacement=\&]
+	0 \& A \& B \& C \& 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3, "i"]
+	\arrow[from=1-3, to=1-4, "p"]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+	discende dalla definizione che $i$ è un mono e $p$ un epi, ma raramente questi sono anche spezzanti: anche se si può scegliere una inversa destra per $p$, cosa assicura sia un omomorfismo? E in effetti, nella successione esatta corta
+ % https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiXFxiYloiXSxbMiwwLCJcXGJiWiJdLFszLDAsIlxcYmJaLzIiXSxbNCwwLCIwIl0sWzAsMV0sWzEsMiwiXFxjZG90IDIiXSxbMiwzLCJcXG1vZCAyIl0sWzMsNF1d
+\[\begin{tikzcd}[ampersand replacement=\&]
+	0 \& \bbZ \& \bbZ \& {\bbZ/2} \& 0
+	\arrow[from=1-1, to=1-2]
+	\arrow["{\cdot 2}", from=1-2, to=1-3]
+	\arrow["{\mod 2}", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+la riduzione modulo 2 è un epi, ma non è spezzante.
+	(Per chi sa: una cosa del tutto analoga avviene nella categoria dei moduli su un anello)
 \end{remark}
 \begin{figure}[h]
 	\begin{center}
@@ -342,8 +364,8 @@ similmente possiamo considerare la nozione di elemento invertibile a sinistra/de
 	\caption{Una funzione suriettiva \(g : E\to B\) dove \(B=\{\blueDot\,\purpleDot\,\redDot\,\orangeDot\,\yellowDot\}\). Ciascuna fibra di \(g\) è non vuota, e la scelta di una inversa destra \(s : B\to E\) ammonta esattamente alla scelta di un elemento in ciascuna di queste fibre.}
 	\label{fig_assioma_scelta}
 \end{figure}
-\begin{proposition}\label{monoepi_in_catCD}\index{Monomorfismo!--- in \(\Hom\ctCat(\ctC,\ctD)\)}
-	Nella categoria \(\Hom\ctCat(\ctC,\ctD)\) dei funtori \(\ctC\fun\ctD\) e trasformazioni naturali, \(\alpha : F\nat G\) è un mono (epi, mono spezzante, epi spezzante) se e solo se ciascuna delle sue componenti \(\alpha_C : FC\to GC\) è un mono (epi, mono spezzante, epi spezzante) in \(\ctD\).
+\begin{proposition}\label{monoepi_in_catCD}\index{Monomorfismo!--- in \(\Hom{\ctCat}(\ctC,\ctD)\)}
+	Nella categoria \(\Hom{\ctCat}(\ctC,\ctD)\) dei funtori \(\ctC\fun\ctD\) e trasformazioni naturali, \(\alpha : F\nat G\) è un mono (epi, mono spezzante, epi spezzante) se e solo se ciascuna delle sue componenti \(\alpha_C : FC\to GC\) è un mono (epi, mono spezzante, epi spezzante) in \(\ctD\).
 \end{proposition}
 \begin{proof}
 	La condizione affinché \(\alpha : F\nat G\) sia un mono è che per ogni \(\gamma,\delta : H\nat F\) si abbia che se \(\alpha\cmp \gamma = \alpha\cmp \delta\), allora \(\gamma=\delta\). Del resto, questa condizione si riscrive come
@@ -545,7 +567,7 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 					      E \ar[r]^u\ar[d]_p & A\ar[d]^m\\
 					      B \ar[r]_v \ar@{.>}[ur]_a & X
 				      }\]
-			      dove \(m : A\mono X\) è un mono in \(\ctC\), esiste un unica freccia \(a : B\to A\) tale che \(a\cmp p=u\) e \(m\cmp a =v\).
+			      dove \(m : A\mono X\) è un mono in \(\ctC\), esiste un'unica freccia \(a : B\to A\) tale che \(a\cmp p=u\) e \(m\cmp a =v\).
 		      \end{quote}
 		\item un \emph{mono forte} è un mono \(m : A\mono X\) con la proprietà seguente:
 		      \begin{quote}
@@ -554,14 +576,26 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 					      E \ar[r]^u\ar[d]_p & A\ar[d]^m\\
 					      B \ar[r]_v \ar@{.>}[ur]_a & X
 				      }\]
-			      dove \(p : E\epi B\) è un mono in \(\ctC\), esiste un unica freccia \(a : B\to A\) tale che \(a\cmp p=u\) e \(m\cmp a =v\).
+			      dove \(p : E\epi B\) è un epi in \(\ctC\), esiste un'unica freccia \(a : B\to A\) tale che \(a\cmp p=u\) e \(m\cmp a =v\).
 		      \end{quote}
 	\end{itemize}
 \end{definition}
-Raccogliamo alcune proprietà degli epi forti:
+
 \begin{proposition}
-	\Todo{}
+	Raccogliamo alcune proprietà degli epi forti:
+	\begin{itemize}
+		\item La classe $\Epi^\text{s}(\ctC)$ degli epi forti di $\ctC$ contiene tutti gli isomorfismi, è chiusa per composizione, e soddisfa la \emph{proprietà di cancellazione destra}:
+		\begin{quote}
+			Se $f\circ g,g$ sono entrambi epi forti, anche $f$ è un epi forte.
+		\end{quote}
+		\item Una freccia che è allo stesso tempo un mono e un epi estremale è un isomorfismo;
+		\item Ogni epi forte è un epi;
+		\item Ogni epi forte è estremale (si veda \ref{def_monoepi_estrem}).
+	\end{itemize}
 \end{proposition}
+\begin{proof}
+	\Todo{proprietà epi forti}
+\end{proof}
 \subsection{Classi di funtori}\label{ssec:classi_di_funtori}
 Spesso le proprietà delle due corrispondenze \(F_0,F_1\) (of \(F_{XY}\)), su oggetti e frecce, che formano un funtore valgono allo stesso un nome speciale, dato che è possibile studiare in generale alcune caratteristiche di quei funtori dove (ad esempio) ciascuna \(F_{XY}\) è iniettiva, o suriettiva, o biiettiva.
 
@@ -625,7 +659,7 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 	\end{itemize}
 \end{definition}
 \begin{proposition}\label{prop_preserva_riflette}\index{Funtore!--- preserva proprietà}
-	Tutti i funtori preservano la proprietà \(\mathcal P_e(f) :=\) `\(f\) è un epi spezzante' e \(\mathcal P_e(f) :=\) `\(f\) è un mono spezzante', per \ref{cor:fun-sezioni-retrazioni}. Gli hom funtori \(\Hom\ctC(C,-)\) preservano la proprietà `\(f\) è un mono' (diciamo che \(\Hom\ctC(C,-)\) \emph{preserva i mono}); nella categoria \(\ctSet\) degli insiemi, \(\Hom\ctSet(A,-)\) preserva anche la proprietà `\(f\) è un epi' se si assume l'assioma della scelta (come formulato in \ref{fig_assioma_scelta}).
+	Tutti i funtori preservano la proprietà \(\mathcal P_e(f) :=\) `\(f\) è un epi spezzante' e \(\mathcal P_e(f) :=\) `\(f\) è un mono spezzante', per \ref{cor:fun-sezioni-retrazioni}. Gli hom funtori \(\Hom{\ctC}(C,-)\) preservano la proprietà `\(f\) è un mono' (diciamo che \(\Hom{\ctC}(C,-)\) \emph{preserva i mono}); nella categoria \(\ctSet\) degli insiemi, \(\Hom{\ctSet}(A,-)\) preserva anche la proprietà `\(f\) è un epi' se si assume l'assioma della scelta (come formulato in \ref{fig_assioma_scelta}).
 
 	Molte proprietà sono \emph{riflesse} dai funtori pienamente fedeli: per esempio,
 	\begin{itemize}
@@ -651,9 +685,9 @@ Una proprietà niente affatto banale dei funtori conservativi è che ogni catego
 	Sia \(\ctC\) una categoria (localmente piccola); allora, esiste un funtore conservativo \(Q_\star : \ctC\fun\ctSet\).
 \end{theorem}
 \begin{proof}
-	Per ogni oggetto \(A\in\ctC_0\) definiamo una relazione di equivalenza sulla classe \(\sum_C\Hom\ctC(C,A)\), imponendo che \((f : C\to A)\asymp(f' : C\to A)\) ogni volta che per ogni \(g :A\to B\), la composizione \(g\cmp f\) è un isomorfismo se e solo se la composizione \(g\cmp f'\) è un isomorfismo.
+	Per ogni oggetto \(A\in\ctC_0\) definiamo una relazione di equivalenza sulla classe \(\sum_C\Hom{\ctC}(C,A)\), imponendo che \((f : C\to A)\asymp(f' : C\to A)\) ogni volta che per ogni \(g :A\to B\), la composizione \(g\cmp f\) è un isomorfismo se e solo se la composizione \(g\cmp f'\) è un isomorfismo.
 
-	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è un mono spezzante, allora lo è anche \(f'\). Prese insieme, queste osservazioni implicano che \(QA\) è un insieme, dato che la classe delle classi di isomorfismo di mono spezzanti dentro \(A\) è un insieme.\footnote{Se \((\alpha,\beta)\) e \((\alpha',\beta')\) sono coppie di frecce con \(\beta : C\to A\) e \(\beta' : C'\to A\), tali che \(\alpha\cmp\beta = \alpha'\cmp\beta'\), allora \(\alpha\cmp\beta'\) è un isomorfismo, con inversa \(\alpha'\cmp\beta\).} Ora, definiamo il funtore \(Q_\star : \ctC\fun\ctSet\) mandando \(A\) in \(QA\), a parte quando tutti gli elementi di \(\Hom\ctC(C,A)\) sono mono spezzanti, nel qual caso \(Q_\star(A):=1+QA = \{\bullet_A\}+QA\). Sulle frecce, \(Q_\star\) agisce come segue: se \(h : A\to B\) è una freccia in \(\ctC\), la post-composizione con \(h\) scende al quoziente, e la classe di \(f : C\to A\) viene mandata nella classe di \(h\cmp f : C\to B\); questo è sufficiente a definire \(Q_\star h : Q_\star A \to Q_\star B\) mediante \(QA\to QB\) o mediante la mappa costante in \(\bullet_B\).
+	Si osservi che \(f\asymp f'\) ogni volta che \(f,f'\) non ammettono alcuna inversa sinistra (perché in quel caso, la classe delle \(g\) tali che \(g\cmp f\) o \(g\cmp f'\) è invertibile è vuota); si osservi anche che se \(f\asymp f'\) e \(f\) è un mono spezzante, allora lo è anche \(f'\). Prese insieme, queste osservazioni implicano che \(QA\) è un insieme, dato che la classe delle classi di isomorfismo di mono spezzanti dentro \(A\) è un insieme.\footnote{Se \((\alpha,\beta)\) e \((\alpha',\beta')\) sono coppie di frecce con \(\beta : C\to A\) e \(\beta' : C'\to A\), tali che \(\alpha\cmp\beta = \alpha'\cmp\beta'\), allora \(\alpha\cmp\beta'\) è un isomorfismo, con inversa \(\alpha'\cmp\beta\).} Ora, definiamo il funtore \(Q_\star : \ctC\fun\ctSet\) mandando \(A\) in \(QA\), a parte quando tutti gli elementi di \(\Hom{\ctC}(C,A)\) sono mono spezzanti, nel qual caso \(Q_\star(A):=1+QA = \{\bullet_A\}+QA\). Sulle frecce, \(Q_\star\) agisce come segue: se \(h : A\to B\) è una freccia in \(\ctC\), la post-composizione con \(h\) scende al quoziente, e la classe di \(f : C\to A\) viene mandata nella classe di \(h\cmp f : C\to B\); questo è sufficiente a definire \(Q_\star h : Q_\star A \to Q_\star B\) mediante \(QA\to QB\) o mediante la mappa costante in \(\bullet_B\).
 
 	Il funtore \(Q_\star\) è conservativo, in virtù di \ref{lemma_conservativo_iff_monoepi_spez}, perché per costruzione riflette sia i mono spezzanti che gli epi spezzanti.
 \end{proof}
@@ -666,9 +700,9 @@ Una proprietà niente affatto banale dei funtori conservativi è che ogni catego
 
 	Si tratta, evidentemente, di un isomorfismo nella categoria \(\ctCat\) di categorie e funtori di \ref{ex_cat_cat}. In particolare,
 	\begin{quote}
-		Ogni isomorfismo di categorie induce una biiezione di classi, \(F_0 : \ctC_0\to\ctD_0\), di inversa \(G_0 : \ctD_0\to\ctC_0\), e una biiezione di classi \(F_1 : \ctC_1 \to \ctD_1\), di inversa \(G_1 : \ctD_1\to\ctC_1\) che si decompone in una famiglia `indicizzata' di biiezioni \(F_{XY} : \Hom\ctC(X,Y)\to\Hom\ctD(FX,FY)\), di inversa
+		Ogni isomorfismo di categorie induce una biiezione di classi, \(F_0 : \ctC_0\to\ctD_0\), di inversa \(G_0 : \ctD_0\to\ctC_0\), e una biiezione di classi \(F_1 : \ctC_1 \to \ctD_1\), di inversa \(G_1 : \ctD_1\to\ctC_1\) che si decompone in una famiglia `indicizzata' di biiezioni \(F_{XY} : \Hom{\ctC}(X,Y)\to\Hom{\ctD}(FX,FY)\), di inversa
 		\[\xymatrix{
-			\Hom\ctD(FX,FY) \ar[r]^-{G_{FX,FY}} & \Hom\ctC(GFX,GFY) \ar@{=}[r] & \hom(X,Y).
+			\Hom{\ctD}(FX,FY) \ar[r]^-{G_{FX,FY}} & \Hom{\ctC}(GFX,GFY) \ar@{=}[r] & \hom(X,Y).
 			}\]
 	\end{quote}
 \end{definition}
@@ -824,13 +858,13 @@ Si noti anche che un risultato analogo è falso per la categoria discreta \(A^\d
 \end{example}
 L'esercizio \ref{ex_monepi_2} contiene un altro esempio di due categorie che non possono essere isomorfe; un ultimo esempio interessante è il seguente, che mostra come possa accadere il fatto seguente (in effetti, abbastanza comune):
 \begin{quote}
-	Due categorie \(\ctC,\ctD\) non sono equivalenti, ma per una fissata categoria \(\ctX\) le categorie di funtori \(\Hom\ctCat(\ctC,\ctX)\) e \(\Hom\ctCat(\ctD,\ctX)\) sono equivalenti.
+	Due categorie \(\ctC,\ctD\) non sono equivalenti, ma per una fissata categoria \(\ctX\) le categorie di funtori \(\Hom{\ctCat}(\ctC,\ctX)\) e \(\Hom{\ctCat}(\ctD,\ctX)\) sono equivalenti.
 \end{quote}
 Un esempio eclatante è \(\ctX=\ctSet\), cosicché possiamo costruire due categorie \(\ctC,\ctD\) che hanno categorie di \emph{prefasci} (si veda \ref{ex_cat_preschif}) equivalenti, senza essere esse stesse equivalenti. Questo esempio è dovuto a W. Lawvere \index{Lawvere@William Lawvere} \cite{}.
 \begin{example}[Monoide grafico e grafi riflessivi]\label{monoide_grafico}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
 	Siano \(\ctC\) e \(\ctD\) le categorie	definite come segue:
 	\begin{itemize}
-		\item \(\ctC=\susp{G}\) dove \(G=\{1,x_1,x_2\}\) è il monoide presentato dalla tavola di moltiplicazione in \ref{fig_monoide_grfico}; seguendo \ref{exa_azioni_funtori} la categoria \(\Hom\ctCat(\ctC^\op,\ctSet)\) dunque è la categoria delle azioni di monoide \(G\times X \to X\).
+		\item \(\ctC=\susp{G}\) dove \(G=\{1,x_1,x_2\}\) è il monoide presentato dalla tavola di moltiplicazione in \ref{fig_monoide_grfico}; seguendo \ref{exa_azioni_funtori} la categoria \(\Hom{\ctCat}(\ctC^\op,\ctSet)\) dunque è la categoria delle azioni di monoide \(G\times X \to X\).
 		\item \(\ctD\) è la categoria
 		      \[\Big\{\xymatrix{
 				      0 \ar@<.4em>[r]^-s\ar@<-.4em>[r]_-t & 1\ar[l]|j
@@ -854,7 +888,7 @@ Un esempio eclatante è \(\ctX=\ctSet\), cosicché possiamo costruire due catego
 	\label{fig_monoide_grfico}
 	\caption{Tavola di moltiplicazione del monoide grafico \(G\) di \ref{monoide_grafico}.}
 \end{table}
-Finiamo la sezione caratterizzando i mono in \(\ctCat\): si tratta di funtori \(F : \ctC \fun\ctD\) con la proprietà che sia \(F_0 : \ctC_0\to\ctD_0\) che ogni \(F_{XY} : \Hom\ctC(X,Y) \to \Hom\ctD(F_0X,F_0Y)\) sono funzioni iniettive.
+Finiamo la sezione caratterizzando i mono in \(\ctCat\): si tratta di funtori \(F : \ctC \fun\ctD\) con la proprietà che sia \(F_0 : \ctC_0\to\ctD_0\) che ogni \(F_{XY} : \Hom{\ctC}(X,Y) \to \Hom{\ctD}(F_0X,F_0Y)\) sono funzioni iniettive.
 \begin{proposition}\label{mona_in_cat}\index{Monomorfismo!--- in \(\ctCat\)}
 	La classe dei mono di \(\ctCat\) consiste dei funtori \(F : \ctC\fun\ctD\) che sono fedeli e iniettivi sugli oggetti (cioè \(F_0\) e tutte le \(F_{XY}\) in \ref{def_alternativa_funtore} sono entrambe funzioni iniettive).
 \end{proposition}
@@ -870,7 +904,7 @@ Finiamo la sezione caratterizzando i mono in \(\ctCat\): si tratta di funtori \(
 
 	In altre parole, \(F : \ctC\fun\ctD\) si dice iniziale se le due condizioni seguenti sono soddisfatte:
 	\begin{enumtag}{fi}
-		\item \label{fi_1} per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom\ctD(D,FX)\) è non vuoto;
+		\item \label{fi_1} per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom{\ctD}(D,FX)\) è non vuoto;
 		\item \label{fi_2} date due frecce \(D\to FX, D\to FY\) in \(\ctD\), esiste una successione finita di oggetti \(\vec A = \tup An,\) e frecce \(A_i \text{---} A_{i+1}\) (la notazione `senza testa' significa che esiste una freccia in una delle due direzioni) tali che ogni triangolo nel diagramma
 		% https://q.uiver.app/#q=WzAsNyxbMCwxLCJGWCJdLFsxLDEsIkZBXzAiXSxbMiwxLCJGQV8xIl0sWzMsMSwiXFxkb3RzIl0sWzQsMSwiRkFfbiJdLFs1LDEsIkZZIl0sWzIsMCwiRCJdLFs2LDBdLFs2LDFdLFs2LDJdLFs2LDRdLFs2LDVdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
 		\[\begin{tikzcd}
@@ -894,7 +928,7 @@ Finiamo la sezione caratterizzando i mono in \(\ctCat\): si tratta di funtori \(
 \begin{remark}[Condizione di Ore]\label{condizione_ore}\index{Funtore!condizione di Ore per un ---}\index{Funtore!--- iniziale}
 	Una condizione più forte dell'inizialità, molto comune e più facile da verificare, è la \emph{condizione di Ore}: \(F : \ctC\fun\ctD\) la soddisfa se
 	\begin{itemize}
-		\item per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom\ctD(D,FX)\) è non vuoto;
+		\item per ogni \(D\in\ctD\), l'insieme \(\sum_X\Hom{\ctD}(D,FX)\) è non vuoto;
 		\item per ogni \(D\) e ogni \(u : D\to FX\), \(v : D\to FY\) esiste un modo di `completare il quadrato'
 		      \[\xymatrix{
 				      D\ar[r]^u\ar[d]_v & FX \ar@{.>}[d]^{Ff}\\
@@ -1070,13 +1104,13 @@ Grazie a \ref{thm_catprod_setacciata} otteniamo una dimostrazione alternativa de
 	\item \label{ex_monepi_2} Fissato un campo \(\bbF\), mostrare che la categoria \(\ctMat\) di \ref{ex_cat_matrici} e la categoria \(\ctVect\) di \ref{varie_categorie_nella_pratica} non possono essere isomorfe (suggerimento: si veda la definizione di \emph{anima} di una categoria in \ref{def_cuore}: \(\ctC^\text{an} := \sum_{C\in\ctC_0} \ctC_\cong(C,C)\); mostrare che due categorie isomorfe hanno anime isomorfe; mostrare che l'anima di \(\ctMat\) e quella di \(\ctVect\) non sono isomorfe.)
 	\item \label{ex_monepi_3} Costruire un'equivalenza di categorie tra la categoria dei sistemi dinamici discreti di \ref{ex_cat_dyn} e la categoria delle rappresentazioni, \ref{es_fun_repre}, del monoide \((\bbN,+,0)\); è un isomorfismo? Mostrare che \(\bbN\) è in maniera naturale un oggetto \(\bsN=(* \xto 0 \bbN \xto{\blank+1} \bbN)\) di \(\ctDyn\), che soddisfa la proprietà (\emph{universale}) seguente:
 	\begin{quote}
-		Per ogni oggetto \(\bsX=(X,x_0,f)\) di \(\ctDyn\) esiste uno e un solo morfismo nell'insieme \(\Hom\ctDyn(\bsN,\bsX)\).
+		Per ogni oggetto \(\bsX=(X,x_0,f)\) di \(\ctDyn\) esiste uno e un solo morfismo nell'insieme \(\Hom{\ctDyn}(\bsN,\bsX)\).
 	\end{quote}
 	\item \label{ex_monepi_4} Se \(\ctC\) è una categoria, un \emph{generatore} (a volte detto un \emph{separatore}) è un oggetto \(G\) con la proprietà seguente
 	\begin{quote}
 		per ogni coppia \(f,g : X \to Y\) di frecce \emph{distinte} di \(\ctC\), esiste una freccia \(h : G \to X\) tale che \(f\cmp h\ne g\cmp h\).
 	\end{quote}
-	Evidentemente il nome \emph{separatore} suggerisce come gli oggetti della succuba \(G/\ctC\) hanno la proprietà di separare le frecce di \(\ctC\). Osservare (è immediato) che \(G\) è un generatore di \(\ctC\) se e solo se il funtore \(\Hom\ctC(G,-)\) è fedele. Chiaramente non c'è ragione per cui un generatore di \(\ctC\) sia essenzialmente unico: ad esempio ogni insieme non vuoto è un generatore di \(\ctSet\), e altrettanto è vero per le categorie \(\ctPos,\ctTop\) di \ref{ex_cat_ordini} e \ref{ex_cat_top}. Si provi che l'insieme dei numeri interi è un generatore per la categoria dei gruppi (abeliani o meno); lo è anche nella categoria dei monoidi, ma è sufficiente considerare il sotto-monoide \(\bbN\subset\bbZ\). Esiste un generatore nella categoria \(\ctdGph\) dei multidigrafi di \ref{ex_cat_grafi}? Si trovino generatori per: una categoria-monoide \(\susp M\) come in \ref{mon_sonocat}; la categoria dei \(G\)-insiemi di \ref{ex_cat_g_insiemi}; il gruppoide d'azione \(\act G\) di \ref{action_groupoid}.
+	Evidentemente il nome \emph{separatore} suggerisce come gli oggetti della succuba \(G/\ctC\) hanno la proprietà di separare le frecce di \(\ctC\). Osservare (è immediato) che \(G\) è un generatore di \(\ctC\) se e solo se il funtore \(\Hom{\ctC}(G,-)\) è fedele. Chiaramente non c'è ragione per cui un generatore di \(\ctC\) sia essenzialmente unico: ad esempio ogni insieme non vuoto è un generatore di \(\ctSet\), e altrettanto è vero per le categorie \(\ctPos,\ctTop\) di \ref{ex_cat_ordini} e \ref{ex_cat_top}. Si provi che l'insieme dei numeri interi è un generatore per la categoria dei gruppi (abeliani o meno); lo è anche nella categoria dei monoidi, ma è sufficiente considerare il sotto-monoide \(\bbN\subset\bbZ\). Esiste un generatore nella categoria \(\ctdGph\) dei multidigrafi di \ref{ex_cat_grafi}? Si trovino generatori per: una categoria-monoide \(\susp M\) come in \ref{mon_sonocat}; la categoria dei \(G\)-insiemi di \ref{ex_cat_g_insiemi}; il gruppoide d'azione \(\act G\) di \ref{action_groupoid}.
 	\item \label{ex_monepi_5} Guardando un monoide come una categoria con un solo oggetto, al modo di \ref{mon_sonocat}, mostrare che
 	\begin{itemize}
 		\item se \(M,N\) sono gruppi, \(\susp f : \susp N\fun \susp M\) è un funtore iniziale se e solo se \(f\) è un omomorfismo suriettivo;

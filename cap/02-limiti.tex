@@ -133,12 +133,12 @@ I due esempi che seguono sono importanti per fissare l'idea in chi legge che un 
 \begin{proposition}\label{init_term_elements}
 	Sia \(\ctC\) una categoria. Le condizioni seguenti sono equivalenti, per un funtore \(F : \ctC \fun\ctSet\):
 	\begin{itemize}
-		\item Esiste un isomorfismo naturale \(F\natIso \Hom\ctC(X_F,\blank)\) (cioè, nella terminologia di \ref{def_rappre_fun} \(F\) è corappresentabile da un oggetto \(X_F\));
+		\item Esiste un isomorfismo naturale \(F\natIso \Hom{\ctC}(X_F,\blank)\) (cioè, nella terminologia di \ref{def_rappre_fun} \(F\) è corappresentabile da un oggetto \(X_F\));
 		\item la categoria degli elementi \(\Elts{\ctC}F\) ha un oggetto iniziale \((\init,h\in F\init)\).
 	\end{itemize}
 	Dualmente, le condizioni seguenti sono equivalenti, per un funtore \(G : \ctC^\op \fun\ctSet\):
 	\begin{itemize}
-		\item Esiste un isomorfismo naturale \(G\natIso \Hom\ctC(\blank,Y_G)\) (cioè, nella terminologia di \ref{def_rappre_fun} \(G\) è rappresentabile da un oggetto \(Y_G\));
+		\item Esiste un isomorfismo naturale \(G\natIso \Hom{\ctC}(\blank,Y_G)\) (cioè, nella terminologia di \ref{def_rappre_fun} \(G\) è rappresentabile da un oggetto \(Y_G\));
 		\item la categoria degli elementi \(\Elts{\ctC}G\) ha un oggetto terminale \((\term,b\in G\term)\).
 	\end{itemize}
 	\Todo{oggetto iniziale/terminale di una categoria degli elementi}
@@ -269,18 +269,18 @@ I due esempi che seguono sono importanti per fissare l'idea in chi legge che un 
 \end{proof}
 \begin{remark}
 	Il nome `comportamento' per la freccia universale \(b_{(X,\alpha)}\) è dovuto al fatto che si può pensare alla successione \eqref{iter_coalgebra} come a una vera e propria traiettoria nello `spazio' \(A\times X\), tale che
-	\[\xymatrix@R=0cm{
-		x \ar@{|->}[r]& a_1\\&x_1 \ar@{|->}[r]& a_2\\&&x_2 \ar@{|->}[r]& \\&&&\dots &
+	\[\xymatrix@R=-1mm{
+		x \ar@{|->}[r]^-\alpha& a_1\\&x_1 \ar@{|->}[r]^-\alpha& a_2\\&&x_2 \ar@{|->}[r]^-\alpha& \\&&&\dots &
 		}\]
 	La Figura \ref{} chiarisce questa idea intuitiva.
 \end{remark}
 % \color{red}
-% Nella teoria classica degli insiemi\footnote{Ad esempio, secondo l'assiomatica ZF(C), vedi \cite{ZFC}}, l'insieme vuoto \(\emptyset\) è definito come \emph{l'insieme privo di elementi}. Questa definizione, tuttavia, non si presta a essere tradotta in un contesto categoriale più generale perché, sebbene gli insiemi siano gli oggetti di una categoria, \(\ctSet\), gli elementi di cui essi sono composti non possono essere indagati direttamente in \(\ctSet\). D'altro canto, l'insieme vuoto è caratterizzato dalla  proprietà di essere sottoinsieme di qualunque altro insieme \(S\). Equivalentemente, per ogni insieme \(S\), l'hom-insieme \(\Hom\ctSet(\emptyset,S)\) contiene un solo elemento: la  \emph{funzione inclusione}  \(\emptyset \hookrightarrow S\). Dal punto di vista categoriale, quest'ultima formulazione si presta a essere adottata come definizione---e qui entra in gioco l'espressività della teoria delle categorie. Infatti, quando si perviene a una definizione espressa puramente in termini di oggetti e morfismi,  tale definizione può essere data in qualunque categoria, ed è naturale chiedersi cosa essa descriva in categorie diverse.
+% Nella teoria classica degli insiemi\footnote{Ad esempio, secondo l'assiomatica ZF(C), vedi \cite{ZFC}}, l'insieme vuoto \(\emptyset\) è definito come \emph{l'insieme privo di elementi}. Questa definizione, tuttavia, non si presta a essere tradotta in un contesto categoriale più generale perché, sebbene gli insiemi siano gli oggetti di una categoria, \(\ctSet\), gli elementi di cui essi sono composti non possono essere indagati direttamente in \(\ctSet\). D'altro canto, l'insieme vuoto è caratterizzato dalla  proprietà di essere sottoinsieme di qualunque altro insieme \(S\). Equivalentemente, per ogni insieme \(S\), l'hom-insieme \(\Hom{\ctSet}(\emptyset,S)\) contiene un solo elemento: la  \emph{funzione inclusione}  \(\emptyset \hookrightarrow S\). Dal punto di vista categoriale, quest'ultima formulazione si presta a essere adottata come definizione---e qui entra in gioco l'espressività della teoria delle categorie. Infatti, quando si perviene a una definizione espressa puramente in termini di oggetti e morfismi,  tale definizione può essere data in qualunque categoria, ed è naturale chiedersi cosa essa descriva in categorie diverse.
 
 % \begin{example}[oggetto iniziale]\label{ex_oggetto_iniziale}
 % 	Data una categoria \(\ctC\), un \emph{oggetto iniziale} è un oggetto \(O\) di \(\ctC\) tale che, per ogni altro oggetto \(C\) di \(\ctC\), ci sia una e una sola freccia \(O\to C\), o, in altre parole, si abbia
 % 	\[\label{def_oggetto_iniziale}
-% 		\#\Hom\ctC(O,C)=1\,.
+% 		\#\Hom{\ctC}(O,C)=1\,.
 % 	\]
 
 % 	Quindi, per quanto abbiamo visto sopra, se la categoria \(\ctC\) è la categoria degli insiemi, l'insieme vuoto \(\emptyset\)  è un oggetto iniziale.
@@ -381,7 +381,7 @@ che determinano univocamente \(h\). Infatti, si osservi come
 	\item grazie a \ref{eq_comprule} l'immagine di \(h(x)\) può essere \emph{ridotta} alla coppia ordinata
 	      \[\pair{(\pi_1\cmp h)(x)}{(\pi_2\cmp h)(x)};\]
 	\item comunque siano date due funzioni \(f : X\to A\) e \(g : X \to B\), è possibile \emph{costruire} la coppia ordinata \(\pair{f(x)}{g(x)}\) e la funzione \(f\pmap g\) che abbiamo già introdotto in \ref{puniv_prodotto_naturale} che ne risulta è l'immagine di \(\pair fg\), nell'insieme a sinistra, rispetto alla biiezione naturale (già dimostrata)
-	      \[\Hom\ctSet(X,A\times B)\cong\Hom\ctSet(X,A)\times\Hom\ctSet(X,B).\]
+	      \[\Hom{\ctSet}(X,A\times B)\cong\Hom{\ctSet}(X,A)\times\Hom{\ctSet}(X,B).\]
 \end{itemize}
 \Todo{}
 \begin{remark}\label{rmk_prodotto}
@@ -589,7 +589,7 @@ Questa è una proprietà generale.
 \end{proposition}
 Questa proprietà non è specifica dei prodotti binari, ma riguarda tutti i limiti e tutti i colimiti, e può essere facilmente ottenuta come caso particolare della \ref{???}. Riteniamo utile esplicitarne la dimostrazione, a fini didattici.
 \begin{proof}
-	Poiché la spanna \((P,p_1,p_1)\) è universale, esiste un unica freccia  \(h\colon Q\to P\) tale che \(p_1\cmp h=q_1\) e \(p_2\cmp h=q_2\). Dimostriamo che \(h\) è un isomorfismo esibendo un suo inverso. Per trovarlo ripetiamo il ragionamento precedente, questa volta utilizzando la spanna universale \((Q,q_1,q_2)\), e ottenendo un unica freccia \(k\colon P\to Q\) tale che \(q_1\cmp =p_1\) e \(q_2\cmp h=p_2\). Sostituendo le nelle relazioni trovate (o \emph{impastando} i diagrammi in basso a sinistra) si ottiene che:\\[2ex]
+	Poiché la spanna \((P,p_1,p_1)\) è universale, esiste un'unica freccia  \(h\colon Q\to P\) tale che \(p_1\cmp h=q_1\) e \(p_2\cmp h=q_2\). Dimostriamo che \(h\) è un isomorfismo esibendo un suo inverso. Per trovarlo ripetiamo il ragionamento precedente, questa volta utilizzando la spanna universale \((Q,q_1,q_2)\), e ottenendo un'unica freccia \(k\colon P\to Q\) tale che \(q_1\cmp =p_1\) e \(q_2\cmp h=p_2\). Sostituendo le nelle relazioni trovate (o \emph{impastando} i diagrammi in basso a sinistra) si ottiene che:\\[2ex]
 	\begin{tikzpicture}
 		\node [mybox] (box){%
 			\begin{minipage}[t][28ex]{0.40\textwidth}

@@ -119,7 +119,7 @@ Una categoria sarà dunque, in prima approssimazione, una collezione di `oggetti
 		\[h\cmp (g\cmp f) = (h\cmp g)\cmp f.\]
 	\end{enumtag}
 \end{definition}
-\begin{notation}\index{hom insieme}\index{aaa_CXY@\(\Hom\ctC(X,Y)\)}\index{Categoria!frecce di una ---}\index{Freccia}
+\begin{notation}\index{hom insieme}\index{aaa_CXY@\(\Hom{\ctC}(X,Y)\)}\index{Categoria!frecce di una ---}\index{Freccia}
 	Dati due oggetti \(X\) e \(Y\), indichiamo con \(\Hom{\ctC}(X,Y)\) la classe di frecce da \(X\) a \(Y\). Altre notazioni, come \(\varHom(X,Y)\) o variazioni come \(\vvarHom{\ctC}(X,Y),\vvarHom{}(X,Y)\), sono ugualmente comuni, e motivate dal fatto che le frecce di una categoria astraggono la nozione di \emph{omomorfismo} tra insiemi strutturati (si veda \ref{ex_cat_monoidi} e più in generale l'esempio \ref{ex_cat_sigma_strutture}); questa notazione renderà chiara quella in \ref{ex_hom_funtore} per i \emph{funtori hom}. \`E anche comune indicare la classe \(\ctC_1\) delle frecce di una categoria con \(\hom(\ctC)\) o \(\mathrm{ar}(\ctC)\).
 \end{notation}
 \begin{notation}\index{aaa_blank@\(\blank\)}
@@ -185,7 +185,7 @@ Sempre riguardo alla `taglia' di una categoria, le seguenti definizioni saranno 
 	\begin{itemize}
 		\item \emph{finita} se ha un numero finito di oggetti, cioè se \(\ctC_0\) è un insieme finito;
 		\item \emph{strettamente finita} se ha un numero finito di frecce, cioè se \(\ctC_1\) è un insieme finito;
-		\item \emph{localmente finita} se ogni insieme \(\Hom\ctC(X,Y)\) è finito.
+		\item \emph{localmente finita} se ogni insieme \(\Hom{\ctC}(X,Y)\) è finito.
 	\end{itemize}
 	Se \(\ctC\) è strettamente finita, è finita, dato che \(\ctC_0\subseteq\ctC_1\) e quest'ultimo è finito. Inoltre \(\ctC\) è finita e localmente finita se e solo se è strettamente finita.
 
@@ -237,10 +237,10 @@ L'ultima di queste osservazioni non è meno importante: porterà alla definizion
 	\end{enumtag}
 	Mostrare che ogni categoria senza oggetti definisce una categoria nel senso di \ref{def_categ} e viceversa.
 	\item \label{jgdasoh_2} Descrivere in cosa consiste una struttura che soddisfa tutti gli assiomi di \ref{def_categ}, a parte il fatto che \(d,c : \ctC_1\to\ctC_0\) sono funzioni parziali: in una `categoria bucata', esistono frecce \(\xymatrix{{} \ar[r]^f & Y}\) di \(\ctC\) che non hanno dominio, e alcune \(\xymatrix{X \ar[r]^g & {}}\) che non hanno codominio (ci può essere una freccia \(\xymatrix{{} \ar[r]^f & {}}\) senza dominio né codominio? Più di una?).
-	\item \label{jgdasoh_3} Costruire la categoria \(\ctM\) con un solo oggetto \(\{X\}\), dove le frecce \(\Hom\ctM(X,X)\) sono specificate ricorsivamente come
+	\item \label{jgdasoh_3} Costruire la categoria \(\ctM\) con un solo oggetto \(\{X\}\), dove le frecce \(\Hom{\ctM}(X,X)\) sono specificate ricorsivamente come
 	\[t ::= z \mid c \mid f \, t \mid g \, t \]
 	dove \(z,c\) sono dze costanti, cosicché le frecce siano parole del tipo
 	\[\ctM_1=\{z,c,fz,gz,fc,gc,ffz,gfz,fgz,\dots\}\]
-	La composizione \(X \xto w X \xto v X\), dove \(v,w\in\ctM_1\), è definita come la sostituzione di \(w\) in tutte le occorrenze di \(z\) nella parola \(v\). Verificare gli assiomi di categoria per \(\ctM\). In quanto categoria con un solo oggetto, esiste un isomorfismo di monoidi \(\ctM(X,X) \cong (M,\ast,1_M)\) (nel senso di \ref{lem_end_monoide}): descrivere la struttura del monoide \(M\) in termini di generatori e relazioni. (Suggerimento: a che elemento di \(\ctM(X,X)\) corrisponde l'elemento neutro \(1_M\) per l'operazione \(*\) su \(M\)? Mostrare per induzione che un elemento di \(\ctM(X,X)\) è della forma \(pz\) o della forma \(pc\) dove \(p\) è una parola qualsiasi nell'alfabeto \(\{f,g\}\); dedurre che è sufficiente esplicitare le composizioni \(pu * p'c\), \(pu * p'u\) e \(pc * x\); quindi\dots)
+	La composizione \(X \xto w X \xto v X\), dove \(v,w\in\ctM_1\), è definita come la sostituzione di \(w\) in tutte le occorrenze di \(z\) nella parola \(v\). Verificare gli assiomi di categoria per \(\ctM\). In quanto categoria con un solo oggetto, esiste un isomorfismo di monoidi \(\Hom{\ctM}(X,X) \cong (M,\ast,1_M)\) (nel senso di \ref{lem_end_monoide}): descrivere la struttura del monoide \(M\) in termini di generatori e relazioni. (Suggerimento: a che elemento di \(\Hom{\ctM}(X,X)\) corrisponde l'elemento neutro \(1_M\) per l'operazione \(*\) su \(M\)? Mostrare per induzione che un elemento di \(\Hom{\ctM}(X,X)\) è della forma \(pz\) o della forma \(pc\) dove \(p\) è una parola qualsiasi nell'alfabeto \(\{f,g\}\); dedurre che è sufficiente esplicitare le composizioni \(pu * p'c\), \(pu * p'u\) e \(pc * x\); quindi\dots)
 	\item \label{jgdasoh_5} Costruire esempi di strutture che soddisfano tutti gli assiomi di \ref{def_categ} meno uno: due classi \(\ctC_0,\ctC_1\), con funzioni di classe \(d,c,\id,\cmp\) ma la composizione non è sempre definita, non è sempre associativa, non sempre unitale.
 \end{esercizi}

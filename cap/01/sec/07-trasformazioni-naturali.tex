@@ -255,7 +255,7 @@ Passiamo ora alla definizione di isomorfismo nella categoria formata da funtori 
 \begin{hDefinition}[Isomorfismo naturale]{fund}\label{def_isonat}\index{Isomorfismo!--- naturale}\index{Trasformazione naturale!isomorfismo naturale}
 	Dati due funtori \(F,G : \ctC\fun\ctD\) tra categorie, un \emph{isomorfismo naturale} consiste di una trasformazione naturale \(\alpha : F\nat G\) che possieda una inversa per l'operazione di composizione verticale di \ref{def_vcomp}; in altre parole, \(\alpha\) è un isomorfismo naturale se esiste una trasformazione naturale \(\bar\alpha : G\nat F\) tale che \(\alpha\vcmp\bar\alpha = 1_G\) e \(\bar\alpha\vcmp\alpha =1_F\).
 \end{hDefinition}
-Evidentemente tale \(\bar\alpha\) è unica e si può denotare con \(\alpha^{-1}\). Indichiamo con \(F\natIso G\) la presenza di un isomorfismo naturale (il cui nome \(\alpha\) è sottinteso) tra i funtori \(F\) e \(G\); questo è un modo di suggerire l'idea che l'isomorfismo tra \(F\) e \(G\) (nella categoria \(\Hom\ctCat(\ctC,\ctD)\), tra gli oggetti \(F\) e \(G\)) sia fatto di diverse componenti (le \(\alpha_X\)), ciascuna delle quali è un isomorfismo \(\alpha_X : FX\iso GX\).
+Evidentemente tale \(\bar\alpha\) è unica e si può denotare con \(\alpha^{-1}\). Indichiamo con \(F\natIso G\) la presenza di un isomorfismo naturale (il cui nome \(\alpha\) è sottinteso) tra i funtori \(F\) e \(G\); questo è un modo di suggerire l'idea che l'isomorfismo tra \(F\) e \(G\) (nella categoria \(\Hom{\ctCat}(\ctC,\ctD)\), tra gli oggetti \(F\) e \(G\)) sia fatto di diverse componenti (le \(\alpha_X\)), ciascuna delle quali è un isomorfismo \(\alpha_X : FX\iso GX\).
 
 Osserviamo poi che la condizione di naturalità per \(\alpha^{-1}\) può essere omessa:
 \begin{lemma}\index{Isomorfismo!--- naturale}
@@ -267,8 +267,8 @@ Osserviamo poi che la condizione di naturalità per \(\alpha^{-1}\) può essere 
 \begin{definition}[Funtore rappresentabile]\label{def_rappre_fun}\index{Funtore!--- rappresentabile}\index{Rappresentabilità}
 	Una famiglia importante di isomorfismi naturali sono quelli che sussistono tra un funtore \(F : \ctC \fun\ctSet\) (covariante o controvarinte) e uno dei \emph{funtori hom} (covariante o controvariante) di \ref{ex_hom_funtore};
 	\begin{itemize}
-		\item Se \(G : \ctC^\op\fun\ctSet\) è controvariante, qualora esista un isomorfismo naturale \(G\natIso \Hom\ctC(\blank,Y_G)\) per un qualche oggetto \(Y_G\in\ctC_0\), diciamo che \(G\) è \emph{rappresentabile} (da \(Y_G\)), o che \(Y_G\) è l'\emph{oggetto rappresentante} per \(G\).
-		\item Dualmente, se \(F : \ctC\fun\ctSet\) è covarinte, qualora esista un isomorfismo naturale \(F\natIso \Hom\ctC(X_F,\blank)\) per un qualche oggetto \(X_F\in\ctC_0\), diciamo che \(F\) è \emph{corappresentabile} (da \(X_F\)), o che \(X_F\) è l'\emph{oggetto corappresentante} per \(F\).
+		\item Se \(G : \ctC^\op\fun\ctSet\) è controvariante, qualora esista un isomorfismo naturale \(G\natIso \Hom{\ctC}(\blank,Y_G)\) per un qualche oggetto \(Y_G\in\ctC_0\), diciamo che \(G\) è \emph{rappresentabile} (da \(Y_G\)), o che \(Y_G\) è l'\emph{oggetto rappresentante} per \(G\).
+		\item Dualmente, se \(F : \ctC\fun\ctSet\) è covarinte, qualora esista un isomorfismo naturale \(F\natIso \Hom{\ctC}(X_F,\blank)\) per un qualche oggetto \(X_F\in\ctC_0\), diciamo che \(F\) è \emph{corappresentabile} (da \(X_F\)), o che \(X_F\) è l'\emph{oggetto corappresentante} per \(F\).
 	\end{itemize}
 	Questa terminologia è indicativa del fatto che la (co)rappresentabilità sia una proprietà di \(G\) (di \(F\)), ossia che se \(G\) è rappresentabile, lo sia in modo essenzialmente unico. Questo è vero (ed è il cuore del capitolo \ref{cap_yoneda}, sul lemma di Yoneda), ma bisogna sviluppare più teoria per poterlo dimostrare. Gli esempi di funtori (co)rappresentabili abbondano in algebra, geometria e logica e sono raccolti nelle prime sezioni del capitolo \ref{cap_yoneda}.
 \end{definition}
@@ -763,9 +763,9 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 \begin{definition}[Il nervo di un funtore]\label{def_nervo_funtore}\index{Funtore!nervo di un ---}\index{Nervo!---	di un funtore}
 	Ogni funtore \(F : \ctC \fun\ctD\) induce un bifuntore
 	\[\dmFun{\N F}{\ctC^\op\times\ctD}\ctSet\]
-	detto il \emph{nervo} di \(F\), e definito da \((C,D)\mapsto \Hom\ctD(FC,D)\) (e similmente sulle frecce). Se \(\ctC\) è piccola, cosicché la categoria \(\presh\ctC\) sia legittima, possiamo `trasporre' il nervo \(\N F\) ad un funtore
+	detto il \emph{nervo} di \(F\), e definito da \((C,D)\mapsto \Hom{\ctD}(FC,D)\) (e similmente sulle frecce). Se \(\ctC\) è piccola, cosicché la categoria \(\presh\ctC\) sia legittima, possiamo `trasporre' il nervo \(\N F\) ad un funtore
 	\[\dmFun{\N F}\ctD{\presh\ctC}\]
-	(indicato con lo stesso nome) che manda \(D\) nel funtore \(\Hom\ctD(F\blank,D) : C\mapsto \Hom\ctD(FC,D)\)
+	(indicato con lo stesso nome) che manda \(D\) nel funtore \(\Hom{\ctD}(F\blank,D) : C\mapsto \Hom{\ctD}(FC,D)\)
 \end{definition}
 Si noti che il nervo di una categoria \(\ctC\), come definito in \ref{def_nervo_di_una_cat}, non è altro che il nervo del funtore canonico
 \[\dmFun{\bsDelta}{\ctFOrd}{\ctCat}\]
