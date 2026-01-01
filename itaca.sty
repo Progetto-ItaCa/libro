@@ -15,7 +15,7 @@
 \RequirePackage{ xparse
                , mathrsfs
                }
-
+\RequirePackage{stix}
 \ExplSyntaxOn
 
 \clist_new:N \g_itaca_upper_clist
@@ -109,10 +109,8 @@
 \newcommand{\orangeDot}{ \drawDot[ibmOrange] }
 
 \RequirePackage[pdftex]{graphicx}
-\RequirePackage{ amsfonts
-               , amsmath
-               , amssymb
-               , amsthm
+\RequirePackage{
+                 amsthm
                , enumitem
                , epigraph
                , microtype
@@ -121,7 +119,6 @@
                , hyphenat
                , todonotes
                , stackrel
-               , stmaryrd
                , tikz-cd
                , turnstile
                , xspace
@@ -176,12 +173,12 @@
 \pgfkeys{
   cm to/.tip={
     Classical TikZ Rightarrow[
-      length = +1.05pt 11,
-      width' = +0pt 0.65,
-      line width = 0pt 0.9 1,
+      length = +1.05pt 8,
+      width' = +0pt 0.55,
+      line width = 0pt 0.6 1,
     ]
   },
-  cm double to/.tip = {cm to[sep=+0pt -8.9]cm to},
+  cm double to/.tip = {cm to[sep=+0pt -8.8]cm to},
 }
 \makeatletter
 \def\defthm#1#2{%
@@ -386,7 +383,9 @@
 \newcommand{\emdash}{\text{-}}
 \setlist[itemize,enumerate]{itemsep=0pt}
 
-\def\pto{\rightarrowtriangle}
+\def\pto{\rightarrowtriangle} % {\seharpoonne}
+\def\llbracket{[\!\![}
+\def\rrbracket{]\!\!]}
 \DeclareMathOperator{\im}{im}
 
 \def\longmor#1#2{\begin{tikzcd}[ampersand replacement=\&] #1 \ar[r] \& #2 \end{tikzcd}}
@@ -472,8 +471,12 @@
 \RequirePackage{microtype,multirow,booktabs}
 \RequirePackage{hyperref}
 \let\second\relax
+\let\centerdot\relax
+\let\circledS\relax
+\let\thicksim\relax
+\let\thickapprox\relax
+\let\hslash\relax
 \let\parto\rightharpoonup
-\RequirePackage{mathabx}
 \RequirePackage[color]{showkeys}
 \RequirePackage{circuitikz}
 

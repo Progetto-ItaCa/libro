@@ -63,6 +63,9 @@
             pgf
             snapshot
             stmaryrd
+            stix
+            boisik
+            fdsymbol
             t2
             texfot
             tikz-cd
