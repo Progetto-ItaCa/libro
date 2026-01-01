@@ -38,6 +38,7 @@
             fancyvrb
             fmtcount
             fontawesome
+            fontspec
             hologo
             hypdoc
             hyphenat
@@ -52,6 +53,7 @@
             latexindent
             lh
             listings
+            lualatex-math
             mathabx
             mathtools
             metafont
@@ -69,6 +71,7 @@
             ucs
             upquote
             underscore
+            unicode-math
             varwidth
             xcolor
             xkeyval
