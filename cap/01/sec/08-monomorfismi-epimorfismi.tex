@@ -867,14 +867,30 @@ Un esempio eclatante è \(\ctX=\ctSet\), cosicché possiamo costruire due catego
 \begin{example}[Monoide grafico e grafi riflessivi]\label{monoide_grafico}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
 	Siano \(\ctC\) e \(\ctD\) le categorie	definite come segue:
 	\begin{itemize}
-		\item \(\ctC=\susp{G}\) dove \(G=\{1,x_1,x_2\}\) è il monoide presentato dalla tavola di moltiplicazione in \ref{fig_monoide_grfico}; seguendo \ref{exa_azioni_funtori} la categoria \(\Hom{\ctCat}(\ctC^\op,\ctSet)\) dunque è la categoria delle azioni di monoide \(G\times X \to X\).
+		\item \(\ctC=\susp{G}\) dove \(G=\{1,x_1,x_2\}\) è il monoide presentato dalla tavola di moltiplicazione in \ref{fig_monoide_grfico}; seguendo \ref{exa_azioni_funtori} la categoria \(\Hom{\ctCat}(\ctC^\op,\ctSet)\) dunque è la categoria delle azioni di monoide \(G\times X \to X\). Si noti che gli elementi non identità di $G$ sono \emph{costanti}, cioè vale che $x_ix_j=x_i$ per ogni $i,j$: in particolare $x_1,x_2$ sono entrambi idempotenti (quando $i=j$). Ancora più in particolare, il fatto che $x_1,x_2$ sono costanti implica l'\emph{identità grafica}: per ogni $x,y\in G$ si ha $xyx=xy$,	che si ottiene, ovviamente, moltiplicando per $x$ a sinistra l'equazione $yx=y$.
 		\item \(\ctD\) è la categoria
 		      \[\Big\{\xymatrix{
 				      0 \ar@<.4em>[r]^-s\ar@<-.4em>[r]_-t & 1\ar[l]|j
 			      }\Big\}\]
-		      dove (a parte le identità) ci sono tre frecce \(s,t,j\) tali che \(s\cmp j = t\cmp j = \id_1\); quindi un funtore \(F : \ctD^\op \fun \ctSet\) è un grafo riflessivo, come in \ref{ex_grafi_riflessivi}.
+		      dove (a parte le identità) ci sono tre frecce \(s,t,j\) tali che \(s\cmp j = t\cmp j = \id_1\); in parole, $s,t$ hanno $j$ come sezione comune. Quindi un funtore \(F : \ctD^\op \fun \ctSet\) è un grafo riflessivo, come in \ref{ex_grafi_riflessivi}.
 	\end{itemize}
-	Queste due categorie sono equivalenti.
+	Queste due categorie sono equivalenti: 
+	\begin{itemize}
+		\item in un verso, una rappresentazione del monoide $G$ definito sopra consiste di una coppia di funzioni 
+		\[\xymatrix{
+			X \ar@<.4em>[r]^-s\ar@<-.4em>[r]_-t & X
+		}\]
+		tali che per ogni $x,y\in\{s,t\}$ si abbia $y\circ x=y$. Ma allora gli elementi di $X$ si possono pensare come frecce di un grafo diretto, $sx \xto x t$, e valgono delle relazioni informali del tipo 
+		\begin{align*}
+			s\left(sx \xto x tx\right)&=ssx \xto{sx} stx\\ 
+			&=sx \xto{sx} sx\\
+			t\left(sx \xto x tx\right)&=tsx \xto{sx} ttx\\ 
+			&=tx \xto{tx} tx
+		\end{align*}
+		cosicché per ogni $x\in X$, $sx,tx$ sono ciascuno un cappio del tipo $\xymatrix{sx\ar@(ur,dr)_{sx}}$ e $\xymatrix{tx\ar@(ur,dr)_{tx}}$. (Si ricordi che formalmente non ci sono `vertici' in $X$: vanno estratti come sottoinsieme $X_0\subseteq X$).
+
+		Formalmente infatti uno può definire $X_0\defeq \{x\in X\mid sx=tx=x\}$ e ottenere che l'inclusione $j : X_0\mono X$ è, praticamente per costruzione, una sezione comune di $s,t$; altrettanto ovviamente, $X_0$ è l'insieme dei punti fissi (si veda \ref{})
+	\end{itemize}
 	\Todo{monoide grafico	e grafi riflessivi...}
 \end{example}
 \begin{table}[h]
@@ -888,8 +904,8 @@ Un esempio eclatante è \(\ctX=\ctSet\), cosicché possiamo costruire due catego
 		\(x_2\)     & \(x_2\) & \(x_2\) & \(x_2\) \\
 		\bottomrule
 	\end{tabular}
-	\label{fig_monoide_grfico}
 	\caption{Tavola di moltiplicazione del monoide grafico \(G\) di \ref{monoide_grafico}.}
+	\label{fig_monoide_grfico}
 \end{table}
 Finiamo la sezione caratterizzando i mono in \(\ctCat\): si tratta di funtori \(F : \ctC \fun\ctD\) con la proprietà che sia \(F_0 : \ctC_0\to\ctD_0\) che ogni \(F_{XY} : \Hom{\ctC}(X,Y) \to \Hom{\ctD}(F_0X,F_0Y)\) sono funzioni iniettive.
 \begin{proposition}\label{mona_in_cat}\index{Monomorfismo!--- in \(\ctCat\)}
