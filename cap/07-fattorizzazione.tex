@@ -32,13 +32,13 @@ Questo motiva la nozione di \emph{ortogonalità} tra frecce (si veda \ref{def_or
 \]
 dove \(e\in\ctE\) e \(m\in\ctM\) sono frecce nelle due sottoclassi.
 
-L'intuizione che chi sta leggendo dovrebbe avere sulla definizione è che una struttura del genere imposta su una categoria \(\ctC\) permette di `generarla' a partire dalle classi \(\ctE,\ctM\), in una notazione suggestiva, cioè, è vero che \(\hom(\ctC) = \ctM\cmp \ctE\). In più, le due classi \(\ctE,\ctM\) sono `ortogonali' nel senso che hanno intersezione più piccola possibile: \(\ctE\cap \ctM\) consta del \emph{cuore} (si veda \ref{def_cuore}) di \(\ctC\), cioè della categoria di tutti gli isomorfismi in \(\ctC\).
+L'intuizione che chi sta leggendo dovrebbe avere sulla definizione è che una struttura del genere imposta su una categoria \(\ctC\) permette di `generarla' a partire dalle classi \(\ctE,\ctM\), in una notazione suggestiva, cioè, è vero che \(\varHom(\ctC) = \ctM\cmp \ctE\). In più, le due classi \(\ctE,\ctM\) sono `ortogonali' nel senso che hanno intersezione più piccola possibile: \(\ctE\cap \ctM\) consta del \emph{cuore} (si veda \ref{def_cuore}) di \(\ctC\), cioè della categoria di tutti gli isomorfismi in \(\ctC\).
 \color{red}
 L'esempio più importante (sebbene non l'unico interessante) di fattorizzazione di questo tipo sarà proprio quando \(\ctE\) è la classe \(\Epi\) degli epi ed \(\ctM\) è la classe \(\Mono\) dei mono di \(\ctC\). Quando le proprietà di ortogonalità e fattorizzazione valgono per la coppia \((\ctE,\ctM)\) questa si dice un \emph{sistema di fattorizzazione} su \(\ctC\).
 \begin{remark}
 	Chi legge non deve con questo pensare che data una qualsiasi categoria \(\ctC\), la coppia di classi \((\Epi,\Mono)\) formi sempre un sistema di fattorizzazione su \(\ctC\).
 
-	In effetti, non è nemmeno vero che \((\Epi,\Mono)\) è sempre una coppia di classi ortogonali nel senso di \ref{def_ortogona} (si pensi al caso dei preordini, dove \emph{ogni} freccia è sia un mono che un epi, cosicché \(\Epi[\ctPos]\cap\Mono[\ctPos]=\hom(\ctPos)\), ma non tutti gli oggetti di un preordine sono tra loro isomorfi).
+	In effetti, non è nemmeno vero che \((\Epi,\Mono)\) è sempre una coppia di classi ortogonali nel senso di \ref{def_ortogona} (si pensi al caso dei preordini, dove \emph{ogni} freccia è sia un mono che un epi, cosicché \(\Epi[\ctPos]\cap\Mono[\ctPos]=\varHom(\ctPos)\), ma non tutti gli oggetti di un preordine sono tra loro isomorfi).
 \end{remark}
 \color{black}
 Sulla classe delle frecce di una generica categoria \(\ctC\) è possibile definire una relazione binaria detta \emph{ortogonalità}, nel modo che segue.
@@ -52,24 +52,24 @@ Sulla classe delle frecce di una generica categoria \(\ctC\) è possibile defini
 	\]
 	esiste un'unica freccia \(a : Y\to A\) tale che \(a\cmp f=u\) e \(g\cmp a=v\).
 \end{definition}
-La relazione di ortogonalità è una sottoclasse \(O^\ctC \subseteq \hom(\ctC)\times\hom(\ctC)\) e il fatto che \((f,g)\in O^\ctC\) verrà sempre denotato con un simbolo infisso \(f\perp^\ctC g\), o semplicemente come \(f\perp g\) quando il contesto permette di determinare quale sia la categoria \(\ctC\) di riferimento (ossia, quasi sempre).
+La relazione di ortogonalità è una sottoclasse \(O^\ctC \subseteq \varHom(\ctC)\times\varHom(\ctC)\) e il fatto che \((f,g)\in O^\ctC\) verrà sempre denotato con un simbolo infisso \(f\perp^\ctC g\), o semplicemente come \(f\perp g\) quando il contesto permette di determinare quale sia la categoria \(\ctC\) di riferimento (ossia, quasi sempre).
 
 La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetrica o transitiva; \ref{} sostanzia questa osservazione con delle maniere di costruire dei controesempi.
 \begin{proposition}\label{ort_to_terminale}
 	Sia \(\ctC\) una categoria che ha un oggetto terminale \(\term\). Allora, dati una freccia \(f : X\to Y\), e un oggetto \(A\in \ctC_0\), le condizioni seguenti sono equivalenti:
 	\begin{enumtag}{ot}
 		\item\label{ot_1} la freccia \(f\) è ortogonale a sinistra alla freccia terminale \(A\to \term\);
-		\item\label{ot_2} il funtore \(\Hom{\ctC}(\blank,A)\) manda la freccia \(f\) in una biiezione
+		\item\label{ot_2} il funtore \(\varHom{\ctC}(\blank,A)\) manda la freccia \(f\) in una biiezione
 		\[\begin{tikzcd}
-				\Hom{\ctC}(Y,A) \ar[r, "{g\cmp \blank}"] & \Hom{\ctC}(X,A).
+				\varHom{\ctC}(Y,A) \ar[r, "{g\cmp \blank}"] & \varHom{\ctC}(X,A).
 			\end{tikzcd}\]
 	\end{enumtag}
 	Dualmente, sia \(\ctC\) una categoria con un oggetto iniziale \(\init\). Allora, dati una freccia \(g : A\to B\), e un oggetto \(Y\in\ctC_0\), le condizioni seguenti sono equivalenti:
 	\begin{enumtag}{oi}
 		\item \label{oi_1} la freccia \(g\) è ortogonale a destra alla freccia iniziale \(\init\to Y\);
-		\item \label{oi_2} il funtore \(\Hom{\ctC}(B,\blank)\) manda la freccia \(g\) in una biiezione
+		\item \label{oi_2} il funtore \(\varHom{\ctC}(B,\blank)\) manda la freccia \(g\) in una biiezione
 		\[\begin{tikzcd}
-				\Hom{\ctC}(Y,A) \ar[r, "{\blank\cmp f}"] & \Hom{\ctC}(Y,B).
+				\varHom{\ctC}(Y,A) \ar[r, "{\blank\cmp f}"] & \varHom{\ctC}(Y,B).
 			\end{tikzcd}\]
 	\end{enumtag}
 \end{proposition}
@@ -176,14 +176,14 @@ Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limi
 \end{esercizi}
 \section[Proprietà ed esempi]{Proprietà fondamentali ed esempi}
 \begin{remark}
-	Grazie a \ref{klext_delle_relazioni} possiamo estendere la relazione di ortogonalità a una coppia di funzioni sulle sottoclassi di \(\hom(\ctC)\),
-	\[\lort{(-)} : 2^{\hom(\ctC)} \leftrightarrows 2^{\hom(\ctC)} : \rort{(-)}\]
+	Grazie a \ref{klext_delle_relazioni} possiamo estendere la relazione di ortogonalità a una coppia di funzioni sulle sottoclassi di \(\varHom(\ctC)\),
+	\[\lort{(-)} : 2^{\varHom(\ctC)} \leftrightarrows 2^{\varHom(\ctC)} : \rort{(-)}\]
 	tali che \(\rort\ctU\subseteq\ctV\) se e solo se \(\ctU\subseteq\lort\ctV\) e definite alla maniera seguente: data una sottoclasse \(\ctU\subseteq \ctC_1\),
 	\begin{gather*}
 		\rort{\ctU} := \{f\in\ctC_1\mid \forall u\in\ctU.(u\perp f)\}\\
 		\lort{\ctU} := \{f\in\ctC_1\mid \forall u\in\ctU.(f\perp u)\}
 	\end{gather*}
-	Così, possiamo definire la relazione di ortogonalità estesa alle sottoclassi di \(\hom(\ctC)\),
+	Così, possiamo definire la relazione di ortogonalità estesa alle sottoclassi di \(\varHom(\ctC)\),
 	\[\ctL\perp \ctR := \forall l\in\ctL,r\in\ctR.(l\perp r).\]
 	Si osservi che le seguenti tre condizioni sono equivalenti (lo si dimostri come esercizio per familiarizzare con la definizione):
 	\[\ctL\perp\ctR\qquad \ctL\subseteq\lort\ctR\qquad \rort\ctL\subseteq \ctR\]
@@ -192,17 +192,17 @@ Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limi
 	Siano \(f : A \to B\) e \(g : X\to Y\) due frecce di una categoria \(\ctC\). Il \emph{prodotto di Leibniz} di \(f\) e \(g\), denotato \(f\oast g\), si costruisce a partire dal prodotto fibrato
 	\[
 		\begin{tikzcd}
-			\pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)} \ar[r]\ar[d] & \Hom{\ctC}(B,Y) \ar[d, "\blank\cmp f"]\\
-			\Hom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \Hom{\ctC}(A,Y)
+			\pull {\varHom{\ctC}(A,X)}{\varHom{\ctC}(B,Y)}{\varHom{\ctC}(A,Y)} \ar[r]\ar[d] & \varHom{\ctC}(B,Y) \ar[d, "\blank\cmp f"]\\
+			\varHom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \varHom{\ctC}(A,Y)
 		\end{tikzcd}
 	\]
-	e consiste della mappa di confronto \(f\oast g : \Hom{\ctC}(B,X) \to \pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)}\) indotta dalla proprietà universale.
+	e consiste della mappa di confronto \(f\oast g : \varHom{\ctC}(B,X) \to \pull {\varHom{\ctC}(A,X)}{\varHom{\ctC}(B,Y)}{\varHom{\ctC}(A,Y)}\) indotta dalla proprietà universale.
 
 	Diciamo che il prodotto di Leibniz di \(f,g\) è \emph{esatto} se \(f\oast g\) è una biiezione. Questo è equivalente ad affermare che il quadrato
 	\[
 		\begin{tikzcd}
-			\Hom{\ctC}(B,X) \ar[d]\ar[r,"g\cmp\blank"]& \Hom{\ctC}(B,Y)\ar[d, "\blank\cmp f"]\\
-			\Hom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \Hom{\ctC}(A,Y)
+			\varHom{\ctC}(B,X) \ar[d]\ar[r,"g\cmp\blank"]& \varHom{\ctC}(B,Y)\ar[d, "\blank\cmp f"]\\
+			\varHom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \varHom{\ctC}(A,Y)
 		\end{tikzcd}
 	\]
 	è un prodotto fibrato.

@@ -401,7 +401,7 @@ Di conseguenza, abbiamo i seguente corollari:
 \end{corollary}
 Questo risultato, per quanto banale nella sua dimostrazione, ha conseguenze profonde: ci dice infatti che, sebbene abbiano proprietà simili, mono (risp., epi) e mono spezzanti (risp., epi spezzanti) sono distinti da una differenza fondamentale: l'essere o meno preservati dai funtori.
 
-Il risultato in questione propone anche le sezioni e le retrazioni come esempi fondamentali di \emph{strutture assolute}: una proprietà \(P\) di una freccia in una categoria \(\ctC\) è `assoluta' se viene preservata da tutti i funtori di dominio \(\ctC\), ovvero: se \(f\in\hom(\ctC)\) ha la proprietà \(P\) in \(\ctC\), allora per ogni altra categoria \(\ctD\) e funtore \(F : \ctC\fun\ctD\) il morfismo \(Ff\) ha la proprietà \(P\) in \(\ctD\).
+Il risultato in questione propone anche le sezioni e le retrazioni come esempi fondamentali di \emph{strutture assolute}: una proprietà \(P\) di una freccia in una categoria \(\ctC\) è `assoluta' se viene preservata da tutti i funtori di dominio \(\ctC\), ovvero: se \(f\in\varHom(\ctC)\) ha la proprietà \(P\) in \(\ctC\), allora per ogni altra categoria \(\ctD\) e funtore \(F : \ctC\fun\ctD\) il morfismo \(Ff\) ha la proprietà \(P\) in \(\ctD\).
 \begin{example}\label{mono_epi_noniso}\index{Monomorfismo}\index{Monomorfismo!--- ed epimorfismo non è iso}
 	Si consideri l'immersione \(\iota \colon \bbN \mono \bbZ\)	nella categoria \(\ctMon\) dei monoidi e omomorfismi di monoide.	Questa è mono in quanto la sua funzione sottogiacente è iniettiva,	ma non è spezzante.	Infatti, se avesse una retrazione,	questa sarebbe preservata dal funtore dimenticante \(U \colon \ctMon \fun \ctSet\),	per \ref{thm:fun-sezioni-retrazioni},	e dunque sarebbe un'inversa sinistra della funzione \(\iota\).	Come omomorfismo di monoidi, però, tale inversa sinistra dovrebbe preservare gli elementi inversi,	e ciò non è possibile.
 
@@ -588,7 +588,7 @@ Introduciamo qui la nozione (e alcune proprietà elementari) di mono ed epi \emp
 	\begin{itemize}
 		\item La classe $\Epi[\ctC]^\text{s}$ degli epi forti di $\ctC$ contiene tutti gli isomorfismi, è chiusa per composizione, e soddisfa la \emph{proprietà di cancellazione destra}:
 		\begin{quote}
-			Se $f\circ g,g$ sono entrambi epi forti, anche $f$ è un epi forte.
+			Se $f\cmp g,g$ sono entrambi epi forti, anche $f$ è un epi forte.
 		\end{quote}
 		\item Una freccia che è allo stesso tempo un mono e un epi estremale è un isomorfismo;
 		\item Ogni epi forte è estremale (si veda \ref{def_monoepi_estrem}).
@@ -637,7 +637,7 @@ Rammentiamo le definizioni date in \ref{classi_di_funtori}, dove diamo un nome s
 		La terminologia \emph{iso-denso} è poco usata e si dovrebbe preferire standardizzare la nomenclatura al modo che segue: sia \(\mathcal{P}\) una proprietà di una funzione tra insiemi o classi; un funtore \(F : \ctC\fun\ctD\) si dice
 		\begin{itemize}
 			\item `\emph{localmente \(\mathcal{P}\)}' se ogni funzione \(F_{XY}\) come in \ref{def_alternativa_funtore} ha la proprietà \(\mathcal{P}\);
-			\item `\emph{essenzialmente \(\mathcal{P}\)}' se la funzione \(\pi_0^\ctGpd(F_\cong) : \pi_0^\ctGpd(\ctC_\cong)\to\pi_0^\ctGpd(\ctD_\cong)\) ottenuta applicando il funtore composto \(\pi_0^\ctGpd\circ (\blank)_\cong\) come in \ref{ex_fun_cpt_conn} (notando che mandare \(\ctC\) in \(\ctC_\cong\) è un funtore \((\blank)_\cong : \ctCat\fun\ctGpd\)), ha la proprietà \(\mathcal{P}\);
+			\item `\emph{essenzialmente \(\mathcal{P}\)}' se la funzione \(\pi_0^\ctGpd(F_\cong) : \pi_0^\ctGpd(\ctC_\cong)\to\pi_0^\ctGpd(\ctD_\cong)\) ottenuta applicando il funtore composto \(\pi_0^\ctGpd\cmp (\blank)_\cong\) come in \ref{ex_fun_cpt_conn} (notando che mandare \(\ctC\) in \(\ctC_\cong\) è un funtore \((\blank)_\cong : \ctCat\fun\ctGpd\)), ha la proprietà \(\mathcal{P}\);
 			      % quando la funzione \pi_0(F) è \mathcal{P}
 			\item `\emph{\(\mathcal{P}\) sugli oggetti}' se la funzione \(F_0\) di \ref{def_funtore}.\ref{f_1} ha la proprietà \(\mathcal{P}\).
 			      % quando F_0 è \mathcal{P}
@@ -704,13 +704,10 @@ Una proprietà niente affatto banale dei funtori conservativi è che ogni catego
 		}\]
 	tali che \(F\cmp G = \Id[\ctD]\) e \(G\cmp F = \Id[\ctC]\).
 
-	Si tratta, evidentemente, di un isomorfismo nella categoria \(\ctCat\) di categorie e funtori di \ref{ex_cat_cat}. In particolare,
-	\begin{quote}
-		Ogni isomorfismo di categorie induce una biiezione di classi, \(F_0 : \ctC_0\to\ctD_0\), di inversa \(G_0 : \ctD_0\to\ctC_0\), e una biiezione di classi \(F_1 : \ctC_1 \to \ctD_1\), di inversa \(G_1 : \ctD_1\to\ctC_1\) che si decompone in una famiglia `indicizzata' di biiezioni \(F_{XY} : \Hom{\ctC}(X,Y)\to\Hom{\ctD}(FX,FY)\), di inversa
+	Si tratta, evidentemente, di un isomorfismo nella categoria \(\ctCat\) di categorie e funtori di \ref{ex_cat_cat}. In particolare, ogni isomorfismo di categorie induce una biiezione di classi, \(F_0 : \ctC_0\to\ctD_0\), di inversa \(G_0 : \ctD_0\to\ctC_0\), e una biiezione di classi \(F_1 : \ctC_1 \to \ctD_1\), di inversa \(G_1 : \ctD_1\to\ctC_1\) che si decompone in una famiglia `indicizzata' di biiezioni \(F_{XY} : \Hom{\ctC}(X,Y)\to\Hom{\ctD}(FX,FY)\), di inversa
 		\[\xymatrix{
-			\Hom{\ctD}(FX,FY) \ar[r]^-{G_{FX,FY}} & \Hom{\ctC}(GFX,GFY) \ar@{=}[r] & \hom(X,Y).
+			\Hom{\ctD}(FX,FY) \ar[r]^-{G_{FX,FY}} & \Hom{\ctC}(GFX,GFY) \ar@{=}[r] & \Hom{\ctC}(X,Y).
 			}\]
-	\end{quote}
 \end{definition}
 \`E più comune trovarsi nella condizione in cui esistono due funtori \(F : \ctC \leftrightarrows \ctD: G\) con la proprietà che esistano \emph{isomorfismi naturali} \(\epsilon : F\cmp G \cong \Id[\ctD]\) ed \(\eta : \Id[\ctC]\cong G\cmp F\). Questa definizione più rilassata di identificazione tra due categorie si dice \emph{equivalenza}, denotata \(\ctC\simeq\ctD\). Vedremo presto che un'equivalenza di categorie \(\ctC\simeq\ctD\) induce biiezioni tra gli hom-insiemi di \(\ctC,\ctD\), ma che le classi degli oggetti di queste possono essere una radicalmente più grande dell'altra (per esempio, \(\ctC_0\) può essere una classe propria, e \(\ctD_0\) un insieme; oppure, esistono categorie dove \(\ctC_0\) ha cardinalità arbitrariamente alta, ma \(\ctD_0\) è un singoletto\dots). Questo è un primo indizio che approcciare l'apprendimento della teoria delle categorie avendo la teoria degli insiemi come modello privilegiato può essere fuorviante.
 \begin{definition}[Equivalenza di categorie]\label{funtore_equcat}\index{Equivalenza}\index{Categoria!equivalenza di ---e}
