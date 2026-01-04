@@ -59,17 +59,17 @@ La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetric
 	Sia \(\ctC\) una categoria che ha un oggetto terminale \(\term\). Allora, dati una freccia \(f : X\to Y\), e un oggetto \(A\in \ctC_0\), le condizioni seguenti sono equivalenti:
 	\begin{enumtag}{ot}
 		\item\label{ot_1} la freccia \(f\) è ortogonale a sinistra alla freccia terminale \(A\to \term\);
-		\item\label{ot_2} il funtore \(\varHom{\ctC}(\blank,A)\) manda la freccia \(f\) in una biiezione
+		\item\label{ot_2} il funtore \(\Hom{\ctC}(\blank,A)\) manda la freccia \(f\) in una biiezione
 		\[\begin{tikzcd}
-				\varHom{\ctC}(Y,A) \ar[r, "{g\cmp \blank}"] & \varHom{\ctC}(X,A).
+				\Hom{\ctC}(Y,A) \ar[r, "{g\cmp \blank}"] & \Hom{\ctC}(X,A).
 			\end{tikzcd}\]
 	\end{enumtag}
 	Dualmente, sia \(\ctC\) una categoria con un oggetto iniziale \(\init\). Allora, dati una freccia \(g : A\to B\), e un oggetto \(Y\in\ctC_0\), le condizioni seguenti sono equivalenti:
 	\begin{enumtag}{oi}
 		\item \label{oi_1} la freccia \(g\) è ortogonale a destra alla freccia iniziale \(\init\to Y\);
-		\item \label{oi_2} il funtore \(\varHom{\ctC}(B,\blank)\) manda la freccia \(g\) in una biiezione
+		\item \label{oi_2} il funtore \(\Hom{\ctC}(B,\blank)\) manda la freccia \(g\) in una biiezione
 		\[\begin{tikzcd}
-				\varHom{\ctC}(Y,A) \ar[r, "{\blank\cmp f}"] & \varHom{\ctC}(Y,B).
+				\Hom{\ctC}(Y,A) \ar[r, "{\blank\cmp f}"] & \Hom{\ctC}(Y,B).
 			\end{tikzcd}\]
 	\end{enumtag}
 \end{proposition}
@@ -168,11 +168,11 @@ Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limi
 	\Todo{Esempi di classi ampie, sature, etc. in varie categorie}
 \end{examples}
 \begin{esercizi}
-	\item
-	\item
-	\item
-	\item
-	\item
+	\item \label{eser_facsys_81_1} Sia $\ctC$ una categoria, e $p\in\lort(\Mono[\ctC])$; supponendo che per ogni oggetto $X\in\ctC_0$ esista il prodotto $X\times X$ (una proprietà strettamente più debole dell'esistenza di prodotti binari in $\ctC$!), si dimostri che $p$ è un epi.
+	\item \label{eser_facsys_81_2}
+	\item \label{eser_facsys_81_3}
+	\item \label{eser_facsys_81_4}
+	\item \label{eser_facsys_81_5}
 \end{esercizi}
 \section[Proprietà ed esempi]{Proprietà fondamentali ed esempi}
 \begin{remark}
@@ -189,35 +189,35 @@ Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limi
 	\[\ctL\perp\ctR\qquad \ctL\subseteq\lort\ctR\qquad \rort\ctL\subseteq \ctR\]
 \end{remark}
 \begin{definition}[Prodotto di Leibniz]
-	Siano \(f : A \to B\) e \(g : X\to Y\) due frecce di una categoria \(\ctC\). Il \emph{prodotto di Leibniz} di \(f\) e \(g\), denotato \(f\oast g\), si costruisce a partire dal prodotto fibrato
+	Siano \(f : A \to B\) e \(g : X\to Y\) due frecce di una categoria \(\ctC\). Il \emph{prodotto di Leibniz} di \(f\) e \(g\), denotato \(f\leib g\), si costruisce a partire dal prodotto fibrato
 	\[
 		\begin{tikzcd}
-			\pull {\varHom{\ctC}(A,X)}{\varHom{\ctC}(B,Y)}{\varHom{\ctC}(A,Y)} \ar[r]\ar[d] & \varHom{\ctC}(B,Y) \ar[d, "\blank\cmp f"]\\
-			\varHom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \varHom{\ctC}(A,Y)
+			\pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)} \ar[r]\ar[d] & \Hom{\ctC}(B,Y) \ar[d, "\blank\cmp f"]\\
+			\Hom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \Hom{\ctC}(A,Y)
 		\end{tikzcd}
 	\]
-	e consiste della mappa di confronto \(f\oast g : \varHom{\ctC}(B,X) \to \pull {\varHom{\ctC}(A,X)}{\varHom{\ctC}(B,Y)}{\varHom{\ctC}(A,Y)}\) indotta dalla proprietà universale.
+	e consiste della mappa di confronto \(f\leib g : \Hom{\ctC}(B,X) \to \pull {\Hom{\ctC}(A,X)}{\Hom{\ctC}(B,Y)}{\Hom{\ctC}(A,Y)}\) indotta dalla proprietà universale.
 
-	Diciamo che il prodotto di Leibniz di \(f,g\) è \emph{esatto} se \(f\oast g\) è una biiezione. Questo è equivalente ad affermare che il quadrato
+	Diciamo che il prodotto di Leibniz di \(f,g\) è \emph{esatto} se \(f\leib g\) è una biiezione. Questo è equivalente ad affermare che il quadrato
 	\[
 		\begin{tikzcd}
-			\varHom{\ctC}(B,X) \ar[d]\ar[r,"g\cmp\blank"]& \varHom{\ctC}(B,Y)\ar[d, "\blank\cmp f"]\\
-			\varHom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \varHom{\ctC}(A,Y)
+			\Hom{\ctC}(B,X) \ar[d]\ar[r,"g\cmp\blank"]& \Hom{\ctC}(B,Y)\ar[d, "\blank\cmp f"]\\
+			\Hom{\ctC}(A,X) \ar[r, "g\cmp\blank"'] & \Hom{\ctC}(A,Y)
 		\end{tikzcd}
 	\]
 	è un prodotto fibrato.
 \end{definition}
-Per orientare chi legge, è utile rendere esplicita la definizione del prodotto di Leibniz \(f\oast g\): una freccia \(u : B\to X\) viene mandata nella coppia \((u\cmp f, g\cmp u)\), che appartiene al prodotto fibrato in questione vista l'associatività della composizione: \(g\cmp (u\cmp f) = (g\cmp u)\cmp f\).
+Per orientare chi legge, è utile rendere esplicita la definizione del prodotto di Leibniz \(f\leib g\): una freccia \(u : B\to X\) viene mandata nella coppia \((u\cmp f, g\cmp u)\), che appartiene al prodotto fibrato in questione vista l'associatività della composizione: \(g\cmp (u\cmp f) = (g\cmp u)\cmp f\).
 
-Il prodotto di Leibniz permette di ridefinire la relazione di ortogonalità mediante l'esattezza, ossia l'invertibilità di \(f\oast g\); la dimostrazione del seguente fatto consiste nel riscrivere le due condizioni in modo che entrambe si rifrasino così:
+Il prodotto di Leibniz permette di ridefinire la relazione di ortogonalità mediante l'esattezza, ossia l'invertibilità di \(f\leib g\); la dimostrazione del seguente fatto consiste nel riscrivere le due condizioni in modo che entrambe si rifrasino così:
 \begin{quote}
 	Per ogni coppia di frecce \(u : X\to A\), \(v : Y\to B\) tali che \(g\cmp u=v\cmp f\), esiste un'unica freccia \(a : Y\to A\) tale che \(g\cmp a=v\) e \(a\cmp f=u\).
 \end{quote}
 \begin{proposition}
-	Due frecce \(f,g\) sono ortogonali (cioè \(f\perp g\) nel senso di \ref{def_ortogona}) se e solo se il prodotto di Leibniz \(f\oast g\) è esatto.
+	Due frecce \(f,g\) sono ortogonali (cioè \(f\perp g\) nel senso di \ref{def_ortogona}) se e solo se il prodotto di Leibniz \(f\leib g\) è esatto.
 \end{proposition}
 \begin{proof}
-	Evidente: la condizione su \(a\) in \ref{def_ortogona} si traduce in esistenza (suriettività di \(f\oast g\)) e unicità (iniettività).
+	Evidente: la condizione su \(a\) in \ref{def_ortogona} si traduce in esistenza (suriettività di \(f\leib g\)) e unicità (iniettività).
 \end{proof}
 \begin{definition}[Sistema di prefattorizzazione]
 	\Todo{}
@@ -233,7 +233,7 @@ Il prodotto di Leibniz permette di ridefinire la relazione di ortogonalità medi
 	L'operatore punto e virgola e le sue proprietà
 \end{definition}
 \begin{definition}
-	Sistema di fattorizzazione: due classi, tra loro strettamente ortogonali, tali che \(\ctC_1 = \ctM \fatsemi \ctE\).
+	Sistema di fattorizzazione: due classi, tra loro strettamente ortogonali, tali che \(\ctC_1 = \ctE \fcmp \ctM\).
 \end{definition}
 \Todo{missing figure here}
 % \begin{figure}[h]
