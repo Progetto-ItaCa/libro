@@ -26,33 +26,37 @@ La natura duale dei due enunciati che compongono \ref{init_ha_solo_id} è un fat
 In maniera molto informale, si dice \emph{universale} la proprietà di essere terminale in una opportuna categoria, e dualmente avere una proprietà \emph{couniversale} significa essere iniziale.
 
 Chiaramente questo è impreciso (gli oggetti sono sempre tipati dalla categoria cui appartengono, si veda la nota \ref{fn_tipati} a pagina \pageref{fn_tipati} nel capitolo precedente), e fuorviante se preso troppo alla lettera; si dovrebbe dire che un oggetto \(X\in\ctC_0\) è universale in \(\ctC\) quando è possibile costruire un certo diagramma, e da esso un `cono' la cui `origine' è \(X\), la cui forma somiglia a
-\[\xymatrix@R=0mm{
+\begin{equation}\label{cone}\vcenter{\xymatrix@R=0mm{
 	& Di \\
 	X \ar@{->}[ru] \ar@{->}[r] \ar@{->}[rdd] & Dj \\
 	& \vdots \\
 	& Dk
-	}\]
+}}
+\end{equation}
 che è terminale in una categoria i cui oggetti sono questi `coni' della stessa forma. Al variare del diagramma \(D\) (quanto è complesso il suo dominio, quanto è complessa la sua azione su oggetti e frecce dello stesso), varia la complessità interna dell'oggetto terminale, che riesce a descrivere oggetti molto strutturati (i nuclei di omomorfismi, si veda \ref{ex_lim_kernel}; i grafici di funzioni reali o complesse, si veda \ref{ex_lim_grafici}; ma anche i numeri \(p\)-adici, si veda \ref{ex_lim_padici}; alcuni frattali, si veda \ref{ex_lim_frattali}; etc). L'oggetto \(X\) si dice allora il \emph{limite} del diagramma \(D\).
 
 Dualmente, un oggetto \(X\in\ctC_0\) è \emph{co}universale in \(\ctC\) quando è il bersaglio di un \emph{co}cono \emph{iniziale},
-\[\xymatrix@R=0mm{
+\begin{equation}\label{cocone}\vcenter{\xymatrix@R=0mm{
 	Di \ar@{->}[rd] &  \\
 	Dj \ar@{->}[r] & X \\
 	\vdots &  \\
 	Dk \ar@{->}[ruu] &
-	}\]
+}}\end{equation}
 ossia di un oggetto iniziale in una categoria di coconi per \(D\). L'oggetto \(X\) si dice allora il \emph{colimite} del diagramma \(D\). Anche i colimiti riescono a descrivere oggetti molto strutturati (i numeri naturali, si veda \ref{ex_colim_nat}; i prodotti liberi di gruppi e monoidi, si veda \ref{ex_colim_liberi}; le liste a valori in un alfabeto \(S\), si veda \ref{ex_colim_liste}; i cosiddetti \emph{catamorfismi}, si veda \ref{ex_colim_cata};\dots).
 \paragraph*{Problemi di minimo-massimo.}
 Il punto di vista appena esposto, seppure profondamente utile, tuttavia non è l'unico, né il più pedagogicamente efficace in assoluto. Sarebbe altrettanto valido introdurre la nozione di limite e di colimite come `soluzione' a un problema di `ottimizzazione', o di minimo-massimo:
 \begin{itemize}\index{Estremo inferiore}\index{Estremo superiore}
-	\item Il limite del diagramma \(D : \ctJ\fun\ctC\) è il `massimo dei minoranti' tra diagrammi della forma \eqref{}; in effetti, in un insieme ordinato (che sappiamo essere una categoria per \ref{ord_sonocat}), l'estremo inferiore di un sottoinsieme \(S\subseteq P\) è un elemento \(\inf S\) con la proprietà
-	      \Todo{}
-	\item Dualmente, il colimite del diagramma \(D : \ctJ\fun\ctC\) è il `minimo dei maggioranti' tra diagrammi della forma \eqref{}; in effetti, in un insieme ordinato l'estremo superiore di un sottoinsieme \(S\subseteq P\) è un elemento \(\sup S\) con la proprietà
-	      \Todo{}
+	\item Il limite del diagramma \(D : \ctJ\fun\ctC\) è il `massimo dei minoranti' tra diagrammi della forma \eqref{cone} (dove le frecce sono disuguaglianze); in effetti, in un insieme ordinato (che sappiamo essere una categoria per \ref{ord_sonocat}), l'estremo inferiore di un sottoinsieme \(S\subseteq P\) è un elemento \(\inf S\) con la proprietà
+\[\forall s\in S : \inf S \le s\qquad \forall s\in S : y\le s \Rightarrow y\le \inf S\]
+	\item Dualmente, il colimite del diagramma \(D : \ctJ\fun\ctC\) è il `minimo dei maggioranti' tra diagrammi della forma \eqref{cocone} (dove le frecce sono disuguaglianze); in effetti, in un insieme ordinato l'estremo superiore di un sottoinsieme \(S\subseteq P\) è un elemento \(\sup S\) con la proprietà
+\[\forall s\in S : s\le\sup S \qquad \forall s\in S : s\le y \Rightarrow \sup S\le y.\]
 \end{itemize}
-In ogni insieme ordinato, quindi, la proprietà di essere estremo superiore	o inferiore si esprime come una proprietà universale, e si riduce alla nozione di colimite o limite in una categoria-preordine. La descrizione di limiti e colimiti in una categoria-preordine nel senso generale verrà delineata più in dettaglio in \ref{}, ma invitiamo già chi legge a immaginare come essa si possa sviluppare.\footnote{Un semplice esercizio per cui non serve alcun prerequisito	non elementare, è mostrare i fatti seguenti, che comunque verranno ripetuti più avanti: se \(\le\) è un preordine su \(P\), un oggetto iniziale della categoria \((P,\le)\) è un elemento \(\le\)-minimo di \(P\) o equivalentemente \(\sup \varnothing\); dualmente, un oggetto terminale di \((P,\le)\) è un elemento \(\le\)-massimo di \(P\), o equivalentemente \(\inf\varnothing\); se l'ordine è antisimmetrico, poi, \(\sup\varnothing\) e \(\inf\varnothing\) sono \emph{strettamente} unici quando esistono.}
+\begin{remark}
+	Chi legge dovrebbe ricordare quando nei primissimi minuti di un corso di analisi è stata introdotta la proprietà dell'estremo superiore/inferiore per un sottoinsieme $S\subseteq\bbR$; \emph{quella} è una particolare proprietà (co)universale.
+\end{remark}
+In ogni insieme ordinato, quindi, la nozione di (co)limite nella associata categoria-preordine si riduce alla proprietà dell'estremo superiore	o inferiore. La descrizione di limiti e colimiti in una categoria-preordine nel senso generale verrà delineata più in dettaglio in \ref{}, ma invitiamo già chi legge a immaginare come essa si possa sviluppare.\footnote{Un semplice esercizio per cui non serve alcun prerequisito	non elementare, è mostrare i fatti seguenti, che comunque verranno ripetuti più avanti: se \(\le\) è un preordine su \(P\), un oggetto iniziale della categoria \((P,\le)\) è un elemento \(\le\)-minimo di \(P\) o equivalentemente è, quando esiste, \(\sup \varnothing\); dualmente, un oggetto terminale di \((P,\le)\) è un elemento \(\le\)-massimo di \(P\), o equivalentemente è, quando esiste, \(\inf\varnothing\); se l'ordine è antisimmetrico, poi, \(\sup\varnothing\) e \(\inf\varnothing\) sono \emph{strettamente} unici quando esistono.}
 
-La teoria dei limiti e dei colimiti si può vedere come la teoria di estremi superiori e inferiori, per categorie che non sono preordini (cioè che non sono nell'immagine del funtore di \ref{ord_come_cat}).
+La teoria dei limiti e dei colimiti si può vedere come la teoria di `estremi superiori e inferiori' per categorie che non sono preordini.
 
 \medskip
 Questa filosofia sui limiti tuttavia va al di là della `pura' teoria degli insiemi; la nozione di proprietà universale spiega infatti il motivo per cui (ad esempio) nel definire una topologia sul prodotto cartesiano di due spazi \(X,Y\) la scelta `naturale' sia la topologia prodotto: non è una scelta di comodo né dettata dalla consuetudine, ma \emph{l'unica risposta giusta} se si desidera che lo \emph{spazio} \(X\times Y\) abbia la proprietà universale di un prodotto nella categoria \(\ctTop\). Allo stesso modo, la definizione di proprietà universale spiega
@@ -328,6 +332,11 @@ La dimostrazione ricorda, in spirito, l'argomento che mostra che l'elemento neut
 		\item una notazione troppo vicina a `\(\emptyset\)', `\(\bullet\)' potrebbe suggerire che un oggetto iniziale è sempre concettualizzabile come vuoto (e questo è falso, ce ne sono di infiniti: \ref{} e \ref{}), e che un terminale è sempre concettualizzabile come un singoletto (e questo è falso, ci sono oggetti terminali molto grandi, \ref{} e \ref{}).
 	\end{itemize}
 \end{remark}
+Le sezioni che seguono un primo gruppo di esercizi si sviluppano così: vengono analizzati il prodotto cartesiano e l'unione disgiunta di insiemi con la loro proprietà universale: la seconda costruzione è duale alla prima e si chiama \emph{coprodotto}. Vengono fatti esempi di prodotti e coprodotti in diverse categorie di insiemi strutturati, come gruppi, anelli, algebre, spazi topologici e ordinati. Vengono poi analizzate costruzioni universali più complesse, nella categoria $\ctSet$ e in altri costrutti, dette \emph{equalizzatori} e \emph{coequalizzatori}. La Sezione \ref{} studia la proprietà universale di prodotti e somme in una categoria astratta, e \ref{} analizza `altre forme di limiti e colimiti': prodotti e somme di famiglie arbitrariamente grandi (ma limitate da un insieme) di oggetti, (co)equalizzatori in categorie astratte. 
+
+La sezione \ref{} raccoglie esempi di limiti e colimiti che descrivono oggetti matematici che chi legge ha certamente incrociato; questo serve a dimostrare l'ubiquità della nozione di proprietà universale in matematica. Su questa stessa nota, la sezione \ref{} mostra come diverse costruzioni del capitolo precedente sono limiti o colimiti: un esempio su tutti è il funtore dei sottogetti di \ref{}, la cui esistenza nella categoria degli insiemi è facilmente giustificabile da un punto di vista elementare, ma che in una categoria astratta generica richiede la presenza di prodotti fibrati. 
+
+Il resto del capitolo è occupato dalla teoria generale dei (co)limiti: teoremi di struttura come \ref{}, e controesempi all'esistenza di `tutti' i limiti \ref{} sono importanti pietre angolari della teoria. Alcuni funtori sono `continui' (mandano limiti in limiti) o `cocontinui' (mandano colimiti in colimiti), o hanno maniere di interagire coi colimiti più sofisticate. La questione viene analizzata nella sezione \ref{}.
 \begin{esercizi}
 	\item Ricordando che \(\bbZ\) e \(\bbB\) sono iniziali, rispettivamente, nella categoria degli anelli unitari e delle algebre di Boole, determinare gli insiemi
 	\[\Hom{\ctRing_1}(R,\bbZ) \qquad \Hom{\ctBAlg}(H,\bbB)\]
@@ -685,22 +694,6 @@ In \(\ctSet\), ad esempio, il prodotto di due funzioni \(f,g\) fa esattamente qu
 \end{example}
 \color{black}
 
-\subsection{Prodotti \(I\)-ari}
-
-
-
-\bigskip
-esempi grandi: in Set, Top, k-Vect, gruppi, anelli etc., Cat, e molte altre categorie del cap 1
-
-esempi piccoli: un (pre)ordine, (ordini, insiemi di parti etc...)
-
-non esempi: categorie senza prodotti, prodotti non categoriali (tensore --che comunque ha una proprietà universale)
-
-unicità
-
-prodotto di famiglie
-
-oggetti terminali.
 
 % \section{coprodotti binari, come sopra. finiti, infiniti.}
 
@@ -712,6 +705,19 @@ oggetti terminali.
 	\item
 \end{esercizi}
 \section{Altre forme di limiti e colimiti}
+Iniziamo coi prodotti di taglia arbitraria (piccola):
+
+esempi grandi: in Set, Top, k-Vect, gruppi, anelli etc., Cat, e molte altre categorie del cap 1
+
+esempi piccoli: un (pre)ordine, (ordini, insiemi di parti etc...)
+
+non esempi: categorie senza prodotti, prodotti non categoriali (tensore --che comunque ha una proprietà universale)
+
+unicità
+
+prodotto di famiglie
+
+oggetti terminali.
 
 equalizzatori e coequalizzatori (coppie nucleo e il quoziente di una relazione di equivalenza interna, fattorizzazione di un morfismo)
 
@@ -795,28 +801,7 @@ perché si chiamano limiti?
 \begin{theorem}
 	Teorema di Knaster-Tarski (l'esistenza di un punto fisso è determinata da una `prop univ')
 \end{theorem}
-\begin{theorem}
-	Teorema di struttura sui limiti. Limiti in funzione di altri limiti. TFAE:
-	\begin{itemize}
-		\item 	Cocompleteness,
-		\item having coproducts and coequalizers,
-		\item having coproducts and pushouts,
-		\item having filtered colimits, finite coproducts and pushouts, and
-		\item having filtered colimits, pushouts and an initial object.
-		\item ...?
-	\end{itemize}
-	Kelly closure of a class of colimits
-\end{theorem}
-Il teorema di struttura è molto utile nel decomporre un limite o colimite di forma complessa in un co/equalizzatore di mappe tra co/prodotti, o in un prodotto fibrato o somma amalgamata, ad esempio...
-\begin{example}
-	Triqualizzatore
-\end{example}
-\begin{example}
-	Prodotto fibrato `ampio'
-\end{example}
-\begin{example}
-	Somma amalgamata `ampia'
-\end{example}
+
 
 \section{Costruzioni che usano limiti}
 \Todo{molti esempi disseminati per il capitolo 1 sono stati architettati per evitare di usare il linguaggio dei limiti;	ora diventano molto più snelli. Metto qui un po' di esempi senza pretesa di ordine (andranno spostati qua e là in ogni caso).}
@@ -862,6 +847,29 @@ Il teorema di struttura è molto utile nel decomporre un limite o colimite di fo
 
 \section{Teoria generale dei limiti}
 
+\begin{theorem}
+	Teorema di struttura sui limiti. Limiti in funzione di altri limiti. TFAE:
+	\begin{itemize}
+		\item 	Cocompleteness,
+		\item having coproducts and coequalizers,
+		\item having coproducts and pushouts,
+		\item having filtered colimits, finite coproducts and pushouts, and
+		\item having filtered colimits, pushouts and an initial object.
+		\item ...?
+	\end{itemize}
+	Kelly closure of a class of colimits
+\end{theorem}
+Il teorema di struttura è molto utile nel decomporre un limite o colimite di forma complessa in un co/equalizzatore di mappe tra co/prodotti, o in un prodotto fibrato o somma amalgamata, ad esempio...
+\begin{example}
+	Triqualizzatore
+\end{example}
+\begin{example}
+	Prodotto fibrato `ampio'
+\end{example}
+\begin{example}
+	Somma amalgamata `ampia'
+\end{example}
+
 Def di limite mediante coni e coconi
 
 rappresentabilità dei (co)limiti, esplicitamente.
@@ -883,7 +891,17 @@ thm: una categoria piccola (co)completa è un poset (Freyd).
 Epimorfismi come colimiti; monomorfismi come limiti. Chiusura degli epi per colimiti, chiusura dei mono per limiti. Coincidenza di alcune classi di mono-epi in presenza di co/limiti.
 
 oss su coequalizzatori riflessivi; epi regolari; coppia nucleo, coppia conucleo; esattezza.
-
+\begin{lemma}
+	Sia $\ctC$ una categoria. Ogni freccia $m : A\to X$ tale che esista una coppia $f,g : X \to Y$ di frecce parallele e un diagramma equalizzatore 
+	\[bla\]
+	è un mono. Dualmente, data $p : Y\to B$, se esiste una simile coppia $f,g : X \to Y$ e un diagramma coequalizzatore
+	\[bla\]
+	allora $p$ è epi.
+\end{lemma}
+Questo motiva la definizione seguente.
+\begin{definition}[Epi e mono regolare]
+	\Todo{epi regolare}
+\end{definition}
 \subsection{}
 
 Interazioni tra limiti e colimiti: commutatività di colimiti filtrati e limiti finiti, commutatività di colimiti setacciati e prodotti. Polinomi (`limiti e colimiti interagiscono per formare un polinomio')
