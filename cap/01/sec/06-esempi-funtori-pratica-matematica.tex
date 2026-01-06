@@ -461,93 +461,93 @@ Il funtore di realizzazione topologica di simplessi permette di definire il \emp
 \end{itemize}
 \begin{figure}
 	\begin{center}
-    \begin{tikzpicture}[
-      x=1em, y=1em,
-      dot/.style={
-          circle,
-          fill=#1,
-          inner sep=0pt,
-          outer sep=2pt,
-          minimum size=4pt,
-          draw=none,
-        },
-      ]
-      \def\twoSimplex{
-        \begin{scope}
-          \coordinate (d22) at ( 90:3);
-          \coordinate (d20) at (210:3);
-          \coordinate (d21) at (-30:3);
-          \node at (d22) [above=.2em,font=\footnotesize] {$\begin{smat}0\\0\\1\end{smat}$};
-          \node at (d20) [left=.2em,font=\footnotesize] {$\begin{smat}1\\0\\0\end{smat}$};
-          \node at (d21) [right=.2em,font=\footnotesize] {$\begin{smat}0\\1\\0\end{smat}$};
-          \draw [thick,draw=none,fill=gray!30] (d22) -- (d21) -- (d20) -- cycle;
-          \node [dot] at (d22) {};
-          \node [dot] at (d21) {};
-          \node [dot] at (d20) {};
-        \end{scope}
-        \begin{scope}[yshift=-6em]
-          \pgfmathsetmacro{\halfS}{sqrt(3)/2}
-          \coordinate (d12) at (\halfS,0);
-          \coordinate (d11) at (3*\halfS,0);
-          \coordinate (d10) at (-3*\halfS,0);
-          \node at (d10) [left=.2em,font=\footnotesize] {$\begin{smat}1\\0\end{smat}$};
-          \node at (d11) [right=.2em,font=\footnotesize] {$\begin{smat}0\\1\end{smat}$};
-          \draw [thick,gray] (d11) -- (d10);
-          \node [dot] at (d10) {};
-          \node [dot] at (d11) {};
-        \end{scope}
-      }
-      \begin{scope}[xshift=0]
-        \twoSimplex
-        \foreach \f in {0.0,0.2,...,1.0} {
-        \coordinate (d2x) at (barycentric cs:d22=1-\f,d20=\f,d21=0) {};
-        \coordinate (d1x) at (barycentric cs:d12=1-\f,d10=\f,d11=0) {};
-          \node [dot=ibmBlue] at (d2x) {};
-          \node [dot=ibmMagenta] at (d1x) {};
-          \draw[-latex,shorten >=3pt, shorten <=3pt] (d2x) -- (d1x);
-        }
-        \draw[ibmBlue, thick]
-          (barycentric cs:d22=1,d20=0,d21=0) --
-          (barycentric cs:d22=0,d20=1,d21=0);
-        \draw[ibmMagenta, thick]
-          (barycentric cs:d12=1,d10=0,d11=0) --
-          (barycentric cs:d12=0,d10=1,d11=0);
-      \end{scope}
-      \begin{scope}[xshift=12em]
-        \twoSimplex
-        \foreach \f in {0.0,0.2,...,1.0} {
-        \coordinate (d2x) at (barycentric cs:d22=\f,d20=0,d21=1-\f) {};
-        \coordinate (d1x) at (barycentric cs:d12=\f,d10=0,d11=1-\f) {};
-          \node [dot=ibmBlue] at (d2x) {};
-          \node [dot=ibmMagenta] at (d1x) {};
-          \draw[-latex,shorten >=3pt, shorten <=3pt] (d2x) -- (d1x);
-        }
-        \draw[ibmBlue, thick]
-          (barycentric cs:d22=0,d20=0,d21=1) --
-          (barycentric cs:d22=1,d20=0,d21=0);
-        \draw[ibmMagenta, thick]
-          (barycentric cs:d12=0,d10=0,d11=1) --
-          (barycentric cs:d12=1,d10=0,d11=0);
-      \end{scope}
-      \begin{scope}[xshift=24em]
-        \twoSimplex
-        \foreach \f in {0.0,0.2,...,1.0} {
-          \coordinate (d2x) at (barycentric cs:d22=0.5*\f,d20=1-\f,d21=0.5*\f) {};
-          \coordinate (d1x) at (barycentric cs:d12=0.5*\f,d10=1-\f,d11=0.5*\f) {};
-            \node [dot=ibmBlue] at (d2x) {};
-            \node [dot=ibmMagenta] at (d1x) {};
-            \draw[-latex,shorten >=3pt, shorten <=3pt] (d2x) -- (d1x);
-        }
-        \draw[ibmBlue, thick]
-          (barycentric cs:d22=0,d20=1,d21=0) --
-          (barycentric cs:d22=0.5,d20=0,d21=0.5);
-        \draw[ibmMagenta, thick]
-          (barycentric cs:d12=0,d10=1,d11=0) --
-          (barycentric cs:d12=0.5,d10=0,d11=0.5);
-      \end{scope}
-    \end{tikzpicture}
+		\begin{tikzpicture}[
+				x=1em, y=1em,
+				dot/.style={
+						circle,
+						fill=#1,
+						inner sep=0pt,
+						outer sep=2pt,
+						minimum size=4pt,
+						draw=none,
+					},
+			]
+			\def\twoSimplex{
+				\begin{scope}
+					\coordinate (d22) at ( 90:3);
+					\coordinate (d20) at (210:3);
+					\coordinate (d21) at (-30:3);
+					\node at (d22) [above=.2em,font=\footnotesize] {$\begin{smat}0\\0\\1\end{smat}$};
+					\node at (d20) [left=.2em,font=\footnotesize] {$\begin{smat}1\\0\\0\end{smat}$};
+					\node at (d21) [right=.2em,font=\footnotesize] {$\begin{smat}0\\1\\0\end{smat}$};
+					\draw [thick,draw=none,fill=gray!30] (d22) -- (d21) -- (d20) -- cycle;
+					\node [dot] at (d22) {};
+					\node [dot] at (d21) {};
+					\node [dot] at (d20) {};
+				\end{scope}
+				\begin{scope}[yshift=-6em]
+					\pgfmathsetmacro{\halfS}{sqrt(3)/2}
+					\coordinate (d12) at (\halfS,0);
+					\coordinate (d11) at (3*\halfS,0);
+					\coordinate (d10) at (-3*\halfS,0);
+					\node at (d10) [left=.2em,font=\footnotesize] {$\begin{smat}1\\0\end{smat}$};
+					\node at (d11) [right=.2em,font=\footnotesize] {$\begin{smat}0\\1\end{smat}$};
+					\draw [thick,gray] (d11) -- (d10);
+					\node [dot] at (d10) {};
+					\node [dot] at (d11) {};
+				\end{scope}
+			}
+			\begin{scope}[xshift=0]
+				\twoSimplex
+				\foreach \f in {0.0,0.2,...,1.0} {
+						\coordinate (d2x) at (barycentric cs:d22=1-\f,d20=\f,d21=0) {};
+						\coordinate (d1x) at (barycentric cs:d12=1-\f,d10=\f,d11=0) {};
+						\node [dot=ibmBlue] at (d2x) {};
+						\node [dot=ibmMagenta] at (d1x) {};
+						\draw[-latex,shorten >=3pt, shorten <=3pt] (d2x) -- (d1x);
+					}
+				\draw[ibmBlue, thick]
+				(barycentric cs:d22=1,d20=0,d21=0) --
+				(barycentric cs:d22=0,d20=1,d21=0);
+				\draw[ibmMagenta, thick]
+				(barycentric cs:d12=1,d10=0,d11=0) --
+				(barycentric cs:d12=0,d10=1,d11=0);
+			\end{scope}
+			\begin{scope}[xshift=12em]
+				\twoSimplex
+				\foreach \f in {0.0,0.2,...,1.0} {
+						\coordinate (d2x) at (barycentric cs:d22=\f,d20=0,d21=1-\f) {};
+						\coordinate (d1x) at (barycentric cs:d12=\f,d10=0,d11=1-\f) {};
+						\node [dot=ibmBlue] at (d2x) {};
+						\node [dot=ibmMagenta] at (d1x) {};
+						\draw[-latex,shorten >=3pt, shorten <=3pt] (d2x) -- (d1x);
+					}
+				\draw[ibmBlue, thick]
+				(barycentric cs:d22=0,d20=0,d21=1) --
+				(barycentric cs:d22=1,d20=0,d21=0);
+				\draw[ibmMagenta, thick]
+				(barycentric cs:d12=0,d10=0,d11=1) --
+				(barycentric cs:d12=1,d10=0,d11=0);
+			\end{scope}
+			\begin{scope}[xshift=24em]
+				\twoSimplex
+				\foreach \f in {0.0,0.2,...,1.0} {
+						\coordinate (d2x) at (barycentric cs:d22=0.5*\f,d20=1-\f,d21=0.5*\f) {};
+						\coordinate (d1x) at (barycentric cs:d12=0.5*\f,d10=1-\f,d11=0.5*\f) {};
+						\node [dot=ibmBlue] at (d2x) {};
+						\node [dot=ibmMagenta] at (d1x) {};
+						\draw[-latex,shorten >=3pt, shorten <=3pt] (d2x) -- (d1x);
+					}
+				\draw[ibmBlue, thick]
+				(barycentric cs:d22=0,d20=1,d21=0) --
+				(barycentric cs:d22=0.5,d20=0,d21=0.5);
+				\draw[ibmMagenta, thick]
+				(barycentric cs:d12=0,d10=1,d11=0) --
+				(barycentric cs:d12=0.5,d10=0,d11=0.5);
+			\end{scope}
+		\end{tikzpicture}
 	\end{center}
-	\caption{Rappresentazione di una codegenerazione topologica \(|\sigma_n^i|	: |\Delta^{n+1}|\to |\Delta^n|\) che agisce sulle coordinate baricentriche di un simplesso geometrico. Viene disegnata l'immagine di una linea mediante la matrice di \(|\sigma_n^i|\).}\label{fig_codegen_top}
+	\caption{Rappresentazione della codegenerazione topologica \(|\sigma_1^1|	: |\Delta^{2}|\to |\Delta^1|\) che agisce sulle coordinate baricentriche di un simplesso geometrico \(\Delta^2\). Viene disegnata l'immagine di una linea mediante la matrice di \(|\sigma_1^1|\). Si noti come \(|\sigma_1^1|\) manda il lato \(\left[\begin{osmat}1\\0\\0\end{osmat}\begin{osmat}0\\0\\1\end{osmat}\right]\) nei primi \(\frac 23\) del segmento \([\begin{osmat}1\\0\end{osmat}\begin{osmat}0\\1\end{osmat}]\), e il lato \(\left[\begin{osmat}0\\0\\1\end{osmat}\begin{osmat}0\\0\\1\end{osmat}\right]\) nel restante \(\frac 13\).}\label{fig_codegen_top}
 \end{figure}
 \begin{definition}\label{def_insieme_globulare}\index{Insieme!--- globulare}\index{Insieme globulare}
 	\index{Insieme!--- globulare}
