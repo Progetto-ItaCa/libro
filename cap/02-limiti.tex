@@ -903,16 +903,83 @@ Epimorfismi come colimiti; monomorfismi come limiti. Chiusura degli epi per coli
 oss su coequalizzatori riflessivi; epi regolari; coppia nucleo, coppia conucleo; esattezza.
 \begin{lemma}
 	Sia \(\ctC\) una categoria. Ogni freccia \(m : A\to X\) tale che esista una coppia \(f,g : X \to Y\) di frecce parallele e un diagramma equalizzatore
-	\[bla\]
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJBIl0sWzEsMCwiWCJdLFsyLDAsIlkiXSxbMSwyLCJmIiwwLHsib2Zmc2V0IjotMn1dLFsxLDIsImciLDIseyJvZmZzZXQiOjJ9XSxbMCwxLCJtIiwyXV0=
+\[\begin{tikzcd}[ampersand replacement=\&]
+	A \& X \& Y
+	\arrow["m"', from=1-1, to=1-2]
+	\arrow["f", shift left=1, from=1-2, to=1-3]
+	\arrow["g"', shift right=1, from=1-2, to=1-3]
+\end{tikzcd}\]
 	è un mono. Dualmente, data \(p : Y\to B\), se esiste una simile coppia \(f,g : X \to Y\) e un diagramma coequalizzatore
-	\[bla\]
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzEsMCwiWSJdLFsyLDAsIkIiXSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMn1dLFswLDEsImciLDIseyJvZmZzZXQiOjJ9XSxbMSwyLCJxIiwyXV0=
+\[\begin{tikzcd}[ampersand replacement=\&]
+	X \& Y \& B
+	\arrow["f", shift left=1, from=1-1, to=1-2]
+	\arrow["g"', shift right=1, from=1-1, to=1-2]
+	\arrow["p"', from=1-2, to=1-3]
+\end{tikzcd}\]
 	allora \(p\) è epi.
 \end{lemma}
+\begin{proof}
+	Mostriamo il primo enunciato, il secondo è duale. Se $m = \eq(f,g)$, e $s,t : Z \to A$ sono tali che $h = m \cmp s = m \cmp t$, allora abbiamo un diagramma 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzEsMCwiWCJdLFsyLDAsIlkiXSxbMCwxLCJaIl0sWzAsMSwibSIsMl0sWzEsMiwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMSwyLCJnIiwyLHsib2Zmc2V0IjoxfV0sWzMsMCwicyIsMCx7Im9mZnNldCI6LTF9XSxbMywwLCJ0IiwyLHsib2Zmc2V0IjoxfV0sWzMsMSwiaCIsMl1d
+\[\begin{tikzcd}[ampersand replacement=\&]
+	A \& X \& Y \\
+	Z
+	\arrow["m"', from=1-1, to=1-2]
+	\arrow["f", shift left, from=1-2, to=1-3]
+	\arrow["g"', shift right, from=1-2, to=1-3]
+	\arrow["s", shift left, from=2-1, to=1-1]
+	\arrow["t"', shift right, from=2-1, to=1-1]
+	\arrow["h"', from=2-1, to=1-2]
+\end{tikzcd}\]
+	ma da ciò segue che $u,v$ sono entrambe fattorizzazioni di $h$	attraverso il dominio $\eq(f,g)_0$ di $m$, e dalla proprietà universale deve seguire $s=t$; dunque $m$ è mono.
+\end{proof}
 Questo motiva la definizione seguente.
-\begin{definition}[Epi e mono regolare]
-	\Todo{epi regolare}
+\begin{definition}[Epi e mono regolare]\label{def_epi_mono_regolari}\index{Monomorfismo!--- regolare}\index{Epimorfismo!--- regolare}
+	Sia $\ctC$ una	categoria.
+\begin{itemize}
+	\item Se una freccia $m :A \to X$ soddisfa l'ipotesi del lemma precedente, allora $m$ è detta un \emph{mono regolare}.
+	\item Dualmente, se una freccia $p : Y \to B$	soddisfa l'ipotesi del lemma precedente, allora $p$ è detta un \emph{epi regolare}.
+\end{itemize}
 \end{definition}
-\subsection{}
+\begin{definition}[Categoria regolare]\label{def_cat_regolare}\index{Categoria!--- regolare}
+	\color{red}
+	Una categoria $\ctC$ è detta \emph{regolare} se:
+	\begin{itemize}
+		\item ha tutti i prodotti finiti;
+		\item ha tutti i coequalizzatori dei mono;
+		\item gli epi sono stabili per pullback, ovvero il pullback di un epi lungo una qualsiasi freccia esiste ed è ancora un epi.
+	\end{itemize}
+\end{definition}
+\begin{remark}
+	La nozione di epi regolare è l'ultima	che ci serve per stabilire la `gerarchia delle frecce epi' (split epi \(\implies\)	epi regolare \(\implies\)	epi forte \(\implies\)	epi estremale, e analogamente per i mono). La situazione è descritta nella Figura \ref{fig_gerarchia} insieme ad una schematizzazione delle ipotesi a cui le inclusioni si possono invertire. Viene usata la notazione di \ref{}, cioè la definizione di classe \emph{ortogonale} a una classe di frecce, ma non si tratta di un concetto nuovo rispetto a \ref{mepi_forte}.\Todo{aggiungere le condizioni a cui classi di epi coincidono}
+\end{remark}
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}[scale=1.1]
+  % Outer to inner boxes
+  \fill[gray!5,rounded corners] (-4,-1.2) rectangle (5,1.2);
+  \node[font=\footnotesize,above] at (4.5,0.0) {epi};
+
+  \fill[gray!10,rounded corners] (-3.2,-1.2) rectangle (4,1.2);
+  \node[font=\footnotesize,above] at (3.2,0.0) {estremale};
+
+  \fill[gray!20,rounded corners] (-2.4,-1.4) rectangle (2.4,1.2);
+  \node[font=\footnotesize] at (0,-1.7) {$\lort(\Mono[\ctC])$};
+  \fill[gray!30,rounded corners] (-2.4,-1.2) rectangle (2.4,1.2);
+  \node[font=\footnotesize] at (0,1) {forte};
+
+  \fill[gray!40,rounded corners] (-1.6,-0.8) rectangle (1.6,0.8);
+  \node[font=\footnotesize] at (0,0.6) {regolare};
+
+  \fill[gray!50,rounded corners] (-0.8,-0.4) rectangle (0.8,0.4);
+  \node[font=\footnotesize] at (0,0) {spezzante};
+\end{tikzpicture}
+	\end{center}
+	\caption{Gerarchia delle classi di epimorfismi in una categoria \(\ctC\). Le inclusioni si possono invertire sotto le ipotesi indicate. Le classi $\Epi[\ctC]^s$ degli epi forti di \ref{} e l'ortogonale sinistro $\lort(\Mono[\ctC])$ sono `essenzialmente sempre' coincidenti nei casi reali, ma \ref{} è un controesempio. Ipotesi opportune su $\ctC$ rovesciano alcune di queste inclusioni: \Todo{}}\label{fig_gerarchia}
+\end{figure}
+\subsection{Interazioni tra limiti e colimiti, completamenti}
 
 Interazioni tra limiti e colimiti: commutatività di colimiti filtrati e limiti finiti, commutatività di colimiti setacciati e prodotti. Polinomi (`limiti e colimiti interagiscono per formare un polinomio')
 
