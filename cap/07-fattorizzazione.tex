@@ -82,7 +82,7 @@ La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetric
 \begin{remark}\label{perche_ortogonale}
 	\Todo{Diverse intuizioni sulla nomenclatura `ortogonale'.}
 
-	Una intuizione a proposito del nome `ortogonale' scelto per \ref{} viene dall'algebra lineare: due sottospazi \(U,W\) di uno stesso spazio vettoriale euclideo $(V,\cdot)$ sono in \emph{somma ortogonale} (scritto \(U\perp W\)) se \(u\cdot w=0\) per ogni \((u,w)\in U\times W\); questo è equivalente alla condizione \(U\le W^\perp\), o alla condizione \(W\le U^\perp\), dove per un sottospazio \(Z\) si usa il prodotto scalare per definire \(Z^\perp = \{v\in V\mid \forall z\in Z,\,z\cdot v=0\}\). Questa analogia formale verrà sostanziata in \ref{} dove vedremo che mandare una classe di frecce nel suo ortogonale definisce un operatore di chiusura (così come accade per l'ortogonale di sottospazi vettoriali di $(V,\cdot)$).
+	Una intuizione a proposito del nome `ortogonale' scelto per \ref{def_ortogona} viene dall'algebra lineare: due sottospazi \(U,W\) di uno stesso spazio vettoriale euclideo $(V,\cdot)$ sono in \emph{somma ortogonale} (scritto \(U\perp W\)) se \(u\cdot w=0\) per ogni \((u,w)\in U\times W\); questo è equivalente alla condizione \(U\le W^\perp\), o alla condizione \(W\le U^\perp\), dove per un sottospazio \(Z\) si usa il prodotto scalare per definire \(Z^\perp = \{v\in V\mid \forall z\in Z,\,z\cdot v=0\}\). Questa analogia formale verrà sostanziata in \ref{} dove vedremo che mandare una classe di frecce nel suo ortogonale definisce un operatore di chiusura (così come accade per l'ortogonale di sottospazi vettoriali di $(V,\cdot)$).
 
 	Una analogia meno formale ma suggestiva: grazie a \ref{ort_to_terminale} la relazione di ortogonalità può essere considerata tra una freccia e un \emph{oggetto}. Da qui\dots
 	%   It means X
@@ -113,7 +113,7 @@ La relazione di ortogonalità è molto lontana dall'essere riflessiva, simmetric
 \end{remark}
 Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limiti, cancellative a sinistra (destra, bilatere).
 \begin{definition}
-	Una \emph{successione transfinita} di frecce in una categoria \(\ctC\) consiste di un funtore \(f : \ctOrd \to \ctC\), dove \(\ctOrd\) è la categoria di \ref{}, che preserva i colimiti; in parole semplici, una successione transfinita in \(\ctC\) consiste di una successione di oggetti \(X_\lambda\), uno per ogni ordinale \(\lambda\), e di frecce
+	Una \emph{successione transfinita} di frecce in una categoria \(\ctC\) consiste di un funtore \(f : \ctOrd \fun \ctC\), dove \(\ctOrd\) è la categoria di \ref{}, che preserva i colimiti; in parole semplici, una successione transfinita in \(\ctC\) consiste di una successione di oggetti \(X_\lambda\), uno per ogni ordinale \(\lambda\), e di frecce
 	\[
 		\begin{tikzcd}
 			X_0 \ar[r] & X_1\ar[r] & X_2 \ar[r]& \dots \ar[r] & X_\alpha \ar[r] & X_{\alpha+1}\ar[r] & \dots
@@ -121,13 +121,13 @@ Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limi
 	\]
 	tale che per ogni ordinale limite \(\lambda = \colim_{\beta<\lambda}\beta\) si abbia che \(X_\lambda\cong \colim_{\beta < \lambda} X_\beta\). Le frecce di questa catena sono quindi essenzialmente di due tipi:
 	\begin{itemize}
-		\item \(X_\alpha \to X_{\alpha+1}\) ogni volta che \(\beta=\alpha+1\) è un ordinale successore;
+		\item \(X_\alpha \fun X_{\alpha+1}\) ogni volta che \(\beta=\alpha+1\) è un ordinale successore;
 		\item frecce da un ordinale \(\theta<\lambda\) dentro l'`oggetto limite' \(\colim_{\beta<\lambda}X_\beta\cong X_\lambda\).
 	\end{itemize}
-	Spesso si limita la taglia di queste successioni a uno specifico ordinale limite \(\lambda\), cioè si considerano solo funtori \(\ctOrd_{<\lambda}\to\ctC\) (in questo modo, la categoria delle successioni transfinite \(\ctOrd \to \ctC\) è legittima); in questo caso parliamo di una \emph{\(\lambda\)-successione in \(\ctC\)}. Data una (\(\lambda\)-)successione \(f : X_0\to X_1 \to \dots\) chiamiamo la sua \emph{composizione} l'unica freccia \(X_0\to \colim_{\beta<\lambda} X_\beta\).
+	Spesso si limita la taglia di queste successioni a uno specifico ordinale limite \(\lambda\), cioè si considerano solo funtori \(\ctOrd_{<\lambda}\fun\ctC\) (in questo modo, la categoria delle successioni transfinite \(\ctOrd \fun \ctC\) è legittima); in questo caso parliamo di una \emph{\(\lambda\)-successione in \(\ctC\)}. Data una (\(\lambda\)-)successione \(f : X_0\to X_1 \to \dots\) chiamiamo la sua \emph{composizione} l'unica freccia \(X_0\to \colim_{\beta<\lambda} X_\beta\).
 \end{definition}
 \begin{proposition}
-	Se una \(\omega\)-successione \(f : \ctOrd_{<\omega}\to\ctSet\) ha la proprietà che ogni \(X_n \to X_{n+1}\) è una funzione iniettiva, è iniettiva anche la composizione transfinita \(f_\infty : X_0\to \colim_{n<\omega} X_n\).
+	Se una \(\omega\)-successione \(f : \ctOrd_{<\omega}\fun\ctSet\) ha la proprietà che ogni \(X_n \to X_{n+1}\) è una funzione iniettiva, è iniettiva anche la composizione transfinita \(f_\infty : X_0\to \colim_{n<\omega} X_n\).
 \end{proposition}
 \begin{proof}
 	La mappa \(f_\infty\) è definita dalla proprietà universale del colimite \(\colim_{n<\omega} X_n\); se \(f_\infty(x)=f_\infty(x')\), allora esiste un \(n<\omega\) tale che \(f_{0n}(x) = f_{:n}(x')\) dove \(f_{:n}\) è la funzione composta
@@ -136,10 +136,10 @@ Miscellanea di definizioni: classi ampie, sature, cellulari, chiuse per (co)limi
 		\end{tikzcd}\]
 	che è iniettiva; allora, \(x=x'\).
 
-	(Evidentemente un argomento simile dimostra, per induzione transfinita, che la composizione di ogni \(\lambda\)-successione \(f : \ctOrd_{<\lambda}\to\ctSet\) tale che ogni \(f_\alpha\) sia un mono è ancora un mono.)
+	(Evidentemente un argomento simile dimostra, per induzione transfinita, che la composizione di ogni \(\lambda\)-successione \(f : \ctOrd_{<\lambda}\fun\ctSet\) tale che ogni \(f_\alpha\) sia un mono è ancora un mono.)
 \end{proof}
 \begin{definition}
-	Una classe di frecce \(\ctK\subseteq\ctC_1\) di una category \(\ctC\) si dice \emph{chiusa per composizioni transfinite} se, per ogni \(\lambda\)-successione \(f : \ctOrd_{<\lambda}\to\ctK\) la composizione transfinita \(f_{:\lambda} : X_0\to \colim_{\alpha < \lambda} X_\alpha\) è ancora una freccia di \(\ctK\).
+	Una classe di frecce \(\ctK\subseteq\ctC_1\) di una category \(\ctC\) si dice \emph{chiusa per composizioni transfinite} se, per ogni \(\lambda\)-successione \(f : \ctOrd_{<\lambda}\fun\ctK\) la composizione transfinita \(f_{:\lambda} : X_0\to \colim_{\alpha < \lambda} X_\alpha\) è ancora una freccia di \(\ctK\).
 \end{definition}
 \begin{definition}[Classi speciali di frecce]
 	Sia \(\ctC\) una categoria. Una classe di frecce \(\ctK\subseteq\ctC_1\) si dice
