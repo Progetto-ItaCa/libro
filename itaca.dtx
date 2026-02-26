@@ -358,7 +358,6 @@
 \def\xfun#1{\xlongrightarrow{#1}}
 \def\xnat#1{\xRightarrow{#1}}
 
-\def\genArrow{\{\to\}}
 
 % == categorie che hanno un nome
 \newcommand{\cate}[1]{\mathbf{#1}}
@@ -386,8 +385,15 @@
 \newcommand{\term}{\textbf{1}}
 
 \let\toto\rightrightarrows
-\newcommand{\genAArrow}{\{\toto\}}
-\def\genRG{\{\toto{\rotatebox[origin=c]{90}{$\circlearrowleft$}\}}}
+
+\newcommand{\wrapSymbol}[1]{
+  {\setlength{\fboxsep}{2pt}
+   \colorbox{gray!20}{$#1$}}
+}
+
+\def\genArrow{\wrapSymbol{\to}}
+\newcommand{\genAArrow}{\wrapSymbol{\toto}}
+\def\genRG{\wrapSymbol{\toto\unkern\curvearrowleft}}
 \NewDocumentCommand{\turk}{ O{S} }{\{0 \toto^#1 1\}}
 \newcommand{\id}{\mathrm{id}}
 \NewDocumentCommand{\Id}{O{}}{\mathrm{id}_{#1}}
