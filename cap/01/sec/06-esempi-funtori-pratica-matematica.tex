@@ -209,17 +209,17 @@
 \end{figure}
 \begin{example}[Realizzare \(\ctMat\) in \(\ctVect\)]\index{Funtore!--- matrici reali}
 	La categoria delle matrici \(\ctMat\) è stata definita in \ref{ex_cat_matrici}; la categoria \(\ctVect\) è stata definita tra gli esempi di \ref{varie_categorie_nella_pratica}. Abbiamo già osservato che \(\ctMat\) si ottiene da \(\ctVect\) scegliendo un solo oggetto per ogni dimensione, e questo definisce un funtore ovvio \(\ctMat \to \ctVect\) (mandando \(n\) in \(\bbF^n\) e una matrice \(A\) nell'applicazione lineare che agisce come \(A\) nella base canonica). Esiste anche un funtore nella direzione opposta,
-	\[\dmFun{Q}{\ctVect}{\ctMat}\]
+	\[\dmFun{\dim}{\ctVect}{\ctMat}\]
 	che assegna a uno spazio vettoriale \(V\) la sua dimensione (rispetto a una base scelta), e ad una mappa \(\bbF\)-lineare \(f : V\to W\) tra spazi vettoriali la matrice di \(f\) nelle basi scelte su \(V\) e \(W\).
 
 	Più precisamente, la base \(b(V)\) è stata scelta per determinare un isomorfismo \(\theta_V : V \to \bbF^n\) (se \(n=\dim_\bbF V)\), e il quadrato di applicazioni lineari
 	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJWIl0sWzAsMSwiVyJdLFsxLDAsIlxcYmJGXm4iXSxbMSwxLCJcXGJiRl5tIl0sWzAsMSwiZiIsMl0sWzAsMiwiXFx0aGV0YV9WIl0sWzEsMywiXFx0aGV0YV9XIiwyXSxbMiwzLCJRZiJdXQ==
 	\[\begin{tikzcd}[cramped]
-			V & {\bbF^n} \\
-			W & {\bbF^m}
+			V & {\dim V} \\
+			W & {\dim W}
 			\arrow["{\theta_V}", from=1-1, to=1-2]
 			\arrow["f"', from=1-1, to=2-1]
-			\arrow["Qf", from=1-2, to=2-2]
+			\arrow["\dim f", from=1-2, to=2-2]
 			\arrow["{\theta_W}"', from=2-1, to=2-2]
 		\end{tikzcd}\]
 	è commutativo. Chi legge riconoscerà nella dimostrazione, lasciata per esercizio, delle proprietà \ref{f_1}, \ref{f_2} alcuni fatti fondamentali insegnati in algebra lineare.
@@ -339,9 +339,9 @@
 \end{example}
 \begin{example}\label{fun_ex_omoto_omolo}\index{Funtore!--- omotopia}\index{Funtore!--- omologia}
 	\index{Omotopia}\index{Gruppo!---	di omotopia}
-	Ad ogni spazio topologico puntato \((X,x_0)\) si può associare l'insieme delle classi di omotopia di mappe \((S^1, \copmap[r] 10)\to (X, x_0)\) che preservano il punto base; tale insieme è un gruppo, e dato che la relazione di omotopia è una \emph{congruenza} rispetto alla composizione (ossia che, se \(f\cong g\) allora ogni volta che ciò ha senso si ha \(h\cmp f\cmp k\cong h\cmp g\cmp k\)), è anche un funtore
+	Ad ogni spazio topologico puntato \((X,x_0)\) si può associare l'insieme delle classi di omotopia di mappe \((S^1, \copmap[r] 10)\to (X, x_0)\) che preservano il punto base; tale insieme è un gruppo, e dato che la relazione di omotopia è una \emph{congruenza} rispetto alla composizione (ossia che, se \(f\simeq g\) allora ogni volta che ciò ha senso si ha \(h\cmp f\cmp k\simeq h\cmp g\cmp k\)), è anche un funtore
 	\[\dmFun{\pi_1}\ctTop\ctGrp\]
-	e in effetti, dato che mappe omotope \(f\cong g : X\to Y\) inducono lo stesso omomorfismo \(f_* = g_* : \pi_1(X,x_0) \to \pi_1(Y,y_0)\), un funtore
+	e in effetti, dato che mappe omotope \(f\simeq g : X\to Y\) inducono lo stesso omomorfismo \(f_* = g_* : \pi_1(X,x_0) \to \pi_1(Y,y_0)\), un funtore
 	\[\dmFun{\pi_1}\ctHoTop\ctGrp\]
 	dove \(\ctHoTop\) è la categoria dell'omotopia di \ref{ex_cat_hotop}.
 
@@ -354,7 +354,7 @@
 	\[\dmFun{H_n(\blank,\bbZ)}\ctHoTop\ctAb\]
 	per \(n\ge 0\), e di coomologia (a coefficienti interi)
 	\[\dmFun{H^n(\blank,\bbZ)}{\ctHoTop^\op}{\ctAb.}\]
-	Per una definizione precisa dei gruppi di omologia e coomologia rimandiamo chi legge a testi classici come \cite{Cartan1956,Rotman1979} e a \cite[pp. 5--6]{Vick73a}.\index{Gruppo!--- di omologia}\index{Gruppo!--- di coomologia}\index{Coomologia}\index{Omologia}
+	Per una definizione precisa dei gruppi di omologia e coomologia singolare rimandiamo chi legge a testi classici come \cite{Cartan1956,Rotman1979,MacLane1965} e a \cite[pp. 5--6]{Vick73a}.\index{Gruppo!--- di omologia}\index{Gruppo!--- di coomologia}\index{Coomologia}\index{Omologia}
 	% 	Per l'omologia, va mostrato che ogni omomorfismo tra complessi \(f_\bullet : (A_\bullet,d_\bullet) \to (B_\bullet,d'_\bullet)\) induce un omomorfismo di gruppi abeliani in maniera che valgano le proprietà di funtorialità; si definisce
 	% 	\[\dmFun{H_n(f)}{\ker d_n}{H_n(B_\bullet,d'_\bullet)}\]
 	% mandando \(t\in \ker d_n\) nella classe \(f_n(t) + \im d'_{n+1}\), ed è poi facile mostrare che questo è un omomorfismo di gruppi, e soddisfa \ref{def_funtore}.\ref{p_1} e \ref{p_2}.\footnote{Ovviamente, preliminare a questo è la dimostrazione che \(H_n(f)\) è ben definito: si vede facilmente che se due classi \(t,t'\) sono tali che \(t' = t + d_{n+1}x\), cioè definiscono lo stesso elemento in \(H_n(A_\bullet,d_\bullet)\), allora \(f_n(t') = f_nt + f_nd_{n+1}x = f_nt + d'_{n+1}(f_{n+1}x)\), cosicché \(f_nt,f_nt'\) sono equivalenti modulo \(\im d'_{n+1}\).}
