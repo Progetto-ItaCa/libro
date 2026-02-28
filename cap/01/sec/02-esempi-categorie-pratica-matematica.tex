@@ -347,7 +347,7 @@ Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto 
 \begin{remark}\label{diff_pres_cat_rel}\index{Categoria!--- delle relazioni}\index{Rel@\(\ctRel\)}
 	L'osservazione precedente permette una differente presentazione per la categoria \(\ctRel\): gli oggetti di \(\ctRel\) sono ancora gli insiemi, ma una relazione \(R\subseteq X\times Y\) viene ora presentata come una \emph{funzione}
 	\[\dmFun RX{\pow Y}\]
-	definita mandando \(x\in X\) nell'insieme \(Rx = \{y\in Y\mid xRy\}\), e una tale relazione induce un'unica funzione \(\hat R : \pow X\to \pow Y\) definita da \(\hat R(U) = \bigcup_{x\in U}Rx = \{y\in Y\mid \exists x\in U,\, y\in Rx\}\), chiamata \emph{estensione di Kleisli} di \(R\) (il capitolo \ref{cap_monadi}, sulle monadi, chiarirà questa terminologia: Heinrich Kleisli ($*$1930-$\dag$2011) è stato un matematico svizzero).\index{Kleisli!estensione di ---}\index{Kleisli@Heinrich Kleisli}
+	definita mandando \(x\in X\) nell'insieme \(Rx = \{y\in Y\mid xRy\}\), e una tale relazione induce un'unica funzione \(\hat R : \pow X\to \pow Y\) definita da \(\hat R(U) = \bigcup_{x\in U}Rx = \{y\in Y\mid \exists x\in U,\, y\in Rx\}\), chiamata \emph{estensione di Kleisli} di \(R\) (il capitolo \ref{cap_monadi}, sulle monadi, chiarirà questa terminologia: Heinrich Kleisli (\(*\)1930-\(\dag\)2011) è stato un matematico svizzero).\index{Kleisli!estensione di ---}\index{Kleisli@Heinrich Kleisli}
 
 	La composizione di due relazioni \(R\subseteq X\times Y\) e \(S\subseteq Y\times Z\) è data dalla composizione \emph{di funzioni} \(\hat S\cmp R\), cioè
 	\[
@@ -763,7 +763,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando nella sez
 	\end{itemize}
 	Una costruzione simile si apprezzerà una volta introdotta la definizione di funtore, dato che una maniera di formalizzare le successioni
 	\[\begin{tikzcd}
-			A_0 \ar[r] & A_1 \ar[r] & A_2 \ar[r] & \cdots \ar[r] & A_\lambda
+			A_0 \ar[r] & A_1 \ar[r] & A_2 \ar[r] & \cdots \ar[r] & A_\lambda \ar[r] & \cdots
 		\end{tikzcd}\]
 	\emph{eventualmente infinite} di frecce contigue in una categoria \(\ctC\) sarà esattamente definendole come funtori \(\ctOrd_{\le\lambda}\funto \ctC\).
 \end{remark}
@@ -875,9 +875,9 @@ La definizione di \emph{funtore} approfondirà la questione in \ref{def_funtore}
 		\item per oggetti le coppie \(((X,x_0),f)\) dove \((X,x_0)\) è un insieme puntato nel senso di \ref{ex_cat_puntati}, ed \(f : X\to X\) è una endofunzione di \(X\);
 		\item  le frecce tra \(((X,x_0),f)\) e \(((Y,y_0),g)\) consistono delle funzioni \(u : X \to Y\) tali che \(u(x_0)=y_0\) e \(u\cmp f = g\cmp u\), cioè entrambi i diagrammi di funzioni seguenti siano commutativi.
 		      \[\xymatrix@R=3mm{
-									& X\ar[r]^f\ar[dd]_u & X \ar[dd]_u\\
-				      \singleton\ar[ur]^{x_0}\ar[dr]_{y_0} &&\\
-				      & Y \ar[r]_g & Y
+			      & X\ar[r]^f\ar[dd]_u & X \ar[dd]_u\\
+			      \singleton\ar[ur]^{x_0}\ar[dr]_{y_0} &&\\
+			      & Y \ar[r]_g & Y
 			      }\]
 	\end{itemize}
 	In un sistema dinamico discreto si considera l'\emph{orbita} \([x_0]:=\{x_0,f(x_0),f(f(x_0)),\dots\}\) del \emph{punto base} \(x_0\) della dinamica per studiarne, per esempio, le proprietà geometriche quando \(X\) ha una struttura di spazio metrico (ad esempio, \([x]\subseteq X\) può essere denso, per alcune scelte di \(x_0\), o finito, per altre; può essere preservato da una misura, quando \(X\) sia dotato di una struttura di spazio di probabilità).
@@ -971,14 +971,14 @@ Un esempio standard di struttura di convessità su un insieme è dato dagli spaz
 	Uno \emph{pseudoinsieme}, o \emph{insieme di Bishop}, o \emph{prequoziente} consiste di un insieme \(S\) su cui è definita una relazione di equivalenza \(\sim_S\). La categoria \(\cate{Bish}\) degli insiemi di Bishop è definita come segue:
 	\begin{itemize}
 		\item gli oggetti sono gli pseudoinsiemi \((S,\sim)\);
-		\item un omomorfismo di pseudoinsiemi \(f : (S,\sim) \to (T,\asymp)\) consiste di una funzione \(f : S\to T\) con la proprietà che se \(s\sim s'\) in \(S\) allora \(fs\asymp fs'\) in \(T\). Equivalentemente, gli omomorfismi di pseudoinsiemi sono le funzioni \(f : S\to T\) che `scendono al quoziente' definendo una funzione \(\hat f : S/_\sim \to T/_\asymp\) tra gli insiemi quoziente.
+		\item un omomorfismo di pseudoinsiemi \(f : (S,\sim) \to (T,\asymp)\) consiste di una funzione \(f : S\to T\) con la proprietà che se \(s\sim s'\) in \(S\) allora \(fs\asymp fs'\) in \(T\). Equivalentemente, gli omomorfismi di pseudoinsiemi sono le funzioni \(f : S\to T\) che `scendono al quoziente' definendo una funzione \(\hat f : S/_{\!\sim} \to T/_{\!\asymp}\) tra gli insiemi quoziente.
 	\end{itemize}
 	La composizione di omomorfismi di pseudoinsiemi è la composizione di funzioni; la funzione identità è l'identità di \((S,\sim)\) (e se \(\sim'\) è una relazione di equivalenza più fine di \(\sim\) sullo stesso insieme \(S\), la funzione identità \((S,\sim) \to (S,\sim')\) è un omomorfismo, ma non è un isomorfismo, nel senso di \ref{def_isomorfismo}).
 \end{example}
 \begin{terminology}[A proposito del nome `pseudoinsieme']\index{Bishop@Errett Bishop}\index{Pseudoinsieme}
 	La nomenclatura `insieme di Bishop' viene da \cite{Bishop1985}, dove quello che è chiamato qui pseudoinsieme consiste di un insieme per cui sia data una regola esplicita che costruisce i suoi elementi, e questi elementi possono essere uguagliati mediante una relazione \(\sim\), che astrae l'uguaglianza sintattica.\footnote{In Bishop la costruibilità dei suoi elementi è il punto centrale nella definizione di pseudoinsieme: elementi esibiti mediante procedure differenti sono però uguali ad ogni fine pratico, e vanno quindi identificati.}
 
-	In questo senso va intesa la nomenclatura `pseudoinsieme': gli elementi di un insieme di Bishop non sono strettamente uguali ma equivalenti mediante \(\sim\); analogamente va inteso il termine `prequoziente': un insieme di Bishop consta della struttura `precedente al quoziente' \(S/_\sim\).
+	In questo senso va intesa la nomenclatura `pseudoinsieme': gli elementi di un insieme di Bishop non sono strettamente uguali ma equivalenti mediante \(\sim\); analogamente va inteso il termine `prequoziente': un insieme di Bishop consta della struttura `precedente al quoziente' \(S/_{\!\sim}\).
 \end{terminology}
 Concludiamo con una ultima digressione terminologica, che vuole fissare una terminologia elusiva ora che disponiamo di molti esempi di categorie larghe come universi.
 \begin{remark}[Morfismi o frecce?]\label{frecce_o_morfismi}\index{Freccia}\index{Morfismo}
@@ -1044,6 +1044,14 @@ Occupiamoci ora di dimostrare che una categoria dove tra due oggetti esiste al p
 		\item transitiva, perché se \(\Hom{\ctC}(X,Y), \Hom{\ctC}(Y,Z)\) non sono vuoti, la composizione è definita come in \ref{cor_def_categ} e quindi esiste un elemento, necessariamente unico, in \(\Hom{\ctC}(X,Z)\).\qedhere
 	\end{itemize}
 \end{proof}
+\begin{remark}\label{cor_di_sonopos}
+	Per definizione, in una categoria-preordine tra due oggetti \(X,Y\) esiste al più una freccia; corollario immediato di ciò è che fissati \(X\) e \(Y\) tutte le composizioni
+	\[\xymatrix@R=0mm{
+		X \ar[r] & A_1\ar[r] & A_2 \ar[r]& \cdots \ar[r]& A_n \ar[r] & Y \\
+		X \ar[r] & B_1\ar[r] & \cdots \ar[r] & B_m \ar[r] & Y \\
+		}\]
+	coincidono, perché \emph{tutte} le frecce \(X\to Y\) coincidono.
+\end{remark}
 \index{Categoria!--- da un monoide}
 L'altro esempio fondamentale di struttura matematica che è un caso particolare di categoria è: un monoide come in \ref{prelim_def_monoide} è precisamente una categoria che ha un solo oggetto. Questi sono precisamente gli esempi iniziali con cui abbiamo motivato la definizione di categoria in \ref{def_categ}.
 \begin{theorem}\label{mon_sonocat}\index{Monoide!---i come categorie}

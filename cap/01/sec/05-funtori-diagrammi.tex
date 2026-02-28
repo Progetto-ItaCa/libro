@@ -206,7 +206,7 @@ Consideriamo uno spazio topologico \(X\) e ad ogni aperto \(U\subseteq X\) assoc
 
 	Si può parlare più in generale di un fascio (sullo spazio \(X\)) a valori in una categoria \(\ctC\) che sia un costrutto nel senso di \ref{def_costrutto} (cosicché sia possibile parlare degli elementi \(s\in UC\) di un oggetto \(C\in \ctC\)): si tratta di un funtore
 	\[\xymatrix{F : (P,\le)^\op \ar[r] & \ctC}\]
-	che soddisfa le proprietà \ref{sheaf_1}, \ref{sheaf_2} rispetto agli oggetti di \(\ctC\); tra le scelte più comuni, \(\ctC=\ctAb\) (i gruppi abeliani di \ref{varie_categorie_nella_pratica}), \(\ctC=\ctTop\) (in \ref{ex_cat_top}), \(\ctC=\ctCat\) (in \ref{ex_cat_cat}), \(\ctC = \ctCh(\ctAb)\) (in \ref{ex_cat_chcomples}).
+	che soddisfa un analogo delle proprietà \ref{sheaf_1}, \ref{sheaf_2} rispetto agli oggetti di \(\ctC\); tra le scelte più comuni, \(\ctC=\ctAb\) (i gruppi abeliani di \ref{varie_categorie_nella_pratica}), \(\ctC=\ctTop\) (in \ref{ex_cat_top}), \(\ctC=\ctCat\) (in \ref{ex_cat_cat}), \(\ctC = \ctCh(\ctAb)\) (in \ref{ex_cat_chcomples}).
 \end{remark}
 \begin{definition}[Endofuntore]\label{def_endofuntore}\index{Endofuntore}\index{Funtore!endo---}
 	Sia \(\ctC\) una categoria; un \emph{endofuntore} consta di un funtore \(F : \ctC\fun\ctC\).
@@ -538,7 +538,7 @@ La nozione di diagramma permette di formalizzare l'idea di diagramma commutativo
 	\begin{quote}
 		Un diagramma commutativo è un funtore \(\Phi : \ctJ \fun\ctD\) tale che per ogni coppia di frecce parallele \(\vec a,\vec b\) del suo dominio, ponendo \(a\defeq \cmp(\vec a) = a_n\cmp a_{n-1}\cmp\dots\cmp a_0\) e similmente \(b\defeq \cmp(\vec b) = b_m\cmp b_{m-1}\cmp\dots\cmp b_0\) le rispettive composizioni, si abbia \(\Phi a = \Phi b\) in \(\ctC\).
 	\end{quote}
-	Si noti che questa definizione è un uso astuto di \ref{}: una categoria-preordine è tale che non esistono due frecce distinte aventi lo stesso dominio e codominio, quindi \emph{tutti} i diagrammi sono ivi commutativi.
+	Si noti che questa definizione è un uso astuto di \ref{cat_sonopos}: una categoria-preordine è tale che non esistono due frecce distinte aventi lo stesso dominio e codominio, quindi \emph{tutti} i diagrammi sono ivi commutativi.
 \end{hRemark}
 \begin{lemma}\label{lem_funtori_preservano_comm}\index{Diagramma commutativo}
 	Con una definizione precisa di diagramma commutativo, si può mostrare formalmente la seguente desiderabile ovvietà: ogni funtore \(F : \ctC \to\ctD\) manda diagrammi commutativi di \(\ctC\) in diagrammi commutativi di \(\ctD\) (della stessa forma, a patto di considerare `degeneri' i lati \(\vec a\) del diagramma \(F(\Phi)\) tali che \(F(\vec a) = a_n\cmp a_{n-1}\cmp\dots\cmp a_0\) sia l'identità di \(\ctD\)); infatti, la fattorizzazione \([\Phi_0,q]\) in
@@ -589,8 +589,65 @@ Nel guardare un funtore \(D : \ctJ \fun\ctC\) come una rappresentazione della ca
 		      k[X]_{\le 2} \subseteq \dots
 		      \subseteq k[X]_{\le n} \subseteq k[X]_{\le n+1} \subseteq \dots
 	      \]
-	      evidentemente l'intero anello dei polinomi \(k[X]\) risulta come \(\bigcup_{n\ge 0} k[X]_{\le n}\) (e le operazioni di somma e prodotto di polinomi sono, in un senso opportuno, compatibili con questa filtrazione).
+	      evidentemente l'intero anello dei polinomi \(k[X]\) risulta come \(\bigcup_{n\ge 0} k[X]_{\le n}\) (e le operazioni di somma e prodotto di polinomi sono, in un senso opportuno, compatibili con questa filtrazione). Attenzione: non è necessario che un diagramma in catena sia fatto di frecce monomorfe, come nell'esempio appena fatto; è sufficiente che il dominio sia un ordinale. Un esempio interessante è questo: un diagramma \(\omega^\op\fun\ctSet\) che manda \(0\) in un insieme \(X(0)\), \(1\) in un insieme \(X(1)\), e così via, e che manda ogni freccia \(n+1 \to n\) in una funzione \(X({n+1})\to X(n)\) si può pensare come un \emph{albero} dove \(X(0)\) è l'insieme delle radici, e dove i figli di un nodo \(x\in X(0)\) sono le sue controimmagini in \(X(1)\) rispetto alla funzione di `transizione' \(\varphi_n : X({n+1})\to X(n)\). La Figura \ref{fig_alberello} illustra la situazione. %; se ogni nodo ha un numero finito di figli, allora questo albero è detto \emph{albero finito}, e se ogni nodo ha esattamente un figlio, allora questo albero è detto \emph{catena infinita}.
 \end{itemize}
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.9]
+			\fill[gray!20] (0,0) rectangle ++(1.5,5) node[pos=0,below,black] (X0) {$X(0)$};
+			\fill[gray!20] (3,0) rectangle ++(1.5,5) node[pos=0,below,black] (X1) {$X(1)$};
+			\fill[gray!20] (6,0) rectangle ++(1.5,5) node[pos=0,below,black] (X2) {$X(2)$};
+			\fill[gray!20] (9,0) rectangle ++(1.5,5) node[pos=0,below,black] (X3) {$X(3)$};
+			\draw[-latex] (X1) -- (X0) node[below,font=\small,pos=.5] {$\varphi_0$};
+			\draw[-latex] (X2) -- (X1) node[below,font=\small,pos=.5] {$\varphi_1$};
+			\draw[-latex] (X3) -- (X2) node[below,font=\small,pos=.5] {$\varphi_2$};
+			\foreach \i in {1,...,5} {
+					\node[ibmPurple] (0-\i) at (0.75,\i*5/6) {$\bullet$};
+				}
+			\foreach \i in {1,...,4} {
+					\node[ibmBlue] (1-\i) at (3.75,\i) {$\bullet$};
+				}
+			\foreach \i in {1,...,7} {
+					\node[ibmMagenta] (2-\i) at (6.75,\i*5/8) {$\bullet$};
+				}
+			\foreach \i in {1,...,4} {
+					\node[ibmOrange] (3-\i) at (9.75,\i) {$\bullet$};
+				}
+			\foreach[count=\i] \j in {1,4,5,5}
+			\draw[-latex] (1-\i) -- (0-\j);
+			%
+			\foreach[count=\i] \j in {1,2,2,2,2,3,3}
+			\draw[-latex] (2-\i) -- (1-\j);
+			%
+			\foreach[count=\i] \j in {1,2,3,5}
+			\draw[-latex] (3-\i) -- (2-\j);
+			%
+			\fill[gray!20] (12.5,0) rectangle ++(4,5);
+			\foreach \i in {1,...,4} {
+					\node[inner sep=1pt] (t3-\i) at (12.5+\i*4/5,1) {$\bullet$};
+				}
+			\foreach \i in {1,...,7} {
+					\node[inner sep=1pt] (t2-\i) at (12.5+\i*4/8,2) {$\bullet$};
+				}
+			\foreach \i in {1,...,4} {
+					\node[inner sep=1pt] (t1-\i) at (12.5+\i*4/5,3) {$\bullet$};
+				}
+			\foreach \i in {1,...,5} {
+					\node[inner sep=1pt] (t0-\i) at (12.5+\i*4/6,4) {$\bullet$};
+				}
+			\foreach[count=\i] \j in {1,4,5,5}
+			\draw[-] (t1-\i) -- (t0-\j);
+			%
+			\foreach[count=\i] \j in {1,2,2,2,2,3,3}
+			\draw[-] (t2-\i) -- (t1-\j);
+			%
+			\foreach[count=\i] \j in {1,2,3,5}
+			\draw[-] (t3-\i) -- (t2-\j);
+		\end{tikzpicture}
+	\end{center}
+	\caption{Un diagramma	in catena \(X : \omega^\op \fun\ctSet\) e il suo `albero' associato (sulla destra): \(X(0)\) è l'insieme delle radici dell'albero, da cui si dipartono una serie di rami, tanti quanti sono gli elementi della fibra di \(\varphi_0\) sopra ciascuna radice; analogamente dagli elementi di \(X(1)\) si dipartono tanti rami quanti sono gli elementi della fibra di \(\varphi_1\) sopra ciascun elemento del suo codominio, e così via.}
+	\label{fig_alberello}
+\end{figure}
 Una classe importante che generalizza i diagrammi in catena è fatta dai diagrammi \emph{filtrati}, che hanno per dominio quella che si dice una \emph{categoria filtrata}:
 \begin{definition}[Categoria filtrata]\label{def_cat_filtrata}\index{Categoria!--- filtrata}
 	Una categoria non vuota \(\ctJ\) si dice \emph{filtrata} se
@@ -680,11 +737,11 @@ Una classe di categorie più generale, che contiene le categorie filtrate, è qu
 % \Todo{forse qualcos'altro: prodotto di setacciate è setacciato, etc?}
 \begin{theorem}\label{filtr_setacciata}\index{Categoria!--- filtrata}
 	Ogni categoria filtrata è setacciata; la categoria
-		      \(\genRG\defeq\big\{\xymatrix{\texttt{0} \ar@<.4em>[r]^-\sigma\ar@<-.4em>[r]_-\tau & \texttt{1}\ar[l]|j}\big\}\)
-		      dove (a parte le identità) ci sono tre frecce \(\sigma,\tau,j\) tali che \(\sigma\cmp j = \tau\cmp j = \id_1\) (e nessun'altra identità vale, cosicché in particolare $j\cmp\sigma,j\cmp \tau$ sono idempotenti distinti) è setacciata ma non filtrata.
+	\(\genRG\defeq\big\{\xymatrix{\texttt{0} \ar@<.4em>[r]^-\sigma\ar@<-.4em>[r]_-\tau & \texttt{1}\ar[l]|j}\big\}\)
+	dove (a parte le identità) ci sono tre frecce \(\sigma,\tau,j\) tali che \(\sigma\cmp j = \tau\cmp j = \id_1\) (e nessun'altra identità vale, cosicché in particolare \(j\cmp\sigma,j\cmp \tau\) sono idempotenti distinti) è setacciata ma non filtrata.
 \end{theorem}
 \begin{proof}
-	Dimostriamo la prima affermazione. 
+	Dimostriamo la prima affermazione.
 
 	Se \(\ctJ\) è filtrata soddisfa la proprietà di Ore; allora mostriamo che ogni coppia di cospanne della forma
 	\[\xymatrix@R=1mm{
@@ -713,16 +770,16 @@ Una classe di categorie più generale, che contiene le categorie filtrate, è qu
 	\]
 	(servono due applicazioni di \ref{cf_2}, e una applicazione della proprietà di Ore, per scegliere \(K\) in modo che \(\ell,r\) siano tali per cui \(\ell\cmp u = r\cmp v\) e \(\ell\cmp u' = r\cmp v'\) allo stesso tempo); ora basta porre \(z = \ell\cmp u \), \(z' =	\ell\cmp u'\) e \(x = \ell\cmp u\cmp f\), \(y = r\cmp v\cmp g\).
 
-	Ora dimostriamo la seconda affermazione. La categoria $\genRG$ si potrebbe chiamare, seguendo la tassonomia di \ref{}, `coppia spezzante generica'.
-	
-	La categoria in questione è setacciata, controllando caso per caso che le categorie 
-	\[\ctCospan(\texttt{0},\texttt{0}) \quad 
-	\ctCospan(\texttt{0},\texttt{1}) \quad
-	\ctCospan(\texttt{1},\texttt{0}) \quad
-	\ctCospan(\texttt{1},\texttt{1}) \]
+	Ora dimostriamo la seconda affermazione. La categoria \(\genRG\) si potrebbe chiamare, seguendo la tassonomia di §\ref{sec_esempi_cats}, `coppia spezzante generica'.
+
+	La categoria in questione è setacciata, controllando caso per caso che le categorie
+	\[\ctCospan(\texttt{0},\texttt{0}) \quad
+		\ctCospan(\texttt{0},\texttt{1}) \quad
+		\ctCospan(\texttt{1},\texttt{0}) \quad
+		\ctCospan(\texttt{1},\texttt{1}) \]
 	sono tutte connesse.
 
-	Però non esiste nessuna freccia $x : \texttt{0} \to \#$ che coequalizzi le due frecce parallele $j\cmp \sigma,j\cmp \tau : \texttt{0} \toto \texttt{0}$: l'identità non lo può fare, perché i due idempotenti $j\cmp \sigma,j\cmp \tau$ sono diversi; né $\sigma$ né $\tau$ possono farlo,	perché $\sigma\cmp j\cmp \sigma = \sigma \neq \tau = \sigma\cmp j\cmp \tau$ e similmente si ragiona per $\tau$. Quindi $\genRG$ non è filtrata.
+	Però non esiste nessuna freccia \(x : \texttt{0} \to \#\) che coequalizzi le due frecce parallele \(j\cmp \sigma,j\cmp \tau : \texttt{0} \toto \texttt{0}\): l'identità non lo può fare, perché i due idempotenti \(j\cmp \sigma,j\cmp \tau\) sono diversi; né \(\sigma\) né \(\tau\) possono farlo,	perché \(\sigma\cmp j\cmp \sigma = \sigma \neq \tau = \sigma\cmp j\cmp \tau\) e similmente si ragiona per \(\tau\). Quindi \(\genRG\) non è filtrata.
 \end{proof}
 \begin{remark}[Perché categorie `filtrate' e `setacciate'?]\index{Categoria!--- filtrata}
 	L'idea è che una categoria setacciata \(\ctJ\) dispone di un filtro che seleziona un cocono per ogni sottocategoria discreta e finita di \(\ctJ\); un filtro è invece capace, in maniera più forte, di selezionare un cocono per ogni sottocategoria finita di \(\ctJ\), anche non discreta, cosicché un filtro è solo un tipo di setaccio particolarmente sottile. La figura \ref{fig_filtro_setaccio} disegna questa situazione.

@@ -3,1371 +3,1368 @@
 \section{Introduzione}\label{sec_intro}
 
 Classicamente, l'oggetto di studio dell'algebra sono le strutture algebriche. Una struttura algebrica \`e un insieme munito di operazioni,
-ognuna delle quali dipende da un numero finito di variabili, che soddisfano certe equazioni. 
+ognuna delle quali dipende da un numero finito di variabili, che soddisfano certe equazioni.
 
-\begin{examples}\label{esempi_strutture_alg} 
-\hfill
-\begin{enumerate}
-\item Un monoide \`e un insieme $A$ con un'operazione binaria $\circ \colon A \times A \to A$ e un elemento specificato $e \in A.$ Tali
-operazioni devono soddisfare tre equazioni: 
-$$x \circ (y \circ z) = (x \circ y) \circ z, \; x \circ e = x = e \circ x$$
-\item Per ottenere un gruppo, si aggiunge alla struttura di monoide un'operazione unaria $(-)^{-1} \colon A \to A$ e si richiedono, in pi\`u
-delle equazioni di monoide, le due equazioni
-$$x \circ x^{-1} = e = x^{-1} \circ x$$
-\item Un gruppo abeliano \`e definito come un gruppo a cui si aggiunge l'equazione
-$$x \circ y = y \circ x$$
-\end{enumerate} 
-\end{examples} 
+\begin{examples}\label{esempi_strutture_alg}
+	\hfill
+	\begin{enumerate}
+		\item Un monoide \`e un insieme \(A\) con un'operazione binaria \(\circ \colon A \times A \to A\) e un elemento specificato \(e \in A.\) Tali
+		      operazioni devono soddisfare tre equazioni:
+		      \(\)x \circ (y \circ z) = (x \circ y) \circ z, \; x \circ e = x = e \circ x\(\)
+		\item Per ottenere un gruppo, si aggiunge alla struttura di monoide un'operazione unaria \((-)^{-1} \colon A \to A\) e si richiedono, in pi\`u
+		      delle equazioni di monoide, le due equazioni
+		      \(\)x \circ x^{-1} = e = x^{-1} \circ x\(\)
+		\item Un gruppo abeliano \`e definito come un gruppo a cui si aggiunge l'equazione
+		      \(\)x \circ y = y \circ x\(\)
+	\end{enumerate}
+\end{examples}
 
-Tre approcci che cercano di studiare in modo unificato le propriet\`a generali delle strutture algebriche sono proposti, con livelli diversi di 
+Tre approcci che cercano di studiare in modo unificato le propriet\`a generali delle strutture algebriche sono proposti, con livelli diversi di
 approfondimento, in questo capitolo.
 \begin{enumerate}
-\item L'approccio pi\`u intuitivo, proprio dell'algebra universale. Storicamente, \`e il primo a essere stato sviluppato.
-\item L'approccio della semantica funtoriale, introdotto, nella sua versione originale, da F.W. Lawvere. \`E pi\`u generale e, per certi versi, pi\`u 
-maneggevole dell'approccio dell'algebra universale.
-\item L'approccio pi\`u generale che usa le monadi (soprattutto le monadi finitarie sulla categoria degli insiemi).
+	\item L'approccio pi\`u intuitivo, proprio dell'algebra universale. Storicamente, \`e il primo a essere stato sviluppato.
+	\item L'approccio della semantica funtoriale, introdotto, nella sua versione originale, da F.W. Lawvere. \`E pi\`u generale e, per certi versi, pi\`u
+	      maneggevole dell'approccio dell'algebra universale.
+	\item L'approccio pi\`u generale che usa le monadi (soprattutto le monadi finitarie sulla categoria degli insiemi).
 \end{enumerate}
 
-Per terminare questa introduzione, segnaliamo al lettore che alcune delle prove contenute nelle sezioni \ref{sec_sigma-alg} 
-e \ref{sec_var_alg} sono ridondanti in quanto casi particolari di risultati pi\`u generali validi per le categorie algebriche, risultati 
-dimostrati pi\`u avanti in questo capitolo. Le abbiamo incluse perch\'e ci sembrano interessanti in quanto usano argomenti 
-diversi da quelli utilizzati per le categorie algebriche e perch\'e si prestano bene a un apprendimento graduale dei concetti 
-principali dell'algebra universale. 
+Per terminare questa introduzione, segnaliamo al lettore che alcune delle prove contenute nelle sezioni \ref{sec_sigma-alg}
+e \ref{sec_var_alg} sono ridondanti in quanto casi particolari di risultati pi\`u generali validi per le categorie algebriche, risultati
+dimostrati pi\`u avanti in questo capitolo. Le abbiamo incluse perch\'e ci sembrano interessanti in quanto usano argomenti
+diversi da quelli utilizzati per le categorie algebriche e perch\'e si prestano bene a un apprendimento graduale dei concetti
+principali dell'algebra universale.
 
-\section{Le $\Sigma$-algebre}\label{sec_sigma-alg}
+\section{Le \(\Sigma\)-algebre}\label{sec_sigma-alg}
 
 Il punto di partenza dell'algebra universale \`e la formalizzazione dell'idea di insieme munito di operazioni finitarie.
 
 \begin{definition}\label{def_sigma_alg}
-\hfill
-\begin{enumerate}
-\item Una segnatura \`e una coppia data da un insieme, i cui elementi sono da pensare come simboli di operazioni, e da una funzione che
-attribuisce a ogni simbolo di funzione la sua ariet\`a, cio\`e il numero di variabili da cui dipende l'operazione
-$$(\Sigma \in \ctSet, \mathrm{ar} \colon \Sigma \to \mathbb N)$$
-\item Se $(\Sigma, \mathrm{ar})$ \`e una segnatura, una $\Sigma$-algebra \`e un insieme munito di una famiglia di operazioni
-$$(X \in \ctSet, \{\sigma^X \colon X^{n} \to X\}_{\sigma \in \Sigma})$$
-dove $n = \mathrm{ar}(\sigma)$ e $X^n$ \`e il prodotto di $n$ copie di $X.$
-\item Un morfismo di $\Sigma$-algebre
-$$f \colon (X,\{\sigma^X\}_{\sigma \in \Sigma}) \to (Y,\{\sigma^Y\}_{\sigma \in \Sigma})$$
-\`e una funzione $f \colon X \to Y$ tale che, per ogni $n \in \mathbb N$ e per ogni simbolo di operazione $\sigma \in \Sigma$ di ariet\`a $n,$ 
-il diagramma seguente commuta 
-$$\xymatrix{ X^{n} \ar[r]^-{f^n} \ar[d]_{\sigma^X} & Y^{n} \ar[d]^{\sigma^Y} \\
-X \ar[r]_-{f} & Y}$$
-\end{enumerate} 
-Nel seguito, scriveremo semplicemente $\Sigma$ per denotare una segnatura e $(X,\sigma^X)$ per denotare una $\Sigma$-algebra.
-Useremo anche la notazione $\Sigma_n = \mathrm{ar}^{-1}(n)$ per indicare i simboli di operazione di ariet\`a $n.$
-Le tre nozioni definite qui sopra compaiono gi\`a, a titolo di esempi, nel secondo capitolo (vedi in particolare l'esempio \ref{esempio_2.2.24}).
-\end{definition} 
+	\hfill
+	\begin{enumerate}
+		\item Una segnatura \`e una coppia data da un insieme, i cui elementi sono da pensare come simboli di operazioni, e da una funzione che
+		      attribuisce a ogni simbolo di funzione la sua ariet\`a, cio\`e il numero di variabili da cui dipende l'operazione
+		      \(\)(\Sigma \in \ctSet, \mathrm{ar} \colon \Sigma \to \mathbb N)\(\)
+		\item Se \((\Sigma, \mathrm{ar})\) \`e una segnatura, una \(\Sigma\)-algebra \`e un insieme munito di una famiglia di operazioni
+		      \(\)(X \in \ctSet, \{\sigma^X \colon X^{n} \to X\}_{\sigma \in \Sigma})\(\)
+		      dove \(n = \mathrm{ar}(\sigma)\) e \(X^n\) \`e il prodotto di \(n\) copie di \(X.\)
+		\item Un morfismo di \(\Sigma\)-algebre
+		      \(\)f \colon (X,\{\sigma^X\}_{\sigma \in \Sigma}) \to (Y,\{\sigma^Y\}_{\sigma \in \Sigma})\(\)
+		      \`e una funzione \(f \colon X \to Y\) tale che, per ogni \(n \in \mathbb N\) e per ogni simbolo di operazione \(\sigma \in \Sigma\) di ariet\`a \(n,\)
+		      il diagramma seguente commuta
+		      \(\)\xymatrix{ X^{n} \ar[r]^-{f^n} \ar[d]_{\sigma^X} & Y^{n} \ar[d]^{\sigma^Y} \\
+		      X \ar[r]_-{f} & Y}\(\)
+	\end{enumerate}
+	Nel seguito, scriveremo semplicemente \(\Sigma\) per denotare una segnatura e \((X,\sigma^X)\) per denotare una \(\Sigma\)-algebra.
+	Useremo anche la notazione \(\Sigma_n = \mathrm{ar}^{-1}(n)\) per indicare i simboli di operazione di ariet\`a \(n.\)
+	Le tre nozioni definite qui sopra compaiono gi\`a, a titolo di esempi, nel secondo capitolo (vedi in particolare l'esempio \ref{esempio_2.2.24}).
+\end{definition}
 
 \begin{examples}\label{esempi_sigma_alg}
-\hfill
-\begin{enumerate}
-\item Se $\Sigma$ \`e l'insieme vuoto, una $\Sigma$-algebra \`e semplicemente un insieme e un morfismo di $\Sigma$-algebre \`e 
-semplicemente una funzione.
-\item Per descrivere certe strutture algebriche occorrono un'infinit\`a di operazioni. Per esempio, se $R$ \`e un anello, per descrivere un 
-$R$-modulo occorre aggiungere alla segnatura dei gruppi un simbolo di operazione unaria $\widehat{r}$ per ogni elemento $r \in R.$
-Tali simboli si interpretano come le funzioni $\widehat{r} \colon M \to M, \widehat{r}(x) = r \cdot x,$ dove il simbolo $\cdot$ \`e l'azione di $R$ 
-sul gruppo $M.$
-\item Attenzione, se $\Sigma$ \`e, per esempio, la segnatura dei monoidi, ogni monoide fornisce una $\Sigma$-algebra, ma una $\Sigma$-algebra 
-non \`e automaticamente un monoide: mancano le equazioni di associativit\`a e di elemento neutro.
-\end{enumerate}
-\end{examples} 
+	\hfill
+	\begin{enumerate}
+		\item Se \(\Sigma\) \`e l'insieme vuoto, una \(\Sigma\)-algebra \`e semplicemente un insieme e un morfismo di \(\Sigma\)-algebre \`e
+		      semplicemente una funzione.
+		\item Per descrivere certe strutture algebriche occorrono un'infinit\`a di operazioni. Per esempio, se \(R\) \`e un anello, per descrivere un
+		      \(R\)-modulo occorre aggiungere alla segnatura dei gruppi un simbolo di operazione unaria \(\widehat{r}\) per ogni elemento \(r \in R.\)
+		      Tali simboli si interpretano come le funzioni \(\widehat{r} \colon M \to M, \widehat{r}(x) = r \cdot x,\) dove il simbolo \(\cdot\) \`e l'azione di \(R\)
+		      sul gruppo \(M.\)
+		\item Attenzione, se \(\Sigma\) \`e, per esempio, la segnatura dei monoidi, ogni monoide fornisce una \(\Sigma\)-algebra, ma una \(\Sigma\)-algebra
+		      non \`e automaticamente un monoide: mancano le equazioni di associativit\`a e di elemento neutro.
+	\end{enumerate}
+\end{examples}
 
 \begin{proposition}\label{prop_cat_sigma_alg}
-Sia $\Sigma$ una segnatura.
-\begin{enumerate}
-\item Le $\Sigma$-algebre e i loro morfismi costituiscono una categoria che denoteremo $\ctSAlg.$
-\item L'azione di associare a ogni $\Sigma$-algebra $(X,\sigma^X)$ l'insieme soggiacente $X$ si estende a un funtore fedele e
-conservativo
-$$U_{\Sigma} \colon \ctSAlg \fun \ctSet$$
-\end{enumerate}
+	Sia \(\Sigma\) una segnatura.
+	\begin{enumerate}
+		\item Le \(\Sigma\)-algebre e i loro morfismi costituiscono una categoria che denoteremo \(\ctSAlg.\)
+		\item L'azione di associare a ogni \(\Sigma\)-algebra \((X,\sigma^X)\) l'insieme soggiacente \(X\) si estende a un funtore fedele e
+		      conservativo
+		      \(\)U_{\Sigma} \colon \ctSAlg \fun \ctSet\(\)
+	\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-Il fatto che $\ctSAlg$ sia una categoria \`e ovvio, cos\`i come \`e ovvio il carattere fedele del funtore dimenticante $U_{\Sigma}.$
-Per quanto riguarda il carattere conservativo di $U_{\Sigma},$ sia $f \colon (X,\sigma^X) \to (Y,\sigma^Y)$ un morfismo biiettivo.
-La dimostrazione che la funzione inversa $f^{-1} \colon Y \to X$ \`e anch'essa un morfismo di $\Sigma$-algebre \`e contenuta 
-nel seguente diagramma
-$$\xymatrix{Y^n \ar[r]_-{(f^{-1})^n} \ar[d]_{\sigma^Y} \ar@/^1.7pc/[rr]^-{\id}_{(1)} & X^n \ar[d]^{\sigma^X} \ar[r]_-{f^n} & Y^n \ar[d]^{\sigma^Y} \\
-Y \ar[r]^-{f^{-1}} \ar@/_1.7pc/[rr]_-{\id}^{(4)} \ar@{}[ru]|{(2)} & X \ar[r]^-{f} \ar@{}[ru]|{(3)} & Y}$$
-Poich\'e il diagramma esterno e le componenti (1), (3) e (4) commutano e poich\'e $f$ \`e un mono, anche la componente (2) commuta.
-\end{proof} 
+	Il fatto che \(\ctSAlg\) sia una categoria \`e ovvio, cos\`i come \`e ovvio il carattere fedele del funtore dimenticante \(U_{\Sigma}.\)
+	Per quanto riguarda il carattere conservativo di \(U_{\Sigma},\) sia \(f \colon (X,\sigma^X) \to (Y,\sigma^Y)\) un morfismo biiettivo.
+	La dimostrazione che la funzione inversa \(f^{-1} \colon Y \to X\) \`e anch'essa un morfismo di \(\Sigma\)-algebre \`e contenuta
+	nel seguente diagramma
+	\(\)\xymatrix{Y^n \ar[r]_-{(f^{-1})^n} \ar[d]_{\sigma^Y} \ar@/^1.7pc/[rr]^-{\id}_{(1)} & X^n \ar[d]^{\sigma^X} \ar[r]_-{f^n} & Y^n \ar[d]^{\sigma^Y} \\
+	Y \ar[r]^-{f^{-1}} \ar@/_1.7pc/[rr]_-{\id}^{(4)} \ar@{}[ru]|{(2)} & X \ar[r]^-{f} \ar@{}[ru]|{(3)} & Y}\(\)
+	Poich\'e il diagramma esterno e le componenti (1), (3) e (4) commutano e poich\'e \(f\) \`e un mono, anche la componente (2) commuta.
+\end{proof}
 
-Il carattere conservativo del funtore dimenticante $U_{\Sigma}$ generalizza il fatto che, per esempio, se un morfismo di gruppi \`e
+Il carattere conservativo del funtore dimenticante \(U_{\Sigma}\) generalizza il fatto che, per esempio, se un morfismo di gruppi \`e
 biiettivo, allora la funzione inversa \`e anche lei un morfismo di gruppi. \`E questo uno dei tratti salienti dell'algebra, in opposizione
 a quanto accade per esempio in topologia (una funzione continua e biiettiva non \`e necessariamente un omeomorfismo).
 
 \begin{remark}\label{oss_stab_morf}
-Leggendo la prova della propriet\`a \ref{prop_cat_sigma_alg}, ci si rende conto che se ne possono estrarre due fatti 
-pi\`u generali. Siano $(A,\sigma^A), (B, \sigma^B), (C,\sigma^C) \in \ctSAlg$ e siano $f \colon A \to B$ e $g \colon B \to C$ due funzioni.
-\begin{enumerate}
-\item Se $g$ e $g \cdot f$ sono morfismi di $\Sigma$-algebre e se $g$ \`e iniettiva, allora anche $f$ \`e un morfismo di $\Sigma$-algebre.
-\item Se $f$ e $g \cdot f$ sono morfismi di $\Sigma$-algebre e se $f$ \`e suriettiva, allora anche $g$ \`e un morfismo di $\Sigma$-algebre.
-(Per verificare questo punto si usa che, poich\'e $f$ \`e suriettiva, anche $f^n$ lo \`e per ogni $n \in \mathbb N.$)
-\end{enumerate}
+	Leggendo la prova della propriet\`a \ref{prop_cat_sigma_alg}, ci si rende conto che se ne possono estrarre due fatti
+	pi\`u generali. Siano \((A,\sigma^A), (B, \sigma^B), (C,\sigma^C) \in \ctSAlg\) e siano \(f \colon A \to B\) e \(g \colon B \to C\) due funzioni.
+	\begin{enumerate}
+		\item Se \(g\) e \(g \cdot f\) sono morfismi di \(\Sigma\)-algebre e se \(g\) \`e iniettiva, allora anche \(f\) \`e un morfismo di \(\Sigma\)-algebre.
+		\item Se \(f\) e \(g \cdot f\) sono morfismi di \(\Sigma\)-algebre e se \(f\) \`e suriettiva, allora anche \(g\) \`e un morfismo di \(\Sigma\)-algebre.
+		      (Per verificare questo punto si usa che, poich\'e \(f\) \`e suriettiva, anche \(f^n\) lo \`e per ogni \(n \in \mathbb N.\))
+	\end{enumerate}
 \end{remark}
 
-Il primo risultato significativo a proposito della categoria $\ctSAlg$ \`e l'esistenza delle $\Sigma$-algebre libere.
+Il primo risultato significativo a proposito della categoria \(\ctSAlg\) \`e l'esistenza delle \(\Sigma\)-algebre libere.
 
 \begin{proposition}\label{prop_alg_libera}
-Sia $\Sigma$ una segnatura. Il funtore dimenticante $U_{\Sigma} \colon \ctSAlg \fun \ctSet$ ammette aggiunto sinistro
-$$F_{\Sigma} \colon \ctSet \fun \ctSAlg$$
-\end{proposition} 
-
-\begin{proof}
-Se $X$ \`e un insieme, la $\Sigma$-algebra libera $F_{\Sigma}(X)$ si costruisce per induzione: l'insieme soggiacente, che denotiamo 
-ancora con $F_{\Sigma}(X),$ \`e il pi\`u piccolo insieme tale che
-\begin{enumerate}
-\item[(i)] $X \subseteq F_{\Sigma}(X),$
-\item[(ii)] se $t_1,\ldots,t_n \in F_{\Sigma}(X)$ e $\sigma \in \Sigma_n,$ allora $\sigma(t_1,\ldots,t_n) \in F_{\Sigma}(X).$
-\end{enumerate} 
-Se $\sigma \in \Sigma_n,$ l'operazione $n$-aria corrispondente \`e definita come
-$$\sigma^{F_{\Sigma}(X)} \colon F_{\Sigma}(X)^n \to F_{\Sigma}(X) \,,\;\; t_1,\ldots,t_n \mapsto \sigma(t_1,\ldots,t_n)$$
-La definizione del funtore $F_{\Sigma}$ sulle frecce \`e anch'essa induttiva: se $f \colon X \to Y$ \`e una funzione, allora
-\begin{enumerate}
-\item[(i)] $F_{\Sigma}(f)(x) = f(x)$ per ogni $x \in X,$
-\item[(ii)] $F_{\Sigma}(f)(\sigma(t_1,\ldots,t_n)) = \sigma(F_{\Sigma}(f)(t_1), \ldots, F_{\Sigma}(f)(t_n))$ per ogni
-$\sigma \in \Sigma_n$ e per ogni $t_1,\ldots,t_n \in F_{\Sigma}(X).$
-\end{enumerate}
-Si pu\`o notare che la seconda parte della definizione di $F_{\Sigma}(f)$ \`e imposta dal fatto che vogliamo ottenere un morfismo
-di $\Sigma$-algebre. Poich\'e la funtorialit\`a di $F_{\Sigma}$ non pone problemi, verifichiamo che si ha un'aggiunzione
-$F_{\Sigma} \dashv U_{\Sigma}.$ L'unit\`a $\eta_X \colon X \to F_{\Sigma}(X)$ \`e data dall'inclusione $X \subseteq F_{\Sigma}(X).$
-Siano ora $(A,\sigma^A)$ una $\Sigma$-algebra e $f \colon X \to A$ una funzione e costruiamo l'unico morfismo
-$\overline{f} \colon F_{\Sigma}(X) \to A$ tale che $\overline{f} \cdot \eta_X = f\colon$ 
-\begin{enumerate}
-\item[(i)] se $x \in X,$ la condizione $\overline{f} \cdot \eta_X = f$ impone $\overline{f}(x) = f(x),$
-\item[(ii)] se $\sigma \in \Sigma_n$ e $t_1,\ldots,t_n \in F_{\Sigma}(X),$ la condizione che $\overline{f}$ sia un morfismo impone 
-$$\overline{f}(\sigma(t_1,\ldots,t_n)) = \overline{f}(\sigma^{F_{\Sigma}(X)}(t_1,\ldots,t_n)) = \sigma^A(\overline{f}(t_1),\ldots,\overline{f}(t_n))$$
-\end{enumerate}
-il che conclude la dimostrazione se si assume che $\overline{f}(t_1),\ldots,\overline{f}(t_n)$ sono gi\`a stati definiti.
-\end{proof}
-
-Il fatto che il funtore $U_{\Sigma},$ in quanto aggiunto destro, preservi i limiti indica come si devono costruire i limiti nella
-categoria $\ctSAlg \colon$ si costruisce il limite in $\ctSet$ e poi lo si munisce dell'unica struttura di $\Sigma$-algebra tale che
-le proiezioni siano morfismi di $\Sigma$-algebre. \`E quello che vedremo in dettaglio nella dimostrazione della prossima proposizione. 
-
-\begin{proposition}\label{prop_alg_compl}
-Sia $\Sigma$ una segnatura. La categoria $\ctSAlg$ \`e completa.
+	Sia \(\Sigma\) una segnatura. Il funtore dimenticante \(U_{\Sigma} \colon \ctSAlg \fun \ctSet\) ammette aggiunto sinistro
+	\(\)F_{\Sigma} \colon \ctSet \fun \ctSAlg\(\)
 \end{proposition}
 
 \begin{proof}
-Consideriamo un diagramma $F \colon \ctD \fun \ctSAlg$ che associa a un oggeto $D \in \ctD$ la $\Sigma$-algebra
-$(FD, \sigma^{FD}),$ nonch\'e il limite in $\ctSet$ del funtore composto
-$$\lim(U_{\Sigma} \cdot F) = \langle A, \{ \pi_D \colon A \to FD\}_{D \in \ctD} \rangle$$ 
-Poich\'e il funtore $U_{\Sigma}$ preserva i limiti, bisogna determinare una struttura di $\Sigma$-algebra sull'insieme 
-$A$ in modo che le proiezioni $\pi_D$ siano morfismi di $\Sigma$-algebre. Tale struttura \`e data dalla funzione
-$\sigma^A$ che fa commutare, per ogni $D \in \ctD,$ il diagramma seguente e la cui esistenza e unicit\`a \`e garantita dalla 
-propriet\`a universale del limite in $\ctSet$
-$$\xymatrix{A^n \ar[r]^-{\sigma^A} \ar[d]_{\pi^n_D} & A \ar[d]^{\pi_D} \\
-F(D)^n \ar[r]_-{\sigma^{FD}} & FD}$$
-Sia ora $\{\lambda_D \colon (B,\sigma^B) \to (FD, \sigma^{FD})\}_{D \in \ctD}$ un cono di base $F$ in $\ctSAlg.$ La propriet\`a 
-universale del limite in $\ctSet$ fornisce un'unica funzione $\lambda \colon B \to A$ tale che $\pi_D \cdot \lambda = \lambda_D$
-per ogni $D \in \ctD.$ Rimane da mostrare che $\lambda \colon (B,\sigma^B) \to (A, \sigma^A)$ \`e un morfismo di $\Sigma$-algebre,
-ma per questo basta comporre $\lambda$ con le proiezioni $\pi_D$ e utilizzare che la famiglia $\{\pi_D\}_{D \in \ctD}$ \`e 
-congiuntamente monomorfica.
-\end{proof} 
+	Se \(X\) \`e un insieme, la \(\Sigma\)-algebra libera \(F_{\Sigma}(X)\) si costruisce per induzione: l'insieme soggiacente, che denotiamo
+	ancora con \(F_{\Sigma}(X),\) \`e il pi\`u piccolo insieme tale che
+	\begin{enumerate}
+		\item[(i)] \(X \subseteq F_{\Sigma}(X),\)
+		\item[(ii)] se \(t_1,\ldots,t_n \in F_{\Sigma}(X)\) e \(\sigma \in \Sigma_n,\) allora \(\sigma(t_1,\ldots,t_n) \in F_{\Sigma}(X).\)
+	\end{enumerate}
+	Se \(\sigma \in \Sigma_n,\) l'operazione \(n\)-aria corrispondente \`e definita come
+	\(\)\sigma^{F_{\Sigma}(X)} \colon F_{\Sigma}(X)^n \to F_{\Sigma}(X) \,,\;\; t_1,\ldots,t_n \mapsto \sigma(t_1,\ldots,t_n)\(\)
+	La definizione del funtore \(F_{\Sigma}\) sulle frecce \`e anch'essa induttiva: se \(f \colon X \to Y\) \`e una funzione, allora
+	\begin{enumerate}
+		\item[(i)] \(F_{\Sigma}(f)(x) = f(x)\) per ogni \(x \in X,\)
+		\item[(ii)] \(F_{\Sigma}(f)(\sigma(t_1,\ldots,t_n)) = \sigma(F_{\Sigma}(f)(t_1), \ldots, F_{\Sigma}(f)(t_n))\) per ogni
+		      \(\sigma \in \Sigma_n\) e per ogni \(t_1,\ldots,t_n \in F_{\Sigma}(X).\)
+	\end{enumerate}
+	Si pu\`o notare che la seconda parte della definizione di \(F_{\Sigma}(f)\) \`e imposta dal fatto che vogliamo ottenere un morfismo
+	di \(\Sigma\)-algebre. Poich\'e la funtorialit\`a di \(F_{\Sigma}\) non pone problemi, verifichiamo che si ha un'aggiunzione
+	\(F_{\Sigma} \dashv U_{\Sigma}.\) L'unit\`a \(\eta_X \colon X \to F_{\Sigma}(X)\) \`e data dall'inclusione \(X \subseteq F_{\Sigma}(X).\)
+	Siano ora \((A,\sigma^A)\) una \(\Sigma\)-algebra e \(f \colon X \to A\) una funzione e costruiamo l'unico morfismo
+	\(\overline{f} \colon F_{\Sigma}(X) \to A\) tale che \(\overline{f} \cdot \eta_X = f\colon\)
+	\begin{enumerate}
+		\item[(i)] se \(x \in X,\) la condizione \(\overline{f} \cdot \eta_X = f\) impone \(\overline{f}(x) = f(x),\)
+		\item[(ii)] se \(\sigma \in \Sigma_n\) e \(t_1,\ldots,t_n \in F_{\Sigma}(X),\) la condizione che \(\overline{f}\) sia un morfismo impone
+		      \(\)\overline{f}(\sigma(t_1,\ldots,t_n)) = \overline{f}(\sigma^{F_{\Sigma}(X)}(t_1,\ldots,t_n)) = \sigma^A(\overline{f}(t_1),\ldots,\overline{f}(t_n))\(\)
+	\end{enumerate}
+	il che conclude la dimostrazione se si assume che \(\overline{f}(t_1),\ldots,\overline{f}(t_n)\) sono gi\`a stati definiti.
+\end{proof}
 
-La categoria delle $\Sigma$-algebre \`e anche cocompleta. La prova di tale fatto \`e pi\`u elaborata che non la prova della completezza 
-e sar\`a vista pi\`u tardi in questo capitolo (corollario \ref{cor_SEAlg_cocompl}). Ora proseguiamo con l'approfondire un po' la nostra 
-conoscenza della categoria delle $\Sigma$-algebre. Il prossimo lemma generalizza una situazione ben nota per tutti i tipi di algebre. 
-Per esempio, se $f \colon M \to N$ \`e un'applicazione lineare tra moduli su un anello, l'immagine di $f$ \`e un sottomodulo di $N.$
+Il fatto che il funtore \(U_{\Sigma},\) in quanto aggiunto destro, preservi i limiti indica come si devono costruire i limiti nella
+categoria \(\ctSAlg \colon\) si costruisce il limite in \(\ctSet\) e poi lo si munisce dell'unica struttura di \(\Sigma\)-algebra tale che
+le proiezioni siano morfismi di \(\Sigma\)-algebre. \`E quello che vedremo in dettaglio nella dimostrazione della prossima proposizione.
+
+\begin{proposition}\label{prop_alg_compl}
+	Sia \(\Sigma\) una segnatura. La categoria \(\ctSAlg\) \`e completa.
+\end{proposition}
+
+\begin{proof}
+	Consideriamo un diagramma \(F \colon \ctD \fun \ctSAlg\) che associa a un oggeto \(D \in \ctD\) la \(\Sigma\)-algebra
+	\((FD, \sigma^{FD}),\) nonch\'e il limite in \(\ctSet\) del funtore composto
+	\(\)\lim(U_{\Sigma} \cdot F) = \langle A, \{ \pi_D \colon A \to FD\}_{D \in \ctD} \rangle\(\)
+	Poich\'e il funtore \(U_{\Sigma}\) preserva i limiti, bisogna determinare una struttura di \(\Sigma\)-algebra sull'insieme
+	\(A\) in modo che le proiezioni \(\pi_D\) siano morfismi di \(\Sigma\)-algebre. Tale struttura \`e data dalla funzione
+	\(\sigma^A\) che fa commutare, per ogni \(D \in \ctD,\) il diagramma seguente e la cui esistenza e unicit\`a \`e garantita dalla
+	propriet\`a universale del limite in \(\ctSet\)
+	\(\)\xymatrix{A^n \ar[r]^-{\sigma^A} \ar[d]_{\pi^n_D} & A \ar[d]^{\pi_D} \\
+	F(D)^n \ar[r]_-{\sigma^{FD}} & FD}\(\)
+	Sia ora \(\{\lambda_D \colon (B,\sigma^B) \to (FD, \sigma^{FD})\}_{D \in \ctD}\) un cono di base \(F\) in \(\ctSAlg.\) La propriet\`a
+	universale del limite in \(\ctSet\) fornisce un'unica funzione \(\lambda \colon B \to A\) tale che \(\pi_D \cdot \lambda = \lambda_D\)
+	per ogni \(D \in \ctD.\) Rimane da mostrare che \(\lambda \colon (B,\sigma^B) \to (A, \sigma^A)\) \`e un morfismo di \(\Sigma\)-algebre,
+	ma per questo basta comporre \(\lambda\) con le proiezioni \(\pi_D\) e utilizzare che la famiglia \(\{\pi_D\}_{D \in \ctD}\) \`e
+	congiuntamente monomorfica.
+\end{proof}
+
+La categoria delle \(\Sigma\)-algebre \`e anche cocompleta. La prova di tale fatto \`e pi\`u elaborata che non la prova della completezza
+e sar\`a vista pi\`u tardi in questo capitolo (corollario \ref{cor_SEAlg_cocompl}). Ora proseguiamo con l'approfondire un po' la nostra
+conoscenza della categoria delle \(\Sigma\)-algebre. Il prossimo lemma generalizza una situazione ben nota per tutti i tipi di algebre.
+Per esempio, se \(f \colon M \to N\) \`e un'applicazione lineare tra moduli su un anello, l'immagine di \(f\) \`e un sottomodulo di \(N.\)
 
 \begin{lemma}\label{lemma_fatt_alg}
-Sia $\Sigma$ una segnatura e $f \colon (A,\sigma^A) \to (B, \sigma^B)$ un morfismo di $\Sigma$-algebre. Consideriamo 
-la fattorizzazione insiemistica di $f$ come une funzione suriettiva seguita da una funzione iniettiva 
-$$\xymatrix{A \ar[rr]^-{f} \ar[rd]_{s} & & B \\ & I \ar[ru]_{i}}$$
-L'insieme immagine $I$ \`e munito di un'unica struttura di $\Sigma$-algebra tale che $s \colon A \to I$ e $i \colon I \to B$ sono 
-morfismi di $\Sigma$-algebre.
+	Sia \(\Sigma\) una segnatura e \(f \colon (A,\sigma^A) \to (B, \sigma^B)\) un morfismo di \(\Sigma\)-algebre. Consideriamo
+	la fattorizzazione insiemistica di \(f\) come une funzione suriettiva seguita da una funzione iniettiva
+	\(\)\xymatrix{A \ar[rr]^-{f} \ar[rd]_{s} & & B \\ & I \ar[ru]_{i}}\(\)
+	L'insieme immagine \(I\) \`e munito di un'unica struttura di \(\Sigma\)-algebra tale che \(s \colon A \to I\) e \(i \colon I \to B\) sono
+	morfismi di \(\Sigma\)-algebre.
 \end{lemma}
 
 \begin{proof}
-Per ogni $\sigma \in \Sigma_n,$ consideriamo il seguente diagramma
-$$\xymatrix{A^n \ar[r]^-{s^n} \ar[d]_{\sigma^A} & I^n \ar[r]^-{i^n} \ar@{-->}[d]^{\sigma^I} & B^n \ar[d]^{\sigma^B} \\
-A \ar[r]_-{s} & I \ar[r]_-{i} & B}$$
-Poich\'e $i \cdot s = f$ e $i^n \cdot s^n = f^n$ e poich\'e $f$ \`e un morfismo di $\Sigma$-algebre, il diagramma totale commuta.
-Inoltre $s^n$ \`e suriettiva perch\`e $s$ lo \`e. Quindi $s^n$ \`e un epi forte in $\ctSet.$ D'altra parte $i,$ essendo iniettiva, \`e 
-un mono in $\ctSet.$ Ne segue l'esistenza di un'unica funzione $\sigma^I$ che fa commutare entrambe le parti del diagramma,
-il che conclude la dimostrazione.
+	Per ogni \(\sigma \in \Sigma_n,\) consideriamo il seguente diagramma
+	\(\)\xymatrix{A^n \ar[r]^-{s^n} \ar[d]_{\sigma^A} & I^n \ar[r]^-{i^n} \ar@{-->}[d]^{\sigma^I} & B^n \ar[d]^{\sigma^B} \\
+	A \ar[r]_-{s} & I \ar[r]_-{i} & B}\(\)
+	Poich\'e \(i \cdot s = f\) e \(i^n \cdot s^n = f^n\) e poich\'e \(f\) \`e un morfismo di \(\Sigma\)-algebre, il diagramma totale commuta.
+	Inoltre \(s^n\) \`e suriettiva perch\`e \(s\) lo \`e. Quindi \(s^n\) \`e un epi forte in \(\ctSet.\) D'altra parte \(i,\) essendo iniettiva, \`e
+	un mono in \(\ctSet.\) Ne segue l'esistenza di un'unica funzione \(\sigma^I\) che fa commutare entrambe le parti del diagramma,
+	il che conclude la dimostrazione.
 \end{proof}
 
-Siamo ora in grado di caratterizzare i mono e gli epi regolari in $\ctSAlg$ e di dedurne il carattere regolare di tale categoria.
+Siamo ora in grado di caratterizzare i mono e gli epi regolari in \(\ctSAlg\) e di dedurne il carattere regolare di tale categoria.
 
 \begin{proposition}\label{prop_alg_reg}
-Sia $\Sigma$ una segnatura.
-\begin{enumerate}
-\item I mono in $\ctSAlg$ sono i morfismi iniettivi.
-\item Gli epi regolari in $\ctSAlg$ sono i morfismi suriettivi.
-\item La categoria $\ctSAlg$ \`e regolare.
-\end{enumerate}
+	Sia \(\Sigma\) una segnatura.
+	\begin{enumerate}
+		\item I mono in \(\ctSAlg\) sono i morfismi iniettivi.
+		\item Gli epi regolari in \(\ctSAlg\) sono i morfismi suriettivi.
+		\item La categoria \(\ctSAlg\) \`e regolare.
+	\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-1. Il funtore $U_{\Sigma} \colon \ctSAlg \fun \ctSet$ preserva i mono perch\'e, in quanto aggiunto destro, preserva le coppie nucleo.
-Inoltre $U_{\Sigma}$ riflette i mono perch\'e \`e fedele. La tesi segue ora dal fatto che i mono in $\ctSet$ sono le funzioni iniettive. \\
-2. Se $f \colon (A,\sigma^A) \to (B,\sigma^B)$ \`e un epi regolare (e quindi estremale) in $\ctSAlg,$ allora nella fattorizzazione del 
-lemma \ref{lemma_fatt_alg} la parte iniettiva (= mono) \`e un iso e quindi \`e biiettiva. Ne segue che $f,$ come composta di una funzione 
-suriettiva e di una funzione biiettiva, \`e suriettiva. Viceversa, consideriamo il seguente diagramma, dove $f$ e $g$ sono morfismi di
-$\Sigma$-algebre e la coppia $(f_1,f_2)$ \`e la coppia nucleo di $f$ in $\ctSAlg$ e dunque anche in $\ctSet$ 
-$$\xymatrix{N(f) \ar@<0.5ex>[r]^-{f_1} \ar@<-0.5ex>[r]_-{f_2} & B \ar[r]^-{f} \ar[d]_{g} & C \ar@{-->}[ld]^{g'} \\ & D}$$
-Supponiamo inoltre che $f$ sia suriettiva e che $g \cdot f_1 = g \cdot f_2.$ La funzione $f$ \`e un epi regolare in $\ctSet$ (perch\'e \`e 
-suriettiva) ed \`e quindi il coequalizzatore della sua coppia nucleo $(f_1,f_2).$ Ne segue che esiste un'unica funzione $g'$ tale che 
-$g' \cdot f = g.$ Resta da dimostrare che $g'$ \`e un morfismo di $\Sigma$-algebre, ma questo segue dall'osservazione \ref{oss_stab_morf}. \\
-3. Sappiamo gi\`a che $\ctSAlg$ \`e completa. Il lemma \ref{lemma_fatt_alg} e i due punti precedenti assicurano che ogni 
-morfismo di $\ctSAlg$ si fattorizza come un epi regolare seguito da un mono. Il punto 2 e il fatto che i prodotti fibrati in $\ctSAlg$ si fanno 
-in $\ctSet$ assicurano la stabilit\`a in $\ctSAlg$ degli epi regolari per prodotti fibrati
+	1. Il funtore \(U_{\Sigma} \colon \ctSAlg \fun \ctSet\) preserva i mono perch\'e, in quanto aggiunto destro, preserva le coppie nucleo.
+	Inoltre \(U_{\Sigma}\) riflette i mono perch\'e \`e fedele. La tesi segue ora dal fatto che i mono in \(\ctSet\) sono le funzioni iniettive. \\
+	2. Se \(f \colon (A,\sigma^A) \to (B,\sigma^B)\) \`e un epi regolare (e quindi estremale) in \(\ctSAlg,\) allora nella fattorizzazione del
+	lemma \ref{lemma_fatt_alg} la parte iniettiva (= mono) \`e un iso e quindi \`e biiettiva. Ne segue che \(f,\) come composta di una funzione
+	suriettiva e di una funzione biiettiva, \`e suriettiva. Viceversa, consideriamo il seguente diagramma, dove \(f\) e \(g\) sono morfismi di
+	\(\Sigma\)-algebre e la coppia \((f_1,f_2)\) \`e la coppia nucleo di \(f\) in \(\ctSAlg\) e dunque anche in \(\ctSet\)
+	\(\)\xymatrix{N(f) \ar@<0.5ex>[r]^-{f_1} \ar@<-0.5ex>[r]_-{f_2} & B \ar[r]^-{f} \ar[d]_{g} & C \ar@{-->}[ld]^{g'} \\ & D}\(\)
+	Supponiamo inoltre che \(f\) sia suriettiva e che \(g \cdot f_1 = g \cdot f_2.\) La funzione \(f\) \`e un epi regolare in \(\ctSet\) (perch\'e \`e
+	suriettiva) ed \`e quindi il coequalizzatore della sua coppia nucleo \((f_1,f_2).\) Ne segue che esiste un'unica funzione \(g'\) tale che
+	\(g' \cdot f = g.\) Resta da dimostrare che \(g'\) \`e un morfismo di \(\Sigma\)-algebre, ma questo segue dall'osservazione \ref{oss_stab_morf}. \\
+	3. Sappiamo gi\`a che \(\ctSAlg\) \`e completa. Il lemma \ref{lemma_fatt_alg} e i due punti precedenti assicurano che ogni
+	morfismo di \(\ctSAlg\) si fattorizza come un epi regolare seguito da un mono. Il punto 2 e il fatto che i prodotti fibrati in \(\ctSAlg\) si fanno
+	in \(\ctSet\) assicurano la stabilit\`a in \(\ctSAlg\) degli epi regolari per prodotti fibrati
 \end{proof}
 
-L'ultima propriet\`a di questa sezione ci d\`a informazioni sulla taglia della categoria $\ctSAlg.$ Sar\`a utile per studiare, nella prossima 
-sezione, le variet\`a di $\Sigma$-algebre, cio\`e le sottocategorie di $\ctSAlg$ determinate da un insieme assegnato di equazioni.
+L'ultima propriet\`a di questa sezione ci d\`a informazioni sulla taglia della categoria \(\ctSAlg.\) Sar\`a utile per studiare, nella prossima
+sezione, le variet\`a di \(\Sigma\)-algebre, cio\`e le sottocategorie di \(\ctSAlg\) determinate da un insieme assegnato di equazioni.
 
 \begin{definition}\label{def_cowellpow}
-Sia $\ctC$ una categoria.
-\begin{enumerate}
-\item Diciamo che due frecce $f_1 \colon A \to X_1$ e $f_2 \colon A \to X_2$ sono isomorfe se esiste un isomorfismo
-$x \colon X_1 \to X_2$ tale che $x \cdot x_1 = x_2,$ ovvero se $f_1$ e $f_2$ sono isomorfi in quanto oggetti della 
-categoria succuba $A/\ctC.$ 
-\item Un quoziente (regolare) di un oggetto $A$ \`e una classe di isomorfismo di epi (regolari) con dominio $A.$
-\item La categoria $\ctC$ \`e co-well-powered se, per ogni suo oggetto $A,$ i quozienti regolari di $A$ formano un insieme
-(e non una classe propria).
-\item Analogamente, un sottoggetto di un oggetto $A$ \`e una classe di isomorfismo di oggetti della categoria incubo $\ctC/A$
-che siano dei mono in $\ctC.$ La categoria $\ctC$ \`e well-powered se, per ogni suo oggetto $A,$ i sottoggetti di $A$ formano 
-un insieme.
-\end{enumerate}
+	Sia \(\ctC\) una categoria.
+	\begin{enumerate}
+		\item Diciamo che due frecce \(f_1 \colon A \to X_1\) e \(f_2 \colon A \to X_2\) sono isomorfe se esiste un isomorfismo
+		      \(x \colon X_1 \to X_2\) tale che \(x \cdot x_1 = x_2,\) ovvero se \(f_1\) e \(f_2\) sono isomorfi in quanto oggetti della
+		      categoria succuba \(A/\ctC.\)
+		\item Un quoziente (regolare) di un oggetto \(A\) \`e una classe di isomorfismo di epi (regolari) con dominio \(A.\)
+		\item La categoria \(\ctC\) \`e co-well-powered se, per ogni suo oggetto \(A,\) i quozienti regolari di \(A\) formano un insieme
+		      (e non una classe propria).
+		\item Analogamente, un sottoggetto di un oggetto \(A\) \`e una classe di isomorfismo di oggetti della categoria incubo \(\ctC/A\)
+		      che siano dei mono in \(\ctC.\) La categoria \(\ctC\) \`e well-powered se, per ogni suo oggetto \(A,\) i sottoggetti di \(A\) formano
+		      un insieme.
+	\end{enumerate}
 \end{definition}
 
 \begin{examples}\label{esempio_set_cowellpow}
-\hfill
-\begin{enumerate}
-\item La categoria $\ctSet$ \`e well-powered e co-well-powered. Infatti i sottoggetti di un insieme $A$ sono in biiezione con i 
-sottoinsiemi di $A$ (se $m \colon X \to A$ \`e un mono, la corestrizione di $m$ alla sua immagine \`e una biiezione) e formano
-quindi un insieme. Se ora $f \colon A \to X$ \`e una funzione suriettiva, gli si pu\`o associare la sua coppia nucleo, che \`e un
-sottoinsieme di $A \times A.$ In questo modo si ottiene una funzione dall'insieme dei quozienti regolari di $A$ all'insieme dei 
-sottoggetti di $A \times A.$ Tale funzione \`e iniettiva perch\'e ogni epi regolare \` e, a meno di isomorfismi, il coequalizzatore della sua 
-coppia nucleo. Poich\'e i sottoggetti di $A \times A$ formano un insieme, se ne deduce che i quozienti regolari di $A$ formano
-anch'essi un insieme. 
-\item Pi\`u in generale, se $\ctD$ \`e una categoria piccola, la categoria $\ctSet^{\ctD}$ \`e well-powered e co-well-powered.
-Questo segue dal punto precedente lavorando punto a punto, come indicato dalla proposizione \ref{prop_lim_puntuali}.
-\end{enumerate} 
+	\hfill
+	\begin{enumerate}
+		\item La categoria \(\ctSet\) \`e well-powered e co-well-powered. Infatti i sottoggetti di un insieme \(A\) sono in biiezione con i
+		      sottoinsiemi di \(A\) (se \(m \colon X \to A\) \`e un mono, la corestrizione di \(m\) alla sua immagine \`e una biiezione) e formano
+		      quindi un insieme. Se ora \(f \colon A \to X\) \`e una funzione suriettiva, gli si pu\`o associare la sua coppia nucleo, che \`e un
+		      sottoinsieme di \(A \times A.\) In questo modo si ottiene una funzione dall'insieme dei quozienti regolari di \(A\) all'insieme dei
+		      sottoggetti di \(A \times A.\) Tale funzione \`e iniettiva perch\'e ogni epi regolare \` e, a meno di isomorfismi, il coequalizzatore della sua
+		      coppia nucleo. Poich\'e i sottoggetti di \(A \times A\) formano un insieme, se ne deduce che i quozienti regolari di \(A\) formano
+		      anch'essi un insieme.
+		\item Pi\`u in generale, se \(\ctD\) \`e una categoria piccola, la categoria \(\ctSet^{\ctD}\) \`e well-powered e co-well-powered.
+		      Questo segue dal punto precedente lavorando punto a punto, come indicato dalla proposizione \ref{prop_lim_puntuali}.
+	\end{enumerate}
 \end{examples}
 
 \begin{proposition}\label{prop_alg_cowellpow}
-Sia $\Sigma$ una segnatura. La categoria $\ctSAlg$ \`e well-powered e co-well-powered.
+	Sia \(\Sigma\) una segnatura. La categoria \(\ctSAlg\) \`e well-powered e co-well-powered.
 \end{proposition}
 
 \begin{proof}
-Mostriamo il carattere co-well-powered di $\ctSAlg.$ Il fatto che $\ctSAlg$ \`e anche well-powered si dimostra in modo analogo.
-Per ogni $\Sigma$-algebra $(A,\sigma^A),$ il funtore fedele $U_{\Sigma} \colon \ctSAlg \to \ctSet$ induce un funtore fedele sulle 
-categorie succubae
-$$U_{\Sigma}^{(A,\sigma^A)} \colon (A,\sigma^A) / \ctSAlg \fun A/\ctSet$$
-Se ci si restringe agli epi regolari, tale funtore diventa anche pieno (usare l'osservazione \ref{oss_stab_morf}) e quindi induce una 
-funzione iniettiva dai quozienti regolari di $(A,\sigma^A)$ in $\ctSAlg$ verso i quozienti regolari di $A$ in $\ctSet.$ Poich\'e $\ctSet$ 
-\`e co-well-powered, ne deduciamo che anche $\ctSAlg$ lo \`e.
+	Mostriamo il carattere co-well-powered di \(\ctSAlg.\) Il fatto che \(\ctSAlg\) \`e anche well-powered si dimostra in modo analogo.
+	Per ogni \(\Sigma\)-algebra \((A,\sigma^A),\) il funtore fedele \(U_{\Sigma} \colon \ctSAlg \to \ctSet\) induce un funtore fedele sulle
+	categorie succubae
+	\(\)U_{\Sigma}^{(A,\sigma^A)} \colon (A,\sigma^A) / \ctSAlg \fun A/\ctSet\(\)
+	Se ci si restringe agli epi regolari, tale funtore diventa anche pieno (usare l'osservazione \ref{oss_stab_morf}) e quindi induce una
+	funzione iniettiva dai quozienti regolari di \((A,\sigma^A)\) in \(\ctSAlg\) verso i quozienti regolari di \(A\) in \(\ctSet.\) Poich\'e \(\ctSet\)
+	\`e co-well-powered, ne deduciamo che anche \(\ctSAlg\) lo \`e.
 \end{proof}
 
-\section{Le variet\`a di $\Sigma$-algebre}\label{sec_var_alg}
+\section{Le variet\`a di \(\Sigma\)-algebre}\label{sec_var_alg}
 
-Una variet\`a (equazionale) di $\Sigma$-algebre \`e la sottocategoria piena di $\ctSAlg$ delle $\Sigma$-algebre che soddisfano un insieme
-assegnato di equazioni. Per esempio, se $\Sigma$ \`e la segnatura dei monoidi, i monoidi sono esattamente la variet\`a delle $\Sigma$-algebre 
-che soddisfano le tre equazioni 
-$$x \circ (y \circ z) = (x \circ y) \circ z, \; x \circ e = x = e \circ x$$
+Una variet\`a (equazionale) di \(\Sigma\)-algebre \`e la sottocategoria piena di \(\ctSAlg\) delle \(\Sigma\)-algebre che soddisfano un insieme
+assegnato di equazioni. Per esempio, se \(\Sigma\) \`e la segnatura dei monoidi, i monoidi sono esattamente la variet\`a delle \(\Sigma\)-algebre
+che soddisfano le tre equazioni
+\(\)x \circ (y \circ z) = (x \circ y) \circ z, \; x \circ e = x = e \circ x\(\)
 Per esprimere in tutta generalit\`a questa idea, bisogna formalizzare la nozione di equazione.
 
 \begin{definition}\label{def_equaz_alg}
-Sia $\Sigma$ una segnatura.
-\begin{enumerate}
-\item Un'equazione (in $n$ variabili) \`e una coppia
-$$t_1,t_2 \in F_{\Sigma}(\{x_1,\ldots,x_n\})$$
-\item Una $\Sigma$-algebra $(A,\sigma^A)$ soddisfa l'equazione $(t_1;t_2)$ se, per ogni interpretazione (= funzione) 
-$f \colon \{x_1,\ldots,x_n\} \to A,$
-si ha $\overline{f}(t_1) = \overline{f}(t_2),$ dove 
-$$\overline{f} \colon F_{\Sigma}(\{x_1,\ldots,x_n\}) \to A$$ 
-\`e il morfismo di $\Sigma$-algebre che corrisponde alla funzione $f$ nell'aggiunzion $F_{\Sigma} \dashv U_{\Sigma}.$
-\item Se $E$ \`e un insieme di equazioni, denotiamo con
-$$\ctSEAlg$$
-la sottocategoria piena di $\ctSAlg$ delle $\Sigma$-algebre che soddisfano tutte le equazioni dell'insieme $E.$
-\end{enumerate}
+	Sia \(\Sigma\) una segnatura.
+	\begin{enumerate}
+		\item Un'equazione (in \(n\) variabili) \`e una coppia
+		      \(\)t_1,t_2 \in F_{\Sigma}(\{x_1,\ldots,x_n\})\(\)
+		\item Una \(\Sigma\)-algebra \((A,\sigma^A)\) soddisfa l'equazione \((t_1;t_2)\) se, per ogni interpretazione (= funzione)
+		      \(f \colon \{x_1,\ldots,x_n\} \to A,\)
+		      si ha \(\overline{f}(t_1) = \overline{f}(t_2),\) dove
+		      \(\)\overline{f} \colon F_{\Sigma}(\{x_1,\ldots,x_n\}) \to A\(\)
+		      \`e il morfismo di \(\Sigma\)-algebre che corrisponde alla funzione \(f\) nell'aggiunzion \(F_{\Sigma} \dashv U_{\Sigma}.\)
+		\item Se \(E\) \`e un insieme di equazioni, denotiamo con
+		      \(\)\ctSEAlg\(\)
+		      la sottocategoria piena di \(\ctSAlg\) delle \(\Sigma\)-algebre che soddisfano tutte le equazioni dell'insieme \(E.\)
+	\end{enumerate}
 \end{definition}
 
 A questo punto possiamo porci due problemi fondamentali che ci guideranno nello studio delle strutture algebriche.
 \begin{enumerate}
-\item Sia $\Sigma$ una segnatura ed $E$ un insieme di equazioni. La restrizione del funtore dimenticante $U_{\Sigma}$
-alla sottocategoria $\ctSEAlg$ 
-$$U_{(\Sigma,E)} \colon \ctSEAlg \fun \ctSet$$
-ammette aggiunto sinistro? Poich\`e le aggiunzioni si compongono, un modo per abbordare tale problema \`e chidersi 
-se il funtore d'inclusione
-$$\ctSEAlg \fun \ctSAlg$$
-ammette un aggiunto sinistro. Pi\`u in generale, ci si pu\`o chiedere se, dati due insieme di equazioni $E' \subseteq E,$
-il funtore d'inclusione piena
-$$\ctSEAlg \fun \ctSEEAlg$$
-ammette un aggiunto sinistro.
-\item Come si pu\`o riconoscere una variet\`a di $\Sigma$-algebre? Pi\`u precisamente, data una sottocategoria piena 
-$$\ctA \fun \ctSAlg$$
-quali condizioni su $\ctA$ assicurano che esista un insieme $E$ di equazioni e un'equivalenza di categorie $\ctA \simeq \ctSEAlg$?
+	\item Sia \(\Sigma\) una segnatura ed \(E\) un insieme di equazioni. La restrizione del funtore dimenticante \(U_{\Sigma}\)
+	      alla sottocategoria \(\ctSEAlg\)
+	      \(\)U_{(\Sigma,E)} \colon \ctSEAlg \fun \ctSet\(\)
+	      ammette aggiunto sinistro? Poich\`e le aggiunzioni si compongono, un modo per abbordare tale problema \`e chidersi
+	      se il funtore d'inclusione
+	      \(\)\ctSEAlg \fun \ctSAlg\(\)
+	      ammette un aggiunto sinistro. Pi\`u in generale, ci si pu\`o chiedere se, dati due insieme di equazioni \(E' \subseteq E,\)
+	      il funtore d'inclusione piena
+	      \(\)\ctSEAlg \fun \ctSEEAlg\(\)
+	      ammette un aggiunto sinistro.
+	\item Come si pu\`o riconoscere una variet\`a di \(\Sigma\)-algebre? Pi\`u precisamente, data una sottocategoria piena
+	      \(\)\ctA \fun \ctSAlg\(\)
+	      quali condizioni su \(\ctA\) assicurano che esista un insieme \(E\) di equazioni e un'equivalenza di categorie \(\ctA \simeq \ctSEAlg\)?
 \end{enumerate}
 
 Una risposta al secondo problema \`e fornita dal teorema di Birkhoff che enunciamo qui di seguito ma di cui, per il momento,
 diamo solo una dimostrazione parziale. La dimostrazione completa sar\`e data pi\`u tardi nel corso di questo capitolo.
 
 \begin{theorem}\label{teo_Birkhoff_v1}
-Sia $\Sigma$ una segnatura e sia
-$$\ctA \fun \ctSAlg$$
-una sottocategoria piena. Le condizioni seguenti sono equivalenti:
-\begin{enumerate}
-\item esiste un insieme $E$ di equazioni e un'equivalenza di categorie $\ctA \simeq \ctSEAlg$;
-\item $\ctA$ \`e chiusa in $\ctSAlg$ per
-\begin{enumerate}
-\item prodotti,
-\item sottoggetti,
-\item quozienti regolari.
-\end{enumerate}
-\end{enumerate}
-(Il significato delle espressioni ``chiusa per \ldots'' sar\`a chiarito nella dimostrazione.)
-\end{theorem} 
+	Sia \(\Sigma\) una segnatura e sia
+	\(\)\ctA \fun \ctSAlg\(\)
+	una sottocategoria piena. Le condizioni seguenti sono equivalenti:
+	\begin{enumerate}
+		\item esiste un insieme \(E\) di equazioni e un'equivalenza di categorie \(\ctA \simeq \ctSEAlg\);
+		\item \(\ctA\) \`e chiusa in \(\ctSAlg\) per
+		      \begin{enumerate}
+			      \item prodotti,
+			      \item sottoggetti,
+			      \item quozienti regolari.
+		      \end{enumerate}
+	\end{enumerate}
+	(Il significato delle espressioni ``chiusa per \ldots'' sar\`a chiarito nella dimostrazione.)
+\end{theorem}
 
-\begin{proof} 
-Come annunciato, ci limitiamo per il momento all'implicazione pi\`u semplice da dimostrare, cio\`e 1 $\Rightarrow$ 2. 
-Segnaliamo che in questa dimostrazione una $\Sigma$-algebra $(A,\sigma^A)$ sar\`a denotata semplicemente $A$
-poich\'e non \`e mai necessario specificare la struttura $\sigma^A.$ Fissiamo un'equazione 
-$$(t_1;t_2) \in E \,,\;\; t_1,t_2 \in F_{\Sigma}(\{x_1,\ldots,x_n\})$$
-a) Sia $\{A_i\}_{i \in I}$ una famiglia di $(\Sigma,E)$-algebre e sia $B = \Pi_{i \in I}A_i$ il loro prodotto in $\ctSAlg$
-con proiezioni $\pi_i \colon B \to A_i.$ Vogliamo mostrare che anche $B$ \`e una $(\Sigma,E)$-algebra. Per questo,
-consideriamo un'interpretazione $f \colon \{x_1,\ldots,x_n\} \to B.$ Per mostrare che $\overline{f}(t_1) = \overline{f}(t_2)$
-basta comporre con le proiezioni $\pi_i \colon B \to A_i,$ che sono congiuntamente monomorfiche. Usando due 
-volte la naturalit\`a della biiezione dell'aggiunzione $F_{\Sigma} \dashv U_{\Sigma},$ si ha che
-$$\pi_i(\overline{f}(t_1)) = \overline{\pi_i \cdot f}(t_1) = \overline{\pi_i \cdot f}(t_2) = \pi_i(\overline{f}(t_2))$$
-dove la seconda uguaglianza viene dal fatto che $A_i$ soddisfa l'equazione $(t_1;t_2).$ \\
-b) Sia $m \colon B \to A$ un morfismo iniettivo di $\Sigma$-algebre. Assumiamo che $A \in \ctSEAlg$ e mostriamo che 
-$B \in \ctSEAlg.$ Sia un'interpretazione $f \colon \{x_1,\ldots,x_n\} \to B.$ Per mostrare che $\overline{f}(t_1) = \overline{f}(t_2)$
-basta comporre con il mono $m.$ Dalla naturalit\`a della biiezione si ha
-$$m(\overline{f}(t_1)) = \overline{m \cdot f}(t_1) = \overline{m \cdot f}(t_2) = m(\overline{f}(t_2))$$
-dove la seconda uguaglianza viene dal fatto che $A$ soddisfa l'equazione $(t_1;t_2).$ \\
-c) Sia $q \colon A \to B$ un morfismo suriettivo di $\Sigma$-algebre. Assumiamo che $A \in \ctSEAlg$ e mostriamo che 
-$B \in \ctSEAlg.$ Sia un'interpretazione $f \colon \{x_1,\ldots,x_n\} \to B.$ Usando l'assioma della scelta in $\ctSet,$ otteniamo 
-un'interpretazione $g \colon \{x_1,\ldots,x_n\} \to A$ tale che $q \cdot g = f.$ Usando ancora una volta la naturalit\`a della biiezione 
-e il fatto che $A$ soddisfa l'equazione $(t_1;t_2),$ otteniamo
-$$\overline{f}(t_1) = q(\overline{g}(t_1) = q(\overline{g}(t_2)) = \overline{f}(t_2)$$
-e la dimostrazione \`e completa.
-\end{proof} 
+\begin{proof}
+	Come annunciato, ci limitiamo per il momento all'implicazione pi\`u semplice da dimostrare, cio\`e 1 \(\Rightarrow\) 2.
+	Segnaliamo che in questa dimostrazione una \(\Sigma\)-algebra \((A,\sigma^A)\) sar\`a denotata semplicemente \(A\)
+	poich\'e non \`e mai necessario specificare la struttura \(\sigma^A.\) Fissiamo un'equazione
+	\(\)(t_1;t_2) \in E \,,\;\; t_1,t_2 \in F_{\Sigma}(\{x_1,\ldots,x_n\})\(\)
+	a) Sia \(\{A_i\}_{i \in I}\) una famiglia di \((\Sigma,E)\)-algebre e sia \(B = \Pi_{i \in I}A_i\) il loro prodotto in \(\ctSAlg\)
+	con proiezioni \(\pi_i \colon B \to A_i.\) Vogliamo mostrare che anche \(B\) \`e una \((\Sigma,E)\)-algebra. Per questo,
+	consideriamo un'interpretazione \(f \colon \{x_1,\ldots,x_n\} \to B.\) Per mostrare che \(\overline{f}(t_1) = \overline{f}(t_2)\)
+	basta comporre con le proiezioni \(\pi_i \colon B \to A_i,\) che sono congiuntamente monomorfiche. Usando due
+	volte la naturalit\`a della biiezione dell'aggiunzione \(F_{\Sigma} \dashv U_{\Sigma},\) si ha che
+	\(\)\pi_i(\overline{f}(t_1)) = \overline{\pi_i \cdot f}(t_1) = \overline{\pi_i \cdot f}(t_2) = \pi_i(\overline{f}(t_2))\(\)
+	dove la seconda uguaglianza viene dal fatto che \(A_i\) soddisfa l'equazione \((t_1;t_2).\) \\
+	b) Sia \(m \colon B \to A\) un morfismo iniettivo di \(\Sigma\)-algebre. Assumiamo che \(A \in \ctSEAlg\) e mostriamo che
+	\(B \in \ctSEAlg.\) Sia un'interpretazione \(f \colon \{x_1,\ldots,x_n\} \to B.\) Per mostrare che \(\overline{f}(t_1) = \overline{f}(t_2)\)
+	basta comporre con il mono \(m.\) Dalla naturalit\`a della biiezione si ha
+	\(\)m(\overline{f}(t_1)) = \overline{m \cdot f}(t_1) = \overline{m \cdot f}(t_2) = m(\overline{f}(t_2))\(\)
+	dove la seconda uguaglianza viene dal fatto che \(A\) soddisfa l'equazione \((t_1;t_2).\) \\
+	c) Sia \(q \colon A \to B\) un morfismo suriettivo di \(\Sigma\)-algebre. Assumiamo che \(A \in \ctSEAlg\) e mostriamo che
+	\(B \in \ctSEAlg.\) Sia un'interpretazione \(f \colon \{x_1,\ldots,x_n\} \to B.\) Usando l'assioma della scelta in \(\ctSet,\) otteniamo
+	un'interpretazione \(g \colon \{x_1,\ldots,x_n\} \to A\) tale che \(q \cdot g = f.\) Usando ancora una volta la naturalit\`a della biiezione
+	e il fatto che \(A\) soddisfa l'equazione \((t_1;t_2),\) otteniamo
+	\(\)\overline{f}(t_1) = q(\overline{g}(t_1) = q(\overline{g}(t_2)) = \overline{f}(t_2)\(\)
+	e la dimostrazione \`e completa.
+\end{proof}
 
-Torniamo ora al problema dell'esistenza dell'aggiunto sinistro al funtore dimenticante $U_{(\Sigma,E)} \colon \ctSEAlg \fun \ctSet$
-o all'inclusione $\ctSEAlg \fun \ctSAlg.$ Tali problemi hanno una risposta positiva e ne daremo due dimostrazioni: la prima usa la 
-nozione di categoria regolare (vedi definizione \ref{def_cat_reg}) e l'implicazione gi\`a dimostrata del teorema di Birkhoff, la seconda 
-usa la nozione di categoria esatta (vedi definizione \ref{def_cat_esatta}) e s'ispira alla situazione dell'inclusione $\ctAb \fun \ctGrp.$ 
-La seconda prova sar\`a presentata nella sezione dedicata agli esercizi. Per preparare la prima dimostrazione, occorrono ora due 
+Torniamo ora al problema dell'esistenza dell'aggiunto sinistro al funtore dimenticante \(U_{(\Sigma,E)} \colon \ctSEAlg \fun \ctSet\)
+o all'inclusione \(\ctSEAlg \fun \ctSAlg.\) Tali problemi hanno una risposta positiva e ne daremo due dimostrazioni: la prima usa la
+nozione di categoria regolare (vedi definizione \ref{def_cat_reg}) e l'implicazione gi\`a dimostrata del teorema di Birkhoff, la seconda
+usa la nozione di categoria esatta (vedi definizione \ref{def_cat_esatta}) e s'ispira alla situazione dell'inclusione \(\ctAb \fun \ctGrp.\)
+La seconda prova sar\`a presentata nella sezione dedicata agli esercizi. Per preparare la prima dimostrazione, occorrono ora due
 lemmi di carattere generale sulle categorie regolari. Per esprimerli, abbiamo bisogno della nozione di sottocategoria epiriflessiva.
 
 \begin{definition}\label{def_sottocat_epirifl}
-Una sottocategoria riflessiva
-$$\ctA \fun \ctB$$
-con riflettore $r \colon \ctB \fun \ctA$ \`e detta epiriflessiva se, per ogni oggetto $B \in \ctB,$ l'unit\`a $\eta_B \colon B \to r(B)$
-dell'aggiunzione \`e un epi regolare.
-\end{definition} 
+	Una sottocategoria riflessiva
+	\(\)\ctA \fun \ctB\(\)
+	con riflettore \(r \colon \ctB \fun \ctA\) \`e detta epiriflessiva se, per ogni oggetto \(B \in \ctB,\) l'unit\`a \(\eta_B \colon B \to r(B)\)
+	dell'aggiunzione \`e un epi regolare.
+\end{definition}
 
 \begin{lemma}\label{lemma_epirifl_reg}
-Sia $\ctA \fun \ctB$ una sottocategoria epiriflessiva e supponiamo che $\ctB$ sia regolare.
-\begin{enumerate}
-\item $\ctA$ \`e chiusa in $\ctB$ per limiti e sottoggetti.
-\item Il funtore d'inclusione $\ctA \fun \ctB$ preserva e riflette i mono e gli epi regolari.
-\item $\ctA$ \`e regolare.
-\item $\ctA$ \`e well-powered (risperttivamente, co-well-powered) se $\ctB$ lo \`e.
-\end{enumerate}
+	Sia \(\ctA \fun \ctB\) una sottocategoria epiriflessiva e supponiamo che \(\ctB\) sia regolare.
+	\begin{enumerate}
+		\item \(\ctA\) \`e chiusa in \(\ctB\) per limiti e sottoggetti.
+		\item Il funtore d'inclusione \(\ctA \fun \ctB\) preserva e riflette i mono e gli epi regolari.
+		\item \(\ctA\) \`e regolare.
+		\item \(\ctA\) \`e well-powered (risperttivamente, co-well-powered) se \(\ctB\) lo \`e.
+	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-1. Il fatto che se un diagramma $\ctD \fun \ctA$ in $\ctA$ ha un limite in $\ctB$ allora tale limite si trova gi\`a in $\ctA$
-\`e una propriet\`a generale delle sottocategorie riflessive, vedi propriet\`a \ref{prop_(co)lim_sottocat_rifl} e osservazione 
-\ref{oss_lim_sottocat_rifl}. Sia ora $m \colon B \to A$ un mono in $\ctB$ con $A \in \ctA$ e mostriamo che $B \in \ctA.$
-Consideriamo il diagramma commutativo
-$$\xymatrix{B \ar[r]^-{m} \ar[d]_{\eta_B} & A \ar[d]^{\eta_A} \\ r(B) \ar[r]_-{r(m)} & r(A)}$$
-Poich\'e $A \in \ctA,$ l'iunit\`a $\eta_A$ \`e un iso, da cui si deduce che $\eta_B$ \`e un mono. Ma per ipotesi $\eta_B$ \`e un epi 
-regolare e quindi \`e un iso. Poich\'e $r(B) \in \ctA,$ si pu\`o concludere che $B \in \ctA.$ \\
-2. Il funtore $i$ preserva i mono perch\'e \`e un aggiunto destro, inoltre li riflette perch\'e \`e fedele.
-Mostriamo che $i$ preserva gli epi regolari: sia $q \colon A \to A'$ un epi regolare in $\ctA$ e sia
-$$\xymatrix{A \ar[rr]^-{q} \ar[rd]_{e} & & A' \\ & I \ar[ru]_{m}}$$
-la sua fattorizzazione epi regolare - mono in $\ctB.$ Poich\'e $\ctA$ \`e chiusa in $\ctB$ per sottoggetti, $I \in \ctA$ e dunque $m$ \`e 
-un mono anche in $\ctA$ perch\'e $i$ riflette i mono. Ma $q$ \`e un epi regolare e quindi estremale in $\ctA,$ il che implica che $m$ 
-\`e un isomorfismo. La condizione $q = m \cdot e$ permette ora di concludere che $q$ \`e un epi regolare in $\ctB.$
-Mostriamo ora che $i$ riflette gli epi regolari: se $f \colon A \to A'$ \`e un epi regolare in $\ctB$ fra oggetti di $\ctA,$ la freccia
-$f$ \`e il coequalizzatore in $\ctB$ della sua coppia nucleo, che per\`o \`e anche la sua coppia nucleo in $\ctA$ (di nuovo per
-la propriet\`a \ref{prop_(co)lim_sottocat_rifl}). Se ne deduce subito che $f$ \`e il coequializzatore della sua coppia nucleo in $\ctA$
-e quindi \`e un epi regolare gi\`a in $\ctA.$ \\
-3. Segue subito dal punto 2, infatti $\ctA$ ha i limiti finiti perch\'e $\ctB$ li ha (propriet\`a \ref{prop_(co)lim_sottocat_rifl})) e il funtore $i$
-preserva e riflette tutti gli ingredienti della definizione di categoria regolare. \\
-4. Segue di nuovo immediatamente dal punto 2.
+	1. Il fatto che se un diagramma \(\ctD \fun \ctA\) in \(\ctA\) ha un limite in \(\ctB\) allora tale limite si trova gi\`a in \(\ctA\)
+	\`e una propriet\`a generale delle sottocategorie riflessive, vedi propriet\`a \ref{prop_(co)lim_sottocat_rifl} e osservazione
+	\ref{oss_lim_sottocat_rifl}. Sia ora \(m \colon B \to A\) un mono in \(\ctB\) con \(A \in \ctA\) e mostriamo che \(B \in \ctA.\)
+	Consideriamo il diagramma commutativo
+	\(\)\xymatrix{B \ar[r]^-{m} \ar[d]_{\eta_B} & A \ar[d]^{\eta_A} \\ r(B) \ar[r]_-{r(m)} & r(A)}\(\)
+	Poich\'e \(A \in \ctA,\) l'iunit\`a \(\eta_A\) \`e un iso, da cui si deduce che \(\eta_B\) \`e un mono. Ma per ipotesi \(\eta_B\) \`e un epi
+	regolare e quindi \`e un iso. Poich\'e \(r(B) \in \ctA,\) si pu\`o concludere che \(B \in \ctA.\) \\
+	2. Il funtore \(i\) preserva i mono perch\'e \`e un aggiunto destro, inoltre li riflette perch\'e \`e fedele.
+	Mostriamo che \(i\) preserva gli epi regolari: sia \(q \colon A \to A'\) un epi regolare in \(\ctA\) e sia
+	\(\)\xymatrix{A \ar[rr]^-{q} \ar[rd]_{e} & & A' \\ & I \ar[ru]_{m}}\(\)
+	la sua fattorizzazione epi regolare - mono in \(\ctB.\) Poich\'e \(\ctA\) \`e chiusa in \(\ctB\) per sottoggetti, \(I \in \ctA\) e dunque \(m\) \`e
+	un mono anche in \(\ctA\) perch\'e \(i\) riflette i mono. Ma \(q\) \`e un epi regolare e quindi estremale in \(\ctA,\) il che implica che \(m\)
+	\`e un isomorfismo. La condizione \(q = m \cdot e\) permette ora di concludere che \(q\) \`e un epi regolare in \(\ctB.\)
+	Mostriamo ora che \(i\) riflette gli epi regolari: se \(f \colon A \to A'\) \`e un epi regolare in \(\ctB\) fra oggetti di \(\ctA,\) la freccia
+	\(f\) \`e il coequalizzatore in \(\ctB\) della sua coppia nucleo, che per\`o \`e anche la sua coppia nucleo in \(\ctA\) (di nuovo per
+	la propriet\`a \ref{prop_(co)lim_sottocat_rifl}). Se ne deduce subito che \(f\) \`e il coequializzatore della sua coppia nucleo in \(\ctA\)
+	e quindi \`e un epi regolare gi\`a in \(\ctA.\) \\
+	3. Segue subito dal punto 2, infatti \(\ctA\) ha i limiti finiti perch\'e \(\ctB\) li ha (propriet\`a \ref{prop_(co)lim_sottocat_rifl})) e il funtore \(i\)
+	preserva e riflette tutti gli ingredienti della definizione di categoria regolare. \\
+	4. Segue di nuovo immediatamente dal punto 2.
 \end{proof}
 
 \begin{lemma}\label{lemma_caract_epirifl}
-Sia $\ctB$ una categoria completa, regolare e co-well-powered. Una sottocategoria
-$$\ctA \fun \ctB$$
-piena e chiusa per isomorfismi \`e epiriflessiva se e solo se \`e chiusa per prodotti e sottoggetti.
+	Sia \(\ctB\) una categoria completa, regolare e co-well-powered. Una sottocategoria
+	\(\)\ctA \fun \ctB\(\)
+	piena e chiusa per isomorfismi \`e epiriflessiva se e solo se \`e chiusa per prodotti e sottoggetti.
 \end{lemma}
 
 \begin{proof}
-L'implicazione $\Rightarrow$ \`e gi\`a stata dimostrata nel lemma \ref{lemma_epirifl_reg}. Occupiamoci dunque dell'implicazione 
-$\Leftarrow \colon$ fissiamo un oggetto $B \in \ctB.$ Per costruire la riflessione $r \colon \ctB \fun \ctA$ e l'unit\`a $\eta_B \colon B \to r(B)$
-consideriamo l'insieme dei quozienti regolari di $B$ che si trovano in $\ctA$ e scegliamo un  rappresentante per ogni classe di 
-isomorfismo
-$$\chi = \{\mbox{quozienti regolari \;} e \colon B \to A_e \mid A_e \in \ctA\}$$
-Consideriamo quindi il prodotto $\Pi_{e \in \chi}A_e$ con le proiezioni $\pi_e \colon \Pi_{e \in \chi}A_e \to A_e$ e l'unica freccia 
-$\tau_B \colon B \to \Pi_{e \in \chi}A_e$ tale che $\pi_e \cdot \tau_B = e$ per ogni $e \in \chi.$ L'unit\`a $\eta_B$ \`e 
-allora data dalla fattorizzazione epi regolare - mono di $\tau_B \colon$
-$$\xymatrix{ & A_e \\ B \ar[rr]^-{\tau_B} \ar[rd]_{\eta_B} \ar[ru]^{e} & & \Pi_{e \in \chi}A_e \ar[lu]_{\pi_e} \\ & r(B) \ar[ru]_{m_B}}$$
-Poich\'e ogni $A_e$ \`e in $\ctA,$ anche $\Pi_{e \in \chi}A_e$ lo \`e e quindi anche $r(B) \in \ctA$ perch\'e $m_B$ \`e un mono.
-La funtorialit\`a di $r \colon \ctB \fun \ctA$ segue dall'essenziale unicit\`a della fattorizzazione epi regolare - mono. Rimane da
-mostrare la propriet\`a universale dell'unit\`a. Sia $f \colon B \to A$ una freccia con codominio in $\ctA.$ Cerchiamo una freccia 
-$\widehat{f} \colon r(B) \to A$ tale che $\widehat{f} \cdot \eta_B = f$ (una tale freccia \`e necessariamente unica perch\'e
-$\eta_B$ \`e un epi). Consideriamo la fattorizzazione epi regolare - mono di $f \colon$
-$$\xymatrix{B \ar[rr]^-{f} \ar[rd]_{e_f} & & A \\ & A_f \ar[ru]_{m_f}}$$
-Poich\'e $A \in \ctA,$ anche $A_f \in \ctA$ e quindi, eventualmente a meno di un isomorfismo, $e_f \in \chi.$ Ne segue che 
-$\pi_{e_f} \cdot \tau_B = e_f.$ Per terminare, possiamo porre $\widehat{f} = m_f \cdot \pi_{e_f} \cdot m_B,$ infatti
-$\widehat{f} \cdot \eta_B = m_f \cdot \pi_{e_f} \cdot m_B \cdot \eta_B = m_f \cdot \pi_{e_f} \cdot \tau_B = m_f \cdot e_f = f.$
+	L'implicazione \(\Rightarrow\) \`e gi\`a stata dimostrata nel lemma \ref{lemma_epirifl_reg}. Occupiamoci dunque dell'implicazione
+	\(\Leftarrow \colon\) fissiamo un oggetto \(B \in \ctB.\) Per costruire la riflessione \(r \colon \ctB \fun \ctA\) e l'unit\`a \(\eta_B \colon B \to r(B)\)
+	consideriamo l'insieme dei quozienti regolari di \(B\) che si trovano in \(\ctA\) e scegliamo un  rappresentante per ogni classe di
+	isomorfismo
+	\(\)\chi = \{\mbox{quozienti regolari \;} e \colon B \to A_e \mid A_e \in \ctA\}\(\)
+	Consideriamo quindi il prodotto \(\Pi_{e \in \chi}A_e\) con le proiezioni \(\pi_e \colon \Pi_{e \in \chi}A_e \to A_e\) e l'unica freccia
+	\(\tau_B \colon B \to \Pi_{e \in \chi}A_e\) tale che \(\pi_e \cdot \tau_B = e\) per ogni \(e \in \chi.\) L'unit\`a \(\eta_B\) \`e
+	allora data dalla fattorizzazione epi regolare - mono di \(\tau_B \colon\)
+	\(\)\xymatrix{ & A_e \\ B \ar[rr]^-{\tau_B} \ar[rd]_{\eta_B} \ar[ru]^{e} & & \Pi_{e \in \chi}A_e \ar[lu]_{\pi_e} \\ & r(B) \ar[ru]_{m_B}}\(\)
+	Poich\'e ogni \(A_e\) \`e in \(\ctA,\) anche \(\Pi_{e \in \chi}A_e\) lo \`e e quindi anche \(r(B) \in \ctA\) perch\'e \(m_B\) \`e un mono.
+	La funtorialit\`a di \(r \colon \ctB \fun \ctA\) segue dall'essenziale unicit\`a della fattorizzazione epi regolare - mono. Rimane da
+	mostrare la propriet\`a universale dell'unit\`a. Sia \(f \colon B \to A\) una freccia con codominio in \(\ctA.\) Cerchiamo una freccia
+	\(\widehat{f} \colon r(B) \to A\) tale che \(\widehat{f} \cdot \eta_B = f\) (una tale freccia \`e necessariamente unica perch\'e
+	\(\eta_B\) \`e un epi). Consideriamo la fattorizzazione epi regolare - mono di \(f \colon\)
+	\(\)\xymatrix{B \ar[rr]^-{f} \ar[rd]_{e_f} & & A \\ & A_f \ar[ru]_{m_f}}\(\)
+	Poich\'e \(A \in \ctA,\) anche \(A_f \in \ctA\) e quindi, eventualmente a meno di un isomorfismo, \(e_f \in \chi.\) Ne segue che
+	\(\pi_{e_f} \cdot \tau_B = e_f.\) Per terminare, possiamo porre \(\widehat{f} = m_f \cdot \pi_{e_f} \cdot m_B,\) infatti
+	\(\widehat{f} \cdot \eta_B = m_f \cdot \pi_{e_f} \cdot m_B \cdot \eta_B = m_f \cdot \pi_{e_f} \cdot \tau_B = m_f \cdot e_f = f.\)
 \end{proof}
 
 \begin{exercise}\label{exer_epirifl_comp}
-Le epiriflessioni si compongono. Sia $\ctA$ una sottocategoria epiriflessiva di un categoria $\ctB$ e sia $\ctB,$ a sua volta,
-una sottocategoria epiriflessiva di una categoria $\ctC.$ Se $\ctC$ \`e regolare, allora $\ctA$ \`e epiriflessiva in $\ctC.$
+	Le epiriflessioni si compongono. Sia \(\ctA\) una sottocategoria epiriflessiva di un categoria \(\ctB\) e sia \(\ctB,\) a sua volta,
+	una sottocategoria epiriflessiva di una categoria \(\ctC.\) Se \(\ctC\) \`e regolare, allora \(\ctA\) \`e epiriflessiva in \(\ctC.\)
 \end{exercise}
 
-Nel prossimo corollario mostriamo che la categoria $\ctSEAlg$ \`e epiriflessiva in $\ctSAlg$ ed eredita da quest'ultima tutte le 
+Nel prossimo corollario mostriamo che la categoria \(\ctSEAlg\) \`e epiriflessiva in \(\ctSAlg\) ed eredita da quest'ultima tutte le
 buone propriet\`a di quest'ultima che abbiamo gi\`a potuto dimostrare.
 
 \begin{corollary}\label{cor_alg_reg}
-Sia $\Sigma$ una segnatura e sia $E$ un insieme di equazioni. 
-\begin{enumerate}
-\item La sottocategoria piena $\ctSEAlg \fun \ctSAlg$ \`e epiriflessiva.
-\item Il funtore dimenticante $U_{(\Sigma,E)} \colon \ctSEAlg \fun \ctSet$ ha un aggiunto sinistro che denoteremo
-$$F_{(\Sigma,E)} \colon \ctSet \fun \ctSEAlg$$
-\item La categoria $\ctSEAlg$ \`e completa, regolare, well-powered e co-well-powered.
-\item Nella categoria $\ctSEAlg,$ i mono sono i morfismi iniettivi e gli epi regolari sono i morfismi suriettivi. 
-\end{enumerate}
+	Sia \(\Sigma\) una segnatura e sia \(E\) un insieme di equazioni.
+	\begin{enumerate}
+		\item La sottocategoria piena \(\ctSEAlg \fun \ctSAlg\) \`e epiriflessiva.
+		\item Il funtore dimenticante \(U_{(\Sigma,E)} \colon \ctSEAlg \fun \ctSet\) ha un aggiunto sinistro che denoteremo
+		      \(\)F_{(\Sigma,E)} \colon \ctSet \fun \ctSEAlg\(\)
+		\item La categoria \(\ctSEAlg\) \`e completa, regolare, well-powered e co-well-powered.
+		\item Nella categoria \(\ctSEAlg,\) i mono sono i morfismi iniettivi e gli epi regolari sono i morfismi suriettivi.
+	\end{enumerate}
 \end{corollary}
 
 \begin{proof}
-1. Sappiamo che $\ctSAlg$ \`e completa (propriet\`a \ref{prop_alg_compl}), regolare (propriet\`a \ref{prop_alg_reg}) e 
-co-well-powered (propriet\`a \ref{prop_alg_cowellpow}. Inoltre $\ctSEAlg$ \`e chiusa in $\ctSAlg$ per prodotti e sottoggetti 
-(teorema \ref{teo_Birkhoff_v1}). Il lemma \ref{lemma_caract_epirifl} permette di concludere che $\ctSEAlg$ \`e epiriflessiva 
-in $\ctSAlg.$ \\
-2. Dal pounto precedente e dalla propriet\`a \ref{prop_alg_libera} si ottiene l'aggiunzione voluta componendo le aggiunzioni
-$r \dashv i$ e $F_{\Sigma} \dashv U_{\Sigma} \colon$
-$$\xymatrix{\ctSEAlg \ar@<-0.5ex>[r]_-{i} & \ctSAlg \ar@<-0.5ex>[r]_{U_{\Sigma}} \ar@<-0.5ex>[l]_-{r} & \ctSet \ar@<-0.5ex>[l]_-{F_{\Sigma}}}$$
-3. Segue dal punto 1 e dal lemma \ref{lemma_epirifl_reg}. \\
-4. Segue di nuovo dal punto 1 e dal lemma \ref{lemma_epirifl_reg}, usando la propriet\`a \ref{prop_alg_reg}.
+	1. Sappiamo che \(\ctSAlg\) \`e completa (propriet\`a \ref{prop_alg_compl}), regolare (propriet\`a \ref{prop_alg_reg}) e
+	co-well-powered (propriet\`a \ref{prop_alg_cowellpow}. Inoltre \(\ctSEAlg\) \`e chiusa in \(\ctSAlg\) per prodotti e sottoggetti
+	(teorema \ref{teo_Birkhoff_v1}). Il lemma \ref{lemma_caract_epirifl} permette di concludere che \(\ctSEAlg\) \`e epiriflessiva
+	in \(\ctSAlg.\) \\
+	2. Dal pounto precedente e dalla propriet\`a \ref{prop_alg_libera} si ottiene l'aggiunzione voluta componendo le aggiunzioni
+	\(r \dashv i\) e \(F_{\Sigma} \dashv U_{\Sigma} \colon\)
+	\(\)\xymatrix{\ctSEAlg \ar@<-0.5ex>[r]_-{i} & \ctSAlg \ar@<-0.5ex>[r]_{U_{\Sigma}} \ar@<-0.5ex>[l]_-{r} & \ctSet \ar@<-0.5ex>[l]_-{F_{\Sigma}}}\(\)
+	3. Segue dal punto 1 e dal lemma \ref{lemma_epirifl_reg}. \\
+	4. Segue di nuovo dal punto 1 e dal lemma \ref{lemma_epirifl_reg}, usando la propriet\`a \ref{prop_alg_reg}.
 \end{proof}
 
 \begin{corollary}\label{cor_alg_EE'}
-Sia $\Sigma$ una segnatura e siano $E$ ed $E'$ due insiemi di equazioni con $E \subseteq E'.$ La sottocategoria piena
-$\ctSEEAlg \fun \ctSEAlg$ \`e epiriflessiva e chiusa in $\ctSEAlg$ per quozienti regolari (oltre che per prodotti e per sottoggetti).
+	Sia \(\Sigma\) una segnatura e siano \(E\) ed \(E'\) due insiemi di equazioni con \(E \subseteq E'.\) La sottocategoria piena
+	\(\ctSEEAlg \fun \ctSEAlg\) \`e epiriflessiva e chiusa in \(\ctSEAlg\) per quozienti regolari (oltre che per prodotti e per sottoggetti).
 \end{corollary}
 
 \begin{proof}
-Poich\'e sappiamo che la categoria $\ctSEAlg$ \`e completa, regolare e co-well-powered (corollario \ref{cor_alg_reg}), per
-applicare il lemma \ref{lemma_caract_epirifl} basta mostrare che $\ctSEEAlg$ \`e chiusa in $\ctSEAlg$ per prodotti e sottoggetti. 
-La dimostrazione di questo fatto si fa esattamente come la dimostrazione dell'implicazione 1 $\Rightarrow$ 2 del teorema 
-\ref{teo_Birkhoff_v1}. Lo stesso dicasi per la chiusura di $\ctSEEAlg$ in $\ctSEAlg$ per quozienti regolari.
+	Poich\'e sappiamo che la categoria \(\ctSEAlg\) \`e completa, regolare e co-well-powered (corollario \ref{cor_alg_reg}), per
+	applicare il lemma \ref{lemma_caract_epirifl} basta mostrare che \(\ctSEEAlg\) \`e chiusa in \(\ctSEAlg\) per prodotti e sottoggetti.
+	La dimostrazione di questo fatto si fa esattamente come la dimostrazione dell'implicazione 1 \(\Rightarrow\) 2 del teorema
+	\ref{teo_Birkhoff_v1}. Lo stesso dicasi per la chiusura di \(\ctSEEAlg\) in \(\ctSEAlg\) per quozienti regolari.
 \end{proof}
 
 %Terminiamo questa sezione con una propriet\`a la cui dimostrazione si basa sulla descrizione delle coppie nucleo e degli
-%epi regolari in $\ctSEAlg.$
+%epi regolari in \(\ctSEAlg.\)
 %
 %\begin{proposition}\label{prop_alg_ex}
-%Sia $\Sigma$ una segnatura e $E$ un insieme di equazioni. La categoria $\ctSEAlg$ \`e esatta.
+%Sia \(\Sigma\) una segnatura e \(E\) un insieme di equazioni. La categoria \(\ctSEAlg\) \`e esatta.
 %\end{proposition}
 %
 %\begin{proof}
 %To be inserted.
 %\end{proof}
 
-\section{Esempi di variet\`a di $\Sigma$-algebre}\label{sec_ex_var_SAlg}
+\section{Esempi di variet\`a di \(\Sigma\)-algebre}\label{sec_ex_var_SAlg}
 
 \begin{example}\label{esempio_torsionfree}
-Questo esempio mostra che essere una sottocategoria epiriflessiva di una variet\`a di $\Sigma$-algebre non garantisce che la 
-categoria sia lei stessa una variet\`a di $\Sigma$-algebre. Ricordiamo che, in un gruppo abeliano,  un elemento $a$ \`e di torsione 
-se esiste $n \in \mathbb N \setminus \{0\}$ tale che $na=0.$ Un gruppo abeliano \`e privo di torsione se il suo unico elemento di 
-torsione \`e 0. Consideriamo la categoria $\ctAb$ dei gruppi abeliani e la sottocategoria piena $\ctAb_{st}$ dei gruppi abeliani privi 
-di torsione. La sottocategoria $\ctAb_{st}$ \`e epiriflessiva in $\ctAb$ ed \`e dunque regolare (lemma \ref{lemma_epirifl_reg}).
-L'unit\`a della riflessione \`e data, per ogni gruppo abeliano $A,$ 
-dalle proiezione sul gruppo quoziente $A \to A/T(A),$ dove $T(A)$ \`e il sottogruppo degli elementi di torsione. Se la condizione di 
-essere privo di torsione potesse esprimersi mediante equazioni nella segnatura dei gruppi, $\ctAb_{st}$ sarebbe chiusa in $\ctAb$ 
-per quozienti regolari (corollario \ref{cor_alg_EE'}), il che \`e falso: il quoziente $\mathbb Z \to \mathbb Z / 2 \mathbb Z = \mathbb Z_2$ 
-mostra che un  quoziente regolare di un gruppo privo di torsione pu\`o avere degli elementi di torsione.
+	Questo esempio mostra che essere una sottocategoria epiriflessiva di una variet\`a di \(\Sigma\)-algebre non garantisce che la
+	categoria sia lei stessa una variet\`a di \(\Sigma\)-algebre. Ricordiamo che, in un gruppo abeliano,  un elemento \(a\) \`e di torsione
+	se esiste \(n \in \mathbb N \setminus \{0\}\) tale che \(na=0.\) Un gruppo abeliano \`e privo di torsione se il suo unico elemento di
+	torsione \`e 0. Consideriamo la categoria \(\ctAb\) dei gruppi abeliani e la sottocategoria piena \(\ctAb_{st}\) dei gruppi abeliani privi
+	di torsione. La sottocategoria \(\ctAb_{st}\) \`e epiriflessiva in \(\ctAb\) ed \`e dunque regolare (lemma \ref{lemma_epirifl_reg}).
+	L'unit\`a della riflessione \`e data, per ogni gruppo abeliano \(A,\)
+	dalle proiezione sul gruppo quoziente \(A \to A/T(A),\) dove \(T(A)\) \`e il sottogruppo degli elementi di torsione. Se la condizione di
+	essere privo di torsione potesse esprimersi mediante equazioni nella segnatura dei gruppi, \(\ctAb_{st}\) sarebbe chiusa in \(\ctAb\)
+	per quozienti regolari (corollario \ref{cor_alg_EE'}), il che \`e falso: il quoziente \(\mathbb Z \to \mathbb Z / 2 \mathbb Z = \mathbb Z_2\)
+	mostra che un  quoziente regolare di un gruppo privo di torsione pu\`o avere degli elementi di torsione.
 \end{example}
 
 \begin{example}\label{esempio_Birkhoff_reticoli}
-In questo esempio esaminiamo la ben nota descrizione equazionale dei reticoli. Prima di iniziare, ricordiamo che in ogni insieme 
-ordinato si ha
-$$a \leq b \; \Leftrightarrow \; a = \inf\{a,b\} \; \Leftrightarrow \; b = \sup\{a,b\}$$
-Un reticolo \`e un insieme ordinato $(A,\leq_A)$ tale che ogni sottoinsieme finito ammette supremum e infimum. In particolare,
-$A$ \`e limitato inferiormente dall'elemento $0 = \sup\emptyset$ e superiormente dall'elemento $1 = \inf\emptyset.$ Chiamiamo 
-$\ctRet$ la categoria i cui oggetti sono i reticoli e le cui frecce sono le funzioni che preservano gli infima e i suprema dei sottoinsiemi 
-finiti (e quindi rispettano anche la relazione d'ordine). Poich\`e
-l'infimum e il supremum di un sottoinsieme di $A$ sono unici, \`e chiaro che otteniamo due operazioni binarie 
-$$\wedge \colon A \times A \to A \;\; (x,y) \mapsto x \wedge y = \inf\{x,y\} \;,\;\;
-\vee \colon A \times A \to A \;\; (x,y) \mapsto x \vee y = \sup\{x,y\}$$
-Se prendiamo come segnatura 
-$$\Sigma = \{\wedge, \vee, 0, 1\}, \;\; \mathrm{ar}(\wedge) = \mathrm{ar}(\vee) = 2, \;\; \mathrm{ar}(0) = \mathrm{ar}(1) = 0$$
-quanto detto si traduce in un funtore
-$$I \colon \ctRet \fun \ctSAlg, \;\; (A,\leq_A) \mapsto (A, \wedge, \vee, 0, 1)$$
-che \`e l'identit\`a sulle frecce. L'idea \`e dunque di descrivere la categoria $\ctRet$ come una variet\`a di $\Sigma$-algebre e il 
-problema \`e di determinare l'insieme $E$ delle equazioni da imporre alle operazioni di $\Sigma$ in modo che si abbia 
-$\ctRet \simeq \ctSEAlg.$ Per questo, consideriamo una $\Sigma$-algebra $(B,\wedge,\vee,0,1)$ e definiamo una relazione 
-d'ordine $\leq_B$ in $B$ in modo che $(B,\leq_B)$ sia un reticolo e $I(B,\leq_B) \simeq (B,\wedge,\vee,0,1).$ Per quanto
-osservato all'inizio dell'esempio, abbiamo due definizioni possibili:
-$$x \leq_B y \;\Leftrightarrow \; x = x \wedge y \;\; \mbox{ oppure } \;\; x \leq_B y \; \Leftrightarrow \; y = x \vee y$$ 
-Ci limitiamo ora a segnalare come si procede per dimostrare alcune delle condizioni.
-\begin{enumerate}
-\item[(i)] L'implicazione $x \vee y = y \Rightarrow x \wedge y = x$ richiede la prima legge di assorbimento $x \wedge (x \vee y) = x$, 
-infatti in questo caso si ha $x \wedge y = x \wedge (x \vee y) = x.$
-\item[(ii)] Analogamente, l'implicazione opposta richiede la seconda legge d'assorbimento $(x \wedge y) \vee y = y.$
-\item[(iii)] L'antisimmetria di $\leq_B$ richiede la commutativit\`a di $\wedge$ (oppure di $\vee,$ secondo quale versione di $\leq_B$
-si adotta).
-\item[(iv)] La transitivit\`a di $\leq_B$ richiede l'associativit\`a di $\wedge$ (oppure di $\vee$).
-\end{enumerate}
-Lasciamo alla lettrice di completare questo esempio, osservando tra l'altro che l'idempotenza di $\wedge$ e di $\vee$ (richieste per
-la riflessivit\`a di $\leq_B$) seguono dalle leggi di assorbimento. Segnaliamo per finire che spesso si usa una definizione pi\`u debole di 
-reticolo chidendo l'esistenza dell'infimum e del supremum per i sottoinsiemi finini e non vuoti; in questo caso si perde l'esistenza 
-dell'elemento minimo 0 e dell'elemento massimo 1.
-%Cominciamo con l'osservare che $I(\ctRet)$ \`e chiusa in $\ctSAlg$ per sottoggetti (e quindi tale condizione non ci aiuta a determinare
-%l'insieme $E$ delle equazioni). Infatti, se
-%$$i \colon (B,\wedge,\vee,0,1) \to I(A,\leq_A)$$
-%\`e un morfismo iniettivo di $\Sigma$-algebre, basta porre $x \leq_B y$ se $i(x) \leq_A i(y)$ per ottenere un reticolo $(B,\leq_B)$
-%tale che $I(B,\leq_B) = (B,\wedge,\vee,0,1).$ Per mostrare l'esistenza dell'infimum e del supremum di ogni sottoinsieme finito di $B,$ 
-%basta esaminare il caso dell'insieme vuoto e dei sottoinsiemi che contengono due elementi. Ci limitiamo, a titolo di esempio, al caso 
-%dell'infimum di una coppia di elementi e mostriamo che $\inf\{x,y\}$ \`e dato de $x \wedge y \colon$
-%\begin{enumerate}
-%\item[(i)] Poich\'e $i$ \`e un morfismo di $\Sigma$-algebre, si ha $i(x \wedge y) = i(x) \wedge i(y) = \inf\{i(x),i(y)\} \leq_A i(x),$
-%da cui $x \wedge y \leq_B x.$ Analogamente $x \wedge y \leq_B y.$
-%\item[(ii)] Se $z \leq_B x$ e $z \leq_B y,$ allora $i(z) \leq_A i(x)$ e $i(z) \leq_A i(y)$ e quindi $i(z) \leq_A \inf\{i(x),i(y)\} = i(x) \wedge i(y) 
-%= i(x \wedge y),$ da cui $z \leq_B x \wedge y.$
-%\end{enumerate} 
-%Lasciamo alla lettrice di verificare che $I(\ctRet)$ \`e chiusa in $\ctSAlg$ anche rispetto ai prodotti e occupiamoci dei quozienti regolari.
-%Sia
-%$$q \colon I(A\leq_A) \to (B,\wedge,\vee,0,1)$$
-%un morfismo suriettivo di $\Sigma$-algebre. In considerazione di quanto ricordato all'inizio dell'esempio, se vogliamo ottenere un
-%reticolo $(B,\leq_B)$ tale che $I(B,\leq_B) = (B,\wedge,\vee,0,1),$ bisogna porre $x \leq_B y$ se $x \wedge y = x.$ Si tratta ora di
-%verificare che $\leq_B$ \`e una relazione d'ordine:
-%\begin{enumerate}
-%\item[(i)]
-%\item[(ii)]
-%\item[(iii)]
-%\end{enumerate}
-\end{example} 
+	In questo esempio esaminiamo la ben nota descrizione equazionale dei reticoli. Prima di iniziare, ricordiamo che in ogni insieme
+	ordinato si ha
+	\(\)a \leq b \; \Leftrightarrow \; a = \inf\{a,b\} \; \Leftrightarrow \; b = \sup\{a,b\}\(\)
+	Un reticolo \`e un insieme ordinato \((A,\leq_A)\) tale che ogni sottoinsieme finito ammette supremum e infimum. In particolare,
+	\(A\) \`e limitato inferiormente dall'elemento \(0 = \sup\emptyset\) e superiormente dall'elemento \(1 = \inf\emptyset.\) Chiamiamo
+	\(\ctRet\) la categoria i cui oggetti sono i reticoli e le cui frecce sono le funzioni che preservano gli infima e i suprema dei sottoinsiemi
+	finiti (e quindi rispettano anche la relazione d'ordine). Poich\`e
+	l'infimum e il supremum di un sottoinsieme di \(A\) sono unici, \`e chiaro che otteniamo due operazioni binarie
+	\(\)\wedge \colon A \times A \to A \;\; (x,y) \mapsto x \wedge y = \inf\{x,y\} \;,\;\;
+	\vee \colon A \times A \to A \;\; (x,y) \mapsto x \vee y = \sup\{x,y\}\(\)
+	Se prendiamo come segnatura
+	\(\)\Sigma = \{\wedge, \vee, 0, 1\}, \;\; \mathrm{ar}(\wedge) = \mathrm{ar}(\vee) = 2, \;\; \mathrm{ar}(0) = \mathrm{ar}(1) = 0\(\)
+	quanto detto si traduce in un funtore
+	\(\)I \colon \ctRet \fun \ctSAlg, \;\; (A,\leq_A) \mapsto (A, \wedge, \vee, 0, 1)\(\)
+	che \`e l'identit\`a sulle frecce. L'idea \`e dunque di descrivere la categoria \(\ctRet\) come una variet\`a di \(\Sigma\)-algebre e il
+	problema \`e di determinare l'insieme \(E\) delle equazioni da imporre alle operazioni di \(\Sigma\) in modo che si abbia
+	\(\ctRet \simeq \ctSEAlg.\) Per questo, consideriamo una \(\Sigma\)-algebra \((B,\wedge,\vee,0,1)\) e definiamo una relazione
+	d'ordine \(\leq_B\) in \(B\) in modo che \((B,\leq_B)\) sia un reticolo e \(I(B,\leq_B) \simeq (B,\wedge,\vee,0,1).\) Per quanto
+	osservato all'inizio dell'esempio, abbiamo due definizioni possibili:
+	\(\)x \leq_B y \;\Leftrightarrow \; x = x \wedge y \;\; \mbox{ oppure } \;\; x \leq_B y \; \Leftrightarrow \; y = x \vee y\(\)
+	Ci limitiamo ora a segnalare come si procede per dimostrare alcune delle condizioni.
+	\begin{enumerate}
+		\item[(i)] L'implicazione \(x \vee y = y \Rightarrow x \wedge y = x\) richiede la prima legge di assorbimento \(x \wedge (x \vee y) = x\),
+		      infatti in questo caso si ha \(x \wedge y = x \wedge (x \vee y) = x.\)
+		\item[(ii)] Analogamente, l'implicazione opposta richiede la seconda legge d'assorbimento \((x \wedge y) \vee y = y.\)
+		\item[(iii)] L'antisimmetria di \(\leq_B\) richiede la commutativit\`a di \(\wedge\) (oppure di \(\vee,\) secondo quale versione di \(\leq_B\)
+		      si adotta).
+		\item[(iv)] La transitivit\`a di \(\leq_B\) richiede l'associativit\`a di \(\wedge\) (oppure di \(\vee\)).
+	\end{enumerate}
+	Lasciamo alla lettrice di completare questo esempio, osservando tra l'altro che l'idempotenza di \(\wedge\) e di \(\vee\) (richieste per
+	la riflessivit\`a di \(\leq_B\)) seguono dalle leggi di assorbimento. Segnaliamo per finire che spesso si usa una definizione pi\`u debole di
+	reticolo chidendo l'esistenza dell'infimum e del supremum per i sottoinsiemi finini e non vuoti; in questo caso si perde l'esistenza
+	dell'elemento minimo 0 e dell'elemento massimo 1.
+	%Cominciamo con l'osservare che \(I(\ctRet)\) \`e chiusa in \(\ctSAlg\) per sottoggetti (e quindi tale condizione non ci aiuta a determinare
+	%l'insieme \(E\) delle equazioni). Infatti, se
+	%\(\)i \colon (B,\wedge,\vee,0,1) \to I(A,\leq_A)\(\)
+	%\`e un morfismo iniettivo di \(\Sigma\)-algebre, basta porre \(x \leq_B y\) se \(i(x) \leq_A i(y)\) per ottenere un reticolo \((B,\leq_B)\)
+	%tale che \(I(B,\leq_B) = (B,\wedge,\vee,0,1).\) Per mostrare l'esistenza dell'infimum e del supremum di ogni sottoinsieme finito di \(B,\) 
+	%basta esaminare il caso dell'insieme vuoto e dei sottoinsiemi che contengono due elementi. Ci limitiamo, a titolo di esempio, al caso 
+	%dell'infimum di una coppia di elementi e mostriamo che \(\inf\{x,y\}\) \`e dato de \(x \wedge y \colon\)
+	%\begin{enumerate}
+	%\item[(i)] Poich\'e \(i\) \`e un morfismo di \(\Sigma\)-algebre, si ha \(i(x \wedge y) = i(x) \wedge i(y) = \inf\{i(x),i(y)\} \leq_A i(x),\)
+	%da cui \(x \wedge y \leq_B x.\) Analogamente \(x \wedge y \leq_B y.\)
+	%\item[(ii)] Se \(z \leq_B x\) e \(z \leq_B y,\) allora \(i(z) \leq_A i(x)\) e \(i(z) \leq_A i(y)\) e quindi \(i(z) \leq_A \inf\{i(x),i(y)\} = i(x) \wedge i(y)  i(x \wedge y),\) da cui \(z \leq_B x \wedge y.\)
+	%\end{enumerate} 
+	%Lasciamo alla lettrice di verificare che \(I(\ctRet)\) \`e chiusa in \(\ctSAlg\) anche rispetto ai prodotti e occupiamoci dei quozienti regolari.
+	%Sia
+	%\(\)q \colon I(A\leq_A) \to (B,\wedge,\vee,0,1)\(\)
+	%un morfismo suriettivo di \(\Sigma\)-algebre. In considerazione di quanto ricordato all'inizio dell'esempio, se vogliamo ottenere un
+	%reticolo \((B,\leq_B)\) tale che \(I(B,\leq_B) = (B,\wedge,\vee,0,1),\) bisogna porre \(x \leq_B y\) se \(x \wedge y = x.\) Si tratta ora di
+	%verificare che \(\leq_B\) \`e una relazione d'ordine:
+	%\begin{enumerate}
+	%\item[(i)]
+	%\item[(ii)]
+	%\item[(iii)]
+	%\end{enumerate}
+\end{example}
 
 \begin{example}\label{esempio_grafi_riflessivi}
-Questo esempio \`e la versione insiemistica di un risultato pi\`u complesso che riguarda i moduli incrociati di gruppi. Quello che 
-vogliamo ottenere \`e una descrizione equazionale della categoria dei grafi riflessivi. Ricordiamo (esempio \ref{2.6.8}) che un grafo 
-riflessivo in $\ctSet$ \`e dato da un diagramma in $\ctSet$ della forma
-$$\xymatrix{G_1 \ar@<1.0ex>[r]^-{d} \ar@<-1.0ex>[r]_-{c} & G_0 \ar[l]|{e}}$$
-a cui si richiedono le equazioni $d \cdot e = \id_{G_0} = d \cdot e.$ Un morfismo di grafi riflessivi \`e dato da una coppia di funzioni 
-$f_1,f_0$ come nel seguente diagramma 
-$$\xymatrix{G_1 \ar@<1.0ex>[r]^-{d} \ar@<-1.0ex>[r]_-{c} \ar[d]_{f_1} & G_0 \ar[l]|{e} \ar[d]^{f_0} \\
-H_1 \ar@<1.0ex>[r]^-{d} \ar@<-1.0ex>[r]_-{c} & H_0 \ar[l]|{e}}$$
-e a cui si richiedono le condizioni $d \cdot f_1 = f_0 \cdot d, c \cdot f_1 = f_0 \cdot c, f_1 \cdot e = e \cdot f_0.$ Si ottiene cos\`i la
-categoria $\ctRGph$ dei grafi riflessivi. Vogliamo mostrare che tale categoria \`e equivalente a una variet\`a di $\Sigma$-algebre,
-cio\`e \`e del tipo $\ctSEAlg.$ Ma chi \`e la segnatura $\Sigma$ e quali sono le equazioni di $E$? Per scoprire la segnatura 
-$\Sigma,$ l'osservazione cruciale \`e che se
-$$(f_1,f_0) \colon (G_1,G_0,d,c,e) \to (H_1,H_0,d,c,e)$$
-\`e un morfismo di grafi riflessivi, allora $f_0$ \`e determinato da $f_1.$ Infatti si ha 
-$$f_0 = d \cdot f_1 \cdot e = c \cdot f_1 \cdot e$$
-Questo suggerisce di esprimere la definizione di grafo riflessivo $(G_1,G_0,d,c,e)$ in termini del solo $G_1.$ Per precisare questa
-idea, basta osservare che le condizioni su $d,c,e$ implicano che il seguente diagramma \`e un equalizzatore in $\ctSet \colon$
-$$\xymatrix{G_0 \ar[r]^-{e} & G_1 \ar@<1.2ex>[rr]^-{e \cdot d} \ar[rr]|-{\id} \ar@<-1.2ex>[rr]_-{e \cdot c} & & G_1}$$
-Se prendiamo come segnatura $\Sigma$ due simboli di operazioni, che chiamiamo $\delta$ e $\gamma,$ entrambi di ariet\`a 1,
-una $\Sigma$-algebra \`e un insieme $B_1$ con due funzioni $\delta^B, \gamma^B \colon B_1 \to B_1$ e un morfismo
-di $\Sigma$-algebre $f_1 \colon (B_1,\delta^B,\gamma^B) \to (C_1,\delta^C,\gamma^C)$ \`e una funzione $f_1 \colon B_1 \to C_1$
-tale che $\delta^C \cdot f_1 = f_1 \cdot \delta^B$ e $\gamma^C \cdot f_1 = f_1 \cdot \gamma^B.$ Si pu\`o ora costruire un 
-funtore $I \colon \ctRGph \fun \ctSAlg$ definito da
-$$\xymatrix{(G_1,G_0,d,c,e) \ar[r]^-{(f_1,f_0)} & (H_1,H_0,d,c,e)} \mapsto 
-\xymatrix{(G_1, e \cdot d, e \cdot c) \ar[r]^-{f_1} & (H_1, e \cdot d, e \cdot c)}$$
-Tale funtore \`e pieno e fedele. Entrambe le cose seguono facilmente dal fatto, gi\`a messo in evidenza, che in un morfismo $(f_1,f_0)$
-fra grafi riflessivi, la funzione $f_0$ \`e determinata dalla funzione $f_1.$ Ne segue che $\ctRGph$ \`e equivalente alla sottocategoria 
-piena $I(\ctRGph)$ di $\ctSAlg.$ Per scoprire le equazioni da imporre ai simboli di operazioni $\delta$ e $\gamma$ 
-%
-%ci lasciamo guidare 
-%dal teorema di Birkhoff. Sappiamo che se $I(\ctRGph)$ \`e del tipo $\ctSEAlg,$ allora $I(\ctRGph)$ \`e chiusa per sottoggetti in $\ctSAlg.$ 
-%Sia dunque $(G_1,G_0,d,c,e)$ un grafo riflessivo e consideriamo un sottoggetto
-%$$m_1 \colon (B_1,\delta^B,\gamma^B) \to I(G_1,G_0,d,c,e)$$
-%
-consideriamo una $\Sigma$-algebra $(B_1,\delta^B,\gamma^B)$ e cerchiamo 
-un grafo riflessivo $(B_1,B_0,d,c,e)$ tale che $I(B_1,B_0,d,c,e) \simeq (B_1,\delta^B,\gamma^B)$ e quindi, in particolare, tale che
-$\delta^B = e \cdot d$ e $\gamma^B = e \cdot c.$ Per quanto gi\`a
-osservato, l'insieme $B_0$ e la funzione $e \colon B_0 \to B_1$ sono necessariamente forniti dal seguente equalizzatore in $\ctSet \colon$
-$$\xymatrix{B_0 \ar[r]^-{e} & B_1 \ar@<1.2ex>[rr]^-{\delta^B} \ar[rr]|-{\id} \ar@<-1.2ex>[rr]_-{\gamma^B} & & B_1}$$
-Se ora vogliamo ottenere una funzione $d \colon B_1 \to B_0$ tale che $e \cdot d = \delta^B,$ il fatto che $e$ sia l'equalizzatore implica
-che dobbiamo imporre le condizioni $\delta^B \cdot \delta^B = \delta^B = \gamma^B \cdot \delta^B.$ Analogamente, l'esistenza di una 
-funzione $c \colon B_1 \to B_0$ tale che $e \cdot c = \gamma^B$ conduce alle condizioni 
-$\gamma^B \cdot \gamma^B = \gamma^B = \delta^B \cdot \gamma^B.$ A questo punto non ci sono ulteriori difficolt\`a a mostrare che si
-ha un'equivalenza di categorie $\ctRGph \simeq \ctSEAlg,$ dove
-$$\Sigma = \{\delta,\gamma\} \;,\;\; \mathrm{ar}(\delta) = 1 = \mathrm{ar}(\gamma) \;,\;\; 
-E = \{\delta \cdot \delta = \delta = \gamma \cdot \delta, \; \gamma \cdot \gamma = \gamma = \delta \cdot \gamma\}$$
-il che fornisce una descrizione equazionale dei grafi riflessivi.
+	Questo esempio \`e la versione insiemistica di un risultato pi\`u complesso che riguarda i moduli incrociati di gruppi. Quello che
+	vogliamo ottenere \`e una descrizione equazionale della categoria dei grafi riflessivi. Ricordiamo (esempio \ref{2.6.8}) che un grafo
+	riflessivo in \(\ctSet\) \`e dato da un diagramma in \(\ctSet\) della forma
+	\(\)\xymatrix{G_1 \ar@<1.0ex>[r]^-{d} \ar@<-1.0ex>[r]_-{c} & G_0 \ar[l]|{e}}\(\)
+	a cui si richiedono le equazioni \(d \cdot e = \id_{G_0} = d \cdot e.\) Un morfismo di grafi riflessivi \`e dato da una coppia di funzioni
+	\(f_1,f_0\) come nel seguente diagramma
+	\(\)\xymatrix{G_1 \ar@<1.0ex>[r]^-{d} \ar@<-1.0ex>[r]_-{c} \ar[d]_{f_1} & G_0 \ar[l]|{e} \ar[d]^{f_0} \\
+	H_1 \ar@<1.0ex>[r]^-{d} \ar@<-1.0ex>[r]_-{c} & H_0 \ar[l]|{e}}\(\)
+	e a cui si richiedono le condizioni \(d \cdot f_1 = f_0 \cdot d, c \cdot f_1 = f_0 \cdot c, f_1 \cdot e = e \cdot f_0.\) Si ottiene cos\`i la
+	categoria \(\ctRGph\) dei grafi riflessivi. Vogliamo mostrare che tale categoria \`e equivalente a una variet\`a di \(\Sigma\)-algebre,
+	cio\`e \`e del tipo \(\ctSEAlg.\) Ma chi \`e la segnatura \(\Sigma\) e quali sono le equazioni di \(E\)? Per scoprire la segnatura
+	\(\Sigma,\) l'osservazione cruciale \`e che se
+	\(\)(f_1,f_0) \colon (G_1,G_0,d,c,e) \to (H_1,H_0,d,c,e)\(\)
+	\`e un morfismo di grafi riflessivi, allora \(f_0\) \`e determinato da \(f_1.\) Infatti si ha
+	\(\)f_0 = d \cdot f_1 \cdot e = c \cdot f_1 \cdot e\(\)
+	Questo suggerisce di esprimere la definizione di grafo riflessivo \((G_1,G_0,d,c,e)\) in termini del solo \(G_1.\) Per precisare questa
+	idea, basta osservare che le condizioni su \(d,c,e\) implicano che il seguente diagramma \`e un equalizzatore in \(\ctSet \colon\)
+	\(\)\xymatrix{G_0 \ar[r]^-{e} & G_1 \ar@<1.2ex>[rr]^-{e \cdot d} \ar[rr]|-{\id} \ar@<-1.2ex>[rr]_-{e \cdot c} & & G_1}\(\)
+	Se prendiamo come segnatura \(\Sigma\) due simboli di operazioni, che chiamiamo \(\delta\) e \(\gamma,\) entrambi di ariet\`a 1,
+	una \(\Sigma\)-algebra \`e un insieme \(B_1\) con due funzioni \(\delta^B, \gamma^B \colon B_1 \to B_1\) e un morfismo
+	di \(\Sigma\)-algebre \(f_1 \colon (B_1,\delta^B,\gamma^B) \to (C_1,\delta^C,\gamma^C)\) \`e una funzione \(f_1 \colon B_1 \to C_1\)
+	tale che \(\delta^C \cdot f_1 = f_1 \cdot \delta^B\) e \(\gamma^C \cdot f_1 = f_1 \cdot \gamma^B.\) Si pu\`o ora costruire un
+	funtore \(I \colon \ctRGph \fun \ctSAlg\) definito da
+	\(\)\xymatrix{(G_1,G_0,d,c,e) \ar[r]^-{(f_1,f_0)} & (H_1,H_0,d,c,e)} \mapsto
+	\xymatrix{(G_1, e \cdot d, e \cdot c) \ar[r]^-{f_1} & (H_1, e \cdot d, e \cdot c)}\(\)
+	Tale funtore \`e pieno e fedele. Entrambe le cose seguono facilmente dal fatto, gi\`a messo in evidenza, che in un morfismo \((f_1,f_0)\)
+	fra grafi riflessivi, la funzione \(f_0\) \`e determinata dalla funzione \(f_1.\) Ne segue che \(\ctRGph\) \`e equivalente alla sottocategoria
+	piena \(I(\ctRGph)\) di \(\ctSAlg.\) Per scoprire le equazioni da imporre ai simboli di operazioni \(\delta\) e \(\gamma\)
+	%
+	%ci lasciamo guidare 
+	%dal teorema di Birkhoff. Sappiamo che se \(I(\ctRGph)\) \`e del tipo \(\ctSEAlg,\) allora \(I(\ctRGph)\) \`e chiusa per sottoggetti in \(\ctSAlg.\) 
+	%Sia dunque \((G_1,G_0,d,c,e)\) un grafo riflessivo e consideriamo un sottoggetto
+	%\(\)m_1 \colon (B_1,\delta^B,\gamma^B) \to I(G_1,G_0,d,c,e)\(\)
+	%
+	consideriamo una \(\Sigma\)-algebra \((B_1,\delta^B,\gamma^B)\) e cerchiamo
+	un grafo riflessivo \((B_1,B_0,d,c,e)\) tale che \(I(B_1,B_0,d,c,e) \simeq (B_1,\delta^B,\gamma^B)\) e quindi, in particolare, tale che
+	\(\delta^B = e \cdot d\) e \(\gamma^B = e \cdot c.\) Per quanto gi\`a
+	osservato, l'insieme \(B_0\) e la funzione \(e \colon B_0 \to B_1\) sono necessariamente forniti dal seguente equalizzatore in \(\ctSet \colon\)
+	\(\)\xymatrix{B_0 \ar[r]^-{e} & B_1 \ar@<1.2ex>[rr]^-{\delta^B} \ar[rr]|-{\id} \ar@<-1.2ex>[rr]_-{\gamma^B} & & B_1}\(\)
+	Se ora vogliamo ottenere una funzione \(d \colon B_1 \to B_0\) tale che \(e \cdot d = \delta^B,\) il fatto che \(e\) sia l'equalizzatore implica
+	che dobbiamo imporre le condizioni \(\delta^B \cdot \delta^B = \delta^B = \gamma^B \cdot \delta^B.\) Analogamente, l'esistenza di una
+	funzione \(c \colon B_1 \to B_0\) tale che \(e \cdot c = \gamma^B\) conduce alle condizioni
+	\(\gamma^B \cdot \gamma^B = \gamma^B = \delta^B \cdot \gamma^B.\) A questo punto non ci sono ulteriori difficolt\`a a mostrare che si
+	ha un'equivalenza di categorie \(\ctRGph \simeq \ctSEAlg,\) dove
+	\(\)\Sigma = \{\delta,\gamma\} \;,\;\; \mathrm{ar}(\delta) = 1 = \mathrm{ar}(\gamma) \;,\;\;
+	E = \{\delta \cdot \delta = \delta = \gamma \cdot \delta, \; \gamma \cdot \gamma = \gamma = \delta \cdot \gamma\}\(\)
+	il che fornisce una descrizione equazionale dei grafi riflessivi.
 \end{example}
 
 \begin{example}\label{esempio_grafi_noneq}
-In considerazione dell'esempio precedente, ci si potrebbe chiedere se la categoria dei grafi pu\`o essere anch'essa descritta come una
-variet\`a di $\Sigma$-algebre. La risposta \`e negativa. Infatti il diagramma
-$$\xymatrix{T \ar@<-0.5ex>[r] \ar@<0.5ex>[r] & T \\
-\emptyset \ar@<-0.5ex>[r] \ar@<0.5ex>[r]  \ar[u] & T \ar[u] }$$
-(dove $T$ \`e l'oggetto terminale di $\ctSet$ e $\emptyset$ \`e l'oggetto iniziale) mostra che, nella categoria dei grafi, l'oggetto terminale 
-ha un sottoggetto che non \`e n\'e iniziale n\'e terminale. Questo \`e in contraddizione con il fatto che in una variet\`a di $\Sigma$-algebre, 
-gli unici sottoggetti dell'oggetto terminale sono l'oggetto terminale e l'oggetto iniziale. Questo segue dal fatto che il funtore dimenticante
-$U_{(\Sigma,E)} \colon \ctSEAlg \fun \ctSet$ preserva i limiti e quindi in particolare i mono e l'oggetto terminale. Ora, i sottoggetti in $\ctSet$
-dell'oggetto terminale sono l'oggetto terminale e l'oggetto iniziale e, se l'insieme vuoto \`e una $(\Sigma,E)$-algebra, allora \`e 
-necessariamente la $(\Sigma,E)$-algebra iniziale.
+	In considerazione dell'esempio precedente, ci si potrebbe chiedere se la categoria dei grafi pu\`o essere anch'essa descritta come una
+	variet\`a di \(\Sigma\)-algebre. La risposta \`e negativa. Infatti il diagramma
+	\(\)\xymatrix{T \ar@<-0.5ex>[r] \ar@<0.5ex>[r] & T \\
+		\emptyset \ar@<-0.5ex>[r] \ar@<0.5ex>[r]  \ar[u] & T \ar[u] }\(\)
+	(dove \(T\) \`e l'oggetto terminale di \(\ctSet\) e \(\emptyset\) \`e l'oggetto iniziale) mostra che, nella categoria dei grafi, l'oggetto terminale
+	ha un sottoggetto che non \`e n\'e iniziale n\'e terminale. Questo \`e in contraddizione con il fatto che in una variet\`a di \(\Sigma\)-algebre,
+	gli unici sottoggetti dell'oggetto terminale sono l'oggetto terminale e l'oggetto iniziale. Questo segue dal fatto che il funtore dimenticante
+	\(U_{(\Sigma,E)} \colon \ctSEAlg \fun \ctSet\) preserva i limiti e quindi in particolare i mono e l'oggetto terminale. Ora, i sottoggetti in \(\ctSet\)
+	dell'oggetto terminale sono l'oggetto terminale e l'oggetto iniziale e, se l'insieme vuoto \`e una \((\Sigma,E)\)-algebra, allora \`e
+	necessariamente la \((\Sigma,E)\)-algebra iniziale.
 \end{example}
 
 \section{Le teorie algebriche}\label{sec_teorie_alg}
 
-Cambiamo ora radicalmente punto di vista e passiamo alle teorie algebriche. Il confronto fra la nozione di $\Sigma$-algebra
-o di $(\Sigma,E)$-algebra e la nozione di algebra per una teoria algebrica sar\`a stabilito gradualmente.
+Cambiamo ora radicalmente punto di vista e passiamo alle teorie algebriche. Il confronto fra la nozione di \(\Sigma\)-algebra
+o di \((\Sigma,E)\)-algebra e la nozione di algebra per una teoria algebrica sar\`a stabilito gradualmente.
 
 La nozione di teoria algebrica \`e molto semplice e generale, ma richiede un po' di attenzione per quanto riguarda la taglia: una
-categoria equivalente a una categoria piccola pu\`o non essere piccola. Chiamiamo quindi essenzialmente piccola una categoria 
+categoria equivalente a una categoria piccola pu\`o non essere piccola. Chiamiamo quindi essenzialmente piccola una categoria
 che \`e equivalente a una categoria piccola.
 
 \begin{definition}\label{def_teoria_alg}
-Una teoria algebrica \`e una categoria essenzialmente piccola e con i prodotti finiti.
-\end{definition} 
-
-\begin{example}\label{esempio_teoria_set}
-La teoria degli insiemi \`e la categoria $\ctN$ duale della categoria $\ctFin$ degli insiemi finiti. La categoria $\ctFin$ ha i coprodotti 
-finiti poich\'e ogni $n \in \mathbb N$ \`e il coprodotto di $n$ copie di 1. Ne segue que la sua duale $\ctN$ \`e una teoria algebrica.
-Il nome ``teoria degli insiemi'' sar\`a spiegato dopo la dimostrazione della proposizione \ref{prop_compl_finprod}.
-\end{example} 
-
-\begin{example}\label{esempio_teoria_sigma}
-Sia $\Sigma$ una segnatura. Consideriamo la restrizione del funtore $\Sigma$-algebra libera alla sottocategoria degli insiemi finiti
-$$\xymatrix{\ctFin \ar[r] & \ctSet \ar[rr]^-{F_{\Sigma}} & & \ctSAlg}$$
-e la sottocategoria piena $\ctSAlg_{\mathrm{lfg}}$ delle $\Sigma$-algebre libere finitamente generate: gli oggetti sono i numeri naturali e le frecce
-$n \to m$ sono i morfismi $F_{\Sigma}(n) \to F_{\Sigma}(m).$ Poich\'e $F_{\Sigma}$ preserva i coprodotti (\`e un aggiunto sinistro), la 
-categoria $\ctSAlg_{\mathrm{lfg}}$ ha i coprodotti finiti. La sua duale \`e dunque una teoria algebrica che denotiamo con $\ctT_{\Sigma}$ e
-chiamiamo la teoria algebrica associata alla segnatura $\Sigma.$ 
-Osserviamo subito che
-$$\ctT_{\Sigma}(n,m) = \ctT_{\Sigma}(n,1 \times \ldots \times 1) \simeq \ctT_{\Sigma}(n,1)^m$$
-$$\ctT_{\Sigma}(n,1) = \ctSAlg(F_{\Sigma}(1),F_{\Sigma}(n)) \simeq \ctSet(1,F_{\Sigma}(n)) \simeq F_{\Sigma}(n)$$
-e che, in tale bijezione, la variabile $x_i \in \{x_1,\ldots,x_n\} \subseteq F_{\Sigma}(n)$ corrisponde alla proiezione 
-$\pi_i \in \ctT_{\Sigma}(n,1) = \ctT_{\Sigma}(1 \times \ldots \times 1,1).$ 
-Osserviamo anche che questo esempio generalizza l'esempio \ref{esempio_teoria_set}: se $\Sigma = \emptyset,$ allora $\ctSAlg = \ctSet,$
-il funtore $F_{\Sigma}$ \`e il funtore identico e quindi $\ctT_{\Sigma} = \ctN.$
-\end{example} 
-
-\begin{definition}\label{def_Talg}
-\hfill
-\begin{enumerate}
-\item Sia $\ctT$ una teoria algebrica. La categoria $\ctAlgT$ delle $\ctT$-algebre \`e la sottocategoria piena della categoria dei funtori
-$\ctSet^{\ctT}$ determinata dai funtori $\ctT \fun \ctSet$ che preservano i prodotti finiti.
-\item Diciamo che una categoria $\ctA$ \`e algebrica se \`e equivalente alla categoria $\ctAlgT$ per una qualche teoria algebrica $\ctT.$
-\end{enumerate}
+	Una teoria algebrica \`e una categoria essenzialmente piccola e con i prodotti finiti.
 \end{definition}
 
-Grazie all'esempio \ref{esempio_teoria_sigma}, possiamo stabilire un primo legame preciso fra le $\Sigma$-algebre e le $\ctT$-algebre.
+\begin{example}\label{esempio_teoria_set}
+	La teoria degli insiemi \`e la categoria \(\ctN\) duale della categoria \(\ctFin\) degli insiemi finiti. La categoria \(\ctFin\) ha i coprodotti
+	finiti poich\'e ogni \(n \in \mathbb N\) \`e il coprodotto di \(n\) copie di 1. Ne segue que la sua duale \(\ctN\) \`e una teoria algebrica.
+	Il nome ``teoria degli insiemi'' sar\`a spiegato dopo la dimostrazione della proposizione \ref{prop_compl_finprod}.
+\end{example}
+
+\begin{example}\label{esempio_teoria_sigma}
+	Sia \(\Sigma\) una segnatura. Consideriamo la restrizione del funtore \(\Sigma\)-algebra libera alla sottocategoria degli insiemi finiti
+	\(\)\xymatrix{\ctFin \ar[r] & \ctSet \ar[rr]^-{F_{\Sigma}} & & \ctSAlg}\(\)
+	e la sottocategoria piena \(\ctSAlg_{\mathrm{lfg}}\) delle \(\Sigma\)-algebre libere finitamente generate: gli oggetti sono i numeri naturali e le frecce
+	\(n \to m\) sono i morfismi \(F_{\Sigma}(n) \to F_{\Sigma}(m).\) Poich\'e \(F_{\Sigma}\) preserva i coprodotti (\`e un aggiunto sinistro), la
+	categoria \(\ctSAlg_{\mathrm{lfg}}\) ha i coprodotti finiti. La sua duale \`e dunque una teoria algebrica che denotiamo con \(\ctT_{\Sigma}\) e
+	chiamiamo la teoria algebrica associata alla segnatura \(\Sigma.\)
+	Osserviamo subito che
+	\(\)\ctT_{\Sigma}(n,m) = \ctT_{\Sigma}(n,1 \times \ldots \times 1) \simeq \ctT_{\Sigma}(n,1)^m\(\)
+	\(\)\ctT_{\Sigma}(n,1) = \ctSAlg(F_{\Sigma}(1),F_{\Sigma}(n)) \simeq \ctSet(1,F_{\Sigma}(n)) \simeq F_{\Sigma}(n)\(\)
+	e che, in tale bijezione, la variabile \(x_i \in \{x_1,\ldots,x_n\} \subseteq F_{\Sigma}(n)\) corrisponde alla proiezione
+	\(\pi_i \in \ctT_{\Sigma}(n,1) = \ctT_{\Sigma}(1 \times \ldots \times 1,1).\)
+	Osserviamo anche che questo esempio generalizza l'esempio \ref{esempio_teoria_set}: se \(\Sigma = \emptyset,\) allora \(\ctSAlg = \ctSet,\)
+	il funtore \(F_{\Sigma}\) \`e il funtore identico e quindi \(\ctT_{\Sigma} = \ctN.\)
+\end{example}
+
+\begin{definition}\label{def_Talg}
+	\hfill
+	\begin{enumerate}
+		\item Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) delle \(\ctT\)-algebre \`e la sottocategoria piena della categoria dei funtori
+		      \(\ctSet^{\ctT}\) determinata dai funtori \(\ctT \fun \ctSet\) che preservano i prodotti finiti.
+		\item Diciamo che una categoria \(\ctA\) \`e algebrica se \`e equivalente alla categoria \(\ctAlgT\) per una qualche teoria algebrica \(\ctT.\)
+	\end{enumerate}
+\end{definition}
+
+Grazie all'esempio \ref{esempio_teoria_sigma}, possiamo stabilire un primo legame preciso fra le \(\Sigma\)-algebre e le \(\ctT\)-algebre.
 
 \begin{proposition}\label{prop_sigma_T_alg}
-Sia $\Sigma$ una segnatura e sia $\ctT_{\Sigma}$ la teoria algebrica associata a $\Sigma.$ Si ha un'equivalenza di categorie
-$$\ctSAlg \simeq \ctAlgT_{\Sigma}$$
+	Sia \(\Sigma\) una segnatura e sia \(\ctT_{\Sigma}\) la teoria algebrica associata a \(\Sigma.\) Si ha un'equivalenza di categorie
+	\(\)\ctSAlg \simeq \ctAlgT_{\Sigma}\(\)
 \end{proposition}
 
 \begin{proof}
-Costruiamo esplicitamente l'equivalenza $E \colon \ctSAlg \fun \ctAlgT_{\Sigma}.$ Se $(A,\sigma^A) \in \ctSAlg,$ poniamo
-$$E(A,\sigma^A) = \widehat{A} \colon \ctT_{\Sigma} \fun \ctSet \;,\;\;\; \widehat{A}(n) = A^n$$
-Per quanto detto nell'esempio \ref{esempio_teoria_sigma}, per definire $\widehat{A}$ sulle frecce di $\ctT_{\Sigma}$ basta definirlo 
-sulle frecce del tipo $n \to 1,$ cio\`e sugli elementi di $F_{\Sigma}(n) = F_{\Sigma}(\{x_1,\ldots,x_n\}).$ La definizione \`e quindi induttiva:
-\begin{enumerate}
-\item[(i)] per ogni $i = 1,\ldots,n,$ poniamo $\widehat{A}(x_i) = \pi_i \colon A^n \to A,$ la $i$-esima proiezione,
-\item[(ii)] se $t_1,\ldots,t_m \in F_{\Sigma}(n)$ e $\sigma \in \Sigma_m,$ allora $\sigma(t_1,\ldots,t_m) \in F_{\Sigma}(n)$ e poniamo
-$$\widehat{A}(\sigma(t_1,\ldots,t_m)) = \sigma^A \cdot \langle \widehat{A}(t_1),\ldots,\widehat{A}(t_m)\rangle \colon A^n \to A^m \to A$$
-\end{enumerate} 
-Sia ora $f \colon (A,\sigma^A) \to (B,\sigma^B)$ un morfismo di $\Sigma$-algebre.  Definiamo la trasformazione naturale 
-$\widehat{f} \colon \widehat{A} \Rightarrow \widehat{B}$ come $\widehat{f}_n = f^n \colon \widehat{A}(n) = A^n \to B^n = \widehat{B}(n).$
-Verifichiamone la naturalit\`a:
-\begin{enumerate}
-\item[(i)] chiaramente, il seguente diagramma commuta per ogni $i=1,\ldots,n \colon$
-$$\xymatrix{A^n \ar[r]^-{f^n} \ar[d]_{\pi_i} & B^n \ar[d]^{\pi_i} \\ A \ar[r]_-{f} & B}$$
-\item[(ii)] supponiamo che $t_1,\ldots,t_m \in F_{\Sigma}(n)$ siano tali che, 
-$$\xymatrix{A^n \ar[r]^-{f^n} \ar[d]_{\widehat{A}(t_i)} & B^n \ar[d]^{\widehat{B}(t_i)} \\ A \ar[r]_-{f} & B}$$
-commuti per ogni $i=1,\ldots,m.$ Ne segue che commuta in ogni sua parte il seguente diagramma (la parte inferiore commuta perch\'e 
-$f$ \`e un morfismo di $\Sigma$-algebre)
-$$\xymatrix{A^n \ar[r]^-{f^n} \ar[d]_{\langle \widehat{A}(t_1),\ldots,\widehat{A}(t_m) \rangle} & 
-B^n \ar[d]^{\langle \widehat{B}(t_1),\ldots,\widehat{B}(t_m) \rangle} \\
-A^m \ar[r]^-{f^m} \ar[d]_{\sigma^A} & B^m \ar[d]^{\sigma^B} \\
-A \ar[r]_-{f} & B}$$
-\end{enumerate}
-Questo conclude la costruzione di $E \colon \ctSAlg \fun \ctAlgT_{\Sigma}$ sugli oggetti e sulle frecce. Essendo ovvio che $E$ \`e un 
-funtore fedele, verifichiamo che \`e anche pieno. Sia $\alpha \colon \widehat{A} \Rightarrow \widehat{B}$ una trasformazione naturale.
-La naturalit\`a di $\alpha$ implica, in particolare, che
-$$\xymatrix{\widehat{A}(n) = A^n \ar[r]^-{\alpha_n} \ar[d]_{\widehat{A}(x_i) = \pi_i} & B^n = \widehat{B}(n) \ar[d]^{\pi_i = \widehat{B}(x_i)} \\
-\widehat{A}(1) = A \ar[r]_-{\alpha_1} & B = \widehat{B}(1) }$$
-commuta per ogni $i = 1,\ldots,n,$ ovvero che $\alpha_n = \alpha_1^n.$ Resta quindi da mostrare che 
-$\alpha_1 \colon (A,\sigma^A) \to (B,\sigma^B)$ \`e un morfismo di $\Sigma$-algebre, ovvero la commutativit\`a di 
-$$\xymatrix{A^n \ar[r]^-{\alpha_1^n} \ar[d]_{\sigma^A} & B^n \ar[d]^{\sigma^B} \\ A \ar[r]_-{\alpha_1} & B}$$
-Per questo basta osservare che la freccia identit\`a $\id \colon A^n \to A^n$ si pu\`o scrivere come
-$\id = \langle \pi_1,\ldots,\pi_n\rangle = \langle \widehat{A}(x_1), \ldots,\widehat{A}(x_n)\rangle$ e quindi
-$\sigma^A = \sigma^A \cdot \id = \sigma^A \cdot \langle \widehat{A}(x_1), \ldots,\widehat{A}(x_n)\rangle = \widehat{A}(\sigma(x_1,\ldots,x_n)).$
-Il diagramma precedente si pu\`o dunque riscrivere come
-$$\xymatrix{A^n \ar[r]^-{\alpha_n} \ar[d]_{\widehat{A}(\sigma(x_1,\ldots,x_n))} & 
-B^n \ar[d]^{\widehat{B}(\sigma(x_1,\ldots,x_n))} \\ A \ar[r]_-{\alpha_1} & B}$$
-che commuta per la naturalit\`a di $\alpha.$
-Costruiamo ora un funtore $E^{-1} \colon \ctAlg\ctT_{\Sigma} \fun \ctSAlg $ quasi-inverso di $E.$ Dato un funtore
-$F \colon \ctT_{\Sigma} \fun \ctSet$ che preserva i prodotti finiti, l'insieme soggiacente alla $\Sigma$-algebra $E^{-1}(F)$ \`e $F(1).$
-Per munire tale insieme di una struttura di $\Sigma$-algebra, osserviamo che, se $\sigma \in \Sigma_n,$ allora 
-$\sigma(x_1,\ldots,x_n) \in F_{\Sigma}(n) = \ctT_{\Sigma}(n,1).$ Possiamo quindi porre
-$$\sigma^{F(1)} = F(\sigma(x_1,\ldots,x_n)) \colon F(n) = F(1)^n \to F(1)$$
-Ancora una volta, se $\alpha \colon F \nat G$ \`e una trasformazione naturale fra $\ctT_{\Sigma}$-algebre, la naturalit\`a
-implica che $\alpha_1 \colon (F(1),\sigma^{F(1)}) \to (G(1),\sigma^{G(1)})$ \`e un morfismo di $\Sigma$-algebre. 
-Per concludere la dimostrazione, basta osservare che $E(E^{-1}(F)) \simeq F$ grazie al fatto che $F$ preserva i prodotti finiti.
-\end{proof} 
+	Costruiamo esplicitamente l'equivalenza \(E \colon \ctSAlg \fun \ctAlgT_{\Sigma}.\) Se \((A,\sigma^A) \in \ctSAlg,\) poniamo
+	\(\)E(A,\sigma^A) = \widehat{A} \colon \ctT_{\Sigma} \fun \ctSet \;,\;\;\; \widehat{A}(n) = A^n\(\)
+	Per quanto detto nell'esempio \ref{esempio_teoria_sigma}, per definire \(\widehat{A}\) sulle frecce di \(\ctT_{\Sigma}\) basta definirlo
+	sulle frecce del tipo \(n \to 1,\) cio\`e sugli elementi di \(F_{\Sigma}(n) = F_{\Sigma}(\{x_1,\ldots,x_n\}).\) La definizione \`e quindi induttiva:
+	\begin{enumerate}
+		\item[(i)] per ogni \(i = 1,\ldots,n,\) poniamo \(\widehat{A}(x_i) = \pi_i \colon A^n \to A,\) la \(i\)-esima proiezione,
+		\item[(ii)] se \(t_1,\ldots,t_m \in F_{\Sigma}(n)\) e \(\sigma \in \Sigma_m,\) allora \(\sigma(t_1,\ldots,t_m) \in F_{\Sigma}(n)\) e poniamo
+		      \(\)\widehat{A}(\sigma(t_1,\ldots,t_m)) = \sigma^A \cdot \langle \widehat{A}(t_1),\ldots,\widehat{A}(t_m)\rangle \colon A^n \to A^m \to A\(\)
+	\end{enumerate}
+	Sia ora \(f \colon (A,\sigma^A) \to (B,\sigma^B)\) un morfismo di \(\Sigma\)-algebre.  Definiamo la trasformazione naturale
+	\(\widehat{f} \colon \widehat{A} \Rightarrow \widehat{B}\) come \(\widehat{f}_n = f^n \colon \widehat{A}(n) = A^n \to B^n = \widehat{B}(n).\)
+	Verifichiamone la naturalit\`a:
+	\begin{enumerate}
+		\item[(i)] chiaramente, il seguente diagramma commuta per ogni \(i=1,\ldots,n \colon\)
+		      \(\)\xymatrix{A^n \ar[r]^-{f^n} \ar[d]_{\pi_i} & B^n \ar[d]^{\pi_i} \\ A \ar[r]_-{f} & B}\(\)
+		\item[(ii)] supponiamo che \(t_1,\ldots,t_m \in F_{\Sigma}(n)\) siano tali che,
+		      \(\)\xymatrix{A^n \ar[r]^-{f^n} \ar[d]_{\widehat{A}(t_i)} & B^n \ar[d]^{\widehat{B}(t_i)} \\ A \ar[r]_-{f} & B}\(\)
+		      commuti per ogni \(i=1,\ldots,m.\) Ne segue che commuta in ogni sua parte il seguente diagramma (la parte inferiore commuta perch\'e
+		      \(f\) \`e un morfismo di \(\Sigma\)-algebre)
+		      \(\)\xymatrix{A^n \ar[r]^-{f^n} \ar[d]_{\langle \widehat{A}(t_1),\ldots,\widehat{A}(t_m) \rangle} &
+		      B^n \ar[d]^{\langle \widehat{B}(t_1),\ldots,\widehat{B}(t_m) \rangle} \\
+		      A^m \ar[r]^-{f^m} \ar[d]_{\sigma^A} & B^m \ar[d]^{\sigma^B} \\
+		      A \ar[r]_-{f} & B}\(\)
+	\end{enumerate}
+	Questo conclude la costruzione di \(E \colon \ctSAlg \fun \ctAlgT_{\Sigma}\) sugli oggetti e sulle frecce. Essendo ovvio che \(E\) \`e un
+	funtore fedele, verifichiamo che \`e anche pieno. Sia \(\alpha \colon \widehat{A} \Rightarrow \widehat{B}\) una trasformazione naturale.
+	La naturalit\`a di \(\alpha\) implica, in particolare, che
+	\(\)\xymatrix{\widehat{A}(n) = A^n \ar[r]^-{\alpha_n} \ar[d]_{\widehat{A}(x_i) = \pi_i} & B^n = \widehat{B}(n) \ar[d]^{\pi_i = \widehat{B}(x_i)} \\
+	\widehat{A}(1) = A \ar[r]_-{\alpha_1} & B = \widehat{B}(1) }\(\)
+	commuta per ogni \(i = 1,\ldots,n,\) ovvero che \(\alpha_n = \alpha_1^n.\) Resta quindi da mostrare che
+	\(\alpha_1 \colon (A,\sigma^A) \to (B,\sigma^B)\) \`e un morfismo di \(\Sigma\)-algebre, ovvero la commutativit\`a di
+	\(\)\xymatrix{A^n \ar[r]^-{\alpha_1^n} \ar[d]_{\sigma^A} & B^n \ar[d]^{\sigma^B} \\ A \ar[r]_-{\alpha_1} & B}\(\)
+	Per questo basta osservare che la freccia identit\`a \(\id \colon A^n \to A^n\) si pu\`o scrivere come
+	\(\id = \langle \pi_1,\ldots,\pi_n\rangle = \langle \widehat{A}(x_1), \ldots,\widehat{A}(x_n)\rangle\) e quindi
+	\(\sigma^A = \sigma^A \cdot \id = \sigma^A \cdot \langle \widehat{A}(x_1), \ldots,\widehat{A}(x_n)\rangle = \widehat{A}(\sigma(x_1,\ldots,x_n)).\)
+	Il diagramma precedente si pu\`o dunque riscrivere come
+	\(\)\xymatrix{A^n \ar[r]^-{\alpha_n} \ar[d]_{\widehat{A}(\sigma(x_1,\ldots,x_n))} &
+	B^n \ar[d]^{\widehat{B}(\sigma(x_1,\ldots,x_n))} \\ A \ar[r]_-{\alpha_1} & B}\(\)
+	che commuta per la naturalit\`a di \(\alpha.\)
+	Costruiamo ora un funtore \(E^{-1} \colon \ctAlg\ctT_{\Sigma} \fun \ctSAlg \) quasi-inverso di \(E.\) Dato un funtore
+	\(F \colon \ctT_{\Sigma} \fun \ctSet\) che preserva i prodotti finiti, l'insieme soggiacente alla \(\Sigma\)-algebra \(E^{-1}(F)\) \`e \(F(1).\)
+	Per munire tale insieme di una struttura di \(\Sigma\)-algebra, osserviamo che, se \(\sigma \in \Sigma_n,\) allora
+	\(\sigma(x_1,\ldots,x_n) \in F_{\Sigma}(n) = \ctT_{\Sigma}(n,1).\) Possiamo quindi porre
+	\(\)\sigma^{F(1)} = F(\sigma(x_1,\ldots,x_n)) \colon F(n) = F(1)^n \to F(1)\(\)
+	Ancora una volta, se \(\alpha \colon F \nat G\) \`e una trasformazione naturale fra \(\ctT_{\Sigma}\)-algebre, la naturalit\`a
+	implica che \(\alpha_1 \colon (F(1),\sigma^{F(1)}) \to (G(1),\sigma^{G(1)})\) \`e un morfismo di \(\Sigma\)-algebre.
+	Per concludere la dimostrazione, basta osservare che \(E(E^{-1}(F)) \simeq F\) grazie al fatto che \(F\) preserva i prodotti finiti.
+\end{proof}
 
-Come caso particolare della propriet\`a \ref{prop_sigma_T_alg}, otteniamo che $\ctSet \simeq \ctAlg\ctN$ (si prenda $\Sigma = \emptyset$),
-il che giustifica il nome di teoria degli insiemi dato alla teoria algebrica $\ctN.$ Ora vogliamo generalizzare quest'ultimo fatto e mostrare che, 
-per ogni categoria piccola $\ctC,$ la categoria dei funtori $\ctSet^{\ctC}$ \`e algebrica. 
+Come caso particolare della propriet\`a \ref{prop_sigma_T_alg}, otteniamo che \(\ctSet \simeq \ctAlg\ctN\) (si prenda \(\Sigma = \emptyset\)),
+il che giustifica il nome di teoria degli insiemi dato alla teoria algebrica \(\ctN.\) Ora vogliamo generalizzare quest'ultimo fatto e mostrare che,
+per ogni categoria piccola \(\ctC,\) la categoria dei funtori \(\ctSet^{\ctC}\) \`e algebrica.
 
 \begin{proposition}\label{prop_compl_finprod}
-Sia $\ctC$ una categoria piccola. Esiste una teoria algebrica $\ctT_{\ctC}$ e un funtore
-$E_{\mathrm{Th}} \colon \ctC \fun \ctT_{\ctC}$ tali che il funtore di composizione
-$$- \circ E_{\mathrm{Th}} \colon \ctAlgT_{\ctC} \fun \ctSet^{\ctC}$$
-\`e un'equivalenza di categorie.
+	Sia \(\ctC\) una categoria piccola. Esiste una teoria algebrica \(\ctT_{\ctC}\) e un funtore
+	\(E_{\mathrm{Th}} \colon \ctC \fun \ctT_{\ctC}\) tali che il funtore di composizione
+	\(\)- \circ E_{\mathrm{Th}} \colon \ctAlgT_{\ctC} \fun \ctSet^{\ctC}\(\)
+	\`e un'equivalenza di categorie.
 \end{proposition}
 
 \begin{proof}
-Gli oggetti della teoria algebrica $\ctT_{\ctC}$ sono le famiglie finite $\{X_i\}_{i \in I}$ di oggetti di $\ctC.$
-Una freccia $(a,\alpha) \colon \{X_i\}_{i \in I} \to \{Y_j\}_{j \in J}$ \`e una coppia formata da una funzione $a \colon J \to I$ e una
-famiglia $\alpha = \{\alpha_j \colon X_{a(j)} \to Y_j\}_{j \in J}$ di frecce di $\ctC.$ L'oggetto terminale di $\ctT_{\ctC}$ \`e la famiglia 
-vuota. Il prodotto di due famiglie \`e la loro unione disgiunta. Pi\`u precisamente, se $s_I \colon I \to I \coprod J \leftarrow J \colon s_J$ 
-\`e il coprodotto in $\ctSet,$ allora
-$$\{X_i\}_{i \in I} \times \{Y_j\}_{j \in J} = \{Z_k\}_{k \in I \coprod J}$$ 
-dove l'oggetto $Z_k$ \`e dato da
-$$Z_k = \left\{\begin{array}{rcl} X_i & \mbox{se} & k=s_I(i) \\ Y_j & \mbox{se} & k=s_J(j) \end{array}\right.$$
-La proiezione $\{Z_k\}_{k \in I \coprod J} \to \{X_i\}_{i \in I}$ \`e data dalla coppia $(s_I \colon I \to I \coprod J, \{\id_{X_i}\}_{i \in I}),$ e 
-analogamente per l'altra proiezione. Il funtore $\ctC \fun \ctT_{\ctC}$ manda un oggetto $X$ nella famiglia $\{X\}_{\ast}$ che contiene 
-un'unica occorrenza di $X,$ e si estende in modo ovvio alle frecce di $\ctC.$ Il punto essenziale per dimostrare l'equivalenza
-$\ctAlgT_{\ctC} \simeq \ctSet^{\ctC}$ \`e mostrare che, per ogni funtore $F \colon \ctC \fun \ctSet,$ esiste un unico funtore 
-$\widehat{F} \colon \ctT_{\ctC} \fun \ctSet$ che preserva i prodotti finiti e tale che
-$$\xymatrix{\ctC \ar[rr]^-{E_{\mathrm{Th}}} \ar[rd]_{F} & & \ctT_{\ctC} \ar[ld]^{\widehat{F}} \\ & \ctSet}$$
-commuta. Per questo, basta osservare che, per ogni oggetto $\{X_i\}_{i \in I}$ di $\ctT_{\ctC},$ si ha
-$$\{X_i\}_{i \in I} = \prod_{i \in I}\{X_i\}_{\ast} = \prod_{i \in I} E_{\mathrm{Th}} (X_i)$$
-Si deve dunque necessariamente definire $\widehat{F}(\{X_i\}_{i \in I}) = \prod_{i \in I}F(X_i).$
+	Gli oggetti della teoria algebrica \(\ctT_{\ctC}\) sono le famiglie finite \(\{X_i\}_{i \in I}\) di oggetti di \(\ctC.\)
+	Una freccia \((a,\alpha) \colon \{X_i\}_{i \in I} \to \{Y_j\}_{j \in J}\) \`e una coppia formata da una funzione \(a \colon J \to I\) e una
+	famiglia \(\alpha = \{\alpha_j \colon X_{a(j)} \to Y_j\}_{j \in J}\) di frecce di \(\ctC.\) L'oggetto terminale di \(\ctT_{\ctC}\) \`e la famiglia
+	vuota. Il prodotto di due famiglie \`e la loro unione disgiunta. Pi\`u precisamente, se \(s_I \colon I \to I \coprod J \leftarrow J \colon s_J\)
+	\`e il coprodotto in \(\ctSet,\) allora
+	\(\)\{X_i\}_{i \in I} \times \{Y_j\}_{j \in J} = \{Z_k\}_{k \in I \coprod J}\(\)
+	dove l'oggetto \(Z_k\) \`e dato da
+	\(\)Z_k = \left\{\begin{array}{rcl} X_i & \mbox{se} & k=s_I(i) \\ Y_j & \mbox{se} & k=s_J(j) \end{array}\right.\(\)
+	La proiezione \(\{Z_k\}_{k \in I \coprod J} \to \{X_i\}_{i \in I}\) \`e data dalla coppia \((s_I \colon I \to I \coprod J, \{\id_{X_i}\}_{i \in I}),\) e
+	analogamente per l'altra proiezione. Il funtore \(\ctC \fun \ctT_{\ctC}\) manda un oggetto \(X\) nella famiglia \(\{X\}_{\ast}\) che contiene
+	un'unica occorrenza di \(X,\) e si estende in modo ovvio alle frecce di \(\ctC.\) Il punto essenziale per dimostrare l'equivalenza
+	\(\ctAlgT_{\ctC} \simeq \ctSet^{\ctC}\) \`e mostrare che, per ogni funtore \(F \colon \ctC \fun \ctSet,\) esiste un unico funtore
+	\(\widehat{F} \colon \ctT_{\ctC} \fun \ctSet\) che preserva i prodotti finiti e tale che
+	\(\)\xymatrix{\ctC \ar[rr]^-{E_{\mathrm{Th}}} \ar[rd]_{F} & & \ctT_{\ctC} \ar[ld]^{\widehat{F}} \\ & \ctSet}\(\)
+	commuta. Per questo, basta osservare che, per ogni oggetto \(\{X_i\}_{i \in I}\) di \(\ctT_{\ctC},\) si ha
+	\(\)\{X_i\}_{i \in I} = \prod_{i \in I}\{X_i\}_{\ast} = \prod_{i \in I} E_{\mathrm{Th}} (X_i)\(\)
+	Si deve dunque necessariamente definire \(\widehat{F}(\{X_i\}_{i \in I}) = \prod_{i \in I}F(X_i).\)
 \end{proof}
 
 \begin{example}\label{esempio_grafi_alg}
-La propriet\`a \ref{prop_compl_finprod} permette di mostrare che la nozione di categoria algebrica \`e pi\`u generale della nozione 
-di variet\`a di $\Sigma$-algebre. Infatti la categoria dei grafi \`e del tipo $\ctSet^{\ctC}$ (si prenda come $\ctC$ la categoria che ha 
-due oggetti distinti $X_0$ e $X_1$ e, come frecce non identiche, due frecce parallele e distinte $X_1 \rightrightarrows X_0$) ma sappiamo 
-gi\`a (esempio \ref{esempio_grafi_noneq}) che tale categoria non \`e una variet\`a di $\Sigma$-algebre.
+	La propriet\`a \ref{prop_compl_finprod} permette di mostrare che la nozione di categoria algebrica \`e pi\`u generale della nozione
+	di variet\`a di \(\Sigma\)-algebre. Infatti la categoria dei grafi \`e del tipo \(\ctSet^{\ctC}\) (si prenda come \(\ctC\) la categoria che ha
+	due oggetti distinti \(X_0\) e \(X_1\) e, come frecce non identiche, due frecce parallele e distinte \(X_1 \rightrightarrows X_0\)) ma sappiamo
+	gi\`a (esempio \ref{esempio_grafi_noneq}) che tale categoria non \`e una variet\`a di \(\Sigma\)-algebre.
 \end{example}
 
 \begin{remark}\label{oss_compl_finprod}
-La costruzione della teoria algebrica $\ctT_{\ctC}$ si pu\`o interpretare in termini di funtori: un oggetto \`e un funtore 
-$X \colon I \fun \ctSet,$ dove $I$ \`e visto come una categoria discreta e finita, e una freccia $(a,\alpha)$ \`e data da
-un funtore $a \colon J \fun I$ e una trasformazione naturale $\alpha \colon X \cdot a \nat Y.$
-Inoltre, a una lettura attenta della dimostrazione della propriet\`a \ref{prop_compl_finprod}, ci si rende conto che abbiamo dimostrato un 
-fatto pi\`u generale. Se $\ctB$ \`e una categoria con i prodotti finiti, la composizione con il funtore $E_{\mathrm{Th}}$ induce un'equivalenza 
-fra la categoria dei funtori $\ctT_{\ctC} \fun \ctB$ che preservano i prodotti finiti e la categoria dei funtori $\ctC \fun \ctB.$ Se si sceglie 
-$\ctB = \ctSet,$ si ottiene l'enunciato della propriet\`a \ref{prop_compl_finprod}. Per questo motivo, il funtore 
-$$E_{\mathrm{Th}} \colon \ctC \fun \ctT_{\ctC}$$
-merita il nome di completamento per prodotti finiti. \`E anche chiaro come si deve adattare la costruzione per ottenere il completamento per
-prodotti arbitrari (piccoli).
+	La costruzione della teoria algebrica \(\ctT_{\ctC}\) si pu\`o interpretare in termini di funtori: un oggetto \`e un funtore
+	\(X \colon I \fun \ctSet,\) dove \(I\) \`e visto come una categoria discreta e finita, e una freccia \((a,\alpha)\) \`e data da
+	un funtore \(a \colon J \fun I\) e una trasformazione naturale \(\alpha \colon X \cdot a \nat Y.\)
+	Inoltre, a una lettura attenta della dimostrazione della propriet\`a \ref{prop_compl_finprod}, ci si rende conto che abbiamo dimostrato un
+	fatto pi\`u generale. Se \(\ctB\) \`e una categoria con i prodotti finiti, la composizione con il funtore \(E_{\mathrm{Th}}\) induce un'equivalenza
+	fra la categoria dei funtori \(\ctT_{\ctC} \fun \ctB\) che preservano i prodotti finiti e la categoria dei funtori \(\ctC \fun \ctB.\) Se si sceglie
+	\(\ctB = \ctSet,\) si ottiene l'enunciato della propriet\`a \ref{prop_compl_finprod}. Per questo motivo, il funtore
+	\(\)E_{\mathrm{Th}} \colon \ctC \fun \ctT_{\ctC}\(\)
+	merita il nome di completamento per prodotti finiti. \`E anche chiaro come si deve adattare la costruzione per ottenere il completamento per
+	prodotti arbitrari (piccoli).
 \end{remark}
 
 \section{Limiti e colimiti nelle categorie algebriche}\label{sec_limcolim_AlgT}
 
-Cominciamo con lo studiare i limiti nelle categorie algebriche, il che risulta facile grazie ai risultati generali stabiliti precedentemente a 
-proposito dei limiti nelle categorie di funtori (proposizione \ref{prop_lim_puntuali} e corollario \ref{cor_lim_cat_pref}) e ai limiti di funtori in 
-due variabili (proposizione \ref{prop_fubini} e osservazione \ref{rem_fubini}) 
+Cominciamo con lo studiare i limiti nelle categorie algebriche, il che risulta facile grazie ai risultati generali stabiliti precedentemente a
+proposito dei limiti nelle categorie di funtori (proposizione \ref{prop_lim_puntuali} e corollario \ref{cor_lim_cat_pref}) e ai limiti di funtori in
+due variabili (proposizione \ref{prop_fubini} e osservazione \ref{rem_fubini})
 
 \begin{proposition}\label{prop_lim_alg}
-Sia $\ctT$ una teoria algebrica. La categoria $\ctAlgT$ \`e completa e il funtore d'inclusione 
-$\ctAlgT \fun \ctSet^{\ctT}$ preserva e riflette i limiti. In altre parole, i limiti in $\ctAlgT$ si calcolano punto a punto in $\ctSet.$
+	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) \`e completa e il funtore d'inclusione
+	\(\ctAlgT \fun \ctSet^{\ctT}\) preserva e riflette i limiti. In altre parole, i limiti in \(\ctAlgT\) si calcolano punto a punto in \(\ctSet.\)
 \end{proposition}
 
 \begin{proof}
-Consideriamo una categoria piccola $\ctD,$ un funtore $F$ e il funtore d'inclusione $i$ come segue
-$$\xymatrix{\ctD \ar[r]^-{F} & \ctAlgT \ar[r]^-{i} & \ctSet^{\ctT}}$$
-Dobbiamo mostrare che il limite di $i \cdot F$ \`e una $\ctT$-algebra, cio\`e preserva i prodotti finiti. 
-Per la proposizione \ref{prop_lim_puntuali}, sappiamo che $(\lim_{\ctD}(i \cdot F))(X) = \lim_{\ctD}((FD)(X))$ per ogni $X \in \ctT.$
-Consideriamo separatamente i prodotti binari e l'oggetto terminale. \\
-Prodotti binari: usando \ref{prop_lim_puntuali}, \ref{rem_fubini} e che $FD$ \`e una $\ctT$-algebra, si ha
-$$\begin{array}{rcl}
-(\lim_{\ctD}(i \cdot F))(X \times Y) & = & \lim_{\ctD}((FD)(X \times Y)) \\
-& = & \lim_{\ctD}((FD)(X) \times (FD)(Y)) \\
-& \simeq & \lim_{\ctD}((FD)(X)) \times \lim_{\ctD}((FD)(Y)) \\
-& = & (\lim_{\ctD}(i \cdot F))(X) \times (\lim_{\ctD}(i \cdot F))(X)
-\end{array}$$
-Oggetto terminale: se $
-T$ \`e l'oggetto terminale di $\ctT,$ allora
-$$(\lim_{\ctD}(i \cdot F))(T) = \lim_{\ctD}((FD)(T)) = \lim_{\ctD}(\{\ast\}) = \{\ast\}$$
-dove l'ultimo passaggio \`e il caso banale dell'esercizio \ref{exer_colim_cost}.
-\end{proof} 
+	Consideriamo una categoria piccola \(\ctD,\) un funtore \(F\) e il funtore d'inclusione \(i\) come segue
+	\(\)\xymatrix{\ctD \ar[r]^-{F} & \ctAlgT \ar[r]^-{i} & \ctSet^{\ctT}}\(\)
+	Dobbiamo mostrare che il limite di \(i \cdot F\) \`e una \(\ctT\)-algebra, cio\`e preserva i prodotti finiti.
+	Per la proposizione \ref{prop_lim_puntuali}, sappiamo che \((\lim_{\ctD}(i \cdot F))(X) = \lim_{\ctD}((FD)(X))\) per ogni \(X \in \ctT.\)
+	Consideriamo separatamente i prodotti binari e l'oggetto terminale. \\
+	Prodotti binari: usando \ref{prop_lim_puntuali}, \ref{rem_fubini} e che \(FD\) \`e una \(\ctT\)-algebra, si ha
+	\(\)\begin{array}{rcl}
+		(\lim_{\ctD}(i \cdot F))(X \times Y) & =      & \lim_{\ctD}((FD)(X \times Y))                                  \\
+		                                     & =      & \lim_{\ctD}((FD)(X) \times (FD)(Y))                            \\
+		                                     & \simeq & \lim_{\ctD}((FD)(X)) \times \lim_{\ctD}((FD)(Y))               \\
+		                                     & =      & (\lim_{\ctD}(i \cdot F))(X) \times (\lim_{\ctD}(i \cdot F))(X)
+	\end{array}\(\)
+	Oggetto terminale: se \(T\) \`e l'oggetto terminale di \(\ctT,\) allora
+	\(\)(\lim_{\ctD}(i \cdot F))(T) = \lim_{\ctD}((FD)(T)) = \lim_{\ctD}(\{\ast\}) = \{\ast\}\(\)
+	dove l'ultimo passaggio \`e il caso banale dell'esercizio \ref{exer_colim_cost}.
+\end{proof}
 
 \begin{corollary}\label{cor_mono_AlgT}
-Sia $\ctT$ una teoria algebrica. L'inclusione $\ctAlgT \fun \ctSet^{\ctT}$ preserva e riflette i mono. In altre parole, i mono in 
-$\ctAlgT$ sono le trasformazioni naturali le cui componenti sono funzioni iniettive. Ne segue che $\ctAlgT$ \`e well-powered.
+	Sia \(\ctT\) una teoria algebrica. L'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) preserva e riflette i mono. In altre parole, i mono in
+	\(\ctAlgT\) sono le trasformazioni naturali le cui componenti sono funzioni iniettive. Ne segue che \(\ctAlgT\) \`e well-powered.
 \end{corollary}
 
-Dimostrare che la categoria $\ctAlgT$ \`e cocompleta richiede pi\`u lavoro che l'analogo risultato per i limiti. Cominciamo con un caso 
+Dimostrare che la categoria \(\ctAlgT\) \`e cocompleta richiede pi\`u lavoro che l'analogo risultato per i limiti. Cominciamo con un caso
 molto particolare.
 
 \begin{proposition}\label{prop_Yoneda_alg}
-Sia $\ctT$ una teoria algebrica.
-\begin{enumerate}
-\item Per ogni oggetto $X \in \ctT,$ il funtore rappresentabile
-$$\ctT(X,-) \colon \ctT \to \ctSet$$
-preserva i prodotti finiti, cio\`e l'immersione di Yoneda si fattorizza attraverso la sottocategoria delle $\ctT$-algebre
-$$\xymatrix{\ctT^{\mathrm{op}} \ar[rr]^-{Y_{\ctT}} \ar@{-->}[rd] & & \ctSet^{\ctT} \\
-& \ctAlgT \ar[ru] }$$
-\item Il funtore $Y_{\ctT} \colon \ctT^{\mathrm{op}} \fun \ctAlgT$ \`e pieno, fedele e preserva i coprodotti finiti. In particolare,
-$\ctT^{\mathrm{op}}$ \`e equivalente alla sottocategoria piena di $\ctAlgT$ dei coprodotti finiti delle $\ctT$-algebre rappresentabili
-\end{enumerate}
+	Sia \(\ctT\) una teoria algebrica.
+	\begin{enumerate}
+		\item Per ogni oggetto \(X \in \ctT,\) il funtore rappresentabile
+		      \(\)\ctT(X,-) \colon \ctT \to \ctSet\(\)
+		      preserva i prodotti finiti, cio\`e l'immersione di Yoneda si fattorizza attraverso la sottocategoria delle \(\ctT\)-algebre
+		      \(\)\xymatrix{\ctT^{\mathrm{op}} \ar[rr]^-{Y_{\ctT}} \ar@{-->}[rd] & & \ctSet^{\ctT} \\
+		      & \ctAlgT \ar[ru] }\(\)
+		\item Il funtore \(Y_{\ctT} \colon \ctT^{\mathrm{op}} \fun \ctAlgT\) \`e pieno, fedele e preserva i coprodotti finiti. In particolare,
+		      \(\ctT^{\mathrm{op}}\) \`e equivalente alla sottocategoria piena di \(\ctAlgT\) dei coprodotti finiti delle \(\ctT\)-algebre rappresentabili
+	\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-1. Il fatto che $\ctT(X,-)$ sia una $\ctT$-algebra segue subito dalla propriet\`a universale del prodotto: 
-$\ctT(X,Y \times Z) \simeq \ctT(X,Y) \times \ctT(X,Z).$ \\
-2. Se $T$ \`e l'oggetto terminale di $\ctT$ e $A \in \ctAlgT,$ allora per il lemma di Yoneda
-$\Nat(\ctT(T,-),A) \simeq A(T) = \{\ast\},$ il che mostra che $\ctT(T,-)$ \`e la $\ctT$-algebra iniziale.
-Siano ora $X,Y \in \ctT$ e $A \in \ctAlgT.$ Usando il lemma di Yoneda a due riprese e la propriet\`a universale del coprodotto, si ha 
-$$\begin{array}{rcl}
-\Nat(\ctT(X \times Y,-),A) & \simeq & A(X \times Y) \\
-& = & A(X) \times A(Y) \\
-& \simeq & \Nat(\ctT(X,-),A) \times \Nat(\ctT(Y,-),A) \\
-& \simeq & \Nat(\ctT(X,-) + \ctT(Y,-),A)
-\end{array}$$
-da cui, ancora per il lemma di Yoneda, si ottiene $\ctT(X \times Y,-) \simeq \ctT(X,-) + \ctT(Y,-).$
+	1. Il fatto che \(\ctT(X,-)\) sia una \(\ctT\)-algebra segue subito dalla propriet\`a universale del prodotto:
+	\(\ctT(X,Y \times Z) \simeq \ctT(X,Y) \times \ctT(X,Z).\) \\
+	2. Se \(T\) \`e l'oggetto terminale di \(\ctT\) e \(A \in \ctAlgT,\) allora per il lemma di Yoneda
+	\(\Nat(\ctT(T,-),A) \simeq A(T) = \{\ast\},\) il che mostra che \(\ctT(T,-)\) \`e la \(\ctT\)-algebra iniziale.
+	Siano ora \(X,Y \in \ctT\) e \(A \in \ctAlgT.\) Usando il lemma di Yoneda a due riprese e la propriet\`a universale del coprodotto, si ha
+	\(\)\begin{array}{rcl}
+		\Nat(\ctT(X \times Y,-),A) & \simeq & A(X \times Y)                              \\
+		                           & =      & A(X) \times A(Y)                           \\
+		                           & \simeq & \Nat(\ctT(X,-),A) \times \Nat(\ctT(Y,-),A) \\
+		                           & \simeq & \Nat(\ctT(X,-) + \ctT(Y,-),A)
+	\end{array}\(\)
+	da cui, ancora per il lemma di Yoneda, si ottiene \(\ctT(X \times Y,-) \simeq \ctT(X,-) + \ctT(Y,-).\)
 \end{proof}
 
 \begin{proposition}\label{prop_colim_sift_AlgT}
-Sia $\ctT$ una teoria algebrica. La categoria $\ctAlgT$ ha i colimiti setaccianti e il funtore ,d'inclusione
-$\ctAlgT \fun \ctSet^{\ctT}$ preserva e riflette tali colimiti. In altre parole, i colimiti setaccianti in $\ctAlgT$ si 
-calcolano punto a punto in $\ctSet.$
+	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) ha i colimiti setaccianti e il funtore ,d'inclusione
+	\(\ctAlgT \fun \ctSet^{\ctT}\) preserva e riflette tali colimiti. In altre parole, i colimiti setaccianti in \(\ctAlgT\) si
+	calcolano punto a punto in \(\ctSet.\)
 \end{proposition}
 
 \begin{proof} La dimostrazione \`e analoga a quella della proposizione \ref{prop_lim_alg}.
-Consideriamo una categoria setacciata $\ctD,$ un funtore $F$ e il funtore d'inclusione $i$ come segue
-$$\xymatrix{\ctD \ar[r]^-{F} & \ctAlgT \ar[r]^-{i} & \ctSet^{\ctT}}$$
-Dobbiamo mostrare che il colimite di $i \cdot F$ \`e una $\ctT$-algebra, cio\`e preserva i prodotti finiti. \\
-Prodotti binari: usando \ref{prop_lim_puntuali}, \ref{th_caratt_sifted} e che $FD$ \`e una $\ctT$-algebra, si ha
-$$\begin{array}{rcl}
-(\colim_{\ctD}(i \cdot F))(X \times Y) & = & \colim_{\ctD}((FD)(X \times Y)) \\
-& = & \colim_{\ctD}((FD)(X) \times (FD)(Y)) \\
-& \simeq & \colim_{\ctD}((FD)(X)) \times \colim_{\ctD}((FD)(Y)) \\
-& = & (\colim_{\ctD}(i \cdot F))(X) \times (\colim_{\ctD}(i \cdot F))(X)
-\end{array}$$
-Oggetto terminale: se $
-T$ \`e l'oggetto terminale di $\ctT,$ allora
-$$(\colim_{\ctD}(i \cdot F))(T) = \colim_{\ctD}((FD)(T)) = \colim_{\ctD}(\{\ast\}) = \{\ast\}$$
-dove nell'ultimo passaggio si usa l'esercizio \ref{exer_colim_cost}.
-\end{proof} 
+	Consideriamo una categoria setacciata \(\ctD,\) un funtore \(F\) e il funtore d'inclusione \(i\) come segue
+	\(\)\xymatrix{\ctD \ar[r]^-{F} & \ctAlgT \ar[r]^-{i} & \ctSet^{\ctT}}\(\)
+	Dobbiamo mostrare che il colimite di \(i \cdot F\) \`e una \(\ctT\)-algebra, cio\`e preserva i prodotti finiti. \\
+	Prodotti binari: usando \ref{prop_lim_puntuali}, \ref{th_caratt_sifted} e che \(FD\) \`e una \(\ctT\)-algebra, si ha
+	\(\)\begin{array}{rcl}
+		(\colim_{\ctD}(i \cdot F))(X \times Y) & =      & \colim_{\ctD}((FD)(X \times Y))                                    \\
+		                                       & =      & \colim_{\ctD}((FD)(X) \times (FD)(Y))                              \\
+		                                       & \simeq & \colim_{\ctD}((FD)(X)) \times \colim_{\ctD}((FD)(Y))               \\
+		                                       & =      & (\colim_{\ctD}(i \cdot F))(X) \times (\colim_{\ctD}(i \cdot F))(X)
+	\end{array}\(\)
+	Oggetto terminale: se \(T\) \`e l'oggetto terminale di \(\ctT,\) allora
+	\(\)(\colim_{\ctD}(i \cdot F))(T) = \colim_{\ctD}((FD)(T)) = \colim_{\ctD}(\{\ast\}) = \{\ast\}\(\)
+	dove nell'ultimo passaggio si usa l'esercizio \ref{exer_colim_cost}.
+\end{proof}
 
 \begin{corollary}\label{cor_epireg_AlgT}
-Sia $\ctT$ una teoria algebrica. L'inclusione $\ctAlgT \fun \ctSet^{\ctT}$ preserva e riflette gli epi regolari. In altre parole, gli
-epi regolari in $\ctAlgT$ sono le trasformazioni naturali le cui componenti sono funzioni suriettive. Ne segue che $\ctAlgT$ 
-\`e esatta e co-well-powered. Inoltre, l'inclusione $\ctAlgT \fun \ctSet^{\ctT}$ riflette anche gli oggetti proiettivi regolari. 
+	Sia \(\ctT\) una teoria algebrica. L'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) preserva e riflette gli epi regolari. In altre parole, gli
+	epi regolari in \(\ctAlgT\) sono le trasformazioni naturali le cui componenti sono funzioni suriettive. Ne segue che \(\ctAlgT\)
+	\`e esatta e co-well-powered. Inoltre, l'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) riflette anche gli oggetti proiettivi regolari.
 \end{corollary}
 
 \begin{proof} Basta osservare che gli epi regolari sono coequalizzatori della propria coppia nucleo, che \`e un grafo riflessivo.
-Tali coequalizzatori sono dunque dei colimiti setaccianti e sono quindi preservati (e riflessi) dall'inclusione di $\ctAlgT$ in $\ctSet^{\ctT}.$
-La riflessione degli oggetti proiettivi regolari segue subito dalla preservazione degli epi regolari.
-Inoltre, sappiamo gi\`a che $\ctSet^{\ctT}$ \`e esatta e co-well-powered, vedi gli esempi \ref{ex_cat_esatte} e \ref{esempio_set_cowellpow},
-il che permette di concludere la prova.
-\end{proof} 
+	Tali coequalizzatori sono dunque dei colimiti setaccianti e sono quindi preservati (e riflessi) dall'inclusione di \(\ctAlgT\) in \(\ctSet^{\ctT}.\)
+	La riflessione degli oggetti proiettivi regolari segue subito dalla preservazione degli epi regolari.
+	Inoltre, sappiamo gi\`a che \(\ctSet^{\ctT}\) \`e esatta e co-well-powered, vedi gli esempi \ref{ex_cat_esatte} e \ref{esempio_set_cowellpow},
+	il che permette di concludere la prova.
+\end{proof}
 
-Per mostrare che $\ctAlgT$ \`e cocompleta ci occorrono ancora alcuni risultati preliminari che raccogliamo nel prossimo lemma.
+Per mostrare che \(\ctAlgT\) \`e cocompleta ci occorrono ancora alcuni risultati preliminari che raccogliamo nel prossimo lemma.
 
 \begin{lemma}\label{lemma_rappr_proj}
-Sia $\ctT$ una teoria algebrica. 
-\begin{enumerate}
-\item Per ogni oggetto $X \in \ctT,$ la $\ctT$-algebra rappresentabile $\ctT(X,-)$ \`e un oggetto proiettivo regolare.
-\item Per ogni insieme $\{X_i \}_{i \in I}$ di oggetti in $\ctT,$ il coprodotto $\coprod_{i \in I}\ctT(X_i,-)$ esiste in $\ctAlgT.$ 
-\item La categoria $\ctAlgT$ ha abbastanza oggetti proiettivi regolari: la sottocategoria piena $\bfK(\ctT)$ di $\ctAlgT$ 
-formata da tutti i coprodotti delle $\ctT$-algebre rappresentabili \`e una copertura proiettiva regolare di $\ctAlgT$
-(definizione \ref{def_cop_proiettiva}). 
-\end{enumerate}
+	Sia \(\ctT\) una teoria algebrica.
+	\begin{enumerate}
+		\item Per ogni oggetto \(X \in \ctT,\) la \(\ctT\)-algebra rappresentabile \(\ctT(X,-)\) \`e un oggetto proiettivo regolare.
+		\item Per ogni insieme \(\{X_i \}_{i \in I}\) di oggetti in \(\ctT,\) il coprodotto \(\coprod_{i \in I}\ctT(X_i,-)\) esiste in \(\ctAlgT.\)
+		\item La categoria \(\ctAlgT\) ha abbastanza oggetti proiettivi regolari: la sottocategoria piena \(\bfK(\ctT)\) di \(\ctAlgT\)
+		      formata da tutti i coprodotti delle \(\ctT\)-algebre rappresentabili \`e una copertura proiettiva regolare di \(\ctAlgT\)
+		      (definizione \ref{def_cop_proiettiva}).
+	\end{enumerate}
 \end{lemma}
 
-\begin{proof} 
-1. Poich\'e l'inclusione $\ctAlgT \fun \ctSet^{\ctT}$ preserva gli epi regolari, si pu\`o applicare lo stesso argomento che
-nell'esempio \ref{exem_proreg}. \\
-2. Denotiamo con $\ctP_{\mathrm{f}}(I)$ l'insieme ordinato dei sottoinsiemi finiti di $I.$ Come gi\`a visto nella 
-proposizione \ref{prop_coprod_colimfiltr}, si ha
-$$\coprod_{i \in I}\ctT(X_i,-) = \colim_{I' \in \ctP_{\mathrm{f}}(I)} \left(\coprod_{i \in I'}\ctT(X_i,-)\right)$$
-Poich\`e la categoria $\ctP_{\mathrm{f}}(I)$ \`e filtrata e quindi setacciata, si pu\`o concludere usando la proposizione
-\ref{prop_colim_sift_AlgT} per il colimite e la proposizione \ref{prop_Yoneda_alg} per il coprodotto finito. \\
-3. Sia $F \in \ctAlgT.$ Consideriamo la sua categoria degli elementi $\mathrm{El}(F)$ e il diagramma seguente
-$$\xymatrix{ & & \coprod_{(A,a) \in \mathrm{El}(F)} \ctT(A,-) \ar@{-->}[d]_{c_F} \ar[rrd]^{p_F} \\
-\ctT(A,-) \ar[rru]^{\sigma_{(A,a)}} \ar[rr]_-{s_{(A,a)}} & & \coprod_{(A,a) \in \mathrm{El}(F)} \ctT(A,-) \ar@{-->}[rr]_-{q_F} & & F}$$
-dove il primo coprodotto, con iniezioni $\sigma_{(A,a)},$ \`e nella categoria $\ctSet^{\ctT},$ $p_F$ \`e l'epi regolare 
-dell'osservazione \ref{oss_colim_rappr} e il secondo coprodotto, con iniezioni $s_{(A,a)},$ \`e nella categoria $\ctAlgT.$
-Il secondo coprodotto esiste grazie al punto precedente, ed \`e un oggetto proiettivo regolare in $\ctAlgT$ grazie al 
-primo punto e alla propriet\`a \ref{prop_stab_proreg}. Per la propriet\`a universale del coprodotto in $\ctSet^{\ctT},$ 
-esiste un'unica freccia $c_F$ tale che $c_F \cdot \sigma_{(A,a)} = s_{(A,a)}$ per ogni $(A,a) \in \mathrm{El}(F).$ Per la
-propriet\`a universale del coprodotto in $\ctAlgT,$ esiste un'unica freccia $q_F$ tale che 
-$q_F \cdot s_{(A,a)} = p_F \cdot \sigma_{(A,a)}$ per ogni $(A,a) \in \mathrm{El}(F).$ Precomponendo con le iniezioni
-$\sigma_{(A,a)},$ si ottiene che $q_F \cdot c_F = p_F.$ Poich\'e $p_F$ \`e un epi regolare e $\ctSet^{\ctT}$ \`e una categoria
-regolare,(esempio \ref{esempio_set_reg}), se ne deduce che $q_F$ \`e un epi regolare in $\ctSet^{\ctT}$ (proposizione
-\ref{prop_epi_reg_cat_reg}) e quindi in $\ctAlgT$ (corollario \ref{cor_epireg_AlgT}).
-\end{proof} 
+\begin{proof}
+	1. Poich\'e l'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) preserva gli epi regolari, si pu\`o applicare lo stesso argomento che
+	nell'esempio \ref{exem_proreg}. \\
+	2. Denotiamo con \(\ctP_{\mathrm{f}}(I)\) l'insieme ordinato dei sottoinsiemi finiti di \(I.\) Come gi\`a visto nella
+	proposizione \ref{prop_coprod_colimfiltr}, si ha
+	\(\)\coprod_{i \in I}\ctT(X_i,-) = \colim_{I' \in \ctP_{\mathrm{f}}(I)} \left(\coprod_{i \in I'}\ctT(X_i,-)\right)\(\)
+	Poich\`e la categoria \(\ctP_{\mathrm{f}}(I)\) \`e filtrata e quindi setacciata, si pu\`o concludere usando la proposizione
+	\ref{prop_colim_sift_AlgT} per il colimite e la proposizione \ref{prop_Yoneda_alg} per il coprodotto finito. \\
+	3. Sia \(F \in \ctAlgT.\) Consideriamo la sua categoria degli elementi \(\mathrm{El}(F)\) e il diagramma seguente
+	\(\)\xymatrix{ & & \coprod_{(A,a) \in \mathrm{El}(F)} \ctT(A,-) \ar@{-->}[d]_{c_F} \ar[rrd]^{p_F} \\
+	\ctT(A,-) \ar[rru]^{\sigma_{(A,a)}} \ar[rr]_-{s_{(A,a)}} & & \coprod_{(A,a) \in \mathrm{El}(F)} \ctT(A,-) \ar@{-->}[rr]_-{q_F} & & F}\(\)
+	dove il primo coprodotto, con iniezioni \(\sigma_{(A,a)},\) \`e nella categoria \(\ctSet^{\ctT},\) \(p_F\) \`e l'epi regolare
+	dell'osservazione \ref{oss_colim_rappr} e il secondo coprodotto, con iniezioni \(s_{(A,a)},\) \`e nella categoria \(\ctAlgT.\)
+	Il secondo coprodotto esiste grazie al punto precedente, ed \`e un oggetto proiettivo regolare in \(\ctAlgT\) grazie al
+	primo punto e alla propriet\`a \ref{prop_stab_proreg}. Per la propriet\`a universale del coprodotto in \(\ctSet^{\ctT},\)
+	esiste un'unica freccia \(c_F\) tale che \(c_F \cdot \sigma_{(A,a)} = s_{(A,a)}\) per ogni \((A,a) \in \mathrm{El}(F).\) Per la
+	propriet\`a universale del coprodotto in \(\ctAlgT,\) esiste un'unica freccia \(q_F\) tale che
+	\(q_F \cdot s_{(A,a)} = p_F \cdot \sigma_{(A,a)}\) per ogni \((A,a) \in \mathrm{El}(F).\) Precomponendo con le iniezioni
+	\(\sigma_{(A,a)},\) si ottiene che \(q_F \cdot c_F = p_F.\) Poich\'e \(p_F\) \`e un epi regolare e \(\ctSet^{\ctT}\) \`e una categoria
+	regolare,(esempio \ref{esempio_set_reg}), se ne deduce che \(q_F\) \`e un epi regolare in \(\ctSet^{\ctT}\) (proposizione
+	\ref{prop_epi_reg_cat_reg}) e quindi in \(\ctAlgT\) (corollario \ref{cor_epireg_AlgT}).
+\end{proof}
 
 \begin{remark}\label{oss_cop_proj}
-Al fine di rendere pi\`u facile da leggere la dimostrazione della prossima proposizione, useremo la notazione seguente. 
-Per una $\ctT$-algebra $F,$ notiamo 
-$$q_F \colon P_F \to F$$
-l'epi regolare con dominio un oggetto proiettivo regolare (che \`e un coprodotto in $\ctAlgT$ di $\ctT$-algebre rappresentabili)
-e codominio $F$ introdotto nella dimostrazione del lemma \ref{lemma_rappr_proj}. Se ne consideriamo la coppia nucleo 
-$q_{F,1},q_{F,2} \colon R[q_F] \rightrightarrows P_F$ e iteriamo il procedimento, otteniamo il diagramma
-$$\xymatrix{P_{R[q_F]} \ar[r]^-{q_{R[q_F]}} & R[q_F] \ar@<0.5ex>[r]^-{q_{F,1}} \ar@<-0.5ex>[r]_-{q_{F,2}} & P_F \ar[r]^-{q_F} & F}$$
-ovvero (semplificando ulteriormente la notazione)
-$$\xymatrix{P'_F = P_{R[q_F]} \ar@<0.5ex>[rrr]^-{f_1 = q_{F,1} \cdot q_{R[q_F]}} \ar@<-0.5ex>[rrr]_-{f_2 = q_{F,2} \cdot q_{R[q_F]}}
-& & & P_F \ar[r]^-{q_F} & F}$$
-Osserviamo che tale diagramma \`e un coequalizzatore, perch\'e $q_F$ \`e il coequalizzatore della sua coppia nucleo e $q_{R[q_F]}$
-\`e un epi (regolare). Inoltre, si tratta del coequalizzatore di un grafo riflessivo. Infatti la coppia nucleo di $q_F$ \`e una relazione 
-d'equivalenza interna e quindi, in particolare, \`e un grafo riflessivo; poich\'e $P_F$ \`e proiettivo regolare e $q_{R[q_F]}$ \`e un epi 
-regolare, si pu\`o prolungare la freccia che testimonia la riflessivit\`a da $R[q_F]$ a $P'_F.$
+	Al fine di rendere pi\`u facile da leggere la dimostrazione della prossima proposizione, useremo la notazione seguente.
+	Per una \(\ctT\)-algebra \(F,\) notiamo
+	\(\)q_F \colon P_F \to F\(\)
+	l'epi regolare con dominio un oggetto proiettivo regolare (che \`e un coprodotto in \(\ctAlgT\) di \(\ctT\)-algebre rappresentabili)
+	e codominio \(F\) introdotto nella dimostrazione del lemma \ref{lemma_rappr_proj}. Se ne consideriamo la coppia nucleo
+	\(q_{F,1},q_{F,2} \colon R[q_F] \rightrightarrows P_F\) e iteriamo il procedimento, otteniamo il diagramma
+	\(\)\xymatrix{P_{R[q_F]} \ar[r]^-{q_{R[q_F]}} & R[q_F] \ar@<0.5ex>[r]^-{q_{F,1}} \ar@<-0.5ex>[r]_-{q_{F,2}} & P_F \ar[r]^-{q_F} & F}\(\)
+	ovvero (semplificando ulteriormente la notazione)
+	\(\)\xymatrix{P'_F = P_{R[q_F]} \ar@<0.5ex>[rrr]^-{f_1 = q_{F,1} \cdot q_{R[q_F]}} \ar@<-0.5ex>[rrr]_-{f_2 = q_{F,2} \cdot q_{R[q_F]}}
+	& & & P_F \ar[r]^-{q_F} & F}\(\)
+	Osserviamo che tale diagramma \`e un coequalizzatore, perch\'e \(q_F\) \`e il coequalizzatore della sua coppia nucleo e \(q_{R[q_F]}\)
+	\`e un epi (regolare). Inoltre, si tratta del coequalizzatore di un grafo riflessivo. Infatti la coppia nucleo di \(q_F\) \`e una relazione
+	d'equivalenza interna e quindi, in particolare, \`e un grafo riflessivo; poich\'e \(P_F\) \`e proiettivo regolare e \(q_{R[q_F]}\) \`e un epi
+	regolare, si pu\`o prolungare la freccia che testimonia la riflessivit\`a da \(R[q_F]\) a \(P'_F.\)
 \end{remark}
 
 \begin{proposition}\label{prop_AlgT_cocompl}
-Sia $\ctT$ una teoria algebrica. La categoria $\ctAlgT$ \`e cocompleta.
+	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) \`e cocompleta.
 \end{proposition}
 
 \begin{proof}
-Affinch\'e una categoria sia cocompleta, occorre mostrare che ammette i colimiti setaccianti e i coprodotti finiti (teorema 
-\ref{th_colim_piccoli}). Poich\'e sappiamo gi\`a che $\ctAlgT$ ammette i colimiti setaccianti (proposizione \ref{prop_colim_sift_AlgT}) 
-e l'oggetto iniziale (proposizione \ref{prop_Yoneda_alg}), rimane da trattare il caso dei coprodotti binari. Per due $\ctT$-algebre
-$F$ e $G,$ consideriamo il seguente diagramma, dove impieghiamo la costruzione e la notazione introdotte nell'osservazione 
-\ref{oss_cop_proj}  
-$$\xymatrix{P'_F \ar@<0.5ex>[rr]^-{f_1} \ar@<-0.5ex>[rr]_-{f_2} \ar[d]_{s'_F} & & P_F \ar[rr]^-{q_F} \ar[d]^{s_F} & & F \ar[d]^{\sigma_F} \\
-P'_F + P'_G \ar@<0.5ex>[rr]^-{f_1 + g_1} \ar@<-0.5ex>[rr]_-{f_2 + g_2} & & P_F + P_G \ar[rr]^-{q} & & Q \\
-P'_G \ar@<0.5ex>[rr]^-{g_1} \ar@<-0.5ex>[rr]_-{g_2} \ar[u]^{s'_G} & & P_G \ar[rr]_-{q_G} \ar[u]_{s_G} & & G \ar[u]_{\sigma_G} }$$
-Osserviamo che, poich\'e gli oggetti $P_F, P'_F, P_G, P'_G$ sono tutti coprodotti di $\ctT$-algebre rappresentabili, i coprodotti
-della prima e della seconda colonna esistono grazie al lemma \ref{lemma_rappr_proj}. Osserviamo anche che la coppia di frecce
-$(f_1+g_1,f_2+g_2)$ \`e a sua volta un grafo riflessivo (si usino, componente per componente, le frecce che attestano la riflessivit\`a
-di $(f_1,f_2)$ e di $(g_1,g_2)$), cosicch\'e il loro coequalizzatore $q$ esiste nella categoria $\ctAlgT.$ Se ora $\sigma_F$ e $\sigma_G$
-sono le estensioni di $s_F$ e $s_G$ ai coequalizzatori, la commutazione dei colimiti (si tratta del caso duale di quello dell'esempio 
-\ref{ex_comm_lim}) permette di concludere che la terza colonna \`e il coprodotto di $F$ e $G$ in $\ctAlgT.$
+	Affinch\'e una categoria sia cocompleta, occorre mostrare che ammette i colimiti setaccianti e i coprodotti finiti (teorema
+	\ref{th_colim_piccoli}). Poich\'e sappiamo gi\`a che \(\ctAlgT\) ammette i colimiti setaccianti (proposizione \ref{prop_colim_sift_AlgT})
+	e l'oggetto iniziale (proposizione \ref{prop_Yoneda_alg}), rimane da trattare il caso dei coprodotti binari. Per due \(\ctT\)-algebre
+	\(F\) e \(G,\) consideriamo il seguente diagramma, dove impieghiamo la costruzione e la notazione introdotte nell'osservazione
+	\ref{oss_cop_proj}
+	\(\)\xymatrix{P'_F \ar@<0.5ex>[rr]^-{f_1} \ar@<-0.5ex>[rr]_-{f_2} \ar[d]_{s'_F} & & P_F \ar[rr]^-{q_F} \ar[d]^{s_F} & & F \ar[d]^{\sigma_F} \\
+	P'_F + P'_G \ar@<0.5ex>[rr]^-{f_1 + g_1} \ar@<-0.5ex>[rr]_-{f_2 + g_2} & & P_F + P_G \ar[rr]^-{q} & & Q \\
+	P'_G \ar@<0.5ex>[rr]^-{g_1} \ar@<-0.5ex>[rr]_-{g_2} \ar[u]^{s'_G} & & P_G \ar[rr]_-{q_G} \ar[u]_{s_G} & & G \ar[u]_{\sigma_G} }\(\)
+	Osserviamo che, poich\'e gli oggetti \(P_F, P'_F, P_G, P'_G\) sono tutti coprodotti di \(\ctT\)-algebre rappresentabili, i coprodotti
+	della prima e della seconda colonna esistono grazie al lemma \ref{lemma_rappr_proj}. Osserviamo anche che la coppia di frecce
+	\((f_1+g_1,f_2+g_2)\) \`e a sua volta un grafo riflessivo (si usino, componente per componente, le frecce che attestano la riflessivit\`a
+	di \((f_1,f_2)\) e di \((g_1,g_2)\)), cosicch\'e il loro coequalizzatore \(q\) esiste nella categoria \(\ctAlgT.\) Se ora \(\sigma_F\) e \(\sigma_G\)
+	sono le estensioni di \(s_F\) e \(s_G\) ai coequalizzatori, la commutazione dei colimiti (si tratta del caso duale di quello dell'esempio
+	\ref{ex_comm_lim}) permette di concludere che la terza colonna \`e il coprodotto di \(F\) e \(G\) in \(\ctAlgT.\)
 \end{proof}
 
 Possiamo ora completare un punto lasciato in sospeso nella sezione \ref{sec_sigma-alg}.
 
 \begin{corollary}\label{cor_SEAlg_cocompl}
-Sia $\Sigma$ una segnatura e sia $E$ un insieme di equazioni. La categoria $\ctSEAlg$ \`e cocompleta.
+	Sia \(\Sigma\) una segnatura e sia \(E\) un insieme di equazioni. La categoria \(\ctSEAlg\) \`e cocompleta.
 \end{corollary}
 
 \begin{proof}
-La categoria $\ctSAlg$ \`e cocompleta per la proposizione \ref{prop_AlgT_cocompl} e perch\'e $\ctSAlg \simeq \ctAlgT_{\Sigma}$ 
-(proposizione \ref{prop_sigma_T_alg}). Se ne deduce che $\ctSEAlg$ \`e cocompleta perch\'e \`e riflessiva in $\ctSAlg$ 
-(corollario \ref{cor_alg_reg}) e si pu\`o quindi applicare la proposizione \ref{prop_(co)lim_sottocat_rifl}.
+	La categoria \(\ctSAlg\) \`e cocompleta per la proposizione \ref{prop_AlgT_cocompl} e perch\'e \(\ctSAlg \simeq \ctAlgT_{\Sigma}\)
+	(proposizione \ref{prop_sigma_T_alg}). Se ne deduce che \(\ctSEAlg\) \`e cocompleta perch\'e \`e riflessiva in \(\ctSAlg\)
+	(corollario \ref{cor_alg_reg}) e si pu\`o quindi applicare la proposizione \ref{prop_(co)lim_sottocat_rifl}.
 \end{proof}
 
 \begin{exercise}\label{exer_alg_sift_rapp}
-In questo esercizio proponiamo un modo diverso di mostrare che, se $\ctT$ \`e un ateoria algebrica, allora la categoria $\ctAlgT$ 
-ha i coprodotti finiti (e dunque, in virt\`u del teorema \ref{th_colim_piccoli} e della proposizione \ref{prop_colim_sift_AlgT}, \`e 
-cocompleta). Possiamo spezzare il lavoro da fare  in due parti.
-\begin{enumerate}
-\item Sia $F \in \ctSet^{\ctT}.$ Mostrare che le condizioni seguenti sono equivalenti:
-\begin{enumerate}
-\item $F$ \`e una $\ctT$-algebra,
-\item la categoria degli elementi $\mathrm{El}(F)$ \`e setacciata,
-\item $F$ \`e un colimite setacciante di algebre rappresentabili.
-\end{enumerate}
-\item Siano $F,G \in \ctAlgT.$ Consideriamo il funtore
-$$H \colon \mathrm{El}(F) \times \mathrm{El}(G) \fun \ctAlgT \;\;\;\;\;\; H((A,a),(B,b)) = \ctT(A \times B,-)$$
-Mostrare che il colimite di $H$ esiste in $\ctAlgT$ ed \`e il coprodotto in $\ctAlgT$ di $F$ e $G.$
-\end{enumerate} 
+	In questo esercizio proponiamo un modo diverso di mostrare che, se \(\ctT\) \`e un ateoria algebrica, allora la categoria \(\ctAlgT\)
+	ha i coprodotti finiti (e dunque, in virt\`u del teorema \ref{th_colim_piccoli} e della proposizione \ref{prop_colim_sift_AlgT}, \`e
+	cocompleta). Possiamo spezzare il lavoro da fare  in due parti.
+	\begin{enumerate}
+		\item Sia \(F \in \ctSet^{\ctT}.\) Mostrare che le condizioni seguenti sono equivalenti:
+		      \begin{enumerate}
+			      \item \(F\) \`e una \(\ctT\)-algebra,
+			      \item la categoria degli elementi \(\mathrm{El}(F)\) \`e setacciata,
+			      \item \(F\) \`e un colimite setacciante di algebre rappresentabili.
+		      \end{enumerate}
+		\item Siano \(F,G \in \ctAlgT.\) Consideriamo il funtore
+		      \(\)H \colon \mathrm{El}(F) \times \mathrm{El}(G) \fun \ctAlgT \;\;\;\;\;\; H((A,a),(B,b)) = \ctT(A \times B,-)\(\)
+		      Mostrare che il colimite di \(H\) esiste in \(\ctAlgT\) ed \`e il coprodotto in \(\ctAlgT\) di \(F\) e \(G.\)
+	\end{enumerate}
 \end{exercise}
 
 %\begin{warning}\label{caveat_prop_univ_AlgT}
 %Un risultato che si potrebbe presentare sotto forma di esercizi \`e mostrare che il teorema (che dovrebbe trovarsi nei
-%capitoli precedenti) che dice che se $\ctC$ \`e piccola allora
-%$$Y_{\ctC} \colon \ctC \fun \ctSet^{\ctC^{\mathrm{op}}}$$
-%\`e il completamento di $\ctC$ rispetto ai colimiti, si adatta al caso delle teorie algebriche per ottenere che, se $\ctT$
+%capitoli precedenti) che dice che se \(\ctC\) \`e piccola allora
+%\(\)Y_{\ctC} \colon \ctC \fun \ctSet^{\ctC^{\mathrm{op}}}\(\)
+%\`e il completamento di \(\ctC\) rispetto ai colimiti, si adatta al caso delle teorie algebriche per ottenere che, se \(\ctT\)
 %\`e una teoria algebrica, allora
-%$$Y_{\ctT} \colon \ctT^{\mathrm{op}} \fun \ctAlgT$$
-%\`e il completamento di $\ctT$ rispetto ai colimiti setaccianti. Per arrivarci occorre un lemma generale che si pu\`o 
+%\(\)Y_{\ctT} \colon \ctT^{\mathrm{op}} \fun \ctAlgT\(\)
+%\`e il completamento di \(\ctT\) rispetto ai colimiti setaccianti. Per arrivarci occorre un lemma generale che si pu\`o 
 %ugualmente trattare come esercizio (in questo capitolo o altrove): i funtori rappresentabili
-%$$\ctB(-,B) \colon \ctB^{\mathrm{op}} \fun \ctSet$$
+%\(\)\ctB(-,B) \colon \ctB^{\mathrm{op}} \fun \ctSet\(\)
 %riflettono collettivamente i colimiti.
 %\end{warning} 
 
 \section{Una caratterizzazione delle categorie algebriche}\label{sec_caract_AlgT_exact}
 
-Sappiamo che le categorie algebriche sono esatte (corollario \ref{cor_epireg_AlgT}). Tale propriet\`a non \`e esclusiva delle 
-categorie algebriche: per esempio, la categoria dei fasci su uno spazio topologico \`e esatta ma non \`e algebrica. Ciononostante 
-l'esattezza \`e una delle caratteristiche fondamentali delle categorie algebriche nel senso che rientra in una lista di condizioni che 
+Sappiamo che le categorie algebriche sono esatte (corollario \ref{cor_epireg_AlgT}). Tale propriet\`a non \`e esclusiva delle
+categorie algebriche: per esempio, la categoria dei fasci su uno spazio topologico \`e esatta ma non \`e algebrica. Ciononostante
+l'esattezza \`e una delle caratteristiche fondamentali delle categorie algebriche nel senso che rientra in una lista di condizioni che
 permettono di caratterizzarle, come mostreremo nel corollario \ref{cor_caratt_AlgT} che conclude questa sezione.
 
-\begin{remark}\label{oss_pro_reg_preser} Nel corollario \ref{cor_caratt_AlgT} useremo la nozione di oggetto finitamente 
-presentabile. Per preparare tale nozione, osserviamo che la nozione di oggetto proiettivo regolare (definizione \ref{def_ogg_pro_reg})
-pu\`o esprimersi in termini di preservazione di certi colimiti. Infatti, se una categoria $\ctA$ ha le coppie nucleo, 
-allora un oggetto $A \in \ctA$ \`e proiettivo regolare se e solo se il funtore rappresentabile $\ctA(A,-) \colon \ctA \fun \ctSet$
-preserva i coequalizzatori delle coppie nucleo. 
+\begin{remark}\label{oss_pro_reg_preser} Nel corollario \ref{cor_caratt_AlgT} useremo la nozione di oggetto finitamente
+	presentabile. Per preparare tale nozione, osserviamo che la nozione di oggetto proiettivo regolare (definizione \ref{def_ogg_pro_reg})
+	pu\`o esprimersi in termini di preservazione di certi colimiti. Infatti, se una categoria \(\ctA\) ha le coppie nucleo,
+	allora un oggetto \(A \in \ctA\) \`e proiettivo regolare se e solo se il funtore rappresentabile \(\ctA(A,-) \colon \ctA \fun \ctSet\)
+	preserva i coequalizzatori delle coppie nucleo.
 \end{remark}
 
 \begin{definition}\label{def_finpres_perfpres}
-Consideriamo una categoria $\ctA,$ un oggetto $A \in \ctA$ e il funtore rappresentabile $\ctA(A,-) \colon \ctA \fun \ctSet.$
-L'oggetto $A$ \`e
-\begin{enumerate}
-\item finitamente presentabile se il funtore $\ctA(A,-)$ preserva i colimiti filtrati,
-\item perfettamente presentabile se il funtore $\ctA(A,-)$ preserva i colimiti setacciati,
-\item assolutamente presentabile se il funtore $\ctA(A,-)$ preserva i colimiti.
-\end{enumerate}
+	Consideriamo una categoria \(\ctA,\) un oggetto \(A \in \ctA\) e il funtore rappresentabile \(\ctA(A,-) \colon \ctA \fun \ctSet.\)
+	L'oggetto \(A\) \`e
+	\begin{enumerate}
+		\item finitamente presentabile se il funtore \(\ctA(A,-)\) preserva i colimiti filtrati,
+		\item perfettamente presentabile se il funtore \(\ctA(A,-)\) preserva i colimiti setacciati,
+		\item assolutamente presentabile se il funtore \(\ctA(A,-)\) preserva i colimiti.
+	\end{enumerate}
 \end{definition}
 
 Ovviamente un oggetto assolutamente presentabile \`e perfettamente presentabile e un oggetto perfettamente presentabile
-\`e finitamente presentabile. Analogamente a quanto fatto per gli oggetti proiettivi regolari nella proposizione \ref{prop_stab_proreg}, 
+\`e finitamente presentabile. Analogamente a quanto fatto per gli oggetti proiettivi regolari nella proposizione \ref{prop_stab_proreg},
 vediamo le propriet\`a di stabilit\`a degli oggetti finitamente, perfettamente e assolutamente presentabili.
 
 \begin{proposition}\label{prop_stab_present}
-Sia $\ctA$ una categoria.
-\begin{enumerate} 
-\item Se $A \in \ctA$ \`e un oggetto finitamente presentabile e se $R$ \`e un retratto di $A,$ allora anche $R$ \`e finitamente 
-presentabile. Lo stesso vale per gli oggetti perfettamente presentabili e per gli oggetti assolutamente presentabili.
-\item Un colimite finito di oggetti finitamente presentabili \`e finitamente presentabile.
-\item Un coprodotto finito di oggetti perfettamente presentabili \`e perfettamente presentabile.
-\end{enumerate}
+	Sia \(\ctA\) una categoria.
+	\begin{enumerate}
+		\item Se \(A \in \ctA\) \`e un oggetto finitamente presentabile e se \(R\) \`e un retratto di \(A,\) allora anche \(R\) \`e finitamente
+		      presentabile. Lo stesso vale per gli oggetti perfettamente presentabili e per gli oggetti assolutamente presentabili.
+		\item Un colimite finito di oggetti finitamente presentabili \`e finitamente presentabile.
+		\item Un coprodotto finito di oggetti perfettamente presentabili \`e perfettamente presentabile.
+	\end{enumerate}
 \end{proposition}
 
-\begin{proof} 
-1. Se $R$ \`e un retratto di $A,$ allora il funtore $\ctA(R,-)$ \`e un retratto del funtore $\ctA(A,-).$ La proposizione 
-\ref{prop_funt_retratto} permette di concludere. \\
-2. Sia $I \colon \ctI \fun \ctA$ un funtore definito su una categoria $\ctI$ finita e sia $L$ il colimite di $I.$ Supponiamo che, 
-per ogni $i \in \ctI,$ l'oggetto $I(i)$ sia finitamente presentabile. Consideriamo anche un funtore $F \colon \ctD \fun \ctA,$
-dove $\ctD$ \`e una categoria filtrata. Il fatto che $L$ sia finitamente presentabile si mostra con la seguente catena di 
-isomorfismi naturali: 
-$$\begin{array}{rclcl}
-\ctA(L,\colim_{\ctD}FD) & \simeq & \ctA(\colim_{\ctI}Ii,\colim_{\ctD}FD) & & (\mbox{definizione di } L) \\
-& \simeq & \lim_{\ctI}\ctA(Ii,\colim_{\ctD}FD) & & (\mbox{osservazione \ref{oss_rappr_lim}}) \\
-& \simeq & \lim_{\ctI}(\colim_{\ctD}\ctA(Ii,FD)) & & (Ii \mbox{ \`e finitamente presentabile}) \\
-& \simeq & \colim_{\ctD}(\lim_{\ctI}\ctA(Ii,FD)) & & (\mbox{teorema \ref{th_caratt_filtr}}) \\
-& \simeq & \colim_{\ctD}\ctA(\colim_{\ctI}Ii,FD) & & (\mbox{osservazione \ref{oss_rappr_lim}}) \\
-& \simeq & \colim_{\ctD}\ctA(L,FD) & & (\mbox{definizione di } L)
-\end{array}$$
-3. Simile alla prova del punto 3 prendendo come $\ctI$ una categoria finita e discreta, come $\ctD$ una categoria setacciata
-e usando il teorema \ref{th_caratt_sifted}.
-\end{proof} 
+\begin{proof}
+	1. Se \(R\) \`e un retratto di \(A,\) allora il funtore \(\ctA(R,-)\) \`e un retratto del funtore \(\ctA(A,-).\) La proposizione
+	\ref{prop_funt_retratto} permette di concludere. \\
+	2. Sia \(I \colon \ctI \fun \ctA\) un funtore definito su una categoria \(\ctI\) finita e sia \(L\) il colimite di \(I.\) Supponiamo che,
+	per ogni \(i \in \ctI,\) l'oggetto \(I(i)\) sia finitamente presentabile. Consideriamo anche un funtore \(F \colon \ctD \fun \ctA,\)
+	dove \(\ctD\) \`e una categoria filtrata. Il fatto che \(L\) sia finitamente presentabile si mostra con la seguente catena di
+	isomorfismi naturali:
+	\(\)\begin{array}{rclcl}
+		\ctA(L,\colim_{\ctD}FD) & \simeq & \ctA(\colim_{\ctI}Ii,\colim_{\ctD}FD) &  & (\mbox{definizione di } L)                \\
+		                        & \simeq & \lim_{\ctI}\ctA(Ii,\colim_{\ctD}FD)   &  & (\mbox{osservazione \ref{oss_rappr_lim}}) \\
+		                        & \simeq & \lim_{\ctI}(\colim_{\ctD}\ctA(Ii,FD)) &  & (Ii \mbox{ \`e finitamente presentabile}) \\
+		                        & \simeq & \colim_{\ctD}(\lim_{\ctI}\ctA(Ii,FD)) &  & (\mbox{teorema \ref{th_caratt_filtr}})    \\
+		                        & \simeq & \colim_{\ctD}\ctA(\colim_{\ctI}Ii,FD) &  & (\mbox{osservazione \ref{oss_rappr_lim}}) \\
+		                        & \simeq & \colim_{\ctD}\ctA(L,FD)               &  & (\mbox{definizione di } L)
+	\end{array}\(\)
+	3. Simile alla prova del punto 3 prendendo come \(\ctI\) una categoria finita e discreta, come \(\ctD\) una categoria setacciata
+	e usando il teorema \ref{th_caratt_sifted}.
+\end{proof}
 
 \begin{example}\label{ex_present_alg}
-\hfill
-\begin{enumerate}
-\item Se $\ctC$ \`e una categoria piccola, i funtori rappresentabili sono degli oggetti assolutamente presentabili di 
-$\ctSet^{\ctC}.$ Questo segue dal lemma di Yoneda e dal fatto che i colimiti in $\ctSet^{\ctC}$ si calcolano punto a 
-punto (proposizione \ref{prop_lim_puntuali}).
-\item Se $\ctT$ \`e una teoria algebrica, le $\ctT$-algebre rappresentabili sono degli oggetti perfettamente presentabili 
-in $\ctAlgT.$ Questo segue dal punto precedente perch\`e $\ctAlgT$ \`e chiusa in $\ctSet^{\ctT}$ per colimiti setacciati 
-(proposizione \ref{prop_colim_sift_AlgT}).
-\end{enumerate}
+	\hfill
+	\begin{enumerate}
+		\item Se \(\ctC\) \`e una categoria piccola, i funtori rappresentabili sono degli oggetti assolutamente presentabili di
+		      \(\ctSet^{\ctC}.\) Questo segue dal lemma di Yoneda e dal fatto che i colimiti in \(\ctSet^{\ctC}\) si calcolano punto a
+		      punto (proposizione \ref{prop_lim_puntuali}).
+		\item Se \(\ctT\) \`e una teoria algebrica, le \(\ctT\)-algebre rappresentabili sono degli oggetti perfettamente presentabili
+		      in \(\ctAlgT.\) Questo segue dal punto precedente perch\`e \(\ctAlgT\) \`e chiusa in \(\ctSet^{\ctT}\) per colimiti setacciati
+		      (proposizione \ref{prop_colim_sift_AlgT}).
+	\end{enumerate}
 \end{example}
 
-Come tappa di avvicinamento alla caratterizzazione delle categorie algebriche, costruiamo il completamento conservativo 
-per coprodotti di una categoria con coprodotti finiti. Qui il termine conservativo indica che tale completamento preserva i 
-coprodotti finiti che esistono gi\`a nella catyegoria di partenza. Tale carattere conservativo non \`e soddisfatto dal completamento 
+Come tappa di avvicinamento alla caratterizzazione delle categorie algebriche, costruiamo il completamento conservativo
+per coprodotti di una categoria con coprodotti finiti. Qui il termine conservativo indica che tale completamento preserva i
+coprodotti finiti che esistono gi\`a nella catyegoria di partenza. Tale carattere conservativo non \`e soddisfatto dal completamento
 costruito in \ref{prop_compl_finprod} e \ref{oss_compl_finprod}.
 
 \begin{proposition}\label{prop_compl_cons_copr}
-Sia $\ctT$ una teoria algebrica e sia $\bfK(\ctT)$ la sottocategoria piena di $\ctAlgT$ formata da tutti i coprodotti delle
-$\ctT$-algebre rappresentabili.
-\begin{enumerate}
-\item La categoria $\bfK(\ctT)$ ha i coprodotti e l'immersione di Yoneda $\ctY_{\ctT} \colon \ctT^{\op} \fun \bfK(\ctT)$ preserva 
-i coprodotti finiti.
-\item Se $\ctB$ \`e una categoria con i coprodotti e se $F \colon \ctT^{\op} \fun \ctB$ \`e un funtore che preserva i coprodotti
-finiti, allora esitste un funtore $\widehat{F}$ essenzialmente unico che preserva i coprodotti e che fa commutare, a meno di 
-isomorfismi naturali, il seguente diagramma
-$$\xymatrix{\ctT^{\op} \ar[rd]_{F} \ar[rr]^-{\ctY_{\ctT}} & & \bfK(\ctT) \ar[ld]^{\widehat{F}} \\ & \ctB }$$
-\item Se inoltre $FX$ \`e finitamente presentabile per ogni oggetto $X \in \ctT$ e se $F$ \`e pieno e fedele, allora anche 
-$\widehat{F}$ lo \`e pieno e fedele.
-\end{enumerate}
+	Sia \(\ctT\) una teoria algebrica e sia \(\bfK(\ctT)\) la sottocategoria piena di \(\ctAlgT\) formata da tutti i coprodotti delle
+	\(\ctT\)-algebre rappresentabili.
+	\begin{enumerate}
+		\item La categoria \(\bfK(\ctT)\) ha i coprodotti e l'immersione di Yoneda \(\ctY_{\ctT} \colon \ctT^{\op} \fun \bfK(\ctT)\) preserva
+		      i coprodotti finiti.
+		\item Se \(\ctB\) \`e una categoria con i coprodotti e se \(F \colon \ctT^{\op} \fun \ctB\) \`e un funtore che preserva i coprodotti
+		      finiti, allora esitste un funtore \(\widehat{F}\) essenzialmente unico che preserva i coprodotti e che fa commutare, a meno di
+		      isomorfismi naturali, il seguente diagramma
+		      \(\)\xymatrix{\ctT^{\op} \ar[rd]_{F} \ar[rr]^-{\ctY_{\ctT}} & & \bfK(\ctT) \ar[ld]^{\widehat{F}} \\ & \ctB }\(\)
+		\item Se inoltre \(FX\) \`e finitamente presentabile per ogni oggetto \(X \in \ctT\) e se \(F\) \`e pieno e fedele, allora anche
+		      \(\widehat{F}\) lo \`e pieno e fedele.
+	\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-Il punto 1 segue immediatamente dalla definizione di $\bfK(\ctT)$ e dalla proposiozione \ref{prop_Yoneda_alg}. \\
-Per quanto riguarda il punto 2, un oggetto di $\bfK(\ctT)$ \`e del tipo $\coprod_{i \in I}\ctT(X_i,-),$ dove $I$ \`e un insieme 
-e $X_i \in \ctT$ per ogni $i \in I.$ Viste le condizioni che $\widehat{F}$ deve soddisfare, si deve definire 
-$$\widehat{F}(\coprod_{i \in I}\ctT(X_i,-)) = \coprod_{i \in I}F(X_i)$$
-Per definire il funtore $\widehat{F}$ sulle frecce, basta considerare le frecce del tipo
-$$f \colon \ctT(X,-) \to \coprod_{i \in I}\ctT(X_i,-)$$
-Usando nell'ordine la proposizione \ref{prop_coprod_colimfiltr}, il fatto che $\ctT(X,-)$ \`e finitamente presentabile (esempio 
-\ref{ex_present_alg} ), la proposizione \ref{prop_Yoneda_alg} e il lemma di Yoneda, abbiamo che
-$$\begin{array}{rcl} 
-\ctAlgT(\ctT(X,-),\coprod_{i \in I}\ctT(X_i,-)) & \simeq & \ctAlgT(\ctT(X,-),\colim_{A \in \ctP_f(I)}(\coprod_{a \in A}\ctT(X_a,-))) \\ \\
-& \simeq & \colim_{A \in \ctP_f(I)}\ctAlgT(\ctT(X,-),\coprod_{a \in A}\ctT(X_a,-)) \\ \\
-& \simeq &  \colim_{A \in \ctP_f(I)}\ctAlgT(\ctT(X,-),\ctT(\prod_{a \in A}X_a,-)) \\ \\
-& \simeq & \colim_{A \in \ctP_f(I)} \ctT(\prod_{a \in A}X_a,X)
-\end{array}$$
-Ora possiamo definire l'azione di $\widehat{F}$ sulle frecce usando la propriet\`a universale del colimite come mostrato
-nel seguente diagramma, dove le $\sigma_A$ sono le iniezioni nel colimite (per quella della colonna di destra si tenga 
-presente che $F$ preserva i coprodotti finiti) e la freccia senza nome \`e quella canonica indotta dalla presentazione del 
-coprodotto come colimite filtrato (ancora la proposizione \ref{prop_coprod_colimfiltr})
-$$\xymatrix{\ctAlgT(\ctT(X,-),\coprod_{i \in I}\ctT(X_i,-)) \ar[r]^-{\widehat{F}} & \ctB(FX,\coprod_{i \in I}FX_i) \\
-\colim_{A \in \ctP_f(I)} \ctT(\prod_{a \in A}X_a,X) \ar[u]^{\simeq} 
-& \colim\ctB(FX,\coprod_{a \in A}FX_a) \ar[u] \\ 
-\ctT(\prod_{a \in A}X_a,X) \ar[u]^{\sigma_A} \ar[r]_-{F} & \ctB(FX,F(\prod_{a \in A}X_a)) \ar[u]_{\sigma_A} }$$
-Il resto della prova del punto 2 \`e pi\`u semplice ed \`e lasciato alla lettrice. \\
-Se assumiamo che $FX$ \`e finitamente presentabile, la freccia senza nome del diagramma precedente diventa un isomorfismo. A
- questo punto \`e chiaro che se $F$ \`e pieno e fedele, anche $\widehat{F}$ lo \`e.
- \end{proof}  
-%Questo significa che, data una freccia $f$ come sopra, esiste $A \in \ctP_f(I)$ ed esiste una freccia 
-%$f_A \colon \prod_{a \in A}X_a \to X$ in $\ctT$ tale che $\sigma_A(f_A)=f,$ dove $\sigma_A$ \`e l'iniezione di
-%$\ctT(\prod_{a \in A}X_a,X)$ nel colimite. Possiamo quindi definire $\widehat{F}(f)$ nel modo seguente
-%$$\xymatrix{\widehat{F}(\ctT(X,-)) = FX \ar[r]^-{F(f_A)} & F(\prod_{a \in A}X_a) \simeq \coprod_{a \in A}FX_a \ar[r]^-{\sigma_A} 
-%& \coprod_{i \in I}FX_i = \widehat{F}(\coprod_{i \in I}\ctT(X_i,-)) }$$
-%dove abbiamo nuovamente indicato con $\sigma_A$ l'iniezione nel coprodotto visto come colimite filtrato dei suoi sottocoprodotti finiti.
-%Verifichiamo che il funtore $\widehat{F}$ \`e ben definito. Supponiamo che $B \in \ctP_f(I)$ e $f_B \in \ctT(\prod_{b \in B}X_b,X)$ 
-%siano tali che $\sigma_B(f_B) = f.$ Per il carattere filtrato di $\ctP_f(I)$ e per la descrizione dei colimiti filtrati in $\ctSet,$ si pu\`o 
-%trovare $C \in \ctP_f(I)$ tale che $A \subseteq C$ e $B \subseteq C$ e tale che il seguente diagramma commuta
-%$$\xymatrix{ & \prod_{c \in C}X_c \ar[ld]_{g^A_C} \ar[rd]^{g^B_C} \\
-%\prod_{a \in A}X_a \ar[rd]_{f_A} & & \prod_{b \in B}X_b \ar[ld]^{f_B} \\ & X}$$
-%dove $g^A_C$ e $g^B_C$ sono le frecce canoniche indotte dalle inclusioni $A \subseteq C$ e $B \subseteq C.$
+	Il punto 1 segue immediatamente dalla definizione di \(\bfK(\ctT)\) e dalla proposiozione \ref{prop_Yoneda_alg}. \\
+	Per quanto riguarda il punto 2, un oggetto di \(\bfK(\ctT)\) \`e del tipo \(\coprod_{i \in I}\ctT(X_i,-),\) dove \(I\) \`e un insieme
+	e \(X_i \in \ctT\) per ogni \(i \in I.\) Viste le condizioni che \(\widehat{F}\) deve soddisfare, si deve definire
+	\(\)\widehat{F}(\coprod_{i \in I}\ctT(X_i,-)) = \coprod_{i \in I}F(X_i)\(\)
+	Per definire il funtore \(\widehat{F}\) sulle frecce, basta considerare le frecce del tipo
+	\(\)f \colon \ctT(X,-) \to \coprod_{i \in I}\ctT(X_i,-)\(\)
+	Usando nell'ordine la proposizione \ref{prop_coprod_colimfiltr}, il fatto che \(\ctT(X,-)\) \`e finitamente presentabile (esempio
+	\ref{ex_present_alg} ), la proposizione \ref{prop_Yoneda_alg} e il lemma di Yoneda, abbiamo che
+	\(\)\begin{array}{rcl}
+		\ctAlgT(\ctT(X,-),\coprod_{i \in I}\ctT(X_i,-)) & \simeq & \ctAlgT(\ctT(X,-),\colim_{A \in \ctP_f(I)}(\coprod_{a \in A}\ctT(X_a,-))) \\ \\
+		                                                & \simeq & \colim_{A \in \ctP_f(I)}\ctAlgT(\ctT(X,-),\coprod_{a \in A}\ctT(X_a,-))   \\ \\
+		                                                & \simeq & \colim_{A \in \ctP_f(I)}\ctAlgT(\ctT(X,-),\ctT(\prod_{a \in A}X_a,-))     \\ \\
+		                                                & \simeq & \colim_{A \in \ctP_f(I)} \ctT(\prod_{a \in A}X_a,X)
+	\end{array}\(\)
+	Ora possiamo definire l'azione di \(\widehat{F}\) sulle frecce usando la propriet\`a universale del colimite come mostrato
+	nel seguente diagramma, dove le \(\sigma_A\) sono le iniezioni nel colimite (per quella della colonna di destra si tenga
+	presente che \(F\) preserva i coprodotti finiti) e la freccia senza nome \`e quella canonica indotta dalla presentazione del
+	coprodotto come colimite filtrato (ancora la proposizione \ref{prop_coprod_colimfiltr})
+	\(\)\xymatrix{\ctAlgT(\ctT(X,-),\coprod_{i \in I}\ctT(X_i,-)) \ar[r]^-{\widehat{F}} & \ctB(FX,\coprod_{i \in I}FX_i) \\
+	\colim_{A \in \ctP_f(I)} \ctT(\prod_{a \in A}X_a,X) \ar[u]^{\simeq}
+	& \colim\ctB(FX,\coprod_{a \in A}FX_a) \ar[u] \\
+	\ctT(\prod_{a \in A}X_a,X) \ar[u]^{\sigma_A} \ar[r]_-{F} & \ctB(FX,F(\prod_{a \in A}X_a)) \ar[u]_{\sigma_A} }\(\)
+	Il resto della prova del punto 2 \`e pi\`u semplice ed \`e lasciato alla lettrice. \\
+	Se assumiamo che \(FX\) \`e finitamente presentabile, la freccia senza nome del diagramma precedente diventa un isomorfismo. A
+	questo punto \`e chiaro che se \(F\) \`e pieno e fedele, anche \(\widehat{F}\) lo \`e.
+\end{proof}
+%Questo significa che, data una freccia \(f\) come sopra, esiste \(A \in \ctP_f(I)\) ed esiste una freccia 
+%\(f_A \colon \prod_{a \in A}X_a \to X\) in \(\ctT\) tale che \(\sigma_A(f_A)=f,\) dove \(\sigma_A\) \`e l'iniezione di
+%\(\ctT(\prod_{a \in A}X_a,X)\) nel colimite. Possiamo quindi definire \(\widehat{F}(f)\) nel modo seguente
+%\(\)\xymatrix{\widehat{F}(\ctT(X,-)) = FX \ar[r]^-{F(f_A)} & F(\prod_{a \in A}X_a) \simeq \coprod_{a \in A}FX_a \ar[r]^-{\sigma_A} 
+%& \coprod_{i \in I}FX_i = \widehat{F}(\coprod_{i \in I}\ctT(X_i,-)) }\(\)
+%dove abbiamo nuovamente indicato con \(\sigma_A\) l'iniezione nel coprodotto visto come colimite filtrato dei suoi sottocoprodotti finiti.
+%Verifichiamo che il funtore \(\widehat{F}\) \`e ben definito. Supponiamo che \(B \in \ctP_f(I)\) e \(f_B \in \ctT(\prod_{b \in B}X_b,X)\) 
+%siano tali che \(\sigma_B(f_B) = f.\) Per il carattere filtrato di \(\ctP_f(I)\) e per la descrizione dei colimiti filtrati in \(\ctSet,\) si pu\`o 
+%trovare \(C \in \ctP_f(I)\) tale che \(A \subseteq C\) e \(B \subseteq C\) e tale che il seguente diagramma commuta
+%\(\)\xymatrix{ & \prod_{c \in C}X_c \ar[ld]_{g^A_C} \ar[rd]^{g^B_C} \\
+%\prod_{a \in A}X_a \ar[rd]_{f_A} & & \prod_{b \in B}X_b \ar[ld]^{f_B} \\ & X}\(\)
+%dove \(g^A_C\) e \(g^B_C\) sono le frecce canoniche indotte dalle inclusioni \(A \subseteq C\) e \(B \subseteq C.\)
 %Si pu\`o concludere grazie alla commutativit\`a del diagramma seguente, dove gli isomorfismi senza nome esprimono il fatto che il 
-%funtore $F$ preserva i coprodotti finiti, le frecce $f^A_C$ e $f^B_C$ sono le frecce canoniche anch'esse indotte dalle inclusioni 
-%$A \subseteq C$ e $B \subseteq C$ e i due triangoli di destra commutano per la naturalit\`a della famiglia $\{\sigma_A \mid A \in \ctP_f(I)\}$
-%$$\xymatrix{ & F(\prod_{a \in A}X_a) \ar[r]^-{\simeq} \ar[d]^{F(g^A_C)} & \coprod_{a \in A}FX_a \ar[rd]^{\sigma_A} \ar[d]_{f^A_C} \\
+%funtore \(F\) preserva i coprodotti finiti, le frecce \(f^A_C\) e \(f^B_C\) sono le frecce canoniche anch'esse indotte dalle inclusioni 
+%\(A \subseteq C\) e \(B \subseteq C\) e i due triangoli di destra commutano per la naturalit\`a della famiglia \(\{\sigma_A \mid A \in \ctP_f(I)\}\)
+%\(\)\xymatrix{ & F(\prod_{a \in A}X_a) \ar[r]^-{\simeq} \ar[d]^{F(g^A_C)} & \coprod_{a \in A}FX_a \ar[rd]^{\sigma_A} \ar[d]_{f^A_C} \\
 %FX \ar[ru]^{F(f_A)} \ar[rd]_{F(f_B)} & F(\prod_{c \in C}X_c) \ar[r]^-{\simeq} & \coprod_{c \in C}FX_c \ar[r]^-{\sigma_C} & \coprod_{i \in I}FX_i \\
-%& F(\prod_{b \in B}X_b) \ar[r]^-{\simeq} \ar[u]_{F(g^B_C)} & \coprod_{b \in B}FX_b \ar[ru]_{\sigma_B} \ar[u]^{f^B_C} }$$
+%& F(\prod_{b \in B}X_b) \ar[r]^-{\simeq} \ar[u]_{F(g^B_C)} & \coprod_{b \in B}FX_b \ar[ru]_{\sigma_B} \ar[u]^{f^B_C} }\(\)
 
-Tutto \`e pronto per caratterizzare le categorie del tipo $\bfK(\ctT)$ per $\ctT$ una teoria algebrica. Si tratta di imporre condizioni 
-sulla categoria $\ctB$ affinch\'e il funtore $\widehat{F}$ della proposizione \ref{prop_compl_cons_copr} sia un'equivalenza.
+Tutto \`e pronto per caratterizzare le categorie del tipo \(\bfK(\ctT)\) per \(\ctT\) una teoria algebrica. Si tratta di imporre condizioni
+sulla categoria \(\ctB\) affinch\'e il funtore \(\widehat{F}\) della proposizione \ref{prop_compl_cons_copr} sia un'equivalenza.
 La caratterizzazione delle categorie algebriche segur\`a allora facilmente.
 
 \begin{corollary}\label{cor_caratt_KT}
-Una categoria $\ctB$ \`e equivalente a $\bfK(\ctT)$ per una teoria algebrica $\ctT$ se e solo se $\ctB$ ha i coprodotti ed esiste in 
-$\ctB$ un insieme $\ctG$ di oggetti finitamente presentabili tale che ogni oggetto di $\ctB$ \`e coprodotto di oggetti di $\ctG.$
+	Una categoria \(\ctB\) \`e equivalente a \(\bfK(\ctT)\) per una teoria algebrica \(\ctT\) se e solo se \(\ctB\) ha i coprodotti ed esiste in
+	\(\ctB\) un insieme \(\ctG\) di oggetti finitamente presentabili tale che ogni oggetto di \(\ctB\) \`e coprodotto di oggetti di \(\ctG.\)
 \end{corollary}
 
 \begin{proof}
-Le condizioni sono necessarie: basta prendere come $\ctG$ l'insieme delle $\ctT$-algebre rappresentabili. \\
-Viceversa, consideriamo $\ctG$ come una sottocategoria piena di $\ctB.$ Poich\'e i coprodotti finiti di oggetti finitamente presentabili
-sono finitamente presentabili (proposizione \ref{prop_stab_present}), senza perdita di generalit\`a possiamo, supporre che $\ctG$ 
-sia chiusa in $\ctB$ per coprodotti finiti. Ne segue che $\ctT = \ctG^{\op}$ \`e una teoria algebrica. Come funtore che preserva i
-coprodotti finiti $F \colon \ctT^{\op} \fun \ctB$ possiamo considerare l'inclusione piena $\ctG \fun \ctB.$ Il fatto che ogni oggetto di
-$\ctB$ sia coprodotto di oggetti in $\ctG$ significa esattamente che l'estension $\widehat{F} \colon \bfK(\ctT) \fun \ctB$ della
-proposizione \ref{prop_compl_cons_copr} \`e essenzialemente suriettiva sigli oggetti. La terza parte della stessa proposizione 
-assicura il carattere pieno e fedele di $\widehat{F}.$ 
-\end{proof} 
+	Le condizioni sono necessarie: basta prendere come \(\ctG\) l'insieme delle \(\ctT\)-algebre rappresentabili. \\
+	Viceversa, consideriamo \(\ctG\) come una sottocategoria piena di \(\ctB.\) Poich\'e i coprodotti finiti di oggetti finitamente presentabili
+	sono finitamente presentabili (proposizione \ref{prop_stab_present}), senza perdita di generalit\`a possiamo, supporre che \(\ctG\)
+	sia chiusa in \(\ctB\) per coprodotti finiti. Ne segue che \(\ctT = \ctG^{\op}\) \`e una teoria algebrica. Come funtore che preserva i
+	coprodotti finiti \(F \colon \ctT^{\op} \fun \ctB\) possiamo considerare l'inclusione piena \(\ctG \fun \ctB.\) Il fatto che ogni oggetto di
+	\(\ctB\) sia coprodotto di oggetti in \(\ctG\) significa esattamente che l'estension \(\widehat{F} \colon \bfK(\ctT) \fun \ctB\) della
+	proposizione \ref{prop_compl_cons_copr} \`e essenzialemente suriettiva sigli oggetti. La terza parte della stessa proposizione
+	assicura il carattere pieno e fedele di \(\widehat{F}.\)
+\end{proof}
 
 \begin{corollary}\label{cor_caratt_AlgT}
-Una categoria $\ctA$ \`e equivalente a $\ctAlgT$ per una teoria algebrica $\ctT$ se e solo se $\ctA$ \`e esatta ed esiste in $\ctA$ 
-un insieme $\ctG$ di oggetti proiettivi regolari e finitamente presentabili tale che in $\ctA$ esistono i coprodotti di oggetti di $\ctG$
-e ogni oggetto di $\ctA$ \`e quoziente regolare di un coprodotto di oggetti di $\ctG.$
+	Una categoria \(\ctA\) \`e equivalente a \(\ctAlgT\) per una teoria algebrica \(\ctT\) se e solo se \(\ctA\) \`e esatta ed esiste in \(\ctA\)
+	un insieme \(\ctG\) di oggetti proiettivi regolari e finitamente presentabili tale che in \(\ctA\) esistono i coprodotti di oggetti di \(\ctG\)
+	e ogni oggetto di \(\ctA\) \`e quoziente regolare di un coprodotto di oggetti di \(\ctG.\)
 \end{corollary}
 
 \begin{proof}
-Il fatto che le condizioni siano necessarie \`e attestato dal corollario \ref{cor_epireg_AlgT} e dal lemma \ref{lemma_rappr_proj}, 
-prendendo come $\ctG$ l'insieme delle $\ctT$-algebre rappresentabili, che sono oggetti proiettivi regolari e finitamente presentabili 
-(esempio \ref{ex_present_alg}). \\
-Sia ora $\ctA$ come nell'enunciato e consideriamo la sottocategoria piena $\ctB$ di $\ctA$ dei coprodotti di oggetti di $\ctG.$
-Il corollario \ref{cor_caratt_KT} si applica a $\ctB,$ cosicch\'e $\ctB$ \`e equivalente a $\bfK(\ctT)$ per una qualche teoria algebrica 
-$\ctT.$ Inoltre, poich\'e il coprodotto di oggetti proiettivi regolari \`e proiettivo regolare (proposizione \ref{prop_stab_proreg}), la 
-sottocategoria $\ctB$ \`e una copertura proiettiva regolare di $\ctA.$ Quindi il lemma \ref{lemma_rappr_proj} e la proposizione 
-\ref{prop_cop_proiettiva} permettono di estendere l'equivalenza $\ctB \simeq \bfK(\ctT)$ a un'equivalenza $\ctA \simeq \ctAlgT.$
-\end{proof} 
+	Il fatto che le condizioni siano necessarie \`e attestato dal corollario \ref{cor_epireg_AlgT} e dal lemma \ref{lemma_rappr_proj},
+	prendendo come \(\ctG\) l'insieme delle \(\ctT\)-algebre rappresentabili, che sono oggetti proiettivi regolari e finitamente presentabili
+	(esempio \ref{ex_present_alg}). \\
+	Sia ora \(\ctA\) come nell'enunciato e consideriamo la sottocategoria piena \(\ctB\) di \(\ctA\) dei coprodotti di oggetti di \(\ctG.\)
+	Il corollario \ref{cor_caratt_KT} si applica a \(\ctB,\) cosicch\'e \(\ctB\) \`e equivalente a \(\bfK(\ctT)\) per una qualche teoria algebrica
+	\(\ctT.\) Inoltre, poich\'e il coprodotto di oggetti proiettivi regolari \`e proiettivo regolare (proposizione \ref{prop_stab_proreg}), la
+	sottocategoria \(\ctB\) \`e una copertura proiettiva regolare di \(\ctA.\) Quindi il lemma \ref{lemma_rappr_proj} e la proposizione
+	\ref{prop_cop_proiettiva} permettono di estendere l'equivalenza \(\ctB \simeq \bfK(\ctT)\) a un'equivalenza \(\ctA \simeq \ctAlgT.\)
+\end{proof}
 
 
 \section{Un'altra caratterizzazione delle categorie algebriche}\label{sec_caract_AlgT_cocompl}
 
 \begin{warning}\label{caveat_sec_caract_AlgT}
-Questa sezione \`e opzionale. Non sono sicuro che si debba includere perch\`e richiede parecchi prerequisiti di carattere
-generale e il risultato centrale ha una dimostrazione assai elaborata. Bisogner\`a decidere insieme. Comunque lo scopo
-sarebbe di dimostrare il seguente teorema di caratterizzazione.
+	Questa sezione \`e opzionale. Non sono sicuro che si debba includere perch\`e richiede parecchi prerequisiti di carattere
+	generale e il risultato centrale ha una dimostrazione assai elaborata. Bisogner\`a decidere insieme. Comunque lo scopo
+	sarebbe di dimostrare il seguente teorema di caratterizzazione.
 \end{warning}
 
 \begin{theorem}\label{teo_caract_AlgT}
-Sia $\ctA$ una categoria. Le condizioni seguenti sono equivalenti:
-\begin{enumerate}
-\item $\ctA$ \`e algebrica,
-\item $\ctA$ \`e cocompleta e ammette un insieme $\ctG$ di oggetti perfettamente presentabili tale che ogni 
-oggetto di $\ctA$ \`e un colimite setacciante di oggetti di $\ctG,$
-\item $\ctA$ \`e cocompleta e ha un generatore forte formato da oggetti perfettamente presentabili.
-\end{enumerate}
+	Sia \(\ctA\) una categoria. Le condizioni seguenti sono equivalenti:
+	\begin{enumerate}
+		\item \(\ctA\) \`e algebrica,
+		\item \(\ctA\) \`e cocompleta e ammette un insieme \(\ctG\) di oggetti perfettamente presentabili tale che ogni
+		      oggetto di \(\ctA\) \`e un colimite setacciante di oggetti di \(\ctG,\)
+		\item \(\ctA\) \`e cocompleta e ha un generatore forte formato da oggetti perfettamente presentabili.
+	\end{enumerate}
 \end{theorem}
 
 \begin{remark}\label{oss_pres_can}
-Una volta introdotte, con qualche esempio e piccole prppriet\`a, tutte le nozioni che intervengono nel teorema, si desume 
-dalla dimostrazione che se $\ctA$ \`e algebrica, allora 
-$$\ctA \simeq \ctAlg(\ctA_{\mathrm{pp}}^{\mathrm{op}})$$
-dove $\ctA_{\mathrm{pp}}$ \`e la sottocategoria piena di $\ctA$ degli oggetti perfettamente presentabili. Questo fornisce
-una presentazione canonica di $\ctA \colon$fra tutte le teorie algebriche $\ctT$ tali che
-$$\ctA \simeq \ctAlgT$$
-la teoria $\ctA_{\mathrm{pp}}^{\mathrm{op}}$ \`e l'unica Cauchy completa (completa per idempotenti).
+	Una volta introdotte, con qualche esempio e piccole prppriet\`a, tutte le nozioni che intervengono nel teorema, si desume
+	dalla dimostrazione che se \(\ctA\) \`e algebrica, allora
+	\(\)\ctA \simeq \ctAlg(\ctA_{\mathrm{pp}}^{\mathrm{op}})\(\)
+	dove \(\ctA_{\mathrm{pp}}\) \`e la sottocategoria piena di \(\ctA\) degli oggetti perfettamente presentabili. Questo fornisce
+	una presentazione canonica di \(\ctA \colon\)fra tutte le teorie algebriche \(\ctT\) tali che
+	\(\)\ctA \simeq \ctAlgT\(\)
+	la teoria \(\ctA_{\mathrm{pp}}^{\mathrm{op}}\) \`e l'unica Cauchy completa (completa per idempotenti).
 \end{remark}
 
 Altre conseguenze semplici del teorema di caratterizzazione sono i seguenti fatti.
 
 \begin{proposition}\label{prop_comma_alg}
-Se $\ctA$ \`e algebrica e $A \in \ctA$ \`e un oggetto fissato, la categoria 
-$$\ctA \downarrow A$$
-\`e algebrica.
-\end{proposition} 
+	Se \(\ctA\) \`e algebrica e \(A \in \ctA\) \`e un oggetto fissato, la categoria
+	\(\)\ctA \downarrow A\(\)
+	\`e algebrica.
+\end{proposition}
 
 \begin{proposition}\label{prop_repr_aAlgT}
-Una categoria \`e algebrica se e solo se \`e equivalente a una sottocategoria riflessiva e chiusa rispetto ai colimiti setaccianti
-di una categoria del tipo $\ctSet^{\ctC}$ con $\ctC$ piccola.
-\end{proposition} 
+	Una categoria \`e algebrica se e solo se \`e equivalente a una sottocategoria riflessiva e chiusa rispetto ai colimiti setaccianti
+	di una categoria del tipo \(\ctSet^{\ctC}\) con \(\ctC\) piccola.
+\end{proposition}
 
 \begin{proposition}\label{prop_stab_alg_exp}
-Se $\ctA$ \`e una categoria algebrica e $\ctC$ \`e una categoria piccola, la categoria di funtori $\ctA^{\ctC}$ \`e algebrica.
+	Se \(\ctA\) \`e una categoria algebrica e \(\ctC\) \`e una categoria piccola, la categoria di funtori \(\ctA^{\ctC}\) \`e algebrica.
 \end{proposition}
 
 \begin{example}\label{esempio_chain}
-Se $R$ \`e un anello unitario, la categoria dei complessi di catena di $R$-moduli \`e algebrica.
-\end{example} 
+	Se \(R\) \`e un anello unitario, la categoria dei complessi di catena di \(R\)-moduli \`e algebrica.
+\end{example}
 
 \section{Il teorema di Birkhoff per le categorie algebriche}\label{sec_th_Birkhoff}
 
-Lo scopo di questa sezione \`e di formulare e dimostrare una versione del teorema di Birkhoff adattata al contesto delle 
-categorie algebriche. Il legame con il teorema di Birkhoff per le variet\`e di $\Sigma$-algebre visto (e solo parzialmente dimostrato)
-nella sezione \ref{sec_var_alg} sar\`a esaminato nella prossima sezione. Cominciamo con il formalizzare la nozione di equazione 
+Lo scopo di questa sezione \`e di formulare e dimostrare una versione del teorema di Birkhoff adattata al contesto delle
+categorie algebriche. Il legame con il teorema di Birkhoff per le variet\`e di \(\Sigma\)-algebre visto (e solo parzialmente dimostrato)
+nella sezione \ref{sec_var_alg} sar\`a esaminato nella prossima sezione. Cominciamo con il formalizzare la nozione di equazione
 per le teorie algebriche.
 
 \begin{definition}\label{def_equaz_th_alg}
-Sia $\ctT$ una teoria algebrica e sia $A$ una $\ctT$-algebra.
-\begin{enumerate}
-\item Un'equazione $(u,v)$ in $\ctT$ \`e una coppia di frecce parallele $u,v \in \ctT(s,t).$
-\item L'algebra $A$ soddisfa l'equazione $(u,v)$ se $A(u)=A(v) \colon A(s) \to A(t)$ in $\ctSet.$
-\end{enumerate}
-\end{definition} 
+	Sia \(\ctT\) una teoria algebrica e sia \(A\) una \(\ctT\)-algebra.
+	\begin{enumerate}
+		\item Un'equazione \((u,v)\) in \(\ctT\) \`e una coppia di frecce parallele \(u,v \in \ctT(s,t).\)
+		\item L'algebra \(A\) soddisfa l'equazione \((u,v)\) se \(A(u)=A(v) \colon A(s) \to A(t)\) in \(\ctSet.\)
+	\end{enumerate}
+\end{definition}
 
 \begin{remark}\label{oss_conf_equaz}
-\`E importante che la nuova nozione di equazione coincida con quella introdotta nella sezione \ref{sec_var_alg} qualora la teoria algebrica
-$\ctT$ sia $\ctT_{\Sigma},$ cio\`e la teoria algebrica associata a una segnatura $\Sigma.$ Per questo, consideriamo un'equazione
-$$t_1,t_2 \in F_{\Sigma}(\{x_1,\ldots,x_n\}) = \ctT_{\Sigma}(n,1)$$
-una $\Sigma$-algebra $(A, \sigma^A)$ e la $\ctT$-algebra $E(A,\sigma^A)$ che gli corrisponde via l'equivalenza 
-$$E \colon \ctSAlg \fun \ctAlgT_{\Sigma}$$
-Si ha allora che $(A,\sigma^A)$ soddisfa l'equazione $(t_1,t_2) \in F_{\Sigma}(\{x_1,\ldots,x_n\})$ se e solo se $E(A,\sigma^A)$ soddisfa
-l'equazione $(t_1,t_2) \in \ctT_{\Sigma}(n,1).$
+	\`E importante che la nuova nozione di equazione coincida con quella introdotta nella sezione \ref{sec_var_alg} qualora la teoria algebrica
+	\(\ctT\) sia \(\ctT_{\Sigma},\) cio\`e la teoria algebrica associata a una segnatura \(\Sigma.\) Per questo, consideriamo un'equazione
+	\(\)t_1,t_2 \in F_{\Sigma}(\{x_1,\ldots,x_n\}) = \ctT_{\Sigma}(n,1)\(\)
+	una \(\Sigma\)-algebra \((A, \sigma^A)\) e la \(\ctT\)-algebra \(E(A,\sigma^A)\) che gli corrisponde via l'equivalenza
+	\(\)E \colon \ctSAlg \fun \ctAlgT_{\Sigma}\(\)
+	Si ha allora che \((A,\sigma^A)\) soddisfa l'equazione \((t_1,t_2) \in F_{\Sigma}(\{x_1,\ldots,x_n\})\) se e solo se \(E(A,\sigma^A)\) soddisfa
+	l'equazione \((t_1,t_2) \in \ctT_{\Sigma}(n,1).\)
 \end{remark}
 
 \begin{proof}
-To be inserted.
+	To be inserted.
 \end{proof}
 
 \begin{definition}\label{def_var_AlgT}
-Sia $\ctT$ una teoria algebrica ed $E$ un insieme di equazioni in $\ctT.$
-\begin{enumerate}
-\item Denotiamo con $\ctAlg(\ctT,E)$ la sottocategoria piena di $\ctAlgT$ delle $\ctT$-algebre tali che $A(u)=A(v)$ per ogni $(u,v) \in E.$
-\item Diciamo che una categoria $\ctA$ \`e una variet\`a di $\ctT$-algebre se $\ctA \simeq \ctAlg(\ctT,E)$ per un insieme di equazioni $E$ in $\ctT.$
-\end{enumerate}
-\end{definition} 
+	Sia \(\ctT\) una teoria algebrica ed \(E\) un insieme di equazioni in \(\ctT.\)
+	\begin{enumerate}
+		\item Denotiamo con \(\ctAlg(\ctT,E)\) la sottocategoria piena di \(\ctAlgT\) delle \(\ctT\)-algebre tali che \(A(u)=A(v)\) per ogni \((u,v) \in E.\)
+		\item Diciamo che una categoria \(\ctA\) \`e una variet\`a di \(\ctT\)-algebre se \(\ctA \simeq \ctAlg(\ctT,E)\) per un insieme di equazioni \(E\) in \(\ctT.\)
+	\end{enumerate}
+\end{definition}
 
-Prima di enunciare il teorema di Birkhoff, mettiamo in evidenza una differenza importante fra le variet\`a di $\Sigma$-algebre e le variet\`a di
-$\ctT$-algebre. In generale, data una segnature $\Sigma$ e un insieme $E$ di equazioni in $\Sigma,$ non si pu\`o trovare una seconda
-segnature $\Sigma'$ tale che $\ctSEAlg \simeq \Sigma'\mbox{-}\ctAlg.$ Invece, nel caso delle $\ctT$-algebre, si ha che ogni variet\`a di 
-$\ctT$-algebre \`e una categoria algebrica, come indicato nella prossima propriet\`a.
+Prima di enunciare il teorema di Birkhoff, mettiamo in evidenza una differenza importante fra le variet\`a di \(\Sigma\)-algebre e le variet\`a di
+\(\ctT\)-algebre. In generale, data una segnature \(\Sigma\) e un insieme \(E\) di equazioni in \(\Sigma,\) non si pu\`o trovare una seconda
+segnature \(\Sigma'\) tale che \(\ctSEAlg \simeq \Sigma'\mbox{-}\ctAlg.\) Invece, nel caso delle \(\ctT\)-algebre, si ha che ogni variet\`a di
+\(\ctT\)-algebre \`e una categoria algebrica, come indicato nella prossima propriet\`a.
 
 \begin{proposition}\label{prop_var_alg_alg}
-Sia $\ctT$ una teoria algebrica ed $E$ un insieme di equazioni in $\ctT.$ Esiste una teoria algebrica $\ctT_E$ tale che
-$$\ctAlg(\ctT,E) \simeq \ctAlgT_{E}$$
+	Sia \(\ctT\) una teoria algebrica ed \(E\) un insieme di equazioni in \(\ctT.\) Esiste una teoria algebrica \(\ctT_E\) tale che
+	\(\)\ctAlg(\ctT,E) \simeq \ctAlgT_{E}\(\)
 \end{proposition}
 
 \begin{proof}
-To be inserted.
+	To be inserted.
 \end{proof}
 
 Concludiamo questa sezione con il teorema di Birkhoff e un suo corollario.
 
 \begin{theorem}\label{teo_Birkhoff_AlgT}
-Sia $\ctT$ una teoria algebrica e 
-$$\ctA \fun \ctAlgT$$
-una sottocategoria piena. La categoria $\ctA$ \`e una variet\`a di $\ctT$-algebre se e solo se \`e chiusa in $\ctAlgT$ per
-\begin{enumerate}
-\item prodotti,
-\item sottoggetti,
-\item quozienti regolari,
-\item unioni dirette.
-\end{enumerate}
+	Sia \(\ctT\) una teoria algebrica e
+	\(\)\ctA \fun \ctAlgT\(\)
+	una sottocategoria piena. La categoria \(\ctA\) \`e una variet\`a di \(\ctT\)-algebre se e solo se \`e chiusa in \(\ctAlgT\) per
+	\begin{enumerate}
+		\item prodotti,
+		\item sottoggetti,
+		\item quozienti regolari,
+		\item unioni dirette.
+	\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-To be inserted.
+	To be inserted.
 \end{proof}
 
 \begin{corollary}\label{cor_th_Birkhoff_AlgT}
-Sia $\ctT$ una teoria algebrica e 
-$$\ctA \fun \ctAlgT$$
-una sottocategoria piena. La categoria $\ctA$ \`e una variet\`a di $\ctT$-algebre se e solo se \`e una sottocategoria epiriflessiva
-chiusa per quozienti regolari e unioni dirette.
+	Sia \(\ctT\) una teoria algebrica e
+	\(\)\ctA \fun \ctAlgT\(\)
+	una sottocategoria piena. La categoria \(\ctA\) \`e una variet\`a di \(\ctT\)-algebre se e solo se \`e una sottocategoria epiriflessiva
+	chiusa per quozienti regolari e unioni dirette.
 \end{corollary}
 
 \begin{proof}
-To be inserted.
+	To be inserted.
 \end{proof}
 
-\section{Confronto con le $\Sigma$-algebre}\label{sec_confr_sigma_T}
+\section{Confronto con le \(\Sigma\)-algebre}\label{sec_confr_sigma_T}
 
-Abbiamo gi\`a due risultati che stabiliscono un rapporto fra le $\Sigma$-algebre e le $\ctT$-algebre:
+Abbiamo gi\`a due risultati che stabiliscono un rapporto fra le \(\Sigma\)-algebre e le \(\ctT\)-algebre:
 \begin{enumerate}
-\item $\ctSAlg \simeq \ctAlgT_{\Sigma},$ vedi la propriet\`a \ref{prop_sigma_T_alg},
-\item $\ctSEAlg \simeq \ctAlg(\ctT_{\Sigma},E) \simeq \ctAlg\ctT_{\Sigma,E},$ vedi, rispettivamente, l'osservazione 
-\ref{oss_conf_equaz} e la propriet\`a \ref{prop_var_alg_alg}.
+	\item \(\ctSAlg \simeq \ctAlgT_{\Sigma},\) vedi la propriet\`a \ref{prop_sigma_T_alg},
+	\item \(\ctSEAlg \simeq \ctAlg(\ctT_{\Sigma},E) \simeq \ctAlg\ctT_{\Sigma,E},\) vedi, rispettivamente, l'osservazione
+	      \ref{oss_conf_equaz} e la propriet\`a \ref{prop_var_alg_alg}.
 \end{enumerate}
 
 Quello che manca nel caso delle teorie algebriche, ma che in effetti \`e impossibile da farsi, \`e di trovare un analogo
 dell'aggiunzione
-$$\xymatrix{\ctSEAlg \ar@<-0.5ex>[rr]_-{U_{(\Sigma,E)}} & & \ctSet \ar@<-0.5ex>[ll]_-{F_{(\Sigma,E)}}}
-\;\;\;\;\;\; F_{(\Sigma,E)} \dashv U_{(\Sigma,E)}$$
-perch\'e una categoria algebrica $\ctAlgT$ non permette di construire in modo canonico un funtore dimenticante 
-$\ctAlgT \fun \ctSet$ che, in pi\`u, vorremmo fedele e conservativo. Per questo occorre restringersi alle 
+\(\)\xymatrix{\ctSEAlg \ar@<-0.5ex>[rr]_-{U_{(\Sigma,E)}} & & \ctSet \ar@<-0.5ex>[ll]_-{F_{(\Sigma,E)}}}
+\;\;\;\;\;\; F_{(\Sigma,E)} \dashv U_{(\Sigma,E)}\(\)
+perch\'e una categoria algebrica \(\ctAlgT\) non permette di construire in modo canonico un funtore dimenticante
+\(\ctAlgT \fun \ctSet\) che, in pi\`u, vorremmo fedele e conservativo. Per questo occorre restringersi alle
 teorie algebriche a una sorte.
 
 \begin{definition}\label{def_th_alg_unasorte}
-Una teoria algebrica a una sorte \`e una coppia
-$$(\ctT, T \colon \ctN \fun \ctT)$$
-dove $\ctN$ \`e la teoria degli insiemi, $\ctT$ \`e una teoria algebrica i cui oggetti sono gli stessi che quelli di $\ctN$ e $T$ 
-\`e un funtore che preserva i prodotti finiti e che \`e l'identit\`a sugli oggetti.
-\end{definition} 
+	Una teoria algebrica a una sorte \`e una coppia
+	\(\)(\ctT, T \colon \ctN \fun \ctT)\(\)
+	dove \(\ctN\) \`e la teoria degli insiemi, \(\ctT\) \`e una teoria algebrica i cui oggetti sono gli stessi che quelli di \(\ctN\) e \(T\)
+	\`e un funtore che preserva i prodotti finiti e che \`e l'identit\`a sugli oggetti.
+\end{definition}
 
 \begin{proposition}\label{prop_funt_ind_unasorte}
-Sia $(\ctT, T \colon \ctN \fun \ctT)$ una teoria algebrica a una sorte. Il funtore indotto
-$$\ctAlg(T) \colon \ctAlgT \fun \ctAlg\ctN \simeq \ctSet , \;\; A \mapsto A(1)$$
-soddisfa le seguenti propriet\`a:
-\begin{enumerate}
-\item \`e fedele e conservativo,
-\item ammette un aggiunto a sinistra,
-\item preserva e riflette i limiti, i colimiti setaccianti, i mono e gli epi regolari.
-\end{enumerate}
+	Sia \((\ctT, T \colon \ctN \fun \ctT)\) una teoria algebrica a una sorte. Il funtore indotto
+	\(\)\ctAlg(T) \colon \ctAlgT \fun \ctAlg\ctN \simeq \ctSet , \;\; A \mapsto A(1)\(\)
+	soddisfa le seguenti propriet\`a:
+	\begin{enumerate}
+		\item \`e fedele e conservativo,
+		\item ammette un aggiunto a sinistra,
+		\item preserva e riflette i limiti, i colimiti setaccianti, i mono e gli epi regolari.
+	\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-To be inserted.
+	To be inserted.
 \end{proof}
 
 \begin{proposition}\label{prop_confr_sigma_tunasorte}
-Sia $\Sigma$ una segnature ed $E$ un insieme di equazioni in $\Sigma.$ Le teorie algebriche $\ctT_{\Sigma}$ e $\ctT_{\Sigma,E}$
-sono delle teorie algebriche a una sorte. Inoltre le equivalenze
-$$\ctSAlg \simeq \ctAlgT_{\Sigma} \;\;\;\;\;\;\;\;\;\; \ctSEAlg \simeq \ctAlgT_{\Sigma,E}$$
-sono concrete, cio\`e commutano con i rispettivi funtori dimenticanti.
-\end{proposition} 
+	Sia \(\Sigma\) una segnature ed \(E\) un insieme di equazioni in \(\Sigma.\) Le teorie algebriche \(\ctT_{\Sigma}\) e \(\ctT_{\Sigma,E}\)
+	sono delle teorie algebriche a una sorte. Inoltre le equivalenze
+	\(\)\ctSAlg \simeq \ctAlgT_{\Sigma} \;\;\;\;\;\;\;\;\;\; \ctSEAlg \simeq \ctAlgT_{\Sigma,E}\(\)
+	sono concrete, cio\`e commutano con i rispettivi funtori dimenticanti.
+\end{proposition}
 
 \begin{proof}
-Costruzione di $T \colon \ctN \fun \ctT_{\Sigma}$ e di $T_E \colon \ctN \fun \ctT_{\Sigma,E}.$ To be inserted.
-\end{proof} 
+	Costruzione di \(T \colon \ctN \fun \ctT_{\Sigma}\) e di \(T_E \colon \ctN \fun \ctT_{\Sigma,E}.\) To be inserted.
+\end{proof}
 
-Possiamo ora concludere la dimostrazione del teorema di Birkhoff per le variet\`a di $\Sigma$-algebre via il teorema di Borkhoff
+Possiamo ora concludere la dimostrazione del teorema di Birkhoff per le variet\`a di \(\Sigma\)-algebre via il teorema di Borkhoff
 per le categorie algebriche e usando la seguente propriet\`a.
 
 \begin{proposition}\label{prop_rid_Birkhoff}
-Sia $(\ctT, T \colon \ctN \fun \ctT)$ una teoria algebrica a una sorte e sia $\ctA \fun \ctAlgT$ una sottocategoria piena e chiusa
-per prodotti, sottoggetti e quozienti regolari. Allora $\ctA$ \`e chiusa in $\ctAlgT$ anche per unioni dirette.
+	Sia \((\ctT, T \colon \ctN \fun \ctT)\) una teoria algebrica a una sorte e sia \(\ctA \fun \ctAlgT\) una sottocategoria piena e chiusa
+	per prodotti, sottoggetti e quozienti regolari. Allora \(\ctA\) \`e chiusa in \(\ctAlgT\) anche per unioni dirette.
 \end{proposition}
 
 \begin{proof}
-To be inserted<;
-\end{proof} 
+	To be inserted<;
+\end{proof}
 
-Per terminare il confronto fra le $(\Sigma,E)$-algebre e le $\ctT$-algebre, rimane da invertire la propriet\`e \ref{prop_confr_sigma_tunasorte}.
+Per terminare il confronto fra le \((\Sigma,E)\)-algebre e le \(\ctT\)-algebre, rimane da invertire la propriet\`e \ref{prop_confr_sigma_tunasorte}.
 
 \begin{proposition}\label{prop_confr_sigma_tunasorte_bis}
-Sia $(\ctT, T \colon \ctN \fun \ctT)$ una teoria algebrica a una sorte. Si possono cosruire una segnature $\Sigma$ e un insieme $E$ di equazioni 
-in $\Sigma$ in modo da ottenere un'equivalenza di categorie
-$$\ctSEAlg \simeq \ctAlgT$$
-Inoltre tale equivalenza \`e concreta, cio\`e il seguente diagramma commuta
-$$\xymatrix{\ctSEAlg \ar[rr]^-{\simeq} \ar[rd]_{U_{(\Sigma,E)}} & & \ctAlgT \ar[ld]^{\ctAlg(T)} \\
-& \ctSet }$$
+	Sia \((\ctT, T \colon \ctN \fun \ctT)\) una teoria algebrica a una sorte. Si possono cosruire una segnature \(\Sigma\) e un insieme \(E\) di equazioni
+	in \(\Sigma\) in modo da ottenere un'equivalenza di categorie
+	\(\)\ctSEAlg \simeq \ctAlgT\(\)
+	Inoltre tale equivalenza \`e concreta, cio\`e il seguente diagramma commuta
+	\(\)\xymatrix{\ctSEAlg \ar[rr]^-{\simeq} \ar[rd]_{U_{(\Sigma,E)}} & & \ctAlgT \ar[ld]^{\ctAlg(T)} \\
+	& \ctSet }\(\)
 \end{proposition}
 
 \begin{proof}
-Costruzione di $\Sigma$ e di $E.$ To be inserted.
-\end{proof} 
+	Costruzione di \(\Sigma\) e di \(E.\) To be inserted.
+\end{proof}
 
 
 \subsubsection*{Esercizi}
 \begin{enumerate}
-	\item 
+	\item
 	\item
 	\item
 	\item

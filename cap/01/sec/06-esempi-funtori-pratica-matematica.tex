@@ -53,7 +53,7 @@
 	\[x \asymp v_1 \asymp v_2 \asymp\dots\asymp v_n\asymp y.\]
 	(Si tratta in poche parole della chiusura transitiva \(\asymp^*\) di \(\asymp\), che quindi diventa una relazione di equivalenza su \(V\).)
 
-	Definiamo \(\pi_0\ctG\) come l'insieme quoziente \(V/_{\asymp^*}\) delle componenti connesse di \(\ctG\). Questa assegnazione è la funzione sugli oggetti di un funtore
+	Definiamo \(\pi_0\ctG\) come l'insieme quoziente \(V/_{\!\asymp^*}\) delle componenti connesse di \(\ctG\). Questa assegnazione è la funzione sugli oggetti di un funtore
 	\[\dmFun{\pi_0}{\ctdGph}{\ctSet}\]
 	che su un omomorfismo di multidigrafi \(f : \ctG \to\ctH\) è definita mandando la componente connessa di \(v\in V_\ctG\) nella componente connessa di \(f_V(v)\in V_\ctH\) (è immediato verificare dal fatto che \(f_E(e : x\to y)=f_Ee : f_Vx\to f_Vy\) che questa è una buona definizione, cioè che \(f_V\) scende al quoziente).
 \end{example}
@@ -224,15 +224,15 @@
 		\end{tikzcd}\]
 	è commutativo. Chi legge riconoscerà nella dimostrazione, lasciata per esercizio, delle proprietà \ref{f_1}, \ref{f_2} alcuni fatti fondamentali insegnati in algebra lineare.
 \end{example}
-\begin{example}[Successioni simmetriche, specie combinatorie]\index{Funtore!--- specie combinatoria}\index{Specie combinatoria}\index{Successione simmetrica|see {Specie combinatoria}}
-	Si ricordi la definizione della categoria \(\cate{Bij}\) in \ref{ex_cat_gruppoide_naturali}; un funtore
-	\[\dmFun{f}{\cate{Bij}}{\ctSet}\]
+\begin{example}[Successioni simmetriche, specie combinatorie]\index{Funtore!--- specie combinatoria}\index{Specie combinatoria}\index{Successione simmetrica|see {Specie combinatoria}}\label{ex_fun_specie}
+	Si ricordi la definizione della categoria \(\ctBij\) in \ref{ex_cat_gruppoide_naturali}; un funtore
+	\[\dmFun{f}{\ctBij}{\ctSet}\]
 	consta dei seguenti dati:
 	\begin{itemize}
 		\item una collezione di insiemi \(f(n)=X_n\) indicizzata dai numeri naturali \(n\ge 1\);
 		\item una rappresentazione \(S_n \times X_n\to X_n\), ossia un'azione (sinistra) del gruppo simmetrico \(S_n\) degli automorfismi dell'insieme \(\{\iter n\}\).
 	\end{itemize}
-	Il funtore \(f\) si dice una \emph{specie combinatoria} e la famiglia \(f(n)=X_n\) è una \emph{successione simmetrica}. Questo tipo di funtori, molto ricchi di struttura e di proprietà interessanti, trovano applicazioni in combinatoria enumerativa \cite{bergeron1998combinatorial}, teoria delle rappresentazioni \cite{aguiar2010monoidal}, geometria e topologia \cite{fresse-operads} (quando invece che insiemi gli \(X_n\) sono spazi vettoriali), logica e informatica teorica \cite{Gambino2017,Hasegawa2002}. Denotando con \(\# S\) la cardinalità di un insieme, ad ogni specie combinatoria \(f : \cate{Bij} \fun\ctSet\) tale che ogni \(f(n)\) sia finito possiamo associare la serie formale \(F(t)\in\mathbb{N}\llbracket t\rrbracket\) definita come \(F(t) \defeq \sum_{n\ge 1} \frac{\# X_n}{n!}t^n\). Questa si chiama la \emph{funzione generatrice} della specie combinatoria \(F\), e le sue proprietà algebriche o analitiche (qualora \(F(t)\) converga) sono in corrispondenza diretta con le proprietà del funtore \(f\).
+	Il funtore \(f\) si dice una \emph{specie combinatoria} e la famiglia \(f(n)=X_n\) è una \emph{successione simmetrica}. Questo tipo di funtori, molto ricchi di struttura e di proprietà interessanti, trovano applicazioni in combinatoria enumerativa \cite{bergeron1998combinatorial}, teoria delle rappresentazioni \cite{aguiar2010monoidal}, geometria e topologia \cite{fresse-operads} (quando invece che insiemi gli \(X_n\) sono spazi vettoriali), logica e informatica teorica \cite{Gambino2017,Hasegawa2002}. Denotando con \(\# S\) la cardinalità di un insieme, ad ogni specie combinatoria \(f : \ctBij \fun\ctSet\) tale che ogni \(f(n)\) sia finito possiamo associare la serie formale \(F(t)\in\mathbb{N}\llbracket t\rrbracket\) definita come \(F(t) \defeq \sum_{n\ge 1} \frac{\# X_n}{n!}t^n\). Questa si chiama la \emph{funzione generatrice} della specie combinatoria \(F\), e le sue proprietà algebriche o analitiche (qualora \(F(t)\) converga) sono in corrispondenza diretta con le proprietà del funtore \(f\).
 \end{example}
 \begin{example}[Moduli sinistri; moduli destri; bimoduli]\index{Moduli su un anello!--- come funtori}\index{Modulo}
 	Se \(\ctAb\) è la categoria dei gruppi abeliani e loro omomorfismi, ed \((R,+,\cdot,0,1)\) è un anello unitario, una rappresentazione del monoide \((R,\cdot,1)\) in \(\ctAb\), ossia un funtore
@@ -430,7 +430,7 @@
 	La procedura che descriviamo qui potrà essere estesa a un funtore che ad ogni \emph{insieme simpliciale} associa uno spazio topologico (la \emph{realizzazione topologica} dell'insieme simpliciale), ma per poterla definire serve il linguaggio dei colimiti, esposto nel capitolo \ref{chap_limiti_colimiti}.
 
 	Ricordiamo da \ref{rmk_delta_e_deltaPlus} che l'oggetto tipico di \(\bsDelta\)	è della forma \([n]=\{\iter[0][<]n\}\) per un certo \(n\ge 0\); definiamo poi \(|\Delta[n]|= \Delta^n\) come sottoinsieme di \(\bbR^{n+1}\) dato da
-	\[\left\{(t_0,t_1,\dots,t_n)\in\bbR^{n+1} \mid t_i\ge 0, \sum_{i=0}^n t_i = 1\right\}\]
+	\[\textstyle\bigl\{(t_0,t_1,\dots,t_n)\in\bbR^{n+1} \mid t_i\ge 0, \sum_{i=0}^n t_i = 1\bigr\}\]
 	e dotato della topologia indotta da quella euclidea di \(\bbR^{n+1}\). Gli elementi di \(|\Delta[n]|\) si possono quindi pensare come \emph{combinazioni convesse}, e in effetti \(|\Delta[n]|\) così ottenuto è precisamente l'\emph{inviluppo convesso} di \(n\) punti in \(\bbR^{n+1}\) che si trovano in `posizione generale'; ogni punto di \(\Delta^n\) è dunque identificato univocamente dalle sue coordinate baricentriche \((\tup[0]tn,)\) e in particolare, il vertice \(i\)-esimo è il punto in cui \(t_i=1\) e tutti gli altri coefficienti sono nulli.
 
 	Ora, per dimostrare che la realizzazione topologica induce un funtore, va mostrato che una funzione monotòna \(f : [m]\to [n]\) in \(\bsDelta\) induce una funzione continua \(|f| : |\Delta[m]|\to |\Delta[n]|\). Dato che, come si è visto in \ref{rmk_combinatoria_simplessi}, \(f\) risulta da una composizione \(\delta^{i_1} \cmp\dots\cmp \delta^{i_k}\cmp \sigma^{j_1} \cmp\dots\cmp \sigma^{j_h}\), essenzialmente unica, di cofacce e codegenerazioni, è sufficiente dimostrare che queste ultime inducono tutte funzioni continue. La tesi seguirà dal definire \(|f|:=|\delta^{i_1}|\cmp\dots\cmp|\delta^{i_k}|\cmp|\sigma^{j_1}|\cmp\dots\cmp|\sigma^{j_h}|\).
@@ -563,7 +563,7 @@ Il funtore di realizzazione topologica di simplessi permette di definire il \emp
 \begin{example}\index{Funtore!--- quoziente di uno pseudoinsieme}
 	Sia \((X,\sim)\) un prequoziente come in \ref{ex_cat_pseudoinsiemi}; l'assegnazione del quoziente \(X/_\sim\) definisce un funtore
 	\[\dmFun q{\cate{Bish}}{\ctSet}\]
-	poiché ogni omomorfismo di pseudoinsiemi \(f : (X,\sim_X)\to (Y,\sim_Y)\) soddisfa esattamente la proprietà necessaria a indurre un'unica funzione \(qf : X/_{\sim_X}\to Y/_{\sim_Y}\), che manda la classe di equivalenza \([x]_X\) nella classe di equivalenza \([fx]_Y\) (si dimostrino per esercizio le identità funtoriali: \(q(\id_{(X,\sim)})=\id_{X/_\sim}\) e \(q(g\cmp f)=qg\cmp qf\)).
+	poiché ogni omomorfismo di pseudoinsiemi \(f : (X,\sim_X)\to (Y,\sim_Y)\) soddisfa esattamente la proprietà necessaria a indurre un'unica funzione \(qf : X/_{\!\sim_X}\to Y/_{\!\sim_Y}\), che manda la classe di equivalenza \([x]_X\) nella classe di equivalenza \([fx]_Y\) (si dimostrino per esercizio le identità funtoriali: \(q(\id_{(X,\sim)})=\id_{X/_{\!\sim}}\) e \(q(g\cmp f)=qg\cmp qf\)).
 \end{example}
 \begin{example}\index{Funtore!--- proiezioni da un prodotto}
 	\index{Funtore!--- inclusioni in una somma}\index{Categoria!--- somma}

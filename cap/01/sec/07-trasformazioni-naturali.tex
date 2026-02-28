@@ -80,6 +80,7 @@ L'operazione di composizione verticale definisce una categoria \(\ctCat(\ctC,\ct
 			      \item nel secondo caso, un funtore \(\ctL\ctG^\op\to\ctSet\) consta di una coppia di insiemi \(G_0=V\) e \(G_1=E\) che, oltre alle solite funzioni dominio e codominio, possiedono una involuzione \(\ell = G(l) : E\to E\)  dell'insieme dei lati, che scambia tra loro dominio e codominio. Una maniera di rappresentare un grafo non diretto è come un grafo diretto, dove ad ogni lato \(e : v\to v'\) corrisponde un lato omonimo \(\ell(e) : v'\to v\) --e dunque, a tutti gli effetti al lato \(e\) manca un'orientazione perché `collega \(v\) e \(v'\) in entrambe le direzioni.
 		      \end{itemize}
 		\item La categoria delle rappresentazioni (in \(\ctSet\)) di un monoide di \ref{ex_cat_g_insiemi} è la categoria dei funtori \(\susp M \fun\ctSet\); una trasformazione naturale tra rappresentazioni viste come funtori è precisamente un omomorfismo equivariante. Un fatto analogo è vero per le rappresentazioni di un monoide in \(\ctD\), come in \ref{es_fun_repre} (scrivere i dettagli per esercizio).
+		\item Esiste una categoria \(\ctSpc\) che ha per oggetti le specie combinatorie di \ref{ex_fun_specie}; una freccia in \(\ctSpc\)	è una trasformazione naturale tra funtori \(\ctBij \fun\ctSet\), e dunque consta di una famiglia di funzioni \(\alpha_X : F(X)\to G(X)\) che commuta (è equivariante) con le funzioni indotte da ogni funzione \(f:X\to Y\).\index{Specie combinatoria}
 	\end{itemize}
 	Si noti come tutti i vantaggi esposti in \ref{es_fun_repre_vantaggi} dell'avere descritto una struttura come una categoria di `rappresentazioni di forme astratte' rimangono validi: un `(multidi)grafo lineare' consiste di un funtore \(\genArrow^\op \fun \ctVect\), e le mappe di dominio e codominio sono omomorfismi lineari; un `grafo topologico' di un funtore \(\genArrow^\op\fun\ctTop\), e le mappe di dominio e codominio sono continue; similmente per grafi riflessivi e non diretti, lineari, topologici o altro.
 \end{example}
@@ -265,7 +266,7 @@ Osserviamo poi che la condizione di naturalità per \(\alpha^{-1}\) può essere 
 	\[Fu\cmp \alpha_X^{-1}=\alpha_Y^{-1}\cmp \alpha_Y \cmp Fu\cmp \alpha_X^{-1} = \alpha_Y^{-1}\cmp Gu\cmp \alpha_X\cmp \alpha_X^{-1}=\alpha_Y^{-1}\cmp Gu.\]
 \end{lemma}
 \begin{definition}[Funtore rappresentabile]\label{def_rappre_fun}\index{Funtore!--- rappresentabile}\index{Rappresentabilità}
-	Una famiglia importante di isomorfismi naturali sono quelli che sussistono tra un funtore \(F : \ctC \fun\ctSet\) (covariante o controvarinte) e uno dei \emph{funtori hom} (covariante o controvariante) di \ref{ex_hom_funtore};
+	Una famiglia importante di isomorfismi naturali sono quelli che sussistono tra un funtore \(F : \ctC \fun\ctSet\) (covariante o controvariante) e uno dei \emph{funtori hom} (covariante o controvariante) di \ref{ex_hom_funtore};
 	\begin{itemize}
 		\item Se \(G : \ctC^\op\fun\ctSet\) è controvariante, qualora esista un isomorfismo naturale \(G\natIso \Hom{\ctC}(\blank,Y_G)\) per un qualche oggetto \(Y_G\in\ctC_0\), diciamo che \(G\) è \emph{rappresentabile} (da \(Y_G\)), o che \(Y_G\) è l'\emph{oggetto rappresentante} per \(G\).
 		\item Dualmente, se \(F : \ctC\fun\ctSet\) è covarinte, qualora esista un isomorfismo naturale \(F\natIso \Hom{\ctC}(X_F,\blank)\) per un qualche oggetto \(X_F\in\ctC_0\), diciamo che \(F\) è \emph{corappresentabile} (da \(X_F\)), o che \(X_F\) è l'\emph{oggetto corappresentante} per \(F\).
@@ -507,7 +508,7 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 
 	Questo argomento si generalizza anche facilmente al caso del funtore \(\GL_n\): in quel caso, \(S(\GL_n)\) è il quoziente
 	\[\bbZ[\{x_{ij}\mid 1\le i,j\le n\}\cup \{y\}]\big/(1-y\cdot\det)\]
-	dove \(\det\) è il polinomio \(\sum_{\sigma\in \fkS(n)}\prod_{i=1}^n x_{i,\sigma(i)}\) nelle indeterminate \(x_{ij}\) (e la somma è indicizzata sugli elementi $\sigma \in \fkS(n)$ del gruppo simmetrico di ordine $n$).
+	dove \(\det\) è il polinomio \(\sum_{\sigma\in \fkS(n)}\prod_{i=1}^n x_{i,\sigma(i)}\) nelle indeterminate \(x_{ij}\) (e la somma è indicizzata sugli elementi \(\sigma \in \fkS(n)\) del gruppo simmetrico di ordine \(n\)).
 \end{proposition}
 Si noti che la condizione di naturalità di \(\beta\cmp\alpha\) si ottiene componendo quelle di \(\alpha\) e \(\beta\):
 \[
