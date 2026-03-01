@@ -359,10 +359,14 @@ La sezione \ref{} raccoglie esempi di limiti e colimiti che descrivono oggetti m
 
 Il resto del capitolo è occupato dalla teoria generale dei (co)limiti: teoremi di struttura come \ref{}, e controesempi all'esistenza di `tutti' i limiti \ref{} sono importanti pietre angolari della teoria. Alcuni funtori sono `continui' (mandano limiti in limiti) o `cocontinui' (mandano colimiti in colimiti), o hanno maniere di interagire coi colimiti più sofisticate. La questione viene analizzata nella sezione \ref{}.
 \begin{esercizi}
-	\item \label{ex_21_1} Nella notazione di \ref{}, ricordando che \(\bbZ\) e \(\bbB\) sono iniziali, rispettivamente, nella categoria degli anelli unitari e delle algebre di Boole, determinare gli insiemi
+	\item \label{ex_21_1} Nella notazione di \ref{}, ricordando che il gruppo additivo degli interi \(\bbZ\) e l'algebra \(\bbB\) dei Booleani $\{\texttt{true},\texttt{false}\}$ sono iniziali, rispettivamente, nella categoria degli anelli unitari e delle algebre di Boole, caratterizzare gli insiemi
 	\[\Hom{\ctRing_1}(R,\bbZ) \qquad \Hom{\ctBAlg}(H,\bbB)\]
-	per \(R\) un anello (commutativo e) unitario, e \(H\) un'algebra di Boole.
-	\item \label{ex_21_2}
+	per \(R\) un anello (commutativo e) unitario, e \(H\) un'algebra di Boole. (`Caratterizzare' significa qui descrivere esplicitamente quali sono le funzioni che appartengono a questi insiemi, e mostrare che sono tutte e sole quelle descritte).
+	\item \label{ex_21_2} Dimostrare il \emph{lemma di Lambek}: se $F : \ctC \fun\ctC$ è un endofuntore, 
+	\begin{itemize}
+		\item qualora $\ctAlg(F)$ abbia un oggetto iniziale $(I,\xi \colon FI \to I)$, la sua mappa strutturale $\xi$ è un isomorfismo in $\ctC$. Dualmente,
+		\item qualora $\ctcoAlg(F)$ abbia un oggetto terminale $(T,\sigma : T \to FT)$, la sua mappa strutturale $\sigma$ è un isomorfismo in $\ctC$.
+	\end{itemize}
 	\item \label{ex_21_3}
 	\item \label{ex_21_4}
 	\item \label{ex_21_5}
@@ -434,12 +438,17 @@ In effetti, è immediato verificare che \(A\times B\) e le proiezioni canoniche 
 \end{lemma}
 Si osservi di nuovo il ruolo dell'aggettivo \emph{unica}: fissate le terne \((P,p_1,p_2)\) e \((Q,q_1,q_2)\) (e solo allora), la biiezione possibile è \emph{solo una}.
 \begin{proof}
-	\Todo{C'è una biiezione}
-	\Todo{E' unica}
+	Dato che $Q$ è un prodotto, esiste un'unica	funzione $u : P \to Q$ che fa commutare i due triangoli del diagramma 
+	\[miao\]
+	Di converso, dato che	$P$ è un prodotto, esiste un'unica funzione $v : Q \to P$ che fa commutare i due triangoli del diagramma
+	\[bau.\]
+	Del resto, $v$ deve essere l'inversa di $u$, perché le composizioni $v\cmp u$ e $u\cmp v$ fanno commutare i due triangoli dei diagrammi
+	\[miao\qquad\qquad bau\] 
+	proprietà che esse hanno in comune con	le identità di $P$ e $Q$; dunque, per unicità si ha $v\cmp u = \id_P$ e $u\cmp v = \id_Q$.
 \end{proof}
 Si osservi che in particolare, istanziando la proprietà di \ref{rmk_prodotto} quando \(X = \singleton\) è un insieme con un solo elemento, le funzioni \(g\colon \singleton\to B\), \(f\colon \singleton\to A\) scelgono rispettivamente un elemento \(g(\bullet) = b \in B\) e \(f(\bullet) = a \in A\); la funzione \(f\pmap g\colon \singleton\to P\) sceglie a sua volta un elemento \((f\pmap g)(\bullet) = t \in P\), che però ora deve essere della forma \(\pair{p_1 t}{p_2 t}\).
 
-La proprietà di \ref{} si traduce allora in: per ogni coppia di elementi \(a\in A\) e \(b\in B\), esiste (suriettività) un unico (iniettività) elemento \(c\in P\) tale che \(p_1 c=a\) e \(p_2 c=b\). Questo è un modo alternativo di stabilire una biiezione \(\tau : P\to A\times B\) soggetta alla proprietà addizionale di commutare con le proiezioni, cioè tale che \(\pi_A\cmp \tau =p_1\) e \(\pi_B\cmp \tau =p_2\).
+La proprietà di \ref{} si traduce allora in: per ogni coppia di elementi \(a\in A\) e \(b\in B\), esiste (suriettività) un unico (iniettività) elemento \(c\in P\) tale che \(p_1 c=a\) e \(p_2 c=b\). Questo è un modo alternativo di stabilire una biiezione \(\tau : P\to A\times B\) soggetta alla proprietà addizionale di commutare con le proiezioni, cioè tale che \(\pi_A\cmp \tau =p_1\) e \(\pi_B\cmp \tau =p_2\). La biiezione è poi unica, ossia non solo è possibile identificare un prodotto Cartesiano $P$ ad un insieme di coppie, ma questa identificazione si fa in un unico modo.
 
 In sintesi, abbiamo enunciato e dimostrato la
 \begin{definition}[Proprietà universale del prodotto Cartesiano di insiemi]
@@ -466,11 +475,47 @@ In sintesi, abbiamo enunciato e dimostrato la
 		      è una biiezione naturale in \(X\) (cioè, l'insieme \(A\times B\) rappresenta il funtore \(\Hom{\ctSet}(\blank,A)\times\Hom{\ctSet}(\blank,A) : \ctSet^\op \to \ctSet\) che manda \(X\) in \(\Hom{\ctSet}(X,A)\times\Hom{\ctSet}(X,B)\)).
 	\end{itemize}
 \end{definition}
+\begin{remark}
+	\`E probabile che questi argomenti risultino persino troppo pedanti per chi legge; tuttavia, ragionare in questi termini è il cuore della teoria delle proprietà universali, che `si dimostrano tutte allo stesso modo'. Ancorare la tecnica di dimostrazione a un esempio estremamente banale è uno strumento pedagogico che permette di non oscurare la tecnica	con i dettagli specifici di una costruzione più complessa (che andrebbe capita e motivata\dots).
+\end{remark}
+Altrettanto probabilmente, chi legge avrà intuito che c'è una somiglianza tra il modo di ragionare appena descritto, e il contenuto di \ref{init_ha_solo_id}; questa non è una coincidenza.
+\begin{proposition}
+	Si rammenti la definizione della categoria $\ctSpan(A,B)$ in \ref{}, che ha 
+	\begin{itemize}
+		\item per oggetti le spanne di insiemi
+			\[\xymatrix{
+			A & X \ar[r]^-r \ar[l]_-l & B
+		}\]
+		\item per frecce le funzioni \(f : X\to Y\) che rendono commutativi i diagrammi
+		\[\xymatrix{
+			X\ar[dr]_f \ar[r]^-l\ar[d]_r & A \\ 
+			B & Y. \ar[l]^-{r'}\ar[u]_-{l'} 
+		}\]
+	\end{itemize}
+	Allora, un insieme $P$ fa parte di un diagramma prodotto
+		\[\xymatrix{
+			A & P \ar[r]\ar[l]& B
+		}\]
+	se e solo se è un oggetto terminale di $\ctSpan(A,B)$.
+\end{proposition}
+Siamo pronti per enunciare la proprietà universale del prodotto (di due oggetti) in una categoria $\ctC$; seguiranno molti esempi di prodotti binari nelle categorie definite nel capitolo precedente, così come diversi controesempi che mostrano come alcune categorie non abbiano prodotti, o non li abbiano per ogni coppia di oggetti. La sezione \ref{} si occuperà di tracciare le prime conseguenze della definizione, e le sue proprietà elementari.
+\begin{definition}[Prodotto binario in $\ctC$]
+	Sia $\ctC$ una categoria e $A,B\in\ctC_0$ due oggetti. Un oggetto $P$ di $\ctC$ è un prodotto di $A$ e $B$ se una delle seguenti condizioni equivalenti è soddisfatta:
+	\begin{enumtag}{pd}
+		\item unica freccia nel diagramma baumiao
+		\item rappresentabilità
+		\item oggetto terminale di baumiao
+	\end{enumtag}
+\end{definition}
+Diciamo che $\ctC$ `ha prodotti' o è una categoria con prodotti se per ogni $A,B\in\ctC_0$ esiste un prodotto $A\times B$.
 \subsection{Prodotti in altre categorie `concrete'}
+I primi corsi di algebra hanno presentato diverse classi di strutture algebriche come monoidi, gruppi, anelli, e a volte reticoli algebrici, grafi, etc.; in ciascuna di queste strutture esiste una nozione di prodotto tra due oggetti, che è caratterizzata da una proprietà universale del tutto analoga a quella del prodotto Cartesiano di insiemi. Cioè: il prodotto di due gruppi (o anelli, spazi vettoriali, reticoli, grafi\dots) $G$ e $H$ si definisce ponendo sul prodotto Cartesiano $G\times H$ degli insiemi sottostanti una operazione componente per componente, non perché questa definizione sia ovvia, ma perché è l'unica che soddisfa la giusta proprietà universale.
 \begin{hExample}[Prodotti in categorie di insiemi strutturati]{fund}
 	Raccogliamo vari esempi, tutti formalmente analoghi, di prodotti in categorie di insiemi con struttura.
 	\begin{itemize}
-		\item \Todo{}
+		\item Il prodotto di due gruppi $G,H$ si costruisce ponendo sul prodotto Cartesiano $G\times H$ la moltiplicazione definita componente per componente,
+		\[(g,h) \cdot_{G\times H} (g',h') \defeq (g\cdot_G g', h\cdot_H h');\]
+		l'identità è ovviamente $(1_G,1_H)$, l'inverso di $(g,h)$ è $(g^{-1},h^{-1})$. Similmente si procede per definire il prodotto di due gruppi abeliani, di due spazi vettoriali $V,W$, di due anelli
 		\item \Todo{}
 		\item \Todo{}
 		\item \Todo{}
@@ -524,236 +569,237 @@ Si osservi che \(q_R\cmp r_1=q_R\cmp r_2 \), ossia \(q_R\) \emph{equalizza} \(r_
 	\item
 	\item
 \end{esercizi}
-\section{Prodotti e somme in una categoria}
-La descrizione del prodotto di due insiemi data in \ref{prod_in_Set} si presta a essere generalizzata a una generica categoria.
-\begin{definition}
-	\Todo{Prodotto in \(\ctC\)}
-\end{definition}
-\begin{definition}
-	\Todo{Coprodotto in \(\ctC\)}
-\end{definition}
-Si vede ora che le due definizioni sono duali in questo senso:
-\begin{lemma}
-	prodotti in \(\ctC\) sono coprodotti in \(\ctC^\op\); coprodotti in \(\ctC\) sono prodotti in \(\ctC^\op\).
-\end{lemma}
-\begin{theorem}
-	\Todo{Prodotto come oggetto terminale.}
-\end{theorem}
-\begin{corollary}
-	\Todo{Unicità a meno di iso del prodotto.}
-\end{corollary}
-\color{red}
-\begin{definition}[Prodotti binari]
-	Sia \(\ctC\) una categoria, e siano \(A\) e \(B\) due oggetti di \(\ctC\). Un prodotto di \(A\) e \(B\) è una spanna
-	\[
-		\begin{tikzcd}
-			A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
-		\end{tikzcd}
-	\]
-	tale che, per ogni altra spanna
-	\[\begin{tikzcd}
-			A&Q\ar[l, "f"']\ar[r, "g"]&B
-		\end{tikzcd}
-	\]
-	esista un'unica freccia
-	\begin{tikzcd}
-		h\colon Q\ar[r] &P
-	\end{tikzcd}
-	tale che \(p_1\cmp h=f\) e \(p_2\cmp h=g\).
-\end{definition}
-\`E utile seguire la definizione sui  diagrammi:\\[2ex]
-\begin{tikzpicture}
-	\node [mybox] (box){%
-		\begin{minipage}[t][19ex]{0.40\textwidth}
-			\begin{center}
-				\begin{tikzcd}
-					&Q\ar[dl, "f"']\ar[dr, "g"]
-					\\
-					A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
-				\end{tikzcd}\\[2ex]
-				\emph{per ogni spanna \((Q,f,g)\) \\su \(A\) e \(B\)}...
-			\end{center}
-		\end{minipage}
-	};
-\end{tikzpicture}%
-\hfill
-\begin{tikzpicture}
-	\node [mybox] (box){%
-		\begin{minipage}[t][19ex]{0.40\textwidth}
-			\begin{center}
-				\begin{tikzcd}
-					&Q\ar[dl, "f"']\ar[dr, "g"]\ar[d, "h", dashed]
-					\\
-					A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
-				\end{tikzcd}\\[2ex]
-				...\emph{esiste un'unica freccia \(h\)\\ tale che \(p_1\cmp h=f\) e \(p_2\cmp h=g\)}
-			\end{center}
-		\end{minipage}
-	};
-\end{tikzpicture}%
-%
-\\[2ex]
-dove la freccia \(h\) è tratteggiata perché la sua esistenza è conseguenza della definizione di prodotto, e i due i triangoli commutativi corrispondono alle due equazioni che concludono la definizione.
+\section{Teoria elementare di prodotti e somme}
+\Todo{}
+% La descrizione del prodotto di due insiemi data in \ref{prod_in_Set} si presta a essere generalizzata a una generica categoria.
+% \begin{definition}
+% 	\Todo{Prodotto in \(\ctC\)}
+% \end{definition}
+% \begin{definition}
+% 	\Todo{Coprodotto in \(\ctC\)}
+% \end{definition}
+% Si vede ora che le due definizioni sono duali in questo senso:
+% \begin{lemma}
+% 	prodotti in \(\ctC\) sono coprodotti in \(\ctC^\op\); coprodotti in \(\ctC\) sono prodotti in \(\ctC^\op\).
+% \end{lemma}
+% \begin{theorem}
+% 	\Todo{Prodotto come oggetto terminale.}
+% \end{theorem}
+% \begin{corollary}
+% 	\Todo{Unicità a meno di iso del prodotto.}
+% \end{corollary}
+% \color{red}
+% \begin{definition}[Prodotti binari]
+% 	Sia \(\ctC\) una categoria, e siano \(A\) e \(B\) due oggetti di \(\ctC\). Un prodotto di \(A\) e \(B\) è una spanna
+% 	\[
+% 		\begin{tikzcd}
+% 			A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
+% 		\end{tikzcd}
+% 	\]
+% 	tale che, per ogni altra spanna
+% 	\[\begin{tikzcd}
+% 			A&Q\ar[l, "f"']\ar[r, "g"]&B
+% 		\end{tikzcd}
+% 	\]
+% 	esista un'unica freccia
+% 	\begin{tikzcd}
+% 		h\colon Q\ar[r] &P
+% 	\end{tikzcd}
+% 	tale che \(p_1\cmp h=f\) e \(p_2\cmp h=g\).
+% \end{definition}
+% \`E utile seguire la definizione sui  diagrammi:\\[2ex]
+% \begin{tikzpicture}
+% 	\node [mybox] (box){%
+% 		\begin{minipage}[t][19ex]{0.40\textwidth}
+% 			\begin{center}
+% 				\begin{tikzcd}
+% 					&Q\ar[dl, "f"']\ar[dr, "g"]
+% 					\\
+% 					A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
+% 				\end{tikzcd}\\[2ex]
+% 				\emph{per ogni spanna \((Q,f,g)\) \\su \(A\) e \(B\)}...
+% 			\end{center}
+% 		\end{minipage}
+% 	};
+% \end{tikzpicture}%
+% \hfill
+% \begin{tikzpicture}
+% 	\node [mybox] (box){%
+% 		\begin{minipage}[t][19ex]{0.40\textwidth}
+% 			\begin{center}
+% 				\begin{tikzcd}
+% 					&Q\ar[dl, "f"']\ar[dr, "g"]\ar[d, "h", dashed]
+% 					\\
+% 					A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
+% 				\end{tikzcd}\\[2ex]
+% 				...\emph{esiste un'unica freccia \(h\)\\ tale che \(p_1\cmp h=f\) e \(p_2\cmp h=g\)}
+% 			\end{center}
+% 		\end{minipage}
+% 	};
+% \end{tikzpicture}%
+% %
+% \\[2ex]
+% dove la freccia \(h\) è tratteggiata perché la sua esistenza è conseguenza della definizione di prodotto, e i due i triangoli commutativi corrispondono alle due equazioni che concludono la definizione.
 
-\medskip
-Per riferirci al prodotto di due oggetti \(A\) e \(B\) diremo che la tripla \((P,p_1,p_2)\) è una \emph{spanna universale} su  \(A\) e \(B\). Inoltre, chiamiamo la proprietà che definisce il prodotto di due oggetti \emph{proprietà universale del prodotto}.
+% \medskip
+% Per riferirci al prodotto di due oggetti \(A\) e \(B\) diremo che la tripla \((P,p_1,p_2)\) è una \emph{spanna universale} su  \(A\) e \(B\). Inoltre, chiamiamo la proprietà che definisce il prodotto di due oggetti \emph{proprietà universale del prodotto}.
 
-\begin{example}\label{esempio_spanna_universale_in_Set}
-	Consideriamo gli insiemi
-	\[
-		A=\{0,1\}\qquad B=\{0,1,2\}\qquad P=\{0,1,2,3,4,5\}
-	\]
-	e le funzioni
-	\[
-		p_1\colon P\to A\qquad n\mapsto n\pmod 2
-	\]
-	\[
-		p_2\colon P\to B\qquad n\mapsto n\pmod 3
-	\]
-	La spanna \((P, p_1, p_2)\) è universale, ovvero definisce un prodotto di \(A\) e \(B\).
-
-
-	Dimostriamolo. Sia \(Q\) un insieme e \(f\colon Q\to A\), \(g\colon Q\to B\) due funzioni. Per ogni elemento \(q\in Q\) possiamo due elementi \(f(q)\in A\) e \(g(q)\in B\). Definiamo allora \(h(q)\in P\) come l'unico intero positivo di \(P\) tale che
-	\[
-		h(q)\equiv p_1(q) \pmod 2\qquad\text{e}\qquad h(q)\equiv p_2(q) \pmod 3
-	\]
-	Il fatto che tale intero esista e sia unico è conseguenza del ben noto teorema \emph{teorema cinese dei resti}\footnote{Si veda su qualunque manuale di algebra o matematica discreta.} Nel caso in esame, può valere la pena verificarlo direttamente sulla tabella qui sotto
-	\begin{center}
-		\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
-			\hline
-			\(n\)         & \(0\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(h(q)\)   \\
-			\hline
-			\(n \pmod 2\) & \(0\) & \(1\) & \(0\) & \(1\) & \(0\) & \(1\) & \(p_1(q)\) \\
-			\hline
-			\(n \pmod 3\) & \(0\) & \(1\) & \(2\) & \(0\) & \(1\) & \(2\) & \(p_2(q)\) \\
-			\hline
-		\end{tabular}
-	\end{center}
-	e la proprietà universale del prodotto è dimostrata per la spanna \((P, p_1, p_2)\).
-\end{example}
-L'esempio precedente mostra come il prodotto di due insiemi \(A\) e \(B\) possa essere presentato in diversi modi.
-
-Si sarebbe potuto descrivere, come abbiamo fatto  in \ref{prod_in_Set},
-\[
-	A\times B=\{(0,0),\,(0,1),\,(0,2),(1,0),\,(1,1),\,(1,2)\}
-\]
-insieme alle funzioni
-\[
-	\pi_A\colon A\times B\to A\qquad (n,m)\mapsto n
-\]
-\[
-	\pi_B \colon A\times B\to B\qquad (n,m)\mapsto m
-\]
-e questa costruzione è chiamata talvolta canonica\footnote{Sul termine \emph{canonico} non ci dilunghiamo; basti osservare che esso è di solito utilizzato in modo informale per intendere la costruzione più semplice o più utilizzata, non essendoci una definizione \emph{canonica} di canonico!}, così come canoniche sono dette le proiezioni \(\pi_A\) e \(\pi_B\).
-
-Diversamente, si può considerare la spanna universale \((P,p_1,p_2)\), come abbiamo fatto in \ref{esempio_spanna_universale_in_Set}. Ora, la tabella qui sopra può essere interpretata come una funzione biettiva
-\[
-	\varphi\colon P\to A\times B \qquad n\mapsto (n\pmod2,n\pmod3)
-\]
-che commuta con le proiezioni, cioè  tale che \(\pi_A\cmp\varphi=p_1\) e \(\pi_B\cmp\varphi=p_2\).
-
-Questa è una proprietà generale.
-
-\begin{proposition}[Il prodotto è unico a meno di un unico isomorfismo]
-	In una categoria \(\ctC\), date due spanne universali \((P,p_1,p_1)\) e \((Q,q_1,q_2)\) che insistano sulla stessa coppia di oggetti \(A,B\), esiste un unico isomorfismo \(h\colon P\to Q\) tale che \(q_1\cmp h=p_1\) e \(q_2\cmp h=p_2\).
-\end{proposition}
-Questa proprietà non è specifica dei prodotti binari, ma riguarda tutti i limiti e tutti i colimiti, e può essere facilmente ottenuta come caso particolare della \ref{???}. Riteniamo utile esplicitarne la dimostrazione, a fini didattici.
-\begin{proof}
-	Poiché la spanna \((P,p_1,p_1)\) è universale, esiste un'unica freccia  \(h\colon Q\to P\) tale che \(p_1\cmp h=q_1\) e \(p_2\cmp h=q_2\). Dimostriamo che \(h\) è un isomorfismo esibendo un suo inverso. Per trovarlo ripetiamo il ragionamento precedente, questa volta utilizzando la spanna universale \((Q,q_1,q_2)\), e ottenendo un'unica freccia \(k\colon P\to Q\) tale che \(q_1\cmp =p_1\) e \(q_2\cmp h=p_2\). Sostituendo le nelle relazioni trovate (o \emph{impastando} i diagrammi in basso a sinistra) si ottiene che:\\[2ex]
-	\begin{tikzpicture}
-		\node [mybox] (box){%
-			\begin{minipage}[t][28ex]{0.40\textwidth}
-				\begin{center}
-					\begin{tikzcd}
-						&P\ar[ddl, "p_1"', bend right]\ar[ddr, "p_2", bend left]\ar[d, "k", dashed]
-						\\
-						&Q\ar[dl, "q_1"']\ar[dr, "q_2"]\ar[d, "h", dashed]
-						\\
-						A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
-					\end{tikzcd}\\[2ex]
-					\(h\cmp k\) soddisfa le relazioni\\
-					\(p_1\cmp h\cmp k = q_1\cmp k=p_1\)\\
-					\(p_2\cmp h\cmp k = q_2\cmp k=p_2\)
-				\end{center}
-			\end{minipage}
-		};
-	\end{tikzpicture}%
-	\hfill
-	\begin{tikzpicture}
-		\node [mybox] (box){%
-			\begin{minipage}[t][28ex]{0.40\textwidth}
-				\begin{center}
-					\begin{tikzcd}
-						&P\ar[ddl, "p_1"', bend right]\ar[ddr, "p_2", bend left]\ar[dd, "\id_P",]
-						\\
-						\\
-						A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
-					\end{tikzcd}\\[4ex]
-					...ma anche \(\id_P\) è tale che \\
-					\(p_1\cmp \id_P =p_1\)\\
-					\(p_2\cmp \id_P =p_2\)
-				\end{center}
-			\end{minipage}
-		};
-	\end{tikzpicture}%
-	\\[2ex]
-	Quindi, per l'unicità data dalla proprietà universale della spanna \((P,p_1,p_2)\) si ottiene \(h\cmp k=\id_P\). Invertendo i ruoli di \(h\) e \(k\), e sfruttando la proprietà universale della spanna \((Q,q_1,q_2)\), si ottiene \(k\cmp h=\id_Q\), e si conclude quindi che la freccia \(h\) è un isomorfismo, con inverso \(h^{-1}=k\).
-\end{proof}
-\begin{remark}[Il prodotto \emph{vs} un prodotto]
-	Anticipiamo un'osservazione, che riguarda tutti i limiti e tutti i colimiti. Quando ci si riferisce a un prodotto di due oggetti, si utilizza di norma l'articolo indeterminativo (\emph{un} prodotto di \(A\) e \(B\)), poiché la definizione categoriale---cioè mediante una proprietà universale---definisce gli oggetti a meno di un unico isomorfismo. Tuttavia, anche nella letteratura, talvolta si cede alla tentazione di usare l'articolo determinativo (\emph{il} prodotto di \(A\) e \(B\)), dando per scontato il fatto di aver scelto una particolare istanza, ad esempio una specifica costruzione, del prodotto considerato, o più comunemente, riferendosi al concetto generale, come nella frase: ``nella categoria \(\ctSet\), esiste sempre \emph{il} prodotto due insiemi''.  Queste formulazioni, soprattutto la prima, sono da considerarsi un abuso di linguaggio, e perciò andrebbero evitate.
-\end{remark}
-\begin{notation}[Notazione standard del prodotto binario] La notazione standard per il prodotto di due oggetti \(A\) e  \(B\) è la spanna \((A\times B,\pi_A,\pi_B)\):
-	\[
-		\begin{tikzcd}
-			A&A\times B\ar[l, "\pi_A"']\ar[r, "\pi_B"]&B
-		\end{tikzcd}
-	\]
-	Le due frecce uscenti dal prodotto vengono dette \emph{proiezioni}.
-\end{notation}
+% \begin{example}\label{esempio_spanna_universale_in_Set}
+% 	Consideriamo gli insiemi
+% 	\[
+% 		A=\{0,1\}\qquad B=\{0,1,2\}\qquad P=\{0,1,2,3,4,5\}
+% 	\]
+% 	e le funzioni
+% 	\[
+% 		p_1\colon P\to A\qquad n\mapsto n\pmod 2
+% 	\]
+% 	\[
+% 		p_2\colon P\to B\qquad n\mapsto n\pmod 3
+% 	\]
+% 	La spanna \((P, p_1, p_2)\) è universale, ovvero definisce un prodotto di \(A\) e \(B\).
 
 
-\begin{remark}(Sulle proiezioni del prodotto).
-	Il termine ``proiezioni'' può trarre in inganno, e indurre il lettore a pensare che si tratti, come in \ref{prod_in_Set}, di funzioni suriettive, o più in generale di frecce epi. Questo, in generale, non è vero neanche nella categoria degli insiemi (e delle funzioni). Infatti, si consideri la spanna universale in  \(\ctSet\):
-	\[
-		\begin{tikzcd}
-			A&A\times \emptyset\ar[l, "\pi_A"']\ar[r, "\pi_\emptyset"]&\emptyset
-		\end{tikzcd}
-	\]
-	Poiché ha per codominio l'insieme vuoto, \(\pi_\emptyset\) non può che essere l'identità. Questo forza \(A\times \emptyset=\emptyset\) e dunque \(\pi_A\colon \emptyset\to A\) è suriettiva se, e solo se, \(A=\emptyset\).
-\end{remark}
+% 	Dimostriamolo. Sia \(Q\) un insieme e \(f\colon Q\to A\), \(g\colon Q\to B\) due funzioni. Per ogni elemento \(q\in Q\) possiamo due elementi \(f(q)\in A\) e \(g(q)\in B\). Definiamo allora \(h(q)\in P\) come l'unico intero positivo di \(P\) tale che
+% 	\[
+% 		h(q)\equiv p_1(q) \pmod 2\qquad\text{e}\qquad h(q)\equiv p_2(q) \pmod 3
+% 	\]
+% 	Il fatto che tale intero esista e sia unico è conseguenza del ben noto teorema \emph{teorema cinese dei resti}\footnote{Si veda su qualunque manuale di algebra o matematica discreta.} Nel caso in esame, può valere la pena verificarlo direttamente sulla tabella qui sotto
+% 	\begin{center}
+% 		\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+% 			\hline
+% 			\(n\)         & \(0\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(h(q)\)   \\
+% 			\hline
+% 			\(n \pmod 2\) & \(0\) & \(1\) & \(0\) & \(1\) & \(0\) & \(1\) & \(p_1(q)\) \\
+% 			\hline
+% 			\(n \pmod 3\) & \(0\) & \(1\) & \(2\) & \(0\) & \(1\) & \(2\) & \(p_2(q)\) \\
+% 			\hline
+% 		\end{tabular}
+% 	\end{center}
+% 	e la proprietà universale del prodotto è dimostrata per la spanna \((P, p_1, p_2)\).
+% \end{example}
+% L'esempio precedente mostra come il prodotto di due insiemi \(A\) e \(B\) possa essere presentato in diversi modi.
 
-\medskip
-Mediante la sua proprietà universale, il prodotto categoriale si estende naturalmente alle frecce. Sia \(\ctC\) una categoria, e \(A,B,C,D\) oggetti tali che esistano i prodotti \(A\times B\) e \(C\times D\). Allora, date due frecce \(f\colon A\to C\) e \(g\colon B\to D\), definiamo \(f\times g\) come l'unica freccia (tratteggiata) che rende commutativo il diagramma seguente:
-\[
-	\begin{aligned}
-		\begin{tikzcd}
-			A\ar[d, "f"']&A\times B\ar[l, "\pi_A"']\ar[r, "\pi_B"]\ar[d, "f\times g", dashed]&B\ar[d, "g"]
-			\\
-			C&C\times D\ar[l, "\pi_A"']\ar[r, "\pi_2"]&D
-		\end{tikzcd}
-	\end{aligned}
-\]
+% Si sarebbe potuto descrivere, come abbiamo fatto  in \ref{prod_in_Set},
+% \[
+% 	A\times B=\{(0,0),\,(0,1),\,(0,2),(1,0),\,(1,1),\,(1,2)\}
+% \]
+% insieme alle funzioni
+% \[
+% 	\pi_A\colon A\times B\to A\qquad (n,m)\mapsto n
+% \]
+% \[
+% 	\pi_B \colon A\times B\to B\qquad (n,m)\mapsto m
+% \]
+% e questa costruzione è chiamata talvolta canonica\footnote{Sul termine \emph{canonico} non ci dilunghiamo; basti osservare che esso è di solito utilizzato in modo informale per intendere la costruzione più semplice o più utilizzata, non essendoci una definizione \emph{canonica} di canonico!}, così come canoniche sono dette le proiezioni \(\pi_A\) e \(\pi_B\).
 
-In \(\ctSet\), ad esempio, il prodotto di due funzioni \(f,g\) fa esattamente quello che ci si aspetta: per ogni \((a,b)\in A\times B\) si ha che \((f\times g)(a,b)=(f(a),g(b))\).
+% Diversamente, si può considerare la spanna universale \((P,p_1,p_2)\), come abbiamo fatto in \ref{esempio_spanna_universale_in_Set}. Ora, la tabella qui sopra può essere interpretata come una funzione biettiva
+% \[
+% 	\varphi\colon P\to A\times B \qquad n\mapsto (n\pmod2,n\pmod3)
+% \]
+% che commuta con le proiezioni, cioè  tale che \(\pi_A\cmp\varphi=p_1\) e \(\pi_B\cmp\varphi=p_2\).
 
-\begin{definition}\label{def_cat_con_prodotti}
-	Una categoria \(\ctC\) ammette (o possiede, o ha) prodotti binari se per ogni coppia di suoi oggetti \(A,B\), esiste una spanna universale sopra di essi.
-\end{definition}
+% Questa è una proprietà generale.
 
-\subsection{Esempi e non-esempi di prodotti}
-\begin{example}[Monoidi, gruppi, gruppi abeliani]
-	Le categorie \(\ctMon\), \(\ctCat\) e \(\ctAb\) definite in \ref{ex_cat_monoidi} hanno prodotti. La costruzione canonica del prodotto di due monoidi \(A=(A, \cdot_A, e_A)\) e \(B=(B, \cdot_B, e_B)\)   si ottiene considerando il prodotto Cartesiano \((A\times B,\pi_A, \pi_2)\), ovvero calcolato in \(\ctSet\)), degli insiemi supporto. Esso viene dotato della struttura di monoide ereditata da quelle di \(A\) e \(B\) componente per componente:
-	\[
-		(a_1,b_1)\cdot_{A \times B} (a_2,b_2)=(a_1\cdot_A b_1, a_2\cdot_B b_2)\qquad e_{A\times B}=(e_A,e_B)
-	\]
-	Le proiezioni risultano essere degli omomorfismi di monoidi.
-	La stessa cosa vale per gruppi e gruppi abeliani, dove l'inverso si calcola per componenti:
-	\[
-		(a,b)^{-1}=(a^{-1},b^{-1})
-	\]
-	In modo del tutto analogo si definiscono i prodotti binari nelle categorie di modelli  \ref{ex_cat_sigma_strutture}, come \(\ctRing\), \(\ctRng\), \(\ctcRing\), \(\ctVect\), \dots
-\end{example}
-\color{black}
+% \begin{proposition}[Il prodotto è unico a meno di un unico isomorfismo]
+% 	In una categoria \(\ctC\), date due spanne universali \((P,p_1,p_1)\) e \((Q,q_1,q_2)\) che insistano sulla stessa coppia di oggetti \(A,B\), esiste un unico isomorfismo \(h\colon P\to Q\) tale che \(q_1\cmp h=p_1\) e \(q_2\cmp h=p_2\).
+% \end{proposition}
+% Questa proprietà non è specifica dei prodotti binari, ma riguarda tutti i limiti e tutti i colimiti, e può essere facilmente ottenuta come caso particolare della \ref{???}. Riteniamo utile esplicitarne la dimostrazione, a fini didattici.
+% \begin{proof}
+% 	Poiché la spanna \((P,p_1,p_1)\) è universale, esiste un'unica freccia  \(h\colon Q\to P\) tale che \(p_1\cmp h=q_1\) e \(p_2\cmp h=q_2\). Dimostriamo che \(h\) è un isomorfismo esibendo un suo inverso. Per trovarlo ripetiamo il ragionamento precedente, questa volta utilizzando la spanna universale \((Q,q_1,q_2)\), e ottenendo un'unica freccia \(k\colon P\to Q\) tale che \(q_1\cmp =p_1\) e \(q_2\cmp h=p_2\). Sostituendo le nelle relazioni trovate (o \emph{impastando} i diagrammi in basso a sinistra) si ottiene che:\\[2ex]
+% 	\begin{tikzpicture}
+% 		\node [mybox] (box){%
+% 			\begin{minipage}[t][28ex]{0.40\textwidth}
+% 				\begin{center}
+% 					\begin{tikzcd}
+% 						&P\ar[ddl, "p_1"', bend right]\ar[ddr, "p_2", bend left]\ar[d, "k", dashed]
+% 						\\
+% 						&Q\ar[dl, "q_1"']\ar[dr, "q_2"]\ar[d, "h", dashed]
+% 						\\
+% 						A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
+% 					\end{tikzcd}\\[2ex]
+% 					\(h\cmp k\) soddisfa le relazioni\\
+% 					\(p_1\cmp h\cmp k = q_1\cmp k=p_1\)\\
+% 					\(p_2\cmp h\cmp k = q_2\cmp k=p_2\)
+% 				\end{center}
+% 			\end{minipage}
+% 		};
+% 	\end{tikzpicture}%
+% 	\hfill
+% 	\begin{tikzpicture}
+% 		\node [mybox] (box){%
+% 			\begin{minipage}[t][28ex]{0.40\textwidth}
+% 				\begin{center}
+% 					\begin{tikzcd}
+% 						&P\ar[ddl, "p_1"', bend right]\ar[ddr, "p_2", bend left]\ar[dd, "\id_P",]
+% 						\\
+% 						\\
+% 						A&P\ar[l, "p_1"']\ar[r, "p_2"]&B
+% 					\end{tikzcd}\\[4ex]
+% 					...ma anche \(\id_P\) è tale che \\
+% 					\(p_1\cmp \id_P =p_1\)\\
+% 					\(p_2\cmp \id_P =p_2\)
+% 				\end{center}
+% 			\end{minipage}
+% 		};
+% 	\end{tikzpicture}%
+% 	\\[2ex]
+% 	Quindi, per l'unicità data dalla proprietà universale della spanna \((P,p_1,p_2)\) si ottiene \(h\cmp k=\id_P\). Invertendo i ruoli di \(h\) e \(k\), e sfruttando la proprietà universale della spanna \((Q,q_1,q_2)\), si ottiene \(k\cmp h=\id_Q\), e si conclude quindi che la freccia \(h\) è un isomorfismo, con inverso \(h^{-1}=k\).
+% \end{proof}
+% \begin{remark}[Il prodotto \emph{vs} un prodotto]
+% 	Anticipiamo un'osservazione, che riguarda tutti i limiti e tutti i colimiti. Quando ci si riferisce a un prodotto di due oggetti, si utilizza di norma l'articolo indeterminativo (\emph{un} prodotto di \(A\) e \(B\)), poiché la definizione categoriale---cioè mediante una proprietà universale---definisce gli oggetti a meno di un unico isomorfismo. Tuttavia, anche nella letteratura, talvolta si cede alla tentazione di usare l'articolo determinativo (\emph{il} prodotto di \(A\) e \(B\)), dando per scontato il fatto di aver scelto una particolare istanza, ad esempio una specifica costruzione, del prodotto considerato, o più comunemente, riferendosi al concetto generale, come nella frase: ``nella categoria \(\ctSet\), esiste sempre \emph{il} prodotto due insiemi''.  Queste formulazioni, soprattutto la prima, sono da considerarsi un abuso di linguaggio, e perciò andrebbero evitate.
+% \end{remark}
+% \begin{notation}[Notazione standard del prodotto binario] La notazione standard per il prodotto di due oggetti \(A\) e  \(B\) è la spanna \((A\times B,\pi_A,\pi_B)\):
+% 	\[
+% 		\begin{tikzcd}
+% 			A&A\times B\ar[l, "\pi_A"']\ar[r, "\pi_B"]&B
+% 		\end{tikzcd}
+% 	\]
+% 	Le due frecce uscenti dal prodotto vengono dette \emph{proiezioni}.
+% \end{notation}
+
+
+% \begin{remark}(Sulle proiezioni del prodotto).
+% 	Il termine ``proiezioni'' può trarre in inganno, e indurre il lettore a pensare che si tratti, come in \ref{prod_in_Set}, di funzioni suriettive, o più in generale di frecce epi. Questo, in generale, non è vero neanche nella categoria degli insiemi (e delle funzioni). Infatti, si consideri la spanna universale in  \(\ctSet\):
+% 	\[
+% 		\begin{tikzcd}
+% 			A&A\times \emptyset\ar[l, "\pi_A"']\ar[r, "\pi_\emptyset"]&\emptyset
+% 		\end{tikzcd}
+% 	\]
+% 	Poiché ha per codominio l'insieme vuoto, \(\pi_\emptyset\) non può che essere l'identità. Questo forza \(A\times \emptyset=\emptyset\) e dunque \(\pi_A\colon \emptyset\to A\) è suriettiva se, e solo se, \(A=\emptyset\).
+% \end{remark}
+
+% \medskip
+% Mediante la sua proprietà universale, il prodotto categoriale si estende naturalmente alle frecce. Sia \(\ctC\) una categoria, e \(A,B,C,D\) oggetti tali che esistano i prodotti \(A\times B\) e \(C\times D\). Allora, date due frecce \(f\colon A\to C\) e \(g\colon B\to D\), definiamo \(f\times g\) come l'unica freccia (tratteggiata) che rende commutativo il diagramma seguente:
+% \[
+% 	\begin{aligned}
+% 		\begin{tikzcd}
+% 			A\ar[d, "f"']&A\times B\ar[l, "\pi_A"']\ar[r, "\pi_B"]\ar[d, "f\times g", dashed]&B\ar[d, "g"]
+% 			\\
+% 			C&C\times D\ar[l, "\pi_A"']\ar[r, "\pi_2"]&D
+% 		\end{tikzcd}
+% 	\end{aligned}
+% \]
+
+% In \(\ctSet\), ad esempio, il prodotto di due funzioni \(f,g\) fa esattamente quello che ci si aspetta: per ogni \((a,b)\in A\times B\) si ha che \((f\times g)(a,b)=(f(a),g(b))\).
+
+% \begin{definition}\label{def_cat_con_prodotti}
+% 	Una categoria \(\ctC\) ammette (o possiede, o ha) prodotti binari se per ogni coppia di suoi oggetti \(A,B\), esiste una spanna universale sopra di essi.
+% \end{definition}
+
+% \subsection{Esempi e non-esempi di prodotti}
+% \begin{example}[Monoidi, gruppi, gruppi abeliani]
+% 	Le categorie \(\ctMon\), \(\ctCat\) e \(\ctAb\) definite in \ref{ex_cat_monoidi} hanno prodotti. La costruzione canonica del prodotto di due monoidi \(A=(A, \cdot_A, e_A)\) e \(B=(B, \cdot_B, e_B)\)   si ottiene considerando il prodotto Cartesiano \((A\times B,\pi_A, \pi_2)\), ovvero calcolato in \(\ctSet\)), degli insiemi supporto. Esso viene dotato della struttura di monoide ereditata da quelle di \(A\) e \(B\) componente per componente:
+% 	\[
+% 		(a_1,b_1)\cdot_{A \times B} (a_2,b_2)=(a_1\cdot_A b_1, a_2\cdot_B b_2)\qquad e_{A\times B}=(e_A,e_B)
+% 	\]
+% 	Le proiezioni risultano essere degli omomorfismi di monoidi.
+% 	La stessa cosa vale per gruppi e gruppi abeliani, dove l'inverso si calcola per componenti:
+% 	\[
+% 		(a,b)^{-1}=(a^{-1},b^{-1})
+% 	\]
+% 	In modo del tutto analogo si definiscono i prodotti binari nelle categorie di modelli  \ref{ex_cat_sigma_strutture}, come \(\ctRing\), \(\ctRng\), \(\ctcRing\), \(\ctVect\), \dots
+% \end{example}
+% \color{black}
 
 
 % \section{coprodotti binari, come sopra. finiti, infiniti.}
@@ -807,10 +853,10 @@ perché si chiamano limiti?
 \end{example}
 \begin{example}
 	Il funtore dei sottoggetti introdotto in \ref{} fa uso della nozione di prodotto fibrato in \(\ctSet\): infatti, data una funzione \(u : A\to B\) tra insiemi, la funzione \(\Sub(u) : \Sub(B) \to \Sub(A)\) si determina dal prodotto fibrato
-	\[\xymatrix{
-			u^*E \ar@{^{(}->}[d]\ar[r]& E \ar@{^{(}->}[d]\\
-			A \ar[r]_-u & B
-		}\]
+	\[\begin{tikzcd}
+u^*E =\pull AEB \arrow[r] \arrow[d, hook] & E \arrow[d, hook] \\
+A \arrow[r, "u"'] & B
+\end{tikzcd}\]
 	Infatti, la funzione \(\Sub(u)\) manda un sottoggetto \(E\mono B\) nel sottoggetto \(u^*E\mono A\).
 \end{example}
 \begin{example}

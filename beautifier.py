@@ -64,4 +64,35 @@ with open(sys.argv[1], 'r+') as f:
     f.write(''.join(content))
     f.truncate()
 
+
+with open(sys.argv[1], 'r+', encoding='utf-8') as f:
+    content = f.read()
+    for punct in [',', '.', ';', ':']:
+        content = content.replace(r'\)' + punct, punct + r'\)')
+    f.seek(0)
+    f.write(content)
+    f.truncate()
+
+ACCENTS = [
+    (r"\`a", "à"),
+    (r"\`e", "è"),
+    (r"\'e", "é"),
+    (r"\`u", "ù"),
+    (r"\`o", "ò"),
+    (r"\`i", "ì"),
+    (r"\`A", "À"),
+    (r"\`E", "È"),
+    (r"\'E", "É"),
+    (r"\`U", "Ù"),
+    (r"\`O", "Ò"),
+]
+
+with open(sys.argv[1], 'r+', encoding='utf-8') as f:
+    content = f.read()
+    for latex, unicode_char in ACCENTS:
+        content = content.replace(latex, unicode_char)
+    f.seek(0)
+    f.write(content)
+    f.truncate()
+
 os.system("latexindent -w " + sys.argv[1] + " > /dev/null 2>&1")
