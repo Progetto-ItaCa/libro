@@ -68,7 +68,7 @@ with open(sys.argv[1], 'r+') as f:
 with open(sys.argv[1], 'r+', encoding='utf-8') as f:
     content = f.read()
     for punct in [',', '.', ';', ':']:
-        content = content.replace(r'\)' + punct, punct + r'\)')
+        content = content.replace(punct + r'\)' , r'\)' + punct)
     f.seek(0)
     f.write(content)
     f.truncate()
