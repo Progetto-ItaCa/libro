@@ -216,7 +216,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 		\item le funzioni dominio e codominio \(d,c : \ctC_1\to\ctC_0:f\mapsto d(f),c(f)\);
 		\item la funzione di costruzione dell'identità \(\id : \ctC_0\to \ctC_1 : A\mapsto \Id[A]\);
 		\item l'operazione di composizione \(\blank\cmp\blank : \ctC_2 \to \ctC_1\) dove ricordiamo che
-		      \[\ctC_2 := \{(f,g) : \ctC_1\times\ctC_1\mid c(f) = d(g)\}\subseteq\ctC_1\times\ctC_1\]
+		      \[\ctC_2 \defeq  \{(f,g) : \ctC_1\times\ctC_1\mid c(f) = d(g)\}\subseteq\ctC_1\times\ctC_1\]
 	\end{itemize}
 	tutto ciò soggetto alle equazioni
 	\begin{center}
@@ -230,7 +230,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 	(che vanno interpretate `in contesto', cioè ad esempio \((g,f) \in \ctC_2\vdash d(g\cmp f)=d(f)\) eccetera).
 
 	Il principio di dualità si enuncia come segue.
-	Data una formula \(\Sigma\) nel linguaggio \(\mathsf{CT}\), possiamo costruire la formula duale per sostituzione, \(\Sigma^\op:=\Sigma[d/c,c/d,\cmp/\cmp^\op]\)\footnote{È chiaro cosa lo scambio di \(d,c\) significhi: prima si sostituisce \(d\) con un simbolo vergine \(c'\) e \(c\) con un simbolo vergine \(d'\), e poi si sosituisce \(c'\) con \(c\) e \(d'\) con \(d\):
+	Data una formula \(\Sigma\) nel linguaggio \(\mathsf{CT}\), possiamo costruire la formula duale per sostituzione, \(\Sigma^\op\defeq \Sigma[d/c,c/d,\cmp/\cmp^\op]\)\footnote{È chiaro cosa lo scambio di \(d,c\) significhi: prima si sostituisce \(d\) con un simbolo vergine \(c'\) e \(c\) con un simbolo vergine \(d'\), e poi si sosituisce \(c'\) con \(c\) e \(d'\) con \(d\):
 		\[\Sigma \squig \Sigma[d/c',c/d']\squig \Sigma[c'/c,d'/d] =:\Sigma^\op\]
 		ma questa pedanteria è eccessiva.} dove \(\blank\cmp^\op\blank\) è definita come \(u\cmp^\op v = v\cmp u\) (e questa è una buona definizione, dopo lo scambio \(d\leftrightarrows c\)).
 	\begin{quote}
@@ -405,7 +405,7 @@ Diverse costruzioni familiari della matematica di base si esprimono facilmente c
 	In maniera simile, si possono costruire gli \emph{spazi topologici puntati}, formando la categoria \(\ctTop_*=1/\ctTop\), dove \(1\) è uno spazio topologico con un solo punto.
 \end{example}
 \begin{example}[Colorazioni di insiemi]\label{ex_set_colorati}\index{Categoria!--- degli insiemi colorati}
-	Se \(\{\iter r\}\) denota un insieme con \(r\) elementi, una \emph{colorazione} di un insieme \(X\) consiste di una funzione \(c : X \to \{\iter r\}\) (di modo che gli elementi di \(X_i := c^{-1}(i)\) siano gli elementi `colorati' nel modo \(i\)); molti problemi di combinatoria enumerativa elementare riguardano colorazioni di insiemi finiti, e quindi essi possono essere enunciati attraverso la categoria incubo sopra \(\{\iter r\}\).
+	Se \(\{\iter r\}\) denota un insieme con \(r\) elementi, una \emph{colorazione} di un insieme \(X\) consiste di una funzione \(c : X \to \{\iter r\}\) (di modo che gli elementi di \(X_i \defeq  c^{-1}(i)\) siano gli elementi `colorati' nel modo \(i\)); molti problemi di combinatoria enumerativa elementare riguardano colorazioni di insiemi finiti, e quindi essi possono essere enunciati attraverso la categoria incubo sopra \(\{\iter r\}\).
 \end{example}
 Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 \begin{example}[Colorazioni di grafi]\label{ex_grph_colorati}\index{Categoria!--- dei grafi colorati}
@@ -513,7 +513,7 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 	\end{figure}
 \end{example}
 \begin{example}[Intervalli]\label{ex_pos_slices}\index{Categoria!--- intervallo di un ordine}
-	Se \((\bbR,\le)\) denota l'insieme dei numeri reali linearmente ordinato nel modo usuale, ed \(x\in\bbR\) è un numero reale, la categoria \(\bbR/x\) è il semi-intervallo inferiormente illimitato \((-\infty,t]:=\{t\le x\}\), e analogamente \(x/\bbR\) è il semi-intervallo \([t,+\infty)\). Più in generale, in ogni insieme parzialmente ordinato \((P,\le)\) guardato come categoria, l'incubo \(P/x\) sopra \(x\in P\) consiste dell'intervallo \(\{t\le x\}\) dotato dell'ordine indotto da \(P\), e similmente accade per \(x/P\). (Se \(a,b\in\bbR\) con l'ordine usuale, e \(a\le b\), si noti anche che \((a/\bbR)/(a\le b)\) è esattamente l'intervallo limitato \([a,b]\).)
+	Se \((\bbR,\le)\) denota l'insieme dei numeri reali linearmente ordinato nel modo usuale, ed \(x\in\bbR\) è un numero reale, la categoria \(\bbR/x\) è il semi-intervallo inferiormente illimitato \((-\infty,t]\defeq \{t\le x\}\), e analogamente \(x/\bbR\) è il semi-intervallo \([t,+\infty)\). Più in generale, in ogni insieme parzialmente ordinato \((P,\le)\) guardato come categoria, l'incubo \(P/x\) sopra \(x\in P\) consiste dell'intervallo \(\{t\le x\}\) dotato dell'ordine indotto da \(P\), e similmente accade per \(x/P\). (Se \(a,b\in\bbR\) con l'ordine usuale, e \(a\le b\), si noti anche che \((a/\bbR)/(a\le b)\) è esattamente l'intervallo limitato \([a,b]\).)
 \end{example}
 \begin{example}[Spazi incubi, fibrati, rivestimenti]\label{ex_fibrati_rivestimenti}\index{Categoria!--- dei rivestimenti}
 	Dato uno spazio topologico \(X\), la categoria incubo \(\ctTop/X\) è quella degli spazi incubi sopra \(X\), o fibrati generalizzati. Tra questi, isoliamo
@@ -529,7 +529,7 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 		\item gli oggetti sono mappe lineari \emph{suriettive} \(A : V\to k\);
 		\item le frecce sono le stesse di \(\ctVect[k]/k\).
 	\end{itemize}
-	Ogni oggetto di \(\ctA\) determina uno spazio affine (non vuoto) modellato su \(k\) ottenuto considerando lo spazio vettoriale \(A_0 = \ker A\) la cui somma di vettori agisce in maniera transitiva sull'insieme di punti \(A_1 := A^{-1}(1_k)\) (\(0_k,1_k\) sono rispettivamente l'elemento neutro additivo e quello moltiplicativo del campo \(k\)).
+	Ogni oggetto di \(\ctA\) determina uno spazio affine (non vuoto) modellato su \(k\) ottenuto considerando lo spazio vettoriale \(A_0 = \ker A\) la cui somma di vettori agisce in maniera transitiva sull'insieme di punti \(A_1 \defeq  A^{-1}(1_k)\) (\(0_k,1_k\) sono rispettivamente l'elemento neutro additivo e quello moltiplicativo del campo \(k\)).
 \end{example}
 \begin{example}[Implicazioni in contesto]\label{ex_boole_cpc}\index{Categoria!--- del calcolo proposizionale}
 	È noto dai corsi di logica elementare che l'insieme \(\ctB=\{\varphi,\psi,\dots\}\) delle formule ben formate del calcolo proposizionale (classico) forma un'algebra di Boole rispetto all'ordine

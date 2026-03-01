@@ -154,19 +154,19 @@ La categoria degli insiemi simpliciali è però decisamente più studiata di que
 	Il maggiore interesse per \(\ctsSet\) risiede principalmente nel fatto che ogni categoria piccola \(\ctC\in\ctCat\) induce un insieme simpliciale \(N\ctC\) detto il \emph{nervo} di \(\ctC\), definito nel modo che segue:
 	\begin{itemize}
 		\item Gli 0-simplessi di \(N\ctC\) sono gli oggetti di \(\ctC\); gli 1-simplessi	sono le frecce di \(\ctC\), e per \(n\ge 2\) gli \(n\)-simplessi di \(N\ctC\) consistono delle \(n\)-uple di frecce componibili di \(\ctC\), cioè
-		      \[(N\ctC)_n := \{C_0 \xto{f_1} C_1 \xto{f_2}C_2\xto{f_3}\cdots \xto{f_{n-1}} C_{n-1}\xto{f_n} C_n\mid \tup[0]Cn,\in\ctC_0\}.\]
+		      \[(N\ctC)_n \defeq  \{C_0 \xto{f_1} C_1 \xto{f_2}C_2\xto{f_3}\cdots \xto{f_{n-1}} C_{n-1}\xto{f_n} C_n\mid \tup[0]Cn,\in\ctC_0\}.\]
 		      Perciò possiamo denotare il generico \(n\)-simplesso di \(N\ctC\) come una \(n\)-upla ordinata \([\tup fn,]\).
 		\item Le mappe di faccia \(d_i : (N\ctC)_n \to (N\ctC)_{n-1}\) sono definite, a seconda che \(i=0\) o \(i=n\), come l'omissione del primo o dell'ultimo termine della sequenza, e altrimenti come la composizione di due frecce adiacenti:
 		      \[\begin{cases}
-				      d_0[\tup fn,] := [\tup[2]fn,]                                           \\
-				      d_n[\tup fn,] := [\tup f{n-1},]                                         \\
-				      d_i[\tup fn,] := [\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]fn,] & 0<i<n.
+				      d_0[\tup fn,] \defeq  [\tup[2]fn,]                                           \\
+				      d_n[\tup fn,] \defeq  [\tup f{n-1},]                                         \\
+				      d_i[\tup fn,] \defeq  [\tup f{i-1}, ,f_{i+1}\cmp f_i, \tup[i+2]fn,] & 0<i<n.
 			      \end{cases}\]
 		\item Le mappe di degenerazione \(s_i : (N\ctC)_n \to (N\ctC)_{n+1}\)	sono definite come l'inserimento di una copia dell'\(i\)-esimo termine (cioè della sua freccia identica) nella sequenza:
 		      \[\begin{cases}
-				      s_0[\tup fn,] := [\Id[C_0],\tup fn,]                         \\
-				      s_n[\tup fn,] := [\tup fn,,\Id[C_n]]                         \\
-				      s_i[\tup fn,] := [\tup fi, ,\Id[C_i], \tup[i+1]fn,] & 0<i<n.
+				      s_0[\tup fn,] \defeq  [\Id[C_0],\tup fn,]                         \\
+				      s_n[\tup fn,] \defeq  [\tup fn,,\Id[C_n]]                         \\
+				      s_i[\tup fn,] \defeq  [\tup fi, ,\Id[C_i], \tup[i+1]fn,] & 0<i<n.
 			      \end{cases}\]
 	\end{itemize}
 \end{remark}
@@ -247,7 +247,7 @@ La categoria degli insiemi simpliciali è però decisamente più studiata di que
 \end{definition}
 \begin{notation}\index{Trasformazione naturale}
 	Dovremmo denotare \(\Hom{\ctCat(\ctC,\ctD)}(F,G)\) la collezione delle trasformazioni naturali tra due funtori, cioè delle frecce nella categoria \(\ctCat(\ctC,\ctD)\). Spesso però è conveniente usare una notazione più compatta, specie quando \(\ctC,\ctD\) sono determinate dal contesto: una scelta comune per riferirsi a \(\Hom{\ctCat(\ctC,\ctD)}(F,G)\) è \(\Nat(F,G)\) (ma alcuni autori usano convenzioni ancora più compatte come \([F,G]\)). È conveniente denotare esplicitamente dominio e codominio di \(F,G\), perciò noi introduciamo la notazione
-	\[\natHom\ctC\ctD FG :=\Hom{\ctCat(\ctC,\ctD)}(F,G)\]
+	\[\natHom\ctC\ctD FG \defeq \Hom{\ctCat(\ctC,\ctD)}(F,G)\]
 \end{notation}
 \begin{remark}\index{Categoria!--- di funtori}
 	Sarà spesso utile considerare esempi in cui \(\ctD\) non è una categoria piccola (l'esempio più illustre e pervasivo è \ref{def_yoneda_embeddu}), e sarà altrettanto utile considerare esempi di funtori tra categorie entrambe larghe; però la definizione della `categoria' \(\ctCat(\ctC,\ctD)\) pone un problema di teoria degli insiemi quando \(\ctC\) non è piccola; infatti, in quel caso la classe delle trasformazioni naturali tra due funtori \(F,G:\ctC\funto\ctD\) è una sottoclasse di \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), che in generale può non essere un insieme (per esempio, può coincidere con \(\prod_{C\in\ctC_0}\ctD(FC,GC)\), quando?).
@@ -305,13 +305,13 @@ Osserviamo poi che la condizione di naturalità per \(\alpha^{-1}\) può essere 
 				\arrow["{(\id_D,u)}", from=1-2, to=2-2]
 				\arrow["Gf"', from=2-1, to=2-2]
 			\end{tikzcd}\]
-		Cosicché le componenti \(\alpha_{A,C} := A(\id_C,u)\) definiscono una trasformazione naturale \(\alpha_A : F\nat G\).
+		Cosicché le componenti \(\alpha_{A,C} \defeq  A(\id_C,u)\) definiscono una trasformazione naturale \(\alpha_A : F\nat G\).
 
 		Vice versa, una trasformazione naturale \(\alpha : F \nat G\) definisce un funtore \(A_\alpha\) ponendo
 		\begin{itemize}
-			\item \(A_\alpha(X,0) := FX\) e \(A_\alpha(Y,1)=GY\) per ogni \(X,Y\in\ctC_0\);
-			\item \(A_\alpha(f,\id_0) := Ff\) e \(A_\alpha(g,\id_1)=Gg\) per ogni \(f,g\in\ctC_1\);
-			\item \(A_\alpha(C,u) := \alpha_C : FC \to GC\) per la definizione appena data di \(A_\alpha\) sugli oggetti.
+			\item \(A_\alpha(X,0) \defeq  FX\) e \(A_\alpha(Y,1)=GY\) per ogni \(X,Y\in\ctC_0\);
+			\item \(A_\alpha(f,\id_0) \defeq  Ff\) e \(A_\alpha(g,\id_1)=Gg\) per ogni \(f,g\in\ctC_1\);
+			\item \(A_\alpha(C,u) \defeq  \alpha_C : FC \to GC\) per la definizione appena data di \(A_\alpha\) sugli oggetti.
 		\end{itemize}
 		La naturalità di \(\alpha\) implica che \(A\) sia un bifuntore nel senso di \ref{def_bifuntore}. Infine, è facile verificare che \(\alpha_{A_\alpha}\) coincide, componente per componente, con \(\alpha\), e che \(A_{\alpha_A}\) coincide, sugli oggetti e sulle frecce di \(\ctC\times\genArrow\), con \(A\).
 
@@ -336,7 +336,7 @@ Osserviamo poi che la condizione di naturalità per \(\alpha^{-1}\) può essere 
 
 % 	In teoria delle rappresentazioni, la condizione su \(f\)
 % 	\[\text{per ogni } g\in G,\, f(g\cdot x)=g\cdot f(x)\]
-% 	si chiama \emph{equivarianza}, ed è esattamente la condizione di naturalità istanziata in questo caso. Una conseguenza immediata della condizione è che \(f\) si restringe all'insieme \(X^G:=\{x\in X\mid \forall g\in G . g\cdot x = x\}\) dei punti fissi dell'azione di \(G\) su \(X\); infatti, per ogni \(x\in X^G\) si ha \(g\cdot f(x) = f(g\cdot x) = f(x)\).
+% 	si chiama \emph{equivarianza}, ed è esattamente la condizione di naturalità istanziata in questo caso. Una conseguenza immediata della condizione è che \(f\) si restringe all'insieme \(X^G\defeq \{x\in X\mid \forall g\in G . g\cdot x = x\}\) dei punti fissi dell'azione di \(G\) su \(X\); infatti, per ogni \(x\in X^G\) si ha \(g\cdot f(x) = f(g\cdot x) = f(x)\).
 % \end{example}
 \begin{example}\label{doppio_duale}\index{Trasformazione naturale!--- sul biduale}
 	Dato uno spazio vettoriale \(V\) di dimensione finita su un campo \(k\), ogni primo corso di algebra lineare mostra che è possibile definire un isomorfismo
@@ -345,7 +345,7 @@ Osserviamo poi che la condizione di naturalità per \(\alpha^{-1}\) può essere 
 			{\epsilon : V} & {\ddual V}
 			\arrow[from=1-1, to=1-2]
 		\end{tikzcd}\]
-	dove per ogni \(W\), \(\dual W :=\Hom{\ctVect}(W,k)\) è lo spazio vettoriale delle mappe lineari \(W\to k\); \(\epsilon_V(v)\) è la mappa lineare di \emph{valutazione} \(\dual V\to k\) che manda \(\alpha : V\to k\) in \(\alpha(v)\). Questo isomorfismo è naturale, dato che una mappa lineare \(f : V\to W\) fa commutare il quadrato
+	dove per ogni \(W\), \(\dual W \defeq \Hom{\ctVect}(W,k)\) è lo spazio vettoriale delle mappe lineari \(W\to k\); \(\epsilon_V(v)\) è la mappa lineare di \emph{valutazione} \(\dual V\to k\) che manda \(\alpha : V\to k\) in \(\alpha(v)\). Questo isomorfismo è naturale, dato che una mappa lineare \(f : V\to W\) fa commutare il quadrato
 	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJWIl0sWzAsMSwiVyJdLFsxLDAsIlxcZGR1YWwgViJdLFsxLDEsIlxcZGR1YWwgVyJdLFsyLDMsIlxcZGR1YWwgZiJdLFsxLDMsIlxcZXBzaWxvbl9XIiwyXSxbMCwxLCJmIiwyXSxbMCwyLCJcXGVwc2lsb25fViJdXQ==
 	\[\begin{tikzcd}
 			V & {\ddual V} \\
@@ -386,7 +386,7 @@ Un funtore \(F : \ctC\fun\ctC\) si dice \emph{puntato} (risp., \emph{copuntato})
 \begin{example}[Co/puntature e co/moltiplicazioni]\index{Funtore!--- co/puntato}
 	Raccogliamo alcuni esempi di funtori puntati e copuntati:
 	\begin{itemize}
-		\item Nella categoria degli insiemi, per un \(A\in\ctSet_0\) fissato, il funtore \(SX := X^A\times A\) è copuntato dalla mappa di riduzione o \emph{valutazione}
+		\item Nella categoria degli insiemi, per un \(A\in\ctSet_0\) fissato, il funtore \(SX \defeq  X^A\times A\) è copuntato dalla mappa di riduzione o \emph{valutazione}
 		      \[\dmFun{\epsilon_X}{X^A\times A}X\]
 		      che manda una coppia \(\pair fa\) in \(\epsilon(f,a) = f(a)\); il fatto che le funzioni \(\epsilon_X\) formino una famiglia naturale in \(X\) (ma non in \(A\)) si riduce al fatto che \((u\cmp f)(a) = u\big(f(a)\big)\) per ogni \(u : X\to Y\) (oppure usando un formalismo diverso, nel fatto che coincidano le due assegnazioni
 		      % https://q.uiver.app/#q=WzAsNSxbMCwwLCIoe1xcbGFtYmRhIHQuZnR9XntBXFx0byBYfSxhKSJdLFsyLDAsIihcXGxhbWJkYSB0LmZ0KVthL3RdIl0sWzAsMiwie1xcbGFtYmRhIHQudWZ0fV57QVxcdG8gWX0iXSxbMiwyLCIoe1xcbGFtYmRhIHQudWZ0fV57QVxcdG8gWX0pW2EvdF0iXSxbMiwxLCJcXGxhbWJkYSBwLnVwW2YoYSkvcF0iXSxbMCwxXSxbMSw0XSxbMCwyXSxbMiwzXSxbNCwzLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
@@ -770,7 +770,7 @@ Un risultato apparentemente semplice da dimostrare, ma dalle conseguenze molto p
 \end{definition}
 Si noti che il nervo di una categoria \(\ctC\), come definito in \ref{def_nervo_di_una_cat}, non è altro che il nervo del funtore canonico
 \[\dmFun{\bsDelta}{\ctFOrd}{\ctCat}\]
-che riguarda un insieme totalmente ordinato \([n]\in\ctFOrd\) come la categoria \(\bsDelta[n] :=\{0\to 1\to\cdots\to n\}\) (a sua volta, il funtore \(\bsDelta\) è la restrizione \(t|_{\ctFOrd}\), nella terminologia di \ref{ord_come_cat}).
+che riguarda un insieme totalmente ordinato \([n]\in\ctFOrd\) come la categoria \(\bsDelta[n] \defeq \{0\to 1\to\cdots\to n\}\) (a sua volta, il funtore \(\bsDelta\) è la restrizione \(t|_{\ctFOrd}\), nella terminologia di \ref{ord_come_cat}).
 \begin{esercizi}
 	\item Mostrare che la regola di scambio di \ref{interchangio} è equivalente al fatto che la composizione
 	\[\dmFun{\cmp}{\ctCat(\ctB,\ctC)\times\ctCat(\ctA,\ctB)}{\ctCat(\ctA,\ctC)}\]

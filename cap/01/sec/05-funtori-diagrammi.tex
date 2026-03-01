@@ -246,7 +246,7 @@ La teoria degli endofuntori su una categoria è molto vasta per diversi motivi: 
 			      a \ar@{|->}[r] & f(a)
 			      }\]
 		      Una \(M\)-algebra consiste di un insieme \(A\) e una funzione \(a : 1+A\to A\); evidentemente, \(a(\bullet)\) sceglie un elemento di \(A\), e \(a|_A : A\to A\) è una generica endofunzione, cosicché la categoria delle \(M\)-algebre si identifica alla categoria dei sistemi dinamici di \ref{ex_cat_dyn}. Anche una \(M\)-coalgebra è un oggetto interessante: è una funzione \(f : A\to 1+A\), che assegna a certi elementi di \(A\) il valore \(\bullet\); se interpretiamo \(f\) come un algoritmo e \(f(a_\times)=\bullet\) come `\(f\) ha fallito nel dare un output, a partire da un input \(a_\times\)' (per esempio perché \(f\) non è definita su \(a_\times\)), questo determina una funzione parziale nel senso di \ref{ex_cat_pfun}. Le \(M\)-coalgebre si identificano quindi alla categoria \(\pSet\).
-		\item Consideriamo l'endofuntore \(\ctP_\bbN:=\ctP(\bbN\times\blank):\ctSet\fun\ctSet\) che manda un insieme \(X\) nell'insieme dei sottoinsiemi di \(\bbN\times X\), dove \(\bbN\) è l'insieme dei numeri naturali.
+		\item Consideriamo l'endofuntore \(\ctP_\bbN\defeq \ctP(\bbN\times\blank):\ctSet\fun\ctSet\) che manda un insieme \(X\) nell'insieme dei sottoinsiemi di \(\bbN\times X\), dove \(\bbN\) è l'insieme dei numeri naturali.
 
 		      Una \(\ctP_\bbN\)-coalgebra è una funzione \(\theta : X\to \ctP_\bbN X\), che si identifica a un sottoinsieme \(T\) di \(X\times\bbN\times X\) (grazie a \ref{diff_pres_cat_rel}), e che può venire rappresentato come un \emph{sistema di transizione} indicizzato sui numeri naturali: se denotiamo una terna \((x,a,y)\in T\) come `\(x\xto ay\)', e diciamo che \((x,a,y)\in T\) se `dallo stato \(x\), una transizione di nome \(a\) porta allo stato \(y\)', allora \(\theta(x) = \{(a,y)\mid x\xto ay\}\) è l'insieme degli stati raggiungibili a partire da \(x\). I sistemi di transizione sono un vasto capitolo dell'informatica teorica che si approvigiona continuamente alla teoria delle categorie per i suoi risultati; si veda \cite{sangiorgi2011introduction,sangiorgi2012advanced,Jacobs2016}.
 
@@ -256,7 +256,7 @@ La teoria degli endofuntori su una categoria è molto vasta per diversi motivi: 
 		      Una \(S\)-coalgebra consiste di una funzione \(\sigma : X\to 1+(A\times X)\) che ad ogni elemento di \(X\) associa o l'unico elemento di \(1=\{\bullet\}\) (in tal caso diciamo che \(\sigma\) termina in \(x\)), o una coppia \((a,x')\), che va ancora interpretata come una transizione \(x\xto ax'\).
 
 		      Una \(S\)-algebra, invece, consiste di una funzione \(\xi : 1+(A\times X)\to X\) che sceglie un elemento \(\xi(\bullet)=x_0\in X\), e tale che \(\xi|_{A\times X}\to A\times X\to X\) sia un \emph{semiautoma deterministico} (con stato iniziale \(x_0\)): l'insieme \(A^*\) delle liste di elementi di \(A\) agisce su \(X\) definendo per induzione
-		      \[\bar\xi(\emptyList,x):=x \qquad \bar\xi(a\cons as,x) := \xi(a, \bar\xi(as,x))\]
+		      \[\bar\xi(\emptyList,x)\defeq x \qquad \bar\xi(a\cons as,x) \defeq  \xi(a, \bar\xi(as,x))\]
 		\item Quando si considera un preordine \((P,\le)\) come una categoria, alla maniera di \ref{ord_sonocat}, un endofuntore consiste di una mappa monotòna \(f : (P,\le) \to (P,\le)\); allora, una \(f\)-algebra consiste di un elemento \(a\in P\) tale che \(f(a) \le a\) (quello che si dice un \emph{punto prefisso} per \(f\)), mentre una \(f\)-coalgebra è un elemento \(a\in P\) tale che \(a \le f(a)\) (quello che si dice un \emph{punto postfisso} per \(f\)). Nella teoria classica degli ordini hanno rilevanza gli elementi \(x_0=\inf\{x\in P \mid f(x) \le x\}\) e \(x_1=\sup\{x\in P \mid x \le f(x)\}\) (quando esistono), che sono rispettivamente la più piccola \(f\)-algebra e la più grande \(f\)-coalgebra. Si noti che in particolare, \(fx_0=x_0\) e \(f(x_1)=x_1\).
 	\end{itemize}
 \end{examples}
@@ -335,7 +335,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
 % \begin{itemize}
 %   \item Si considerano gli oggetti \(\var[\lceil a \rceil]{*}{A}\) che `scelgono' \(a\in A\): ogni oggetto di \(\ctSet^A\) è una unione disgiunta di oggetti di questo tipo, che sono gli `atomi' della categoria;
 %   \item \(M_{ab}\) è definito a partire dagli atomi \(\var[\lceil a \rceil]{*}{A}\) ponendo
-% \[M_{ab} := \{x\in M_0a\mid (M\lceil a \rceil)(x)=b\}\]
+% \[M_{ab} \defeq  \{x\in M_0a\mid (M\lceil a \rceil)(x)=b\}\]
 % dove (\(M\lceil a \rceil\) è, per definizione, un oggetto \(\var{M_0a}{B}\) dell'incubo sopra \(B\)).
 % \end{itemize}
 % Ora, dare una famiglia di insiemi \(M_{ab}\) al variare di \(A\times B\) è equivalente a dare un funtore \(\tilde M : A\times B \fun\ctSet\) dal prodotto di due categorie discrete; a sua volta questo è equivalente a dare un funtore \(M : \ctSet/A \fun\ctSet/B\) come sopra, il quale soddisfa una certa proprietà (è un `aggiunto sinistro', si veda il \autoref{cap_aggiunti}) che lo rende univocamente determinato dagli \(M_{ab}\).
@@ -447,7 +447,7 @@ La costruzione si dà anche per un funtore controvariante \(F : \ctC^\op\fun\ctS
 		      e dobbiamo provare che questo contiene \(jS\), o piuttosto che contiene tutti gli aperti \(U\) tali che \(U\subseteq S\). Poiché se \(U\subseteq S\) allora \(U\subseteq jS\), ciò è ovvio.
 	\end{itemize}
 	Viceversa, dato uno spazio di Kuratowski definiamo una famiglia di sottoinsiemi
-	\[\tau_j := \{S\in 2^X\mid jS=S\}\]
+	\[\tau_j \defeq  \{S\in 2^X\mid jS=S\}\]
 	cioè i \emph{punti fissi} di \(j\); evidentemente, \(j\varnothing=\varnothing\) e \(jX=X\), quindi \(\varnothing,X\) sono `aperti' secondo questa definizione; ora, se \(A_i\) è una famiglia di elementi in \(\tau_j\), allora
 	\begin{itemize}
 		\item \(j(\bigcup A_i)\subseteq \bigcup A_i\) per l'assioma 2. dell'operatore di interno;
@@ -709,13 +709,13 @@ tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia
 \begin{proof}
 	La seconda condizione implica la prima, perché è sufficiente prendere \(\ctI=\bkt{n}^\delta\) finita e discreta, e \(\ctI=\genAArrow\) la doppia freccia generica per ritrovare le condizioni \ref{cf_1}, \ref{cf_2}.
 
-	Viceversa, se \(\ctJ\) è filtrata e \(D : \ctI \fun\ctJ\) un diagramma da una categoria finita, l'insieme finito \(\{\tup Jn,\}=\{DI_1,\dots, DI_n\}\) ammette un cocono \(\pair {k_i}{J^*}\); possiamo porre \(\bar D I := DI\), ma definire \(\bar D (\infty)\) e l'azione di \(\bar D\) sulle frecce è più complesso: non esiste garanzia che i triangoli della forma
+	Viceversa, se \(\ctJ\) è filtrata e \(D : \ctI \fun\ctJ\) un diagramma da una categoria finita, l'insieme finito \(\{\tup Jn,\}=\{DI_1,\dots, DI_n\}\) ammette un cocono \(\pair {k_i}{J^*}\); possiamo porre \(\bar D I \defeq  DI\), ma definire \(\bar D (\infty)\) e l'azione di \(\bar D\) sulle frecce è più complesso: non esiste garanzia che i triangoli della forma
 	\[\xymatrix@R=3mm{
 		**[l] DI=J\ar[dr]\ar[dd]_{D(I\to I')} \\
 		&J^* \\
 		**[l] DI'=J'\ar[ur]
 		}\]
-	siano commutativi. Si possono però definire gli oggetti \(B_0 := J^*\), e per ogni fissato \(i=\iter n\), e ogni \(f : I_i \to I'\) l'oggetto \(B_i\) come il cocono della famiglia di frecce parallele
+	siano commutativi. Si possono però definire gli oggetti \(B_0 \defeq  J^*\), e per ogni fissato \(i=\iter n\), e ogni \(f : I_i \to I'\) l'oggetto \(B_i\) come il cocono della famiglia di frecce parallele
 	\[\xymatrix@R=1mm{
 		&DI'\ar[dr]&\\
 		DI_i = J_i\ar[ur]\ar[r]\ar[dr]& DI''\ar[r]& B_0 \ar@{.>}[r]^-{u_i} & C_i\\
@@ -728,7 +728,7 @@ tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia
 		B_0 \ar[uur]^-{u_1}\ar[ur]_{u_2}\ar[dr]_-{u_n} & \vdots & B_\infty\\
 		& C_n\ar@{.>}[ur]_{l_n}
 		}\]
-	che ammette un cocono \(\pair{B_\infty}{l_i}\) (le frecce tratteggiate). Poniamo \(\bar D(\infty) := B_\infty\), e a questo punto la maniera in cui abbiamo costruito \(B_\infty\) assicura che \(\bar D\) sia un funtore.
+	che ammette un cocono \(\pair{B_\infty}{l_i}\) (le frecce tratteggiate). Poniamo \(\bar D(\infty) \defeq  B_\infty\), e a questo punto la maniera in cui abbiamo costruito \(B_\infty\) assicura che \(\bar D\) sia un funtore.
 \end{proof}
 Una classe di categorie più generale, che contiene le categorie filtrate, è quella delle \emph{categorie setacciate}:
 \begin{definition}\label{def_cat_setacciata}\index{Categoria!--- setacciata}
