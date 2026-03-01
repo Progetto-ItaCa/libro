@@ -23,7 +23,7 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 \begin{example}\label{ex_cat_catena}\index{Categoria!--- catena generica}
 	Più in generale, la categoria \(\Delta[n]\) detta \emph{catena generica di lunghezza \(n+1\)} è definita come segue:
 	\begin{itemize}
-		\item gli oggetti di \(\Delta[n]\) sono gli elementi di \(\{\iter[0]{n}\}\) (ci sono quindi \(n+1\) oggetti, per ogni \(n\ge 1\));\footnote{Si presti attenzione alla differente notazione per due insiemi finiti distinti: \(\bkt n := \{\iter n\}\), ma \([n] := \{\iter [0]n\}\) A volte è utile adottare la convenzione per cui quando \(n=-1\), l'insieme \(\{\iter[0]{n}\}\) è vuoto, e quindi la categoria `catena di lunghezza \(0\)' è la categoria vuota \(\ctInit\) di \ref{ex_cat_vuota}.}
+		\item gli oggetti di \(\Delta[n]\) sono gli elementi di \(\{\iter[0]{n}\}\) (ci sono quindi \(n+1\) oggetti, per ogni \(n\ge 1\));\footnote{Si presti attenzione alla differente notazione per due insiemi finiti distinti: \(\bkt n \defeq  \{\iter n\}\), ma \([n] \defeq  \{\iter [0]n\}\) A volte è utile adottare la convenzione per cui quando \(n=-1\), l'insieme \(\{\iter[0]{n}\}\) è vuoto, e quindi la categoria `catena di lunghezza \(0\)' è la categoria vuota \(\ctInit\) di \ref{ex_cat_vuota}.}
 		\item C'è un'unica freccia \(i\to j\) in \(\Delta[n]\) se e solo se \(i\le j\), di modo che esista un'unica freccia \(i\to i\) (l'identità) per ogni \(i\in\{\iter[0]{n}\}\), e un'unica freccia \(i\to i+1\) per \(i\in\{\iter[0]{n-1}\}\); in particolare l'unica freccia \(i\to j\) è ottenuta dalla composizione
 		      \[i\to i+1\to\dots\to j\]
 	\end{itemize}
@@ -99,7 +99,7 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 			Che era d'oro tutto lavorato [\dots\unkern]
 		\end{verse}} ha due oggetti \(0,1\), e una freccia \(s : 0\to 1\) per ogni \(s\in S\). La composizione è possibile solo tra \(s\in S\) e una identità, nel modo ovvio.
 
-	Chiaramente se \(S=\emptyset\) si ottiene la categoria \(\{0,1\}^\delta\), discreta su \(\{0,1\}\); se \(\#S=2\) si ottiene la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Se $S$ è finito e $\#S=n$ possiamo chiamare brevemente la categoria turcasso con $n$ elementi un \emph{$n$-turcasso}, e in effetti è sufficiente parlare di $\kappa$-turcassi per $\kappa$ un qualsiasi cardinale (è quindi evidente cosa sia un $\aleph_0$-turcasso).
+	Chiaramente se \(S=\emptyset\) si ottiene la categoria \(\{0,1\}^\delta\), discreta su \(\{0,1\}\); se \(\#S=2\) si ottiene la doppia freccia generica di \ref{ex_cat_doppiafreccia}. Se \(S\) è finito e \(\#S=n\) possiamo chiamare brevemente la categoria turcasso con \(n\) elementi un \emph{\(n\)-turcasso}, e in effetti è sufficiente parlare di \(\kappa\)-turcassi per \(\kappa\) un qualsiasi cardinale (è quindi evidente cosa sia un \(\aleph_0\)-turcasso).
 \end{example}
 \begin{example}\label{ex_quadcuboncubo}\index{Categoria!--- quadrato commutativo generico}
 	La categoria \emph{quadrato commutativo generico} \(\ctQ\) ha 4 oggetti
@@ -199,14 +199,14 @@ Alcune categorie che è spesso utile considerare si rappresentano mediante dei g
 
 	Più in generale, sia \(S\) un insieme; la categoria \emph{\(S\)-spanna generica} \(S^\lhd\) è definita come segue:\index{Spanna}\index{S_spanna@\(S\)-spanna|see {Spanna}}
 	\begin{itemize}
-		\item gli oggetti di \(S^\lhd\) sono gli elementi di \(S^+ := S\cup \{-\infty\}\);
+		\item gli oggetti di \(S^\lhd\) sono gli elementi di \(S^+ \defeq  S\cup \{-\infty\}\);
 		\item esiste un'unica freccia \(f_s : -\infty\to s\), per ogni \(s\in S\).
 	\end{itemize}
 	La composizione è ancora una volta definita solamente quando almeno una delle due frecce è l'identità. Questo definisce una categoria in cui da un oggetto chiamato `\(-\infty\)' spiccano tante frecce \(f_s\) quanti sono gli elementi di \(S\).
 
 	Dualmente, definiamo la categoria \emph{\(S\)-cospanna generica} \(S^\rhd\) come segue:
 	\begin{itemize}
-		\item gli oggetti di \(S^\rhd\) sono gli elementi di \(S^+ := S\cup \{+\infty\}\);
+		\item gli oggetti di \(S^\rhd\) sono gli elementi di \(S^+ \defeq  S\cup \{+\infty\}\);
 		\item esiste un'unica freccia \(f_s : s\to+\infty\), per ogni \(s\in S\).
 	\end{itemize}
 	La composizione è ancora una volta definita solamente quando almeno una delle due frecce è l'identità. Questo definisce una categoria in cui verso un oggetto chiamato `\(\infty\)' puntano tante frecce \(f_s\) quanti sono gli elementi di \(S\).
@@ -315,7 +315,7 @@ Vale il seguente teorema:
 \end{theorem}
 Una maniera alternativa di esprimere questo risultato è affermare che l'insieme \(\{\text{AND},\text{OR}\}\) è \emph{funzionalmente completo} (o un \emph{insieme universale}) per il calcolo di porte logiche. Per una dimostrazione, si veda \cite[Teorema 1.4]{Crama2011}. In termini categoriali, stiamo affermando che un certo insieme di frecce genera, insieme alle \(\pi_{n,1},\dots,\pi_{n,n}\) e \(\Delta_n\) per ogni \(n\ge 0\), l'intera categoria mediante le operazioni di prodotto e composizione.
 
-Il capitolo \ref{chap_limiti_colimiti} e in particolare la nozione di prodotto, introdotta in \ref{chap_limiti_colimiti}, renderanno chiaro il ruolo fondamentale delle mappe \(\Delta_n,\tup{\pi}n\), in questa e molte altre costruzioni.
+Il capitolo \ref{chap_limiti_colimiti} e in particolare la nozione di prodotto, introdotta in \ref{chap_limiti_colimiti}, renderanno chiaro il ruolo fondamentale delle mappe \(\Delta_n,{\tup{\pi}n,}\) in questa e molte altre costruzioni.
 \subsection{Categorie come universi}\label{ssec:categorie_universi}
 Proseguiamo con degli esempi di categorie grandi, che giustificano l'intuizione per le categorie come `universi del discorso matematico', ossia come classi i cui costituenti sono collegati da relazioni reciproche.\footnote{Vale la pena una digressione: gli oggetti di una categoria \(\ctC\) sono strettamente `tipati' dalla natura di \(\ctC\), nel senso che, laddove è sempre possibile dire che `\(S\) è un insieme', non è quasi mai possibile dire senza ambiguità `\(X\) è un oggetto': \emph{di quale categoria?} In questo senso, la teoria delle categorie somiglia alla teoria dei tipi, che si discosta molto dalla teoria degli insiemi proprio in virtù del fatto che i tipi non sono oggetti amorfi, tutti confrontabili uno con l'altro.\label{fn_tipati}} L'esempio fondamentale per tutta la sezione è \ref{ex_cat_insiemi}, la categoria di insiemi e funzioni. Usando questa categoria \(\ctSet\) come esempio paradigmatico, è possibile costruire
 \begin{itemize}
@@ -340,7 +340,7 @@ e insieme a queste, molte altre. Esiste una dicotomia forte tra queste due class
 \end{example}
 Nell'esempio appena fatto, l'ordine in cui si scrivono i fattori di un prodotto cartesiano è importante, perché se \(R : A\to B\) è una relazione, vogliamo che \(A\) ne sia il dominio, e \(B\) il codominio. È però vero che gli insiemi \(A\times B\) e \(B\times A\) sono in biiezione canonica, e quindi si potrebbe pensare di definire una categoria \(\ctRel'\) con gli stessi oggetti di \(\ctRel\), ma con frecce da \(A\) verso \(B\) le relazioni \(R\subseteq B\times A\). In effetti, questa è la categoria opposta \(\ctRel^\op\) di \(\ctRel\) (si veda \ref{def_cat_opp}), e tra \(\ctRel^\op\) e \(\ctRel\) esiste un isomorfismo (si veda \ref{rel_autoduale}).
 \begin{remark}\label{klext_delle_relazioni}\index{Relazione}\index{Relazione!estensione di ---}
-	Ogni relazione \(R : A\to B\) induce una funzione \(R^* : \pow B\to \pow A\) nel modo che segue: un sottoinsieme \(U\subseteq B\) viene mandato in \(R^*U:=\{x\in A\mid \forall u\in U.(x,u)\in R\}\). In effetti, esiste una analoga funzione \(R_* : \pow A\to \pow B\), definita da \((V\subseteq A) \mapsto R_*V:= \{y\in B\mid \forall v\in V.(v,y)\in R\}\), e tra le due funzioni \(R^*, R_*\) sussiste la relazione
+	Ogni relazione \(R : A\to B\) induce una funzione \(R^* : \pow B\to \pow A\) nel modo che segue: un sottoinsieme \(U\subseteq B\) viene mandato in \(R^*U\defeq \{x\in A\mid \forall u\in U.(x,u)\in R\}\). In effetti, esiste una analoga funzione \(R_* : \pow A\to \pow B\), definita da \((V\subseteq A) \mapsto R_*V\defeq  \{y\in B\mid \forall v\in V.(v,y)\in R\}\), e tra le due funzioni \(R^*, R_*\) sussiste la relazione
 	\[V\subseteq R^*U \iff U\subseteq R_*V\label{aggiunti_in_disguise}\]
 	dal momento che il lato sinistro è equivalente a \(\forall v\in V.\forall u\in U.(v,u)\in R\) e il lato destro a \(\forall u\in U.\forall v\in V.(v,u)\in R\). Nel capitolo \ref{cap_aggiunti} questo sarà un esempio elementare di una nozione importante, quella di \emph{aggiunzione} tra due categorie.
 \end{remark}
@@ -378,7 +378,7 @@ Evidentemente, possiamo restringerci a considerare la categoria dei soli insiemi
 		\item per oggetti i numeri naturali \(0,1,2,\dots\);
 		\item per frecce \(n\to m\) le matrici con \(m\) righe ed \(n\) colonne a coefficienti in \(\bbF\), ossia:
 		      \[\Hom{\ctMat}(n,m) = \matrici mn\bbF = \text{Lin}_{\bbF}(\bbF^n,\bbF^m)\]
-		      dove \(\bbF^n:=\bbF \times\dots\times\bbF\) è il prodotto cartesiano iterato di \(\bbF\) con sé stesso \(n\) volte (quindi \(\bbF^0\) contiene il solo vettore nullo), e \(\text{Lin}_{\bbF}(\bbF^n,\bbF^m)\) è l'insieme delle funzioni \(\bbF\)-lineari \(\bbF^n\to\bbF^m\) (che scegliendo su dominio e codominio le basi canoniche, si identifica alle matrici a componenti in \(\bbF\) di taglia \(m\times n\)).
+		      dove \(\bbF^n\defeq \bbF \times\dots\times\bbF\) è il prodotto cartesiano iterato di \(\bbF\) con sé stesso \(n\) volte (quindi \(\bbF^0\) contiene il solo vettore nullo), e \(\text{Lin}_{\bbF}(\bbF^n,\bbF^m)\) è l'insieme delle funzioni \(\bbF\)-lineari \(\bbF^n\to\bbF^m\) (che scegliendo su dominio e codominio le basi canoniche, si identifica alle matrici a componenti in \(\bbF\) di taglia \(m\times n\)).
 	\end{itemize}
 	La composizione è il prodotto di matrici: se \(A : n\to m\) e \(B : m\to p\) sono matrici di entrate \((A_{ij}\mid 1\le i\le m,1\le j\le n)\) e \((B_{rs}\mid 1\le r\le p,1\le s\le m)\), la loro composizione \(BA : n\to p\) è la matrice \(BA\in \matrici pn\bbF\) definita da \((BA)_{ij} = \sum_{k=1}^m B_{ik}A_{kj}\).
 
@@ -750,7 +750,7 @@ L'importanza della categoria degli ordinali sarà più evidente quando nella sez
 	\label{fig:cofa}
 \end{figure}
 \begin{remark}\index{Universo}\index{Ordinale}\label{tipi_di_ordinaly}
-	Senza un assioma dedicato a tale scopo, non si possono generare ordinali più grandi di quelli finiti; al contrario, assumendo che esista almeno un insieme \emph{induttivo} \(N\) (cioè tale che, se \(x\in N\), allora \(x^+:=x\cup\{x\}\in N\)), possiamo `accedere' a ordinali più grandi, e da qui generarne di \emph{molto} grandi (abbastanza da far sì che la categoria \(\ctOrd\) abbia una classe propria di oggetti).
+	Senza un assioma dedicato a tale scopo, non si possono generare ordinali più grandi di quelli finiti; al contrario, assumendo che esista almeno un insieme \emph{induttivo} \(N\) (cioè tale che, se \(x\in N\), allora \(x^+\defeq x\cup\{x\}\in N\)), possiamo `accedere' a ordinali più grandi, e da qui generarne di \emph{molto} grandi (abbastanza da far sì che la categoria \(\ctOrd\) abbia una classe propria di oggetti).
 
 	Questa è una maniera un po' semplificata di introdurre l'ordinale \(\omega\) ottenuto come `limite' di tutti gli ordinali finiti \([n]\): rinviamo chi legge a un corso di logica elementare per approfondire la questione in modo più tecnico, e ci limitiamo a osservare che la dicotomia importante nella definizione di un numero ordinale è la seguente: un ordinale \(\alpha\in\ctOrd_0\) può essere di due tipi: un \emph{successore}, se esiste \(\beta\) tale che \(\alpha=\beta^+\), e un \emph{limite} se, invece, \(\alpha=\bigcup\alpha=\sup\{\gamma\mid \gamma < \alpha\}\).
 \end{remark}
@@ -880,7 +880,7 @@ La definizione di \emph{funtore} approfondirà la questione in \ref{def_funtore}
 			      & Y \ar[r]_g & Y
 			      }\]
 	\end{itemize}
-	In un sistema dinamico discreto si considera l'\emph{orbita} \([x_0]:=\{x_0,f(x_0),f(f(x_0)),\dots\}\) del \emph{punto base} \(x_0\) della dinamica per studiarne, per esempio, le proprietà geometriche quando \(X\) ha una struttura di spazio metrico (ad esempio, \([x]\subseteq X\) può essere denso, per alcune scelte di \(x_0\), o finito, per altre; può essere preservato da una misura, quando \(X\) sia dotato di una struttura di spazio di probabilità).
+	In un sistema dinamico discreto si considera l'\emph{orbita} \([x_0]\defeq \{x_0,f(x_0),f(f(x_0)),\dots\}\) del \emph{punto base} \(x_0\) della dinamica per studiarne, per esempio, le proprietà geometriche quando \(X\) ha una struttura di spazio metrico (ad esempio, \([x]\subseteq X\) può essere denso, per alcune scelte di \(x_0\), o finito, per altre; può essere preservato da una misura, quando \(X\) sia dotato di una struttura di spazio di probabilità).
 \end{example}
 \begin{example}[\(\mathrm{C}^*\)-algebre complesse]\label{ex_cat_C_star_algebre}\index{Categoria!--- delle \(\mathrm{C}^*\)-algebre}\index{Cs-algebra@\(\mathrm{C}^*\)-algebra}
 	Una \emph{\(\mathrm{C}^*\)-algebra} (\emph{C-star algebra}) consiste di uno spazio di Banach \(A\) (cioè di uno spazio vettoriale topologico sul campo dei complessi, dotato di una norma \(\norm{\blank} : A \to \bbR_{\ge 0}\), e completo rispetto alla metrica indotta da \(\norm{\blank}\)), che in più è dotato di
@@ -915,7 +915,7 @@ La definizione di \emph{funtore} approfondirà la questione in \ref{def_funtore}
 	\end{itemize}
 	La composizione è data dalla composizione di matrici (dunque l'identità coincide con la matrice che ha tutti 1 in diagonale, e zero altrove), e tutti gli assiomi di categoria sono soddisfatti.
 
-	Sebbene questa categoria somigli molto alla categoria delle matrici di \ref{ex_cat_matrici}, essa si comporta molto diversamente (per esempio: non è possibile sommare due matrici stocastiche per ottenerne una terza, né riscalare una matrice stocastica di un fattore \(\lambda\in\bbR\); però è possibile considerare \emph{combinazioni convesse} di matrici stocastiche, ossia la somma di matrici \(\alpha_1 A_1+\dots + \alpha_n A_n\) è una matrice stocastica quando lo sono tutte le \(\tup An\), e \(\tup\alpha n+ = 1\)).
+	Sebbene questa categoria somigli molto alla categoria delle matrici di \ref{ex_cat_matrici}, essa si comporta molto diversamente (per esempio: non è possibile sommare due matrici stocastiche per ottenerne una terza, né riscalare una matrice stocastica di un fattore \(\lambda\in\bbR\); però è possibile considerare \emph{combinazioni convesse} di matrici stocastiche, ossia la somma di matrici \(\alpha_1 A_1+\dots + \alpha_n A_n\) è una matrice stocastica quando lo sono tutte le \({\tup An,}\) e \(\tup\alpha n+ = 1\)).
 \end{example}
 \begin{example}[Spazi di convessità]\index{Categoria!--- degli spazi di convessità}\index{Spazio convesso|see {Spazio di convessità}}\index{Spazio di convessità}\label{ex_cat_conv}
 	Uno \emph{spazio di convessità} consiste di una coppia \((X,\bsc)\) dove \(X\) è un insieme detto \emph{supporto} dello spazio, e \(\bsc=(c_\lambda\mid \lambda\in[0,1])\) è una famiglia di funzioni \(c_\lambda : X\times X\to X\)	soggetta agli assiomi seguenti:
@@ -950,7 +950,7 @@ Un esempio standard di struttura di convessità su un insieme è dato dagli spaz
 \begin{example}[La categoria degli insiemi dimensionati]\label{example_dimensionati}\index{Categoria!--- degli insiemi dimensionati}\index{dSet@\(\cate{dSet}\)}
 	La categoria \(\cate{dSet}\) degli \emph{insiemi con unità di misura} o `insiemi dimensionati' ha
 	\begin{itemize}
-		\item per oggetti le funzioni suriettive \(d : A\to D\) verso un insieme \(D\) che svolge il ruolo di insieme delle unità di misura con cui gli elementi di \(A\) sono etichettati; se, ad esempio \(D := \{\texttt{m},\texttt{s},\texttt{kg}\}\), gli elementi di \(d^{-1}(m)\) sono le `lunghezze' (cioè si misurano in metri), gli elementi di \(d^{-1}(s)\) sono i tempi, eccetera.
+		\item per oggetti le funzioni suriettive \(d : A\to D\) verso un insieme \(D\) che svolge il ruolo di insieme delle unità di misura con cui gli elementi di \(A\) sono etichettati; se, ad esempio \(D \defeq  \{\texttt{m},\texttt{s},\texttt{kg}\}\), gli elementi di \(d^{-1}(m)\) sono le `lunghezze' (cioè si misurano in metri), gli elementi di \(d^{-1}(s)\) sono i tempi, eccetera.
 		\item dati due insiemi dimensionati \((d : A\to D)\) e \((d', B\to D')\), una freccia tra di loro consiste di una coppia di funzioni \(u,v\) che fanno commutare il seguente quadrato:
 		      \[\begin{tikzcd}
 				      A\ar[r, "u"]\ar[d,"d"'] & B \ar[d, "d'"]\\
@@ -1057,7 +1057,7 @@ L'altro esempio fondamentale di struttura matematica che è un caso particolare 
 \begin{theorem}\label{mon_sonocat}\index{Monoide!---i come categorie}
 	Dato un monoide \((M,\cdot,1)\), definiamo la seguente categoria, che indichiamo con \(\susp M\).\footnote{A volte la categoria definita in questo modo si indica con \(\susp(M,\cdot,1)\), a volte (quando l'operazione su \(M\) è ovvia dal contesto) semplicemente con \(\susp M\).}
 	\begin{itemize}
-		\item La categoria \(\susp M\) ha un unico oggetto, che indichiamo con \(\bullet\);\footnote{La notazione è volta a suggerire che precisare questo elemento non sarà mai importante (una scelta canonica, ma che potrebbe causare confusione, è fissare \(\susp M_0 := \{M\}\), insieme che ovviamente \emph{non} è \(M\)).}
+		\item La categoria \(\susp M\) ha un unico oggetto, che indichiamo con \(\bullet\);\footnote{La notazione è volta a suggerire che precisare questo elemento non sarà mai importante (una scelta canonica, ma che potrebbe causare confusione, è fissare \(\susp M_0 \defeq  \{M\}\), insieme che ovviamente \emph{non} è \(M\)).}
 		\item La categoria \(\susp M\) ha una freccia \(m:\bullet\to\bullet\) per ogni elemento \(m\in M\); l'unico hom-insieme che dobbiamo specificare, \(\Hom{\susp M}(\bullet,\bullet)\), è cioè uguale a \(M\), e in particolare, l'identità \(\id_\bullet\) è l'elemento neutro \(1\in M\);
 		\item La composizione di frecce
 		      \[\longmor{\Hom{\susp M}(\bullet,\bullet)\times \Hom{\susp M}(\bullet,\bullet)}{\Hom{\susp M}(\bullet,\bullet)}\]

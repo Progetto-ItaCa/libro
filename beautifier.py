@@ -64,6 +64,64 @@ with open(sys.argv[1], 'r+') as f:
     f.write(''.join(content))
     f.truncate()
 
+def replace_colon_in_math(content, dry_run=False, filename=""):
+    result = []
+    i = 0
+    lines = content.split('\n')
+    
+    # mappa offset -> numero di riga
+    offset_to_line = {}
+    offset = 0
+    for lineno, line in enumerate(lines, 1):
+        for _ in line:
+            offset_to_line[offset] = lineno
+            offset += 1
+        offset_to_line[offset] = lineno  # il \n
+        offset += 1
+
+    findings = []
+    i = 0
+    while i < len(content):
+        if content[i:i+2] == r'\(':
+            start = i
+            result.append(r'\(')
+            i += 2
+            math_content = []
+            math_start = i
+            while i < len(content):
+                if content[i:i+2] == r'\)':
+                    inner = ''.join(math_content)
+                    if ':' in inner:
+                        lineno = offset_to_line.get(start, '?')
+                        findings.append((lineno, inner.strip()))
+                    if not dry_run:
+                        result.append(inner.replace(':', r'\colon'))
+                    else:
+                        result.append(inner)
+                    result.append(r'\)')
+                    i += 2
+                    break
+                math_content.append(content[i])
+                i += 1
+        else:
+            result.append(content[i])
+            i += 1
+
+    if dry_run and findings:
+        for lineno, math in findings:
+            print(f"{filename}:L{lineno}: \\({math}\\)")
+
+    return ''.join(result)
+
+drun = True  # cambia a False per modificare effettivamente
+
+with open(sys.argv[1], 'r+', encoding='utf-8') as f:
+    content = f.read()
+    content = replace_colon_in_math(content, dry_run=drun, filename=sys.argv[1])
+    if not drun:
+        f.seek(0)
+        f.write(content)
+        f.truncate()
 
 with open(sys.argv[1], 'r+', encoding='utf-8') as f:
     content = f.read()

@@ -77,7 +77,7 @@ Data una famiglia di oggetti di \(\ctC\), soggetta a determinate relazioni (il `
 Esempi essenziali di limiti e colimiti nella categoria \(\ctSet\) di insiemi e funzioni coinvolgono le costruzioni fondamentali di \emph{sottoinsieme} e di \emph{insieme quoziente} (rispetto a una relazione di equivalenza):
 \begin{itemize}\index{Equalizzatore}\index{Coequalizzatore}
 	\item l'equalizzatore di due funzioni \(f,g : A \to B\), definito come
-	      \[E(f,g) := \{ a \in A \mid fa = ga\} \subseteq A\]
+	      \[E(f,g) \defeq  \{ a \in A \mid fa = ga\} \subseteq A\]
 	      che in virtù di questa definizione ha la proprietà per cui ogni funzione \(h : X \to A\) tale che \(f\cmp h = g\cmp h\) assume valori in \(E\), ciò si fattorizza in modo unico come
 	      % https://q.uiver.app/#q=WzAsNCxbMCwxLCJFKGYsZykiXSxbMiwxLCJBIl0sWzEsMCwiWCJdLFszLDEsIkIiXSxbMiwxLCJoIl0sWzAsMSwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiwwLCJcXGJhciBoIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzEsMywiZyIsMix7Im9mZnNldCI6Mn1dLFsxLDMsImYiLDAseyJvZmZzZXQiOi0yfV1d
 	      \[\begin{tikzcd}
@@ -89,7 +89,7 @@ Esempi essenziali di limiti e colimiti nella categoria \(\ctSet\) di insiemi e f
 			      \arrow["g"', shift right=1, from=2-3, to=2-4]
 			      \arrow["f", shift left=1, from=2-3, to=2-4]
 		      \end{tikzcd}\]
-	\item il coequalizzatore di due funzioni \(f,g : A \to B\), definito considerando la relazione di equivalenza \(\sim_{f,g}\) su \(B\) generata dalle coppie \((fa,ga)\) per ogni \(a\in A\) (si veda \ref{rel_equiv_generata}), e ponendo poi \(Q(f,g) := B/_{\!\sim_{f,g}}\); per definizione, la proiezione canonica \(\pi : B \to Q(f,g)\) ha la proprietà seguente: ogni funzione \(h : B \to Y\) tale che \(h\cmp f = h\cmp g\) `scende al quoziente' (perché è costante sulle classi di equivalenza di \(\sim_{f,g}\)) si fattorizza in modo unico come
+	\item il coequalizzatore di due funzioni \(f,g : A \to B\), definito considerando la relazione di equivalenza \(\sim_{f,g}\) su \(B\) generata dalle coppie \((fa,ga)\) per ogni \(a\in A\) (si veda \ref{rel_equiv_generata}), e ponendo poi \(Q(f,g) \defeq  B/_{\!\sim_{f,g}}\); per definizione, la proiezione canonica \(\pi : B \to Q(f,g)\) ha la proprietà seguente: ogni funzione \(h : B \to Y\) tale che \(h\cmp f = h\cmp g\) `scende al quoziente' (perché è costante sulle classi di equivalenza di \(\sim_{f,g}\)) si fattorizza in modo unico come
 	      \[\begin{tikzcd}
 			      & X \\
 			      {Q(f,g)} && B & A
@@ -120,7 +120,7 @@ Questi, e molti altri concetti, appariranno più chiari quando avremo delineato 
 		%; infatti, 
 		% \begin{itemize}
 		per ogni sistema dinamico \(((X,x_0),f)\) esiste un unico omomorfismo \(u_f : \bbN \to X\), definito `per induzione' dalla regola
-		\[u_f(0) := x_0 \qquad u_f(1+n) := f(u_f(n))\]
+		\[u_f(0) \defeq  x_0 \qquad u_f(1+n) \defeq  f(u_f(n))\]
 		che quindi evidentemente è definito in modo tale che
 		\[\xymatrix{
 				\singleton\ar[r]^{0}\ar[dr]_{x_0} & \bbN\ar[r]^s\ar[d]_{u_f} & \bbN \ar[d]_{u_f}\\
@@ -130,7 +130,7 @@ Questi, e molti altri concetti, appariranno più chiari quando avremo delineato 
 		% 	\item se esiste un altro	omomorfismo \(v : \bbN \to X\), per definizione si ha che \(v(0) = x_0\) e \(v(s(n))=v(1+n) = f(v(n))\); perciò, per induzione su \(n\), si ottiene che \(v(n) = u_f(n)\) per ogni \(n\in\bbN\), e quindi \(v = u_f\).
 		% \end{itemize}
 		\item\label{it_6} Data una categoria \(\ctC\), la categoria incubo \(\ctC/X\) sopra un oggetto possiede sempre un oggetto terminale, e la succuba sotto un oggetto \(X/\ctC\) possiede sempre un oggetto iniziale: la freccia identità di \(X\). Infatti (si ragiona dualmente per \(X/\ctC\)), se \(u : A \to X\) è un oggetto della categoria incubo su \(X\), la stessa \(u\) è l'unica freccia \(u : (A,u) \to (X,\id_X)\). Leggermente più in generale, un oggetto \(t : T \to X\) dell'incubo \(\ctC/X\) è terminale se e solo se \(t\) è un isomorfismo in \(\ctC\). In un verso, la cosa è ovvia. Di converso, se \(t\) come appena definito è terminale, allora esiste un'unica freccia \(k : X \to T\) tale che \(t\cmp k = \id_X\); quindi \(t\cmp k \cmp t = t\), e allora (per unicità) anche \(k\cmp t\) è uguale a \(\id_T\).
-		\item\label{it_7} In un preordine guardato come categoria, un oggetto iniziale consiste di un elemento \(\bot\in P\) con la proprietà che per ogni \(x\in P\) si abbia \(\bot\le x\); quindi un oggetto iniziale è un elemento \emph{minimo}. Dualmente, un oggetto terminale è un massimo \(\top\), con la proprietà che per ogni \(x\in P\) si abbia \(x\le \top\). L'ordine stretto e totale \((\bbN,\le)\) ha iniziale/minimo ma non terminale/massimo, e altrettanto è vero per \(\bbR_\ge := [0,\infty)\); L'ordine stretto e totale \((\bbZ,\le)\) non ha né minimo né massimo; l'ordine di divisibilità \((\bbN,\div)\) accennato in \ref{alcuni_es_ordini} ha per oggetto iniziale \(1\) (ogni \(m\in\bbN\) è tale che \(m = 1\cdot m\)) e \(0\) per oggetto terminale (ogni \(m\in\bbN\) è tale che \(0 = m\cdot 0\)). L'ordine stretto e parziale sull'insieme delle parti \(PS\) di un insieme \(S\) ha il sottoinsieme vuoto come minimo/iniziale e il sottoinsieme \(S\subseteq S\) come massimo/terminale.
+		\item\label{it_7} In un preordine guardato come categoria, un oggetto iniziale consiste di un elemento \(\bot\in P\) con la proprietà che per ogni \(x\in P\) si abbia \(\bot\le x\); quindi un oggetto iniziale è un elemento \emph{minimo}. Dualmente, un oggetto terminale è un massimo \(\top\), con la proprietà che per ogni \(x\in P\) si abbia \(x\le \top\). L'ordine stretto e totale \((\bbN,\le)\) ha iniziale/minimo ma non terminale/massimo, e altrettanto è vero per \(\bbR_\ge \defeq  [0,\infty)\); L'ordine stretto e totale \((\bbZ,\le)\) non ha né minimo né massimo; l'ordine di divisibilità \((\bbN,\div)\) accennato in \ref{alcuni_es_ordini} ha per oggetto iniziale \(1\) (ogni \(m\in\bbN\) è tale che \(m = 1\cdot m\)) e \(0\) per oggetto terminale (ogni \(m\in\bbN\) è tale che \(0 = m\cdot 0\)). L'ordine stretto e parziale sull'insieme delle parti \(PS\) di un insieme \(S\) ha il sottoinsieme vuoto come minimo/iniziale e il sottoinsieme \(S\subseteq S\) come massimo/terminale.
 	\end{enumtag}
 \end{hExamples}
 \begin{lemma}\label{equivs_preservano_init_term}
@@ -172,8 +172,8 @@ I due esempi che seguono sono importanti per fissare l'idea in chi legge che un 
 	L'implicazione non ovvia è l'altra: supponiamo che \(\Elts{\ctC}F\) abbia un oggetto iniziale \((\init,h\in F\init)\), e ci proponiamo di costruire un isomorfismo naturale \(F\natIso \Hom{\ctC}(\init,\blank)\).
 \end{proof}
 \begin{proposition}\label{term_coalgebra_maybe}
-	L'oggetto terminale della categoria delle \(S\)-coalgebre, dove \(S=1+(A\times\blank) : \ctSet\fun\ctSet\), esiste ed è dato da \(\term=(A^\omega,\xi_! : A^\omega \to 1+A\times A^\omega )\), dove \(A^\omega := A^\bbN + A^* = A^\bbN + \{\emptyList\} + A + (A \times A) + (A\times A\times A) + \dots\) è l'insieme delle liste (potenzialmente infinite) di \(A\) (composto dalla unione disgiunta delle liste propriamente dette, \(A^*\), e degli \emph{stream} \(A^\bbN := \prod_{n\in\bbN} A\)) e
-	\[\xi_!(\emptyList) := \bullet \in \singleton \qquad \xi_!(a\cons as) = (a, as) \in A\times A^\omega.\]
+	L'oggetto terminale della categoria delle \(S\)-coalgebre, dove \(S=1+(A\times\blank) : \ctSet\fun\ctSet\), esiste ed è dato da \(\term=(A^\omega,\xi_! : A^\omega \to 1+A\times A^\omega )\), dove \(A^\omega \defeq  A^\bbN + A^* = A^\bbN + \{\emptyList\} + A + (A \times A) + (A\times A\times A) + \dots\) è l'insieme delle liste (potenzialmente infinite) di \(A\) (composto dalla unione disgiunta delle liste propriamente dette, \(A^*\), e degli \emph{stream} \(A^\bbN \defeq  \prod_{n\in\bbN} A\)) e
+	\[\xi_!(\emptyList) \defeq  \bullet \in \singleton \qquad \xi_!(a\cons as) = (a, as) \in A\times A^\omega.\]
 \end{proposition}
 \begin{figure}
 	\begin{center}
@@ -980,13 +980,13 @@ perché si chiamano limiti?
 \end{theorem}
 Il teorema di struttura è molto utile nel decomporre un limite o colimite di forma complessa in un co/equalizzatore di mappe tra co/prodotti, o in un prodotto fibrato o somma amalgamata, ad esempio...
 \begin{example}
-	Nella terminologia di \ref{}, si consideri un 3-turcasso $\turk[3]\defeq\xymatrix{0 \ar[r] \ar@<.5em>[r]\ar@<-.5em>[r]& 1}$; un \emph{triqualizzatore} in una categoria $\ctC$ è il limite di un diagramma $D\turk[3] \fun\ctC$ che quindi è della forma
+	Nella terminologia di \ref{}, si consideri un 3-turcasso \(\turk[3]\defeq\xymatrix{0 \ar[r] \ar@<.5em>[r]\ar@<-.5em>[r]& 1}\); un \emph{triqualizzatore} in una categoria \(\ctC\) è il limite di un diagramma \(D\turk[3] \fun\ctC\) che quindi è della forma
 	\[\xymatrix{X \ar[r]|-g \ar@<.5em>[r]^-f \ar@<-.5em>[r]_-h& Y}\]
-	per certe frecce $f,g,h\colon X\to Y$ in $\ctC$.
+	per certe frecce \(f,g,h\colon X\to Y\) in \(\ctC\).
 
 	La proprietà universale di un triqualizzatore si enuncia come segue:
 	\Todo{}
-	Il triqualizzatore di $f,g,h$ è esprimibile come \emph{equa}lizzatore di una coppia di frecce in $\ctC$, nel modo che segue: 
+	Il triqualizzatore di \(f,g,h\) è esprimibile come \emph{equa}lizzatore di una coppia di frecce in \(\ctC\), nel modo che segue:
 	\Todo{}
 \end{example}
 \begin{example}
