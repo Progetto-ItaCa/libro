@@ -19,7 +19,7 @@ Anche questo capitolo inizia raccogliendo degli esempi che la nozione di limite 
 	Sia \(\ctC\) una categoria. Se \(\term\) è un oggetto terminale, l'unica freccia \(\term\to\term\) è l'identità \(\id_{\term}\). Se \(\init\) è un oggetto iniziale, l'unica freccia \(\init\to\init\) è l'identità \(\id_{\init}\).
 \end{lemma}
 \begin{proof}
-	Evidentemente, deve esistere \emph{almeno} l'identità \(\id_{\term} : \term\to\term\), e del resto non può esistere nessun'altra freccia. Del tutto analoga è la dimostrazione per \(\init\).
+	Evidentemente, deve esistere \emph{almeno} l'identità \(\id_{\term} \colon \term\to\term\), e del resto non può esistere nessun'altra freccia. Del tutto analoga è la dimostrazione per \(\init\).
 \end{proof}
 La natura duale dei due enunciati che compongono \ref{init_ha_solo_id} è un fatto molto generale. Evidentemente, la proprietà di essere iniziale in \(\ctC\) è precisamente la proprietà di essere terminale in \(\ctC^\op\), e viceversa, la proprietà di essere terminale in \(\ctC\) è precisamente la proprietà di essere iniziale in \(\ctC^\op\). La maggior parte dei risultati che vedremo nel capitolo sono dualizzabili; per ragioni pedagogiche insisteremo a enunciare le due forme duali dei primi risultati per poi lasciare la dualizzazione come un (quasi sempre semplice) esercizio per chi legge. Imparare a dualizzare un enunciato, e a farlo correttamente (si veda \ref{ocio_al_duale}), è una parte inevitabile del percorso di apprendimento di chi studia la teoria delle categorie.
 \paragraph*{Proprietà universali.}\index{Proprietà!--- universale}\index{Proprietà!--- couniversale}
@@ -46,9 +46,9 @@ ossia di un oggetto iniziale in una categoria di coconi per \(D\). L'oggetto \(X
 \paragraph*{Problemi di minimo-massimo.}
 Il punto di vista appena esposto, seppure profondamente utile, tuttavia non è l'unico, né il più pedagogicamente efficace in assoluto. Sarebbe altrettanto valido introdurre la nozione di limite e di colimite come `soluzione' a un problema di `ottimizzazione', o di minimo-massimo:
 \begin{itemize}\index{Estremo inferiore}\index{Estremo superiore}
-	\item Il limite del diagramma \(D : \ctJ\fun\ctC\) è il `massimo dei minoranti' tra diagrammi della forma \eqref{cone} (dove le frecce sono disuguaglianze); in effetti, in un insieme ordinato (che sappiamo essere una categoria per \ref{ord_sonocat}), l'estremo inferiore di un sottoinsieme \(S\subseteq P\) è un elemento \(\inf S\) con la proprietà
+	\item Il limite del diagramma \(D \colon \ctJ\fun\ctC\) è il `massimo dei minoranti' tra diagrammi della forma \eqref{cone} (dove le frecce sono disuguaglianze); in effetti, in un insieme ordinato (che sappiamo essere una categoria per \ref{ord_sonocat}), l'estremo inferiore di un sottoinsieme \(S\subseteq P\) è un elemento \(\inf S\) con la proprietà
 	      \[\forall s\in S : \inf S \le s\qquad \forall s\in S : y\le s \Rightarrow y\le \inf S\]
-	\item Dualmente, il colimite del diagramma \(D : \ctJ\fun\ctC\) è il `minimo dei maggioranti' tra diagrammi della forma \eqref{cocone} (dove le frecce sono disuguaglianze); in effetti, in un insieme ordinato l'estremo superiore di un sottoinsieme \(S\subseteq P\) è un elemento \(\sup S\) con la proprietà
+	\item Dualmente, il colimite del diagramma \(D \colon \ctJ\fun\ctC\) è il `minimo dei maggioranti' tra diagrammi della forma \eqref{cocone} (dove le frecce sono disuguaglianze); in effetti, in un insieme ordinato l'estremo superiore di un sottoinsieme \(S\subseteq P\) è un elemento \(\sup S\) con la proprietà
 	      \[\forall s\in S : s\le\sup S \qquad \forall s\in S : s\le y \Rightarrow \sup S\le y.\]
 \end{itemize}
 \begin{remark}
@@ -66,7 +66,7 @@ Questa filosofia sui limiti tuttavia va al di là della `pura' teoria degli insi
 	      \[\xymatrix{
 		      0 & \ar[l]_-{\varphi_1} \bbZ/p\bbZ & \bbZ/p^2\bbZ \ar[l]_-{\varphi_2} & \bbZ/p^3\bbZ \ar[l]_-{\varphi_3} & \bbZ/p^4\bbZ \ar[l]_-{\varphi_4} & \cdots \ar[l]_-{\varphi_5}
 		      }\]
-	      dove ciascuna mappa \(\varphi_n : \bbZ/p^n\bbZ \to \bbZ/p^{n-1}\bbZ\) è la mappa di riduzione modulo \(p\), suriettiva e di nucleo \(p^{n-1}\bbZ/p^n\bbZ\); la topologia naturale su \(\bbZ_p\) (che lo rende uno \emph{spazio di Stone} oltre che un gruppo topologico) è universale a rendere continue tutte le proiezioni canoniche \(\bbZ_p \to \bbZ/p^n\bbZ\), e quindi che conferisce a \(\bbZ_p\) la proprietà universale di limite in \(\ctTop\); su certi oggetti quindi compare una topologia non discreta \emph{anche se tutte le componenti del diagramma sono spazi discreti}. Gli elementi di \(\bbZ_p\) si possono vedere come `serie di potenze nella variabile \(p\)' nel senso che un elemento \(x\in\bbZ_p\) è una successione	\(\overline x = (x_0,x_1,x_2,x_3\dots)\) tale che per ogni \(n\ge 0\) si abbia \(x_n\equiv x_{n+1}\pmod{p^n}\); del resto, se \(x_0 = k_0+x_1\), \(x_1 = k_1p+x_2\), \(x_2 = k_2p^2+x_3\), \dots, si ha che
+	      dove ciascuna mappa \(\varphi_n \colon \bbZ/p^n\bbZ \to \bbZ/p^{n-1}\bbZ\) è la mappa di riduzione modulo \(p\), suriettiva e di nucleo \(p^{n-1}\bbZ/p^n\bbZ\); la topologia naturale su \(\bbZ_p\) (che lo rende uno \emph{spazio di Stone} oltre che un gruppo topologico) è universale a rendere continue tutte le proiezioni canoniche \(\bbZ_p \to \bbZ/p^n\bbZ\), e quindi che conferisce a \(\bbZ_p\) la proprietà universale di limite in \(\ctTop\); su certi oggetti quindi compare una topologia non discreta \emph{anche se tutte le componenti del diagramma sono spazi discreti}. Gli elementi di \(\bbZ_p\) si possono vedere come `serie di potenze nella variabile \(p\)' nel senso che un elemento \(x\in\bbZ_p\) è una successione	\(\overline x = (x_0,x_1,x_2,x_3\dots)\) tale che per ogni \(n\ge 0\) si abbia \(x_n\equiv x_{n+1}\pmod{p^n}\); del resto, se \(x_0 = k_0+x_1\), \(x_1 = k_1p+x_2\), \(x_2 = k_2p^2+x_3\), \dots, si ha che
 	      \[\overline x \approx k_0 + k_1p + k_2p^2 + k_3p^3 + k_4p^4 + k_5p^5 + \dots \]
 \end{itemize}
 \paragraph*{Natura relazionale delle categorie.}
@@ -76,9 +76,9 @@ Data una famiglia di oggetti di \(\ctC\), soggetta a determinate relazioni (il `
 \Todo{}
 Esempi essenziali di limiti e colimiti nella categoria \(\ctSet\) di insiemi e funzioni coinvolgono le costruzioni fondamentali di \emph{sottoinsieme} e di \emph{insieme quoziente} (rispetto a una relazione di equivalenza):
 \begin{itemize}\index{Equalizzatore}\index{Coequalizzatore}
-	\item l'equalizzatore di due funzioni \(f,g : A \to B\), definito come
+	\item l'equalizzatore di due funzioni \(f,g \colon A \to B\), definito come
 	      \[E(f,g) \defeq  \{ a \in A \mid fa = ga\} \subseteq A\]
-	      che in virtù di questa definizione ha la proprietà per cui ogni funzione \(h : X \to A\) tale che \(f\cmp h = g\cmp h\) assume valori in \(E\), ciò si fattorizza in modo unico come
+	      che in virtù di questa definizione ha la proprietà per cui ogni funzione \(h \colon X \to A\) tale che \(f\cmp h = g\cmp h\) assume valori in \(E\), ciò si fattorizza in modo unico come
 	      % https://q.uiver.app/#q=WzAsNCxbMCwxLCJFKGYsZykiXSxbMiwxLCJBIl0sWzEsMCwiWCJdLFszLDEsIkIiXSxbMiwxLCJoIl0sWzAsMSwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiwwLCJcXGJhciBoIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzEsMywiZyIsMix7Im9mZnNldCI6Mn1dLFsxLDMsImYiLDAseyJvZmZzZXQiOi0yfV1d
 	      \[\begin{tikzcd}
 			      & X \\
@@ -89,7 +89,7 @@ Esempi essenziali di limiti e colimiti nella categoria \(\ctSet\) di insiemi e f
 			      \arrow["g"', shift right=1, from=2-3, to=2-4]
 			      \arrow["f", shift left=1, from=2-3, to=2-4]
 		      \end{tikzcd}\]
-	\item il coequalizzatore di due funzioni \(f,g : A \to B\), definito considerando la relazione di equivalenza \(\sim_{f,g}\) su \(B\) generata dalle coppie \((fa,ga)\) per ogni \(a\in A\) (si veda \ref{rel_equiv_generata}), e ponendo poi \(Q(f,g) \defeq  B/_{\!\sim_{f,g}}\); per definizione, la proiezione canonica \(\pi : B \to Q(f,g)\) ha la proprietà seguente: ogni funzione \(h : B \to Y\) tale che \(h\cmp f = h\cmp g\) `scende al quoziente' (perché è costante sulle classi di equivalenza di \(\sim_{f,g}\)) si fattorizza in modo unico come
+	\item il coequalizzatore di due funzioni \(f,g \colon A \to B\), definito considerando la relazione di equivalenza \(\sim_{f,g}\) su \(B\) generata dalle coppie \((fa,ga)\) per ogni \(a\in A\) (si veda \ref{rel_equiv_generata}), e ponendo poi \(Q(f,g) \defeq  B/_{\!\sim_{f,g}}\); per definizione, la proiezione canonica \(\pi \colon B \to Q(f,g)\) ha la proprietà seguente: ogni funzione \(h \colon B \to Y\) tale che \(h\cmp f = h\cmp g\) `scende al quoziente' (perché è costante sulle classi di equivalenza di \(\sim_{f,g}\)) si fattorizza in modo unico come
 	      \[\begin{tikzcd}
 			      & X \\
 			      {Q(f,g)} && B & A
@@ -112,53 +112,53 @@ Questi, e molti altri concetti, appariranno più chiari quando avremo delineato 
 	\begin{enumtag}{it}
 		\item\label{it_1} Nella categoria \(\ctSet\) di \ref{ex_cat_insiemi}, fatta da insiemi e funzioni, l'insieme vuoto \(\emptyset\) (senza elementi) è iniziale, dato che la condizione
 		\[\forall S\in\ctSet_0 \text{ esiste uno e un solo sottoinsieme } f\subseteq \emptyset\times S \]
-		è realizzata (banalmente) solo dall'insieme vuoto dato che \(\emptyset\times S = \emptyset\). Per contro, si osservi che una funzione \(S \to \emptyset\) esiste se e solo se \(S=\emptyset\). Ragionando in modo simile si ottiene che anche nella categoria di spazi topologici l'insieme vuoto \(\emptyset\), con l'unica topologia possibile, è un oggetto iniziale. Dualmente, ogni insieme \(\{\bullet\}\) che abbia un solo elemento è terminale, dato che per ogni \(S\in\ctSet_0\), esiste un'unica possibile funzione \(f : S \to \{\bullet\}\) che mappa tutto \(s\in S\) in \(\bullet\). Analogamente, nella categoria degli spazi topologici di \ref{}, per ogni spazio topologico \((X,\tau)\) esiste un'unica funzione continua \(X \to \{\bullet\}\) quando il codominio ha la topologia banale (che coincide con quella discreta).
+		è realizzata (banalmente) solo dall'insieme vuoto dato che \(\emptyset\times S = \emptyset\). Per contro, si osservi che una funzione \(S \to \emptyset\) esiste se e solo se \(S=\emptyset\). Ragionando in modo simile si ottiene che anche nella categoria di spazi topologici l'insieme vuoto \(\emptyset\), con l'unica topologia possibile, è un oggetto iniziale. Dualmente, ogni insieme \(\{\bullet\}\) che abbia un solo elemento è terminale, dato che per ogni \(S\in\ctSet_0\), esiste un'unica possibile funzione \(f \colon S \to \{\bullet\}\) che mappa tutto \(s\in S\) in \(\bullet\). Analogamente, nella categoria degli spazi topologici di \ref{}, per ogni spazio topologico \((X,\tau)\) esiste un'unica funzione continua \(X \to \{\bullet\}\) quando il codominio ha la topologia banale (che coincide con quella discreta).
 		\item\label{it_2} Nella categoria di modelli di una segnatura algebrica \(\Sigma\) (come in \ref{}) che contiene solo una operazione binaria, l'insieme vuoto (definendo l'operazione come la funzione vuota) è un oggetto iniziale, e lo stesso accade se l'operazione è associativa o commutativa; le cose cambiano non appena la segnatura contiene una \emph{costante}, perché questo obbliga ogni modello a contenere una interpretazione di almeno quella costante, e quindi ogni supporto del modello deve contenere almeno un elemento (questo è il caso dei monoidi, dei gruppi, gruppi abeliani, insiemi puntati\dots --in questi ultimi l'unica operazione è proprio una costante). Nella categoria dei gruppi abeliani è il gruppo banale \(\init_\ctAb=\{0\}\) a essere iniziale, ma accade qualcosa di peculiare: \(\init_\ctAb\) è anche \emph{terminale} (è quello che si dice un \emph{oggetto zero}).
-		\item\label{it_3} Nella categoria degli anelli unitari \(\ctRing_1\) di \ref{varie_categorie_nella_pratica} (in cui \(0\ne 1\) e gli omomorfismi rispettano entrambi, di modo che non esiste l'anello \(\{0\}\)), l'oggetto iniziale è l'anello degli interi \(\bbZ\): dato un anello unitario \(R\), un omomorfismo di anelli \(\varphi : \bbZ \to R\) deve mandare \(0\) in \(0_R\) e \(1\) in \(1_R\); del resto deve anche essere tale che \(\varphi(n) = \varphi(n\cdot 1) = n \cdot 1_R = \iter[1][+]1\) ed è quindi definito su tutti gli altri interi. Nella sottocategoria degli anelli con divisione, però, un oggetto iniziale non esiste: per quale motivo? (per chi vuole un suggerimento: se un oggetto iniziale esiste, quale ne deve essere la caratteristica?)
-		\item\label{it_4} Nella categoria delle algebre di Boole di \ref{varie_categorie_nella_pratica}, l'oggetto iniziale è l'algebra con due elementi \(\bbB=\{\bot < \top\}\) (con le operazioni di congiunzione, disgiunzione e complemento usuali): se \(H\) è un'altra algebra di Boole, dato che un omomorfismo di algebre di Boole/Heyting deve mandare \(\bot\) in \(\bot\) e \(\top\) in \(\top\), deve esistere un unico \(\bang_H : \bbB \to H\). Un oggetto terminale è invece dato dall'algebra di Boole banale (con un solo elemento \(\bot=\top\)); sebbene l'interesse logico per un oggetto del genere sia praticamente nullo, questo è l'unico modo di garantire che per ogni algebra di Boole \(H\) esista un \emph{unico} omomorfismo \(H \to \term_\ctBAlg\). L'insieme \(\Hom{\ctBAlg}(H,\bbB)\) è interessante, ma lungi dall'essere un singoletto: si veda \ref{ex_21_1}.
-		\item\label{it_5} Nella categoria dei sistemi dinamici di \ref{ex_cat_dyn} succede qualcosa di interessante, osservato nell'esercizio \ref{ex_monepi_3}: l'oggetto iniziale è il sistema dinamico \(\bsN=((\bbN,0),s)\) dove \(s : \bbN \to \bbN\) è la funzione successore \(n\mapsto 1+n\);
+		\item\label{it_3} Nella categoria degli anelli unitari \(\ctRing_1\) di \ref{varie_categorie_nella_pratica} (in cui \(0\ne 1\) e gli omomorfismi rispettano entrambi, di modo che non esiste l'anello \(\{0\}\)), l'oggetto iniziale è l'anello degli interi \(\bbZ\): dato un anello unitario \(R\), un omomorfismo di anelli \(\varphi \colon \bbZ \to R\) deve mandare \(0\) in \(0_R\) e \(1\) in \(1_R\); del resto deve anche essere tale che \(\varphi(n) = \varphi(n\cdot 1) = n \cdot 1_R = \iter[1][+]1\) ed è quindi definito su tutti gli altri interi. Nella sottocategoria degli anelli con divisione, però, un oggetto iniziale non esiste: per quale motivo? (per chi vuole un suggerimento: se un oggetto iniziale esiste, quale ne deve essere la caratteristica?)
+		\item\label{it_4} Nella categoria delle algebre di Boole di \ref{varie_categorie_nella_pratica}, l'oggetto iniziale è l'algebra con due elementi \(\bbB=\{\bot < \top\}\) (con le operazioni di congiunzione, disgiunzione e complemento usuali): se \(H\) è un'altra algebra di Boole, dato che un omomorfismo di algebre di Boole/Heyting deve mandare \(\bot\) in \(\bot\) e \(\top\) in \(\top\), deve esistere un unico \(\bang_H \colon \bbB \to H\). Un oggetto terminale è invece dato dall'algebra di Boole banale (con un solo elemento \(\bot=\top\)); sebbene l'interesse logico per un oggetto del genere sia praticamente nullo, questo è l'unico modo di garantire che per ogni algebra di Boole \(H\) esista un \emph{unico} omomorfismo \(H \to \term_\ctBAlg\). L'insieme \(\Hom{\ctBAlg}(H,\bbB)\) è interessante, ma lungi dall'essere un singoletto: si veda \ref{ex_21_1}.
+		\item\label{it_5} Nella categoria dei sistemi dinamici di \ref{ex_cat_dyn} succede qualcosa di interessante, osservato nell'esercizio \ref{ex_monepi_3}: l'oggetto iniziale è il sistema dinamico \(\bsN=((\bbN,0),s)\) dove \(s \colon \bbN \to \bbN\) è la funzione successore \(n\mapsto 1+n\);
 		%; infatti, 
 		% \begin{itemize}
-		per ogni sistema dinamico \(((X,x_0),f)\) esiste un unico omomorfismo \(u_f : \bbN \to X\), definito `per induzione' dalla regola
+		per ogni sistema dinamico \(((X,x_0),f)\) esiste un unico omomorfismo \(u_f \colon \bbN \to X\), definito `per induzione' dalla regola
 		\[u_f(0) \defeq  x_0 \qquad u_f(1+n) \defeq  f(u_f(n))\]
 		che quindi evidentemente è definito in modo tale che
 		\[\xymatrix{
 				\singleton\ar[r]^{0}\ar[dr]_{x_0} & \bbN\ar[r]^s\ar[d]_{u_f} & \bbN \ar[d]_{u_f}\\
 				& X \ar[r]_f & X
 			}\]
-		commuti in tutte le sue parti. Si noti che è essenziale che gli insiemi in questione siano puntati (quindi, non vuoti). Ammettendo sistemi dinamici con supporto vuoto, infatti, sarebbe l'insieme \(\emptyset\) (con l'unica azione possibile \(\id_\emptyset : \emptyset \to \emptyset\)) ad essere iniziale.
-		% 	\item se esiste un altro	omomorfismo \(v : \bbN \to X\), per definizione si ha che \(v(0) = x_0\) e \(v(s(n))=v(1+n) = f(v(n))\); perciò, per induzione su \(n\), si ottiene che \(v(n) = u_f(n)\) per ogni \(n\in\bbN\), e quindi \(v = u_f\).
+		commuti in tutte le sue parti. Si noti che è essenziale che gli insiemi in questione siano puntati (quindi, non vuoti). Ammettendo sistemi dinamici con supporto vuoto, infatti, sarebbe l'insieme \(\emptyset\) (con l'unica azione possibile \(\id_\emptyset \colon \emptyset \to \emptyset\)) ad essere iniziale.
+		% 	\item se esiste un altro	omomorfismo \(v \colon \bbN \to X\), per definizione si ha che \(v(0) = x_0\) e \(v(s(n))=v(1+n) = f(v(n))\); perciò, per induzione su \(n\), si ottiene che \(v(n) = u_f(n)\) per ogni \(n\in\bbN\), e quindi \(v = u_f\).
 		% \end{itemize}
-		\item\label{it_6} Data una categoria \(\ctC\), la categoria incubo \(\ctC/X\) sopra un oggetto possiede sempre un oggetto terminale, e la succuba sotto un oggetto \(X/\ctC\) possiede sempre un oggetto iniziale: la freccia identità di \(X\). Infatti (si ragiona dualmente per \(X/\ctC\)), se \(u : A \to X\) è un oggetto della categoria incubo su \(X\), la stessa \(u\) è l'unica freccia \(u : (A,u) \to (X,\id_X)\). Leggermente più in generale, un oggetto \(t : T \to X\) dell'incubo \(\ctC/X\) è terminale se e solo se \(t\) è un isomorfismo in \(\ctC\). In un verso, la cosa è ovvia. Di converso, se \(t\) come appena definito è terminale, allora esiste un'unica freccia \(k : X \to T\) tale che \(t\cmp k = \id_X\); quindi \(t\cmp k \cmp t = t\), e allora (per unicità) anche \(k\cmp t\) è uguale a \(\id_T\).
+		\item\label{it_6} Data una categoria \(\ctC\), la categoria incubo \(\ctC/X\) sopra un oggetto possiede sempre un oggetto terminale, e la succuba sotto un oggetto \(X/\ctC\) possiede sempre un oggetto iniziale: la freccia identità di \(X\). Infatti (si ragiona dualmente per \(X/\ctC\)), se \(u \colon A \to X\) è un oggetto della categoria incubo su \(X\), la stessa \(u\) è l'unica freccia \(u \colon (A,u) \to (X,\id_X)\). Leggermente più in generale, un oggetto \(t \colon T \to X\) dell'incubo \(\ctC/X\) è terminale se e solo se \(t\) è un isomorfismo in \(\ctC\). In un verso, la cosa è ovvia. Di converso, se \(t\) come appena definito è terminale, allora esiste un'unica freccia \(k \colon X \to T\) tale che \(t\cmp k = \id_X\); quindi \(t\cmp k \cmp t = t\), e allora (per unicità) anche \(k\cmp t\) è uguale a \(\id_T\).
 		\item\label{it_7} In un preordine guardato come categoria, un oggetto iniziale consiste di un elemento \(\bot\in P\) con la proprietà che per ogni \(x\in P\) si abbia \(\bot\le x\); quindi un oggetto iniziale è un elemento \emph{minimo}. Dualmente, un oggetto terminale è un massimo \(\top\), con la proprietà che per ogni \(x\in P\) si abbia \(x\le \top\). L'ordine stretto e totale \((\bbN,\le)\) ha iniziale/minimo ma non terminale/massimo, e altrettanto è vero per \(\bbR_\ge \defeq  [0,\infty)\); L'ordine stretto e totale \((\bbZ,\le)\) non ha né minimo né massimo; l'ordine di divisibilità \((\bbN,\div)\) accennato in \ref{alcuni_es_ordini} ha per oggetto iniziale \(1\) (ogni \(m\in\bbN\) è tale che \(m = 1\cdot m\)) e \(0\) per oggetto terminale (ogni \(m\in\bbN\) è tale che \(0 = m\cdot 0\)). L'ordine stretto e parziale sull'insieme delle parti \(PS\) di un insieme \(S\) ha il sottoinsieme vuoto come minimo/iniziale e il sottoinsieme \(S\subseteq S\) come massimo/terminale.
 	\end{enumtag}
 \end{hExamples}
 \begin{lemma}\label{equivs_preservano_init_term}
-	Se \((F,G,\eta,\epsilon):\ctC\simeq\ctD\) è un'equivalenza di categorie come in \ref{funtore_equcat}, e \(\init\in\ctC_0\) è un oggetto iniziale, allora \(F\init\in\ctD_0\) è un oggetto iniziale di \(\ctD\). Dualmente, se \(\term\in\ctC_0\) è un oggetto terminale, allora \(F\term\in\ctD_0\) è un oggetto terminale di \(\ctD\).
+	Se \((F,G,\eta,\epsilon)\colon\ctC\simeq\ctD\) è un'equivalenza di categorie come in \ref{funtore_equcat}, e \(\init\in\ctC_0\) è un oggetto iniziale, allora \(F\init\in\ctD_0\) è un oggetto iniziale di \(\ctD\). Dualmente, se \(\term\in\ctC_0\) è un oggetto terminale, allora \(F\term\in\ctD_0\) è un oggetto terminale di \(\ctD\).
 
 	Similmente, se \(\init\in\ctD_0\) è un oggetto iniziale, allora \(G\init\in\ctC_0\) è un oggetto iniziale di \(\ctC\), e se \(\term\in\ctD_0\) è un oggetto terminale, allora \(G\term\in\ctC_0\) è un oggetto terminale di \(\ctC\).
 \end{lemma}
 \begin{proof}
-	Tutti e quattro gli enunciati si dimostrano allo stesso modo, \emph{mutatis mutandis}. Quindi dimostriamo solo il primo, e in effetti facciamo uso solo del fatto che \(F : \ctC \fun \ctD\) è un'equivalenza debole di categorie. In quanto tale, è pienamente fedele; allora, dato un oggetto \(D\in\ctD_0\), esiste un oggetto \(C\in\ctC_0\) tale che \(FC\) è isomorfo a \(D\), con un isomorfismo \(k : FC \cong D\). Dunque in \(\ctC\) esiste un'unica \(\bang_C : \init \to C\); ma allora,
+	Tutti e quattro gli enunciati si dimostrano allo stesso modo, \emph{mutatis mutandis}. Quindi dimostriamo solo il primo, e in effetti facciamo uso solo del fatto che \(F \colon \ctC \fun \ctD\) è un'equivalenza debole di categorie. In quanto tale, è pienamente fedele; allora, dato un oggetto \(D\in\ctD_0\), esiste un oggetto \(C\in\ctC_0\) tale che \(FC\) è isomorfo a \(D\), con un isomorfismo \(k \colon FC \cong D\). Dunque in \(\ctC\) esiste un'unica \(\bang_C \colon \init \to C\); ma allora,
 	\begin{itemize}
 		\item \(k\cmp F(\bang_C)\) è una freccia \(F\init \to FC \xto k D\);
-		\item se si trova un altro oggetto \(C'\) con un isomorfismo \(h : FC'\cong D\), il quadrato
+		\item se si trova un altro oggetto \(C'\) con un isomorfismo \(h \colon FC'\cong D\), il quadrato
 		      \[\xymatrix{
 			      F\init\ar[r]^-{F\bang_C}\ar[d]_{F\bang_{C'}} & FC \ar[d]^k_\wr \\
 			      FC' \ar[r]_-h^-\sim & D
 			      }\]
-		      sta nell'immagine di \(F\) (perché è pienamente fedele), ed è commutativo in \(\ctC\); allora è commutativo anche in \(\ctD\), di modo che fissato \(D\in\ctD_0\), per ogni \(C\in \ctC_0\) e ogni isomorfismo \(k : FC \cong D\), esiste un'unica freccia \(F\init\to D\).
+		      sta nell'immagine di \(F\) (perché è pienamente fedele), ed è commutativo in \(\ctC\); allora è commutativo anche in \(\ctD\), di modo che fissato \(D\in\ctD_0\), per ogni \(C\in \ctC_0\) e ogni isomorfismo \(k \colon FC \cong D\), esiste un'unica freccia \(F\init\to D\).
 	\end{itemize}
 	Questo conclude la dimostrazione.
 \end{proof}
 I due esempi che seguono sono importanti per fissare l'idea in chi legge che un oggetto iniziale o terminale può essere `grande' o `complicato' e che sebbene la sua definizione sia semplice, in molti casi concreti la sua esistenza è un fatto altamente non banale.
 \begin{proposition}\label{init_term_elements}
-	Sia \(\ctC\) una categoria. Le condizioni seguenti sono equivalenti, per un funtore \(F : \ctC \fun\ctSet\):
+	Sia \(\ctC\) una categoria. Le condizioni seguenti sono equivalenti, per un funtore \(F \colon \ctC \fun\ctSet\):
 	\begin{itemize}
 		\item Esiste un isomorfismo naturale \(F\natIso \Hom{\ctC}(X_F,\blank)\) (cioè, nella terminologia di \ref{def_rappre_fun} \(F\) è corappresentabile da un oggetto \(X_F\));
 		\item la categoria degli elementi \(\Elts{\ctC}F\) ha un oggetto iniziale \((\init,h\in F\init)\).
 	\end{itemize}
-	Dualmente, le condizioni seguenti sono equivalenti, per un funtore \(G : \ctC^\op \fun\ctSet\):
+	Dualmente, le condizioni seguenti sono equivalenti, per un funtore \(G \colon \ctC^\op \fun\ctSet\):
 	\begin{itemize}
 		\item Esiste un isomorfismo naturale \(G\natIso \Hom{\ctC}(\blank,Y_G)\) (cioè, nella terminologia di \ref{def_rappre_fun} \(G\) è rappresentabile da un oggetto \(Y_G\));
 		\item la categoria degli elementi \(\Elts{\ctC}G\) ha un oggetto terminale \((\term,b\in G\term)\).
@@ -172,7 +172,7 @@ I due esempi che seguono sono importanti per fissare l'idea in chi legge che un 
 	L'implicazione non ovvia è l'altra: supponiamo che \(\Elts{\ctC}F\) abbia un oggetto iniziale \((\init,h\in F\init)\), e ci proponiamo di costruire un isomorfismo naturale \(F\natIso \Hom{\ctC}(\init,\blank)\).
 \end{proof}
 \begin{proposition}\label{term_coalgebra_maybe}
-	L'oggetto terminale della categoria delle \(S\)-coalgebre, dove \(S=1+(A\times\blank) : \ctSet\fun\ctSet\), esiste ed è dato da \(\term=(A^\omega,\xi_! : A^\omega \to 1+A\times A^\omega )\), dove \(A^\omega \defeq  A^\bbN + A^* = A^\bbN + \{\emptyList\} + A + (A \times A) + (A\times A\times A) + \dots\) è l'insieme delle liste (potenzialmente infinite) di \(A\) (composto dalla unione disgiunta delle liste propriamente dette, \(A^*\), e degli \emph{stream} \(A^\bbN \defeq  \prod_{n\in\bbN} A\)) e
+	L'oggetto terminale della categoria delle \(S\)-coalgebre, dove \(S=1+(A\times\blank) \colon \ctSet\fun\ctSet\), esiste ed è dato da \(\term=(A^\omega,\xi_! \colon A^\omega \to 1+A\times A^\omega )\), dove \(A^\omega \defeq  A^\bbN + A^* = A^\bbN + \{\emptyList\} + A + (A \times A) + (A\times A\times A) + \dots\) è l'insieme delle liste (potenzialmente infinite) di \(A\) (composto dalla unione disgiunta delle liste propriamente dette, \(A^*\), e degli \emph{stream} \(A^\bbN \defeq  \prod_{n\in\bbN} A\)) e
 	\[\xi_!(\emptyList) \defeq  \bullet \in \singleton \qquad \xi_!(a\cons as) = (a, as) \in A\times A^\omega.\]
 \end{proposition}
 \begin{figure}
@@ -240,14 +240,14 @@ I due esempi che seguono sono importanti per fissare l'idea in chi legge che un 
 			\draw[|->,shorten <=1em,shorten >=.5em] ($(x4 |- 0,-1)$.east) -- node[below,font=\footnotesize] {$b_{(X,\alpha)}$} (beh);
 		\end{tikzpicture}
 	\end{center}
-	\caption{Evoluzione di un punto iniziale in una \(S\)-coalgebra \((X,\alpha)\), se \(SX = 1+A\times X\); in questo esempio \(X\) è un insieme a forma di gatto, e il comportamento \(b_{(X,\alpha)} : X \to A^\omega\) esibisce la freccia universale verso l'oggetto terminale di \(\fcoalg S\).}
+	\caption{Evoluzione di un punto iniziale in una \(S\)-coalgebra \((X,\alpha)\), se \(SX = 1+A\times X\); in questo esempio \(X\) è un insieme a forma di gatto, e il comportamento \(b_{(X,\alpha)} \colon X \to A^\omega\) esibisce la freccia universale verso l'oggetto terminale di \(\fcoalg S\).}
 	\label{fig_term_coalgebra_maybe}
 \end{figure}
 \begin{remark}
 	Si noti che non è possibile derivare \ref{term_coalgebra_maybe} da \ref{init_term_elements} come caso particolare quando \(\ctC=\ctSet\), perché \(S\) è covariante e quest'ultimo risultato garantirebbe l'esistenza di un oggetto \emph{iniziale} in \(\Elts{\ctSet}S\). Tuttavia con strumenti appena più sofisticati (si veda \ref{rep_preservano_lim}) possiamo dimostrare che \(S\) non può essere rappresentabile --e dunque nella sua categoria degli elementi manca un oggetto iniziale.
 \end{remark}
 \begin{proof}[Dimostrazione di \ref{term_coalgebra_maybe}]
-	Consideriamo una generica altra \(S\)-coalgebra \((X, \alpha : A \to SX)\): adottiamo la stenografia
+	Consideriamo una generica altra \(S\)-coalgebra \((X, \alpha \colon A \to SX)\): adottiamo la stenografia
 	\[\begin{cases}
 			x \overset a\leadsto x' & \text{ se } \alpha(x) = (a,x')   \\
 			x  \leadsto \bullet     & \text{ se } \alpha(x) = \bullet.
@@ -260,7 +260,7 @@ I due esempi che seguono sono importanti per fissare l'idea in chi legge che un 
 		\dots\overset{a_{n-1}}\leadsto
 		x_n \overset{a_n}\leadsto \dots
 	\end{equation}
-	(al netto del fatto che queste concatenazioni possono avere lunghezza infinita, ma questo è semplice da precisare). Allora esiste un'unica freccia \(b_{(X,\alpha)} : X \to A^\omega\) (detta \emph{comportamento} della coalgebra) definita come segue:
+	(al netto del fatto che queste concatenazioni possono avere lunghezza infinita, ma questo è semplice da precisare). Allora esiste un'unica freccia \(b_{(X,\alpha)} \colon X \to A^\omega\) (detta \emph{comportamento} della coalgebra) definita come segue:
 	\[
 		b_{(X,\alpha)}(x) =
 		\begin{cases}
@@ -336,7 +336,7 @@ Si noti l'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) e
 
 La dimostrazione ricorda, in spirito, l'argomento che mostra che l'elemento neutro in un monoide (o l'identità \(\id_X\) di un oggetto in una categoria) è unico, ma ne è una versione `mollificata' per così dire dal fatto che l'unicità stretta dell'elemento neutro di un monoide viene qui rimpiazzata dal fatto che la sottocategoria piena formata da tutti gli oggetti terminali (risp., iniziali) di \(\ctC\) è un gruppoide caotico (quindi, \emph{equivalente}, e non isomorfa, alla categoria singoletto).
 \begin{proof}
-	Siccome \(\term\) è terminale, esiste un'unica freccia \(u : \term'\to \term\), e siccome \(\term'\) è terminale, esiste un'unica freccia \(u' : \term\to\term'\). Del resto ora per \ref{init_ha_solo_id} concludiamo che le composizioni \(u'\cmp u\) e \(u\cmp u'\) sono rispettivamente le identità di \(\term'\) e di \(\term\).
+	Siccome \(\term\) è terminale, esiste un'unica freccia \(u \colon \term'\to \term\), e siccome \(\term'\) è terminale, esiste un'unica freccia \(u' \colon \term\to\term'\). Del resto ora per \ref{init_ha_solo_id} concludiamo che le composizioni \(u'\cmp u\) e \(u\cmp u'\) sono rispettivamente le identità di \(\term'\) e di \(\term\).
 \end{proof}
 \begin{example}
 	Nella categoria \(\ctSet\) di insiemi e funzioni di \ref{ex_cat_insiemi}, l'assioma di estensionalità implica che esiste un solo oggetto iniziale (l'insieme vuoto), laddove \emph{ogni} insieme con un solo elemento è un oggetto terminale, non importa `quale sia l'elemento', e ve ne sono in effetti molti diversi: gli insiemi
@@ -362,17 +362,17 @@ Il resto del capitolo è occupato dalla teoria generale dei (co)limiti: teoremi 
 	\item \label{ex_21_1} Nella notazione di \ref{}, ricordando che il gruppo additivo degli interi \(\bbZ\) e l'algebra \(\bbB\) dei Booleani \(\{\texttt{true},\texttt{false}\}\) sono iniziali, rispettivamente, nella categoria degli anelli unitari e delle algebre di Boole, caratterizzare gli insiemi
 	\[\Hom{\ctRing_1}(R,\bbZ) \qquad \Hom{\ctBAlg}(H,\bbB)\]
 	per \(R\) un anello (commutativo e) unitario, e \(H\) un'algebra di Boole. (`Caratterizzare' significa qui descrivere esplicitamente quali sono le funzioni che appartengono a questi insiemi, e mostrare che sono tutte e sole quelle descritte).
-	\item \label{ex_21_2} Dimostrare il \emph{lemma di Lambek}: se \(F : \ctC \fun\ctC\) è un endofuntore,
+	\item \label{ex_21_2} Dimostrare il \emph{lemma di Lambek}: se \(F \colon \ctC \fun\ctC\) è un endofuntore,
 	\begin{itemize}
 		\item qualora \(\ctAlg(F)\) abbia un oggetto iniziale \((I,\xi \colon FI \to I)\), la sua mappa strutturale \(\xi\) è un isomorfismo in \(\ctC\). Dualmente,
-		\item qualora \(\ctcoAlg(F)\) abbia un oggetto terminale \((T,\sigma : T \to FT)\), la sua mappa strutturale \(\sigma\) è un isomorfismo in \(\ctC\).
+		\item qualora \(\ctcoAlg(F)\) abbia un oggetto terminale \((T,\sigma \colon T \to FT)\), la sua mappa strutturale \(\sigma\) è un isomorfismo in \(\ctC\).
 	\end{itemize}
 	\item \label{ex_21_3}
 	\item \label{ex_21_4}
 	\item \label{ex_21_5}
 \end{esercizi}
 \section{Prodotti e somme in \(\ctSet\)}
-Le operazioni insiemistiche di somma e prodotto sono già state impiegate diverse volte nel capitolo \ref{chap_cat_fun_nat} in una versione intuitiva, che dopotutto è quella con cui sono state introdotte in algebra o analisi; lo scopo di questa prima sezione è `ristrutturarle' in prospettiva categoriale, e descriverle come primi importanti esempi di costruzioni universali. Nel dover dimostrare le proprietà di unicità per insiemi e funzioni, ci avvarremo del principio di estensionalità per le funzioni, che è un assioma di ZF(C) (dunque implicito nelle nostre assunzioni di base): due funzioni	\(f,g : A\to B\) sono uguali se e solo se sono uguali le immagini \(f(a),g(a)\) per ogni \(a\in A\). In questo modo, quando si dovrà dimostrare che una certa funzione di insiemi \(f : A\to B\) è l'unica con una certa proprietà \(\mathcal{P}\), dimostreremo che, se \(g : A \to B\) è un'altra funzione con la proprietà \(\mathcal{P}\), allora \(f(a)=g(a)\) per ogni \(a\in A\).
+Le operazioni insiemistiche di somma e prodotto sono già state impiegate diverse volte nel capitolo \ref{chap_cat_fun_nat} in una versione intuitiva, che dopotutto è quella con cui sono state introdotte in algebra o analisi; lo scopo di questa prima sezione è `ristrutturarle' in prospettiva categoriale, e descriverle come primi importanti esempi di costruzioni universali. Nel dover dimostrare le proprietà di unicità per insiemi e funzioni, ci avvarremo del principio di estensionalità per le funzioni, che è un assioma di ZF(C) (dunque implicito nelle nostre assunzioni di base): due funzioni	\(f,g \colon A\to B\) sono uguali se e solo se sono uguali le immagini \(f(a),g(a)\) per ogni \(a\in A\). In questo modo, quando si dovrà dimostrare che una certa funzione di insiemi \(f \colon A\to B\) è l'unica con una certa proprietà \(\mathcal{P}\), dimostreremo che, se \(g \colon A \to B\) è un'altra funzione con la proprietà \(\mathcal{P}\), allora \(f(a)=g(a)\) per ogni \(a\in A\).
 \subsection{Prodotti in \(\ctSet\)}\label{prod_in_Set}
 Per produrre un \emph{prodotto Cartesiano} \(A\times B\), viene costruito un insieme di coppie ordinate di elementi presi da due \emph{fattori}  \(A,B\). Come ogni insieme, \(A\times B\) è caratterizzato da quali sono i suoi elementi. Le regole di `introduzione' di un tipo/insieme permettono di costruire un suo elemento a partire da dati più semplici; le regole di `eliminazione' lo destrutturano nelle sue componenti; una o più regole di `computazione' prescrivono il modo in cui introduzione ed eliminazione si annullano a vicenda.
 \begin{hExample}[Regole di introduzione ed eliminazione per il prodotto Cartesiano]{fund}
@@ -384,14 +384,14 @@ Per produrre un \emph{prodotto Cartesiano} \(A\times B\), viene costruito un ins
 	\[\frac{t : A\times B}{\pi_A\, t : A}\qquad \frac{t : A\times B}{\pi_B\, t : B}\qquad \frac{a : A\quad b : B}{\pair ab : A\times B}\qquad \frac{t : A\times B}{t = \pair{\pi_A\, t}{\pi_B\, t}}\]
 	si leggono come deduzioni (supponendo che <numeratore>, allora <denominatore>), e dicono quattro cose:
 	\begin{itemize}
-		\item ogni volta che viene dato un elemento \(t : A\times B\), si ottiene un elemento \(\pi_A t\) la `prima componente di \(t\)';
-		\item ogni volta che viene dato un elemento \(t : A\times B\), si ottiene un elemento \(\pi_B t\) la `seconda componente di \(t\)';
-		\item ogni volta che vengono dati due elementi \(a : A, b : B\), si ottiene un elemento \(\pair ab : A\times B\);
-		\item ogni elemento \(t : A\times B\) è della forma \(\pair{\pi_A\, t}{\pi_B\, t}\).
+		\item ogni volta che viene dato un elemento \(t \colon A\times B\), si ottiene un elemento \(\pi_A t\) la `prima componente di \(t\)';
+		\item ogni volta che viene dato un elemento \(t \colon A\times B\), si ottiene un elemento \(\pi_B t\) la `seconda componente di \(t\)';
+		\item ogni volta che vengono dati due elementi \(a \colon A, b \colon B\), si ottiene un elemento \(\pair ab \colon A\times B\);
+		\item ogni elemento \(t \colon A\times B\) è della forma \(\pair{\pi_A\, t}{\pi_B\, t}\).
 	\end{itemize}
 	L'ultima di queste condizioni a sua volta dice due cose:
 	\begin{itemize}
-		\item in \(A\times B\) non ci sono che elementi della forma \(\pair ab\) per qualche \(a : A\) e \(b : B\);
+		\item in \(A\times B\) non ci sono che elementi della forma \(\pair ab\) per qualche \(a \colon A\) e \(b \colon B\);
 		\item le uguaglianze in \ref{}, \ref{}, \ref{} valgono per `lambda-astrazione' di \(t\), cioè
 		      \[\pair{\pi_A}{\pi_B} = \id_{A\times B} \]
 	\end{itemize}
@@ -406,7 +406,7 @@ L'esempio \ref{} lascia poi intendere che ci si debba più correttamente riferir
 \]
 specificata insieme alle funzioni \(\pi_A,\pi_B\) di \emph{proiezione} sui due fattori \(A\) e \(B\), definite in \ref{}.
 
-Anche il prodotto Cartesiano di insiemi può essere caratterizzato da una proprietà che non riguarda direttamente i suoi elementi, ma li caratterizza in termini delle funzioni verso \(A\times B\) (gli elementi di \(A\times B\) essendo i \emph{punti} della forma \(\pair ab : \singleton \to A\times B\)). Per chiarire questo aspetto, consideriamo una funzione che ha \(A\times B\) come codominio, cioè della forma
+Anche il prodotto Cartesiano di insiemi può essere caratterizzato da una proprietà che non riguarda direttamente i suoi elementi, ma li caratterizza in termini delle funzioni verso \(A\times B\) (gli elementi di \(A\times B\) essendo i \emph{punti} della forma \(\pair ab \colon \singleton \to A\times B\)). Per chiarire questo aspetto, consideriamo una funzione che ha \(A\times B\) come codominio, cioè della forma
 \[\label{prodotti_h}
 	h\colon X\to A\times B
 \]
@@ -418,7 +418,7 @@ che determinano univocamente \(h\). Infatti, si osservi come
 \begin{itemize}
 	\item grazie a \ref{eq_comprule} l'immagine di \(h(x)\) può essere \emph{ridotta} alla coppia ordinata
 	      \[\pair{(\pi_A\cmp h)(x)}{(\pi_B\cmp h)(x)};\]
-	\item comunque siano date due funzioni \(f : X\to A\) e \(g : X \to B\), è possibile \emph{costruire} la coppia ordinata \(\pair{f(x)}{g(x)}\) e la funzione \(f\pmap g\) che abbiamo già introdotto in \ref{puniv_prodotto_naturale} che ne risulta è l'immagine di \(\pair fg\), nell'insieme a sinistra, rispetto alla biiezione naturale (già dimostrata in \ref{})
+	\item comunque siano date due funzioni \(f \colon X\to A\) e \(g \colon X \to B\), è possibile \emph{costruire} la coppia ordinata \(\pair{f(x)}{g(x)}\) e la funzione \(f\pmap g\) che abbiamo già introdotto in \ref{puniv_prodotto_naturale} che ne risulta è l'immagine di \(\pair fg\), nell'insieme a sinistra, rispetto alla biiezione naturale (già dimostrata in \ref{})
 	      \[\Hom{\ctSet}(X,A\times B)\cong\Hom{\ctSet}(X,A)\times\Hom{\ctSet}(X,B).\]
 \end{itemize}
 Queste due corrispondenze di riduzione e costruzione, o introduzione ed eliminazione, che sono inverse una dell'altra, stanno alla base del ragionare mediante proprietà universali.
@@ -427,20 +427,20 @@ Queste due corrispondenze di riduzione e costruzione, o introduzione ed eliminaz
 	\[
 		(P,\,  p_1\colon P\to A,\,  p_2\colon P\to B)
 	\]
-	si dice un \emph{prodotto Cartesiano} di \(A\) e \(B\), se, e solo se, per ogni insieme \(X\) e per ogni coppia di funzioni \(f : X \to A\) e \(g : X \to B\) come in \eqref{prodotti_f_e_g}, esiste un'unica funzione \(f\pmap g : X \to P\) come in \eqref{prodotti_h} tale che
+	si dice un \emph{prodotto Cartesiano} di \(A\) e \(B\), se, e solo se, per ogni insieme \(X\) e per ogni coppia di funzioni \(f \colon X \to A\) e \(g \colon X \to B\) come in \eqref{prodotti_f_e_g}, esiste un'unica funzione \(f\pmap g \colon X \to P\) come in \eqref{prodotti_h} tale che
 	\[
 		p_1\cmp (f\pmap g) = f\,,\qquad p_2\cmp (f\pmap g)=g.
 	\]
 \end{remark}
 In effetti, è immediato verificare che \(A\times B\) e le proiezioni canoniche \(\pi_A,\pi_B\) soddisfano questa proprietà. Ma se \(P\) soddisfa questa proprietà, possiamo dimostrare quanto segue.
 \begin{lemma}
-	Siano \((P,p_1,p_2)\) e \((Q,q_1,q_2)\) due prodotti	cartesiani di \(A\) e \(B\). Allora esiste un unico isomorfismo \(u= p_1\pmap p_2 : P\to Q\) di inversa \(u^{-1} = q_1\pmap q_2\). In particolare, se \((P,p_1,p_2)\) è un prodotto Cartesiano di \(A\) e \(B\) come in \ref{rmk_prodotto}, allora esiste un'unica biiezione \(P\cong A\times B\), che rende \(P\) `essenzialmente' composto dalle coppie \(\pair ab\) come in \ref{}.
+	Siano \((P,p_1,p_2)\) e \((Q,q_1,q_2)\) due prodotti	cartesiani di \(A\) e \(B\). Allora esiste un unico isomorfismo \(u= p_1\pmap p_2 \colon P\to Q\) di inversa \(u^{-1} = q_1\pmap q_2\). In particolare, se \((P,p_1,p_2)\) è un prodotto Cartesiano di \(A\) e \(B\) come in \ref{rmk_prodotto}, allora esiste un'unica biiezione \(P\cong A\times B\), che rende \(P\) `essenzialmente' composto dalle coppie \(\pair ab\) come in \ref{}.
 \end{lemma}
 Si osservi di nuovo il ruolo dell'aggettivo \emph{unica}: fissate le terne \((P,p_1,p_2)\) e \((Q,q_1,q_2)\) (e solo allora), la biiezione possibile è \emph{solo una}.
 \begin{proof}
-	Dato che \(Q\) è un prodotto, esiste un'unica	funzione \(u : P \to Q\) che fa commutare i due triangoli del diagramma
+	Dato che \(Q\) è un prodotto, esiste un'unica	funzione \(u \colon P \to Q\) che fa commutare i due triangoli del diagramma
 	\[miao\]
-	Di converso, dato che	\(P\) è un prodotto, esiste un'unica funzione \(v : Q \to P\) che fa commutare i due triangoli del diagramma
+	Di converso, dato che	\(P\) è un prodotto, esiste un'unica funzione \(v \colon Q \to P\) che fa commutare i due triangoli del diagramma
 	\[bau.\]
 	Del resto, \(v\) deve essere l'inversa di \(u\), perché le composizioni \(v\cmp u\) e \(u\cmp v\) fanno commutare i due triangoli dei diagrammi
 	\[miao\qquad\qquad bau\]
@@ -448,7 +448,7 @@ Si osservi di nuovo il ruolo dell'aggettivo \emph{unica}: fissate le terne \((P,
 \end{proof}
 Si osservi che in particolare, istanziando la proprietà di \ref{rmk_prodotto} quando \(X = \singleton\) è un insieme con un solo elemento, le funzioni \(g\colon \singleton\to B\), \(f\colon \singleton\to A\) scelgono rispettivamente un elemento \(g(\bullet) = b \in B\) e \(f(\bullet) = a \in A\); la funzione \(f\pmap g\colon \singleton\to P\) sceglie a sua volta un elemento \((f\pmap g)(\bullet) = t \in P\), che però ora deve essere della forma \(\pair{p_1 t}{p_2 t}\).
 
-La proprietà di \ref{} si traduce allora in: per ogni coppia di elementi \(a\in A\) e \(b\in B\), esiste (suriettività) un unico (iniettività) elemento \(c\in P\) tale che \(p_1 c=a\) e \(p_2 c=b\). Questo è un modo alternativo di stabilire una biiezione \(\tau : P\to A\times B\) soggetta alla proprietà addizionale di commutare con le proiezioni, cioè tale che \(\pi_A\cmp \tau =p_1\) e \(\pi_B\cmp \tau =p_2\). La biiezione è poi unica, ossia non solo è possibile identificare un prodotto Cartesiano \(P\) ad un insieme di coppie, ma questa identificazione si fa in un unico modo.
+La proprietà di \ref{} si traduce allora in: per ogni coppia di elementi \(a\in A\) e \(b\in B\), esiste (suriettività) un unico (iniettività) elemento \(c\in P\) tale che \(p_1 c=a\) e \(p_2 c=b\). Questo è un modo alternativo di stabilire una biiezione \(\tau \colon P\to A\times B\) soggetta alla proprietà addizionale di commutare con le proiezioni, cioè tale che \(\pi_A\cmp \tau =p_1\) e \(\pi_B\cmp \tau =p_2\). La biiezione è poi unica, ossia non solo è possibile identificare un prodotto Cartesiano \(P\) ad un insieme di coppie, ma questa identificazione si fa in un unico modo.
 
 In sintesi, abbiamo enunciato e dimostrato la
 \begin{definition}[Proprietà universale del prodotto Cartesiano di insiemi]
@@ -472,7 +472,7 @@ In sintesi, abbiamo enunciato e dimostrato la
 			      \varpi_X : \Hom{\ctSet}(X,A\times B) \ar[r]& \Hom{\ctSet}(X,A)\times\Hom{\ctSet}(X,B)\\
 			      h \ar@{|->}[r]& (\pi_A\cmp h, \pi_B\cmp h)
 			      }\]
-		      è una biiezione naturale in \(X\) (cioè, l'insieme \(A\times B\) rappresenta il funtore \(\Hom{\ctSet}(\blank,A)\times\Hom{\ctSet}(\blank,A) : \ctSet^\op \to \ctSet\) che manda \(X\) in \(\Hom{\ctSet}(X,A)\times\Hom{\ctSet}(X,B)\)).
+		      è una biiezione naturale in \(X\) (cioè, l'insieme \(A\times B\) rappresenta il funtore \(\Hom{\ctSet}(\blank,A)\times\Hom{\ctSet}(\blank,A) \colon \ctSet^\op \to \ctSet\) che manda \(X\) in \(\Hom{\ctSet}(X,A)\times\Hom{\ctSet}(X,B)\)).
 	\end{itemize}
 \end{definition}
 \begin{remark}
@@ -486,7 +486,7 @@ Altrettanto probabilmente, chi legge avrà intuito che c'è una somiglianza tra 
 		      \[\xymatrix{
 				      A & X \ar[r]^-r \ar[l]_-l & B
 			      }\]
-		\item per frecce le funzioni \(f : X\to Y\) che rendono commutativi i diagrammi
+		\item per frecce le funzioni \(f \colon X\to Y\) che rendono commutativi i diagrammi
 		      \[\xymatrix{
 			      X\ar[dr]_f \ar[r]^-l\ar[d]_r & A \\
 			      B & Y. \ar[l]^-{r'}\ar[u]_-{l'}
@@ -842,17 +842,17 @@ perché si chiamano limiti?
 \end{remark}
 \subsection{Limiti in algebra, topologia e logica}
 \begin{example}
-	Il \emph{nucleo} di una applicazione lineare \(f : V \to W\) tra spazi vettoriali (o tra gruppi abeliani, o \(R\)-moduli,\dots), già introdotto in \ref{ker_e_coker}, è un esempio di limite: si tratta dell'equalizzatore della coppia
+	Il \emph{nucleo} di una applicazione lineare \(f \colon V \to W\) tra spazi vettoriali (o tra gruppi abeliani, o \(R\)-moduli,\dots), già introdotto in \ref{ker_e_coker}, è un esempio di limite: si tratta dell'equalizzatore della coppia
 	% https://q.uiver.app/#q=WzAsMixbMCwwLCJWIl0sWzEsMCwiVyJdLFswLDEsIjAiLDAseyJvZmZzZXQiOi0yfV0sWzAsMSwiZiIsMix7Im9mZnNldCI6MX1dXQ==
 	\[\begin{tikzcd}[cramped]
 			V & W
 			\arrow["0", shift left=2, from=1-1, to=1-2]
 			\arrow["f"', shift right, from=1-1, to=1-2]
 		\end{tikzcd}\]
-	In effetti una nozione di `nucleo' in questo senso si può dare in ogni categoria che abbia un \emph{oggetto zero}, nel senso di un oggetto che sia allo stesso tempo iniziale e terminale (questo è il caso di ciascuna delle categorie appena menzionate, ma anche della categoria degli insiemi puntati di \ref{}). In tal caso, si ricordi che la `mappa zero' consiste della composizione \(0_{VW} : V \to 0 \to W\) e in un certo senso evidente \(\ker f\) è in quel caso il massimo sottoggetto \(i_{\ker f} : \ker f \mono V\) tale che \(f\circ i_{\ker f} = 0_{VW}\). Nel caso degli insiemi puntati, dove \(V=(A,a_0)\), si tratta del sottoinsieme \(K\subseteq A\) determinato come \(K=\{a\in A\mid fa = b_0\}\), se \(W=(B,b_0)\) è l'insieme puntato codominio.
+	In effetti una nozione di `nucleo' in questo senso si può dare in ogni categoria che abbia un \emph{oggetto zero}, nel senso di un oggetto che sia allo stesso tempo iniziale e terminale (questo è il caso di ciascuna delle categorie appena menzionate, ma anche della categoria degli insiemi puntati di \ref{}). In tal caso, si ricordi che la `mappa zero' consiste della composizione \(0_{VW} \colon V \to 0 \to W\) e in un certo senso evidente \(\ker f\) è in quel caso il massimo sottoggetto \(i_{\ker f} \colon \ker f \mono V\) tale che \(f\circ i_{\ker f} = 0_{VW}\). Nel caso degli insiemi puntati, dove \(V=(A,a_0)\), si tratta del sottoinsieme \(K\subseteq A\) determinato come \(K=\{a\in A\mid fa = b_0\}\), se \(W=(B,b_0)\) è l'insieme puntato codominio.
 \end{example}
 \begin{example}
-	Il funtore dei sottoggetti introdotto in \ref{} fa uso della nozione di prodotto fibrato in \(\ctSet\): infatti, data una funzione \(u : A\to B\) tra insiemi, la funzione \(\Sub(u) : \Sub(B) \to \Sub(A)\) si determina dal prodotto fibrato
+	Il funtore dei sottoggetti introdotto in \ref{} fa uso della nozione di prodotto fibrato in \(\ctSet\): infatti, data una funzione \(u \colon A\to B\) tra insiemi, la funzione \(\Sub(u) \colon \Sub(B) \to \Sub(A)\) si determina dal prodotto fibrato
 	\[\begin{tikzcd}
 			u^*E =\pull AEB \arrow[r] \arrow[d, hook] & E \arrow[d, hook] \\
 			A \arrow[r, "u"'] & B
@@ -1018,7 +1018,7 @@ Epimorfismi come colimiti; monomorfismi come limiti. Chiusura degli epi per coli
 
 oss su coequalizzatori riflessivi; epi regolari; coppia nucleo, coppia conucleo; esattezza.
 \begin{lemma}
-	Sia \(\ctC\) una categoria. Ogni freccia \(m : A\to X\) tale che esista una coppia \(f,g : X \to Y\) di frecce parallele e un diagramma equalizzatore
+	Sia \(\ctC\) una categoria. Ogni freccia \(m \colon A\to X\) tale che esista una coppia \(f,g \colon X \to Y\) di frecce parallele e un diagramma equalizzatore
 	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJBIl0sWzEsMCwiWCJdLFsyLDAsIlkiXSxbMSwyLCJmIiwwLHsib2Zmc2V0IjotMn1dLFsxLDIsImciLDIseyJvZmZzZXQiOjJ9XSxbMCwxLCJtIiwyXV0=
 	\[\begin{tikzcd}[ampersand replacement=\&]
 			A \& X \& Y
@@ -1026,7 +1026,7 @@ oss su coequalizzatori riflessivi; epi regolari; coppia nucleo, coppia conucleo;
 			\arrow["f", shift left=1, from=1-2, to=1-3]
 			\arrow["g"', shift right=1, from=1-2, to=1-3]
 		\end{tikzcd}\]
-	è un mono. Dualmente, data \(p : Y\to B\), se esiste una simile coppia \(f,g : X \to Y\) e un diagramma coequalizzatore
+	è un mono. Dualmente, data \(p \colon Y\to B\), se esiste una simile coppia \(f,g \colon X \to Y\) e un diagramma coequalizzatore
 	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzEsMCwiWSJdLFsyLDAsIkIiXSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMn1dLFswLDEsImciLDIseyJvZmZzZXQiOjJ9XSxbMSwyLCJxIiwyXV0=
 	\[\begin{tikzcd}[ampersand replacement=\&]
 			X \& Y \& B
@@ -1037,7 +1037,7 @@ oss su coequalizzatori riflessivi; epi regolari; coppia nucleo, coppia conucleo;
 	allora \(p\) è epi.
 \end{lemma}
 \begin{proof}
-	Mostriamo il primo enunciato, il secondo è duale. Se \(m = \eq(f,g)\), e \(s,t : Z \to A\) sono tali che \(h = m \cmp s = m \cmp t\), allora abbiamo un diagramma
+	Mostriamo il primo enunciato, il secondo è duale. Se \(m = \eq(f,g)\), e \(s,t \colon Z \to A\) sono tali che \(h = m \cmp s = m \cmp t\), allora abbiamo un diagramma
 	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzEsMCwiWCJdLFsyLDAsIlkiXSxbMCwxLCJaIl0sWzAsMSwibSIsMl0sWzEsMiwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMSwyLCJnIiwyLHsib2Zmc2V0IjoxfV0sWzMsMCwicyIsMCx7Im9mZnNldCI6LTF9XSxbMywwLCJ0IiwyLHsib2Zmc2V0IjoxfV0sWzMsMSwiaCIsMl1d
 	\[\begin{tikzcd}[ampersand replacement=\&]
 			A \& X \& Y \\
@@ -1055,8 +1055,8 @@ Questo motiva la definizione seguente.
 \begin{definition}[Epi e mono regolare]\label{def_epi_mono_regolari}\index{Monomorfismo!--- regolare}\index{Epimorfismo!--- regolare}
 	Sia \(\ctC\) una	categoria.
 	\begin{itemize}
-		\item Se una freccia \(m :A \to X\) soddisfa l'ipotesi del lemma precedente, allora \(m\) è detta un \emph{mono regolare}.
-		\item Dualmente, se una freccia \(p : Y \to B\)	soddisfa l'ipotesi del lemma precedente, allora \(p\) è detta un \emph{epi regolare}.
+		\item Se una freccia \(m \colon A \to X\) soddisfa l'ipotesi del lemma precedente, allora \(m\) è detta un \emph{mono regolare}.
+		\item Dualmente, se una freccia \(p \colon Y \to B\)	soddisfa l'ipotesi del lemma precedente, allora \(p\) è detta un \emph{epi regolare}.
 	\end{itemize}
 \end{definition}
 \begin{definition}[Categoria regolare]\label{def_cat_regolare}\index{Categoria!--- regolare}
@@ -1104,7 +1104,7 @@ completamenti (il completamento per iniziale è \(\ctC^\lhd\), quello per termin
 \subsection{Categorie piccolo-complete e piccolo-cocomplete}
 
 \section{Limiti e funtori}
-Limiti e colimiti in categorie di funtori. Il caso particolare di limiti in Set (prefasci): per \(F : \ctC^\op\fun\ctSet\), \(\colim F\cong \pi_0(\Elts\ctC F)\). E il limite?
+Limiti e colimiti in categorie di funtori. Il caso particolare di limiti in Set (prefasci): per \(F \colon \ctC^\op\fun\ctSet\), \(\colim F\cong \pi_0(\Elts\ctC F)\). E il limite?
 
 preservazione/riflessione/creazione. criteri di preservazione/riflessione/creazione. esempi.
 

@@ -113,7 +113,7 @@ def replace_colon_in_math(content, dry_run=False, filename=""):
 
     return ''.join(result)
 
-drun = True  # cambia a False per modificare effettivamente
+drun = False  # cambia a False per modificare effettivamente
 
 with open(sys.argv[1], 'r+', encoding='utf-8') as f:
     content = f.read()

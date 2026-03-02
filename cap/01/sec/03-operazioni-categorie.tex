@@ -27,14 +27,14 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 	\begin{itemize}
 		\item le sottocategorie \(\cate{T}n\ctTop\) per \(n=0,1,2,3\) degli spazi che soddisfano gli assiomi di separazione \(Tn\) sono sottocategorie piene della categoria \(\ctTop\) di \ref{ex_cat_top}, una inclusa nell'altra,
 		      \[\ctTop\supseteq\cate{T}0\ctTop\supseteq\cate{T}1\ctTop\supseteq\cate{T}2\ctTop\supseteq\cate{T}3\ctTop\]
-		\item Per contro, la sottocategoria di \(\cate{T}2\ctTop\) fatta dagli spazi T2 e \emph{compatti} ha come scelta comune di frecce la classe delle mappe \(f : X\to Y\) continue e \emph{proprie}, tali cioè che la controimmagine di un sottoinsieme compatto \(K\Subset Y\) mediante \(f\) sia un sottoinsieme compatto di \(X\).
+		\item Per contro, la sottocategoria di \(\cate{T}2\ctTop\) fatta dagli spazi T2 e \emph{compatti} ha come scelta comune di frecce la classe delle mappe \(f \colon X\to Y\) continue e \emph{proprie}, tali cioè che la controimmagine di un sottoinsieme compatto \(K\Subset Y\) mediante \(f\) sia un sottoinsieme compatto di \(X\).
 	\end{itemize}
 \end{example}
 \begin{definition}\label{def_cat_prodotto}\index{Categoria!--- prodotto}
 	Date due categorie \(\ctC\) e \(\ctD\), la \emph{categoria prodotto} \(\ctC\times\ctD\) ha
 	\begin{itemize}
 		\item Per oggetti, coppie \((C,D)\) dove \(C\) è un oggetto di \(\ctC\), e \(D\) è un oggetto di \(\ctD\);
-		\item una freccia \((C,D)\to(C',D')\) è una coppia \((f,g)\) dove \(f:C\to C'\) è una freccia di \(\ctC\) e \(g:D\to D'\) è una freccia di \(\ctD\);
+		\item una freccia \((C,D)\to(C',D')\) è una coppia \((f,g)\) dove \(f\colon C\to C'\) è una freccia di \(\ctC\) e \(g\colon D\to D'\) è una freccia di \(\ctD\);
 		\item L'identità di \((C,D)\) è data dalla freccia \((\id_C,\id_D)\);
 		\item La composizione è data dalla composizione in ciascuna delle componenti.
 	\end{itemize}
@@ -181,7 +181,7 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 	Data una categoria \(\ctC\), la \emph{categoria opposta} o \emph{duale} \(\ctC^\op\) ha
 	\begin{itemize}
 		\item come oggetti, gli stessi oggetti di \(\ctC\);
-		\item come frecce, una freccia \(f^\op:Y\to X\) per ogni freccia \(f:X\to Y\) di \(\ctC\);
+		\item come frecce, una freccia \(f^\op\colon Y\to X\) per ogni freccia \(f\colon X\to Y\) di \(\ctC\);
 		\item per ogni oggetto \(X\), l'identità è data da \((\id_X)^\op\);
 		\item date due frecce \(f\) e \(g\) componibili in \(\ctC\), la composizione di \(f^\op\cmp g^\op\) è data da \((g\cmp f)^\op\). Si noti l'ordine inverso della composizione:
 		      % https://q.uiver.app/#q=WzAsOCxbMCwxLCJcXHRleHR7aW4gfVxcY3RDOiJdLFsxLDAsIlgiXSxbMSwxLCJZIl0sWzIsMSwiWiJdLFszLDEsIlxcdGV4dHtpbiB9XFxjdENeXFxvcDoiXSxbNCwwLCJYIl0sWzQsMSwiWSJdLFs1LDEsIloiXSxbMSwyLCJmIiwyXSxbMiwzLCJnIiwyXSxbNyw2LCJnXlxcb3AiXSxbNiw1LCJmXlxcb3AiXSxbMSwzLCJnXFxjbXAgZiJdLFs3LDUsImZeXFxvcFxcY21wIGdeXFxvcCA9IChnXFxjbXAgZileXFxvcCIsMl1d
@@ -212,10 +212,10 @@ Di seguito diamo alcune di queste costruzioni, alcune delle quali (\ref{def_subc
 
 	Per rendere preciso questo principio dobbiamo fare uso di alcune nozioni elementari di logica; svolgere davvero questo compito (cioè scrivere un linguaggio al primo ordine, dove esprimere veramente la teoria delle categorie) sarebbe fuorviante (ma chi legge può consultare \cite{ETCC}), quindi ci limitiamo a una esposizione semi-formale, definendo il \emph{linguaggio \(\mathsf{CT}\)} come quello che ha
 	\begin{itemize}
-		\item per costanti i simboli \(A,B,C,\dots : \ctC_0\) degli oggetti e i simboli \(f,g,h,\dots : \ctC_1\) delle frecce (in particolare \(A,B,C,\dots\) hanno \emph{sorte} \(\ctC_0\) e \(f,g,h,\dots\) sorte \(\ctC_1\));
-		\item le funzioni dominio e codominio \(d,c : \ctC_1\to\ctC_0:f\mapsto d(f),c(f)\);
-		\item la funzione di costruzione dell'identità \(\id : \ctC_0\to \ctC_1 : A\mapsto \Id[A]\);
-		\item l'operazione di composizione \(\blank\cmp\blank : \ctC_2 \to \ctC_1\) dove ricordiamo che
+		\item per costanti i simboli \(A,B,C,\dots \colon \ctC_0\) degli oggetti e i simboli \(f,g,h,\dots \colon \ctC_1\) delle frecce (in particolare \(A,B,C,\dots\) hanno \emph{sorte} \(\ctC_0\) e \(f,g,h,\dots\) sorte \(\ctC_1\));
+		\item le funzioni dominio e codominio \(d,c \colon \ctC_1\to\ctC_0\colon f\mapsto d(f),c(f)\);
+		\item la funzione di costruzione dell'identità \(\id \colon \ctC_0\to \ctC_1 \colon A\mapsto \Id[A]\);
+		\item l'operazione di composizione \(\blank\cmp\blank \colon \ctC_2 \to \ctC_1\) dove ricordiamo che
 		      \[\ctC_2 \defeq  \{(f,g) : \ctC_1\times\ctC_1\mid c(f) = d(g)\}\subseteq\ctC_1\times\ctC_1\]
 	\end{itemize}
 	tutto ciò soggetto alle equazioni
@@ -272,16 +272,16 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 	\[(\Lambda^2_0)^\op = \Lambda^2_2\qquad\qquad (S^\lhd)^\op = S^\rhd\]
 \end{example}
 \begin{example}\label{rel_autoduale}\index{Categoria!--- autoduale}
-	Un esempio non banale di categoria autoduale è \(\ctRel\) di \ref{ex_cat_rels}. Dato che una relazione \(R : A\to B\) è per definizione un sottoinsieme \(R\subseteq A\times B\), e dato che \(A\times B\) è in biiezione con \(B\times A\) (e che questa biiezione \(\sigma : A\times B \to B\times A\) è una involuzione, cioè \(\sigma\cmp\sigma = 1_{A\times B}\)), la differenza tra `dominio' e `codominio' di \(R\) è trascurabile, dato che nel sottoinsieme \(R \subseteq A\times B\) è contenuta esattamente la stessa informazione che nel sottoinsieme \(\sigma(R)\subseteq B\times A\).
+	Un esempio non banale di categoria autoduale è \(\ctRel\) di \ref{ex_cat_rels}. Dato che una relazione \(R \colon A\to B\) è per definizione un sottoinsieme \(R\subseteq A\times B\), e dato che \(A\times B\) è in biiezione con \(B\times A\) (e che questa biiezione \(\sigma \colon A\times B \to B\times A\) è una involuzione, cioè \(\sigma\cmp\sigma = 1_{A\times B}\)), la differenza tra `dominio' e `codominio' di \(R\) è trascurabile, dato che nel sottoinsieme \(R \subseteq A\times B\) è contenuta esattamente la stessa informazione che nel sottoinsieme \(\sigma(R)\subseteq B\times A\).
 
-	Questa idea, del tutto ovvia, necessita tuttavia di parecchio linguaggio per essere resa veramente precisa: la nozione di \emph{trasformazione naturale} \ref{def_nat} e di \emph{equivalenza di categorie} \ref{funtore_equcat} costruiranno un'equivalenza \(\ctRel\simeq \ctRel^\op\) a partire dalla famiglia di involuzioni \(\sigma_{AB} : \Hom{\ctRel}(A,B) = \pow {A\times B} \to \pow {B\times A} = \Hom{\ctRel}(B,A)\).
+	Questa idea, del tutto ovvia, necessita tuttavia di parecchio linguaggio per essere resa veramente precisa: la nozione di \emph{trasformazione naturale} \ref{def_nat} e di \emph{equivalenza di categorie} \ref{funtore_equcat} costruiranno un'equivalenza \(\ctRel\simeq \ctRel^\op\) a partire dalla famiglia di involuzioni \(\sigma_{AB} \colon \Hom{\ctRel}(A,B) = \pow {A\times B} \to \pow {B\times A} = \Hom{\ctRel}(B,A)\).
 \end{example}
 \begin{definition}[Incubi e succube sopra un oggetto]\label{def_cat_slice}\index{Categoria!--- incubo}\index{Categoria!--- succuba|see {incubo}}\index{Categoria!--- sopra un oggetto}\index{Categoria!--- sotto un oggetto|see {sopra un oggetto}}
 	Sia \(\ctC\) una categoria, e \(X\) un oggetto di \(\ctC\).
 	La \emph{categoria incubo} sopra \(X\), o semplicemente \emph{categoria sopra} \(X\), denotata \(\ctC/X\), è definita come segue:\footnote{Nel folklore medievale un \emph{incubo} è un demone maschile, che premendo sul petto dell'addormentato causa le paralisi notturne.	Una \emph{succuba}, invece, è un'entità demoniaca femminile, che appare nei sogni soggiogando il sognatore (rigorosamente uomo) e lo obbliga a un rapporto sessuale.}
 	\begin{itemize}
-		\item gli oggetti sono coppie \((A,p)\) dove \(A\) è un oggetto di \(\ctC\) e \(p : A\to X\) è una freccia di \(\ctC\);
-		\item le frecce \((A,p)\to(B,q)\) sono frecce \(f:A\to B\) di \(\ctC\) tali che \(q\cmp f=p\), ovvero tali che il seguente diagramma commuta.
+		\item gli oggetti sono coppie \((A,p)\) dove \(A\) è un oggetto di \(\ctC\) e \(p \colon A\to X\) è una freccia di \(\ctC\);
+		\item le frecce \((A,p)\to(B,q)\) sono frecce \(f\colon A\to B\) di \(\ctC\) tali che \(q\cmp f=p\), ovvero tali che il seguente diagramma commuta.
 		      \[
 			      \begin{tikzcd}[column sep=small]
 				      A \ar{rr}{f} \ar{dr}[swap]{p} && B \ar{dl}{q} \\
@@ -292,8 +292,8 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 
 	La \emph{categoria succuba sotto \(X\)}, o semplicemente \emph{categoria sotto} \(X\), denotata \(X/\ctC\), ha
 	\begin{itemize}
-		\item per oggetti, coppie \((A,p)\) dove \(A\) è un oggetto di \(\ctC\) e \(p:X\to A\) è una freccia di \(\ctC\);
-		\item per frecce \((A,p)\to(B,q)\), frecce \(f:A\to B\) di \(\ctC\) tali che \(q=f\cmp p\), ovvero tali che il seguente diagramma commuta.
+		\item per oggetti, coppie \((A,p)\) dove \(A\) è un oggetto di \(\ctC\) e \(p\colon X\to A\) è una freccia di \(\ctC\);
+		\item per frecce \((A,p)\to(B,q)\), frecce \(f\colon A\to B\) di \(\ctC\) tali che \(q=f\cmp p\), ovvero tali che il seguente diagramma commuta.
 		      \[
 			      \begin{tikzcd}[column sep=small]
 				      & X \ar{dl}[swap]{p} \ar{dr}{q}  \\
@@ -400,16 +400,16 @@ Le categorie che si identificano alla propria opposta meritano quindi un nome sp
 \end{definition}
 Diverse costruzioni familiari della matematica di base si esprimono facilmente come categorie sopra o sotto oggetti fissati. Raccogliamo alcuni esempi (riempire i dettagli mancanti nelle definizioni è un utile esercizio per familiarizzare con le definizioni in \ref{def_cat_slice}).
 \begin{example}\label{def_spazi_pun_succuba}\index{Categoria!--- degli spazi puntati}\index{Spazi topologici}
-	La categoria degli insiemi puntati \(\ctSet_*\) costruita nell'Esempio \ref{ex_cat_puntati} si può vedere equivalentemente come la categoria succuba \(1/\ctSet\), dove \(1\) è un insieme con un solo elemento: ciò perché la scelta di una funzione \(a_0 : 1\to A\) consiste esattamente della scelta di un elemento \(a_0\in A\).
+	La categoria degli insiemi puntati \(\ctSet_*\) costruita nell'Esempio \ref{ex_cat_puntati} si può vedere equivalentemente come la categoria succuba \(1/\ctSet\), dove \(1\) è un insieme con un solo elemento: ciò perché la scelta di una funzione \(a_0 \colon 1\to A\) consiste esattamente della scelta di un elemento \(a_0\in A\).
 
 	In maniera simile, si possono costruire gli \emph{spazi topologici puntati}, formando la categoria \(\ctTop_*=1/\ctTop\), dove \(1\) è uno spazio topologico con un solo punto.
 \end{example}
 \begin{example}[Colorazioni di insiemi]\label{ex_set_colorati}\index{Categoria!--- degli insiemi colorati}
-	Se \(\{\iter r\}\) denota un insieme con \(r\) elementi, una \emph{colorazione} di un insieme \(X\) consiste di una funzione \(c : X \to \{\iter r\}\) (di modo che gli elementi di \(X_i \defeq  c^{-1}(i)\) siano gli elementi `colorati' nel modo \(i\)); molti problemi di combinatoria enumerativa elementare riguardano colorazioni di insiemi finiti, e quindi essi possono essere enunciati attraverso la categoria incubo sopra \(\{\iter r\}\).
+	Se \(\{\iter r\}\) denota un insieme con \(r\) elementi, una \emph{colorazione} di un insieme \(X\) consiste di una funzione \(c \colon X \to \{\iter r\}\) (di modo che gli elementi di \(X_i \defeq  c^{-1}(i)\) siano gli elementi `colorati' nel modo \(i\)); molti problemi di combinatoria enumerativa elementare riguardano colorazioni di insiemi finiti, e quindi essi possono essere enunciati attraverso la categoria incubo sopra \(\{\iter r\}\).
 \end{example}
 Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 \begin{example}[Colorazioni di grafi]\label{ex_grph_colorati}\index{Categoria!--- dei grafi colorati}
-	Una \emph{\(n\)-colorazione} di un grafo non diretto come in \ref{ex_cat_grafi_nondiretti} consiste della scelta di una colorazione \(c : V \to \{\iter n\}\), che assegna un colore ad ogni vertice \(V\) di un grafo \(\ctG=(E,V)\), in modo tale che due vertici collegati da un lato non siano dello stesso colore.
+	Una \emph{\(n\)-colorazione} di un grafo non diretto come in \ref{ex_cat_grafi_nondiretti} consiste della scelta di una colorazione \(c \colon V \to \{\iter n\}\), che assegna un colore ad ogni vertice \(V\) di un grafo \(\ctG=(E,V)\), in modo tale che due vertici collegati da un lato non siano dello stesso colore.
 
 	Una \(n\)-colorazione per un grafo \(\ctG\) corrisponde precisamente al dato di un omomorfismo di grafi \(\ctG\to\ctK_n\) verso il \emph{grafo completo} su \(n\) vertici:
 	\begin{itemize}
@@ -508,7 +508,7 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 				\end{scope}
 			\end{tikzpicture}
 		\end{center}
-		\caption{Una 3-colorazione di un grafo \(\ctG\) a forma di gatto. I vertici di \(\ctG\) sono etichettati da dei colori (gli elementi dell'insieme \(C = \{\yellowDot,\redDot,\blueDot\}\)), di modo che resti definito un omomorfismo \(f : \ctG \to\ctK_G\) di grafi non diretti verso il grafo completo costruito sull'insieme \(C\), che estende la colorazione \(c : V\to C\). Questo significa: dato un vertice \(v\), \(c(v)=\redDot\) se e solo se \(f(v)=\redDot\) (e lo stesso vale per gli altri colori).}
+		\caption{Una 3-colorazione di un grafo \(\ctG\) a forma di gatto. I vertici di \(\ctG\) sono etichettati da dei colori (gli elementi dell'insieme \(C = \{\yellowDot,\redDot,\blueDot\}\)), di modo che resti definito un omomorfismo \(f \colon \ctG \to\ctK_G\) di grafi non diretti verso il grafo completo costruito sull'insieme \(C\), che estende la colorazione \(c \colon V\to C\). Questo significa: dato un vertice \(v\), \(c(v)=\redDot\) se e solo se \(f(v)=\redDot\) (e lo stesso vale per gli altri colori).}
 		\label{fig_n_colorazione_grafo}
 	\end{figure}
 \end{example}
@@ -519,14 +519,14 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 	Dato uno spazio topologico \(X\), la categoria incubo \(\ctTop/X\) è quella degli spazi incubi sopra \(X\), o fibrati generalizzati. Tra questi, isoliamo
 	\begin{itemize}
 		\item i \emph{fibrati banali}, ossia le proiezioni \(A\times X \to X\) dove \(A\) è uno spazio topologico arbitrario detto \emph{fibra generica};
-		\item i \emph{fibrati localmente banali}, ossia gli oggetti \(p : E\to X\) di \(\ctTop/X\) con la proprietà che esiste un ricoprimento aperto \(\{U_i\}\) di \(X\) tale che \(p|_i : p^{-1}U_i\to U_i\) sia un fibrato banale in \(\ctTop/U_i\). Equivalentemente, un fibrato è localmente banale se per ogni punto \(x\in X\) esiste un aperto \(U_x\) tale che \(p|_x : p^{-1}U_x\to U_x\) sia banale, cioè \(p^{-1}U_x\) è omeomorfo a \(U_x\times A_x\) per qualche \(A_x\in\ctTop_0\).
+		\item i \emph{fibrati localmente banali}, ossia gli oggetti \(p \colon E\to X\) di \(\ctTop/X\) con la proprietà che esiste un ricoprimento aperto \(\{U_i\}\) di \(X\) tale che \(p|_i \colon p^{-1}U_i\to U_i\) sia un fibrato banale in \(\ctTop/U_i\). Equivalentemente, un fibrato è localmente banale se per ogni punto \(x\in X\) esiste un aperto \(U_x\) tale che \(p|_x \colon p^{-1}U_x\to U_x\) sia banale, cioè \(p^{-1}U_x\) è omeomorfo a \(U_x\times A_x\) per qualche \(A_x\in\ctTop_0\).
 	\end{itemize}
 	La sottocategoria \(\cate{Fib}/X\) dei fibrati sopra \(X\) è piena in \(\ctTop/X\). La sottocategoria dei \emph{rivestimenti} sopra \(X\), dove le fibre generiche sopra i punti \(x\in X\) sono spazi discreti, trova interessanti applicazioni in topologia algebrica.
 \end{example}
 \begin{example}[Spazi affini]\label{ex_affini}\index{Categoria!--- degli spazi affini}
 	Consideriamo la categoria \(\ctVect[k]\) degli spazi vettoriali su un campo \(k\); a partire dall'incubo \(\ctVect[k]/k\) definiamo la categoria \(\ctA\) come segue:
 	\begin{itemize}
-		\item gli oggetti sono mappe lineari \emph{suriettive} \(A : V\to k\);
+		\item gli oggetti sono mappe lineari \emph{suriettive} \(A \colon V\to k\);
 		\item le frecce sono le stesse di \(\ctVect[k]/k\).
 	\end{itemize}
 	Ogni oggetto di \(\ctA\) determina uno spazio affine (non vuoto) modellato su \(k\) ottenuto considerando lo spazio vettoriale \(A_0 = \ker A\) la cui somma di vettori agisce in maniera transitiva sull'insieme di punti \(A_1 \defeq  A^{-1}(1_k)\) (\(0_k,1_k\) sono rispettivamente l'elemento neutro additivo e quello moltiplicativo del campo \(k\)).
@@ -543,8 +543,8 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 \begin{definition}\label{def_cat_frecce}\index{Categoria!--- delle frecce}
 	Data una categoria \(\ctC\), la \emph{categoria delle frecce} (o \emph{dei morfismi}) di \(\ctC\), denotata \(\ctC^\to\), ha
 	\begin{itemize}
-		\item come oggetti, le frecce \(f:A\to B\) di \(\ctC\);
-		\item come frecce \(f\to f'\), coppie di frecce \(p:A\to A'\) e \(q:B\to B'\) che fanno commutare il seguente quadrato,
+		\item come oggetti, le frecce \(f\colon A\to B\) di \(\ctC\);
+		\item come frecce \(f\to f'\), coppie di frecce \(p\colon A\to A'\) e \(q\colon B\to B'\) che fanno commutare il seguente quadrato,
 		      \[
 			      \begin{tikzcd}
 				      A \ar{r}{f} \ar{d}{p} & B \ar{d}{q} \\
@@ -565,7 +565,7 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 				      B && C
 			      \end{tikzcd}
 		      \]
-		\item Come frecce \((f,g)\to (f',g')\), triple di frecce \(p:A\to A'\), \(q:B\to B'\) e \(r:C\to C'\) che fanno commutare il seguente diagramma,
+		\item Come frecce \((f,g)\to (f',g')\), triple di frecce \(p\colon A\to A'\), \(q\colon B\to B'\) e \(r\colon C\to C'\) che fanno commutare il seguente diagramma,
 		      \begin{equation}
 			      \begin{tikzcd}[row sep=small]
 				      & A \ar{dd}{p} \ar{dl}[swap]{f} \ar{dr}{g} \\
@@ -587,7 +587,7 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 				      & C
 			      \end{tikzcd}
 		      \]
-		\item Come frecce \((p,q,r):(f,g)\to (f',g')\), triple di frecce \(p:A\to A'\), \(q:B\to B'\) e \(r:C\to C'\) che fanno commutare il seguente diagramma,
+		\item Come frecce \((p,q,r)\colon(f,g)\to (f',g')\), triple di frecce \(p\colon A\to A'\), \(q\colon B\to B'\) e \(r\colon C\to C'\) che fanno commutare il seguente diagramma,
 		      \[
 			      \begin{tikzcd}[row sep=small]
 				      X \ar{dd}{p} \ar{dr}{f} && Y \ar{dd}{q} \ar{dl}[swap]{g} \\
@@ -600,8 +600,8 @@ Un esempio più raffinato, sullo stesso spirito del precedente, è il seguente.
 	\end{itemize}
 	Un'altra definizione possibile è quella della categoria \(\Hom{\ctCospan_\ctC}(X,Y)\) di cospanne \emph{a estremi fissati} \(X\) e \(Y\), che ha
 	\begin{itemize}
-		\item per oggetti le cospanne	\(\pair fg : X\xto{f} C\xot{g} Y\) in \(\ctC\),
-		\item per frecce tra cospanne	\(\pair fg : X\to C\leftarrow Y\) e \(\pair{f'}{g'} : X\to C'\leftarrow Y\) le frecce \(r : C\to C'\) di \(\ctC\) tali che \(r\cmp f = f'\) e \(r\cmp g=g'\), cioè tali che il diagramma
+		\item per oggetti le cospanne	\(\pair fg \colon X\xto{f} C\xot{g} Y\) in \(\ctC\),
+		\item per frecce tra cospanne	\(\pair fg \colon X\to C\leftarrow Y\) e \(\pair{f'}{g'} \colon X\to C'\leftarrow Y\) le frecce \(r \colon C\to C'\) di \(\ctC\) tali che \(r\cmp f = f'\) e \(r\cmp g=g'\), cioè tali che il diagramma
 		      \[\xymatrix@R=1mm{
 			      &C\ar[dd]_r & \\
 			      X \ar[dr]_{f'}\ar[ur]^f&& Y\ar[ul]_g\ar[dl]^{g'}\\
@@ -620,7 +620,7 @@ Chi legge rifletta su questa domanda: la categoria \(\ctCospan(\ctC)\) è \(\ctS
 		      \begin{itemize}
 			      \item se \(X,Y\in\ctC_0\), \(\Hom{(\ctC\star\ctD)}(X,Y)=\Hom{\ctC}(X,Y)\);
 			      \item se \(X,Y\in\ctD_0\), \(\Hom{(\ctC\star\ctD)}(X,Y)=\Hom{\ctD}(X,Y)\);
-			      \item se \(X\in\ctC_0\) e \(Y\in\ctD_0\), esiste un'unica freccia \(u_{XY} : X \squig Y\); questa unica freccia si chiama l'\emph{eteromorfismo} che connette \(X\) e \(Y\);
+			      \item se \(X\in\ctC_0\) e \(Y\in\ctD_0\), esiste un'unica freccia \(u_{XY} \colon X \squig Y\); questa unica freccia si chiama l'\emph{eteromorfismo} che connette \(X\) e \(Y\);
 			      \item se \(X\in\ctD_0\) e \(Y\in\ctC_0\), \(\Hom{(\ctC\star\ctD)}(X,Y)\) è vuoto.
 		      \end{itemize}
 	\end{itemize}
@@ -729,13 +729,13 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
 		      \end{quote}
 		      (Questa proprietà afferma che \(\infty\) è un oggetto \emph{iniziale} di \(\ctC^\lhd\).)
 	\end{itemize}
-	Si osservi che ci sono inclusioni ovvie \(i^\rhd : \ctC \subset \ctC^\rhd\) e \(i^\lhd : \ctC \subset \ctC^\lhd\) ottenute mandando un oggetto \(C \in\ctC_0\) nell'oggetto \(C\) di \(\ctC_0 + \{\pm\infty\}\).
+	Si osservi che ci sono inclusioni ovvie \(i^\rhd \colon \ctC \subset \ctC^\rhd\) e \(i^\lhd \colon \ctC \subset \ctC^\lhd\) ottenute mandando un oggetto \(C \in\ctC_0\) nell'oggetto \(C\) di \(\ctC_0 + \{\pm\infty\}\).
 \end{definition}
 \begin{definition}[Categoria delle frecce ritorte]\label{def_cat_frecce_ritorte}\index{Categoria!--- delle frecce ritorte}
 	Data una categoria \(\ctC\), la \emph{categoria delle frecce ritorte} di \(\ctC\), denotata \(\ctTw(\ctC)\), è la categoria che ha
 	\begin{itemize}
-		\item come oggetti, le frecce	\(f : A \to B\) di \(\ctC\), denotate \([A,B;f]\);
-		\item come frecce \((u,v) : [A,B;f]\leftrightarrows [X,Y;g]\) le coppie \(v : B\to Y\) e \(u : X \to A\) di frecce di \(\ctC\) tali che il quadrato
+		\item come oggetti, le frecce	\(f \colon A \to B\) di \(\ctC\), denotate \([A,B;f]\);
+		\item come frecce \((u,v) \colon [A,B;f]\leftrightarrows [X,Y;g]\) le coppie \(v \colon B\to Y\) e \(u \colon X \to A\) di frecce di \(\ctC\) tali che il quadrato
 		      \[
 			      \begin{tikzcd}
 				      A \ar{d}[swap]{f} & X \ar{l}[swap]{u} \ar{d}{g} \\
@@ -744,7 +744,7 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
 		      \]
 		      sia commutativo, ossia tali che \(f\cmp u = v\cmp g\).
 	\end{itemize}
-	L'identità è chiaramente \((\id_A,\id_B) : [A,b;f] \leftrightarrows [A,B;f]\); la composizione è definita incollando i quadrati
+	L'identità è chiaramente \((\id_A,\id_B) \colon [A,b;f] \leftrightarrows [A,B;f]\); la composizione è definita incollando i quadrati
 	\[
 		\begin{tikzcd}
 			A \ar{d}[swap]{f} & X \ar{l}[swap]{u} \ar{d}{g} & Z \ar{d}{h}\ar{l}[swap]{u'} \\
@@ -807,11 +807,11 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
 	\caption{La ragione dietro la terminologia `freccia ritorta' per la Definizione \ref{def_cat_frecce_ritorte} è che le sue frecce si possono pensare come quadrati commutativi dove il dominio orizzontale \(u\) è stato ruotato di mezzo giro.}
 \end{figure}
 \begin{esercizi}
-	\item Sia \(\ctC\) una categoria, \(X\in\ctC_0\) un oggetto, \(f : A\to X\) una freccia: dimostrare che il doppio incubo \((\ctC/X)/f\) è un incubo di \(\ctC\) (su quale oggetto?). Questa `riduzione' di un incubo iterato resta vera per l'incubo della succuba \((A/\ctC)/f\), per \(f/(\ctC/X)\), e per \(f/(A/\ctC)\)?
-	\item Un \emph{segmento binario} \((n_0,n_1,t,H)\) consiste di una coppia di interi positivi \(n_0 \le n_1\),con una funzione suriettiva e monotòna \(t : [n_1] \to [n_0]\), e un sottoinsieme \(H\subseteq [n_0]\). Un omomorfismo tra segmenti binari \((n_0,n_1,t,H) \to (n_0',n_1',t',H')\) consiste di una coppia \((f_0,f_1)\) dove
+	\item Sia \(\ctC\) una categoria, \(X\in\ctC_0\) un oggetto, \(f \colon A\to X\) una freccia: dimostrare che il doppio incubo \((\ctC/X)/f\) è un incubo di \(\ctC\) (su quale oggetto?). Questa `riduzione' di un incubo iterato resta vera per l'incubo della succuba \((A/\ctC)/f\), per \(f/(\ctC/X)\), e per \(f/(A/\ctC)\)?
+	\item Un \emph{segmento binario} \((n_0,n_1,t,H)\) consiste di una coppia di interi positivi \(n_0 \le n_1\),con una funzione suriettiva e monotòna \(t \colon [n_1] \to [n_0]\), e un sottoinsieme \(H\subseteq [n_0]\). Un omomorfismo tra segmenti binari \((n_0,n_1,t,H) \to (n_0',n_1',t',H')\) consiste di una coppia \((f_0,f_1)\) dove
 	\begin{itemize}
-		\item \(f_1 : [n_1] \to [n_1']\) è una funzione iniettiva e monotòna;
-		\item \(f_0 : [n_0] \to [n_0']\) è una funzione monotòna;
+		\item \(f_1 \colon [n_1] \to [n_1']\) è una funzione iniettiva e monotòna;
+		\item \(f_0 \colon [n_0] \to [n_0']\) è una funzione monotòna;
 		\item il diagramma
 		      \[\begin{tikzcd}
 				      {[n_1]}\ar[r, "t"]\ar[d, hook, "{f_1}"'] & {[n_0]} \ar[d, "f_0"]\\
