@@ -980,15 +980,116 @@ perché si chiamano limiti?
 \end{theorem}
 Il teorema di struttura è molto utile nel decomporre un limite o colimite di forma complessa in un co/equalizzatore di mappe tra co/prodotti, o in un prodotto fibrato o somma amalgamata, ad esempio...
 \begin{example}
-	Nella terminologia di \ref{}, si consideri un 3-turcasso \(\turk[3]\defeq\xymatrix{0 \ar[r] \ar@<.5em>[r]\ar@<-.5em>[r]& 1}\); un \emph{triqualizzatore} in una categoria \(\ctC\) è il limite di un diagramma \(D\turk[3] \fun\ctC\) che quindi è della forma
+	Nella terminologia di \ref{ex_cat_turcasso}, si consideri come dominio di un diagramma un 3-turcasso \(\turk[3]\); un \emph{triqualizzatore} in una categoria \(\ctC\) è il limite di un diagramma \(D\colon \turk[3] \fun\ctC\), che quindi è della forma
 	\[\xymatrix{X \ar[r]|-g \ar@<.5em>[r]^-f \ar@<-.5em>[r]_-h& Y}\]
-	per certe frecce \(f,g,h\colon X\to Y\) in \(\ctC\).
-
-	La proprietà universale di un triqualizzatore si enuncia come segue:
-	\Todo{}
-	Il triqualizzatore di \(f,g,h\) è esprimibile come \emph{equa}lizzatore di una coppia di frecce in \(\ctC\), nel modo che segue:
-	\Todo{}
+	per tre frecce parallele \(f,g,h\colon X\to Y\) in \(\ctC\). La punta del cono limite è un oggetto $\eq_3(f,g,h)\in\ctC_0$, con una freccia $e_3 \colon \eq_3(f,g,h) \to X$ e la proprietà che
+\begin{itemize}
+	\item $f\cmp e_3 = g\cmp e_3 = h\cmp e_3$;
+	\item per ogni $z \colon Z \to X$ tale che $f\cmp z = g\cmp z = h\cmp z$, esiste un'unica $\bar z \colon Z \to \eq_3(f,g,h)$ tale che $z = e_3\cmp \bar z$.
+\end{itemize}
+	In virtù di \ref{}, il triqualizzatore di \(f,g,h\) è esprimibile come \emph{equa}lizzatore di una coppia di frecce in \(\ctC\), precisamente si ha 
+	\[\eq_3(f,g,h) \cong \eq\Bigl( 
+	\xymatrix@C=2cm{
+		X\times Y \ar@<.3em>[r]^-{\bkt{\pi_Y,\pi_Y,\pi_Y}}\ar@<-.3em>[r]_{\bkt{f\cmp\pi_X,g\cmp\pi_X,h\cmp\pi_X}} & Y\times Y \times Y
+	}	
+	\Bigr)\]
+	dove come di consueto indichiamo $\bkt{u,v,w}$ la freccia $\pair u{\pair vw}=\pair{\pair uv}w$.
+	
+	C'è però una maniera più diretta di ottenerlo mediante la combinazione di due equalizzatori e di un prodotto fibrato: consideriamo il diagramma 
+% https://q.uiver.app/#q=WzAsNixbMSwxLCJYIl0sWzIsMSwiWSJdLFswLDAsIlQiXSxbMSwwLCJFJyJdLFswLDEsIkUiXSxbMSwyLCJZIl0sWzIsMywicCJdLFszLDAsImVfMiJdLFs0LDAsImVfMSIsMl0sWzIsNCwicSIsMl0sWzAsMSwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMCw1LCJoIiwwLHsib2Zmc2V0IjotMX1dLFswLDUsImciLDIseyJvZmZzZXQiOjF9XSxbMCwxLCJnIiwyLHsib2Zmc2V0IjoxfV0sWzIsMCwiciIsMV1d
+\[\begin{tikzcd}[ampersand replacement=\&]
+	T=\pull E{E'}X \& {E'} \\
+	E \& X \& Y \\
+	\& Y
+	\arrow["p", from=1-1, to=1-2]
+	\arrow["q"', from=1-1, to=2-1]
+	\arrow["r"{description}, from=1-1, to=2-2]
+	\arrow["{e_2}", from=1-2, to=2-2]
+	\arrow["{e_1}"', from=2-1, to=2-2]
+	\arrow["f", shift left, from=2-2, to=2-3]
+	\arrow["g"', shift right, from=2-2, to=2-3]
+	\arrow["h", shift left, from=2-2, to=3-2]
+	\arrow["g"', shift right, from=2-2, to=3-2]
+\end{tikzcd}\]
+	dove $(E,e_1)$ è l'equalizzatore della coppia $(f,g)$, e $(E',e_2)$ è l'equalizzatore della coppia $(g,h)$, e il quadrato è un prodotto fibrato. Dimostriamo che $(T,r)$, dove $r = e_1\cmp q=e_2\cmp p$ è il triqualizzatore di $(f,g,h)$: innanzitutto, 
+	\begin{align*}
+		\underline{f\cmp r} &= f\cmp e_1\cmp q \\ 
+		&=g\cmp e_1\cmp q \\ 
+		&=\underline{g\cmp r}\\
+		&=g\cmp e_2\cmp p \\ 
+		&=h\cmp e_2\cmp p \\ 
+		&=\underline{h\cmp r}.
+	\end{align*}
+	Se ora supponiamo che esista $z\colon Z \to X$ tale che $f\cmp z=g\cmp z=h\cmp z$, $z$ equalizza sia la coppia $(f,g)$ (e allora $z=e_1\cmp \bar z_1$ per un'unica $z_1$) sia la coppia $(g,h)$ (e allora $z=e_2\cmp \bar z_2$ per un'unica $z_2$); quindi 
+	\[e_1\cmp \bar z_1=z=e_2\cmp \bar z_2\]
+	cosa che implica che la coppia $\pair{z_1}{z_2} : Z \to E\times E'$ fattorizzi lungo il prodotto fibrato $\pull E{E'}X=T$. La costruzione è rappresentata, un passaggio alla volta, nel diagramma in Figura \ref{fig_triqual_construzia}.
 \end{example}
+\begin{figure}
+\begin{minipage}{0.33\textwidth}
+  % https://q.uiver.app/#q=WzAsMyxbMSwwLCJYIl0sWzIsMCwiWSJdLFswLDAsIkUiXSxbMiwwLCJlXzEiLDJdLFswLDEsImYiLDAseyJvZmZzZXQiOi0xfV0sWzAsMSwiZyIsMix7Im9mZnNldCI6MX1dXQ==
+\[\begin{tikzcd}[ampersand replacement=\&]
+	E \& X \& Y
+	\arrow["{e_1}"', from=1-1, to=1-2]
+	\arrow["f", shift left, from=1-2, to=1-3]
+	\arrow["g"', shift right, from=1-2, to=1-3]
+\end{tikzcd}\]
+\end{minipage}%
+\begin{minipage}{0.33\textwidth}
+  % https://q.uiver.app/#q=WzAsNSxbMSwxLCJYIl0sWzIsMSwiWSJdLFswLDEsIkUiXSxbMSwwLCJFJyJdLFsxLDIsIlkiXSxbMiwwLCJlXzEiLDIseyJjb2xvdXIiOlswLDAsNjldfSxbMCwwLDY5LDFdXSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMSwiY29sb3VyIjpbMCwwLDY5XX0sWzAsMCw2OSwxXV0sWzAsMSwiZyIsMix7Im9mZnNldCI6MSwiY29sb3VyIjpbMCwwLDY5XX0sWzAsMCw2OSwxXV0sWzMsMF0sWzAsNCwiaCIsMCx7Im9mZnNldCI6LTF9XSxbMCw0LCJnIiwyLHsib2Zmc2V0IjoxfV1d
+\[\begin{tikzcd}[ampersand replacement=\&]
+	\& {E'} \\
+	\color{gray!50}E \& X \& \color{gray!50}Y \\
+	\& Y
+	\arrow[from=1-2, to=2-2]
+	\arrow["{e_1}"', color=gray!50, from=2-1, to=2-2]
+	\arrow["f", shift left, color=gray!50, from=2-2, to=2-3]
+	\arrow["g"', shift right, color=gray!50, from=2-2, to=2-3]
+	\arrow["h", shift left, from=2-2, to=3-2]
+	\arrow["g"', shift right, from=2-2, to=3-2]
+\end{tikzcd}\]
+\end{minipage}%
+\begin{minipage}{0.33\textwidth}
+% https://q.uiver.app/#q=WzAsNixbMSwxLCJYIl0sWzIsMSwiWSJdLFswLDEsIkUiXSxbMSwwLCJFJyJdLFsxLDIsIlkiXSxbMCwwLCJUIl0sWzIsMCwiZV8xIiwyXSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMX1dLFswLDEsImciLDIseyJvZmZzZXQiOjF9XSxbMywwXSxbMCw0LCJoIiwwLHsib2Zmc2V0IjotMX1dLFswLDQsImciLDIseyJvZmZzZXQiOjF9XSxbNSwzXSxbNSwyXSxbNSwwLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+\[\begin{tikzcd}[ampersand replacement=\&]
+	T \& {E'} \\
+	E \& X \& \color{gray!50}Y \\
+	\& \color{gray!50}Y
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow["{e_1}"', from=2-1, to=2-2]
+	\arrow["f", color=gray!50,shift left, from=2-2, to=2-3]
+	\arrow["g"', color=gray!50,shift right, from=2-2, to=2-3]
+	\arrow["h", color=gray!50,shift left, from=2-2, to=3-2]
+	\arrow["g"', color=gray!50,shift right, from=2-2, to=3-2]
+\end{tikzcd}\]
+\end{minipage}%
+% \begin{minipage}{0.5\textwidth}
+%   % https://q.uiver.app/#q=WzAsNyxbMiwyLCJYIl0sWzMsMiwiWSJdLFsxLDIsIkUiXSxbMiwxLCJFJyJdLFsyLDMsIlkiXSxbMSwxLCJUIl0sWzAsMCwiWiJdLFsyLDAsImVfMSIsMl0sWzAsMSwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMCwxLCJnIiwyLHsib2Zmc2V0IjoxfV0sWzMsMF0sWzAsNCwiaCIsMCx7Im9mZnNldCI6LTF9XSxbMCw0LCJnIiwyLHsib2Zmc2V0IjoxfV0sWzUsM10sWzUsMl0sWzUsMCwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV0sWzYsMywiel8yIiwwLHsiY3VydmUiOi0xfV0sWzYsMiwiel8xIiwyLHsiY3VydmUiOjF9XSxbNiw1LCJ6X1QiXV0=
+% \[\begin{tikzcd}[ampersand replacement=\&]
+% 	Z \\
+% 	\& T \& {E'} \\
+% 	\& E \& X \& Y \\
+% 	\&\& Y
+% 	\arrow["{z_T}", from=1-1, to=2-2]
+% 	\arrow["{z_2}", curve={height=-6pt}, from=1-1, to=2-3]
+% 	\arrow["{z_1}"', curve={height=6pt}, from=1-1, to=3-2]
+% 	\arrow[from=2-2, to=2-3]
+% 	\arrow[from=2-2, to=3-2]
+% 	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-2, to=3-3]
+% 	\arrow[from=2-3, to=3-3]
+% 	\arrow["{e_1}"', from=3-2, to=3-3]
+% 	\arrow["f", shift left, from=3-3, to=3-4]
+% 	\arrow["g"', shift right, from=3-3, to=3-4]
+% 	\arrow["h", shift left, from=3-3, to=4-3]
+% 	\arrow["g"', shift right, from=3-3, to=4-3]
+% \end{tikzcd}\]
+% \end{minipage}
+% \end{center}
+\caption{Costruzione del triqualizzatore di tre frecce $f,g,h$ in termini di due equalizzatori e un prodotto fibrato. Si provi a dimostrare, per esercizio, il fatto ovvio che l'equalizzatore di $(f,g,g)$ coincide con l'equalizzatore di $(f,g)$.}
+\label{fig_triqual_construzia}
+\end{figure}
 \begin{example}
 	Prodotto fibrato `ampio'
 \end{example}
