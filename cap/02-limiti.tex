@@ -371,7 +371,7 @@ Il resto del capitolo è occupato dalla teoria generale dei (co)limiti: teoremi 
 	\item \label{ex_21_4}
 	\item \label{ex_21_5}
 \end{esercizi}
-\section{Prodotti e somme in \(\ctSet\)}
+\section{Prodotti e somme (in \(\ctSet\) e in categorie concrete)}
 Le operazioni insiemistiche di somma e prodotto sono già state impiegate diverse volte nel capitolo \ref{chap_cat_fun_nat} in una versione intuitiva, che dopotutto è quella con cui sono state introdotte in algebra o analisi; lo scopo di questa prima sezione è `ristrutturarle' in prospettiva categoriale, e descriverle come primi importanti esempi di costruzioni universali. Nel dover dimostrare le proprietà di unicità per insiemi e funzioni, ci avvarremo del principio di estensionalità per le funzioni, che è un assioma di ZF(C) (dunque implicito nelle nostre assunzioni di base): due funzioni	\(f,g \colon A\to B\) sono uguali se e solo se sono uguali le immagini \(f(a),g(a)\) per ogni \(a\in A\). In questo modo, quando si dovrà dimostrare che una certa funzione di insiemi \(f \colon A\to B\) è l'unica con una certa proprietà \(\mathcal{P}\), dimostreremo che, se \(g \colon A \to B\) è un'altra funzione con la proprietà \(\mathcal{P}\), allora \(f(a)=g(a)\) per ogni \(a\in A\).
 \subsection{Prodotti in \(\ctSet\)}\label{prod_in_Set}
 Per produrre un \emph{prodotto Cartesiano} \(A\times B\), viene costruito un insieme di coppie ordinate di elementi presi da due \emph{fattori}  \(A,B\). Come ogni insieme, \(A\times B\) è caratterizzato da quali sono i suoi elementi. Le regole di `introduzione' di un tipo/insieme permettono di costruire un suo elemento a partire da dati più semplici; le regole di `eliminazione' lo destrutturano nelle sue componenti; una o più regole di `computazione' prescrivono il modo in cui introduzione ed eliminazione si annullano a vicenda.
@@ -381,7 +381,7 @@ Per produrre un \emph{prodotto Cartesiano} \(A\times B\), viene costruito un ins
 		A\times B= \{\pair ab \mid a\in A, b\in B\}
 	\]
 	Per chi è familiare con questa nomenclatura, \(A\times B\) è il `tipo' i cui `termini' sono destrutturabili come coppie: le seguenti `frazioni'
-	\[\frac{t : A\times B}{\pi_A\, t : A}\qquad \frac{t : A\times B}{\pi_B\, t : B}\qquad \frac{a : A\quad b : B}{\pair ab : A\times B}\qquad \frac{t : A\times B}{t = \pair{\pi_A\, t}{\pi_B\, t}}\]
+	\[\frac{t \in A\times B}{\pi_A\, t \in A}\qquad \frac{t \in A\times B}{\pi_B\, t \in B}\qquad \frac{a \in A\quad b \in B}{\pair ab \in A\times B}\qquad \frac{t \in A\times B}{t = \pair{\pi_A\, t}{\pi_B\, t}}\]
 	si leggono come deduzioni (supponendo che <numeratore>, allora <denominatore>), e dicono quattro cose:
 	\begin{itemize}
 		\item ogni volta che viene dato un elemento \(t \colon A\times B\), si ottiene un elemento \(\pi_A t\) la `prima componente di \(t\)';
@@ -547,20 +547,38 @@ I primi corsi di algebra hanno presentato diverse classi di strutture algebriche
 	\item
 	\item
 \end{esercizi}
-\section{Equalizzatori e coequalizzatori in \(\ctSet\)}
-Una ulteriore costruzione insiemistica che vogliamo esaminare è quella di un \emph{insieme quoziente}. Il punto di partenza, in questo caso, è una relazione di equivalenza \(R\) su un insieme \(S\), ovvero una relazione \(R\subseteq S\times S\) che sia riflessiva, simmetrica e transitiva. L'insieme quoziente, di solito denotato \(S/R\), è l'insieme delle \emph{classi di equivalenza}:
+\section{Equalizzatori e coequalizzatori (in \(\ctSet\) e in categorie concrete)}
+\subsection{Equalizzatori}
+\Todo{}
+\subsection{Coequalizzatori}
+Una costruzione che si può esprimere come un colimite in $\ctSet$ è quella di un \emph{insieme quoziente}. Il punto di partenza, in questo caso, è una \emph{relazione di equivalenza} \(R\) su un insieme \(S\), ovvero una relazione \(R\subseteq S\times S\) che sia riflessiva, simmetrica e transitiva. 
+
+Data una relazione di equivalenza su $S$, si può costruire l'insieme quoziente, di solito denotato \(S/R\), come insieme delle \emph{classi di equivalenza}:
 \[
 	S/R=\{[s]_R\mid s\in S\}
 \]
+dove \([s]_R=\{y\in S\mid sRy\}=\{x\in S\mid xRs\}\). Questo insieme è dotato di una funzione
+\[\dmFun{q_R}{S}{S/R}\]
+definita da \(q_R(s)=[s]_R\) (cosicché per ogni $t\in S/R$, $q_R^{-1}(t)$ sia precisamente un elemento della partizione determinata da $\{\{y\in S\mid sRy\}\mid y\in S\}$); come in altri casi già esaminati, anche la
+% Anche in questo caso, come per il prodotto, l'insieme che abbiamo definito ci racconta solo una parte della storia. Infatti, perché \(S/R\) sia considerato un quoziente di \(S\), bisogna tenere traccia di come i suoi elementi rappresentino quelli di \(S\). In altre parole, è necessario specificare una funzione \(q_R\colon S\to S/R\),  chiamata proiezione canonica sul quoziente. Nel caso in esame, avremo \(q_R(s)=[s]_R\), per ogni elemento \(s\in S\). La 
+coppia \((S/R, q_R)\) gode di una proprietà caratterizzante (universale) che può essere formulata in termini diagrammatici.
 
-dove \([s]_R=\{s'\in S\mid sRs'\}\). Anche in questo caso, come per il prodotto, l'insieme che abbiamo definito ci racconta solo una parte della storia. Infatti, perché \(S/R\) sia considerato un quoziente di \(S\), bisogna tenere traccia di come i suoi elementi rappresentino quelli di \(S\). In altre parole, è necessario specificare una funzione \(q_R\colon S\to S/R\),  chiamata proiezione canonica sul quoziente. Nel caso in esame, avremo \(q_R(s)=[s]_R\), per ogni elemento \(s\in S\). La coppia \((S/R, q_R\colon S\to S/R)\) gode anch'essa di una proprietà caratterizzante che può essere formulata in termini di soli insiemi e funzioni; vediamo come.  Se chiamiamo \(i\) la funzione inclusione di \(R\) in \(S\times  S\), possiamo definire due nuove funzioni \(r_1=\pi_A\cmp i\) e \(r_2=\pi_B\cmp i\):
-\[
-	r_1, r_2\colon R\to S
-\]
-Allora, \(s R s'\) se, e solo se, esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\); e dunque, \(q_R(s)=q_R(s')\) se, e solo se, esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\).
+Chiamiamo \(i\colon R\subseteq S\times S\) l'inclusione; allora possiamo definire due nuove funzioni \(r_1=\pi_1\cmp i\) e \(r_2=\pi_2\cmp i\) di tipo \(r_1,r_2\colon R\to S\), e \(s R s'\) se e solo se esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\); e dunque, \(q_R(s)=q_R(s')\) se e solo se esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\).
 
-Si osservi che \(q_R\cmp r_1=q_R\cmp r_2 \), ossia \(q_R\) \emph{equalizza} \(r_1\) e \(r_2\). Di più. Con un linguaggio che impareremo a utilizzare in questo capitolo, affermiamo che la coppia \((S/R,q_R\colon S\to S/R)\) \emph{è universale rispetto a questa proprietà}, cioè, per ogni altra coppia \((X,f\colon S\to X)\) tale che  \(f\cmp r_1=f\cmp r_2 \), esiste un'unica funzione \(\bar f\colon S/R\to X\) tale che \(\bar f\cmp q_R= f\). Si noti che questa funzione \(\bar f\) non è altro che la funzione \(f\) definita sulle classi, i.e.\ \(\bar f([s]_R)= f(s)\). Nel linguaggio matematico corrente si dice che \(f\) \emph{passa al quoziente}, mentre la condizione imposta corrisponde al fatto che \(f\) sia ben definita sulle classi di equivalenza di \(R\).
+Si osservi che \(q_R\cmp r_1=q_R\cmp r_2\), ossia \(q_R\) \emph{coequalizza} \(r_1\) e \(r_2\); inoltre, la coppia \((S/R,q_R)\) è universale rispetto a questa proprietà, cioè, per ogni altra coppia \((X,f\colon S\to X)\) tale che \(f\cmp r_1=f\cmp r_2 \), esiste un'unica funzione \(\bar f\colon S/R\to X\) tale che \(\bar f\cmp q_R= f\):% Si noti che questa funzione \(\bar f\) non è altro che la funzione \(f\) definita sulle classi, i.e.\ \(\bar f([s]_R)= f(s)\). Nel linguaggio matematico corrente si dice che \(f\) \emph{passa al quoziente}, mentre la condizione imposta corrisponde al fatto che \(f\) sia ben definita sulle classi di equivalenza di \(R\).
+diciamo che $f : S\to X$ è `costante sulle $R$-classi' se \(f\cmp r_1=f\cmp r_2 \), ossia se quando $xRy$, si ha che $f(x)=f(y)$; allora, se $f \colon S\to X$ è costante sulle $R$-classi, $\bar f\colon S/R \to X$ definita da \(\bar f([s])= f(s)\) è una funzione (se $[s]=[s']$ per due elementi diversi ma tali che $\pair s{s'}\in R$, $\bar f[s]=\bar f[s']$ siccome $f$ è costante sulle $R$-classi). Abbiamo enunciato e dimostrato il 
+\begin{theorem}[Primo teorema di isomorfismo per insiemi]
+	Sia $f : S\to X$ una funzione, $R\subseteq S\times S$ una relazione di equivalenza su $S$; se $f$ è costante sulle $R$-classi, esiste un'unica funzione $\bar f : S/R \to X$ con la proprietà che $\bar f[s]=f(s)$ per ogni $s\in S$; cioè, esiste un'unica funzione $\bar f$ che fa commutare il triangolo 
+	\[\xymatrix{
+		S \ar[d]_{q_R}\ar[r]^-f & X \\ 
+		S/R\ar@{.>}[ur]_-{\bar f}
+	}\]
+\end{theorem}
 \Todo{}
+\begin{remark}
+	Il primo teorema di isomorfismo per insiemi si può rifrasare convenientemente nel linguaggio degli pseudoinsiemi (o insiemi di Bishop, si veda \ref{ex_cat_pseudoinsiemi}): in notazioni simili alle precedenti, ogni $f \colon S\to X$ definisce su $S$ una relazione di equivalenza $R_f$, ponendo $s R_f s'$ se e solo se $f(s)=f(s')$; in altre parole, la partizione di $S$ a cui $R_f$ è equivalente è fatta dalle fibre $f^{-1}x$ al variare di $x\in X$, oppure, equivalentemente, $R_f \defeq (f\times f)^{-1}\Delta_X$ dove $\Delta_X = \{(x,x)\mid x\in X\}$ è la relazione diagonale. Allora, $f$ è costante sulle $R$-classi se e solo se $R\subseteq R_f$, se e solo se $f \colon S\to X$ si promuove a un omomorfismo di pseudoinsiemi
+	\[\dmFun{f}{(S,R)}{(X,\Delta_X).}\]
+\end{remark}
 \subsection{Equalizzatori e coequalizzatori in categorie `concrete'}
 \begin{esercizi}
 	\item
@@ -569,7 +587,7 @@ Si osservi che \(q_R\cmp r_1=q_R\cmp r_2 \), ossia \(q_R\) \emph{equalizza} \(r_
 	\item
 	\item
 \end{esercizi}
-\section{Teoria elementare di prodotti e somme}
+\section{Teoria elementare di prodotti, somme, equalizzatori, coequalizzatori}
 \Todo{}
 % La descrizione del prodotto di due insiemi data in \ref{prod_in_Set} si presta a essere generalizzata a una generica categoria.
 % \begin{definition}
@@ -812,6 +830,8 @@ Si osservi che \(q_R\cmp r_1=q_R\cmp r_2 \), ossia \(q_R\) \emph{equalizza} \(r_
 	\item
 \end{esercizi}
 \section{Altre forme di limiti e colimiti}
+Lo scopo di questa sezione è generalizzare le costruzioni date precedentemente a limiti e colimiti di forma diversa da prodotti, somme, equalizzatori e coequalizzatori.
+
 Iniziamo coi prodotti di taglia arbitraria (piccola):
 
 esempi grandi: in Set, Top, k-Vect, gruppi, anelli etc., Cat, e molte altre categorie del cap 1
