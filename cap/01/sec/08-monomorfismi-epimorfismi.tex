@@ -921,11 +921,11 @@ Un esempio è chiaramente \(\ctX=\ctTerm\); uno più eclatante, perché \(\ctX\)
 \begin{example}[Monoide grafico e grafi riflessivi]\label{monoide_grafico}\index{Categoria!equivalenza di ---e}\index{Equivalenza!--- di categorie}
 	Siano \(\ctC\) e \(\ctD\) le categorie	definite come segue:
 	\begin{itemize}
-		\item \(\ctC=\susp{G}\) dove \(G=\{1,x_1,x_2\}\) è il monoide presentato dalla tavola di moltiplicazione in \ref{fig_monoide_grfico}; seguendo \ref{exa_azioni_funtori} la categoria \(\Hom{\ctCat}(\ctC^\op,\ctSet)\) dunque è la categoria delle azioni (sinistre) di monoide \(G^\op\times X \to X\). Si noti che gli elementi non identità di \(G\) sono \emph{costanti}, cioè vale che \(x_ix_j=x_i\) per ogni \(i,j\): in particolare \(x_1,x_2\) sono entrambi idempotenti (quando \(i=j\)). Ancora più in particolare, il fatto che \(x_1,x_2\) sono costanti implica l'\emph{identità grafica}: per ogni \(x,y\in G\) si ha \(xyx=xy\),	che si ottiene, ovviamente, moltiplicando per \(x\) a sinistra l'equazione \(yx=y\). Lawvere chiama \emph{categorie grafiche} quelle dove ogni monoide \(\ctC(X,X)\), come in \ref{lem_end_monoide}, soddisfa l'identità grafica (e \emph{monoidi grafici} le categorie grafiche con un solo oggetto). Si noti che un'azione sinistra di \((\susp G)^\op\) è un'azione \emph{destra} di \(G\) su un insieme, quindi in \(G^\op\) si ha che \(x_1,x_2\) sono `co-costanti':
+		\item \(\ctC=\susp{G}\) dove \(G=\{1,x_1,x_2\}\) è il monoide presentato dalla tavola di moltiplicazione in \ref{fig_monoide_grfico}; seguendo \ref{exa_azioni_funtori} la categoria \(\Hom{\ctCat}(\ctC^\op,\ctSet)\) dunque è la categoria delle azioni (sinistre) di monoide \(G^\op\times X \to X\). Si noti che gli elementi non identità di \(G\) sono \emph{costanti}, cioè vale che \(x_ix_j=x_i\) per ogni \(i,j\): in particolare \(x_1,x_2\) sono entrambi idempotenti (quando \(i=j\)). Ancora più in particolare, il fatto che \(x_1,x_2\) sono costanti implica l'\emph{identità grafica}: per ogni \(x,y\in G\) si ha \(xyx=xy\),	che si ottiene, ovviamente, moltiplicando per \(x\) a sinistra l'equazione \(yx=y\). Lawvere chiama \emph{categorie grafiche} quelle dove ogni monoide \(\ctC(X,X)\), come in \ref{lem_end_monoide}, soddisfa l'identità grafica (e \emph{monoidi grafici} le categorie grafiche con un solo oggetto). In più, un'azione sinistra di \((\susp G)^\op\) è un'azione \emph{destra} di \(G\) su un insieme, quindi in \(G^\op\) si ha che \(x_1,x_2\) sono `co-costanti':
 		      \[\text{per ogni } i,j : x_i\cdot^\op x_j \defeq  x_j \cdot x_i = x_j\]
 		\item \(\ctD\) è la categoria
 		      \(\big\{\xymatrix{\texttt{0} \ar@<.4em>[r]^-\sigma\ar@<-.4em>[r]_-\tau & \texttt{1}\ar[l]|j}\big\}\)
-		      dove (a parte le identità) ci sono tre frecce \(\sigma,\tau,j\) tali che \(j\cmp \sigma = j\cmp \tau = \id_0\); in parole, \(\sigma,\tau\) hanno \(j\) come retrazione comune. Si tratta della categoria opposta a quella di \ref{filtr_setacciata}. Un funtore \(F \colon \ctD^\op \fun \ctSet\) è un grafo riflessivo, come definito in \ref{ex_grafi_riflessivi}.
+		      dove (a parte le identità) ci sono tre frecce \(\sigma,\tau,j\) tali che \(j\cmp \sigma = j\cmp \tau = \id_0\); in parole, \(\sigma,\tau\) hanno \(j\) come \emph{retrazione} comune. Si tratta della categoria opposta a quella di \ref{filtr_setacciata}. Un funtore \(F \colon \ctD^\op \fun \ctSet\) è un grafo riflessivo, come definito in \ref{ex_grafi_riflessivi}.
 	\end{itemize}
 	\color{red} Queste due categorie sono equivalenti. Diamo un'idea della dimostrazione (che è un utile, sebbene complesso, esercizio): prestando attenzione al lato della moltiplicazione, una rappresentazione del monoide \(G\) definito sopra consiste di una coppia di funzioni
 	\[\xymatrix{
@@ -933,7 +933,9 @@ Un esempio è chiaramente \(\ctX=\ctTerm\); uno più eclatante, perché \(\ctX\)
 		}\]
 	tali che per ogni \(x,y\in\{s,t\}\) si abbia \(y\circ x=y\); cioè vale
 	\[s\cmp s = s,\quad t\cmp t=t,\quad t\cmp s=s,\quad s\cmp t=t\]
-	Ma allora gli elementi di \(X\) si possono pensare come frecce di un grafo diretto, \(sx \xto x tx\), e valgono delle relazioni informali del tipo
+	in parole, $s,t$ sono entrambi idempotenti, e co-costanti. 
+	
+	Stante questo, gli elementi di \(X\) si possono pensare come frecce di un grafo diretto, \(sx \xto x tx\), e valgono delle relazioni informali del tipo
 	\begin{align*}
 		s\big(sx \xto x tx\big) & =ssx \xto{sx} stx =sx \xto{sx} sx \\
 		t\big(sx \xto x tx\big) & =tsx \xto{sx} ttx =tx \xto{tx} tx
