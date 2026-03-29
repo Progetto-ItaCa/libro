@@ -464,8 +464,8 @@ In sintesi, abbiamo enunciato e dimostrato la
 			      }\]
 		      esiste un unico omomorfismo di spanne denotato \(\pair fg\)	che rende commutativo il diagramma
 		      \[\xymatrix{
-				      & X \ar@{.>}[d] \ar[dl]_f \ar[dr]^g\\
-				      A & A\times B \ar[r]_{p_2}\ar[l]^{p_1}& B
+			      & X \ar@{.>}[d]|{\pair fg} \ar[dl]_f \ar[dr]^g\\
+			      A & A\times B \ar[r]_{p_2}\ar[l]^{p_1}& B
 			      }\]
 		\item (proprietà universale mediante rappresentabilità) Per ogni \(X\), la funzione
 		      \[\xymatrix@R=0cm{
@@ -478,31 +478,45 @@ In sintesi, abbiamo enunciato e dimostrato la
 \begin{remark}
 	È probabile che questi argomenti risultino persino troppo pedanti per chi legge; tuttavia, ragionare in questi termini è il cuore della teoria delle proprietà universali, che `si dimostrano tutte allo stesso modo'. Ancorare la tecnica di dimostrazione a un esempio estremamente banale è uno strumento pedagogico che permette di non oscurare la tecnica	con i dettagli specifici di una costruzione più complessa (che andrebbe capita e motivata\dots).
 \end{remark}
-Altrettanto probabilmente, chi legge avrà intuito che c'è una somiglianza tra il modo di ragionare appena descritto, e il contenuto di \ref{init_ha_solo_id}; questa non è una coincidenza.
+Altrettanto probabilmente, chi legge avrà intuito che c'è una somiglianza tra il modo di ragionare appena descritto, e il contenuto di \ref{init_ha_solo_id}; questa non è una coincidenza. La dimostrazione del seguente fatto consiste nel notare che le due condizioni di \ref{rmk_prodotto} sono esattamente le condizioni che rendono \(P\) un oggetto terminale.
 \begin{proposition}
-	Si rammenti la definizione della categoria \(\ctSpan(A,B)\) in \ref{}, che ha
+	Si rammenti la definizione della categoria \(\ctSpan(A,B)\) in \ref{}, delle spanne di insiemi, che ha
 	\begin{itemize}
-		\item per oggetti le spanne di insiemi $\xymatrix{ A & X \ar[r]^-r \ar[l]_-l & B }$;
+		\item per oggetti i diagrammi \(\xymatrix{ A & X \ar[r]^-r \ar[l]_-l & B }\);
 		\item per frecce le funzioni \(f \colon X\to Y\) che rendono commutativi i diagrammi
 		      \[\xymatrix{
 			      X\ar[dr]_f \ar[r]^-l\ar[d]_r & A \\
 			      B & Y. \ar[l]^-{r'}\ar[u]_-{l'}
 			      }\]
 	\end{itemize}
-	Allora, un insieme \(P\) fa parte di un diagramma prodotto $\xymatrix{
-			A & P \ar[r]\ar[l]& B
-		}$ se e solo se è un oggetto terminale di \(\ctSpan(A,B)\).
+	Un oggetto \(\xymatrix{ A & P \ar[r]\ar[l]& B }\) è allora terminale in \(\ctSpan(A,B)\) se e solo se \(P\) è un prodotto Cartesiano di \(A\) e \(B\).
 \end{proposition}
 Siamo pronti per enunciare la proprietà universale del prodotto (di due oggetti) in una categoria \(\ctC\); seguiranno molti esempi di prodotti binari nelle categorie definite nel capitolo precedente, così come diversi controesempi che mostrano come alcune categorie non abbiano prodotti, o non li abbiano per ogni coppia di oggetti. La sezione \ref{} si occuperà di tracciare le prime conseguenze della definizione, e le sue proprietà elementari.
 \begin{definition}[Prodotto binario in \(\ctC\)]
 	Sia \(\ctC\) una categoria e \(A,B\in\ctC_0\) due oggetti. Un oggetto \(P\) di \(\ctC\) è un prodotto di \(A\) e \(B\) se una delle seguenti condizioni equivalenti è soddisfatta:
 	\begin{enumtag}{pd}
-		\item unica freccia nel diagramma baumiao
-		\item rappresentabilità
-		\item oggetto terminale di baumiao
+		\item per ogni diagramma \(A \xot{z_A} Z \xto{z_B} B\), esiste un'unica freccia \(\pair{z_A}{z_B} \colon Z\to P\)	che rende commutativi i due triangoli del diagramma
+		\[\xymatrix{
+			& Z \ar@{.>}[d]|{\pair{z_A}{z_B}} \ar[dl]_{z_A}\ar[dr]^{z_B}\\
+			A & P \ar[r]^{p_2}\ar[l]_{p_1} & B
+			}\]
+		\item la spanna \(\xymatrix{
+			A & P \ar[r]\ar[l]& B
+		}\) è un oggetto terminale in \(\ctSpan_\ctC(A,B)\) (la categoria delle spanne di \(\ctC\) tra \(A\) e \(B\) definita in \ref{});
+		\item l'oggetto	\(P\) rappresenta (nel senso di \ref{}) il funtore \(\varpi_{AB}=\Hom{\ctC}(\blank,A)\times\Hom{\ctC}(\blank,B) \colon \ctC^\op \to \ctSet\) che manda \(X\) in \(\Hom{\ctC}(X,A)\times\Hom{\ctC}(X,B)\).
 	\end{enumtag}
 \end{definition}
-Diciamo che \(\ctC\) `ha prodotti' o è una categoria con prodotti se per ogni \(A,B\in\ctC_0\) esiste un prodotto \(A\times B\).
+\begin{remark}[Alcune osservazioni sulla nozione generale di prodotto]
+	Se una qualsiasi di queste condizioni	è soddisfatta, si dice che \(P\) è un prodotto di \(A\) e \(B\), e si denota con \(A\times B\).
+
+	Diciamo che \(\ctC\) `ha prodotti' o è una categoria con prodotti se per ogni \(A,B\in\ctC_0\) esiste un prodotto \(A\times B\).
+
+	Si osservi che la terza condizione sembra non fare menzione della spanna di apice \(P\); in realtà però la sua esistenza è implicata dalla condizione di rappresentabilità: se \(P\) rappresenta il funtore \(\Hom{\ctC}(\blank,A)\times\Hom{\ctC}(\blank,B)\), allora esiste una biiezione naturale
+	\[\alpha_P : \Hom{\ctC}(P,P)\cong\Hom{\ctC}(P,A)\times\Hom{\ctC}(P,B)\]
+	e l'immagine di \(\id_P\) mediante \(\alpha_P\) consta di due frecce \(p_1 \colon P\to A\) e \(p_2 \colon P\to B\), che rendono \(P\) un prodotto di \(A\) e \(B\) secondo la prima condizione. Questa è semplicemente una maniera di rifrasare il fatto che l'oggetto \((P,p_1,p_2)\) è terminale nella categoria degli elementi di \(\varpi_{AB}\), come definita in \ref{}, che coincide esattamente con \(\ctSpan_\ctC(A,B)\).
+
+	Considerazioni del tutto analoghe saranno valide per la nozione generale di limite, che sarà definita in \ref{}; considerazioni del tutto analoghe, dualizzate, saranno valide per la nozione generale di colimite, che sarà definita in \ref{}.
+\end{remark}
 \subsection{Prodotti in altre categorie `concrete'}
 I primi corsi di algebra hanno presentato diverse classi di strutture algebriche come monoidi, gruppi, anelli, e a volte reticoli algebrici, grafi, etc.; in ciascuna di queste strutture esiste una nozione di prodotto tra due oggetti, che è caratterizzata da una proprietà universale del tutto analoga a quella del prodotto Cartesiano di insiemi. Cioè: il prodotto di due gruppi (o anelli, spazi vettoriali, reticoli, grafi\dots) \(G\) e \(H\) si definisce ponendo sul prodotto Cartesiano \(G\times H\) degli insiemi sottostanti una operazione componente per componente, non perché questa definizione sia ovvia, ma perché è l'unica che soddisfa la giusta proprietà universale.
 \begin{hExample}[Prodotti in categorie di insiemi strutturati]{fund}
@@ -510,20 +524,17 @@ I primi corsi di algebra hanno presentato diverse classi di strutture algebriche
 	\begin{itemize}
 		\item Il prodotto di due gruppi \(G,H\) si costruisce ponendo sul prodotto Cartesiano \(G\times H\) la moltiplicazione definita componente per componente,
 		      \[(g,h) \cdot_{G\times H} (g',h') \defeq (g\cdot_G g', h\cdot_H h');\]
-		      l'identità è ovviamente \((1_G,1_H)\), l'inverso di \((g,h)\) è \((g^{-1},h^{-1})\). Similmente si procede per definire il prodotto di due gruppi abeliani, di due spazi vettoriali \(V,W\), di due anelli
-		\item \Todo{}
+		      l'identità è ovviamente \((1_G,1_H)\), l'inverso di \((g,h)\) è \((g^{-1},h^{-1})\). Similmente si procede per definire il prodotto di due gruppi abeliani, di due spazi vettoriali \(V,W\), di due anelli, et cetera, fino al punto che è facile sospettare ci sia un teorema generale che afferma che in ogni categoria di modelli di una segnatura algebrica (come in \ref{}), il prodotto di due modelli	\(A\) e \(B\) si costruisce ponendo sul prodotto Cartesiano (fatto in \(\ctSet\)) dei loro supporti, una struttura definita componente per componente. Questo è vero.
 		\item \Todo{}
 		\item \Todo{}
 	\end{itemize}
 \end{hExample}
-\begin{hExample}{fund}
-	Prodotti nella categoria degli spazi topologici\Todo{}
+\begin{hExample}[Prodotti nella categoria degli spazi topologici]{fund}
 \end{hExample}
-\begin{hExample}{fund}
-	Prodotti in categorie di insiemi ordinati\Todo{}
+\begin{hExample}[Prodotti in categorie di insiemi ordinati]{fund}
 \end{hExample}
-\begin{hExample}{fund}
-	Prodotti in categorie della forma \(\presh\ctC\)\Todo{}
+\begin{hExample}[Prodotti in categorie della forma \(\presh\ctC\)]{fund}
+	\Todo{e in particolare nelle categorie di funtori che hanno una presentazione `concreta', come i grafi diretti.}
 \end{hExample}
 \Todo{}
 \Todo{Sottolineare che in ciascuna di queste il prodotto soddisfa la stessa proprietà universale che sarà enunciata con precisione in \ref{}}
@@ -546,32 +557,32 @@ I primi corsi di algebra hanno presentato diverse classi di strutture algebriche
 \subsection{Equalizzatori}
 \Todo{}
 \subsection{Coequalizzatori}
-Una costruzione che si può esprimere come un colimite in $\ctSet$ è quella di un \emph{insieme quoziente}. Il punto di partenza, in questo caso, è una \emph{relazione di equivalenza} \(R\) su un insieme \(S\), ovvero una relazione \(R\subseteq S\times S\) che sia riflessiva, simmetrica e transitiva. 
+Una costruzione che si può esprimere come un colimite in \(\ctSet\) è quella di un \emph{insieme quoziente}. Il punto di partenza, in questo caso, è una \emph{relazione di equivalenza} \(R\) su un insieme \(S\), ovvero una relazione \(R\subseteq S\times S\) che sia riflessiva, simmetrica e transitiva.
 
-Data una relazione di equivalenza su $S$, si può costruire l'insieme quoziente, di solito denotato \(S/R\), come insieme delle \emph{classi di equivalenza}:
+Data una relazione di equivalenza su \(S\), si può costruire l'insieme quoziente, di solito denotato \(S/R\), come insieme delle \emph{classi di equivalenza}:
 \[
 	S/R=\{[s]_R\mid s\in S\}
 \]
 dove \([s]_R=\{y\in S\mid sRy\}=\{x\in S\mid xRs\}\). Questo insieme è dotato di una funzione
 \[\dmFun{q_R}{S}{S/R}\]
-definita da \(q_R(s)=[s]_R\) (cosicché per ogni $t\in S/R$, $q_R^{-1}(t)$ sia precisamente un elemento della partizione determinata da $\{\{y\in S\mid sRy\}\mid y\in S\}$); come in altri casi già esaminati, anche la
+definita da \(q_R(s)=[s]_R\) (cosicché per ogni \(t\in S/R\), \(q_R^{-1}(t)\) sia precisamente un elemento della partizione determinata da \(\{\{y\in S\mid sRy\}\mid y\in S\}\)); come in altri casi già esaminati, anche la
 % Anche in questo caso, come per il prodotto, l'insieme che abbiamo definito ci racconta solo una parte della storia. Infatti, perché \(S/R\) sia considerato un quoziente di \(S\), bisogna tenere traccia di come i suoi elementi rappresentino quelli di \(S\). In altre parole, è necessario specificare una funzione \(q_R\colon S\to S/R\),  chiamata proiezione canonica sul quoziente. Nel caso in esame, avremo \(q_R(s)=[s]_R\), per ogni elemento \(s\in S\). La 
 coppia \((S/R, q_R)\) gode di una proprietà caratterizzante (universale) che può essere formulata in termini diagrammatici.
 
 Chiamiamo \(i\colon R\subseteq S\times S\) l'inclusione; allora possiamo definire due nuove funzioni \(r_1=\pi_1\cmp i\) e \(r_2=\pi_2\cmp i\) di tipo \(r_1,r_2\colon R\to S\), e \(s R s'\) se e solo se esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\); e dunque, \(q_R(s)=q_R(s')\) se e solo se esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\).
 
 Si osservi che \(q_R\cmp r_1=q_R\cmp r_2\), ossia \(q_R\) \emph{coequalizza} \(r_1\) e \(r_2\); inoltre, la coppia \((S/R,q_R)\) è universale rispetto a questa proprietà, cioè, per ogni altra coppia \((X,f\colon S\to X)\) tale che \(f\cmp r_1=f\cmp r_2 \), esiste un'unica funzione \(\bar f\colon S/R\to X\) tale che \(\bar f\cmp q_R= f\):% Si noti che questa funzione \(\bar f\) non è altro che la funzione \(f\) definita sulle classi, i.e.\ \(\bar f([s]_R)= f(s)\). Nel linguaggio matematico corrente si dice che \(f\) \emph{passa al quoziente}, mentre la condizione imposta corrisponde al fatto che \(f\) sia ben definita sulle classi di equivalenza di \(R\).
-diciamo che $f : S\to X$ è `costante sulle $R$-classi' se \(f\cmp r_1=f\cmp r_2 \), ossia se quando $xRy$, si ha che $f(x)=f(y)$; allora, se $f \colon S\to X$ è costante sulle $R$-classi, $\bar f\colon S/R \to X$ definita da \(\bar f([s])= f(s)\) è una funzione (se $[s]=[s']$ per due elementi diversi ma tali che $\pair s{s'}\in R$, $\bar f[s]=\bar f[s']$ siccome $f$ è costante sulle $R$-classi). Abbiamo enunciato e dimostrato il 
+diciamo che \(f \colon S\to X\) è `costante sulle \(R\)-classi' se \(f\cmp r_1=f\cmp r_2 \), ossia se quando \(xRy\), si ha che \(f(x)=f(y)\); allora, se \(f \colon S\to X\) è costante sulle \(R\)-classi, \(\bar f\colon S/R \to X\) definita da \(\bar f([s])= f(s)\) è una funzione (se \([s]=[s']\) per due elementi diversi ma tali che \(\pair s{s'}\in R\), \(\bar f[s]=\bar f[s']\) siccome \(f\) è costante sulle \(R\)-classi). Abbiamo enunciato e dimostrato il
 \begin{theorem}[Primo teorema di isomorfismo per insiemi]
-	Sia $f : S\to X$ una funzione, $R\subseteq S\times S$ una relazione di equivalenza su $S$; se $f$ è costante sulle $R$-classi, esiste un'unica funzione $\bar f : S/R \to X$ con la proprietà che $\bar f[s]=f(s)$ per ogni $s\in S$; cioè, esiste un'unica funzione $\bar f$ che fa commutare il triangolo 
+	Sia \(f \colon S\to X\) una funzione, \(R\subseteq S\times S\) una relazione di equivalenza su \(S\); se \(f\) è costante sulle \(R\)-classi, esiste un'unica funzione \(\bar f \colon S/R \to X\) con la proprietà che \(\bar f[s]=f(s)\) per ogni \(s\in S\); cioè, esiste un'unica funzione \(\bar f\) che fa commutare il triangolo
 	\[\xymatrix{
-		S \ar[d]_{q_R}\ar[r]^-f & X \\ 
+		S \ar[d]_{q_R}\ar[r]^-f & X \\
 		S/R\ar@{.>}[ur]_-{\bar f}
-	}\]
+		}\]
 \end{theorem}
 \Todo{}
 \begin{remark}
-	Il primo teorema di isomorfismo per insiemi si può rifrasare convenientemente nel linguaggio degli pseudoinsiemi (o insiemi di Bishop, si veda \ref{ex_cat_pseudoinsiemi}): in notazioni simili alle precedenti, ogni $f \colon S\to X$ definisce su $S$ una relazione di equivalenza $R_f$, ponendo $s R_f s'$ se e solo se $f(s)=f(s')$; in altre parole, la partizione di $S$ a cui $R_f$ è equivalente è fatta dalle fibre $f^{-1}x$ al variare di $x\in X$, oppure, equivalentemente, $R_f \defeq (f\times f)^{-1}\Delta_X$ dove $\Delta_X = \{(x,x)\mid x\in X\}$ è la relazione diagonale. Allora, $f$ è costante sulle $R$-classi se e solo se $R\subseteq R_f$, se e solo se $f \colon S\to X$ si promuove a un omomorfismo di pseudoinsiemi
+	Il primo teorema di isomorfismo per insiemi si può rifrasare convenientemente nel linguaggio degli pseudoinsiemi (o insiemi di Bishop, si veda \ref{ex_cat_pseudoinsiemi}): in notazioni simili alle precedenti, ogni \(f \colon S\to X\) definisce su \(S\) una relazione di equivalenza \(R_f\), ponendo \(s R_f s'\) se e solo se \(f(s)=f(s')\); in altre parole, la partizione di \(S\) a cui \(R_f\) è equivalente è fatta dalle fibre \(f^{-1}x\) al variare di \(x\in X\), oppure, equivalentemente, \(R_f \defeq (f\times f)^{-1}\Delta_X\) dove \(\Delta_X = \{(x,x)\mid x\in X\}\) è la relazione diagonale. Allora, \(f\) è costante sulle \(R\)-classi se e solo se \(R\subseteq R_f\), se e solo se \(f \colon S\to X\) si promuove a un omomorfismo di pseudoinsiemi
 	\[\dmFun{f}{(S,R)}{(X,\Delta_X).}\]
 \end{remark}
 \subsection{Equalizzatori e coequalizzatori in categorie `concrete'}
@@ -997,113 +1008,113 @@ Il teorema di struttura è molto utile nel decomporre un limite o colimite di fo
 \begin{example}
 	Nella terminologia di \ref{ex_cat_turcasso}, si consideri come dominio di un diagramma un 3-turcasso \(\turk[3]\); un \emph{triqualizzatore} in una categoria \(\ctC\) è il limite di un diagramma \(D\colon \turk[3] \fun\ctC\), che quindi è della forma
 	\[\xymatrix{X \ar[r]|-g \ar@<.5em>[r]^-f \ar@<-.5em>[r]_-h& Y}\]
-	per tre frecce parallele \(f,g,h\colon X\to Y\) in \(\ctC\). La punta del cono limite è un oggetto $\eq_3(f,g,h)\in\ctC_0$, con una freccia $e_3 \colon \eq_3(f,g,h) \to X$ e la proprietà che
-\begin{itemize}
-	\item $f\cmp e_3 = g\cmp e_3 = h\cmp e_3$;
-	\item per ogni $z \colon Z \to X$ tale che $f\cmp z = g\cmp z = h\cmp z$, esiste un'unica $\bar z \colon Z \to \eq_3(f,g,h)$ tale che $z = e_3\cmp \bar z$.
-\end{itemize}
-	In virtù di \ref{}, il triqualizzatore di \(f,g,h\) è esprimibile come \emph{equa}lizzatore di una coppia di frecce in \(\ctC\), precisamente si ha 
-	\[\eq_3(f,g,h) \cong \eq\Bigl( 
-	\xymatrix@C=2cm{
-		X\times Y \ar@<.3em>[r]^-{\bkt{\pi_Y,\pi_Y,\pi_Y}}\ar@<-.3em>[r]_{\bkt{f\cmp\pi_X,g\cmp\pi_X,h\cmp\pi_X}} & Y\times Y \times Y
-	}	
-	\Bigr)\]
-	dove come di consueto indichiamo $\bkt{u,v,w}$ la freccia $\pair u{\pair vw}=\pair{\pair uv}w$.
-	
-	C'è però una maniera più diretta di ottenerlo mediante la combinazione di due equalizzatori e di un prodotto fibrato: consideriamo il diagramma 
-% https://q.uiver.app/#q=WzAsNixbMSwxLCJYIl0sWzIsMSwiWSJdLFswLDAsIlQiXSxbMSwwLCJFJyJdLFswLDEsIkUiXSxbMSwyLCJZIl0sWzIsMywicCJdLFszLDAsImVfMiJdLFs0LDAsImVfMSIsMl0sWzIsNCwicSIsMl0sWzAsMSwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMCw1LCJoIiwwLHsib2Zmc2V0IjotMX1dLFswLDUsImciLDIseyJvZmZzZXQiOjF9XSxbMCwxLCJnIiwyLHsib2Zmc2V0IjoxfV0sWzIsMCwiciIsMV1d
-\[\begin{tikzcd}[ampersand replacement=\&]
-	T=\pull E{E'}X \& {E'} \\
-	E \& X \& Y \\
-	\& Y
-	\arrow["p", from=1-1, to=1-2]
-	\arrow["q"', from=1-1, to=2-1]
-	\arrow["r"{description}, from=1-1, to=2-2]
-	\arrow["{e_2}", from=1-2, to=2-2]
-	\arrow["{e_1}"', from=2-1, to=2-2]
-	\arrow["f", shift left, from=2-2, to=2-3]
-	\arrow["g"', shift right, from=2-2, to=2-3]
-	\arrow["h", shift left, from=2-2, to=3-2]
-	\arrow["g"', shift right, from=2-2, to=3-2]
-\end{tikzcd}\]
-	dove $(E,e_1)$ è l'equalizzatore della coppia $(f,g)$, e $(E',e_2)$ è l'equalizzatore della coppia $(g,h)$, e il quadrato è un prodotto fibrato. Dimostriamo che $(T,r)$, dove $r = e_1\cmp q=e_2\cmp p$ è il triqualizzatore di $(f,g,h)$: innanzitutto, 
+	per tre frecce parallele \(f,g,h\colon X\to Y\) in \(\ctC\). La punta del cono limite è un oggetto \(\eq_3(f,g,h)\in\ctC_0\), con una freccia \(e_3 \colon \eq_3(f,g,h) \to X\) e la proprietà che
+	\begin{itemize}
+		\item \(f\cmp e_3 = g\cmp e_3 = h\cmp e_3\);
+		\item per ogni \(z \colon Z \to X\) tale che \(f\cmp z = g\cmp z = h\cmp z\), esiste un'unica \(\bar z \colon Z \to \eq_3(f,g,h)\) tale che \(z = e_3\cmp \bar z\).
+	\end{itemize}
+	In virtù di \ref{}, il triqualizzatore di \(f,g,h\) è esprimibile come \emph{equa}lizzatore di una coppia di frecce in \(\ctC\), precisamente si ha
+	\[\eq_3(f,g,h) \cong \eq\Bigl(
+		\xymatrix@C=2cm{
+			X\times Y \ar@<.3em>[r]^-{\bkt{\pi_Y,\pi_Y,\pi_Y}}\ar@<-.3em>[r]_{\bkt{f\cmp\pi_X,g\cmp\pi_X,h\cmp\pi_X}} & Y\times Y \times Y
+		}
+		\Bigr)\]
+	dove come di consueto indichiamo \(\bkt{u,v,w}\) la freccia \(\pair u{\pair vw}=\pair{\pair uv}w\).
+
+	C'è però una maniera più diretta di ottenerlo mediante la combinazione di due equalizzatori e di un prodotto fibrato: consideriamo il diagramma
+	% https://q.uiver.app/#q=WzAsNixbMSwxLCJYIl0sWzIsMSwiWSJdLFswLDAsIlQiXSxbMSwwLCJFJyJdLFswLDEsIkUiXSxbMSwyLCJZIl0sWzIsMywicCJdLFszLDAsImVfMiJdLFs0LDAsImVfMSIsMl0sWzIsNCwicSIsMl0sWzAsMSwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMCw1LCJoIiwwLHsib2Zmc2V0IjotMX1dLFswLDUsImciLDIseyJvZmZzZXQiOjF9XSxbMCwxLCJnIiwyLHsib2Zmc2V0IjoxfV0sWzIsMCwiciIsMV1d
+	\[\begin{tikzcd}[ampersand replacement=\&]
+			T=\pull E{E'}X \& {E'} \\
+			E \& X \& Y \\
+			\& Y
+			\arrow["p", from=1-1, to=1-2]
+			\arrow["q"', from=1-1, to=2-1]
+			\arrow["r"{description}, from=1-1, to=2-2]
+			\arrow["{e_2}", from=1-2, to=2-2]
+			\arrow["{e_1}"', from=2-1, to=2-2]
+			\arrow["f", shift left, from=2-2, to=2-3]
+			\arrow["g"', shift right, from=2-2, to=2-3]
+			\arrow["h", shift left, from=2-2, to=3-2]
+			\arrow["g"', shift right, from=2-2, to=3-2]
+		\end{tikzcd}\]
+	dove \((E,e_1)\) è l'equalizzatore della coppia \((f,g)\), e \((E',e_2)\) è l'equalizzatore della coppia \((g,h)\), e il quadrato è un prodotto fibrato. Dimostriamo che \((T,r)\), dove \(r = e_1\cmp q=e_2\cmp p\) è il triqualizzatore di \((f,g,h)\): innanzitutto,
 	\begin{align*}
-		\underline{f\cmp r} &= f\cmp e_1\cmp q \\ 
-		&=g\cmp e_1\cmp q \\ 
-		&=\underline{g\cmp r}\\
-		&=g\cmp e_2\cmp p \\ 
-		&=h\cmp e_2\cmp p \\ 
-		&=\underline{h\cmp r}.
+		\underline{f\cmp r} & = f\cmp e_1\cmp q     \\
+		                    & =g\cmp e_1\cmp q      \\
+		                    & =\underline{g\cmp r}  \\
+		                    & =g\cmp e_2\cmp p      \\
+		                    & =h\cmp e_2\cmp p      \\
+		                    & =\underline{h\cmp r}.
 	\end{align*}
-	Se ora supponiamo che esista $z\colon Z \to X$ tale che $f\cmp z=g\cmp z=h\cmp z$, $z$ equalizza sia la coppia $(f,g)$ (e allora $z=e_1\cmp \bar z_1$ per un'unica $z_1$) sia la coppia $(g,h)$ (e allora $z=e_2\cmp \bar z_2$ per un'unica $z_2$); quindi 
+	Se ora supponiamo che esista \(z\colon Z \to X\) tale che \(f\cmp z=g\cmp z=h\cmp z\), \(z\) equalizza sia la coppia \((f,g)\) (e allora \(z=e_1\cmp \bar z_1\) per un'unica \(z_1\)) sia la coppia \((g,h)\) (e allora \(z=e_2\cmp \bar z_2\) per un'unica \(z_2\)); quindi
 	\[e_1\cmp \bar z_1=z=e_2\cmp \bar z_2\]
-	cosa che implica che la coppia $\pair{z_1}{z_2} : Z \to E\times E'$ fattorizzi lungo il prodotto fibrato $\pull E{E'}X=T$. La costruzione è rappresentata, un passaggio alla volta, nel diagramma in Figura \ref{fig_triqual_construzia}.
+	cosa che implica che la coppia \(\pair{z_1}{z_2} \colon Z \to E\times E'\) fattorizzi lungo il prodotto fibrato \(\pull E{E'}X=T\). La costruzione è rappresentata, un passaggio alla volta, nel diagramma in Figura \ref{fig_triqual_construzia}.
 \end{example}
 \begin{figure}
-\begin{minipage}{0.33\textwidth}
-  % https://q.uiver.app/#q=WzAsMyxbMSwwLCJYIl0sWzIsMCwiWSJdLFswLDAsIkUiXSxbMiwwLCJlXzEiLDJdLFswLDEsImYiLDAseyJvZmZzZXQiOi0xfV0sWzAsMSwiZyIsMix7Im9mZnNldCI6MX1dXQ==
-\[\begin{tikzcd}[ampersand replacement=\&]
-	E \& X \& Y
-	\arrow["{e_1}"', from=1-1, to=1-2]
-	\arrow["f", shift left, from=1-2, to=1-3]
-	\arrow["g"', shift right, from=1-2, to=1-3]
-\end{tikzcd}\]
-\end{minipage}%
-\begin{minipage}{0.33\textwidth}
-  % https://q.uiver.app/#q=WzAsNSxbMSwxLCJYIl0sWzIsMSwiWSJdLFswLDEsIkUiXSxbMSwwLCJFJyJdLFsxLDIsIlkiXSxbMiwwLCJlXzEiLDIseyJjb2xvdXIiOlswLDAsNjldfSxbMCwwLDY5LDFdXSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMSwiY29sb3VyIjpbMCwwLDY5XX0sWzAsMCw2OSwxXV0sWzAsMSwiZyIsMix7Im9mZnNldCI6MSwiY29sb3VyIjpbMCwwLDY5XX0sWzAsMCw2OSwxXV0sWzMsMF0sWzAsNCwiaCIsMCx7Im9mZnNldCI6LTF9XSxbMCw0LCJnIiwyLHsib2Zmc2V0IjoxfV1d
-\[\begin{tikzcd}[ampersand replacement=\&]
-	\& {E'} \\
-	\color{gray!50}E \& X \& \color{gray!50}Y \\
-	\& Y
-	\arrow[from=1-2, to=2-2]
-	\arrow["{e_1}"', color=gray!50, from=2-1, to=2-2]
-	\arrow["f", shift left, color=gray!50, from=2-2, to=2-3]
-	\arrow["g"', shift right, color=gray!50, from=2-2, to=2-3]
-	\arrow["h", shift left, from=2-2, to=3-2]
-	\arrow["g"', shift right, from=2-2, to=3-2]
-\end{tikzcd}\]
-\end{minipage}%
-\begin{minipage}{0.33\textwidth}
-% https://q.uiver.app/#q=WzAsNixbMSwxLCJYIl0sWzIsMSwiWSJdLFswLDEsIkUiXSxbMSwwLCJFJyJdLFsxLDIsIlkiXSxbMCwwLCJUIl0sWzIsMCwiZV8xIiwyXSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMX1dLFswLDEsImciLDIseyJvZmZzZXQiOjF9XSxbMywwXSxbMCw0LCJoIiwwLHsib2Zmc2V0IjotMX1dLFswLDQsImciLDIseyJvZmZzZXQiOjF9XSxbNSwzXSxbNSwyXSxbNSwwLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
-\[\begin{tikzcd}[ampersand replacement=\&]
-	T \& {E'} \\
-	E \& X \& \color{gray!50}Y \\
-	\& \color{gray!50}Y
-	\arrow[from=1-1, to=1-2]
-	\arrow[from=1-1, to=2-1]
-	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
-	\arrow[from=1-2, to=2-2]
-	\arrow["{e_1}"', from=2-1, to=2-2]
-	\arrow["f", color=gray!50,shift left, from=2-2, to=2-3]
-	\arrow["g"', color=gray!50,shift right, from=2-2, to=2-3]
-	\arrow["h", color=gray!50,shift left, from=2-2, to=3-2]
-	\arrow["g"', color=gray!50,shift right, from=2-2, to=3-2]
-\end{tikzcd}\]
-\end{minipage}%
-% \begin{minipage}{0.5\textwidth}
-%   % https://q.uiver.app/#q=WzAsNyxbMiwyLCJYIl0sWzMsMiwiWSJdLFsxLDIsIkUiXSxbMiwxLCJFJyJdLFsyLDMsIlkiXSxbMSwxLCJUIl0sWzAsMCwiWiJdLFsyLDAsImVfMSIsMl0sWzAsMSwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMCwxLCJnIiwyLHsib2Zmc2V0IjoxfV0sWzMsMF0sWzAsNCwiaCIsMCx7Im9mZnNldCI6LTF9XSxbMCw0LCJnIiwyLHsib2Zmc2V0IjoxfV0sWzUsM10sWzUsMl0sWzUsMCwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV0sWzYsMywiel8yIiwwLHsiY3VydmUiOi0xfV0sWzYsMiwiel8xIiwyLHsiY3VydmUiOjF9XSxbNiw1LCJ6X1QiXV0=
-% \[\begin{tikzcd}[ampersand replacement=\&]
-% 	Z \\
-% 	\& T \& {E'} \\
-% 	\& E \& X \& Y \\
-% 	\&\& Y
-% 	\arrow["{z_T}", from=1-1, to=2-2]
-% 	\arrow["{z_2}", curve={height=-6pt}, from=1-1, to=2-3]
-% 	\arrow["{z_1}"', curve={height=6pt}, from=1-1, to=3-2]
-% 	\arrow[from=2-2, to=2-3]
-% 	\arrow[from=2-2, to=3-2]
-% 	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-2, to=3-3]
-% 	\arrow[from=2-3, to=3-3]
-% 	\arrow["{e_1}"', from=3-2, to=3-3]
-% 	\arrow["f", shift left, from=3-3, to=3-4]
-% 	\arrow["g"', shift right, from=3-3, to=3-4]
-% 	\arrow["h", shift left, from=3-3, to=4-3]
-% 	\arrow["g"', shift right, from=3-3, to=4-3]
-% \end{tikzcd}\]
-% \end{minipage}
-% \end{center}
-\caption{Costruzione del triqualizzatore di tre frecce $f,g,h$ in termini di due equalizzatori e un prodotto fibrato. Si provi a dimostrare, per esercizio, il fatto ovvio che l'equalizzatore di $(f,g,g)$ coincide con l'equalizzatore di $(f,g)$.}
-\label{fig_triqual_construzia}
+	\begin{minipage}{0.33\textwidth}
+		% https://q.uiver.app/#q=WzAsMyxbMSwwLCJYIl0sWzIsMCwiWSJdLFswLDAsIkUiXSxbMiwwLCJlXzEiLDJdLFswLDEsImYiLDAseyJvZmZzZXQiOi0xfV0sWzAsMSwiZyIsMix7Im9mZnNldCI6MX1dXQ==
+		\[\begin{tikzcd}[ampersand replacement=\&]
+				E \& X \& Y
+				\arrow["{e_1}"', from=1-1, to=1-2]
+				\arrow["f", shift left, from=1-2, to=1-3]
+				\arrow["g"', shift right, from=1-2, to=1-3]
+			\end{tikzcd}\]
+	\end{minipage}%
+	\begin{minipage}{0.33\textwidth}
+		% https://q.uiver.app/#q=WzAsNSxbMSwxLCJYIl0sWzIsMSwiWSJdLFswLDEsIkUiXSxbMSwwLCJFJyJdLFsxLDIsIlkiXSxbMiwwLCJlXzEiLDIseyJjb2xvdXIiOlswLDAsNjldfSxbMCwwLDY5LDFdXSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMSwiY29sb3VyIjpbMCwwLDY5XX0sWzAsMCw2OSwxXV0sWzAsMSwiZyIsMix7Im9mZnNldCI6MSwiY29sb3VyIjpbMCwwLDY5XX0sWzAsMCw2OSwxXV0sWzMsMF0sWzAsNCwiaCIsMCx7Im9mZnNldCI6LTF9XSxbMCw0LCJnIiwyLHsib2Zmc2V0IjoxfV1d
+		\[\begin{tikzcd}[ampersand replacement=\&]
+				\& {E'} \\
+				\color{gray!50}E \& X \& \color{gray!50}Y \\
+				\& Y
+				\arrow[from=1-2, to=2-2]
+				\arrow["{e_1}"', color=gray!50, from=2-1, to=2-2]
+				\arrow["f", shift left, color=gray!50, from=2-2, to=2-3]
+				\arrow["g"', shift right, color=gray!50, from=2-2, to=2-3]
+				\arrow["h", shift left, from=2-2, to=3-2]
+				\arrow["g"', shift right, from=2-2, to=3-2]
+			\end{tikzcd}\]
+	\end{minipage}%
+	\begin{minipage}{0.33\textwidth}
+		% https://q.uiver.app/#q=WzAsNixbMSwxLCJYIl0sWzIsMSwiWSJdLFswLDEsIkUiXSxbMSwwLCJFJyJdLFsxLDIsIlkiXSxbMCwwLCJUIl0sWzIsMCwiZV8xIiwyXSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMX1dLFswLDEsImciLDIseyJvZmZzZXQiOjF9XSxbMywwXSxbMCw0LCJoIiwwLHsib2Zmc2V0IjotMX1dLFswLDQsImciLDIseyJvZmZzZXQiOjF9XSxbNSwzXSxbNSwyXSxbNSwwLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+		\[\begin{tikzcd}[ampersand replacement=\&]
+				T \& {E'} \\
+				E \& X \& \color{gray!50}Y \\
+				\& \color{gray!50}Y
+				\arrow[from=1-1, to=1-2]
+				\arrow[from=1-1, to=2-1]
+				\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+				\arrow[from=1-2, to=2-2]
+				\arrow["{e_1}"', from=2-1, to=2-2]
+				\arrow["f", color=gray!50,shift left, from=2-2, to=2-3]
+				\arrow["g"', color=gray!50,shift right, from=2-2, to=2-3]
+				\arrow["h", color=gray!50,shift left, from=2-2, to=3-2]
+				\arrow["g"', color=gray!50,shift right, from=2-2, to=3-2]
+			\end{tikzcd}\]
+	\end{minipage}%
+	% \begin{minipage}{0.5\textwidth}
+	%   % https://q.uiver.app/#q=WzAsNyxbMiwyLCJYIl0sWzMsMiwiWSJdLFsxLDIsIkUiXSxbMiwxLCJFJyJdLFsyLDMsIlkiXSxbMSwxLCJUIl0sWzAsMCwiWiJdLFsyLDAsImVfMSIsMl0sWzAsMSwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMCwxLCJnIiwyLHsib2Zmc2V0IjoxfV0sWzMsMF0sWzAsNCwiaCIsMCx7Im9mZnNldCI6LTF9XSxbMCw0LCJnIiwyLHsib2Zmc2V0IjoxfV0sWzUsM10sWzUsMl0sWzUsMCwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV0sWzYsMywiel8yIiwwLHsiY3VydmUiOi0xfV0sWzYsMiwiel8xIiwyLHsiY3VydmUiOjF9XSxbNiw1LCJ6X1QiXV0=
+	% \[\begin{tikzcd}[ampersand replacement=\&]
+	% 	Z \\
+	% 	\& T \& {E'} \\
+	% 	\& E \& X \& Y \\
+	% 	\&\& Y
+	% 	\arrow["{z_T}", from=1-1, to=2-2]
+	% 	\arrow["{z_2}", curve={height=-6pt}, from=1-1, to=2-3]
+	% 	\arrow["{z_1}"', curve={height=6pt}, from=1-1, to=3-2]
+	% 	\arrow[from=2-2, to=2-3]
+	% 	\arrow[from=2-2, to=3-2]
+	% 	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-2, to=3-3]
+	% 	\arrow[from=2-3, to=3-3]
+	% 	\arrow["{e_1}"', from=3-2, to=3-3]
+	% 	\arrow["f", shift left, from=3-3, to=3-4]
+	% 	\arrow["g"', shift right, from=3-3, to=3-4]
+	% 	\arrow["h", shift left, from=3-3, to=4-3]
+	% 	\arrow["g"', shift right, from=3-3, to=4-3]
+	% \end{tikzcd}\]
+	% \end{minipage}
+	% \end{center}
+	\caption{Costruzione del triqualizzatore di tre frecce \(f,g,h\) in termini di due equalizzatori e un prodotto fibrato. Si provi a dimostrare, per esercizio, il fatto ovvio che l'equalizzatore di \((f,g,g)\) coincide con l'equalizzatore di \((f,g)\).}
+	\label{fig_triqual_construzia}
 \end{figure}
 \begin{example}
 	Prodotto fibrato `ampio'
