@@ -33,6 +33,38 @@ hash:
 	echo "\\\\newcommand{\\gHash}{\\\\texttt{`git rev-parse --short HEAD`}}" > gitcommit.tex
 # 	$(MAKE) -B main.pdf
 
+# ---------------------------------------------------------------------------
+# Precompiled preamble format (the nuclear option)
+# ---------------------------------------------------------------------------
+#
+# `make fmt` compiles the full preamble (50+ packages) into itaca-dev.fmt.
+# `make fast` then loads the format instantly instead of re-parsing packages.
+
+itaca-dev.fmt: itaca.sty main.tex gitcommit.tex
+	@rm -f _includeonly.tex
+	@{ printf '\\PassOptionsToPackage{fast}{itaca}\n'; \
+	   sed '/\\begin{document}/,$$d' main.tex; \
+	   printf '\\AtBeginDocument{\\let\\printindex\\relax}\n'; \
+	   printf '\\AtBeginDocument{\\renewcommand{\\bibliography}[1]{}}\n'; \
+	   printf '\\AtBeginDocument{\\renewcommand{\\bibliographystyle}[1]{}}\n'; \
+	   printf '\\AtBeginDocument{\\let\\listoftodos\\relax}\n'; \
+	   printf '\\dump\n'; \
+	} > "$$TMPDIR/fmt-preamble.tex"
+	pdftex -ini -jobname=itaca-dev "&pdflatex" "$$TMPDIR/fmt-preamble.tex"
+
+fmt: itaca-dev.fmt
+
+# Ultra-fast single-pass build using precompiled preamble.
+# Usage: make fast                           (all chapters, ~18s)
+#        make fast CH=cap/07-fattorizzazione  (single chapter, ~1s)
+fast: itaca-dev.fmt
+	@{ test -z "$(CH)" || printf '\\includeonly{%s}\n' '$(CH_NORM)'; \
+	   sed -n '/\\begin{document}/,$$p' main.tex; \
+	} > _body.tex
+	-pdflatex -shell-escape -interaction=nonstopmode -jobname=main "&./itaca-dev" _body.tex
+
+# ---------------------------------------------------------------------------
+
 itaca.pdf: itaca.dtx
 	latexmk -shell-escape -pdf -gg $<
 
