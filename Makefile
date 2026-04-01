@@ -21,9 +21,13 @@ DEV_PRETEX = \
     \\let\\listoftodos\\relax\
   }\\relax
 
+# Normalize chapter path (strip optional .tex suffix).
+CH_NORM = $(patsubst %.tex,%,$(CH))
+
 LATEXMK_FULL = latexmk -shell-escape -pdf
-# Disable bibtex; makeindex is replaced by a no-op for speed.
-LATEXMK_DEV  = latexmk -pdf -bibtex- -e '$$makeindex = q/true/;'
+# At most 2 passes, no bibtex, makeindex no-op, nonstop, force finish.
+LATEXMK_DEV  = latexmk -f -shell-escape -pdf -interaction=nonstopmode \
+  -usepretex -bibtex- -e '$$makeindex = q/true/;' -e '$$max_repeat = 2'
 
 hash:
 	echo "\\\\newcommand{\\gHash}{\\\\texttt{`git rev-parse --short HEAD`}}" > gitcommit.tex
@@ -36,24 +40,43 @@ main.pdf: main.tex itaca.sty
 	latexmk -shell-escape -pdf main.tex
 
 dev: main.tex itaca.sty
-	texfot $(LATEXMK_DEV) -pretex="$(DEV_PRETEX)" main.tex
+	@mkdir -p tikz-cache
+	@rm -f _includeonly.tex
+	-texfot $(LATEXMK_DEV) -pretex="$(DEV_PRETEX)" main.tex
 
-# Compile a single chapter by editing main.tex's \includeonly list.
-# Usage: make chap CH=cap/02-limiti   (with or without .tex)
+# Compile a single chapter.  Writes _includeonly.tex to override the default.
+# Usage: make chap CH=cap/01/categorie   (with or without .tex)
 chap: main.tex itaca.sty
-	@test -n "$(CH)" || (echo "Usage: make chap CH=cap/02-limiti"; exit 2)
-	python3 select_includeonly.py "$(CH)"
-	texfot $(LATEXMK_DEV) -pretex="$(DEV_PRETEX)" main.tex
+	@test -n "$(CH)" || (echo "Usage: make chap CH=cap/01/categorie"; exit 2)
+	@mkdir -p tikz-cache
+	@printf '\\includeonly{%s}\n' '$(CH_NORM)' > _includeonly.tex
+	-texfot $(LATEXMK_DEV) -pretex="$(DEV_PRETEX)" main.tex
+
+# One-time: build the TikZ diagram cache (slow, but makes subsequent
+# dev builds much faster).  After this, run: make dev ITACA_DEV_OPTS=fast,externalize
+cache: main.tex itaca.sty
+	@mkdir -p tikz-cache
+	texfot $(LATEXMK_DEV) -pretex="\
+	  \\PassOptionsToPackage{fast,externalize}{itaca}\\relax\
+	  \\AtBeginDocument{\
+	    \\let\\printindex\\relax\
+	    \\renewcommand{\\bibliography}[1]{}\
+	    \\renewcommand{\\bibliographystyle}[1]{}\
+	    \\let\\listoftodos\\relax\
+	  }\\relax" main.tex
 
 watch:
 	texfot latexmk -shell-escape -pdf -pvc main.tex | grep -v "Missing character: There is no ; in font nullfont"
 
 watch-dev:
+	@mkdir -p tikz-cache
+	@rm -f _includeonly.tex
 	texfot $(LATEXMK_DEV) -pvc -pretex="$(DEV_PRETEX)" main.tex
 
 watch-chap:
-	@test -n "$(CH)" || (echo "Usage: make watch-chap CH=cap/02-limiti"; exit 2)
-	python3 select_includeonly.py "$(CH)"
+	@test -n "$(CH)" || (echo "Usage: make watch-chap CH=cap/01/categorie"; exit 2)
+	@mkdir -p tikz-cache
+	@printf '\\includeonly{%s}\n' '$(CH_NORM)' > _includeonly.tex
 	texfot $(LATEXMK_DEV) -pvc -pretex="$(DEV_PRETEX)" main.tex
 
 book:
@@ -66,6 +89,9 @@ clean:
 	texfot latexmk -C main.tex
 	texfot latexmk -C itaca.dtx
 	rm -rf *.bbl *.tdo
+
+clean-cache:
+	rm -rf tikz-cache
 
 view:
 	evince main.pdf &
