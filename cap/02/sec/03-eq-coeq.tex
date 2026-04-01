@@ -1,0 +1,40 @@
+\section{Equalizzatori e coequalizzatori (in \(\ctSet\) e in categorie concrete)}
+\subsection{Equalizzatori}
+\Todo{}
+\subsection{Coequalizzatori}
+Una costruzione che si può esprimere come un colimite in \(\ctSet\) è quella di un \emph{insieme quoziente}. Il punto di partenza, in questo caso, è una \emph{relazione di equivalenza} \(R\) su un insieme \(S\), ovvero una relazione \(R\subseteq S\times S\) che sia riflessiva, simmetrica e transitiva.
+
+Data una relazione di equivalenza su \(S\), si può costruire l'insieme quoziente, di solito denotato \(S/R\), come insieme delle \emph{classi di equivalenza}:
+\[
+	S/R=\{[s]_R\mid s\in S\}
+\]
+dove \([s]_R=\{y\in S\mid sRy\}=\{x\in S\mid xRs\}\). Questo insieme è dotato di una funzione
+\[\dmFun{q_R}{S}{S/R}\]
+definita da \(q_R(s)=[s]_R\) (cosicché per ogni \(t\in S/R\), \(q_R^{-1}(t)\) sia precisamente un elemento della partizione determinata da \(\{\{y\in S\mid sRy\}\mid y\in S\}\)); come in altri casi già esaminati, anche la
+% Anche in questo caso, come per il prodotto, l'insieme che abbiamo definito ci racconta solo una parte della storia. Infatti, perché \(S/R\) sia considerato un quoziente di \(S\), bisogna tenere traccia di come i suoi elementi rappresentino quelli di \(S\). In altre parole, è necessario specificare una funzione \(q_R\colon S\to S/R\),  chiamata proiezione canonica sul quoziente. Nel caso in esame, avremo \(q_R(s)=[s]_R\), per ogni elemento \(s\in S\). La 
+coppia \((S/R, q_R)\) gode di una proprietà caratterizzante (universale) che può essere formulata in termini diagrammatici.
+
+Chiamiamo \(i\colon R\subseteq S\times S\) l'inclusione; allora possiamo definire due nuove funzioni \(r_1=\pi_1\cmp i\) e \(r_2=\pi_2\cmp i\) di tipo \(r_1,r_2\colon R\to S\), e \(s R s'\) se e solo se esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\); e dunque, \(q_R(s)=q_R(s')\) se e solo se esiste \(t\in R\) tale che \(r_1(t)=s\) e \(r_2(t)=s'\).
+
+Si osservi che \(q_R\cmp r_1=q_R\cmp r_2\), ossia \(q_R\) \emph{coequalizza} \(r_1\) e \(r_2\); inoltre, la coppia \((S/R,q_R)\) è universale rispetto a questa proprietà, cioè, per ogni altra coppia \((X,f\colon S\to X)\) tale che \(f\cmp r_1=f\cmp r_2 \), esiste un'unica funzione \(\bar f\colon S/R\to X\) tale che \(\bar f\cmp q_R= f\):% Si noti che questa funzione \(\bar f\) non è altro che la funzione \(f\) definita sulle classi, i.e.\ \(\bar f([s]_R)= f(s)\). Nel linguaggio matematico corrente si dice che \(f\) \emph{passa al quoziente}, mentre la condizione imposta corrisponde al fatto che \(f\) sia ben definita sulle classi di equivalenza di \(R\).
+diciamo che \(f \colon S\to X\) è `costante sulle \(R\)-classi' se \(f\cmp r_1=f\cmp r_2 \), ossia se quando \(xRy\), si ha che \(f(x)=f(y)\); allora, se \(f \colon S\to X\) è costante sulle \(R\)-classi, \(\bar f\colon S/R \to X\) definita da \(\bar f([s])= f(s)\) è una funzione (se \([s]=[s']\) per due elementi diversi ma tali che \(\pair s{s'}\in R\), \(\bar f[s]=\bar f[s']\) siccome \(f\) è costante sulle \(R\)-classi). Abbiamo enunciato e dimostrato il
+\begin{theorem}[Primo teorema di isomorfismo per insiemi]
+	Sia \(f \colon S\to X\) una funzione, \(R\subseteq S\times S\) una relazione di equivalenza su \(S\); se \(f\) è costante sulle \(R\)-classi, esiste un'unica funzione \(\bar f \colon S/R \to X\) con la proprietà che \(\bar f[s]=f(s)\) per ogni \(s\in S\); cioè, esiste un'unica funzione \(\bar f\) che fa commutare il triangolo
+	\[\xymatrix{
+		S \ar[d]_{q_R}\ar[r]^-f & X \\
+		S/R\ar@{.>}[ur]_-{\bar f}
+		}\]
+\end{theorem}
+\Todo{}
+\begin{remark}
+	Il primo teorema di isomorfismo per insiemi si può rifrasare convenientemente nel linguaggio degli pseudoinsiemi (o insiemi di Bishop, si veda \ref{ex_cat_pseudoinsiemi}): in notazioni simili alle precedenti, ogni \(f \colon S\to X\) definisce su \(S\) una relazione di equivalenza \(R_f\), ponendo \(s R_f s'\) se e solo se \(f(s)=f(s')\); in altre parole, la partizione di \(S\) a cui \(R_f\) è equivalente è fatta dalle fibre \(f^{-1}x\) al variare di \(x\in X\), oppure, equivalentemente, \(R_f \defeq (f\times f)^{-1}\Delta_X\) dove \(\Delta_X = \{(x,x)\mid x\in X\}\) è la relazione diagonale. Allora, \(f\) è costante sulle \(R\)-classi se e solo se \(R\subseteq R_f\), se e solo se \(f \colon S\to X\) si promuove a un omomorfismo di pseudoinsiemi
+	\[\dmFun{f}{(S,R)}{(X,\Delta_X).}\]
+\end{remark}
+\subsection{Equalizzatori e coequalizzatori in categorie `concrete'}
+\begin{esercizi}
+	\item
+	\item
+	\item
+	\item
+	\item
+\end{esercizi}
