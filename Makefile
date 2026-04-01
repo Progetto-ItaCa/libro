@@ -9,6 +9,18 @@ itaca.sty: itaca.ins itaca.dtx
 
 ITACA_DEV_OPTS ?= fast
 
+# TeX injected before main.tex is read (keeps local builds fast).
+# - disable index + bibliography output (still OK for drafting)
+# - avoid rendering list of todos
+DEV_PRETEX = \
+  \\PassOptionsToPackage{$(ITACA_DEV_OPTS)}{itaca}\\relax\
+  \\AtBeginDocument{\
+    \\let\\printindex\\relax\
+    \\renewcommand{\\bibliography}[1]{}\
+    \\renewcommand{\\bibliographystyle}[1]{}\
+    \\let\\listoftodos\\relax\
+  }\\relax
+
 LATEXMK_FULL = latexmk -shell-escape -pdf
 # Disable bibtex; makeindex is replaced by a no-op for speed.
 LATEXMK_DEV  = latexmk -pdf -bibtex- -e '$$makeindex = q/true/;'
@@ -24,25 +36,25 @@ main.pdf: main.tex itaca.sty
 	latexmk -shell-escape -pdf main.tex
 
 dev: main.tex itaca.sty
-	texfot $(LATEXMK_DEV) -pretex="\\PassOptionsToPackage{$(ITACA_DEV_OPTS)}{itaca}\\relax" main.tex
+	texfot $(LATEXMK_DEV) -pretex="$(DEV_PRETEX)" main.tex
 
-# Compile a single chapter via \includeonly injection (no edits to main.tex).
+# Compile a single chapter by editing main.tex's \includeonly list.
 # Usage: make chap CH=cap/02-limiti   (with or without .tex)
 chap: main.tex itaca.sty
 	@test -n "$(CH)" || (echo "Usage: make chap CH=cap/02-limiti"; exit 2)
-	@CHBASE="$(CH)"; CHBASE="$${CHBASE%.tex}"; \
-	texfot $(LATEXMK_DEV) -pretex="\\includeonly{$$CHBASE}\\relax\\PassOptionsToPackage{$(ITACA_DEV_OPTS)}{itaca}\\relax" main.tex
+	python3 select_includeonly.py "$(CH)"
+	texfot $(LATEXMK_DEV) -pretex="$(DEV_PRETEX)" main.tex
 
 watch:
 	texfot latexmk -shell-escape -pdf -pvc main.tex | grep -v "Missing character: There is no ; in font nullfont"
 
 watch-dev:
-	texfot $(LATEXMK_DEV) -pvc -pretex="\\PassOptionsToPackage{$(ITACA_DEV_OPTS)}{itaca}\\relax" main.tex
+	texfot $(LATEXMK_DEV) -pvc -pretex="$(DEV_PRETEX)" main.tex
 
 watch-chap:
 	@test -n "$(CH)" || (echo "Usage: make watch-chap CH=cap/02-limiti"; exit 2)
-	@CHBASE="$(CH)"; CHBASE="$${CHBASE%.tex}"; \
-	texfot $(LATEXMK_DEV) -pvc -pretex="\\includeonly{$$CHBASE}\\relax\\PassOptionsToPackage{$(ITACA_DEV_OPTS)}{itaca}\\relax" main.tex
+	python3 select_includeonly.py "$(CH)"
+	texfot $(LATEXMK_DEV) -pvc -pretex="$(DEV_PRETEX)" main.tex
 
 book:
 	for f in cap/*.tex; do touch "${f%.tex}.aux"; done
