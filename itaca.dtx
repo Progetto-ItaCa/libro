@@ -72,10 +72,12 @@
 \newif\ifitacaShowkeys
 \newif\ifitacaTodos
 \newif\ifitacaCjk
+\newif\ifitacaExternalize
 
 \itacaShowkeystrue
 \itacaTodostrue
 \itacaCjktrue
+\itacaExternalizefalse
 
 \DeclareOption{showkeys}{\itacaShowkeystrue}
 \DeclareOption{noshowkeys}{\itacaShowkeysfalse}
@@ -83,9 +85,11 @@
 \DeclareOption{notodos}{\itacaTodosfalse}
 \DeclareOption{cjk}{\itacaCjktrue}
 \DeclareOption{nocjk}{\itacaCjkfalse}
+\DeclareOption{externalize}{\itacaExternalizetrue}
+\DeclareOption{noexternalize}{\itacaExternalizefalse}
 
 % Convenience option for local iteration.
-\DeclareOption{fast}{\itacaShowkeysfalse\itacaTodosfalse}
+\DeclareOption{fast}{\itacaShowkeysfalse\itacaTodosfalse\itacaCjkfalse}
 
 \DeclareOption*{\PackageWarning{itaca}{Unknown option `\CurrentOption`}}
 \ProcessOptions\relax
@@ -199,7 +203,7 @@
 \definecolor{ibmYellow}{HTML}{ffb000}
 
 \NewDocumentCommand{\drawDot}{ O{black} }{%
-\begin{tikzpicture}
+\begin{tikzpicture}[itaca/no export]
   \node[circle, fill=#1, radius=2pt, inner sep=0pt, minimum size=4pt, draw=none] at (0,0) {};
 \end{tikzpicture}
 }
@@ -531,7 +535,7 @@
 \def\rrbracket{]\!\!]}
 \DeclareMathOperator{\im}{im}
 
-\def\longmor#1#2{\begin{tikzcd}[ampersand replacement=\&] #1 \ar[r] \& #2 \end{tikzcd}}
+\def\longmor#1#2{\itacaNoExportNext\begin{tikzcd}[ampersand replacement=\&] #1 \ar[r] \& #2 \end{tikzcd}}
 
 \newenvironment{xsmallmatrix}[1]
 {\renewcommand\thickspace{\kern#1}\smallmatrix}
@@ -601,6 +605,7 @@
 
 % [d]isplay[m]ath[Fun]ctor
 \NewDocumentCommand{\dmFun}{m m m}{
+  \itacaNoExportNext
   \begin{tikzcd}[ampersand replacement=\&]
     #1 \colon #2 \ar[r] \& #3
   \end{tikzcd}
@@ -626,6 +631,19 @@
   \RequirePackage[color]{showkeys}
 \fi
 \RequirePackage{circuitikz}
+
+% TikZ externalization: cache diagrams as standalone PDFs.
+% Requires -shell-escape.  First build populates the cache; subsequent
+% builds reuse cached PDFs and only recompile changed pictures.
+\ifitacaExternalize
+  \usetikzlibrary{external}
+  \tikzexternalize[prefix=tikz-cache/]
+  \tikzset{itaca/no export/.style={external/export=false}}
+  \newcommand{\itacaNoExportNext}{\tikzset{external/export next=false}}
+\else
+  \tikzset{itaca/no export/.style={}}
+  \newcommand{\itacaNoExportNext}{}
+\fi
 
 \ctikzset{tripoles/thickness=1}
 \hypersetup{
@@ -690,7 +708,7 @@
 \def\scriptscriptstyleRadius{1.5pt}
 
 \NewDocumentCommand{\doBlankInner}{ O{gray!20} m }{%
-\begin{tikzpicture}[baseline=(current bounding box.south)]%
+\begin{tikzpicture}[baseline=(current bounding box.south),itaca/no export]%
   \fill[#1] (0,0) rectangle (#2,#2);
 \end{tikzpicture}%
 }
