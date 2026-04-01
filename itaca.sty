@@ -12,6 +12,27 @@
   [lo .sty per il libro di ItaCa]
 
 
+\newif\ifitacaShowkeys
+\newif\ifitacaTodos
+\newif\ifitacaCjk
+
+\itacaShowkeystrue
+\itacaTodostrue
+\itacaCjktrue
+
+\DeclareOption{showkeys}{\itacaShowkeystrue}
+\DeclareOption{noshowkeys}{\itacaShowkeysfalse}
+\DeclareOption{todos}{\itacaTodostrue}
+\DeclareOption{notodos}{\itacaTodosfalse}
+\DeclareOption{cjk}{\itacaCjktrue}
+\DeclareOption{nocjk}{\itacaCjkfalse}
+
+\DeclareOption{fast}{\itacaShowkeysfalse\itacaTodosfalse}
+
+\DeclareOption*{\PackageWarning{itaca}{Unknown option `\CurrentOption`}}
+\ProcessOptions\relax
+
+
 \RequirePackage{ xparse
                , mathrsfs
                }
@@ -80,9 +101,15 @@
 \NewDocumentCommand{\ctSEAlg}{O{E}}{(\Sigma,#1)\emdash\ctAlg}
 \NewDocumentCommand{\ctSEEAlg}{O{E}}{\ctSEAlg[E']}
 
-\RequirePackage{CJKutf8}
-\newcommand{\jap}[1]{\text{\begin{CJK}{UTF8}{min}#1\end{CJK}}}
-\newcommand{\doYon}{\jap{^^e3^^82^^88}}
+\ifitacaCjk
+  \RequirePackage{CJKutf8}
+  \newcommand{\jap}[1]{\text{\begin{CJK}{UTF8}{min}#1\end{CJK}}}
+  \newcommand{\doYon}{\jap{^^e3^^82^^88}}
+\else
+  % Fallback: keep the interface but avoid loading CJK.
+  \newcommand{\jap}[1]{#1}
+  \newcommand{\doYon}{\mathrm{yo}}
+\fi
 \newcommand{\yon}{\hat{\doYon}}
 \newcommand{\coyon}{\check{\doYon}}
 \newcommand{\bang}{\boldsymbol{!}}
@@ -110,19 +137,24 @@
 
 \RequirePackage[pdftex]{graphicx}
 \RequirePackage{
-                 amsthm
-               , enumitem
-               , epigraph
-               , microtype
-               , mathtools
-               , nextpage
-               , hyphenat
-               , todonotes
-               , stackrel
-               , tikz-cd
-               , turnstile
-               , xspace
-               }
+                  amsthm
+                , enumitem
+                , epigraph
+                , microtype
+                , mathtools
+                , nextpage
+                , hyphenat
+                , stackrel
+                , tikz-cd
+                , turnstile
+                , xspace
+                }
+
+\ifitacaTodos
+  \RequirePackage{todonotes}
+\else
+  \RequirePackage[disable]{todonotes}
+\fi
 
 \RequirePackage{tikz}
   \usetikzlibrary{decorations.pathmorphing}
@@ -254,8 +286,6 @@
 \newenvironment{hTerminology}[2][]{\begin{terminology}[#1\,|\,\hands{#2}]}{\end{terminology}}
 \newenvironment{hHeuristics}[2][]{\begin{heuristics}[#1\,|\,\hands{#2}]}{\end{heuristics}}
 \newenvironment{hTheorem}[2][]{\begin{theorem}[#1\,|\,\hands{#2}]}{\end{theorem}}
-
-\ProcessOptions\relax
 
 \newcommand{\Hom}[1]{#1}
 \newcommand{\varHom}{\text{Fr}}
@@ -484,7 +514,9 @@
 \let\thickapprox\relax
 \let\hslash\relax
 \let\parto\rightharpoonup
-\RequirePackage[color]{showkeys}
+\ifitacaShowkeys
+  \RequirePackage[color]{showkeys}
+\fi
 \RequirePackage{circuitikz}
 
 \ctikzset{tripoles/thickness=1}

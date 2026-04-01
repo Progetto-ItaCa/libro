@@ -1,6 +1,18 @@
 itaca.sty: itaca.ins itaca.dtx
 	tex $<
 
+# -----------------------------------------------------------------------------
+# Local dev build helpers (Task A)
+# -----------------------------------------------------------------------------
+#
+# CI can keep doing full builds; locally we optimize the edit->compile loop.
+
+ITACA_DEV_OPTS ?= fast
+
+LATEXMK_FULL = latexmk -shell-escape -pdf
+# Disable bibtex; makeindex is replaced by a no-op for speed.
+LATEXMK_DEV  = latexmk -pdf -bibtex- -e '$$makeindex = q/true/;'
+
 hash:
 	echo "\\\\newcommand{\\gHash}{\\\\texttt{`git rev-parse --short HEAD`}}" > gitcommit.tex
 # 	$(MAKE) -B main.pdf
@@ -11,8 +23,26 @@ itaca.pdf: itaca.dtx
 main.pdf: main.tex itaca.sty
 	latexmk -shell-escape -pdf main.tex
 
+dev: main.tex itaca.sty
+	texfot $(LATEXMK_DEV) -pretex="\\PassOptionsToPackage{$(ITACA_DEV_OPTS)}{itaca}\\relax" main.tex
+
+# Compile a single chapter via \includeonly injection (no edits to main.tex).
+# Usage: make chap CH=cap/02-limiti   (with or without .tex)
+chap: main.tex itaca.sty
+	@test -n "$(CH)" || (echo "Usage: make chap CH=cap/02-limiti"; exit 2)
+	@CHBASE="$(CH)"; CHBASE="$${CHBASE%.tex}"; \
+	texfot $(LATEXMK_DEV) -pretex="\\includeonly{$$CHBASE}\\relax\\PassOptionsToPackage{$(ITACA_DEV_OPTS)}{itaca}\\relax" main.tex
+
 watch:
 	texfot latexmk -shell-escape -pdf -pvc main.tex | grep -v "Missing character: There is no ; in font nullfont"
+
+watch-dev:
+	texfot $(LATEXMK_DEV) -pvc -pretex="\\PassOptionsToPackage{$(ITACA_DEV_OPTS)}{itaca}\\relax" main.tex
+
+watch-chap:
+	@test -n "$(CH)" || (echo "Usage: make watch-chap CH=cap/02-limiti"; exit 2)
+	@CHBASE="$(CH)"; CHBASE="$${CHBASE%.tex}"; \
+	texfot $(LATEXMK_DEV) -pvc -pretex="\\includeonly{$$CHBASE}\\relax\\PassOptionsToPackage{$(ITACA_DEV_OPTS)}{itaca}\\relax" main.tex
 
 book:
 	for f in cap/*.tex; do touch "${f%.tex}.aux"; done

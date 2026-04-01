@@ -63,6 +63,33 @@
 \ProvidesPackage{itaca}
   [lo .sty per il libro di ItaCa]
 
+% -----------------------------------------------------------------------------
+% Package options (Task A: fast local builds)
+% -----------------------------------------------------------------------------
+%
+% Defaults preserve the current behavior; Makefile targets can pass `fast`.
+
+\newif\ifitacaShowkeys
+\newif\ifitacaTodos
+\newif\ifitacaCjk
+
+\itacaShowkeystrue
+\itacaTodostrue
+\itacaCjktrue
+
+\DeclareOption{showkeys}{\itacaShowkeystrue}
+\DeclareOption{noshowkeys}{\itacaShowkeysfalse}
+\DeclareOption{todos}{\itacaTodostrue}
+\DeclareOption{notodos}{\itacaTodosfalse}
+\DeclareOption{cjk}{\itacaCjktrue}
+\DeclareOption{nocjk}{\itacaCjkfalse}
+
+% Convenience option for local iteration.
+\DeclareOption{fast}{\itacaShowkeysfalse\itacaTodosfalse}
+
+\DeclareOption*{\PackageWarning{itaca}{Unknown option `\CurrentOption`}}
+\ProcessOptions\relax
+
 % TODO:
 % - funziona tutto ma c'è molto refactoring da fare:
 % - [in progress] la parte in LaTeX3 è vecchia e farraginosa
@@ -147,9 +174,15 @@
 \NewDocumentCommand{\ctSEEAlg}{O{E}}{\ctSEAlg[E']}
 
 % imprescindibile yoneda in hiragana, va caricato prima di `inputenc'
-\RequirePackage{CJKutf8}
-\newcommand{\jap}[1]{\text{\begin{CJK}{UTF8}{min}#1\end{CJK}}}
-\newcommand{\doYon}{\jap{よ}}
+\ifitacaCjk
+  \RequirePackage{CJKutf8}
+  \newcommand{\jap}[1]{\text{\begin{CJK}{UTF8}{min}#1\end{CJK}}}
+  \newcommand{\doYon}{\jap{よ}}
+\else
+  % Fallback: keep the interface but avoid loading CJK.
+  \newcommand{\jap}[1]{#1}
+  \newcommand{\doYon}{\mathrm{yo}}
+\fi
 \newcommand{\yon}{\hat{\doYon}}
 \newcommand{\coyon}{\check{\doYon}}
 \newcommand{\bang}{\boldsymbol{!}}
@@ -178,19 +211,25 @@
 
 \RequirePackage[pdftex]{graphicx}
 \RequirePackage{ 
-                 amsthm
-               , enumitem
-               , epigraph
-               , microtype
-               , mathtools
-               , nextpage
-               , hyphenat
-               , todonotes
-               , stackrel
-               , tikz-cd
-               , turnstile
-               , xspace
-               }
+                  amsthm
+                , enumitem
+                , epigraph
+                , microtype
+                , mathtools
+                , nextpage
+                , hyphenat
+                , stackrel
+                , tikz-cd
+                , turnstile
+                , xspace
+                }
+
+% todonotes is heavily used in the sources; allow disabling for fast local runs.
+\ifitacaTodos
+  \RequirePackage{todonotes}
+\else
+  \RequirePackage[disable]{todonotes}
+\fi
 
 \RequirePackage{tikz}
   \usetikzlibrary{decorations.pathmorphing}
@@ -329,8 +368,6 @@
 \newenvironment{hTerminology}[2][]{\begin{terminology}[#1\,|\,\hands{#2}]}{\end{terminology}}
 \newenvironment{hHeuristics}[2][]{\begin{heuristics}[#1\,|\,\hands{#2}]}{\end{heuristics}}
 \newenvironment{hTheorem}[2][]{\begin{theorem}[#1\,|\,\hands{#2}]}{\end{theorem}}
-
-\ProcessOptions\relax
 
 \newcommand{\Hom}[1]{#1}
 % NO: \ctC(X,Y)
@@ -585,7 +622,9 @@
 \let\thickapprox\relax
 \let\hslash\relax
 \let\parto\rightharpoonup
-\RequirePackage[color]{showkeys}
+\ifitacaShowkeys
+  \RequirePackage[color]{showkeys}
+\fi
 \RequirePackage{circuitikz}
 
 \ctikzset{tripoles/thickness=1}
