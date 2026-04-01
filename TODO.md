@@ -1,3 +1,4 @@
+opencode -s ses_2b74ed1dcffeIrjhimI6pQOvzM
 
 # Project TODO
 
