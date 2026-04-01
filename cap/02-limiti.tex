@@ -332,7 +332,7 @@ Il seguente risultato merita il nome di \emph{teorema fondamentale sulle proprie
 \begin{hProposition}[TFPU]{fund}\label{tfpu}\index{Teorema fondamentale sulle proprietà universali}
 	Sia \(\ctC\) una categoria. Se \(\term,\term'\) (risp., \(\init,\init'\)) sono entrambi oggetti terminali (risp., iniziali) di \(\ctC\), allora esiste un \emph{unico} isomorfismo \(\term\cong\term'\) (risp., \(\init\cong \init'\)).
 \end{hProposition}
-Si noti l'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) esiste uno e un solo isomorfismo, essi non sono uguali, ma (per così dire) `traducibili uno nell'altro in un unico modo'. Non va però frainteso questo punto (ad esempio pensando stranezze come: ci sono due oggetti terminali, connessi da un unico isomorfismo). L'isomorfismo è unico \emph{solo una volta fissati \(\term\) e \(\term'\)} e varia insieme ad essi.
+Si noti l'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) esiste uno e un solo isomorfismo, essi non sono uguali, ma (per così dire) `traducibili uno nell'altro in un unico modo'. Non va però frainteso questo punto (ad esempio pensando stranezze come: ci sono solo due oggetti terminali, connessi da un unico isomorfismo). L'isomorfismo è unico \emph{solo una volta fissati \(\term\) e \(\term'\)} e varia insieme ad essi.
 
 La dimostrazione ricorda, in spirito, l'argomento che mostra che l'elemento neutro in un monoide (o l'identità \(\id_X\) di un oggetto in una categoria) è unico, ma ne è una versione `mollificata' per così dire dal fatto che l'unicità stretta dell'elemento neutro di un monoide viene qui rimpiazzata dal fatto che la sottocategoria piena formata da tutti gli oggetti terminali (risp., iniziali) di \(\ctC\) è un gruppoide caotico (quindi, \emph{equivalente}, e non isomorfa, alla categoria singoletto).
 \begin{proof}
@@ -436,15 +436,27 @@ In effetti, è immediato verificare che \(A\times B\) e le proiezioni canoniche 
 \begin{lemma}
 	Siano \((P,p_1,p_2)\) e \((Q,q_1,q_2)\) due prodotti	cartesiani di \(A\) e \(B\). Allora esiste un unico isomorfismo \(u= p_1\pmap p_2 \colon P\to Q\) di inversa \(u^{-1} = q_1\pmap q_2\). In particolare, se \((P,p_1,p_2)\) è un prodotto Cartesiano di \(A\) e \(B\) come in \ref{rmk_prodotto}, allora esiste un'unica biiezione \(P\cong A\times B\), che rende \(P\) `essenzialmente' composto dalle coppie \(\pair ab\) come in \ref{}.
 \end{lemma}
-Si osservi di nuovo il ruolo dell'aggettivo \emph{unica}: fissate le terne \((P,p_1,p_2)\) e \((Q,q_1,q_2)\) (e solo allora), la biiezione possibile è \emph{solo una}.
+Si osservi di nuovo il ruolo dell'aggettivo \emph{unica}: fissate le terne \((P,p_1,p_2)\) e \((Q,q_1,q_2)\) (e solo allora), la biiezione possibile tra \(P\) e \(Q\) è \emph{solo una}. In termini più semplici, ci possono essere biiezioni tra \(P\) e \(Q\) che non rendono commutativi i diagrammi di \ref{rmk_prodotto}, ma ce n'è una sola che li rende commutativi, e questa è quella cui ci si riferisce nelle discussioni su oggetti universali. Identiche considerazioni valgono per i prodotti	in categorie astratte, e per tutti gli altri oggetti universali che incontreremo.
 \begin{proof}
 	Dato che \(Q\) è un prodotto, esiste un'unica	funzione \(u \colon P \to Q\) che fa commutare i due triangoli del diagramma
-	\[miao\]
+	\[\xymatrix{
+			& P \ar@{.>}[d]^{u} \ar[dl]_{p_1} \ar[dr]^{p_2}\\
+			A & Q \ar[r]_{q_2}\ar[l]^{q_1}& B
+		}\]
 	Di converso, dato che	\(P\) è un prodotto, esiste un'unica funzione \(v \colon Q \to P\) che fa commutare i due triangoli del diagramma
-	\[bau.\]
+	\[\xymatrix{
+			& Q \ar@{.>}[d]^v \ar[dl]_{q_1} \ar[dr]^{q_2}\\
+			A & P \ar[r]_{p_2}\ar[l]^{p_1}& B.
+		}\]
 	Del resto, \(v\) deve essere l'inversa di \(u\), perché le composizioni \(v\cmp u\) e \(u\cmp v\) fanno commutare i due triangoli dei diagrammi
-	\[miao\qquad\qquad bau\]
-	proprietà che esse hanno in comune con	le identità di \(P\) e \(Q\); dunque, per unicità si ha \(v\cmp u = \id_P\) e \(u\cmp v = \id_Q\).
+	\[\xymatrix{
+			& P \ar@{.>}[d]^{vu} \ar[dl]_{p_1} \ar[dr]^{p_2}\\
+			A & P \ar[r]_{p_2}\ar[l]^{p_1}& B
+		}\qquad\qquad \xymatrix{
+			& Q \ar@{.>}[d]^{uv} \ar[dl]_{q_1} \ar[dr]^{q_2}\\
+			A & Q \ar[r]_{q_2}\ar[l]^{q_1}& B.
+		}\]
+	proprietà che esse hanno in comune con	le identità di \(P\) e \(Q\); dunque, per unicità, si ha \(v\cmp u = \id_P\) e \(u\cmp v = \id_Q\).
 \end{proof}
 Si osservi che in particolare, istanziando la proprietà di \ref{rmk_prodotto} quando \(X = \singleton\) è un insieme con un solo elemento, le funzioni \(g\colon \singleton\to B\), \(f\colon \singleton\to A\) scelgono rispettivamente un elemento \(g(\bullet) = b \in B\) e \(f(\bullet) = a \in A\); la funzione \(f\pmap g\colon \singleton\to P\) sceglie a sua volta un elemento \((f\pmap g)(\bullet) = t \in P\), che però ora deve essere della forma \(\pair{p_1 t}{p_2 t}\).
 
@@ -478,7 +490,7 @@ In sintesi, abbiamo enunciato e dimostrato la
 \begin{remark}
 	È probabile che questi argomenti risultino persino troppo pedanti per chi legge; tuttavia, ragionare in questi termini è il cuore della teoria delle proprietà universali, che `si dimostrano tutte allo stesso modo'. Ancorare la tecnica di dimostrazione a un esempio estremamente banale è uno strumento pedagogico che permette di non oscurare la tecnica	con i dettagli specifici di una costruzione più complessa (che andrebbe capita e motivata\dots).
 \end{remark}
-Altrettanto probabilmente, chi legge avrà intuito che c'è una somiglianza tra il modo di ragionare appena descritto, e il contenuto di \ref{init_ha_solo_id}; questa non è una coincidenza. La dimostrazione del seguente fatto consiste nel notare che le due condizioni di \ref{rmk_prodotto} sono esattamente le condizioni che rendono \(P\) un oggetto terminale.
+Altrettanto probabilmente, chi legge avrà intuito che c'è una somiglianza tra il modo di ragionare appena descritto, e il TFPU di \ref{tfpu}, e ancor prima di \ref{init_ha_solo_id}; questa non è una coincidenza. La dimostrazione del seguente fatto consiste nel notare che le due condizioni di \ref{rmk_prodotto} sono esattamente le condizioni che rendono \(P\) un oggetto terminale.
 \begin{proposition}
 	Si rammenti la definizione della categoria \(\ctSpan(A,B)\) in \ref{}, delle spanne di insiemi, che ha
 	\begin{itemize}
@@ -489,29 +501,29 @@ Altrettanto probabilmente, chi legge avrà intuito che c'è una somiglianza tra 
 			      B & Y. \ar[l]^-{r'}\ar[u]_-{l'}
 			      }\]
 	\end{itemize}
-	Un oggetto \(\xymatrix{ A & P \ar[r]\ar[l]& B }\) è allora terminale in \(\ctSpan(A,B)\) se e solo se \(P\) è un prodotto Cartesiano di \(A\) e \(B\).
+	Un oggetto \(\xymatrix{ A & P \ar[r]^-{p_B}\ar[l]_-{p_A} & B }\) è allora terminale in \(\ctSpan(A,B)\) se e solo se \((P,p_A,p_B)\) è un prodotto Cartesiano di \(A\) e \(B\).
 \end{proposition}
 Siamo pronti per enunciare la proprietà universale del prodotto (di due oggetti) in una categoria \(\ctC\); seguiranno molti esempi di prodotti binari nelle categorie definite nel capitolo precedente, così come diversi controesempi che mostrano come alcune categorie non abbiano prodotti, o non li abbiano per ogni coppia di oggetti. La sezione \ref{} si occuperà di tracciare le prime conseguenze della definizione, e le sue proprietà elementari.
 \begin{definition}[Prodotto binario in \(\ctC\)]
 	Sia \(\ctC\) una categoria e \(A,B\in\ctC_0\) due oggetti. Un oggetto \(P\) di \(\ctC\) è un prodotto di \(A\) e \(B\) se una delle seguenti condizioni equivalenti è soddisfatta:
 	\begin{enumtag}{pd}
-		\item per ogni diagramma \(A \xot{z_A} Z \xto{z_B} B\), esiste un'unica freccia \(\pair{z_A}{z_B} \colon Z\to P\)	che rende commutativi i due triangoli del diagramma
+		\item\label{pd_1} per ogni diagramma \(A \xot{z_A} Z \xto{z_B} B\), esiste un'unica freccia \(\pair{z_A}{z_B} \colon Z\to P\)	che rende commutativi i due triangoli del diagramma
 		\[\xymatrix{
 			& Z \ar@{.>}[d]|{\pair{z_A}{z_B}} \ar[dl]_{z_A}\ar[dr]^{z_B}\\
 			A & P \ar[r]^{p_2}\ar[l]_{p_1} & B
 			}\]
-		\item la spanna \(\xymatrix{
-			A & P \ar[r]\ar[l]& B
+		\item\label{pd_2} la spanna \(\xymatrix{
+		A & P \ar[r]^-{p_B}\ar[l]_-{p_A}& B
 		}\) è un oggetto terminale in \(\ctSpan_\ctC(A,B)\) (la categoria delle spanne di \(\ctC\) tra \(A\) e \(B\) definita in \ref{});
-		\item l'oggetto	\(P\) rappresenta (nel senso di \ref{}) il funtore \(\varpi_{AB}=\Hom{\ctC}(\blank,A)\times\Hom{\ctC}(\blank,B) \colon \ctC^\op \to \ctSet\) che manda \(X\) in \(\Hom{\ctC}(X,A)\times\Hom{\ctC}(X,B)\).
+		\item\label{pd_3} l'oggetto	\(P\) rappresenta (nel senso di \ref{}) il funtore \(\varpi_{AB}=\Hom{\ctC}(\blank,A)\times\Hom{\ctC}(\blank,B) \colon \ctC^\op \to \ctSet\) che manda \(X\) in \(\Hom{\ctC}(X,A)\times\Hom{\ctC}(X,B)\).
 	\end{enumtag}
 \end{definition}
 \begin{remark}[Alcune osservazioni sulla nozione generale di prodotto]
-	Se una qualsiasi di queste condizioni	è soddisfatta, si dice che \(P\) è un prodotto di \(A\) e \(B\), e si denota con \(A\times B\).
+	Se una qualsiasi di queste condizioni	è soddisfatta, si dice che \(P\) è un prodotto di \(A\) e \(B\), e si denota con \(A\times B\). Dire `\(P\) è un prodotto' in effetti è una denominazione ambigua; il prodotto è, per definizione, \emph{l'intera spanna} \((P,p_A,p_B)\), e l'oggetto \(P\) ne è l'apice. Ma è consuetudine ammettere questo lieve abuso di terminologia. In questo modo, quando si dice che `\(P\) è un prodotto', solitamente si intende che le braccia della spanna \(p_A \colon P\to A\) e \(p_B \colon P \to B\) esistono ed è ovvio determinarle dal contesto del problema.
 
-	Diciamo che \(\ctC\) `ha prodotti' o è una categoria con prodotti se per ogni \(A,B\in\ctC_0\) esiste un prodotto \(A\times B\).
+	Allora diremo che \(\ctC\) `ha prodotti' o `è una categoria con prodotti' se per ogni \(A,B\in\ctC_0\) esiste il prodotto \(A\times B\).
 
-	Si osservi che la terza condizione sembra non fare menzione della spanna di apice \(P\); in realtà però la sua esistenza è implicata dalla condizione di rappresentabilità: se \(P\) rappresenta il funtore \(\Hom{\ctC}(\blank,A)\times\Hom{\ctC}(\blank,B)\), allora esiste una biiezione naturale
+	Si osservi che la condizione \ref{pd_3} sembra non fare menzione della spanna di apice \(P\); in realtà però la sua esistenza è implicata dalla condizione di rappresentabilità: se \(P\) rappresenta il funtore \(\Hom{\ctC}(\blank,A)\times\Hom{\ctC}(\blank,B)\), allora esiste una biiezione naturale
 	\[\alpha_P : \Hom{\ctC}(P,P)\cong\Hom{\ctC}(P,A)\times\Hom{\ctC}(P,B)\]
 	e l'immagine di \(\id_P\) mediante \(\alpha_P\) consta di due frecce \(p_1 \colon P\to A\) e \(p_2 \colon P\to B\), che rendono \(P\) un prodotto di \(A\) e \(B\) secondo la prima condizione. Questa è semplicemente una maniera di rifrasare il fatto che l'oggetto \((P,p_1,p_2)\) è terminale nella categoria degli elementi di \(\varpi_{AB}\), come definita in \ref{}, che coincide esattamente con \(\ctSpan_\ctC(A,B)\).
 
@@ -532,12 +544,112 @@ I primi corsi di algebra hanno presentato diverse classi di strutture algebriche
 \begin{hExample}[Prodotti nella categoria degli spazi topologici]{fund}
 \end{hExample}
 \begin{hExample}[Prodotti in categorie di insiemi ordinati]{fund}
+	L'esempio degli insiemi ordinati è particolarmente interessante, perché mostra che ci sono due maniere di porre sul prodotto Cartesiano \(A\times B\) di due ordini parziali \((A,\le), (B,\preceq)\) un ordine;
+	\begin{itemize}
+		\item uno è l'ordine prodotto: \((a,b)\le_\times (a',b')\) se e solo se \(a\le a'\) in \(A\), e \(b\preceq b'\) in \(B\);
+		\item uno è l'ordine lessicografico: \((a,b)\le_\text{lx} (a',b')\) se e solo se vale
+		      \[(a\le a') \text{ oppure } \bigl( a=a' \land b\preceq b' \bigr).\]
+	\end{itemize}
+	La prima definizione è quella `giusta' dato che soddisfa la proprietà universale come enunciata in \ref{}; la seconda no --e quindi, in particolare, sebbene esista una ovvia biiezione monotòna \((A\times B,\le_\times) \cong (A\times B,\le_\text{lx})\), i due ordini non sono isomorfi.
+
+	Ad esempio, se \(A=B=\{0\le 1\}\) si ha che \((A\times B,\le_\times)\) è l'ordine a quattro elementi isomorfo a \(P[2]\) (come in \ref{fig_n_cubo}), mentre \((A\times B,\le_\text{lx})\) è l'ordine totale \(\{(0,0) \le (0,1) \le (1,0) \le (1,1)\}\). Come è semplice verificare nel caso in cui \(B=\{x<y<z\}\) poi, la proiezione \(\pi_B \colon A\times B \to B\) sul secondo fattore non è monotòna.
 \end{hExample}
 \begin{hExample}[Prodotti in categorie della forma \(\presh\ctC\)]{fund}
 	\Todo{e in particolare nelle categorie di funtori che hanno una presentazione `concreta', come i grafi diretti.}
 \end{hExample}
+La proprietà universale del prodotto è una maniera molto utile di determinare `isomorfismi canonici' tra oggetti: un esempio semplice ma illustrativo è il seguente.
+\begin{lemma}
+	Dati due insiemi \(A,B\), esiste una spanna di insiemi
+	\begin{equation}
+		\label{pow_cop_isprod}\xymatrix{
+			\pow A & \ar[r]^{p_B}\ar[l]_{p_A}\pow{A+B} & \pow B
+		}
+	\end{equation}
+	determinata dalle funzioni \(p_A= \pow{\iota_A}\) e \(p_B=\pow{\iota_B}\), dove \(\iota_A \colon A \to A+B\) e \(\iota_B \colon B \to A+B\) sono le inclusioni nell'unione disgiunta di insiemi. Esplicitamente, se \(U\subseteq A+B\),  \(p_A(U)= A \cap U\) e \(p_B(U)= B \cap U\).
+
+	La spanna così definita soddisfa la proprietà universale del prodotto, e dunque esiste un `isomorfismo canonico'\footnote{Chi legge potrà trovare con piacere che questo implica che le cardinalità di questi insiemi sono uguali, e dunque che le `proprietà delle potenze' imparate alle scuole medie valgono in forza del fatto che il diagramma in \eqref{pow_cop_isprod} soddisfa la proprietà universale del prodotto. In particolare, non c'è niente di speciale nell'insieme `2' e analoghi isomorfismi del tipo \(X^{A+B}\cong X^A\times X^B\) valgono per ogni insieme \(X\).} tra \(\pow{A+B}\) e \(\pow A \times \pow B\), cioè una biiezione (che, in più, si può mostrare essere naturale in \(A,B\); si veda \ref{iso_aritmetici})
+	\[\pow{A+B} \cong \pow A \times \pow B.\]
+\end{lemma}
+\begin{proof}
+	La dimostrazione consiste nella verifica della proprietà universale per la spanna in \eqref{pow_cop_isprod}: dati un insieme \(X\) e una qualsiasi altra spanna
+	\[\xymatrix{
+			\pow A & \ar[r]^{f_B}\ar[l]_{f_A} X & \pow B
+		}\]
+	è possibile definire una funzione \(X \to \pow{A+B}\)	che rende commutativo il diagramma
+	\[\xymatrix{
+		&X\ar@{.>}[d]\ar[dr]^{f_B}\ar[dl]_{f_A}&\\
+		\pow A & \ar[r]_-{p_B}\ar[l]^-{p_A} \pow{A+B} & \pow B
+		}\]
+	La funzione \(\pair{f_A}{f_B}\) è definita da \(\iota_A(f_A(x)) + \iota_B(f_B(x))\) per ogni \(x\in X\). La verifica che questa funzione rende commutativo il diagramma è semplice, e la lasciamo a chi legge. Per mostrare he \(\pair{f_A}{f_B}\) è l'unica definizione possibile, si renda precisa questa idea: se \(r \colon X \to \pow{A+B}\), allora \(r(x) = E+F\) per un'unica coppia di insiemi \(E\subseteq A,F\subseteq B\) (usando \ref{}); allora se \(p_A(r(x))=	f_A(x)\) e \(p_B(r(x)) = f_B(x)\), non può che essere \(p_A(r(x)) = A\cap E=E=f_A(x)\) e \(p_B(r(x)) = B\cap F=F=f_B(x)\), da cui \(r(x) = \iota_A(f_A(x)) + \iota_B(f_B(x))\).
+
+	Concludiamo osservando due cose:
+	\begin{itemize}
+		\item Nella terminologia di \ref{}, diremo che il funtore \(\pow{(\blank)}\) `preserva' oppure che `commuta con' i prodotti (ma dato che è controvariante, manda \emph{coprodotti}, definiti in \ref{}, in prodotti).
+		\item Il diagramma in \eqref{pow_cop_isprod} si può estendere a
+		      \[\xymatrix{
+			      \pow A\ar@<-.3em>[r]_{(\iota_{B})_*} & \ar@<.3em>[r]^-{p_B}\ar@<-.3em>[l]_-{p_A}\pow{A+B} & \pow B\ar@<.3em>[l]^-{(\iota_{A})_*}
+			      }\]
+		      dove abbiamo definito \((\iota_{A})_* (U) = \iota_A(U)\) e \((\iota_{B})_* (V) = \iota_B(V)\); quindi tra queste frecce valgono le relazioni
+		      \[p_A((\iota_{A})_* (U)) = A\cap\iota_A(U) = \iota_A(A\cap U)=U,\quad
+			      p_B((\iota_{B})_* (V)) = B\cap\iota_B(V) = \iota_B(B\cap V)=V\]
+		      cosicché \(p_A,p_B\) sono epi spezzanti (risp., \((\iota_A)_*, (\iota_B)_*\) sono mono spezzanti). \qedhere
+	\end{itemize}
+\end{proof}
+\begin{example}[Prodotti in \(\ctRel\)]
+	Nella categoria \(\ctRel\) di insiemi e relazioni, come definita  in \ref{ex_cat_rels}, ogni coppia di oggetti \(A,B\) ammette un prodotto, \emph{ma}	questo prodotto non è il prodotto Cartesiano di insiemi, bensì l'insieme \(A + B\) (unione disgiunta di \(A\) e \(B\)), con la spanna di relazioni
+	\[\xymatrix{
+		A & A+B \ar[r]|@-{|}^-{p_B}\ar[l]|@-{|}_-{p_A}& B
+		}\]
+	definita (usando \ref{diff_pres_cat_rel}, la spanna è formata da funzioni \(\pow A \xot{p_A} A+B \xto{p_B} \pow B\)) come segue:
+	\[p_A(t)=\begin{cases}
+			\{t\}     & t\in A \\
+			\emptyset & t\in B
+		\end{cases}\quad
+		p_B(t)=\begin{cases}
+			\emptyset & t\in A \\
+			\{t\}     & t\in B
+		\end{cases}\]
+\end{example}
+\begin{example}[Prodotti di pseudoinsiemi]
+	Si ricordi da \ref{} che uno pseudoinsieme, o insieme di Bishop, è una coppia \((X,\sim)\) dove \(X\) è un insieme	e \(\sim\) è una relazione di equivalenza su \(X\). Il prodotto tra insiemi di Bishop	\((X,\sim_X)\) e \((Y,\sim_Y)\) è l'insieme di coppie \(X\times Y\) con la relazione di equivalenza definita dal prodotto	di relazioni di equivalenza, cioè
+	\[(x,y)\sim_{X\times Y} (x',y') \defeq \bigl((x\sim_X x') \land (y\sim_Y y')\bigr).\]
+	La proprietà universale è soddisfatta: se \(g \colon (Z,\approx)\to (Y,\sim_Y)\) e \(f \colon (Z,\approx)\to (X,\sim_X)\) sono funzioni che preservano le rispettive relazioni di equivalenza, allora la funzione \(\pair fg \colon Z\to X\times Y\) definita da \(\pair fg(z) = (f(z),g(z))\) è l'unica tale che
+	\[z\approx z' \Rightarrow \bigl(f(z)\sim_X f(z') \land g(z)\sim_Y g(z')\bigr).\]
+\end{example}
+\begin{example}[Prodotti nella categoria incubo \(\ctSet/A\), e nella categoria succuba \(A/\ctSet\)]
+	Nella categoria succuba sopra \(A\in\ctSet_0\), due oggetti \(f	\colon A\to X\) e \(g \colon A\to Y\) ammettono un prodotto, determinato dal prodotto Cartesiano \(X\times Y\) dei loro codomini, e dalla funzione \(\pair fg \colon A\to X\times Y\colon a \mapsto (f(a),g(a))\) per ogni \(a\in A\). Dunque, in \(A/\ctSet\), il prodotto di \(f \colon A\to X\) e \(g \colon A\to Y\) viene `creato' a partire dal prodotto in \(\ctSet\) dei codomini di \(f\) e \(g\).
+
+	Per contro, nella categoria incubo sopra \(A\), due oggetti \(f \colon X\to A\) e \(g \colon Y\to A\) la situazione è irriducibile a una costruzione già nota. Il prodotto di due funzioni, viste come oggetti di \(\ctSet/A\), è il \emph{prodotto fibrato} sopra \(A\), che si costruisce come sottoinsieme (quasi sempre proprio) di \(X\times Y\) formato dalle coppie \((x,y)\) tali che \(f(x)=g(y)\), con le restrizioni delle proiezioni canoniche \(p_X|_{\pull XYA} \colon \pull XYA \subseteq X\times A\to X\colon (x,y)\mapsto x\) e \(p_Y|_{\pull XYA} \colon \pull XYA \subseteq X\times A\to Y\colon (x,y)\mapsto y\). Solo dopo questa restrizione la proprietà universale è soddisfatta, perché una spanna
+	\[\xymatrix{
+			(X,f) & (Z,h) \ar[r]^-r\ar[l]_-l & (Y,g)
+		}\]
+	si scompone a un diagramma
+	\[
+		\xymatrix{
+		Z \ar@/^1pc/[rrd]^{r} \ar@/_1pc/[rdd]_{l} & & \\
+		& \pull XYA \ar[r]^-{p_Y} \ar[d]_{p_X} & Y \ar[d]^{g} \\
+		& X \ar[r]_{f} & A
+		}
+	\] con la proprietà che \(g\cmp r = f\cmp l=h\); ma allora la funzione \(\pair lh \colon Z\to X\times Y\) fattorizza sul sottoggetto \(\pull XYA\) come è stato definito, perché questa condizione è precisamente necessaria e sufficiente affinché \((l(z),r(z)) \in \pull XYA\).
+
+	Sarà la sezione sui prodotti fibrati a chiarire la questione in modo definitivo.
+\end{example}
+\begin{example}[Prodotti in una categoria-poset]
+	\Todo{}
+	Ad esempio,
+	\begin{itemize}
+		\item nella categoria-poset \(\pow{S}\), insieme delle parti di un insieme \(S\), il prodotto di \(A,B\subseteq S\) è l'intersezione \(A\cap B\) con le inclusioni \(A\supseteq A\cap B\subseteq B\);
+		\item nella categoria-poset \((\bfN,\le)\), il prodotto di \(n,m\in\bfN\) è il loro minimo \(\min\{n,m\}\); mentre nella categoria-poset \((\bfN,\div)\), il prodotto di \(n,m\in\bfN\) è il loro massimo comun divisore \(\gcd(n,m)\).
+	\end{itemize}
+\end{example}
+\begin{example}[Prodotti in una categoria-monoide]
+	\Todo{}
+\end{example}
+\begin{example}[Esempi di categorie senza prodotti]
+	\Todo{}
+\end{example}
 \Todo{}
-\Todo{Sottolineare che in ciascuna di queste il prodotto soddisfa la stessa proprietà universale che sarà enunciata con precisione in \ref{}}
+%\Todo{Sottolineare che in ciascuna di queste il prodotto soddisfa la stessa proprietà universale che sarà enunciata con precisione in \ref{}}
 \subsection{Somme (coprodotti) in \(\ctSet\)}\label{sum_in_set}
 \Todo{Qui tutto avviene in maniera duale e in parallelo a prima}
 \subsection{Somme in altre categorie `concrete'}
@@ -993,7 +1105,7 @@ perché si chiamano limiti?
 \section{Teoria generale dei limiti}
 
 \begin{theorem}
-	Teorema di struttura sui limiti. Limiti in funzione di altri limiti. TFAE:
+	Teorema di struttura sui limiti. Limiti in funzione di altri limiti. In breve, TFAE:
 	\begin{itemize}
 		\item 	Cocompleteness,
 		\item having coproducts and coequalizers,
@@ -1248,9 +1360,28 @@ Biprodotti, quadrati esatti in \(\ctAb\)
 
 La definizione di categoria abeliana
 \subsection{Proprietà di oggetti specificate da limiti}
-Inizialità, finalità (il contenuto della sezione \ref{} su funtori iniziali e finali ora è in contesto), densità (ogni oggetto di \(C\) è colimite di oggetti nella subcat densa) e codensità (più difficile dare un'intuizione, proviamoci)
-
-Oggetti presentabili, oggetti connessi, oggetti minuscoli, oggetti \(\bbD\)-presentabili.
+\begin{definition}[Diagramma iniziale, diagramma finale]
+	\Todo{}
+\end{definition}
+(il contenuto della sezione \ref{} su funtori iniziali e finali ora è in contesto)
+\begin{definition}[Funtore denso, sottocategoria densa, funtore codenso, sottocategoria codensa]
+	\Todo{}
+\end{definition}
+\begin{definition}[Oggetto $\kappa$-compatto]
+	\Todo{}
+\end{definition}
+\begin{definition}[Oggetto minuscolo]
+	\Todo{}
+	
+\end{definition}
+\begin{definition}[Oggetto connesso]
+	\Todo{}
+	
+\end{definition}
+\begin{definition}[Oggetto $\bbD$-presentabile]
+	\Todo{}
+	
+\end{definition}
 
 
 
