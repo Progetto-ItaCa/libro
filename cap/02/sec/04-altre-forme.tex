@@ -1,0 +1,329 @@
+\section{Teoria generale di limiti e colimiti}
+Lo scopo di questa sezione è generalizzare le costruzioni date precedentemente a limiti e colimiti di forma diversa da prodotti, somme, equalizzatori e coequalizzatori. Dopo aver introdotto la nozione di cono e di cocono per un diagramma $D \colon \ctJ \to\ctC$, il limite (risp., colimite) per $D$ è l'oggetto terminale (risp., iniziale) della categoria dei coni (risp., coconi) per $D$. In questo modo, si ottiene una definizione di limite e colimite che è del tutto generale, che si applica a qualsiasi tipo di diagramma, e che ritrova come esempi particolari tutti quelli fatti finora. 
+
+Ricordiamo che con \emph{diagramma} intendiamo un funtore \(D\colon \ctJ \fun \ctC\) da una categoria piccola \(\ctJ\) (detta \emph{categoria degli indici}) a una categoria \(\ctC\) (detta \emph{categoria ambiente}). La categoria indice è un modo per specificare la forma del diagramma, e dunque la forma del limite o colimite che vogliamo costruire. Ad esempio, se \(\ctJ\) è la doppia freccia generica, allora \(D\) è un diagramma di due frecce parallele, la categoria dei coni avrà per oggetti le frecce che equalizzano quella coppia, e il limite di \(D\) sarà il loro equalizzatore; se invece \(\ctJ\) è una categoria discreta con due oggetti, allora \(D\) è un diagramma di due oggetti, senza frecce tra loro, e il limite di \(D\) è un prodotto. E così via.
+\begin{definition}[Categoria dei coni, categoria dei coconi]\label{def_cat_coni}
+	\Todo{}
+\end{definition}
+\begin{definition}[Limite di un diagramma, colimite di un diagramma]\label{def_limite_colimite}
+	\Todo{}
+\end{definition}
+\begin{remark}\label{rem_caratterizzazione_coni}
+	Caratterizzazione equivalente della categoria dei coni e dei coconi per \(D\).
+\end{remark}
+\begin{remark}
+	\Todo{A proposito del nome `cono' e `cocono'.}
+\end{remark}
+\begin{examples}\label{ex_cat_coni_coconi}
+	Raccogliamo alcuni esempi di categorie di coni e di coconi per diagrammi noti e meno noti.
+	
+	Iniziamo coi prodotti di taglia arbitraria (piccola)
+	\Todo{}
+\end{examples}
+
+% esempi grandi: in Set, Top, k-Vect, gruppi, anelli etc., Cat, e molte altre categorie del cap 1
+
+% esempi piccoli: un (pre)ordine, (ordini, insiemi di parti etc...)
+
+% non esempi: categorie senza prodotti, prodotti non categoriali (tensore --che comunque ha una proprietà universale)
+
+% unicità
+
+% prodotto di famiglie
+\begin{itemize}
+	\item oggetti terminali.
+	\item equalizzatori e coequalizzatori (coppie nucleo e il quoziente di una relazione di equivalenza interna, fattorizzazione di un morfismo)
+	\item prodotti fibrati (pullback) e somme amalgamate (pushout) (sottoalgebre definite da equazioni, amalgame)
+	\item colimiti filtrati
+	\item categorie puntate, nuclei e conuclei
+	\item esempi e non esempi
+\end{itemize}
+
+\subsection{Categorie piccolo-complete e piccolo-cocomplete}
+\begin{definition}\label{def_piccolo_complete}
+	Una categoria si dice \emph{(piccolo-)completa} se ogni diagramma $D : \ctJ \to\ctC$ ammette un limite; dualmente, si dice \emph{(piccolo-)cocompleta} se ogni diagramma $D : \ctJ \to\ctC$ ammette un colimite.
+	\Todo{}
+\end{definition}
+\Todo{}
+\begin{theorem}\label{thm_struttura_limiti}
+	Teorema di struttura sui limiti. Limiti in funzione di altri limiti. In breve, TFAE:
+	\begin{itemize}
+		\item Cocompleteness,
+		\item having coproducts and coequalizers,
+		\item having coproducts and pushouts,
+		\item having filtered colimits, finite coproducts and pushouts, and
+		\item having filtered colimits, pushouts and an initial object.
+		\item ...?
+	\end{itemize}
+	Kelly closure of a class of colimits menzionato e poi ripreso in \ref{}
+\end{theorem}
+Il teorema di struttura è molto utile nel decomporre un limite o colimite di forma complessa in un co/equalizzatore di mappe tra co/prodotti, o in un prodotto fibrato o somma amalgamata. Raccogliamo alcuni esempi (ovviamente, supponiamo sempre che i limiti e colimiti di cui abbiamo bisogno esistano).
+\begin{example}\label{ex_triqualizzatore}
+	Nella terminologia di \ref{ex_cat_turcasso}, si consideri come dominio di un diagramma un 3-turcasso \(\turk[3]\); un \emph{triqualizzatore} in una categoria \(\ctC\) finitamente completa è il limite di un diagramma \(D\colon \turk[3] \fun\ctC\), che quindi è della forma
+	\[\xymatrix{X \ar[r]|-g \ar@<.5em>[r]^-f \ar@<-.5em>[r]_-h& Y}\]
+	per tre frecce parallele \(f,g,h\colon X\to Y\) in \(\ctC\). La punta del cono limite è un oggetto \(\eq_3(f,g,h)\in\ctC_0\), con una freccia \(e_3 \colon \eq_3(f,g,h) \to X\) e la proprietà che
+	\begin{itemize}
+		\item \(f\cmp e_3 = g\cmp e_3 = h\cmp e_3\);
+		\item per ogni \(z \colon Z \to X\) tale che \(f\cmp z = g\cmp z = h\cmp z\), esiste un'unica \(\bar z \colon Z \to \eq_3(f,g,h)\) tale che \(z = e_3\cmp \bar z\).
+	\end{itemize}
+	In virtù di \ref{}, il triqualizzatore di \(f,g,h\) è esprimibile come \emph{equa}lizzatore di una coppia di frecce tra prodotti in \(\ctC\), precisamente si ha
+	\[\eq_3(f,g,h) \cong \eq\Bigl(
+		\xymatrix@C=2cm{
+			X\times Y \ar@<.3em>[r]^-{\bkt{\pi_Y,\pi_Y,\pi_Y}}\ar@<-.3em>[r]_{\bkt{f\cmp\pi_X,g\cmp\pi_X,h\cmp\pi_X}} & Y\times Y \times Y
+		}
+		\Bigr)\]
+	dove come di consueto indichiamo \(\bkt{u,v,w}\) la freccia \(\pair u{\pair vw}=\pair{\pair uv}w\).
+
+	C'è però una maniera più diretta di ottenerlo mediante la combinazione di due equalizzatori e di un prodotto fibrato: consideriamo il diagramma
+	% https://q.uiver.app/#q=WzAsNixbMSwxLCJYIl0sWzIsMSwiWSJdLFswLDAsIlQiXSxbMSwwLCJFJyJdLFswLDEsIkUiXSxbMSwyLCJZIl0sWzIsMywicCJdLFszLDAsImVfMiJdLFs0LDAsImVfMSIsMl0sWzIsNCwicSIsMl0sWzAsMSwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMCw1LCJoIiwwLHsib2Zmc2V0IjotMX1dLFswLDUsImciLDIseyJvZmZzZXQiOjF9XSxbMCwxLCJnIiwyLHsib2Zmc2V0IjoxfV0sWzIsMCwiciIsMV1d
+	\[\begin{tikzcd}[ampersand replacement=\&]
+			T=\pull E{E'}X \& {E'} \\
+			E \& X \& Y \\
+			\& Y
+			\arrow["p", from=1-1, to=1-2]
+			\arrow["q"', from=1-1, to=2-1]
+			\arrow["r"{description}, from=1-1, to=2-2]
+			\arrow["{e_2}", from=1-2, to=2-2]
+			\arrow["{e_1}"', from=2-1, to=2-2]
+			\arrow["f", shift left, from=2-2, to=2-3]
+			\arrow["g"', shift right, from=2-2, to=2-3]
+			\arrow["h", shift left, from=2-2, to=3-2]
+			\arrow["g"', shift right, from=2-2, to=3-2]
+		\end{tikzcd}\]
+	dove \((E,e_1)\) è l'equalizzatore della coppia \((f,g)\), e \((E',e_2)\) è l'equalizzatore della coppia \((g,h)\), e il quadrato è un prodotto fibrato. Dimostriamo che \((T,r)\), dove \(r = e_1\cmp q=e_2\cmp p\) è il triqualizzatore di \((f,g,h)\): innanzitutto,
+	\begin{align*}
+		\underline{f\cmp r} & = f\cmp e_1\cmp q     \\
+		                    & =g\cmp e_1\cmp q      \\
+		                    & =\underline{g\cmp r}  \\
+		                    & =g\cmp e_2\cmp p      \\
+		                    & =h\cmp e_2\cmp p      \\
+		                    & =\underline{h\cmp r}.
+	\end{align*}
+	Se ora supponiamo che esista \(z\colon Z \to X\) tale che \(f\cmp z=g\cmp z=h\cmp z\), \(z\) equalizza sia la coppia \((f,g)\) (e allora \(z=e_1\cmp \bar z_1\) per un'unica \(z_1\)) sia la coppia \((g,h)\) (e allora \(z=e_2\cmp \bar z_2\) per un'unica \(z_2\)); quindi
+	\[e_1\cmp \bar z_1=z=e_2\cmp \bar z_2\]
+	cosa che implica che la coppia \(\pair{z_1}{z_2} \colon Z \to E\times E'\) fattorizzi lungo il prodotto fibrato \(\pull E{E'}X=T\). La costruzione è rappresentata, un passaggio alla volta, nel diagramma in Figura \ref{fig_triqual_construzia}.
+\end{example}
+\begin{figure}
+	\begin{minipage}{0.33\textwidth}
+		% https://q.uiver.app/#q=WzAsMyxbMSwwLCJYIl0sWzIsMCwiWSJdLFswLDAsIkUiXSxbMiwwLCJlXzEiLDJdLFswLDEsImYiLDAseyJvZmZzZXQiOi0xfV0sWzAsMSwiZyIsMix7Im9mZnNldCI6MX1dXQ==
+		\[\begin{tikzcd}[ampersand replacement=\&]
+				E \& X \& Y
+				\arrow["{e_1}"', from=1-1, to=1-2]
+				\arrow["f", shift left, from=1-2, to=1-3]
+				\arrow["g"', shift right, from=1-2, to=1-3]
+			\end{tikzcd}\]
+	\end{minipage}%
+	\begin{minipage}{0.33\textwidth}
+		% https://q.uiver.app/#q=WzAsNSxbMSwxLCJYIl0sWzIsMSwiWSJdLFswLDEsIkUiXSxbMSwwLCJFJyJdLFsxLDIsIlkiXSxbMiwwLCJlXzEiLDIseyJjb2xvdXIiOlswLDAsNjldfSxbMCwwLDY5LDFdXSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMSwiY29sb3VyIjpbMCwwLDY5XX0sWzAsMCw2OSwxXV0sWzAsMSwiZyIsMix7Im9mZnNldCI6MSwiY29sb3VyIjpbMCwwLDY5XX0sWzAsMCw2OSwxXV0sWzMsMF0sWzAsNCwiaCIsMCx7Im9mZnNldCI6LTF9XSxbMCw0LCJnIiwyLHsib2Zmc2V0IjoxfV1d
+		\[\begin{tikzcd}[ampersand replacement=\&]
+				\& {E'} \\
+				\color{gray!50}E \& X \& \color{gray!50}Y \\
+				\& Y
+				\arrow[from=1-2, to=2-2]
+				\arrow["{e_1}"', color=gray!50, from=2-1, to=2-2]
+				\arrow["f", shift left, color=gray!50, from=2-2, to=2-3]
+				\arrow["g"', shift right, color=gray!50, from=2-2, to=2-3]
+				\arrow["h", shift left, from=2-2, to=3-2]
+				\arrow["g"', shift right, from=2-2, to=3-2]
+			\end{tikzcd}\]
+	\end{minipage}%
+	\begin{minipage}{0.33\textwidth}
+		% https://q.uiver.app/#q=WzAsNixbMSwxLCJYIl0sWzIsMSwiWSJdLFswLDEsIkUiXSxbMSwwLCJFJyJdLFsxLDIsIlkiXSxbMCwwLCJUIl0sWzIsMCwiZV8xIiwyXSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMX1dLFswLDEsImciLDIseyJvZmZzZXQiOjF9XSxbMywwXSxbMCw0LCJoIiwwLHsib2Zmc2V0IjotMX1dLFswLDQsImciLDIseyJvZmZzZXQiOjF9XSxbNSwzXSxbNSwyXSxbNSwwLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+		\[\begin{tikzcd}[ampersand replacement=\&]
+				T \& {E'} \\
+				E \& X \& \color{gray!50}Y \\
+				\& \color{gray!50}Y
+				\arrow[from=1-1, to=1-2]
+				\arrow[from=1-1, to=2-1]
+				\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+				\arrow[from=1-2, to=2-2]
+				\arrow["{e_1}"', from=2-1, to=2-2]
+				\arrow["f", color=gray!50,shift left, from=2-2, to=2-3]
+				\arrow["g"', color=gray!50,shift right, from=2-2, to=2-3]
+				\arrow["h", color=gray!50,shift left, from=2-2, to=3-2]
+				\arrow["g"', color=gray!50,shift right, from=2-2, to=3-2]
+			\end{tikzcd}\]
+	\end{minipage}%
+	\caption{Costruzione del triqualizzatore di tre frecce \(f,g,h\) in termini di due equalizzatori e un prodotto fibrato. Si provi a dimostrare, per esercizio, il fatto ovvio che l'equalizzatore di \((f,g,g)\) coincide con l'equalizzatore di \((f,g)\).}
+	\label{fig_triqual_construzia}
+\end{figure}
+\begin{example}\label{ex_prodotto_fibrato_amp}
+	Prodotto fibrato `ampio'
+\end{example}
+\begin{example}\label{ex_somma_amalgamata_amp}
+	Somma amalgamata `ampia'
+\end{example}
+\begin{definition}[Limiti e colimiti finiti]\label{def_limiti_colimiti_finiti}\index{Limite!--- finito}\index{Colimite!--- finito}
+	\Todo{}
+\end{definition}
+\begin{definition}[Limiti e colimiti connessi]\label{def_limiti_colimiti_connessi}\index{Limite!--- connesso}\index{Colimite!--- connesso}
+ \Todo{}
+\end{definition}
+
+\begin{definition}[Limiti cofiltrati, colimiti filtrati]\label{def_limiti_cofiltrati_colimiti_filtrati}\index{Limite!--- cofiltrato}\index{Colimite!--- filtrato}
+ \Todo{}
+\end{definition}
+
+\begin{definition}[Limiti assoluti]\label{def_limiti_assoluti}\index{Limite!--- assoluto}
+ \Todo{}
+\end{definition}
+
+\begin{proposition}[Funtorialità dei limiti e dei colimiti]\label{prop_funtorialita_limiti_colimiti}\index{Limite!funtorialità}\index{Colimite!funtorialità}
+ \Todo{}
+\end{proposition}
+
+\begin{theorem}[Invarianza dell'esistenza di co/limiti per equivalenza di categorie]\label{thm_invarianza_colimiti_equivalenza_categorie}\index{Limite!invarianza per equivalenza}\index{Colimite!invarianza per equivalenza}
+ \Todo{}
+\end{theorem}
+
+\begin{theorem}[Dualità scambiano limiti e colimiti]\label{thm_dualita_limiti_colimiti}\index{Limite!--- mandato in co---}\index{Colimite!--- mandato in co---}
+ \Todo{}
+\end{theorem}
+
+\begin{remark}\label{mk_lim_ctI_ctJ_equivalenti}
+ Se \(\ctI\) e \(\ctJ\) sono equivalenti, è vero o falso \(\lim_\ctI D\cong\lim_\ctJ D\)?
+\end{remark}
+
+\begin{theorem}[Teorema di ostruzione di Freyd]\label{thm_large_cocompleta_poset}\index{Categoria!piccola (co)completa}\index{Poset}
+ \Todo{}
+\end{theorem}
+
+% def: Limiti e colimiti finiti, 
+% def: limiti e colimiti connessi.
+% def: Limiti cofiltrati, colimiti filtrati.
+% def: Limiti assoluti.
+
+% prop: Funtorialità dei limiti e dei colimiti.
+
+% thm: Invarianza dell'esistenza di co/limiti per equivalenza di categorie. 
+% thm: Dualità scambiano limiti e colimiti.
+
+% mk: Se \(\ctI\) e \(\ctJ\) sono equivalenti, è vero o falso \(\lim_\ctI D\cong\lim_\ctJ D\)?
+
+% thm: una categoria piccola (co)completa è un poset (Freyd).
+
+\subsection{Mono, epi e limiti}
+Epimorfismi come colimiti; monomorfismi come limiti. Chiusura degli epi per colimiti, chiusura dei mono per limiti. Coincidenza di alcune classi di mono-epi in presenza di co/limiti.
+
+oss su coequalizzatori riflessivi; epi regolari; coppia nucleo, coppia conucleo; esattezza.
+\begin{lemma}
+	Sia \(\ctC\) una categoria. Ogni freccia \(m \colon A\to X\) tale che esista una coppia \(f,g \colon X \to Y\) di frecce parallele e un diagramma equalizzatore
+	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJBIl0sWzEsMCwiWCJdLFsyLDAsIlkiXSxbMSwyLCJmIiwwLHsib2Zmc2V0IjotMn1dLFsxLDIsImciLDIseyJvZmZzZXQiOjJ9XSxbMCwxLCJtIiwyXV0=
+	\[\begin{tikzcd}[ampersand replacement=\&]
+			A \& X \& Y
+			\arrow["m"', from=1-1, to=1-2]
+			\arrow["f", shift left=1, from=1-2, to=1-3]
+			\arrow["g"', shift right=1, from=1-2, to=1-3]
+		\end{tikzcd}\]
+	è un mono. Dualmente, data \(p \colon Y\to B\), se esiste una simile coppia \(f,g \colon X \to Y\) e un diagramma coequalizzatore
+	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzEsMCwiWSJdLFsyLDAsIkIiXSxbMCwxLCJmIiwwLHsib2Zmc2V0IjotMn1dLFswLDEsImciLDIseyJvZmZzZXQiOjJ9XSxbMSwyLCJxIiwyXV0=
+	\[\begin{tikzcd}[ampersand replacement=\&]
+			X \& Y \& B
+			\arrow["f", shift left=1, from=1-1, to=1-2]
+			\arrow["g"', shift right=1, from=1-1, to=1-2]
+			\arrow["p"', from=1-2, to=1-3]
+		\end{tikzcd}\]
+	allora \(p\) è epi.
+\end{lemma}
+\begin{proof}
+	Mostriamo il primo enunciato, il secondo è duale. Se \(m = \eq(f,g)\), e \(s,t \colon Z \to A\) sono tali che \(h = m \cmp s = m \cmp t\), allora abbiamo un diagramma
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzEsMCwiWCJdLFsyLDAsIlkiXSxbMCwxLCJaIl0sWzAsMSwibSIsMl0sWzEsMiwiZiIsMCx7Im9mZnNldCI6LTF9XSxbMSwyLCJnIiwyLHsib2Zmc2V0IjoxfV0sWzMsMCwicyIsMCx7Im9mZnNldCI6LTF9XSxbMywwLCJ0IiwyLHsib2Zmc2V0IjoxfV0sWzMsMSwiaCIsMl1d
+	\[\begin{tikzcd}[ampersand replacement=\&]
+			A \& X \& Y \\
+			Z
+			\arrow["m"', from=1-1, to=1-2]
+			\arrow["f", shift left, from=1-2, to=1-3]
+			\arrow["g"', shift right, from=1-2, to=1-3]
+			\arrow["s", shift left, from=2-1, to=1-1]
+			\arrow["t"', shift right, from=2-1, to=1-1]
+			\arrow["h"', from=2-1, to=1-2]
+		\end{tikzcd}\]
+	ma da ciò segue che \(u,v\) sono entrambe fattorizzazioni di \(h\)	attraverso il dominio \(\eq(f,g)_0\) di \(m\), e dalla proprietà universale deve seguire \(s=t\); dunque \(m\) è mono.
+\end{proof}
+Questo motiva la definizione seguente.
+\begin{definition}[Epi e mono regolare]\label{def_epi_mono_regolari}\index{Monomorfismo!--- regolare}\index{Epimorfismo!--- regolare}
+	Sia \(\ctC\) una	categoria.
+	\begin{itemize}
+		\item Se una freccia \(m \colon A \to X\) soddisfa l'ipotesi del lemma precedente, allora \(m\) è detta un \emph{mono regolare}.
+		\item Dualmente, se una freccia \(p \colon Y \to B\)	soddisfa l'ipotesi del lemma precedente, allora \(p\) è detta un \emph{epi regolare}.
+	\end{itemize}
+\end{definition}
+\begin{definition}[Categoria regolare]\label{def_cat_regolare}\index{Categoria!--- regolare}
+	\color{red}
+	Una categoria \(\ctC\) è detta \emph{regolare} se:
+	\begin{itemize}
+		\item ha tutti i prodotti finiti;
+		\item ha tutti i coequalizzatori dei mono;
+		\item gli epi sono stabili per pullback, ovvero il pullback di un epi lungo una qualsiasi freccia esiste ed è ancora un epi.
+	\end{itemize}
+\end{definition}
+\begin{remark}
+	La nozione di epi regolare è l'ultima	che ci serve per stabilire la `gerarchia delle frecce epi' (split epi \(\implies\)	epi regolare \(\implies\)	epi forte \(\implies\)	epi estremale, e analogamente per i mono). La situazione è descritta nella Figura \ref{fig_gerarchia} insieme ad una schematizzazione delle ipotesi a cui le inclusioni si possono invertire. Viene usata la notazione di \ref{}, cioè la definizione di classe \emph{ortogonale} a una classe di frecce, ma non si tratta di un concetto nuovo rispetto a \ref{mepi_forte}.\Todo{aggiungere le condizioni a cui classi di epi coincidono}
+\end{remark}
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}[scale=1.1]
+			% Outer to inner boxes
+			\fill[gray!5,rounded corners] (-4,-1.2) rectangle (5,1.2);
+			\node[font=\footnotesize,above] at (4.5,0.0) {epi};
+
+			\fill[gray!10,rounded corners] (-3.2,-1.2) rectangle (4,1.2);
+			\node[font=\footnotesize,above] at (3.2,0.0) {estremale};
+
+			\fill[gray!20,rounded corners] (-2.4,-1.4) rectangle (2.4,1.2);
+			\node[font=\footnotesize] at (0,-1.7) {$\lort(\Mono[\ctC])$};
+			\fill[gray!30,rounded corners] (-2.4,-1.2) rectangle (2.4,1.2);
+			\node[font=\footnotesize] at (0,1) {forte};
+
+			\fill[gray!40,rounded corners] (-1.6,-0.8) rectangle (1.6,0.8);
+			\node[font=\footnotesize] at (0,0.6) {regolare};
+
+			\fill[gray!50,rounded corners] (-0.8,-0.4) rectangle (0.8,0.4);
+			\node[font=\footnotesize] at (0,0) {spezzante};
+		\end{tikzpicture}
+	\end{center}
+	\caption{Gerarchia delle classi di epimorfismi in una categoria \(\ctC\). Le inclusioni si possono invertire sotto le ipotesi indicate. Le classi \(\Epi[\ctC]^s\) degli epi forti di \ref{} e l'ortogonale sinistro \(\lort(\Mono[\ctC])\) sono `essenzialmente sempre' coincidenti nei casi reali, ma \ref{} è un controesempio. Ipotesi opportune su \(\ctC\) rovesciano alcune di queste inclusioni: \Todo{}}\label{fig_gerarchia}
+\end{figure}
+\subsection{Interazioni tra limiti e colimiti, completamenti}
+\begin{proposition}[Commutatività di colimiti filtrati e limiti finiti]\label{prop_commutativita_colimiti_filtrati_limiti_finiti}\index{Colimite!filtrato!commutatività con limiti finiti}\index{Limite!finito!commutatività con colimiti filtrati}
+ \Todo{}
+\end{proposition}
+
+\begin{proposition}[Commutatività di colimiti setacciati e prodotti]\label{prop_commutativita_colimiti_setacciati_prodotti}\index{Colimite!setacciato!commutatività con prodotti}\index{Prodotto!commutatività con colimiti setacciati}
+ \Todo{}
+\end{proposition}
+
+\begin{definition}[Categoria di funtori polinomiali]\label{def_categoria_funtori_polinomiali}\index{Funtore!polinomiale}\index{Categoria!di funtori polinomiali}
+ limiti e colimiti interagiscono per formare un polinomio
+ \Todo{}
+\end{definition}
+
+\begin{definition}[Completamento libero per diagrammi di forma \(\ctJ\)]\label{def_completamento_libero_diagrammi_ctJ}\index{Completamento!libero per diagrammi}
+ \Todo{}
+\end{definition}
+
+\begin{proposition}[Completamenti liberi]\label{prop_completamenti_liberi}\index{Completamento!per oggetto iniziale}\index{Completamento!per oggetto terminale}\index{Completamento!per prodotti}\index{Completamento!per coprodotti}
+ % - il completamento per iniziale è \(\ctC^\lhd\)
+ % - quello per terminale è il cono destro \(\ctC^\rhd\)
+ % - completamento per prodotti e per coprodotti descrivibile in casi semplici
+ \Todo{}
+\end{proposition}
+
+\begin{theorem}[Complemento]\label{mk_kelly_closure}
+	Kelly closure of a class of colimits
+	\cite{paper_kelly_closure}
+ \Todo{}
+\end{theorem}
+% prop: commutatività di colimiti filtrati e limiti finiti, 
+% prop: commutatività di colimiti setacciati e prodotti. 
+% def: categoria di funtori polinomiali (`limiti e colimiti interagiscono per formare un polinomio')
+
+% def: completamento libero per diagrammi di forma $\ctJ$ 
+% prop: evidenziamo alcuni completamenti; 
+% - il completamento per iniziale è \(\ctC^\lhd\), 
+% - quello per terminale è il cono destro \(\ctC^\rhd\) 
+% - si può descrivere in casi semplici il completamento per prodotti e per coprodotti, gli altri sono più difficili...
+
+% thm: Complemento
+
+% ...Kelly closure of a class of colimits... \cite{paper_kelly_closure}
