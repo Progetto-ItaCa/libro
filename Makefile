@@ -18,8 +18,8 @@ DEV_PRETEX = \
     \\let\\printindex\\relax\
     \\renewcommand{\\bibliography}[1]{}\
     \\renewcommand{\\bibliographystyle}[1]{}\
-    \\let\\listoftodos\\relax\
   }\\relax
+#     \\let\\listoftodos\\relax\ can be added to remove todos, but I find them useful even in dev builds
 
 # Normalize chapter path (strip optional .tex suffix).
 CH_NORM = $(patsubst %.tex,%,$(CH))
