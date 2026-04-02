@@ -1,5 +1,5 @@
 \section{Teoria generale di limiti e colimiti}
-Lo scopo di questa sezione è generalizzare le costruzioni date precedentemente a limiti e colimiti di forma diversa da prodotti, somme, equalizzatori e coequalizzatori. Dopo aver introdotto la nozione di cono e di cocono per un diagramma $D \colon \ctJ \to\ctC$, il limite (risp., colimite) per $D$ è l'oggetto terminale (risp., iniziale) della categoria dei coni (risp., coconi) per $D$. In questo modo, si ottiene una definizione di limite e colimite che è del tutto generale, che si applica a qualsiasi tipo di diagramma, e che ritrova come esempi particolari tutti quelli fatti finora. 
+Lo scopo di questa sezione è generalizzare le costruzioni date precedentemente a limiti e colimiti di forma diversa da prodotti, somme, equalizzatori e coequalizzatori. Dopo aver introdotto la nozione di cono e di cocono per un diagramma \(D \colon \ctJ \to\ctC\), il limite (risp., colimite) per \(D\) è l'oggetto terminale (risp., iniziale) della categoria dei coni (risp., coconi) per \(D\). In questo modo, si ottiene una definizione di limite e colimite che è del tutto generale, che si applica a qualsiasi tipo di diagramma, e che ritrova come esempi particolari tutti quelli fatti finora.
 
 Ricordiamo che con \emph{diagramma} intendiamo un funtore \(D\colon \ctJ \fun \ctC\) da una categoria piccola \(\ctJ\) (detta \emph{categoria degli indici}) a una categoria \(\ctC\) (detta \emph{categoria ambiente}). La categoria indice è un modo per specificare la forma del diagramma, e dunque la forma del limite o colimite che vogliamo costruire. Ad esempio, se \(\ctJ\) è la doppia freccia generica, allora \(D\) è un diagramma di due frecce parallele, la categoria dei coni avrà per oggetti le frecce che equalizzano quella coppia, e il limite di \(D\) sarà il loro equalizzatore; se invece \(\ctJ\) è una categoria discreta con due oggetti, allora \(D\) è un diagramma di due oggetti, senza frecce tra loro, e il limite di \(D\) è un prodotto. E così via.
 \begin{definition}[Categoria dei coni, categoria dei coconi]\label{def_cat_coni}
@@ -16,39 +16,201 @@ Ricordiamo che con \emph{diagramma} intendiamo un funtore \(D\colon \ctJ \fun \c
 \end{remark}
 \begin{examples}\label{ex_cat_coni_coconi}
 	Raccogliamo alcuni esempi di categorie di coni e di coconi per diagrammi noti e meno noti.
-	
+
 	Iniziamo coi prodotti di taglia arbitraria (piccola)
 	\Todo{}
 
-\begin{itemize}
-	\item Un oggetto terminale di $\ctC$ è un cono terminale per il funtore vuoto $\bang_\ctC \colon \ctInit\fun\ctC$. Dualmente, un	oggetto iniziale è un cocono iniziale per lo stesso funtore vuoto. (Si noti una certa autoreferenzialità: la categoria iniziale è il colimite del diagramma vuoto $\bang_{\ctCat}\colon \ctInit \fun\ctCat$, e un oggetto iniziale (risp., terminale) in $\ctC$ è un cocono (risp., un cono) per $\colim(\bang_{\ctCat})\fun\ctC$. Questi diagrammi esistono, in un certo senso, su piani diversi.)
-	\item Un equalizzatore è un cono terminale per un diagramma $D \colon \genAArrow \fun\ctC$; dualmente, un coequalizzatore è un cocono iniziale dello stesso $D$.  %(coppie nucleo e il quoziente di una relazione di equivalenza interna, fattorizzazione di un morfismo)
-	\item Un prodotto fibrato è un cono terminale per un diagramma di dominio la cospanna generica di \ref{}; dualmente, una somma amalgamata è un cocono iniziale di un diagramma di dominio la spanna generica di \ref{}; strettamente parlando, nell'esempio precedente avremmo dovuto dire che un coequalizzatore è un cocono iniziale per $D \colon (\genAArrow)^\op \fun\ctC$, ma la categoria $\genAArrow$ è autoduale (si veda \ref{}).
-	\item Un colimite filtrato è un cocono iniziale per un diagramma su una categoria filtrata nel senso di \ref{}; dualmente, un limite cofiltrato è un cono terminale per un diagramma su una categoria cofiltrata (equivalentemente, sull'opposta di una categoria filtrata). Un colimite in $\kappa$-catena è un cocono iniziale per un diagramma $D \colon \kappa \fun \ctC$ come in \ref{}; dualmente un limite in $\kappa$-cocatena è un cono terminale per un diagramma	$D \colon \kappa^\op \fun \ctC$.
-	\item categorie puntate, nuclei e conuclei
-	\item esempi e non esempi
-\end{itemize}
-
+	\begin{itemize}
+		\item Un oggetto terminale di \(\ctC\) è un cono terminale per il funtore vuoto \(\bang_\ctC \colon \ctInit\fun\ctC\). Dualmente, un	oggetto iniziale è un cocono iniziale per lo stesso funtore vuoto. (Si noti una certa autoreferenzialità: la categoria iniziale è il colimite del diagramma vuoto \(\bang_{\ctCat}\colon \ctInit \fun\ctCat\), e un oggetto iniziale (risp., terminale) in \(\ctC\) è un cocono (risp., un cono) per \(\colim(\bang_{\ctCat})\fun\ctC\). Questi diagrammi esistono, in un certo senso, su piani diversi.)
+		\item Un equalizzatore è un cono terminale per un diagramma \(D \colon \genAArrow \fun\ctC\); dualmente, un coequalizzatore è un cocono iniziale dello stesso \(D\).  %(coppie nucleo e il quoziente di una relazione di equivalenza interna, fattorizzazione di un morfismo)
+		\item Un prodotto fibrato è un cono terminale per un diagramma di dominio la cospanna generica di \ref{}; dualmente, una somma amalgamata è un cocono iniziale di un diagramma di dominio la spanna generica di \ref{}; strettamente parlando, nell'esempio precedente avremmo dovuto dire che un coequalizzatore è un cocono iniziale per \(D \colon (\genAArrow)^\op \fun\ctC\), ma la categoria \(\genAArrow\) è autoduale (si veda \ref{}).
+		\item Un colimite filtrato è un cocono iniziale per un diagramma su una categoria filtrata nel senso di \ref{}; dualmente, un limite cofiltrato è un cono terminale per un diagramma su una categoria cofiltrata (equivalentemente, sull'opposta di una categoria filtrata). Un colimite in \(\kappa\)-catena è un cocono iniziale per un diagramma \(D \colon \kappa \fun \ctC\) come in \ref{}; dualmente un limite in \(\kappa\)-cocatena è un cono terminale per un diagramma	\(D \colon \kappa^\op \fun \ctC\).
+		\item categorie puntate, nuclei e conuclei
+		\item esempi e non esempi
+	\end{itemize}
 \end{examples}
-\subsection{Categorie piccolo-complete e piccolo-cocomplete}
+\subsection{Combinatoria dei co/limiti}
+\Todo{}
+Per `combinatoria' dei co/limiti si intende l'insieme di tecniche per asserire che, assumendo alcune parti di un diagramma siano co/limiti. Il più semplice, e utile, risultato di qesto tipo riguarda la possibilità di comporre, e cancellare, quadrati Cartesiani.
+\begin{example}
+	\Todo{Incollamento di prodotti fibrati}
+\end{example}
+\begin{example}
+	\Todo{Incollamento di somme amalgamate}
+\end{example}
+\begin{example}
+	\Todo{Lemma del cubo}
+\end{example}
+\begin{example}
+	Lemmi delle forme e degli animali (serpente, farfalla, salamandra, liocorno, teiera,	\dots)
+\end{example}
+\begin{example}
+	\Todo{Quadrato magico di Vakil} Siano \(f_1,f_2 \colon X_1,X_2 \to Y\) e \(g \colon Y\to Z\) tre frecce di una categoria \(\ctC\); supponiamo che i prodotti fibrati \(\pull{X_1}{X_2}Y\) di \(f_1,f_2\), \(\pull \) di \(g\cmp f_1,g\cmp f_2\), e la coppia-nucleo \(\pull YYZ\) di \(g\), esistano tutte. Allora il quadrato colorato in rosso, ottenuto per funtorialità, è anch'esso un prodotto fibrato.
+	% https://q.uiver.app/#q=WzAsMTEsWzAsMSwiWF8xXFx0aW1lc19ZIFhfMiJdLFsxLDAsIlhfMVxcdGltZXNfWiBYXzIiXSxbMiwxLCJYXzEiXSxbNCwwLCJYXzEiXSxbMCwzLCJYXzIiXSxbMiwzLCJZIl0sWzQsMiwiWiJdLFsxLDIsIlhfMiJdLFszLDIsIlkiXSxbNCwxLCJZIl0sWzMsMSwiWSBcXHRpbWVzX1ogWSJdLFs1LDYsImciLDJdLFsyLDMsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiZl8yIiwyXSxbMCw0XSxbMCwyXSxbMSwzXSxbMCwxLCIiLDIseyJjb2xvdXIiOlswLDYwLDYwXX1dLFs0LDcsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsN10sWzcsOCwiZl8yIiwwLHsibGFiZWxfcG9zaXRpb24iOjIwfV0sWzgsNiwiZyJdLFszLDksImZfMSJdLFs5LDYsImciXSxbMiw1XSxbMTAsOV0sWzEwLDhdLFsxLDEwLCIiLDAseyJjb2xvdXIiOlswLDYwLDYwXX1dLFswLDUsIiIsMCx7ImNvbG91ciI6WzAsNjAsNjBdfV0sWzUsMTAsIiIsMCx7ImNvbG91ciI6WzAsNjAsNjBdfV0sWzEwLDYsIiIsMCx7InN0eWxlIjp7Im5hbWUiOiJjb3JuZXIifX1dLFsxLDYsIiIsMCx7InN0eWxlIjp7Im5hbWUiOiJjb3JuZXIifX1dXQ==
+	\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+			\& {X_1\times_Z X_2} \&\&\& {X_1} \\
+			{X_1\times_Y X_2} \&\& {X_1} \& {Y \times_Z Y} \& Y \\
+			\& {X_2} \&\& Y \& Z \\
+			{X_2} \&\& Y
+			\arrow[from=1-2, to=1-5]
+			\arrow[draw={rgb,255:red,214;green,92;blue,92}, from=1-2, to=2-4]
+			\arrow[from=1-2, to=3-2]
+			\arrow["\pullback"{anchor=center, pos=0.125}, draw=none, from=1-2, to=3-5]
+			\arrow["{f_1}", from=1-5, to=2-5]
+			\arrow[draw={rgb,255:red,214;green,92;blue,92}, from=2-1, to=1-2]
+			\arrow[from=2-1, to=2-3]
+			\arrow[from=2-1, to=4-1]
+			\arrow[draw={rgb,255:red,214;green,92;blue,92}, from=2-1, to=4-3]
+			\arrow[equals, from=2-3, to=1-5]
+			\arrow[from=2-3, to=4-3]
+			\arrow[from=2-4, to=2-5]
+			\arrow[from=2-4, to=3-4]
+			\arrow["\pullback"{anchor=center, pos=0.125}, draw=none, from=2-4, to=3-5]
+			\arrow["g", from=2-5, to=3-5]
+			\arrow["{f_2}"{pos=0.2}, from=3-2, to=3-4]
+			\arrow["g", from=3-4, to=3-5]
+			\arrow[equals, from=4-1, to=3-2]
+			\arrow["{f_2}"', from=4-1, to=4-3]
+			\arrow[draw={rgb,255:red,214;green,92;blue,92}, from=4-3, to=2-4]
+			\arrow["g"', from=4-3, to=3-5]
+		\end{tikzcd}\]
+\end{example}
+\begin{proposition}
+	Supponiamo di avere un cubo commutativo
+	\[
+		\xymatrix@R=.65em@C=.65em{
+		A_0 \ar[rr] \ar[dd] \ar[dr] & & C_0 \ar[dd] \ar[dr] & \\
+		& B_0 \ar[rr] \ar[dd] & & D_0 \ar[dd] \\
+		A_1 \ar[rr] \ar[dr] & & C_1 \ar[dr] & \\
+		& B_1 \ar[rr] & & D_1
+		}
+	\]
+	in cui la faccia sinistra, la faccia destra e la faccia frontale sono Cartesiane. Allora la faccia posteriore è Cartesiana.
+\end{proposition}
+\begin{proof}
+	\Todo{}
+\end{proof}
+\begin{proposition}
+	Supponiamo di avere un cubo commutativo
+	\[
+		\xymatrix@R=.65em@C=.65em{
+		A \ar[rr] \ar[dd] \ar[dr] & & C \ar[dd] \ar[dr] & \\
+		& A' \ar[rr] \ar[dd] & & C' \ar[dd] \\
+		B \ar[rr] \ar[dr] & & D \ar[dr] & \\
+		& B' \ar[rr] & & D'
+		}
+	\]
+	in cui le facce superiore e inferiore sono Cartesiane. Allora il seguente quadrato è Cartesiano,
+	\[
+		\begin{tikzcd}
+			A \arrow[r] \arrow[d] & A' \arrow[d] \\
+			B \times_D C \arrow[r] & B' \times_{D'} C'.
+		\end{tikzcd}
+	\]
+\end{proposition}
+\begin{proof}
+	\Todo{}
+\end{proof}
+Entrambi questi risultati possono essere ottenuti come corollari del seguente fatto generale, che fa uso del calcolo dei sistemi di fattorizzazione (si veda \ref{}).
+\begin{theorem}
+	Sia \(\ctE\) una categoria che ammette prodotti fibrati. Se \(\ctB\) è la classe dei quadrati Cartesiani in \(\ctE\), e \(\ctA\) è la classe dei quadrati \(u \colon A \rightarrow B\) con \(u_1\) invertibile, allora la coppia \((\ctA, \ctB)\) è un sistema di fattorizzazione nella categoria \(\ctE^I\).
+\end{theorem}
+\subsection{Categorie piccolo-co/complete}
 \begin{definition}\label{def_piccolo_complete}
-	Una categoria si dice \emph{(piccolo-)completa} se ogni diagramma $D : \ctJ \to\ctC$ ammette un limite; dualmente, si dice \emph{(piccolo-)cocompleta} se ogni diagramma $D : \ctJ \to\ctC$ ammette un colimite.
+	Una categoria si dice \emph{(piccolo-)completa} se ogni diagramma \(D \colon \ctJ \to\ctC\) ammette un limite; dualmente, si dice \emph{(piccolo-)cocompleta} se ogni diagramma \(D \colon \ctJ \to\ctC\) ammette un colimite.
 	\Todo{}
 \end{definition}
-\Todo{}
-\begin{theorem}\label{thm_struttura_limiti}
-	Teorema di struttura sui limiti. Limiti in funzione di altri limiti. In breve, TFAE:
-	\begin{itemize}
-		\item Cocompleteness,
-		\item having coproducts and coequalizers,
-		\item having coproducts and pushouts,
-		\item having filtered colimits, finite coproducts and pushouts, and
-		\item having filtered colimits, pushouts and an initial object.
-		\item ...?
-	\end{itemize}
-	Kelly closure of a class of colimits menzionato e poi ripreso in \ref{}
+Si è già osservato che la categoria	\(\ctSet\) di insiemi e funzioni ha prodotti (di qualsiasi cardinalità) ed equalizzatori di coppie di frecce. In effetti, è possibile sfruttare l'esistenza di questi soli limiti per dimostrare il seguente risultato generale (che, dualizzato, mostrerà l'enunciato duale).
+\begin{theorem}
+	La categoria degli insiemi è piccolo-completa e piccolo-cocompleta.
 \end{theorem}
-Il teorema di struttura è molto utile nel decomporre un limite o colimite di forma complessa in un co/equalizzatore di mappe tra co/prodotti, o in un prodotto fibrato o somma amalgamata. Raccogliamo alcuni esempi (ovviamente, supponiamo sempre che i limiti e colimiti di cui abbiamo bisogno esistano).
+\begin{proof}
+	Per quanto riguarda la completezza,
+	\Todo{dalle note di un'altra lezione:}
+	\color{red}
+	Let \(\ctD\) be a small category and \(F \colon \ctD\to\ctSet\) a functor. For every arrow \(f\) in \(\ctD\), we denote \(\text{s}(f)\) the source and \(\text{t}(f)\) the target of \(f\); so, if \(f \colonD\to D'\), \(\text{s}(f)=D\), \(\text{t}(f)=D'\).
+
+	We prove that the limit \(\lim F\) of \(F\) is precisely the equalizer of the pair of maps
+	\[\xymatrix{
+		\displaystyle\prod_{D\in\ctD_0} FD \ar@<.3em>[r]^-{\alpha^F}\ar@<-.3em>[r]_-{\beta^F}& \displaystyle\prod_{f\in\ctD_1} F(\text{t}(f))
+		}\]
+	where
+	\begin{itemize}
+		\item \(\alpha^F((x_D\mid D\in\ctD)) = (x_{\text{t}(f)}\mid f\in\ctD_1)\);
+		\item \(\beta^F(((x_D\mid D\in\ctD)) = (Ff(x_{\text{s}(f)})\mid f\in\ctD_1)\);
+	\end{itemize}
+	This means two things: if \(\lim F\) exists, then it must be the equalizer of that pair; otoh, if that pair \((\alpha,\beta)\) has an equalizer, then such is the limit of \(F\).
+
+	We have to prove that
+	\begin{enumerate}
+		\item There exists a cone
+		      \[\xymatrix{
+			      \lim F \ar[r]^-{\bar p} & \displaystyle\prod_{D\in\ctD_0} FD \ar@<.5em>[r]^-\alpha\ar@<-.5em>[r]_-\beta& \displaystyle\prod_{f\in\ctD_1} F(\text{t}(f))
+			      }\]
+		      where \(e\) equalizes the pair \(\alpha,\beta\);
+		\item such cone is terminal; this will mean two things:
+		      \begin{itemize}
+			      \item the universal property of \(\lim F\) entails the universal property of \(\mathsf{eq}(\alpha,\beta)\);
+			      \item the universal property of \(\mathsf{eq}(\alpha,\beta)\) entails the universal property of \(\lim F\).
+		      \end{itemize}
+		      Thus, there is a unique isomorphism \(\mathsf{eq}(\alpha,\beta)\cong \lim F\).
+	\end{enumerate}
+	Proving 1. is easy; if \((\lim F,p_D)\) exists, all projections \(p_D \colon \lim F\to FD\) assemble into a unique map \(\bar p \colon \lim F \to \prod_D FD\) (this is the universal property of \(\prod_D FD\)). Note in passing that by the lemma above if \(\ctD\) is a discrete category, \(\prod_{f\in\ctD_1} F(\text{t}(f)) = \prod_{D\in\ctD_0} FD\), \(\alpha,\beta\) are invertible and thus \(\lim F\cong \prod_{D\in\ctD_0} FD\), as it should be.
+
+	Now, \(\bar p \colon \lim F \to \prod_D FD\) equalizes \((\alpha,\beta)\), because the components \(p_D\) form a cone: the triangle of sets and functions
+	\[\xymatrix@R=5mm{
+		& FD \ar[dd]^{Ff}\\
+		\lim F \ar[ur]^{p_D}\ar[dr]_{p_{D'}}& \\
+		& FD'
+		}\]
+	is commutative, whence the fact that for all \(\hat x\in\lim F\) and \(f \colon D\to D'\) in \(\ctD_1\) one has
+	\[
+		\beta^F(\bar p(\hat x))= \big(Ff(p_{\text{s}(f)}(\hat x))\mid f\in\ctD_1\big) =
+		\big(p_{\text{t}(f)}(\hat x)\mid f\in\ctD_1\big) = \alpha^F(\bar p(\hat x)).\]
+	A similar argument for a general cone \((z \colon Z\to FD\mid D\in\ctD_0)\) proves that this is a cone for \(F\) if and only if it equalizes \((\alpha,\beta)\); thus, a cone for \(F\) must be a terminal cone wrt the property of equalizing \((\alpha,\beta)\); whence the conclusion.
+
+	\color{black}
+	Per quanto riguarda la cocompletezza,
+	\Todo{}
+\end{proof}
+Lo stesso ragionamento si applica ad altre categorie i cui oggetti sono insiemi, con una importante semplificazione nel caso di gruppi abeliani, spazi vettoriali, moduli su un anello, etc., dove possiamo semplificare l'espressione nel `teorema di struttura' seguente.
+\begin{theorem}[Teorema di struttura sui limiti]\label{thm_struttura_limiti}
+	Le condizioni seguenti sono equivalenti, per una categoria \(\ctC\).
+	\begin{enumtag}{sl}
+		\item\label{sl_1} piccolo-completezza nel senso di \ref{},
+		\item\label{sl_2} avere tutti i prodotti e gli equalizzatori,
+		\item\label{sl_3} avere tutti i prodotti e i prodotti fibrati,
+		\item\label{sl_4} avere i limiti \(\kappa\)-cofiltrati per ogni \(\kappa\), i prodotti finiti e i prodotti fibrati, e
+		\item\label{sl_5} avere i limiti \(\kappa\)-cofiltrati per ogni \(\kappa\), i prodotti fibrati e un oggetto terminale.
+	\end{enumtag}
+	Dualmente, le seguenti condizioni sono equivalenti:
+	\begin{enumtag}{sc}
+		\item\label{sc_1} piccolo-cocompletezza nel senso di \ref{},
+		\item\label{sc_2} avere tutti i coprodotti e i coequalizzatori,
+		\item\label{sc_3} avere tutti i coprodotti e le somme amalgamate,
+		\item\label{sc_4} avere i colimiti \(\kappa\)-filtrati per ogni \(\kappa\), i coprodotti finiti e le somme amalgamate, e
+		\item\label{sc_5} avere i colimiti \(\kappa\)-filtrati per ogni \(\kappa\), le somme amalgamate e un oggetto iniziale.
+	\end{enumtag}
+\end{theorem}
+Valgono anche enunciati più deboli, che rimpiazzano \ref{sl_1} con la sola \(\lambda\)-completezza (cioè esistenza di tutti i limiti di diagrammi con dominio \(\lambda\)-piccolo); allora in \ref{sl_2}--\ref{sl_3} bastano i prodotti su famiglie \(\lambda\)-piccole, e in \ref{sl_4}--\ref{sl_5} `per ogni \(\kappa\)' diventa `ogni \(\kappa<\lambda\)'. Ovviamente, valgono (e saranno usati senza ulteriore menzione) risultati duali	a questi ultimi per la cocompletezza.
+\begin{proof}
+	La dimostrazione più comune della equivalenza tra tutte queste condizioni è quella che mostra l'equivalenza di \ref{sl_1} e \ref{sl_2}, e in effetti l'implicazione inversa (l'altra è ovvia). Le altre implicazioni procedono dimostrando che si possono esprimere i limiti
+\end{proof}
+Kelly closure of a class of colimits menzionato e poi ripreso in \ref{}
+\begin{remark}
+	Nella categoria \(\ctAb\) dei gruppi abeliani, possiamo semplificare il teorema di struttura nell'enunciato che segue.
+	\begin{quote}
+		Sia \(D \colon \ctJ \fun \ctAb\) un diagramma. Allora, il limite di \(D\) è realizzato come il nucleo della mappa
+		\Todo{}
+		Dualmente, il colimite di \(D\) è isomorfo al conucleo di una freccia
+		\Todo{}
+		tra somme dirette in \(\ctAb\).
+	\end{quote}
+	Per dimostrarlo, possiamo usare la semplice osservazione che dati due omomorfismi di gruppi abeliani \(f,g \colon A\to B\), l'equalizzatore di \((f,g)\) e il nucleo di \(g-f\) (e il nucleo di \(f-g\)) soddisfano tutti la stessa proprietà universale.
+\end{remark}
+\begin{remark}
+	Il teorema di struttura è molto utile nel decomporre un limite o colimite di forma complessa in un co/equalizzatore di mappe tra co/prodotti, o in un prodotto fibrato o somma amalgamata. Raccogliamo alcuni esempi (ovviamente, supponiamo sempre che i limiti e colimiti di cui abbiamo bisogno esistano).
+\end{remark}
 \begin{example}\label{ex_triqualizzatore}
 	Nella terminologia di \ref{ex_cat_turcasso}, si consideri come dominio di un diagramma un 3-turcasso \(\turk[3]\); un \emph{triqualizzatore} in una categoria \(\ctC\) finitamente completa è il limite di un diagramma \(D\colon \turk[3] \fun\ctC\), che quindi è della forma
 	\[\xymatrix{X \ar[r]|-g \ar@<.5em>[r]^-f \ar@<-.5em>[r]_-h& Y}\]
@@ -148,37 +310,68 @@ Il teorema di struttura è molto utile nel decomporre un limite o colimite di fo
 	\Todo{}
 \end{definition}
 \begin{definition}[Limiti e colimiti connessi]\label{def_limiti_colimiti_connessi}\index{Limite!--- connesso}\index{Colimite!--- connesso}
- \Todo{}
+	\Todo{}
 \end{definition}
 
 \begin{definition}[Limiti cofiltrati, colimiti filtrati]\label{def_limiti_cofiltrati_colimiti_filtrati}\index{Limite!--- cofiltrato}\index{Colimite!--- filtrato}
- \Todo{}
+	\Todo{}
 \end{definition}
 
 \begin{definition}[Limiti assoluti]\label{def_limiti_assoluti}\index{Limite!--- assoluto}
- \Todo{}
+	\Todo{}
 \end{definition}
 
 \begin{proposition}[Funtorialità dei limiti e dei colimiti]\label{prop_funtorialita_limiti_colimiti}\index{Limite!funtorialità}\index{Colimite!funtorialità}
- \Todo{}
+	\Todo{}
 \end{proposition}
+\begin{example}
+	La funtorialità dei limiti e dei colimiti si esprime in queste maniere familiari, nel caso dei prodotti (e coprodotti), degli equalizzatori (e coequalizzatori), e dei prodotti fibrati (e somme amalgamate):
+	\begin{itemize}
+		\item \Todo{mappaindotta	tra prodotti}
+		\item \Todo{mappaindotta tra equalizzatori}
+		\item \Todo{mappaindotta tra pullback}
+	\end{itemize}
+	(si dualizzi per esercizio).
 
-\begin{theorem}[Invarianza dell'esistenza di co/limiti per equivalenza di categorie]\label{thm_invarianza_colimiti_equivalenza_categorie}\index{Limite!invarianza per equivalenza}\index{Colimite!invarianza per equivalenza}
- \Todo{}
+	In particolare, questo implica i fatti seguenti in \(\ctAb\) (si veda \ref{}):
+	\begin{itemize}
+		\item mappa indotta tra nuclei
+		\item mappa indotta tra conuclei
+	\end{itemize}
+\end{example}
+\begin{theorem}[Teorema di Fubini per limiti e colimiti]\label{thm_fubini}\index{Teorema!--- di Fubini}\index{Commutatività!--- tra co/limiti}
+	\Todo{}
 \end{theorem}
+\begin{proof}
+	\Todo{}
+\end{proof}
+\begin{theorem}[Invarianza dell'esistenza di co/limiti per equivalenza di categorie]\label{thm_invarianza_colimiti_equivalenza_categorie}\index{Limite!invarianza per equivalenza}\index{Colimite!invarianza per equivalenza}
+	\Todo{}
+\end{theorem}
+\begin{proof}
+	\Todo{}
+\end{proof}
 
 \begin{theorem}[Dualità scambiano limiti e colimiti]\label{thm_dualita_limiti_colimiti}\index{Limite!--- mandato in co---}\index{Colimite!--- mandato in co---}
- \Todo{}
+	\Todo{}
 \end{theorem}
-
+\begin{proof}
+	\Todo{}
+\end{proof}
 \begin{remark}\label{mk_lim_ctI_ctJ_equivalenti}
- Se \(\ctI\) e \(\ctJ\) sono equivalenti, è vero o falso \(\lim_\ctI D\cong\lim_\ctJ D\)?
+	Se \(\ctI\) e \(\ctJ\) sono equivalenti, è vero o falso \(\lim_\ctI D\cong\lim_\ctJ D\)?
 \end{remark}
 
-\begin{theorem}[Teorema di ostruzione di Freyd]\label{thm_large_cocompleta_poset}\index{Categoria!piccola (co)completa}\index{Poset}
- \Todo{}
-\end{theorem}
+\begin{theorem}[Teorema di ostruzione di Freyd]\label{thm_large_cocompleta_poset}\index{Categoria!--- ipercompleta}\index{Poset}
+	Una categoria \(\ctD\) localmente piccola si dice \emph{ipercompleta} se per ogni funtore \(D \colon \ctC\fun\ctD\), esiste il limite \(\lim D\); dualmente, si dice \emph{ipercocompleta} se per ogni funtore \(D \colon \ctC\fun\ctD\), esiste il colimite \(\colim D\).
 
+	Similmente, una categoria piccola (di cardinalità minore di un cardinale \(\alpha\)) si dice ipercompleta	(risp., ipercocompleta) se ogni diagramma di cardinalità maggiore di \(\alpha\) ammette un limite (risp., colimite).
+
+	Il teorema di ostruzione di Freyd afferma che una categoria (piccola) ipercompleta è un preordine (largo, se \(\ctD\) non era piccola).
+\end{theorem}
+\begin{proof}
+	\Todo{}
+\end{proof}
 % def: Limiti e colimiti finiti, 
 % def: limiti e colimiti connessi.
 % def: Limiti cofiltrati, colimiti filtrati.
@@ -277,39 +470,39 @@ Questo motiva la definizione seguente.
 \end{figure}
 \subsection{Interazioni tra limiti e colimiti, completamenti}
 \begin{proposition}[Commutatività di colimiti filtrati e limiti finiti]\label{prop_commutativita_colimiti_filtrati_limiti_finiti}\index{Colimite!filtrato!commutatività con limiti finiti}\index{Limite!finito!commutatività con colimiti filtrati}
- \Todo{}
+	\Todo{}
 \end{proposition}
 
 \begin{proposition}[Commutatività di colimiti setacciati e prodotti]\label{prop_commutativita_colimiti_setacciati_prodotti}\index{Colimite!setacciato!commutatività con prodotti}\index{Prodotto!commutatività con colimiti setacciati}
- \Todo{}
+	\Todo{}
 \end{proposition}
 
 \begin{definition}[Categoria di funtori polinomiali]\label{def_categoria_funtori_polinomiali}\index{Funtore!polinomiale}\index{Categoria!di funtori polinomiali}
- limiti e colimiti interagiscono per formare un polinomio
- \Todo{}
+	limiti e colimiti interagiscono per formare un polinomio
+	\Todo{}
 \end{definition}
 
 \begin{definition}[Completamento libero per diagrammi di forma \(\ctJ\)]\label{def_completamento_libero_diagrammi_ctJ}\index{Completamento!libero per diagrammi}
- \Todo{}
+	\Todo{}
 \end{definition}
 
 \begin{proposition}[Completamenti liberi]\label{prop_completamenti_liberi}\index{Completamento!per oggetto iniziale}\index{Completamento!per oggetto terminale}\index{Completamento!per prodotti}\index{Completamento!per coprodotti}
- % - il completamento per iniziale è \(\ctC^\lhd\)
- % - quello per terminale è il cono destro \(\ctC^\rhd\)
- % - completamento per prodotti e per coprodotti descrivibile in casi semplici
- \Todo{}
+	% - il completamento per iniziale è \(\ctC^\lhd\)
+	% - quello per terminale è il cono destro \(\ctC^\rhd\)
+	% - completamento per prodotti e per coprodotti descrivibile in casi semplici
+	\Todo{}
 \end{proposition}
 
 \begin{theorem}[Complemento]\label{mk_kelly_closure}
 	Kelly closure of a class of colimits
 	\cite{paper_kelly_closure}
- \Todo{}
+	\Todo{}
 \end{theorem}
 % prop: commutatività di colimiti filtrati e limiti finiti, 
 % prop: commutatività di colimiti setacciati e prodotti. 
 % def: categoria di funtori polinomiali (`limiti e colimiti interagiscono per formare un polinomio')
 
-% def: completamento libero per diagrammi di forma $\ctJ$ 
+% def: completamento libero per diagrammi di forma \(\ctJ\) 
 % prop: evidenziamo alcuni completamenti; 
 % - il completamento per iniziale è \(\ctC^\lhd\), 
 % - quello per terminale è il cono destro \(\ctC^\rhd\) 
