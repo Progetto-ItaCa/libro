@@ -30,14 +30,75 @@ Ricordiamo che con \emph{diagramma} intendiamo un funtore \(D\colon \ctJ \fun \c
 	\end{itemize}
 \end{examples}
 \subsection{Combinatoria dei co/limiti}
-\Todo{}
-Per `combinatoria' dei co/limiti si intende l'insieme di tecniche per asserire che, assumendo alcune parti di un diagramma siano co/limiti. Il più semplice, e utile, risultato di qesto tipo riguarda la possibilità di comporre, e cancellare, quadrati Cartesiani.
-\begin{example}
+Per `combinatoria' dei co/limiti si intende l'insieme di tecniche per asserire che, assumendo alcune parti di un diagramma siano co/limiti, anche altre lo sono. Il più semplice, e utile, risultato di questo tipo riguarda la possibilità di comporre, e cancellare, quadrati Cartesiani.
+\begin{proposition}[Composizione di quadrati Cartesiani]\label{prop_composizione_quadrati_cartesiani}\index{Quadrato Cartesiano!composizione di ---}
 	\Todo{Incollamento di prodotti fibrati}
-\end{example}
-\begin{example}
 	\Todo{Incollamento di somme amalgamate}
-\end{example}
+\end{proposition}
+\begin{remark}
+	Si può mostrare, per induzione, un fatto più generale:
+	\begin{quote}
+		La composizione di \(n\)	quadrati Cartesiani come in
+		% https://q.uiver.app/#q=WzAsMTIsWzUsMCwiQV8wIl0sWzQsMCwiQV8xIl0sWzMsMCwiQV8yIl0sWzIsMCwiXFxkb3RzIl0sWzEsMCwiQV97bi0xfSJdLFswLDAsIkFfbiJdLFs1LDEsIkFfMCJdLFs0LDEsIkFfMSJdLFszLDEsIkFfMiJdLFsyLDEsIlxcZG90cyJdLFsxLDEsIkFfe24tMX0iXSxbMCwxLCJBX24iXSxbNSwxMV0sWzUsNF0sWzQsM10sWzMsMl0sWzIsMV0sWzEsMF0sWzExLDEwXSxbMTAsOV0sWzksOF0sWzgsN10sWzcsNl0sWzAsNl0sWzEsN10sWzIsOF0sWzQsMTBdLFsxLDYsInFfMSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDcsInFfMiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDksInFfe24tMX0iLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwxMCwicV9uIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+		\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+				{A_n} \& {A_{n-1}} \& \dots \& {A_2} \& {A_1} \& {A_0} \\
+				{B_n} \& {B_{n-1}} \& \dots \& {B_2} \& {B_1} \& {B_0}
+				\arrow[from=1-1, to=1-2]
+				\arrow[from=1-1, to=2-1]
+				\arrow["{q_n}"{description}, draw=none, from=1-1, to=2-2]
+				\arrow[from=1-2, to=1-3]
+				\arrow[from=1-2, to=2-2]
+				\arrow["{q_{n-1}}"{description}, draw=none, from=1-2, to=2-3]
+				\arrow[from=1-3, to=1-4]
+				\arrow[from=1-4, to=1-5]
+				\arrow[from=1-4, to=2-4]
+				\arrow["{q_2}"{description}, draw=none, from=1-4, to=2-5]
+				\arrow[from=1-5, to=1-6]
+				\arrow[from=1-5, to=2-5]
+				\arrow["{q_1}"{description}, draw=none, from=1-5, to=2-6]
+				\arrow[from=1-6, to=2-6]
+				\arrow[from=2-1, to=2-2]
+				\arrow[from=2-2, to=2-3]
+				\arrow[from=2-3, to=2-4]
+				\arrow[from=2-4, to=2-5]
+				\arrow[from=2-5, to=2-6]
+			\end{tikzcd}\]
+		è ancora un	quadrato Cartesiano; se gli \(n-1\) quadrati \(q_1,\dots,q_{n-1}\) di destra sono Cartesiani, allora la composizione è Cartesiana se e solo se lo è il quadrato sinistro \(q_n\).
+	\end{quote}
+	(E ovviamente, uno duale per quadrati coCartesiani.) Ci si può domandare, ora, se è possibile generalizzare ulteriormente, per esempio `passando al limite' per \(n\to\infty\) avendo che la op-composizione transfinita (si veda \ref{})
+	% https://q.uiver.app/#q=WzAsMTAsWzQsMCwiQV8wIl0sWzMsMCwiQV8xIl0sWzIsMCwiQV8yIl0sWzEsMCwiQV8zIl0sWzAsMCwiXFxkb3RzIl0sWzQsMSwiQV8wIl0sWzMsMSwiQV8xIl0sWzIsMSwiQV8yIl0sWzEsMSwiQV8zIl0sWzAsMSwiXFxkb3RzIl0sWzQsM10sWzMsMl0sWzIsMV0sWzEsMF0sWzksOF0sWzgsN10sWzcsNl0sWzYsNV0sWzAsNV0sWzEsNl0sWzIsN10sWzEsNSwicV8xIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNiwicV8yIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsOCwicV97bi0xfSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDhdLFszLDcsInFfMyIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+	\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+			\dots \& {A_3} \& {A_2} \& {A_1} \& {A_0} \\
+			\dots \& {B_3} \& {B_2} \& {B_1} \& {B_0}
+			\arrow[from=1-1, to=1-2]
+			\arrow[from=1-2, to=1-3]
+			\arrow[from=1-2, to=2-2]
+			\arrow["{q_3}"{description}, draw=none, from=1-2, to=2-3]
+			\arrow[from=1-3, to=1-4]
+			\arrow[from=1-3, to=2-3]
+			\arrow["{q_2}"{description}, draw=none, from=1-3, to=2-4]
+			\arrow[from=1-4, to=1-5]
+			\arrow[from=1-4, to=2-4]
+			\arrow["{q_1}"{description}, draw=none, from=1-4, to=2-5]
+			\arrow[from=1-5, to=2-5]
+			\arrow[from=2-1, to=2-2]
+			\arrow[from=2-2, to=2-3]
+			\arrow[from=2-3, to=2-4]
+			\arrow[from=2-4, to=2-5]
+		\end{tikzcd}\]
+	sia ancora un quadrato Cartesiano di forma
+	% https://q.uiver.app/#q=WzAsNCxbMSwwLCJBXzAiXSxbMSwxLCJCXzAiXSxbMCwwLCJcXGhhdCBBX1xcaW5mdHkiXSxbMCwxLCJcXGhhdCBCX1xcaW5mdHkiXSxbMiwwXSxbMywxXSxbMCwxXSxbMiwzXSxbMiwxLCJcXGhhdCBxX1xcaW5mdHkiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+	\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+			{\hat A_\infty} \& {A_0} \\
+			{\hat B_\infty} \& {B_0}
+			\arrow[from=1-1, to=1-2]
+			\arrow[from=1-1, to=2-1]
+			\arrow["{\hat q_\infty}"{description}, draw=none, from=1-1, to=2-2]
+			\arrow[from=1-2, to=2-2]
+			\arrow[from=2-1, to=2-2]
+		\end{tikzcd}\]
+	(E ovviamente, un eventuale risultato duale per quadrati coCartesiani.) Risponderemo a tempo debito.
+\end{remark}
 \begin{example}
 	\Todo{Lemma del cubo}
 \end{example}
@@ -128,16 +189,16 @@ Si è già osservato che la categoria	\(\ctSet\) di insiemi e funzioni ha prodot
 	Per quanto riguarda la completezza,
 	\Todo{dalle note di un'altra lezione:}
 	\color{red}
-	Let \(\ctD\) be a small category and \(F \colon \ctD\to\ctSet\) a functor. For every arrow \(f\) in \(\ctD\), we denote \(\text{s}(f)\) the source and \(\text{t}(f)\) the target of \(f\); so, if \(f \colon D\to D'\), \(\text{s}(f)=D\), \(\text{t}(f)=D'\).
+	Let \(\ctJ\) be a small category and \(F \colon \ctJ\to\ctSet\) un diagramma. As in \ref{}, for every arrow \(f\) in \(\ctJ\), we denote \(\text{d}(f)\) the source and \(\text{c}(f)\) the target of \(f\); so, if \(f \colon J\to J'\), \(\text{d}(f)=J\), \(\text{c}(f)=J'\).
 
 	We prove that the limit \(\lim F\) of \(F\) is precisely the equalizer of the pair of maps
 	\[\xymatrix{
-		\displaystyle\prod_{D\in\ctD_0} FD \ar@<.3em>[r]^-{\alpha^F}\ar@<-.3em>[r]_-{\beta^F}& \displaystyle\prod_{f\in\ctD_1} F(\text{t}(f))
+		\displaystyle\prod_{J\in\ctJ_0} FJ \ar@<.3em>[r]^-{\alpha^F}\ar@<-.3em>[r]_-{\beta^F}& \displaystyle\prod_{f\in\ctJ_1} F(\text{t}(f))
 		}\]
 	where
 	\begin{itemize}
-		\item \(\alpha^F((x_D\mid D\in\ctD)) = (x_{\text{t}(f)}\mid f\in\ctD_1)\);
-		\item \(\beta^F(((x_D\mid D\in\ctD)) = (Ff(x_{\text{s}(f)})\mid f\in\ctD_1)\);
+		\item \(\alpha^F(x_J\mid J\in\ctJ) = (x_{\text{t}(f)}\mid f\in\ctJ_1)\);
+		\item \(\beta^F(x_J\mid J\in\ctJ) = (Ff(x_{\text{s}(f)})\mid f\in\ctJ_1)\);
 	\end{itemize}
 	This means two things: if \(\lim F\) exists, then it must be the equalizer of that pair; otoh, if that pair \((\alpha,\beta)\) has an equalizer, then such is the limit of \(F\).
 
@@ -145,7 +206,7 @@ Si è già osservato che la categoria	\(\ctSet\) di insiemi e funzioni ha prodot
 	\begin{enumerate}
 		\item There exists a cone
 		      \[\xymatrix{
-			      \lim F \ar[r]^-{\bar p} & \displaystyle\prod_{D\in\ctD_0} FD \ar@<.5em>[r]^-\alpha\ar@<-.5em>[r]_-\beta& \displaystyle\prod_{f\in\ctD_1} F(\text{t}(f))
+			      \lim F \ar[r]^-{\bar p} & \displaystyle\prod_{J\in\ctJ_0} FJ \ar@<.3em>[r]^-\alpha\ar@<-.3em>[r]_-\beta& \displaystyle\prod_{f\in\ctJ_1} F(\text{t}(f))
 			      }\]
 		      where \(e\) equalizes the pair \(\alpha,\beta\);
 		\item such cone is terminal; this will mean two things:
@@ -153,21 +214,22 @@ Si è già osservato che la categoria	\(\ctSet\) di insiemi e funzioni ha prodot
 			      \item the universal property of \(\lim F\) entails the universal property of \(\mathsf{eq}(\alpha,\beta)\);
 			      \item the universal property of \(\mathsf{eq}(\alpha,\beta)\) entails the universal property of \(\lim F\).
 		      \end{itemize}
-		      Thus, there is a unique isomorphism \(\mathsf{eq}(\alpha,\beta)\cong \lim F\).
 	\end{enumerate}
-	Proving 1. is easy; if \((\lim F,p_D)\) exists, all projections \(p_D \colon \lim F\to FD\) assemble into a unique map \(\bar p \colon \lim F \to \prod_D FD\) (this is the universal property of \(\prod_D FD\)). Note in passing that by the lemma above if \(\ctD\) is a discrete category, \(\prod_{f\in\ctD_1} F(\text{t}(f)) = \prod_{D\in\ctD_0} FD\), \(\alpha,\beta\) are invertible and thus \(\lim F\cong \prod_{D\in\ctD_0} FD\), as it should be.
+	Thus, there is a unique isomorphism \(\mathsf{eq}(\alpha,\beta)\cong \lim F\), which all in all exists because we have reduced the property of being a cone for \(F\) to the property of equalizing the pair \((\alpha,\beta)\). Since we know that \(\ctSet\) has products	and equalizers, we conclude that \(\lim F\) exists and thus that \(\ctSet\) is complete.
 
-	Now, \(\bar p \colon \lim F \to \prod_D FD\) equalizes \((\alpha,\beta)\), because the components \(p_D\) form a cone: the triangle of sets and functions
+	Proving 1. is easy; if \((\lim F,p_J)\) exists, all projections \(p_J \colon \lim F\to FJ\) assemble into a unique map \(\bar p \colon \lim F \to \prod_J FJ\) (this is the universal property of \(\prod_J FJ\)). Note in passing that by the lemma above if \(\ctJ\) is a discrete category, \(\prod_{f\in\ctJ_1} F(\text{t}(f)) = \prod_{J\in\ctJ_0} FJ\), \(\alpha,\beta\) are invertible and thus \(\lim F\cong \prod_{J\in\ctJ_0} FJ\), as it should be.
+
+	Now, \(\bar p \colon \lim F \to \prod_J FJ\) equalizes \((\alpha,\beta)\), because the components \(p_J\) form a cone: the triangle of sets and functions
 	\[\xymatrix@R=5mm{
-		& FD \ar[dd]^{Ff}\\
-		\lim F \ar[ur]^{p_D}\ar[dr]_{p_{D'}}& \\
-		& FD'
+		& FJ \ar[dd]^{Ff}\\
+		\lim F \ar[ur]^{p_J}\ar[dr]_{p_{J'}}& \\
+		& FJ'
 		}\]
-	is commutative, whence the fact that for all \(\hat x\in\lim F\) and \(f \colon D\to D'\) in \(\ctD_1\) one has
+	is commutative, whence the fact that for all \(\hat x\in\lim F\) and \(f \colon J\to J'\) in \(\ctJ_1\) one has
 	\[
-		\beta^F(\bar p(\hat x))= \big(Ff(p_{\text{s}(f)}(\hat x))\mid f\in\ctD_1\big) =
-		\big(p_{\text{t}(f)}(\hat x)\mid f\in\ctD_1\big) = \alpha^F(\bar p(\hat x)).\]
-	A similar argument for a general cone \((z \colon Z\to FD\mid D\in\ctD_0)\) proves that this is a cone for \(F\) if and only if it equalizes \((\alpha,\beta)\); thus, a cone for \(F\) must be a terminal cone wrt the property of equalizing \((\alpha,\beta)\); whence the conclusion.
+		\beta^F(\bar p(\hat x))= \big(Ff(p_{\text{s}(f)}(\hat x))\mid f\in\ctJ_1\big) =
+		\big(p_{\text{t}(f)}(\hat x)\mid f\in\ctJ_1\big) = \alpha^F(\bar p(\hat x)).\]
+	A similar argument for a general cone \((z \colon Z\to FJ\mid J\in\ctJ_0)\) proves that this is a cone for \(F\) if and only if it equalizes \((\alpha,\beta)\); thus, a cone for \(F\) must be a terminal cone wrt the property of equalizing \((\alpha,\beta)\); whence the conclusion.
 
 	\color{black}
 	Per quanto riguarda la cocompletezza,
@@ -194,23 +256,27 @@ Lo stesso ragionamento si applica ad altre categorie i cui oggetti sono insiemi,
 \end{theorem}
 Valgono anche enunciati più deboli, che rimpiazzano \ref{sl_1} con la sola \(\lambda\)-completezza (cioè esistenza di tutti i limiti di diagrammi con dominio \(\lambda\)-piccolo); allora in \ref{sl_2}--\ref{sl_3} bastano i prodotti su famiglie \(\lambda\)-piccole, e in \ref{sl_4}--\ref{sl_5} `per ogni \(\kappa\)' diventa `ogni \(\kappa<\lambda\)'. Ovviamente, valgono (e saranno usati senza ulteriore menzione) risultati duali	a questi ultimi per la cocompletezza.
 \begin{proof}
-	La dimostrazione più comune della equivalenza tra tutte queste condizioni è quella che mostra l'equivalenza di \ref{sl_1} e \ref{sl_2}, e in effetti solo un'implicazione (l'altra è ovvia). Le altre procedono dimostrando che si possono esprimere i limiti di \ref{sl_3}, \ref{sl_4}, \ref{sl_5} l'uno in termini dell'altro. 
+	La dimostrazione più comune della equivalenza tra tutte queste condizioni è quella che mostra l'equivalenza di \ref{sl_1} e \ref{sl_2}, e in effetti solo un'implicazione (l'altra è ovvia). Le altre procedono dimostrando che si possono esprimere i limiti di \ref{sl_3}, \ref{sl_4}, \ref{sl_5} l'uno in termini dell'altro.
 
 	Si privilegia l'espressione di co/limiti generici in termini di co/equalizzatori di mappe tra co/prodotti perché la condizione \ref{sl_2} sostanzia nel modo migliore l'intuizione data in \ref{}, secondo cui un limite consta dell'oggetto `più grande in cui certe equazioni sono vere' e un colimite consta dell'oggetto `più piccolo in cui certe equazioni sono state imposte'.
 \end{proof}
 Kelly closure of a class of colimits menzionato e poi ripreso in \ref{}
 \begin{remark}
-	Nella categoria \(\ctAb\) dei gruppi abeliani, possiamo semplificare il teorema di struttura nell'enunciato che segue.
+	Nella categoria \(\ctAb\) dei gruppi abeliani, possiamo semplificare il teorema di struttura nell'enunciato che segue. Come è consuetudine, \(\ctJ_0\) e \(\ctJ_1\) indicano gli insiemi di oggetti e di frecce di \(\ctJ\), e \(c(u)\) e \(d(u)\) indicano rispettivamente il codominio e il dominio di una freccia \(u\in\ctJ_1\).
 	\begin{quote}
 		Sia \(D \colon \ctJ \fun \ctAb\) un diagramma. Allora, il limite di \(D\) è realizzato come il nucleo della mappa
 		\[\xymatrix{
-			\displaystyle\prod_{I\in\ctJ_0}DI \ar[r] & \displaystyle\prod_{u\in\ctJ_1} D(c(u))
-		}\]
-		che manda $\big(x_I\mid I\in\ctJ\big)$ in $\big(Du(x_I)-x_J \mid u : I \to J\big)$.
+				\displaystyle\prod_{I\in\ctJ_0}DI \ar[r] & \displaystyle\prod_{u\in\ctJ_1} D(c(u))
+			}\]
+		che manda \(\big(x_I\mid I\in\ctJ\big)\) in \(\big(Du(x_I)-x_J \mid u \colon I \to J\big)\).
 
 		Dualmente, il colimite di \(D\) è isomorfo al conucleo di una freccia
-		\Todo{}
-		tra somme dirette in \(\ctAb\). (E dato che i prodotti e i coprodotti in questione possono essere finiti, $\bigoplus_{} DI \subseteq \prod_I DI$ è un sottoggetto \emph{proprio}, si veda in tal senso \ref{})
+		\[\xymatrix{
+				\displaystyle\bigoplus_{u\in\ctJ_1} D(d(u)) \ar[r] & \displaystyle\bigoplus_{I\in\ctJ_0}DI
+			}\]
+		tra somme dirette in \(\ctAb\), che applica la funzione \(\iota_J\cmp Du-\iota_I\) al generico elemento \((x_I\mid u\colon I\to J)\) del dominio (questi due elementi stanno in generale in sommandi diversi).
+
+		(Dato che i prodotti e i coprodotti in questione possono essere infiniti, \(\bigoplus_I DI \subseteq \prod_I DI\) è un sottoggetto \emph{proprio}, si veda in tal senso \ref{})
 	\end{quote}
 	Per dimostrarlo, possiamo usare la semplice osservazione che dati due omomorfismi di gruppi abeliani \(f,g \colon A\to B\), l'equalizzatore di \((f,g)\) e il nucleo di \(g-f\) (e il nucleo di \(f-g\)) soddisfano tutti la stessa proprietà universale.
 \end{remark}
@@ -303,7 +369,7 @@ Kelly closure of a class of colimits menzionato e poi ripreso in \ref{}
 				\arrow["g"', color=gray!50,shift right, from=2-2, to=3-2]
 			\end{tikzcd}\]
 	\end{minipage}%
-	\caption{Costruzione del triqualizzatore di tre frecce \(f,g,h\) in termini di due equalizzatori e un prodotto fibrato. Si provi a dimostrare, per esercizio, il fatto ovvio che l'equalizzatore di \((f,g,g)\) coincide con l'equalizzatore di \((f,g)\).}
+	\caption{Costruzione del triqualizzatore di tre frecce \(f,g,h\) in termini di due equalizzatori e un prodotto fibrato. Noto questo è molto facile dimostrare (si provi per esercizio) il fatto ovvio che il triqualizzatore di \((f,g,g)\) coincide con l'equalizzatore di \((f,g)\).}
 	\label{fig_triqual_construzia}
 \end{figure}
 \begin{example}\label{ex_prodotto_fibrato_amp}
@@ -472,7 +538,7 @@ Questo motiva la definizione seguente.
 			\node[font=\footnotesize] at (0,0) {spezzante};
 		\end{tikzpicture}
 	\end{center}
-	\caption{Gerarchia delle classi di epimorfismi in una categoria \(\ctC\). Le inclusioni si possono invertire sotto le ipotesi indicate. Le classi \(\Epi[\ctC]^s\) degli epi forti di \ref{} e l'ortogonale sinistro \(\lort(\Mono[\ctC])\) sono `essenzialmente sempre' coincidenti nei casi reali, ma \ref{} è un controesempio. Ipotesi opportune su \(\ctC\) rovesciano alcune di queste inclusioni: \Todo{}}\label{fig_gerarchia}
+	\caption{Gerarchia delle classi di epimorfismi in una categoria \(\ctC\). Le inclusioni si possono invertire sotto le ipotesi indicate. Le classi \(\Epi[\ctC]^s\) degli epi forti di \ref{} e l'ortogonale sinistro \(\lort(\Mono[\ctC])\) sono `essenzialmente sempre' coincidenti nei casi reali, ma \ref{} è un controesempio. Ipotesi opportune su \(\ctC\) rovesciano alcune di queste inclusioni.}\label{fig_gerarchia}
 \end{figure}
 \subsection{Interazioni tra limiti e colimiti, completamenti}
 \begin{proposition}[Commutatività di colimiti filtrati e limiti finiti]\label{prop_commutativita_colimiti_filtrati_limiti_finiti}\index{Colimite!filtrato!commutatività con limiti finiti}\index{Limite!finito!commutatività con colimiti filtrati}
