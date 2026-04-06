@@ -59,15 +59,19 @@ with open(sys.argv[1], 'r+') as f:
             line = re.sub(r'\$(.*?)\$', r'\\(\1\\)', line)
         content.append(line)
 
+    # Fix any \(\)...\(\) leftovers (multiline, so operate on joined content)
+    joined = ''.join(content)
+    joined = re.sub(r'\\\(\\\)(.*?)\\\(\\\)', r'\\[\1\\]', joined, flags=re.DOTALL)
+
     f.seek(0)
-    f.write(''.join(content))
+    f.write(joined)
     f.truncate()
 
 def replace_colon_in_math(content, dry_run=False, filename=""):
     result = []
     i = 0
     lines = content.split('\n')
-    
+
     # mappa offset -> numero di riga
     offset_to_line = {}
     offset = 0
@@ -86,7 +90,6 @@ def replace_colon_in_math(content, dry_run=False, filename=""):
             result.append(r'\(')
             i += 2
             math_content = []
-            math_start = i
             while i < len(content):
                 if content[i:i+2] == r'\)':
                     inner = ''.join(math_content)
@@ -125,7 +128,9 @@ with open(sys.argv[1], 'r+', encoding='utf-8') as f:
 with open(sys.argv[1], 'r+', encoding='utf-8') as f:
     content = f.read()
     for punct in [',', '.', ';', ':']:
-        content = content.replace(punct + r'\)' , r'\)' + punct)
+        content = content.replace(punct + r'\)', r'\)' + punct)
+    for latex, unicode_char in ACCENTS:
+        content = content.replace(latex, unicode_char)
     f.seek(0)
     f.write(content)
     f.truncate()
@@ -147,7 +152,7 @@ ACCENTS = [
 with open(sys.argv[1], 'r+', encoding='utf-8') as f:
     content = f.read()
     for punct in [',', '.', ';', ':']:
-        content = content.replace(punct + r'\)' , r'\)' + punct)
+        content = content.replace(punct + r'\)', r'\)' + punct)
     for latex, unicode_char in ACCENTS:
         content = content.replace(latex, unicode_char)
     f.seek(0)
