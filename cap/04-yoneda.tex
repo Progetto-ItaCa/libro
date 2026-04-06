@@ -1,11 +1,11 @@
 \chapter{Il lemma di Yoneda}\label{cap_yoneda}
 \subsubsection*{Esercizi}
 \begin{enumerate}
-	\item
-	\item
-	\item
-	\item
-	\item
+ \item
+ \item
+ \item
+ \item
+ \item
 \end{enumerate}
 
 
@@ -15,100 +15,100 @@
 \paragraph{I prefasci come colimiti di rappresentabili}\label{sec_colim_rappr}
 
 \begin{color}{blue}
-	Il seguente risultato fondamentale \ref{prop_colim_rappr} si troverà molto probabilmente nel capitolo in cui si discute
-	di Yoneda e colimiti. È il punto di partenza per una proprietà universale delle categorie di prefasci, un teorema di
-	caratterizzazione e una proprietà di stabilità.
+ Il seguente risultato fondamentale \ref{prop_colim_rappr} si troverà molto probabilmente nel capitolo in cui si discute
+ di Yoneda e colimiti. È il punto di partenza per una proprietà universale delle categorie di prefasci, un teorema di
+ caratterizzazione e una proprietà di stabilità.
 \end{color}
 
 \begin{remark}\label{oss_categ_elem}
-	Sia \(\ctD\) una categoria piccola, \(\ctY_{\ctD} \colon \ctD^{\op} \fun \ctSet^{\ctD}\) l'immersione di Yoneda e
-	\(A \colon \ctD \fun \ctSet\) un funtore.
-	Usando il lemma di Yoneda, la categoria comma \(\ctY_{\ctD}/A\) si può descrivere nel modo seguente:
-	\begin{enumerate}
-		\item[a)] un oggetto è una coppia \((X \in \ctD, x \in AX)\),
-		\item[b)] una freccia \(f \colon (X,x) \to (Y,y)\) è una freccia \(f \colon Y \to X\) in \(\ctA\) tale che \(A(f)(y)=x\).
-	\end{enumerate}
-	Tale categoria, chiamata categoria degli elementi di \(A\) e denotata \(\mathrm{El}(A)\), è equipaggiata di un ovvio
-	funtore dimenticante controvariante
-	\[\Phi_{A} \colon \mathrm{El}(A) \fun \ctD^{\op} \;\;\;\;\;\; \Phi_{A}(f \colon (X;x) \to (Y,y)) = (f \colon Y \to X)\]
+ Sia \(\ctD\) una categoria piccola, \(\ctY_{\ctD} \colon \ctD^{\op} \fun \ctSet^{\ctD}\) l'immersione di Yoneda e
+ \(A \colon \ctD \fun \ctSet\) un funtore.
+ Usando il lemma di Yoneda, la categoria comma \(\ctY_{\ctD}/A\) si può descrivere nel modo seguente:
+ \begin{enumerate}
+  \item[a)] un oggetto è una coppia \((X \in \ctD, x \in AX)\),
+  \item[b)] una freccia \(f \colon (X,x) \to (Y,y)\) è una freccia \(f \colon Y \to X\) in \(\ctA\) tale che \(A(f)(y)=x\).
+ \end{enumerate}
+ Tale categoria, chiamata categoria degli elementi di \(A\) e denotata \(\mathrm{El}(A)\), è equipaggiata di un ovvio
+ funtore dimenticante controvariante
+ \[\Phi_{A} \colon \mathrm{El}(A) \fun \ctD^{\op} \;\;\;\;\;\; \Phi_{A}(f \colon (X;x) \to (Y,y)) = (f \colon Y \to X)\]
 \end{remark}
 
 Usando la costruzione precedente, ogni funtore \(A \colon \ctD \fun \ctSet\) si può esprimere in modo canonico come colimite
 di funtori rappresentabili.
 
 \begin{proposition}\label{prop_colim_rappr}
-	Sia \(\ctD\) una categoria piccola. Per ogni funtore \(A \colon \ctD \fun \ctSet\) si ha
-	\[\colim_{\mathrm{El}(A)}(\ctY_{\ctD} \cdot \Phi_{A}) = \langle A, \{\xi \colon \ctD(X,-) \nat A\}_{(X,x) \in \mathrm{El}(A)}\rangle\]
-	dove \(\xi\) è la trasformazione naturale che corrisponde all'elemento \(x \in AX\) nella biiezione naturale
-	\(\Nat(\ctD(X,-),A) \simeq AX\) del lemma di Yoneda.
+ Sia \(\ctD\) una categoria piccola. Per ogni funtore \(A \colon \ctD \fun \ctSet\) si ha
+ \[\colim_{\mathrm{El}(A)}(\ctY_{\ctD} \cdot \Phi_{A}) = \langle A, \{\xi \colon \ctD(X,-) \nat A\}_{(X,x) \in \mathrm{El}(A)}\rangle\]
+ dove \(\xi\) è la trasformazione naturale che corrisponde all'elemento \(x \in AX\) nella biiezione naturale
+ \(\Nat(\ctD(X,-),A) \simeq AX\) del lemma di Yoneda.
 \end{proposition}
 
 \begin{proof}
-	Dato un cocono \(\{g_{(X,x)} \colon \ctD(X,-) \nat G\}_{(X,x) \in \mathrm{El}(A)}\), la sua fattorizzazione attraverso il cocono
-	\(\{\xi \colon \ctD(X,-) \nat A\}_{(X,x) \in \mathrm{El}(A)}\) è data dalla trasformazione naturale \(g \colon A \nat G\) la cui
-	componente in \(X \in \ctD\) è definita da \(g_X(x) = \bar{g}_{(X,x)}\), dove \(\bar{g}_{(X,x)} \in GX\) è l'elemento che corrisponde
-	a \(g_{(X,x)}\) nella biiezione naturale \(\Nat(\ctD(X,-),G) \simeq GX\) del lemma di Yoneda.
+ Dato un cocono \(\{g_{(X,x)} \colon \ctD(X,-) \nat G\}_{(X,x) \in \mathrm{El}(A)}\), la sua fattorizzazione attraverso il cocono
+ \(\{\xi \colon \ctD(X,-) \nat A\}_{(X,x) \in \mathrm{El}(A)}\) è data dalla trasformazione naturale \(g \colon A \nat G\) la cui
+ componente in \(X \in \ctD\) è definita da \(g_X(x) = \bar{g}_{(X,x)}\), dove \(\bar{g}_{(X,x)} \in GX\) è l'elemento che corrisponde
+ a \(g_{(X,x)}\) nella biiezione naturale \(\Nat(\ctD(X,-),G) \simeq GX\) del lemma di Yoneda.
 \end{proof}
 
 \begin{remark}\label{oss_colim_rappr}
-	\hfill
-	\begin{enumerate}
-		\item Poiché questo ci servirà nell'esempio \ref{exem_proreg}, osserviamo che, combinando la proposizione \ref{prop_colim_rappr}
-		      e il teorema \ref{th_colim_piccoli}, otteniamo che \(A \colon \ctD \fun \ctSet\) è un quoziente regolare di un coprodotto di funtori rappresentabili
-		      \[p_A \colon \coprod_{(X,x) \in \mathrm{El}(A)}\ctD(X,-) \to A\]
-		\item Osserviamo anche che, poiché le categorie \(\mathrm{El}(A)\) e \(\ctY_{\ctD}/A\) sono equivalenti, avremmo potuto evitare di introdurre
-		      \(\mathrm{El}(A)\) ed esprimere tutto usando solo \(\ctY_{\ctD}/A\). L'interesse di usare la categoria degli elementi è unicamente per rendere
-		      più semplice la descrizione del funtore dimenticante \(\Phi_A\).
-	\end{enumerate}
+ \hfill
+ \begin{enumerate}
+  \item Poiché questo ci servirà nell'esempio \ref{exem_proreg}, osserviamo che, combinando la proposizione \ref{prop_colim_rappr}
+        e il teorema \ref{th_colim_piccoli}, otteniamo che \(A \colon \ctD \fun \ctSet\) è un quoziente regolare di un coprodotto di funtori rappresentabili
+        \[p_A \colon \coprod_{(X,x) \in \mathrm{El}(A)}\ctD(X,-) \to A\]
+  \item Osserviamo anche che, poiché le categorie \(\mathrm{El}(A)\) e \(\ctY_{\ctD}/A\) sono equivalenti, avremmo potuto evitare di introdurre
+        \(\mathrm{El}(A)\) ed esprimere tutto usando solo \(\ctY_{\ctD}/A\). L'interesse di usare la categoria degli elementi è unicamente per rendere
+        più semplice la descrizione del funtore dimenticante \(\Phi_A\).
+ \end{enumerate}
 \end{remark}
 
 Il fatto che ogni funtore \(A \colon \ctD \fun \ctSet\) sia un colimite di funtori rappresentabili è il punto di partenza per dimostrare che l'immersione
 di Yoneda \(\ctY_{\ctD} \colon \ctD^{\op} \fun \ctSet^{\ctD}\) è il completamento di \(\ctD^{\op}\) per colimiti, nel senso della seguente proprietà universale.
 
 \begin{proposition}\label{prop_univ_yon}
-	Siano \(\ctD\) una categoria piccola e \(\ctB\) una categoria cocompleta. Per ogni funtore \(F \colon \ctD^{\op} \fun \ctB\) esiste un funtore
-	\(F^* \colon \ctSet^{\ctD} \fun \ctB\) che preserva i colimiti e tale che il diagramma
-	\[\xymatrix{\ctD^{\op} \ar[r]^-{\ctY_{\ctD}} \ar[d]_{F} & \ctSet^{\ctD} \ar[ld]^{F^*} \\
-		\ctB}\]
-	commuta a meno di un isomorfismo naturale. Inoltre un tale funtore \(F^*\) è essenzialmente unico.
+ Siano \(\ctD\) una categoria piccola e \(\ctB\) una categoria cocompleta. Per ogni funtore \(F \colon \ctD^{\op} \fun \ctB\) esiste un funtore
+ \(F^* \colon \ctSet^{\ctD} \fun \ctB\) che preserva i colimiti e tale che il diagramma
+ \[\xymatrix{\ctD^{\op} \ar[r]^-{\ctY_{\ctD}} \ar[d]_{F} & \ctSet^{\ctD} \ar[ld]^{F^*} \\
+  \ctB}\]
+ commuta a meno di un isomorfismo naturale. Inoltre un tale funtore \(F^*\) è essenzialmente unico.
 \end{proposition}
 
 \begin{proof}
-	Poiché \(F^*\) deve preservare i colimiti e \(F^* \cmp \ctY_{\ctD} \simeq F\), la proposizione \ref{prop_colim_rappr}
-	fornisce in modo necessario la definizione di \(F^*\) sugli oggetti di \(\ctSet^{\ctD}\)
-	\[F^*(A) = F^*(\colim_{\mathrm{El}(A)}(\ctY_{\ctD} \cmp \Phi_A)) \simeq \colim_{\mathrm{El}(A)}(F^* \cmp \ctY_{\ctD} \cmp \Phi_A))
-		\simeq \colim_{\mathrm{El}(A)}(F \cmp \Phi_A)\]
-	Per quanto riguarda la definizione di \(F^*\) sulle frecce di \(\ctSet^{\ctD}\), una trasformazione naturale \(\lambda \colon A \nat A'\)
-	induce un funtore
-	\[\Phi_{\lambda} \colon \mathrm{El}(A) \fun \mathrm{El}(A'), \;
-		\Phi_{\lambda}(f \colon (X,x) \to (Y,y)) = (f \colon (X,\lambda_X(x)) \to (Y,\lambda_Y(y))\]
-	che fa commutare il diagramma
-	\[\xymatrix{\mathrm{El}(A) \ar[rr]^-{\Phi_{\lambda}} \ar[rd]_{\Phi_A} & & \mathrm{El}(A') \ar[ld]^{\Phi_{A'}} \\
-		& \ctD^{\op}}\]
-	La proprietà universale del colimite \(F^*(A)\) fornisce ora un'unica freccia \(F^*(\lambda)\) che fa commutare, per ogni
-	\((X,x) \in \mathrm{El}(A)\), il seguente diagramma (dove le frecce \(\sigma\) sono le iniezioni nei colimiti)
-	\[\xymatrix{F^*(A) \ar[rr]^-{F^*(\lambda)} & & F^*(A') \\
-		& F(\Phi_A(X,x)) \ar[lu]^{\sigma^A_{(X,x)}} \ar[ru]_{\sigma^B_{\Phi_{\lambda}(X,x)}} }\]
-	Verifichiamo ora l'isomorfismo \(F^* \cmp \ctY_{\ctD} \simeq F\). Se \(A = \ctD(Z,-)\) per un oggetto \(Z \in \ctD\), oggetti e
-	frecce della categoria \(\mathrm{El}(A)\) assumono la seguente forma
-	\[f \colon (X,x \colon Z \to X) \to (Y, y \colon Z \to Y) \;\mbox{ tale che }\; f \cmp y = x \]
-	In particolare, \((Z,\id \colon Z \to Z)\) è l'oggetto terminale di \(\mathrm{El}(A)\) poiché, per ogni altro oggetto \((X,x)\),
-	si ha un'unica freccia data da \(x \colon (X,x) \to (Z,\id)\). Ora possiamo mostrare che
-	\[ \colim_{\mathrm{El}(A)}(F \cmp \Phi_A) = \langle FZ,\{F(x) \colon FX \to FZ\}_{(X,x) \in \mathrm{El}(A)} \rangle \]
-	La naturalità di tale famiglia segue subito dalla condizione sulle frecce di \(\mathrm{El}(A)\). Per quanto riguarda l'universalità,
-	se \(\{b_{(X,x)} \colon FX \to B\}_{(X,x) \in \mathrm{El}(A)}\) è un'altra famiglia naturale, si ha che
-	\[ \xymatrix{FZ \ar[rr]^-{b_{(Z,\id)}} & & B \\ & FX \ar[lu]^{F(x)} \ar[ru]_{b_{(X,x)}} } \]
-	commuta, il che indica che \(b_{(Z,\id)} \colon FZ \to B\) è una fattorizzazione della famiglie \(\{b_{(X,x)}\}\) attraverso la famiglia
-	\(\{F(x)\}\). Tale fattorizzazione è unica: se \(t \colon FZ \to B\) è tale che \(t \cmp F(x) = b_{(X,x)}\) per ogni
-	\((X,x) \in \mathrm{El}(A)\), in particolare \(t \cmp F(\id) = b_{(Z,\id)}\) e quindi \(t = b_{(Z,\id)}\). \\
-	Rimane da verificare che \(F^*\) preserva i colimiti, ma questo segue dal fatto che \(F^*\) ammette un aggiunto destro
-	\(R_F \colon \ctB \fun \ctSet^{\ctD}\) definito da
-	\[ R_F(B) = \ctB(F-,B) \colon \ctD \fun \ctSet \]
-	La biiezione naturale che garantisce l'aggiunzione \(F^* \dashv R_F\) si ottiene così:
-	\[ \ctB(F^*A,B) = \ctB(\colim_{\mathrm{El}(A)}(F \cmp \Phi_A),B) \simeq \lim_{\mathrm{El}(A)}\ctB(FX,B) \simeq \]
-	\[ \simeq \lim_{\mathrm{El}(A)} \Nat(\ctD(X,-), \ctB(F-,B)) \simeq \Nat(\colim_{\mathrm{El}(A)}(\ctY_{\ctD} \cmp \Phi_A), \ctB(F-,B))
-		= \Nat(A,R_F(B)) \]
-	avendo usato, per passare dalla prima alla seconda riga, le biiezione del lemma di Yoneda.
+ Poiché \(F^*\) deve preservare i colimiti e \(F^* \cmp \ctY_{\ctD} \simeq F\), la proposizione \ref{prop_colim_rappr}
+ fornisce in modo necessario la definizione di \(F^*\) sugli oggetti di \(\ctSet^{\ctD}\)
+ \[F^*(A) = F^*(\colim_{\mathrm{El}(A)}(\ctY_{\ctD} \cmp \Phi_A)) \simeq \colim_{\mathrm{El}(A)}(F^* \cmp \ctY_{\ctD} \cmp \Phi_A))
+  \simeq \colim_{\mathrm{El}(A)}(F \cmp \Phi_A)\]
+ Per quanto riguarda la definizione di \(F^*\) sulle frecce di \(\ctSet^{\ctD}\), una trasformazione naturale \(\lambda \colon A \nat A'\)
+ induce un funtore
+ \[\Phi_{\lambda} \colon \mathrm{El}(A) \fun \mathrm{El}(A'), \;
+  \Phi_{\lambda}(f \colon (X,x) \to (Y,y)) = (f \colon (X,\lambda_X(x)) \to (Y,\lambda_Y(y))\]
+ che fa commutare il diagramma
+ \[\xymatrix{\mathrm{El}(A) \ar[rr]^-{\Phi_{\lambda}} \ar[rd]_{\Phi_A} & & \mathrm{El}(A') \ar[ld]^{\Phi_{A'}} \\
+  & \ctD^{\op}}\]
+ La proprietà universale del colimite \(F^*(A)\) fornisce ora un'unica freccia \(F^*(\lambda)\) che fa commutare, per ogni
+ \((X,x) \in \mathrm{El}(A)\), il seguente diagramma (dove le frecce \(\sigma\) sono le iniezioni nei colimiti)
+ \[\xymatrix{F^*(A) \ar[rr]^-{F^*(\lambda)} & & F^*(A') \\
+  & F(\Phi_A(X,x)) \ar[lu]^{\sigma^A_{(X,x)}} \ar[ru]_{\sigma^B_{\Phi_{\lambda}(X,x)}} }\]
+ Verifichiamo ora l'isomorfismo \(F^* \cmp \ctY_{\ctD} \simeq F\). Se \(A = \ctD(Z,-)\) per un oggetto \(Z \in \ctD\), oggetti e
+ frecce della categoria \(\mathrm{El}(A)\) assumono la seguente forma
+ \[f \colon (X,x \colon Z \to X) \to (Y, y \colon Z \to Y) \;\mbox{ tale che }\; f \cmp y = x \]
+ In particolare, \((Z,\id \colon Z \to Z)\) è l'oggetto terminale di \(\mathrm{El}(A)\) poiché, per ogni altro oggetto \((X,x)\),
+ si ha un'unica freccia data da \(x \colon (X,x) \to (Z,\id)\). Ora possiamo mostrare che
+ \[ \colim_{\mathrm{El}(A)}(F \cmp \Phi_A) = \langle FZ,\{F(x) \colon FX \to FZ\}_{(X,x) \in \mathrm{El}(A)} \rangle \]
+ La naturalità di tale famiglia segue subito dalla condizione sulle frecce di \(\mathrm{El}(A)\). Per quanto riguarda l'universalità,
+ se \(\{b_{(X,x)} \colon FX \to B\}_{(X,x) \in \mathrm{El}(A)}\) è un'altra famiglia naturale, si ha che
+ \[ \xymatrix{FZ \ar[rr]^-{b_{(Z,\id)}} & & B \\ & FX \ar[lu]^{F(x)} \ar[ru]_{b_{(X,x)}} } \]
+ commuta, il che indica che \(b_{(Z,\id)} \colon FZ \to B\) è una fattorizzazione della famiglie \(\{b_{(X,x)}\}\) attraverso la famiglia
+ \(\{F(x)\}\). Tale fattorizzazione è unica: se \(t \colon FZ \to B\) è tale che \(t \cmp F(x) = b_{(X,x)}\) per ogni
+ \((X,x) \in \mathrm{El}(A)\), in particolare \(t \cmp F(\id) = b_{(Z,\id)}\) e quindi \(t = b_{(Z,\id)}\). \\
+ Rimane da verificare che \(F^*\) preserva i colimiti, ma questo segue dal fatto che \(F^*\) ammette un aggiunto destro
+ \(R_F \colon \ctB \fun \ctSet^{\ctD}\) definito da
+ \[ R_F(B) = \ctB(F-,B) \colon \ctD \fun \ctSet \]
+ La biiezione naturale che garantisce l'aggiunzione \(F^* \dashv R_F\) si ottiene così:
+ \[ \ctB(F^*A,B) = \ctB(\colim_{\mathrm{El}(A)}(F \cmp \Phi_A),B) \simeq \lim_{\mathrm{El}(A)}\ctB(FX,B) \simeq \]
+ \[ \simeq \lim_{\mathrm{El}(A)} \Nat(\ctD(X,-), \ctB(F-,B)) \simeq \Nat(\colim_{\mathrm{El}(A)}(\ctY_{\ctD} \cmp \Phi_A), \ctB(F-,B))
+  = \Nat(A,R_F(B)) \]
+ avendo usato, per passare dalla prima alla seconda riga, le biiezione del lemma di Yoneda.
 \end{proof}
 
 Il prossimo obiettivo è di utilizzare la proprietà universale \ref{prop_univ_yon} per caratterizzare le categorie del tipo
@@ -117,13 +117,13 @@ assolutamente, perfettamente e finitamente presentabili. Solo i primi interverra
 gli altri saranno utilizzati nel capitolo \ref{cap_cat_alg}.
 
 \begin{definition}\label{def_finpres_perfpres}
-	Consideriamo una categoria \(\ctA\), un oggetto \(A \in \ctA\) e il funtore rappresentabile \(\ctA(A,-) \colon \ctA \fun \ctSet\).
-	L'oggetto \(A\) è
-	\begin{enumerate}
-		\item assolutamente presentabile se il funtore \(\ctA(A,-)\) preserva i colimiti,
-		\item perfettamente presentabile se il funtore \(\ctA(A,-)\) preserva i colimiti setacciati,
-		\item finitamente presentabile se il funtore \(\ctA(A,-)\) preserva i colimiti filtrati.
-	\end{enumerate}
+ Consideriamo una categoria \(\ctA\), un oggetto \(A \in \ctA\) e il funtore rappresentabile \(\ctA(A,-) \colon \ctA \fun \ctSet\).
+ L'oggetto \(A\) è
+ \begin{enumerate}
+  \item assolutamente presentabile se il funtore \(\ctA(A,-)\) preserva i colimiti,
+  \item perfettamente presentabile se il funtore \(\ctA(A,-)\) preserva i colimiti setacciati,
+  \item finitamente presentabile se il funtore \(\ctA(A,-)\) preserva i colimiti filtrati.
+ \end{enumerate}
 \end{definition}
 
 Ovviamente un oggetto assolutamente presentabile è perfettamente presentabile e un oggetto perfettamente presentabile è
@@ -131,148 +131,148 @@ finitamente presentabile. Nelle due prossime proposizioni vediamo qualche propri
 perfettamente e finitamente presentabili.
 
 \begin{proposition}\label{prop_stab_present}
-	Sia \(\ctA\) una categoria.
-	\begin{enumerate}
-		\item Se \(A \in \ctA\) è un oggetto assolutamente presentabile e se \(R\) è un retratto di \(A\), allora anche \(R\) è assolutamente
-		      presentabile. Lo stesso vale per gli oggetti perfettamente presentabili e per gli oggetti finitamente presentabili.
-		\item Un colimite finito di oggetti finitamente presentabili è finitamente presentabile.
-		\item Un coprodotto finito di oggetti perfettamente presentabili è perfettamente presentabile.
-	\end{enumerate}
+ Sia \(\ctA\) una categoria.
+ \begin{enumerate}
+  \item Se \(A \in \ctA\) è un oggetto assolutamente presentabile e se \(R\) è un retratto di \(A\), allora anche \(R\) è assolutamente
+        presentabile. Lo stesso vale per gli oggetti perfettamente presentabili e per gli oggetti finitamente presentabili.
+  \item Un colimite finito di oggetti finitamente presentabili è finitamente presentabile.
+  \item Un coprodotto finito di oggetti perfettamente presentabili è perfettamente presentabile.
+ \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-	1. Se \(R\) è un retratto di \(A\), allora il funtore \(\ctA(R,-)\) è un retratto del funtore \(\ctA(A,-)\). La proposizione
-	\ref{prop_funt_retratto} permette di concludere. \\
-	2. Sia \(I \colon \ctI \fun \ctA\) un funtore definito su una categoria \(\ctI\) finita e sia \(L\) il colimite di \(I\). Supponiamo che,
-	per ogni \(i \in \ctI\), l'oggetto \(I(i)\) sia finitamente presentabile. Consideriamo anche un funtore \(F \colon \ctD \fun \ctA\),
-	dove \(\ctD\) è una categoria filtrata. Il fatto che \(L\) sia finitamente presentabile si mostra con la seguente catena di
-	isomorfismi naturali:
-	\[\begin{array}{rclcl}
-			\ctA(L,\colim_{\ctD}FD) & \simeq & \ctA(\colim_{\ctI}Ii,\colim_{\ctD}FD) &  & (\mbox{definizione di } L)                \\
-			                        & \simeq & \lim_{\ctI}\ctA(Ii,\colim_{\ctD}FD)   &  & (\mbox{osservazione \ref{oss_rappr_lim}}) \\
-			                        & \simeq & \lim_{\ctI}(\colim_{\ctD}\ctA(Ii,FD)) &  & (Ii \mbox{ è finitamente presentabile})   \\
-			                        & \simeq & \colim_{\ctD}(\lim_{\ctI}\ctA(Ii,FD)) &  & (\mbox{teorema \ref{th_caratt_filtr}})    \\
-			                        & \simeq & \colim_{\ctD}\ctA(\colim_{\ctI}Ii,FD) &  & (\mbox{osservazione \ref{oss_rappr_lim}}) \\
-			                        & \simeq & \colim_{\ctD}\ctA(L,FD)               &  & (\mbox{definizione di } L)
-		\end{array}\]
-	3. Simile alla prova del punto 3 prendendo come \(\ctI\) una categoria finita e discreta, come \(\ctD\) una categoria setacciata
-	e usando il teorema \ref{th_caratt_sifted}.
+ 1. Se \(R\) è un retratto di \(A\), allora il funtore \(\ctA(R,-)\) è un retratto del funtore \(\ctA(A,-)\). La proposizione
+ \ref{prop_funt_retratto} permette di concludere. \\
+ 2. Sia \(I \colon \ctI \fun \ctA\) un funtore definito su una categoria \(\ctI\) finita e sia \(L\) il colimite di \(I\). Supponiamo che,
+ per ogni \(i \in \ctI\), l'oggetto \(I(i)\) sia finitamente presentabile. Consideriamo anche un funtore \(F \colon \ctD \fun \ctA\),
+ dove \(\ctD\) è una categoria filtrata. Il fatto che \(L\) sia finitamente presentabile si mostra con la seguente catena di
+ isomorfismi naturali:
+ \[\begin{array}{rclcl}
+   \ctA(L,\colim_{\ctD}FD) & \simeq & \ctA(\colim_{\ctI}Ii,\colim_{\ctD}FD) &  & (\mbox{definizione di } L)                \\
+                           & \simeq & \lim_{\ctI}\ctA(Ii,\colim_{\ctD}FD)   &  & (\mbox{osservazione \ref{oss_rappr_lim}}) \\
+                           & \simeq & \lim_{\ctI}(\colim_{\ctD}\ctA(Ii,FD)) &  & (Ii \mbox{ è finitamente presentabile})   \\
+                           & \simeq & \colim_{\ctD}(\lim_{\ctI}\ctA(Ii,FD)) &  & (\mbox{teorema \ref{th_caratt_filtr}})    \\
+                           & \simeq & \colim_{\ctD}\ctA(\colim_{\ctI}Ii,FD) &  & (\mbox{osservazione \ref{oss_rappr_lim}}) \\
+                           & \simeq & \colim_{\ctD}\ctA(L,FD)               &  & (\mbox{definizione di } L)
+  \end{array}\]
+ 3. Simile alla prova del punto 3 prendendo come \(\ctI\) una categoria finita e discreta, come \(\ctD\) una categoria setacciata
+ e usando il teorema \ref{th_caratt_sifted}.
 \end{proof}
 
 \begin{proposition}\label{prop_stab_perf_pres}
-	Consideriamo un'aggiunzione
-	\[ \xymatrix{\ctB \ar@<-0.5ex>[r]_-{G} & \ctA \ar@<-0.5ex>[l]_-{F} } \;\;\; F \dashv G \]
-	Se il funtore \(G\) preserva i colimiti (rispettivamente, i colimiti setacciati, i colimiti filtrati) e se \(A \in \ctA\) è assolutamente
-	presentabile (rispettivamente, perfettamente presentabile, finitamente presentabile), allora anche \(FA \in \ctB\) lo è.
+ Consideriamo un'aggiunzione
+ \[ \xymatrix{\ctB \ar@<-0.5ex>[r]_-{G} & \ctA \ar@<-0.5ex>[l]_-{F} } \;\;\; F \dashv G \]
+ Se il funtore \(G\) preserva i colimiti (rispettivamente, i colimiti setacciati, i colimiti filtrati) e se \(A \in \ctA\) è assolutamente
+ presentabile (rispettivamente, perfettamente presentabile, finitamente presentabile), allora anche \(FA \in \ctB\) lo è.
 \end{proposition}
 
 \begin{proof}
-	Vediamo il caso degli oggetti assolutamente presentabili. Il diagramma
-	\[ \xymatrix{\ctB \ar[rr]^-{G} \ar[rd]_{\ctB(FA,-)} & & \ctA \ar[ld]^{\ctA(A,-)} \\ & \ctSet} \]
-	commuta a meno dell'isomorfismo naturale fornito dall'aggiunzione \(F \dashv G\). Ne segue che \(\ctB(FA,-)\) preserva i
-	colimiti in quanto composto di due funtori che li preservano.
+ Vediamo il caso degli oggetti assolutamente presentabili. Il diagramma
+ \[ \xymatrix{\ctB \ar[rr]^-{G} \ar[rd]_{\ctB(FA,-)} & & \ctA \ar[ld]^{\ctA(A,-)} \\ & \ctSet} \]
+ commuta a meno dell'isomorfismo naturale fornito dall'aggiunzione \(F \dashv G\). Ne segue che \(\ctB(FA,-)\) preserva i
+ colimiti in quanto composto di due funtori che li preservano.
 \end{proof}
 
 \begin{example}\label{ex_ass_present_pref}
-	Se \(\ctC\) è una categoria piccola, i funtori rappresentabili sono degli oggetti assolutamente presentabili di
-	\(\ctSet^{\ctC}\). Infatti, nella situazione
-	\[\xymatrix{\ctD \ar[r]^-{H} & \ctSet^{\ctC} \ar[rr]^-{\Nat(\ctC(X,-),-)} & & \ctSet}\]
-	usando due volte il lemma di Yoneda e il fatto che i colimiti in \(\ctSet^{\ctC}\) si calcolano punto a
-	punto (proposizione \ref{prop_lim_puntuali}), si ha
-	\[\Nat(\ctC(X,-),\colim_{\ctD}H) \simeq (\colim_{\ctD}H)(X) = \colim_{\ctD}((HD)(X)) \simeq \colim_{\ctD}\Nat(\ctC(X,-),HD))\]
-	La proposizione \ref{prop_stab_present} implica ora che i retratti dei funtori rappresentabili sono oggetti
-	assolutamente presentabili di \(\ctSet^{\ctC}\). Non ce ne sono altri: se \(A \in \ctSet^{\ctC}\) è assolutamente
-	presentabile, allora \(A\) è un retratto di un funtore rappresentabile. Infatti, con la notazione della proposizione
-	\ref{prop_colim_rappr}, si ha
-	\[ \Nat(A,A) = \Nat(A, \colim_{\mathrm{El}(A)}(\ctY_{\ctC} \cmp \Phi_A)) \simeq \colim_{\mathrm{El}(A)} \Nat(A, \ctC(X,-)) \]
-	Poiché \(\id_A \in \Nat(A,A)\), tale isomorfismo implica in particolare che esistono \((X,x) \in \mathrm{El}(A)\) e
-	\(\alpha \in \Nat(A,\ctC(X,-))\) tali che \(\xi \cmp \alpha = \id_A\), dove \(\xi \colon \ctC(X,-) \nat A\) è la trasformazione
-	naturale che corrisponde all'elemento \(x \in A(X)\). In conclusione, \(A\) è un retratto di \(\ctC(X,-)\).
+ Se \(\ctC\) è una categoria piccola, i funtori rappresentabili sono degli oggetti assolutamente presentabili di
+ \(\ctSet^{\ctC}\). Infatti, nella situazione
+ \[\xymatrix{\ctD \ar[r]^-{H} & \ctSet^{\ctC} \ar[rr]^-{\Nat(\ctC(X,-),-)} & & \ctSet}\]
+ usando due volte il lemma di Yoneda e il fatto che i colimiti in \(\ctSet^{\ctC}\) si calcolano punto a
+ punto (proposizione \ref{prop_lim_puntuali}), si ha
+ \[\Nat(\ctC(X,-),\colim_{\ctD}H) \simeq (\colim_{\ctD}H)(X) = \colim_{\ctD}((HD)(X)) \simeq \colim_{\ctD}\Nat(\ctC(X,-),HD))\]
+ La proposizione \ref{prop_stab_present} implica ora che i retratti dei funtori rappresentabili sono oggetti
+ assolutamente presentabili di \(\ctSet^{\ctC}\). Non ce ne sono altri: se \(A \in \ctSet^{\ctC}\) è assolutamente
+ presentabile, allora \(A\) è un retratto di un funtore rappresentabile. Infatti, con la notazione della proposizione
+ \ref{prop_colim_rappr}, si ha
+ \[ \Nat(A,A) = \Nat(A, \colim_{\mathrm{El}(A)}(\ctY_{\ctC} \cmp \Phi_A)) \simeq \colim_{\mathrm{El}(A)} \Nat(A, \ctC(X,-)) \]
+ Poiché \(\id_A \in \Nat(A,A)\), tale isomorfismo implica in particolare che esistono \((X,x) \in \mathrm{El}(A)\) e
+ \(\alpha \in \Nat(A,\ctC(X,-))\) tali che \(\xi \cmp \alpha = \id_A\), dove \(\xi \colon \ctC(X,-) \nat A\) è la trasformazione
+ naturale che corrisponde all'elemento \(x \in A(X)\). In conclusione, \(A\) è un retratto di \(\ctC(X,-)\).
 \end{example}
 
 \begin{lemma}\label{lemma_caratt_pref}
-	Nella situazione della proposizione \ref{prop_univ_yon}
-	\[\xymatrix{\ctD^{\op} \ar[r]^-{\ctY_{\ctD}} \ar[d]_{F} & \ctSet^{\ctD} \ar[ld]^{F^*} \\
-		\ctB}\]
-	se \(F\) è pieno e fedele e se, per ogni \(Z \in \ctD\), l'oggetto \(FZ\) è assolutamente presentabile, allora \(F^*\) è pieno e fedele.
+ Nella situazione della proposizione \ref{prop_univ_yon}
+ \[\xymatrix{\ctD^{\op} \ar[r]^-{\ctY_{\ctD}} \ar[d]_{F} & \ctSet^{\ctD} \ar[ld]^{F^*} \\
+  \ctB}\]
+ se \(F\) è pieno e fedele e se, per ogni \(Z \in \ctD\), l'oggetto \(FZ\) è assolutamente presentabile, allora \(F^*\) è pieno e fedele.
 \end{lemma}
 
 \begin{proof}
-	Cominciamo con l'osservare cha la proposizione \ref{prop_colim_rappr} permette di ridurre lo studio del carattere pieno e fedele
-	di \(F^*\) alle frecce il cui dominio è un funtore rappresentabile. Infatti, per \(A,A' \in \ctSet^{\ctD}\) si ha
-	\[ \Nat(A,A') = \Nat(\colim_{\mathrm{El}(A)}(\ctY_{\ctD} \cmp \Phi_A),A') \simeq \lim_{\mathrm{El}(A)}\Nat(\ctD(X,-),A') \]
-	Fissiamo dunque \(A \in \ctSet^{\ctD}\) e \(Z \in \ctD\) e consideriamo il, seguente diagramma, la cui commutatività per ogni
-	\((X,x) \in \mathrm{El}(A)\) definisce l'azione di \(F^*\) sulle frecce
-	\[\xymatrix{ \Nat(\ctD(Z,-), A) \ar[rr]^-{F^*} \ar@{=}[d] & & \ctB(FZ, F^*A) \ar@{=}[d] \\
-		\Nat(\ctD(Z,-), \colim_{\mathrm{El}(A)}(\ctY_{\ctD} \cmp \Phi_A)) & & \ctB(FZ, \colim_{\mathrm{El}(A)}(F \cmp \Phi_A)) \\
-		\colim_{\mathrm{El}(A)}\Nat(\ctD(Z,-),\ctD(X,-)) \ar[u]^{\mathrm{can}} & & \colim_{\mathrm{El}(A)}\ctB(FZ,FX) \ar[u]_{\mathrm{can}} \\
-		\Nat(\ctD(Z,-)\ctD(X,-)) \simeq \ctD(Z,X) \ar[rr]_-{F} \ar[u]^{\sigma_{(X,x)}} & & \ctB(FZ,FX) \ar[u]_{\sigma_{(X,x)}} }\]
-	Le frecce chiamate \(\sigma\) sono come al solito le iniezioni nei colimiti e l'isomorfismo è la biiezione del lemma di Yoneda.
-	Osserviamo ora che le due frecce canoniche sono degli isomorfismi: quella di sinistra perché \(\ctD(Z,-)\) è assolutamente presentabile
-	(esempio \ref{ex_ass_present_pref}) e quella di destra perché \(FZ\) è assolutamente presentabile per ipotesi. Poiché la freccia alla base
-	del diagramma è un isomorfismo (perché \(F\) è pieno e fedele), anche la feccia in alto è un isomorfismo, cioé \(F^*\) è pieno e fedele.
+ Cominciamo con l'osservare cha la proposizione \ref{prop_colim_rappr} permette di ridurre lo studio del carattere pieno e fedele
+ di \(F^*\) alle frecce il cui dominio è un funtore rappresentabile. Infatti, per \(A,A' \in \ctSet^{\ctD}\) si ha
+ \[ \Nat(A,A') = \Nat(\colim_{\mathrm{El}(A)}(\ctY_{\ctD} \cmp \Phi_A),A') \simeq \lim_{\mathrm{El}(A)}\Nat(\ctD(X,-),A') \]
+ Fissiamo dunque \(A \in \ctSet^{\ctD}\) e \(Z \in \ctD\) e consideriamo il, seguente diagramma, la cui commutatività per ogni
+ \((X,x) \in \mathrm{El}(A)\) definisce l'azione di \(F^*\) sulle frecce
+ \[\xymatrix{ \Nat(\ctD(Z,-), A) \ar[rr]^-{F^*} \ar@{=}[d] & & \ctB(FZ, F^*A) \ar@{=}[d] \\
+  \Nat(\ctD(Z,-), \colim_{\mathrm{El}(A)}(\ctY_{\ctD} \cmp \Phi_A)) & & \ctB(FZ, \colim_{\mathrm{El}(A)}(F \cmp \Phi_A)) \\
+  \colim_{\mathrm{El}(A)}\Nat(\ctD(Z,-),\ctD(X,-)) \ar[u]^{\mathrm{can}} & & \colim_{\mathrm{El}(A)}\ctB(FZ,FX) \ar[u]_{\mathrm{can}} \\
+  \Nat(\ctD(Z,-)\ctD(X,-)) \simeq \ctD(Z,X) \ar[rr]_-{F} \ar[u]^{\sigma_{(X,x)}} & & \ctB(FZ,FX) \ar[u]_{\sigma_{(X,x)}} }\]
+ Le frecce chiamate \(\sigma\) sono come al solito le iniezioni nei colimiti e l'isomorfismo è la biiezione del lemma di Yoneda.
+ Osserviamo ora che le due frecce canoniche sono degli isomorfismi: quella di sinistra perché \(\ctD(Z,-)\) è assolutamente presentabile
+ (esempio \ref{ex_ass_present_pref}) e quella di destra perché \(FZ\) è assolutamente presentabile per ipotesi. Poiché la freccia alla base
+ del diagramma è un isomorfismo (perché \(F\) è pieno e fedele), anche la feccia in alto è un isomorfismo, cioé \(F^*\) è pieno e fedele.
 \end{proof}
 
 \begin{proposition}\label{prop_caratt_pref}
-	Una categoria \(\ctB\) è equivalente a una categoria del tipo \(\ctSet^{\ctD}\) per \(\ctD\) piccola se e solo se \(\ctB\) è cocompleta e contiene
-	un insieme \(\ctG\) di oggetti assolutamente presentabili tale che ogni oggetto di \(\ctB\) è colimite di oggetti di \(\ctG\).
+ Una categoria \(\ctB\) è equivalente a una categoria del tipo \(\ctSet^{\ctD}\) per \(\ctD\) piccola se e solo se \(\ctB\) è cocompleta e contiene
+ un insieme \(\ctG\) di oggetti assolutamente presentabili tale che ogni oggetto di \(\ctB\) è colimite di oggetti di \(\ctG\).
 \end{proposition}
 
 \begin{proof}
-	Sappiamo che \(\ctSet^{\ctD}\) è cocompleta (corollario \ref{cor_lim_cat_pref}) e come insieme \(\ctG\) si può prendere
-	l'insieme dei funtori \(\ctD \fun \ctSet\) rappresentabili, vedi proposizione \ref{prop_colim_rappr}. \\
-	Viceversa,  consideriamo la sottocategoria piena \(\ctD\) di \(\ctB\) che ha come oggetti quelli dell'insieme \(\ctG\) e
-	prendiamo come funtore \(F \colon \ctD \fun \ctB\) l'inclusione piena. Si può applicare il lemma \ref{lemma_caratt_pref},
-	per cui il funtore indotto \(F^* \colon \ctSet^{\ctD} \fun \ctB\) è pieno e fedele. Inoltre, per ogni oggetto \(B \in \ctB\) esistono per
-	ipotesi una categoria piccola \(\ctD_B\) e un funtore \(\Psi_B \colon \ctD_B \fun \ctD\) tali che
-	\[ B = \colim_{\ctD_B}(F \cmp \Psi_B) \]
-	Se poniamo \(A = \colim_{\ctD_B}(\ctY_{\ctD} \cmp \Psi_B)\) e usiamo il fatto che \(F^*\) preserva i colimiti, otteniamo
-	\[ F^*A = F^*(\colim_{\ctD_B}(\ctY_{\ctD} \cmp \Psi_B)) \simeq \colim_{\ctD_B}(F^* \cmp \ctY_{\ctD} \cmp \Psi_B) \simeq
-		\colim_{\ctD_B}(F \cmp \Psi_B) = B \]
-	Questo mostra che \(F^* \colon \ctSet^{\ctD} \fun \ctB\) è essenzialmente suriettivo ed è quindi un'equivalenza.
+ Sappiamo che \(\ctSet^{\ctD}\) è cocompleta (corollario \ref{cor_lim_cat_pref}) e come insieme \(\ctG\) si può prendere
+ l'insieme dei funtori \(\ctD \fun \ctSet\) rappresentabili, vedi proposizione \ref{prop_colim_rappr}. \\
+ Viceversa,  consideriamo la sottocategoria piena \(\ctD\) di \(\ctB\) che ha come oggetti quelli dell'insieme \(\ctG\) e
+ prendiamo come funtore \(F \colon \ctD \fun \ctB\) l'inclusione piena. Si può applicare il lemma \ref{lemma_caratt_pref},
+ per cui il funtore indotto \(F^* \colon \ctSet^{\ctD} \fun \ctB\) è pieno e fedele. Inoltre, per ogni oggetto \(B \in \ctB\) esistono per
+ ipotesi una categoria piccola \(\ctD_B\) e un funtore \(\Psi_B \colon \ctD_B \fun \ctD\) tali che
+ \[ B = \colim_{\ctD_B}(F \cmp \Psi_B) \]
+ Se poniamo \(A = \colim_{\ctD_B}(\ctY_{\ctD} \cmp \Psi_B)\) e usiamo il fatto che \(F^*\) preserva i colimiti, otteniamo
+ \[ F^*A = F^*(\colim_{\ctD_B}(\ctY_{\ctD} \cmp \Psi_B)) \simeq \colim_{\ctD_B}(F^* \cmp \ctY_{\ctD} \cmp \Psi_B) \simeq
+  \colim_{\ctD_B}(F \cmp \Psi_B) = B \]
+ Questo mostra che \(F^* \colon \ctSet^{\ctD} \fun \ctB\) è essenzialmente suriettivo ed è quindi un'equivalenza.
 \end{proof}
 
 Terminiamo questa sezione con una proprietà di stabilità per le categorie di prefasci.
 
 \begin{corollary}\label{cor_stab_pref}
-	Sia \(\ctC\) una categoria piccola e sia \(i \colon \ctA \fun \ctSet^{\ctC}\) una sottocategoria riflessiva e chiusa per colimiti.
-	La categoria \(\ctA\) è a sua volta equivalente a una categoria di prefasci su una categoria piccola.
+ Sia \(\ctC\) una categoria piccola e sia \(i \colon \ctA \fun \ctSet^{\ctC}\) una sottocategoria riflessiva e chiusa per colimiti.
+ La categoria \(\ctA\) è a sua volta equivalente a una categoria di prefasci su una categoria piccola.
 \end{corollary}
 
 \begin{proof}
-	Mostriamo che \(\ctA\) soddisfa le ipotesi della caratterizzazione \ref{prop_caratt_pref}. Certamente \(\ctA\) è cocompleta
-	in quanto sottocategoria riflessiva di una categoria cocompleta. Sia ora \(R \colon \ctSet^{\ctC} \fun \ctA\) l'aggiunto sinistro.
-	e considero l'insieme di oggetti
-	\[\ctG = \{R(\ctC(X,-)) \mid X \in \ctC\}\]
-	In virtù della proposizione \ref{prop_stab_perf_pres} e dell'esempio \ref{ex_ass_present_pref}, tali oggetti sono assolutamente
-	presentabili in \(\ctA\). Per terminare, consideriamo un oggetto \(A \in \ctA\). Per la proposizione \ref{prop_colim_rappr},
-	sappiamo che \(iA = \colim_{\mathrm{El}(A)}(\ctY_{\ctC} \cmp \Phi_A)\). Usando che \(i\) è pieno e fedele (e quindi la
-	counità \(R(iA) \to A\) dell'aggiunzione è un isomorfismo) e che \(R\) preserva i colimiti, otteniamo
-	\[ A \simeq R(iA) = R(\colim_{\mathrm{El}(A)}(\ctY_{\ctC} \cmp \Phi_A))
-		\simeq \colim_{\mathrm{El}(A)}(R \cmp \ctY_{\ctC} \cmp \Phi_A) \]
-	il che conclude la prova.
+ Mostriamo che \(\ctA\) soddisfa le ipotesi della caratterizzazione \ref{prop_caratt_pref}. Certamente \(\ctA\) è cocompleta
+ in quanto sottocategoria riflessiva di una categoria cocompleta. Sia ora \(R \colon \ctSet^{\ctC} \fun \ctA\) l'aggiunto sinistro.
+ e considero l'insieme di oggetti
+ \[\ctG = \{R(\ctC(X,-)) \mid X \in \ctC\}\]
+ In virtù della proposizione \ref{prop_stab_perf_pres} e dell'esempio \ref{ex_ass_present_pref}, tali oggetti sono assolutamente
+ presentabili in \(\ctA\). Per terminare, consideriamo un oggetto \(A \in \ctA\). Per la proposizione \ref{prop_colim_rappr},
+ sappiamo che \(iA = \colim_{\mathrm{El}(A)}(\ctY_{\ctC} \cmp \Phi_A)\). Usando che \(i\) è pieno e fedele (e quindi la
+ counità \(R(iA) \to A\) dell'aggiunzione è un isomorfismo) e che \(R\) preserva i colimiti, otteniamo
+ \[ A \simeq R(iA) = R(\colim_{\mathrm{El}(A)}(\ctY_{\ctC} \cmp \Phi_A))
+  \simeq \colim_{\mathrm{El}(A)}(R \cmp \ctY_{\ctC} \cmp \Phi_A) \]
+ il che conclude la prova.
 \end{proof}
 
 \begin{exercise}\label{ex_perf_present_pref}
-	Gli oggetti perfettamente presentabili in una categoria di prefasci \(\ctSet^{\ctC}\) si possono caratterizzare in modo analogo a
-	quanto fatto nell'esempio \ref{ex_ass_present_pref} con gli oggetti assolutamente presentabili: i prefasci perfettamente
-	presentabili sono esattamente i retratti dei coprodotti finiti di prefasci rappresentabili. Vediamo le tappe essenziali della prova e
-	lasciamo alla lettrice, se ne ha voglia, il compito di completarla. \\
-	\(\bullet\) I prefasci rappresentabili sono assolutamente presentabili e quindi perfettamente presentabili.
-	Inoltre, i coprodotti finiti di oggetti perfettamente presentabili sono perfettamente presentabili. Infine, i retratti di oggetti
-	perfettamente presentabili sono perfettamente presentabili. \\
-	\(\bullet\) Viceversa, per ogni \(A \in \ctSet^{\ctC}\) esiste una categoria piccola \(\ctD_A\) e un funtore \(\Psi_A \colon \ctD_A \fun \ctC^{\op}\)
-	tale che \(A = \colim_{\ctD_A}(\ctY_{\ctC} \cmp \Psi_A)\). Ne segue che \(A\) è il coequalizzatore di un grafo riflessivo che ha come
-	codominio il coprodotto \(\coprod \ctC(\Psi_AD,-)\) indicizzato dagli oggetti \(D \in \ctD_A\). Tale coprodotto è anche il
-	colimite filtrante dei suoi sottocoprodotti finiti (proposizione \ref{prop_coprod_colimfiltr})
-	\[ \coprod_{D \in \ctD_A}\ctC(\psi_AD,-) =  \colim_{I \in \ctP_{\mathrm{f}}(\ctD_A)} \left(\coprod_{D \in I}\ctC(\Psi_AD,-)\right) \]
-	Se ora assumiamo che \(A\) è perfettamente presentabile e applichiamo il funtore \(\Nat(A,-)\), otteniamo una funzione suriettiva
-	\[ \colim_{I \in \ctP_{\mathrm{f}}(\ctD_A)}\Nat\left(A, \coprod_{D \in I}\ctC(\Psi_AD,-)\right) \to \Nat(A,A) \]
-	Poiché \(\id \in \Nat(A,A)\), ne segue che esistono \(I \in \ctP_{\mathrm{f}}(\ctD_A)\) e
-	\(\lambda \in \Nat\left(A,\coprod_{D \in I}\ctC(\Psi_AD,-)\right)\) tali che il seguente diagramma commuta
-	\[ \xymatrix{ A \ar[rd]_<<<<<<{\lambda} \ar[rrr]^-{\id} & & & A \\
-		& \coprod_{D \in I}\ctC(\Psi_AD,-) \ar[r] & \coprod_{D \in \ctD_A}\ctC(\Psi_AD,-) \ar[ru] } \]
-	il che mostra che \(A\) è un  retratto di un coprodotto finito di prefasci rappresentabili.
+ Gli oggetti perfettamente presentabili in una categoria di prefasci \(\ctSet^{\ctC}\) si possono caratterizzare in modo analogo a
+ quanto fatto nell'esempio \ref{ex_ass_present_pref} con gli oggetti assolutamente presentabili: i prefasci perfettamente
+ presentabili sono esattamente i retratti dei coprodotti finiti di prefasci rappresentabili. Vediamo le tappe essenziali della prova e
+ lasciamo alla lettrice, se ne ha voglia, il compito di completarla. \\
+ \(\bullet\) I prefasci rappresentabili sono assolutamente presentabili e quindi perfettamente presentabili.
+ Inoltre, i coprodotti finiti di oggetti perfettamente presentabili sono perfettamente presentabili. Infine, i retratti di oggetti
+ perfettamente presentabili sono perfettamente presentabili. \\
+ \(\bullet\) Viceversa, per ogni \(A \in \ctSet^{\ctC}\) esiste una categoria piccola \(\ctD_A\) e un funtore \(\Psi_A \colon \ctD_A \fun \ctC^{\op}\)
+ tale che \(A = \colim_{\ctD_A}(\ctY_{\ctC} \cmp \Psi_A)\). Ne segue che \(A\) è il coequalizzatore di un grafo riflessivo che ha come
+ codominio il coprodotto \(\coprod \ctC(\Psi_AD,-)\) indicizzato dagli oggetti \(D \in \ctD_A\). Tale coprodotto è anche il
+ colimite filtrante dei suoi sottocoprodotti finiti (proposizione \ref{prop_coprod_colimfiltr})
+ \[ \coprod_{D \in \ctD_A}\ctC(\psi_AD,-) =  \colim_{I \in \ctP_{\mathrm{f}}(\ctD_A)} \left(\coprod_{D \in I}\ctC(\Psi_AD,-)\right) \]
+ Se ora assumiamo che \(A\) è perfettamente presentabile e applichiamo il funtore \(\Nat(A,-)\), otteniamo una funzione suriettiva
+ \[ \colim_{I \in \ctP_{\mathrm{f}}(\ctD_A)}\Nat\left(A, \coprod_{D \in I}\ctC(\Psi_AD,-)\right) \to \Nat(A,A) \]
+ Poiché \(\id \in \Nat(A,A)\), ne segue che esistono \(I \in \ctP_{\mathrm{f}}(\ctD_A)\) e
+ \(\lambda \in \Nat\left(A,\coprod_{D \in I}\ctC(\Psi_AD,-)\right)\) tali che il seguente diagramma commuta
+ \[ \xymatrix{ A \ar[rd]_<<<<<<{\lambda} \ar[rrr]^-{\id} & & & A \\
+  & \coprod_{D \in I}\ctC(\Psi_AD,-) \ar[r] & \coprod_{D \in \ctD_A}\ctC(\Psi_AD,-) \ar[ru] } \]
+ il che mostra che \(A\) è un  retratto di un coprodotto finito di prefasci rappresentabili.
 \end{exercise}
 
 \color{black}
