@@ -690,9 +690,10 @@ tale che tutte le composizioni \(d_i\cmp v_i\) siano uguali a una stessa freccia
 	\end{itemize}
 	Esempi di categorie che non sono filtrate:
 	\begin{itemize}
-		\item L'esempio più semplice di categoria non filtrata è dato da un insieme parzialmente ordinato, dove esiste una coppia di elementi \(a,b\) che non possiede un estremo superiore; l'esempio minimo è quindi l'insieme \(\{0,a,b\}\) ordinato da \(0\le a,b\) (ma \(a,b\) non sono confrontabili, e quindi non esiste un cocono per \(\{a,b\}\)).
 		\item Se \(A\) è un insieme con almeno due elementi, la categoria discreta \(A^\delta\) di \ref{ex_cat_discreta} non è filtrata.
+		\item L'esempio più semplice di categoria (non discreta e) non filtrata è dato da un insieme parzialmente ordinato, dove esiste una coppia di elementi \(a,b\) che non possiede un estremo superiore; l'esempio minimo è quindi l'insieme \(\{0,a,b\}\) ordinato da \(0\le a,b\) (ma \(a,b\) non sono confrontabili, e quindi non esiste un cocono per \(\{a,b\}\)).
 		\item La categoria \(\bsDelta_\text{inj}\) dei \emph{semisimplessi}, ossia la sottocategoria ottenuta da \(\bsDelta\) prendendo gli stessi oggetti \([n]\) e solo le cofacce \(\delta_n^i\) per frecce, non è filtrata: infatti, nessuna funzione \emph{iniettiva} (le sole che sono ottenibili componendo mappe di cofaccia) \([1] \to [n]\) coequalizza la coppia di frecce \(\delta_1^0,\delta_1^1 \colon [0]\toto [1]\), che quindi non ammette un cocono.
+		\item La categoria `coppia spezzante generica' \(\genRG\defeq\big\{\xymatrix{\texttt{0} \ar@<.4em>[r]^-\sigma\ar@<-.4em>[r]_-\tau & \texttt{1}\ar[l]|j}\big\}\) non è filtrata; sarà dimostrato in \ref{ex_set_nonfiltr}.
 	\end{itemize}
 \end{examples}
 \begin{theorem}\label{estensione_filtrata}\index{Funtore!--- iniziale}
@@ -735,7 +736,7 @@ Una classe di categorie più generale, che contiene le categorie filtrate, è qu
 	Una categoria \(\ctJ\) si dice \emph{setacciata} se per ogni coppia di oggetti \(X,Y\in\ctJ\) la categoria delle cospanne di \ref{def_span_e_cospan} è connessa nel senso di \ref{ex_fun_cpt_conn}, \ref{exe_cpt_conn}.
 \end{definition}
 % \Todo{forse qualcos'altro: prodotto di setacciate è setacciato, etc?}
-\begin{theorem}\label{filtr_setacciata}\index{Categoria!--- filtrata}
+\begin{theorem}\label{ex_set_nonfiltr}\index{Categoria!--- filtrata}
 	Ogni categoria filtrata è setacciata; la categoria
 	\(\genRG\defeq\big\{\xymatrix{\texttt{0} \ar@<.4em>[r]^-\sigma\ar@<-.4em>[r]_-\tau & \texttt{1}\ar[l]|j}\big\}\)
 	dove (a parte le identità) ci sono tre frecce \(\sigma,\tau,j\) tali che \(\sigma\cmp j = \tau\cmp j = \id_1\) (e nessun'altra identità vale, cosicché in particolare \(j\cmp\sigma,j\cmp \tau\) sono idempotenti distinti) è setacciata ma non filtrata.
@@ -781,6 +782,15 @@ Una classe di categorie più generale, che contiene le categorie filtrate, è qu
 
 	Però non esiste nessuna freccia \(x \colon \texttt{0} \to \#\) che coequalizzi le due frecce parallele \(j\cmp \sigma,j\cmp \tau \colon \texttt{0} \toto \texttt{0}\): l'identità non lo può fare, perché i due idempotenti \(j\cmp \sigma,j\cmp \tau\) sono diversi; né \(\sigma\) né \(\tau\) possono farlo,	perché \(\sigma\cmp j\cmp \sigma = \sigma \neq \tau = \sigma\cmp j\cmp \tau\) e similmente si ragiona per \(\tau\). Quindi \(\genRG\) non è filtrata.
 \end{proof}
+Dopo questa lunga dimostrazione, osserviamo due cose:
+\begin{enumerate}
+	\item Se si toglie la freccia \(j\) che esprime la riflessività, la categoria \(\genAArrow\) è un esempio di categoria non setacciata. Infatti la comma \(\ctK=(\texttt{1},\texttt{0})/\Delta\) non è
+	      connessa (e quindi il funtore \(\Delta\) non è iniziale). In effetti, \(\ctK\) è la categoria discreta con oggetti
+	      \((\sigma,\id_{\texttt{0}})\) e \((\tau,\id_{\texttt{0}})\).
+	\item Ogni categoria \(\ctD\) con i coprodotti finiti è setacciata. Infatti, \(\ctD\) non è vuota perché contiene almeno l'oggetto
+	      iniziale. Inoltre, per ogni coppia di oggetti \((X,Y) \in \ctD \times \ctD\), la categoria comma \((X,Y)/\Delta\) ammette come oggetto
+	      iniziale il coprodotto \(X \to X+Y \leftarrow Y\). Si conclude osservando che ogni categoria con oggetto iniziale (o terminale) è connessa.
+\end{enumerate}
 \begin{remark}[Perché categorie `filtrate' e `setacciate'?]\index{Categoria!--- filtrata}
 	L'idea è che una categoria setacciata \(\ctJ\) dispone di un filtro che seleziona un cocono per ogni sottocategoria discreta e finita di \(\ctJ\); un filtro è invece capace, in maniera più forte, di selezionare un cocono per ogni sottocategoria finita di \(\ctJ\), anche non discreta, cosicché un filtro è solo un tipo di setaccio particolarmente sottile. La figura \ref{fig_filtro_setaccio} disegna questa situazione.
 \end{remark}
