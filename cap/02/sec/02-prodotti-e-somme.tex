@@ -157,7 +157,6 @@ Siamo pronti per enunciare la proprietà universale del prodotto (di due oggetti
  Considerazioni del tutto analoghe saranno valide per la nozione generale di limite, che sarà definita in \ref{}; considerazioni del tutto analoghe, dualizzate, saranno valide per la nozione generale di colimite, che sarà definita in \ref{}.
 \end{remark}
 \begin{remark}\label{eqn_del_prodotto}
- \Todo{Due identità diagrammatiche ed equazionali.}
  Nella categoria degli insiemi è facile verificare le seguenti identità tra funzioni \(p\colon A\to B,q \colon A\to C,f \colon X\to Y,g \colon X\to Z\), \(u\colon B\to X\), \(v\colon C\to Y\):
  \[(u\times v)\cmp (p\pmap q) = (u\cmp p)\pmap (v\cmp q), \qquad f\pmap g = (f\times g)\cmp\Delta\]
  dove \(\Delta=\id_X\pmap \id_X\) è la diagonale \(x\mapsto \pair xx\) (e quindi la seconda equazione è un caso particolare della prima).
@@ -175,7 +174,12 @@ Siamo pronti per enunciare la proprietà universale del prodotto (di due oggetti
    \arrow["{u\times v}"', from=2-1, to=2-2]
   \end{tikzcd}\]
  sono commutativi. Del resto è facile dimostrare identità analoghe (i diagrammi appena disegnati hanno senso in ogni categoria dove i prodotti esistano!) usando la proprietà universale: la composizione \((u\times v)\cmp (p\pmap q)\) soddisfa la proprietà universale di \((u\cmp p)\pmap (v\cmp q)\) perché
- \Todo{}
+ \begin{align*}
+		\underline{\pi_1\cmp (u\times v)}\cmp (p\pmap q) &= u\cmp \underline{\pi_1 \cmp (p\pmap q)} \\
+		&= u\cmp p;\\
+		\underline{\pi_2\cmp (u\times v)}\cmp (p\pmap q) &=v\cmp \underline{\pi_2 \cmp (p\pmap q)} \\ 
+		&=v\cmp q,
+	\end{align*}
  come si può osservare seguendo le frecce nel diagramma
  % https://q.uiver.app/#q=WzAsNyxbMiwxLCJCXFx0aW1lcyBDIl0sWzMsMSwiWFxcdGltZXMgWSJdLFswLDMsIkIiXSxbNCwzLCJYIl0sWzIsMiwiQyJdLFszLDIsIlkiXSxbMSwwLCJBIl0sWzAsMiwiXFxwaV8xIl0sWzAsNCwiXFxwaV8yIiwyXSxbMSwzLCJcXHBpXzEiLDAseyJjdXJ2ZSI6LTF9XSxbMSw1LCJcXHBpXzIiXSxbMCwxLCJ1XFx0aW1lcyB2Il0sWzIsMywidSJdLFs0LDUsInYiLDJdLFs2LDAsInBcXHBtYXAgcSIsMSx7InNob3J0ZW4iOnsidGFyZ2V0IjoyMH19XSxbNiwyLCJwIiwyLHsiY3VydmUiOjJ9XSxbNiw0LCJxIiwyLHsiY3VydmUiOjJ9XV0=
  \[\begin{tikzcd}[cramped]
@@ -183,7 +187,7 @@ Siamo pronti per enunciare la proprietà universale del prodotto (di due oggetti
    && {B\times C} & {X\times Y} \\
    && C & Y \\
    B &&&& X
-   \arrow["{p\pmap q}"{description}, between={0}{0.8}, from=1-2, to=2-3]
+   \arrow["{p\pmap q}", from=1-2, to=2-3]
    \arrow["q"', curve={height=12pt}, from=1-2, to=3-3]
    \arrow["p"', curve={height=12pt}, from=1-2, to=4-1]
    \arrow["{u\times v}", from=2-3, to=2-4]
