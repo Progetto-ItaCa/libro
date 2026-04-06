@@ -5,6 +5,8 @@
 Classicamente, l'oggetto di studio dell'algebra sono le strutture algebriche. Una struttura algebrica è un insieme munito di operazioni,
 ognuna delle quali dipende da un numero finito di variabili, che soddisfano certe equazioni.
 
+Grazie Fosco è tardi devo andare a casa
+
 \begin{examples}\label{esempi_strutture_alg}
 	\hfill
 	\begin{enumerate}
@@ -391,7 +393,7 @@ lemmi di carattere generale sulle categorie regolari. Per esprimerli, abbiamo bi
 	\(f\) è il coequalizzatore in \(\ctB\) della sua coppia nucleo, che però è anche la sua coppia nucleo in \(\ctA\) (di nuovo per
 	la proprietà \ref{prop_(co)lim_sottocat_rifl}). Se ne deduce subito che \(f\) è il coequializzatore della sua coppia nucleo in \(\ctA\)
 	e quindi è un epi regolare già in \(\ctA\). \\
-	3. Segue subito dal punto 2, infatti \(\ctA\) ha i limiti finiti perché \(\ctB\) li ha (proprietà \ref{prop_(co)lim_sottocat_rifl})) e il funtore \(i\)
+	3. Segue subito dal punto 2, infatti \(\ctA\) ha i limiti finiti perché \(\ctB\) li ha (proprietà \ref{prop_(co)lim_sottocat_rifl}) e il funtore \(i\)
 	preserva e riflette tutti gli ingredienti della definizione di categoria regolare. \\
 	4. Segue di nuovo immediatamente dal punto 2.
 \end{proof}
@@ -692,13 +694,13 @@ Grazie all'esempio \ref{esempio_teoria_sigma}, possiamo stabilire un primo legam
 	\end{enumerate}
 	Questo conclude la costruzione di \(E \colon \ctSAlg \fun \ctAlgT_{\Sigma}\) sugli oggetti e sulle frecce. Essendo ovvio che \(E\) è un
 	funtore fedele, verifichiamo che è anche pieno. Sia \(\alpha \colon \widehat{A} \Rightarrow \widehat{B}\) una trasformazione naturale.
-	La naturalità di \(\alpha\) implica, in particolare, che
+	La naturalità di \(\alpha\) implica, in particolare, che il seguente diagramma commuta per ogni \(i = 1,\ldots,n\)
 	\[\xymatrix{\widehat{A}(n) = A^n \ar[r]^-{\alpha_n} \ar[d]_{\widehat{A}(x_i) = \pi_i} & B^n = \widehat{B}(n) \ar[d]^{\pi_i = \widehat{B}(x_i)} \\
 		\widehat{A}(1) = A \ar[r]_-{\alpha_1} & B = \widehat{B}(1) }\]
-	commuta per ogni \(i = 1,\ldots,n\), ovvero che \(\alpha_n = \alpha_1^n\). Resta quindi da mostrare che
+	ovvero che \(\alpha_n = \alpha_1^n\). Resta quindi da mostrare che
 	\(\alpha_1 \colon (A,\sigma^A) \to (B,\sigma^B)\) è un morfismo di \(\Sigma\)-algebre, ovvero la commutatività di
 	\[\xymatrix{A^n \ar[r]^-{\alpha_1^n} \ar[d]_{\sigma^A} & B^n \ar[d]^{\sigma^B} \\ A \ar[r]_-{\alpha_1} & B}\]
-	Per questo basta osservare che la freccia identità \(\id \colon A^n \to A^n\) si può scrivere come
+	Per questo, cominciamo con l'osservare che la freccia identità \(\id \colon A^n \to A^n\) si può scrivere come
 	\(\id = \langle \pi_1,\ldots,\pi_n\rangle = \langle \widehat{A}(x_1), \ldots,\widehat{A}(x_n)\rangle\) e quindi
 	\(\sigma^A = \sigma^A \cdot \id = \sigma^A \cdot \langle \widehat{A}(x_1), \ldots,\widehat{A}(x_n)\rangle = \widehat{A}(\sigma(x_1,\ldots,x_n))\).
 	Il diagramma precedente si può dunque riscrivere come
@@ -762,19 +764,20 @@ per ogni categoria piccola \(\ctC\), la categoria dei funtori \(\ctSet^{\ctC}\) 
 	fra la categoria dei funtori \(\ctT_{\ctC} \fun \ctB\) che preservano i prodotti finiti e la categoria dei funtori \(\ctC \fun \ctB\). Se si sceglie
 	\(\ctB = \ctSet\), si ottiene l'enunciato della proprietà \ref{prop_compl_finprod}. Per questo motivo, il funtore
 	\[E_{\mathrm{Th}} \colon \ctC \fun \ctT_{\ctC}\]
-	merita il nome di completamento per prodotti finiti. è anche chiaro come si deve adattare la costruzione per ottenere il completamento per
+	merita il nome di completamento per prodotti finiti. È anche chiaro come si deve adattare la costruzione per ottenere il completamento per
 	prodotti arbitrari (piccoli).
 \end{remark}
 
-\section{Limiti e colimiti nelle categorie algebriche}\label{sec_limcolim_AlgT}
+\section{Limiti e colimiti setacciati nelle categorie algebriche}\label{sec_limcolim_AlgT}
 
 Cominciamo con lo studiare i limiti nelle categorie algebriche, il che risulta facile grazie ai risultati generali stabiliti precedentemente a
 proposito dei limiti nelle categorie di funtori (proposizione \ref{prop_lim_puntuali} e corollario \ref{cor_lim_cat_pref}) e ai limiti di funtori in
 due variabili (proposizione \ref{prop_fubini} e osservazione \ref{rem_fubini})
 
 \begin{proposition}\label{prop_lim_alg}
-	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è completa e il funtore d'inclusione
-	\(\ctAlgT \fun \ctSet^{\ctT}\) preserva e riflette i limiti. In altre parole, i limiti in \(\ctAlgT\) si calcolano punto a punto in \(\ctSet\).
+	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è chiusa in \(\ctSet^{\ctT}\) rispetto ai limiti. Ne segue che
+	\(\ctAlgT\) è completa, che il funtore d'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) preserva e riflette i limiti e che
+	i limiti in \(\ctAlgT\) si calcolano punto a punto in \(\ctSet\).
 \end{proposition}
 
 \begin{proof}
@@ -796,12 +799,13 @@ due variabili (proposizione \ref{prop_fubini} e osservazione \ref{rem_fubini})
 \end{proof}
 
 \begin{corollary}\label{cor_mono_AlgT}
-	Sia \(\ctT\) una teoria algebrica. L'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) preserva e riflette i mono. In altre parole, i mono in
-	\(\ctAlgT\) sono le trasformazioni naturali le cui componenti sono funzioni iniettive. Ne segue che \(\ctAlgT\) è well-powered.
+	Sia \(\ctT\) una teoria algebrica. Il funtore d'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) preserva e riflette i mono. Ne segue che
+	i mono in \(\ctAlgT\) sono le trasformazioni naturali le cui componenti sono funzioni iniettive e che \(\ctAlgT\) è well-powered.
 \end{corollary}
 
-Dimostrare che la categoria \(\ctAlgT\) è cocompleta richiede più lavoro che l'analogo risultato per i limiti. Cominciamo con un caso
-molto particolare.
+Dimostrare che la categoria \(\ctAlgT\) è cocompleta richiede più lavoro che l'analogo risultato per i limiti. In questa sezione ci
+accontentiamo di mostrare l'esistenza dei colimiti setacciati. Cominciamo però con un caso molto particolare: i coprodotti finiti
+delle \(\ctT\)-algebre rappresentabili.
 
 \begin{proposition}\label{prop_Yoneda_alg}
 	Sia \(\ctT\) una teoria algebrica.
@@ -825,16 +829,15 @@ molto particolare.
 	\[\begin{array}{rcl}
 			\Nat(\ctT(X \times Y,-),A) & \simeq & A(X \times Y)                              \\
 			                           & =      & A(X) \times A(Y)                           \\
-			                           & \simeq & \Nat(\ctT(X,-),A) \times \Nat(\ctT(Y,-),A) \\
-			                           & \simeq & \Nat(\ctT(X,-) + \ctT(Y,-),A)
+			                           & \simeq & \Nat(\ctT(X,-),A) \times \Nat(\ctT(Y,-),A)
 		\end{array}\]
-	da cui, ancora per il lemma di Yoneda, si ottiene \(\ctT(X \times Y,-) \simeq \ctT(X,-) + \ctT(Y,-)\).
+	da cui si ottiene \(\ctT(X \times Y,-) \simeq \ctT(X,-) + \ctT(Y,-)\).
 \end{proof}
 
 \begin{proposition}\label{prop_colim_sift_AlgT}
-	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) ha i colimiti setaccianti e il funtore ,d'inclusione
-	\(\ctAlgT \fun \ctSet^{\ctT}\) preserva e riflette tali colimiti. In altre parole, i colimiti setaccianti in \(\ctAlgT\) si
-	calcolano punto a punto in \(\ctSet\).
+	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è chiusa in \(\ctSet^{\ctT}\) rispetto ai colimiti setaccianti.
+	Ne segue che \(\ctAlgT\) ha i colimiti setacciati, che il funtore d'inclusione	\(\ctAlgT \fun \ctSet^{\ctT}\) li preserva e
+	riflette e che tali colimiti in \(\ctAlgT\) si calcolano punto a punto in \(\ctSet\).
 \end{proposition}
 
 \begin{proof} La dimostrazione è analoga a quella della proposizione \ref{prop_lim_alg}.
@@ -854,9 +857,9 @@ molto particolare.
 \end{proof}
 
 \begin{corollary}\label{cor_epireg_AlgT}
-	Sia \(\ctT\) una teoria algebrica. L'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) preserva e riflette gli epi regolari. In altre parole, gli
-	epi regolari in \(\ctAlgT\) sono le trasformazioni naturali le cui componenti sono funzioni suriettive. Ne segue che \(\ctAlgT\)
-	è esatta e co-well-powered. Inoltre, l'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) riflette anche gli oggetti proiettivi regolari.
+	Sia \(\ctT\) una teoria algebrica. L'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) preserva e riflette gli epi regolari. Ne segue che gli
+	epi regolari in \(\ctAlgT\) sono le trasformazioni naturali le cui componenti sono funzioni suriettive e che \(\ctAlgT\)
+	è esatta e co-well-powered. Inoltre, l'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) riflette gli oggetti proiettivi regolari.
 \end{corollary}
 
 \begin{proof} Basta osservare che gli epi regolari sono coequalizzatori della propria coppia nucleo, che è un grafo riflessivo.
@@ -866,13 +869,406 @@ molto particolare.
 	il che permette di concludere la prova.
 \end{proof}
 
-Per mostrare che \(\ctAlgT\) è cocompleta ci occorrono ancora alcuni risultati preliminari che raccogliamo nel prossimo lemma.
+\section{Una caratterizzazione delle categorie algebriche}\label{sec_caract_AlgT_sift}
+
+Lo scopo di questa sezione è di adattare alle categorie algebriche la proprietà universale dell'immersione di Yoneda
+\ref{prop_univ_yon}. Questo ci permetterà di caratterizzare le categorie algebriche in modo simile a quanto fatto per le
+categorie di prefasci covarianti (proposizione \ref{prop_caratt_pref}) ma usando sistematicamente i colimiti setacciati.
+La strategia che seguiremo è di sfruttare i risultati già stabiliti per le categorie del tipo \(\ctSet^{\ctD}\) via l'inclusione
+di \(\ctAlgT\) in \(\ctSet^{\ctT}\). Occorre in primo luogo distinguere le \(\ctT\)-algebre fra i funtori \(\ctT \fun \ctSet\) in base
+alla categoria degli elementi introdotta nell'osservazione \ref{oss_categ_elem}.
+
+\begin{proposition}\label{prop_alg_elsift}
+	Sia \(\ctT\) una teoria algebrica e sia \(A \in \ctSet^{\ctT}\). Le condition seguenti sono equivalenti:
+	\begin{enumerate}
+		\item \(A\) è una \(\ctT\)-algebra,
+		\item la categoria degli elementi \(\mathrm{El}(A)\) è setacciata,
+		\item \(A\) è un colimite setacciato di funtori rappresentabili \( \ctT \fun \ctSet\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\(1 \Rightarrow 2 \colon\) Mostriamo che , se \(A\) è una \(T\)-algebra, allora la categoria \(\mathrm{El}(A)\) ha i coprodotti finiti e
+	quindi è setacciata (vedi esempio \ref{ex_set_nonfiltr}). Vediamo i coprodotti binari: dati due oggetti \((X,x),(Y,y) \in \mathrm{El}(A)\),
+	il loro coprodotto è
+	\[\xymatrix{(X,x) \ar[r]^-{\pi_X} & (X \times Y, (x,y)) & (Y,y) \ar[l]_-{\pi_Y} }\]
+	dove \((x,y) \in A(X) \times A(Y) = A(X \times Y)\). \\
+	\(2 \Rightarrow 3 \colon\) Segue subito dalla proposizione \ref{prop_colim_rappr}. \\
+	\(3 \Rightarrow 4 \colon\) Segue dal fatto che i funtori rappresentabili sono \(\ctT\)-algebre (proposizione \ref{prop_Yoneda_alg})
+	e che \(\ctAlgT\) è chiusa in \(\ctSet^{\ctT}\) per colimiti setacciati (proposizione \ref{prop_colim_sift_AlgT}).
+\end{proof}
+
+Ora possiamo adattare la proprietà universale delle categorie di prefasci covarianti (proposizione \ref{prop_univ_yon})
+alle categorie algebriche. Otteniamo così che la categoria \(\ctAlgT\) è il completamento di \(\ctT\) per
+colimiti setacciati.
+
+\begin{proposition}\label{prop_univ_yon_alg}
+	Siano \(\ctT\) una teoria algebrica e \(\ctB\) una categoria con i colimiti setacciati. Per ogni funtore \(F \colon \ctT^{\op} \fun \ctB\)
+	esiste un funtore \(F^* \colon \ctAlgT \fun \ctB\) che preserva i colimiti setacciati e tale che il diagramma
+	\[\xymatrix{\ctT^{\op} \ar[r]^-{\ctY_{\ctT}} \ar[d]_{F} & \ctAlgT \ar[ld]^{F^*} \\
+		\ctB}\]
+	commuta a meno di un isomorfismo naturale. Inoltre un tale funtore \(F^*\) è essenzialmente unico.
+\end{proposition}
+
+\begin{proof}
+	La definizione del funtore \(F^*\) e la sua essenziale unicità non cambiano rispetto al caso dei prefasci: poiché per ogni \(A \in \ctAlgT\)
+	si ha \(A = \colim_{\mathrm{El}(A)}(\ctY_{\ctT} \cmp \Phi_A)\), si deve porre \(F^*A = \colim_{\mathrm{El}(A)}(F \cmp \Phi_A)\)
+	e analogamente sulle frecce. Osserviamo solo che tale definizione è ben data perché \(\mathrm{El}(A)\) è setacciata
+	(proposizione \ref{prop_alg_elsift}). La verifica dell'iisomorfismo \(F^* \cmp \ctY_{\ctD} \simeq F\) è identica al caso dei prefasci.
+	Invece, la verifica che \(F^*\) preserva i colimiti setacciata richiede un po' più di attenzione. Consideriamo il diagramma
+	\[\xymatrix{\ctT^{\op} \ar[rd]_{F} \ar[r]^-{\ctY_{\ctT}} & \ctAlgT \ar[r]^-{i} \ar[d]^{F^*} & \ctSet^{\ctT} \\
+		& \ctB \ar[ru]_{R_F} }\]
+	dove \(R_F\) è definito da \(R_F(B) = \ctB(F-,B) \colon \ctT \fun \ctSet\). Verifichiamo che i tre funtori \(i, F^*\) e \(R_F\)
+	formano un'aggiunzione relativa (definizione \ref{def_agg_rel}). La costruzione, per \(A \in \ctAlgT\) e per \(B \in \ctB\), della
+	biiezione naturale che attesta l'aggiunzione relativa è analoga a quella fatta nel caso dei prefasci:
+	\[ \ctB(F^*A,B) = \ctB(\colim_{\mathrm{El}(A)}(F \cmp \Phi_A),B) \simeq \lim_{\mathrm{El}(A)}\ctB(FX,B)
+		\simeq \lim_{\mathrm{El}(A)} \Nat(\ctT(X,-), \ctB(F-,B)) \simeq \]
+	\[ \Nat(\colim_{\mathrm{El}(A)}(i \cmp \ctY_{\ctT} \cmp \Phi_A), \ctB(F-,B)) \simeq
+		\Nat(i(\colim_{\mathrm{El}(A)}(\ctY_{\ctT} \cmp \Phi_A)), \ctB(F-,B))
+		= \Nat(iA,R_F(B)) \]
+	l'unica differenza è che nella penultima tappa abbiamo usato che l'inclusione \(i \colon \ctAlgT \fun \ctSet^{\ctT}\) preserva
+	i colimiti setacciati (proposizione \ref{prop_colim_sift_AlgT}). Possiamo ora applicare la proposizione \ref{prop_preserv_agg_rel}
+	e concludere che \(F^*\) preserva anch'esso i colimiti setacciati.
+\end{proof}
+
+\begin{remark}\label{oss_aggrel_alg}
+	Se il funtore \(F \colon \ctT^{\op} \fun \ctB\) della proposizione \ref{prop_univ_yon_alg} preserva i coprodotti finiti,
+	allora il funtore \(R_F \colon \ctB \fun \ctSet^{\ctT}\) introdotto nella dimostrazione della proposizione si fattorizza
+	attraverso l'inclusione \(i \colon \ctAlgT \fun \ctSet^{\ctT}\). Ne segue che, in questo caso, l'aggiunzione relativa
+	usata nella dimostrazione è in realtà un'aggiunzione
+	\[ \xymatrix{\ctB \ar@<-0.5ex>[r]_-{R_F} & \ctAlgT \ar@<-0.5ex>[l]_-{F^*} } \;\;\; F^* \dashv R_F \]
+	nel senso usuale. Questo ci sarà utile per studiare i funtori algebrici nella sezione \ref{sec_rappr_AlgT}.
+\end{remark}
+
+Per avanzare verso la caratterizzazione delle categorie algebriche, occorre identificare gli oggetti perfettamente
+presentabili della categoria \(\ctAlgT\).
+
+\begin{example}\label{ex_present_alg}
+	Se \(\ctT\) è una teoria algebrica, le \(\ctT\)-algebre rappresentabili sono degli oggetti perfettamente presentabili
+	in \(\ctAlgT\). In generale, se \(A \in \ctAlgT\) è perfettamente presentabile in \(\ctSet^{\ctT}\), allora lo è già
+	in \(\ctAlgT\): basta osservare che il seguente diagramma commuta
+	\[\xymatrix{\ctAlgT \ar[rr]^-{i} \ar[rd]_{\Nat(A,-)} & & \ctSet^{\ctT} \ar[ld]^{\Nat(iA,-)} \\
+		& \ctSet}\]
+	quindi \(\Nat(A,-)\) preserva i colimiti setacciati in quanto è il composto di due funtori che li preservano.
+	Per concludere, bisogna ricordarsi che \(\ctT(X,-)\) è assolutamente (e quindi perfettamente) presentabile in
+	\(\ctSet^{\ctT}\) (esempio \ref{ex_ass_present_pref}). Dalla proposizione \ref{prop_stab_present} segue ora che
+	i retratti di \(\ctT\)-algebre rappresentabili sono \(\ctT\)-algebre perfettamente presentabili. Non ce ne sono altre:
+	se \(A \in \ctAlgT\) è perfettamente presentabile, allora \(A\) è un retratto di una \(\ctT\)-algebra rappresentabile.
+	Per questo, osserviamo che
+	\[ \Nat(A,A) = \Nat(A, \colim_{\mathrm{El}(A)}(\ctY_{\ctC} \cmp \Phi_A)) \simeq \colim_{\mathrm{El}(A)} \Nat(A, \ctC(X,-)) \]
+	dove la preservazione del colimite è possibile grazie al fatto che \(\mathrm{El}(A)\) è setacciata (proposizione
+	\ref{prop_alg_elsift}). Poiché \(\id_A \in \Nat(A,A)\), lo stesso argomento ,usato nell'esempio \ref{ex_ass_present_pref}
+	permette di concludere che \(A\) è un retratto di una \(\ctT\)-algebra rappresentabile.
+\end{example}
+
+Ora possiamo arrivare in due tappe alla caratterizzazione delle categorie algebriche applicando la stessa strategia usata per le categorie
+di prefasci.
+
+\begin{lemma}\label{lemma_caratt_alg}
+	Nella situazione della proposizione \ref{prop_univ_yon_alg}
+	\[\xymatrix{\ctT^{\op} \ar[r]^-{\ctY_{\ctT}} \ar[d]_{F} & \ctAlgT \ar[ld]^{F^*} \\
+		\ctB}\]
+	se \(F\) è pieno e fedele e se, per ogni \(Z \in \ctT\), l'oggetto \(FZ\) è perfettamente presentabile, allora \(F^*\) è pieno e fedele.
+\end{lemma}
+
+\begin{proof}
+	Come nel caso dei prefasci, ci si riconduce alle frecce di \(\ctAlgT\) il cui dominio è una \(\ctT\)-algebra rappresentabile
+	e si esprime l'azione di \(F^*\) sulle frecce mediante il seguente diagramma, dove \(A \in \ctAlgT\) e \(Z \in \ctT\),
+	\[\xymatrix{ \Nat(\ctT(Z,-), A) \ar[rr]^-{F^*} \ar@{=}[d] & & \ctB(FZ, F^*A) \ar@{=}[d] \\
+		\Nat(\ctT(Z,-), \colim_{\mathrm{El}(A)}(\ctY_{\ctT} \cmp \Phi_A)) & & \ctB(FZ, \colim_{\mathrm{El}(A)}(F \cmp \Phi_A)) \\
+		\colim_{\mathrm{El}(A)}\Nat(\ctT(Z,-),\ctT(X,-)) \ar[u]^{\mathrm{can}} & & \colim_{\mathrm{El}(A)}\ctB(FZ,FX) \ar[u]_{\mathrm{can}} \\
+		\Nat(\ctT(Z,-)\ctT(X,-)) \simeq \ctT(Z,X) \ar[rr]_-{F} \ar[u]^{\sigma_{(X,x)}} & & \ctB(FZ,FX) \ar[u]_{\sigma_{(X,x)}} }\]
+	Le due frecce canoniche sono degli isomorfismi perché \(\ctT(Z,-)\) e \(FZ\) sono oggetti perfettamente presentabili e i colimiti che
+	intervengono sono setacciati. Ne segue che, se per ogni \((X,x) \in \mathrm{El}(A)\) la funzione \(F \colon \ctT(Z,X) \to \ctB(FZ,FX)\)
+	è un isomorfismo, anche la funzione \(F^* \colon \Nat(\ctT(Z,-),A) \to \ctB(FZ,F^*A)\) lo è.
+\end{proof}
+
+\begin{proposition}\label{prop_caratt_alg}
+	Una categoria \(\ctB\) è equivalente a una categoria del tipo \(\ctAlgT\) per \(\ctT\) una teoria algebrica se e solo se
+	\(\ctB\) ammette i colimiti setacciati e contiene un insieme \(\ctG\) di oggetti perfettamente presentabili tale che ogni oggetto di
+	\(\ctB\) è colimite setacciato di oggetti di \(\ctG\) e tale che i coprodotti finiti di oggetti di \(\ctG\) esistono in \(\ctB\).
+\end{proposition}
+
+\begin{proof}
+	Sappiamo che \(\ctAlgT\) ammette i colimiti setacciati e possiamo prendere come \(\ctG\) l'insieme delle \(\ctT\)-algebre
+	rappresentabili. \\
+	Viceversa, possiamo assumere che \(\ctG\) sia chiuso in \(\ctB\) per coprodotti finiti (se non è il caso, possiamo aggiungere
+	in \(\ctG\) tutti i coprodotti finiti di oggetti di \(\ctG\) senza perdere né che \(\ctG\) sia un insieme né che gli oggetti di \(\ctG\)
+	siano perfettamente presentabili). Ora, se consideriamo \(\ctG\) come una sottocategoria piena di \(\ctB\), la sua duale
+	è una teoria algebrica che chiamiamo \(\ctT\). Se prendiamo come funtore \(F \colon \ctT^{\op} = \ctG \fun \ctB\)
+	l'inclusione piena, il lemma \ref{lemma_caratt_alg} garantisce che il funtore indotto \(F^* \colon \ctAlgT \fun \ctB\) è pieno e
+	fedele. Per mostrare che \(F^*\) è anche essenzialemente suriettivo basta porre (come nel caso dei prefasci)
+	\(A = \colim_{\ctD_B}(\ctY_{\ctT} \cmp \Psi_B)\), dove \(B\) è un oggetto di \(\ctB\) e \(\Psi_B \colon \ctD_B \fun \ctG\)
+	è un funtore tale che \(\colim_{\ctD_B}(F \cmp \Psi_B) = B\) con \(\ctD_B\) setacciata. Poiché \(F^* \cmp \ctY_{\ctT} \simeq F\)
+	e poiché \(F^*\) preserva i colimiti setacciati, si ha che \(F^*A \simeq B\). Abbiamo cos\'i ottenuto un'equivalenza \(\ctAlgT \simeq \ctB\).
+\end{proof}
+
+\section{Un teorema di rappresentazione per le categorie algebriche}\label{sec_rappr_AlgT}
+
+Nel caso delle categorie algebriche, la proprietà di stabilità delle categorie di prefasci (corollario \ref{cor_stab_pref})
+assume la forma di un teorema di rappresentazione. Mostreremo infatti che le categorie algebriche sono tutte e
+sole le sottocategorie riflessive e chiuse per colimiti setacciati delle categorie del tipo \(\ctSet^{\ctD}\) con \(\ctD\) piccola.
+Ne seguirà come corollario immediato che le categorie algebriche sono cocomplete, il che termina lo studio dei colimiti
+nelle categorie algebriche iniziato nella sezione \ref{sec_limcolim_AlgT}.
+Cominciamo con l'introdurre le nozioni di morfismo di teorie algebriche e di funtore algebrico fra categorie algebriche.
+
+\begin{definition}\label{def_morf_funt_alg}
+	\hfill
+	\begin{enumerate}
+		\item Siano \(\ctT_1\) e \(\ctT_2\) due teorie algebriche. Un funtore \(M \colon \ctT_1 \fun \ctT_2\)
+		      è un morfismo di teorie se preserva i prodotti finiti.
+		\item Siano \(\ctA_1\) e \(\ctA_2\) due categorie algebriche. Un funtore \(F \colon \ctA_1 \fun \ctA_2\)
+		      è un funtore algebrico se preserva i colimiti setacciati e se ha un aggiunto sinistro.
+	\end{enumerate}
+\end{definition}
+
+Il primo risultato sui funtori algebrici è l'analogo della proposizione \ref{prop_funt_indotto_pref} valida per i
+funtori indotti fra categorie di prefasci. Diamo solo gli elementi essenziali della prova che la lettrice interessata
+potrà facilmente completare confrontando con il caso dei prefasci.
+
+\begin{proposition}\label{prop_funt_alg_indotto}
+	Ogni morfismo di teorie algebriche \(M \colon \ctT_1 \fun \ctT_2\) induce un funtore algebrico
+	\[ \ctAlg M \colon \ctAlgT_2 \fun \ctAlgT_1, \;\; \ctAlg M(A) = A \cmp M \colon \ctT_1 \fun \ctT_2 \fun \ctSet \]
+\end{proposition}
+
+\begin{proof}
+	Il funtore \(\ctAlg M\) è ben definitio perché \(A \cmp M\) preserva i prodotti finiti in quanto \(A\) e \(M\) li preservano.
+	Mostriamo ora che \(\ctAlg M\) preserva i colimiti setacciati. Sia \(H \colon \ctD \fun \ctAlgT_2\) un funtore con \(\ctD\)
+	setacciata e sia \(X \in \ctT_1\); usando due volte che i colimiti setacciati si calcolano punto a punto in \(\ctSet\)
+	(proposizione \ref{prop_colim_sift_AlgT}) e due volte la definizione di \(\ctAlg M\), otteniamo
+	\((\ctAlg M(\colim_{\ctD}H))(X) = (\colim_{\ctD}(\ctAlg M(HD)))(X)\) per ogni \(X \in \ctT_1\).
+	Dobbiamo ancora mostrare che \(\ctAlg M\) ha un aggiunto sinistro. Per questo, applicando al funtore
+	\[ F = \ctY_{\ctT_2} \cmp M^{\op} \colon \ctT_1^{\op} \fun \ctT_2^{\op} \fun \ctAlgT_2 \]
+	l'osservazione \ref{oss_aggrel_alg}, otteniamo un'aggiunzione
+	\[ \xymatrix{\ctAlgT_2 \ar@<-0.5ex>[r]_-{R_F} & \ctAlgT_1 \ar@<-0.5ex>[l]_-{F^*} } \;\;\; F^* \dashv R_F \]
+	Per concludere, si verifica che \(R_F \simeq \ctAlg M\) usando lla definizione \(R_F(B) = \Nat(F-,B)\) e il lemma di Yoneda.
+\end{proof}
+
+\begin{example}\label{ex_incl_ind}
+	Esaminiamo ora un esempio di morfismo di teorie algebriche che ci permetterà di dimostrare la prima parte del teorema
+	di rappresentazione delle categorie algebriche (e la loro cocompletezza).
+	Ricordiamo (proposizione \ref{prop_compl_finprod} e osservazione \ref{oss_compl_finprod})
+	che, data una categoria piccola \(\ctC\), si può costruire una teoria algebrica \(\ctT_{\ctC}\) e un  funtore
+	\(E_{\mathrm{Th}} \colon \ctC \fun \ctT_{\ctC}\) tale che, per ogni categoria \(\ctB\) con i prodotti finiti e per ogni funtore \(F \colon \ctC \fun \ctB\),
+	esiste un funtore essenzialmente unico \(\widehat{F} \colon \ctT_{\ctC} \fun \ctB\) che preserva i prodotti finiti e tale che
+	\(\widehat{F} \cmp E_{\mathrm{Th}} \simeq F\). Se si prende \(\ctB = \ctSet\), si ottiene l'equivalenza
+	\(- \cmp E_{\mathrm{Th}} \colon \ctAlgT_{\ctC} \fun \ctSet^{\ctC}\) della proposizione \ref{prop_compl_finprod}. Se ora assumiamo che la
+	categoria \(\ctC\) sia lei stessa una teora algebrica, possiamo scegliere \(\ctB = \ctC\) e, come funtore \(F\), possiamo prendere il funtore
+	identità \(\mathrm{Id} \colon \ctC \fun \ctC\). Si ottiene in questo modo un morfismo di teorie algebriche
+	\(\widehat{\mathrm{Id}} \colon \ctT_{\ctC} \fun \ctC\) tale che \(\widehat{\mathrm{Id}} \cmp E_{\mathrm{Th}} \simeq \mathrm{Id}\)
+	\[\xymatrix{\ctC \ar[rr]^-{E_{\mathrm{Th}}} \ar[rd]_{\mathrm{Id}} & & \ctT_{\ctC} \ar[ld]^{\widehat{\mathrm{Id}}} \\ & \ctC}\]
+\end{example}
+
+\begin{proposition}\label{prop_rappr_alg}
+	Sia \(\ctC\) una teoria algebrica e sia \(\widehat{\mathrm{Id}} \colon \ctT_{\ctC} \fun \ctC\) il morfismo di teorie algebriche dell'esempio
+	\ref{ex_incl_ind}.
+	\begin{enumerate}
+		\item Il funtore algebrico indotto \(\ctAlg \widehat{\mathrm{Id}} \colon \ctAlg{\bfC} \fun \ctAlgT_{\ctC}\) coincide, a meno dell'equivalenza
+		      \(\ctAlgT_{\ctC} \simeq \ctSet^{\ctC}\), con l'inclusione \(\ctAlg{\bfC} \fun \ctSet^{\ctC}\).
+		\item \(\ctAlg{\bfC} \fun \ctSet^{\ctC}\) è una sottocategoria riflessiva e quindi \(\ctAlg{\bfC}\) è cocompleta.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Per il punto 1, se applichiamo il funtore composto
+	\[ \xymatrix{\ctAlg{\bfC} \ar[rr]^{\ctAlg \widehat{\mathrm{Id}}} & & \ctAlgT_{\ctC} \ar[rr]^-{- \cmp E_{\mathrm{Th}}} & & \ctSet^{\ctC} }\]
+	a una \(\ctC\)-algebra \(A \colon \ctC \fun \ctSet\), otteniamo
+	\[ \xymatrix{\ctC \ar[r]^-{E_{\mathrm{Th}}} & \ctT_{\ctC} \ar[r]^-{\widehat{\mathrm{Id}}} & \ctC \ar[r]^-{A} & \ctSet }\]
+	che è naturalmente isomorfo ad \(A\) perché  \(\widehat{\mathrm{Id}} \cmp E_{\mathrm{Th}} \simeq \mathrm{Id}\). \\
+	Il punto 2 segue subito dal punto 1 e dal fatto che il funtore indotto da un morfismo di teorie algebriche è algebrico
+	(proposizione \ref{prop_funt_alg_indotto}) e quindi, in particolare, ha aggiunto sinistro. Per la cocompletezza, basta
+	ora applicare la proposizioni \ref{prop_(co)lim_sottocat_rifl}.
+\end{proof}
+
+Possiamo ora completare un punto lasciato in sospeso nella sezione \ref{sec_sigma-alg}.
+
+\begin{corollary}\label{cor__AlgT_SEAlg_cocompl}
+	Siano \(\Sigma\) una segnatura ed \(E\) un insieme di equazioni. La categoria \(\ctSEAlg\) è cocompleta.
+\end{corollary}
+
+\begin{proof}
+	La categoria \(\ctSAlg\) è cocompleta per la proposizione \ref{prop_rappr_alg} e perché \(\ctSAlg \simeq \ctAlgT_{\Sigma}\)
+	(proposizione \ref{prop_sigma_T_alg}). Se ne deduce che \(\ctSEAlg\) è cocompleta perché è riflessiva in \(\ctSAlg\)
+	(corollario \ref{cor_alg_reg}) e si può quindi applicare la proposizione \ref{prop_(co)lim_sottocat_rifl}.
+\end{proof}
+
+Con il prossimo risultato, completiamo il teorema di rappresentazione delle categorie algebriche.
+
+\begin{proposition}\label{prop_rappr_alg_vv}
+	Sia \(\ctB\) una categoria. Le seguenti condizioni sono equivalenti:
+	\begin{enumerate}
+		\item \(\ctB\) è algebrica.
+		\item \(\ctB\) è una sottocategoria riflessiva e chiusa per colimiti setacciati di una categoria del tipo
+		      \(\ctSet^{\ctC}\) per \(\ctC\) una categoria piccola.
+		\item \(\ctB\) è una sottocategoria riflessiva e chiusa per colimiti setacciati di una categoria del tipo
+		      \(\ctAlgT\) per \(\ctT\) una teoria algebrica.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\(1 \Rightarrow 2 \colon\) È la proposizione \ref{prop_rappr_alg}. \\
+	\(2 \Rightarrow 3 \colon\) Ovvio perché \(\ctSet^{\ctC} \simeq \ctAlgT_{\ctC}\), vedi proposizione \ref{prop_compl_finprod}. \\
+	\(3 \Rightarrow 1 \colon\) Consideriamo una sottocategoria riflessiva e chiusa per colimiti setacciati
+	\[ \xymatrix{\ctB \ar@<-0.5ex>[r]_-{i} & \ctAlgT \ar@<-0.5ex>[l]_-{R} } \;\;\; R \dashv i \]
+	e verifichiamo che \(\ctB\) soddisfa le condizioni della caratterizzazione \ref{prop_caratt_alg} prendendo come insieme di
+	oggetti l'insieme \(\ctG = \{R(\ctT(X,)) \mid X \in \ctT\}\). \\
+	\(\bullet\) \(\ctB\) è riflessiva in \(\ctAlgT\) e quindi ammette i colimiti e, in particolare, i colimiti setacciati e i coprodotti
+	finiti di oggetti di \(\ctG\). \\
+	\(\bullet\) Le \(\ctT\)-algebre rappresentabili sono perfettamente presentabili (esempio \ref{ex_present_alg}) e quindi,
+	per la proposizione \ref{prop_stab_perf_pres}, gli oggetti di \(\ctG\) sono perfettamente presentabili in \(\ctB\). \\
+	\(\bullet\) Sia \(B \in \ctB\). Per la proposizione \ref{prop_alg_elsift}, \(iB\) è un colimite setacciato di \(\ctT\)-algebre
+	rappresentabili. Poiché \(R\) preserva i colimiti, \(R(iB)\) è un colimite setacciato di oggetti di \(\ctG\). Ma \(R(iB) \simeq B\)
+	perché l'aggiunto destro \(i\) è pieno e fedele.
+\end{proof}
+
+\begin{exercise}\label{ex_AlgT_cocompl}
+	Abbiamo mostrato che \(\ctAlgT\) è cocompleta usando i funtori algebrici (proposizione \ref{prop_rappr_alg}).
+	In questo esercizio proponiamo un altro modo di dimostrare tale risultato usando l'esistenza dei colimiti setacciati e la
+	caratterizzazione delle \(\ctT\)-algebre in termini della categoria degli elementi (proposizione \ref{prop_alg_elsift}).
+	Se assumiamo l'esistenza dei colimiti setacciati, per avere la cocompletezza basta mostrare che \(\ctAlgT\) ammette
+	i coprodotti finiti. Date due \(\ctT\)-algebre \(A\) e \(B\), la lettrice può considerare il funtore
+	\[H \colon \mathrm{El}(A) \times \mathrm{El}(B) \fun \ctAlgT \;\;\;\;\;\; H((X,x),(Y,y)) = \ctT(X \times Y,-)\]
+	e dimostrare che il colimite di \(H\) esiste in \(\ctAlgT\) e fornisce il coprodotto in \(\ctAlgT\) di \(A\) e \(B\).
+\end{exercise}
+
+\begin{exercise}\label{ex_alg_exp}
+	Concludiamo questa sezione con un esercizio di carattere più generale del precedente ma che si conclude con
+	un'applicazione alle categorie algebriche. Consideriamo un funtore \(I \colon \ctA \fun \ctB\), una categoria piccola
+	\(\ctD\) e il funtore di composizione
+	\[ \widehat{I} \colon \ctA^{\ctD} \fun \ctB^{\ctD}, \;\;\;  F \colon \ctD \fun \ctA \;\mapsto\; I \cmp F \colon \ctD \fun \ctA \fun \ctB \]
+	Si possono mostrare i seguenti fatti:
+	\begin{enumerate}
+		\item Se \(I\) è fedele (rispettivamente, pieno e fedele), anche \(\widehat{I}\) lo è.
+		      %\item Se \(i\) è pieno e fedele, anche \(\widehat{i}\) lo è.
+		\item Se \(I\) preserva un certo tipo di (co)limiti, anche \(\widehat{I}\) preserva i (co)limiti di tale tipo.
+		\item Se \(I\) ha aggiunto sinistro, anche \(\widehat{I}\) lo ha.
+		\item Se \(\ctA\) è una categoria algebrica, allora anche \(\ctA^{\ctD}\) lo è.
+	\end{enumerate}
+	Come suggerimento per la lettrice, segnaliamo solo che l'ultimo punto segue dai punti precedenti e dalla proposizione
+	\ref{prop_rappr_alg_vv}.
+\end{exercise}
+
+\section{Teorie algebriche complete per idempotenti}
+
+Disponendo dei morfismi di teorie algebriche e dei funtori algebrici, possiamo ora identificare una classe particolare di
+teorie algebriche, le teorie algebriche complete per idempotenti, che permettono di dare una prima risposta al problema
+di Morita per le teorie algebriche: quando due teorie algebriche \(\ctT_1\) e \(\ctT_2\) sono tali che si abbia un'equivalenza
+\(\ctAlgT_1 \simeq \ctAlgT_2\)? A parte il lemma \ref{lemma_lim_idcompl}, che contiene dei risultati di carattere generale sul
+completamento per idempotenti, questa sezione è un esercizio in cui si adatta al caso algebrico quanto fatto per le categorie
+di prefasci nella sezione \ref{sec_compl_idemp}.
+
+\begin{lemma}\label{lemma_lim_idcompl}
+	Sia \(\mathrm{Ic}_{\ctC} \colon \ctC \fun \mathrm{Ic}(\ctC)\) il completamento per idempotenti di una categoria \(\ctC\).
+	\begin{enumerate}
+		\item Se \(\ctC\) ha i prodotti (finiti), allora anche \(\mathrm{Ic}(\ctC)\) li ha e \(\mathrm{Ic}_{\ctC}\) li conserva.
+		\item Se \(\ctC\) ha gli equalizzatori, allora anche \(\mathrm{Ic}(\ctC)\) li ha e \(\mathrm{Ic}_{\ctC}\) li conserva.
+		\item Se \(\ctC\) ha i limiti (finiti), allora anche \(\mathrm{Ic}(\ctC)\) li ha e \(\mathrm{Ic}_{\ctC}\) li conserva.
+	\end{enumerate}
+	Le stesse proprietà valgono se si rimpiazzano i limiti con i colimiti.
+\end{lemma}
+
+\begin{proof}
+	1. Se \(T\) è il terminale di \(\ctC\), allora \((\id \colon T \to T)\) è il terminale di \(\mathrm{Ic}(\ctC)\).
+	Siano ora \((f \colon X \to X)\) e \((g \colon Y \to Y)\) due oggetti di \(\mathrm{Ic}(\ctC)\). Il loro prodotto, con le corrispondenti
+	proiezioni, è
+	\[ \xymatrix{ (X \xto{f} X) & (X \times Y \xto{f \times g} X \times Y) \ar[l]_-{f \cmp \pi_X} \ar[r]^-{g \cmp \pi_Y} & (Y \xto{g} Y) } \]
+	2.Date due frecce parallele \(a,b \colon (f \colon X \to X) \rightrightarrows (g \colon Y \to Y)\) in \(\mathrm{Ic}(\ctC)\), consideriamo
+	l'equalizzatore in \(\ctC\)
+	\[ \xymatrix{ E \ar[d]_{e_{f,g}} \ar[r]^-{e} & X \ar@<0.5ex>[r]^-{a} \ar@<-0.5ex>[r]_-{b} \ar[d]_{f} & Y \ar[d]^{g} \\
+		E \ar[r]_-{e} & X \ar@<0.5ex>[r]^-{a} \ar@<-0.5ex>[r]_-{b} & Y } \]
+	L'equalizzatore di \(a\) e \(b\) in \(\mathrm{Ic}(\ctC)\) è
+	\[ \xymatrix{ (E \xto{e_{f,g}} E) \ar[r]^-{e \cmp e_{f,g}} & (X \xto{f} X) \ar@<0.5ex>[r]^-{a} \ar@<-0.5ex>[r]_-{b} & (Y \xto{g} Y) } \]
+	3. Segue subito dai due punti precedenti.
+\end{proof}
+
+\begin{corollary}\label{cor_idcompl_pp}
+	Sia \(\ctT\) una teoria algebrica.
+	\begin{enumerate}
+		\item Il completamento per idempotenti \(\mathrm{Ic}_{\ctT} \colon \ctT \fun \mathrm{Ic}(\ctT)\) è un morfismo di
+		      teorie algebriche.
+		\item Il completamento per idempotenti di \(\ctT^{\op}\) è equivalente alla corestrizione dell'immersione di Yoneda
+		      alla sottocategoria \(\ctAlg_{\mathrm{pp}}{\bfT}\) di \(\ctAlgT\) degli oggetti perfettamente presentabili.
+		\item Se \(\ctT\) è completa per idempotenti, la corestrizione
+		      \(\ctY_{\ctT} \colon \ctT^{\op} \fun \ctAlg_{\mathrm{pp}}{\bfT}\) è un'equivalenza.
+	\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+	1. È il caso dei prodotti finiti nel lemma \ref{lemma_lim_idcompl}. \\
+	2 et 3. Seguono subito dal corollario \ref{cor_idcompl_ap} e dagli esempi \ref{ex_ass_present_pref} e \ref{ex_present_alg}
+	per i quali si ha \(\ctSet^{\ctT}_{\mathrm{ap}} = \mbox{retratti dei rappresentabili } = \ctAlg_{\mathrm{pp}}{\bfT}\).
+\end{proof}
+
+\begin{remark}\label{oss_ap_pp}
+	Sappiamo che, se \(\ctT\) è una categoria piccola, i prefasci perfettamente presentabili sono i retratti dei coprodotti finiti dei
+	prefasci rappresentabili (vedi esercizio \ref{ex_perf_present_pref}). Il corollario \ref{cor_idcompl_pp} non deve far credere che,
+	nel caso \(\ctT\) sia una teoria algebrica, si abbia \(\ctSet^{\ctT}_{\mathrm{ap}} = \ctSet^{\ctT}_{\mathrm{pp}}\). Questo non capita
+	perché l'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) non preserva i coprodotti finiti (neanche quelli delle \(\ctT\)-algebre rappresentabili).
+\end{remark}
+
+È facile adattare il lemma \ref{lemma_Set^M_equiv} alle categorie algebriche.
+
+\begin{lemma}\label{lemma_AlgM_equiv}
+	Sia \(M \colon \ctT \fun \ctS\) un morfismo di teorie algebriche.
+	Se \(M\) è pieno e fedele e se ogni oggetto di \(\ctD\) è un retratto di un  oggetto del tipo \(MZ\) con \(Z \in \ctT\),
+	allora il funtore \(\ctAlg M \colon \ctAlg{\bfS} \fun \ctAlgT\) è un'equivalenza.
+\end{lemma}
+
+\begin{proof}
+	Consideriamo il diagramma
+	\[ \xymatrix{ \ctT^{\op} \ar[rr]^-{\ctY_{\ctT}} \ar[d]_{M^{\op}} & & \ctAlgT \ar@<-0.8ex>[d]_{F^*} \\
+		\ctS^{\op} \ar[rr]_-{\ctY_{\ctS}} & & \ctAlg{\bfS} \ar@<-0.5ex>[u]_{\ctAlg M} } \]
+	dove abbiamo posto \(F = \ctY_{\ctS} \cmp M^{\op}\), il funtore \(F^*\) è fornito dalla proprietà universale di \(\ctY_{\ctT}\)
+	(proposizione \ref{prop_univ_yon_alg}) ed è l'aggiunto sinistro di \(\ctAlg M\) (vedi prova della proposizione \ref{prop_funt_alg_indotto}).
+	Il lemma \ref{lemma_caratt_alg} garantisce che \(F^*\) è pieno e fedele e il lemma \ref{lemma_ind_iniziale} garantisce che è
+	essenzialmente suriettivo.
+\end{proof}
+
+Possiamo ora formulare una risposta semplice al problema di Morita per le teorie algebriche. La prova è come quella della
+proposizione \ref{prop_morita_prefasci}, usando il lemma \ref{lemma_AlgM_equiv} per il primo punto e il corollario
+\ref{cor_idcompl_pp} per il secondo punto.
+
+\begin{proposition}\label{prop_morita_alg}
+	Siano \(\ctT\) ed \(\ctS\) due teorie algebriche.
+	\begin{enumerate}
+		\item Il morfismo \(\mathrm{Ic}_{\ctT} \colon \ctT \fun \mathrm{Ic}(\ctT)\) induce un'equivalenza
+		      \(\ctAlg({\mathrm{Ic}_{\ctT}}) \colon \ctAlg{\mathrm{Ic}(\bfT)} \fun \ctAlgT\).
+		\item  \(\ctAlgT \simeq \ctAlg{\bfS}\) se e solo se \(\ctAlg_{\mathrm{pp}}{\bfT} \simeq \ctAlg_{\mathrm{pp}}{\bfS}\)
+		      se e solo se \(\mathrm{Ic}(\ctT) \simeq \mathrm{Ic}(\ctS)\) se e solo se \(\ctSet^{\ctT} \simeq \ctSet^{\ctS}\).
+	\end{enumerate}
+\end{proposition}
+
+La proprietà \ref{prop_morita_alg} fa parte di una dualità fra la 2-categoria delle teorie algebriche complete per
+idempotenti e dei morfismi di teorie algebriche e la 2-categoria delle categorie algebriche e dei funtori algebrici.
+Come nel caso delle categorie di prefasci, non entriamo nei dettagli di tale dualità e ci limitiamo a enunciarne il
+secondo ingrediente fondamentale. Omettiamo la prova che si sviluppa come quella della proposizione
+\ref{prop_dualita_cat_pref} usando il corollario \ref{cor_idcompl_pp}.
+
+\begin{proposition}\label{prop_dualita_alg}
+	Sia \(M \colon \ctT \fun \ctS\) un morfismo di teorie algebriche. Se \(\ctT\) e \(\ctS\) sono complete per idempotenti,
+	allora la costruzione
+	\[ M \colon \ctT \fun \ctS \; \mapsto \; \ctSet^M \colon \ctSet^{\ctD} \fun \ctSet^{\ctC} \]
+	della proposizione \ref{prop_funt_alg_indotto} realizza un'equivalenza fra la categoria dei morfismi di teorie algebriche
+	da \(\ctT\) a \(\ctS\) e la categoria dei funtori algebrici da \(\ctAlg{\bfS}\) a \(\ctAlgT\).
+\end{proposition}
+
+\section{Un'altra caratterizzazione delle categorie algebriche}\label{sec_caract_AlgT_exact}
+
+Sappiamo che le categorie algebriche sono esatte (corollario \ref{cor_epireg_AlgT}). Tale proprietà non è esclusiva delle
+categorie algebriche: per esempio, la categoria dei fasci su uno spazio topologico è esatta ma non è algebrica. Ciononostante
+l'esattezza è una delle caratteristiche fondamentali delle categorie algebriche nel senso che rientra in una lista di condizioni che
+permettono di caratterizzarle, come mostreremo nel corollario \ref{cor_caratt_AlgT} che conclude questa sezione.
+
+Come tappa di avvicinamento alla caratterizzazione delle categorie algebriche, costruiamo il completamento conservativo
+per coprodotti di una categoria con coprodotti finiti. Qui il termine conservativo indica che tale completamento preserva i
+coprodotti finiti che esistono già nella categoria di partenza. Tale carattere conservativo non è soddisfatto dal completamento
+costruito in \ref{prop_compl_finprod} e \ref{oss_compl_finprod}. Ci occorre un lemma preliminare che, in particolare, contiene
+la descrizione del completamento conservativo.
 
 \begin{lemma}\label{lemma_rappr_proj}
 	Sia \(\ctT\) una teoria algebrica.
 	\begin{enumerate}
 		\item Per ogni oggetto \(X \in \ctT\), la \(\ctT\)-algebra rappresentabile \(\ctT(X,-)\) è un oggetto proiettivo regolare.
-		\item Per ogni insieme \(\{X_i \}_{i \in I}\) di oggetti in \(\ctT\), il coprodotto \(\coprod_{i \in I}\ctT(X_i,-)\) esiste in \(\ctAlgT\).
 		\item La categoria \(\ctAlgT\) ha abbastanza oggetti proiettivi regolari: la sottocategoria piena \(\bfK(\ctT)\) di \(\ctAlgT\)
 		      formata da tutti i coprodotti delle \(\ctT\)-algebre rappresentabili è una copertura proiettiva regolare di \(\ctAlgT\)
 		      (definizione \ref{def_cop_proiettiva}).
@@ -882,17 +1278,12 @@ Per mostrare che \(\ctAlgT\) è cocompleta ci occorrono ancora alcuni risultati 
 \begin{proof}
 	1. Poiché l'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) preserva gli epi regolari, si può applicare lo stesso argomento che
 	nell'esempio \ref{exem_proreg}. \\
-	2. Denotiamo con \(\ctP_{\mathrm{f}}(I)\) l'insieme ordinato dei sottoinsiemi finiti di \(I\). Come già visto nella
-	proposizione \ref{prop_coprod_colimfiltr}, si ha
-	\[\coprod_{i \in I}\ctT(X_i,-) = \colim_{I' \in \ctP_{\mathrm{f}}(I)} \left(\coprod_{i \in I'}\ctT(X_i,-)\right)\]
-	Poichè la categoria \(\ctP_{\mathrm{f}}(I)\) è filtrata e quindi setacciata, si può concludere usando la proposizione
-	\ref{prop_colim_sift_AlgT} per il colimite e la proposizione \ref{prop_Yoneda_alg} per il coprodotto finito. \\
-	3. Sia \(F \in \ctAlgT\). Consideriamo la sua categoria degli elementi \(\mathrm{El}(F)\) e il diagramma seguente
+	2. Sia \(F \in \ctAlgT\). Consideriamo la sua categoria degli elementi \(\mathrm{El}(F)\) e il diagramma seguente
 	\[\xymatrix{ & & \coprod_{(A,a) \in \mathrm{El}(F)} \ctT(A,-) \ar@{-->}[d]_{c_F} \ar[rrd]^{p_F} \\
 		\ctT(A,-) \ar[rru]^{\sigma_{(A,a)}} \ar[rr]_-{s_{(A,a)}} & & \coprod_{(A,a) \in \mathrm{El}(F)} \ctT(A,-) \ar@{-->}[rr]_-{q_F} & & F}\]
 	dove il primo coprodotto, con iniezioni \(\sigma_{(A,a)}\), è nella categoria \(\ctSet^{\ctT}\), \(p_F\) è l'epi regolare
 	dell'osservazione \ref{oss_colim_rappr} e il secondo coprodotto, con iniezioni \(s_{(A,a)}\), è nella categoria \(\ctAlgT\).
-	Il secondo coprodotto esiste grazie al punto precedente, ed è un oggetto proiettivo regolare in \(\ctAlgT\) grazie al
+	Tale coprodotto è un oggetto proiettivo regolare in \(\ctAlgT\) grazie al
 	primo punto e alla proprietà \ref{prop_stab_proreg}. Per la proprietà universale del coprodotto in \(\ctSet^{\ctT}\),
 	esiste un'unica freccia \(c_F\) tale che \(c_F \cdot \sigma_{(A,a)} = s_{(A,a)}\) per ogni \((A,a) \in \mathrm{El}(F)\). Per la
 	proprietà universale del coprodotto in \(\ctAlgT\), esiste un'unica freccia \(q_F\) tale che
@@ -902,159 +1293,8 @@ Per mostrare che \(\ctAlgT\) è cocompleta ci occorrono ancora alcuni risultati 
 	\ref{prop_epi_reg_cat_reg}) e quindi in \(\ctAlgT\) (corollario \ref{cor_epireg_AlgT}).
 \end{proof}
 
-\begin{remark}\label{oss_cop_proj}
-	Al fine di rendere più facile da leggere la dimostrazione della prossima proposizione, useremo la notazione seguente.
-	Per una \(\ctT\)-algebra \(F\), notiamo
-	\[q_F \colon P_F \to F\]
-	l'epi regolare con dominio un oggetto proiettivo regolare (che è un coprodotto in \(\ctAlgT\) di \(\ctT\)-algebre rappresentabili)
-	e codominio \(F\) introdotto nella dimostrazione del lemma \ref{lemma_rappr_proj}. Se ne consideriamo la coppia nucleo
-	\(q_{F,1},q_{F,2} \colon R[q_F] \rightrightarrows P_F\) e iteriamo il procedimento, otteniamo il diagramma
-	\[\xymatrix{P_{R[q_F]} \ar[r]^-{q_{R[q_F]}} & R[q_F] \ar@<0.5ex>[r]^-{q_{F,1}} \ar@<-0.5ex>[r]_-{q_{F,2}} & P_F \ar[r]^-{q_F} & F}\]
-	ovvero (semplificando ulteriormente la notazione)
-	\[\xymatrix{P'_F = P_{R[q_F]} \ar@<0.5ex>[rrr]^-{f_1 = q_{F,1} \cdot q_{R[q_F]}} \ar@<-0.5ex>[rrr]_-{f_2 = q_{F,2} \cdot q_{R[q_F]}}
-		& & & P_F \ar[r]^-{q_F} & F}\]
-	Osserviamo che tale diagramma è un coequalizzatore, perché \(q_F\) è il coequalizzatore della sua coppia nucleo e \(q_{R[q_F]}\)
-	è un epi (regolare). Inoltre, si tratta del coequalizzatore di un grafo riflessivo. Infatti la coppia nucleo di \(q_F\) è una relazione
-	d'equivalenza interna e quindi, in particolare, è un grafo riflessivo; poiché \(P_F\) è proiettivo regolare e \(q_{R[q_F]}\) è un epi
-	regolare, si può prolungare la freccia che testimonia la riflessività da \(R[q_F]\) a \(P'_F\).
-\end{remark}
-
-\begin{proposition}\label{prop_AlgT_cocompl}
-	Sia \(\ctT\) una teoria algebrica. La categoria \(\ctAlgT\) è cocompleta.
-\end{proposition}
-
-\begin{proof}
-	Affinché una categoria sia cocompleta, occorre mostrare che ammette i colimiti setaccianti e i coprodotti finiti (teorema
-	\ref{th_colim_piccoli}). Poiché sappiamo già che \(\ctAlgT\) ammette i colimiti setaccianti (proposizione \ref{prop_colim_sift_AlgT})
-	e l'oggetto iniziale (proposizione \ref{prop_Yoneda_alg}), rimane da trattare il caso dei coprodotti binari. Per due \(\ctT\)-algebre
-	\(F\) e \(G\), consideriamo il seguente diagramma, dove impieghiamo la costruzione e la notazione introdotte nell'osservazione
-	\ref{oss_cop_proj}
-	\[\xymatrix{P'_F \ar@<0.5ex>[rr]^-{f_1} \ar@<-0.5ex>[rr]_-{f_2} \ar[d]_{s'_F} & & P_F \ar[rr]^-{q_F} \ar[d]^{s_F} & & F \ar[d]^{\sigma_F} \\
-		P'_F + P'_G \ar@<0.5ex>[rr]^-{f_1 + g_1} \ar@<-0.5ex>[rr]_-{f_2 + g_2} & & P_F + P_G \ar[rr]^-{q} & & Q \\
-		P'_G \ar@<0.5ex>[rr]^-{g_1} \ar@<-0.5ex>[rr]_-{g_2} \ar[u]^{s'_G} & & P_G \ar[rr]_-{q_G} \ar[u]_{s_G} & & G \ar[u]_{\sigma_G} }\]
-	Osserviamo che, poiché gli oggetti \(P_F, P'_F, P_G, P'_G\) sono tutti coprodotti di \(\ctT\)-algebre rappresentabili, i coprodotti
-	della prima e della seconda colonna esistono grazie al lemma \ref{lemma_rappr_proj}. Osserviamo anche che la coppia di frecce
-	\((f_1+g_1,f_2+g_2)\) è a sua volta un grafo riflessivo (si usino, componente per componente, le frecce che attestano la riflessività
-	di \((f_1,f_2)\) e di \((g_1,g_2)\)), cosicché il loro coequalizzatore \(q\) esiste nella categoria \(\ctAlgT\). Se ora \(\sigma_F\) e \(\sigma_G\)
-	sono le estensioni di \(s_F\) e \(s_G\) ai coequalizzatori, la commutazione dei colimiti (si tratta del caso duale di quello dell'esempio
-	\ref{ex_comm_lim}) permette di concludere che la terza colonna è il coprodotto di \(F\) e \(G\) in \(\ctAlgT\).
-\end{proof}
-
-Possiamo ora completare un punto lasciato in sospeso nella sezione \ref{sec_sigma-alg}.
-
-\begin{corollary}\label{cor_SEAlg_cocompl}
-	Sia \(\Sigma\) una segnatura e sia \(E\) un insieme di equazioni. La categoria \(\ctSEAlg\) è cocompleta.
-\end{corollary}
-
-\begin{proof}
-	La categoria \(\ctSAlg\) è cocompleta per la proposizione \ref{prop_AlgT_cocompl} e perché \(\ctSAlg \simeq \ctAlgT_{\Sigma}\)
-	(proposizione \ref{prop_sigma_T_alg}). Se ne deduce che \(\ctSEAlg\) è cocompleta perché è riflessiva in \(\ctSAlg\)
-	(corollario \ref{cor_alg_reg}) e si può quindi applicare la proposizione \ref{prop_(co)lim_sottocat_rifl}.
-\end{proof}
-
-\begin{exercise}\label{exer_alg_sift_rapp}
-	In questo esercizio proponiamo un modo diverso di mostrare che, se \(\ctT\) è un ateoria algebrica, allora la categoria \(\ctAlgT\)
-	ha i coprodotti finiti (e dunque, in virtù del teorema \ref{th_colim_piccoli} e della proposizione \ref{prop_colim_sift_AlgT}, è
-	cocompleta). Possiamo spezzare il lavoro da fare  in due parti.
-	\begin{enumerate}
-		\item Sia \(F \in \ctSet^{\ctT}\). Mostrare che le condizioni seguenti sono equivalenti:
-		      \begin{enumerate}
-			      \item \(F\) è una \(\ctT\)-algebra,
-			      \item la categoria degli elementi \(\mathrm{El}(F)\) è setacciata,
-			      \item \(F\) è un colimite setacciante di algebre rappresentabili.
-		      \end{enumerate}
-		\item Siano \(F,G \in \ctAlgT\). Consideriamo il funtore
-		      \[H \colon \mathrm{El}(F) \times \mathrm{El}(G) \fun \ctAlgT \;\;\;\;\;\; H((A,a),(B,b)) = \ctT(A \times B,-)\]
-		      Mostrare che il colimite di \(H\) esiste in \(\ctAlgT\) ed è il coprodotto in \(\ctAlgT\) di \(F\) e \(G\).
-	\end{enumerate}
-\end{exercise}
-
-%\begin{warning}\label{caveat_prop_univ_AlgT}
-%Un risultato che si potrebbe presentare sotto forma di esercizi è mostrare che il teorema (che dovrebbe trovarsi nei
-%capitoli precedenti) che dice che se \(\ctC\) è piccola allora
-%\[Y_{\ctC} \colon \ctC \fun \ctSet^{\ctC^{\mathrm{op}}}\]
-%è il completamento di \(\ctC\) rispetto ai colimiti, si adatta al caso delle teorie algebriche per ottenere che, se \(\ctT\)
-%è una teoria algebrica, allora
-%\[Y_{\ctT} \colon \ctT^{\mathrm{op}} \fun \ctAlgT\]
-%è il completamento di \(\ctT\) rispetto ai colimiti setaccianti. Per arrivarci occorre un lemma generale che si può 
-%ugualmente trattare come esercizio (in questo capitolo o altrove): i funtori rappresentabili
-%\[\ctB(-,B) \colon \ctB^{\mathrm{op}} \fun \ctSet\]
-%riflettono collettivamente i colimiti.
-%\end{warning} 
-
-\section{Una caratterizzazione delle categorie algebriche}\label{sec_caract_AlgT_exact}
-
-Sappiamo che le categorie algebriche sono esatte (corollario \ref{cor_epireg_AlgT}). Tale proprietà non è esclusiva delle
-categorie algebriche: per esempio, la categoria dei fasci su uno spazio topologico è esatta ma non è algebrica. Ciononostante
-l'esattezza è una delle caratteristiche fondamentali delle categorie algebriche nel senso che rientra in una lista di condizioni che
-permettono di caratterizzarle, come mostreremo nel corollario \ref{cor_caratt_AlgT} che conclude questa sezione.
-
-\begin{remark}\label{oss_pro_reg_preser} Nel corollario \ref{cor_caratt_AlgT} useremo la nozione di oggetto finitamente
-	presentabile. Per preparare tale nozione, osserviamo che la nozione di oggetto proiettivo regolare (definizione \ref{def_ogg_pro_reg})
-	può esprimersi in termini di preservazione di certi colimiti. Infatti, se una categoria \(\ctA\) ha le coppie nucleo,
-	allora un oggetto \(A \in \ctA\) è proiettivo regolare se e solo se il funtore rappresentabile \(\ctA(A,-) \colon \ctA \fun \ctSet\)
-	preserva i coequalizzatori delle coppie nucleo.
-\end{remark}
-
-\begin{definition}\label{def_finpres_perfpres}
-	Consideriamo una categoria \(\ctA\), un oggetto \(A \in \ctA\) e il funtore rappresentabile \(\ctA(A,-) \colon \ctA \fun \ctSet\).
-	L'oggetto \(A\) è
-	\begin{enumerate}
-		\item finitamente presentabile se il funtore \(\ctA(A,-)\) preserva i colimiti filtrati,
-		\item perfettamente presentabile se il funtore \(\ctA(A,-)\) preserva i colimiti setacciati,
-		\item assolutamente presentabile se il funtore \(\ctA(A,-)\) preserva i colimiti.
-	\end{enumerate}
-\end{definition}
-
-Ovviamente un oggetto assolutamente presentabile è perfettamente presentabile e un oggetto perfettamente presentabile
-è finitamente presentabile. Analogamente a quanto fatto per gli oggetti proiettivi regolari nella proposizione \ref{prop_stab_proreg},
-vediamo le proprietà di stabilità degli oggetti finitamente, perfettamente e assolutamente presentabili.
-
-\begin{proposition}\label{prop_stab_present}
-	Sia \(\ctA\) una categoria.
-	\begin{enumerate}
-		\item Se \(A \in \ctA\) è un oggetto finitamente presentabile e se \(R\) è un retratto di \(A\), allora anche \(R\) è finitamente
-		      presentabile. Lo stesso vale per gli oggetti perfettamente presentabili e per gli oggetti assolutamente presentabili.
-		\item Un colimite finito di oggetti finitamente presentabili è finitamente presentabile.
-		\item Un coprodotto finito di oggetti perfettamente presentabili è perfettamente presentabile.
-	\end{enumerate}
-\end{proposition}
-
-\begin{proof}
-	1. Se \(R\) è un retratto di \(A\), allora il funtore \(\ctA(R,-)\) è un retratto del funtore \(\ctA(A,-)\). La proposizione
-	\ref{prop_funt_retratto} permette di concludere. \\
-	2. Sia \(I \colon \ctI \fun \ctA\) un funtore definito su una categoria \(\ctI\) finita e sia \(L\) il colimite di \(I\). Supponiamo che,
-	per ogni \(i \in \ctI\), l'oggetto \(I(i)\) sia finitamente presentabile. Consideriamo anche un funtore \(F \colon \ctD \fun \ctA\),
-	dove \(\ctD\) è una categoria filtrata. Il fatto che \(L\) sia finitamente presentabile si mostra con la seguente catena di
-	isomorfismi naturali:
-	\[\begin{array}{rclcl}
-			\ctA(L,\colim_{\ctD}FD) & \simeq & \ctA(\colim_{\ctI}Ii,\colim_{\ctD}FD) &  & (\mbox{definizione di } L)                \\
-			                        & \simeq & \lim_{\ctI}\ctA(Ii,\colim_{\ctD}FD)   &  & (\mbox{osservazione \ref{oss_rappr_lim}}) \\
-			                        & \simeq & \lim_{\ctI}(\colim_{\ctD}\ctA(Ii,FD)) &  & (Ii \mbox{ è finitamente presentabile})   \\
-			                        & \simeq & \colim_{\ctD}(\lim_{\ctI}\ctA(Ii,FD)) &  & (\mbox{teorema \ref{th_caratt_filtr}})    \\
-			                        & \simeq & \colim_{\ctD}\ctA(\colim_{\ctI}Ii,FD) &  & (\mbox{osservazione \ref{oss_rappr_lim}}) \\
-			                        & \simeq & \colim_{\ctD}\ctA(L,FD)               &  & (\mbox{definizione di } L)
-		\end{array}\]
-	3. Simile alla prova del punto 3 prendendo come \(\ctI\) una categoria finita e discreta, come \(\ctD\) una categoria setacciata
-	e usando il teorema \ref{th_caratt_sifted}.
-\end{proof}
-
-\begin{example}\label{ex_present_alg}
-	\hfill
-	\begin{enumerate}
-		\item Se \(\ctC\) è una categoria piccola, i funtori rappresentabili sono degli oggetti assolutamente presentabili di
-		      \(\ctSet^{\ctC}\). Questo segue dal lemma di Yoneda e dal fatto che i colimiti in \(\ctSet^{\ctC}\) si calcolano punto a
-		      punto (proposizione \ref{prop_lim_puntuali}).
-		\item Se \(\ctT\) è una teoria algebrica, le \(\ctT\)-algebre rappresentabili sono degli oggetti perfettamente presentabili
-		      in \(\ctAlgT\). Questo segue dal punto precedente perchè \(\ctAlgT\) è chiusa in \(\ctSet^{\ctT}\) per colimiti setacciati
-		      (proposizione \ref{prop_colim_sift_AlgT}).
-	\end{enumerate}
-\end{example}
-
-Come tappa di avvicinamento alla caratterizzazione delle categorie algebriche, costruiamo il completamento conservativo
-per coprodotti di una categoria con coprodotti finiti. Qui il termine conservativo indica che tale completamento preserva i
-coprodotti finiti che esistono già nella catyegoria di partenza. Tale carattere conservativo non è soddisfatto dal completamento
-costruito in \ref{prop_compl_finprod} e \ref{oss_compl_finprod}.
+Ora possiamo enunciare e dimostrare la proprietà universale del completamento conservativo per coprodotti
+\({\bfK}(\ctT)\) di \(\ctT^{\op}\).
 
 \begin{proposition}\label{prop_compl_cons_copr}
 	Sia \(\ctT\) una teoria algebrica e sia \(\bfK(\ctT)\) la sottocategoria piena di \(\ctAlgT\) formata da tutti i coprodotti delle
@@ -1062,18 +1302,18 @@ costruito in \ref{prop_compl_finprod} e \ref{oss_compl_finprod}.
 	\begin{enumerate}
 		\item La categoria \(\bfK(\ctT)\) ha i coprodotti e l'immersione di Yoneda \(\ctY_{\ctT} \colon \ctT^{\op} \fun \bfK(\ctT)\) preserva
 		      i coprodotti finiti.
-		\item Se \(\ctB\) è una categoria con i coprodotti e se \(F \colon \ctT^{\op} \fun \ctB\) è un funtore che preserva i coprodotti
-		      finiti, allora esitste un funtore \(\widehat{F}\) essenzialmente unico che preserva i coprodotti e che fa commutare, a meno di
-		      isomorfismi naturali, il seguente diagramma
+		\item Se \(\ctB\) è una categoria con i coprodotti, per ogni funtore \(F \colon \ctT^{\op} \fun \ctB\) che preserva i coprodotti
+		      finiti, esitste un funtore \(\widehat{F}\) che preserva i coprodotti e tale che il diagramma
 		      \[\xymatrix{\ctT^{\op} \ar[rd]_{F} \ar[rr]^-{\ctY_{\ctT}} & & \bfK(\ctT) \ar[ld]^{\widehat{F}} \\ & \ctB }\]
-		\item Se inoltre \(FX\) è finitamente presentabile per ogni oggetto \(X \in \ctT\) e se \(F\) è pieno e fedele, allora anche
-		      \(\widehat{F}\) lo è pieno e fedele.
+		      commuta a meno di un iso naturale. Inoltre, tale funtore \(\widehat{F}\) è essenzialmente unico.
+		\item Inoltre, se \(F\) è pieno e fedele e se \(FX\) è finitamente presentabile per ogni oggetto \(X \in \ctT\), allora anche
+		      \(\widehat{F}\) è pieno e fedele.
 	\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-	Il punto 1 segue immediatamente dalla definizione di \(\bfK(\ctT)\) e dalla proposiozione \ref{prop_Yoneda_alg}. \\
-	Per quanto riguarda il punto 2, un oggetto di \(\bfK(\ctT)\) è del tipo \(\coprod_{i \in I}\ctT(X_i,-)\), dove \(I\) è un insieme
+	1. Segue subito dalla definizione di \(\bfK(\ctT)\) e dalla proposiozione \ref{prop_Yoneda_alg}. \\
+	2. Un oggetto di \(\bfK(\ctT)\) è del tipo \(\coprod_{i \in I}\ctT(X_i,-)\), dove \(I\) è un insieme
 	e \(X_i \in \ctT\) per ogni \(i \in I\). Viste le condizioni che \(\widehat{F}\) deve soddisfare, si deve definire
 	\[\widehat{F}(\coprod_{i \in I}\ctT(X_i,-)) = \coprod_{i \in I}F(X_i)\]
 	Per definire il funtore \(\widehat{F}\) sulle frecce, basta considerare le frecce del tipo
@@ -1087,16 +1327,17 @@ costruito in \ref{prop_compl_finprod} e \ref{oss_compl_finprod}.
 			                                                & \simeq & \colim_{A \in \ctP_f(I)} \ctT(\prod_{a \in A}X_a,X)
 		\end{array}\]
 	Ora possiamo definire l'azione di \(\widehat{F}\) sulle frecce usando la proprietà universale del colimite come mostrato
-	nel seguente diagramma, dove le \(\sigma_A\) sono le iniezioni nel colimite (per quella della colonna di destra si tenga
+	nel seguente diagramma, dove, l'isomorfismo nella colonna di sinistra viene dal fatto che \(\ctT(X,-)\) è finitamente presentabile
+	(esempio \ref{ex_present_alg}),  le \(\sigma_A\) sono le iniezioni nel colimite (per quella della colonna di destra si tenga
 	presente che \(F\) preserva i coprodotti finiti) e la freccia senza nome è quella canonica indotta dalla presentazione del
 	coprodotto come colimite filtrato (ancora la proposizione \ref{prop_coprod_colimfiltr})
 	\[\xymatrix{\ctAlgT(\ctT(X,-),\coprod_{i \in I}\ctT(X_i,-)) \ar[r]^-{\widehat{F}} & \ctB(FX,\coprod_{i \in I}FX_i) \\
 		\colim_{A \in \ctP_f(I)} \ctT(\prod_{a \in A}X_a,X) \ar[u]^{\simeq}
-		& \colim\ctB(FX,\coprod_{a \in A}FX_a) \ar[u] \\
+		& \colim_{A \in \ctP_f(I)} \ctB(FX,\coprod_{a \in A}FX_a) \ar[u] \\
 		\ctT(\prod_{a \in A}X_a,X) \ar[u]^{\sigma_A} \ar[r]_-{F} & \ctB(FX,F(\prod_{a \in A}X_a)) \ar[u]_{\sigma_A} }\]
 	Il resto della prova del punto 2 è più semplice ed è lasciato alla lettrice. \\
-	Se assumiamo che \(FX\) è finitamente presentabile, la freccia senza nome del diagramma precedente diventa un isomorfismo. A
-	questo punto è chiaro che se \(F\) è pieno e fedele, anche \(\widehat{F}\) lo è.
+	3. Se assumiamo che \(FX\) è finitamente presentabile, la freccia senza nome del diagramma precedente è
+	un isomorfismo. Ora è chiaro che se \(F\) è pieno e fedele, anche \(\widehat{F}\) lo è.
 \end{proof}
 
 Tutto è pronto per caratterizzare le categorie del tipo \(\bfK(\ctT)\) per \(\ctT\) una teoria algebrica. Si tratta di imporre condizioni
@@ -1136,55 +1377,48 @@ La caratterizzazione delle categorie algebriche segurà allora facilmente.
 	\ref{prop_cop_proiettiva} permettono di estendere l'equivalenza \(\ctB \simeq \bfK(\ctT)\) a un'equivalenza \(\ctA \simeq \ctAlgT\).
 \end{proof}
 
-
-\section{Un'altra caratterizzazione delle categorie algebriche}\label{sec_caract_AlgT_cocompl}
-
-\begin{warning}\label{caveat_sec_caract_AlgT}
-	Questa sezione è opzionale. Non sono sicuro che si debba includere perchè richiede parecchi prerequisiti di carattere
-	generale e il risultato centrale ha una dimostrazione assai elaborata. Bisognerà decidere insieme. Comunque lo scopo
-	sarebbe di dimostrare il seguente teorema di caratterizzazione.
-\end{warning}
-
-\begin{theorem}\label{teo_caract_AlgT}
-	Sia \(\ctA\) una categoria. Le condizioni seguenti sono equivalenti:
-	\begin{enumerate}
-		\item \(\ctA\) è algebrica,
-		\item \(\ctA\) è cocompleta e ammette un insieme \(\ctG\) di oggetti perfettamente presentabili tale che ogni
-		      oggetto di \(\ctA\) è un colimite setacciante di oggetti di \(\ctG\),
-		\item \(\ctA\) è cocompleta e ha un generatore forte formato da oggetti perfettamente presentabili.
-	\end{enumerate}
-\end{theorem}
-
-\begin{remark}\label{oss_pres_can}
-	Una volta introdotte, con qualche esempio e piccole prpprietà, tutte le nozioni che intervengono nel teorema, si desume
-	dalla dimostrazione che se \(\ctA\) è algebrica, allora
-	\[\ctA \simeq \ctAlg(\ctA_{\mathrm{pp}}^{\mathrm{op}})\]
-	dove \(\ctA_{\mathrm{pp}}\) è la sottocategoria piena di \(\ctA\) degli oggetti perfettamente presentabili. Questo fornisce
-	una presentazione canonica di \(\ctA \colon\)fra tutte le teorie algebriche \(\ctT\) tali che
-	\[\ctA \simeq \ctAlgT\]
-	la teoria \(\ctA_{\mathrm{pp}}^{\mathrm{op}}\) è l'unica Cauchy completa (completa per idempotenti).
-\end{remark}
-
-Altre conseguenze semplici del teorema di caratterizzazione sono i seguenti fatti.
-
-\begin{proposition}\label{prop_comma_alg}
-	Se \(\ctA\) è algebrica e \(A \in \ctA\) è un oggetto fissato, la categoria
-	\[\ctA \downarrow A\]
-	è algebrica.
-\end{proposition}
-
-\begin{proposition}\label{prop_repr_aAlgT}
-	Una categoria è algebrica se e solo se è equivalente a una sottocategoria riflessiva e chiusa rispetto ai colimiti setaccianti
-	di una categoria del tipo \(\ctSet^{\ctC}\) con \(\ctC\) piccola.
-\end{proposition}
-
-\begin{proposition}\label{prop_stab_alg_exp}
-	Se \(\ctA\) è una categoria algebrica e \(\ctC\) è una categoria piccola, la categoria di funtori \(\ctA^{\ctC}\) è algebrica.
-\end{proposition}
-
-\begin{example}\label{esempio_chain}
-	Se \(R\) è un anello unitario, la categoria dei complessi di catena di \(R\)-moduli è algebrica.
-\end{example}
+\begin{exercise}\label{ex_algt_cocmpl_proj}
+	Per terminare questa sezione, proponiamo (come già fatto nell'esercizio \ref{???}) una dimostrazione alternativa del fatto che
+	\(\ctAlgT\) è cocompleta. Assumiamo che \(\ctAlgT\) è esatta e che l'inclusione \(\ctAlgT \fun \ctSet^{\ctT}\) preserva i colimiti setacciati,
+	proprietà entrambe dimostrate nella sezione \ref{sec_limcolim_AlgT}. Procediamo in tre tappe. \\
+	\(\bullet\) Tappa 1:
+	Per ogni insieme \(\{X_i \}_{i \in I}\) di oggetti in \(\ctT\), il coprodotto \(\coprod_{i \in I}\ctT(X_i,-)\) esiste in \(\ctAlgT\). \\
+	Dimostrazione.
+	Denotiamo con \(\ctP_{\mathrm{f}}(I)\) l'insieme ordinato dei sottoinsiemi finiti di \(I\) e consideriamo il funtore
+	\[ S \colon \ctP_{\mathrm{f}}(I) \fun \ctAlgT, \; S(A) = \coprod_{a \in A}X_a \]
+	Tale funtore è ben definito per la proposizione \ref{prop_Yoneda_alg} e, poiché \(\ctP_{\mathrm{f}}(I)\) è filtrata e quindi
+	setacciata, il suo colimite esiste in \(\ctAlgT\) grazie alla proposizione \ref{prop_colim_sift_AlgT}. Per la proposizione
+	\ref{prop_coprod_colimfiltr}, il colimlite di \(S\) fornisce il coprodotto \(\coprod_{i \in I}\ctT(X_i,-)\) in \(\ctAlgT\). \\
+	\(\bullet\bullet\) Tappa 2:
+	Al fine di rendere più facile da leggere la dimostrazione della terza tappa, useremo la notazione seguente.
+	Per una \(\ctT\)-algebra \(F\), notiamo
+	\[q_F \colon P_F \to F\]
+	l'epi regolare con dominio un oggetto proiettivo regolare (che è un coprodotto in \(\ctAlgT\) di \(\ctT\)-algebre rappresentabili)
+	e codominio \(F\) introdotto nella dimostrazione del lemma \ref{lemma_rappr_proj}. Se ne consideriamo la coppia nucleo
+	\(q_{F,1},q_{F,2} \colon R[q_F] \rightrightarrows P_F\) e iteriamo il procedimento, otteniamo il diagramma
+	\[\xymatrix{P_{R[q_F]} \ar[r]^-{q_{R[q_F]}} & R[q_F] \ar@<0.5ex>[r]^-{q_{F,1}} \ar@<-0.5ex>[r]_-{q_{F,2}} & P_F \ar[r]^-{q_F} & F}\]
+	ovvero (semplificando ulteriormente la notazione)
+	\[\xymatrix{P'_F = P_{R[q_F]} \ar@<0.5ex>[rrr]^-{f_1 = q_{F,1} \cdot q_{R[q_F]}} \ar@<-0.5ex>[rrr]_-{f_2 = q_{F,2} \cdot q_{R[q_F]}}
+		& & & P_F \ar[r]^-{q_F} & F}\]
+	Osserviamo che tale diagramma è un coequalizzatore, perché \(q_F\) è il coequalizzatore della sua coppia nucleo e \(q_{R[q_F]}\)
+	è un epi (regolare). Inoltre, si tratta del coequalizzatore di un grafo riflessivo. Infatti la coppia nucleo di \(q_F\) è una relazione
+	d'equivalenza interna e quindi, in particolare, è un grafo riflessivo; poiché \(P_F\) è proiettivo regolare e \(q_{R[q_F]}\) è un epi
+	regolare, si può prolungare la freccia che testimonia la riflessività da \(R[q_F]\) a \(P'_F\). \\
+	\(\bullet\bullet\bullet\) Tappa 3:
+	La categoria \(\ctAlgT\) ha i coprodotti binari (er è quindi cocompleta). \\
+	Dimostrazione.
+	Per due \(\ctT\)-algebre
+	\(F\) e \(G\), consideriamo il seguente diagramma, dove impieghiamo la costruzione e la notazione introdotte nella seconda tappa
+	\[\xymatrix{P'_F \ar@<0.5ex>[rr]^-{f_1} \ar@<-0.5ex>[rr]_-{f_2} \ar[d]_{s'_F} & & P_F \ar[rr]^-{q_F} \ar[d]^{s_F} & & F \ar[d]^{\sigma_F} \\
+		P'_F + P'_G \ar@<0.5ex>[rr]^-{f_1 + g_1} \ar@<-0.5ex>[rr]_-{f_2 + g_2} & & P_F + P_G \ar[rr]^-{q} & & Q \\
+		P'_G \ar@<0.5ex>[rr]^-{g_1} \ar@<-0.5ex>[rr]_-{g_2} \ar[u]^{s'_G} & & P_G \ar[rr]_-{q_G} \ar[u]_{s_G} & & G \ar[u]_{\sigma_G} }\]
+	Osserviamo che, poiché gli oggetti \(P_F, P'_F, P_G, P'_G\) sono tutti coprodotti di \(\ctT\)-algebre rappresentabili, i coprodotti
+	della prima e della seconda colonna esistono grazie alla prima tappa. Osserviamo anche che la coppia di frecce
+	\((f_1+g_1,f_2+g_2)\) è a sua volta un grafo riflessivo (si usino, componente per componente, le frecce che attestano la riflessività
+	di \((f_1,f_2)\) e di \((g_1,g_2)\)), cosicché il loro coequalizzatore \(q\) esiste nella categoria \(\ctAlgT\). Se ora \(\sigma_F\) e \(\sigma_G\)
+	sono le estensioni di \(s_F\) e \(s_G\) ai coequalizzatori, la commutazione dei colimiti (si tratta del caso duale di quello dell'esempio
+	\ref{ex_comm_lim}) permette di concludere che la terza colonna è il coprodotto di \(F\) e \(G\) nella categoria \(\ctAlgT\).
+\end{exercise}
 
 \section{Il teorema di Birkhoff per le categorie algebriche}\label{sec_th_Birkhoff}
 

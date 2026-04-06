@@ -15,3 +15,446 @@
 
 % La lista è ordinata alfabeticamente in inglese (è più utile così, dato che dove è possibile menzioniamo già nel corso del testo qual è l'analogo inglese del termine italiano).
 
+\chapter{Miscellanea di cose da inserire}\label{cap_misc}
+
+\begin{color}{blue}
+Questo capitolo  non esiste e non esister\`a mai. Si tratta solo di una scatola dove metto delle cose che secondo me potrebbero 
+trovarsi altrove nel libro e di cui ho bisogno nel capitolo sulle categorie algebriche (o che semplicemente completano quanto appare
+gi\`a altrove nel libro). Naturalmente possiamo anche decidere di metterne alcune nel capitolo sulle categorie algebriche o, al
+contrario, ripulire ulteriormente il capitolo sulle categorie algebriche evacuando alcune cose generali verso capitoli ad hoc. 
+Per il momento non includo tutte le dimostrazioni (alcune non sono ovvie). 
+\end{color}
+
+
+
+\section{Sui limiti e colimiti nelle categorie di funtori}\label{sec_lim_cat_fun}
+
+\begin{color}{blue}
+Sempre per il capitolo in cui si introducono limiti e colimiti. 
+\end{color}
+
+\hfill
+
+\noindent 
+
+\fosco{Mi piace l'idea di avere un capitolo su categorie regolari ed esatte e calcolo delle relazioni; soprattutto perché sospetto il capitolo `yoneda e limiti' verrà ampiamente assorbito dal capitolo sui limiti, e dal capitolo su yoneda.}
+
+
+\section{Sulle categorie regolari}\label{sec_cat_regolari}
+
+\begin{color}{blue}
+Le categorie regolari potrebbero essere introdotte nel capitolo sui sistemi di fattorizzazione oppure nel capitolo sulle 
+categorie algebriche. Alternativamente, assieme alle categorie esatte potrebbero formare un capitolo a parte in cui
+trattare anche il calcolo delle relazioni.
+\end{color}
+
+\begin{definition}\label{def_epi_reg}
+Una freccia $f \colon X \to Y$ \`e un epi regolare se esite una coppia di frecce parallele $Z \rightrightarrows X$ di cui
+$f$ \`e il coequalizzatore. Dualmente, una freccia che \`e l'equalizzatore di una coppia di frecce parallele sar\`a chiamata 
+mono regolare.
+\end{definition}
+
+\begin{remark}\label{oss_epi_reg}
+Osserviamo che se un epi regolare ha una coppia nucleo, allora tale freccia \`e il coequalizzatore della sua coppia nucleo. 
+Viceversa, se una coppia nucleo ha un coequalizzatore, allora tale coppia nucleo \`e la coppia nucleo del suo coequalizzatore.
+Osserviamo anche che, in ogni categoria, ogni epi spezzante \`e regolare e ogni epi regolare \`e forte.
+Ne segue che se una freccia \`e un epi regolare e un mono, allora \`e un isomorfismo. 
+In generale, gli epi regolari non sono chiusi per composizione. Un esempio di tale situazione \`e fornito dalla categoria  
+$\ctCat$ delle categorie piccole.
+\end{remark}
+
+\begin{proposition}\label{prop_cat_reg}
+Sia $\ctC$ una categoria con i limiti finiti e supponiamo che in $\ctC$ gli epi regolari siano stabili per prodotti fibrati.
+Le condizioni seguenti sono equivalenti.
+\begin{enumerate}
+\item Ogni coppia nucleo ha un coequalizzatore.
+\item Ogni freccia si fattorizza come un epi regolare seguito da un mono.
+\end{enumerate} 
+\end{proposition}
+
+\begin{definition}\label{def_cat_reg}
+Una categoria \`e regolare se soddisfa le condizioni della propriet\`a \ref{prop_cat_reg}: ha i limiti finiti, gli epi regolari
+sono stabili per prodotti fibrati e ogni freccia si fattorizza come un epi regolare seguito da un mono. 
+\end{definition}
+
+\begin{proposition}\label{prop_epi_reg_cat_reg}
+Sia $\ctC$ un a categoria regolare.
+\begin{enumerate}
+\item In $\ctC$ le nozioni di epi regolare, epi forte ed epi estremale coincidono.
+\item In particolare, se una composizione $f \circ g$ \`e un epi regolare, allora $f$ \`e un epi regolare.
+Inoltre, se $f$ e $g$ sono epi regolari, allora $f \circ g$ \`e un epi regolare.
+\end{enumerate}
+\end{proposition}
+
+\begin{exercise}\label{esercizio_stab_epireg}
+Sia $\ctC$ una categoria regolare.
+\begin{enumerate}
+\item Consideriamo il diagramma commutativo seguente, dove le due righe sono prodotti,
+$$\xymatrix{A_1 \ar[d]_{f_1} & A_1 \times A_2 \ar[l]_-{\pi_1} \ar[d]^{f_1 \times f_2} \ar[r]^-{\pi_2} & A_2 \ar[d]^{f_2} \\
+B_1 & B_1 \times B_2 \ar[l]^-{\pi_1} \ar[r]_-{\pi_2} & B_2}$$
+Se $f_1$ e $f_2$ sono epi regolari, allora anche $f_1 \times f_2$ lo \`e.
+\item Consideriamo il diagramma commutativo seguente (nel senso che $m \cdot a_1 = b_1 \cdot f$ 
+e $m \cdot a_2 = b_2 \cdot f$), dove le due righe sono equalizzatori,
+$$\xymatrix{D \ar[r]^-{d} \ar[d]_{g} & A \ar@<0.5ex>[r]^-{a_1} \ar@<-0.5ex>[r]_-{a_2} \ar[d]_{f} & A' \ar[d]^{m} \\
+E \ar[r]_-{e} & B \ar@<0.5ex>[r]^-{b_1} \ar@<-0.5ex>[r]_-{b_2} & B'}$$
+Se $m$ \`e un mono e $f$ \`e un epi regolare, allora $g$ \`e un epi regolare.
+\item Consideriamo il diagramma commutativo seguente, dove la faccia superiore e la faccia inferiore 
+sono prodotti fibrati,
+$$\xymatrix{P \ar[rr]^-{p_1} \ar[rd]_{p_2} \ar[dd]_{g} & & A_1 \ar[rd]^{a_1} \ar[dd]^>>>>>>{f_1} \\
+& A_2 \ar[rr]_<<<<<<{a_2} \ar[dd]^>>>>>>{f_2} & & A \ar[dd]^{m} \\
+Q \ar[rr]^<<<<<<{q_1} \ar[rd]_{q_2} & & B_1 \ar[rd]^{b_1} \\
+& B_2 \ar[rr]_-{b_2} & & B}$$
+Se $m$ \`e un mono e $f_1$ e $f_2$ sono epi regolari, allora $g$ \`e un epi regolare. 
+\item I tre punti precedenti si generalizzano dal caso binario (prodotti binari, equalizzatori di coppie di frecce parallele,
+prodotti fibrati di coppie di frecce con stesso codominio) al caso $n$-ario.
+\end{enumerate}
+\end{exercise} 
+
+\begin{examples}\label{esempio_set_reg}
+\hfill
+\begin{enumerate}
+\item Nella categorie $\ctSet,$ i mono sono le funzioni iniettive e gli epi sono le funzioni suriettive (vedi esempio \ref{2.8.8}). 
+Se si assume l'assioma della scelta, le funzioni suriettive sono epi spezzanti e quindi le nozioni di epi, epi regolare ed epi 
+spezzante coincidono. A questo punto diventa facile mostrare che gli epi regolari sono stabili per prodotti fibrati e che ogni 
+freccia si fattorizza come un epi regolare seguito da un mono, si tratta semplicemente della fattorizzazione di una funzione 
+attraverso la sua immagine. Possiamo concludere che $\ctSet$ \`e una categoria regolare. 
+\item Pi\`u in generale, ogni categoria del tipo $\ctSet^{\ctD}$ con $\ctD$ piccola, \`e regolare. Lo si pu\`o
+dedurre dal fatto che i mono (rispettivamente, gli epi regolari) sono le trasformazioni naturali tali che ogni componente \`e una 
+funzione iniettiva (rispettivamente, suriettiva), come si pu\`o desumere dalla proposizione \ref{prop_lim_puntuali}.
+\item L'esempio precedente si generalizza a sua volta come segue:; se $\ctD$ \`e una categoria piccola e $\ctB$ \`e una
+categoria regolare, allora la categoria $\ctB^{\ctD}$ dei funtori da $\ctD$ verso $\ctB$ e delle trasformazioni naturali \`e regolare,
+i mono (rispettivamente, gli epi regolari) sono le trasformazioni naturali le cui componenti sono dei mono (rispettivamente, degli 
+epi regolari) in $\ctB.$
+\item Per completare il quadro, osserviamo che in $\ctSet$ i mono sono spezzanti salvo nel caso in cui il dominio del mono sia 
+l'insieme vuoto e il codominio sia un insieme non vuoto. Quello che rimane vero in $\ctSet$ \`e che i mono coincidono con i mono 
+regolari. Infatti ogni funzione iniettiva
+$s \colon S \to A$ \`e l'equalizzatore della coppia formata dalla sua funzione caratteristica
+$$\varphi_s \colon A \to \{0,1\} \;\;\;\;\;\; \varphi_s(a) = 
+\left\{\begin{array}{rl} 1 & \mbox{se esiste } x \in S \mbox{ tale che } s(x)=a \\
+0 & \mbox{in caso contrario} \end{array}\right.$$ 
+e dalla funzione costante $1 \colon A \to \{0,1\}.$
+La proposizione \ref{prop_lim_puntuali} permette ora di concludere che anche in $\ctSet^{\ctD}$ ogni mono \`e regolare.
+\end{enumerate} 
+\end{examples}
+
+\begin{examples}\label{esempio_non_reg}
+\hfill
+\begin{enumerate}
+\item Quanto detto nell'osservazione \ref{oss_epi_reg} mostra che $\ctCat$ non \`e regolare. 
+\item Un altro esempio importante di categoria che non \`e regolare \`e la categorie $\ctTop$ degli spazi topologici e delle 
+funzioni continue. Infatti in $\ctTop$ gli epi forti sono le mappe quozienti, che non sono stabili per prodotti fibrati.
+\end{enumerate} 
+\end{examples}
+
+\begin{exercise}\label{esercizio_def_cat_reg}
+Una categoria \`e regolare se e solo se ha i limiti finiti, gli epi forti sono stabili per prodotti fibrati e 
+ogni freccia si fattorizza come un epi forte seguito da un mono.
+\end{exercise} 
+
+\section{Sugli oggetti proiettivi regolari}\label{sec_proj_reg}
+
+\begin{color}{blue}
+Questa parte deve venire dopo la parte sulle categorie regolari, indifferentemente prima o dopo la parte sulle categorie esatte.
+\end{color}
+
+\begin{definition}\label{def_ogg_pro_reg}
+Sia $\ctC$ una categoria.
+\begin{enumerate}
+\item Un oggetto $P$ \`e proiettivo regolare se il funtore rappresentabile $\ctC(P,-) \colon \ctC \fun \ctSet$ preserva gli
+epi regolari. Esplicitamente, questo significa che date due frecce $f$ e $g$ come nel seguente diagramma 
+$$\xymatrix{ & P \ar@{-->}[ld]_{h} \ar[d]^{f} \\ X \ar[r]_-{g} & Y}$$
+se $g$ \`e un epi regolare, allora esiste una freccia $h$ tale che $f = g \cdot h$
+
+\item La categoria $\ctC$ ha abbastanza proiettivi regolari se ogno oggetto \`e un quoziente regolare di un oggetto proiettivo
+regolare: per ogni oggetto $A \in \ctC$ esiste un oggetto proiettivo regolare $P_A$ e un epi regolare $e_A \colon P_A \to A.$
+\end{enumerate}
+\end{definition} 
+
+\begin{remark}\label{oss_pro_reg}
+Se nella categoria $\ctC$ gli epi regolari sono stabili per prodotti fibrati (per esempio se $\ctC$ \`e regolare), allora la condizione 
+di essere un oggetto proiettivo regolare si riduce al caso particolare in cui la freccia $f$ del diagramma della definizione 
+\ref{def_ogg_pro_reg} \`e la freccia identi\`a. Quindi un oggetto $P$ \`e proiettivo regolare se e solo se ogni epi regolare 
+con codominio $P$ ammette una sezione 
+$$\xymatrix{ & P \ar@{-->}[ld]_{h} \ar[d]^{\id} \\ X \ar[r]_-{g} & P}$$
+Osserviamo anche che se in \(\ctC\) esistono le coppie nucleo, allora un oggetto perfettamente presentabile (definizione 
+\ref{def_finpres_perfpres}) \`e proiettivo regolare. Infatti ogni epi regolare \`e il coequalizzatore della sua coppia nucleo (che \`e un 
+grafo riflessivo) ed \`e dunque un colimite setacciato. 
+\end{remark}
+
+Vediamo ora due propriet\`a di stabilit\`a degli oggetti proiettivi regolari.
+
+\begin{proposition}\label{prop_stab_proreg}
+Sia $\ctC$ una categoria.
+\begin{enumerate}
+\item Siano $P,R \in \ctC.$ Se $P$ \`e proiettivo regolare e $R$ \`e un retratto di $P,$ allora anche $R$ \`e proiettivo regolare.
+\item Sia $\{P_i\}_{i \in I}$ una famiglia di oggetti di $\ctC$ e sia $P = \coprod_{i \in I}P_i$ il loro coprodotto. 
+\begin{enumerate}
+\item Se ogni $P_i$ \`e proiettivo regolare, allora anche $P$ \`e proiettivo regolare. 
+\item Se $\ctC$ ha un oggetto zero, allora vale anche la reciproca.
+\end{enumerate} 
+\end{enumerate}
+\end{proposition} 
+
+\begin{proof}
+1. Consideriamo la situazione seguente, dove $g$ \`e un epi regolare, $r \cdot s = \id_R$ e le frecce tratteggiate sono da trovare,
+$$\xymatrix{P \ar@<-0.5ex>[rr]_-{r} \ar@{-->}[d]_{h} & & R \ar@<-0.5ex>[ll]_-{s} \ar[d]^{f} \ar@{-->}[lld]^{h \cdot s} \\
+X \ar[rr]_-{g} & & Y}$$
+Poich\`e $P$ \`e proiettivo regolare, esiste $h$ tale che $g \cdot h = f \cdot r.$ Ne segue che $g \cdot h \cdot s = f \cdot r \cdot s = f$
+il che mostra che $R$ \`e proiettivo regolare. \\
+2.a) Consideriamo la situazione seguente, dove $g$ \`e un epi regolare, les $\sigma_i$ sono le iniezioni nel coprodotto e le frecce 
+tratteggiate sono da trovare, 
+$$\xymatrix{P_i \ar@{-->}[d]_{h_i} \ar[rr]^-{\sigma_i} & & P \ar[d]^{f} \ar@{-->}[lld]^{h} \\
+X \ar[rr]_-{g} & & Y}$$
+Poich\`e $P_i$ \`e proiettivo regolare, esiste $h_i$ tale che $g \cdot h_i = f \cdot \sigma_i.$ La famiglia delle frecce $h_i$ d\`a luogo
+a un'unica freccia $h$ tale che $h \cdot \sigma_i = h_i$ per ogni $i \in I,$ da cui $f = g \cdot h.$ \\
+2.b) Se $\ctC$ ha oggetto zero, allora ogni $P_i$ \`e un retratto di $P$ (vedi esercizio \ref{exer_copr_retr})
+e si pu\`o concludere grazie al primo punto.
+\end{proof}
+
+\begin{examples}\label{exem_proreg}
+\hfill
+\begin{enumerate}
+\item L'assioma della scelta per gli insiemi, nella sua espressione pi\`u semplice, afferma che ogni funzione suriettiva ammette 
+una sezione. Questo esprime esattamente il fatto che in $\ctSet$ tutti gli oggetti sono proiettivi regolari. 
+\item Contrariamente ad altre situazioni gi\`a incontrate, il fatto che in $\ctSet$ tutti gli oggetti siano proiettivi regolari non passa
+alla categoria $\ctSet^{\ctD}$ ($\ctD$ piccola). Infatti, anche se un epi regolare in $\ctSet^{\ctD}$ \`e una trasformazione naturale
+tale che tutte le componenti sono funzioni suriettive (vedi esempio \ref{esempio_set_reg}), il fatto di trovare una sezione per ogni 
+componente non garantisce che tali sezioni si possano mettere insieme per fornire una sezione alla trasformazione naturale di 
+partenza. Vedremo pi\`u tardi un contro-esempio esplicito.
+\item La propriet\`a pi\`u debole che sussiste in $\ctSet^{\ctD}$ \`e che tale categoria ha abbastanza proiettivi regolari. 
+Questo si giustifica in due tappe:
+\begin{enumerate}
+\item Ogni funtore rappresentabile $\ctD(A,-)$ \`e un oggetto proiettivo regolare.
+Infatti, consideriamo il diagramma in $\ctSet^{\ctD}$
+$$\xymatrix{ & \ctD(A,-) \ar@{-->}[ld]_{h} \ar[d]^{f} \\
+F \ar[r]_-{g} & G}$$
+con $g$ un epi regolare. Usando la biiezione del lemma di Yoneda, trovare una fattorizzazione $h$ corrisponde a trovare 
+un elemento $h \in FA$ tale che $g_A(h)=f.$ Questo \`e possibile perch\'e $g_A \colon FA \to GA$ \`e la componente in $A$
+della trasformazione naturale $g,$ cosicch\'e $g_A$ \`e suriettiva.
+\item Poich\'e il coprodotto di oggetti proiettivi regolari \`e proiettivo regolare (proposizione \ref{prop_stab_proreg}), la formula 
+$$p_F \colon \coprod_{(A,a) \in \mathrm{El}(F)}\ctD(A,-) \to F$$
+dell'osservazione \ref{oss_colim_rappr} permette di concludere.
+\end{enumerate}
+\end{enumerate}
+\end{examples}
+
+\begin{examples}\label{esem_mod_pro}
+Nel capitolo \ref{cap_cat_alg} vedremo che tutte le categorie algebriche hanno abbastanza proiettivi regolari. Per il momento 
+ci limitiamo a esaminare due casi particolari.
+\begin{enumerate}
+\item Se $A$ \`e un anello e $\ctL_A(X)$ \`e l'$A$-modulo libero su un insieme $X,$ la proprit\`a universale permette di trasportare
+il carattere proiettivo regolare dall'insieme $X$ all'$A$-modulo $\ctL_A(X).$ Poich\'e ogni $A$-modulo \`e quoziente di un
+$A$-modulo libero, la categoria degli $A$-moduli ha abbastanza proiettivi regolari.
+\item In particolare, se $A$ \`e un corpo, ogni spazio vettoriale su $A$ \`e libero ed \`e quindi proiettivo regolare.
+\end{enumerate}
+\end{examples}
+
+
+\section{Sulle categorie esatte}\label{sec_cat_esatte}
+
+\begin{color}{blue}
+Come per le categorie regolari, le categorie esatte potrebbero essere introdotte nel capitolo sui sistemi di fattorizzazione oppure 
+nel capitolo sulle categorie algebriche. 
+\end{color}
+
+\begin{definition}\label{def_relequiv_interne}
+Sia $\ctC$ una categorie e $X$ un oggetto di $\ctC.$
+\begin{enumerate}
+\item Una relazione interna su $X$ \`e una coppia di frecce congiuntamente monomorfiche $r_1,r_2 \colon R \rightrightarrows X.$
+\item Una relazione $r_1,r_2 \colon R \rightrightarrows X$ su $X$ \`e
+\begin{enumerate}
+\item riflessiva se esiste $r \colon X \to R$ tale che $r_1 \cdot r = \id_X = r_2 \cdot r,$
+\item simmetrica se esiste $s \colon R \to R$ tale che $r_1 \cdot s = r_2$ e $r_2 \cdot s = r_1,$
+\item transitiva se esiste $t \colon P \to R$ tale che $r_1 \cdot t = r_1 \cdot r_1'$ e $r_2 \cdot t = r_2 \cdot r_2',$ dove
+$$\xymatrix{P \ar[d]_{r_2'} \ar[r]^-{r_1'} & R \ar[d]^{r_2} \\ R \ar[r]_-{r_1} & X}$$
+\`e un prodotto fibrato,
+\item d'equivalenza se \`e riflessiva, simmetrica e transitiva.
+\end{enumerate}
+\end{enumerate}
+\end{definition} 
+
+\begin{remark}\label{rem_relequiv_interne} \hfill
+\begin{enumerate} 
+\item Se il prodotto $X \times X$ esiste, chiedere che una coppia di frecce $r_1,r_2 \colon R \rightrightarrows X$ 
+sia congiuntamente monomorfica \`e la stessa cosa che chiedere che la freccia indotta $\langle r_1,r_2 \rangle \colon R \to X \times X$ 
+sia un mono. 
+\item Richiedere che una relazione $r_1,r_2 \colon R \rightrightarrows X$ sia riflessiva, simmetrica o transitiva \`e
+una propriet\`a, non una struttura. Infatti, se le frecce $r,s,t$ della definizione \ref{def_relequiv_interne} esistono, esse
+sono necessariamente uniche.
+\item Data una relazione d'equivalenza interna $r_1,r_2 \colon R \rightrightarrows X,$ si pu\`o definire, per ogni oggetto 
+$A \in \ctC,$ una relazione d'equivalenza $\sim_{A,R}$ (nel senso usuale) sull'insieme delle frecce $\ctC(A,X)$ ponendo 
+$f \sim_{A,R} g$ se esiste $\varphi \colon A \to R$ tale che $r_1 \cdot \varphi = g$ e $r_2 \cdot \varphi = f$
+$$\xymatrix{ & R \ar@<-0.5ex>[d]_{r_1} \ar@<0.5ex>[d]^{r_2} \\ 
+A \ar[ru]^{\varphi} \ar@<0.5ex>[r]^-{f} \ar@<-0.5ex>[r]_-{g} & X}$$
+\item Pi\`u precisamente, una relazione interna $r_1,r_2 \colon R \rightrightarrows X$ \`e riflessiva se e solo se $\sim_{X,R}$ 
+\`e riflessiva, \`e simmetrica se e solo se $\sim_{R,R}$ \`e simmetrica, ed \`e transitiva se e solo se $\sim_{P,R}$ \`e transitiva
+(dove $P$ \`e il prodotto fibrato della definizione \ref{def_relequiv_interne}).
+\end{enumerate}
+\end{remark} 
+
+\begin{examples}\label{ex_coppia_nucleo}
+\hfill
+\begin{enumerate}
+\item In $\ctSet$ la nozione di relazione d'equivalenza interna coincide con l'usuale nozione di relazione d'equivalenza.
+\item Nelle categorie algebriche (vedi capitolo \ref{cap_cat_alg}) le relazioni d'equivalenza interne vengono spesso chiamate
+congruenze. Se $G$ \`e un gruppo, le congruenze su $G$ sono in biiezione con i sottogruppi normali di $G.$ Se $A$
+\`e un anello, le congruenze su $A$ sono in biiezione con gli ideali di $A.$
+\item In ogni categoria, la coppia nucleo di una freccia $f,$ ovvero il prodotto fibrato
+$$\xymatrix{R[f] \ar[d]_{f_1} \ar[r]^-{f_2} & X \ar[d]^{f} \\ X \ar[r]_-{f} & Y}$$
+fornisce una relazione di equivalenza interna $f_1,f_2 \colon R[f] \rightrightarrows X$ su $X.$
+\end{enumerate}
+\end{examples}
+
+\begin{exercise}\label{exer_maltsev}
+Nella categoria dei gruppi, ogni relazione riflessiva interna \`e automaticamente una relazione d'equivalenza. 
+Lo stesso vale nella categoria delle algebre di Lie su un anello commutativo. Questo fenomeno si esprime dicendo 
+che la categoria dei gruppi e la categoria delle algebre di Lie sono categorie di Mal'cev.
+\end{exercise}
+
+\begin{exercise}\label{exer_coppianucleo_gen}
+Si consideri la situazione
+$$\xymatrix{X \ar[r]^-{f} & Y & S \ar@<-0.5ex>[l]_-{s_1} \ar@<0.5ex>[l]^-{s_2}}$$
+La lettrice \`e invitata a 
+\begin{enumerate}
+\item formulare la propriet\`a universale del diagramma limite del tipo
+$$\xymatrix{R \ar@<-0.5ex>[d]_{r_1} \ar@<0.5ex>[d]^{r_2} \ar[r]^-{f'} & S \ar@<-0.5ex>[d]_{s_1} \ar@<0.5ex>[d]^{s_2} \\
+X \ar[r]_-{f} & Y}$$
+\item costruire tale diagramma limite via tre prodotti fibrati o via due prodotti e un prodotto fibrato,
+\item verificare che se $s_1,s_2 \colon S \rightrightarrows Y$ \`e una relazione d'equivalenza interna, anche 
+$r_1,r_2 \colon R \rightrightarrows X$ lo \`e,
+\item ritrovare la coppia nucleo di $f$ come caso particolare di tale costruzione. 
+\end{enumerate}
+\end{exercise} 
+
+\begin{definition}\label{def_cat_esatta}
+Una categoria \`e esatta se \`e regolare (definizione \ref{def_cat_reg}) e se ogni relazione d'equivalenza interna
+\`e una coppia nucleo (necessariamente del suo coequalizzatore).
+\end{definition}
+
+\begin{examples}\label{ex_cat_esatte}
+\hfill
+\begin{enumerate}
+\item La categoria $\ctSet$ \`e esatta. Infatti, se $R \subseteq X \times X$ \`e una relazione d'equivalenza su un 
+insieme $X$ e se $q \colon X \to X/R = \{[x]_R \mid x \in X \}$ \`e la proiezione sull'insieme quoziente, si ha
+$$R[q] = \{(x_1,x_2) \in X \times X \mid q(x_1) = q(x_2)\} = \{(x_1,x_2) \in X \times X \mid [x_1]_R = [x_2]_R\} = R$$
+\item Pi\`u in generale, se $\ctD$ \`e una categoria piccola, allora $\ctSet^{\ctD}$ \`e esatta e $\ctB^{\ctD}$ \`e 
+esatta ogniqualvolta $\ctB$ lo \`e.
+\item Le categorie algebriche sono esatte. Questo fatto sar\`a studiato nel capitolo \ref{cap_cat_alg}.
+\end{enumerate}
+\end{examples} 
+
+\begin{examples}\label{ex_non_esatte}
+Vediamo due esempi di categorie che sono regolari ma non esatte.
+\begin{enumerate}
+\item La categoria dei gruppi abeliani privi di torsione \`e regolare ma non \`e esatta. Torneremo su questo esempio
+in \ref{esempio_torsionfree}.
+\item La categoria degli spazi di Hausdorff compattamente generati (chiamati anche spazi di Kelley) \`e regolare ma 
+non \`e esatta.
+\end{enumerate}
+\end{examples} 
+
+Gli oggetti proiettivi regolari, ammesso che ce ne siano abbastanza, hanno un ruolo particolare nelle categorie esatte. 
+Per esprimere questo fatto introduciamo la nozione di copertura proiettiva regolare osservando gi\`a che una categoria 
+ha una copertura proiettiva regolare se e solo se ha abbastanza proiettivi regolari.
+
+\begin{definition}\label{def_cop_proiettiva}
+Una sottocategoria piena $\ctB$ di una categoria $\ctA$ \`e una copertura proiettiva regolare di $\ctA$ se gli oggetti di 
+$\ctB$ sono proiettivi regolari in $\ctA$ e se ogni oggetto di $\ctA$ \`e un quoziente regolare di un oggetto di $\ctB.$
+\end{definition} 
+
+\begin{proposition}\label{prop_cop_proiettiva}
+Siano $\ctA$ e $\ctB$ due categorie esatte e siano $\ctP(\ctA)$ e $\ctP(\ctB)$ due coperture proiettive regolari 
+rispettivamente di $\ctA$ e di $\ctB.$ Ogni equivalenza $\ctP(\ctA) \simeq \ctP(\ctB)$ si estende a un'equivalenza
+$\ctA \simeq \ctB.$
+\end{proposition}
+
+\begin{proof}
+Sia $F \colon \ctP(\ctA) \fun \ctP(\ctB)$ un'equivalenza. Vogliamo costruire un'equivalenza $\widehat{F} \colon \ctA \fun \ctB$ 
+estendendo il funtore $F.$ Spezziamo la dimostrazione in tre parti: definizione di $\widehat{F}$ sugli oggetti, definizione di
+$\widehat{F}$ sulle frecce, verifica che $\widehat{F}$ \`e un'equivalenza. \\
+$\bullet$ Sia $A$ un oggetto di $\ctA.$ Consideriamo un epi regolare $p \colon P \to A$ con $P \in \ctP(\ctA),$ la coppia nucleo
+$p_1,p_2 \colon R[p] \rightrightarrows P$ e ancora un epi regolare $p' \colon P' \to R[p]$ con $p' \in \ctP(\ctA).$ Se chiamiamo
+$a_1 = p_1 \cdot p'$ e $a_2 = p_2 \cdot p',$ otteniamo il diagramma
+$$\xymatrix{P' \ar@<0,5ex>[r]^-{a_1} \ar@<-0.5ex>[r]_-{a_2} & P \ar[r]^-{p} & A }$$
+che \`e un coequalizzatore. Infatti $p,$ in quanto epi regolare, \`e il coequalizzatore della sua coppia nucleo e $p'$ \`e un epi 
+(regolare). Poich\'e $\widehat{F}$ deve essere un'equivalenza, non possiamo che definire $\widehat{F}A$ come il seguente 
+coequalizzatore
+$$\xymatrix{FP' \ar@<0,5ex>[rr]^-{F(a_1)} \ar@<-0.5ex>[rr]_-{F(a_2)} & & FP \ar[rr]^-{\widehat{F}(p)} & & \widehat{F}A }$$
+e il problema \`e di giustificare l'esistenza di tale coequalizzatore. Consideriamo la fattorizzazione della coppia $(F(a_1),F(a_2))$
+come un epi regolare sequito da una coppia congiuntamente monomorfica (questo \`e possibile perch\'e $\ctB$ \`e regolare)
+$$\xymatrix{FP' \ar@<0.5ex>[rr]^-{F(a_1)} \ar@<-0.5ex>[rr]_-{F(a_2)} \ar[rrd]_{n} & & FP \\
+& & N \ar@<0.5ex>[u]^{i_1} \ar@<-0.5ex>[u]_{i_2} }$$
+e mostriamo che $i_1,i_2 \colon N \rightrightarrows FP$ \`e una relazione di equivalenza (da cui segue l'esistenza del suo 
+coequalizzatore che \`e anche il coequalizzatore di $(F(a_1),F(a_2))$ perch\'e $n$ \`e un epi). Ci limitiamo a mostrare la transitivit\`a 
+(le altre condizioni sono pi\`u facili da verificare). Consideriamo il seguente diagramma, dove il quadrato esterno e il quadrato in 
+basso a destra sono dei prodotti fibrati e $m$ \`e l'unica freccia tale che $i_1' \cmp m = n \cmp n_1$ e $i_2' \cmp m = n \cmp n_2$
+$$\xymatrix{M' \ar[dd]_{n_1} \ar[rr]^-{n_2} \ar[rd]^{m} & & FP' \ar[d]^{n} \\
+& M \ar[d]_{i_2'} \ar[r]^-{i_1'} & N \ar[d]^{i_2} \\
+FP' \ar[r]_-{n} & N \ar[r]_-{i_1} & FP }$$
+Poich\'e $n$ \`e un epi regolare, la stabilit\`a in $\ctB$ degli epi regolari per prodotti fibrati assicura che anche $m$ \`e un epi regolare.
+Poich\'e $F \colon \ctP(\ctA) \fun \ctP(\ctB)$ \`e un'equivalenza e $\ctP(\ctB)$ \`e una copertura proiettiva regolare di $\ctB,$ si pu\`o
+trovare un epi regolare $x \colon FX \to M'$ con $X \in \ctP(\ctA).$ Poich\'e $F$ \`e pieno, esistono $x_1, x_2 \colon X \rightrightarrows P'$
+tali che $F(x_1) = n_1 \cmp x$ e $F(x_2) = n_2 \cmp x.$ Ora possiamo considerare il seguente diagramma, dove il quadrato esterno
+commuta (perch\'e $F$ \`e fedele), il quadrato in basso a destra \`e un prodotto fibrato e $y$ \`e l'unica freccia tale che 
+$p_1' \cmp y = p' \cmp x_1$ e $p_2' \cmp y = p' \cmp x_2$
+$$\xymatrix{X \ar[dd]_{x_2} \ar[rr]^-{x_1} \ar[rd]^{y} & & P' \ar[d]^{p'} \\
+& Z \ar[d]_{p_2'} \ar[r]^-{p_1'} & R[p] \ar[d]^{p_2} \\
+P' \ar[r]_-{p'} & R[p] \ar[r]_-{p_1} & P }$$
+Sia ora $t \colon Z \to R[p]$ la freccia che attesta la transitivit\`a della relazione d'equivalenza $p_1,p_2 \colon R[p] \rightrightarrows P.$
+Possiamo dunque considerare le due frecce
+$$\xymatrix{P' \ar[r]^-{p'} & R[p] & X \ar[l]_-{t \cmp y}}$$
+Poich\'e $X$ \`e proiettivo regolare e $p'$ \`e un epi regolare, esiste $t' \colon X \to P'$ tale che $p' \cmp t' = t \cmp y.$ Abbiamo ora tutti 
+gli ingredienti per costruire il diagramma commutativo seguente
+$$\xymatrix{FX \ar[r]^-{x} \ar[d]_{F(t')} & M' \ar[r]^-{m} & M \ar[dd]^{\langle i_1 \cmp i_1', i_2 \cmp i_2' \rangle} \ar@{-->}[lldd]_{\tau} \\
+FP' \ar[d]_{n} \\
+N \ar[rr]_-{\langle i_1,i_2 \rangle} & & FP \times FP }$$
+Poich\'e $m \cmp x$ \`e un epi regolare e $\langle i_1,i_2 \rangle$ \`e un mono, esiste un'unica diagonale $\tau$ che rende commutativi
+i due triangoli. In particolare, la commutativit\`a del triangolo in basso a destra esprime la transitivit\`a della relazione 
+$i_1;i_2 \colon N \rightrightarrows FP.$ \\
+$\bullet$ Sia $f \colon A \to B$ una freccia di $\ctA.$ Se applichiamo a $B$ lo stesso procedimento che abbiamo applicato ad $A$
+all'inizio del punto precedente, otteniamo il seguente diagramma 
+$$\xymatrix{P' \ar[d]_{\varphi'} \ar[r]^-{p'} & R[p] \ar@<0.5ex>[r]^-{p_1} \ar@<-0.5ex>[r]_-{p_2} \ar[d]_{\overline{\varphi}} 
+& P \ar[r]^-{p} \ar[d]^{\varphi} & A \ar[d]^{f} \\
+Q' \ar[r]_-{q'} & R[q] \ar@<0.5ex>[r]^-{q_1} \ar@<-0.5ex>[r]_-{q_2} & Q \ar[r]_{q} & B}$$
+dove l'esistenza di $\varphi$ tale che $q \cmp \varphi = f \cmp p$ viene dal fatto che $q$ \`e un epi regolare e $P$ \`e proiettivo regolare,
+l'esistenza di $\overline{\varphi}$ tale che $q_1 \cmp \overline{\varphi} = \varphi \cmp p_1$ e $q_2 \cmp \overline{\varphi} = \varphi \cmp p_2$
+viene dalla propriet\`a universale della coppia nucleo $R[q],$ e l'esistenza di $\varphi'$ tale cha $q' \cmp \varphi' = \varphi \cmp p'$
+viene dal fatto che $q'$ \`e un epi regolare e $P'$ \`e proiettivo regolare. Finalmente, se poniamo $b_1 = q_1 \cmp q'$ e $b_2 = q_2 \cmp q',$
+possiamo definire $\widehat{F}(f)$ come l'unica estensione ai coequalizzatori come nel seguente diagramma
+$$\xymatrix{FP' \ar[d]_{F(\varphi')} \ar@<0.5ex>[rr]^-{F(a_1)} \ar@<-0.5ex>[rr]_-{F(a_2)} & & FP \ar[d]^{F(\varphi)} \ar[rr]^-{\widehat{F}(p)} 
+& & \widehat{F}A \ar[d]^{\widehat{F}(f)} \\
+FQ \ar@<0.5ex>[rr]^-{F(b_1)} \ar@<-0.5ex>[rr]_-{F(b_2)} & & FQ \ar[rr]_-{\widehat{F}(q)} & & B}$$
+$\bullet$ La parte pi\`u interessante per verificare che $\widehat{F}$ \`e un'equivalenza \`e mostrarne il carattere fedele. Consideriamo
+dunque una seconda freccia $g \colon A \to B$ in $\ctA$ e ripetiamo la costruzione fatta per $f$ nel punto precedente, ottenendo
+$$\xymatrix{P' \ar@<0.5ex>[d]^{\varphi'} \ar@<-0.5ex>[d]_{\psi'} \ar[r]^-{p'} & 
+R[p] \ar@<0.5ex>[r]^-{p_1} \ar@<-0.5ex>[r]_-{p_2} \ar@<0.5ex>[d]^{\overline{\varphi}} \ar@<-0.5ex>[d]_{\overline{\psi}}
+& P \ar[r]^-{p} \ar@<0.5ex>[d]^{\varphi} \ar@<-0.5ex>[d]_{\psi} & A \ar@<0.5ex>[d]^{f} \ar@<-0.5ex>[d]_{g} \\
+Q' \ar[r]_-{q'} & R[q] \ar@<0.5ex>[r]^-{q_1} \ar@<-0.5ex>[r]_-{q_2} & Q \ar[r]_{q} & B}$$
+Ora, usando $\widehat{F},$  ci trasferiamo in $\ctB$ ricordandoci che la parte congiuntamente monomorfica della fattorizzazione della 
+coppia $(F(b_1),F(b_2))$ \`e una relazione d'equivalenza (vedi primo punto della dimostrazione) e quindi \`e la coppia nucleo del suo
+coequalizzatore
+$$\xymatrix{FP' \ar@<0.5ex>[d]^{F(\varphi')} \ar@<-0.5ex>[d]_{F(\psi')} \ar@<0.5ex>[rr]^-{F(a_1)} \ar@<-0.5ex>[rr]_-{F(a_2)} & & 
+FP \ar@<0.5ex>[d]^{F(\varphi)} \ar@<-0.5ex>[d]_{F(\psi)} \ar[rr]^-{\widehat{F}(p)} 
+& & \widehat{F}A \ar@<0.5ex>[d]^{\widehat{F}(f)} \ar@<-0.5ex>[d]_{\widehat{F}(g)} \\
+FQ \ar@<0.5ex>[rr]^-{F(b_1)} \ar@<-0.5ex>[rr]_-{F(b_2)} \ar[rd]_{r} & & FQ \ar[rr]_-{\widehat{F}(q)} & & B \\
+& R[\widehat{F}(q)] \ar@<0.5ex>[ru]^{j_1} \ar@<-0.5ex>[ru]_{j_2} }$$
+Se ora supponiamo che $\widehat{F}(f) = \widehat{F}(g),$ la proprit\`a universale della coppia nucleo fornisce una freccia 
+$\alpha \colon FP \to R[\widehat{F}(q)]$ tale che $j_1 \cmp \alpha = F(\psi)$ e $j_2 \cmp \alpha = F(\varphi).$ Poich\'e $r$ \`e un epi
+regolare e $FP$ \`e proiettivo regolare, otteniamo una freccia $\beta \colon FP \to FQ$ tale che $r \cmp \beta = \alpha.$ Poich\'e
+$F$ \`e pieno, esiste una freccia $\gamma \colon P \to Q$ tale che $F(\gamma)=\beta.$ Inoltre, visto che $F$ \`e fedele, tale freccia
+$\gamma$ soddisfa le condizioni $a_1 \cmp \gamma = \psi$ e $a_2 \cmp \gamma = \varphi.$ Ne deduciamo dunque che
+$$g \cmp p = q \cmp \psi = q \cmp a_1 \cmp \gamma = q \cmp a_2 \cmp \gamma = q \cmp \varphi = f \cmp p$$
+Possiamo finalmente concludere che $f = g$ perch\'e $p$ \`e un epi. 
+\end{proof} 
+
+\begin{exercise}\label{ex_cop_proiettiva}
+In questo esercizio proponiamo alla lettrice di mostrare in che senso si pu\`o invertire la proposizione \ref{prop_cop_proiettiva}
+\begin{enumerate}
+\item Sia $\ctP(\ctA)$ una coperture proiettiva regolare di una categoria $\ctA.$ Un oggetto di $\ctA$ \`e proiettivo regolare
+se e solo se \`e un retratto di un oggetto di $\ctP(\ctA).$
+\item Siano $\ctA$ e $\ctB$ due categorie esatte con abbastanza proiettivi regolari. Ogni equivalenza $\ctA \simeq \ctB$
+si restringe a un'equivalenza fra le sottocategorie piene degli oggetti proiettivi regolari.
+\end{enumerate}
+\end{exercise} 
+
+\color{black}
