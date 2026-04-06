@@ -11,3 +11,801 @@ rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
 % \input{cap/02/sec/05-costruzioni-con-limiti.tex}
 \input{cap/02/sec/06-limiti-pratica-matematica.tex}
 \input{cap/02/sec/07-limiti-e-funtori.tex}
+
+\section{Addenda \& paralipomena}\color{gray}
+\begin{remark}\label{esercizio_epi}
+	\hfill
+	\begin{enumerate}
+		\item Se una categoria ha gli equalizzatori, allora nella definizione di epi estremale la condizione di essere un epi è ridondante.
+		\item Se una categoria ha i prodotti binari, allora nella definizione di epi forte la condizione di essere un epi è ridondante.
+		\item Se una categoria ha i limiti finiti, allora ogni epi estremale è un epi forte.
+	\end{enumerate}
+\end{remark}
+
+\paragraph{Sulla definizione di limite}
+
+\begin{color}{blue}
+	Sicuramente più modi di esprimere la definizione di limite saranno proposti. Avrei bisogno dell'osservazione seguente per uso
+	già nel capitolo sui limiti e poi nel capitolo sulle categorie algebriche.
+\end{color}
+
+\begin{definition}\label{def_preserv_limiti}
+	Consideriamo una categoria piccola \(\ctD\) e due funtori
+	\[\xymatrix{\ctD \ar[r]^-{F} & \ctC \ar[r]^-{G} & \ctB}\]
+	e sia \(\lim_{\ctD}(F) = \langle L \in \ctC, \{\pi_D \colon L \to F(D)\}_{D \in \ctD}\rangle\). Diciamo che \(G\) preserva il limite di \(F\) se
+	\[\lim_{\ctD}(G \cdot F) =  \langle G(L) \in \ctB, \{G(\pi_D) \colon G(L) \to G(FD)\}_{D \in \ctD}\rangle\]
+\end{definition}
+
+\begin{remark}\label{oss_rappr_lim}
+	Le definizione \ref{def_preserv_limiti} permette di parafrasare la definizione stessa di limite. Più precisamente:
+	\begin{enumerate}
+		\item Sia \(\ctC\) una categoria e fissiamo un oggeto \(C \in \ctC\). Il funtore rappresentabile covariante \(\ctC(C,-) \colon \ctC \fun \ctSet\)
+		      preserva tutti i limiti che esistono in \(\ctC\).
+		\item Sia \(F \colon \ctD \fun \ctC\) un funtore definito su una categoria piccola \(\ctD\). Un cono naturale \(\{\pi_D \colon L \to F(D)\}_{D \in \ctD}\)
+		      è il limite di \(F\) se (e solo se) per ogni \(C \in \ctC\) il cono
+		      \[\{\pi_D \cdot - \colon \ctC(C,L) \to \ctC(C,FD)\}_{D \in \ctD}\]
+		      è il cono limite del funtore composto \(\ctC(C,-) \cdot F \colon \ctD \fun \ctC \fun \ctSet\).
+	\end{enumerate}
+	La verifica del primo punto è immediata. La verifica del secondo punto è un'applicazione interessante del lemma di Yoneda. \\
+	Attenzione alla controvarianza quando si dualizzano le affermazioni precedenti. Il funtore \(\ctC(-,C)\) preserva i limiti di \(\ctC^{\op}\),
+	ovvero trasforma i colimiti di \(\ctC\) in limiti in \(\ctSet\).
+\end{remark}
+
+Una condizione molto forte su un limite è quella di essere assoluto.
+
+\begin{definition}\label{def_lim_assoluto}
+	Sia \(F \colon \ctD \fun \ctC\) un funtore definito su una categoria piccola e che ammette limite. Il limite di \(F\) è assoluto
+	se è preservato da tutti i funtori \(G \colon \ctC \fun \ctB\).
+\end{definition}
+
+La seguente proprosizione fornisce un esempio di (co)limite assoluto.
+
+\begin{proposition}\label{prop_equal_ass}
+	In una categoria \(\ctC\), un oggetto \(R\) sia un retratto di un oggetto \(A\), ovvero supponiamo che esistano due frecce
+	\(s \colon R \to A\) ed \(r \colon A \to R\)
+	%\[\xymatrix{R \ar[r]^-{s} & A \ar[r]^-{r} & R}\]
+	tali che \(r \cdot s = \id_R\). I due diagrammi seguenti sono, rispettivamente, un equalizzatore assoluto e un coequalizzatore assoluto:
+	\(\)\xymatrix{R \ar[r]^-{s} & A \ar@<0.5ex>[r]^-{s \cdot r} \ar@<-0.5ex>[r]_-{\id_A} & A}
+	\;\;\;\;\;\;\;\;\;\;\;\;
+	\xymatrix{A \ar@<0.5ex>[r]^-{s \cdot r} \ar@<-0.5ex>[r]_-{\id_A} & A \ar[r]^-{r} & R}\(\)
+\end{proposition}
+
+\begin{proof} Trattiamo il caso dell'equalizzatore. Chiaramente \(s\) equalizza perché \(s \cdot r \cdot s = s \cdot \id_R = \id_A \cdot s\).
+	Sia ora \(x \colon X \to A\) una freccia tale che \(s \cdot r \cdot x = x\). La fattorizzazione di \(x\) attraverso \(s\) è \(r \cdot x\) ed è unica
+	perché \(s\) è un mono (spezzante). Se ora \(F \colon \ctC \fun \ctB\) è un funtore, si ha \(F(r) \cdot F(s) = \id_{FR}\). Quindi l'argomento
+	usato per mostrare che \(s\) è l'equalizzatore di \(s \cdot r\) e \(\id_A\) si può ripetere per mostrare che \(F(s)\) è l'equalizzatore di
+	\(F(s \cdot r)\) e \(F(\id_A)\).
+\end{proof}
+
+\paragraph{A propositio del teorema di esistenza dei colimiti}\label{sec_exist_colim}
+
+\begin{color}{blue}
+	Propongo la seguente formulazione, prima nel caso finito e poi nel caso generale, del teorema generale sull'esistenza dei (co)limiti.
+	Il primo esempio prepara il teorema \ref{th_colim_piccoli}.
+	L'esercizio conclusivo non c'entra niente con il teorema e può andare ovunque a condizione che si disponga delle nozioni di
+	oggetto zero e di coprodotto.
+\end{color}
+
+\hfill
+
+\noindent
+Nella prossima proposizione vedremo due esempi, collegati fra di loro, di colimiti filtrati. Il secondo esempio sarà utilizzato nella
+dimostrazione del teorema \ref{th_colim_piccoli}, teorema che permette di dedurre l'esistenza di tutti i colimiti piccoli dall'esistenza
+di alcuni colimiti particolari.
+
+\begin{proposition}\label{prop_coprod_colimfiltr}
+	\hfill
+	\begin{enumerate}
+		\item Ogni insieme è il colimite dei suoi sottoinsiemi finiti. Inoltre tale colimite è filtrato perché l'insieme ordinato
+		      \(\ctP_f(I)\) dei sottoinsiemi finiti di un insieme \(I\) è chiaramente una categoria filtrata.
+		\item Sia \(\ctC\) una categoria con i coprodotti finiti e sia \(\{X_i\}_{i \in I}\) una famiglia di oggetti di \(\ctC\) indicizzata da
+		      un insieme \(I\). Se il coprodotto della famiglia \(\{X_i\}_{i \in I}\) esiste, allora tale coprodotto è il colimite filtrato dei suoi sottocoprodotti
+		      finiti:
+		      \[\coprod_{i \in I}X_i = \colim_{A \in {\cal P}_f(I)}\left(\coprod_{a \in A}X_a\right)\]
+		      La stessa formula esprime il fatto che se in \(\ctC\) esistono i coprodotti finiti e i colimiti filtrati, allora in \(\ctC\) esistono tutti i coprodotti.
+	\end{enumerate}
+	Segnaliamo che i colimiti filtrati di questi esempi vengono chiamati anche colimiti diretti in quanto la categoria di base \(\ctP_f(I)\)
+	utilizzata per definirli è un insieme ordinato diretto, cioè non vuoto e tale che ogni coppia di oggetti ha un maggiorante (vedi
+	esempio \ref{esempio_2.5.42}).
+\end{proposition}
+
+\begin{proof} 1. La dimostrazione è facile e lasciata come esercizio per la lettrice. Alternativamente, il punto 1 si può trattare come
+	caso particolare del punto 2, basta vedere un insieme \(I\) come il coprodotto di copie del singleton, una copia per ogni elemento di \(I\). \\
+	2. Sia \(A \in \ctP_f(I)\), e sia
+	\[s_A^a \colon X_a \to \coprod_{a \in A}X_a\]
+	il coprodotto con le iniezioni canoniche. Consideriamo il funtore \(S \colon \ctP_f(I) \fun \ctC\) che associa ad \(A \in \ctP_f(I)\) il coprodotto
+	\(\coprod_{a \in A}X_a\). A un'inclusione \(A \subseteq B\), il funtore \(S\) associa la freccia \(f^A_B\) definita dalla commutatività,
+	per ogni \(a \in A\), del diagramma seguente:
+	\(\)\xymatrix{\coprod_{a \in A} X_a \ar[rr]^-{f^A_B} & & \coprod_{b \in B} X_b \\
+	& X_a \ar[lu]^{s^a_A} \ar[ru]_{s^a_B} }\(\)
+	\(\bullet\) Se si assume l'esistenza del coprodotto \(\coprod_{i \in I}X_i\) con le iniezioni \(s^i_I \colon X_i \to \coprod_{i \in I}X_i\)
+	allora tale coprodotto è anche il colimite del funtore \(S\).  Per ogni \(A \in \ctP_f(I)\), l'iniezione \(\sigma_A\) nel colimite è
+	data dall'unica freccia che rende commutativo, per ogni \(a \in A\), il diagramma seguente:
+	\(\)\xymatrix{\coprod_{a \in A} X_a \ar[rr]^-{\sigma_A} & & \coprod_{i \in I} X_i \\
+	& X_a \ar[lu]^{s^a_A} \ar[ru]_{s^a_I} }\(\)
+	\(\bullet\) Viceversa, se si assume l'esistenza del colimite del funtore \(S\) con iniezioni canoniche
+	\[\sigma_A \colon \coprod_{a \in A}X_a \to \colim_{A \in \ctP_f(I)}(\coprod_{a \in A}X_a)\]
+	allora tale colimite fornisce il coprodotto \(\coprod_{i \in I}X_i\). Come iniezione nel coprodotto si prende, per ogni \(i \in I\), la freccia
+	\[\sigma_{\{i\}} \colon X_i \to \colim_{A \in \ctP_f(I)}(\coprod_{a \in A}X_a)\]
+	Segnaliamo solo che per verificare la condizione di unicità nella proprietà universale del coprodotto è essenziale utilizzare la
+	naturalità della famiglia \(\{\sigma_A \mid A \in \ctP_f(I)\}\). Lasciamo alla lettrice il resto della verifica.
+\end{proof}
+
+\begin{theorem}\label{th_colim_fin}
+	Sia \(\ctA\) una categoria. Le condizioni seguenti sono equivalenti:
+	\begin{enumerate}
+		\item \(\ctA\) ha i colimiti finiti.
+		\item \(\ctA\) ha i coprodotti finiti e i coequalizzatori riflessivi.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{color}{blue}È la costruzione usuale, ma si osserva che la coppia di frecce parallele di cui si prende il
+		coequalizzatore è un grafo riflessivo in \(\ctA\). \end{color}
+\end{proof}
+
+\begin{theorem}\label{th_colim_piccoli}
+	Sia \(\ctA\) una categoria. Le condizioni seguenti sono equivalenti:
+	\begin{enumerate}
+		\item \(\ctA\) ha i colimiti piccoli.
+		\item \(\ctA\) ha i colimiti finiti e i colimiti filtranti.
+		\item \(\ctA\) ha i coprodotti finiti, i coequalizzatori riflessivi e i colimiti filtranti.
+		\item \(\ctA\) ha i coprodotti finiti e i colimiti setaccianti.
+		\item \(\ctA\) ha i coprodotti e i coequalizzatori riflessivi.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{color}{blue} Piuttosto che cercare la dimostrazione più rapida possibile, qua mi sembrerebbe
+		interessante mettere in evidenza gli argomenti interessanti delle varie implicazioni.\end{color} \\
+	\(2 \Rightarrow 1 \colon\) ogni colimite è il colimite del diagramma filtrato dei suoi sotto-colimiti finiti. \\
+	\(2 \Leftrightarrow 3 \colon\) basta applicare il teorema \ref{th_colim_fin}.\\
+	\(4 \Rightarrow 3 \colon\) i colimiti filtranti e i coequalizzatori riflessivi sono colimiti setaccianti. \\
+	\(3 \Rightarrow 5 \colon\) ogni coprodotto è il colimite del diagramma filtrato dei sotto-coprodotti finiti. \\
+	\(5 \Rightarrow 1 \colon\) si adatta in modo ovvio la costruzione fatta nella prova del teorema \ref{th_colim_fin}. \\
+	Se si aggiunge che la condizione 1 implica ovviamente ognuna delle altre condizioni, la prova è completa.
+\end{proof}
+
+\begin{exercise}\label{exer_copr_retr}
+	In questo esercizio ritroviamo una situazione ben nota nel caso dei monoidi, dei gruppi (abeliani o no), dei moduli
+	su un anello, degli anelli senza unità. Sia \(\ctC\) una categoria con oggetto zero. Sia \(\{X_i\}_{i \in I}\) una famiglia
+	di oggetti di \(\ctC\) e sia \(X = \coprod_{i \in I}X_i\) il loro coprodotto. Ogni oggetto \(X_i\) è un retratto di \(X\).
+\end{exercise}
+
+La prossima proprietà si può esprimere dicendo che limiti e
+colimiti nelle categorie di funtori si calcolano ``punto a punto''. Nelle proposizioni \ref{prop_lim_puntuali} e \ref{prop_fubini} e
+nell'osservazione \ref{rem_fubini} trattiamo solo il caso dei limiti perché tutto si dualizza in modo ovvio. In particolare, nei
+corollari \ref{cor_fun_cat_compl} e \ref{cor_lim_cat_pref} diamo per acquisita la duale della proposizione \ref{prop_lim_puntuali}.
+
+\begin{proposition}\label{prop_lim_puntuali}
+	Siano \(\ctB,\ctC,\ctD\) tre categorie, con \(\ctC\) e \(\ctD\) piccole. Consideriamo un funtore \(F \colon \ctD \fun \ctB^{\ctC}\) e,
+	per ogni oggetto \(C \in \ctC\), il funtore di valutazione \(\mathrm{ev}_C \colon \ctB^{\ctC} \fun \ctB\). Se per ogni \(C \in \ctC\)
+	\[\lim(\mathrm{ev}_C \cdot F) = \langle F^C \in \ctB,\{\pi^C_D \colon F^C \to (FD)(C)\}_{D \in \ctD}\rangle\]
+	allora
+	\[\lim(F) = \langle F^- \colon \ctC \fun \ctB,\{\pi^-_D \colon F^- \nat FD\}_{D \in \ctD}\rangle\]
+\end{proposition}
+
+\begin{proof} Ci limitiamo a esplicitare la definizione del funtore \(F^- \colon \ctC \to \ctB\) sulle frecce. Sia \(c \colon C \to C'\)
+	una freccia in \(\ctC\). La proprietà universale di \(F^{C'}\) fornisce un'unica freccia \(F^c\) tale che il diagramma
+	\(\)\xymatrix{F^C \ar[r]^-{\pi^C_D} \ar[d]_{F^c} & (FD)(C) \ar[d]^{(FD)(c)} \\
+	F^{C'} \ar[r]_-{\pi^{C'}_D} & (FD)(C')}\(\)
+	commuta per ogni \(D \in \ctD\). Osserviamo che la commutatività di tale diagramma esprime anche il fatto che la famiglia
+	\(\pi^-_D = \{\pi^C_D\}_{C \in \ctC}\) è una trasformazione naturale \(F^- \nat FD\).
+\end{proof}
+
+\begin{corollary}\label{cor_fun_cat_compl}
+	Siano \(\ctB,\ctC\) due categorie, con \(\ctC\) piccola.
+	\begin{enumerate}
+		\item Se \(\ctB\) è (finitamente) completa, anche \(\ctB^{\ctC}\) lo è.
+		      Se \(\ctB\) è (finitamente) cocompleta, anche \(\ctB^{\ctC}\) lo è.
+		\item I mono in \(\ctB^{\ctC}\) sono le trasformazioni naturali le cui componenti sono dei mono in \(\ctB\).
+		      Gli epi in \(\ctB^{\ctC}\) sono le trasformazioni naturali le cui componenti sono degli epi in \(\ctB\).
+	\end{enumerate}
+\end{corollary}
+
+\begin{corollary}\label{cor_lim_cat_pref}
+	Sia \(\ctC\) una categoria piccola.
+	\begin{enumerate}
+		\item La categoria \(\ctSet^{\ctC}\) è completa e cocompleta.
+		\item I mono in \(\ctSet^{\ctC}\) sono le trasformazioni naturali le cui componenti sono delle funzioni iniettive.
+		      Gli epi in \(\ctSet^{\ctC}\) sono le trasformazioni naturali le cui componenti sono delle funzioni suriettive.
+	\end{enumerate}
+\end{corollary}
+
+La situazione analizzata nei corollari \ref{cor_fun_cat_compl} e \ref{cor_lim_cat_pref} sarà ulteriormente
+approfondita quando disporremo delle nozioni di mono regolare e di epi regolare, vedi in particolare l'esempio
+\ref{esempio_set_reg}.
+
+Il prossimo risultato viene qualche volta chiamato ``teorema di Fubini'' per i limiti in quanto esprime il limite di un funtore
+definito su una categoria prodotto come due limiti iterati. Per un funtore \(F \colon \ctD \fun \ctB^{\ctC}\) e per il funtore composto
+\(\mathrm{ev}_C \cdot F \colon \ctD \fun \ctB^{\ctC} \fun \ctC\)  usiamo le notazioni
+\(\)\lim(\mathrm{ev}_C \cdot F) = \langle F^C \in \ctB,\{\pi^C_D\}_{D \in \ctD}\rangle
+\;\;\;\;\;\;
+\lim(F) = \langle F^- \colon \ctC \fun \ctB,\{\pi^-_D\}_{D \in \ctD}\rangle\(\)
+introdotte nella proprietà \ref{prop_lim_puntuali}.
+
+\begin{proposition}\label{prop_fubini}
+	Siano \(\ctB,\ctC,\ctD\) tre categorie, con \(\ctC\) e \(\ctD\) piccole, e sia \(G \colon \ctC \times \ctD \to \ctB\) un funtore.
+	Consideriamo anche il funtore \(F \colon \ctD \fun \ctB^{\ctC}\) definito da \(FD = G(-,D)\). Se per ogni \(C \in \ctC\)
+	esiste \(\lim(\mathrm{ev}_C \cdot F)\) e se
+	\[\lim(F^{-}) = \langle P \in \ctB, \{p_C \colon P \to F^C\}_{C \in \ctC}\rangle\]
+	allora
+	\[\lim(G) = \langle P \in \ctB, \{\pi^C_D \cdot p_C \colon P \to F^C \to G(C,D)\}_{(C,D) \in \ctC \times \ctD}\rangle\]
+\end{proposition}
+
+\begin{proof} La naturalità della famiglia \(\{\pi^C_D \cdot p_C\}\) è espressa dalla commutatività del seguente
+	diagramma, dove \((c,d) \colon (C,D) \to (C',D')\) è una freccia nella categoria \(\ctC \times \ctD\)
+	\(\)\xymatrix{ & P \ar[ld]_{p_C} \ar[rd]^{p_{C'}} \ar@{}[d]|{(1)} \\
+	F^C \ar[rr]^-{F^c} \ar[rd]^{\pi^C_{D'}} \ar[dd]_{\pi^C_D} & & F^{C'} \ar[dd]^{\pi^{C'}_{D'}} \\
+	& G(C,D') \ar[rd]^{G(c,\id)} \ar@{}[ru]|{(3)} \ar@{}[l]|-{(2)} \ar@{}[d]|{(4)} \\
+	G(C,D) \ar[ru]^{G(\id,d)} \ar[rr]_-{G(c,d)} & & G(C',D')}\(\)
+	Infatti le componenti (1) e (2) sono, rispettivamente, la naturalità della famiglia \(\{p_C\}\) e della famiglia \(\{\pi^C_D\}\),
+	la componente (3) è la definizione del funtore \(F^{-}\) sulle frecce e la componente (4) è la definizione della composizione
+	nella categoria prodotto \(\ctC \times \ctD\). L'universalità della famiglia \(\{\pi^C_D \cdot p_C\}\) si ottiene in due
+	tappe: se \(\{q_{C,D} \colon B \to G(C,D)\}_{(C,D) \in \ctC \times \ctD}\) è una famiglia naturale,
+	la proprietà universale di \(\lim(\mathrm{ev}_C \cdot F)\) fornisce, per ogni \(C \in \ctC\), un'unica freccia \(q^C \colon B \to F^C\)
+	tale che \(\pi^C_D \cdot q^C = q_{C,D}\) per ogni \(D \in \ctD\). Dopodiché la proprietà universale di \(\lim(F^{-})\) fornisce
+	un'unica freccia \(q \colon B \to P\) tale che \(p_C \cdot q = q^C\) per ogni \(C \in \ctC\). Il resto della dimostrazione è una verifica semplice.
+\end{proof}
+
+\begin{remark}\label{rem_fubini}
+	Nella situazione della proprietà \ref{prop_fubini}, si può scambiare il ruolo delle due categorie piccole \(\ctC\) e \(\ctD\).
+	Se chiamiamo \(H \colon \ctC \fun \ctB^{\ctD}\) il funtore definito da \(H(C) = G(C,-)\) e se i limiti in \(\ctB\)
+	\[\lim(\mathrm{ev}_D \cdot H) = \langle H^D \in \ctB, \{\tau^D_C \colon H^D \to G(C,D)\}_{C \in \ctC}\rangle\]
+	\[\lim(H^{-}) = \langle T \in \ctB, \{t_D \colon T \to H^D\}_{D \in \ctD}\rangle\]
+	esistono, si ottiene che
+	\[\lim(G) = \langle T \in \ctB, \{\tau^D_C \cdot t_D \colon T \to H^D \to G(C,D)\}_{(C,D) \in \ctC \times \ctD}\rangle\]
+	Poiché il limite di \(G\) è essenzialmente unico, se ne deduce che le frecce \(p \colon P \to T\) e \(t \colon T \to P\)
+	che commutano con le proiezioni
+	\(\)\xymatrix{P \ar@<0.5ex>[rr]^-{p} \ar[d]_{p_C} & & T \ar@<0.5ex>[ll]^-{t} \ar[d]^{t_D} \\
+	F^C \ar[r]_-{\pi^C_D} & G(C,D) & H^D \ar[l]^-{\tau^D_C}}\(\)
+	realizzano un isomorfismo. Usando una notazione meno precisa ma suggestiva, si può riscrivere tale isomorfismo come
+	\[\lim_{\ctC}(\lim_{\ctD}G(C,D)) \simeq \lim_{\ctC \times \ctD}G \simeq \lim_{\ctD}(\lim_{\ctC}G(C,D))\]
+	che esprime l'idea che i limiti commutano con i limiti.
+\end{remark}
+
+\begin{example}\label{ex_comm_lim}
+	Se si considera una categoria \(\ctB\) con prodotti ed equalizzatori e se come categorie \(\ctC\) e \(\ctD\) si scelgono la
+	categoria discreta con due oggetti distinti e la categoria con due oggetti distinti e due frecce parallele distinte, l'isomorfismo
+	dell'osservazione \ref{rem_fubini} esprime il fatto che il prodotto di due equalizzatori coincide con l'equalizzatore delle frecce
+	prodotto: nel diagramma commutativo
+	\(\)\xymatrix{E_1 \ar[r] & X_1 \ar@<0.5ex>[r] \ar@<-0.5ex>[r] & Y_1 \\
+		E \ar[u] \ar[r] \ar[d] & X_1 \times X_2 \ar@<0.5ex>[r] \ar@<-0.5ex>[r] \ar[u] \ar[d] & Y_1 \times Y_2 \ar[u] \ar[d] \\
+		E_2 \ar[r] & X_2 \ar@<0.5ex>[r] \ar@<-0.5ex>[r] & Y_2}\(\)
+	se la prima e la terza riga sono equalizzatori e se la seconda e la terza colonna sono prodotti, allora
+	la seconda riga è un equalizzatore se e solo se la prima colonna è un prodotto.
+\end{example}
+
+\begin{exercise}\label{exer_lim_puntuali}
+	Torniamo alla situazione della proprietà \ref{prop_lim_puntuali}: siano \(\ctB,\ctC,\ctD\) tre categorie, con \(\ctC\)
+	e \(\ctD\) piccole. Consideriamo due funtori \(F \colon \ctD \fun \ctB^{\ctC}\) e \(H \colon \ctC \fun \ctB^{\ctD}\)
+	legati mutualmente dalla condizione
+	\[(FD)(C) = (HC)(D)\]
+	per ogni \(D \in \ctD\) e per ogni \(C \in \ctC\), e analogamente per le frecce (lasciamo alla lettrice di esprimere precisamente
+	cosa ciò significhi). Se in \(\ctB\) esistono i limiti dei funtori definiti su \(\ctC\), allora il limite di \(H\) si può descrivere
+	nel modo seguente:
+	\(\)\begin{array}{rcl}
+		\lim_{\ctC}(H) & = & \xymatrix{\ctD \ar[r]^-{F}     & \ctB^{\ctC} \ar[r]^-{\lim_{\ctC}} & \ctB}                                     \\
+		               & = & \xymatrix{\ctD \ar[r]^{\Delta} & \ctD^{\ctC} \ar[r]^{\widehat{F}}  & \ctB^{\ctC} \ar[r]^-{\lim_{\ctC}} & \ctB}
+	\end{array}\(\)
+	dove \(\Delta\) è il funtore diagonale definito da \(\Delta(D)(C) = D\) per ogni \(C \in \ctC\) e \(\widehat{F}\) è l'unico funtore
+	tale che \(\widehat{F} \cdot \Delta = F\) o, equivalentemente, tale che \(\mathrm{ev}_C \cdot \widehat{F} = H(C) \cdot \mathrm{ev}_C\)
+	per ogni \(C \in \ctC\). Naturalmente si può trattare in modo analogo il limite di \(F\).
+\end{exercise}
+
+Terminiamo questa sezione con un'applicazione delle proposizioni \ref{prop_lim_puntuali} e \ref{prop_fubini} in cui consideriamo la
+categoria dei funtori \(\ctB^{\ctC}\) senza imporre che \(\ctC\) sia piccola. Ci prendiamo questa libertà
+perché tale categoria di funtori ci serve solo per esprimere la condizione di retrazione fra due funtori.
+
+\begin{proposition}\label{prop_funt_retratto}
+	Consideriamo due funtori \(G,H \colon \ctC \fun \ctB\). Se \(G\) è un retratto di \(H\) nella categoria \(\ctB^{\ctD}\), allora \(G\)
+	preserva tutti i limiti preservati da \(H\).
+\end{proposition}
+
+\begin{proof}
+	Siano \(\sigma \colon G \nat H\) e \(\rho \colon H \nat G\) due trasformazioni naturali che testimoniano che \(G\) è un retratto di \(H\).
+	Notiamo \(\ctI = \{x \rightrightarrows y\}\) la categoria con due frecce parallele distinte e \(I \colon \ctI \to \ctB^{\ctD}\) il funtore che
+	associa a \(\ctI\) le due trasformazioni naturali \(\sigma \cdot \rho \colon H \nat H\) e \(\id \colon H \nat H\). Per la proposizione
+	\ref{prop_equal_ass} sappiamo che \(G\) è il limite di \(I\). Sia ora \(F \colon D \fun \ctC\) un funtore il cui limite esiste ed è preservato
+	da \(H\). La prova che \(G\) preserva il limite di \(F\) è fornita dalla seguente catena di isomorfismi naturali:
+	\(\)\begin{array}{rclcl}
+		G(\lim_{\ctD}FD) & \simeq & (\lim_{\ctI}Ii)(\lim_{\ctD}FD)     &  & (G \mbox{ è un retratto di } H)               \\
+		                 & \simeq & \lim_{\ctI}((Ii)(\lim_{\ctD}FD))   &  & (\mbox{proposizione \ref{prop_lim_puntuali}}) \\
+		                 & \simeq & \lim_{\ctI}(\lim_{\ctD}((Ii)(FD))) &  & (H \mbox{ preserve } \lim_{\ctD}FD)           \\
+		                 & \simeq & \lim_{\ctD}(\lim_{\ctI}((Ii)(FD))) &  & (\mbox{proposizione \ref{prop_fubini}})       \\
+		                 & \simeq & \lim_{\ctD}((\lim_{\ctI}Ii)(FD))   &  & (\mbox{proposizione \ref{prop_lim_puntuali}}) \\
+		                 & \simeq & \lim_{\ctD}G(FD)                   &  & (G \mbox{ è un retratto di } H)
+	\end{array}\(\)
+	dove abbiamo indicato con \(i\) un oggetto generico di \(\ctI\).
+\end{proof}
+
+\paragraph{Sulla commutatività dei limiti con i colimiti}\label{sec_comm_limcolim}
+
+\begin{color}{blue}
+	Questa parte dovrebbe essere la prosecuzione naturale della sezione precedente.
+\end{color}
+
+\begin{remark}\label{rem_noncomm_limcolim}
+	È importante chiarire che, benché la proposizione \ref{prop_fubini} valga tanto per i limiti che (nella sua versione duale)
+	per i colimiti, in generale i limiti non commutano con i colimiti. Precisiamo il problema: se \(G \colon \ctC \times \ctD \fun \ctB\)
+	è un funtore, si ha effettivamente una freccia canonica \(\delta\) determinata dalla commutatività del seguente diagramma,
+	dove le frecce senza nome sono le frecce canoniche del limite e del colimite
+	\(\)\xymatrix{\colim_{\ctD}(\lim_{\ctC}G(C,D)) \ar[rr]^{\delta} & & \lim_{\ctC}(\colim_{\ctD}G(C,D)) \ar[d] \\
+	\lim_{\ctC}G(C,D) \ar[u] \ar[r] & G(C,D) \ar[r] & \colim_{\ctD}G(C,D)}\(\)
+	(ammesso evidentemente che tali limiti e colimiti esistano in \(\ctB\)), ma in generale tale freccia non è un isomorfismo,
+	come mostra il seguente esempio.
+\end{remark}
+
+\begin{example}\label{ex_noncomm_limcolim}
+	Prendiamo \(\ctC = \ctD = \{0,1\}\), la categoria discreta con due oggetti distinti, e \(G \colon \ctC \times \ctD \fun \ctSet\)
+	il funtore costante che associa a ogni oggetto l'insieme 2 a due elementi. Il dominio e il codominio della freccia \(\delta\)
+	in questo caso sono, rispettivamente, \((2 \times 2) + (2 \times 2)\) e \((2 + 2) \times (2 + 2)\). Per ovvie ragioni di cardinalità,
+	non ci può essere nessuna biiezione fra tali insiemi.
+\end{example}
+
+Nei teoremi \ref{th_caratt_sifted} e \ref{th_caratt_filtr} espliciteremo due casi importanti in cui la freccia \(\delta\) dell'osservazione
+\ref{rem_noncomm_limcolim} è un isomorfismo. Come risultato preliminare alla dimostrazione del teorema \ref{th_caratt_sifted}
+ci occorre una caratterizzazione dei funtori iniziali in termini di colimiti. Ci limitiamo a dimostrare solo una delle due implicazioni
+(quella che interviene nella prova del teorema), la seconda sarà proposta come esercizio. Ricordiamo che una categoria \(\ctD\) è
+connessa se è non vuota e se per ogni coppia di oggetti \(X,Y \in \ctD\) esiste uno zig-zag di frecce che li connette
+\[X \longleftarrow D_1 \longrightarrow D_2 \longleftarrow D_3 \longrightarrow D_4 \ldots\ldots D_{n-1} \longleftarrow D_n \longrightarrow Y\]
+(vedi esercizio \ref{E.2.6.7}). Ricordiamo anche che un funtore \(F \colon \ctC \fun \ctD\) è iniziale se, per ogni oggetto \(D \in \ctD\), la
+categoria comma \(D/F\) è connessa (vedi definizione \ref{2.8.61}).
+
+\begin{lemma}\label{lemma_caract_funt_iniz}
+	Un funtore \(F \colon \ctC \fun \ctD\) è iniziale se e solo se per ogni categoria \(\ctA\) e per ogni funtore \(G \colon \ctD \fun \ctA\),
+	l'esistenza del colimite di \(G \cdot F\) implica che esiste il colimite di \(G\) e che la freccia canonica
+	\[\beta \colon \colim_{\ctC}(G \cdot F) \to \colim_{\ctD}(G)\]
+	è un isomorfismo.
+\end{lemma}
+
+\begin{proof} Precisiamo che \(\beta\) è l'unica freccia tale che il diagramma
+	\(\)\xymatrix{\colim_{\ctC}(G \cdot F) \ar[rr]^-{\beta} & & \colim_{\ctD}(G) \\
+	& G(FC) \ar[lu]^{\sigma_C} \ar[ru]_{s_{FC}} }\(\)
+	commuta per ogni \(C \in \ctC\), dove le frecce \(\sigma_C\) e \(s_D\) sono le iniezioni nel colimite. \\
+	\(\Rightarrow \colon\) Dobbiamo costruire il cocono colimite \(\{s_D \colon GD \to \colim_{\ctC}(G \cdot F)\}_{D \in \ctD}\).
+	Per un oggetto \(D \in \ctD\) fissato, la categoria comma \(D/F\) è non vuota (perché connessa). Possiamo dunque scegliere
+	una freccia \(u_D \colon D \to FX\) e porre
+	\[s_D = \sigma_X \cdot G(u_D) \colon GD \to G(FX) \to \colim_{\ctC}(G \cdot F)\]
+	Dobbiamo verificare che \(s_D\) è ben definita, cioè non dipende dalla scelta della freccia \(u_D\). Una volta fatto questo,
+	la verifica che la famiglia \(\{s_D\}_{D \in \ctD}\) è naturale è simile (ma più semplice) e la verifica della proprietà universale
+	è diretta (usando naturalmente la proprietà universale del colimite di \(G \cdot F\)). Supponiamo quindi di avere una seconda
+	freccia \(v_D \colon D \to FY\). Poiché \(D/F\) è connessa, si può trovare uno zig-zag in \(D/F\) che connette \(u_D\) e \(v_D\)
+	(per semplificare la scrittura dei diagrammi utilizzati nella dimostrazione, supponiamo che lo zig-zag sia ridotto a un'unica spanna,
+	ma l'argomento è chiaramente generale), ovvero che si abbia un diagramma commutativo del tipo
+	\(\)\xymatrix{ & D \ar[ld]_{u_D} \ar[d]^{f} \ar[rd]^{v_D} \\
+	FX & FZ \ar[l]^-{Fx} \ar[r]_-{Fy} & FY}\(\)
+	Applicando il funtore \(G\) a tale diagramma, si ottiene
+	\(\)\xymatrix{ & &\colim_{\ctC}(G \cdot F) \\
+	G(FX) \ar[rru]^{\sigma_X} & & & & GD  \ar[llll]_-{G(u_D)} \ar@{-->}[llu]_{s_D} \ar[llld]_>>>>>>>>>>>>>>>>>>>>{G(f)} \ar[ld]^{G(v_D)} \\
+	& G(FZ) \ar[lu]^{G(Fx)} \ar[ruu]^>>>>>>>>>>{\sigma_Z} \ar[rr]_{G(Fy)} & & G(FY) \ar[luu]_>>>>>>>>>>{\sigma_Y} }\(\)
+	Bisogna mostrare che \(\sigma_X \cdot G(u_D) = \sigma_Y \cdot G(v_D)\) usando la naturalità del cocono \(\{\sigma_C\}_{C \in \ctC} \colon\)
+	\[\sigma_X \cdot G(u_D) = \sigma_X \cdot G(Fx) \cdot G(f) = \sigma_Z \cdot G(f) = \sigma_Y \cdot G(Fy) \cdot G(f) = \sigma_Y \cdot G(v_D)\]
+	Consideriamo che questo sia sufficiente come dimostrazione della prima implicazione.
+\end{proof}
+
+Per la prova del teorema \ref{th_caratt_sifted} ci saranno utili 	anche i seguenti facili esercizi.
+
+\begin{exercise}\label{exer_set_conn}
+	Ogni categoria setacciata è connessa.
+\end{exercise}
+
+\begin{exercise}\label{exer_colim_cost}
+	Sia \(F \colon \ctD \fun \ctB\) un funtore costante di valore \(X \in \ctB\). Se \(\ctD\) è connessa, allora il colimite di \(F\)
+	è \(\{\id_X \colon F(D) = X \to X\}_{D \in \ctD}\). (Se \(X\) è l'oggetto iniziale di \(\ctB\), allora l'ipotesi che \(\ctD\) sia
+	connessa è superflua.)
+\end{exercise}
+
+Enunciamo ora i due teoremi che caratterizzano le categorie setacciate e filtrate in termini di commutazione fra limiti e colimiti.
+Per il momento ci limitiamo a dimostrare l'implicazione \(\Rightarrow\) del teorema \ref{th_caratt_sifted}, in quanto è quella
+che serve nel capitolo \ref{cap_cat_alg}, dedicato alle categorie algebriche, per costruire certi colimiti. L'implicazione opposta e
+la dimostrazione del teorema \ref{th_caratt_filtr} saranno proposte come esercizi.
+
+\begin{theorem}\label{th_caratt_sifted}
+	Una categoria piccola \(\ctD\) è setacciata (nel senso della definizione \ref{2.5.44}) se e solo se per ogni categoria discreta e
+	finita \(\ctC\) e per ogni funtore \(G \colon \ctC \times \ctD \fun \ctSet\), la freccia canonica
+	\[\delta \colon \colim_{\ctD}(\lim_{\ctC}G(C,D)) \to \lim_{\ctC}(\colim_{\ctD}G(C,D))\]
+	è un isomorfismo.
+\end{theorem}
+
+\begin{proof} \(\Rightarrow \colon\) Assumiamo che la categoria \(\ctD\) sia setacciata e mostriamo che la freccia \(\delta\)
+	dell'osservazione \ref{rem_noncomm_limcolim} è un isomorfismo. Poiché \(\ctC\) è finita e discreta, per induzione
+	basta considerare due casi, il caso in  cui \(\ctC\) contiene solo due elementi distinti e il caso in  cui \(\ctC\) è vuota. \\
+	Caso \(\ctC = \{1,2\} \colon\) in questa situazione dare un funtore \(G \colon \ctC \times \ctD \fun \ctSet\) significa scegliere due
+	funtori \(H_1 = G(1,-), H_2 = G(2,-) \colon \ctD \fun \ctSet\). La freccia \(\delta\) è dunque
+	\(\)\xymatrix{\colim_{\ctD}(H_1 \times H_2) \ar[rr]^-{\delta} & & \colim_{\ctD}(H_1) \times \colim_{\ctD}(H_2) \\
+	& H_1(D) \times H_2(D) \ar[lu]^{\sigma_D} \ar[ru]_{s^1_D \times s^2_D} }\(\)
+	dove \(H_1 \times H_2 \colon \ctD \fun \ctSet\) è il prodotto di \(H_1\) e \(H_2\) nella categoria \(\ctSet^{\ctD}\) (vedi proposizione
+	\ref{prop_lim_puntuali}) e \(\{\sigma_D\}_{D \in \ctD}, \{s^1_D\}_{D \in \ctD}, \{s^2_D\}_{D \in \ctD}\) sono i coconi colimite.
+	Osserviamo che
+	\(\)\xymatrix{ & \ctD \times \ctD \ar[rd]^{H_1 \boxtimes H_2} \\
+		\ctD \ar[ru]^{\Delta} \ar[rr]_{H_1 \times H_2} & & \ctSet }\(\)
+	dove \(\Delta(D) = (D,D)\) e \(H_1 \boxtimes H_2)(D_1,D_2) = H_1(D_1) \times H_2(D_2)\) (questo è un caso particolarmente
+	semplice dell'esercizio \ref{exer_lim_puntuali}). Poichè \(\ctD\) è setacciata, il funtore \(\Delta\) è iniziale (teorema \ref{2.8.65})
+	e quindi, per il lemma \ref{lemma_caract_funt_iniz}, si ha un isomorfismo
+	\(\)\beta \colon \colim_{\ctD}(H_1 \times H_2) = \colim_{\ctD}((H_1 \boxtimes H_2) \cdot \Delta) \to
+	\colim_{\ctD \times \ctD}(H_1 \boxtimes H_2)\(\)
+	Per mostrare che \(\delta = \beta\), e quindi che \(\delta\) è un isomorfismo, rimane da provare che
+	\(\)\{s^1_{D_1} \times s^2_{D_2} \colon H_1(D_1) \times H_2(D_2) \to
+	\colim_{\ctD}(H_1) \times \colim_{\ctD}(H_2)\}_{(D_1,D_2) \in \ctD \times \ctD}\(\)
+	è il cocono colimite del funtore \(H_1 \boxtimes H_2\). Questa è una conseguenza del fatto che \(\ctSet\) è cartesiana chiusa
+	(esempio \ref{ex_set_cartcl}). Esplicitamente, dato un cocono
+	\[\{x_{D_1,D_2} \colon H_1(D_1) \times H_2(D_2) \to X\}_{(D_1,D_2) \in \ctD \times \ctD}\]
+	l'unica fattorizzazione \(x \colon \colim_{\ctD}(H_1) \times \colim_{\ctD}(H_2) \to X\) delle frecce \(x_{D_1,D_2}\) attraverso le frecce
+	\(s^1_{D_1} \times s^2_{D_2}\) si ottiene grazie alle seguenti biiezioni naturali fra l'insieme delle funzioni al di sopra della linea
+	orizzontale e l'insieme delle funzioni al di sotto della linea:
+	\(\)\begin{array}{c}
+		x \colon \colim_{\ctD}(H_1) \times \colim_{\ctD}(H_2) \to X           \\ \hline
+		\colim_{\ctD}(H_2) \to \ctSet(\colim_{\ctD}(H_1),X)                   \\ \hline
+		\{H_2(D_2) \to \ctSet(\colim_{\ctD}(H_1),X)\}_{D_2 \in \ctD}          \\ \hline
+		\{\colim_{\ctD}(H_1) \times H_2(D_2) \to X\}_{D_2 \in \ctD}           \\ \hline
+		\{\colim_{\ctD}(H_1) \to \ctSet(H_2(D_2),X)\}_{D_2 \in \ctD}          \\ \hline
+		\{\{H_1(D_1) \to \ctSet(H_2(D_2),X)\}_{D_1 \in \ctD}\}_{D_2 \in \ctD} \\ \hline
+		\{\{x_{D_1,D_2} \colon H_1(D_1) \times H_2(D_2) \to X\}_{D_1 \in \ctD}\}_{D_2 \in \ctD}
+	\end{array}\(\)
+	Caso \(\ctC = \emptyset \colon\) in questa situazione la freccia \(\delta\) è la freccia terminale
+	\[\delta \colon \colim_{\ctD}(T) \to \{\ast\}\]
+	dove \(T \colon \ctD \fun \ctSet\) è l'oggetto terminale della categoria \(\ctSet^{\ctD}\), cioè il funtore costante definito
+	da \(T(D) = \{\ast\}\). Poichè \(\ctD\) è setacciata, è anche connessa (esercizio \ref{exer_set_conn}) e quindi l'esercizio
+	\ref{exer_colim_cost} permette di concludere che \(\delta\) è un isomorfismo.
+\end{proof}
+
+\begin{theorem}\label{th_caratt_filtr}
+	Una categoria piccola \(\ctD\) è filtrata (nel senso della definizione \ref{2.5.41}) se e solo se per ogni categoria
+	finite \(\ctC\) e per ogni funtore \(G \colon \ctC \times \ctD \fun \ctSet\), la freccia canonica
+	\[\delta \colon \colim_{\ctD}(\lim_{\ctC}G(C,D)) \to \lim_{\ctC}(\colim_{\ctD}G(C,D))\]
+	è un isomorfismo.
+\end{theorem}
+
+\begin{remark}\label{oss_unioni_filtr_sg}
+	Per aiutare la lettrice a capire l'interesse dei teoremi \ref{th_caratt_sifted} e \ref{th_caratt_filtr} ricordiamo che, come già detto,
+	nel capitolo \ref{cap_cat_alg} essi saranno utilizzati per mostrare che nelle categorie algebriche i colimiti setacciati si calcolano
+	come colimiti degli insiemi soggiacenti (in un senso che verrà precisato), come è per altro il caso di tutti i limiti nelle categorie
+	algebriche. Per vedere un esempio facile di tale situazione, si può pensare a una famiglia \(\{H_i\}_{i \in I}\) di sottogruppi di un
+	gruppo \(G\), famiglia indicizzata da un insieme \(I\). L'intersezione insiemistica \(\bigcap_{i \in I}H_i\)  (che è un tipo di limite)
+	è chiaramente un sottogruppo di \(G\). Invece l'unione \(\bigcup_{i \in I}H_i\) (che è un colimite) in generale non lo è.
+	Se però l'insieme \(I\) è un insieme ordinato in cui ogni sottoinsieme finito ammette un maggiorante (e in particolare se è un
+	insieme totalmente ordinato), ovvero se, visto come categoria, è filtrata, allora l'unione (che diventa in tal caso un colimite filtrato)
+	è chiaramente un sottogruppo. Questa situazione, benché semplice, è di notevole importanza: si pensi alla dimostrazione
+	del teorema di Krull (ogni ideale proprio di un anello commutativo è contenuto in un ideale massimale) o al fatto che in un
+	anello noetheriano ogni catena ascendente di ideali si stabilizza.
+\end{remark}
+
+
+\paragraph{Completamento per idempotenti}\label{sec_compl_idemp}
+
+\begin{color}{blue}
+	Il completamento per idempotenti di una categoria è un argomento interessante che rientra nei teoremi di dualità
+	per le teorie algebriche. Non so bene quale è il punto migliore del libro per introdurlo. Porta vari nomi: completamento per
+	idempotenti, Cauchy completion, Karoubi envelope, \ldots Esito fra completamento per idempotenti e il più suggestivo
+	completamento di Cauchy, che però, se adottato, richiede una spiegazione.
+\end{color}
+
+\hfill
+
+Vista l'importanza delle categorie del tipo \(\ctSet^{\ctC}\) con \(\ctC\) piccola, ci si può chiedere quando due categorie
+piccole \(\ctC\) e \(\ctD\) danno luogo a categorie di prefasci equivalenti: \(\ctSet^{\ctC} \simeq \ctSet^{\ctD}\).
+Per rispondere in modo esaustivo a tale domanda dobbiamo interessarci alle frecce idempotenti.
+
+\begin{definition}\label{def_idempotente}
+	Una freccia \(f \colon X \to X\) di una categoria è detta idempotente se \(f \cmp f = f\).
+\end{definition}
+
+\begin{remark}\label{oss_idemp_eq}
+	Dalla proposizione \ref{prop_equal_ass} sappiamo che, a partire da un diagramma commutativo del tipo
+	\[ \xymatrix{R \ar[rr]^-{\id_R} \ar[rd]_{s} & & R \\ & X \ar[ru]_{r} } \]
+	si ottengono un equalizzatore assoluto e un coequalizzatore assoluto nel modo seguente
+	\[\xymatrix{R \ar[r]^-{s} & X \ar@<0.5ex>[r]^-{s \cmp r} \ar@<-0.5ex>[r]_-{\id_X} & X}
+		\;\;\;\;\;\;\;\;\;\;\;\;
+		\xymatrix{X \ar@<0.5ex>[r]^-{s \cmp r} \ar@<-0.5ex>[r]_-{\id_X} & X \ar[r]^-{r} & R}\]
+	Osserviamo che la freccia \(s \cmp r \colon X \to X\) è idempootente, infatti \(s \cmp r \cmp s \cmp r = s \cmp \id \cmp r = s \cmp r\). \\
+	Il prossimo lemma chiarisce il legame fra l'idempotenza della freccia \(s \cmp r\) e l'esistenza dell'equalizzatore e del coequalizzatore
+	della coppia \((s \cmp r, \id_X)\).
+\end{remark}
+
+\begin{lemma}\label{lemma_spezz_idemp}
+	Sia \(f \colon X \to X\) una freccia in una categoria \(\ctA\). Le condizioni seguenti sono equivalenti:
+	\begin{enumerate}
+		\item La freccia \(f\) si spezza: esistono \(s \colon R \to X\) ed \(r \colon X \to R\) tali che \(s \cmp r = f\) ed
+		      \(r \cmp s = \id_R\).
+		\item La freccia \(f\) è idempotente ed esiste l'equalizzatore \(\xymatrix{R \ar[r]^-{s} & X \ar@<0.5ex>[r]^-{f} \ar@<-0.5ex>[r]_-{\id_X} & X}\)
+		\item La freccia \(f\) è idempotente ed esiste il coequalizzatore \(\xymatrix{X \ar@<0.5ex>[r]^-{f} \ar@<-0.5ex>[r]_-{\id_X} & X \ar[r]^-{r} & R}\)
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\(1 \Rightarrow 2\) e \(1 \Rightarrow 3 \colon\) Questo è il contenuto della proposizione \ref{prop_equal_ass} e
+	dell'osservazione \ref{oss_idemp_eq}. \\
+	Ora mostriamo che \(2 \Rightarrow 1\), la prova dell'implicazione \(3 \Rightarrow 1\) è duale. Poiché \(f\) è
+	idempotente, si ha \(f \cmp f = f = \id_X \cmp f\). La propriet\'a universale dell'equalizzatore fornisce un'unica freccia
+	\(s \colon X \to R\) tale che \(s \cmp r = f\). Resta da mostrare che \(r \cmp s = \id_R\). Poiché \(s\) è un mono, tale
+	uguaglianza si deduce dal fatto che \(s\) equalizza \(f\) e \(\id_X\), infatti \(s \cmp r \cmp s = f \cmp s = \id_X \cmp s = s \cmp \id_R\).
+\end{proof}
+
+\begin{definition}\label{def_idemp_compl}
+	Una categoria è completa per idempotenti se tutte le sue frecce idempotenti si spezzano.
+\end{definition}
+
+\begin{remark}\label{oss_idCompl_retr}
+	Segnaliamo qualche semplice conseguenza del lemma \ref{lemma_spezz_idemp}:
+	\begin{enumerate}
+		\item Una categoria che ha gli equalizzatori (o i coequalizzatori), è completa per idempotenti.
+		\item Il fatto di essere completa per idempotenti è una condizione autoduale: una categoria \(\ctC\)
+		      è completa per idempotenti se e solo se \(\ctC^{\op}\) lo è.
+		\item Una sottocategoria piena \(\ctB\) di una categoria \(\ctA\) completa per idempotenti è a sua
+		      volta completa per idempotenti se e solo se è chiusa in \(\ctA\) per retratti.
+		\item Lo spezzamento di una freccia idempotente, quando esiste, è unico a meno di isomorfismi.
+	\end{enumerate}
+\end{remark}
+
+Vediamo come si può costruire in modo universale una categoria completa per idemopotenti a partire da una categoria qualsiasi.
+
+\begin{proposition}\label{prop_compl_idemp}
+	Sia \(\ctC\) una categoria. Esiste una categoria completa per idempotenti \(\mathrm{Ic}(\ctC)\) e un funtore
+	\(\mathrm{Ic}_{\ctC} \colon \ctC \fun \mathrm{Ic}(\ctC)\) tale che, per ogni categoria completa per idempotenti \(\ctB\) e per
+	ogni funtore \(F \colon \ctC \fun \ctB\), esiste un funtore \(F' \colon \mathrm{Ic}(\ctC) \fun \ctB\) tale che il diagramma
+	\[ \xymatrix{\ctC \ar[rr]^-{\mathrm{Ic}_{\ctC}} \ar[rd]_{F} & & \mathrm{Ic}(\ctC) \ar[ld]^{F'} \\ & \ctB }\]
+	commuta a meno di un isomorfismo naturale. Inoltre, tale funtore \(F'\) è essenzialmente unico.
+\end{proposition}
+
+\begin{proof}
+	Cominciamo col descrivere la categoria \(\mathrm{Ic}(\ctC)\).Un oggetto de \(\mathrm{Ic}(\ctC)\) è una freccia idempotente
+	\(f \colon X \to X\) di \(\ctC\). Una freccia \(a \colon (f \colon X \to X) \to (g \colon Y \to Y)\) è una freccia \(a \colon X \to Y\) di
+	\(\ctC\) tale che \(g \cmp a \cmp f = a\) o, equivalentemente, tale che \(a \cmp f = a\) e \(g \cmp a = a\)
+	\[ \xymatrix{X \ar[r]^-{a} \ar[d]_{f} & Y \ar[d]^{g} \\
+		X \ar[ru]^{a} \ar[r]_-{a} & Y }\]
+	In effetti, se \(a \cmp f = f\) e \(g \cmp a = a\), allora \(g \cmp a \cmp f = g \cmp a = a\); viceversa, se \(g \cmp a \cmp f = a\),
+	allora \(g \cmp a = g \cmp g \cmp a \cmp f = g \cmp a \cmp f = a\) e, analogamente, \(a \cmp f = a\). La composizione in
+	\(\mathrm{Ic}(\ctC)\) è quella di \(\ctC\). La freccia identità in \(\mathrm{Ic}(\ctC)\) è
+	\(f \colon (f \colon X \to X) \to (f \colon X \to X)\).
+	Il funtore \(\mathrm{Ic}_{\ctC} \colon \ctC \fun \mathrm{Ic}(\ctC)\) è definito da
+	\[ a \colon X \to Y \;\mapsto \; a \colon (\id_X \colon X \to X) \to (\id_Y \colon Y \to Y)\]
+	Se \(h \colon (f \colon X \to X) \to (f \colon X \to X)\) è una freccia idempotente in \(\mathrm{Ic}(\ctC)\), il suo spezzamento è
+	\[ (f \colon X \to X) \xto{h} (h \colon X \to X) \xto{h} (f \colon X \to X) \]
+	Questo dimostra che \(\mathrm{Ic}(\ctC)\) è completa per idempotenti. \\
+	Verifichiamo ora la proprietà universale. Se si applica la descrizione dello spezzamento di
+	una freccia idempotente al caso dell'immagine in \(\mathrm{Ic}(\ctC)\) di una freccia idempotente \(f \colon X \to X\) di \(\ctC\),
+	ne segue che, per ogni freccia \(a \colon (f \colon X \to X) \to (g \colon Y \to Y)\) di \(\mathrm{Ic}(\ctC)\), le due righe del
+	diagramma commutativo
+	\[ \xymatrix{(X \xto{f} X) \ar[rr]^-{f} \ar[d]_{a} & &
+		\mathrm{Ic}_{\ctC}(X) \ar@<0.5ex>[rr]^-{\mathrm{Ic}_{\ctC}(f)} \ar@<-0.5ex>[rr]_-{\id} \ar[d]_{\mathrm{Ic}_{\ctC}(a)}
+		& & \mathrm{Ic}_{\ctC}(X) \ar[d]^{\mathrm{Ic}_{\ctC}(a)} \\
+		(Y \xto{g} Y) \ar[rr]_-{g} & & \mathrm{Ic}_{\ctC}(Y) \ar@<0.5ex>[rr]^-{\mathrm{Ic}_{\ctC}(g)} \ar@<-0.5ex>[rr]_-{\id}
+		& & \mathrm{Ic}_{\ctC}(Y) }\]
+	sono equalizzatori assoluti. Se ora abbiamo un funtore \(F \colon \ctC \fun \ctB\), l'unico modo di definire un funtore
+	\(F' \colon \mathrm{Ic}(\ctC) \fun \ctB\) tale che \(F' \cmp \mathrm{Ic}_{\ctC} \simeq F\) è di definirlo come l'estensione
+	agli equalizzatori nel diagramma seguente
+	\[ \xymatrix{F'(f) \ar[r] \ar[d]_{F'(a)} & FX \ar@<0.5ex>[rr]^-{F(f)} \ar@<-0.5ex>[rr]_-{\id} \ar[d]_{F(a)} & & FX \ar[d]^{F(a)} \\
+		F'(g) \ar[r] & FY \ar@<0.5ex>[rr]^-{F(g)} \ar@<-0.5ex>[rr]_-{\id} & & FY }\]
+	Tale definizione è possibile perché \(\ctB\) è completa per idempotenti e le frecce \(F(f)\) e \(F(g)\) sono idempotenti.
+\end{proof}
+
+Per preparare una descrizione alternativa del completamento per idempotenti di una categoria (corollario \ref{cor_idcompl_ap}),
+analizziamo la proprietà universale di \(\mathrm{Ic}_{\ctC} \colon \ctC \fun \mathrm{Ic}(\ctC)\).
+
+\begin{lemma}\label{lemma_caratt_idcompl}
+	Sia \(\ctC\) una categoria e consideriamo la situazione della proposizione \ref{prop_compl_idemp}
+	\[ \xymatrix{\ctC \ar[rr]^-{\mathrm{Ic}_{\ctC}} \ar[rd]_{F} & & \mathrm{Ic}(\ctC) \ar[ld]^{F'} \\ & \ctB }\]
+	\begin{enumerate}
+		\item Il funtore \(F'\) è un'equivalenza se e solo se \(F\) è pieno e fedele e ogni oggetto di \(\ctB\) è un retratto di un
+		      oggetto del tipo \(FX\) con \(X \in \ctC\).
+		\item In particolare, \(\ctC\) è completa per idempotenti se e solo se \(\mathrm{Ic}_{\ctC}\) è un'equivalenza.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	1. Chiaramente il funtore \(\mathrm{Ic}_{\ctC}\) è pieno e fedele. Inoltre, se \(f \colon X \to X\) è una feeccia idempotente
+	di \(\ctC\), il diagramma
+	\[ \xymatrix{ (X \xto{f} X) \ar[r]^-{f} & \mathrm{Ic}_{\ctC}(X) \ar[r]^-{f} & (X \xto{f} X) }\]
+	mostra che ogni oggetto di \(\mathrm{Ic}(\ctC)\) è un retratto di un oggetto proveniente da \(\ctC\). Quindi, se \(F'\) è
+	un'equivalenza, tali caratteristiche di \(\mathrm{Ic}_{\ctC}\) sono soddisfatte anche da \(F\). \\
+	Viceversa, le frecce \((f \colon X \to X) \to (g \colon Y \to Y)\) di \(\mathrm{Ic}(\ctC)\) si riconducono a frecce del tipo
+	\((f \colon X \to X) \to \mathrm{Ic}_{\ctC}(Y)\) perché \((g \colon Y \to Y)\) è un limite di oggetti provenienti da \(\ctC\). Inoltre,
+	le frecce del tipo \((f \colon X \to X) \to \mathrm{Ic}_{\ctC}(Y)\) si riconducono a loro volta a frecce del tipo
+	\(\mathrm{Ic}_{\ctC}(X) \to \mathrm{Ic}_{\ctC}(Y)\) perché \((f \colon X \to X)\) è un colimite di oggetti provenienti da \(\ctC\).
+	Ma l'azione di \(F'\) su una freccia del tipo \(\mathrm{Ic}_{\ctC}(X) \to \mathrm{Ic}_{\ctC}(Y)\) coincide con l'azione di \(F\)
+	sulla corrispondente freccia \(X \to Y\) e quindi \(F'\) è pieno e fedele se \(F\) lo è. Sia ora \(B \in \ctB\). Per ipotesi,
+	esistono un oggetto \(X \in \ctC\) e due frecce \(s \colon B \to FX\) e \(r \colon FX \to B\) tali che \(r \cmp s = \id_R\). Poiché
+	\(F\) è pieno, esiste una freccia \(f \colon X \to X\) tale che \(F(f) = s \cmp r\). Inoltre, tale freccia \(f\) è idempotente perché
+	\(F(f)\) lo è e \(F\) è fedele. Finalmente, \(F'(f)\) è per definizione lo spezzamento di \(F(f)\) in \(\ctB\) e quindi è isomorfo
+	a \(B\) perché lo spezzamento è essenzialmente unico. \\
+	2. Se \(\mathrm{Ic}_{\ctC}\) è un'equivalenza, allora \(\ctC\) è completa per idempotenti perché \(\mathrm{Ic}(\ctC)\) lo è.
+	Viceversa, se \(\ctC\) è completa per idempotenti, si può applicare il punto precedente prendendo come funtore \(F\) il funtore
+	identico su \(\ctC\) e si ottiene che \(\mathrm{Ic}_{\ctC}\) è un'equivalenza.
+\end{proof}
+
+\begin{remark}\label{oss_idcompl_duale}
+	Poiché il fatto di essere completa per idempotenti è una condizione autoduale, possiamo applicare il lemma
+	\ref{lemma_caratt_idcompl} alla configurazione
+	\[ \xymatrix{\ctC^{\op} \ar[rr]^-{\mathrm{Ic}_{\ctC^{\op}}} \ar[rd]_{F=\mathrm{Ic}_{\ctC}^{\op}} & & \mathrm{Ic}(\ctC^{\op}) \ar[ld]^{F'} \\
+		& \mathrm{Ic}(\ctC)^{\op} }\]
+	e il funtore \(F'\) che si ottiene fornisce un'equvalenza \(\mathrm{Ic}(\ctC^{\op}) \simeq \mathrm{Ic}(\ctC)^{\op}\).
+\end{remark}
+
+\begin{corollary}\label{cor_idcompl_ap}
+	Sia \(\ctC\) una categoria piccola.
+	\begin{enumerate}
+		\item Il completamento per idempotenti \(\mathrm{Ic}(\ctC)\) è una categoria piccola.
+		\item Il completamento per idempotenti di \(\ctC^{\op}\) è equivalente alla corestrizione dell'immersione di Yoneda
+		      alla sottocategoria \(\ctSet^{\ctC}_{\mathrm{ap}}\) di \(\ctSet^{\ctC}\) degli oggetti assolutamente presentabili.
+		\item Se \(\ctC\) è completa per idempotenti, la corestrizione
+		      \(\ctY_{\ctC} \colon \ctC^{\op} \fun \ctSet^{\ctC}_{\mathrm{ap}}\) è un'equivalenza.
+	\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+	1. \(\mathrm{Ic}(\ctC)\) è localmente piccola perché \(\mathrm{Ic}(\ctC)((X \to X),(Y \to Y)) \subseteq \ctC(X,Y)\).
+	Inoltre, gli oggetti di \(\ctC\) costituiscono un insieme e, per ogni oggetto \(X\), le frecce idempotenti \(X \to X\)
+	costituiscono anch'esse un insieme. Quindi \(\mathrm{Ic}(\ctC)\) ha un insieme di oggetti. \\
+	2. Un retratto di un oggetto assolutamente presentabile è assolutamente presentabile (proposizione \ref{prop_stab_present}.
+	Ne segue che \(\ctSet^{\ctC}_{\mathrm{ap}}\) è chiusa in \(\ctSet^{\ctC}\) per retratti ed è quindi completa per idempotenti
+	(osservazione \ref{oss_idCompl_retr}). Ora possiamo utilizzare la proprietè universale \ref{prop_compl_idemp} per completare
+	il diagramma
+	\[ \xymatrix{\ctC^{\op} \ar[rr]^-{\mathrm{Ic}_{\ctC^{\op}}} \ar[rd]_{\ctY_{\ctC}} & & \mathrm{Ic}(\ctC^{\op}) \ar[ld]^{\ctY_{\ctC}'} \\
+		& \ctSet^{\ctC}_{\mathrm{ap}} } \]
+	Grazie all'esempio \ref{ex_ass_present_pref} possiamo applicare il primo punto del lemma \ref{lemma_caratt_idcompl} e
+	otteniamo che \(\ctY_{\ctC}' \colon \mathrm{Ic}(\ctC^{\op}) \to \ctSet^{\ctC}_{\mathrm{ap}}\) è un'equivalenza. \\
+	3. Se \(\ctC\) è completa per idempotenti, nel diagramma precedente anche \(\mathrm{Ic}_{\ctC^{\op}}\) è un'equivalenza.
+\end{proof}
+
+Il prossimo passo per rispondere alla domanda che ci siamo posti all'inizio di questa sezione è di studiare il funtore fra le categorie
+di prefasci indotto da un funtore fra categorie piccole.
+
+\begin{proposition}\label{prop_funt_indotto_pref}
+	Ogni funtore \(M \colon \ctC \fun \ctD\) fra categorie piccole induce un funtore
+	\[ \ctSet^M \colon \ctSet^{\ctD} \fun \ctSet^{\ctC}, \; \ctSet^M(B) = B \cmp M \colon \ctC \fun \ctD \fun \ctSet \]
+	che preserva i colimiti e che ha aggiunto sinistro.
+\end{proposition}
+
+\begin{proof}
+	Per mostrare che \(\ctSet^M\) preserva i colimiti, consideriamo una categoria piccola \(\ctP\) e un funtore
+	\(H \colon \ctP \fun \ctSet^{\ctD}\). Usando due volte che i colimiti nelle categorie di prefasci si calcolano punto
+	a punto in \(\ctSet\) (proposizione \ref{prop_lim_puntuali}) e la definizione di \(\ctSet^M\), si ha
+	\[ (\ctSet^M(\colim_{\ctP}H))(X) = (\colim_{\ctP}H)(MX) = \colim_{\ctP}((HP)(MX)) = \]
+	\[ = \colim_{\ctP}((\ctSet^M(HP))(X)) = (\colim_{\ctP}(\ctSet^M(HP)))(X) \]
+	Per mostrare che \(\ctSet^M\) ha aggiunto sinistro, consideriamo il seguente diagramma
+	\[ \xymatrix{\ctC^{\op} \ar[d]_{M^{\op}} \ar[r]^-{\ctY_{\ctC}} \ar@{.>}[rd]^{F} & \ctSet^{\ctC} \ar[d]^{F^*} \\
+		\ctD^{\op} \ar[r]_-{\ctY_{\ctD}} & \ctSet^{\ctD}} \]
+	dove abbiamo posto \(F = \ctY_{\ctD} \cmp M^{\op}\) e abbiamo usato la proprietà universale dell'immersione di
+	Yoneda \(\ctY_{\ctC}\) (proposizione \ref{prop_univ_yon}) per ottenere il funtore \(F^*\) che preserva i colimiti e
+	che rende il diagramma commutativo a meno di isomorfismo naturale. Sappiamo che \(F^*\) ha un aggiunto destro
+	\[ R_F \colon \ctSet^{\ctD} \fun \ctSet^{\ctC}, \; R_F(B) = \Nat(F-,B) \colon \ctC \fun \ctSet \]
+	e resta da mostrare che \(R_F\) è isomorfo a \(\ctSet^M\). Per ogni \(X \in \ctC\) si ha
+	\[ (R_F(B))(X) = \Nat(FX,B) = \Nat(\ctD(MX,-),B) \simeq B(MX) = (\ctSet^M(B))(X) \]
+	avendo usato alla penultima tappa il lemma di Yoneda.
+\end{proof}
+
+I due lemmi seguenti forniscono delle condizioni sufficienti affinché il funtore \(\ctSet^M\), introdotto nella proposizione
+\ref{prop_funt_indotto_pref}, sia un'equivalenza. La lettrice costaterà che sono le stesse condizioni che appaiono
+nel lemma \ref{lemma_caratt_idcompl}.
+
+\begin{lemma}\label{lemma_ind_iniziale}
+	Sia \(M \colon \ctC \fun \ctD\) un funtore fra categorie piccole.
+	\begin{enumerate}
+		\item Per ogni oggetto \(B \in \ctSet^{\ctD}\), il funtore \(M\) induce un funtore \(M_B \colon \mathrm{El}(B \cmp M) \fun \mathrm{El}(B)\)
+		      che rende il seguente diagramma commutativo
+		      \[ \xymatrix{ \ctC^{\op} \ar[d]_{M^{\op}} & \mathrm{El}(B \cmp M) \ar[l]_-{\Phi_{B \cmp M}} \ar[d]^{M_B} \\
+			      \ctD^{\op} & \mathrm{El}(B) \ar[l]^{\Phi_B} }\]
+		\item Se \(M\) è pieno e se ogni oggetto di \(\ctD\) è un retratto di un  oggetto del tipo \(MZ\) con \(Z \in \ctC\),
+		      allora il funtore \(M_B\) è iniziale.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	1. Data una freccia di \(\mathrm{El}(B \cmp M)\)
+	\[ f \colon (X \in \ctC, x \in BMX) \to (Y \in \ctC, y \in BMY) \]
+	con \(f \colon Y \to X\) tale che \((BMf)(y)=x\), la sua immagine attraverso \(M_B\) è la freccia
+	\[ Mf \colon (MX \in \ctD, x \in BMX) \to (MY \in \ctD, y \in BMY) \]
+	di \(\mathrm{El}(B)\). Con tale definizione, la commutatività del diagramma dell'enunciato è ovvia. \\
+	2. Fissiamo un oggetto \((D \in \ctD, d \in BD)\) in \(\mathrm{El}(B)\).
+	Per ipotesi, esiste un diagramma commutativo
+	\[ \xymatrix{ D \ar[rr]^-{\id} \ar[rd]_{s} & & D \\ & MZ \ar[ru]_{r} }\]
+	Otteniamo un oggetto \(r \colon (D,d) \to (MZ, (Bs)(d))\) della categoria comma \((D,d) / M_B\),
+	infatti \((Br)((Bs)(d)) = (B(r \cmp s))(d) = (B\id)(d) = d\). Consideriamo ora due oggetti
+	\[ \xymatrix{ & (D,d) \ar[ld]_{g} \ar[rd]^{h} \\
+			(MX,x) & & (MY,y) } \]
+	della categoria comma, cioè \(g \colon MX \to D\) e \(h \colon MY \to D\) tali che \((Bg)(x) = d = (Bh)(y)\).
+	Possiamo costruire un nuovo diagramma commutativo
+	\[ \xymatrix{ & & D \\
+		MX \ar[rru]^{g} \ar[r]_-{g} & D \ar[r]_-{s} & MZ \ar[u]_{r} & D \ar[l]^-{s} & MY \ar[l]^-{h} \ar[llu]_{h} } \]
+	Poiché \(M\) è pieno, esistono \(g' \colon  X \to Z\) e \(h' \colon Y \to Z\) tali che \(Mg' = s \cmp g\) e \(Mh' = s \cmp h\).
+	Questo ci fornisce uno zig-zag in \((D,d) / M_B\)
+	\[ \xymatrix{ & (D,d) \ar[ld]_{g} \ar[rd]^{h} \ar[d]^{r} \\
+		(MX,x) & (MZ, (Bs)(d)) \ar[l]^-{Mg'} \ar[r]_-{Mh'} & (MY,y) } \]
+	infatti \((BMg')(x) = (B(s \cmp g))(x) = (Bs)((Bg)(x)) = (Bs)(d)\) e, analogamente, \((BMh')(y) = (Bs)(d)\). Abbiamo così
+	mostrato che \((D,d) / M_B\) è connessa, ovvero che \(M_B\) è iniziale.
+\end{proof}
+
+\begin{lemma}\label{lemma_Set^M_equiv}
+	Sia \(M \colon \ctC \fun \ctD\) un funtore fra categorie piccole.
+	Se \(M\) è pieno e fedele e se ogni oggetto di \(\ctD\) è un retratto di un  oggetto del tipo \(MZ\) con \(Z \in \ctC\),
+	allora il funtore \(\ctSet^{M} \colon \ctSet^{\ctD} \fun \ctSet^{\ctC}\) è un'equivalenza.
+\end{lemma}
+
+\begin{proof}
+	Consideriamo il diagramma
+	\[ \xymatrix{ \ctC^{\op} \ar[rr]^-{\ctY_{\ctC}} \ar[d]_{M^{\op}} & & \ctSet^{\ctC} \ar@<-0.8ex>[d]_{F^*} \\
+		\ctD^{\op} \ar[rr]_-{\ctY_{\ctD}} & & \ctSet^{\ctD} \ar@<-0.5ex>[u]_{\ctSet^M} } \]
+	dove abbiamo posto \(F = \ctY_{\ctD} \cmp M^{\op}\), il funtore \(F^*\) è fornito dalla proprietà universale di \(\ctY_{\ctC}\)
+	(proposizione \ref{prop_univ_yon}) ed è l'aggiunto sinistro di \(\ctSet^M\) (vedi prova della proposizione \ref{prop_funt_indotto_pref}).
+	Poiché \(F\) è pieno e fedele (perché \(M\) e \(\ctY_{\ctD}\) lo sono) e poiché, per ogni \(X \in \ctC\), il prefascio \(FX = \ctD(MX,-)\)
+	è assolutamente presentabile, il lemma \ref{lemma_caratt_pref} garantisce che \(F^*\) è pieno e fedele. Per mostrare che
+	\(F^*\) è anche essenzialmente suriettivo, consideriamo il diagramma commutativo
+	\[ \xymatrix{ \mathrm{El}(B \cmp M) \ar[r]^-{\Phi_{B \cmp M}} \ar[rd]_{M_B} & \ctC^{\op} \ar[r]^-{M^{\op}}
+		& \ctD^{\op} \ar[r]^-{\ctY_{\ctD}} & \ctSet^M \\
+		& \mathrm{El}(B) \ar[ru]_{\Phi_B} } \]
+	dove \(B \in \ctSet^{\ctD}\) e \(M_B\) è il funtore introdotto nel lemma \ref{lemma_ind_iniziale}.
+	Poiché \(M_B\) è iniziale, possiamo usare il lemma \ref{lemma_caract_funt_iniz} e abbiamo
+	\[ B = \colim_{\mathrm{El}(B)}(\ctY_{\ctD} \cmp \Phi_B) \simeq \colim_{\mathrm{El}(B \cmp M)}(\ctY_{\ctD} \cmp \Phi_B \cmp M_B)
+		= \colim_{\mathrm{El}(B \cmp M)}(\ctY_{\ctD} \cmp M^{\op} \cmp \Phi_{B \cmp M}) \simeq \]
+	\[ \simeq \colim_{\mathrm{El}(B \cmp M)}(F^* \cmp \ctY_{\ctC} \cmp \Phi_{B \cmp M}) \simeq
+		F^*(\colim_{\mathrm{El}(B \cmp M)}(\ctY_{\ctC} \cmp \Phi_{B \cmp M})) = F^*(B \cmp M) \]
+	Questo conclude la prova perché \(\ctSet^M\), essendo aggiunto destro di \(F^*\) che è un'equivalenza, è anch'esso
+	un'equivalenza.
+\end{proof}
+
+Possiamo ora rispondere alla domanda che ci siamo posti all'inizio di questa sezione.
+
+\begin{proposition}\label{prop_morita_prefasci}
+	Siano \(\ctC\) e \(\ctD\) due categorie piccole.
+	\begin{enumerate}
+		\item Il funtore \(\mathrm{Ic}_{\ctC} \colon \ctC \fun \mathrm{Ic}(\ctC)\) induce un'equivalenza
+		      \(\ctSet^{\mathrm{Ic}_{\ctC}} \colon \ctSet^{\mathrm{Ic}(\ctC)} \fun \ctSet^{\ctC}\).
+		\item  \(\ctSet^{\ctC} \simeq \ctSet^{\ctD}\) se e solo se \(\ctSet^{\ctC}_{\mathrm{ap}} \simeq \ctSet^{\ctD}_{\mathrm{ap}}\)
+		      se e solo se \(\mathrm{Ic}(\ctC) \simeq \mathrm{Ic}(\ctD)\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	1. Le condizioni richieste dal lemma \ref{lemma_Set^M_equiv} affinché \(\ctSet^M\) sia un'equivalenza sono
+	chiaramente soddisfatte se si prende come \(M\) il funtore  \(\mathrm{Ic}_{\ctC}\). \\
+	2. L'equivalenza fra le condizioni \(\ctSet^{\ctC}_{\mathrm{ap}} \simeq \ctSet^{\ctD}_{\mathrm{ap}}\) e
+	\(\mathrm{Ic}(\ctC) \simeq \mathrm{Ic}(\ctD)\) segue subito dall'osservazione \ref{oss_idcompl_duale} e dal
+	corollario \ref{cor_idcompl_ap}. \\
+	Se \(\mathrm{Ic}(\ctC) \simeq \mathrm{Ic}(\ctD)\), allora usando il primo punto si ha
+	\(\ctSet^{\ctC} \simeq \ctSet^{\mathrm{Ic}(\ctC)} \simeq \ctSet^{\mathrm{Ic}(\ctD)} \simeq \ctSet^{\ctD}\). \\
+	Viceversa, per la proposizione \ref{prop_stab_perf_pres} ogni equivalenza \(\ctSet^{\ctC} \simeq \ctSet^{\ctD}\)
+	si restringe alle sottocategorie \(\ctSet^{\ctC}_{\mathrm{ap}} \simeq \ctSet^{\ctD}_{\mathrm{ap}}\) degli oggetti
+	assolutamente presentabili.
+\end{proof}
+
+\begin{remark}\label{oss_dualita}
+	Il primo punto della proposizione \ref{prop_morita_prefasci} si può ottenere direttamente
+	dalla proprietà universale di \(\mathrm{Ic}_{\ctC} \colon \ctC \fun \mathrm{Ic}(\ctC)\) (proposizione
+	\ref{prop_compl_idemp}) prendendo come categoria \(\ctB\) completa per idempotenti la categoria \(\ctSet\),
+	evitando dunque la proposizione \ref{prop_funt_indotto_pref} e il lemma \ref{lemma_Set^M_equiv}.
+	Tuttavia, in tal caso bisogna verificare che \(\ctSet^{\mathrm{Ic}_{\ctC}}\) è pieno e fedele. D'altra parte,
+	la proposizione \ref{prop_morita_prefasci} è parte di una dualità fra 2-categorie che non
+	svilupperemo in dettaglio, ma di cui diamo di seguito il secondo ingrediente fondamentale (la cui prova
+	dipende dalla proposizione \ref{prop_funt_indotto_pref}).
+\end{remark}
+
+\begin{proposition}\label{prop_dualita_cat_pref}
+	Sia \(M \colon \ctC \fun \ctD\) un funtore fra categorie piccole.
+	Se \(\ctC\) e \(\ctD\) sono complete per idempotenti, allora la costruzione
+	\[ M \colon \ctC \fun \ctD \; \mapsto \; \ctSet^M \colon \ctSet^{\ctD} \fun \ctSet^{\ctC} \]
+	della proposizione \ref{prop_funt_indotto_pref} realizza un'equivalenza fra la categoria dei funtori da
+	\(\ctC\) a \(\ctD\) e la categoria dei funtori da \(\ctSet^{\ctD}\) a
+	\(\ctSet^{\ctC}\) che preservano i colimiti e hanno aggiunto sinistro.
+\end{proposition}
+
+\begin{proof}
+	Data un'aggiunzione
+	\[ \xymatrix{\ctSet^{\ctD} \ar@<-0.5ex>[r]_-{R} & \ctSet^{\ctC} \ar@<-0.5ex>[l]_-{L} } \;\;\; L \dashv R \]
+	assumiamo che \(R\) preservi i colimiti e cerchiamo un funtore \(M \colon \ctC \fun \ctD\) tale che \(R \simeq \ctSet^M\).
+	Per questo, consideriamo il diagramma
+	\[ \xymatrix{\ctC^{\op} \ar@{.>}[ddd]_{M^{\op}} \ar[rr]^-{\ctY_{\ctC}} \ar[rd]^{\simeq} & & \ctSet^{\ctC} \ar[ddd]^{L} \\
+		& \ctSet^{\ctC}_{\mathrm{ap}} \ar@{.>}[d]^{L_{\mathrm{ap}}} \ar[ru] \\
+		& \ctSet^{\ctD}_{\mathrm{ap}} \ar[rd] \\
+		\ctD^{op} \ar[ru]_{\simeq} \ar[rr]_-{\ctY_{\ctD}} & & \ctSet^{\ctD} } \]
+	Poiché \(\ctC\) e \(\ctD\) sono complete per idempotenti, le corestrizioni di \(\ctY_{\ctC}\) e di \(\ctY_{\ctD}\) alle
+	sottocategorie dei prefasci assolutamente presentabili sono delle equivalenze (corollario \ref{cor_idcompl_ap}).
+	Inoltre, per la proprietà \ref{prop_stab_perf_pres}, l'aggiunto sinistro \(L\) si restringe alle sottocategorie dei prefasci
+	assolutamente presentabili. Chiamiamo \(L_{\mathrm{ap}}\) tale restrizione e poniamo
+	\[ M^{\op} \colon \ctC^{\op} \simeq \ctSet^{\ctC}_{\mathrm{ap}} \xto{L_{\mathrm{ap}}} \ctSet^{\ctD}_{\mathrm{ap}} \simeq \ctD^{\op} \]
+	Poiché il diagramma completo commuta, il funtore \(L\) è l'estensione di \(\ctY_{\ctD} \cmp M^{\op}\) fornita dalla
+	proprietà universale dell'immersione di Yoneda \(\ctY_{\ctC}\) (proposizione \ref{prop_univ_yon}) e quindi il suo aggiunto destro
+	\(R\) coincide, a meno di iso naturale, con \(\ctSet^M\), come mostrato nella prova della proposizione \ref{prop_funt_indotto_pref}.
+\end{proof}
+
+\color{black}
