@@ -43,8 +43,6 @@ with open(sys.argv[1], 'r') as f, open(error_file_path, 'w') as error_file:
 if problems:
     sys.exit("Unmatched $'s found.")
 
-good_delims = lambda x: re.sub(r"\$(.*?)\$", r"\\(\1\\)", x, flags = re.M)
-
 with open(sys.argv[1], 'r+') as f:
     content = []
     inside_tikz = False
@@ -57,7 +55,8 @@ with open(sys.argv[1], 'r+') as f:
             content.append(line)
             continue
         if not inside_tikz:
-            line = re.sub(r"\$(.*?)\$", r"\\(\1\\)", line)
+            line = re.sub(r'\$\$(.*?)\$\$', r'\\[\1\\]', line, flags=re.DOTALL)
+            line = re.sub(r'\$(.*?)\$', r'\\(\1\\)', line)
         content.append(line)
 
     f.seek(0)
@@ -147,6 +146,8 @@ ACCENTS = [
 
 with open(sys.argv[1], 'r+', encoding='utf-8') as f:
     content = f.read()
+    for punct in [',', '.', ';', ':']:
+        content = content.replace(punct + r'\)' , r'\)' + punct)
     for latex, unicode_char in ACCENTS:
         content = content.replace(latex, unicode_char)
     f.seek(0)
