@@ -10,20 +10,20 @@ Per produrre un \emph{prodotto Cartesiano} \(A\times B\), viene costruito un ins
  Per chi è familiare con questa nomenclatura, \(A\times B\) è il `tipo' i cui `termini' sono destrutturabili come coppie: le seguenti `frazioni'
  \[\frac{t \in A\times B}{\pi_A\, t \in A}\qquad \frac{t \in A\times B}{\pi_B\, t \in B}\qquad \frac{a \in A\quad b \in B}{\pair ab \in A\times B}\qquad \frac{t \in A\times B}{t = \pair{\pi_A\, t}{\pi_B\, t}}\]
  si leggono come deduzioni (supponendo che <numeratore>, allora <denominatore>), e dicono quattro cose:
- \begin{itemize}
-  \item ogni volta che viene dato un elemento \(t \in A\times B\), si ottiene un elemento \(\pi_A t\) la `prima componente di \(t\)';
-  \item ogni volta che viene dato un elemento \(t \in A\times B\), si ottiene un elemento \(\pi_B t\) la `seconda componente di \(t\)';
-  \item ogni volta che vengono dati due elementi \(a \in A, b \in B\), si ottiene un elemento \(\pair ab \in A\times B\);
-  \item ogni elemento \(t \in A\times B\) è della forma \(\pair{\pi_A\, t}{\pi_B\, t}\).
- \end{itemize}
+ \begin{enumtag}{iep}
+  \item \label{iep_1} ogni volta che viene dato un elemento \(t \in A\times B\), si ottiene un elemento \(\pi_A t\) la `prima componente di \(t\)';
+  \item \label{iep_2} ogni volta che viene dato un elemento \(t \in A\times B\), si ottiene un elemento \(\pi_B t\) la `seconda componente di \(t\)';
+  \item \label{iep_3} ogni volta che vengono dati due elementi \(a \in A, b \in B\), si ottiene un elemento \(\pair ab \in A\times B\);
+  \item \label{iep_4} ogni elemento \(t \in A\times B\) è della forma \(\pair{\pi_A\, t}{\pi_B\, t}\).
+ \end{enumtag}
  L'ultima di queste condizioni a sua volta dice due cose:
  \begin{itemize}
   \item in \(A\times B\) non ci sono che elementi della forma \(\pair ab\) per qualche \(a \in A\) e \(b \in B\);
-  \item le uguaglianze in \ref{}, \ref{}, \ref{} valgono per `lambda-astrazione' di \(t\), cioè vale l'uguaglianza
+  \item le deduzioni in \ref{intro_elim_prodotto} valgono per `lambda-astrazione' di \(t\), cioè vale l'uguaglianza
         \[{\pi_A}\pmap{\pi_B} = \id_{A\times B} \]
  \end{itemize}
 \end{hExample}
-In questi termini, il prodotto è descritto come una operazione di costruzione di un insieme a partire da due dati: questo è ragionevole, dato che abbiamo già visto in \ref{} che esiste un funtore
+In questi termini, il prodotto è descritto come una operazione di costruzione di un insieme a partire da due dati: questo è ragionevole, dato che abbiamo già visto in \ref{exam_bifuntori}.\ref{eb_2} che esiste un (bi)funtore
 \[\dmFun{\blank\times\blank}{\ctSet\times\ctSet}{\ctSet.}\]
 Come già detto, il piano Cartesiano ortogonale della geometria analitica può essere identificato con \(\bbR^2=\bbR\times\bbR\), l'insieme delle coppie \emph{ordinate} (questa condizione è cruciale) di numeri reali.
 
@@ -61,7 +61,7 @@ Queste due corrispondenze di riduzione e costruzione, o introduzione ed eliminaz
 \end{remark}
 In effetti, è immediato verificare che \(A\times B\) e le proiezioni canoniche \(\pi_A,\pi_B\) soddisfano questa proprietà. Ma se \(P\) soddisfa questa proprietà, possiamo dimostrare quanto segue.
 \begin{lemma}\label{prodotto_unico_upto_iso}
- Siano \((P,p_1,p_2)\) e \((Q,q_1,q_2)\) due prodotti	Cartesiani di \(A\) e \(B\). Allora esiste un unico isomorfismo \(u= p_1\pmap p_2 \colon P\to Q\) di inversa \(u^{-1} = q_1\pmap q_2\). In particolare, se \((P,p_1,p_2)\) è un prodotto Cartesiano di \(A\) e \(B\) come in \ref{rmk_prodotto}, allora esiste un'unica biiezione \(P\cong A\times B\), che rende \(P\) `essenzialmente' composto dalle coppie \(\pair ab\) come in \ref{}.
+ Siano \((P,p_1,p_2)\) e \((Q,q_1,q_2)\) due prodotti	Cartesiani di \(A\) e \(B\). Allora esiste un unico isomorfismo \(u= p_1\pmap p_2 \colon P\to Q\) di inversa \(u^{-1} = q_1\pmap q_2\). In particolare, se \((P,p_1,p_2)\) è un prodotto Cartesiano di \(A\) e \(B\) come in \ref{rmk_prodotto}, allora esiste un'unica biiezione \(P\cong A\times B\), che rende \(P\) `essenzialmente' composto dalle coppie \(\pair ab\) come in \ref{iep_4}.
 \end{lemma}
 Si osservi di nuovo il ruolo dell'aggettivo \emph{unica}: fissate le terne \((P,p_1,p_2)\) e \((Q,q_1,q_2)\) (e solo allora), la biiezione possibile tra \(P\) e \(Q\) è \emph{solo una}. In termini più semplici, ci possono essere biiezioni tra \(P\) e \(Q\) che non rendono commutativi i diagrammi di \ref{rmk_prodotto}, ma ce n'è una sola che li rende commutativi, e questa è quella cui ci si riferisce nelle discussioni su oggetti universali. Identiche considerazioni valgono per i prodotti	in categorie astratte, e per tutti gli altri oggetti universali che incontreremo.
 \begin{proof}
@@ -87,7 +87,7 @@ Si osservi di nuovo il ruolo dell'aggettivo \emph{unica}: fissate le terne \((P,
 \end{proof}
 Si osservi che in particolare, istanziando la proprietà di \ref{rmk_prodotto} quando \(X = \singleton\) è un insieme con un solo elemento, le funzioni \(g\colon \singleton\to B\), \(f\colon \singleton\to A\) scelgono rispettivamente un elemento \(g(\bullet) = b \in B\) e \(f(\bullet) = a \in A\); la funzione \(f\pmap g\colon \singleton\to P\) sceglie a sua volta un elemento \((f\pmap g)(\bullet) = t \in P\), che però ora deve essere della forma \(\pair{p_1 t}{p_2 t}\).
 
-La proprietà di \ref{} si traduce allora in: per ogni coppia di elementi \(a\in A\) e \(b\in B\), esiste (suriettività) un unico (iniettività) elemento \(c\in P\) tale che \(p_1 c=a\) e \(p_2 c=b\). Questo è un modo alternativo di stabilire una biiezione \(\tau \colon P\to A\times B\) soggetta alla proprietà addizionale di commutare con le proiezioni, cioè tale che \(\pi_A\cmp \tau =p_1\) e \(\pi_B\cmp \tau =p_2\). La biiezione è poi unica, ossia non solo è possibile identificare un prodotto Cartesiano \(P\) ad un insieme di coppie, ma questa identificazione si fa in un unico modo.
+La proprietà di \ref{prodotto_unico_upto_iso} si traduce allora in: per ogni coppia di elementi \(a\in A\) e \(b\in B\), esiste (suriettività) un unico (iniettività) elemento \(c\in P\) tale che \(p_1 c=a\) e \(p_2 c=b\). Questo è un modo alternativo di stabilire una biiezione \(\tau \colon P\to A\times B\) soggetta alla proprietà addizionale di commutare con le proiezioni, cioè tale che \(\pi_A\cmp \tau =p_1\) e \(\pi_B\cmp \tau =p_2\). La biiezione è poi unica, ossia non solo è possibile identificare un prodotto Cartesiano \(P\) ad un insieme di coppie, ma questa identificazione si fa in un unico modo.
 
 In sintesi, abbiamo enunciato e dimostrato la
 \begin{definition}\label{pruniv_prodotto_tfae}
@@ -119,7 +119,7 @@ In sintesi, abbiamo enunciato e dimostrato la
 \end{remark}
 Altrettanto probabilmente, chi legge avrà intuito che c'è una somiglianza tra il modo di ragionare appena descritto, e il TFPU di \ref{tfpu}, e ancor prima di \ref{init_ha_solo_id}; questa non è una coincidenza. La dimostrazione del seguente fatto consiste nel notare che le due condizioni di \ref{rmk_prodotto} sono esattamente le condizioni che rendono \(P\) un oggetto terminale.
 \begin{proposition}\label{prodotto_terminal_span}
- Si rammenti la definizione della categoria \(\ctSpan(A,B)\) in \ref{}, delle spanne di insiemi, che ha
+ Si rammenti la definizione della categoria \(\ctSpan(A,B)\) in \ref{def_span_e_cospan}, delle spanne di insiemi, che ha
  \begin{itemize}
   \item per oggetti i diagrammi \(\xymatrix{ A & X \ar[r]^-r \ar[l]_-l & B }\);
   \item per frecce le funzioni \(f \colon X\to Y\) che rendono commutativi i diagrammi
@@ -175,11 +175,11 @@ Siamo pronti per enunciare la proprietà universale del prodotto (di due oggetti
   \end{tikzcd}\]
  sono commutativi. Del resto è facile dimostrare identità analoghe (i diagrammi appena disegnati hanno senso in ogni categoria dove i prodotti esistano!) usando la proprietà universale: la composizione \((u\times v)\cmp (p\pmap q)\) soddisfa la proprietà universale di \((u\cmp p)\pmap (v\cmp q)\) perché
  \begin{align*}
-		\underline{\pi_1\cmp (u\times v)}\cmp (p\pmap q) &= u\cmp \underline{\pi_1 \cmp (p\pmap q)} \\
-		&= u\cmp p;\\
-		\underline{\pi_2\cmp (u\times v)}\cmp (p\pmap q) &=v\cmp \underline{\pi_2 \cmp (p\pmap q)} \\ 
-		&=v\cmp q,
-	\end{align*}
+  \underline{\pi_1\cmp (u\times v)}\cmp (p\pmap q) & = u\cmp \underline{\pi_1 \cmp (p\pmap q)} \\
+                                                   & = u\cmp p;                                \\
+  \underline{\pi_2\cmp (u\times v)}\cmp (p\pmap q) & =v\cmp \underline{\pi_2 \cmp (p\pmap q)}  \\
+                                                   & =v\cmp q,
+ \end{align*}
  come si può osservare seguendo le frecce nel diagramma
  % https://q.uiver.app/#q=WzAsNyxbMiwxLCJCXFx0aW1lcyBDIl0sWzMsMSwiWFxcdGltZXMgWSJdLFswLDMsIkIiXSxbNCwzLCJYIl0sWzIsMiwiQyJdLFszLDIsIlkiXSxbMSwwLCJBIl0sWzAsMiwiXFxwaV8xIl0sWzAsNCwiXFxwaV8yIiwyXSxbMSwzLCJcXHBpXzEiLDAseyJjdXJ2ZSI6LTF9XSxbMSw1LCJcXHBpXzIiXSxbMCwxLCJ1XFx0aW1lcyB2Il0sWzIsMywidSJdLFs0LDUsInYiLDJdLFs2LDAsInBcXHBtYXAgcSIsMSx7InNob3J0ZW4iOnsidGFyZ2V0IjoyMH19XSxbNiwyLCJwIiwyLHsiY3VydmUiOjJ9XSxbNiw0LCJxIiwyLHsiY3VydmUiOjJ9XV0=
  \[\begin{tikzcd}[cramped]
@@ -200,8 +200,7 @@ Siamo pronti per enunciare la proprietà universale del prodotto (di due oggetti
   \end{tikzcd}\]
 \end{remark}
 \begin{remark}\label{congiunta_monicita}
- La proprietà universale di \ref{} implica che la spanna universale \(A\xot{\pi_1} A\times B \xto{\pi_2} B\) fatta dalle proiezioni sia una coppia \emph{congiuntamente mono}: questo significa che
- \Todo{}
+ La proprietà universale di \ref{} implica che la spanna universale \(A\xot{\pi_1} A\times B \xto{\pi_2} B\) fatta dalle proiezioni sia una coppia \emph{congiuntamente mono}: questo significa che se \(\pi_1\cmp f  = \pi_1\cmp g\) e \(\pi_2\cmp f = \pi_2\cmp g\), allora \(f=g\) (ed è necessaroi che \emph{entrambe} queste uguaglianze siano vere).
 \end{remark}
 \subsection{Prodotti in altre categorie `concrete'}
 I primi corsi di algebra hanno presentato diverse classi di strutture algebriche come monoidi, gruppi, anelli, e a volte reticoli algebrici, grafi, etc.; in ciascuna di queste strutture esiste una nozione di prodotto tra due oggetti, che è caratterizzata da una proprietà universale del tutto analoga a quella del prodotto Cartesiano di insiemi. Cioè: il prodotto di due gruppi (o anelli, spazi vettoriali, reticoli, grafi\dots) \(G\) e \(H\) si definisce ponendo sul prodotto Cartesiano \(G\times H\) degli insiemi sottostanti una operazione componente per componente, non perché questa definizione sia ovvia, ma perché è l'unica che soddisfa la giusta proprietà universale.
