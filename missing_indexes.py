@@ -16,8 +16,8 @@ def find_missing_index_in_file(filename, output_file):
             print(f"L{i+1}: {line.strip()} < no '\index' found")
             print(f"> {next_line}\n")
 
-def find_missing_index(directory="cap/01/sec/", output_filename="missing_indices.idx"):
-    tex_files = glob.glob(os.path.join(directory, "*.tex"))
+def find_missing_index(directory="cap/", output_filename="missing_indices.idx"):
+    tex_files = glob.glob(os.path.join(directory, "**/*.tex"), recursive=True)
     with open(output_filename, 'w', encoding='utf-8') as output_file:
         for tex_file in tex_files:
             find_missing_index_in_file(tex_file, output_file)
