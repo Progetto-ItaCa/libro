@@ -129,11 +129,11 @@ view:
 	evince main.pdf &
 
 pretty:
-	find cap/ -type f -name "*.tex" -exec python3 beautifier.py {} \;
+	find cap/ -type f -name "*.tex" -exec python3 scripting/beautifier.py {} \;
 	find cap/ -type f \( -name "*.bak" -o -name "*.bak0" -o -name "*.log" \) -delete
 
 indexing:
-	python3 missing_indexes.py > missing_indices.idx
+	python3 scripting/missing_indexes.py > missing_indices.idx
 	code missing_indices.idx
 	# this *.idx file is highly volatile
 

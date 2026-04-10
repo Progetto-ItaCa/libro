@@ -99,7 +99,7 @@ supporta queste opzioni:
 ```bash
 make hash         # aggiorna gitcommit.tex con l'hash corrente
 make view         # apre main.pdf con evince
-make pretty       # formatta i .tex con beautifier.py
+make pretty       # formatta i .tex con scripting/beautifier.py
 make clean        # rimuove tutti i file generati
 make clean-cache  # rimuove la cache dei diagrammi TikZ
 ```
