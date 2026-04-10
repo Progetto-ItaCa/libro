@@ -7,10 +7,33 @@
  Il caso particolare di limiti in \(\ctSet\) (prefasci): per \(F \colon \ctC^\op\fun\ctSet\), \(\colim F\cong \pi_0(\Elts\ctC F)\). E il limite?
 \end{remark}
 
-\begin{definition}[Preservazione, riflessione, creazione di limiti]\label{def_preservazione_riflessione_creazione}\index{Limite!preservazione}\index{Limite!riflessione}\index{Limite!creazione}\index{Colimite!preservazione}\index{Colimite!riflessione}\index{Colimite!creazione}
- \Todo{}
+\begin{definition}\label{def_preserv_limiti}
+ Consideriamo una categoria piccola \(\ctD\) e due funtori
+ \[\xymatrix{\ctD \ar[r]^-{F} & \ctC \ar[r]^-{G} & \ctB}\]
+ e sia \(\lim_{\ctD}(F) = \langle L \in \ctC, \{\pi_D \colon L \to F(D)\}_{D \in \ctD}\rangle\). Diciamo che \(G\) preserva il limite di \(F\) se
+ \[\lim_{\ctD}(G \cdot F) =  \langle G(L) \in \ctB, \{G(\pi_D) \colon G(L) \to G(FD)\}_{D \in \ctD}\rangle\]
 \end{definition}
 
+\begin{remark}\label{oss_rappr_lim}
+ Le definizione \ref{def_preserv_limiti} permette di parafrasare la definizione stessa di limite. Più precisamente:
+ \begin{enumerate}
+  \item Sia \(\ctC\) una categoria e fissiamo un oggeto \(C \in \ctC\). Il funtore rappresentabile covariante \(\ctC(C,-) \colon \ctC \fun \ctSet\)
+        preserva tutti i limiti che esistono in \(\ctC\).
+  \item Sia \(F \colon \ctD \fun \ctC\) un funtore definito su una categoria piccola \(\ctD\). Un cono naturale \(\{\pi_D \colon L \to F(D)\}_{D \in \ctD}\)
+        è il limite di \(F\) se (e solo se) per ogni \(C \in \ctC\) il cono
+        \[\{\pi_D \cdot - \colon \ctC(C,L) \to \ctC(C,FD)\}_{D \in \ctD}\]
+        è il cono limite del funtore composto \(\ctC(C,-) \cdot F \colon \ctD \fun \ctC \fun \ctSet\).
+ \end{enumerate}
+ La verifica del primo punto è immediata. La verifica del secondo punto è un'applicazione interessante del lemma di Yoneda. \\
+ Attenzione alla controvarianza quando si dualizzano le affermazioni precedenti. Il funtore \(\ctC(-,C)\) preserva i limiti di \(\ctC^{\op}\),
+ ovvero trasforma i colimiti di \(\ctC\) in limiti in \(\ctSet\).
+\end{remark}
+\begin{definition}\label{def_rifl_limiti}
+ \Todo{riflessione di limiti}
+\end{definition}
+\begin{definition}\label{def_creaz_limiti}
+ \Todo{Creazione di limiti}
+\end{definition}
 \begin{proposition}[Il dimenticante da \(\ctAlg(F)\) crea i limiti]\label{prop_dimenticante_alg_crea_limiti}\index{Algebra!di un funtore}\index{Coalgebra!di un funtore}\index{Funtore!dimenticante!creazione di limiti}\index{Limite!creazione}\index{Colimite!creazione}
  \Todo{}
 \end{proposition}
@@ -37,6 +60,9 @@ $U(\mathrm{Eq}(f, g)) \to \mathrm{Eq}(U(f), U(g)) = U(X)$
 
 è un isomorfismo per preservazione dei limiti, e allora il morfismo canonico $\mathrm{Eq}(f, g) \to X$ è un isomorfismo per la conservatività di $U$, e ciò implica $f = g$.
 \end{proposition}
+\begin{proof}
+ \Todo{}
+\end{proof}
 \begin{definition}[Teorie-prodotto]\label{def_teorie_prodotto}\index{Teoria!algebrica}\index{Teoria!prodotto}
  % i.e. teorie algebriche
  \Todo{}
@@ -66,7 +92,13 @@ Questa proprietà è condivisa da molte altre categorie oltre a \(\ctAb\); più 
 \begin{proposition}[Esattezza e successioni esatte corte]\label{prop_esattezza_successioni_esatte_corte}\index{Successione esatta corta}\index{Quadrato esatto!relazione con successioni esatte}
  \Todo{}
 \end{proposition}
-
+ Raccogliamo alcuni risultati sulle successioni esatte corte
+ \begin{proposition}
+  Pullback di una s.e.s induce iso sui ker
+ \end{proposition}
+ \begin{proposition}
+  Lemma dei 5 e dei 9
+ \end{proposition}
 \begin{definition}[Categoria abeliana]\label{def_categoria_abeliana}\index{Categoria!abeliana}
  \Todo{}
 \end{definition}
