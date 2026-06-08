@@ -15,10 +15,10 @@ blabla
 
 \section{I prefasci come colimiti di rappresentabili}\label{sec_colim_rappr}
 
-Il risultato fondamentale di questa sezione \`e \ref{prop_colim_rappr}, che costituisce il punto di partenza per dimostrare una propriet\`a universale delle categorie di prefasci. Ne dedurremo ache un teorema  di caratterizzazione e una proprietà di stabilit\`a per le categorie di prefasci. Cominciamo con l'introdurre una notazione.
+Il risultato fondamentale di questa sezione è \ref{prop_colim_rappr}, che costituisce il punto di partenza per dimostrare una proprietà universale delle categorie di prefasci. Ne dedurremo anche un teorema di caratterizzazione (si veda \ref{}) e una proprietà di stabilità (si veda \ref{}) per le categorie di prefasci. Cominciamo con l'introdurre una notazione.
 
 \begin{remark}\label{oss_categ_elem}
- Sia \(\ctD\) una categoria piccola, \(\ctY_{\ctD} \colon \ctD^{\op} \fun \ctSet^{\ctD}\) l'immersione di Yoneda e
+ Sia \(\ctD\) una categoria piccola, \(\coyon_{\ctD} \colon \ctD^{\op} \fun \ctSet^{\ctD}\) l'immersione di Yoneda e
  \(A \colon \ctD \fun \ctSet\) un funtore.
  Usando il lemma di Yoneda, la categoria comma \(\ctY_{\ctD}/A\) si può descrivere nel modo seguente:
  \begin{enumerate}
@@ -171,15 +171,15 @@ perfettamente e finitamente presentabili.
 \end{proof}
 
 \begin{example}\label{ex_ass_present_pref}
-In questo esempio vogliamo identificare gli oggetti assolutamente presentabili della categoria \(\ctSet^{\ctC}\), dove
-\(\ctC\) \`e una categoria piccola. 
+ In questo esempio vogliamo identificare gli oggetti assolutamente presentabili della categoria \(\ctSet^{\ctC}\), dove
+ \(\ctC\) è una categoria piccola.
  Come primo passo, osserviamo che i funtori rappresentabili sono degli oggetti assolutamente presentabili di
  \(\ctSet^{\ctC}\). Infatti, nella situazione
  \[\xymatrix{\ctD \ar[r]^-{H} & \ctSet^{\ctC} \ar[rr]^-{\Nat(\ctC(X,-),-)} & & \ctSet}\]
  usando due volte il lemma di Yoneda e il fatto che i colimiti in \(\ctSet^{\ctC}\) si calcolano punto a
  punto (proposizione \ref{prop_lim_puntuali}), si ha
  \[\Nat(\ctC(X,-),\colim_{\ctD}H) \simeq (\colim_{\ctD}H)(X) = \colim_{\ctD}((HD)(X)) \simeq \colim_{\ctD}\Nat(\ctC(X,-),HD))\]
- il che conclude la prova che i rappesentabili son assolutamente presentabili. 
+ il che conclude la prova che i rappesentabili son assolutamente presentabili.
  La proposizione \ref{prop_stab_present} implica ora che i retratti dei funtori rappresentabili sono oggetti
  assolutamente presentabili di \(\ctSet^{\ctC}\). Non ce ne sono altri: se \(A \in \ctSet^{\ctC}\) è assolutamente
  presentabile, allora \(A\) è un retratto di un funtore rappresentabile. Infatti, con la notazione della proposizione
@@ -221,9 +221,9 @@ In questo esempio vogliamo identificare gli oggetti assolutamente presentabili d
 \begin{proof}
  Sappiamo che \(\ctSet^{\ctD}\) è cocompleta (corollario \ref{cor_lim_cat_pref}) e come insieme \(\ctG\) si può prendere
  l'insieme dei funtori \(\ctD \fun \ctSet\) rappresentabili, vedi proposizione \ref{prop_colim_rappr}. \\
- Viceversa,  consideriamo come categoria \(\ctD\) la duale della sottocategoria piena di \(\ctB\) che ha come oggetti quelli 
- dell'insieme \(\ctG\) e prendiamo come funtore \(F \colon \ctD^{\op} \fun \ctB\) l'inclusione piena. Si può applicare il lemma 
- \ref{lemma_caratt_pref}, per cui il funtore indotto \(F^* \colon \ctSet^{\ctD} \fun \ctB\) è pieno e fedele. Inoltre, per ogni 
+ Viceversa,  consideriamo come categoria \(\ctD\) la duale della sottocategoria piena di \(\ctB\) che ha come oggetti quelli
+ dell'insieme \(\ctG\) e prendiamo come funtore \(F \colon \ctD^{\op} \fun \ctB\) l'inclusione piena. Si può applicare il lemma
+ \ref{lemma_caratt_pref}, per cui il funtore indotto \(F^* \colon \ctSet^{\ctD} \fun \ctB\) è pieno e fedele. Inoltre, per ogni
  oggetto \(B \in \ctB\) esistono per ipotesi una categoria piccola \(\ctD_B\) e un funtore \(\Psi_B \colon \ctD_B \fun \ctD^{\op}\) tali che
  \[ B = \colim_{\ctD_B}(F \cmp \Psi_B) \]
  Se poniamo \(A = \colim_{\ctD_B}(\ctY_{\ctD} \cmp \Psi_B)\) e usiamo il fatto che \(F^*\) preserva i colimiti, otteniamo
@@ -242,7 +242,7 @@ Terminiamo questa sezione con una proprietà di stabilità per le categorie di p
 \begin{proof}
  Mostriamo che \(\ctA\) soddisfa le ipotesi della caratterizzazione \ref{prop_caratt_pref}. Certamente \(\ctA\) è cocompleta
  in quanto sottocategoria riflessiva di una categoria cocompleta. Sia ora \(R \colon \ctSet^{\ctC} \fun \ctA\) l'aggiunto sinistro.
- e considero l'insieme di oggetti di \(\ctA\) definito da 
+ e considero l'insieme di oggetti di \(\ctA\) definito da
  \[\ctG = \{R(\ctC(X,-)) \mid X \in \ctC\}\]
  In virtù della proposizione \ref{prop_stab_perf_pres} e dell'esempio \ref{ex_ass_present_pref}, tali oggetti sono assolutamente
  presentabili in \(\ctA\). Per terminare, consideriamo un oggetto \(A \in \ctA\). Per la proposizione \ref{prop_colim_rappr},
@@ -279,7 +279,7 @@ Terminiamo questa sezione con una proprietà di stabilità per le categorie di p
 
 Vista l'importanza delle categorie del tipo \(\ctSet^{\ctC}\) con \(\ctC\) piccola, ci si può chiedere quando due categorie
 piccole \(\ctC\) e \(\ctD\) danno luogo a categorie di prefasci equivalenti: \(\ctSet^{\ctC} \simeq \ctSet^{\ctD}\).
-Per rispondere in modo esaustivo a tale domanda dobbiamo rivisitare il completamento per idempotenti (definizione 
+Per rispondere in modo esaustivo a tale domanda dobbiamo rivisitare il completamento per idempotenti (definizione
 \ref{def_idemp_compl} e proposizione \ref{prop_compl_idemp}) nel caso di una categoria piccola.
 
 \begin{corollary}\label{cor_idcompl_ap}
@@ -321,7 +321,7 @@ Possiamo ora formulare una prima risposta alla domanda che ci siamo posti all'in
 \end{proposition}
 
 \begin{proof}
- 1. Poich\'e \(\ctSet\) \`e completa e quindi completa per idempotenti, questo punto \`e un  caso particolare
+ 1. Poiché \(\ctSet\) è completa e quindi completa per idempotenti, questo punto è un  caso particolare
  del corollario \ref{cor_equiv_idcompl}. \\
  2. L'equivalenza fra le condizioni \(\ctSet^{\ctC}_{\mathrm{ap}} \simeq \ctSet^{\ctD}_{\mathrm{ap}}\) e
  \(\mathrm{Ic}(\ctC) \simeq \mathrm{Ic}(\ctD)\) segue subito dall'osservazione \ref{oss_idcompl_duale} e dal
@@ -334,12 +334,12 @@ Possiamo ora formulare una prima risposta alla domanda che ci siamo posti all'in
 \end{proof}
 
 \begin{remark}\label{oss_dualita}
-La proposizione \ref{prop_morita_prefasci} ci dice in particolare che, se due categorie piccole \(\ctC\) e \(\ctD\) sono complete 
-per idempotenti,allora \(\ctSet^\ctC \simeq \ctSet^\ctD\) se e solo se \(\ctC \simeq \ctD\). Questo fatto si pu\`o anche inquadrare 
-in una dualit\`a fra la 2-categoria delle categorie piccole e complete per idempotenti e la 2-categoria delle categorie di prefasci. 
-Senza entrare in una spiegazione dettagliata di tale risultato, che richiede evidentemente di introdurre le 2-categorie e i 2-funtori, 
-ci limitiamo a enunciare e dimostrare i due ingredienti essenziali di tale dualit\`a, ovvero le proposizioni \ref{prop_funt_indotto_pref} 
-e \ref{prop_dualita_cat_pref}.
+ La proposizione \ref{prop_morita_prefasci} ci dice in particolare che, se due categorie piccole \(\ctC\) e \(\ctD\) sono complete
+ per idempotenti,allora \(\ctSet^\ctC \simeq \ctSet^\ctD\) se e solo se \(\ctC \simeq \ctD\). Questo fatto si può anche inquadrare
+ in una dualità fra la 2-categoria delle categorie piccole e complete per idempotenti e la 2-categoria delle categorie di prefasci.
+ Senza entrare in una spiegazione dettagliata di tale risultato, che richiede evidentemente di introdurre le 2-categorie e i 2-funtori,
+ ci limitiamo a enunciare e dimostrare i due ingredienti essenziali di tale dualità, ovvero le proposizioni \ref{prop_funt_indotto_pref}
+ e \ref{prop_dualita_cat_pref}.
 \end{remark}
 
 \begin{proposition}\label{prop_funt_indotto_pref}
@@ -349,13 +349,13 @@ e \ref{prop_dualita_cat_pref}.
 \end{proposition}
 
 \begin{proof}
-Il fatto che \(\ctSet^M\) preservi i colimiti \`e un caso particolare del corollario \ref{cor_funt_indotto_catfunt}.
-Per mostrare che \(\ctSet^M\) ha aggiunto sinistro, consideriamo il seguente diagramma
+ Il fatto che \(\ctSet^M\) preservi i colimiti è un caso particolare del corollario \ref{cor_funt_indotto_catfunt}.
+ Per mostrare che \(\ctSet^M\) ha aggiunto sinistro, consideriamo il seguente diagramma
  \[ \xymatrix{\ctC^{\op} \ar[d]_{M^{\op}} \ar[r]^-{\ctY_{\ctC}} \ar@{.>}[rd]^{F} & \ctSet^{\ctC} \ar[d]^{M^*} \\
   \ctD^{\op} \ar[r]_-{\ctY_{\ctD}} & \ctSet^{\ctD}} \]
- dove abbiamo applicato la proprietà universale dell'immersione di Yoneda \(\ctY_{\ctC}\) (proposizione 
- \ref{prop_univ_yon}) al funtore \(F = \ctY_{\ctD} \cmp M^{\op}\) per ottenere il funtore \(M^*\) che preserva 
- i colimiti e che rende il diagramma commutativo a meno di isomorfismo naturale. Sappiamo che \(M^*\) ha 
+ dove abbiamo applicato la proprietà universale dell'immersione di Yoneda \(\ctY_{\ctC}\) (proposizione
+ \ref{prop_univ_yon}) al funtore \(F = \ctY_{\ctD} \cmp M^{\op}\) per ottenere il funtore \(M^*\) che preserva
+ i colimiti e che rende il diagramma commutativo a meno di isomorfismo naturale. Sappiamo che \(M^*\) ha
  un aggiunto destro \[ R_M \colon \ctSet^{\ctD} \fun \ctSet^{\ctC}, \; R_M(B) = \Nat(F-,B) \colon \ctC \fun \ctSet \]
  e resta da mostrare che \(R_M\) è isomorfo a \(\ctSet^M\). Per ogni \(X \in \ctC\) si ha
  \[ (R_M(B))(X) = \Nat(FX,B) = \Nat(\ctD(MX,-),B) \simeq B(MX) = (\ctSet^M(B))(X) \]
@@ -363,17 +363,17 @@ Per mostrare che \(\ctSet^M\) ha aggiunto sinistro, consideriamo il seguente dia
 \end{proof}
 
 \begin{example}\label{ex_M_subcat_refl}
-Esaminiamo la dimostrazione della propriet\`a di stabilit\`a delle categorie di prefasci (corollario \ref{cor_stab_pref})
-dal punto di vista dei funtori di tipo \(\ctSet^M\). Se \(i \colon \ctA \fun \ctSet^{\ctC}\) \`e una sottocategoria riflessiva,
-con riflettore \(R\), abbiamo posto \(\ctD^{\op} = \{R(\ctC(X,-)) \mid X \in \ctC\}\). Se ora chiamiamo \(F\)
-l'inclusione piena \(\ctD \subseteq \ctA\), abbiamo mostrato che l'unico funtore \(F^* \colon \ctSet^{\ctD} \fun \ctA\)
-che preserva i colimiti e tale che \(F^* \cmp \ctY_{\ctD} \simeq F\) \`e un'equivalenza. Se definiamo
-\(M \colon \ctC \fun \ctD\) come la corestrizione di \(R \cmp \ctY_{\ctD}\) a \(\ctD\), abbiamo che \(F^* \cmp M^* \simeq R\).
-Infatti
-\[F^* \cmp M^* \cmp \ctY_{\ctC} \simeq F^* \cmp \ctY_{\ctD} \cmp M^{\op} \simeq F \cmp M^{\op} = R \cmp \ctY_{\ctC}\]
-e tanto \(F^* \cmp M^*\) che \(R\) preservano i colimiti. Possiamo concludere che, a meno dell'equivalenza 
-\(\ctA \simeq \ctSet^{\ctD}\), l'aggiunzione di partenza \(R \dashv i\) coincide con l'aggiunzione indotta \(M^* \dashv \ctSet^M\).
-\end{example} 
+ Esaminiamo la dimostrazione della proprietà di stabilità delle categorie di prefasci (corollario \ref{cor_stab_pref})
+ dal punto di vista dei funtori di tipo \(\ctSet^M\). Se \(i \colon \ctA \fun \ctSet^{\ctC}\) è una sottocategoria riflessiva,
+ con riflettore \(R\), abbiamo posto \(\ctD^{\op} = \{R(\ctC(X,-)) \mid X \in \ctC\}\). Se ora chiamiamo \(F\)
+ l'inclusione piena \(\ctD \subseteq \ctA\), abbiamo mostrato che l'unico funtore \(F^* \colon \ctSet^{\ctD} \fun \ctA\)
+ che preserva i colimiti e tale che \(F^* \cmp \ctY_{\ctD} \simeq F\) è un'equivalenza. Se definiamo
+ \(M \colon \ctC \fun \ctD\) come la corestrizione di \(R \cmp \ctY_{\ctD}\) a \(\ctD\), abbiamo che \(F^* \cmp M^* \simeq R\).
+ Infatti
+ \[F^* \cmp M^* \cmp \ctY_{\ctC} \simeq F^* \cmp \ctY_{\ctD} \cmp M^{\op} \simeq F \cmp M^{\op} = R \cmp \ctY_{\ctC}\]
+ e tanto \(F^* \cmp M^*\) che \(R\) preservano i colimiti. Possiamo concludere che, a meno dell'equivalenza
+ \(\ctA \simeq \ctSet^{\ctD}\), l'aggiunzione di partenza \(R \dashv i\) coincide con l'aggiunzione indotta \(M^* \dashv \ctSet^M\).
+\end{example}
 
 \begin{proposition}\label{prop_dualita_cat_pref}
  Sia \(M \colon \ctC \fun \ctD\) un funtore fra categorie piccole.
@@ -403,25 +403,25 @@ e tanto \(F^* \cmp M^*\) che \(R\) preservano i colimiti. Possiamo concludere ch
  \(R\) coincide, a meno di iso naturale, con \(\ctSet^M\), come mostrato nella prova della proposizione \ref{prop_funt_indotto_pref}.
 \end{proof}
 
-Dal corollario \ref{cor_equiv_sutr} sappiamo che, date tre categorie \(\ctB, \ctC\) e \(\ctD\), con \(\ctB\) e \(\ctD\) complete per idempotenti, 
+Dal corollario \ref{cor_equiv_sutr} sappiamo che, date tre categorie \(\ctB, \ctC\) e \(\ctD\), con \(\ctB\) e \(\ctD\) complete per idempotenti,
 e un funtore \(M \colon \ctC \fun \ctD\) pieno, fedele e suriettivo a meno di retratti, il funtore indotto \(\ctB^M \colon \ctB^\ctD \fun \ctB^\ctC\)
-\`e un'equivalenza. Con il seguente esercizio vogliamo mostrare che, nel caso in cui \(\ctB\) sia \(\ctSet\), l'ipotesi che \(\ctD\) sia
-completa per idempotenti si pu\`o omettere. Per pervenire a tale scopo, piuttosto che analizzare il funtore \(\ctSet^M\) analizziamo
+è un'equivalenza. Con il seguente esercizio vogliamo mostrare che, nel caso in cui \(\ctB\) sia \(\ctSet\), l'ipotesi che \(\ctD\) sia
+completa per idempotenti si può omettere. Per pervenire a tale scopo, piuttosto che analizzare il funtore \(\ctSet^M\) analizziamo
 il suo aggiunto sinistro \(M^* \colon \ctSet^\ctC \fun \ctSet^\ctD\) introdotto nella proposizione \ref{prop_funt_indotto_pref}.
-(L'esercizio \`e anche una scusa per mostrare un esempio di funtore iniziale.)
+(L'esercizio è anche una scusa per mostrare un esempio di funtore iniziale.)
 
 \begin{exercise}\label{esercizio_equiv_sutr}
-Sia \(M \colon \ctC \fun \ctD\) un funtore fra categorie piccole.
-\begin{enumerate}
- \item Per ogni oggetto \(B \in \ctSet^{\ctD}\), il funtore \(M\) induce un funtore \(M_B \colon \mathrm{El}(B \cmp M) \fun \mathrm{El}(B)\)
+ Sia \(M \colon \ctC \fun \ctD\) un funtore fra categorie piccole.
+ \begin{enumerate}
+  \item Per ogni oggetto \(B \in \ctSet^{\ctD}\), il funtore \(M\) induce un funtore \(M_B \colon \mathrm{El}(B \cmp M) \fun \mathrm{El}(B)\)
         che rende il seguente diagramma commutativo
         \[ \xymatrix{ \ctC^{\op} \ar[d]_{M^{\op}} & \mathrm{El}(B \cmp M) \ar[l]_-{\Phi_{B \cmp M}} \ar[d]^{M_B} \\
          \ctD^{\op} & \mathrm{El}(B) \ar[l]^{\Phi_B} }\]
   \item Se \(M\) è pieno e suriettivo a meno di retratti, allora il funtore \(M_B\) è iniziale.
-  \item Se \(M\) è pieno e fedele, allora il funtore \(M^* \colon \ctSet^\ctC \fun \ctSet^\ctD\)  \`e pieno e fedele.
-  \item Se \(M\) \`e pieno, fedele e suriettivo a meno di retratti, allora il funtore \(M^* \colon \ctSet^\ctC \fun \ctSet^\ctD\)  
-  \`e un'equivalenza.
-\end{enumerate}
+  \item Se \(M\) è pieno e fedele, allora il funtore \(M^* \colon \ctSet^\ctC \fun \ctSet^\ctD\)  è pieno e fedele.
+  \item Se \(M\) è pieno, fedele e suriettivo a meno di retratti, allora il funtore \(M^* \colon \ctSet^\ctC \fun \ctSet^\ctD\)
+        è un'equivalenza.
+ \end{enumerate}
 \end{exercise}
 
 \begin{proof}
@@ -447,7 +447,7 @@ Sia \(M \colon \ctC \fun \ctD\) un funtore fra categorie piccole.
   (MX,x) & (MZ, (Bs)(d)) \ar[l]^-{Mg'} \ar[r]_-{Mh'} & (MY,y) } \]
  infatti \((BMg')(x) = (B(s \cmp g))(x) = (Bs)((Bg)(x)) = (Bs)(d)\) e, analogamente, \((BMh')(y) = (Bs)(d)\). Abbiamo così
  mostrato che \((D,d) / M_B\) è connessa, ovvero che \(M_B\) è iniziale. \\
-3.  Consideriamo il diagramma
+ 3.  Consideriamo il diagramma
  \[ \xymatrix{ \ctC^{\op} \ar[rr]^-{\ctY_{\ctC}} \ar[d]_{M^{\op}} \ar@{.>}[rrd]^{F} & & \ctSet^{\ctC} \ar@<-0.8ex>[d]_{M^*} \\
   \ctD^{\op} \ar[rr]_-{\ctY_{\ctD}} & & \ctSet^{\ctD} \ar@<-0.5ex>[u]_{\ctSet^M} } \]
  dove abbiamo posto \(F = \ctY_{\ctD} \cmp M^{\op}\) (vedi prova della proposizione \ref{prop_funt_indotto_pref}).
@@ -464,168 +464,168 @@ Sia \(M \colon \ctC \fun \ctD\) un funtore fra categorie piccole.
   = \colim_{\mathrm{El}(B \cmp M)}(\ctY_{\ctD} \cmp M^{\op} \cmp \Phi_{B \cmp M}) \simeq \]
  \[ \simeq \colim_{\mathrm{El}(B \cmp M)}(M^* \cmp \ctY_{\ctC} \cmp \Phi_{B \cmp M}) \simeq
   M^*(\colim_{\mathrm{El}(B \cmp M)}(\ctY_{\ctC} \cmp \Phi_{B \cmp M})) = M^*(B \cmp M) \]
- Questo conclude la prova che \(M^*\) \`e un'equivalenza (e quindi anche \(\ctSet^M\) lo \`e).
+ Questo conclude la prova che \(M^*\) è un'equivalenza (e quindi anche \(\ctSet^M\) lo è).
 \end{proof}
 
 \section{Sottocategorie equazionali di categorie di prefasci}\label{sec_birk_prefasci}
 
-Anticipando un problema che sar\`a sviluppato pi\`u ampiamente nel capitolo sulle categorie algebriche, possiamo chiederci come 
-riconoscere se una sottocategoria piena di \(\ctSet^\ctC\) \`e determinata da un insieme di equazioni su \(\ctC\) o, equivalentemente,
+Anticipando un problema che sarà sviluppato più ampiamente nel capitolo sulle categorie algebriche, possiamo chiederci come
+riconoscere se una sottocategoria piena di \(\ctSet^\ctC\) è determinata da un insieme di equazioni su \(\ctC\) o, equivalentemente,
 da una congruenza su \(\ctC\). Prima di specializzarci al caso di \(\ctSet^\ctC\), consideriamo il caso generale di \(\ctB^\ctC\).
 
 \begin{definition}\label{def_equaz_cat}
-Sia \(\ctC\) una categoria.
-\begin{enumerate}
-\item Un'equazione su \(\ctC\), o \(\ctC\)-equazione, \`e una coppia \(u,v \colon X \rightrightarrows Y\) di frecce parallele di \(\ctC\).
-\item Un funtore \(M \colon \ctC \fun \ctB\) soddisfa una \(\ctC\)-equazione \((u,v)\) se \(M(u)=M(v)\).
-\item Se \(E\) \`e un insieme di \(\ctC\)-equazioni, denotiamo con \(\ctB^{(\ctC,E)}\) la sottocategoria piena di \(\ctB^\ctC\)
-dei funtori \(A \colon \ctC \fun \ctB\) tali che \(A(u)=A(v)\) per ogni \(\ctC\)-equazione \((u,v) \in E\). Chiamiamo le sottocategorie 
-del tipo \(\ctB^{(\ctC,E)}\) sottocategorie equazionali.
-\end{enumerate}
-\end{definition} 
+ Sia \(\ctC\) una categoria.
+ \begin{enumerate}
+  \item Un'equazione su \(\ctC\), o \(\ctC\)-equazione, è una coppia \(u,v \colon X \rightrightarrows Y\) di frecce parallele di \(\ctC\).
+  \item Un funtore \(M \colon \ctC \fun \ctB\) soddisfa una \(\ctC\)-equazione \((u,v)\) se \(M(u)=M(v)\).
+  \item Se \(E\) è un insieme di \(\ctC\)-equazioni, denotiamo con \(\ctB^{(\ctC,E)}\) la sottocategoria piena di \(\ctB^\ctC\)
+        dei funtori \(A \colon \ctC \fun \ctB\) tali che \(A(u)=A(v)\) per ogni \(\ctC\)-equazione \((u,v) \in E\). Chiamiamo le sottocategorie
+        del tipo \(\ctB^{(\ctC,E)}\) sottocategorie equazionali.
+ \end{enumerate}
+\end{definition}
 
-Per poter costruire la categoria quoziente, conviene rimpiazzare la nozione di \(\ctC\)-equazione con la nozione pi\`u 
+Per poter costruire la categoria quoziente, conviene rimpiazzare la nozione di \(\ctC\)-equazione con la nozione più
 maneggevole di \(\ctC\)-congruenza.
 
-\begin{definition}\label{def_cong_cat} 
-Sia \(\ctC\) una categoria. 
-\begin{enumerate}
-\item Una congruenza \(\sim\) su \(\ctC\), o \(\ctC\)-congruenza, \`e una famiglia di relazioni di equivalenza
-\[\{\sim_{X,Y} \, \subseteq \ctC(X,Y) \times \ctC(X,Y) \mid X,Y \in \ctC\}\] 
-che collettivamente formano una sottocategoria della categoria prodotto \(\ctC \times \ctC\), ovvero
-tali che, se \(a \sim_{X,Y}b\) e \(c \sim_{Y,Z}d\), allora \(c \cmp a \sim_{X,Z} d \cmp b\).  \\
-(Quando questo non crea confusione, scriveremo \(a \sim b\) invece di \(a \sim_{X,Y} b\).)
-\item Se \(\sim\) \`e una \(\ctC\)-congruenza, denotiamo con \(\ctB^{(\ctC,\sim)}\) la sottocategoria piena di \(\ctB^{\ctC}\)
-dei funtori \(A \colon \ctC \fun \ctB\) tali che \(A(u)=A(v)\) ogniqualvolta \(u \sim v\).
-\end{enumerate} 
+\begin{definition}\label{def_cong_cat}
+ Sia \(\ctC\) una categoria.
+ \begin{enumerate}
+  \item Una congruenza \(\sim\) su \(\ctC\), o \(\ctC\)-congruenza, è una famiglia di relazioni di equivalenza
+        \[\{\sim_{X,Y} \, \subseteq \ctC(X,Y) \times \ctC(X,Y) \mid X,Y \in \ctC\}\]
+        che collettivamente formano una sottocategoria della categoria prodotto \(\ctC \times \ctC\), ovvero
+        tali che, se \(a \sim_{X,Y}b\) e \(c \sim_{Y,Z}d\), allora \(c \cmp a \sim_{X,Z} d \cmp b\).  \\
+        (Quando questo non crea confusione, scriveremo \(a \sim b\) invece di \(a \sim_{X,Y} b\).)
+  \item Se \(\sim\) è una \(\ctC\)-congruenza, denotiamo con \(\ctB^{(\ctC,\sim)}\) la sottocategoria piena di \(\ctB^{\ctC}\)
+        dei funtori \(A \colon \ctC \fun \ctB\) tali che \(A(u)=A(v)\) ogniqualvolta \(u \sim v\).
+ \end{enumerate}
 \end{definition}
 
 \begin{example}\label{ex_cong_funt}
-Se \(M \colon \ctC \fun \ctB\) \`e un funtore, otteniamo una \(\ctC\)-congruenza \(\sim_M\) nel modo seguente: 
-date due frecce parallele
-\(u,v \colon X \rightrightarrows Y\) di \(\ctC\), poniamo
-\[u \sim_M v \;\mbox{ se }\; M(u)=M(v)\]
-Usando tale notazione, si ha che un funtore \(M \colon \ctC \fun \ctB\) \`e in \(\ctB^{(\ctC,\sim)}\) se e solo se \(\sim \,\leq\, \sim_M\).
-(La relazione d'ordine fra \(\ctC\)-congruenze \`e quella ovvia: \(\sim \, \leq \, \sim'\) se \(\sim_{X,Y} \, \subseteq \, \sim'_{X,Y}\) 
-per ogni \(X,Y \in \ctC\).) 
+ Se \(M \colon \ctC \fun \ctB\) è un funtore, otteniamo una \(\ctC\)-congruenza \(\sim_M\) nel modo seguente:
+ date due frecce parallele
+ \(u,v \colon X \rightrightarrows Y\) di \(\ctC\), poniamo
+ \[u \sim_M v \;\mbox{ se }\; M(u)=M(v)\]
+ Usando tale notazione, si ha che un funtore \(M \colon \ctC \fun \ctB\) è in \(\ctB^{(\ctC,\sim)}\) se e solo se \(\sim \,\leq\, \sim_M\).
+ (La relazione d'ordine fra \(\ctC\)-congruenze è quella ovvia: \(\sim \, \leq \, \sim'\) se \(\sim_{X,Y} \, \subseteq \, \sim'_{X,Y}\)
+ per ogni \(X,Y \in \ctC\).)
 \end{example}
 
 \begin{remark}\label{oss_cong_funt}
-Per completare l'esempio \ref{ex_cong_funt}, osserviamo due semplici fatti che riguardano la congruenza indotta da un funtore.
-\begin{enumerate}
-\item Dati due funtori \(M \colon \ctC \fun \ctB\) e \(N \colon \ctB \fun \ctA\), si ha  
-sempre \(\sim_M \,\leq\, \sim_{N \cmp M}\).
-\item Sia \(\alpha \colon M \nat N \colon \ctC \rightrightarrows \ctB\) una trasformazione naturale. Se \(\alpha\) \`e un mono, allora 
-\(\sim_N \,\leq\, \sim_M\). Se \(\alpha\) \`e un epi, allora \(\sim_M \,\leq\, \sim_N\).
-\end{enumerate}
+ Per completare l'esempio \ref{ex_cong_funt}, osserviamo due semplici fatti che riguardano la congruenza indotta da un funtore.
+ \begin{enumerate}
+  \item Dati due funtori \(M \colon \ctC \fun \ctB\) e \(N \colon \ctB \fun \ctA\), si ha
+        sempre \(\sim_M \,\leq\, \sim_{N \cmp M}\).
+  \item Sia \(\alpha \colon M \nat N \colon \ctC \rightrightarrows \ctB\) una trasformazione naturale. Se \(\alpha\) è un mono, allora
+        \(\sim_N \,\leq\, \sim_M\). Se \(\alpha\) è un epi, allora \(\sim_M \,\leq\, \sim_N\).
+ \end{enumerate}
 \end{remark}
 
-\begin{proof} 
-Il punto 1 \`e ovvio. Per il punto 2, ricordiamoci che \(\alpha\) \`e un mono nella categoria \(\ctB^\ctC\) precisamente quando 
-\(\alpha_X\) \`e un mono in \(\ctB\) per ogni oggetto \(X \in \ctC\), e analogamente per la condizione di epi (vedi corollario
-\ref{cor_fun_cat_compl}). La naturalit\`a di \(\alpha\) applicata a due frecce \(u,v \colon X \rightrightarrows Y\) di \(\ctC\)
-d\`a luogo al diagramma
-\[\xymatrix{MX \ar@<-0.5ex>[rr]_-{M(v)} \ar@<0.5ex>[rr]^-{M(u)} \ar[d]_{\alpha_X} & & MY \ar[d]^{\alpha_Y} \\
-NX \ar@<-0.5ex>[rr]_-{N(v)} \ar@<0.5ex>[rr]^-{N(u)} & & NY }\]
-la cui commutativit\`a permette di verificare le inclusioni fra \(\ctC\)-congruenze del punto 2.
-\end{proof} 
+\begin{proof}
+ Il punto 1 è ovvio. Per il punto 2, ricordiamoci che \(\alpha\) è un mono nella categoria \(\ctB^\ctC\) precisamente quando
+ \(\alpha_X\) è un mono in \(\ctB\) per ogni oggetto \(X \in \ctC\), e analogamente per la condizione di epi (vedi corollario
+ \ref{cor_fun_cat_compl}). La naturalità di \(\alpha\) applicata a due frecce \(u,v \colon X \rightrightarrows Y\) di \(\ctC\)
+ dà luogo al diagramma
+ \[\xymatrix{MX \ar@<-0.5ex>[rr]_-{M(v)} \ar@<0.5ex>[rr]^-{M(u)} \ar[d]_{\alpha_X} & & MY \ar[d]^{\alpha_Y} \\
+  NX \ar@<-0.5ex>[rr]_-{N(v)} \ar@<0.5ex>[rr]^-{N(u)} & & NY }\]
+ la cui commutatività permette di verificare le inclusioni fra \(\ctC\)-congruenze del punto 2.
+\end{proof}
 
 
 \begin{remark}\label{oss_inter_cong}
-Chiaramente, ogni \(\ctC\)-congruenza \(\sim\) determina un insieme \(E\) di \(\ctC\)-equazioni dato da tutte le coppie 
-\((u,v)\) tali che \(u \sim v\). Vogliamo ora associare a un insieme \(E\) di \(\ctC\)-equazioni una congruenza su \(\ctC\).
-Per questo, cominciamo con l'osservare che se \(\sim\) e \(\sim'\) sono due \(\ctC\)-congruenze, la loro intersezione puntuale 
-\(\sim \,\cap\, \sim'\), definita da
-\[(\sim \, \cap \, \sim' )_{X,Y} = \, \sim_{X,Y} \,\cap \, \sim'_{X,Y}\]
-\`e ancora una congruenza su \(\ctC\). Lo stesso dicasi per l'intersezione di una famiglia arbitraria di \(\ctC\)-congruenze.
-Ne segue che, se \(E = \{E_{X,Y} \subseteq \ctC(X,Y) \times \ctC(X,Y) \mid X,Y \in \ctC\} \) \`e un insieme di \(\ctC\)-equazioni, 
-allora l'intersezione di tutte le \(\ctC\)-congruenze \(\sim\) tali che
-\[ E_{X,Y} \subseteq \, \sim_{X,Y} \;\mbox{ per ogni coppia }\; X,Y \in \ctC\]
-\`e una \(\ctC\)-congruenza ed \`e la pi\`u piccola \(\ctC\)-congruenza che contiene tutte le equazioni di \(E\). Denoteremo tale 
-\(\ctC\)-congruenza con \(\sim_E\). Il carattere minimale di \(\sim_E\) d\`a luogo al seguente lemma.
+ Chiaramente, ogni \(\ctC\)-congruenza \(\sim\) determina un insieme \(E\) di \(\ctC\)-equazioni dato da tutte le coppie
+ \((u,v)\) tali che \(u \sim v\). Vogliamo ora associare a un insieme \(E\) di \(\ctC\)-equazioni una congruenza su \(\ctC\).
+ Per questo, cominciamo con l'osservare che se \(\sim\) e \(\sim'\) sono due \(\ctC\)-congruenze, la loro intersezione puntuale
+ \(\sim \,\cap\, \sim'\), definita da
+ \[(\sim \, \cap \, \sim' )_{X,Y} = \, \sim_{X,Y} \,\cap \, \sim'_{X,Y}\]
+ è ancora una congruenza su \(\ctC\). Lo stesso dicasi per l'intersezione di una famiglia arbitraria di \(\ctC\)-congruenze.
+ Ne segue che, se \(E = \{E_{X,Y} \subseteq \ctC(X,Y) \times \ctC(X,Y) \mid X,Y \in \ctC\} \) è un insieme di \(\ctC\)-equazioni,
+ allora l'intersezione di tutte le \(\ctC\)-congruenze \(\sim\) tali che
+ \[ E_{X,Y} \subseteq \, \sim_{X,Y} \;\mbox{ per ogni coppia }\; X,Y \in \ctC\]
+ è una \(\ctC\)-congruenza ed è la più piccola \(\ctC\)-congruenza che contiene tutte le equazioni di \(E\). Denoteremo tale
+ \(\ctC\)-congruenza con \(\sim_E\). Il carattere minimale di \(\sim_E\) dà luogo al seguente lemma.
 \end{remark}
 
 \begin{lemma}\label{lemma_equaz_cong}
-Sia \(E\) un insieme di \(\ctC\)-equazioni. 
-Un funtore \(M \colon \ctC \fun \ctB\) soddisfa tutte le equazioni di \(E\) se e solo se \(\sim_E \,\leq\, \sim_M\).
-Ne segue che \(\ctB^{(\ctC,E)} = \ctB^{(\ctC,\sim_E)}\).
-\end{lemma} 
+ Sia \(E\) un insieme di \(\ctC\)-equazioni.
+ Un funtore \(M \colon \ctC \fun \ctB\) soddisfa tutte le equazioni di \(E\) se e solo se \(\sim_E \,\leq\, \sim_M\).
+ Ne segue che \(\ctB^{(\ctC,E)} = \ctB^{(\ctC,\sim_E)}\).
+\end{lemma}
 
-Come annunciato, a partire da una \(\ctC\)-congruenza costruiamo ora la categoria quoziente \(\ctC/{\!\sim}\) per poi 
-stabilirne la propriet\`a universale.
+Come annunciato, a partire da una \(\ctC\)-congruenza costruiamo ora la categoria quoziente \(\ctC/{\!\sim}\) per poi
+stabilirne la proprietà universale.
 
 \begin{proposition}\label{prop_cat_quoz}
-Sia \(\ctC\) una categoria e \(\sim\) una \(\ctC\)-congruenza. Esistono una categoria \(\ctC/{\!\sim}\) e un funtore
-\(Q \colon \ctC \fun \ctC/{\!\sim}\) pieno, suriettivo sugli oggetti e tale che \(\sim \,=\,\sim_Q\). Inoltre, se 
-\(M \colon \ctC \fun \ctD\) \`e tal che \(\sim \,\leq\, \sim_M\), allora esiste un unico \(M' \colon \ctC/{\!\sim} \fun \ctD\) 
-tale che \(M' \cmp Q = M\)
-\[\xymatrix{\ctC \ar[r]^-{Q} \ar[d]_-{M} & \ctC/{\!\sim} \ar[ld]^{M'} \\ \ctD }\]
+ Sia \(\ctC\) una categoria e \(\sim\) una \(\ctC\)-congruenza. Esistono una categoria \(\ctC/{\!\sim}\) e un funtore
+ \(Q \colon \ctC \fun \ctC/{\!\sim}\) pieno, suriettivo sugli oggetti e tale che \(\sim \,=\,\sim_Q\). Inoltre, se
+ \(M \colon \ctC \fun \ctD\) è tal che \(\sim \,\leq\, \sim_M\), allora esiste un unico \(M' \colon \ctC/{\!\sim} \fun \ctD\)
+ tale che \(M' \cmp Q = M\)
+ \[\xymatrix{\ctC \ar[r]^-{Q} \ar[d]_-{M} & \ctC/{\!\sim} \ar[ld]^{M'} \\ \ctD }\]
 \end{proposition}
 
 \begin{proof}
-Gli oggetti di \(\ctC/{\!\sim}\) sono gli oggetti di \(\ctC\). Le frecce di  \(\ctC/{\!\sim}\) sono le classi di equivalenza di 
-frecce di \(\ctC\), cio\`e  \(\ctC/{\!\sim}(X,Y) = \ctC(X,Y)/\sim_{X,Y}\). Il funtore \(Q\) \`e definito da
-\(Q(f \colon X \to Y) = (\left[f\right] \colon X \to Y)\). Il fatto che \(Q\) sia pieno e suriettivo sugli oggetti \`e ovvio, cos\`i 
-come la condizione \(\sim_Q \,=\, \sim\). Sia ora un funtore \(M \colon \ctC \fun \ctD\)
-tale che \(\sim \,\leq\, \sim_M\). La condizione \(M' \cmp Q = M\) impone che \(M'\) sia definito da
-\(M'(\left[f\right] \colon X \to Y) = M(f \colon X \to Y)\) e la condizione \(\sim \,\leq\, \sim_M\) implica che tale definizione
-\`e ben data.
-\end{proof} 
+ Gli oggetti di \(\ctC/{\!\sim}\) sono gli oggetti di \(\ctC\). Le frecce di  \(\ctC/{\!\sim}\) sono le classi di equivalenza di
+ frecce di \(\ctC\), cioè  \(\ctC/{\!\sim}(X,Y) = \ctC(X,Y)/\sim_{X,Y}\). Il funtore \(Q\) è definito da
+ \(Q(f \colon X \to Y) = (\left[f\right] \colon X \to Y)\). Il fatto che \(Q\) sia pieno e suriettivo sugli oggetti è ovvio, così
+ come la condizione \(\sim_Q \,=\, \sim\). Sia ora un funtore \(M \colon \ctC \fun \ctD\)
+ tale che \(\sim \,\leq\, \sim_M\). La condizione \(M' \cmp Q = M\) impone che \(M'\) sia definito da
+ \(M'(\left[f\right] \colon X \to Y) = M(f \colon X \to Y)\) e la condizione \(\sim \,\leq\, \sim_M\) implica che tale definizione
+ è ben data.
+\end{proof}
 
 \begin{exercise}\label{ex_cat_quoz_bidim}
-Lasciamo alla lettrice il compito di enunciare e dimostrare una propriet\`a universale della categoria quoziente dove la
-condizione \(M' \cmp Q = M\) sia rimpiazzata dall'esistenza di un isomorfismo naturale \(M' \cmp Q \simeq M\) e
-l'unicit\`a di \(M'\) sia a meno di un (unico) isomorfismo naturale.
-\end{exercise} 
+ Lasciamo alla lettrice il compito di enunciare e dimostrare una proprietà universale della categoria quoziente dove la
+ condizione \(M' \cmp Q = M\) sia rimpiazzata dall'esistenza di un isomorfismo naturale \(M' \cmp Q \simeq M\) e
+ l'unicità di \(M'\) sia a meno di un (unico) isomorfismo naturale.
+\end{exercise}
 
 Ora possiamo dimostriare che le sottocategorie equazionali di \(\ctB^\ctC\) sono, a meno di equivalenze, le categorie
 del tipo \(\ctB^{\ctC/{\!\sim}}\) per \(\sim\) una \(\ctC\)-congruenza.
 
 \begin{corollary}\label{cor_cat_equaz_quoz}
-Sia \(\sim\) una \(\ctC\)-congruenza. Il funtore \(\ctB^Q \colon \ctB^{\ctC/{\!\sim}} \fun \ctB^\ctC\) indotto per composizione dal funtore
-universale \(Q \colon \ctC \fun \ctC/{\!\sim}\) si fattorizza attraverso la sottocategoria \(\ctB^{(\ctC,\sim)}\) e la fattorizzazione \`e 
-un'equivalenza di categorie
-\[\xymatrix{\ctB^{\ctC/{\!\sim}} \ar[rr]^-{\ctB^Q} \ar[rd]_{\simeq} & & \ctB^{\ctC} \\ & \ctB^{(\ctC,\sim)} \ar[ru] }\]
-Ne segue che \(\ctB^{(\ctC,\sim)}\) \`e chiusa in \(\ctB^\ctC\) per limiti, colimiti, sottooggetti e immagini epimorfiche.
-\end{corollary} 
+ Sia \(\sim\) una \(\ctC\)-congruenza. Il funtore \(\ctB^Q \colon \ctB^{\ctC/{\!\sim}} \fun \ctB^\ctC\) indotto per composizione dal funtore
+ universale \(Q \colon \ctC \fun \ctC/{\!\sim}\) si fattorizza attraverso la sottocategoria \(\ctB^{(\ctC,\sim)}\) e la fattorizzazione è
+ un'equivalenza di categorie
+ \[\xymatrix{\ctB^{\ctC/{\!\sim}} \ar[rr]^-{\ctB^Q} \ar[rd]_{\simeq} & & \ctB^{\ctC} \\ & \ctB^{(\ctC,\sim)} \ar[ru] }\]
+ Ne segue che \(\ctB^{(\ctC,\sim)}\) è chiusa in \(\ctB^\ctC\) per limiti, colimiti, sottooggetti e immagini epimorfiche.
+\end{corollary}
 
 \begin{proof}
-Se \(B \in \ctB^{\ctC/{\!\sim}}\), allora \(\ctB^Q(B) = B \cmp Q \in \ctB^{(\ctC,\sim)}\) perch\'e \(\sim \,=\, \sim_Q \;\leq\, \sim_{B \cmp Q}\).
-Verifichiamo ora che la corestrizione di \(\ctB^Q\) a \(\ctB^{(\ctC,\sim)}\) \`e un'equivalenza. Se 
-\(\beta \colon B_1 \nat B_2 \colon \ctC/{\!\sim} \rightrightarrows \ctB\) \`e una trasformazione naturale, allora
-\((\ctB^Q(\beta))_X = \beta_{QX} = \beta_X\) per ogni \(X \in \ctC\). La fedelt\`a di \(\ctB^Q\) \`e dunque ovvia. Per quanto riguarda 
-la pienezza, se \(\alpha \colon B_1 \cmp Q \nat B_2 \cmp Q \colon \ctC \rightrightarrows \ctB\) \`e una trasformazione naturale,
-otteniamo una trasformazione naturale \(\beta \colon B_1 \nat B_2 \colon \ctC/{\!\sim} \rightrightarrows \ctB\)
-ponendo \(\beta_X = \alpha_X \colon B_1X = B_1(QX) \to B_2(QX) = B_2X\) per ogni \(X \in \ctC\). Per la naturalit\`a di \(\beta\),
-basta osservare che se \(\left[u\right] \colon X \to Y\) \`e una freccia di \(\ctC/{\!\sim}\), allora
-\[B_2\left[u\right] \cmp \beta_X = B_2(Qu) \cmp \alpha_X = \alpha_Y \cmp B_1(Qu) = \beta_Y \cmp B_1\left[u\right] \]
-Per il carattere essenzialmente suriettivo, se \(A \in \ctB^{(\ctC,\sim)}\), allora \(\sim \,\leq\, \sim_A\) e quindi la propriet\`a 
-universale \ref{prop_cat_quoz} garantisce l'esistenza di un (unico) \(A' \in \ctB^{\ctC/{\!\sim}}\) tale che \(\ctB^Q(A')=A\). \\
-Le condizioni di chiusura di \(\ctB^{(\ctC,\sim)}\) seguono ora dal corollario \ref{cor_funt_indotto_catfunt} (per i limiti e i colimiti) e 
-dall'osservazione \ref{oss_cong_funt} (per i sottooggetti e le immagini epimorfiche). 
-\end{proof} 
+ Se \(B \in \ctB^{\ctC/{\!\sim}}\), allora \(\ctB^Q(B) = B \cmp Q \in \ctB^{(\ctC,\sim)}\) perché \(\sim \,=\, \sim_Q \;\leq\, \sim_{B \cmp Q}\).
+ Verifichiamo ora che la corestrizione di \(\ctB^Q\) a \(\ctB^{(\ctC,\sim)}\) è un'equivalenza. Se
+ \(\beta \colon B_1 \nat B_2 \colon \ctC/{\!\sim} \rightrightarrows \ctB\) è una trasformazione naturale, allora
+ \((\ctB^Q(\beta))_X = \beta_{QX} = \beta_X\) per ogni \(X \in \ctC\). La fedeltà di \(\ctB^Q\) è dunque ovvia. Per quanto riguarda
+ la pienezza, se \(\alpha \colon B_1 \cmp Q \nat B_2 \cmp Q \colon \ctC \rightrightarrows \ctB\) è una trasformazione naturale,
+ otteniamo una trasformazione naturale \(\beta \colon B_1 \nat B_2 \colon \ctC/{\!\sim} \rightrightarrows \ctB\)
+ ponendo \(\beta_X = \alpha_X \colon B_1X = B_1(QX) \to B_2(QX) = B_2X\) per ogni \(X \in \ctC\). Per la naturalità di \(\beta\),
+ basta osservare che se \(\left[u\right] \colon X \to Y\) è una freccia di \(\ctC/{\!\sim}\), allora
+ \[B_2\left[u\right] \cmp \beta_X = B_2(Qu) \cmp \alpha_X = \alpha_Y \cmp B_1(Qu) = \beta_Y \cmp B_1\left[u\right] \]
+ Per il carattere essenzialmente suriettivo, se \(A \in \ctB^{(\ctC,\sim)}\), allora \(\sim \,\leq\, \sim_A\) e quindi la proprietà
+ universale \ref{prop_cat_quoz} garantisce l'esistenza di un (unico) \(A' \in \ctB^{\ctC/{\!\sim}}\) tale che \(\ctB^Q(A')=A\). \\
+ Le condizioni di chiusura di \(\ctB^{(\ctC,\sim)}\) seguono ora dal corollario \ref{cor_funt_indotto_catfunt} (per i limiti e i colimiti) e
+ dall'osservazione \ref{oss_cong_funt} (per i sottooggetti e le immagini epimorfiche).
+\end{proof}
 
-Nel prossimo lemma caratterizziamo le categorie quoziente. Si tratta di una caratterizzazione a meno di equivalenza di 
-categorie, ragione per cui la condizione su \(Q\) che metteremo in evidenza \`e di essere essenzialmente suriettivo sugli 
+Nel prossimo lemma caratterizziamo le categorie quoziente. Si tratta di una caratterizzazione a meno di equivalenza di
+categorie, ragione per cui la condizione su \(Q\) che metteremo in evidenza è di essere essenzialmente suriettivo sugli
 oggetti, non strettamente suriettivo.
 
 \begin{lemma}\label{lemma_caratt_categ_quoz}
-Sia \(M \colon \ctC \fun \ctD\) un funtore e sia \(\sim_M\) la \(\ctC\)-conguenza indotta de \(M\). Consideriamo la situazione
-della propriet\`a universale \ref{prop_cat_quoz}:
-\[\xymatrix{\ctC \ar[r]^-{Q} \ar[d]_-{M} & \ctC/{\!\sim_M} \ar[ld]^{M'} \\ \ctD }\]
-Il funtore \(M'\) \`e sempre fedele. Inoltre \(M'\) \`e pieno se e solo se \(M\) lo \`e ed \`e essenzialmente suriettivo se e solo 
-se \(M\) lo \`e. Ne segue che \(M'\) \`e un'equivalenza se e solo se \(M\) \`e pieno ed essenzialemente suriettivo.
-\end{lemma} 
+ Sia \(M \colon \ctC \fun \ctD\) un funtore e sia \(\sim_M\) la \(\ctC\)-conguenza indotta de \(M\). Consideriamo la situazione
+ della proprietà universale \ref{prop_cat_quoz}:
+ \[\xymatrix{\ctC \ar[r]^-{Q} \ar[d]_-{M} & \ctC/{\!\sim_M} \ar[ld]^{M'} \\ \ctD }\]
+ Il funtore \(M'\) è sempre fedele. Inoltre \(M'\) è pieno se e solo se \(M\) lo è ed è essenzialmente suriettivo se e solo
+ se \(M\) lo è. Ne segue che \(M'\) è un'equivalenza se e solo se \(M\) è pieno ed essenzialemente suriettivo.
+\end{lemma}
 
 \begin{proof}
-Verifichiamo per esempio che \(M'\) \`e fedele: 
-\[M'\left[f\right] = M'\left[g\right] \;\Rightarrow\; M(f) = M(g) \;\Rightarrow\; f \sim_M g \;\Rightarrow\; \left[f\right] = \left[g\right]\]
-Invitiamo la lettrice a terminare la dimostrazione come esercizio.
-\end{proof} 
+ Verifichiamo per esempio che \(M'\) è fedele:
+ \[M'\left[f\right] = M'\left[g\right] \;\Rightarrow\; M(f) = M(g) \;\Rightarrow\; f \sim_M g \;\Rightarrow\; \left[f\right] = \left[g\right]\]
+ Invitiamo la lettrice a terminare la dimostrazione come esercizio.
+\end{proof}
 
 %\begin{corollary}\label{cor_ind_plfed}
-%Se un funtore \(M \colon \ctC \fun \ctD\) \`e pieno ed essenzialmente suriettivo, il funtore \(\ctB^M \colon \ctB^D \fun \ctB^\ctC\) 
-%indotto per composizione \`e pieno e fedele.
+%Se un funtore \(M \colon \ctC \fun \ctD\) è pieno ed essenzialmente suriettivo, il funtore \(\ctB^M \colon \ctB^D \fun \ctB^\ctC\) 
+%indotto per composizione è pieno e fedele.
 %\end{corollary} 
 %
 %\begin{proof}
@@ -635,95 +635,95 @@ Invitiamo la lettrice a terminare la dimostrazione come esercizio.
 %\end{proof} 
 
 \begin{remark}\label{oss_restr_quot_pref}
-Per migliorare il corollario \ref{cor_cat_equaz_quoz}, ci restringiamo adesso al caso in cui la categoria \(\ctB\) che 
-compare nel lemma \ref{lemma_equaz_cong} e nel corollario \ref{cor_cat_equaz_quoz} sia la 
-categoria \(\ctSet\). Per un insieme \(E\) di \(\ctC\)-equazioni abbiamo quindi un'equivalenza 
-\(\ctSet^{(\ctC,E)} = \ctSet^{(\ctC,\sim_E)} \simeq \ctSet^{\ctC/{\!\sim_E}}\). Inoltre, a meno di tale equivalenza, l'inclusione 
-\(\ctSet^{(\ctC,E)} \fun \ctSet^\ctC\) coincide con il funtore \(\ctSet^Q \colon \ctSet^{\ctC/{\!\sim_E}} \fun \ctSet^\ctC\) che 
-sappiamo preservare i colimiti e avere un aggiunto sinistro \(Q^*\), vedi proposizione \ref{prop_funt_indotto_pref}.
-Ricordiamo anche che per le categorie del tipo \(\ctSet^\ctC\) non c'\`e differenza fra epi ed epi regolare (esempio 
-\ref{esempio_set_reg}).
-\end{remark} 
+ Per migliorare il corollario \ref{cor_cat_equaz_quoz}, ci restringiamo adesso al caso in cui la categoria \(\ctB\) che
+ compare nel lemma \ref{lemma_equaz_cong} e nel corollario \ref{cor_cat_equaz_quoz} sia la
+ categoria \(\ctSet\). Per un insieme \(E\) di \(\ctC\)-equazioni abbiamo quindi un'equivalenza
+ \(\ctSet^{(\ctC,E)} = \ctSet^{(\ctC,\sim_E)} \simeq \ctSet^{\ctC/{\!\sim_E}}\). Inoltre, a meno di tale equivalenza, l'inclusione
+ \(\ctSet^{(\ctC,E)} \fun \ctSet^\ctC\) coincide con il funtore \(\ctSet^Q \colon \ctSet^{\ctC/{\!\sim_E}} \fun \ctSet^\ctC\) che
+ sappiamo preservare i colimiti e avere un aggiunto sinistro \(Q^*\), vedi proposizione \ref{prop_funt_indotto_pref}.
+ Ricordiamo anche che per le categorie del tipo \(\ctSet^\ctC\) non c'è differenza fra epi ed epi regolare (esempio
+ \ref{esempio_set_reg}).
+\end{remark}
 
 \begin{lemma}\label{lemma_unita_agg_ind}
-Sia \(M \colon \ctC \fun \ctD\) un funtore fra categorie piccole e sia 
-\[\xymatrix{ \ctSet^\ctD \ar@<-0.5ex>[rr]_-{\ctSet^M} & & \ctSet^\ctC \ar@<-0.5ex>[ll]_-{M^*} } \;\;\;\;\;\; M^* \dashv \ctSet^M\]
-l'aggiunzione indotta. Se \(M\) \`e pieno, allopra l'unit\`a \(\eta^A \colon A \to \ctSet^M(M^*A)\) dell'aggiunzione \`e un 
-epimorfismo (regolare) per ogni \(A \in \ctSet^\ctC\).
+ Sia \(M \colon \ctC \fun \ctD\) un funtore fra categorie piccole e sia
+ \[\xymatrix{ \ctSet^\ctD \ar@<-0.5ex>[rr]_-{\ctSet^M} & & \ctSet^\ctC \ar@<-0.5ex>[ll]_-{M^*} } \;\;\;\;\;\; M^* \dashv \ctSet^M\]
+ l'aggiunzione indotta. Se \(M\) è pieno, allopra l'unità \(\eta^A \colon A \to \ctSet^M(M^*A)\) dell'aggiunzione è un
+ epimorfismo (regolare) per ogni \(A \in \ctSet^\ctC\).
 \end{lemma}
 
 \begin{proof}
-Ricordiamo la situazione della proposizione \ref{prop_funt_indotto_pref}
+ Ricordiamo la situazione della proposizione \ref{prop_funt_indotto_pref}
  \[ \xymatrix{\ctC^{\op} \ar[d]_{M^{\op}} \ar[r]^-{\ctY_{\ctC}} & \ctSet^{\ctC} \ar@<-0.5ex>[d]_{M^*} \\
   \ctD^{\op} \ar[r]_-{\ctY_{\ctD}} & \ctSet^{\ctD} \ar@<-0.5ex>[u]_{\ctSet^M} } \]
-  con \(M^* \dashv \ctSet^M\) e \(\ctSet^M\) che preserva i colimiti. Se \(A \in \ctSet^\ctC\), sappiamo che
-  \[A \simeq \colim_{\mathrm{El}(A)}(\xymatrix{\mathrm{El}(A) \ar[r]^-{\Phi_A} & \ctC^{\op} \ar[r]^-{\ctY_\ctC} & \ctSet^\ctC })\]
-(vedi proposizione \ref{prop_colim_rappr}), da cui segue che
-\[\begin{array}{rcl} \ctSet^M(M^*A) & \simeq & 
-\colim_{\mathrm{El}(A)}(\xymatrix{\mathrm{El}(A) \ar[r]^-{\Phi_A} & \ctC^{\op} \ar[r]^-{\ctY_\ctC} & \ctSet^\ctC \ar[r]^-{M^*} & 
-\ctSet^\ctD \ar[r]^-{\ctSet^M} & \ctSet^\ctC}) \\
-& \simeq & 
-\colim_{\mathrm{El}(A)}(\xymatrix{\mathrm{El}(A) \ar[r]^-{\Phi_A} & \ctC^{\op} \ar[r]^-{M^{\op}} & \ctD^{\op} \ar[r]^-{\ctY_\ctD} & 
-\ctSet^\ctD \ar[r]^-{\ctSet^M} & \ctSet^\ctC})
-\end{array}\]
-Possiamo dunque descrivere l'unit\`a dell'aggiunzione tramite il diagramma seguente
-\[\xymatrix{A \ar[rr]^-{\eta^A} & &  \ctSet^M(M^*A) \\
-\colim_{\mathrm{El}(A)} \ctC(X,-) \ar[u]^{\simeq} & & \colim_{\mathrm{El}(A)}(\ctD(MX,-) \cmp M) \ar[u]_{\simeq} \\
-\ctC(X,-) \ar[u]^{\sigma^{(X,x)}} \ar[rr]_-{\eta^{\ctC(X,-)}} & & \ctD(MX,-) \cmp M \ar[u]_{\sigma^{(X,x)}} }\]
-Poich\'e in \(\ctSet^\ctC\) i colimiti si calcolano punto a punto, il diagramma precedente induce, per ogni \(Y \in \ctC\), 
-un diagramma commutativo
-\[\xymatrix{\colim_{\mathrm{El}(A)}\ctC(X,Y) \ar[rr]^-{\eta^A_Y} & & \colim_{\mathrm{El}(A)}\ctD(MX,MY) \\
-\ctC(X,Y) \ar[u]^{\sigma^{(X,x)}_Y} \ar[rr]_-{\eta^{\ctC(X,-)}_Y} & & \ctD(MX,MY) \ar[u]_{\sigma^{(X,x)}_Y} }\]
-Rimane da descrivere la componente in \(Y\) della trasformazione naturale \(\eta^{\ctC(X,-)}\), ma questa \`e 
-data semplicemente dall'azione di \(M\) sulle frecce di \(\ctC\):
-\[\eta^{\ctC(X,-)}_Y = M_{X,Y} \colon \ctC(X,Y) \to \ctD(MX,MY)\]
-Poich\'e, per ipotesi, \(M\) \`e pieno, tale funzione \(M_{X,Y}\) \`e suriettiva. Ne segue che anche la funzione
-\(\eta^A_Y\) \`e suriettiva e, poich\'e quasto vale per ogni \(Y \in \ctC\), possiamo concludere che \(\eta^A\) \`e 
-un epi.
-\end{proof} 
+ con \(M^* \dashv \ctSet^M\) e \(\ctSet^M\) che preserva i colimiti. Se \(A \in \ctSet^\ctC\), sappiamo che
+ \[A \simeq \colim_{\mathrm{El}(A)}(\xymatrix{\mathrm{El}(A) \ar[r]^-{\Phi_A} & \ctC^{\op} \ar[r]^-{\ctY_\ctC} & \ctSet^\ctC })\]
+ (vedi proposizione \ref{prop_colim_rappr}), da cui segue che
+ \[\begin{array}{rcl} \ctSet^M(M^*A)                                              & \simeq                         &
+             \colim_{\mathrm{El}(A)}(\xymatrix{\mathrm{El}(A) \ar[r]^-{\Phi_A} & \ctC^{\op} \ar[r]^-{\ctY_\ctC} & \ctSet^\ctC \ar[r]^-{M^*}      &
+             \ctSet^\ctD \ar[r]^-{\ctSet^M}                                    & \ctSet^\ctC})                                                     \\
+                                                                               & \simeq                         &
+             \colim_{\mathrm{El}(A)}(\xymatrix{\mathrm{El}(A) \ar[r]^-{\Phi_A} & \ctC^{\op} \ar[r]^-{M^{\op}}   & \ctD^{\op} \ar[r]^-{\ctY_\ctD} &
+             \ctSet^\ctD \ar[r]^-{\ctSet^M}                                    & \ctSet^\ctC})
+  \end{array}\]
+ Possiamo dunque descrivere l'unità dell'aggiunzione tramite il diagramma seguente
+ \[\xymatrix{A \ar[rr]^-{\eta^A} & &  \ctSet^M(M^*A) \\
+  \colim_{\mathrm{El}(A)} \ctC(X,-) \ar[u]^{\simeq} & & \colim_{\mathrm{El}(A)}(\ctD(MX,-) \cmp M) \ar[u]_{\simeq} \\
+  \ctC(X,-) \ar[u]^{\sigma^{(X,x)}} \ar[rr]_-{\eta^{\ctC(X,-)}} & & \ctD(MX,-) \cmp M \ar[u]_{\sigma^{(X,x)}} }\]
+ Poiché in \(\ctSet^\ctC\) i colimiti si calcolano punto a punto, il diagramma precedente induce, per ogni \(Y \in \ctC\),
+ un diagramma commutativo
+ \[\xymatrix{\colim_{\mathrm{El}(A)}\ctC(X,Y) \ar[rr]^-{\eta^A_Y} & & \colim_{\mathrm{El}(A)}\ctD(MX,MY) \\
+  \ctC(X,Y) \ar[u]^{\sigma^{(X,x)}_Y} \ar[rr]_-{\eta^{\ctC(X,-)}_Y} & & \ctD(MX,MY) \ar[u]_{\sigma^{(X,x)}_Y} }\]
+ Rimane da descrivere la componente in \(Y\) della trasformazione naturale \(\eta^{\ctC(X,-)}\), ma questa è
+ data semplicemente dall'azione di \(M\) sulle frecce di \(\ctC\):
+ \[\eta^{\ctC(X,-)}_Y = M_{X,Y} \colon \ctC(X,Y) \to \ctD(MX,MY)\]
+ Poiché, per ipotesi, \(M\) è pieno, tale funzione \(M_{X,Y}\) è suriettiva. Ne segue che anche la funzione
+ \(\eta^A_Y\) è suriettiva e, poiché quasto vale per ogni \(Y \in \ctC\), possiamo concludere che \(\eta^A\) è
+ un epi.
+\end{proof}
 
-Grazie al lemma \ref{lemma_unita_agg_ind} otteniamo la seguente caratterizzazione delle sottocategorie equazionali delle 
-categorie di prefasci. Per la nozione di sottocategoria	 epiriflessiva, che appare nella prossima proposizione, si veda la 
+Grazie al lemma \ref{lemma_unita_agg_ind} otteniamo la seguente caratterizzazione delle sottocategorie equazionali delle
+categorie di prefasci. Per la nozione di sottocategoria	 epiriflessiva, che appare nella prossima proposizione, si veda la
 definizione \ref{def_sottocat_epirifl} tenendo presente quanto ricordato nell'osservazione \ref{oss_restr_quot_pref} a proposito
 degli epi regolari nelle categorie di prefasci.
 
 \begin{proposition}\label{prop_stc_equaz_pref}
-Siano \(\ctC\) una categoria piccola e \(\ctA\) una sottocategoria piena e repleta di \(\ctSet^\ctC\). 
-Le condizioni seguenti sono equivalenti:
-\begin{enumerate}
-\item \(\ctA\) \`e equivalente a \(\ctSet^{(\ctC,E)}\) per un qualche insieme \(E\) di \(\ctC\)-equazioni. 
-\item \(\ctA\) \`e epiriflessiva e chiusa per colimiti in \(\ctSet^\ctC\).
-\item \(\ctA\) \`e chiusa in \(\ctSet^\ctC\) per colimiti, prodotti e sottooggetti.
-\end{enumerate}
+ Siano \(\ctC\) una categoria piccola e \(\ctA\) una sottocategoria piena e repleta di \(\ctSet^\ctC\).
+ Le condizioni seguenti sono equivalenti:
+ \begin{enumerate}
+  \item \(\ctA\) è equivalente a \(\ctSet^{(\ctC,E)}\) per un qualche insieme \(E\) di \(\ctC\)-equazioni.
+  \item \(\ctA\) è epiriflessiva e chiusa per colimiti in \(\ctSet^\ctC\).
+  \item \(\ctA\) è chiusa in \(\ctSet^\ctC\) per colimiti, prodotti e sottooggetti.
+ \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-\(1 \Rightarrow 2\): Poich\'e \(\ctSet^{(\ctC,E)} = \ctSet^{(\ctC,\sim_E)}\), possiamo considerare il funtore universale
-\(Q \colon \ctC \fun \ctC/{\!\sim_E}\) della proposizione \ref{prop_cat_quoz} e il diagramma commutativo
-\[\xymatrix{\ctSet^{\ctC/{\!\sim_E}} \ar[rr]^-{\ctSet^Q} \ar[rd]_{\simeq} & & \ctSet^{\ctC} \\ & \ctSet^{(\ctC,\sim_E)} \ar[ru] }\]
-del corollario \ref{cor_cat_equaz_quoz}. Ne deduciamo che \(\ctSet^{(\ctC,\sim_E)}\) \`e chiusa in \(\ctSet^\ctC\)
-per colimiti (perch\'e \(\ctSet^Q\) preserva i colimiti), che \`e riflessiva (perch\'e \(\ctSet^Q\) ha aggiunto sinistro) e,
-in particolare, epiriflessiva per il lemma \ref{lemma_unita_agg_ind} (perch\'e \(Q\) \`e pieno). \\
-\(2 \Rightarrow 1\): Sia \(R \colon \ctSet^\ctC \fun \ctA\) l'aggiunto sinistro all'inclusione \(i \colon \ctA \fun \ctSet^\ctC\). 
-Come nella dimostrazione del corollario \ref{cor_stab_pref}, poniamo 
-\[\ctG = \{R(\ctC(X,-)) \mid X \in \ctC\}\]
-che guardiamo come sottocategoria piena di \(\ctA\). Sappiamo gi\`a che \(\ctA \simeq \ctSet^{\ctG^{\op}}\) (vedi proposizione
-\ref{prop_caratt_pref}). Definiamo ora un funtore \(M \colon \ctC \fun \ctG^{\op}\) chiedendo che \(M^{\op} \colon \ctC^{\op} \fun \ctG\)
-sia la corestizione di \(R \cmp \ctY_\ctC\) a \(\ctG\)
-\[\xymatrix{\ctC^{\op} \ar[rr]^-{\ctY_\ctC} \ar[d]_{M^{\op}} & & \ctSet^\ctC \ar[d]^{R} \\
-\ctG \ar[r]_-{\ctY_{\ctG^{\op}}} & \ctSet^{\ctG^{\op}} \ar[r]_-{\simeq} & \ctA }\]
-Tale funtore \(M\) \`e ovviamente suriettivo sugli oggetti (per definizione di \(\ctG\)). 
-Se mostriamo che \`e anche pieno, allora il lemma \ref{lemma_caratt_categ_quoz} garantisce che \(\ctG^{\op} \simeq \ctC/{\!\sim_M}\) 
-e quindi \(\ctA \simeq \ctSet^{\ctG^{\op}} \simeq \ctSet^{\ctC/{\!\sim_M}}\), il che conclude la prova di questa implicazione. Sia dunque
-\[g \colon MX = R(\ctC(X,-)) \to R(\ctC(Y,-))= MY\]
-una freccia in \(\ctG^{\op}\). Nell'aggiunzione \(R \dashv i\), tale freccia corrisponde a una freccia
-\[ g' \colon \ctC(X,-) \to i(R(\ctC(Y,-)))\] 
-Poich\'e l'unit\`a \(\eta^{\ctC(Y,-)} \colon \ctC(Y,-) \to i(R(\ctC(Y,-)))\) \`e un epi e \(\ctC(X,-)\) \`e un oggetto proiettivo, esiste una freccia
-\(g'' \colon \ctC(X,-) \to \ctC(Y,-)\) tale che \(\eta^{\ctC(Y,-)} \cmp g'' = g'\). Per il lemma di Yoneda, la freccia \(g''\) corrisponde a sua volta
-a una feeccia \(f \colon Y \to X\) in \(\ctC\) e si verifica senza problemi che \(M(f)=g\). \\
-\(1 \Rightarrow 3\): \`E un caso particolare del corollario \ref{cor_cat_equaz_quoz}. \\
-\(3 \Rightarrow 2\): Poich\'e \(\ctSet^\ctC\) \`e completa, regolare (vedi esempio \ref{esempio_set_reg}) e co-well-powered (vedi esempio 
-\ref{esempio_set_cowellpow}), possiamo applicare il lemma \ref{lemma_caract_epirifl} e concludere che \(\ctA\) \`e epiriflessiva.
-\end{proof} 
+ \(1 \Rightarrow 2\): Poiché \(\ctSet^{(\ctC,E)} = \ctSet^{(\ctC,\sim_E)}\), possiamo considerare il funtore universale
+ \(Q \colon \ctC \fun \ctC/{\!\sim_E}\) della proposizione \ref{prop_cat_quoz} e il diagramma commutativo
+ \[\xymatrix{\ctSet^{\ctC/{\!\sim_E}} \ar[rr]^-{\ctSet^Q} \ar[rd]_{\simeq} & & \ctSet^{\ctC} \\ & \ctSet^{(\ctC,\sim_E)} \ar[ru] }\]
+ del corollario \ref{cor_cat_equaz_quoz}. Ne deduciamo che \(\ctSet^{(\ctC,\sim_E)}\) è chiusa in \(\ctSet^\ctC\)
+ per colimiti (perché \(\ctSet^Q\) preserva i colimiti), che è riflessiva (perché \(\ctSet^Q\) ha aggiunto sinistro) e,
+ in particolare, epiriflessiva per il lemma \ref{lemma_unita_agg_ind} (perché \(Q\) è pieno). \\
+ \(2 \Rightarrow 1\): Sia \(R \colon \ctSet^\ctC \fun \ctA\) l'aggiunto sinistro all'inclusione \(i \colon \ctA \fun \ctSet^\ctC\).
+ Come nella dimostrazione del corollario \ref{cor_stab_pref}, poniamo
+ \[\ctG = \{R(\ctC(X,-)) \mid X \in \ctC\}\]
+ che guardiamo come sottocategoria piena di \(\ctA\). Sappiamo già che \(\ctA \simeq \ctSet^{\ctG^{\op}}\) (vedi proposizione
+ \ref{prop_caratt_pref}). Definiamo ora un funtore \(M \colon \ctC \fun \ctG^{\op}\) chiedendo che \(M^{\op} \colon \ctC^{\op} \fun \ctG\)
+ sia la corestizione di \(R \cmp \ctY_\ctC\) a \(\ctG\)
+ \[\xymatrix{\ctC^{\op} \ar[rr]^-{\ctY_\ctC} \ar[d]_{M^{\op}} & & \ctSet^\ctC \ar[d]^{R} \\
+  \ctG \ar[r]_-{\ctY_{\ctG^{\op}}} & \ctSet^{\ctG^{\op}} \ar[r]_-{\simeq} & \ctA }\]
+ Tale funtore \(M\) è ovviamente suriettivo sugli oggetti (per definizione di \(\ctG\)).
+ Se mostriamo che è anche pieno, allora il lemma \ref{lemma_caratt_categ_quoz} garantisce che \(\ctG^{\op} \simeq \ctC/{\!\sim_M}\)
+ e quindi \(\ctA \simeq \ctSet^{\ctG^{\op}} \simeq \ctSet^{\ctC/{\!\sim_M}}\), il che conclude la prova di questa implicazione. Sia dunque
+ \[g \colon MX = R(\ctC(X,-)) \to R(\ctC(Y,-))= MY\]
+ una freccia in \(\ctG^{\op}\). Nell'aggiunzione \(R \dashv i\), tale freccia corrisponde a una freccia
+ \[ g' \colon \ctC(X,-) \to i(R(\ctC(Y,-)))\]
+ Poiché l'unità \(\eta^{\ctC(Y,-)} \colon \ctC(Y,-) \to i(R(\ctC(Y,-)))\) è un epi e \(\ctC(X,-)\) è un oggetto proiettivo, esiste una freccia
+ \(g'' \colon \ctC(X,-) \to \ctC(Y,-)\) tale che \(\eta^{\ctC(Y,-)} \cmp g'' = g'\). Per il lemma di Yoneda, la freccia \(g''\) corrisponde a sua volta
+ a una feeccia \(f \colon Y \to X\) in \(\ctC\) e si verifica senza problemi che \(M(f)=g\). \\
+ \(1 \Rightarrow 3\): È un caso particolare del corollario \ref{cor_cat_equaz_quoz}. \\
+ \(3 \Rightarrow 2\): Poiché \(\ctSet^\ctC\) è completa, regolare (vedi esempio \ref{esempio_set_reg}) e co-well-powered (vedi esempio
+ \ref{esempio_set_cowellpow}), possiamo applicare il lemma \ref{lemma_caract_epirifl} e concludere che \(\ctA\) è epiriflessiva.
+\end{proof}
 
 \color{black}
