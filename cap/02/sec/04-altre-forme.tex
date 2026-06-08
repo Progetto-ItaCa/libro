@@ -332,7 +332,7 @@ di alcuni colimiti particolari.
   \item Sia \(\ctC\) una categoria con i coprodotti finiti e sia \(\{X_i\}_{i \in I}\) una famiglia di oggetti di \(\ctC\) indicizzata da
         un insieme \(I\). Se il coprodotto della famiglia \(\{X_i\}_{i \in I}\) esiste, allora tale coprodotto è il colimite filtrato dei suoi sottocoprodotti
         finiti:
-        \[\coprod_{i \in I}X_i = \colim_{A \in {\cal P}_f(I)}\left(\coprod_{a \in A}X_a\right)\]
+        \[\cop_{i \in I}X_i = \colim_{A \in {\cal P}_f(I)}\left(\cop_{a \in A}X_a\right)\]
         La stessa formula esprime il fatto che se in \(\ctC\) esistono i coprodotti finiti e i colimiti filtrati, allora in \(\ctC\) esistono tutti i coprodotti.
  \end{enumerate}
  Segnaliamo che i colimiti filtrati di questi esempi vengono chiamati anche colimiti diretti in quanto la categoria di base \(\ctP_f(I)\)
@@ -343,23 +343,23 @@ di alcuni colimiti particolari.
 \begin{proof} 1. La dimostrazione è facile e lasciata come esercizio per la lettrice. Alternativamente, il punto 1 si può trattare come
  caso particolare del punto 2, basta vedere un insieme \(I\) come il coprodotto di copie del singleton, una copia per ogni elemento di \(I\). \\
  2. Sia \(A \in \ctP_f(I)\), e sia
- \[s_A^a \colon X_a \to \coprod_{a \in A}X_a\]
+ \[s_A^a \colon X_a \to \cop_{a \in A}X_a\]
  il coprodotto con le iniezioni canoniche. Consideriamo il funtore \(S \colon \ctP_f(I) \fun \ctC\) che associa ad \(A \in \ctP_f(I)\) il coprodotto
- \(\coprod_{a \in A}X_a\). A un'inclusione \(A \subseteq B\), il funtore \(S\) associa la freccia \(f^A_B\) definita dalla commutatività,
+ \(\cop_{a \in A}X_a\). A un'inclusione \(A \subseteq B\), il funtore \(S\) associa la freccia \(f^A_B\) definita dalla commutatività,
  per ogni \(a \in A\), del diagramma seguente:
- \[\xymatrix{\coprod_{a \in A} X_a \ar[rr]^-{f^A_B} & & \coprod_{b \in B} X_b \\
+ \[\xymatrix{\cop_{a \in A} X_a \ar[rr]^-{f^A_B} & & \cop_{b \in B} X_b \\
   & X_a \ar[lu]^{s^a_A} \ar[ru]_{s^a_B} }\]
- \(\bullet\) Se si assume l'esistenza del coprodotto \(\coprod_{i \in I}X_i\) con le iniezioni \(s^i_I \colon X_i \to \coprod_{i \in I}X_i\)
+ \(\bullet\) Se si assume l'esistenza del coprodotto \(\cop_{i \in I}X_i\) con le iniezioni \(s^i_I \colon X_i \to \cop_{i \in I}X_i\)
  allora tale coprodotto è anche il colimite del funtore \(S\).  Per ogni \(A \in \ctP_f(I)\), l'iniezione \(\sigma_A\) nel colimite è
  data dall'unica freccia che rende commutativo, per ogni \(a \in A\), il diagramma seguente:
- \[\xymatrix{\coprod_{a \in A} X_a \ar[rr]^-{\sigma_A} & & \coprod_{i \in I} X_i \\
+ \[\xymatrix{\cop_{a \in A} X_a \ar[rr]^-{\sigma_A} & & \cop_{i \in I} X_i \\
   & X_a \ar[lu]^{s^a_A} \ar[ru]_{s^a_I} }\]
  \(\bullet\) Viceversa, se si assume l'esistenza del colimite del funtore \(S\) con iniezioni canoniche
- \[\sigma_A \colon \coprod_{a \in A}X_a \to \colim_{A \in \ctP_f(I)}(\coprod_{a \in A}X_a)\]
- allora tale colimite fornisce il coprodotto \(\coprod_{i \in I}X_i\). Come iniezione nel coprodotto si prende, per ogni \(i \in I\), la freccia
- \[\sigma_{\{i\}} \colon X_i \to \colim_{A \in \ctP_f(I)}(\coprod_{a \in A}X_a)\]
+ \[\sigma_A \colon \cop_{a \in A}X_a \to \colim_{A \in \ctP_f(I)}(\cop_{a \in A}X_a)\]
+ allora tale colimite fornisce il coprodotto \(\cop_{i \in I}X_i\). Come iniezione nel coprodotto si prende, per ogni \(i \in I\), la freccia
+ \[\sigma_{\{i\}} \colon X_i \to \colim_{A \in \ctP_f(I)}(\cop_{a \in A}X_a)\]
  Segnaliamo solo che per verificare la condizione di unicità nella proprietà universale del coprodotto è essenziale utilizzare la
- naturalità della famiglia \(\{\sigma_A \mid A \in \ctP_f(I)\}\). Lasciamo alla lettrice il resto della verifica.
+ naturalità della famiglia \(\{\sigma_A \mid A \in \ctP_f(I)\}\). Lasciamo a chi legge il resto della verifica.
 \end{proof}
 
 \begin{theorem}\label{th_colim_fin}
@@ -400,7 +400,7 @@ di alcuni colimiti particolari.
 \begin{exercise}\label{exer_copr_retr}
  In questo esercizio ritroviamo una situazione ben nota nel caso dei monoidi, dei gruppi (abeliani o no), dei moduli
  su un anello, degli anelli senza unità. Sia \(\ctC\) una categoria con oggetto zero. Sia \(\{X_i\}_{i \in I}\) una famiglia
- di oggetti di \(\ctC\) e sia \(X = \coprod_{i \in I}X_i\) il loro coprodotto. Ogni oggetto \(X_i\) è un retratto di \(X\).
+ di oggetti di \(\ctC\) e sia \(X = \cop_{i \in I}X_i\) il loro coprodotto. Ogni oggetto \(X_i\) è un retratto di \(X\).
 \end{exercise}
 
 La prossima proprietà si può esprimere dicendo che limiti e
@@ -527,7 +527,7 @@ introdotte nella proprietà \ref{prop_lim_puntuali}.
  e \(\ctD\) piccole. Consideriamo due funtori \(F \colon \ctD \fun \ctB^{\ctC}\) e \(H \colon \ctC \fun \ctB^{\ctD}\)
  legati mutualmente dalla condizione
  \[(FD)(C) = (HC)(D)\]
- per ogni \(D \in \ctD\) e per ogni \(C \in \ctC\), e analogamente per le frecce (lasciamo alla lettrice di esprimere precisamente
+ per ogni \(D \in \ctD\) e per ogni \(C \in \ctC\), e analogamente per le frecce (lasciamo a chi legge di esprimere precisamente
  cosa ciò significhi). Se in \(\ctB\) esistono i limiti dei funtori definiti su \(\ctC\), allora il limite di \(H\) si può descrivere
  nel modo seguente:
  \[\begin{array}{rcl}
