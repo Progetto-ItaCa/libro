@@ -23,6 +23,7 @@ Ricordiamo che con \emph{diagramma} intendiamo un funtore \(D\colon \ctJ \fun \c
  \begin{itemize}
   \item Un oggetto terminale di \(\ctC\) è un cono terminale per il funtore vuoto \(\bang_\ctC \colon \ctInit\fun\ctC\). Dualmente, un	oggetto iniziale è un cocono iniziale per lo stesso funtore vuoto. (Si noti una certa autoreferenzialità: la categoria iniziale è il colimite del diagramma vuoto \(\bang_{\ctCat}\colon \ctInit \fun\ctCat\), e un oggetto iniziale (risp., terminale) in \(\ctC\) è un cocono (risp., un cono) per \(\colim(\bang_{\ctCat})\fun\ctC\). Questi diagrammi esistono, in un certo senso, su piani diversi.)
   \item Un equalizzatore è un cono terminale per un diagramma \(D \colon \genAArrow \fun\ctC\); dualmente, un coequalizzatore è un cocono iniziale dello stesso \(D\).  %(coppie nucleo e il quoziente di una relazione di equivalenza interna, fattorizzazione di un morfismo)
+  \item Un equalizzatore \emph{riflessivo} è un cono terminale per \Todo{}
   \item Un prodotto fibrato è un cono terminale per un diagramma di dominio la cospanna generica di \ref{}; dualmente, una somma amalgamata è un cocono iniziale di un diagramma di dominio la spanna generica di \ref{}; strettamente parlando, nell'esempio precedente avremmo dovuto dire che un coequalizzatore è un cocono iniziale per \(D \colon (\genAArrow)^\op \fun\ctC\), ma la categoria \(\genAArrow\) è autoduale (si veda \ref{}).
   \item Un colimite filtrato è un cocono iniziale per un diagramma su una categoria filtrata nel senso di \ref{}; dualmente, un limite cofiltrato è un cono terminale per un diagramma su una categoria cofiltrata (equivalentemente, sull'opposta di una categoria filtrata). Un colimite in \(\kappa\)-catena è un cocono iniziale per un diagramma \(D \colon \kappa \fun \ctC\) come in \ref{}; dualmente un limite in \(\kappa\)-cocatena è un cono terminale per un diagramma	\(D \colon \kappa^\op \fun \ctC\).
   \item categorie puntate, nuclei e conuclei
@@ -42,11 +43,57 @@ Ricordiamo che con \emph{diagramma} intendiamo un funtore \(D\colon \ctJ \fun \c
  Numeri naturali come colimite
 \end{remark}
 \subsection{Combinatoria dei co/limiti}
-Per `combinatoria' dei co/limiti si intende l'insieme di tecniche per asserire che, assumendo alcune parti di un diagramma siano co/limiti, anche altre lo sono. Il più semplice, e utile, risultato di questo tipo riguarda la possibilità di comporre, e cancellare, quadrati Cartesiani.
-\begin{proposition}[Composizione di quadrati Cartesiani]\label{prop_composizione_quadrati_cartesiani}\index{Quadrato Cartesiano!composizione di ---}
- \Todo{Incollamento di prodotti fibrati}
- \Todo{Incollamento di somme amalgamate}
+Per `combinatoria' dei co/limiti si intende l'insieme di tecniche per asserire che, assumendo alcune parti di un dato diagramma siano co/universali, anche altre parti lo sono. Il più semplice, e utile, risultato di questo tipo riguarda la possibilità di comporre, e cancellare, quadrati Cartesiani.
+\begin{proposition}[Composizione di quadrati co/Cartesiani]\label{prop_composizione_quadrati_cartesiani}\index{Quadrato Cartesiano!composizione di ---}
+%  \Todo{Incollamento di prodotti fibrati}
+ Si consideri un diagramma della forma 
+ \[\xymatrix{
+  A \ar[r]^-f \ar[d]_-p\ar@{}[dr]|{(I)}& B\ar[r]^-g\ar@{}[dr]|{(II)} \ar[d]_q & C \ar[d]^r\\
+  A'\ar[r]_-{f'} & B'\ar[r]_-{g'} & C'
+ }\]
+ e si chiami $(III)$ il quadrato 
+ \[\xymatrix{
+  A \ar[r]^-{g\cmp f}\ar[d]_p & C\ar[d]^r \\ 
+  A' \ar[r]_-{g'\cmp f'}& C'
+ }\]
+ che risulta `componendo' nel senso ovvio i due quadrati, cioè componendo le frecce orizzontali. Allora, le seguenti condizioni sono equivalenti: 
+ \begin{enumtag}{pb}
+\item \label{pb_1} i quadrati $(I), (II)$ sono Cartesiani;
+\item \label{pb_2} i quadrati $(II)$ e $(III)$ sono Cartesiani.
+ \end{enumtag}
+ Dualmente, le seguenti condizioni sono equivalenti: 
+ \begin{enumtag}{po}
+\item \label{po_1} i quadrati $(I), (II)$ sono coCartesiani;
+\item \label{po_2} i quadrati $(I)$ e $(III)$ sono coCartesiani.
+ \end{enumtag}
+%  \Todo{Incollamento di somme amalgamate}
 \end{proposition}
+\begin{proof}
+  Mostriamo l'equivalenza tra \ref{pb_1} e \ref{pb_2}, quella tra \ref{po_1} e \ref{po_2} segue per dualità.
+
+  Assumendo che $(I), (II)$ siano Cartesiani, quello che va mostrato è che in un diagramma della forma
+  \[\xymatrix{
+    X \ar@/_1pc/[ddr]_v\ar@/^1pc/[drrr]^u\ar@{.>}[dr]|k & \\
+  & A \ar[r]^-{f}\ar[d]_p &B\ar[d]_q\ar[r]^-g& C\ar[d]^r \\ 
+  & A' \ar[r]_-{f'}&B'\ar[r]_-{g'}& C'
+ }\]
+  esiste un'unica freccia tratteggiata, che lo fa commutare in ogni parte. Del resto, la proprietà universale di $(\pull{B'}{C}{C'}, g,q)$ e la commutatività $r\cmp u = g'\cmp f'\cmp v$ implica che esista un'unica freccia $h : X \to B$ tale che $g\cmp h=u$ e $f'\cmp v = q\cmp h$. Ma ora, proprio per quest'ultima equazione e per la proprietà universale di $\pull{A'}{B}{B'}$, esiste un'unica $k : X \to A$ tale che $f\cmp k = h$ e $p\cmp k=v$; allora, quest'unica $k$ è anche tale che $g\cmp f\cmp k = g\cmp h = u$.
+
+  Viceversa, se $(I)$ e $(III)$ sono Cartesiani, siamo nella situazione di questo diagramma:
+  \[\xymatrix{
+    X \ar@/_1pc/[ddr]_v\ar@/^1pc/[drr]^w\ar@{.>}[dr]|t & \\
+  & A \ar[r]^-{f}\ar[d]_p &B\ar[d]_q\ar[r]^-g& C\ar[d]^r \\ 
+  & A' \ar[r]_-{f'}&B'\ar[r]_-{g'}& C'
+ }\]
+  in cui ciascuna parte è commutativa. Dato che $(III)$ è Cartesiano, esiste un'unica $t : X \to A$ tale che $g\cmp w = g\cmp f \cmp t$ e $p\cmp t = v$; per concludere, manca di dimostrare che $q\cmp f\cmp t = q\cmp w$, e usare \ref{} ($f\cmp t = w$ è l'unica freccia di dominio $X$, tale che\dots); per vedere quest'ultima cosa, è sufficiente osservare che
+  \[q\cmp f\cmp t = f'\cmp p\cmp t=f'\cmp v=q\cmp w.\]
+  Questo conclude la dimostrazione.
+\end{proof}
+\begin{remark}
+  Quanto dimostrato in \ref{prop_composizione_quadrati_cartesiani} è un risultato di `riduzione' tra prodotti fibrati innestati: assumendo che $B$ sia il prodotto fibrato $\pull {B'}C{C'}$, e che $A$ sia il prodotto fibrato $\pull{A'}{B}{B'}=\pull{A'}{(\pull {B'}C{C'})}{B'}$ allora 
+  \[\pull{A'}{(\pull {B'}C{C'})}{B'} = \pull{A'}{(\pull {{\color{lightgray}B'}}C{C'})}{{\color{lightgray}B'}} \cong \pull{A'}C{C'}\]
+  cosicché l'oggetto $B'$ può essere `semplificato'.
+\end{remark}
 \begin{remark}
  Si può mostrare, per induzione, un fatto più generale:
  \begin{quote}
@@ -99,16 +146,10 @@ Per `combinatoria' dei co/limiti si intende l'insieme di tecniche per asserire c
    \arrow[from=2-4, to=2-5]
   \end{tikzcd}\]
  sia ancora un quadrato Cartesiano di forma
- % https://q.uiver.app/#q=WzAsNCxbMSwwLCJBXzAiXSxbMSwxLCJCXzAiXSxbMCwwLCJcXGhhdCBBX1xcaW5mdHkiXSxbMCwxLCJcXGhhdCBCX1xcaW5mdHkiXSxbMiwwXSxbMywxXSxbMCwxXSxbMiwzXSxbMiwxLCJcXGhhdCBxX1xcaW5mdHkiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
- \[\begin{tikzcd}[ampersand replacement=\&,cramped]
-   {\hat A_\infty} \& {A_0} \\
-   {\hat B_\infty} \& {B_0}
-   \arrow[from=1-1, to=1-2]
-   \arrow[from=1-1, to=2-1]
-   \arrow["{\hat q_\infty}"{description}, draw=none, from=1-1, to=2-2]
-   \arrow[from=1-2, to=2-2]
-   \arrow[from=2-1, to=2-2]
-  \end{tikzcd}\]
+ \[\xymatrix{
+  **[l]\lim A_n \mathrel{\rotatebox[origin=c]{180}{$\defeq$}} \hat A_\infty  \ar[r]^-{\pi_0} \ar[d] \ar@{}[dr]|{\hat q_\infty} & A_0 \ar[d] \\
+  **[l]\lim B_n \mathrel{\rotatebox[origin=c]{180}{$\defeq$}} \hat B_\infty  \ar[r]_-{\pi_0} & B_0
+}\]
  (E ovviamente, un eventuale risultato duale per quadrati coCartesiani.) Risponderemo a tempo debito.
 \end{remark}
 \begin{example}
