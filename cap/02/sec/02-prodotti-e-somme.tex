@@ -8,9 +8,11 @@ g(x)=\begin{cases}
 h(x) = eval(10^{x!}) 
      ; \texttt{return } 0
 \]
-dove $RH$ è la congettura di Riemann, ed $eval$ forza il numero (immenso) $10^{x!}$ a essere calcolato, per poi ritornare $0$ come output, sono estensionalmente uguali; del resto il loro \emph{comportamento} è radicalmente diverso, nel senso che ciò che accade quando diamo un input a $g,h$ è radicalmente diverso, nel mondo reale, da ciò che accade quando diamo $n=7$ come argomento ad $f$ e istantaneamente essa restituisce il valore $0$.} In questo modo, quando si dovrà dimostrare che una certa funzione di insiemi \(f \colon A\to B\) è l'unica con una certa proprietà \(\mathcal{P}\), dimostreremo che, se \(g \colon A \to B\) è un'altra funzione con la proprietà \(\mathcal{P}\), allora \(f(a)=g(a)\) per ogni \(a\in A\). La nozione di \emph{generatore} e di \emph{generatore forte}, introdotta di passaggio in \ref{}, è la generalizzazione corretta di questa idea a una categoria diversa da $\ctSet$.
+dove $RH$ è la congettura di Riemann, ed $eval$ forza il numero (immenso) $10^{x!}$ a essere calcolato, per poi ritornare $0$ come output, sono estensionalmente uguali; del resto il loro \emph{comportamento} è radicalmente diverso, nel senso che ciò che accade quando diamo un input $n=7$ a $g,h$ è radicalmente diverso, nel mondo reale, da ciò che accade quando diamo $n=7$ come argomento ad $f$ e istantaneamente essa restituisce il valore $0$.} In questo modo, quando si dovrà dimostrare che una certa funzione di insiemi \(f \colon A\to B\) è l'unica con una certa proprietà \(\mathcal{P}\), dimostreremo che, se \(g \colon A \to B\) è un'altra funzione con la proprietà \(\mathcal{P}\), allora \(f(a)=g(a)\) per ogni \(a\in A\). La nozione di \emph{generatore} e di \emph{generatore forte}, introdotta di passaggio in \ref{}, è la generalizzazione corretta di questa idea a una categoria diversa da $\ctSet$.
 \subsection{Prodotti in \(\ctSet\)}\label{prod_in_Set}
-Per produrre un \emph{prodotto Cartesiano} \(A\times B\), viene costruito un insieme di coppie ordinate di elementi presi da due \emph{fattori}  \(A,B\). Come ogni insieme, \(A\times B\) è caratterizzato da quali sono i suoi elementi. Le regole di `introduzione' di un tipo/insieme permettono di costruire un suo elemento a partire da dati più semplici; le regole di `eliminazione' lo destrutturano nelle sue componenti; una o più regole di `computazione' prescrivono il modo in cui introduzione ed eliminazione si annullano a vicenda.
+Per produrre un \emph{prodotto Cartesiano} \(A\times B\), viene costruito un insieme di coppie ordinate di elementi presi da due \emph{fattori}  \(A,B\). Come ogni insieme, \(A\times B\) è caratterizzato specificando quali elementi vi appartengono. 
+
+In linguaggio moderno, e più vicino alla teoria delle categorie, le regole di `introduzione' di un tipo/insieme permettono di costruire un suo elemento a partire da dati più semplici; le regole di `eliminazione' lo destrutturano nelle sue componenti; una o più regole di `computazione' prescrivono il modo in cui introduzione ed eliminazione si annullano a vicenda.
 \begin{hExample}[Regole di introduzione ed eliminazione per il prodotto Cartesiano]{fund}\label{intro_elim_prodotto}
  Dati due insiemi \(A\) e \(B\), il loro \emph{prodotto Cartesiano} \(A\times B\) consiste nell'insieme di tutte le coppie ordinate di elementi di \(A\) e di \(B\):\footnote{Il prodotto è chiamato così in onore del filosofo francese Pierre Descartes (\(*\)1596-\(\dag\)1650) che per primo si accorse (si dice, osservando il soffitto dove si era posata una mosca) che un punto del piano può essere univocamente determinato da una coppia di coordinate \((x,y)\in\bbR\times\bbR\).}
  \[
@@ -18,10 +20,10 @@ Per produrre un \emph{prodotto Cartesiano} \(A\times B\), viene costruito un ins
  \]
  Per chi è familiare con questa nomenclatura, \(A\times B\) è il `tipo' i cui `termini' sono destrutturabili come coppie: le seguenti `frazioni'
  \[\frac{t \in A\times B}{\pi_A\, t \in A}\qquad \frac{t \in A\times B}{\pi_B\, t \in B}\qquad \frac{a \in A\quad b \in B}{\pair ab \in A\times B}\qquad \frac{t \in A\times B}{t = \pair{\pi_A\, t}{\pi_B\, t}}\]
- si leggono come deduzioni (supponendo che <numeratore>, allora <denominatore>), e dicono quattro cose:
+ si leggono come deduzioni (`supponendo che <numeratore>, allora <denominatore>'), e dicono quattro cose:
  \begin{enumtag}{iep}
-  \item \label{iep_1} ogni volta che viene dato un elemento \(t \in A\times B\), si ottiene un elemento \(\pi_A t\) la `prima componente di \(t\)';
-  \item \label{iep_2} ogni volta che viene dato un elemento \(t \in A\times B\), si ottiene un elemento \(\pi_B t\) la `seconda componente di \(t\)';
+  \item \label{iep_1} ogni volta che viene dato un elemento \(t \in A\times B\), si ottiene un elemento \(\pi_A t\): la `prima componente di \(t\)';
+  \item \label{iep_2} ogni volta che viene dato un elemento \(t \in A\times B\), si ottiene un elemento \(\pi_B t\): la `seconda componente di \(t\)';
   \item \label{iep_3} ogni volta che vengono dati due elementi \(a \in A, b \in B\), si ottiene un elemento \(\pair ab \in A\times B\);
   \item \label{iep_4} ogni elemento \(t \in A\times B\) è della forma \(\pair{\pi_A\, t}{\pi_B\, t}\).
  \end{enumtag}
@@ -30,9 +32,10 @@ Per produrre un \emph{prodotto Cartesiano} \(A\times B\), viene costruito un ins
   \item in \(A\times B\) non ci sono che elementi della forma \(\pair ab\) per qualche \(a \in A\) e \(b \in B\);
   \item le deduzioni in \ref{intro_elim_prodotto} valgono per `lambda-astrazione' di \(t\), cioè vale l'uguaglianza
         \[{\pi_A}\pmap{\pi_B} = \id_{A\times B} \]
+        \Todo{dove $\pmap$...?}
  \end{itemize}
 \end{hExample}
-In questi termini, il prodotto è descritto come una operazione di costruzione di un insieme a partire da due dati: questo è ragionevole, dato che abbiamo già visto in \ref{exam_bifuntori}.\ref{eb_2} che esiste un (bi)funtore
+In questi termini, il prodotto $A\times B$ è descritto come una operazione di costruzione di un insieme a partire da due dati $A,B$: questo è ragionevole, dato che abbiamo già visto in \ref{exam_bifuntori}.\ref{eb_2} che esiste un (bi)funtore
 \[\dmFun{\blank\times\blank}{\ctSet\times\ctSet}{\ctSet.}\]
 Come già detto, il piano Cartesiano ortogonale della geometria analitica può essere identificato con \(\bbR^2=\bbR\times\bbR\), l'insieme delle coppie \emph{ordinate} (questa condizione è cruciale) di numeri reali.
 
@@ -154,6 +157,9 @@ Siamo pronti per enunciare la proprietà universale del prodotto (di due oggetti
   \item\label{pd_3} l'oggetto	\(P\) rappresenta (nel senso di \ref{}) il funtore \(\varpi_{AB}=\Hom{\ctC}(\blank,A)\times\Hom{\ctC}(\blank,B) \colon \ctC^\op \to \ctSet\) che manda \(X\) in \(\Hom{\ctC}(X,A)\times\Hom{\ctC}(X,B)\).
  \end{enumtag}
 \end{definition}
+\begin{proof}
+  Va dimostrata l'equivalenza tra le condizioni \Todo{}
+\end{proof}
 \begin{remark}[Alcune osservazioni sulla nozione generale di prodotto]\label{rmk_prodotto_gen}
  Se una qualsiasi di queste condizioni	è soddisfatta, si dice che \(P\) è un prodotto di \(A\) e \(B\), e si denota con \(A\times B\). Dire `\(P\) è un prodotto' in effetti è una denominazione ambigua; il prodotto è, per definizione, \emph{l'intera spanna} \((P,p_A,p_B)\), e l'oggetto \(P\) ne è l'apice. Ma è consuetudine ammettere questo lieve abuso di terminologia. In questo modo, quando si dice che `\(P\) è un prodotto', solitamente si intende che le braccia della spanna \(p_A \colon P\to A\) e \(p_B \colon P \to B\) esistono ed è ovvio determinarle dal contesto del problema.
 
