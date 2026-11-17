@@ -22,7 +22,7 @@ Nel seguito diremo \emph{universale} la proprietà di essere terminale in una op
 
 Oltre che inusuale, questa terminologia è anche imprecisa (dato che gli oggetti sono sempre tipati dalla categoria cui appartengono, si veda la nota \ref{fn_tipati} a pagina \pageref{fn_tipati} nel capitolo precedente), e fuorviante se preso troppo alla lettera; è però solo introducendo una nomenclatura adeguata che essa si può rendere precisa. 
 
-Riassumiamo brevemente l'idea: un oggetto \(X\in\ctC_0\) in una categoria $\ctC$ è `universale' in \(\ctC\) quando è possibile costruire un certo diagramma $D : \ctJ \fun \ctC$ (si veda \ref{}), e da esso un `cono', ossia un diagramma del tipo disegnato sotto, la cui `origine' è \(X\), la cui forma somiglia a
+Riassumiamo brevemente l'idea: un oggetto \(X\in\ctC_0\) in una categoria $\ctC$ è `universale' in \(\ctC\) quando è possibile costruire un certo funtore/diagramma $D : \ctJ \fun \ctC$ (come in \ref{}), e da esso un `cono', ossia un diagramma in $\ctC$ del tipo disegnato sotto, la cui `origine' è \(X\), e la cui forma somiglia a
 \begin{equation}\label{cone}\vcenter{\xymatrix@R=0mm{
  & Di \\
  X \ar@{->}[ru] \ar@{->}[r] \ar@{->}[rdd] & Dj \\
@@ -69,7 +69,7 @@ Questa \emph{topologia profinita} di cui al secondo esempio ha una interpretazio
 \[\overline x = k_0 + k_1p + k_2p^2 + k_3p^3 + k_4p^4 + k_5p^5 + \dots \]
 Queste serie formali, e più precisamente l'estensione di questo anello ai cosiddetti `numeri \(p\)-adici' \(\bbQ_p\) (ottenuti prendendo il campo di frazioni di \(\bbZ_p\), che --si dimostri!-- è un dominio di integrità), sono di fondamentale importanza in algebra, geometria algebrica, e in teoria dei numeri (si vedano, ad esempio, i testi \cite{a,b,c}).
 \paragraph*{Natura relazionale delle categorie.}
-Per indagare le proprietà di un determinato oggetto \(X\in\ctC_0\), in teoria delle categorie si deve guardare al modo in cui esso interagisce con gli altri oggetti di \(\ctC\); è solo in questi termini relazionali la `natura' di $X$ può essere compresa appieno (per esempio: lo stesso insieme $A$ definisce la categoria discreta $A^\delta$ di \ref{} e la categoria codiscreta $A^\chi$ di \ref{}; entrambe hanno $A$ per insieme degli oggetti, ma un oggetto $a\in A$ è indistinguibile da ogni altro in $A^\chi$, perché seguendo \ref{}, $A^\chi$ è equivalente alla categoria terminale di \ref{}).
+Per indagare le proprietà di un determinato oggetto \(X\in\ctC_0\), in teoria delle categorie si deve guardare al modo in cui esso interagisce con gli altri oggetti di \(\ctC\); è solo in questi termini relazionali la `natura' di $X$ può essere compresa appieno (per esempio: lo stesso insieme $A$ definisce la categoria discreta $A^\delta$ di \ref{} e la categoria codiscreta $A^\chi$ di \ref{}; entrambe hanno $A$ per insieme degli oggetti, ma un oggetto $a\in A$ è indistinguibile da ogni altro in $A^\chi$, nel senso che seguendo \ref{}, nessuna equivalenza di categorie riesce a distinguere una data coppia di oggetti $x,y\in A^\chi$).
 
 Anche questo è un valido punto di ingresso alla teoria dei limiti e dei colimiti, e lo scopo principale di questo capitolo sarà di conciliare questa prospettiva insieme alle altre.
 
@@ -195,15 +195,17 @@ I due esempi che seguono sono importanti per fissare l'idea in chi legge che un 
   FC' \ar[r]_-{\theta_{C'}} & \Hom{\ctC}
   (\init,C')
   }\]
- è commutativo. Per questo è sufficiente verificare che la composizione \(u\cmp f\) è l'unica freccia \(f'=\theta_{C'}(Fu(x))\) tale che \(F(f')(\xi)=Fu(x)\); questo è ovvio:
- \[F(u\cmp f)(\xi) = (Fu\cmp Ff)(\xi) = Fu\bigl(Ff(\xi)\bigr)=Fu(x)\]
+ è commutativo. Per questo è sufficiente verificare che la composizione \(u\cmp f\) è l'unica freccia \(f'=\theta_{C'}(Fu(x))\) tale che \(F(f')(\xi)=Fu(x)\); questo è ovvio in virtù della catena di uguaglianze
+ \[F(u\cmp f)(\xi) = (Fu\cmp Ff)(\xi) = Fu\bigl(Ff(\xi)\bigr)=Fu(x),\]
  per come \(f = \theta_C(x)\) è definita. Questo conclude la dimostrazione.
  %Sia \(x\in FC\); allora, per definizione di \(\theta_C\), esiste un'unica freccia \(f \colon \init \to C\) tale che \(Ff(\xi) = x\). Dunque, \(Fu(Ff(\xi)) = Fu(x)\), e allora \(F(u\cmp f)(\xi) = Fu(x)\). Ma \(u\cmp f \colon \init \to C'\) è una freccia in \(\ctC\), e quindi, per la proprietà di inizialità di \((\init,\xi)\), deve essere l'unica freccia con questa proprietà. Dunque, \(u\cmp f = \theta_{C'}(Fu(x))\), e il quadrato è commutativo.
 \end{proof}
 \begin{proposition}\label{term_coalgebra_maybe}
- Sia \(S=1+(A\times\blank) \colon \ctSet\fun\ctSet\) il funtore che manda un insieme $X$ in \Todo{}
+ Sia $A$ un insieme e \(S=1+(A\times\blank) \colon \ctSet\fun\ctSet\) il funtore che manda un insieme $X$ in $1 + A\times X$, ossia nell'insieme ottenuto facendo il prodotto Cartesiano tra $A$ e $X$ e aggiungendo poi un punto $1 = \{\bullet\}$ a questo prodotto.
  
- L'oggetto terminale della categoria delle \(S\)-coalgebre esiste ed è dato da \(\term=(A^\omega,\xi_! \colon A^\omega \to 1+A\times A^\omega )\), dove \(A^\omega \defeq  A^\bbN + A^* = A^\bbN + \{\emptyList\} + A + (A \times A) + (A\times A\times A) + \dots\) è l'insieme delle liste (potenzialmente infinite) di \(A\) (composto dalla unione disgiunta delle liste propriamente dette, \(A^*\), e degli \emph{stream} \(A^\bbN \defeq  \prod_{n\in\bbN} A\)) e
+ L'oggetto terminale della categoria delle \(S\)-coalgebre (definita in \ref{}) esiste ed è dato da \(\term_{\fcoalg S}=(A^\omega,\xi_! \colon A^\omega \to 1+A\times A^\omega )\), dove il supporto \(A^\omega\) è l'insieme unione \(A^\bbN + A^* = A^\bbN + \{\emptyList\} + A + (A \times A) + (A\times A\times A) + \dots\), ossia l'insieme delle liste (finite e infinite) di elementi di \(A\).
+ 
+ In altre parole, $A^\omega$ è composto dalla unione disgiunta delle liste propriamente dette, \(A^*\), e degli \emph{stream} \(A^\bbN \defeq  \prod_{n\in\bbN} A\); con ciò definiamo la mappa strutturale
  \[\xi_!(\emptyList) \defeq  \bullet \in \singleton \qquad \xi_!(a\cons as) = (a, as) \in A\times A^\omega.\]
 \end{proposition}
 \begin{figure}
@@ -275,13 +277,13 @@ I due esempi che seguono sono importanti per fissare l'idea in chi legge che un 
  \label{fig_term_coalgebra_maybe}
 \end{figure}
 \begin{remark}
- Si noti che non è possibile derivare \ref{term_coalgebra_maybe} da \ref{init_term_elements} come caso particolare quando \(\ctC=\ctSet\), perché \(S\) è covariante e quest'ultimo risultato garantirebbe l'esistenza di un oggetto \emph{iniziale} in \(\Elts{\ctSet}S\). Tuttavia con strumenti appena più sofisticati (si veda \ref{rep_preservano_lim}) possiamo dimostrare che \(S\) non può essere rappresentabile --e dunque nella sua categoria degli elementi manca un oggetto iniziale.
+ Si noti che non è possibile derivare \ref{term_coalgebra_maybe} da \ref{init_term_elements} come caso particolare quando \(\ctC=\ctSet\), perché \(S\) è covariante, e \ref{init_term_elements} garantirebbe l'esistenza di un oggetto \emph{iniziale} in \(\Elts{\ctSet}S\). Tuttavia con strumenti appena più sofisticati (si veda \ref{rep_preservano_lim}) possiamo dimostrare che \(S\) non può essere rappresentabile --e dunque nella sua categoria degli elementi manca un oggetto iniziale.
 \end{remark}
 \begin{proof}[Dimostrazione di \ref{term_coalgebra_maybe}]
  Consideriamo una generica altra \(S\)-coalgebra \((X, \alpha \colon A \to SX)\): adottiamo la stenografia
  \[\begin{cases}
-   x \overset a\leadsto x' & \text{ se } \alpha(x) = (a,x')   \\
-   x  \leadsto \bullet     & \text{ se } \alpha(x) = \bullet.
+   x \overset a\leadsto x' & \text{ quando } \alpha(x) = (a,x')   \\
+   x  \leadsto \bullet     & \text{ quando } \alpha(x) = \bullet.
   \end{cases}\]
  Così risulta chiaro come dare senso a scritture del tipo
  \begin{equation}\label{iter_coalgebra}
@@ -291,7 +293,7 @@ I due esempi che seguono sono importanti per fissare l'idea in chi legge che un 
   \dots\overset{a_{n-1}}\leadsto
   x_n \overset{a_n}\leadsto \dots
  \end{equation}
- (al netto del fatto che queste concatenazioni possono avere lunghezza infinita, ma questo è semplice da precisare). Allora esiste un'unica freccia \(b_{(X,\alpha)} \colon X \to A^\omega\) (detta \emph{comportamento} della coalgebra) definita come segue:
+ (al netto del fatto che queste concatenazioni possono avere lunghezza infinita, ma questo è semplice da precisare). Dobbiamo mostrare che esiste un'unica freccia \(b_{(X,\alpha)} \colon X \to A^\omega\) (detta \emph{comportamento} della coalgebra) definita nell'unico modo seguente:
  \[
   b_{(X,\alpha)}(x) =
   \begin{cases}
@@ -301,19 +303,15 @@ I due esempi che seguono sono importanti per fissare l'idea in chi legge che un 
    \dots
    \overset{a_{n-1}}\leadsto x_n \overset{a_n}\leadsto \dots
   \end{cases}\]
- Va ora dimostrato che il quadrato di insiemi e funzioni
+ Con ciò va dimostrato che il quadrato di insiemi e funzioni
  \[\xymatrix{
   X\ar[r]^{b_{(X,\alpha)}}\ar[d]_\alpha & A^\omega \ar[d]^{\xi_!}\\
   1+A\times X \ar[r]_-{1+A\times b_{(X,\alpha)}} & 1+A\times A^\omega
   }\]
  è commutativo:
  \begin{itemize}
-  \item se \(x\leadsto\bullet\) la condizione esprime il fatto che \(\xi_!(b_{(X,\alpha)}(x)) = \alpha(x) = \bullet\); questo è vero.
-        % \[\xymatrix@R=1cm@C=1cm{
-        %  x \ar@{|->}[r]^{b_{(X,\alpha)}}\ar@{|->}[d]_\alpha& \emptyList \ar@{|->}[d]^{\xi_!}\\
-        %  \bullet \ar@{|->}[r]_-{\id_\bullet}& \bullet
-        %  }\]
-  \item Se \(x \overset{a_1}\leadsto x_1 \overset{a_2}\leadsto\dots \leadsto x_{n-1} \overset{a_n}\leadsto x_n\leadsto \bullet\), la condizione esprime il fatto che coincidono le due composizioni
+  \item se \(x\leadsto\bullet\) la commutatività esprime il fatto che \(\xi_!(b_{(X,\alpha)}(x)) = \alpha(x) = \bullet\); questo è vero.
+  \item Se \(x \overset{a_1}\leadsto x_1 \overset{a_2}\leadsto\dots \leadsto x_{n-1} \overset{a_n}\leadsto x_n\leadsto \bullet\), la commutatività esprime il fatto che coincidono le due composizioni
         \[\xymatrix@R=0mm@C=1cm{
          x \ar@{|->}[r]\ar@{|->}[dddd]& (\tup an,) \ar@{|->}[ddd]\\
          &\\
@@ -321,46 +319,47 @@ I due esempi che seguono sono importanti per fissare l'idea in chi legge che un 
          & (a_1;\tup[2] an,)\\
          (a_1;x_1) \ar@{|->}[r]& (a_1;b_{(X,\alpha)}(x_1))
          }\]
-        e anche questo è vero. Similmente si ragiona nell'ultimo caso e questo conclude la dimostrazione.\qedhere
+        e anche questo è vero. Similmente si ragiona nell'ultimo caso.
  \end{itemize}
+ Va ora mostrato che $b_{(X,\alpha)}$ è l'unica definizione possibile.\Todo{}
 \end{proof}
 \begin{remark}\label{intuition_su_comportamento}
- Il nome `comportamento' per la freccia universale \(b_{(X,\alpha)}\) è dovuto al fatto che si può pensare alla successione \eqref{iter_coalgebra} come a una vera e propria traiettoria nello `spazio' \(A\times X\), tale che
+ Il nome `comportamento' per la freccia universale \(b_{(X,\alpha)}\) è dovuto al fatto che si può pensare alla successione \eqref{iter_coalgebra} come a una vera e propria traiettoria nello `spazio' \(A\times X\), tale che $\alpha$ viene applicato in sequenza ad $x,x_1,x_2,...$:
  \[\xymatrix@R=-1mm{
   x \ar@{|->}[r]^-\alpha& a_1\\&x_1 \ar@{|->}[r]^-\alpha& a_2\\&&x_2 \ar@{|->}[r]^-\alpha& \\&&&\dots &
   }\]
  La Figura \ref{fig_term_coalgebra_maybe} chiarisce questa idea intuitiva.
 \end{remark}
-Il seguente risultato merita il nome di \emph{teorema fondamentale sulle proprietà universali}, dato che pressoché ogni invocazione di una proprietà universale ne fa uso più o meno diretto.\footnote{L'idea che chi legge dovrà trattenere fino a \ref{}, in cui avrà un enunciato preciso e una dimostrazione, è: un oggetto universale \(X_u\) di \(\ctC\) è terminale in una certa categoria \(\Pi\ctC\) costruita a partire da \(\ctC\). Più complicata è \(\Pi\ctC\), più sofisticata la proprietà posseduta da \(X_u\): la proprietà di \(X_u\) (essere terminale) non cambia mai, quello che cambia è la complessità dell'\emph{ambiente} dove esso è terminale.}
+Torniamo alla teoria generale. Il seguente risultato merita il nome di \emph{teorema fondamentale sulle proprietà universali}, dato che pressoché ogni invocazione di una proprietà universale ne fa uso più o meno diretto.\footnote{L'idea che chi legge dovrà trattenere fino a \ref{}, in cui avrà un enunciato preciso e una dimostrazione, è: un oggetto universale \(X_u\) di \(\ctC\) è terminale in una certa categoria \(\Pi\ctC\) costruita a partire da \(\ctC\). Più complicata è \(\Pi\ctC\), più sofisticata la proprietà posseduta da \(X_u\): la proprietà di \(X_u\) (essere terminale) non cambia mai, quello che cambia è la complessità dell'\emph{ambiente} dove esso è terminale.}
 \begin{hProposition}[TFPU]{fund}\label{tfpu}\index{Teorema fondamentale sulle proprietà universali}
  Sia \(\ctC\) una categoria. Se \(\term,\term'\) (risp., \(\init,\init'\)) sono entrambi oggetti terminali (risp., iniziali) di \(\ctC\), allora esiste un \emph{unico} isomorfismo \(\term\cong\term'\) (risp., \(\init\cong \init'\)).
 \end{hProposition}
-Si noti il ruolo e la posizione dell'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) esiste uno e un solo isomorfismo, essi non sono uguali, ma (per così dire) `traducibili uno nell'altro in un unico modo'. Non va però frainteso questo punto (ad esempio pensando stranezze come: ci sono solo due oggetti terminali, connessi da un unico isomorfismo). L'isomorfismo è unico \emph{solo una volta fissati \(\term\) e \(\term'\)} e varia insieme ad essi.
-
-La dimostrazione è molto breve e ricorda, in spirito, l'argomento per vedere che l'elemento neutro in un monoide (o l'identità \(\id_X\) di un oggetto in una categoria) è unico, ma ne è una versione `mollificata' per così dire dal fatto che l'unicità stretta dell'elemento neutro di un monoide viene qui rimpiazzata dal fatto che la sottocategoria piena formata da tutti gli oggetti terminali (risp., iniziali) di \(\ctC\) è un gruppoide caotico (quindi, \emph{equivalente}, e non isomorfa, alla categoria singoletto, si veda \ref{}).
+\begin{hRemark}{fund}
+ Si noti il ruolo e la posizione dell'aggettivo \emph{unico} nell'enunciato: se tra \(\term\) e \(\term'\) esiste uno e un solo isomorfismo, essi non sono uguali, ma (per così dire) `traducibili uno nell'altro in un unico modo'. Non va però frainteso questo punto (ad esempio pensando stranezze come: ci sono solo due oggetti terminali, connessi da un unico isomorfismo). L'isomorfismo è unico \emph{solo una volta fissati} \(\term\) \emph{e} \(\term'\) e varia insieme ad essi.
+\end{hRemark}
+La dimostrazione di \ref{tfpu} è molto breve e ricorda, in spirito, l'argomento per vedere che l'elemento neutro in un monoide (o l'identità \(\id_X\) di un oggetto in una categoria) è unico, ma ne è una versione `mollificata' per così dire dal fatto che l'unicità stretta dell'elemento neutro di un monoide viene qui rimpiazzata dal fatto che la sottocategoria piena formata da tutti gli oggetti terminali (risp., iniziali) di \(\ctC\) è un gruppoide caotico (quindi, \emph{equivalente}, e non isomorfa, alla categoria singoletto, si veda \ref{}).
 \begin{proof}
  Siccome \(\term\) è terminale, esiste un'unica freccia \(u \colon \term'\to \term\), e siccome \(\term'\) è terminale, esiste un'unica freccia \(u' \colon \term\to\term'\). Del resto ora per \ref{init_ha_solo_id} concludiamo che le composizioni \(u'\cmp u\) e \(u\cmp u'\) sono rispettivamente le identità di \(\term'\) e di \(\term\).
 \end{proof}
 \begin{example}\label{init_strict_term_many}
- Nella categoria \(\ctSet\) di insiemi e funzioni di \ref{ex_cat_insiemi}, l'assioma di estensionalità implica che esiste un solo oggetto iniziale (l'insieme vuoto), però \emph{ogni} insieme con un solo elemento è un oggetto terminale, non importa quale questo elemento sia; ve ne sono in effetti molti diversi: gli insiemi
+ Nella categoria \(\ctSet\) di insiemi e funzioni di \ref{ex_cat_insiemi}, l'assioma di estensionalità implica che esiste un solo oggetto iniziale (l'insieme vuoto); per contro \emph{ogni} insieme con un solo elemento è un oggetto terminale, non importa quale questo elemento sia; ve ne sono in effetti molti diversi: gli insiemi
  \[\{\emptyset\},\{\{\emptyset\}\},\{\{\{\emptyset\}\}\},\dots\]
- sono tutti terminali a due a due distinti.\footnote{In effetti formano la catena $\{\emptyset\}\in\{\{\emptyset\}\}\in\{\{\{\emptyset\}\}\}\in\dots$ dove ciascun termine è un elemento del successivo\dots} C'è quindi una sottigliezza di cui tenere conto qui: la teoria degli insiemi postula che esista un unico insieme vuoto, e per contro non si cura di creare, iterando l'operazione \(y\mapsto\{y\}\), una molteplicità di insiemi singoletti tutti isomorfi tra loro (molteplicità illusoria nel linguaggio di questo libro, perché la teoria delle categorie non sa stabilire una differenza che sia `interna' a due di loro, può vederli solo da fuori, mediante frecce che ci puntano o ne escono).
-
- Questo è un pregio o un difetto del formalismo categoriale? Come in ogni cosa, dipende: qual è il `significato' delle variabili che denotano gli elementi di un insieme? Esiste una proprietà scrivibile nel linguaggio \(\mathsf{CT}\) di \ref{prop_dualita} che l'insieme \(\{\emptyset\}\) soddisfa, che l'insieme \(\{\{\emptyset\}\}\) non soddisfa?
+ sono tutti terminali a due a due distinti.\footnote{In effetti formano la catena $\{\emptyset\}\in\{\{\emptyset\}\}\in\{\{\{\emptyset\}\}\}\in\dots$ dove ciascun termine è un elemento del successivo; questa è tra l'altro una codifica (di Zermelo) per i numeri alternativa a quella di Von Neumann, dove la funzione successore viene interpretata come $s' : y \mapsto \{y\}$ invece che come $s : y\mapsto y \cup \{y\}$. Il numero 2 nella codifica di Zermelo non ha due elementi, ma uno innestato `a profondità 2' in una catena di parentesi.} C'è quindi una sottigliezza di cui tenere conto qui: la teoria degli insiemi postula che esista un unico insieme vuoto, e per contro non si cura di creare, iterando l'operazione \(y\mapsto\{y\}\), una molteplicità di insiemi singoletti tutti isomorfi tra loro (molteplicità illusoria nel linguaggio di questo libro, perché la teoria delle categorie non sa stabilire una differenza che sia `interna' a due di loro, può vederli solo da fuori, mediante frecce che ci puntano o ne escono).
 \end{example}
+Questo è un pregio o un difetto del formalismo categoriale? Come in ogni cosa, dipende: qual è il `significato' delle variabili che denotano gli elementi di un insieme? Esiste una proprietà scrivibile nel linguaggio \(\mathsf{CT}\) di \ref{prop_dualita} che l'insieme \(\{\emptyset\}\) soddisfa, che l'insieme \(\{\{\emptyset\}\}\) non soddisfa?
 \begin{remark}[Notazioni alternative per oggetti iniziali e terminali]\label{notazioni_init_term}
- La varietà di situazioni in cui un oggetto iniziale o terminale può dover essere identificato comporta una uguale varietà di notazioni diverse per evitare confusioni:
+ La varietà di situazioni in cui un oggetto iniziale o terminale può apparire e dover essere identificato comporta una uguale varietà di notazioni diverse per denotarlo senza confusione:
  \begin{itemize}
-  \item Se si vuole creare un parallelo con la teoria degli ordini o la logica, le notazioni \(\bot,\top\) sono comuni; del resto,
-  \item `\(0\)' e `\(1\)' possono facilmente essere confusi con il numero zero e con un'identità (moltiplicativa o per composizione);
-  \item una notazione troppo vicina a `\(\emptyset\)', `\(\bullet\)' potrebbe suggerire che un oggetto iniziale è sempre concettualizzabile come vuoto (e questo è falso, ce ne sono di infiniti: \ref{} e \ref{}), e che un terminale è sempre concettualizzabile come un singoletto (e questo è falso, ci sono oggetti terminali molto grandi, \ref{} e \ref{}).
+  \item se si vuole creare un parallelo con la teoria degli ordini o la logica, le notazioni \(\bot,\top\) sono comuni; del resto,
+  \item `\(0\)' e `\(1\)' sono usati quasi da tutti, ma possono facilmente essere confusi con il numero zero e con un'identità (moltiplicativa o per un'operazione di composizione);
+  \item e una notazione troppo vicina a `\(\emptyset\)', `\(\bullet\)' potrebbe suggerire che un oggetto iniziale è sempre concettualizzabile come vuoto (e questo è falso, ce ne sono di infiniti: \ref{} e \ref{}), e che un terminale è sempre concettualizzabile come un singoletto (e questo è falso, ci sono oggetti terminali molto grandi, \ref{} e \ref{}).
  \end{itemize}
 \end{remark}
-Le sezioni che seguono un primo gruppo di esercizi si sviluppano così: vengono analizzati il prodotto Cartesiano e l'unione disgiunta di insiemi con la loro proprietà universale: la seconda costruzione è duale alla prima e si chiama \emph{coprodotto}. Vengono fatti esempi di prodotti e coprodotti in diverse categorie di insiemi strutturati, come gruppi, anelli, algebre, spazi topologici e ordinati. Vengono poi analizzate costruzioni universali più complesse, nella categoria \(\ctSet\) e in altri costrutti, dette \emph{equalizzatori} e \emph{coequalizzatori}. La Sezione \ref{} studia la proprietà universale di prodotti e somme in una categoria astratta, e \ref{} analizza `altre forme di limiti e colimiti': prodotti e somme di famiglie arbitrariamente grandi (ma limitate da un insieme) di oggetti, (co)equalizzatori in categorie astratte.
+Proponiamo un primo gruppo di esercizi e poi avanziamo con l'esposizione, con le sezioni seguenti che si sviluppano così: in \ref{} vengono analizzati il prodotto Cartesiano e l'unione disgiunta di insiemi con la loro proprietà universale; la seconda costruzione è duale alla prima e si chiama \emph{coprodotto}, introdotto in \ref{}. Vengono fatti esempi di prodotti e coprodotti in diverse categorie di insiemi strutturati, come gruppi, anelli, algebre, spazi topologici e ordinati, in \ref{}. Vengono poi analizzate costruzioni universali più complesse, nella categoria \(\ctSet\) e in altri costrutti, dette \emph{equalizzatori} e \emph{coequalizzatori}, in \ref{}. La Sezione \ref{} studia la proprietà universale di prodotti e somme in una categoria astratta, e \ref{} analizza `altre forme di limiti e colimiti': prodotti e somme di famiglie arbitrariamente grandi (ma limitate da un insieme) di oggetti, (co)equalizzatori in categorie astratte.
 
-La sezione \ref{} raccoglie esempi di limiti e colimiti che descrivono oggetti matematici che chi legge ha certamente incrociato; questo serve a dimostrare l'ubiquità della nozione di proprietà universale in matematica. Su questa stessa nota, la sezione \ref{} mostra come diverse costruzioni del capitolo precedente sono limiti o colimiti: un esempio su tutti è il funtore dei sottogetti di \ref{}, la cui esistenza nella categoria degli insiemi è facilmente giustificabile da un punto di vista elementare, ma che in una categoria astratta generica richiede la presenza di prodotti fibrati.
+La sezione \ref{} raccoglie esempi di limiti e colimiti che descrivono oggetti matematici che chi legge ha certamente incrociato; questo serve a dimostrare l'ubiquità della nozione di proprietà universale in matematica. Su questa stessa nota, la sezione \ref{} mostra come diverse costruzioni del capitolo precedente sono tutte limiti o colimiti: un esempio tra tanti è il \emph{funtore dei sottogetti} di \ref{}, la cui esistenza nella categoria degli insiemi è facilmente giustificabile da un punto di vista elementare, ma che in una categoria astratta generica richiede la presenza di abbastanza prodotti fibrati.
 
-Il resto del capitolo è occupato dalla teoria generale dei (co)limiti: teoremi di struttura come \ref{}, e controesempi all'esistenza di `tutti' i limiti \ref{} sono importanti pietre angolari della teoria. Alcuni funtori sono `continui' (mandano limiti in limiti) o `cocontinui' (mandano colimiti in colimiti), o hanno maniere di interagire coi colimiti più sofisticate. La questione viene analizzata nella sezione \ref{}.
+Il resto del capitolo è occupato dalla teoria generale dei (co)limiti: teoremi di struttura come \ref{}, e controesempi all'esistenza di `tutti' i limiti \ref{} sono importanti pietre angolari della teoria. Alcuni funtori sono `continui' (mandano limiti in limiti) o `cocontinui' (mandano colimiti in colimiti), o hanno maniere di interagire coi colimiti più sofisticate (sono (co)continui rispetto a (co)limiti di una forma ben precisa). La questione viene analizzata nella sezione \ref{}.
 \begin{esercizi}
  \item \label{ex_21_1} Nella notazione di \ref{}, ricordando che il gruppo additivo degli interi \(\bbZ\) e l'algebra \(\bbB\) dei Booleani \(\{\texttt{true},\texttt{false}\}\) sono iniziali, rispettivamente, nella categoria degli anelli unitari e delle algebre di Boole, caratterizzare gli insiemi
  \[\Hom{\ctRing_1}(R,\bbZ) \qquad \Hom{\ctBAlg}(H,\bbB)\]
