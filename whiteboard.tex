@@ -30,10 +30,60 @@
   cm double to/.tip = {cm to[sep=+0pt -8.8]cm to},
 }
 \begin{document}
-\begin{tikzcd}
-	{}	\ar[r] &{}
-\end{tikzcd}
-\begin{tikzpicture}[overlay]
-	\node	at (-1,0.5) {\color{red}\xymatrix{\ar[r] & }};
-\end{tikzpicture}
+  \begin{tikzpicture}[
+    x=4em, y=4em,
+    dot/.style={
+      circle,
+      fill=#1,
+      inner sep=0pt,
+      outer sep=2pt,
+      minimum size=4pt,
+      draw=none,
+     },
+    wrap/.style={
+      fill=black!5,
+      draw=gray,
+      rounded corners,
+      inner sep=.5em,
+     },
+   ]
+
+   \node (A) at (0,0) {$A$};
+   \node (B) at (0,-1) {$B$};
+   \node (X) at (1,0) {$X$};
+   \node (Y) at (1,-1) {$Y$};
+   \draw[-latex] (A) -- (B);
+   \draw[-latex] (X) -- (Y);
+   \draw[-latex] (B) -- (Y) node[below, pos=.5, font=\scriptsize] {$v$};
+   \draw[-latex] (X) -- (A) node[above, pos=.5, font=\scriptsize] {$u$};
+   \begin{scope}[xshift=4cm]
+    \node (A) at (.25,0) {$A$};
+    \node (B) at (0,-1) {$B$};
+    \node (X) at (.75,0) {$X$};
+    \node (Y) at (1,-1) {$Y$};
+    \draw[-latex] (A) -- (B);
+    \draw[-latex] (X) -- (Y);
+    \draw[-latex] (B) -- (Y) node[below, pos=.5, font=\scriptsize] {$v$};
+    \draw[-latex] (X) -- (A) node[above, pos=.5, font=\scriptsize] {$u$};
+   \end{scope}
+   \begin{scope}[xshift=8cm]
+    \node (A) at (1,0) {$A$};
+    \node (B) at (0,-1) {$B$};
+    \node (X) at (0,0) {$X$};
+    \node (Y) at (1,-1) {$Y$};
+    \draw[-latex] (A) -- (B);
+    \draw[-latex] (B) -- (Y) node[below, pos=.5, font=\scriptsize] {$v$};
+    \draw[-latex] (X) -- (A) node[above, pos=.5, font=\scriptsize] {$u$};
+    \draw[line width=3pt,white,-] (X) -- (Y);
+    \draw[-latex] (X) -- (Y);
+   \end{scope}
+   \begin{scope}[yshift=-3.5cm]
+    \node[draw] (TWspan) at (0,-.5) {$\xymatrix@R=6mm@C=6mm{\id_1\ar[dr]_{(\id_1,f)}&& \id_0 \ar[dr]|{(\id_0,g)}\ar[dl]|{(\id_0,f)}&& \id_2 \ar[dl]^{(g,\id_1)}\\ & f && g}$};
+    \node[draw] (TWcube) at (4,-.5) {$\xymatrix@R=6mm@C=6mm{
+      && [02]\ar@{<-}[dr]\ar@{<-}[dl]\\
+      & [01] \ar@{<-}[dr]\ar@{<-}[dl]&& [12]\ar@{<-}[dr]\ar@{<-}[dl]\\
+      [00] && [11] && [22]
+    }$};
+   \end{scope}
+  \end{tikzpicture}
 \end{document}
