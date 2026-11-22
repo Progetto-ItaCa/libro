@@ -753,10 +753,10 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
  \]
  Gli assiomi di categoria sono evidentemente soddisfatti da questa definizione.
 \end{definition}
-\begin{examples}
+\begin{examples}\label{ex_twC_examples}
   Identifichiamo la categoria di frecce ritorte di alcune delle categorie più semplici incontrate in \ref{}:
   \begin{enumtag}{twx}
-    \item \label{twex_1} Se $\ctC$ è la spanna generica di \ref{ex_spancospan}, allora $\ctTw(\ctC)$ è la categoria rappresentata in \ref{}, a sinistra. Ha cinque oggetti (le frecce di $\Lambda^2_0$) e quattro frecce non identiche.
+    \item \label{twex_1} Se $\ctC$ è la spanna generica di \ref{ex_spancospan}, allora $\ctTw(\ctC)$ è la categoria rappresentata in \ref{}, a sinistra. Ha cinque oggetti (le tre frecce identiche e le due non identiche di $\Lambda^2_0$) e quattro frecce non identiche `tautologiche' formate mediante le due braccia $f,g$ della spanna.
     \item \label{twex_2} Se $\ctC$ è l'ordine lineare finito $\{0 < 1 < \cdots < n\}$ di \ref{}, la categoria delle frecce ritorte $\ctTw(\ctC)$ è l'ordine parziale finito degli \emph{intervalli} in $[n]$, cioè l'insieme delle coppie \(\{[ij]\in\bbN^2 \mid 0\le i\le j\le n\}\) con l'ordine definito da \([ij]\le [i'j']\) se e solo se \(i'\le i \le j\le j'\). In particolare, $\ctTw([1])$ è l'ordine lineare a tre elementi \(\{(0,0)<(0,1)<(1,1)\}\), e $\ctTw([2])$ consiste del diagramma di Hasse disegnato in \ref{}, a destra.
     \item \label{twex_3} Se $\ctC = \ctA \times \ctB$ è il prodotto di due categorie date, allora \(\ctTw(\ctC) \cong \ctTw(\ctA) \times \ctTw(\ctB)\):\Todo{}
     \item \label{twex_4} Conseguenza del punto precedente, dato che il cubo $n$-dimensionale generico è il prodotto di $n$ copie della frecia generica, la categoria delle frecce ritorte del cubo $n$-dimensionale generico è \Todo{}
@@ -814,8 +814,8 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
     \draw[-latex] (X) -- (Y);
    \end{scope}
    \begin{scope}[yshift=-3.5cm]
-    \node[draw] (TWspan) at (0,-.5) {$\xymatrix@R=6mm@C=6mm{\id_1\ar[dr]_{(\id_1,f)}&& \id_0 \ar[dr]|{(\id_0,g)}\ar[dl]|{(\id_0,f)}&& \id_2 \ar[dl]^{(g,\id_1)}\\ & f && g}$};
-    \node[draw] (TWcube) at (4,-.5) {$\xymatrix@R=6mm@C=6mm{
+    \node[fill=gray!10] (TWspan) at (0,-.5) {$\xymatrix@R=6mm@C=6mm{\id_1\ar[dr]_{(\id_1,f)}&& \id_0 \ar[dr]|{(\id_0,g)}\ar[dl]|{(\id_0,f)}&& \id_2 \ar[dl]^{(g,\id_1)}\\ & f && g}$};
+    \node[fill=gray!10] (TWcube) at (4,-.5) {$\xymatrix@R=6mm@C=6mm{
       && [02]\ar@{<-}[dr]\ar@{<-}[dl]\\
       & [01] \ar@{<-}[dr]\ar@{<-}[dl]&& [12]\ar@{<-}[dr]\ar@{<-}[dl]\\
       [00] && [11] && [22]
@@ -823,7 +823,7 @@ Ci sono però altre applicazioni di questa costruzione: per esempio, se \(\susp 
    \end{scope}
   \end{tikzpicture}
  \end{center}
- \caption{La ragione dietro la terminologia `freccia ritorta' per la Definizione \ref{def_cat_frecce_ritorte} è che le sue frecce si possono pensare come quadrati commutativi dove il dominio orizzontale \(u\) è stato ruotato di mezzo giro. Sotto, alcuni esempi di categorie di frecce ritorte, descritti in maggior dettaglio in \ref{twex_1} e \ref{twex_2}.}
+ \caption{La ragione dietro la terminologia `freccia ritorta' per la Definizione \ref{def_cat_frecce_ritorte} è che le sue frecce si possono pensare come quadrati commutativi dove il dominio orizzontale \(u\) è stato ruotato di mezzo giro. Sotto, alcuni esempi di categorie di frecce ritorte, descritti in maggior dettaglio in \ref{ex_twC_examples}.\ref{twex_1} e \ref{twex_2}.}
 \end{figure}
 \begin{esercizi}
  \item Sia \(\ctC\) una categoria, \(X\in\ctC_0\) un oggetto, \(f \colon A\to X\) una freccia: dimostrare che il doppio incubo \((\ctC/X)/f\) è un incubo di \(\ctC\) (su quale oggetto?). Questa `riduzione' di un incubo iterato resta vera per l'incubo della succuba \((A/\ctC)/f\), per \(f/(\ctC/X)\), e per \(f/(A/\ctC)\)?
