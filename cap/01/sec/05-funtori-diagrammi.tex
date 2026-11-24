@@ -314,7 +314,7 @@ Si dimostri per facile esercizio che definire \(F(f,\id_B)\) e \(F(\id_A,g)\) è
  \begin{enumtag}{eb}
   \item\label{eb_1} il bifuntore hom di \ref{ex_hom_funtore}, che esiste per ogni categoria \(\ctC\);
   \item\label{eb_2} Esiste un bifuntore \(\blank\times\blank \colon \ctSet\times\ctSet \fun\ctSet\) che manda un oggetto \((X,Y)\) del prodotto di categorie \(\ctSet\times\ctSet\) nell'insieme \(X\times Y\) e le frecce \((f \colon A \to X, g \colon B\to Y)\) in \(f\times g \colon A\times B \to X\times Y \colon (a,b)\mapsto (f(a),g(b))\).
-  \item\label{eb_3} Esiste un bifuntore \(\blank\oplus\blank \colon \ctVect\times\ctVect \fun\ctVect\) che, similmente a prima, manda due spazi vettoriali \(V,W\) nella loro \emph{somma diretta}, e due mappe lineari \(f \colon V\to V',g \colon W\to W'\) nella mappa lineare \(\left(\begin{smat} f & 0 \\ 0 & g \end{smat}\right) \colon V\oplus W \to V'\oplus W'\). Questo e il precedente esempio sono casi particolari del \emph{prodotto} di due oggetti rispettivamente nelle categorie \(\ctSet,\ctVect\).
+  \item\label{eb_3} Esiste un bifuntore \(\blank\oplus\blank \colon \ctVect\times\ctVect \fun\ctVect\) che, similmente a prima, manda due spazi vettoriali \(V,W\) nella loro \emph{somma diretta}, e due mappe lineari \(f \colon V\to V',g \colon W\to W'\) nella mappa lineare \(\begin{smat} f & 0 \\ 0 & g \end{smat} \colon V\oplus W \to V'\oplus W'\). Questo e il precedente esempio sono casi particolari del \emph{prodotto} di due oggetti rispettivamente nelle categorie \(\ctSet,\ctVect\).
   \item\label{eb_4} \ref{ex_cat_matrici} (le matrici a coefficienti in un campo) fornisce un esempio di categoria dove le frecce sono bifuntori: una matrice \(m\times n\) a coefficienti in \(k\) infatti si può vedere come una funzione \(\bkt m\times \bkt n \to \bbF\), e considerare \(\bkt m = \{\iter n\}\) come una categoria discreta (\ref{ex_cat_discreta}) motiva la definizione seguente.
  \end{enumtag}
 \end{examples}
@@ -541,12 +541,12 @@ La nozione di diagramma permette di formalizzare l'idea di diagramma commutativo
  Si noti che questa definizione è un uso astuto di \ref{cat_sonopos}: una categoria-preordine è tale che non esistono due frecce distinte aventi lo stesso dominio e codominio, quindi \emph{tutti} i diagrammi sono ivi commutativi.
 \end{hRemark}
 \begin{lemma}\label{lem_funtori_preservano_comm}\index{Diagramma commutativo}
- Con una definizione precisa di diagramma commutativo, si può mostrare formalmente la seguente desiderabile ovvietà: ogni funtore \(F \colon \ctC \to\ctD\) manda diagrammi commutativi di \(\ctC\) in diagrammi commutativi di \(\ctD\) (della stessa forma, a patto di considerare `degeneri' i lati \(\vec a\) del diagramma \(F(\Phi)\) tali che \(F(\vec a) = a_n\cmp a_{n-1}\cmp\dots\cmp a_0\) sia l'identità di \(\ctD\)); infatti, la fattorizzazione \([\Phi_0,q]\) in
+ Con una definizione precisa di diagramma commutativo, si può mostrare formalmente la seguente desiderabile ovvietà: ogni funtore \(F \colon \ctC \to\ctD\) manda diagrammi commutativi di \(\ctC\) in diagrammi commutativi di \(\ctD\) (della stessa forma, a patto di considerare `degeneri' i lati \(\vec a\) del diagramma \(F(\Phi)\) tali che \(F(\vec a) = a_n\cmp a_{n-1}\cmp\dots\cmp a_0\) sia l'identità di \(\ctD\)); infatti, la fattorizzazione \([\Phi_0,q]\) di $\Phi$ in
  \[\xymatrix{
   \bfF\ctJ\ar[rr]^\Phi\ar[dr]_q && \ctC \ar[r]^-F & \ctD \\
   & P\ar[ur]_-{\Phi_0}
   }\]
- induce, per composizione, la fattorizzazione \([F\Phi_0,q]\).
+ induce, per composizione, la fattorizzazione \([F\cmp\Phi_0,q]\) di $F\cmp\Phi$.
 \end{lemma}
 \begin{remark}[Sull'immagine di un funtore]\label{im_non_subcat}\index{Funtore!immagine di un ---}\index{Immagine}
  L'immagine (stretta) di un funtore \(F \colon \ctC\fun\ctD\) può non essere una sottocategoria nel senso di \ref{def_subcat}; un controesempio minimo è il seguente: il funtore \(F\) definito da \(Ff=v,Fg=u\) in
