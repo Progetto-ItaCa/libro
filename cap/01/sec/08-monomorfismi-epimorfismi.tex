@@ -165,117 +165,6 @@ Il duale di \ref{caratt_epi_con_ort} è la seguente proposizione, che ammette un
  \[\dmFun{\Sub}{\ctC^\op}{\ctSet}\]
  per due motivi: il primo, che serve assumere un po' di struttura aggiuntiva perché \(\Sub\) sia definito sulle frecce (deve avere tutti i pullback di frecce lungo un mono, nel linguaggio dei limiti del capitolo \ref{chap_limiti_colimiti}), e il secondo, più importante, che (sebbene sia vero per la categoria degli insiemi, come visto sopra, e per tante altre categorie) nessun assioma di categoria assicura che, partendo da una categoria larga \(\ctC\), la classe dei sottoggetti di ogni \(X\) sia un insieme e non una classe propria.\footnote{Per chi legge ed ha interesse a questo tipo di problemi, possiamo dualmente definire anche la classe dei \emph{quozienti} di \(X\in\ctC_0\) come una classe di isomorfismo di epi di dominio \(X\), ma questa dualizzazione è delicata. Una categoria si dirà \emph{ben copotenziata} (in inglese, \emph{well-copowered}) se, per ogni oggetto \(X\in\ctC_0\), la classe \(\Quot(X)\) dei quozienti di \(X\) è un insieme. Si osservi che, in generale, non è vero che una categoria ben potenziata è ben copotenziata né il viceversa.}
 \end{definition}
-\begin{remark}
-  La coppia $(A,X)$, senza la specifica del mono $A\mono X$, non è sufficiente per specificare un sottoggetto. In parole semplici, occorre precisare \emph{come} $A$ si immerge in $X$. Uno stesso oggetto può infatti ammettere immersioni diverse nello stesso oggetto ambiente, e queste possono determinare sottoggetti distinti.
-
-Esistono esempi più semplici, ma per chi sa di cosa si tratta (in particolare, molte persone che studiano Fisica teorica), un esempio abbastanza significativo di questa situazione si incontra nella categoria delle algebre di Lie. Consideriamo
-\[
-\fkh=\mathfrak{sl}_2(\mathbb{C}),
-\qquad
-\fkg=\mathfrak{sl}_3(\mathbb{C}),
-\]
-e scegliamo generatori $e,f,h$ di $\mathfrak{h}$ tali che
-\[
-[h,e]=2e,\qquad [h,f]=-2f,\qquad [e,f]=h.
-\]
-Indicando con $E_{ij}$ le unità matriciali, una prima immersione
-$i\colon\mathfrak{h}\hookrightarrow\mathfrak{g}$ è data da
-\[
-i(e)=E_{12},\qquad
-i(f)=E_{21},\qquad
-i(h)=E_{11}-E_{22}.
-\]
-La sua immagine è la sottoalgebra
-\[
-i(\mathfrak{h})
-=
-\left\{
-\begin{pmatrix}
-a&b&0\\
-c&-a&0\\
-0&0&0
-\end{pmatrix}
-\;\middle|\;
-a,b,c\in\mathbb{C}
-\right\}.
-\]
-Una seconda immersione
-$j\colon\mathfrak{h}\hookrightarrow\mathfrak{g}$,
-detta \emph{principale}, è invece definita da
-\[
-j(e)=\sqrt{2}(E_{12}+E_{23}),\qquad
-j(f)=\sqrt{2}(E_{21}+E_{32}),\qquad
-j(h)=2(E_{11}-E_{33}).
-\]
-Si verifica direttamente che queste matrici soddisfano le
-stesse relazioni di commutazione. La loro indipendenza lineare
-garantisce che $j$ sia iniettiva.
-
-Le due immagini sono entrambe isomorfe a $\mathfrak{sl}_2(\mathbb{C})$,
-ma occupano posizioni sostanzialmente diverse in
-$\mathfrak{sl}_3(\mathbb{C})$. Per vederlo, restringiamo la
-rappresentazione naturale di $\mathfrak{g}$ su $\mathbb{C}^3$
-lungo le due immersioni. Nel primo caso otteniamo
-\[
-\mathbb{C}^3\cong\mathbb{C}^2\oplus\mathbb{C},
-\]
-con azione standard sul primo addendo e banale sul secondo.
-Nel secondo caso otteniamo invece la rappresentazione
-irriducibile tridimensionale
-\[
-\mathbb{C}^3\cong\operatorname{Sym}^2(\mathbb{C}^2).
-\]
-In particolare, la prima sottoalgebra ha una retta di vettori
-fissati, mentre la seconda non ha vettori fissati non nulli.
-Le due sottoalgebre non sono dunque neppure coniugate mediante
-un cambiamento di base di $\mathbb{C}^3$.
-
-La definizione categoriale di sottoggetto conserva precisamente
-l'informazione che andrebbe perduta considerando soltanto
-il tipo di isomorfismo di $\mathfrak{h}$. Un \emph{sottoggetto}
-di un oggetto $X$ è una classe di equivalenza di monomorfismi
-con codominio $X$: due monomorfismi
-\[
-m\colon A\hookrightarrow X,
-\qquad
-n\colon B\hookrightarrow X
-\]
-rappresentano lo stesso sottoggetto se esiste un isomorfismo
-$u\colon A\overset{\sim}{\longrightarrow}B$ tale che
-\[
-n\circ u=m.
-\]
-Non basta quindi che $A\cong B$: l'isomorfismo deve essere
-\emph{compatibile con le immersioni nell'oggetto ambiente}.
-Equivalentemente, $m$ e $n$ devono essere isomorfi come oggetti
-della categoria fetta $\mathcal{C}/X$.
-
-Nella categoria delle algebre di Lie questa equivalenza
-identifica esattamente le immersioni aventi la stessa immagine.
-Le immersioni $i$ e $j$ costruite sopra rappresentano pertanto
-sottoggetti distinti di $\mathfrak{g}$, pur avendo lo stesso
-dominio.
-
-Occorre inoltre distinguere l'uguaglianza di sottoggetti dalla
-coniugazione mediante automorfismi dell'oggetto ambiente.
-Per esempio, le tre copie di $\mathfrak{sl}_2(\mathbb{C})$
-ottenute facendo agire le matrici sulle coppie di coordinate
-$(1,2)$, $(1,3)$ e $(2,3)$ sono coniugate fra loro, ma
-costituiscono tre sottoggetti distinti di
-$\mathfrak{sl}_3(\mathbb{C})$: le loro immagini sono diverse.
-La definizione di sottoggetto mantiene infatti fisso
-l'oggetto ambiente e consente di cambiare soltanto la
-parametrizzazione del dominio.
-
-La delicatezza non consiste dunque in un'ambiguità della
-nozione concreta di sottoalgebra: se $\mathfrak{h}$ è già
-specificata come sottoinsieme di $\mathfrak{g}$, la sua
-inclusione è determinata. Il problema nasce quando si
-sostituisce quella sottoalgebra concreta con il suo solo
-tipo di isomorfismo. Un sottoggetto ricorda non soltanto
-\emph{quale oggetto} compare, ma anche \emph{come compare}
-nell'oggetto ambiente.
-\end{remark}
 \begin{definition}\label{def_cat_ben_potenziata}\index{Categoria!--- ben potenziata}
  Una categoria \(\ctC\) si dice \emph{ben potenziata} (in inglese, \emph{well-powered}) se, per ogni oggetto \(X\in\ctC_0\), la classe \(\Sub(X)\) dei sottoggetti di \(X\) è un insieme.
 \end{definition}
@@ -294,6 +183,63 @@ nell'oggetto ambiente.
   \end{cases}
  \]
 \end{hExample}
+\begin{remark}
+  La coppia $(A,X)$, senza la specifica del mono $A\mono X$, non è sufficiente per specificare un sottoggetto. In parole semplici, occorre precisare \emph{come} $A$ si immerge in $X$. Uno stesso oggetto può infatti ammettere immersioni diverse nello stesso oggetto ambiente, e queste possono determinare sottoggetti distinti.
+
+Esistono esempi più semplici, ma per chi sa di cosa si tratta (in particolare, molte persone che studiano Fisica teorica), un esempio abbastanza significativo che sostanzia questa osservazione si incontra nella categoria $\ctLie$ delle algebre di Lie. Consideriamo
+\[
+\fkh=\mathfrak{sl}_2(\bbC),
+\qquad
+\fkg=\mathfrak{sl}_3(\bbC),
+\]
+e scegliamo generatori $e,f,h$ di $\fkh$ tali che
+\[
+[h,e]=2e,\qquad [h,f]=-2f,\qquad [e,f]=h.
+\]
+Indicando con $E_{ij}$ le matrici della base canonica, una prima immersione
+$i\colon\fkh\hookrightarrow\fkg$ è data da
+\[
+i(e)=E_{12},\qquad
+i(f)=E_{21},\qquad
+i(h)=E_{11}-E_{22}.
+\]
+La sua immagine è quindi la sottoalgebra delle matrici della forma $\begin{smat}a&b&0\\
+c&-a&0\\
+0&0&0
+\end{smat}$ al variare di $a,b,c\in\bbC$.
+
+Una seconda immersione $j\colon\fkh\hookrightarrow\fkg$, detta \emph{principale}, è invece definita da
+\[
+j(e)=\sqrt{2}(E_{12}+E_{23}),\qquad
+j(f)=\sqrt{2}(E_{21}+E_{32}),\qquad
+j(h)=2(E_{11}-E_{33}).
+\]
+Si verifica direttamente che queste matrici soddisfano le stesse relazioni di commutazione. La loro indipendenza lineare garantisce che $j$ sia iniettiva.
+
+Le due immagini sono entrambe isomorfe a $\mathfrak{sl}_2(\bbC)$, ma occupano posizioni sostanzialmente diverse in $\mathfrak{sl}_3(\bbC)$. Per vederlo, restringiamo la rappresentazione naturale di $\mathfrak{g}$ su $\bbC^3$ lungo le due immersioni. Nel primo caso otteniamo
+\[
+\bbC^3\cong\bbC^2\oplus\bbC,
+\]
+con azione standard sul primo addendo e banale sul secondo. Nel secondo caso otteniamo invece la rappresentazione irriducibile tridimensionale
+\[
+\bbC^3\cong\operatorname{Sym}^2(\bbC^2).
+\]
+In particolare, la prima sottoalgebra ha una retta di vettori fissati, mentre la seconda non ha vettori fissati non nulli. Le due sottoalgebre non sono dunque neppure coniugate mediante un cambiamento di base di $\bbC^3$.
+
+In questo caso, la definizione categoriale di sottoggetto conserva precisamente l'informazione che andrebbe perduta considerando soltanto il tipo di isomorfismo di $\fkh$. Questo mostra l'importanza del dare la definizione di sottoggetto nel modo giusto: in una categoria $\ctC$ due mono
+\[
+m\colon A\hookrightarrow X,
+\qquad
+n\colon B\hookrightarrow X
+\]
+rappresentano lo stesso sottoggetto solo se esiste un isomorfismo
+$u\colon A \cong B$ \emph{tale che}
+\[
+n\circ u=m.
+\]
+Equivalentemente, $m$ e $n$ devono essere isomorfi come oggetti
+della categoria incubo $\ctC/X$, cosa non vera per $i,j : \mathfrak{sl}_2(\bbC) \mono \mathfrak{sl}_3(\bbC)$.
+\end{remark}
 \subsection{Sezioni e retrazioni}\label{sec_sezretraz}\index{Sezione}
 Così come l'algebra ci ha suggerito di generalizzare all'ambito categoriale la nozione di elemento di un monoide cancellabile a sinistra/destra,
 similmente possiamo considerare la nozione di elemento invertibile a sinistra/destra.
